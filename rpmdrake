@@ -33,7 +33,7 @@ use rpmdrake;
 ", basename($0)); exit 0; };
 
 $> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
-$::isEmbedded = ($::XID, $::CCPID) = "@ARGV" =~ /--embedded (\w+) (\w+)/;
+
 $MODE = 'install';
 $0 =~ '/rpmdrake-remove$' and $MODE = 'remove';
 $0 =~ '/MandrakeUpdate$'  and $MODE = 'update';

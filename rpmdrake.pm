@@ -94,7 +94,6 @@ sub fatal_msg {
 }
 
 sub wait_msg {
-    local $::isEmbedded = 0;
     my $mainw = my_gtk->new('rpmdrake');
     my $label = new Gtk::Label($_[0]);
     gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label)));
