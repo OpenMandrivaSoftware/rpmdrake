@@ -930,7 +930,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 			   N("A required program is missing (grpmi). Check your installation.")), myexit(-1);
 
     my $fatal_msg;
-    local $urpm->{fatal} = sub { $fatal_msg = $_[1]; die };
+    my @error_msgs;
+    local $urpm->{fatal} = sub { $fatal_msg = $_[1]; printf STDERR "%s\n", $_[1]; die };
+    local $urpm->{error} = sub { push @error_msgs, $_[0]; printf STDERR "%s\n", $_[0] };
 
     eval {
 	standalone::explanations("Removing package $_") foreach keys %{$urpm->{state}{ask_remove}};
@@ -940,9 +942,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	foreach my $l (@$list) {
 	    standalone::explanations("Installing package $_") foreach sort values %$l;
 	}
-	if (!$local_sources && !$list) {
-	    fatal_msg(N("Unable to get source packages."),
-		      N("Unable to get source packages, sorry."));
+	if (!$local_sources && (!$list || !@$list)) {
+	    interactive_msg_(N("Unable to get source packages."),
+			     N("Unable to get source packages, sorry. %s",
+			     @error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
+	    die "return 1\n";
 	}
 	foreach (@$local_to_removes) {
 	    unlink $_;
@@ -961,7 +965,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		m|^/| && ! -e $_ or next;
 		interactive_msg_(N("Installation failed"),
 				 N("Installation failed, some files are missing.\nYou may want to update your sources database."));
-		return;
+		die "return 1\n";
 	    }
 	    %{$urpm->{state}{ask_remove}} and slow_func(N("Please wait, removing packages to allow others to be upgraded..."),
 							sub { system('rpm', '-e', '--nodeps', keys %{$urpm->{state}{ask_remove}}) });
@@ -992,8 +996,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    die "return $exitstatus\n";
 	} else {
 	    $urpm->try_umounting_removables;
-	    interactive_msg_(N("Everything already installed."),
-			     N("Everything already installed (is this supposed to happen at all?)."));
+	    interactive_msg_(N("No package found for installation."),
+			     N("Unrecoverable error: no package found for installation, sorry."));
 	}
     };
     if ($@) {
