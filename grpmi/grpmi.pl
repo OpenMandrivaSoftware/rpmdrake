@@ -80,10 +80,15 @@ my $exitstatus = -1;
 my $proxy;
 /http_proxy = (http:[^:]+:\d+)/ and $proxy = $1 foreach cat_("$ENV{HOME}/.wgetrc");
 my $cache_location = '/var/cache/urpmi/rpms';
+my $url_regexp = '^http://|^https://|^ftp://';
+my $nb_downloads = int(grep { m,$url_regexp, } @ARGV);
+my $download_progress;
 
 for (my $i=0; $i<@ARGV; $i++) {
-    if ($ARGV[$i] =~ m,^http://|^https://|^ftp://,) {
-	$label->set(_("Downloading package `%s'...", basename($ARGV[$i]))); select(undef, undef, undef, 0.1); $mainw->flush;  #- hackish :-(
+    if ($ARGV[$i] =~ m,$url_regexp,) {
+	$download_progress++;
+	$label->set(_("Downloading package `%s' (%s/%s)...", basename($ARGV[$i]), $download_progress, $nb_downloads));
+	select(undef, undef, undef, 0.1); $mainw->flush;  #- hackish :-(
 	my $res = curl_download::download($ARGV[$i], $cache_location, $proxy,
 					  sub { $_[0] and $progressbar->update($_[1]/$_[0]); $mainw->flush });
 	my $url = $ARGV[$i];
@@ -128,7 +133,9 @@ Do you want to continue anyway (skipping this package)?",
 
 if (grep { /^[^-]/ } @ARGV) {
     $label->set(_("Preparing packages for installation...")); $mainw->flush;
-    
+    my $nb_installs = int(grep { /^[^-]/ } @ARGV);
+    my $install_progress;
+
     sub install_packages_callback {
 	my ($msg) = @_;
 	my $retval;
@@ -140,7 +147,9 @@ _("Conflicts were detected:
 Do you want to force the install anyway?",
 					      join("\n", split(/\|/, $1))), 1) ? 0 : 1
 					},
-			'inst-start' => sub { $label->set(_("Installing package `%s'...", $1)); $mainw->flush },
+			'inst-start' => sub { $install_progress++;
+					      $label->set(_("Installing package `%s' (%s/%s)...", $1, $install_progress, $nb_installs));
+					      $mainw->flush },
 			'inst-progress' => sub {
 			    $1 =~ /(\d+) (\d+)/;
 			    $progressbar->update($1/$2); $mainw->flush
