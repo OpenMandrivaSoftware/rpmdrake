@@ -28,6 +28,7 @@ use urpm::download ();
 use MDK::Common;
 use MDK::Common::System;
 use urpm;
+use urpm::cfg;
 use URPM;
 use URPM::Resolve;
 use strict;
@@ -402,7 +403,8 @@ sub mirrors {
     $cachedir ||= '/root';
     my $mirrorslist = "$cachedir/mirrorsfull.list";
     unlink $mirrorslist;
-    my $res = curl_download::download('http://www.mandrakelinux.com/mirrorsfull.list', $cachedir, sub {});
+    urpm::cfg::mirrors_cfg();
+    my $res = curl_download::download($urpm::cfg::mirrors, $cachedir, sub {});
     $res and die $res;
     require timezone;
     my $tz = ${timezone::read()}{timezone};
