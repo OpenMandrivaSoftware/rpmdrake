@@ -185,6 +185,11 @@ really want to replace it?"), yesno => 1) or return 0;
     return 0;
 }
 
+sub options_callback {
+    my $w = ugtk2->new(N("Global options for package installation"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    $w->main;
+}
+
 sub remove_callback {
     my $row = selrow();
     $row == -1 and return;
@@ -192,6 +197,7 @@ sub remove_callback {
 	N("Source Removal"),
 	N("Are you sure you want to remove source \"%s\"?", to_utf8($urpm->{media}[$row]{name})),
 	yesno => 1,
+	transient => $mainw->{rwindow},
     ) or return;
 
     my $wait = wait_msg(N("Please wait, removing medium..."));
@@ -360,8 +366,7 @@ sub remove_parallel {
 sub edit_parallel {
     my ($num, $conf) = @_;
     my $edited = $num == -1 ? {} : $conf->[$num];
-
-    my $w = ugtk2->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"), grab => 1);
+    my $w = ugtk2->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"), grab => 1, center => 1, transient => $mainw->{rwindow});
     my $name_entry;
 
     my $medias_ls = Gtk2::ListStore->new("Glib::String");
@@ -473,7 +478,6 @@ sub edit_parallel {
                                                      } \@protocols, \@protocols_names;
                                                      Gtk2->main_quit }),
 			       gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
-    $w->{rwindow}->set_position('center');
     $w->{rwindow}->set_size_request(600, -1);
     if ($w->main) {
         $num == -1 and push @$conf, $edited;
@@ -486,7 +490,7 @@ sub edit_parallel {
 }
 
 sub parallel_callback {
-    my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"), grab => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"), grab => 1, center => 1, transient => $mainw->{rwindow});
     my $list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String", "Glib::String", "Glib::String");
     my $list = Gtk2::TreeView->new_with_model($list_ls);
     each_index { $list->append_column(Gtk2::TreeViewColumn->new_with_attributes($_, Gtk2::CellRendererText->new, 'text' => $::i)) } N("Group"), N("Protocol"), N("Media limit");
@@ -523,14 +527,11 @@ sub parallel_callback {
 		    0, Gtk2::HSeparator->new,
 		    0, gtkpack(create_hbox(),
 			       gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
-    $w->{rwindow}->set_position('center');
-
     $w->main;
 }
 
-
 sub keys_callback {
-    my $w = ugtk2->new(N("Manage keys for digital signatures of packages"), grab => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Manage keys for digital signatures of packages"), grab => 1, center => 1, transient => $mainw->{rwindow});
 
     my $media_list_ls = Gtk2::ListStore->new("Glib::String");
     my $media_list = Gtk2::TreeView->new_with_model($media_list_ls);
@@ -624,8 +625,6 @@ sub keys_callback {
 		    0, Gtk2::HSeparator->new,
 		    0, gtkpack(create_hbox(),
 			       gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
-    $w->{rwindow}->set_position('center');
-
     $w->main;
 }
 
@@ -745,7 +744,7 @@ sub mainwindow {
 		    ),
 		    gtksignal_connect(Gtk2::Button->new(but(N("Manage keys..."))), clicked => \&keys_callback),
 		    gtksignal_connect(Gtk2::Button->new(but(N("Proxy..."))), clicked => \&proxy_callback),
-		    gtksignal_connect(Gtk2::Button->new(but(N("Parallel..."))), clicked => \&parallel_callback)
+		    gtksignal_connect(Gtk2::Button->new(but(N("Parallel..."))), clicked => \&parallel_callback),
 		)
 	    ),
 	    0, Gtk2::HSeparator->new,
