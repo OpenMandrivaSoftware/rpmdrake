@@ -31,14 +31,16 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
 ", $basename->($0);
 	exit 0;
     };
-    $> and (exec { 'consolehelper' } $0, @ARGV or die "consolehelper missing");
 }
 
 use strict;
 use vars qw($MODE %options);
 
+use lib qw(/usr/lib/libDrakX);
+use common;
 use rpmdrake;
 
+require_root_capability();
 
 $MODE = 'install';
 $0 =~ m|/rpmdrake-remove$| and $MODE = 'remove';

@@ -20,9 +20,13 @@
 #
 # $Id$
 
-$> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
 
 use strict;
+use lib qw(/usr/lib/libDrakX);
+use common;
+
+require_root_capability();
+
 use rpmdrake;
 
 $::isStandalone = 1;
