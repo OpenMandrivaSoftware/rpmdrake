@@ -709,9 +709,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     if (@rpms_install || @rpms_upgrade) {
 	foreach (@rpms_install, @rpms_upgrade) {
 	    m|^/| && ! -e $_ or next;
-	    fatal_msg(_("Installation failed"),
-		      _("Installation failed, some files are missing.\nYou may want to update your sources database."));
-	    myexit -1;
+	    interactive_msg(_("Installation failed"),
+			    _("Installation failed, some files are missing.\nYou may want to update your sources database."));
+	    return;
 	}
 	%{$urpm->{state}{ask_remove}} and slow_func(_("Please wait, removing packages to allow others to be upgraded..."),
 						    sub { system('rpm', '-e', '--nodeps', keys %{$urpm->{state}{ask_remove}}) });
