@@ -1044,7 +1044,7 @@ Is it ok to continue?",
 			    Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove") : N("Install"))),
 			    clicked => sub { $do_action->() },
 			),
-			0, gtksignal_connect(
+			0, my $update_button = gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Update media"))),
 			    clicked => sub {
 				update_sources_interactive($urpm, transient => $w->{rwindow})
@@ -1065,7 +1065,7 @@ Is it ok to continue?",
 	),
     );
     $show_selections_button and $show_selections_button->set_active(!$dont_show_selections);
-    $> and $action_button->set_sensitive(0);
+    $> and $action_button->set_sensitive(0), $update_button->set_sensitive(0);
     $find_entry->grab_focus;
 
     $w->{window}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
