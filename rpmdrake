@@ -318,9 +318,10 @@ sub parse_compssUsers_flat {
 
 sub pkg2medium {
     my ($p, $urpm) = @_;
-    my $tmp;
-    each_index { !$_->{ignore} && $p->id <= $_->{end} and $tmp ||= ${$urpm->{media}}[$::i] } @{$urpm->{media}};
-    $tmp;
+    foreach ( @{$urpm->{media}} ) {
+	!$_->{ignore} && $p->id <= $_->{end} and return $_;
+    }
+    undef;
 }
 
 #- strftime returns a string in the locale charset encoding;
