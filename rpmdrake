@@ -352,10 +352,18 @@ or you already installed all of them."));
 		       if ($MODE eq 'remove') {
 			   if ($new_state) {
 			       slow_func($tree->window, sub { $closure_removal->(@nodes) });
-			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} } keys %{$urpm->{state}{ask_remove}};
+			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } keys %{$urpm->{state}{ask_remove}};
 			       $deps_msg->(N("Some additional packages need to be removed"),
 					   N("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
 					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
+			       my @impossible_to_remove;
+			       foreach (grep { exists $pkgs->{$_}{base} } keys %{$urpm->{state}{ask_remove}}) {
+				   ${$pkgs->{$_}{base}} == 1 ? push @impossible_to_remove, $_ : ${$pkgs->{$_}{base}}--;
+			       }
+			       @impossible_to_remove and interactive_msg_(N("Some packages can't be removed"),
+									  N("Removing these packages would break your system, sorry:\n\n") .
+									  $formatlistpkg->(sort { $a cmp $b } @impossible_to_remove));
+			       @nodes_with_deps = difference2(\@nodes_with_deps, \@impossible_to_remove);
 			   } else {
 			       slow_func($tree->window,
 					 sub { @nodes_with_deps = grep { intersection(\@nodes, [ $closure_removal->($_) ]) }
@@ -363,6 +371,7 @@ or you already installed all of them."));
 			       $deps_msg->(N("Some packages can't be removed"),
 					   N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
 					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
+			       $pkgs->{$_}{base} && ${$pkgs->{$_}{base}}++ foreach @nodes_with_deps;
 			   }
 		       } else {
 			   if ($new_state) {
@@ -1000,10 +1009,12 @@ sub get_installed_pkgs {
     $db->traverse(sub {
 		      my ($pkg) = @_;
 		      my $fullname = my_fullname($pkg);
-		      $base{$fullname} && ${$base{$fullname}}
-			#- I need to extract summary and description since they'll be lost when $pkg->pack_header
-			or $installed_pkgs{$fullname} = { selected => 0, pkg => $pkg, summary => $pkg->summary,
-							  description => beautify_description($pkg->description) };
+		      if (!$base{$fullname} || ${$base{$fullname}} != 1) {
+			  #- I need to extract summary and description since they'll be lost when $pkg->pack_header
+			  $installed_pkgs{$fullname} = { selected => 0, pkg => $pkg, summary => $pkg->summary,
+							 description => beautify_description($pkg->description) };
+			  $base{$fullname} and $installed_pkgs{$fullname}{base} = \${$base{$fullname}};
+		      }
 		      $pkg->pack_header;
 		  });
     remove_wait_msg($wait);
@@ -1014,8 +1025,11 @@ sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = grep { $pkgs->{$_}{selected} } keys %$pkgs;
     standalone::explanations("Removing package $_") foreach sort @toremove;
+    my @results;
     slow_func(N("Please wait, removing packages..."),
-	      sub { $urpm->install(\@toremove, {}, {}) });
+	      sub { @results = $urpm->install(\@toremove, {}, {}, translate_message => 1) });
+    @results and interactive_msg_(N("Problem during removal"),
+				  N("There was a problem during the removal of packages:\n\n%s", join("\n",  @results)));
 }
 
 
