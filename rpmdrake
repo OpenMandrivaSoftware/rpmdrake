@@ -847,7 +847,7 @@ Is it ok to continue?", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{a
 				       0, gtkpack_(Gtk2::HBox->new(0, 20),
 						   0, gtksignal_connect(Gtk2::Button->new(but(N("Help"))),
 									clicked => sub {
-                                                           system('drakhelp Drakxtools-Guide.html/software-management.html &');
+                                                           system("drakhelp --id software-management-$MODE &");
                                                            interactive_msg_(N("Help launched in background"),
                                                                             N("The help window has been started, it should appear shortly on your desktop."));
                                                                         }),

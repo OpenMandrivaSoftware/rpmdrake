@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools > 9.2-0.28mdk rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools > 9.2-5mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-6mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: libcurl2-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -103,6 +103,9 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Tue Sep  2 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-34mdk
 - s/9.1/9.2/ (#5201)
+- help:
+  - use --id
+  - launch the good sub-chapter
 
 * Tue Sep 02 2003 David Baudens <baudens@mandrakesoft.com> 2.1-33mdk
 - Update banners
