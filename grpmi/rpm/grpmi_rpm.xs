@@ -178,7 +178,7 @@ int install_packages_callback(char * msg, ...)
 		out = "";
 	va_end(args);
 
-	if (!install_packages_callback_data)
+	if (!SvROK(install_packages_callback_data))
 		return 0;
 	ENTER;
 	SAVETMPS;
@@ -186,7 +186,7 @@ int install_packages_callback(char * msg, ...)
   	XPUSHs(sv_2mortal(newSVpv(out, 0)));
   	PUTBACK;
 	free(out);
-  	i = perl_call_sv(install_packages_callback_data, G_SCALAR);
+  	i = call_sv(install_packages_callback_data, G_SCALAR);
         SPAGAIN;
         if (i != 1)
 		croak("Big trouble\n");
@@ -369,7 +369,7 @@ SV * callback
 		install_packages_callback_data = callback;
 		pkgs = malloc(sizeof(char *) * items);
                 for (i=1; i<items; i++)
-			pkgs[i-1] = SvPV(ST(i), PL_na);
+			pkgs[i-1] = SvPV_nolen(ST(i));
 		pkgs[items-1] = NULL;
                 RETVAL = install_packages_(pkgs);
 		free(pkgs);
