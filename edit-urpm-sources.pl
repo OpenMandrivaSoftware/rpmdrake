@@ -83,6 +83,7 @@ sub add_callback {
 			     1, new Gtk::Label,
 			     0, gtksignal_connect($info->{$_->[0].'_check'} = new Gtk::CheckButton($_->[1]),
 						  clicked => sub { $info->{$entry_name.'_entry'}->set_sensitive($_[0]->get_active);
+								   $info->{pass_entry}->set_visibility(0);
 								   $info->{pass_check}->set_active($_[0]->get_active);
 								   $info->{login_check}->set_active($_[0]->get_active);
 							       }),
