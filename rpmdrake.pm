@@ -200,7 +200,7 @@ sub mirrors {
     my $res = curl_download::download('http://www.linux-mandrake.com/mirrorsfull.list', $cachedir, $proxy, sub {});
     $res and die $res;
     require timezone;
-    my $tz = ${{timezone::read()}}{timezone};
+    my $tz = ${timezone::read()}{timezone};
     my @mirrors = map { my ($land, $goodness);
 			my ($arch, $url) = m|\Q$class\E([^:]*):(.+)|;
 			$url =~ m|\.\Q$_\E/| and $land = $_ foreach keys %u2l;
