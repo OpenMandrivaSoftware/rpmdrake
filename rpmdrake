@@ -237,6 +237,12 @@ sub find_installed_version {
     @version ? join(',', sort @version) : N("(none)");
 }
 
+#- remove architecture
+sub ask_remove_ {
+    my ($state) = @_;
+    map { /(.*)\.[^\.]+$/ && $1 } keys %{$state->{ask_remove}};
+}
+
 sub run_treeview_dialog {
     my ($pkgs_provider, $callback_action) = @_;
 
@@ -284,7 +290,7 @@ sub run_treeview_dialog {
 				  $urpm->resolve_closure_ask_remove($db, $urpm->{state}, $_[0]);
 			      }) or die N("unknown package ") . "$_\n";
 	}
-	keys %{$urpm->{state}{ask_remove}};
+	ask_remove_($urpm->{state});
     };
     $options = {
 		   node_state => sub { $_[0] ? ($pkgs->{$_[0]}{selected} ? 'selected' : 'unselected')
@@ -385,12 +391,12 @@ or you already installed all of them."));
 		       if ($MODE eq 'remove') {
 			   if ($new_state) {
 			       slow_func($tree->window, sub { $closure_removal->(@nodes) });
-			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } keys %{$urpm->{state}{ask_remove}};
+			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } ask_remove_($urpm->{state});
 			       $deps_msg->(N("Some additional packages need to be removed"),
 					   N("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
 					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
 			       my @impossible_to_remove;
-			       foreach (grep { exists $pkgs->{$_}{base} } keys %{$urpm->{state}{ask_remove}}) {
+			       foreach (grep { exists $pkgs->{$_}{base} } ask_remove_($urpm->{state})) {
 				   ${$pkgs->{$_}{base}} == 1 ? push @impossible_to_remove, $_ : ${$pkgs->{$_}{base}}--;
 			       }
 			       @impossible_to_remove and interactive_msg_(N("Some packages can't be removed"),

@@ -16,13 +16,14 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.82-2mdk drakxtools >= 9.1-0.12mdk rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.84 drakxtools >= 9.1-0.12mdk rpmtools >= 4.5
 Requires: perl-GTK2 > 0.0.cvs.2003.02.12.1-2mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: libcurl2-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
 URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
 Obsoletes: MandrakeUpdate
+Conflicts: perl-URPM < 0.84
 
 %description
 rpmdrake is a simple graphical frontend to manage software packages on a
@@ -101,6 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Fri May 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-20mdk
+- perl-URPM API change: gives architecture in ask_remove
 - fix #3908 (garbage chars displayed as date in changelog entries in
   removal mode)
 
