@@ -50,7 +50,7 @@ my ($remove, $edit, $clist);
 
 sub add_callback {
     my ($mode, $rebuild_ui, $name_entry, $url_entry, $hdlist_entry, $count_nbs);
-    my $w = my_gtk->new(_("Edit a source"));
+    my $w = my_gtk->new(_("Add a source"));
     my %radios_infos = (local => { name => _("Local files"), url => _("Path:"), dirsel => 1 },
 			ftp => { name => _("FTP server"), url => _("URL:"), loginpass => 1 },
 			http => { name => _("HTTP server"), url => _("URL:") },
