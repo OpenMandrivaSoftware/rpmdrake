@@ -33,7 +33,7 @@ $> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
 use lib qw(/usr/lib/libDrakX);
 
 use strict;
-use vars qw($MODE %options);
+use vars qw($MODE %options $typical_width);
 
 use rpmdrake;
 
@@ -193,7 +193,7 @@ sub run_treeview_dialog {
 
     my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
 
-    my ($size_selected, $compssUsers, $info, $info_update, $tree, $disable_treeselect_callback, %elems);
+    my ($options, $size_selected, $compssUsers, $info, $info_update, $tree, $disable_treeselect_callback, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
@@ -211,7 +211,11 @@ sub run_treeview_dialog {
 		$is_locale_available->($_) and return $pkg;
 	    }
 	}
-	$choices->[interactive_list(_("Please choose"), _("One of the following packages is needed:"), map { my_fullname($_) } @$choices)];
+	my $callback = sub {
+	    interactive_msg(_("More information on package..."), $options->{get_info}->($_[0]), scroll => 1);
+	};
+	$choices->[interactive_list(_("Please choose"), _("One of the following packages is needed:"),
+				    [ map { my_fullname($_) } @$choices ], $callback)];
     };
     my $choices_auto;
     my $callback_choices_auto = sub {
@@ -230,7 +234,7 @@ sub run_treeview_dialog {
 	}
 	keys %{$urpm->{state}{ask_remove}};
     };
-    my $options = {
+    $options = {
 		   node_state => sub { $_[0] ? ($pkgs->{$_[0]}{selected} ? 'selected' : 'unselected')
 					     : 'XXX' },  #- checks $_[0] -> hack for partial tree displaying
 		   build_tree => sub {
@@ -298,7 +302,7 @@ or you already installed all of them."));
 			   my ($title, $msg, $nodes, $nodes_with_deps) = @_;
 			   @$nodes_with_deps > @$nodes or return 1;
 			   interactive_msg($title, $msg . $formatlistpkg->(sort { $a cmp $b } difference2($nodes_with_deps, $nodes)),
-					   { yesno => 1, text => { yes => _("Ok"), no => _("Cancel") } });
+					   yesno => 1, text => { yes => _("Ok"), no => _("Cancel") });
 		       };
 		       if ($MODE eq 'remove') {
 			   if ($new_state) {
@@ -421,7 +425,7 @@ or you already installed all of them."));
     $tree = Gtk::CTree->new(3, 0);
     $tree->set_selection_mode('browse');
     $tree->set_column_auto_resize($_, 1) foreach 0..2;
-    my $typical_width = $tree->get_style->font->string_width("Develop xmms-more-vis-plugins-1.6.0.0-2mdk");
+    $typical_width = $tree->get_style->font->string_width("Develop xmms-more-vis-plugins-1.6.0.0-2mdk");
     $typical_width > 500 and $typical_width = 500;  #- try to not being crazy with a too large value
     $typical_width < 150 and $typical_width = 150;
     $tree->set_column_max_width(0, $typical_width);
@@ -526,7 +530,7 @@ _("The following packages have to be removed for others to be upgraded:
 
 %s
 
-Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), { yesno => 1 })
+Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), yesno => 1)
 	      or return;
 	}
 	$callback_action->($urpm, $pkgs);
@@ -606,7 +610,7 @@ sub get_installable_pkgs {
 _("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
-Is it ok to continue?"), { yesno => 1 }) or myexit -1;
+Is it ok to continue?"), yesno => 1) or myexit -1;
 		my $w = wait_msg(_("Please wait, contacting mirror to update packages information."));
 		system('/usr/sbin/urpmi.update', map { $_->{name} } @update_medias) == 0
 		  or fatal_msg(_("Error updating medium"),
@@ -634,7 +638,7 @@ This may be due to a broken or temporary unavailable mirror, or when your
 Mandrake Linux version (%s) is not yet / no more supported by Mandrake Linux
 Official Updates.
 
-Do you want to try another mirror?", $r), { yesno => 1 }) and goto mu_retry_another_mirror;
+Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_mirror;
 		myexit -1;
 	    }
 	}
@@ -698,7 +702,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my %sources = $urpm->download_source_packages($local_sources, $list, '',
 						  sub { interactive_msg(_("Change medium"),
 									_("Please insert the medium named \"%s\" on device [%s]", @_),
-									{ yesno => 1, text => { yes => _("Ok"), no => _("Cancel") } }) });
+									yesno => 1, text => { yes => _("Ok"), no => _("Cancel") }) });
     my @rpms_install = grep { $_ !~ /\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
     my @rpms_upgrade = grep { $_ !~ /\.src\.rpm$/ } values %sources;
 
@@ -800,7 +804,7 @@ computer.")
 Your Mandrake Linux system comes with several thousands of software
 packages on CDROM or DVD. This tool will help you choose which software
 you want to install on your computer."))
-  , { yesno => 1 }) or myexit -1;
+  , yesno => 1) or myexit -1;
 	push @$already_splashed, $MODE;
     }
 

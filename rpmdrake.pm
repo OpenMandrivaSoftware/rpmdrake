@@ -63,29 +63,37 @@ sub writeconf {
 }
 
 sub interactive_msg {
-    my ($title, $contents, $options) = @_;
+    my ($title, $contents, %options) = @_;
     my $d = my_gtk->new($title);
     gtkadd($d->{window},
 	   gtkpack_(new Gtk::VBox(0,5),
-		    1, new Gtk::Label($contents),
+		    1, $options{scroll} ? gtkset_usize(createScrolledWindow(gtktext_insert(new Gtk::Text, $contents)), $typical_width*2, 300)
+					: new Gtk::Label($contents),
 		    0, gtkpack(create_hbox(),
-			       $options->{yesno} ? (gtksignal_connect(new Gtk::Button($options->{text}{yes} || _("Yes")),
-								      clicked => sub { $d->{retval} = 1; Gtk->main_quit }),
-						    gtksignal_connect(new Gtk::Button($options->{text}{no} || _("No")),
-								      clicked => sub { $d->{retval} = 0; Gtk->main_quit }))
+			       $options{yesno} ? (gtksignal_connect(new Gtk::Button($options{text}{yes} || _("Yes")),
+								    clicked => sub { $d->{retval} = 1; Gtk->main_quit }),
+						  gtksignal_connect(new Gtk::Button($options{text}{no} || _("No")),
+								    clicked => sub { $d->{retval} = 0; Gtk->main_quit }))
 			       : gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit })
 			      )));
     $d->main;
 }
 
 sub interactive_list {
-    my ($title, $contents, @list) = @_;
+    my ($title, $contents, $list, $callback) = @_;
     my $d = my_gtk->new($title);
-    my $vbradios = gtkpack__(new Gtk::VBox(0, 0), my @radios = gtkradio('', @list));
+    my @radios = gtkradio('', @$list);
+    my $vbradios = $callback ? create_packtable({},
+						mapn { my $n = $_[1];
+						       [ $_[0],
+							 gtksignal_connect(new Gtk::Button(_("Info...")),
+									   clicked => sub { $callback->($n) }) ]
+						   } \@radios, $list)
+                             : gtkpack__(new Gtk::VBox(0, 0), @radios);
     gtkadd($d->{window},
 	   gtkpack__(new Gtk::VBox(0,5),
 		     new Gtk::Label($contents),
-		     int(@list) > 8 ? gtkset_usize(createScrolledWindow($vbradios), 250, 320) : $vbradios,
+		     int(@$list) > 8 ? gtkset_usize(createScrolledWindow($vbradios), 250, 320) : $vbradios,
 		     gtkpack__(create_hbox(), gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit }))));
     $d->main;
     my $tmp;
@@ -221,7 +229,7 @@ sub choose_mirror {
 _("I need to contact MandrakeSoft website to get the mirrors list.
 Please check that your network is currently running.
 
-Is it ok to continue?"), { yesno => 1 }) or return '';
+Is it ok to continue?"), yesno => 1) or return '';
     my $wait = wait_msg(_("Please wait, downloading mirrors addresses from MandrakeSoft website."));
     my @mirrors;
     eval { @mirrors = mirrors('/var/cache/urpmi', 'updates') };
