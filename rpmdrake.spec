@@ -105,6 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 - provide drak* names as well
 - fix filelist wrongly displayed in RTL language, thx titi (#6581)
 - remove info on last selected package after install (#4648)
+- MandrakeUpdate: add ability to select all (#6576 and others)
 
 * Fri Sep  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-35mdk
 - fix invalid-build-requires libcurl2-devel

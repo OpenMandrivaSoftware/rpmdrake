@@ -362,7 +362,7 @@ sub run_treeview_dialog {
 
     my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
 
-    my ($options, $size_selected, $compssUsers, $info, $info_update, $tree, $disable_treeselect_callback, %elems);
+    my ($options, $size_selected, $compssUsers, $info, $info_update, $tree, $tree_model, $disable_treeselect_callback, %elems);
     $size_selected = 0;  #- to remove the use strict warning
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
@@ -440,7 +440,10 @@ or you already installed all of them."));
 		       if ($flat) {
 			   $add_node->($_->[0], '') foreach $sortmethods{$mode || 'flat'}->(@elems);
 		       } else {
-			   if ($mode eq 'by_source') {
+			   if ($MODE eq 'update') {
+			       $add_node->($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
+                               $tree->expand_row($tree_model->get_path($tree_model->get_iter_first), 0);
+                           } elsif ($mode eq 'by_source') {
 			       $add_node->($_->[0], pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm)->{name}) foreach $sortmethods{flat}->(@elems);
 			   } elsif ($mode eq 'by_presence') {
 			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed && !$pkgs->{$_->[0]}{pkg}->flag_skip
@@ -631,7 +634,7 @@ or you already installed all of them."));
 		   rebuild_tree => sub {},
 		  };
 
-    my $tree_model = Gtk2::TreeStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
+    $tree_model = Gtk2::TreeStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
     $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
 
@@ -673,7 +676,7 @@ or you already installed all of them."));
 
     my @modes_buttons;
     if ($MODE eq 'update') {
-	$options->{state}{flat} = 1;
+	$options->{state}{flat} = 0;
 	my %toggle_infos = (security => N("Security updates"), bugfix => N("Bugfixes updates"), normal => N("Normal updates"));
 	my @toggle_names_ordered = qw(security bugfix normal);
 	@modes_buttons = map { Gtk2::CheckButton->new(but($toggle_infos{$_})) } @toggle_names_ordered;
