@@ -128,7 +128,7 @@ sub extract_header {
 	    $p->pack_header;
 	} else {
 	  header_non_available:
-	    add2hash($pkg, { summary => _("(Non available)"), description => undef });
+	    add2hash($pkg, { summary => _("(Not available)"), description => undef });
 	}
     }
 }
@@ -419,8 +419,8 @@ or you already installed all of them."));
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
 				     my $max_info = if_(@$max_info_in_descr, _("%sFiles:\n%s\n\nChangelog:\n%s",
 					   $MODE eq 'remove' ? '' : _("Source: %s\n", pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name}),
-					   $pkgs->{$key}{files} || _("(Non available)"),
-					   $pkgs->{$key}{changelog} || _("(Non available)")));
+					   $pkgs->{$key}{files} || _("(Not available)"),
+					   $pkgs->{$key}{changelog} || _("(Not available)")));
 				     if ($MODE eq 'update') {
 					 gtktext_insert($info_update, beautify_description($descriptions->{$name}{pre}));
 					 _("Name: %s\nVersion: %s\nSize: %s KB\nImportance: %s\n\nSummary: %s\n\n%s\n",
