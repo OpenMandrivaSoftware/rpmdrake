@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 8mdk
+%define release 9mdk
 
 Name: %{name}
 Version: %{version}
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Feb 27 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-9mdk
+- support "community" and "cooker" classes of mirrors for updates
+
 * Thu Feb 26 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-8mdk
 - MandrakeUpdate: add --media, --pkg-sel and --pkg-nosel commandline
   switches, to be invoked by MandrakeOnline
