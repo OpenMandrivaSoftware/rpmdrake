@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Apr 27 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-2mdk
+- Language updates
+
 * Mon Apr 26 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-1mdk
 - MandrakeUpdate: didn't notify the user when it failed to retrieve
   the hdlist or synthesis file from a mirror. As a consequence no
