@@ -279,9 +279,8 @@ sub run_treeview_dialog {
 		       } else {
 			   my @keys = keys %$pkgs;
 			   if ($MODE eq 'update') {
-			       member('normal', @$mandrakeupdate_wanted_categories)
-				 or @keys = grep { my ($name) = split_fullname($_);
-						   member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories) } @keys;
+			       @keys = grep { my ($name) = split_fullname($_);
+					      member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories) } @keys;
 			       if (@keys == 0) {
 				   $add_node->('', _("(none)"), { nochild => 1 });
 				   my $explanation_only_once if 0;
@@ -757,11 +756,13 @@ Official Updates.
 Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_mirror;
 		myexit(-1);
 	    }
+	    @update_medias = ({ name => $update_name });  #- hack to simulate a medium for parsing of descriptions
 	}
 
 	my ($cur, $section);
 	foreach (map { cat_("$statedir/descriptions.$_->{name}"), '%package dummy' } @update_medias) {
 	    /^%package (.+)/ and do {
+		exists $cur->{importance} && !member($cur->{importance}, qw(security bugfix)) and $cur->{importance} = 'normal';
 		$update_descr{$_} = $cur foreach @{$cur->{pkgs}};
 		$cur = {};
 		$cur->{pkgs} = [ split /\s/, $1 ];
