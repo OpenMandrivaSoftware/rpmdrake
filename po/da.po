@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-06 15:03+0200\n"
+"POT-Creation-Date: 2002-08-06 15:58+0200\n"
 "PO-Revision-Date: 2002-03-03 19:35+0100\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -82,9 +82,8 @@ msgid "Login:"
 msgstr "login:"
 
 #: ../edit-urpm-sources.pl_.c:92
-#, fuzzy
 msgid "Password:"
-msgstr "password:"
+msgstr "Adgangskode:"
 
 #: ../edit-urpm-sources.pl_.c:97
 msgid "Name:"
@@ -117,7 +116,7 @@ msgstr "Kildetype:"
 #: ../edit-urpm-sources.pl_.c:124 ../rpmdrake.pm_.c:75 ../rpmdrake.pm_.c:88
 #: ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:176
 #: ../edit-urpm-sources.pl_.c:200 ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
@@ -168,9 +167,8 @@ msgstr ""
 "du ønsker at opdatere:"
 
 #: ../edit-urpm-sources.pl_.c:199
-#, fuzzy
 msgid "Update"
-msgstr "Opdatér medie"
+msgstr "Opdatér"
 
 #: ../edit-urpm-sources.pl_.c:207
 #, fuzzy
@@ -632,9 +630,8 @@ msgid "Search"
 msgstr "Søg"
 
 #: ../rpmdrake_.c:483
-#, fuzzy
 msgid "Install"
-msgstr "Installerede"
+msgstr "Installér"
 
 #: ../rpmdrake_.c:495
 #, fuzzy
@@ -786,195 +783,369 @@ msgid ""
 "you want to install on your computer."
 msgstr ""
 
-#, fuzzy
-#~ msgid "By source"
-#~ msgstr "Kilde"
+#~ msgid "Installing/Upgrading Progress"
+#~ msgstr "Installations/opgraderings-fremskridt"
 
-#, fuzzy
-#~ msgid "Unable to update medium."
-#~ msgstr "Kan ikke lave rapportfil; afbryder.\n"
+#~ msgid "Fetching:"
+#~ msgstr "Henter:"
 
-#, fuzzy
-#~ msgid "Please wait, checking dependencies..."
-#~ msgstr "Tjekker afhængigheder..."
+#~ msgid "Installing:"
+#~ msgstr "Installerer:"
 
-#~ msgid "search"
-#~ msgstr "søg"
+#~ msgid " is needed by %s-%s-%s"
+#~ msgstr " behøves af %s-%s-%s"
 
-#, fuzzy
-#~ msgid "rpmdrake.pl"
-#~ msgstr "Start rpmdrake"
+#~ msgid " conflicts with %s-%s-%s"
+#~ msgstr " konflikter med %s-%s-%s"
 
-#, fuzzy
-#~ msgid "rpmdrake"
-#~ msgstr "Start rpmdrake"
+#~ msgid "Unsupported protocol\n"
+#~ msgstr "Ikke-understøttet protokol\n"
 
-#~ msgid "New"
-#~ msgstr "Ny"
+#~ msgid "Failed init\n"
+#~ msgstr "Init mislykkedes\n"
 
-#, fuzzy
-#~ msgid "Please wait"
-#~ msgstr "Vent venligst"
+#~ msgid "Bad URL format\n"
+#~ msgstr "Fejlbehæftet URL-format\n"
 
-#, fuzzy
-#~ msgid "Relative path to synthesis or hdlist:"
-#~ msgstr "Relativ sti til syntese eller hdlist: "
+#~ msgid "Bad user format in URL\n"
+#~ msgstr "Fejlbehæftet format på Internet URL-adresse\n"
 
-#~ msgid "%d packages, %Ld bytes"
-#~ msgstr "%d pakker, %Ld byte"
+#~ msgid "Couldn't resolve proxy\n"
+#~ msgstr "Kunne ikke finde proxy\n"
 
-#~ msgid "Cannot read this source: %s"
-#~ msgstr "Kan ikke læse denne kilde: %s"
+#~ msgid "Couldn't resolve host\n"
+#~ msgstr "Kunne ikke finde vært\n"
 
-#~ msgid "Cannot open the source: %s"
-#~ msgstr "Kan ikke åbne kilden: %s"
+#~ msgid "Couldn't connect\n"
+#~ msgstr "Kunne ikke forbinde til\n"
 
-#~ msgid " Searching the %s source"
-#~ msgstr " Søger i %s-kilden"
+#~ msgid "Ftp weird server reply\n"
+#~ msgstr "Mærkeligt ftp-server svar\n"
 
-#~ msgid "filling lists"
-#~ msgstr "fylder lister"
+#~ msgid "Ftp access denied\n"
+#~ msgstr "Ftp-adgang nægtet\n"
 
-#~ msgid "filling trees"
-#~ msgstr "fylder træer"
+#~ msgid "Ftp user password incorrect\n"
+#~ msgstr "Ftp brugeradgangskode ukorrekt\n"
+
+#~ msgid "Ftp weird PASS reply\n"
+#~ msgstr "Ftp mærkeligt PASS svar på adgangskode\n"
+
+#~ msgid "Ftp weird USER reply\n"
+#~ msgstr "Ftp mærkeligt USER svar\n"
+
+#~ msgid "ftp weird PASV reply\n"
+#~ msgstr "Ftp mærkeligt PASV svar\n"
+
+#~ msgid "Ftp weird 227 format\n"
+#~ msgstr "Ftp mærkeligt 227 format\n"
+
+#~ msgid "Ftp can't get host\n"
+#~ msgstr "Ftp kan ikke få fat på vært\n"
+
+#~ msgid "Ftp can't reconnect\n"
+#~ msgstr "Ftp kan ikke tilslutte igen\n"
+
+#~ msgid "Ftp couldn't set binary\n"
+#~ msgstr "Ftp kunne ikke sætte binær overførsel\n"
+
+#~ msgid "Partial file\n"
+#~ msgstr "Delvis fil\n"
+
+#~ msgid "Ftp couldn't RETR file\n"
+#~ msgstr "Ftp kunne ikke hente (RETR) fil\n"
+
+#~ msgid "Ftp write error\n"
+#~ msgstr "Ftp fejl ved skrivning\n"
+
+#~ msgid "Ftp quote error\n"
+#~ msgstr "Ftp fejl ved citationstegn\n"
+
+#~ msgid "http not found\n"
+#~ msgstr "http ikke fundet\n"
+
+#~ msgid "Write error\n"
+#~ msgstr "Fejl ved skriving\n"
+
+#~ msgid "User name illegally specified\n"
+#~ msgstr "Brugernavn forket angivet\n"
+
+#~ msgid "ftp couldn't STOR file\n"
+#~ msgstr "ftp kunne ikke gemme (STOR) fil\n"
+
+#~ msgid "Read error\n"
+#~ msgstr "Fejl ved læsning\n"
+
+#~ msgid "Out of memory\n"
+#~ msgstr "Løbet tør for hukommelse\n"
+
+#~ msgid "Time out\n"
+#~ msgstr "Tidsafbrydelse\n"
+
+#~ msgid "Ftp couldn't set ASCII\n"
+#~ msgstr "Ftp kunne ikke sætte ASCII-overførsel\n"
+
+#~ msgid "Ftp PORT failed\n"
+#~ msgstr "Ftp PORT mislykkedes\n"
+
+#~ msgid "Ftp couldn't use REST\n"
+#~ msgstr "Ftp kunne ikke bruge REST\n"
+
+#~ msgid "Ftp couldn't get size\n"
+#~ msgstr "Ftp kunne ikke få størrelse\n"
+
+#~ msgid "Http range error\n"
+#~ msgstr "Http områdefejl\n"
+
+#~ msgid "Http POST error\n"
+#~ msgstr "Http POST fejl\n"
+
+#~ msgid "Ssl connect error\n"
+#~ msgstr "Ssl tilslutningsfejl\n"
+
+#~ msgid "Ftp bad download resume\n"
+#~ msgstr "Ftp dårlig genoptagelse af henting\n"
+
+#~ msgid "File couldn't read file\n"
+#~ msgstr "File kunne ikke læse fil\n"
+
+#~ msgid "LDAP cannot bind\n"
+#~ msgstr "LDAP kan ikke tilslutte\n"
+
+#~ msgid "LDAP search failed\n"
+#~ msgstr "LDAP søgning mislykkedes\n"
+
+#~ msgid "Library not found\n"
+#~ msgstr "Bibliotek ikke fundet\n"
+
+#~ msgid "Function not found\n"
+#~ msgstr "Funktion ikke fundet\n"
+
+#~ msgid "Aborted by callback\n"
+#~ msgstr "Afbrudt ved tilbagekald\n"
+
+#~ msgid "Bad function argument\n"
+#~ msgstr "Dårligt argument til funktion\n"
+
+#~ msgid "Bad calling order\n"
+#~ msgstr "Dårlig rækkefølge ved kald\n"
+
+#~ msgid "Unknown error code %d\n"
+#~ msgstr "Ukendt fejl kode %d\n"
+
+#~ msgid "An error occured while fetching file"
+#~ msgstr "En fejl opstod under hentning af filen"
+
+#~ msgid "Skip"
+#~ msgstr "Spring over"
+
+#~ msgid "Preparing for install"
+#~ msgstr "Forbereder installation"
+
+#~ msgid "Can't check the GPG signature"
+#~ msgstr "Kan ikke tjekke GPG signatur"
 
 #~ msgid ""
-#~ "Error!\n"
-#~ "Cannot open rpm database"
+#~ "The package %s has a wrong signature or\n"
+#~ "GnuPG isn't correctly installed"
 #~ msgstr ""
-#~ "Fejl!\n"
-#~ "Kan ikke åbne rpm-database"
+#~ "Pakken %s har en forkert signatur eller\n"
+#~ "GnuPG er ikke korrekt installeret"
 
-#~ msgid "Error!"
-#~ msgstr "Fejl!"
+#~ msgid "The package %s is not signed"
+#~ msgstr "Pakken %s er ikke signeret"
 
-#~ msgid ""
-#~ "It looks like you don't have\n"
-#~ "configured a source for\n"
-#~ "security updates.\n"
-#~ "Do you want to configure one now?"
-#~ msgstr ""
-#~ "Det ser ud som du ikke har\n"
-#~ "konfigureret en kilde for\n"
-#~ "sikkerhedsopdateringer.\n"
-#~ "Ønsker du at konfigurere én nu?"
+#~ msgid "Install all"
+#~ msgstr "Installér alle"
 
-#~ msgid "Do not show this message again"
-#~ msgstr "Vis ikke denne besked igen"
+#~ msgid "Don't install"
+#~ msgstr "Installér ikke"
 
-#~ msgid "Configure a Cooker source?"
-#~ msgstr "Konfigurér en kilde for Cooker?"
+#~ msgid "Signature problem"
+#~ msgstr "Signatur problemer"
 
-#~ msgid ""
-#~ "Cooker is a development and unstable distribution.\n"
-#~ "It is not supported by MandrakeSoft.\n"
-#~ "Use it at your own risk.\n"
-#~ msgstr ""
-#~ "Cooker er en udviklings- og ustabil distribution.\n"
-#~ "Den er ikke understøttet af MandrakeSoft.\n"
-#~ "Brug den på eget ansvar.\n"
+#~ msgid "Can't open package"
+#~ msgstr "Kan ikke åbne pakke"
 
-#~ msgid ""
-#~ "Can't find the /var/lib/urpmi/compssUsers.flat file\n"
-#~ "the tree mode won't be available"
-#~ msgstr ""
-#~ "Kan ikke finde filen /var/lib/urpmi/compssUsers.flat\n"
-#~ "træ-modus vil ikke være tilstede"
+#~ msgid "Package is corrupted"
+#~ msgstr "Pakke er ødelagt"
 
-#~ msgid "Others"
-#~ msgstr "Andre"
+#~ msgid "Package can't be installed"
+#~ msgstr "Pakke kan ikke blive installeret"
 
-#~ msgid "Analysing the %s source"
-#~ msgstr "Analyserer %s-kilden"
+#~ msgid "Error while checking dependencies :("
+#~ msgstr "Fejl ved kontrol af afhængigheder :("
 
-#~ msgid "looking for installed packages"
-#~ msgstr "leder efter installerede pakker"
+#~ msgid "Force"
+#~ msgstr "Tving"
 
-#~ msgid "Frederic Lepied <flepied@mandrakesoft.com>"
-#~ msgstr "Frédéric Lepied <flepied@mandrakesoft.com>"
+#~ msgid "Error..."
+#~ msgstr "Fejl..."
 
-#~ msgid "Francois Pons <fpons@mandrakesoft.com>"
-#~ msgstr "François Pons <fpons@mandrakesoft.com>"
+#~ msgid "Problems occured during installation"
+#~ msgstr "Der opstod problemer under installationen"
+
+#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
+#~ msgstr "brug: grpmi <[-noupgrade] rpm'er>\n"
+
+#~ msgid "grpmi error: you must be superuser!\n"
+#~ msgstr "grpmi fejl: du skal være superbruger!\n"
 
 #~ msgid " ~ # ~ "
-#~ msgstr "Dansk oversættelse: Keld Simonsen <keld@dkuug.dk>"
+#~ msgstr "HSDG: Keld Simonsen <keld@dkuug.dk>"
 
 #~ msgid ""
-#~ "Software Manager\n"
+#~ "Mandrake Update\n"
 #~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
+#~ "(c) MandrakeSoft 1999-2000\n"
 #~ "released under the GPL"
 #~ msgstr ""
-#~ "ProgrammelAdministrator\n"
+#~ "Mandrake Update\n"
 #~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "frigivet under GPL"
+#~ "(c) MandrakeSoft 1999-2000\n"
+#~ "udgivet under GPL"
 
-#~ msgid "building dependencies for packages removing"
-#~ msgstr "opbygger afhængigheder for pakkefjernelse"
+#~ msgid "Error"
+#~ msgstr "Fejl"
+
+#~ msgid ""
+#~ "Cannot retrieve the list of mirrors\n"
+#~ "Try again later"
+#~ msgstr ""
+#~ "Kan ikke hente listen over spejle\n"
+#~ "Prøv igen senere"
+
+#~ msgid "Source on network: %s"
+#~ msgstr "Kilde på nettet: %s"
+
+#~ msgid "Source on network: %s/%s/%s"
+#~ msgstr "Kilde på nettet: %s/%s/%s"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Fetching the list of mirrors"
+#~ msgstr ""
+#~ "Vent venligst\n"
+#~ "Liste over spejle bliver hentet"
+
+#~ msgid "%.1f KB"
+#~ msgstr "%.1f kb"
+
+#~ msgid "%.1f MB"
+#~ msgstr "%.1f Mb"
+
+#~ msgid " n/a "
+#~ msgstr "-"
+
+#~ msgid ""
+#~ "Cannot retrieve the description file\n"
+#~ "Bad things can happen"
+#~ msgstr ""
+#~ "Kan ikke hente beskrivelsesfilen\n"
+#~ "Slemme ting kan ske"
+
+#~ msgid "n/a"
+#~ msgstr "-"
+
+#~ msgid "security"
+#~ msgstr "sikkerhed"
+
+#~ msgid "general"
+#~ msgstr "generelt"
+
+#~ msgid "bugfix"
+#~ msgstr "fejlrettelse"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Retrieving the Description file"
+#~ msgstr ""
+#~ "Vent venligst\n"
+#~ "Beskrivelsesfilen bliver hentet"
+
+#~ msgid ""
+#~ "Cannot retrieve the list of packages to update\n"
+#~ "Try with an other mirror"
+#~ msgstr ""
+#~ "Kan ikke hente listen over pakker der skal opdateres\n"
+#~ "Prøv med et andet spejl"
+
+#~ msgid "Warning"
+#~ msgstr "Advarsel"
+
+#~ msgid ""
+#~ "Caution! These packages are NOT well tested.\n"
+#~ "You really can screw up your system\n"
+#~ "by installing them.\n"
+#~ msgstr ""
+#~ "Forsigtig! Disse pakker er IKKE gennemtestede.\n"
+#~ "Du kan virkelig ødelægge dit system\n"
+#~ "ved at installere dem.\n"
+
+#~ msgid "Source on disk: %s"
+#~ msgstr "Kilde på disken: %s"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Updating the list of packages"
+#~ msgstr ""
+#~ "Vent venligst\n"
+#~ "Opdaterer listen over pakker"
+
+#~ msgid ""
+#~ "Name: %s\n"
+#~ "Type: %s"
+#~ msgstr ""
+#~ "Navn: %s\n"
+#~ "Type: %s"
+
+#~ msgid "unknown"
+#~ msgstr "ukendt"
+
+#~ msgid "Name: %s"
+#~ msgstr "Navn: %s"
+
+#~ msgid "%d selected packages: %.1f MB"
+#~ msgstr "%d valgte pakker: %.1f Mb"
+
+#~ msgid "GnuPG not found"
+#~ msgstr "GnuPG ikke fundet"
+
+#~ msgid ""
+#~ "GnuPG was not found\n"
+#~ "\n"
+#~ "MandrakeUpdate will not be able to verify the GPG\n"
+#~ "signature of the packages\n"
+#~ "\n"
+#~ "Please install the gpg package\n"
+#~ msgstr ""
+#~ "GnuPG blev ikke fundet\n"
+#~ "\n"
+#~ "MandrakeUpdate vil ikke være i stand til at\n"
+#~ "verificere GPG signaturen på pakken\n"
+#~ "\n"
+#~ "Installér venligst gpg-pakken\n"
+
+#~ msgid "Don't show this message again"
+#~ msgstr "Vis ikke denne besked igen"
 
 #~ msgid "oops %s not found\n"
-#~ msgstr "ups, %s ikke fundet\n"
+#~ msgstr "ups, %s blev ikke fundet\n"
 
-#~ msgid "Name"
-#~ msgstr "Navn"
+#~ msgid "Please Wait"
+#~ msgstr "Vent venligst"
 
-#~ msgid "Uninstalling packages"
-#~ msgstr "Afinstallerer pakker"
-
-#~ msgid "Looking for dependencies"
-#~ msgstr "Søger efter afhængigheder"
-
-#~ msgid "Please wait while rpm is removing these packages:"
-#~ msgstr "Vent venligst mens rpm fjerner disse pakker:"
-
-#~ msgid "The selected packages have been removed succesfully"
-#~ msgstr "De valgte pakker er blevet fjernet uden problemer"
-
-#~ msgid "Security warning : The Software Manager won't start browser as root"
-#~ msgstr ""
-#~ "Sikkerhedsadvarsel: ProgrammelAdministratoren vil ikke starte netlæser "
-#~ "som root"
-
-#~ msgid "Unable to run browser"
-#~ msgstr "Kunne ikke køre netlæser"
-
-#~ msgid "verbosity set to %s"
-#~ msgstr "Oplysningsniveau sat til %s"
-
-#~ msgid "TRUE"
-#~ msgstr "SAND"
-
-#~ msgid "FALSE"
-#~ msgstr "FALSK"
-
-#~ msgid "be verbose"
-#~ msgstr "Giv mange oplysninger"
-
-#~ msgid "Close"
-#~ msgstr "Luk"
+#~ msgid "0 selected packages: 0.0 MB"
+#~ msgstr "0 valgte pakker: 0.0 Mb"
 
 #~ msgid "/_File"
 #~ msgstr "/_Fil"
 
-#~ msgid "/File/Display Logs"
-#~ msgstr "/Fil/Vis log"
-
-#~ msgid "/File/_Install"
-#~ msgstr "/Fil/_Installér"
-
-#~ msgid "/File/_Uninstall"
-#~ msgstr "/Fil/_Afinstallering"
+#~ msgid "/File/_Preferences"
+#~ msgstr "/Fil/_Foretrukne"
 
 #~ msgid "/File/-"
-#~ msgstr "/Fil/-"
-
-#~ msgid "/File/_Proxies"
-#~ msgstr "/Fil/_Mellemværter (proxyer)"
+#~ msgstr "Fil/_"
 
 #~ msgid "/File/_Quit"
 #~ msgstr "/Fil/_Afslut"
@@ -983,797 +1154,49 @@ msgstr ""
 #~ msgstr "/_Hjælp"
 
 #~ msgid "/Help/_About..."
-#~ msgstr "/Hjælp/_Om..."
+#~ msgstr "/Hjælp/_Om"
 
-#~ msgid "/Help/-"
-#~ msgstr "/Hjælp/-"
+#~ msgid "Name"
+#~ msgstr "Navn"
 
-#~ msgid "/Help/MandrakeCampus.com"
-#~ msgstr "/Hjælp/MandrakeCampus.com"
-
-#~ msgid "/Help/MandrakeExpert.com"
-#~ msgstr "/Hjælp/MandrakeExpert.com"
-
-#~ msgid "/Help/Show Console Logs"
-#~ msgstr "/Hjælp/Vis konsollog"
-
-#~ msgid "Version"
-#~ msgstr "Version"
-
-#~ msgid "Installed version"
-#~ msgstr "Installeret version"
+#~ msgid "Installed"
+#~ msgstr "Installeret"
 
 #~ msgid "Size"
 #~ msgstr "Størrelse"
 
-#~ msgid "Software Manager"
-#~ msgstr "ProgrammelAdministrator"
-
-#~ msgid ""
-#~ "Install/\n"
-#~ "Remove"
-#~ msgstr ""
-#~ "Installér/\n"
-#~ "Fjern"
-
-#~ msgid "Install and remove selected packages"
-#~ msgstr "Installér og fjern valgte pakker"
-
-#~ msgid ""
-#~ "Define\n"
-#~ "sources"
-#~ msgstr ""
-#~ "Definér\n"
-#~ "kilder"
-
-#~ msgid "Define sources of packages available for installation and update"
-#~ msgstr ""
-#~ "Definér kilder til pakker tilgængelige for installering og opdatering"
-
-#~ msgid ""
-#~ "Reload\n"
-#~ "lists"
-#~ msgstr ""
-#~ "Indlæs lister\n"
-#~ "igen"
-
-#~ msgid "reload lists of available packages"
-#~ msgstr "Genindlæs lister over tilgængelige pakker"
-
-#~ msgid "Launch the Mandrake Update wizard"
-#~ msgstr "Start Mandrakes opdateringsvejleder"
-
-#~ msgid "Reset"
-#~ msgstr "nulstil"
-
-#~ msgid "Search by file"
-#~ msgstr "Søg i fillister"
-
-#~ msgid "Search by description"
-#~ msgstr "Søg i beskrivelser"
-
-#~ msgid "Flat List"
-#~ msgstr "Flad liste"
-
-#~ msgid "Tree view"
-#~ msgstr "Trævisning"
-
-#~ msgid "Selected"
-#~ msgstr "Valgt"
-
-#~ msgid "Installable"
-#~ msgstr "Installerbare"
-
-#~ msgid "All"
-#~ msgstr "Alt"
-
-#~ msgid "Updates only"
-#~ msgstr "Kun opdateringer"
-
-#~ msgid "Non-installed only"
-#~ msgstr "Kun afinstallerede"
-
-#~ msgid "Edit Sources"
-#~ msgstr "Redigér kilder"
-
-#~ msgid "Delete"
-#~ msgstr "Slet"
-
-#~ msgid "Error: curl_easy_init()"
-#~ msgstr "Fejl: curl_easy_init()"
-
-#~ msgid "You must provide a valid source name!"
-#~ msgstr "Du skal angive et gyldigt kildenavn!"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Adding source"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Tilføjer kilde"
-
-#~ msgid "An error occured when adding this source"
-#~ msgstr "En fejl opstod da denne kilde blev tilføjet"
-
-#~ msgid "New Source"
-#~ msgstr "Ny kilde"
-
-#~ msgid "New source's name:"
-#~ msgstr "Navn på ny kilde:"
-
-#~ msgid "path or mount point"
-#~ msgstr "sti eller monteringspunkt"
-
-#~ msgid "Local"
-#~ msgstr "Lokal"
-
-#~ msgid "path"
-#~ msgstr "sti"
-
-#~ msgid "http"
-#~ msgstr "http"
-
-#~ msgid "URL: "
-#~ msgstr "URL: "
-
-#~ msgid "ftp"
-#~ msgstr "ftp"
-
-#~ msgid "Update the list of mirrors"
-#~ msgstr "Opdatér listen med spejle"
-
-#~ msgid "Cooker"
-#~ msgstr "Cooker"
-
-#~ msgid "Do you really want to delete the %s source?\n"
-#~ msgstr "Vil du virkelig fjerne %s-kilden?\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Removing the %s source"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Fjerner %s-kilden"
-
-#~ msgid "Editing %s"
-#~ msgstr "Redigerer %s"
-
-#~ msgid "Please change one or more parameter\n"
-#~ msgstr "Ændr venligst en eller flere parametre\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the parameters for the %s source"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Opdaterer parametrene for %s-kilden"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the sources"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Opdaterer databasen for kilderne"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the %s source"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Opdaterer databasen for %s-kilden"
-
-#~ msgid "Sources to update"
-#~ msgstr "Kildefiler at opdatere"
-
-#~ msgid ""
-#~ "Welcome to the Mandrake Update utility!\n"
-#~ "\n"
-#~ "Here, you'll be able to upgrade your system\n"
-#~ "with the latest Mandrake Linux updates\n"
-#~ msgstr ""
-#~ "Velkommen til Mandrake opdateringsværktøjet!\n"
-#~ "\n"
-#~ "Her vil du kunne opgradere dit system\n"
-#~ "med de sidste opdateringer til Mandrake Linux\n"
-
-#~ msgid "Please choose which types of update you want to perform:"
-#~ msgstr "Vælg venligst hvilke slags opdateringer du ønsker at udføre:"
-
-#~ msgid "bugfixes"
-#~ msgstr "fejlrettelser"
-
-#~ msgid "security updates"
-#~ msgstr "sikkerhedsopdateringer"
-
-#~ msgid "No changelog found..."
-#~ msgstr "Ingen ændringslog fundet..."
-
-#~ msgid "Importance"
-#~ msgstr "Vigtighed"
-
-#~ msgid "Please select the packages you want to upgrade"
-#~ msgstr "Vælg venligst de pakker du ønsker at opgradere"
-
-#~ msgid "No Changelog found..."
-#~ msgstr "Ingen ændringslog fundet..."
-
-#~ msgid "please select at least one type of update\n"
-#~ msgstr "vælg venligst mindst en type opdatering\n"
-
-#~ msgid ""
-#~ "Cannot grab the list of mirrors.\n"
-#~ "The network could be unreachable.\n"
-#~ "Please try again later.\n"
-#~ msgstr ""
-#~ "Kan ikke få listen over spejle.\n"
-#~ "Netværket kan være udenfor rækkevidde.\n"
-#~ "Venligst prøv igen senere.\n"
-
-#~ msgid "Http Proxy:"
-#~ msgstr "Http mellemvært (proxy):"
-
-#~ msgid "Ftp Proxy:"
-#~ msgstr "Ftp mellemvært (proxy):"
-
-#~ msgid "Initialisation"
-#~ msgstr "Initialisering"
-
-#~ msgid "Welcome"
-#~ msgstr "Velkommen"
-
-#~ msgid "Packages informations"
-#~ msgstr "Informationer om pakker"
-
-#~ msgid "Errors found"
-#~ msgstr "Fejl fundet"
-
-#~ msgid "Packages dependencies informations"
-#~ msgstr "Information om pakkeafhængigheder"
-
-#~ msgid "Disk usage"
-#~ msgstr "Diskforbrug"
-
-#~ msgid "Good bye"
-#~ msgstr "Farvel"
-
-#, fuzzy
-#~ msgid "Software Installer"
-#~ msgstr "ProgrammelAdministrator"
-
-#~ msgid "Unable to safely create the temporary directory"
-#~ msgstr "Kunne ikke sikkert oprette midlertidigt katalog"
-
-#~ msgid "Unable to safely create the temporary file"
-#~ msgstr "Kan ikke oprette midlertidig fil på sikker måde"
-
-#~ msgid "Some errors where encountered while checking your wishes :"
-#~ msgstr "Nogle fejl blev opdaget mens dine ønsker blev tjekket :"
-
-#~ msgid "Files or packages format error"
-#~ msgstr "Formatfejl på filer eller pakker"
-
-#~ msgid "Conflicting packages"
-#~ msgstr "Konfliktende pakker"
-
-#~ msgid ""
-#~ "Despite these errors some package can be installed.\n"
-#~ "If you want to go on, click the \"Next\" button below."
-#~ msgstr ""
-#~ "Til trods for disse fejl kan nogle pakker installeres.\n"
-#~ "Hvis du ønsker at fortsætte, klik på \"Næste\" knappen nedenunder."
-
-#~ msgid ""
-#~ "Sorry, but all packages raised an error.\n"
-#~ "So I can't proceed with the installation."
-#~ msgstr ""
-#~ "Beklager, men alle pakker fremkaldte en fejl.\n"
-#~ "Så du kan ikke fortsætte med installationen."
-
-#~ msgid ""
-#~ "Congratulations!\n"
-#~ "You successfully installed your packages, now you can enjoy your new "
-#~ "programs. Simply click the \"Quit\" button below.\n"
-#~ "See you soon!"
-#~ msgstr ""
-#~ "Gratulerer!\n"
-#~ "Du har installeret dine pakker, og nu kan du bruge dine nye programmer. "
-#~ "Bare klik på \"Afslut\"-knappen nedenunder.\n"
-#~ "Vi ses!"
-
-#~ msgid "Unfortunately, some packages were not installed due to some errors."
-#~ msgstr "Desværre blev nogle pakker ikke installeret på grund af nogle fejl."
-
-#~ msgid "All required additional software is already installed, just go on."
-#~ msgstr ""
-#~ "Alt nødvendigt yderligere programmel er allerede installeret, gå bare "
-#~ "videre."
-
-#~ msgid ""
-#~ "This additional package needs to be installed in order to everything "
-#~ "working well:"
-#~ msgstr ""
-#~ "Denne yderligere pakke skal installeres for at alt kan virke ordentligt:"
-
-#~ msgid ""
-#~ "Install in progress...\n"
-#~ "\n"
-#~ "You can see below the installation state."
-#~ msgstr ""
-#~ "Installering er i gang...\n"
-#~ "\n"
-#~ "Du kan nedenfor se installationens tilstand."
-
-#~ msgid "Welcome to rpminst"
-#~ msgstr "Velkommen til rpminst"
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "An RPM package is a \"case\" containing a software (or a piece of "
-#~ "software) that you can install on your system to use it later."
-#~ msgstr ""
-#~ "Dette program vil installere de RPM-pakker du har bedt om.\n"
-#~ "En RPM-pakke er en 'kuffert' indeholdende et stykke programmel (eller en "
-#~ "del af et stykke programmel) som du kan installere på dit system til "
-#~ "senere brug."
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "Please wait while packages and dependencies are checked."
-#~ msgstr ""
-#~ "Dette program vil installere de RPM-pakker du bad om.\n"
-#~ "Vent venligst mens pakker og afhængigheder tjekkes."
-
-#~ msgid "Now doing:"
-#~ msgstr "Udfører nu:"
-
-#~ msgid "Checking files..."
-#~ msgstr "Tjekker filer..."
-
-#~ msgid "Checking packages..."
-#~ msgstr "Tjekker pakker..."
-
-#~ msgid "Building interface..."
-#~ msgstr "Bygger grænseflade..."
-
-#~ msgid "Install selected with rpminst"
-#~ msgstr "Installer valgte med rmpinst"
-
-#~ msgid "Select all"
-#~ msgstr "Vælg alle"
-
-#~ msgid "Unselect all"
-#~ msgstr "Fravælg alle"
-
-#~ msgid "Unknown error code"
-#~ msgstr "Ukendt fejlkode"
-
-#~ msgid "RPM file not found"
-#~ msgstr "RPM-fil ikke fundet"
-
-#~ msgid "Bad RPM file format (header)"
-#~ msgstr "Dårligt RPM-fil-format (hoved)"
-
-#~ msgid "Package unknown by urpmq"
-#~ msgstr "Pakke ukendt af urpmq"
-
-#~ msgid "Conflicting package"
-#~ msgstr "Konfliktende pakker"
-
-#~ msgid "Not enough available disk space"
-#~ msgstr "Ikke nok tilgængelig diskplads"
-
-#~ msgid "Unreadable RPM file"
-#~ msgstr "Ulæselig RPM-fil"
-
-#~ msgid "Added for dependencies"
-#~ msgstr "Tilføjet for afhængigheder"
-
-#~ msgid "Header format error (from urpmq)"
-#~ msgstr "Fejl på hoved-format (fra urpmq)"
-
-#~ msgid "Canceled by user"
-#~ msgstr "Afbrudt af bruger"
-
-#~ msgid "Refused by grpmi"
-#~ msgstr "Afvist af grpmi"
-
-#~ msgid "urpmi return value"
-#~ msgstr "urpmi returværdi"
-
-#~ msgid "Internal error"
-#~ msgstr "Intern fejl"
-
-#~ msgid "Brief"
-#~ msgstr "Kortfattet"
-
-#~ msgid "Details"
-#~ msgstr "Detaljer"
-
-#~ msgid "Files"
-#~ msgstr "Filer"
-
-#~ msgid ""
-#~ "Sorry, but no suitable web browser seems to be installed on your system."
-#~ msgstr ""
-#~ "Beklager, men ingen web-læser som kan bruges ser ud til at være "
-#~ "installeret\n"
-#~ "i dit system."
-
-#~ msgid "OK"
-#~ msgstr "O.k."
-
-#~ msgid "Changelog"
-#~ msgstr "Ændringslog"
-
-#~ msgid "Group: "
-#~ msgstr "Gruppe: "
-
-#~ msgid "License: "
-#~ msgstr "Licens: "
-
-#~ msgid "Packager: "
-#~ msgstr "Pakkeprogram: "
-
-#~ msgid "Size: "
-#~ msgstr "Størrelse: "
-
-#~ msgid "Empty changelog"
-#~ msgstr "Tom ændringslog"
-
-#~ msgid "(undefined)"
-#~ msgstr "(udefineret)"
+#~ msgid "Type"
+#~ msgstr "Type"
 
 #~ msgid "Summary"
 #~ msgstr "Oversigt"
 
-#~ msgid "Description"
-#~ msgstr "Beskrivelse"
-
-#~ msgid "%1.2f kB"
-#~ msgstr "%1.2f kb"
-
-#~ msgid "%1.2f MB"
-#~ msgstr "%1.2f Mb"
-
-#~ msgid "%1.2f GB"
-#~ msgstr "%1.2f Gb"
+#~ msgid "MandrakeUpdate, version 7.2\n"
+#~ msgstr "MandrakeUpdate, version 7.2\n"
 
 #~ msgid ""
-#~ "Cannot open the cached source: %s\n"
-#~ "fallback to slow method."
+#~ "  usage:\n"
+#~ "    -h, --help:    display this help and exit\n"
+#~ "    -v, --version: show the version and exit\n"
+#~ "    -V, --verbose: increase the verbosity level\n"
 #~ msgstr ""
-#~ "Kan ikke åbne den mellemlagrede kilde: %s\n"
-#~ "bruger i stedet langsom metode."
+#~ "  brug:\n"
+#~ "    -h, --help:    vis denne hjælp og luk\n"
+#~ "    -v, --version: vis versionen og luk\n"
+#~ "    -V, --verbose: øg niveauet for oplysninger\n"
+
+#~ msgid "Source on network: (random mirror)\n"
+#~ msgstr "Kilde på nettet: (tilfældigt spejl)\n"
 
 #~ msgid ""
-#~ "Cannot read this cached source: %s\n"
-#~ "fallback to slow method"
+#~ "Update\n"
+#~ "List"
 #~ msgstr ""
-#~ "Kan ikke læse denne mellemlagrede kilde: %s\n"
-#~ "bruger i stedet langsom metode."
-
-#~ msgid "Device name:"
-#~ msgstr "Enhedsnavn:"
-
-#~ msgid "url: "
-#~ msgstr "url: "
-
-#~ msgid "hdlist:"
-#~ msgstr "hdlist:"
-
-#~ msgid ""
-#~ "Software Manager\n"
-#~ "\n"
-#~ msgstr ""
-#~ "ProgrammelAdministrator\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "released under the GPL"
-#~ msgstr ""
-#~ "\n"
-#~ "(c) MandrakeSoft 1999-2000\n"
-#~ "frigivet under GPL"
-
-#~ msgid ""
-#~ "An internal error occured :\n"
-#~ "%s"
-#~ msgstr ""
-#~ "En intern fejl opstod:\n"
-#~ "%s"
-
-#~ msgid "Error"
-#~ msgstr "Fejl"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Invoking rpminst"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Kalder rpminst"
-
-#~ msgid ""
-#~ "Easy\n"
-#~ "Updates"
-#~ msgstr ""
-#~ "Nemme\n"
-#~ "opdateringer"
-
-#~ msgid "You must use at least one of --files or --packages !"
-#~ msgstr "Du skal bruge mindst én af parametrene --files eller --packages !"
-
-#~ msgid "Information"
-#~ msgstr "Information"
-
-#~ msgid "Description:"
-#~ msgstr "Beskrivelse:"
-
-#~ msgid "Files list"
-#~ msgstr "Filliste"
-
-#~ msgid "Device"
-#~ msgstr "Enheds"
-
-#~ msgid "Mount point"
-#~ msgstr "Monteringspunkt"
-
-#~ msgid "Needed"
-#~ msgstr "Behøves"
-
-#~ msgid "Status"
-#~ msgstr "Status"
-
-#~ msgid "You can see below the needs for your various filesystems."
-#~ msgstr "Du kan nedenfor se behovene for de forskellige filsystemer."
-
-#~ msgid "KO"
-#~ msgstr "KO"
-
-#~ msgid "You have enough disk space to proceed with the installation."
-#~ msgstr "Du har nok diskplads til at fortsætte installationen."
-
-#~ msgid ""
-#~ "You do not have enough disk space to install what you asked for. Make "
-#~ "room and try again !"
-#~ msgstr ""
-#~ "Du har ikke nok diskplads til at installere det som du har bedt om. Lav "
-#~ "plads og prøv igen!"
-
-#~ msgid "More informations about "
-#~ msgstr "Mere information om "
-
-#~ msgid "Release"
-#~ msgstr "Udgave"
-
-#~ msgid "Build date"
-#~ msgstr "Byggedato"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "More informations..."
-#~ msgstr "Mere information..."
-
-#~ msgid "-adobe-helvetica-bold-r-*-*-*-140-*-*-*-*-*-*,*"
-#~ msgstr "-adobe-helvetica-bold-r-*-*-*-140-*-*-*-*-*-*,*"
-
-#~ msgid "rank:"
-#~ msgstr "rang:"
-
-#~ msgid "n/a"
-#~ msgstr "i/t"
-
-#~ msgid "Version:"
-#~ msgstr "Version:"
-
-#~ msgid "Summary:"
-#~ msgstr "Oversigt:"
-
-#~ msgid "End of rmpinst"
-#~ msgstr "Slut på rmpinst"
-
-#~ msgid "Fetching "
-#~ msgstr "Henter "
-
-#~ msgid "Install in progress..."
-#~ msgstr "Installering undervejs..."
-
-#~ msgid " "
-#~ msgstr " "
-
-#~ msgid "Install Date:"
-#~ msgstr "Installeringsdato:"
-
-#~ msgid "Relocations:"
-#~ msgstr "Overflyttinger:"
-
-#~ msgid "Vendor:"
-#~ msgstr "Producent:"
-
-#~ msgid "Build host:"
-#~ msgstr "Kompileringstjeneren:"
-
-#~ msgid "cleaning 'installed' tree"
-#~ msgstr "renser 'installeret' tre"
-
-#~ msgid "cleaning 'installable' tree"
-#~ msgstr "renser 'installerbart' tre"
-
-#~ msgid "New Media"
-#~ msgstr "Nyt medie"
-
-#~ msgid "Edit media"
-#~ msgstr "Redigér medie"
-
-#~ msgid ""
-#~ "Edit\n"
-#~ "media"
-#~ msgstr ""
-#~ "Redigér\n"
-#~ "medie"
-
-#~ msgid ""
-#~ "Install/\n"
-#~ "Uninstall"
-#~ msgstr ""
-#~ "Installér/\n"
-#~ "Afinstallér"
-
-#~ msgid ""
-#~ "Do you really want to\n"
-#~ "remove the %s media?"
-#~ msgstr ""
-#~ "Vil du virkelig fjerne\n"
-#~ "%s-mediet"
-
-#~ msgid "CDROM"
-#~ msgstr "CDROM"
-
-#~ msgid "FTP"
-#~ msgstr "FTP"
-
-#~ msgid "HTTP"
-#~ msgstr "HTTP"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Adding media"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Tilføjer medie"
-
-#~ msgid "Add a media"
-#~ msgstr "Tilføj et medie"
-
-#~ msgid "Type of media:"
-#~ msgstr "Medietype:"
-
-#~ msgid "New media's Name:"
-#~ msgstr "Navn på nyt medie:"
-
-#~ msgid "Please, choose a CDROM number: "
-#~ msgstr "Vælg venligst et CDROM-nummer: "
-
-#~ msgid "Directory:"
-#~ msgstr "Katalog:"
-
-#~ msgid "Select directory"
-#~ msgstr "Vælg katalog"
-
-#~ msgid "FTP URL of the directory containing the RPMs"
-#~ msgstr "FTP URL til kataloget der indeholder RPM'erne"
-
-#~ msgid "Location for hdlist (relative to the URL above)"
-#~ msgstr "Placering af hdlist (relativ til URL ovenfor)"
-
-#~ msgid "HTTP URL of the directory containing the RPMs"
-#~ msgstr "HTTP URL til kataloget der indeholder RPM'erne"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the %s media"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Opdaterer databasen for %s medie"
-
-#~ msgid "Type"
-#~ msgstr "Type"
-
-#~ msgid "Media"
-#~ msgstr "Medie"
-
-#~ msgid "Add media"
-#~ msgstr "Tilføj medie"
-
-#~ msgid "Preferences"
-#~ msgstr "Foretrukne"
-
-#~ msgid "Categories"
-#~ msgstr "Kategorier"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Configuration checking"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Tjekker konfiguration"
-
-#~ msgid ""
-#~ "RpmDrake was unable to find any package\n"
-#~ "Please, check your installation\n"
-#~ "\n"
-#~ "If you made an NFS install, check the NFS directories are\n"
-#~ "still correctly mounted."
-#~ msgstr ""
-#~ "RpmDrake var ikke i stand til at finde nogen pakker\n"
-#~ "Undersøg venligst din installation\n"
-#~ "\n"
-#~ "Hvis du har lavet en installation med NFS, så undersøg om \n"
-#~ "dine nfs-kataloger stadig er monterede."
-
-#~ msgid "Name: %s"
-#~ msgstr "Navn: %s"
-
-#~ msgid "0 selected packages: 0.0 MB"
-#~ msgstr "0 valgte pakker: 0.0 Mb"
-
-#~ msgid ""
-#~ "Uninstall\n"
-#~ "selected"
-#~ msgstr ""
-#~ "Afinstallér\n"
-#~ "valgte"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Removing packages"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Fjerner pakker"
-
-#~ msgid "/File/_Update list"
-#~ msgstr "/Fil/_Opdatér liste"
-
-#~ msgid "Error: you must be root to use rpmdrake.\n"
-#~ msgstr "Fejl: du skal være root for at bruge rpmdrake.\n"
-
-#~ msgid "Enter search pattern"
-#~ msgstr "Indtast et søgemønster"
-
-#~ msgid "Case sensitive"
-#~ msgstr "Forskel på store og små bogstaver"
-
-#~ msgid "RPM Groups"
-#~ msgstr "RPM-grupper"
-
-#~ msgid "Packages:"
-#~ msgstr "Pakker:"
-
-#~ msgid "File list"
-#~ msgstr "Filliste"
-
-#~ msgid ""
-#~ "Expand\n"
-#~ "all"
-#~ msgstr ""
-#~ "Udvid\n"
-#~ "alle"
-
-#~ msgid "Expand all"
-#~ msgstr "Udvid alle"
-
-#~ msgid ""
-#~ "Collapse\n"
-#~ "all"
-#~ msgstr ""
-#~ "Sammenfold\n"
-#~ "alle"
-
-#~ msgid "Collapse all"
-#~ msgstr "Sammenfold alle"
+#~ "Opdatér\n"
+#~ "liste"
+
+#~ msgid "Update the list of packages to update"
+#~ msgstr "Opdatér listen over pakker der skal opdateres"
 
 #~ msgid ""
 #~ "Select\n"
@@ -1782,6 +1205,9 @@ msgstr ""
 #~ "Vælg\n"
 #~ "alle"
 
+#~ msgid "Select all"
+#~ msgstr "Vælg alle"
+
 #~ msgid ""
 #~ "Unselect\n"
 #~ "all"
@@ -1789,15 +1215,151 @@ msgstr ""
 #~ "Fravælg\n"
 #~ "alle"
 
-#~ msgid "Installing"
-#~ msgstr "Installerer"
+#~ msgid "Unselect all"
+#~ msgstr "Fravælg alle"
 
 #~ msgid ""
-#~ "Show\n"
-#~ "selected"
+#~ "Do\n"
+#~ "updates"
 #~ msgstr ""
-#~ "Vis\n"
-#~ "valgte"
+#~ "Udfør\n"
+#~ "opdateringer"
 
-#~ msgid "Show selected"
-#~ msgstr "Vis valgte"
+#~ msgid "Do Updates"
+#~ msgstr "Udfør opdateringer"
+
+#~ msgid "Normal Updates"
+#~ msgstr "Normale opdateringer"
+
+#~ msgid "Development Updates"
+#~ msgstr "Udviklings-opdateringer"
+
+#~ msgid "Descriptions"
+#~ msgstr "Beskrivelser"
+
+#~ msgid ""
+#~ "The packages are the updates for Mandrake\n"
+#~ "Select the one(s) you want to update\n"
+#~ "When you click on a package you get information about\n"
+#~ "the need to update"
+#~ msgstr ""
+#~ "Pakkerne er opdateringer til Mandrake\n"
+#~ "Vælg dem du ønsker at opdatere\n"
+#~ "Når du klikker på en pakke, vil du få information om\n"
+#~ "nødvendigheden af opdateringen"
+
+#~ msgid "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,*"
+#~ msgstr "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-1,*"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Sorting packages"
+#~ msgstr ""
+#~ "Vent venligst\n"
+#~ "Sorterer pakker"
+
+#~ msgid "Choose your packages"
+#~ msgstr "Vælg dine pakker"
+
+#~ msgid "Packages to update"
+#~ msgstr "Pakker der skal opgraderes"
+
+#~ msgid "Packages NOT to update"
+#~ msgstr "Pakker der IKKE skal opgraderes"
+
+#~ msgid ""
+#~ "Caution! You're changing the version.\n"
+#~ "MandrakeUpdate will think you actually have this\n"
+#~ "version installed\n"
+#~ "\n"
+#~ "You should only use this if you really know what you're doing.\n"
+#~ msgstr ""
+#~ "Advarsel! Du er i gang med at ændre versionen.\n"
+#~ "MandrakeUpdate vil tro du faktisk har denne version\n"
+#~ "installeret\n"
+#~ "\n"
+#~ "Du bør kun bruge dette hvis du virkelig véd hvad du laver.\n"
+
+#~ msgid "Preferences for Proxies"
+#~ msgstr "Foretrukne proxyer"
+
+#~ msgid "Proxies"
+#~ msgstr "Proxyer"
+
+#~ msgid "Http Proxy:"
+#~ msgstr "Http-Proxy:"
+
+#~ msgid "Port:"
+#~ msgstr "Port:"
+
+#~ msgid "Ftp Proxy:"
+#~ msgstr "Ftp-Proxy:"
+
+#~ msgid "Proxy username:"
+#~ msgstr "Proxy brugernavn:"
+
+#~ msgid "Proxy password:"
+#~ msgstr "Proxy adgangskode:"
+
+#~ msgid "Error: curl_easy_init()"
+#~ msgstr "Fejl: curl_easy_init()"
+
+#~ msgid "Disk"
+#~ msgstr "Disk"
+
+#~ msgid "Network"
+#~ msgstr "Netværk"
+
+#~ msgid "RPM directory"
+#~ msgstr "RPM-katalog"
+
+#~ msgid "Network settings:"
+#~ msgstr "Netværksopsætning:"
+
+#~ msgid "Version:"
+#~ msgstr "Version:"
+
+#~ msgid "Show security updates"
+#~ msgstr "Vis sikkerhedsopdateringer"
+
+#~ msgid "Show general updates"
+#~ msgstr "Vis generelle opdateringer"
+
+#~ msgid "Show bugfix updates"
+#~ msgstr "Vis fejlrettelsesopdateringer"
+
+#~ msgid "mirror:"
+#~ msgstr "spejl:"
+
+#~ msgid "Update the list of mirrors"
+#~ msgstr "Opdatér listen over spejle"
+
+#~ msgid "Choose Packages"
+#~ msgstr "Vælg pakker"
+
+#~ msgid "Username:"
+#~ msgstr "Brugernavn:"
+
+#~ msgid "Security"
+#~ msgstr "Sikkerhed"
+
+#~ msgid "Do not warn if GnuPG isn't installed"
+#~ msgstr "Advar ikke, selvom GnuPG ikke er installeret"
+
+#~ msgid "Do not warn if the package isn't signed"
+#~ msgstr "Advar ikke, selvom pakken ikke er underskrevet"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Forskelligt"
+
+#~ msgid "Timeout:"
+#~ msgstr "Tidsafbrydelse:"
+
+#~ msgid "(in sec)"
+#~ msgstr "(i sek)"
+
+#~ msgid "MandrakeUpdate Preferences"
+#~ msgstr "MandrakeUpdate, indstillinger"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorier"

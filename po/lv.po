@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-06 15:03+0200\n"
+"POT-Creation-Date: 2002-08-06 15:58+0200\n"
 "PO-Revision-Date: 2001-09-22 07:30+0200\n"
 "Last-Translator: Juris Kudiòð <cooker@inbox.lv>\n"
 "Language-Team: Latvian\n"
@@ -81,9 +81,8 @@ msgid "Login:"
 msgstr "lietotâjs:"
 
 #: ../edit-urpm-sources.pl_.c:92
-#, fuzzy
 msgid "Password:"
-msgstr "parole:"
+msgstr "Parole:"
 
 #: ../edit-urpm-sources.pl_.c:97
 msgid "Name:"
@@ -116,12 +115,12 @@ msgstr "Avota tips:"
 #: ../edit-urpm-sources.pl_.c:124 ../rpmdrake.pm_.c:75 ../rpmdrake.pm_.c:88
 #: ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:176
 #: ../edit-urpm-sources.pl_.c:200 ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
 msgid "Cancel"
-msgstr "Atcelt"
+msgstr "Atsaukt"
 
 #: ../edit-urpm-sources.pl_.c:145
 #, fuzzy
@@ -167,9 +166,8 @@ msgstr ""
 "kurus vçlaties atnunot:"
 
 #: ../edit-urpm-sources.pl_.c:199
-#, fuzzy
 msgid "Update"
-msgstr "Atjauninât datu nesçju"
+msgstr "Atjauninât"
 
 #: ../edit-urpm-sources.pl_.c:207
 #, fuzzy
@@ -630,9 +628,8 @@ msgid "Search"
 msgstr "Meklçt"
 
 #: ../rpmdrake_.c:483
-#, fuzzy
 msgid "Install"
-msgstr "Uzstâdîtas"
+msgstr "Instalçt"
 
 #: ../rpmdrake_.c:495
 #, fuzzy
@@ -784,171 +781,358 @@ msgid ""
 "you want to install on your computer."
 msgstr ""
 
-#, fuzzy
-#~ msgid "By source"
-#~ msgstr "Avots"
+#~ msgid "Installing/Upgrading Progress"
+#~ msgstr "Instalçðanas/Uzlaboðanas progress"
 
-#, fuzzy
-#~ msgid "Unable to update medium."
-#~ msgstr "Nevaru izveidot ziòojuma failu, pârtraucu.\n"
+#~ msgid "Fetching:"
+#~ msgstr "Saòemu:"
 
-#, fuzzy
-#~ msgid "Please wait, checking dependencies..."
-#~ msgstr "Pârbaudam atkarîbas..."
+#~ msgid "Installing:"
+#~ msgstr "Instalçju:"
 
-#~ msgid "search"
-#~ msgstr "meklçt"
+#~ msgid " is needed by %s-%s-%s"
+#~ msgstr " ir nepiecieðams priekð %s-%s-%s"
 
-#, fuzzy
-#~ msgid "rpmdrake.pl"
-#~ msgstr "Palaiest rpmdrake"
+#~ msgid " conflicts with %s-%s-%s"
+#~ msgstr " konfliktç ar %s-%s-%s"
 
-#, fuzzy
-#~ msgid "rpmdrake"
-#~ msgstr "Palaiest rpmdrake"
+#~ msgid "Unsupported protocol\n"
+#~ msgstr "Neatbalstîts protokols\n"
 
-#~ msgid "New"
-#~ msgstr "Jauns"
+#~ msgid "Failed init\n"
+#~ msgstr "Neizdevâs init\n"
 
-#, fuzzy
-#~ msgid "Please wait"
-#~ msgstr "Lûdzu gaidiet"
+#~ msgid "Bad URL format\n"
+#~ msgstr "Slikts URL formâts\n"
 
-#, fuzzy
-#~ msgid "Relative path to synthesis or hdlist:"
-#~ msgstr "relatîvais èeïð uz hdlist: "
+#~ msgid "Bad user format in URL\n"
+#~ msgstr "Slikts lietotâja formâts URLâ\n"
 
-#~ msgid "%d packages, %Ld bytes"
-#~ msgstr "%d pakotnes, %Ld baiti"
+#~ msgid "Couldn't resolve proxy\n"
+#~ msgstr "Neizdevâs atrast proxy\n"
 
-#, fuzzy
-#~ msgid "Cannot read this source: %s"
-#~ msgstr "Nevar lsaît ðo avotu: %s\n"
+#~ msgid "Couldn't resolve host\n"
+#~ msgstr "Neizdevâs atrast serveri\n"
 
-#, fuzzy
-#~ msgid "Cannot open the source: %s"
-#~ msgstr "Nevar atvçrt avotu: %s\n"
+#~ msgid "Couldn't connect\n"
+#~ msgstr "Neizdevâs pieslçgties\n"
 
-#~ msgid " Searching the %s source"
-#~ msgstr " Pârmeklçju avotu %s"
+#~ msgid "Ftp weird server reply\n"
+#~ msgstr "Ftp: dîvaina servera atbilde\n"
 
-#~ msgid "filling lists"
-#~ msgstr "aizpildu sarakstus"
+#~ msgid "Ftp access denied\n"
+#~ msgstr "Ftp: pieeja liegta\n"
 
-#~ msgid "filling trees"
-#~ msgstr "aizpildu kokus"
+#~ msgid "Ftp user password incorrect\n"
+#~ msgstr "Ftp: nepareiza lietotâja parole\n"
 
-#~ msgid "Error!"
-#~ msgstr "Kïûda!"
+#~ msgid "Ftp weird PASS reply\n"
+#~ msgstr "Ftp: dîvaina PASS atbilde\n"
+
+#~ msgid "Ftp weird USER reply\n"
+#~ msgstr "Ftp: dîvaina USER atbilde\n"
+
+#~ msgid "ftp weird PASV reply\n"
+#~ msgstr "Ftp: dîvaina PASV atbilde\n"
+
+#~ msgid "Ftp weird 227 format\n"
+#~ msgstr "Ftp: dîvains 227 formâts\n"
+
+#~ msgid "Ftp can't get host\n"
+#~ msgstr "Ftp: neizdodas noskaidrot serveri\n"
+
+#~ msgid "Ftp can't reconnect\n"
+#~ msgstr "Ftp: neizdodas atjaunot pieslçgumu\n"
+
+#~ msgid "Ftp couldn't set binary\n"
+#~ msgstr "Ftp: neizdodas pâriet uz binâru reþîmu\n"
+
+#~ msgid "Partial file\n"
+#~ msgstr "Nepilnîgs fails\n"
+
+#~ msgid "Ftp couldn't RETR file\n"
+#~ msgstr "Ftp: neizdevâs saòemt failu\n"
+
+#~ msgid "Ftp write error\n"
+#~ msgstr "Ftp: ierakstîðanas kïûda\n"
+
+#~ msgid "Ftp quote error\n"
+#~ msgstr "Ftp: quote kïûda\n"
+
+#~ msgid "http not found\n"
+#~ msgstr "http nav atrasts\n"
+
+#~ msgid "Write error\n"
+#~ msgstr "Ierakstîðanas kïûda\n"
+
+#~ msgid "User name illegally specified\n"
+#~ msgstr "Lietotâja vârds norâdîts nepareizi\n"
+
+#~ msgid "ftp couldn't STOR file\n"
+#~ msgstr "ftp: neizdevâs saglabât failu\n"
+
+#~ msgid "Read error\n"
+#~ msgstr "Nolasîðanas kïûda\n"
+
+#~ msgid "Out of memory\n"
+#~ msgstr "Trûkst atmiòas\n"
+
+#~ msgid "Time out\n"
+#~ msgstr "Taimauts\n"
+
+#~ msgid "Ftp couldn't set ASCII\n"
+#~ msgstr "Ftp: neizdevâs ieslçgt ASCII reþîmu\n"
+
+#~ msgid "Ftp PORT failed\n"
+#~ msgstr "Ftp: PORT neizdevâs\n"
+
+#~ msgid "Ftp couldn't use REST\n"
+#~ msgstr "Ftp: neizdevâs izmantot REST\n"
+
+#~ msgid "Ftp couldn't get size\n"
+#~ msgstr "Ftp: neizdevâs saòemt izmçru\n"
+
+#~ msgid "Http range error\n"
+#~ msgstr "Http RANGE kïûda\n"
+
+#~ msgid "Http POST error\n"
+#~ msgstr "Http POST kïûda\n"
+
+#~ msgid "Ssl connect error\n"
+#~ msgstr "Ssl pieslçguma kïûda\n"
+
+#~ msgid "Ftp bad download resume\n"
+#~ msgstr "Ftp: ielâdes turpinâðanas kïûda\n"
+
+#~ msgid "File couldn't read file\n"
+#~ msgstr "Fails: neizdevâs nolasît failu\n"
+
+#~ msgid "LDAP cannot bind\n"
+#~ msgstr "LDAP: bind neizdevâs\n"
+
+#~ msgid "LDAP search failed\n"
+#~ msgstr "LDAP: meklçðana neizdevâs\n"
+
+#~ msgid "Library not found\n"
+#~ msgstr "Bibliotçka nav atrasta\n"
+
+#~ msgid "Function not found\n"
+#~ msgstr "Funkcija nav atrasta\n"
+
+#~ msgid "Aborted by callback\n"
+#~ msgstr "Pârtraukts callback rezultâtâ\n"
+
+#~ msgid "Bad function argument\n"
+#~ msgstr "Slikts funkcijas arguments\n"
+
+#~ msgid "Bad calling order\n"
+#~ msgstr "Slikta izsaukðanas secîba\n"
+
+#~ msgid "Unknown error code %d\n"
+#~ msgstr "Nezinâms kïûdas kods %d\n"
+
+#~ msgid "An error occured while fetching file"
+#~ msgstr "Faila saòemðanas laikâ notika kïûda"
+
+#~ msgid "Skip"
+#~ msgstr "Izlaist"
+
+#~ msgid "Preparing for install"
+#~ msgstr "Tiek sagatavota instalçðana"
+
+#~ msgid "Can't check the GPG signature"
+#~ msgstr "Neizdodas pârbaudît GPG parakstu"
 
 #~ msgid ""
-#~ "It looks like you don't have\n"
-#~ "configured a source for\n"
-#~ "security updates.\n"
-#~ "Do you want to configure one now?"
+#~ "The package %s has a wrong signature or\n"
+#~ "GnuPG isn't correctly installed"
 #~ msgstr ""
-#~ "Izskatâs ka Jûs neesat\n"
-#~ "konfigurçjuði avotu priekð\n"
-#~ "droðîbas atjauninâjumiem.\n"
-#~ "Vai vçlaties to izdarît tagad?"
+#~ "Pakotnei %s ir nepareizs paraksts,\n"
+#~ "vai arî GnuPG nav instalçts pareizi"
 
-#~ msgid "Do not show this message again"
-#~ msgstr "Nerâdît ðo ziòojumu atkârtoti"
+#~ msgid "The package %s is not signed"
+#~ msgstr "Pakotne %s nav parakstîta"
 
-#, fuzzy
-#~ msgid "Configure a Cooker source?"
-#~ msgstr "Konfigurçt avotu?"
+#~ msgid "Install all"
+#~ msgstr "Instalçt visu"
+
+#~ msgid "Don't install"
+#~ msgstr "Neinstalçt"
+
+#~ msgid "Signature problem"
+#~ msgstr "Paraksta problçma"
+
+#~ msgid "Can't open package"
+#~ msgstr "Neizdodas atvçrt pakotni"
+
+#~ msgid "Package is corrupted"
+#~ msgstr "Pakotne ir bojâta"
+
+#~ msgid "Package can't be installed"
+#~ msgstr "Pakotni neizdodas instalçt"
+
+#~ msgid "Error while checking dependencies :("
+#~ msgstr "Atkarîbu pârbaudes laikâ notika kïûda :("
+
+#~ msgid "Force"
+#~ msgstr "Piespiest"
+
+#~ msgid "Error..."
+#~ msgstr "Kïûda..."
+
+#~ msgid "Problems occured during installation"
+#~ msgstr "Instalçðanas laikâ radâs problçmas"
+
+#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
+#~ msgstr "izmantoðana: grpmi <[-noupgrade] rpms>\n"
+
+#~ msgid "grpmi error: you must be superuser!\n"
+#~ msgstr "grpmi kïûda: jums ir nepiecieðamas root tiesîbas!\n"
+
+#~ msgid "Error"
+#~ msgstr "Kïûda"
 
 #~ msgid ""
-#~ "Can't find the /var/lib/urpmi/compssUsers.flat file\n"
-#~ "the tree mode won't be available"
+#~ "Cannot retrieve the list of mirrors\n"
+#~ "Try again later"
 #~ msgstr ""
-#~ "Nevar atrast /var/lib/urpmi/compssUsers.flat filu\n"
-#~ "izkârtojums kokâ nebûs piejems"
+#~ "Neizdevâs saòemt spoguïserveru sarakstu\n"
+#~ "Pamçìiniet vçlâk"
 
-#~ msgid "Others"
-#~ msgstr "Citi"
+#~ msgid "Source on network: %s"
+#~ msgstr "Avots tîklâ: %s"
 
-#~ msgid "Analysing the %s source"
-#~ msgstr "Analizçju avotu %s"
+#~ msgid "Source on network: %s/%s/%s"
+#~ msgstr "Avots tîklâ: %s/%s/%s"
 
-#~ msgid "looking for installed packages"
-#~ msgstr "meklçju jau uzstâdîtas pakotnes"
-
-#~ msgid "Frederic Lepied <flepied@mandrakesoft.com>"
-#~ msgstr "Frédéric Lepied <flepied@mandrakesoft.com>"
-
-#~ msgid "Francois Pons <fpons@mandrakesoft.com>"
-#~ msgstr "Francois Pons <fpons@mandrakesoft.com>"
-
-#~ msgid " ~ # ~ "
-#~ msgstr "Latvieðu versija: Juris Kudiòð <cooker@inbox.lv>"
-
-#, fuzzy
 #~ msgid ""
-#~ "Software Manager\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "released under the GPL"
+#~ "Please Wait\n"
+#~ "Fetching the list of mirrors"
 #~ msgstr ""
-#~ "Programmatûras vadîtâjs\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "izlaists saskaòâ ar GPL"
+#~ "Lûdzu gaidiet\n"
+#~ "Saòemu spoguïserveru sarakstu"
 
-#~ msgid "building dependencies for packages removing"
-#~ msgstr "veidoju atkarîbas priekð pakotòu noòemðanas"
+#~ msgid "%.1f KB"
+#~ msgstr "%.1f KB"
+
+#~ msgid "%.1f MB"
+#~ msgstr "%.1f MB"
+
+#~ msgid " n/a "
+#~ msgstr " n/d "
+
+#~ msgid ""
+#~ "Cannot retrieve the description file\n"
+#~ "Bad things can happen"
+#~ msgstr ""
+#~ "Neizdevâs saòemt apraksta failu\n"
+#~ "Var notikt sliktas lietas"
+
+#~ msgid "n/a"
+#~ msgstr "n/d"
+
+#~ msgid "security"
+#~ msgstr "droðîba"
+
+#~ msgid "general"
+#~ msgstr "vispârçja"
+
+#~ msgid "bugfix"
+#~ msgstr "kïûdu labojums"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Retrieving the Description file"
+#~ msgstr ""
+#~ "Lûdzu gaidiet\n"
+#~ "Saòemu apraksta failu"
+
+#~ msgid ""
+#~ "Cannot retrieve the list of packages to update\n"
+#~ "Try with an other mirror"
+#~ msgstr ""
+#~ "Neizdevâs saòemt atjauninâmo pakotòu sarakstu\n"
+#~ "Izmçìiniet citu spoguïserveri"
+
+#~ msgid "Warning"
+#~ msgstr "Brîdinâjums"
+
+#~ msgid ""
+#~ "Caution! These packages are NOT well tested.\n"
+#~ "You really can screw up your system\n"
+#~ "by installing them.\n"
+#~ msgstr ""
+#~ "Uzmanîbu! Ðîs pakotnes NAV rûpîgi testçtas.\n"
+#~ "Tâs instalçjot, jût varat pamatîgi\n"
+#~ "nojaukt sava datora konfigurâciju.\n"
+
+#~ msgid "Source on disk: %s"
+#~ msgstr "Avots diskâ: %s"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Updating the list of packages"
+#~ msgstr ""
+#~ "Lûdzu gaidiet\n"
+#~ "Atjauninu pakotòu sarakstu"
+
+#~ msgid ""
+#~ "Name: %s\n"
+#~ "Type: %s"
+#~ msgstr ""
+#~ "Nosaukums: %s\n"
+#~ "Tips: %s"
+
+#~ msgid "unknown"
+#~ msgstr "nezinâms"
+
+#~ msgid "Name: %s"
+#~ msgstr "Nosaukums: %s"
+
+#~ msgid "%d selected packages: %.1f MB"
+#~ msgstr "%d izvçlçtas pakotnes: %.1f MB"
+
+#~ msgid "GnuPG not found"
+#~ msgstr "GnuPG nav atrasts"
+
+#~ msgid ""
+#~ "GnuPG was not found\n"
+#~ "\n"
+#~ "MandrakeUpdate will not be able to verify the GPG\n"
+#~ "signature of the packages\n"
+#~ "\n"
+#~ "Please install the gpg package\n"
+#~ msgstr ""
+#~ "GnuPG nav atrasts\n"
+#~ "\n"
+#~ "MandrakeUpdate nespçs pârbaudît pakotòu\n"
+#~ "GPG parakstus\n"
+#~ "\n"
+#~ "Lûdzu instalçjiet gpg pakotnu\n"
+
+#~ msgid "Don't show this message again"
+#~ msgstr "Vair nerâdît ðo paziòojumu"
 
 #~ msgid "oops %s not found\n"
 #~ msgstr "hmm, %s nav atrasta\n"
 
-#~ msgid "Name"
-#~ msgstr "Nosaukums"
+#~ msgid "Please Wait"
+#~ msgstr "Lûdzu gaidiet"
 
-#~ msgid "Uninstalling packages"
-#~ msgstr "Noinstalçju pakotnes"
-
-#~ msgid "Looking for dependencies"
-#~ msgstr "Pievienots atkarîbu dçï"
-
-#~ msgid "Please wait while rpm is removing these packages:"
-#~ msgstr "Lûdzu gaidiet, kamçr rpm noòem ðîs pakotnes:"
-
-#~ msgid "The selected packages have been removed succesfully"
-#~ msgstr "Izvçlçtâs pakotnes tika veiksmîgi noòemtas"
-
-#~ msgid "Security warning : The Software Manager won't start browser as root"
-#~ msgstr ""
-#~ "Droðîbas brîdinâjums : Programmatûras vadîtâjs nelaidîs pârlûku kâ root"
-
-#~ msgid "Unable to run browser"
-#~ msgstr "Nevar palaist pârlûku"
-
-#~ msgid "Close"
-#~ msgstr "Aizvçrt"
+#~ msgid "0 selected packages: 0.0 MB"
+#~ msgstr "0 izvçlçtas pakotnes: 0.0 MB"
 
 #~ msgid "/_File"
-#~ msgstr "/_Fails"
+#~ msgstr "/_Faili"
 
-#~ msgid "/File/Display Logs"
-#~ msgstr "/Fails/Parâdît þurnâlus"
-
-#~ msgid "/File/_Install"
-#~ msgstr "/Fails/_Uzstâdît"
-
-#~ msgid "/File/_Uninstall"
-#~ msgstr "/Faili/_Noòemt"
+#~ msgid "/File/_Preferences"
+#~ msgstr "/Faili/_Konfigurâcija"
 
 #~ msgid "/File/-"
 #~ msgstr "/Faili/-"
 
-#~ msgid "/File/_Proxies"
-#~ msgstr "/Fails/_Prokði"
-
 #~ msgid "/File/_Quit"
-#~ msgstr "/Fails/_Iziet"
+#~ msgstr "/Faili/_Iziet"
 
 #~ msgid "/_Help"
 #~ msgstr "/_Palîdzîba"
@@ -956,695 +1140,47 @@ msgstr ""
 #~ msgid "/Help/_About..."
 #~ msgstr "/Palîdzîba/_Par..."
 
-#~ msgid "/Help/-"
-#~ msgstr "/Palîdzîba/-"
+#~ msgid "Name"
+#~ msgstr "Nosaukums"
 
-#~ msgid "/Help/MandrakeCampus.com"
-#~ msgstr "/Palîdzîba/MandrakeCampus.com"
-
-#~ msgid "/Help/MandrakeExpert.com"
-#~ msgstr "/Palîdzîba/MandrakeExpert.com"
-
-#~ msgid "Version"
-#~ msgstr "Versija"
-
-#~ msgid "Installed version"
-#~ msgstr "Uzstâdîtâ versija"
+#~ msgid "Installed"
+#~ msgstr "Instalçta"
 
 #~ msgid "Size"
 #~ msgstr "Izmçrs"
 
-#~ msgid "Software Manager"
-#~ msgstr "Programmatûras vadîtâjs"
-
-#~ msgid ""
-#~ "Install/\n"
-#~ "Remove"
-#~ msgstr ""
-#~ "Uzstâdît/\n"
-#~ "Noòemt"
-
-#~ msgid "Install and remove selected packages"
-#~ msgstr "Uzstâdît un noòemt izvçlçtâs pakotnes"
-
-#~ msgid ""
-#~ "Define\n"
-#~ "sources"
-#~ msgstr ""
-#~ "Definçt\n"
-#~ "avotus"
-
-#~ msgid "Define sources of packages available for installation and update"
-#~ msgstr ""
-#~ "Definçt avotus pakotnçm, kuras piejamas uzstâdîðanai un atjaninâðanai"
-
-#~ msgid ""
-#~ "Reload\n"
-#~ "lists"
-#~ msgstr ""
-#~ "Pârlâdçt\n"
-#~ "sarakstus"
-
-#~ msgid "reload lists of available packages"
-#~ msgstr "pârlâdçt piejamo pakotòu sarakstus"
-
-#~ msgid "Launch the Mandrake Update wizard"
-#~ msgstr "Palaist Mandrake atjauninâðanas meistaru"
-
-#~ msgid "Reset"
-#~ msgstr "Pârlâdçt"
-
-#~ msgid "Search by file"
-#~ msgstr "Meklçt pçc faila"
-
-#~ msgid "Search by description"
-#~ msgstr "Meklçt pçc apraksta"
-
-#~ msgid "Flat List"
-#~ msgstr "Lineârs saraksts"
-
-#~ msgid "Tree view"
-#~ msgstr "Koka skats"
-
-#~ msgid "Selected"
-#~ msgstr "Izvçlçtas"
-
-#~ msgid "Installable"
-#~ msgstr "Uzstâdâmas"
-
-#~ msgid "All"
-#~ msgstr "Viss"
-
-#~ msgid "Updates only"
-#~ msgstr "Tikai atjauninâjumi"
-
-#~ msgid "Non-installed only"
-#~ msgstr "Tikai noòemtâs"
-
-#~ msgid "Edit Sources"
-#~ msgstr "Labot avotus"
-
-#~ msgid "Delete"
-#~ msgstr "Dzçst"
-
-#~ msgid "Error: curl_easy_init()"
-#~ msgstr "Kïûda: curl_easy_init()"
-
-#~ msgid "You must provide a valid source name!"
-#~ msgstr "Jums jâuzdod pareizs avota vârds!"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Adding source"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Pievienoju avotu"
-
-#~ msgid "An error occured when adding this source"
-#~ msgstr "Kïûda pievienojot ðo avotu"
-
-#~ msgid "New Source"
-#~ msgstr "Jauns avots"
-
-#~ msgid "New source's name:"
-#~ msgstr "Jaunâ avota nosaukums:"
-
-#, fuzzy
-#~ msgid "path or mount point"
-#~ msgstr "montçðanas punkts"
-
-#~ msgid "path"
-#~ msgstr "ceïð"
-
-#~ msgid "http"
-#~ msgstr "http"
-
-#~ msgid "URL: "
-#~ msgstr "URL:"
-
-#~ msgid "ftp"
-#~ msgstr "ftp"
-
-#~ msgid "Update the list of mirrors"
-#~ msgstr "Atjaunot spoguïserveru sarakstu"
-
-#~ msgid "Cooker"
-#~ msgstr "Cooker"
-
-#~ msgid "Do you really want to delete the %s source?\n"
-#~ msgstr "Vai tieðâm vçlaties dzçst %s avotu?\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Removing the %s source"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Noòemu %s avotu"
-
-#~ msgid "Editing %s"
-#~ msgstr "Laboju %s"
-
-#~ msgid "Please change one or more parameter\n"
-#~ msgstr "Lûszu izmainiet kâdu(s) parametru(s)\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the parameters for the %s source"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Avota %s datubâzes parametri tiek atjaunoti"
-
-#, fuzzy
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the sources"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Atjaunoju %s avota datubâzi"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the %s source"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Atjaunoju %s avota datubâzi"
-
-#~ msgid "Sources to update"
-#~ msgstr "Avoti atjaunoðanai"
-
-#~ msgid ""
-#~ "Welcome to the Mandrake Update utility!\n"
-#~ "\n"
-#~ "Here, you'll be able to upgrade your system\n"
-#~ "with the latest Mandrake Linux updates\n"
-#~ msgstr ""
-#~ "Laipni lûdzam Mandrake Update programmâ!\n"
-#~ "\n"
-#~ "Ðajâ programmâ Jûs varat uzlabot savu datoru\n"
-#~ "ar pçdçjiem Mandrake Linux jauninâjumiem\n"
-
-#~ msgid "Please choose which types of update you want to perform:"
-#~ msgstr "Lûdzu izvçlieties, kâdu tipu atjauninâðanu veikt:"
-
-#~ msgid "bugfixes"
-#~ msgstr "kïûdu labojumi"
-
-#~ msgid "security updates"
-#~ msgstr "Droðîbas uzlabojumi"
-
-#~ msgid "No changelog found..."
-#~ msgstr "Neatradu izmaiòu þurnâlu..."
-
-#~ msgid "Importance"
-#~ msgstr "Svarîgums:"
-
-#~ msgid "Please select the packages you want to upgrade"
-#~ msgstr "Lûdzu izvçlieties, kuras pakotnes uzlabot"
-
-#~ msgid "No Changelog found..."
-#~ msgstr "Neatradu izmaiòu þurnâlu..."
-
-#~ msgid "please select at least one type of update\n"
-#~ msgstr "lûdzu izvçlieties vismaz vienu tipu atjauninâðanai\n"
-
-#~ msgid ""
-#~ "Cannot grab the list of mirrors.\n"
-#~ "The network could be unreachable.\n"
-#~ "Please try again later.\n"
-#~ msgstr ""
-#~ "Nevaru dabût spoguïserveru sarakstu.\n"
-#~ "Varbût ka ir problçmas ar tîklu.\n"
-#~ "Lûdzu pamçìiniet vçlâk.\n"
-
-#~ msgid "Http Proxy:"
-#~ msgstr "Http proxis:"
-
-#~ msgid "Ftp Proxy:"
-#~ msgstr "Ftp proxis:"
-
-#~ msgid "Initialisation"
-#~ msgstr "Inicializâcija"
-
-#~ msgid "Welcome"
-#~ msgstr "Laipni lûdzu"
-
-#~ msgid "Packages informations"
-#~ msgstr "Pakotòu informâcija"
-
-#~ msgid "Errors found"
-#~ msgstr "Atrastas kïûdas"
-
-#~ msgid "Packages dependencies informations"
-#~ msgstr "Pakotòu atkarîbu informâcija"
-
-#~ msgid "Disk usage"
-#~ msgstr "Disks izmantots"
-
-#~ msgid "Good bye"
-#~ msgstr "Visu labu"
-
-#, fuzzy
-#~ msgid "Software Installer"
-#~ msgstr "Programmatûras vadîtâjs"
-
-#~ msgid "Unable to safely create the temporary directory"
-#~ msgstr "Nevaru droði izveidot pagaidu katalogu"
-
-#~ msgid "Unable to safely create the temporary file"
-#~ msgstr "Nevaru droði izveidot pagaidu failu"
-
-#~ msgid "Some errors where encountered while checking your wishes :"
-#~ msgstr "Atradâs daþas kïûdas, pârbaudot Jûsu izvçles :"
-
-#~ msgid "Files or packages format error"
-#~ msgstr "Failu vai pakotòu formâtâ kïûda"
-
-#~ msgid "Conflicting packages"
-#~ msgstr "Konfliktçjoðas pakotnes"
-
-#~ msgid ""
-#~ "Despite these errors some package can be installed.\n"
-#~ "If you want to go on, click the \"Next\" button below."
-#~ msgstr ""
-#~ "Neskatoties uzðîm kïûdâm kâdu pakotni vçl var uzstâdît.\n"
-#~ "Ja vçlaties turpinât, nospiediet \"Next\" pogu zemâk."
-
-#~ msgid ""
-#~ "Sorry, but all packages raised an error.\n"
-#~ "So I can't proceed with the installation."
-#~ msgstr ""
-#~ "Ar visâm/katru pakotni bija problçmas.\n"
-#~ "Diemþçl nav iespçjams turpinât uzstâdîðanu."
-
-#~ msgid ""
-#~ "Congratulations!\n"
-#~ "You successfully installed your packages, now you can enjoy your new "
-#~ "programs. Simply click the \"Quit\" button below.\n"
-#~ "See you soon!"
-#~ msgstr ""
-#~ "Apsveicu!\n"
-#~ "Jûs veiksmîgi uzstâdîjât pakotnes, tagad varat izbaudît savas jaunâs "
-#~ "programmas. =) Vienkârði nospiediet \"Quit\" pogu zemâk.\n"
-#~ "Gan jau vçl tiksimies!"
-
-#~ msgid "Unfortunately, some packages were not installed due to some errors."
-#~ msgstr "Diemþçl daþas pakotnes netika uzstâdîtas raduðos kïûdu dçï."
-
-#~ msgid "All required additional software is already installed, just go on."
-#~ msgstr "Visa nepiecieðamâ papildus programmatûra ir uzstâdîta - turpiniet."
-
-#~ msgid ""
-#~ "This additional package needs to be installed in order to everything "
-#~ "working well:"
-#~ msgstr "Lai viss strâdâtu pareizi, bûs jâuzstâda arî ðî pakotne: "
-
-#~ msgid ""
-#~ "Install in progress...\n"
-#~ "\n"
-#~ "You can see below the installation state."
-#~ msgstr ""
-#~ "Notiek uzstâdîðana...\n"
-#~ "\n"
-#~ "Zemâk redzams procesa stâvoklis."
-
-#~ msgid "Welcome to rpminst"
-#~ msgstr "Lâipni lûdzam rpminst"
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "An RPM package is a \"case\" containing a software (or a piece of "
-#~ "software) that you can install on your system to use it later."
-#~ msgstr ""
-#~ "Ðî programma uzstâdîs RPM pakotnes, kuras Jûs vçlçjâties.\n"
-#~ "RPM pakotne ir \"case\", kas satur programmatûru (vai kâdu tâs daïu), "
-#~ "kuru Jûs varat uzstâdît savâ sistçmâ un vçlâk lietot."
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "Please wait while packages and dependencies are checked."
-#~ msgstr ""
-#~ "Ðî programma uzstâdîs Jûsu izvçlçtâs RPM pakotnes.\n"
-#~ "Uzgaidiet kamçr tiek pârbaudîtas pakotnes un atkarîbas."
-
-#~ msgid "Now doing:"
-#~ msgstr "Ðobrîd norisinâs:"
-
-#~ msgid "Checking files..."
-#~ msgstr "Tâ, pârbaudam failus..."
-
-#~ msgid "Checking packages..."
-#~ msgstr "Pârbaudam pakotnes..."
-
-#~ msgid "Building interface..."
-#~ msgstr "Sabûvçjam starpseju..."
-
-#~ msgid "Install selected with rpminst"
-#~ msgstr "Uzstâdît izvçlçto ar rpminst"
-
-#~ msgid "Select all"
-#~ msgstr "Izvçlçties visu"
-
-#~ msgid "Unselect all"
-#~ msgstr "Neko neizvçlçties"
-
-#~ msgid "Unknown error code"
-#~ msgstr "Nezinâms kïûdas kods"
-
-#~ msgid "RPM file not found"
-#~ msgstr "RPM fails nav atrasts"
-
-#~ msgid "Bad RPM file format (header)"
-#~ msgstr "Nepareizs RPM faila formâts (galviòa)"
-
-#~ msgid "Package unknown by urpmq"
-#~ msgstr "Urpmq natpazîst pakotni"
-
-#~ msgid "Conflicting package"
-#~ msgstr "Konfliktçjoða pakotne"
-
-#~ msgid "Not enough available disk space"
-#~ msgstr "Nepietiek diska vietas"
-
-#~ msgid "Unreadable RPM file"
-#~ msgstr "Nesalasâms RPM fails"
-
-#~ msgid "Added for dependencies"
-#~ msgstr "Pievienots atkarîbu labad"
-
-#~ msgid "Header format error (from urpmq)"
-#~ msgstr "Galviòas formâta kïûda (no urpmq)"
-
-#~ msgid "Canceled by user"
-#~ msgstr "Lietotâjs atcçla"
-
-#~ msgid "Refused by grpmi"
-#~ msgstr "Grpmi atteicâs"
-
-#~ msgid "urpmi return value"
-#~ msgstr "urpmi atgrieza vçrtîbu"
-
-#~ msgid "Internal error"
-#~ msgstr "Iekðçja kïûda"
-
-#~ msgid "Brief"
-#~ msgstr "Îsi"
-
-#~ msgid "Details"
-#~ msgstr "Detaïas"
-
-#~ msgid "Files"
-#~ msgstr "Faili"
-
-#~ msgid ""
-#~ "Sorry, but no suitable web browser seems to be installed on your system."
-#~ msgstr ""
-#~ "Þçl, bet liekas, ka Jûsu sistçmâ nav uzstâdîts piemçrots tîkla pârlûks"
-
-#~ msgid "OK"
-#~ msgstr "Labi"
-
-#~ msgid "Changelog"
-#~ msgstr "Izmaiòu saraksts"
-
-#~ msgid "Group: "
-#~ msgstr "Grupa:"
-
-#~ msgid "License: "
-#~ msgstr "Licenze:"
-
-#~ msgid "Packager: "
-#~ msgstr "Pakotâjs:"
-
-#~ msgid "Size: "
-#~ msgstr "Izmçrs:"
-
-#~ msgid "Empty changelog"
-#~ msgstr "Tikðs izmaiòu saraksts"
-
-#~ msgid "(undefined)"
-#~ msgstr "(nedefinçts)"
+#~ msgid "Type"
+#~ msgstr "Tips"
 
 #~ msgid "Summary"
 #~ msgstr "Kopsavilkums"
 
-#~ msgid "Description"
-#~ msgstr "Apraksts"
-
-#~ msgid "%1.2f kB"
-#~ msgstr "%1.2f kB"
-
-#~ msgid "%1.2f MB"
-#~ msgstr "%1.2f MB"
-
-#~ msgid "%1.2f GB"
-#~ msgstr "%1.2f GB"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cannot open the cached source: %s\n"
-#~ "fallback to slow method."
-#~ msgstr "Nevar atvçrt avotu: %s\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cannot read this cached source: %s\n"
-#~ "fallback to slow method"
-#~ msgstr "Nevar lsaît ðo avotu: %s\n"
-
-#~ msgid "Device name:"
-#~ msgstr "Ierîces nosaukums:"
-
-#~ msgid "url: "
-#~ msgstr "url: "
-
-#~ msgid "hdlist:"
-#~ msgstr "hdlist:"
+#~ msgid "MandrakeUpdate, version 7.2\n"
+#~ msgstr "MandrakeUpdate, versija 7.2\n"
 
 #~ msgid ""
-#~ "Software Manager\n"
-#~ "\n"
+#~ "  usage:\n"
+#~ "    -h, --help:    display this help and exit\n"
+#~ "    -v, --version: show the version and exit\n"
+#~ "    -V, --verbose: increase the verbosity level\n"
 #~ msgstr ""
-#~ "Programmatûras vadîtâjs\n"
-#~ "\n"
+#~ "  izsaukðana:\n"
+#~ "    -h, --help:    parâdît ðo palîdzîbu un iziet\n"
+#~ "    -v, --version: parâdît versiju un iziet\n"
+#~ "    -V, --verbose: palielinât izvadâmâs informâcijas apjomu\n"
+
+#~ msgid "Source on network: (random mirror)\n"
+#~ msgstr "Avots tîklâ: (nejauði izraudzîts spoguïserveris)\n"
 
 #~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "released under the GPL"
+#~ "Update\n"
+#~ "List"
 #~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 1999-2000\n"
-#~ "izlaists saskaòâ ar GVL"
+#~ "Atjauninât\n"
+#~ "sarakstu"
 
-#~ msgid ""
-#~ "An internal error occured :\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Notikusi iekðçja kïûda :\n"
-#~ "%s"
-
-#~ msgid "Error"
-#~ msgstr "Kïûda"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Invoking rpminst"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Palaiþu rpminst"
-
-#~ msgid ""
-#~ "Easy\n"
-#~ "Updates"
-#~ msgstr ""
-#~ "Vieglie\n"
-#~ "atjauninâjumi"
-
-#~ msgid "You must use at least one of --files or --packages !"
-#~ msgstr "Jums jâlieto vismaz viens no --files vai --packages !"
-
-#~ msgid "Description:"
-#~ msgstr "Apraksts:"
-
-#~ msgid "Files list"
-#~ msgstr "Failu saraksts"
-
-#~ msgid "-adobe-helvetica-bold-r-*-*-*-140-*-*-*-*-*-*,*"
-#~ msgstr "-adobe-helvetica-bold-r-*-*-*-140-*-*-*-*-*-*,*"
-
-#~ msgid "Version:"
-#~ msgstr "Versija:"
-
-#~ msgid "Summary:"
-#~ msgstr "Kopsavilkums:"
-
-#~ msgid "Install in progress..."
-#~ msgstr "Notiek uzstâdîðana..."
-
-#~ msgid " "
-#~ msgstr " "
-
-#~ msgid "Install Date:"
-#~ msgstr "Uzstâdîðanas datums:"
-
-#~ msgid "New Media"
-#~ msgstr "Jauns datu nesçjs"
-
-#~ msgid "Edit media"
-#~ msgstr "Labot datu nesçju"
-
-#~ msgid ""
-#~ "Edit\n"
-#~ "media"
-#~ msgstr ""
-#~ "Labot\n"
-#~ "datu nesçju"
-
-#~ msgid ""
-#~ "Install/\n"
-#~ "Uninstall"
-#~ msgstr ""
-#~ "Instalçt/\n"
-#~ "Noinstalçt"
-
-#~ msgid ""
-#~ "Do you really want to\n"
-#~ "remove the %s media?"
-#~ msgstr ""
-#~ "Vai tieðâm vçlaties\n"
-#~ "noòemt %s datu nesçju"
-
-#~ msgid "CDROM"
-#~ msgstr "CDROM"
-
-#~ msgid "FTP"
-#~ msgstr "FTP"
-
-#~ msgid "HTTP"
-#~ msgstr "HTTP"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Adding media"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Pievienoju datu nesçju"
-
-#~ msgid "Add a media"
-#~ msgstr "Pievienot datu nesçju"
-
-#~ msgid "Type of media:"
-#~ msgstr "Datu nesçja tips:"
-
-#~ msgid "New media's Name:"
-#~ msgstr "Jaunâ nesçja nosaukums:"
-
-#~ msgid "Please, choose a CDROM number: "
-#~ msgstr "Lûdzu izvçlieties CDROM numuru: "
-
-#~ msgid "Directory:"
-#~ msgstr "Katalogs:"
-
-#~ msgid "Select directory"
-#~ msgstr "Izvçlieties katalogu"
-
-#~ msgid "FTP URL of the directory containing the RPMs"
-#~ msgstr "FTP kataloga URL, kurâ atrodas RPMi"
-
-#~ msgid "Location for hdlist (relative to the URL above)"
-#~ msgstr "hdlist atraðanâs vieta (attiecîbâ pret norâdîto URL)"
-
-#~ msgid "HTTP URL of the directory containing the RPMs"
-#~ msgstr "HTTP kataloga URL, kurâ atrodas RPMi"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the %s media"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Atjauninu %s datu nesçja datubâzi"
-
-#~ msgid "Type"
-#~ msgstr "Tips"
-
-#~ msgid "Media"
-#~ msgstr "Datu nesçjs"
-
-#~ msgid "Add media"
-#~ msgstr "Pievienot datu nesçju"
-
-#~ msgid "Preferences"
-#~ msgstr "Konfigurâcija"
-
-#~ msgid "Categories"
-#~ msgstr "Kategorijas"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Configuration checking"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Pârbaudu konfigurâciju"
-
-#~ msgid "Name: %s"
-#~ msgstr "Nosaukums: %s"
-
-#~ msgid "0 selected packages: 0.0 MB"
-#~ msgstr "0 izvçlçtas pakotnes: 0.0 MB"
-
-#~ msgid ""
-#~ "Uninstall\n"
-#~ "selected"
-#~ msgstr ""
-#~ "Noinstalçt\n"
-#~ "izvçlçtâs"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Removing packages"
-#~ msgstr ""
-#~ "Lûdzu gaidiet\n"
-#~ "Noòemu pakotnes"
-
-#~ msgid "/File/_Update list"
-#~ msgstr "/Faili/_Atjauninât sarakstu"
-
-#~ msgid "Enter search pattern"
-#~ msgstr "Ievadiet meklçðanas ðablonu"
-
-#~ msgid "Case sensitive"
-#~ msgstr "Lielie/mazie atðíirîgi"
-
-#~ msgid "RPM Groups"
-#~ msgstr "RPM grupas"
-
-#~ msgid "Packages:"
-#~ msgstr "Pakotnes:"
-
-#~ msgid "File list"
-#~ msgstr "Failu saraksts"
-
-#~ msgid ""
-#~ "Expand\n"
-#~ "all"
-#~ msgstr ""
-#~ "Izvçrst\n"
-#~ "visu"
-
-#~ msgid "Expand all"
-#~ msgstr "Izvçrst visu"
-
-#~ msgid ""
-#~ "Collapse\n"
-#~ "all"
-#~ msgstr ""
-#~ "Sakïaut\n"
-#~ "visu"
-
-#~ msgid "Collapse all"
-#~ msgstr "Sakïaut visu"
+#~ msgid "Update the list of packages to update"
+#~ msgstr "Atjauninât atjauninâjumu pakotòu sarakstu"
 
 #~ msgid ""
 #~ "Select\n"
@@ -1653,6 +1189,9 @@ msgstr ""
 #~ "Izvçlçties\n"
 #~ "visu"
 
+#~ msgid "Select all"
+#~ msgstr "Izvçlçties visu"
+
 #~ msgid ""
 #~ "Unselect\n"
 #~ "all"
@@ -1660,15 +1199,148 @@ msgstr ""
 #~ "Atcelt visu\n"
 #~ "izvçli"
 
-#~ msgid "Installing"
-#~ msgstr "Instalçju"
+#~ msgid "Unselect all"
+#~ msgstr "Atcelt visu izvçli"
 
 #~ msgid ""
-#~ "Show\n"
-#~ "selected"
+#~ "Do\n"
+#~ "updates"
 #~ msgstr ""
-#~ "Parâdît\n"
-#~ "izvçlçtâs"
+#~ "Veikt\n"
+#~ "atjauninâðanu"
 
-#~ msgid "Show selected"
-#~ msgstr "Parâdît izvçlçtâs"
+#~ msgid "Do Updates"
+#~ msgstr "Veikt atjauninâðanu"
+
+#~ msgid "Normal Updates"
+#~ msgstr "Parasti atjauninâjumi"
+
+#~ msgid "Development Updates"
+#~ msgstr "Izstâdes atjauninâjumi"
+
+#~ msgid "Descriptions"
+#~ msgstr "Apraksti"
+
+#~ msgid ""
+#~ "The packages are the updates for Mandrake\n"
+#~ "Select the one(s) you want to update\n"
+#~ "When you click on a package you get information about\n"
+#~ "the need to update"
+#~ msgstr ""
+#~ "Ðîs pakotnes ir Linux-Mandrake jauninâjumi\n"
+#~ "Izvçlieties tâs, ko gribat atjauninât\n"
+#~ "Kad jûs izvçlçsities pakotni, varçsiet aplûkot\n"
+#~ "informâciju par atjauninâðanas nepiecieðamîbu"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Sorting packages"
+#~ msgstr ""
+#~ "Lûdzu gaidiet\n"
+#~ "Sakârtoju pakotnes"
+
+#~ msgid "Choose your packages"
+#~ msgstr "Izvçlieties pakotnes"
+
+#~ msgid "Packages to update"
+#~ msgstr "Atjauninâmâs pakotnes"
+
+#~ msgid "Packages NOT to update"
+#~ msgstr "NEatjauninâmâs pakotnes"
+
+#~ msgid ""
+#~ "Caution! You're changing the version.\n"
+#~ "MandrakeUpdate will think you actually have this\n"
+#~ "version installed\n"
+#~ "\n"
+#~ "You should only use this if you really know what you're doing.\n"
+#~ msgstr ""
+#~ "Brîdinâjums! Jûs izmainât versiju.\n"
+#~ "MandrakeUpdate uzskatîs, ka jums tieðâm ir\n"
+#~ "instalçta ðî versija\n"
+#~ "\n"
+#~ "Dariet to tikai tad, ja esat pârliecinâts par savu rîcîbu.\n"
+
+#~ msgid "Preferences for Proxies"
+#~ msgstr "Proxy serveru konfigurâcija"
+
+#~ msgid "Proxies"
+#~ msgstr "Proxy serveri"
+
+#~ msgid "Http Proxy:"
+#~ msgstr "Http proxy:"
+
+#~ msgid "Port:"
+#~ msgstr "Ports:"
+
+#~ msgid "Ftp Proxy:"
+#~ msgstr "Ftp proxy:"
+
+#~ msgid "Proxy username:"
+#~ msgstr "Proxy lietotâjs:"
+
+#~ msgid "Proxy password:"
+#~ msgstr "Proxy parole:"
+
+#~ msgid "Error: curl_easy_init()"
+#~ msgstr "Kïûda: curl_easy_init()"
+
+#~ msgid "Disk"
+#~ msgstr "Disks"
+
+#~ msgid "Network"
+#~ msgstr "Tîkls"
+
+#~ msgid "RPM directory"
+#~ msgstr "RPM katalogs"
+
+#~ msgid "Network settings:"
+#~ msgstr "Tîkla konfigurâcija:"
+
+#~ msgid "Version:"
+#~ msgstr "Versija:"
+
+#~ msgid "Show security updates"
+#~ msgstr "Râdît droðîbas jauninâjumus"
+
+#~ msgid "Show general updates"
+#~ msgstr "Râdît vispârçjus jauninâjumus"
+
+#~ msgid "Show bugfix updates"
+#~ msgstr "Râdît kïûdu labojumu jauninâjumus"
+
+#~ msgid "mirror:"
+#~ msgstr "spoguïserveris:"
+
+#~ msgid "Update the list of mirrors"
+#~ msgstr "Atjauninât spoguïserveru sarakstu"
+
+#~ msgid "Choose Packages"
+#~ msgstr "Izvçlieties pakotnes"
+
+#~ msgid "Username:"
+#~ msgstr "Lietotâjs:"
+
+#~ msgid "Security"
+#~ msgstr "Droðîba"
+
+#~ msgid "Do not warn if GnuPG isn't installed"
+#~ msgstr "Nebrîdinât, ja GnuPG nav instalçts"
+
+#~ msgid "Do not warn if the package isn't signed"
+#~ msgstr "Nebrîdinât, ja pakotne nav parakstîta"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Daþâdi"
+
+#~ msgid "Timeout:"
+#~ msgstr "Taimauts:"
+
+#~ msgid "(in sec)"
+#~ msgstr "(sek)"
+
+#~ msgid "MandrakeUpdate Preferences"
+#~ msgstr "MandrakeUpdate konfigurâcija"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorijas"

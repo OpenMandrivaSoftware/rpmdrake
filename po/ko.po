@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2002-08-06 15:03+0200\n"
+"POT-Creation-Date: 2002-08-06 15:58+0200\n"
 "PO-Revision-Date: 2002-03-15 02:02+0900\n"
 "Last-Translator: Jaegeum Choe <baedaron@hananet.net>\n"
 "Language-Team: Korean <baedaron@hananet.net>\n"
@@ -80,7 +80,6 @@ msgid "Login:"
 msgstr "사용자명:"
 
 #: ../edit-urpm-sources.pl_.c:92
-#, fuzzy
 msgid "Password:"
 msgstr "암호:"
 
@@ -118,7 +117,7 @@ msgstr "소스 유형:"
 #: ../edit-urpm-sources.pl_.c:124 ../rpmdrake.pm_.c:75 ../rpmdrake.pm_.c:88
 #: ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
 msgid "Ok"
-msgstr ""
+msgstr "확인"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:176
 #: ../edit-urpm-sources.pl_.c:200 ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
@@ -163,9 +162,8 @@ msgstr ""
 "선택해 주세요:"
 
 #: ../edit-urpm-sources.pl_.c:199
-#, fuzzy
 msgid "Update"
-msgstr "업데이트된 팩키지"
+msgstr "업데이트 버전"
 
 #: ../edit-urpm-sources.pl_.c:207
 #, fuzzy
@@ -625,9 +623,8 @@ msgid "Search"
 msgstr "검색"
 
 #: ../rpmdrake_.c:483
-#, fuzzy
 msgid "Install"
-msgstr "설치된 팩키지"
+msgstr "설치"
 
 #: ../rpmdrake_.c:495
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
@@ -777,186 +774,369 @@ msgid ""
 "you want to install on your computer."
 msgstr ""
 
-#, fuzzy
-#~ msgid "By source"
-#~ msgstr "소스"
+#~ msgid "Installing/Upgrading Progress"
+#~ msgstr "설치/업그레이드 진행과정"
 
-#, fuzzy
-#~ msgid "Unable to update medium."
-#~ msgstr "보고서 파일을 만들 수 없습니다. 중지합니다.\n"
+#~ msgid "Fetching:"
+#~ msgstr "가져오는 과정:"
 
-#, fuzzy
-#~ msgid "Please wait, checking dependencies..."
-#~ msgstr "의존성 체크 중..."
+#~ msgid "Installing:"
+#~ msgstr "설치하는 과정:"
 
-#, fuzzy
-#~ msgid "rpmdrake.pl"
-#~ msgstr "소프트웨어 관리자 실행"
+#~ msgid " is needed by %s-%s-%s"
+#~ msgstr "는 %s-%s-%s가 필요로 합니다."
 
-#, fuzzy
-#~ msgid "rpmdrake"
-#~ msgstr "소프트웨어 관리자 실행"
+#~ msgid " conflicts with %s-%s-%s"
+#~ msgstr "는 %s-%s-%s와 충돌합니다."
 
-#~ msgid "New"
-#~ msgstr "새로 만들기"
+#~ msgid "Unsupported protocol\n"
+#~ msgstr "지원되지 않는 프로토콜\n"
 
-#, fuzzy
-#~ msgid "Please wait"
-#~ msgstr "확인해 주세요."
+#~ msgid "Failed init\n"
+#~ msgstr "초기화 실패\n"
 
-#, fuzzy
-#~ msgid "Relative path to synthesis or hdlist:"
-#~ msgstr "합성 또는 목록 파일로의 상대 경로:"
+#~ msgid "Bad URL format\n"
+#~ msgstr "잘못된 URL 형식\n"
 
-#~ msgid "%d packages, %Ld bytes"
-#~ msgstr "%d 팩키지, %Ld 바이트"
+#~ msgid "Bad user format in URL\n"
+#~ msgstr "URL에 잘못된 사용자 형식\n"
 
-#~ msgid "Cannot read this source: %s"
-#~ msgstr "이 소스를 읽을 수 없습니다: %s"
+#~ msgid "Couldn't resolve proxy\n"
+#~ msgstr "프락시를 찾을 수 없습니다.\n"
 
-#~ msgid "Cannot open the source: %s"
-#~ msgstr "소스를 열 수 없습니다: %s"
+#~ msgid "Couldn't resolve host\n"
+#~ msgstr "호스트를 찾을 수 없습니다.\n"
 
-#~ msgid " Searching the %s source"
-#~ msgstr " %s 소스 검색 중..."
+#~ msgid "Couldn't connect\n"
+#~ msgstr "접속할 수 없습니다.\n"
 
-#~ msgid "filling lists"
-#~ msgstr "목록 작성 중..."
+#~ msgid "Ftp weird server reply\n"
+#~ msgstr "FTP 비정상적인 서버 응답\n"
 
-#~ msgid "filling trees"
-#~ msgstr "수상구조 작성 중..."
+#~ msgid "Ftp access denied\n"
+#~ msgstr "FTP 액세스 거부\n"
+
+#~ msgid "Ftp user password incorrect\n"
+#~ msgstr "FTP 사용자 암호 불일치\n"
+
+#~ msgid "Ftp weird PASS reply\n"
+#~ msgstr "FTP 비정상적인 암호 응답\n"
+
+#~ msgid "Ftp weird USER reply\n"
+#~ msgstr "FTP 비정상적인 사용자 응답\n"
+
+#~ msgid "ftp weird PASV reply\n"
+#~ msgstr "FTP 비정상적인 PASV 응답\n"
+
+#~ msgid "Ftp weird 227 format\n"
+#~ msgstr "FTP 비정상적인 227 형식\n"
+
+#~ msgid "Ftp can't get host\n"
+#~ msgstr "FTP 호스트를 찾을 수 없습니다.\n"
+
+#~ msgid "Ftp can't reconnect\n"
+#~ msgstr "FTP 재접속할 수 없습니다.\n"
+
+#~ msgid "Ftp couldn't set binary\n"
+#~ msgstr "FTP 바이너리 설정을 할 수 없습니다.\n"
+
+#~ msgid "Partial file\n"
+#~ msgstr "부분 파일\n"
+
+#~ msgid "Ftp couldn't RETR file\n"
+#~ msgstr "FTP 파일을 추출할 수 없습니다.\n"
+
+#~ msgid "Ftp write error\n"
+#~ msgstr "FTP 쓰기 오류\n"
+
+#~ msgid "Ftp quote error\n"
+#~ msgstr "FTP 인용 오류\n"
+
+#~ msgid "http not found\n"
+#~ msgstr "HTTP를 찾을 수 없습니다.\n"
+
+#~ msgid "Write error\n"
+#~ msgstr "쓰기 오류\n"
+
+#~ msgid "User name illegally specified\n"
+#~ msgstr "잘못된 사용자명 지정\n"
+
+#~ msgid "ftp couldn't STOR file\n"
+#~ msgstr "FTP 파일을 저장할 수 없습니다.\n"
+
+#~ msgid "Read error\n"
+#~ msgstr "읽기 오류\n"
+
+#~ msgid "Out of memory\n"
+#~ msgstr "메모리 부족\n"
+
+#~ msgid "Time out\n"
+#~ msgstr "시간 초과\n"
+
+#~ msgid "Ftp couldn't set ASCII\n"
+#~ msgstr "FTP 아스키 설정을 할 수 없습니다.\n"
+
+#~ msgid "Ftp PORT failed\n"
+#~ msgstr "FTP 포트 실패\n"
+
+#~ msgid "Ftp couldn't use REST\n"
+#~ msgstr "FTP REST를 사용할 수 없습니다.\n"
+
+#~ msgid "Ftp couldn't get size\n"
+#~ msgstr "FTP 크기를 알 수 없습니다.\n"
+
+#~ msgid "Http range error\n"
+#~ msgstr "HTTP 범위 오류\n"
+
+#~ msgid "Http POST error\n"
+#~ msgstr "HTTP POST 오류\n"
+
+#~ msgid "Ssl connect error\n"
+#~ msgstr "SSL 연결 오류\n"
+
+#~ msgid "Ftp bad download resume\n"
+#~ msgstr "FTP 잘못된 이어받기\n"
+
+#~ msgid "File couldn't read file\n"
+#~ msgstr "File 파일을 읽을 수 없습니다.\n"
+
+#~ msgid "LDAP cannot bind\n"
+#~ msgstr "LDAP bind 할 수 없습니다.\n"
+
+#~ msgid "LDAP search failed\n"
+#~ msgstr "LDAP 검색 실패\n"
+
+#~ msgid "Library not found\n"
+#~ msgstr "라이브러리를 찾을 수 없습니다.\n"
+
+#~ msgid "Function not found\n"
+#~ msgstr "함수를 찾을 수 없습니다.\n"
+
+#~ msgid "Aborted by callback\n"
+#~ msgstr "콜백에 의해 중지되었습니다.\n"
+
+#~ msgid "Bad function argument\n"
+#~ msgstr "잘못된 함수 인자\n"
+
+#~ msgid "Bad calling order\n"
+#~ msgstr "잘못된 호출 순서\n"
+
+#~ msgid "Unknown error code %d\n"
+#~ msgstr "알 수 없는 오류코드 %d\n"
+
+#~ msgid "An error occured while fetching file"
+#~ msgstr "파일을 가져오는 도중 오류가 발생했습니다."
+
+#~ msgid "Skip"
+#~ msgstr "건너뛰기"
+
+#~ msgid "Preparing for install"
+#~ msgstr "설치 준비 중..."
+
+#~ msgid "Can't check the GPG signature"
+#~ msgstr "GPG 서명을 확인할 수 없습니다."
 
 #~ msgid ""
-#~ "Error!\n"
-#~ "Cannot open rpm database"
+#~ "The package %s has a wrong signature or\n"
+#~ "GnuPG isn't correctly installed"
 #~ msgstr ""
-#~ "오류!\n"
-#~ "RPM 데이터베이스 열기 실패"
+#~ "%s 팩키지는 잘못된 서명을 가지고 있거나 \n"
+#~ "GnuPG가 올바르게 설치되어 있지 않습니다."
 
-#~ msgid "Error!"
-#~ msgstr "오류!"
+#~ msgid "The package %s is not signed"
+#~ msgstr "%s 팩키지는 서명되지 않았습니다."
 
-#~ msgid ""
-#~ "It looks like you don't have\n"
-#~ "configured a source for\n"
-#~ "security updates.\n"
-#~ "Do you want to configure one now?"
-#~ msgstr ""
-#~ "보안 업데이트를 할 수 있는\n"
-#~ "소스가 설정되어 있지 않습니다.\n"
-#~ "지금 보안 업데이트 소스를\n"
-#~ "설정하시겠습니까?"
+#~ msgid "Install all"
+#~ msgstr "모두 설치"
 
-#~ msgid "Do not show this message again"
-#~ msgstr "이 메시지를 다시 보이지 않음."
+#~ msgid "Don't install"
+#~ msgstr "설치 안함"
 
-#~ msgid "Configure a Cooker source?"
-#~ msgstr "개발(쿠커) 소스를 설정하시겠습니까?"
+#~ msgid "Signature problem"
+#~ msgstr "서명 문제"
 
-#~ msgid ""
-#~ "Cooker is a development and unstable distribution.\n"
-#~ "It is not supported by MandrakeSoft.\n"
-#~ "Use it at your own risk.\n"
-#~ msgstr ""
-#~ "쿠커는 개발 중인 불안정 배포본입니다.\n"
-#~ "맨드레이크소프트의 지원을 받을 수 없으며,\n"
-#~ "모든 위험은 사용자 스스로 감수해야 합니다.\n"
+#~ msgid "Can't open package"
+#~ msgstr "팩키지를 열 수 없습니다."
 
-#~ msgid ""
-#~ "Can't find the /var/lib/urpmi/compssUsers.flat file\n"
-#~ "the tree mode won't be available"
-#~ msgstr ""
-#~ "「/var/lib/urpmi/compssUsers.flat」파일을 찾을 수 없습니다.\n"
-#~ "분류 모드는 사용할 수 없습니다."
+#~ msgid "Package is corrupted"
+#~ msgstr "팩키지에 문제가 있습니다."
 
-#~ msgid "Others"
-#~ msgstr "기타"
+#~ msgid "Package can't be installed"
+#~ msgstr "팩키지가 설치될 수 없습니다."
 
-#~ msgid "Analysing the %s source"
-#~ msgstr "%s 소스 분석 중..."
+#~ msgid "Error while checking dependencies :("
+#~ msgstr "의존성 검사 중 오류 :("
 
-#~ msgid "looking for installed packages"
-#~ msgstr "설치된 팩키지 검색 중..."
+#~ msgid "Force"
+#~ msgstr "강제추진"
 
-#~ msgid "Frederic Lepied <flepied@mandrakesoft.com>"
-#~ msgstr "Frederic Lepied <flepied@mandrakesoft.com>"
+#~ msgid "Error..."
+#~ msgstr "오류..."
 
-#~ msgid "Francois Pons <fpons@mandrakesoft.com>"
-#~ msgstr "Francois Pons <fpons@mandrakesoft.com>"
+#~ msgid "Problems occured during installation"
+#~ msgstr "설치중에 문제가 발생했습니다."
+
+#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
+#~ msgstr "사용법: grpmi <[-noupgrade] rpms>\n"
+
+#~ msgid "grpmi error: you must be superuser!\n"
+#~ msgstr "grpmi 오류: 님은 루트 사용자이어야 합니다!\n"
 
 #~ msgid " ~ # ~ "
 #~ msgstr "한국어 번역: 최재금 <baedaron@hananet.net>"
 
 #~ msgid ""
-#~ "Software Manager\n"
+#~ "Mandrake Update\n"
 #~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
+#~ "(c) MandrakeSoft 1999-2000\n"
 #~ "released under the GPL"
 #~ msgstr ""
-#~ "소프트웨어 관리자\n"
+#~ "맨드레이크 업데이트\n"
 #~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
+#~ "(c) MandrakeSoft 1999-2000\n"
 #~ "GPL에 따라 배포됩니다."
 
-#~ msgid "building dependencies for packages removing"
-#~ msgstr "제거하기 위해 의존성 검사 중..."
+#~ msgid "Error"
+#~ msgstr "오류"
+
+#~ msgid ""
+#~ "Cannot retrieve the list of mirrors\n"
+#~ "Try again later"
+#~ msgstr ""
+#~ "미러 사이트 목록을 가져올 수 없습니다.\n"
+#~ "나중에 다시 시도하세요."
+
+#~ msgid "Source on network: %s"
+#~ msgstr "네트웍상의 소스: %s"
+
+#~ msgid "Source on network: %s/%s/%s"
+#~ msgstr "네트웍상의 소스: %s/%s/%s"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Fetching the list of mirrors"
+#~ msgstr ""
+#~ "기다려 주세요.\n"
+#~ "미러 사이트 목록을 가져오는 중..."
+
+#~ msgid "%.1f KB"
+#~ msgstr "%.1f KB"
+
+#~ msgid "%.1f MB"
+#~ msgstr "%.1f MB"
+
+#~ msgid " n/a "
+#~ msgstr "n/a"
+
+#~ msgid ""
+#~ "Cannot retrieve the description file\n"
+#~ "Bad things can happen"
+#~ msgstr ""
+#~ "설명 파일을 가져올 수 없습니다.\n"
+#~ "문제가 일어날 수 있습니다."
+
+#~ msgid "n/a"
+#~ msgstr "n/a"
+
+#~ msgid "security"
+#~ msgstr "보안강화"
+
+#~ msgid "general"
+#~ msgstr "기능강화"
+
+#~ msgid "bugfix"
+#~ msgstr "버그수정"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Retrieving the Description file"
+#~ msgstr ""
+#~ "기다려 주세요.\n"
+#~ "설명 파일을 가져오는 중..."
+
+#~ msgid ""
+#~ "Cannot retrieve the list of packages to update\n"
+#~ "Try with an other mirror"
+#~ msgstr ""
+#~ "업데이트할 팩키지 목록을 가져올 수 없습니다.\n"
+#~ "다른 미러 사이트를 이용해 보세요."
+
+#~ msgid "Warning"
+#~ msgstr "경고"
+
+#~ msgid ""
+#~ "Caution! These packages are NOT well tested.\n"
+#~ "You really can screw up your system\n"
+#~ "by installing them.\n"
+#~ msgstr ""
+#~ "주의! 이 팩키지들은 충분히 검증되지 않았습니다.\n"
+#~ "이 팩키지들을 설치하면 님의 시스템에 문제를 일으킬\n"
+#~ "수도 있습니다.\n"
+
+#~ msgid "Source on disk: %s"
+#~ msgstr "디스크상의 소스: %s"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Updating the list of packages"
+#~ msgstr ""
+#~ "기다려 주세요.\n"
+#~ "팩키지 목록 갱신 중..."
+
+#~ msgid ""
+#~ "Name: %s\n"
+#~ "Type: %s"
+#~ msgstr ""
+#~ "팩키지명: %s\n"
+#~ "유형: %s"
+
+#~ msgid "unknown"
+#~ msgstr "알 수 없음"
+
+#~ msgid "Name: %s"
+#~ msgstr "팩키지명: %s"
+
+#~ msgid "%d selected packages: %.1f MB"
+#~ msgstr "%d 개의 선택된 팩키지: %.1f MB"
+
+#~ msgid "GnuPG not found"
+#~ msgstr "GnuPG를 찾을 수 없습니다."
+
+#~ msgid ""
+#~ "GnuPG was not found\n"
+#~ "\n"
+#~ "MandrakeUpdate will not be able to verify the GPG\n"
+#~ "signature of the packages\n"
+#~ "\n"
+#~ "Please install the gpg package\n"
+#~ msgstr ""
+#~ "GnuPG를 찾을 수 없었습니다.\n"
+#~ "\n"
+#~ "맨드레이크업데이트는 팩키지들의 PGP 서명을 확인할 수 \n"
+#~ "없을 것입니다.\n"
+#~ "\n"
+#~ "pgp 팩키지를 먼저 설치하세요.\n"
+
+#~ msgid "Don't show this message again"
+#~ msgstr "이 메시지를 다시 표시하지 않음."
 
 #~ msgid "oops %s not found\n"
 #~ msgstr "%s를 찾을 수 없습니다.\n"
 
-#~ msgid "Uninstalling packages"
-#~ msgstr "팩키지 제거 중"
+#~ msgid "Please Wait"
+#~ msgstr "기다려 주세요."
 
-#~ msgid "Looking for dependencies"
-#~ msgstr "의존성 파악 중"
-
-#~ msgid "The selected packages have been removed succesfully"
-#~ msgstr "선택된 팩키지들이 성공적으로 삭제되었습니다."
-
-#~ msgid "Security warning : The Software Manager won't start browser as root"
-#~ msgstr ""
-#~ "보안 경고: 소프트웨어 관리자는 루트권한으로 탐색기를 실행하지 않을 것입니"
-#~ "다."
-
-#~ msgid "Unable to run browser"
-#~ msgstr "탐색기를 실행할 수 없습니다."
-
-#~ msgid "verbosity set to %s"
-#~ msgstr "과정 보이기 수준: %s"
-
-#~ msgid "TRUE"
-#~ msgstr "참"
-
-#~ msgid "FALSE"
-#~ msgstr "거짓"
-
-#~ msgid "be verbose"
-#~ msgstr "과정 보이기"
-
-#~ msgid "Close"
-#~ msgstr "닫기"
+#~ msgid "0 selected packages: 0.0 MB"
+#~ msgstr "0 개의 선택된 팩키지: 0.0 MB"
 
 #~ msgid "/_File"
 #~ msgstr "/파일(_F)"
 
-#~ msgid "/File/Display Logs"
-#~ msgstr "/파일(F)/로그 보기"
-
-#~ msgid "/File/_Install"
-#~ msgstr "/파일(F)/설치(_I)"
-
-#~ msgid "/File/_Uninstall"
-#~ msgstr "/파일(F)/제거(_U)"
+#~ msgid "/File/_Preferences"
+#~ msgstr "/파일(F)/사용자 설정(_P)"
 
 #~ msgid "/File/-"
 #~ msgstr "/파일(F)/-"
-
-#~ msgid "/File/_Proxies"
-#~ msgstr "/파일(F)/프락시(_P)"
 
 #~ msgid "/File/_Quit"
 #~ msgstr "/파일(F)/종료(_Q)"
@@ -967,440 +1147,211 @@ msgstr ""
 #~ msgid "/Help/_About..."
 #~ msgstr "/도움말(H)/이 프로그램은(_A)..."
 
-#~ msgid "/Help/-"
-#~ msgstr "/도움말(H)/-"
+#~ msgid "Name"
+#~ msgstr "팩키지명"
 
-#~ msgid "/Help/MandrakeCampus.com"
-#~ msgstr "/도움말(H)/맨드레이크 캠퍼스"
-
-#~ msgid "/Help/MandrakeExpert.com"
-#~ msgstr "/도움말(H)/맨드레이크 전문가"
-
-#~ msgid "/Help/Show Console Logs"
-#~ msgstr "/도움말(H)/콘솔 로그 보이기"
-
-#~ msgid "Version"
-#~ msgstr "버전"
-
-#~ msgid "Installed version"
+#~ msgid "Installed"
 #~ msgstr "설치된 버전"
 
 #~ msgid "Size"
 #~ msgstr "크기"
 
-#~ msgid "Software Manager"
-#~ msgstr "소프트웨어 관리자"
+#~ msgid "Type"
+#~ msgstr "유형"
+
+#~ msgid "Summary"
+#~ msgstr "간단한 설명"
+
+#~ msgid "MandrakeUpdate, version 7.2\n"
+#~ msgstr "MandrakeUpdate, 버전 7.2\n"
 
 #~ msgid ""
-#~ "Install/\n"
-#~ "Remove"
+#~ "  usage:\n"
+#~ "    -h, --help:    display this help and exit\n"
+#~ "    -v, --version: show the version and exit\n"
+#~ "    -V, --verbose: increase the verbosity level\n"
 #~ msgstr ""
-#~ "설치/\n"
-#~ "제거"
+#~ "  사용법:\n"
+#~ "    -h, --help:   지금 이 메시지를 보이고 종료\n"
+#~ "    -v, --version:   버전 번호를 보이고 종료\n"
+#~ "    -V, --vervose:   출력 메시지 증가\n"
 
-#~ msgid "Install and remove selected packages"
-#~ msgstr "선택된 팩키지 설치/제거"
+#~ msgid "Source on network: (random mirror)\n"
+#~ msgstr "네트웍상의 소스: (무작위 미러)\n"
 
 #~ msgid ""
-#~ "Define\n"
-#~ "sources"
+#~ "Update\n"
+#~ "List"
 #~ msgstr ""
-#~ "소스\n"
-#~ "정의"
+#~ "업데이트\n"
+#~ "목록"
 
-#~ msgid "Define sources of packages available for installation and update"
-#~ msgstr "설치 또는 업데이트할 팩키지의 소스를 정의합니다."
+#~ msgid "Update the list of packages to update"
+#~ msgstr "업데이트할 팩키지 목록 갱신"
 
 #~ msgid ""
-#~ "Reload\n"
-#~ "lists"
+#~ "Select\n"
+#~ "all"
 #~ msgstr ""
-#~ "목록\n"
-#~ "갱신"
-
-#~ msgid "Launch the Mandrake Update wizard"
-#~ msgstr "맨드레이크 업데이트 마법사 실행"
-
-#~ msgid "Reset"
-#~ msgstr "초기화"
-
-#~ msgid "Search by file"
-#~ msgstr "파일로 찾기"
-
-#~ msgid "Search by description"
-#~ msgstr "설명으로 찾기"
-
-#~ msgid "Flat List"
-#~ msgstr "목록 보기"
-
-#~ msgid "Tree view"
-#~ msgstr "분류 보기"
-
-#~ msgid "Selected"
-#~ msgstr "선택된 팩키지"
-
-#~ msgid "All"
-#~ msgstr "모든 팩키지"
-
-#~ msgid "Non-installed only"
-#~ msgstr "새로운 팩키지"
-
-#~ msgid "Delete"
-#~ msgstr "삭제"
-
-#~ msgid "Error: curl_easy_init()"
-#~ msgstr "오류: curl_easy_init()"
-
-#~ msgid "You must provide a valid source name!"
-#~ msgstr "유효한 소스 이름을 지정해 주세요!"
-
-#~ msgid "An error occured when adding this source"
-#~ msgstr "이 소스를 추가하는 도중에 오류가 발생했습니다."
-
-#~ msgid "New Source"
-#~ msgstr "새 소스"
-
-#~ msgid "New source's name:"
-#~ msgstr "새 소스 이름:"
-
-#~ msgid "path or mount point"
-#~ msgstr "경로 또는 마운트 위치"
-
-#~ msgid "path"
-#~ msgstr "경로"
-
-#~ msgid "http"
-#~ msgstr "HTTP"
-
-#~ msgid "URL: "
-#~ msgstr "URL:"
-
-#~ msgid "ftp"
-#~ msgstr "FTP"
-
-#~ msgid "Update the list of mirrors"
-#~ msgstr "미러 사이트 목록 업데이트"
-
-#~ msgid "Cooker"
-#~ msgstr "개발자 업데이트(Cooker)"
-
-#~ msgid "Do you really want to delete the %s source?\n"
-#~ msgstr "정말로 %s 소스를 삭제할까요?\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Removing the %s source"
-#~ msgstr ""
-#~ "기다려 주세요.\n"
-#~ "%s 소스 제거 중..."
-
-#~ msgid "Editing %s"
-#~ msgstr "%s 편집 중"
-
-#~ msgid "Please change one or more parameter\n"
-#~ msgstr "인자들을 변경해 보세요.\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the parameters for the %s source"
-#~ msgstr ""
-#~ "기다려 주세요.\n"
-#~ "%s 소스의  인자를 업데이트 중..."
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the sources"
-#~ msgstr ""
-#~ "기다려 주세요.\n"
-#~ "소스의 데이터베이스 정보 업데이트 중..."
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the %s source"
-#~ msgstr ""
-#~ "기다려 주세요.\n"
-#~ "%s 소스의  데이터베이스 정보를 업데이트 중..."
-
-#~ msgid "Sources to update"
-#~ msgstr "업데이트할 소스"
-
-#~ msgid ""
-#~ "Welcome to the Mandrake Update utility!\n"
-#~ "\n"
-#~ "Here, you'll be able to upgrade your system\n"
-#~ "with the latest Mandrake Linux updates\n"
-#~ msgstr ""
-#~ "맨드레이크 업데이트 유틸러티에 잘 오셨습니다!\n"
-#~ "\n"
-#~ "여기에서, 맨드리이크 리눅스의 최신 업데이트로 \n"
-#~ "시스템을 업그레이드할 수 있습니다.\n"
-
-#~ msgid "Please choose which types of update you want to perform:"
-#~ msgstr "하시고자 하는 업데이트 유형을 선택해 주세요:"
-
-#~ msgid "bugfixes"
-#~ msgstr "버그 수정"
-
-#~ msgid "security updates"
-#~ msgstr "보안 업데이트"
-
-#~ msgid "No changelog found..."
-#~ msgstr "변경사항록을 찾을 수 없습니다..."
-
-#~ msgid "Importance"
-#~ msgstr "중요도"
-
-#~ msgid "No Changelog found..."
-#~ msgstr "변경사항록을 찾을 수 없습니다..."
-
-#~ msgid "please select at least one type of update\n"
-#~ msgstr "최소한 하나의 업데이트 유형은 선택해 주세요.\n"
-
-#~ msgid ""
-#~ "Cannot grab the list of mirrors.\n"
-#~ "The network could be unreachable.\n"
-#~ "Please try again later.\n"
-#~ msgstr ""
-#~ "미러 목록을 가져올 수 없습니다.\n"
-#~ "네트웍 연결을 할 수 없었습니다.\n"
-#~ "나중에 다시 시도해 보세요.\n"
-
-#~ msgid "Http Proxy:"
-#~ msgstr "HTTP 프락시:"
-
-#~ msgid "Ftp Proxy:"
-#~ msgstr "FTP 프락시:"
-
-#~ msgid "Initialisation"
-#~ msgstr "설치"
-
-#~ msgid "Welcome"
-#~ msgstr "환영합니다."
-
-#~ msgid "Packages informations"
-#~ msgstr "팩키지 정보"
-
-#~ msgid "Errors found"
-#~ msgstr "오류 발견"
-
-#~ msgid "Packages dependencies informations"
-#~ msgstr "팩키지 의존성 정보"
-
-#~ msgid "Disk usage"
-#~ msgstr "디스크 사용량"
-
-#~ msgid "Good bye"
-#~ msgstr "안녕히 가세요."
-
-#, fuzzy
-#~ msgid "Software Installer"
-#~ msgstr "소프트웨어 관리자"
-
-#~ msgid "Unable to safely create the temporary directory"
-#~ msgstr "임시 디렉토리를 안전하게 만들 수 없습니다."
-
-#~ msgid "Unable to safely create the temporary file"
-#~ msgstr "임시 파일을 안전하게 만들 수 없습니다."
-
-#~ msgid "Some errors where encountered while checking your wishes :"
-#~ msgstr "실행할 작업을 검사하는 도중에 일부 오류가 발견되었습니다:"
-
-#~ msgid "Files or packages format error"
-#~ msgstr "파일 또는 팩키지 형식 오류"
-
-#~ msgid "Conflicting packages"
-#~ msgstr "충돌하는 팩키지"
-
-#~ msgid ""
-#~ "Despite these errors some package can be installed.\n"
-#~ "If you want to go on, click the \"Next\" button below."
-#~ msgstr ""
-#~ "오류가 발생했지만 일부 팩키지는 설치될 수 있습니다.\n"
-#~ "계속할려면, 「다음」을 누르세요."
-
-#~ msgid ""
-#~ "Sorry, but all packages raised an error.\n"
-#~ "So I can't proceed with the installation."
-#~ msgstr ""
-#~ "모든 팩키지가 오류를 일으켰습니다.\n"
-#~ "설치를 계속할 수 없습니다."
-
-#~ msgid ""
-#~ "Congratulations!\n"
-#~ "You successfully installed your packages, now you can enjoy your new "
-#~ "programs. Simply click the \"Quit\" button below.\n"
-#~ "See you soon!"
-#~ msgstr ""
-#~ "축하합니다!\n"
-#~ "팩키지들이 성공적으로 설치되었습니다. 이제 새로운 프로그램들을 즐겨 보세"
-#~ "요. 넵다 아래의 「종료」버튼을 누르세요.\n"
-#~ "그럼, 다시 볼 때까지 안녕히..."
-
-#~ msgid "Unfortunately, some packages were not installed due to some errors."
-#~ msgstr "일부 팩키지는 오류로 인하여 설치되지 않았습니다."
-
-#~ msgid "All required additional software is already installed, just go on."
-#~ msgstr "추가로 필요한 소프트웨어가 이미 설치되어 있습니다. 계속 진행하세요."
-
-#~ msgid ""
-#~ "This additional package needs to be installed in order to everything "
-#~ "working well:"
-#~ msgstr ""
-#~ "선택된 팩키지의 소프트웨어가 정상적으로 수행되기 위해서는, 이 추가 팩키지"
-#~ "를 설치할 필요가 있습니다:"
-
-#~ msgid ""
-#~ "Install in progress...\n"
-#~ "\n"
-#~ "You can see below the installation state."
-#~ msgstr ""
-#~ "설치작업 진행 중...\n"
-#~ "\n"
-#~ "아래에서 설치 상황을 볼 수 있습니다."
-
-#~ msgid "Welcome to rpminst"
-#~ msgstr "소프트웨어 설치기에 잘 오셨습니다."
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "An RPM package is a \"case\" containing a software (or a piece of "
-#~ "software) that you can install on your system to use it later."
-#~ msgstr ""
-#~ "이 프로그램으로 원하는 RPM 팩키지를 설치할 수 있습니다.\n"
-#~ "RPM 팩키지는 시스템에 설치하여 사용할 수 있는 소프트웨어(또는 소프트웨어 "
-#~ "조각)를 담고 있는 「상자」입니다."
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "Please wait while packages and dependencies are checked."
-#~ msgstr ""
-#~ "이 프로그램은 요청한 RPM 팩키지들을 설치할 것입니다.\n"
-#~ "선택된 팩키지와 의존성을 검사하는 동안 기다려 주세요."
-
-#~ msgid "Now doing:"
-#~ msgstr "지금 동작중:"
-
-#~ msgid "Checking files..."
-#~ msgstr "파일 체크 중..."
-
-#~ msgid "Checking packages..."
-#~ msgstr "팩키지 체크 중..."
-
-#~ msgid "Building interface..."
-#~ msgstr "인터페이스 구성 중..."
-
-#~ msgid "Install selected with rpminst"
-#~ msgstr "선택된 팩키지들을 소프트웨어 설치기로 설치"
+#~ "모두\n"
+#~ "선택"
 
 #~ msgid "Select all"
 #~ msgstr "모두 선택"
 
+#~ msgid ""
+#~ "Unselect\n"
+#~ "all"
+#~ msgstr ""
+#~ "모두\n"
+#~ "해제"
+
 #~ msgid "Unselect all"
-#~ msgstr "모두 선택 해제"
-
-#~ msgid "Unknown error code"
-#~ msgstr "알 수 없는 오류 코드"
-
-#~ msgid "RPM file not found"
-#~ msgstr "팩키지를 찾을 수 없습니다."
-
-#~ msgid "Bad RPM file format (header)"
-#~ msgstr "잘못된 팩키지 형식 (헤더)"
-
-#~ msgid "Package unknown by urpmq"
-#~ msgstr "「urpmq」가 인식할 수 없는 팩키지"
-
-#~ msgid "Conflicting package"
-#~ msgstr "충돌하는 팩키지"
-
-#~ msgid "Not enough available disk space"
-#~ msgstr "충분하지 않은 디스크 공간"
-
-#~ msgid "Unreadable RPM file"
-#~ msgstr "읽을 수 없는 팩키지"
-
-#~ msgid "Added for dependencies"
-#~ msgstr "의존성 때문에 추가됨"
-
-#~ msgid "Header format error (from urpmq)"
-#~ msgstr "헤더 형식 오류 (urpmq)"
-
-#~ msgid "Canceled by user"
-#~ msgstr "사용자에 의한 작업 취소"
-
-#~ msgid "Refused by grpmi"
-#~ msgstr "Grpmi 허가 거부"
-
-#~ msgid "urpmi return value"
-#~ msgstr "Urpmi 리턴값"
-
-#~ msgid "Internal error"
-#~ msgstr "내부 오류"
-
-#~ msgid "Brief"
-#~ msgstr "간략 설명"
-
-#~ msgid "Details"
-#~ msgstr "세부사항"
-
-#~ msgid "Files"
-#~ msgstr "파일"
+#~ msgstr "모든 선택 해제"
 
 #~ msgid ""
-#~ "Sorry, but no suitable web browser seems to be installed on your system."
-#~ msgstr "죄송합니다. 적당한 웹 브라우저가 설치되어 있지 않습니다."
+#~ "Do\n"
+#~ "updates"
+#~ msgstr ""
+#~ "업데이트\n"
+#~ "시작"
 
-#~ msgid "OK"
-#~ msgstr "확인"
+#~ msgid "Do Updates"
+#~ msgstr "업데이트 시작"
 
-#~ msgid "Changelog"
-#~ msgstr "변경사항록"
+#~ msgid "Normal Updates"
+#~ msgstr "정식버전 업데이트"
 
-#~ msgid "Group: "
-#~ msgstr "그룹:"
+#~ msgid "Development Updates"
+#~ msgstr "개발버전 업데이트"
 
-#~ msgid "License: "
-#~ msgstr "사용자 계약서:"
-
-#~ msgid "Packager: "
-#~ msgstr "팩키지 만든이:"
-
-#~ msgid "Size: "
-#~ msgstr "크기:"
-
-#~ msgid "Empty changelog"
-#~ msgstr "변경사항록 비우기"
-
-#~ msgid "(undefined)"
-#~ msgstr "(정의되어 있지 않음)"
-
-#~ msgid "Summary"
-#~ msgstr "요약 설명"
-
-#~ msgid "Description"
+#~ msgid "Descriptions"
 #~ msgstr "설명"
 
-#~ msgid "%1.2f kB"
-#~ msgstr "%1.2f KB"
+#~ msgid ""
+#~ "The packages are the updates for Mandrake\n"
+#~ "Select the one(s) you want to update\n"
+#~ "When you click on a package you get information about\n"
+#~ "the need to update"
+#~ msgstr ""
+#~ "위 목록은 맨드레이크 업데이트 팩키지들입니다.\n"
+#~ "업데이트할 팩키지들을 선택하세요.\n"
+#~ "팩키지를 클릭하면, 업데이트 정보를 \n"
+#~ "볼 수 있습니다."
 
-#~ msgid "%1.2f MB"
-#~ msgstr "%1.2f MB"
-
-#~ msgid "%1.2f GB"
-#~ msgstr "%1.2f GB"
-
-#~ msgid "Device name:"
-#~ msgstr "장치 이름:"
-
-#~ msgid "url: "
-#~ msgstr "URL:"
-
-#~ msgid "hdlist:"
-#~ msgstr "목록파일:"
+#~ msgid "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,*"
+#~ msgstr ""
+#~ "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,-*-gulim-bold-r-"
+#~ "normal--*-120-*-*-*-*-ksc5601.1987-0,*"
 
 #~ msgid ""
-#~ "Software Manager\n"
-#~ "\n"
+#~ "Please Wait\n"
+#~ "Sorting packages"
 #~ msgstr ""
-#~ "소프트웨어 관리자\n"
+#~ "기다려 주세요.\n"
+#~ "팩키지 정렬 중..."
+
+#~ msgid "Choose your packages"
+#~ msgstr "팩키지를 선택하세요."
+
+#~ msgid "Packages to update"
+#~ msgstr "업데이트할 팩키지"
+
+#~ msgid "Packages NOT to update"
+#~ msgstr "업데이트하지 않을 팩키지"
+
+#~ msgid ""
+#~ "Caution! You're changing the version.\n"
+#~ "MandrakeUpdate will think you actually have this\n"
+#~ "version installed\n"
 #~ "\n"
+#~ "You should only use this if you really know what you're doing.\n"
+#~ msgstr ""
+#~ "주의! 버전을 변경하려고 합니다.\n"
+#~ "맨드레이크업데이트는 님이 실제로 이 버전을 설치했다고\n"
+#~ "가정할 것입니다.\n"
+#~ "확신이 서지 않는다면 이것을 사용하지 마세요.\n"
+
+#~ msgid "Preferences for Proxies"
+#~ msgstr "프락시 사용자 설정"
+
+#~ msgid "Proxies"
+#~ msgstr "프락시"
+
+#~ msgid "Http Proxy:"
+#~ msgstr "HTTP 프락시:"
+
+#~ msgid "Port:"
+#~ msgstr "포트:"
+
+#~ msgid "Ftp Proxy:"
+#~ msgstr "FTP 프락시:"
+
+#~ msgid "Proxy username:"
+#~ msgstr "프락시 사용자명:"
+
+#~ msgid "Proxy password:"
+#~ msgstr "프락시 암호:"
+
+#~ msgid "Error: curl_easy_init()"
+#~ msgstr "오류: curl_easy_init()"
+
+#~ msgid "Disk"
+#~ msgstr "디스크"
+
+#~ msgid "Network"
+#~ msgstr "네트웍"
+
+#~ msgid "RPM directory"
+#~ msgstr "RPM 디렉토리"
+
+#~ msgid "Network settings:"
+#~ msgstr "네트웍 셋팅:"
+
+#~ msgid "Version:"
+#~ msgstr "버전:"
+
+#~ msgid "Show security updates"
+#~ msgstr "보안 업데이트 보이기"
+
+#~ msgid "Show general updates"
+#~ msgstr "일반 업데이트 보이기"
+
+#~ msgid "Show bugfix updates"
+#~ msgstr "버그수정 업데이트 보이기"
+
+#~ msgid "mirror:"
+#~ msgstr "미러 사이트:"
+
+#~ msgid "Update the list of mirrors"
+#~ msgstr "미러 사이트 목록 갱신"
+
+#~ msgid "Choose Packages"
+#~ msgstr "특정 팩키지 선택"
+
+#~ msgid "Username:"
+#~ msgstr "사용자명:"
+
+#~ msgid "Security"
+#~ msgstr "보안"
+
+#~ msgid "Do not warn if GnuPG isn't installed"
+#~ msgstr "GnuPG가 설치되어 있지 않아도 경고하지 않기"
+
+#~ msgid "Do not warn if the package isn't signed"
+#~ msgstr "팩키지가 서명되어 있지 않아도 경고하지 않기"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "기타 등등"
+
+#~ msgid "Timeout:"
+#~ msgstr "시간초과:"
+
+#~ msgid "(in sec)"
+#~ msgstr "(초)"
+
+#~ msgid "MandrakeUpdate Preferences"
+#~ msgstr "맨드레이크업데이트 사용자 설정"
+
+#~ msgid "Categories"
+#~ msgstr "범주"

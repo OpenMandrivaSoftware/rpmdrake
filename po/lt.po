@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-06 15:03+0200\n"
+"POT-Creation-Date: 2002-08-06 15:58+0200\n"
 "PO-Revision-Date: 2001-03-04 15:30+0200\n"
 "Last-Translator: Mykolas Norvaiðas <Myka@centras.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -82,9 +82,8 @@ msgid "Login:"
 msgstr "login:"
 
 #: ../edit-urpm-sources.pl_.c:92
-#, fuzzy
 msgid "Password:"
-msgstr "password:"
+msgstr "Slaptaþodis:"
 
 #: ../edit-urpm-sources.pl_.c:97
 msgid "Name:"
@@ -118,7 +117,7 @@ msgstr "Laikmenos tipas:"
 #: ../edit-urpm-sources.pl_.c:124 ../rpmdrake.pm_.c:75 ../rpmdrake.pm_.c:88
 #: ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
 msgid "Ok"
-msgstr ""
+msgstr "Gerai"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:176
 #: ../edit-urpm-sources.pl_.c:200 ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
@@ -166,9 +165,8 @@ msgid "Select the source(s) you wish to update:"
 msgstr ""
 
 #: ../edit-urpm-sources.pl_.c:199
-#, fuzzy
 msgid "Update"
-msgstr "Atnaujinti laikmenà"
+msgstr "Atnaujinti"
 
 #: ../edit-urpm-sources.pl_.c:207
 #, fuzzy
@@ -189,9 +187,8 @@ msgid "Enabled?"
 msgstr ""
 
 #: ../edit-urpm-sources.pl_.c:215
-#, fuzzy
 msgid "Source"
-msgstr "Redaguoti Laikmena"
+msgstr "Ðaltinis"
 
 #: ../edit-urpm-sources.pl_.c:243 ../rpmdrake_.c:482
 #, fuzzy
@@ -216,7 +213,7 @@ msgstr ""
 
 #: ../edit-urpm-sources.pl_.c:253 ../rpmdrake_.c:486
 msgid "Quit"
-msgstr ""
+msgstr "Iðeiti"
 
 #: ../edit-urpm-sources.pl_.c:263 ../rpmdrake_.c:708
 #, c-format
@@ -629,7 +626,6 @@ msgid "Search"
 msgstr "Ieðkoti"
 
 #: ../rpmdrake_.c:483
-#, fuzzy
 msgid "Install"
 msgstr "Ádiegti"
 
@@ -778,129 +774,351 @@ msgid ""
 "you want to install on your computer."
 msgstr ""
 
-#, fuzzy
-#~ msgid "By source"
-#~ msgstr "Redaguoti Laikmena"
+#~ msgid "Installing/Upgrading Progress"
+#~ msgstr "Ádiegimo/Atnaujinimo paþanga"
 
-#, fuzzy
-#~ msgid "Unable to update medium."
-#~ msgstr "Nepavyko sukurti raporto bylos, nutraukiu.\n"
+#~ msgid "Fetching:"
+#~ msgstr "Gauname:"
 
-#, fuzzy
-#~ msgid "Please wait, checking dependencies..."
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Tikrinamos priklausomybës"
+#~ msgid "Installing:"
+#~ msgstr "Ádiegiame:"
 
-#~ msgid "search"
-#~ msgstr "ieðkoti"
+#~ msgid " is needed by %s-%s-%s"
+#~ msgstr " yra reikalingas %s-%s-%s"
 
-#~ msgid "New"
-#~ msgstr "Naujas"
+#~ msgid " conflicts with %s-%s-%s"
+#~ msgstr " konfliktuoja su %s-%s-%s"
 
-#, fuzzy
-#~ msgid "Please wait"
-#~ msgstr "Praðom palaukti"
+#~ msgid "Unsupported protocol\n"
+#~ msgstr "Nepalaikomas protokolas\n"
 
-#, fuzzy
-#~ msgid "Relative path to synthesis or hdlist:"
-#~ msgstr "reliatyvus kelias iki hdlist: "
+#~ msgid "Failed init\n"
+#~ msgstr "Inicializacija nepavyko\n"
 
-#, fuzzy
-#~ msgid "%d packages, %Ld bytes"
-#~ msgstr "%d paketai, %d baitai"
+#~ msgid "Bad URL format\n"
+#~ msgstr "Blogas URL formatas\n"
 
-#, fuzzy
-#~ msgid "Cannot read this source: %s"
-#~ msgstr "Negliu atidaryti ið laikmenos: %s\n"
+#~ msgid "Bad user format in URL\n"
+#~ msgstr "Blogas vartotojo formatas URL\n"
 
-#, fuzzy
-#~ msgid "Cannot open the source: %s"
-#~ msgstr "Negliu atidaryti ið laikmenos: %s\n"
+#~ msgid "Couldn't resolve proxy\n"
+#~ msgstr "Negaliu suþinoti (resolve) tarpinës stoties (proxy) IP adreso\n"
 
-#, fuzzy
-#~ msgid " Searching the %s source"
-#~ msgstr "Analizuojama %s laikmena"
+#~ msgid "Couldn't resolve host\n"
+#~ msgstr "Negaliu suþinoti (resolve) stoties (host) IP adreso\n"
 
-#~ msgid "filling lists"
-#~ msgstr "uþpildau sàraðus"
+#~ msgid "Couldn't connect\n"
+#~ msgstr "Negaliu prisijungti\n"
 
-#~ msgid "filling trees"
-#~ msgstr "uþpildau medþius"
+#~ msgid "Ftp weird server reply\n"
+#~ msgstr "Keistas FTP serverio atsakymas\n"
 
-#~ msgid "Error!"
-#~ msgstr "Klaida!"
+#~ msgid "Ftp access denied\n"
+#~ msgstr "FTP priëjimas uþdraustas\n"
 
-#~ msgid "Others"
-#~ msgstr "Kiti"
+#~ msgid "Ftp user password incorrect\n"
+#~ msgstr "Neteisingas FTP vartotojo slaptaþodis\n"
 
-#, fuzzy
-#~ msgid "Analysing the %s source"
-#~ msgstr "Analizuojama %s laikmena"
+#~ msgid "Ftp weird PASS reply\n"
+#~ msgstr "Keistas FTP atsakymas á PASS\n"
 
-#, fuzzy
-#~ msgid "looking for installed packages"
-#~ msgstr ""
-#~ "Ádiegti/Paðalinti\n"
-#~ "paþymëtus paketus"
+#~ msgid "Ftp weird USER reply\n"
+#~ msgstr "Keistas FTP atsakymas á USER\n"
 
-#~ msgid "Frederic Lepied <flepied@mandrakesoft.com>"
-#~ msgstr "Frédéric Lepied <flepied@mandrakesoft.com>"
+#~ msgid "ftp weird PASV reply\n"
+#~ msgstr "Keistas FTP atsakymas á PASV\n"
 
-#~ msgid "Francois Pons <fpons@mandrakesoft.com>"
-#~ msgstr "Francois Pons <fpons@mandrakesoft.com>"
+#~ msgid "Ftp weird 227 format\n"
+#~ msgstr "Keistas FTP 227 formatas\n"
 
-#, fuzzy
+#~ msgid "Ftp can't get host\n"
+#~ msgstr "Negaliu gauti FTP hosto\n"
+
+#~ msgid "Ftp can't reconnect\n"
+#~ msgstr "FTP negali prisijungti ið naujo\n"
+
+#~ msgid "Ftp couldn't set binary\n"
+#~ msgstr "FTP negali perjungti á binary\n"
+
+#~ msgid "Partial file\n"
+#~ msgstr "Dalinë byla\n"
+
+#~ msgid "Ftp couldn't RETR file\n"
+#~ msgstr "FTP negalëjo gauti (RETR) bylos\n"
+
+#~ msgid "Ftp write error\n"
+#~ msgstr "FTP raðymo klaida\n"
+
+#~ msgid "Ftp quote error\n"
+#~ msgstr "FTP citavimo (quote) klaida\n"
+
+#~ msgid "http not found\n"
+#~ msgstr "http nerastas\n"
+
+#~ msgid "Write error\n"
+#~ msgstr "Raðymo klaida\n"
+
+#~ msgid "User name illegally specified\n"
+#~ msgstr "Neteisingai nurodytas vartotojo vardas\n"
+
+#~ msgid "ftp couldn't STOR file\n"
+#~ msgstr "FTP negalëjo áraðyti (STOR) bylos\n"
+
+#~ msgid "Read error\n"
+#~ msgstr "Skaitymo klaida\n"
+
+#~ msgid "Out of memory\n"
+#~ msgstr "Trûksta atminties\n"
+
+#~ msgid "Time out\n"
+#~ msgstr "Laiko riba\n"
+
+#~ msgid "Ftp couldn't set ASCII\n"
+#~ msgstr "FTP negalëjo perjungti á ASCII\n"
+
+#~ msgid "Ftp PORT failed\n"
+#~ msgstr "FTP PORT nepavyko\n"
+
+#~ msgid "Ftp couldn't use REST\n"
+#~ msgstr "FTP negalëjo naudoti REST\n"
+
+#~ msgid "Ftp couldn't get size\n"
+#~ msgstr "FTP negalëjo gauti dydþio\n"
+
+#~ msgid "Http range error\n"
+#~ msgstr "HTPP ribø (range) klaida\n"
+
+#~ msgid "Http POST error\n"
+#~ msgstr "HTTP POST klaida\n"
+
+#~ msgid "Ssl connect error\n"
+#~ msgstr "SSL prisijungimo klaida\n"
+
+#~ msgid "Ftp bad download resume\n"
+#~ msgstr "FTP blogas parsiuntimo pratæsimas\n"
+
+#~ msgid "File couldn't read file\n"
+#~ msgstr "Byla negali perskaityti bylos\n"
+
+#~ msgid "LDAP cannot bind\n"
+#~ msgstr "LDAP negali prisiriðti\n"
+
+#~ msgid "LDAP search failed\n"
+#~ msgstr "LDAP paieðka nepavyko\n"
+
+#~ msgid "Library not found\n"
+#~ msgstr "Biblioteka nerasta\n"
+
+#~ msgid "Function not found\n"
+#~ msgstr "Funkcija nerasta\n"
+
+#~ msgid "Aborted by callback\n"
+#~ msgstr "Nutraukta callback'o\n"
+
+#~ msgid "Bad function argument\n"
+#~ msgstr "Blogas funkcijos argumentas\n"
+
+#~ msgid "Bad calling order\n"
+#~ msgstr "Bloga iðkvietimo tvarka\n"
+
+#~ msgid "An error occured while fetching file"
+#~ msgstr "Ávyko klaida, bandant gauti bylà"
+
+#~ msgid "Skip"
+#~ msgstr "Praleisti"
+
+#~ msgid "Preparing for install"
+#~ msgstr "Ruoðiama ádiegimui"
+
+#~ msgid "Can't check the GPG signature"
+#~ msgstr "Negaliu patikrinti GPG paraðo"
+
 #~ msgid ""
-#~ "Software Manager\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "released under the GPL"
+#~ "The package %s has a wrong signature or\n"
+#~ "GnuPG isn't correctly installed"
 #~ msgstr ""
-#~ "SoftwareManager\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "iðleista pagal GPL"
+#~ "Blogas %s paketo GPG paraðas arba\n"
+#~ "blogai ádiegtas GnuPG paketas"
 
-#~ msgid "building dependencies for packages removing"
-#~ msgstr "iðmetimui skaièiuojami priklausomi paketai"
+#~ msgid "The package %s is not signed"
+#~ msgstr "Paketas %s nëra pasiraðytas"
+
+#~ msgid "Install all"
+#~ msgstr "Ádiegti visus"
+
+#~ msgid "Don't install"
+#~ msgstr "Neádiegti"
+
+#~ msgid "Signature problem"
+#~ msgstr "Paraðo problema"
+
+#~ msgid "Can't open package"
+#~ msgstr "Negaliu atidaryti paketo"
+
+#~ msgid "Package is corrupted"
+#~ msgstr "Paketas yra paþeistas"
+
+#~ msgid "Package can't be installed"
+#~ msgstr "Paketas negali bûti ádiegtas"
+
+#~ msgid "Error while checking dependencies :("
+#~ msgstr "Klaida tikrinant priklausomybes :("
+
+#~ msgid "Force"
+#~ msgstr "Priverstinai"
+
+#~ msgid "Error..."
+#~ msgstr "Klaida..."
+
+#~ msgid "Problems occured during installation"
+#~ msgstr "Ádiegimo metu ávyko klaida"
+
+#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
+#~ msgstr "vartojimas: grpmi <[-noupgrade] rpms>\n"
+
+#~ msgid "grpmi error: you must be superuser!\n"
+#~ msgstr "grpmi klaida: jûs turite bûti root vartotojas!\n"
+
+#~ msgid "Error"
+#~ msgstr "Klaida"
+
+#~ msgid ""
+#~ "Cannot retrieve the list of mirrors\n"
+#~ "Try again later"
+#~ msgstr ""
+#~ "Negaliu atsisiøsti nuorodø sàraðo\n"
+#~ "Bandykite vëliau"
+
+#~ msgid "Source on network: %s"
+#~ msgstr "Ðaltinis tinkle: %s"
+
+#~ msgid "Source on network: %s/%s/%s"
+#~ msgstr "Ðaltinis tinkle: %s/%s/%s"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Fetching the list of mirrors"
+#~ msgstr ""
+#~ "Praðome palaukti\n"
+#~ "Gaunamas atvaizdø (mirror) sàraðas..."
+
+#~ msgid "%.1f KB"
+#~ msgstr "%.1f KB"
+
+#~ msgid "%.1f MB"
+#~ msgstr "%.1f MB"
+
+#~ msgid " n/a "
+#~ msgstr " nëra "
+
+#~ msgid ""
+#~ "Cannot retrieve the description file\n"
+#~ "Bad things can happen"
+#~ msgstr ""
+#~ "Negaliu atsisiøsti apraðymo bylos\n"
+#~ "Gali nutikti blogi dalykai"
+
+#~ msgid "n/a"
+#~ msgstr "nëra"
+
+#~ msgid "security"
+#~ msgstr "saugumas"
+
+#~ msgid "general"
+#~ msgstr "bendras"
+
+#~ msgid "bugfix"
+#~ msgstr "klaidos atitaisymas"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Retrieving the Description file"
+#~ msgstr ""
+#~ "Praðome palaukti\n"
+#~ "Gaunama apraðymø byla"
+
+#~ msgid ""
+#~ "Cannot retrieve the list of packages to update\n"
+#~ "Try with an other mirror"
+#~ msgstr ""
+#~ "Negaliu atsisiøsti atnaujinamø paketø sàraðo\n"
+#~ "Pabandykit kità serverá"
+
+#~ msgid "Warning"
+#~ msgstr "Dëmesio"
+
+#~ msgid ""
+#~ "Caution! These packages are NOT well tested.\n"
+#~ "You really can screw up your system\n"
+#~ "by installing them.\n"
+#~ msgstr ""
+#~ "Atsargiai! Ðie paketai dar NËRA gerai iðbandyti.\n"
+#~ "Juos ádiegdami jûs tikrai galite sugadinti sistemà.\n"
+
+#~ msgid "Source on disk: %s"
+#~ msgstr "Ðaltinis diske: %s"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Updating the list of packages"
+#~ msgstr ""
+#~ "Praðome palaukti\n"
+#~ "Atnaujinamas paketø sàraðas"
+
+#~ msgid ""
+#~ "Name: %s\n"
+#~ "Type: %s"
+#~ msgstr ""
+#~ "Pavadinimas: %s\n"
+#~ "Tipas: %s"
+
+#~ msgid "unknown"
+#~ msgstr "neþinomas"
+
+#~ msgid "Name: %s"
+#~ msgstr "Pavadinimas: %s"
+
+#~ msgid "%d selected packages: %.1f MB"
+#~ msgstr "%d pasirinkti paketai: %.1f MB"
+
+#~ msgid "GnuPG not found"
+#~ msgstr "GnuPG nerastas"
+
+#~ msgid ""
+#~ "GnuPG was not found\n"
+#~ "\n"
+#~ "MandrakeUpdate will not be able to verify the GPG\n"
+#~ "signature of the packages\n"
+#~ "\n"
+#~ "Please install the gpg package\n"
+#~ msgstr ""
+#~ "GnuPG nerastas\n"
+#~ "\n"
+#~ "MandrakeUpdate negalës patikrinti paketø\n"
+#~ "GPG paraðø\n"
+#~ "\n"
+#~ "Praðom ádiegti gpg paketà\n"
+
+#~ msgid "Don't show this message again"
+#~ msgstr "Ðio praneðimo daugiau nerodyti"
 
 #~ msgid "oops %s not found\n"
 #~ msgstr "oops %s nerastas\n"
 
-#~ msgid "Name"
-#~ msgstr "Pavadinimas"
+#~ msgid "Please Wait"
+#~ msgstr "Praðome palaukti"
 
-#, fuzzy
-#~ msgid "Uninstalling packages"
-#~ msgstr "Paðalinama"
-
-#, fuzzy
-#~ msgid "Please wait while rpm is removing these packages:"
-#~ msgstr "Praðom palaukti.Paðalinami paketai"
-
-#~ msgid "Close"
-#~ msgstr "Uþdaryti"
+#~ msgid "0 selected packages: 0.0 MB"
+#~ msgstr "0 pasirinktø paketø: 0.0 MB"
 
 #~ msgid "/_File"
 #~ msgstr "/_Byla"
 
-#, fuzzy
-#~ msgid "/File/_Install"
-#~ msgstr "/Byla/_Iðeiti"
-
-#, fuzzy
-#~ msgid "/File/_Uninstall"
-#~ msgstr "/Byla/_Iðeiti"
+#~ msgid "/File/_Preferences"
+#~ msgstr "/Byla/_Nustatymai"
 
 #~ msgid "/File/-"
 #~ msgstr "/Byla/-"
-
-#, fuzzy
-#~ msgid "/File/_Proxies"
-#~ msgstr "/Byla/_Nustatymai"
 
 #~ msgid "/File/_Quit"
 #~ msgstr "/Byla/_Iðeiti"
@@ -911,624 +1129,207 @@ msgstr ""
 #~ msgid "/Help/_About..."
 #~ msgstr "/Pagalba/_Apie..."
 
-#~ msgid "/Help/-"
-#~ msgstr "/Pagalba/-"
+#~ msgid "Name"
+#~ msgstr "Pavadinimas"
 
-#~ msgid "/Help/MandrakeCampus.com"
-#~ msgstr "/Pagalba/MandrakeCampus.com"
-
-#~ msgid "/Help/MandrakeExpert.com"
-#~ msgstr "/Pagalba/MandrakeExpert.com"
-
-#~ msgid "Version"
-#~ msgstr "Versija"
-
-#, fuzzy
-#~ msgid "Installed version"
-#~ msgstr "Ádiegti"
+#~ msgid "Installed"
+#~ msgstr "Ádiegtas"
 
 #~ msgid "Size"
 #~ msgstr "Dydis"
 
-#, fuzzy
-#~ msgid ""
-#~ "Install/\n"
-#~ "Remove"
-#~ msgstr "Ádiegti"
-
-#, fuzzy
-#~ msgid "Install and remove selected packages"
-#~ msgstr ""
-#~ "Ádiegti/Paðalinti\n"
-#~ "paþymëtus paketus"
-
-#, fuzzy
-#~ msgid "Search by file"
-#~ msgstr "Ieðkoti bylø sàraðe"
-
-#, fuzzy
-#~ msgid "Search by description"
-#~ msgstr "Ieðkoti apraðymuose"
-
-#~ msgid "Flat List"
-#~ msgstr "Plokðèias Sàraðas"
-
-#~ msgid "Selected"
-#~ msgstr "Pasirinkti"
-
-#~ msgid "Installable"
-#~ msgstr "Ádiegimui"
-
-#, fuzzy
-#~ msgid "Non-installed only"
-#~ msgstr "Paðalinama"
-
-#~ msgid "Delete"
-#~ msgstr "Iðtrinti"
-
-#~ msgid "Error: curl_easy_init()"
-#~ msgstr "Klaida: curl_easy_init()"
-
-#, fuzzy
-#~ msgid "You must provide a valid source name!"
-#~ msgstr "Jûs turite áraðyti galiojantá laikmenos vardà!"
-
-#, fuzzy
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Adding source"
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Pridedama laikmena"
-
-#, fuzzy
-#~ msgid "New source's name:"
-#~ msgstr "Naujos laikmenos vardas:"
-
-#, fuzzy
-#~ msgid "path or mount point"
-#~ msgstr "prijungimo vieta"
-
-#~ msgid "Local"
-#~ msgstr "Vietinis"
-
-#~ msgid "path"
-#~ msgstr "kelias"
-
-#~ msgid "http"
-#~ msgstr "http"
-
-#~ msgid "ftp"
-#~ msgstr "ftp"
-
-#~ msgid "Update the list of mirrors"
-#~ msgstr "Atnaujinti veidrodþiø sàraða"
-
-#~ msgid "Cooker"
-#~ msgstr "Cooker"
-
-#, fuzzy
-#~ msgid "Do you really want to delete the %s source?\n"
-#~ msgstr "Ar tikrai norite iðmesti %s laikmenà?\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Removing the %s source"
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Iðmetama laikmena"
-
-#, fuzzy
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the parameters for the %s source"
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Papildoma %s laikmenos duomenø bazë"
-
-#, fuzzy
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the sources"
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Papildoma %s laikmenos duomenø bazë"
-
-#, fuzzy
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the %s source"
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Papildoma %s laikmenos duomenø bazë"
-
-#, fuzzy
-#~ msgid "Sources to update"
-#~ msgstr "Saugumo atnaujinimai"
-
-#, fuzzy
-#~ msgid "security updates"
-#~ msgstr "Saugumo atnaujinimai"
-
-#, fuzzy
-#~ msgid "No Changelog found..."
-#~ msgstr "Pakeitimai"
-
-#, fuzzy
-#~ msgid "Packages informations"
-#~ msgstr "Failinës sistemos informacija:\n"
-
-#, fuzzy
-#~ msgid "Packages dependencies informations"
-#~ msgstr "Ieðkai informcijos apie priklausomybæ"
-
-#, fuzzy
-#~ msgid "Unable to safely create the temporary directory"
-#~ msgstr "Nepavyko sukurti raporto bylos, nutraukiu.\n"
-
-#, fuzzy
-#~ msgid "Unable to safely create the temporary file"
-#~ msgstr "Nepavyko sukurti raporto bylos, nutraukiu.\n"
-
-#, fuzzy
-#~ msgid "Conflicting packages"
-#~ msgstr "Paðalinami paketai"
-
-#, fuzzy
-#~ msgid ""
-#~ "Sorry, but all packages raised an error.\n"
-#~ "So I can't proceed with the installation."
-#~ msgstr "Jûs turite pakankamai vietos, kad tæstumëte"
-
-#~ msgid ""
-#~ "Congratulations!\n"
-#~ "You successfully installed your packages, now you can enjoy your new "
-#~ "programs. Simply click the \"Quit\" button below.\n"
-#~ "See you soon!"
-#~ msgstr ""
-#~ "Sveikiname!\n"
-#~ "Jûs sëkmingai ádiegëte paketus. Dabar galite dþiaugtis "
-#~ "naujomisprogramomis. Spragtelëkite \"Quit\" klaviðà þemiau.\n"
-#~ "Iki susitikimo!"
-
-#~ msgid "All required additional software is already installed, just go on."
-#~ msgstr "Visa reikiama informacija yra jau ádiegta."
-
-#~ msgid ""
-#~ "This additional package needs to be installed in order to everything "
-#~ "working well:"
-#~ msgstr ""
-#~ "Ðis papildomas paketas turi bûti ádiegtas kad viskas dirbtø gerai gerai:"
-
-#~ msgid "Welcome to rpminst"
-#~ msgstr "Sveiki atvykæ á rpminst"
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "An RPM package is a \"case\" containing a software (or a piece of "
-#~ "software) that you can install on your system to use it later."
-#~ msgstr ""
-#~ "Ði programa ádiegs jûsø praðytus paketus.\n"
-#~ "RPM paketas yra \"dëþë\" su programine áranga kurià jûsgalite ádiegti"
-
-#, fuzzy
-#~ msgid "Now doing:"
-#~ msgstr "Dabar vykdau "
-
-#, fuzzy
-#~ msgid "Checking packages..."
-#~ msgstr "Paðalinami paketai"
-
-#, fuzzy
-#~ msgid "Install selected with rpminst"
-#~ msgstr ""
-#~ "Ádiegti\n"
-#~ "paþymëtus"
-
-#~ msgid "Select all"
-#~ msgstr "Paþymëti visus"
-
-#~ msgid "Unselect all"
-#~ msgstr "Atþymëti visus"
-
-#, fuzzy
-#~ msgid "RPM file not found"
-#~ msgstr "oops %s nerastas\n"
-
-#, fuzzy
-#~ msgid "Conflicting package"
-#~ msgstr "Paðalinami paketai"
-
-#, fuzzy
-#~ msgid "Files"
-#~ msgstr "/_Byla"
-
-#~ msgid "OK"
-#~ msgstr "Gerai"
-
-#, fuzzy
-#~ msgid "Changelog"
-#~ msgstr "Pakeitimai"
-
-#, fuzzy
-#~ msgid "Group: "
-#~ msgstr "RPM Grupës"
-
-#, fuzzy
-#~ msgid "License: "
-#~ msgstr "Árengimio vardas:"
-
-#, fuzzy
-#~ msgid "Packager: "
-#~ msgstr "Paketai:"
-
-#, fuzzy
-#~ msgid "Size: "
-#~ msgstr "Dydis:"
-
-#~ msgid "Summary"
-#~ msgstr "Santrauka"
-
-#~ msgid "Description"
-#~ msgstr "Apraðymas"
-
-#, fuzzy
-#~ msgid "%1.2f kB"
-#~ msgstr "%.1f KB"
-
-#, fuzzy
-#~ msgid "%1.2f MB"
-#~ msgstr "%.1f MB"
-
-#, fuzzy
-#~ msgid "%1.2f GB"
-#~ msgstr "%.1f KB"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cannot open the cached source: %s\n"
-#~ "fallback to slow method."
-#~ msgstr "Negliu atidaryti ið laikmenos: %s\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cannot read this cached source: %s\n"
-#~ "fallback to slow method"
-#~ msgstr "Negliu atidaryti ið laikmenos: %s\n"
-
-#~ msgid "Device name:"
-#~ msgstr "Árengimio vardas:"
-
-#~ msgid "url: "
-#~ msgstr "url: "
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "released under the GPL"
-#~ msgstr ""
-#~ "rpmdrake\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 1999-2000\n"
-#~ "iðleista pagal GPL"
-
-#, fuzzy
-#~ msgid "Error"
-#~ msgstr "Klaida!"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Invoking rpminst"
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Kvieèiama rpminst"
-
-#~ msgid "You must use at least one of --files or --packages !"
-#~ msgstr "Turite naudoti bent vienà --bylà arba --paketà !"
-
-#~ msgid "Information"
-#~ msgstr "Informacija"
-
-#~ msgid "Description:"
-#~ msgstr "Apraðymas:"
-
-#~ msgid "Files list"
-#~ msgstr "Bylø sàraðas"
-
-#~ msgid "Device"
-#~ msgstr "Árenginys"
-
-#~ msgid "Mount point"
-#~ msgstr "Prijungimo vieta"
-
-#~ msgid "Needed"
-#~ msgstr "Reikiami"
-
-#~ msgid "You can see below the needs for your various filesystems."
-#~ msgstr "Þemiau galite matyti savo failinës sistemos reikalavimus"
-
-#~ msgid "You have enough disk space to proceed with the installation."
-#~ msgstr "Jûs turite pakankamai vietos, kad tæstumëte"
-
-#~ msgid ""
-#~ "You do not have enough disk space to install what you asked for. Make "
-#~ "room and try again !"
-#~ msgstr ""
-#~ "Jûs turite nepakankamai vietos. Padarykite daugiau vietos irbandykite "
-#~ "vël !"
-
-#, fuzzy
-#~ msgid "More informations about "
-#~ msgstr "Failinës sistemos informacija:\n"
-
-#, fuzzy
-#~ msgid "Release"
-#~ msgstr "Iðtrinti"
-
-#, fuzzy
-#~ msgid "More informations..."
-#~ msgstr "Failinës sistemos informacija:\n"
-
-#~ msgid "-adobe-helvetica-bold-r-*-*-*-140-*-*-*-*-*-*,*"
-#~ msgstr ""
-#~ "-filija-arija-bold-r-*-*-*-140-*-*-*-*-*-*,-*-helvetica-bold-r-*-*-*-140-"
-#~ "*-*-*-*-*-*,*"
-
-#~ msgid "rank:"
-#~ msgstr "laipsnis:"
-
-#~ msgid "n/a"
-#~ msgstr "nëra"
-
-#~ msgid "Version:"
-#~ msgstr "Versija:"
-
-#~ msgid "Summary:"
-#~ msgstr "Santrauka:"
-
-#~ msgid "End of rpminst"
-#~ msgstr "Rpminst pabaiga"
-
-#, fuzzy
-#~ msgid "Install in progress..."
-#~ msgstr "Ádiegiama"
-
-#~ msgid " "
-#~ msgstr " "
-
-#, fuzzy
-#~ msgid "Install Date:"
-#~ msgstr "Ádiegimui"
-
-#~ msgid "cleaning 'installed' tree"
-#~ msgstr "valomas medis 'ádiegti'"
-
-#~ msgid "cleaning 'installable' tree"
-#~ msgstr "valomes medis 'ádiegimui'"
-
-#~ msgid "Getting RPM infos from packages names..."
-#~ msgstr "Gaunu informacijà apie RPM paketus..."
-
-#~ msgid "Building command line for urpmq\n"
-#~ msgstr "Organizuoju urpmq komandinæ eilutæ\n"
-
-#~ msgid "Package found: "
-#~ msgstr "Rastas paketas:"
-
-#~ msgid "nothing to do!\n"
-#~ msgstr "nëra kà veikti!\n"
-
-#~ msgid ""
-#~ "Do you really want to delete the %s media?\n"
-#~ "Please note that you can temporary disable a media\n"
-#~ "by removing the check in front of its name"
-#~ msgstr ""
-#~ "Ar tikrai norite iðtrinti %s laikmenas?\n"
-#~ "Þinokite kad galima laikinai iðjungtiðias laikmenas\n"
-#~ "jei nuimsite varnelæ esanèià prie atitinkamo varda"
-
-#~ msgid "Parsing file "
-#~ msgstr "Ieðkoti bylø sàraðe"
-
-#~ msgid "New Media"
-#~ msgstr "Nauja Laikmena"
-
-#~ msgid "Edit media"
-#~ msgstr "Redaguoti laikmenà"
-
-#~ msgid ""
-#~ "Edit\n"
-#~ "media"
-#~ msgstr ""
-#~ "Redaguoti\n"
-#~ "laikmenà"
-
-#~ msgid ""
-#~ "Install/\n"
-#~ "Uninstall"
-#~ msgstr ""
-#~ "Ádiegti/\n"
-#~ "Paðalinti"
-
-#~ msgid ""
-#~ "Do you really want to\n"
-#~ "remove the %s media?"
-#~ msgstr ""
-#~ "Ar tikrai norite\n"
-#~ "iðmesti %s laikmenà"
-
-#~ msgid "CDROM"
-#~ msgstr "CDROM"
-
-#~ msgid "FTP"
-#~ msgstr "FTP"
-
-#~ msgid "HTTP"
-#~ msgstr "HTTP"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Adding media"
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Pridedama laikmena"
-
-#~ msgid "Add a media"
-#~ msgstr "Pridëti laikmenà"
-
-#~ msgid "Type of media:"
-#~ msgstr "Laikmenos tipas:"
-
-#~ msgid "New media's Name:"
-#~ msgstr "Naujos laikmenos vardas:"
-
-#~ msgid "Please, choose a CDROM number: "
-#~ msgstr "Praðom pasirinkti CDROM numerá:"
-
-#~ msgid "Directory:"
-#~ msgstr "Katalogas:"
-
-#~ msgid "Select directory"
-#~ msgstr "Pasirinkite katalogà"
-
-#~ msgid "FTP URL of the directory containing the RPMs"
-#~ msgstr "URL FTP katalogo, kuriame yra RPM'ai"
-
-#~ msgid "Location for hdlist (relative to the URL above)"
-#~ msgstr "hdlist vieta (nudoryta santykinai URL aukðèiau)"
-
-#~ msgid "HTTP URL of the directory containing the RPMs"
-#~ msgstr "URL HTTP katalogo, kuriame yra RPM'ai"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the %s media"
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Papildoma %s laikmenos duomenø bazë"
-
 #~ msgid "Type"
 #~ msgstr "Tipas"
 
-#~ msgid "Media"
-#~ msgstr "Laikmena"
+#~ msgid "Summary"
+#~ msgstr "Turinys"
 
-#~ msgid "Add media"
-#~ msgstr "Pridëti laikmenà"
-
-#~ msgid "Preferences"
-#~ msgstr "Nustatymai"
-
-#~ msgid "Categories"
-#~ msgstr "Kategorijos"
+#~ msgid "MandrakeUpdate, version 7.2\n"
+#~ msgstr "MandrakeUpdate, versija 7.2\n"
 
 #~ msgid ""
-#~ "Please Wait\n"
-#~ "Configuration checking"
+#~ "  usage:\n"
+#~ "    -h, --help:    display this help and exit\n"
+#~ "    -v, --version: show the version and exit\n"
+#~ "    -V, --verbose: increase the verbosity level\n"
 #~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Tikrinama konfigûracija"
+#~ "  vartojimas:\n"
+#~ "    -h, --help:    parodyti ðià pagalbà ir iðeiti\n"
+#~ "    -v, --version: parodyti programos versijà ir iðeiti\n"
+#~ "    -V, --verbose: vykdymo metu rodyti daugiau informacijos\n"
+
+#~ msgid "Source on network: (random mirror)\n"
+#~ msgstr "Ðaltinis tinkle: (atsitiktinis mirror'as)\n"
 
 #~ msgid ""
-#~ "RpmDrake was unable to find any package\n"
-#~ "Please, check your installation\n"
-#~ "\n"
-#~ "If you made an NFS install, check the NFS directories are\n"
-#~ "still correctly mounted."
+#~ "Update\n"
+#~ "List"
 #~ msgstr ""
-#~ "RpmDrake negalëjo rasti në vieno paketo.\n"
-#~ "Praðom patikrinti savo ádiegimà.\n"
-#~ "\n"
-#~ "Jei tu vykdei NFS ádiegimà, patikrink, ar NFS katalogai\n"
-#~ "vis dar teisingai primontuoti."
+#~ "Atnaujinti\n"
+#~ "Sàraðà"
 
-#~ msgid "Name: %s"
-#~ msgstr "Pavadinimas: %s"
-
-#~ msgid "0 selected packages: 0.0 MB"
-#~ msgstr "0 paþymëtø paketø: 0.0 MB"
-
-#~ msgid ""
-#~ "Uninstall\n"
-#~ "selected"
-#~ msgstr ""
-#~ "Iðmesti\n"
-#~ "paþymëtus"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Removing packages"
-#~ msgstr ""
-#~ "Praðom palaukti\n"
-#~ "Paðalinami paketai"
-
-#~ msgid "/File/_Update list"
-#~ msgstr "/Byla/_Atnaujinti sàraðà"
-
-#~ msgid "Error: you must be root to use rpmdrake.\n"
-#~ msgstr "Klaida: tu turi bûti root, kad galëtum naudoti rpmdrake.\n"
-
-#~ msgid "Enter search pattern"
-#~ msgstr "Áveskite paieðkos ðablonà"
-
-#~ msgid "Case sensitive"
-#~ msgstr "Skirti raidþiø dydá"
-
-#~ msgid "RPM Groups"
-#~ msgstr "RPM Grupës"
-
-#~ msgid "Packages:"
-#~ msgstr "Paketai:"
-
-#~ msgid "File list"
-#~ msgstr "Bylø sàraðas"
-
-#~ msgid ""
-#~ "Expand\n"
-#~ "all"
-#~ msgstr ""
-#~ "Iðskleisti\n"
-#~ "visus"
-
-#~ msgid "Expand all"
-#~ msgstr "Iðskleisti visus"
-
-#~ msgid ""
-#~ "Collapse\n"
-#~ "all"
-#~ msgstr ""
-#~ "Sutraukti\n"
-#~ "visus"
-
-#~ msgid "Collapse all"
-#~ msgstr "Sutraukti visus"
+#~ msgid "Update the list of packages to update"
+#~ msgstr "Atnaujinti paketø sàraðà"
 
 #~ msgid ""
 #~ "Select\n"
 #~ "all"
 #~ msgstr ""
-#~ "Paþymëti\n"
+#~ "Pasirinkti\n"
 #~ "visus"
+
+#~ msgid "Select all"
+#~ msgstr "Pasirinkti visus"
 
 #~ msgid ""
 #~ "Unselect\n"
 #~ "all"
 #~ msgstr ""
-#~ "Atþymëti\n"
-#~ "visus"
+#~ "Nesirinkti\n"
+#~ "nieko"
 
-#~ msgid "Installing"
-#~ msgstr "Ádiegiama"
+#~ msgid "Unselect all"
+#~ msgstr "Nesirinkti nieko"
 
 #~ msgid ""
-#~ "Show\n"
-#~ "selected"
+#~ "Do\n"
+#~ "updates"
 #~ msgstr ""
-#~ "Rodyti\n"
-#~ "paþymëtus"
+#~ "Atnaujinti\n"
+#~ " "
 
-#~ msgid "Show selected"
-#~ msgstr "Rodyti paþymëtus"
+#~ msgid "Do Updates"
+#~ msgstr "Atnaujinti"
+
+#~ msgid "Normal Updates"
+#~ msgstr "Normalûs atnaujinimai"
+
+#~ msgid "Development Updates"
+#~ msgstr "Kûrimo atnaujinimai"
+
+#~ msgid "Descriptions"
+#~ msgstr "Apraðymai"
+
+#~ msgid ""
+#~ "The packages are the updates for Mandrake\n"
+#~ "Select the one(s) you want to update\n"
+#~ "When you click on a package you get information about\n"
+#~ "the need to update"
+#~ msgstr ""
+#~ "Ðie paketai yra Mandrake atnaujinimai\n"
+#~ "Pasirinkite vienà arba kelis, kuriuos jûs norite atnaujinti\n"
+#~ "Spustelëjæ ant paketo, jûs gausite informacijà apie atnaujinimo "
+#~ "reikalingumà"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Sorting packages"
+#~ msgstr ""
+#~ "Praðome palaukti\n"
+#~ "Rûðiuojami paketai"
+
+#~ msgid "Choose your packages"
+#~ msgstr "Pasirinkite paketus"
+
+#~ msgid "Packages to update"
+#~ msgstr "Paketai atnaujinimui"
+
+#~ msgid "Packages NOT to update"
+#~ msgstr "Paketai neatnaujinimui"
+
+#~ msgid ""
+#~ "Caution! You're changing the version.\n"
+#~ "MandrakeUpdate will think you actually have this\n"
+#~ "version installed\n"
+#~ "\n"
+#~ "You should only use this if you really know what you're doing.\n"
+#~ msgstr ""
+#~ "Atsargiai! Jûs keièiate versijà.\n"
+#~ "MandrakeUpdate galvos, kad jau turite ádiegæ\n"
+#~ "ðià versijà\n"
+#~ "\n"
+#~ "Naudokite tai tik tuomet, jei tikrai þinote, kà darote.\n"
+
+#~ msgid "Preferences for Proxies"
+#~ msgstr "Tarpiniø stoèiø (proxies) nustatymai"
+
+#~ msgid "Proxies"
+#~ msgstr "Tarpinës stotys (proxies)"
+
+#~ msgid "Http Proxy:"
+#~ msgstr "HTTP tarpinë stotis (proxy):"
+
+#~ msgid "Port:"
+#~ msgstr "Prievadas:"
+
+#~ msgid "Ftp Proxy:"
+#~ msgstr "FTP tarpinë stotis (proxy):"
+
+#~ msgid "Proxy username:"
+#~ msgstr "Tarpinës stoties (proxy) vartotojo vardas:"
+
+#~ msgid "Proxy password:"
+#~ msgstr "Tarpinës stoties (proxy) slaptaþodis:"
+
+#~ msgid "Error: curl_easy_init()"
+#~ msgstr "Klaida: curl_easy_init()"
+
+#~ msgid "Disk"
+#~ msgstr "Diskas"
+
+#~ msgid "Network"
+#~ msgstr "Tinklas"
+
+#~ msgid "RPM directory"
+#~ msgstr "RPM katalogas"
+
+#~ msgid "Network settings:"
+#~ msgstr "Tinklo nustatymai:"
+
+#~ msgid "Version:"
+#~ msgstr "Versija:"
+
+#~ msgid "Show security updates"
+#~ msgstr "Rodyti saugumo atnaujinimus"
+
+#~ msgid "Show general updates"
+#~ msgstr "Rodyti paprastus atnaujinimus"
+
+#~ msgid "Show bugfix updates"
+#~ msgstr "Rodyti pataisymø atnaujinimus"
+
+#~ msgid "mirror:"
+#~ msgstr "veidrodis:"
+
+#~ msgid "Update the list of mirrors"
+#~ msgstr "Atnaujinti veidrodþiø sàraðà"
+
+#~ msgid "Choose Packages"
+#~ msgstr "Pasirinkite paketus"
+
+#~ msgid "Username:"
+#~ msgstr "Vartotojo vardas (username):"
+
+#~ msgid "Security"
+#~ msgstr "Saugumas"
+
+#~ msgid "Do not warn if GnuPG isn't installed"
+#~ msgstr "Neperspëti, jeigu GnuPG neádiegtas"
+
+#~ msgid "Do not warn if the package isn't signed"
+#~ msgstr "Neperspëti, jei paketas nepasiraðytas"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Ávairûs"
+
+#~ msgid "Timeout:"
+#~ msgstr "Laiko riba:"
+
+#~ msgid "(in sec)"
+#~ msgstr "(sek.)"
+
+#~ msgid "MandrakeUpdate Preferences"
+#~ msgstr "MandrakeUpdate nustatymai"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorijos"

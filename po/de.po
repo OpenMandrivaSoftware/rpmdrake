@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: RpmDrake 1.4\n"
-"POT-Creation-Date: 2002-08-06 15:03+0200\n"
+"POT-Creation-Date: 2002-08-06 15:58+0200\n"
 "PO-Revision-Date: 2001-02-21 15:04+0100\n"
 "Last-Translator: Stefan Siegel <siegel@linux-mandrake.com>\n"
 "Language-Team: German <cooker-i18n@linux-mandrake.com>\n"
@@ -79,7 +79,6 @@ msgid "Login:"
 msgstr "Login:"
 
 #: ../edit-urpm-sources.pl_.c:92
-#, fuzzy
 msgid "Password:"
 msgstr "Passwort:"
 
@@ -117,7 +116,7 @@ msgstr "Typ der Quelle:"
 #: ../edit-urpm-sources.pl_.c:124 ../rpmdrake.pm_.c:75 ../rpmdrake.pm_.c:88
 #: ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:176
 #: ../edit-urpm-sources.pl_.c:200 ../rpmdrake.pm_.c:260 ../rpmdrake_.c:622
@@ -162,11 +161,8 @@ msgstr ""
 "die aktualisiert werden sollen:"
 
 #: ../edit-urpm-sources.pl_.c:199
-#, fuzzy
 msgid "Update"
-msgstr ""
-"Einfache\n"
-"Aktualisierungen"
+msgstr "Neue Version"
 
 #: ../edit-urpm-sources.pl_.c:207
 #, fuzzy
@@ -627,9 +623,8 @@ msgid "Search"
 msgstr "Suche"
 
 #: ../rpmdrake_.c:483
-#, fuzzy
 msgid "Install"
-msgstr "Installierte"
+msgstr "Installieren"
 
 #: ../rpmdrake_.c:495
 #, fuzzy
@@ -781,190 +776,372 @@ msgid ""
 "you want to install on your computer."
 msgstr ""
 
-#, fuzzy
-#~ msgid "By source"
-#~ msgstr "Quelle"
+#~ msgid "Installing/Upgrading Progress"
+#~ msgstr "Fortschritt der Installation/des Upgrades"
 
-#, fuzzy
-#~ msgid "Unable to update medium."
-#~ msgstr "Ich kann keine Report-Datei anlegen, Abbruch.\n"
+#~ msgid "Fetching:"
+#~ msgstr "Besorge:"
 
-#, fuzzy
-#~ msgid "Please wait, checking dependencies..."
-#~ msgstr "Abhängigkeiten kontrollieren ..."
+#~ msgid "Installing:"
+#~ msgstr "Installiere:"
 
-#, fuzzy
-#~ msgid "rpmdrake.pl"
-#~ msgstr "Starte rpmdrake"
+#~ msgid " is needed by %s-%s-%s"
+#~ msgstr " wird benötigt von %s-%s-%s"
 
-#, fuzzy
-#~ msgid "rpmdrake"
-#~ msgstr "Starte rpmdrake"
+#~ msgid " conflicts with %s-%s-%s"
+#~ msgstr " wirft Konflikte mit %s-%s-%s auf."
 
-#~ msgid "New"
-#~ msgstr "Neu"
+#~ msgid "Unsupported protocol\n"
+#~ msgstr "Protokoll wird nicht unterstützt\n"
 
-#, fuzzy
-#~ msgid "Please wait"
-#~ msgstr "Bitte bestätigen"
+#~ msgid "Failed init\n"
+#~ msgstr "Fehlgeschlagener Init\n"
 
-#, fuzzy
-#~ msgid "Relative path to synthesis or hdlist:"
-#~ msgstr "relativer Pfad zur Synthesis- oder HD-Liste: "
+#~ msgid "Bad URL format\n"
+#~ msgstr "Die URL hat kein korrektes Format\n"
 
-#~ msgid "%d packages, %Ld bytes"
-#~ msgstr "%d Paket(e), %Ld Bytes"
+#~ msgid "Bad user format in URL\n"
+#~ msgstr "Falsches Benutzer-Format in der URL\n"
 
-#~ msgid "Cannot read this source: %s"
-#~ msgstr "Ich kann folgende Quelle nicht lesen: %s"
+#~ msgid "Couldn't resolve proxy\n"
+#~ msgstr "Konnte den Proxynamen nicht zu IP-Adresse auflösen\n"
 
-#~ msgid "Cannot open the source: %s"
-#~ msgstr "Ich kann folgende Quelle nicht öffnen: %s"
+#~ msgid "Couldn't resolve host\n"
+#~ msgstr "Konnte den Rechnernamen nicht zu IP-Adresse auflösen\n"
 
-#~ msgid " Searching the %s source"
-#~ msgstr "Suchen der Quelle %s"
+#~ msgid "Couldn't connect\n"
+#~ msgstr "Konnte nicht verbinden\n"
 
-#~ msgid "filling lists"
-#~ msgstr "Listen füllen"
+#~ msgid "Ftp weird server reply\n"
+#~ msgstr "FTP erhielt sonderbare Antwort des Servers\n"
 
-#~ msgid "filling trees"
-#~ msgstr "Baumansicht füllen"
+#~ msgid "Ftp access denied\n"
+#~ msgstr "FTP wurde der Zugriff verwehrt\n"
+
+#~ msgid "Ftp user password incorrect\n"
+#~ msgstr "FTP erhielt falsches Passwort für den Benuter\n"
+
+#~ msgid "Ftp weird PASS reply\n"
+#~ msgstr "FTP erhielt sonderbare PASS Antwort\n"
+
+#~ msgid "Ftp weird USER reply\n"
+#~ msgstr "FTP erhielt sonderbare USER Antwort\n"
+
+#~ msgid "ftp weird PASV reply\n"
+#~ msgstr "FTP erhielt sonderbare PASV Antwort\n"
+
+#~ msgid "Ftp weird 227 format\n"
+#~ msgstr "FTP erhielt sonderbares Format 227\n"
+
+#~ msgid "Ftp can't get host\n"
+#~ msgstr "FTP kann den Rechner nicht ermitteln\n"
+
+#~ msgid "Ftp can't reconnect\n"
+#~ msgstr "FTP kann nicht neu verbinden\n"
+
+#~ msgid "Ftp couldn't set binary\n"
+#~ msgstr "FTP kann nicht auf Binärübermittlung schalten\n"
+
+#~ msgid "Partial file\n"
+#~ msgstr "Unvollständige Datei\n"
+
+#~ msgid "Ftp couldn't RETR file\n"
+#~ msgstr "FTP konnte RETR nicht für die Datei ausführen\n"
+
+#~ msgid "Ftp write error\n"
+#~ msgstr "FTP Schreibfehler\n"
+
+#~ msgid "Ftp quote error\n"
+#~ msgstr "FTP Fehler mit Anführungszeichen\n"
+
+#~ msgid "http not found\n"
+#~ msgstr "Ich kann HTTP nicht finden\n"
+
+#~ msgid "Write error\n"
+#~ msgstr "Schreibfehler\n"
+
+#~ msgid "User name illegally specified\n"
+#~ msgstr "Benutzername falsch angegeben\n"
+
+#~ msgid "ftp couldn't STOR file\n"
+#~ msgstr "FTP konnte STOR nicht für die Datei ausführen\n"
+
+#~ msgid "Read error\n"
+#~ msgstr "Lesefehler\n"
+
+#~ msgid "Out of memory\n"
+#~ msgstr "Kein Speicher mehr verfügbar\n"
+
+#~ msgid "Time out\n"
+#~ msgstr "Die Wartezeit ist abgelaufen\n"
+
+#~ msgid "Ftp couldn't set ASCII\n"
+#~ msgstr "FTP konnte nicht auf Textmodus schalten\n"
+
+#~ msgid "Ftp PORT failed\n"
+#~ msgstr "FTP konnte den PORT Befehl nicht ausführen\n"
+
+#~ msgid "Ftp couldn't use REST\n"
+#~ msgstr "FTP konnte RESET nicht verwenden\n"
+
+#~ msgid "Ftp couldn't get size\n"
+#~ msgstr "FTP konnte die Größe nicht ermitteln\n"
+
+#~ msgid "Http range error\n"
+#~ msgstr "HTTP RANGE-Fehler\n"
+
+#~ msgid "Http POST error\n"
+#~ msgstr "HTTP POST-Fehler\n"
+
+#~ msgid "Ssl connect error\n"
+#~ msgstr "SSL Verbindungsfehler\n"
+
+#~ msgid "Ftp bad download resume\n"
+#~ msgstr "FTP konnte das Herunterladen nicht richtig fortsetzen\n"
+
+#~ msgid "File couldn't read file\n"
+#~ msgstr "FILE kann die Datei nicht lesen\n"
+
+#~ msgid "LDAP cannot bind\n"
+#~ msgstr "LDAP kann nicht gebunden werden\n"
+
+#~ msgid "LDAP search failed\n"
+#~ msgstr "Die LDAP Suche schlug fehl\n"
+
+#~ msgid "Library not found\n"
+#~ msgstr "Ich kann eine Bibliothek nicht finden\n"
+
+#~ msgid "Function not found\n"
+#~ msgstr "Ich kann eine Funktion nicht finden\n"
+
+#~ msgid "Aborted by callback\n"
+#~ msgstr "Abbruch durch Rückruf\n"
+
+#~ msgid "Bad function argument\n"
+#~ msgstr "Falsches Argument in Funktionsaufruf\n"
+
+#~ msgid "Bad calling order\n"
+#~ msgstr "Falsche Aufrufreihenfolge\n"
+
+#~ msgid "Unknown error code %d\n"
+#~ msgstr "Unbekannter Fehler Nr. %d\n"
+
+#~ msgid "An error occured while fetching file"
+#~ msgstr "Es trat ein Fehler beim Besorgen einer Datei auf"
+
+#~ msgid "Skip"
+#~ msgstr "Überspringen"
+
+#~ msgid "Preparing for install"
+#~ msgstr "Installation vorbereiten"
+
+#~ msgid "Can't check the GPG signature"
+#~ msgstr ""
+#~ "Ich kann die GnuPG Signatur \n"
+#~ "nicht kontrollieren."
 
 #~ msgid ""
-#~ "Error!\n"
-#~ "Cannot open rpm database"
+#~ "The package %s has a wrong signature or\n"
+#~ "GnuPG isn't correctly installed"
 #~ msgstr ""
-#~ "Fehler!\n"
-#~ "Ich kann die RPM-Datenbank nicht öffnen!"
+#~ "Das Paket „%s“ hat\n"
+#~ "entweder eine falsche Signatur \n"
+#~ "oder GnuPG ist nicht richtig installiert."
 
-#~ msgid "Error!"
-#~ msgstr "Fehler!"
+#~ msgid "The package %s is not signed"
+#~ msgstr "Das Paket %s ist nicht signiert"
 
-#~ msgid ""
-#~ "It looks like you don't have\n"
-#~ "configured a source for\n"
-#~ "security updates.\n"
-#~ "Do you want to configure one now?"
-#~ msgstr ""
-#~ "Es scheint, dass Sie noch \n"
-#~ "keine Quelle für \n"
-#~ "Sicherheitsaktualisierungen\n"
-#~ "eingerichtet haben.\n"
-#~ "Wollen Sie das jetzt tun?"
+#~ msgid "Install all"
+#~ msgstr "Alle Installieren"
 
-#~ msgid "Do not show this message again"
-#~ msgstr "Diese Nachricht nichtmehr zeigen"
+#~ msgid "Don't install"
+#~ msgstr "Nicht installieren"
 
-#~ msgid "Configure a Cooker source?"
-#~ msgstr "Eine Cooker-Quelle einrichten?"
+#~ msgid "Signature problem"
+#~ msgstr "Problem beim Testen der Signatur"
 
-#~ msgid ""
-#~ "Cooker is a development and unstable distribution.\n"
-#~ "It is not supported by MandrakeSoft.\n"
-#~ "Use it at your own risk.\n"
-#~ msgstr ""
-#~ "Cooker ist eine instabile Entwicklungsdistribution.\n"
-#~ "MandrakeSoft rät Ihnen davon ab, Rechner, deren Lauffähigkeit "
-#~ "gewährleistet sein muss, daraus zu aktualisieren, da es zu "
-#~ "Komplettausfällen Ihres Systems führen kann!\n"
-#~ "Sie Verwenden Cooker auf eigenes Risiko, wenn Sie hier fortfahren!\n"
+#~ msgid "Can't open package"
+#~ msgstr "Ich kann das Paket nicht öffnen"
 
-#~ msgid ""
-#~ "Can't find the /var/lib/urpmi/compssUsers.flat file\n"
-#~ "the tree mode won't be available"
-#~ msgstr ""
-#~ "Die Datei „/var/lib/urpmi/compssUsers.flat“ existiert\n"
-#~ "nicht. Sie müssen daher ohne Baumansicht arbeiten."
+#~ msgid "Package is corrupted"
+#~ msgstr "Das Paket ist beschädigt"
 
-#~ msgid "Others"
-#~ msgstr "Sonstiges"
+#~ msgid "Package can't be installed"
+#~ msgstr "Das Paket kann nicht installiert werden"
 
-#~ msgid "Analysing the %s source"
-#~ msgstr "Analysiere die %s Quelle"
+#~ msgid "Error while checking dependencies :("
+#~ msgstr "Fehler beim Testen der Abhängigkeiten :-("
 
-#~ msgid "looking for installed packages"
-#~ msgstr "Schauen nach installierten Paketen"
+#~ msgid "Force"
+#~ msgstr "Forciert"
 
-#~ msgid "Frederic Lepied <flepied@mandrakesoft.com>"
-#~ msgstr "Frédéric Lepied <flepied@mandrakesoft.com>"
+#~ msgid "Error..."
+#~ msgstr "Fehler ..."
 
-#~ msgid "Francois Pons <fpons@mandrakesoft.com>"
-#~ msgstr "François Pons <fpons@mandrakesoft.com>"
+#~ msgid "Problems occured during installation"
+#~ msgstr "Währen der Installation sind Fehler aufgetreten."
+
+#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
+#~ msgstr "Verwendung: grpmi <[-noupgrade] RPMs>\n"
+
+#~ msgid "grpmi error: you must be superuser!\n"
+#~ msgstr "grpmi Fehler: benötige Root-Rechte!\n"
 
 #~ msgid " ~ # ~ "
 #~ msgstr "Deutsche Übersetzung von: Stefan Siegel <siegel@linux-mandrake.com>"
 
 #~ msgid ""
-#~ "Software Manager\n"
+#~ "Mandrake Update\n"
 #~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
+#~ "(c) MandrakeSoft 1999-2000\n"
 #~ "released under the GPL"
 #~ msgstr ""
-#~ "RpmDrake - Der Software-Manager\n"
+#~ "Mandrake Update\n"
 #~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "© MandrakeSoft 2001\n"
-#~ "veröffentlicht unter der GPL"
+#~ "© MandrakeSoft 1999-2001\n"
+#~ "Unter der GPL veröffentlicht"
 
-#~ msgid "building dependencies for packages removing"
-#~ msgstr "Bilden der Paketabhängigkeiten für das Entfernen von Paketen"
+#~ msgid "Error"
+#~ msgstr "Fehler"
+
+#~ msgid ""
+#~ "Cannot retrieve the list of mirrors\n"
+#~ "Try again later"
+#~ msgstr ""
+#~ "Ich kann die Mirror Liste nicht laden\n"
+#~ "Versuchen Sie es später erneut"
+
+#~ msgid "Source on network: %s"
+#~ msgstr "Quelle im Netz: %s"
+
+#~ msgid "Source on network: %s/%s/%s"
+#~ msgstr "Quelle im Netz: %s/%s/%s"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Fetching the list of mirrors"
+#~ msgstr ""
+#~ "Bitte warten\n"
+#~ "Ich besorge die Mirror Liste ..."
+
+#~ msgid "%.1f KB"
+#~ msgstr "%.1f KB"
+
+#~ msgid "%.1f MB"
+#~ msgstr "%.1f MB"
+
+#~ msgid " n/a "
+#~ msgstr " nicht vorhanden "
+
+#~ msgid ""
+#~ "Cannot retrieve the description file\n"
+#~ "Bad things can happen"
+#~ msgstr ""
+#~ "Ich kann die Beschreibungs-Liste nicht laden.\n"
+#~ "Das lässt nichts Gutes vermuten ..."
+
+#~ msgid "n/a"
+#~ msgstr "nicht vorhanden"
+
+#~ msgid "security"
+#~ msgstr "Sicherheit"
+
+#~ msgid "general"
+#~ msgstr "Allgemein"
+
+#~ msgid "bugfix"
+#~ msgstr "Bugfix"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Retrieving the Description file"
+#~ msgstr ""
+#~ "Bitte warten\n"
+#~ "Ich besorge die Beschreibungs-Liste ..."
+
+#~ msgid ""
+#~ "Cannot retrieve the list of packages to update\n"
+#~ "Try with an other mirror"
+#~ msgstr ""
+#~ "Ich kann die Liste der zu aktualisierenden Pakete nicht finden.\n"
+#~ "Bitte versuchen Sie einen anderen Server."
+
+#~ msgid "Warning"
+#~ msgstr "Warnung"
+
+#~ msgid ""
+#~ "Caution! These packages are NOT well tested.\n"
+#~ "You really can screw up your system\n"
+#~ "by installing them.\n"
+#~ msgstr ""
+#~ "Seien Sie vorsichtig! Diese Pakete sind NICHT ausreichend \n"
+#~ "getestet! Möglicherweise ist Ihr System komplet unbrauchbar, \n"
+#~ "nach ihrer Installation.\n"
+
+#~ msgid "Source on disk: %s"
+#~ msgstr "Quelle auf Platte %s"
+
+#~ msgid ""
+#~ "Please Wait\n"
+#~ "Updating the list of packages"
+#~ msgstr ""
+#~ "Bitte warten\n"
+#~ "Ich besorge die Liste zu aktualisierender Pakete ..."
+
+#~ msgid ""
+#~ "Name: %s\n"
+#~ "Type: %s"
+#~ msgstr ""
+#~ "Name: %s\n"
+#~ "Typ: %s"
+
+#~ msgid "unknown"
+#~ msgstr "unbekannt"
+
+#~ msgid "Name: %s"
+#~ msgstr "Name: %s"
+
+#~ msgid "%d selected packages: %.1f MB"
+#~ msgstr "%d gewählte Pakete: %.1f MB"
+
+#~ msgid "GnuPG not found"
+#~ msgstr "Ich kann  GnuPG nicht finden!"
+
+#~ msgid ""
+#~ "GnuPG was not found\n"
+#~ "\n"
+#~ "MandrakeUpdate will not be able to verify the GPG\n"
+#~ "signature of the packages\n"
+#~ "\n"
+#~ "Please install the gpg package\n"
+#~ msgstr ""
+#~ "GnuPG nicht gefunden\n"
+#~ "\n"
+#~ "MandrakeUpdate wird nicht in der Lage sein, die GPG Signatur der\n"
+#~ "zu aktualisierenden Pakete zu verifizieren.\n"
+#~ "\n"
+#~ "Bitte Installieren Sie (als Root) das Paket „gpg“\n"
+
+#~ msgid "Don't show this message again"
+#~ msgstr "Diese Nachricht nichtmehr zeigen."
 
 #~ msgid "oops %s not found\n"
-#~ msgstr "Hoppla, ich konnte „%s“ nicht finden\n"
+#~ msgstr "Hoppla, ich kann „%s“ nicht finden\n"
 
-#~ msgid "Uninstalling packages"
-#~ msgstr "Pakete deinstallieren"
+#~ msgid "Please Wait"
+#~ msgstr "Einen Moment bitte ..."
 
-#~ msgid "Looking for dependencies"
-#~ msgstr "Nach Abhängigkeiten schauen"
-
-#~ msgid "Please wait while rpm is removing these packages:"
-#~ msgstr "Bitte warten, während RPM folgende Pakete entfernt:"
-
-#~ msgid "The selected packages have been removed succesfully"
-#~ msgstr "Die Pakete wurden erfolgreich entfernt."
-
-#~ msgid "Security warning : The Software Manager won't start browser as root"
-#~ msgstr "Sicherheitswarnung: RpmDrake startet keinen Browser als Root"
-
-#~ msgid "Unable to run browser"
-#~ msgstr "Ich kann keinen Browser starten!"
-
-#~ msgid "verbosity set to %s"
-#~ msgstr "Ausführliche Ausgabe: %s"
-
-#~ msgid "TRUE"
-#~ msgstr "WAHR"
-
-#~ msgid "FALSE"
-#~ msgstr "FALSCH"
-
-#~ msgid "be verbose"
-#~ msgstr "Ausführliche Ausgaben"
-
-#~ msgid "Close"
-#~ msgstr "Schließen"
+#~ msgid "0 selected packages: 0.0 MB"
+#~ msgstr "0 gewählte Pakete: 0,0 MB"
 
 #~ msgid "/_File"
 #~ msgstr "/_Datei"
 
-#~ msgid "/File/Display Logs"
-#~ msgstr "/Datei/Logs anzeigen"
-
-#~ msgid "/File/_Install"
-#~ msgstr "/Datei/_Installieren"
-
-#~ msgid "/File/_Uninstall"
-#~ msgstr "/Datei/_Deinstallieren"
+#~ msgid "/File/_Preferences"
+#~ msgstr "/Datei/_Voreinstellungen"
 
 #~ msgid "/File/-"
 #~ msgstr "/Datei/-"
-
-#~ msgid "/File/_Proxies"
-#~ msgstr "/Datei/_Proxies"
 
 #~ msgid "/File/_Quit"
 #~ msgstr "/Datei/_Beenden"
@@ -973,558 +1150,214 @@ msgstr ""
 #~ msgstr "/_Hilfe"
 
 #~ msgid "/Help/_About..."
-#~ msgstr "/Hilfe/_Über..."
+#~ msgstr "/Hilfe/Ü_ber ..."
 
-#~ msgid "/Help/-"
-#~ msgstr "/Hilfe/-"
+#~ msgid "Name"
+#~ msgstr "Name"
 
-#~ msgid "/Help/MandrakeCampus.com"
-#~ msgstr "/Hilfe/MandrakeCampus.com"
-
-#~ msgid "/Help/MandrakeExpert.com"
-#~ msgstr "/Hilfe/MandrakeExpert.com"
-
-#~ msgid "/Help/Show Console Logs"
-#~ msgstr "/Hilfe/Zeige Konsolen-Logs"
-
-#~ msgid "Version"
-#~ msgstr "Version"
-
-#~ msgid "Installed version"
-#~ msgstr "Installierte Version"
+#~ msgid "Installed"
+#~ msgstr "Installiert"
 
 #~ msgid "Size"
 #~ msgstr "Größe"
 
-#~ msgid "Software Manager"
-#~ msgstr "Software Manager"
-
-#~ msgid ""
-#~ "Install/\n"
-#~ "Remove"
-#~ msgstr ""
-#~ "Installiere/\n"
-#~ "Entferne"
-
-#~ msgid "Install and remove selected packages"
-#~ msgstr "De-/Installiere markierte Pakete"
-
-#~ msgid ""
-#~ "Define\n"
-#~ "sources"
-#~ msgstr ""
-#~ "Quellen\n"
-#~ "definieren"
-
-#~ msgid "Define sources of packages available for installation and update"
-#~ msgstr "Paketquellen für Installationen und Aktualisierungen angeben"
-
-#~ msgid ""
-#~ "Reload\n"
-#~ "lists"
-#~ msgstr ""
-#~ "Listen\n"
-#~ "neu laden"
-
-#~ msgid "reload lists of available packages"
-#~ msgstr "Listen vorhandener Pakete erneut laden"
-
-#~ msgid "Launch the Mandrake Update wizard"
-#~ msgstr "Den Mandrake Aktualisierungsassistenten starten."
-
-#~ msgid "Reset"
-#~ msgstr "Zurücksetzen"
-
-#~ msgid "Search by file"
-#~ msgstr "Nach Datei suchen"
-
-#~ msgid "Search by description"
-#~ msgstr "Nach Beschreibung suchen"
-
-#~ msgid "Flat List"
-#~ msgstr "Alphabetische Liste"
-
-#~ msgid "Tree view"
-#~ msgstr "Baumansicht"
-
-#~ msgid "Selected"
-#~ msgstr "Markierte"
-
-#~ msgid "All"
-#~ msgstr "Alle"
-
-#~ msgid "Updates only"
-#~ msgstr "Nur Aktualisierungen"
-
-#~ msgid "Non-installed only"
-#~ msgstr "Nur Uninstallierte"
-
-#~ msgid "Delete"
-#~ msgstr "Löschen"
-
-#~ msgid "Error: curl_easy_init()"
-#~ msgstr "Fehler: curl_easy_init()"
-
-#~ msgid "You must provide a valid source name!"
-#~ msgstr "Sie müssen eine gültige Quelle angeben!"
-
-#~ msgid "An error occured when adding this source"
-#~ msgstr "Beim Hinzufügen der Quelle trat ein Fehler auf."
-
-#~ msgid "New Source"
-#~ msgstr "Neue Quelle"
-
-#~ msgid "New source's name:"
-#~ msgstr "Name der neuen Quelle:"
-
-#~ msgid "path or mount point"
-#~ msgstr "Pfad oder Einhängpunkt"
-
-#~ msgid "Local"
-#~ msgstr "Lokal"
-
-#~ msgid "path"
-#~ msgstr "Pfad"
-
-#~ msgid "http"
-#~ msgstr "HTTP"
-
-#~ msgid "URL: "
-#~ msgstr "URL: "
-
-#~ msgid "ftp"
-#~ msgstr "FTP"
-
-#~ msgid "Update the list of mirrors"
-#~ msgstr "Aktualisieren der Mirror-Liste"
-
-#~ msgid "Cooker"
-#~ msgstr "Cooker"
-
-#~ msgid "Do you really want to delete the %s source?\n"
-#~ msgstr "Wollen Sie die Quelle „%s“ wirklich entfernen?\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Removing the %s source"
-#~ msgstr ""
-#~ "Bitte warten,\n"
-#~ "Ich entferne die Quelle „%s“."
-
-#~ msgid "Editing %s"
-#~ msgstr "Editieren: %s"
-
-#~ msgid "Please change one or more parameter\n"
-#~ msgstr "Bitte ändern Sie einen oder mehrere Parameter\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the parameters for the %s source"
-#~ msgstr ""
-#~ "Bitte warten,\n"
-#~ "Ich aktualisiere die Parameter\n"
-#~ "für die Quelle „%s“"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the sources"
-#~ msgstr ""
-#~ "Bitte warten,\n"
-#~ "ich aktualisiere die Datenbank für die Quellen"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the %s source"
-#~ msgstr ""
-#~ "Bitte warten, ich aktualisiere die Datenbank\n"
-#~ "für die Quelle „%s“."
-
-#~ msgid "Sources to update"
-#~ msgstr "Zu aktualisierende Quellen"
-
-#~ msgid ""
-#~ "Welcome to the Mandrake Update utility!\n"
-#~ "\n"
-#~ "Here, you'll be able to upgrade your system\n"
-#~ "with the latest Mandrake Linux updates\n"
-#~ msgstr ""
-#~ "Willkommen zum Mandrake Aktualisierungsassistenten!\n"
-#~ "\n"
-#~ "Sie können hier Ihr System mit den neusten Software-Paketen\n"
-#~ "von Mandrake Linux aktualisieren.\n"
-
-#~ msgid "Please choose which types of update you want to perform:"
-#~ msgstr "Bitte wählen Sie die Art der Aktualisierung:"
-
-#~ msgid "bugfixes"
-#~ msgstr "Fehlerkorrekturen"
-
-#~ msgid "security updates"
-#~ msgstr "Sicherheitsaktualisierungen"
-
-#~ msgid "No changelog found..."
-#~ msgstr "Keinen Änderungsbericht gefunden ..."
-
-#~ msgid "Importance"
-#~ msgstr "Wichtigkeit"
-
-#~ msgid "Please select the packages you want to upgrade"
-#~ msgstr "Bitte wählen Sie die Pakete, die aktualisiert werden sollen."
-
-#~ msgid "No Changelog found..."
-#~ msgstr "Keinen Änderungsbericht gefunden ..."
-
-#~ msgid "please select at least one type of update\n"
-#~ msgstr "Bitte wählen Sie mindestens eine Aktualisierungsart.\n"
-
-#~ msgid ""
-#~ "Cannot grab the list of mirrors.\n"
-#~ "The network could be unreachable.\n"
-#~ "Please try again later.\n"
-#~ msgstr ""
-#~ "Ich habe Probleme, die Mirror Liste zu besorgen.\n"
-#~ "Möglicherweise besteht momentan keine Netzverbindung.\n"
-#~ "Bitte versuchen Sie es später erneut.\n"
-
-#~ msgid "Http Proxy:"
-#~ msgstr "HTTP Proxy:"
-
-#~ msgid "Ftp Proxy:"
-#~ msgstr "FTP Proxy:"
-
-#~ msgid "Initialisation"
-#~ msgstr "Initialisierung"
-
-#~ msgid "Welcome"
-#~ msgstr "Willkommen"
-
-#~ msgid "Packages informations"
-#~ msgstr "Paket Informationen"
-
-#~ msgid "Errors found"
-#~ msgstr "Fehler gefunden"
-
-#~ msgid "Packages dependencies informations"
-#~ msgstr "Informationen zu Paketabhängigkeiten"
-
-#~ msgid "Disk usage"
-#~ msgstr "Plattenplatz"
-
-#~ msgid "Good bye"
-#~ msgstr "Auf Wiedersehen"
-
-#, fuzzy
-#~ msgid "Software Installer"
-#~ msgstr "Software Manager"
-
-#~ msgid "Unable to safely create the temporary directory"
-#~ msgstr ""
-#~ "Es ist nicht möglich, ein sicheres temporäres Verzeichnis anzulegen."
-
-#~ msgid "Unable to safely create the temporary file"
-#~ msgstr "Es ist nicht möglich, eine sichere temporäre Datei anzulegen."
-
-#~ msgid "Some errors where encountered while checking your wishes :"
-#~ msgstr "Es traten einige Fehler bei der Kontrolle Ihrer Wünsche auf:"
-
-#~ msgid "Files or packages format error"
-#~ msgstr "Datei- oder Paketformat-Fehler"
-
-#~ msgid "Conflicting packages"
-#~ msgstr "Paketkollisionen"
-
-#~ msgid ""
-#~ "Despite these errors some package can be installed.\n"
-#~ "If you want to go on, click the \"Next\" button below."
-#~ msgstr ""
-#~ "Trotz dieser Fehler können einige Pakete installiert werden.\n"
-#~ "Falls Sie das tun wollen, betätigen Sie die Schaltfläche „Weiter“."
-
-#~ msgid ""
-#~ "Sorry, but all packages raised an error.\n"
-#~ "So I can't proceed with the installation."
-#~ msgstr ""
-#~ "Es tut mir Leid, aber alle Pakete wiesen Fehler auf.\n"
-#~ "Ich kann die Installation daher nicht fortsetzen."
-
-#~ msgid ""
-#~ "Congratulations!\n"
-#~ "You successfully installed your packages, now you can enjoy your new "
-#~ "programs. Simply click the \"Quit\" button below.\n"
-#~ "See you soon!"
-#~ msgstr ""
-#~ "Herzlichen Glückwunsch!\n"
-#~ "Sie haben Ihre Pakete erfolgreich installiert. Viel Spass mit Ihren neuen "
-#~ "Programmen. Klicken Sie nun einfach unten auf die Schaltfläche "
-#~ "„Beenden“.\n"
-#~ "Bis Bald!"
-
-#~ msgid "Unfortunately, some packages were not installed due to some errors."
-#~ msgstr ""
-#~ "Es wurden leider einige Pakete nicht installiert,\n"
-#~ "da Fehler auftraten."
-
-#~ msgid "All required additional software is already installed, just go on."
-#~ msgstr ""
-#~ "Die benötigte zusätzliche Software ist bereits installiert. Machen Sie "
-#~ "einfach weiter."
-
-#~ msgid ""
-#~ "This additional package needs to be installed in order to everything "
-#~ "working well:"
-#~ msgstr ""
-#~ "Folgendes Paket muss ebenfalls installiert werden, um sicherzustellen,"
-#~ "dass alles reibungslos funktioniert:"
-
-#~ msgid ""
-#~ "Install in progress...\n"
-#~ "\n"
-#~ "You can see below the installation state."
-#~ msgstr ""
-#~ "Installation läuft ...\n"
-#~ "\n"
-#~ "Sie können den Fortschritt unten verfolgen."
-
-#~ msgid "Welcome to rpminst"
-#~ msgstr "Willkommen zu rpminst"
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "An RPM package is a \"case\" containing a software (or a piece of "
-#~ "software) that you can install on your system to use it later."
-#~ msgstr ""
-#~ "Dieses Programm wir die von Ihnen gewünschten RPM-Pakete installieren.\n"
-#~ "Ein RPM-Paket ist ein „Behälter“ der Software (oder Teile eines größeren "
-#~ "Softwarepakets) enthält, die Sie auf Ihrem System installieren können, um "
-#~ "sie später verwenden zu können."
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "Please wait while packages and dependencies are checked."
-#~ msgstr ""
-#~ "Dieses Programm wird das gewünschte RPM Paket installieren.\n"
-#~ "Bitte warten Sie, während ich die Paketabhängigheiten prüfe."
-
-#~ msgid "Now doing:"
-#~ msgstr "Ich arbeite gerade an:"
-
-#~ msgid "Checking files..."
-#~ msgstr "Dateien kontrollieren ..."
-
-#~ msgid "Checking packages..."
-#~ msgstr "Pakete kontrollieren ..."
-
-#~ msgid "Building interface..."
-#~ msgstr "Ausgabe vorbereiten ..."
-
-#~ msgid "Install selected with rpminst"
-#~ msgstr "Installiere die gewählten Pakete mit rpminst."
-
-#~ msgid "Select all"
-#~ msgstr "Alle auswählen"
-
-#~ msgid "Unselect all"
-#~ msgstr "Markierungen entfernen"
-
-#~ msgid "Unknown error code"
-#~ msgstr "Unbekannter Fehler"
-
-#~ msgid "RPM file not found"
-#~ msgstr "RPM Paket nicht gefunden"
-
-#~ msgid "Bad RPM file format (header)"
-#~ msgstr "Fehlerhaftes RPM-Format (Dateikopf)"
-
-#~ msgid "Package unknown by urpmq"
-#~ msgstr "„urpmq“ kennt die Datei nicht"
-
-#~ msgid "Conflicting package"
-#~ msgstr "Paketkollisionen"
-
-#~ msgid "Not enough available disk space"
-#~ msgstr "Nicht genügend freier Plattenplatz"
-
-#~ msgid "Unreadable RPM file"
-#~ msgstr "RPM-Datei nicht lesbar"
-
-#~ msgid "Added for dependencies"
-#~ msgstr "Zu den Abhängigkeiten hinzugefügt"
-
-#~ msgid "Header format error (from urpmq)"
-#~ msgstr "Fehler im Dateikopf (von urpmq)"
-
-#~ msgid "Canceled by user"
-#~ msgstr "Durch den Anwender abgebrochen"
-
-#~ msgid "Refused by grpmi"
-#~ msgstr "Von grpmi zurückgewiesen"
-
-#~ msgid "urpmi return value"
-#~ msgstr "urpmi Rückgabe Wert"
-
-#~ msgid "Internal error"
-#~ msgstr "Interner Fehler"
-
-#~ msgid "Brief"
-#~ msgstr "Kurzfassung"
-
-#~ msgid "Details"
-#~ msgstr "Details"
-
-#~ msgid "Files"
-#~ msgstr "Dateien"
-
-#~ msgid ""
-#~ "Sorry, but no suitable web browser seems to be installed on your system."
-#~ msgstr "Es scheint kein verwendbarer Web-Browser installiert zu sein."
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Changelog"
-#~ msgstr "Änderungsbericht"
-
-#~ msgid "Group: "
-#~ msgstr "Gruppe: "
-
-#~ msgid "License: "
-#~ msgstr "Lizenz: "
-
-#~ msgid "Packager: "
-#~ msgstr "Paket-Ersteller: "
-
-#~ msgid "Size: "
-#~ msgstr "Größe: "
-
-#~ msgid "Empty changelog"
-#~ msgstr "Kein Änderungsbericht vorhanden"
-
-#~ msgid "(undefined)"
-#~ msgstr "(undefiniert)"
+#~ msgid "Type"
+#~ msgstr "Typ"
 
 #~ msgid "Summary"
 #~ msgstr "Zusammenfassung"
 
-#~ msgid "Description"
+#~ msgid "MandrakeUpdate, version 7.2\n"
+#~ msgstr "Mandrake Update, Version 7.2\n"
+
+#~ msgid ""
+#~ "  usage:\n"
+#~ "    -h, --help:    display this help and exit\n"
+#~ "    -v, --version: show the version and exit\n"
+#~ "    -V, --verbose: increase the verbosity level\n"
+#~ msgstr ""
+#~ "  Verwendung:\n"
+#~ "\n"
+#~ "    -h, --help:      Anzeigen dieser Hilfe und beenden.\n"
+#~ "    -v, --version:   Anzeigen der Version und beenden.\n"
+#~ "    -V, --verbose:   Erzeuge mehr Anwender-Informationen.\n"
+
+#~ msgid "Source on network: (random mirror)\n"
+#~ msgstr "Quelle im Netz: (zufällig gewählter Mirror)\n"
+
+#~ msgid ""
+#~ "Update\n"
+#~ "List"
+#~ msgstr ""
+#~ "Liste\n"
+#~ "erneuern"
+
+#~ msgid "Update the list of packages to update"
+#~ msgstr "Erneuere die Liste zu aktualisierender Pakete"
+
+#~ msgid ""
+#~ "Select\n"
+#~ "all"
+#~ msgstr ""
+#~ "Alle\n"
+#~ "auswählen"
+
+#~ msgid "Select all"
+#~ msgstr "Alle auswählen"
+
+#~ msgid ""
+#~ "Unselect\n"
+#~ "all"
+#~ msgstr ""
+#~ "Auswahl\n"
+#~ "zurücksetzen"
+
+#~ msgid "Unselect all"
+#~ msgstr "Auswahl zurücksetzen"
+
+#~ msgid ""
+#~ "Do\n"
+#~ "updates"
+#~ msgstr ""
+#~ "Aktualisieren\n"
+#~ " "
+
+#~ msgid "Do Updates"
+#~ msgstr "Aktualisieren"
+
+#~ msgid "Normal Updates"
+#~ msgstr "Normale Aktualisierungen"
+
+#~ msgid "Development Updates"
+#~ msgstr "Entwicklungsversionen"
+
+#~ msgid "Descriptions"
 #~ msgstr "Beschreibung"
 
-#~ msgid "%1.2f kB"
-#~ msgstr "%1.2f KB"
-
-#~ msgid "%1.2f MB"
-#~ msgstr "%1.2f MB"
-
-#~ msgid "%1.2f GB"
-#~ msgstr "%1.2f GB"
-
 #~ msgid ""
-#~ "Cannot open the cached source: %s\n"
-#~ "fallback to slow method."
+#~ "The packages are the updates for Mandrake\n"
+#~ "Select the one(s) you want to update\n"
+#~ "When you click on a package you get information about\n"
+#~ "the need to update"
 #~ msgstr ""
-#~ "Ich kann die das Archiv für die Quelle nicht öffnen: %s\n"
-#~ "Rückgriff auf die langsame Methode."
+#~ "Dies sind die aktuelleren Mandrake Pakete.\n"
+#~ "Wählen Sie, welche Sie aktualisieren wollen.\n"
+#~ "Durch Markieren eines Pakets erhalten Sie Informationen über die "
+#~ "Notwendigkeit der Aktualisierung."
 
-#~ msgid ""
-#~ "Cannot read this cached source: %s\n"
-#~ "fallback to slow method"
-#~ msgstr ""
-#~ "Ich kann die das Archiv für die Quelle nicht lesen: %s\n"
-#~ "Rückgriff auf die langsame Methode."
-
-#~ msgid "Device name:"
-#~ msgstr "Gerätename:"
-
-#~ msgid "url: "
-#~ msgstr "URL: "
-
-#~ msgid "hdlist:"
-#~ msgstr "HD-Liste:"
-
-#~ msgid ""
-#~ "Software Manager\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Software Manager\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "An internal error occured :\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Es trat ein interner Fehler auf:\n"
-#~ "%s"
-
-#~ msgid "Error"
-#~ msgstr "Fehler"
+#~ msgid "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,*"
+#~ msgstr "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,*"
 
 #~ msgid ""
 #~ "Please Wait\n"
-#~ "Invoking rpminst"
+#~ "Sorting packages"
 #~ msgstr ""
-#~ "Bitte warten,\n"
-#~ "ich rufe „rpminst“ auf."
+#~ "Bitte warten\n"
+#~ "Ich sortiere die Pakete"
 
-#~ msgid "You must use at least one of --files or --packages !"
-#~ msgstr ""
-#~ "Sie müssen mindestens einen der Parameter „--files“ bzw. „--packages“ "
-#~ "verwenden!"
+#~ msgid "Choose your packages"
+#~ msgstr "Wählen Sie Ihre Pakete"
 
-#~ msgid "Information"
-#~ msgstr "Information"
+#~ msgid "Packages to update"
+#~ msgstr "Zu aktualisiernede Pakete"
 
-#~ msgid "Description:"
-#~ msgstr "Beschreibung:"
-
-#~ msgid "Files list"
-#~ msgstr "Dateiliste"
-
-#~ msgid "Device"
-#~ msgstr "Gerät"
-
-#~ msgid "Mount point"
-#~ msgstr "Einhängpunkt"
-
-#~ msgid "Needed"
-#~ msgstr "Benötigt"
-
-#~ msgid "Status"
-#~ msgstr "Status"
-
-#~ msgid "You can see below the needs for your various filesystems."
-#~ msgstr ""
-#~ "Sie können unten die Ansprüche für Ihre verschiedenen Dateisysteme sehen."
-
-#~ msgid "KO"
-#~ msgstr "KB"
-
-#~ msgid "You have enough disk space to proceed with the installation."
-#~ msgstr ""
-#~ "Sie haben ausreichend Plattenplatz, um mit der Installation fortzufahren."
+#~ msgid "Packages NOT to update"
+#~ msgstr "NICHT zu aktualisiernede Pakete"
 
 #~ msgid ""
-#~ "You do not have enough disk space to install what you asked for. Make "
-#~ "room and try again !"
+#~ "Caution! You're changing the version.\n"
+#~ "MandrakeUpdate will think you actually have this\n"
+#~ "version installed\n"
+#~ "\n"
+#~ "You should only use this if you really know what you're doing.\n"
 #~ msgstr ""
-#~ "Sie haben nicht genügend Speicherplatz, um die gewünschten Pakete zu "
-#~ "installieren. Bitte schaffen Sie erst Platz und versuchen Sie es erneut."
+#~ "Vorsicht! Sie verändern die Version.\n"
+#~ "MandrakeUpdate wird denken, dass Sie diese Version \n"
+#~ "bereits installiert haben\n"
+#~ "\n"
+#~ "Sie sollten diese Funktion nur verwenden, \n"
+#~ "wenn Sie wirklich wissen, was Sie machen.\n"
 
-#~ msgid "More informations about "
-#~ msgstr "Weitere Informationen über "
+#~ msgid "Preferences for Proxies"
+#~ msgstr "Proxie Optionen"
 
-#~ msgid "Release"
-#~ msgstr "Release"
+#~ msgid "Proxies"
+#~ msgstr "Proxies"
 
-#~ msgid "Build date"
-#~ msgstr "Erstellt am"
+#~ msgid "Http Proxy:"
+#~ msgstr "HTTP Proxy:"
 
-#~ msgid "URL"
-#~ msgstr "URL"
+#~ msgid "Port:"
+#~ msgstr "Port:"
 
-#~ msgid "More informations..."
-#~ msgstr "Weitere Informationen..."
+#~ msgid "Ftp Proxy:"
+#~ msgstr "FTP Proxy:"
 
-#~ msgid "-adobe-helvetica-bold-r-*-*-*-140-*-*-*-*-*-*,*"
-#~ msgstr "-adobe-helvetica-bold-r-*-*-*-140-*-*-*-*-*-*,*"
+#~ msgid "Proxy username:"
+#~ msgstr "Proxy Kennzeichen:"
 
-#~ msgid "rank:"
-#~ msgstr "Rang:"
+#~ msgid "Proxy password:"
+#~ msgstr "Proxy Passwort:"
+
+#~ msgid "Error: curl_easy_init()"
+#~ msgstr "Fehler: curl_easy_init()"
+
+#~ msgid "Disk"
+#~ msgstr "Platte"
+
+#~ msgid "Network"
+#~ msgstr "Netzwerk"
+
+#~ msgid "RPM directory"
+#~ msgstr "RPM-Verzeichnis"
+
+#~ msgid "Network settings:"
+#~ msgstr "Netzwerkeinstellungen"
+
+#~ msgid "Version:"
+#~ msgstr "Version:"
+
+#~ msgid "Show security updates"
+#~ msgstr "Zeige Sicherheits-Aktualisierungen"
+
+#~ msgid "Show general updates"
+#~ msgstr "Zeige allgemeine Aktualisierungen"
+
+#~ msgid "Show bugfix updates"
+#~ msgstr "Zeige Fehlerkorrekturen"
+
+#~ msgid "mirror:"
+#~ msgstr "Mirror:"
+
+#~ msgid "Update the list of mirrors"
+#~ msgstr "Aktualisiern der Mirror Liste"
+
+#~ msgid "Choose Packages"
+#~ msgstr "Pakete wählen"
+
+#~ msgid "Username:"
+#~ msgstr "Kennzeichen:"
+
+#~ msgid "Security"
+#~ msgstr "Sicherheit"
+
+#~ msgid "Do not warn if GnuPG isn't installed"
+#~ msgstr "Keine Warnung, falls GnuPG nicht installiert ist"
+
+#~ msgid "Do not warn if the package isn't signed"
+#~ msgstr "Keine Warung falls das Paket nicht signiert ist"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Verschiedenes"
+
+#~ msgid "Timeout:"
+#~ msgstr "Wartezeit:"
+
+#~ msgid "(in sec)"
+#~ msgstr "(in sec)"
+
+#~ msgid "MandrakeUpdate Preferences"
+#~ msgstr "Mandrake Update Voreinstellungen"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorien"
