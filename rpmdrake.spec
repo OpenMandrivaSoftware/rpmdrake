@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 7mdk
+%define release 8mdk
 
 Name: %{name}
 Version: %{version}
@@ -118,6 +118,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Feb 24 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-8mdk
+- MandrakeUpdate: add --media, --pkg-sel and --pkg-nosel commandline
+  switches, to be invoked by MandrakeOnline
+
 * Mon Feb 23 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-7mdk
 - rpmdrake: don't hide progress window during install (#8146)
 

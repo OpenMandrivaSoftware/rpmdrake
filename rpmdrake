@@ -29,6 +29,9 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
   --changelog-first      display changelog before filelist in the description window
   --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found
   --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps
+  --media=medium1,..     limit to given media
+  --pkg-sel=pkg1,..      preselect these packages
+  --pkg-nosel=pkg1,..    show only these packages
 ", $basename->($0);
 	exit 0;
     };
@@ -998,15 +1001,25 @@ Then, restart MandrakeUpdate.")), myexit(-1);
     $urpm->{state} = {};
     my %installable_pkgs;
 
-    $urpm->configure;
+    my $media = $options{media} ? join(',', @{$options{media}}) : '';
+    $urpm->configure(media => $media);
+
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 
     $urpm->compute_installed_flags(db());
 
     foreach my $pkg (@{$urpm->{depslist}}) {
 	$pkg->flag_upgrade or next;
-	$updates and ($pkg->flag_installed && grep { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next);
-	$installable_pkgs{my_fullname($pkg)} = { selected => 0, pkg => $pkg };
+        my $selected = 0;
+	if ($updates) {
+            $pkg->flag_installed or next;
+            any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next;
+            if ($options{'pkg-sel'} || $options{'pkg-nosel'}) {
+                member(urpm_name($pkg), @{$options{'pkg-sel'}}, @{$options{'pkg-nosel'}}) or next;
+                member(urpm_name($pkg), @{$options{'pkg-sel'}}) and $selected = 1;
+            }
+        }
+	$installable_pkgs{my_fullname($pkg)} = { selected => $selected, pkg => $pkg };
     }
 
     remove_wait_msg($wait);
