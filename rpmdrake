@@ -859,6 +859,7 @@ Is it ok to continue?", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{a
 										clicked => sub { Gtk2->main_quit })))
 				       ))));
     $> and $action_button->set_sensitive(0);
+    $find_entry->grab_focus;
     my $pixbuf_icon = gtkcreate_pixbuf("title-$MODE");
     $darea->modify_font(Gtk2::Pango::FontDescription->from_string('Sans Italic 24'));
     my %t = (remove => N("Software Packages Removal"), update => N("Mandrake Update"), install => N("Software Packages Installation"));

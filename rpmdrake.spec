@@ -107,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
   - fix #4914 (program crashes when trying to add a medium)
 - MandrakeUpdate: handle subdirectory in "updates" for special
   Mandrake issues such as corporate/clustering/etc
+- rpmdrake: focus in the find entry on startup (#5021)
 
 * Wed Aug 13 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
 - require root capability when run "Install Sofware" and add a new
