@@ -44,11 +44,10 @@ clean:
 	done
 
 tar:
-	mkdir -p t/rpmdrake; \
-	cd t/rpmdrake; \
-	cp -a ../../* .; \
+	mkdir ../t; \
+	cd ../t; \
+	cp -a ../rpmdrake .; \
 	find -name "CVS" | xargs rm -rf; \
-	cd ..; \
 	tar jcvf ../rpmdrake.tar.bz2 rpmdrake; \
 	cd ..; \
 	rm -rf t
@@ -60,4 +59,4 @@ hack:
 	cp -f $(SOFTHOME)/rpmdrake/rpmdrake $(SOFTHOME)/rpmdrake/edit-urpm-sources.pl /usr/sbin
 	cp -f $(SOFTHOME)/rpmdrake/rpmdrake.pm $(shell rpm --eval %perl_vendorlib)
 	cp -f $(GIHOME)/perl-install/my_gtk.pm $(GIHOME)/perl-install/ugtk.pm /usr/lib/libDrakX
-	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' /usr/lib/libDrakX/*.pm /usr/sbin/{rpmdrake,edit-urpm-sources.pl}
+#	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' /usr/lib/libDrakX/*.pm /usr/sbin/{rpmdrake,edit-urpm-sources.pl}
