@@ -154,7 +154,7 @@ sub wait_msg {
     my $mainw = ugtk2->new('rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     my $label = Gtk2::Label->new($msg);
     gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label)));
-    $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1 });
+    $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });
     $mainw->sync until $mainw->{displayed};
     gtkset_mousecursor_wait($mainw->{rwindow}->window);
     $mainw->flush;
