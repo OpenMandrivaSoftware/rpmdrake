@@ -94,7 +94,7 @@ N("You are launching this program as a normal user.
 You will not be able to perform modifications on the system,
 but you may still browse the existing database."), yesno => 1, text => { no => N("Cancel"), yes => N("Ok") }) or myexit(0));
 
-my $dont_show_selections = 0;
+my $dont_show_selections = $> ? 1 : 0;
 
 #- /usr/share/rpmlint/TagsCheck.py (duplicates are normal, so that we are not too far away from .py)
 my @valid_groups = (
