@@ -1458,7 +1458,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 			    Gtk2::Button->new(N("More information on package...")),
 			    clicked => sub {
 				interactive_msg(
-				    N("More information on package..."),
+				    N("More information on package...") . "[$pkg->[0]]",
 				    (join '' => cat_($pkg->[0])),
 				    scroll => 1,
 				);
