@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 2mdk
+%define release 3mdk
 
 Name: %{name}
 Version: %{version}
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon May 03 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-3mdk
+- Fix reset of the wait cursor when run embedded in drakconf
+
 * Tue Apr 27 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-2mdk
 - Language updates
 
