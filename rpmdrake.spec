@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 6mdk
+%define release 7mdk
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,21 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri Aug 23 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-7mdk
+- rpmdrake: when a choice has to be made involving locales,
+  autochoose the package requiring the locales already installed
+  on the machine, or the package requiring an already selected
+  locale
+- rpmdrake: when user does a multiple selection of packages to
+  install, if some packages require a new locale to install and
+  they look like i18n packages (eg they contain the same locale
+  name in their name), don't select them; it should fix the
+  selection of all the locales when user selects "KDE
+  Workstation" or "Gnome Workstation"; of course, still possible
+  to select these packages one by one
+- in by_presence and by_selection modes, limit search results to
+  upgradable packages and to selected packages
+
 * Thu Aug 22 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-6mdk
 - edit-urpm-sources: toggle the ignore flag only when the button
   press was really done in an existing col/row
