@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.4
-%define release 3mdk
+%define release 4mdk
 
 Name: %{name}
 Version: %{version}
@@ -109,6 +109,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Jan 07 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-4mdk
+- New command-line option --no-media-update to Mandrakeupdate, to avoid
+  updating media at startup
+- A few optimisations
+- Fix the display of the number of RPMs to be retrieved in rpmdrake
+
 * Fri Dec 17 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-3mdk
 - Add the ability to reorder the media in the software media manager
 
