@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 23mdk
+%define release 25mdk
 
 Name: %{name}
 Version: %{version}
@@ -123,6 +123,16 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Sep 11 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-25mdk
+- when installing packages, set urpm->{fatal} so that I can intercept
+  when "cancel" is clicked for the change of CD's -> we no more exit
+  the program anymore
+
+* Tue Sep 10 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-24mdk
+- when starting rpmdrake as user, usermode restes some env vars, thus
+  the locale seen might be fr_FR when it was fr; thus, for the title
+  images, we need to load also ^(..)_.+ when the first try fails
+
 * Mon Sep  9 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-23mdk
 - in removal mode, fix misleading presence of "update sources"; fix
   behaviour of "reset selection"
