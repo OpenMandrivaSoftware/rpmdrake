@@ -603,7 +603,7 @@ sub update_sources_interactive {
 	    Gtk2::Label->new(N("Select the media you wish to update:")),
 	    (
 		@buttons = map {
-		    Gtk2::CheckButton->new($_->{name})
+		    Gtk2::CheckButton->new_with_label($_->{name})
 		} grep {
 		    ! $_->{ignore}
 		} @{$urpm->{media}}
