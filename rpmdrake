@@ -557,7 +557,7 @@ or you already installed all of them."));
                                    my @reasons = map {
                                        my $cant = $_;
                                        my $unsel = find { remove_arch($_) eq $cant } @ask_unselect;
-                                       $unsel ? $urpm->translate_why_unselected($urpm->{state}, $unsel) : $cant;
+                                       $unsel ? to_utf8($urpm->translate_why_unselected($urpm->{state}, $unsel)) : $cant;
                                    } @cant;
 				   interactive_msg_(N("Some packages can't be installed"),
 						    N("Sorry, the following package(s) can't be selected:\n\n%s", join("\n", @reasons)));
@@ -819,7 +819,7 @@ N("The following packages have to be removed for others to be upgraded:
 
 %s
 
-Is it ok to continue?", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{ask_remove}})), yesno => 1) or return);
+Is it ok to continue?", to_utf8($urpm->translate_why_removed($urpm->{state}, @{$urpm->{ask_remove}}))), yesno => 1) or return);
 	}
 	if (!$callback_action->($urpm, $pkgs)) {
 	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
@@ -1111,11 +1111,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         gurpm::label(N("Verifying packages signatures..."));
         my $total = @rpms_install + @rpms_upgrade;
         my $progress;
-        my @invalid_sources;
-        foreach (@rpms_install, @rpms_upgrade) {
-            URPM::verify_rpm($_) =~ /NOT OK/ and push @invalid_sources, basename($_);
-            gurpm::progress(++$progress/$total);
-        }
+	my @invalid_sources = to_utf8($urpm->check_sources_signatures(\%sources_install, \%sources, translate => 1, basename => 1,
+                                                                      callback => sub {
+                                                                          gurpm::progress(++$progress/$total);
+                                                                      }));
         if (@invalid_sources) {
             interactive_msg_('rpmdrake',
                              N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",

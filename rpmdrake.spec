@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools > 9.2-5mdk rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi > 4.4-31mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools > 9.2-5mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-6mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: curl-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -103,6 +103,8 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Fri Sep  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-36mdk
 - fix garbled UTF8 in "summary" and "description" of pkgs when i18n'ed
+- use new urpmi API to verify signatures, so that we don't miss
+  signatures problems when key of package is not in urpmi allowed pool
 
 * Thu Sep  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-35mdk
 - fix invalid-build-requires libcurl2-devel
