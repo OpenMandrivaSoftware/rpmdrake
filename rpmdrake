@@ -652,7 +652,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     @pkgs{ map { $_->id } grep { $_->flag_selected } @{$urpm->{depslist}} } = undef;
     my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
     foreach my $l (@$list) {
-	standalone::explanations("Installing package $l->{$_}") foreach keys %$l;
+	standalone::explanations("Installing package $l->{$_}") foreach sort keys %$l;
     }
     if (!$local_sources && !$list) {
 	fatal_msg(_("Unable to get source packages."),
@@ -717,7 +717,7 @@ sub get_installed_pkgs {
 sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = grep { $pkgs->{$_}{selected} } keys %$pkgs;
-    standalone::explanations("Removing package $_") foreach @toremove;
+    standalone::explanations("Removing package $_") foreach sort @toremove;
     slow_func(_("Please wait, removing packages..."),
 	      sub { $urpm->install('/', \@toremove, {}, {}) });
 }
