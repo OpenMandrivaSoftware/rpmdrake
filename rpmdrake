@@ -340,9 +340,12 @@ sub find_installed_version {
 }
 
 #- remove architecture
+sub remove_arch {
+    $_[0] =~ /(.*)\.[^\.]+$/ ? $1 : $_[0];
+}
 sub ask_remove_ {
     my ($state) = @_;
-    map { /(.*)\.[^\.]+$/ && $1 } keys %{$state->{ask_remove}};
+    map { remove_arch($_) } keys %{$state->{ask_remove}};
 }
 
 sub run_treeview_dialog {
@@ -531,15 +534,6 @@ or you already installed all of them."));
                                          sub { @requested = $urpm->resolve_requested(db(), $urpm->{state},
                                                                                      { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
                                                                                      callback_choices => $callback_choices) });
-                               my @conflict;
-                               if (%{$urpm->{state}{ask_unselect} || {}}) {
-                                   print "ask_unselect! (currently unavailable!?)\n";
-                                   foreach my $p (keys %{$urpm->{state}{ask_unselect}}) {
-                                       push @conflict, [ my_fullname($urpm->{depslist}[$p]),
-                                                         [ map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{ask_unselect}{$p}} ] ];
-                                   }
-                                   delete @{$urpm->{state}{selected}}{keys %{delete $urpm->{state}{ask_unselect}}};
-                               }
                                @nodes_with_deps = map { my_fullname($_) } @requested;
 			       if (!$deps_msg->(N("Additional packages needed"), 
 						N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
@@ -553,7 +547,7 @@ or you already installed all of them."));
 				   interactive_msg_(N("Some packages can't be installed"),
 						    N("Sorry, the following package(s) can't be selected:\n\n%s\n\nReasons follow:\n\n%s",
                                                       $formatlistpkg->(@cant),
-                                                      join '', map { N("%s conflicts with %s", $_->[0], join(', ', @{$_->[1]})) } @conflict));
+                                                      "(waiting for urpmi subroutine)"));
 				   foreach (@cant) {
 				       $pkgs->{$_}{pkg}->set_flag_requested(0);
 				       $pkgs->{$_}{pkg}->set_flag_required(0);
@@ -803,14 +797,17 @@ dangerous and should be considered with care.
 Do you really want to install all the selected packages?"), yesno => 1)
 	      or return;
 	}
-	if ($MODE ne 'remove' && %{$urpm->{state}{ask_remove} || {}}) {
-	    interactive_msg_(N("Some packages need to be removed"),
+	if ($MODE ne 'remove') {
+            my @ask_remove = grep { $urpm->{state}{rejected}{$_}{removed}
+                                    && !$urpm->{state}{rejected}{$_}{obsoleted} } keys %{$urpm->{state}{rejected} || {}};
+            @ask_remove and (interactive_msg_(N("Some packages need to be removed"),
 N("The following packages have to be removed for others to be upgraded:
 
 %s
 
-Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), yesno => 1)
-	      or return;
+(waiting for urpmi subroutine for explanation)
+
+Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } @ask_remove)), yesno => 1) or return);
 	}
 	if (!$callback_action->($urpm, $pkgs)) {
 	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
