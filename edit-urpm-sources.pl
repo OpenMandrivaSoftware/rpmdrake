@@ -255,6 +255,7 @@ sub mainwindow {
     my $reorder_ok = 1;
     $list->signal_connect(row_deleted => sub {
                               my ($model) = @_;
+                              $reorder_ok or return;
                               my @medias;
                               $model->foreach(sub {
                                               my (undef, $path) = @_;
