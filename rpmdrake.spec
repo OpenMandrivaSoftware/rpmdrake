@@ -106,6 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 - add ability to run the rpmdrake suite as a user (you can browse
   packages but can't modify the system)
 - edit-medias: remove weird looking Save&Quit / Quit buttons, use Ok only
+- adding an update source: fix sorting according to tz
 
 * Fri May 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-20mdk
 - perl-URPM API change: gives architecture in ask_remove

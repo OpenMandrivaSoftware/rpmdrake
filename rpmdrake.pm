@@ -277,7 +277,7 @@ sub mirrors {
 			} else { () }
 		    } cat_($mirrorslist);
     unlink $mirrorslist;
-    return sort { $::b->{goodness} <=> $::a->{goodness} } @mirrors;
+    return sort { $b->{goodness} <=> $a->{goodness} } @mirrors;
 }
 
 sub choose_mirror {
