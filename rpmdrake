@@ -290,10 +290,11 @@ sub extract_header {
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
-	if (-r $hdlist) {  #- packdrake segfaults when giving a missing file :(
+	if (-r $hdlist) {
 	    standalone::explanations("Extracting header of " . $p->header_filename . " from $hdlist");
 	    my $packer;
-	    eval { $packer = new packdrake($hdlist, quiet => 1) } or log::l("Warning, hdlist seems corrupted :-("), goto header_non_available;
+	    eval { require packdrake; $packer = new packdrake($hdlist, quiet => 1) }
+		or log::l("Warning, hdlist seems corrupted :-("), goto header_non_available;
             my $headersdir = chomp_(`mktemp -d /tmp/rpmdrake.XXXXXX`);
             -d $headersdir or die "Could not create temporary directory";
 	    $packer->extract_archive($headersdir, $p->header_filename);
@@ -352,7 +353,12 @@ sub do_search($$$$$$$) {
 	} else {
 	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}";
 				if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h) } @{$urpm->{media}};
-	    my $total_size = sum(map { my $pack; eval { $pack = new packdrake($_, quiet => 1) } ? $pack->{toc_f_count} : 0 } @hdlists);
+	    my $total_size = sum(
+		map {
+		    my $pack;
+		    eval { require packdrake; $pack = new packdrake($_, quiet => 1) } ? $pack->{toc_f_count} : 0;
+		} @hdlists
+	    );
 	    my $searchstop;
 	    my $searchw = ugtk2->new(N("Rpmdrake"), grab => 1, transient => $w->{rwindow});
 	    gtkadd($searchw->{window}, gtkpack__(Gtk2::VBox->new(0, 5),

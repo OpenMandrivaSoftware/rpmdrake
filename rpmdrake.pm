@@ -30,7 +30,6 @@ use MDK::Common::System;
 use urpm;
 use URPM;
 use URPM::Resolve;
-use packdrake;
 use strict;
 use log;
 use c;
