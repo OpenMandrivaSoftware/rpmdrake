@@ -247,13 +247,21 @@ sub wait_msg {
     my $mainw = ugtk2->new('rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $mainw->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::WrappedLabel->new($msg);
-    gtkadd($mainw->{window}, gtkpack__(gtkpack__(gtkset_border_width(Gtk2::VBox->new(0, 5),6), $label, if_(exists $options{widgets}, @{$options{widgets}}))));
+    gtkadd(
+	$mainw->{window},
+	gtkpack__(
+	    gtkset_border_width(Gtk2::VBox->new(0, 5), 6),
+	    $label,
+	    if_(exists $options{widgets}, @{$options{widgets}}),
+	)
+    );
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });
     $mainw->sync until $mainw->{displayed};
     gtkset_mousecursor_wait($mainw->{rwindow}->window);
     $mainw->flush;
     $mainw;
 }
+
 sub remove_wait_msg {
     my $w = shift;
     gtkset_mousecursor_normal($w->{rwindow}->window);
