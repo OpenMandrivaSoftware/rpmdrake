@@ -362,7 +362,7 @@ sub run_treeview_dialog {
 
     my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
 
-    my ($options, $size_selected, $compssUsers, $info, $info_update, $tree, $tree_model, $disable_treeselect_callback, %elems);
+    my ($options, $size_selected, $compssUsers, $info, $info_update, $tree, $tree_model, %elems);
     $size_selected = 0;  #- to remove the use strict warning
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
@@ -406,7 +406,6 @@ sub run_treeview_dialog {
 		       my ($add_node, $flat, $mode) = @_;
 		       my @elems;
 		       my $wait = wait_msg_(N("Please wait, listing packages..."));
-		       $disable_treeselect_callback = 1;
 		       if ($mode eq 'mandrake_choices') {
 			   foreach my $pkg (keys %$pkgs) {
 			       my ($name) = split_fullname($pkg);
@@ -459,7 +458,6 @@ or you already installed all of them."));
 			       }
 			   }
 		       }
-		       $disable_treeselect_callback = 0;
 		       remove_wait_msg($wait);
 		   },
 		   grep_unselected => sub { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ },
@@ -684,7 +682,6 @@ or you already installed all of them."));
 	    member($_[0], @$mandrakeupdate_wanted_categories) and $_[1]->set_active(1);
 	    my $capture_value = $_[0];
 	    $_[1]->signal_connect(clicked => sub {
-				      $disable_treeselect_callback = 1;
 				      if ($_[0]->get_active) {
 					  push @$mandrakeupdate_wanted_categories, $capture_value;
 				      } else {
@@ -692,7 +689,6 @@ or you already installed all of them."));
 											   [ $capture_value ]);
 				      }
 				      $options->{rebuild_tree}->();
-				      $disable_treeselect_callback = 0;
 				  });
 	} \@toggle_names_ordered, \@modes_buttons;
     } else {
@@ -708,12 +704,10 @@ or you already installed all of them."));
 	    my $capture_mode = $_[0];
 	    $_[1]->signal_connect(clicked => sub {
 				      if ($_[0]->get_active) {
-					  $disable_treeselect_callback = 1;
 					  ($options->{tree_mode}, $options->{state}{flat}) = $capture_mode eq 'by'
 					        ? ($options->{tree_submode}, $options->{tree_subflat})
 					        : ($capture_mode,            $radios_infos{$capture_mode}{flat});
 					  $options->{rebuild_tree}->();
-					  $disable_treeselect_callback = 0;
 				      }
 				  });
 	} \@radios_names_ordered, \@modes_buttons;
