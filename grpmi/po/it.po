@@ -1,25 +1,27 @@
+# translation of grpmi-it.po to Italian
 # MandrakeUpdate.po.it
-# Copyright (C) 2000 Free Software Foundation, Inc.
-# Ruggero Tonelli <ruggero@valtellinux.it>, 2000-2001.
-# Andrea Celli <a.celli@caltanet.it>, 2001
+# Copyright (C) 2000,2003 Free Software Foundation, Inc.
 # Roberto Rosselli Del Turco <rosselli@ling.unipi.it>
 # 8.0 Tech/Lang proofreading by Roberto Rosselli Del Turco
+# Ruggero Tonelli <ruggero@valtellinux.it>, 2000-2001.
+# Andrea Celli <a.celli@caltanet.it>, 2001
 # 	 <rosselli@ling.unipi.it>, 2001
+# Simone Riccio <s.riccio@aeb.informatica.it>, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: grpmi\n"
+"Project-Id-Version: grpmi-it\n"
 "POT-Creation-Date: 2003-02-21 00:37+0100\n"
-"PO-Revision-Date: 2002-08-13 18:22+0200\n"
-"Last-Translator: Roberto Rosselli Del Turco <rosselli@ling.unipi.it>\n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2003-02-21 18:18+0100\n"
+"Last-Translator: Simone Riccio <s.riccio@aeb.informatica.it>\n"
+"Language-Team: Italian <IT@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
-msgstr "La directory dove mettere quanto scaricato deve esistere"
+msgstr "La directory dove mettere quanto scaricato non esiste"
 
 #: ../curl_download/curl_download.xs:89 ../curl_download/curl_download.xs:206
 msgid "Out of memory\n"
@@ -103,20 +105,19 @@ msgstr "File parziale\n"
 
 #: ../curl_download/curl_download.xs:180
 msgid "FTP couldn't RETR file\n"
-msgstr "FTP: non posso RETR il file\n"
+msgstr "FTP: non posso recuperare (RETR) il file\n"
 
 #: ../curl_download/curl_download.xs:183
 msgid "FTP write error\n"
-msgstr "FTP: Errore in scrittura\n"
+msgstr "FTP: errore in scrittura\n"
 
 #: ../curl_download/curl_download.xs:188
 msgid "FTP quote error\n"
 msgstr "FTP: errore di quota\n"
 
 #: ../curl_download/curl_download.xs:191
-#, fuzzy
 msgid "HTTP not found\n"
-msgstr "Non ho trovato GnuPG"
+msgstr "HTTP non trovato\n"
 
 #: ../curl_download/curl_download.xs:194
 msgid "Write error\n"
@@ -124,11 +125,11 @@ msgstr "Errore di scrittura\n"
 
 #: ../curl_download/curl_download.xs:197
 msgid "User name illegally specified\n"
-msgstr "Nome utente specificato illegalmente\n"
+msgstr "Nome utente specificato in modo non valido\n"
 
 #: ../curl_download/curl_download.xs:200
 msgid "FTP couldn't STOR file\n"
-msgstr "FTP: non posso STOR il file\n"
+msgstr "FTP: non posso archiviare (STOR) il file\n"
 
 #: ../curl_download/curl_download.xs:203
 msgid "Read error\n"
@@ -250,11 +251,12 @@ msgstr "Nessuna firma GPG nel pacchetto\n"
 
 #: ../rpm/grpmi_rpm.xs:234
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr "Non ho potuto aprire il DB RPM in scrittura (non sei il superutente?)"
+msgstr ""
+"Non ho potuto aprire il database RPM in scrittura (non sei il superutente?)"
 
 #: ../rpm/grpmi_rpm.xs:236
 msgid "Couldn't open RPM DB for writing"
-msgstr "Non ho potuto aprire il DB RPM in scrittura"
+msgstr "Non ho potuto aprire il database RPM in scrittura"
 
 #: ../rpm/grpmi_rpm.xs:240
 msgid "Couldn't start transaction"
@@ -281,7 +283,7 @@ msgstr "Errore nella verifica delle dipendenze"
 
 #: ../rpm/grpmi_rpm.xs:299
 msgid "conflicts with"
-msgstr "crea conflitto con"
+msgstr "è in conflitto con"
 
 #: ../rpm/grpmi_rpm.xs:299
 msgid "is needed by"
@@ -302,11 +304,14 @@ msgid ""
 "remove the %d downloaded package(s)?\n"
 "(they are located in %s)"
 msgstr ""
+"Nota: si sono verificati errori durante l'installazione, vuoi\n"
+"rimuovere i %d pacchetti scaricati?\n"
+"(sono in %s)"
 
 #: ../grpmi.pl:1
 #, c-format
 msgid "Cleanup"
-msgstr ""
+msgstr "Pulizia"
 
 #: ../grpmi.pl:1
 #, c-format
@@ -340,7 +345,7 @@ msgstr ""
 "Sono stati individuati dei conflitti:\n"
 "\n"
 "%s\n"
-"Installazione abortita"
+"Installazione interrotta."
 
 #: ../grpmi.pl:1
 #, c-format
@@ -350,7 +355,7 @@ msgstr "Individuati dei conflitti"
 #: ../grpmi.pl:1
 #, c-format
 msgid "Preparing packages for installation..."
-msgstr "Sto preparando i pacchetti per l'installazione"
+msgstr "Sto preparando i pacchetti per l'installazione..."
 
 #: ../grpmi.pl:1
 #, c-format
@@ -361,7 +366,7 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
-"Il file che segue non è valido:\n"
+"Il file seguente non è valido:\n"
 "\n"
 "%s\n"
 "\n"
@@ -370,12 +375,12 @@ msgstr ""
 #: ../grpmi.pl:1
 #, c-format
 msgid "File error"
-msgstr "Errore del file"
+msgstr "Errore nel file"
 
 #: ../grpmi.pl:1
-#, fuzzy, c-format
+#, c-format
 msgid "Yes to all"
-msgstr "Seleziona tutto"
+msgstr "Si per tutti"
 
 #: ../grpmi.pl:1
 #, c-format
@@ -413,7 +418,7 @@ msgstr "Sto verificando la firma di `%s'..."
 #: ../grpmi.pl:1
 #, c-format
 msgid "Retry download"
-msgstr ""
+msgstr "Riprova a scaricare"
 
 #: ../grpmi.pl:1
 #, c-format
@@ -430,7 +435,7 @@ msgstr ""
 "%s\n"
 "\n"
 "Errore: %s\n"
-"Desiderate continuare (saltando questo pacchetto)?"
+"Desideri continuare (saltando questo pacchetto)?"
 
 #: ../grpmi.pl:1
 #, c-format
@@ -450,8 +455,7 @@ msgstr "Inizializzazione..."
 #: ../grpmi.pl:1
 #, c-format
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
-"L'inizializzazione dei file config di RPM non è stata possibile, spiacente."
+msgstr "L'inizializzazione dei file config di RPM non è stata possibile."
 
 #: ../grpmi.pl:1
 #, c-format
@@ -461,7 +465,7 @@ msgstr "Errore di inizializzazione RPM"
 #: ../grpmi.pl:1
 #, c-format
 msgid "You need to be root to install packages, sorry."
-msgstr "Devi essere root per installare dei pacchetti, spiacente."
+msgstr "Devi essere root per installare dei pacchetti."
 
 #: ../grpmi.pl:1
 #, c-format
