@@ -478,13 +478,15 @@ sub keys_callback {
     };
     my $write = sub {
         $urpm->write_config;
-	$urpm = urpm->new;
-	$urpm->read_config; 
+        $urpm = urpm->new;
+        $urpm->read_config; 
         $read_conf->();
+        $media_list->get_selection->signal_emit('changed');
     };
     $read_conf->();
     my $key_name = sub {
-        $urpm->{keys}{$_[0] || {}}{name} || N("no name found");
+        exists $urpm->{keys}{$_[0]} ? $urpm->{keys}{$_[0]}{name}
+                                    : N("no name found, key doesn't exist in rpm keyring!");
     };
     
     $media_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
@@ -498,6 +500,31 @@ sub keys_callback {
     });
 
     my $add_key = sub {
+        my $w = ugtk2->new(N("Add a key"));
+        my $available_keyz_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
+        my $available_keyz = Gtk2::TreeView->new_with_model($available_keyz_ls);
+        $available_keyz->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+        $available_keyz->set_headers_visible(0);
+        $available_keyz->get_selection->set_mode('browse');
+        $available_keyz_ls->append_set([ 0 => sprintf("%s (%s)", $_, $key_name->($_)), 1 => $_ ]) foreach keys %{$urpm->{keys}};
+        my $key;
+        gtkadd($w->{window},
+               gtkpack__(Gtk2::VBox->new(0, 5),
+                         Gtk2::Label->new(N("Choose a key for adding to the medium %s", $current_medium)),
+                         $available_keyz,
+                         Gtk2::HSeparator->new,
+                         gtkpack(create_hbox(),
+                                 gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub {
+                                                       my ($model, $iter) = $available_keyz->get_selection->get_selected;
+                                                       $model && $iter and $key = $model->get($iter, 1);
+                                                       Gtk2->main_quit;
+                                                   }),
+                                 gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit }))));
+        $w->main;
+        if (defined $key) {
+            $urpm->{media}[$current_medium_nb]{'key-ids'} = join(',', sort(uniq(@{$keys[$current_medium_nb]}, $key)));
+            $write->();
+        }
     };
 
     my $remove_key = sub {
@@ -510,7 +537,6 @@ sub keys_callback {
                         yesno => 1) or return;
         $urpm->{media}[$current_medium_nb]{'key-ids'} = join(',', difference2(\@{$keys[$current_medium_nb]}, [ $key ]));
         $write->();
-        $media_list->get_selection->signal_emit('changed');
     };
 
     gtkadd($w->{window},

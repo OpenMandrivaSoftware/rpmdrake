@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Tue Aug 12 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
+* Wed Aug 13 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
 - require root capability when run "Install Sofware" and add a new
   menu entry reading "Browse Available Software"
 - s/Medias/Media/ in the program name of the menu entry
