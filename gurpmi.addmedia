@@ -54,8 +54,10 @@ if ($@) {
 }
 $::isStandalone = 1;
 
+my $fromfile;
 if (@ARGV == 1 && $ARGV[0] =~ /\.urpm-media$/) {
     @ARGV = split /\n/, cat_($ARGV[0]);
+    $fromfile = 1;
 }
 
 my $update = 0;
@@ -69,6 +71,15 @@ if ($url !~ m,^(file://|ftp://|http://|removable://), || $with && !$with_hdlist)
                     N("Unable to add medium, wrong or missing arguments"));
     POSIX::_exit(-1);
 }
+
+$fromfile and interactive_msg('gurpmi.addmedia',
+N("%s
+
+Is it ok to continue?",
+N("You are about to add a new packages medium, `%s'.
+That means you will be able to add new software packages
+to your system from that new medium.", $name)),
+                              yesno => 1) or myexit(0);
 
 my $urpm = urpm->new;
 $urpm->read_config; 
