@@ -105,6 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 - fix garbled UTF8 in "summary" and "description" of pkgs when i18n'ed
 - use new urpmi API to verify signatures, so that we don't miss
   signatures problems when key of package is not in urpmi allowed pool
+- fix "Reset the selection" that didn't really reset it for urpmi :/
 
 * Thu Sep  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-35mdk
 - fix invalid-build-requires libcurl2-devel

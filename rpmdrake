@@ -758,9 +758,8 @@ or you already installed all of them."));
 	my %action2fun; %action2fun = (
 		          reset_selection => sub {
 			      if ($MODE ne 'remove') {
-				  $urpm->{state} = {};
-				  $urpm->resolve_unrequested(db(), $urpm->{state},
-						   { map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}->id => undef) } keys %$pkgs });
+                                  $urpm->disable_selected(db(), $urpm->{state},
+                                                          map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs);
 			      }
 			      $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
 			      $size_selected = 0;
