@@ -1308,7 +1308,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
             my $showable = $_;
             $showable =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|;  #- hide password
             standalone::explanations("Installing package $showable");
-            /^(file|removable)/ or $distant_number++;
+            /^(?:file:|removable:|\/)/ or $distant_number++;
         }
     }
     if (!$local_sources && (!$list || !@$list)) {
