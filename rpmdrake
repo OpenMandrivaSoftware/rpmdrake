@@ -23,7 +23,7 @@
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
     "@ARGV" =~ /-h/ and do {
-	printf STDERR "Usage: %s [OPTION]...
+	printf "Usage: %s [OPTION]...
   --no-confirmation      don't ask first confirmation question in MandrakeUpdate mode
   --no-verify-rpm        don't verify packages signatures
   --changelog-first      display changelog before filelist in the description window
