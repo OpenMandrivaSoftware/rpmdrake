@@ -10,12 +10,13 @@
 # Tom Svensson <tom@firstdev.com>, 2000.
 # Mattias Dahlberg <voz@home.se>, 2001.
 # Mattias Newzella <newzella@linux.nu>, 2002,2003.
+# Henrik Borg <hblinux@bredband.net>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sv\n"
-"POT-Creation-Date: 2004-03-01 21:09+0100\n"
-"PO-Revision-Date: 2003-08-21 10:24+0200\n"
+"POT-Creation-Date: 2004-03-04 14:59+0100\n"
+"PO-Revision-Date: 2004-03-03 20:36+0100\n"
 "Last-Translator: Mattias Newzella <newzella@linux.nu>\n"
 "Language-Team: Svenska <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -135,7 +136,7 @@ msgstr "Typ av medium:"
 #: ../edit-urpm-sources.pl:453 ../edit-urpm-sources.pl:517
 #: ../edit-urpm-sources.pl:554 ../edit-urpm-sources.pl:660 ../rpmdrake:91
 #: ../rpmdrake:514 ../rpmdrake:528 ../rpmdrake:532 ../rpmdrake:1106
-#: ../rpmdrake:1167 ../rpmdrake.pm:125 ../rpmdrake.pm:168 ../rpmdrake.pm:356
+#: ../rpmdrake:1167 ../rpmdrake.pm:125 ../rpmdrake.pm:168 ../rpmdrake.pm:361
 #, c-format
 msgid "Ok"
 msgstr "OK"
@@ -144,8 +145,8 @@ msgstr "OK"
 #: ../edit-urpm-sources.pl:211 ../edit-urpm-sources.pl:251
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:91
-#: ../rpmdrake:514 ../rpmdrake:1167 ../rpmdrake:1173 ../rpmdrake.pm:356
-#: ../rpmdrake.pm:461
+#: ../rpmdrake:514 ../rpmdrake:1167 ../rpmdrake:1173 ../rpmdrake.pm:361
+#: ../rpmdrake.pm:471
 #, c-format
 msgid "Cancel"
 msgstr "Avbryt"
@@ -391,7 +392,7 @@ msgstr "Uppdatera medium"
 msgid "Regenerate hdlist"
 msgstr "Omgenerera hdlist"
 
-#: ../edit-urpm-sources.pl:607 ../rpmdrake.pm:424
+#: ../edit-urpm-sources.pl:607 ../rpmdrake.pm:434
 #, c-format
 msgid "Please wait, updating media..."
 msgstr "Vänta, uppdaterar media..."
@@ -471,11 +472,14 @@ msgid ""
 "manager on another desktop, or are you currently installing\n"
 "packages as well?)."
 msgstr ""
+"Paketdatabasen är låst. Stäng applikationerna som använder\n"
+"paketdatabasen (har du en annan pakethanterare på en annan\n"
+"arbetsyta, eller håller du redan på att installera paket?)."
 
 #: ../gurpmi.addmedia:70
 #, c-format
 msgid "Unable to add medium, wrong or missing arguments"
-msgstr ""
+msgstr "Kan inte lägga till media, avsaknad av eller felaktiga argument."
 
 #: ../gurpmi.addmedia:78
 #, c-format
@@ -484,11 +488,14 @@ msgid ""
 "That means you will be able to add new software packages\n"
 "to your system from that new medium."
 msgstr ""
+"Du kommer nu lägga till ett nytt media med paket, %s.\n"
+"Det innebär att du kommer kunna installera ny programvara\n"
+"till ditt system från det mediat."
 
 #: ../gurpmi.addmedia:87
 #, c-format
 msgid "Successfully added medium `%s'."
-msgstr ""
+msgstr "Installation av media %s lyckades."
 
 #: ../rpmdrake:88
 #, c-format
@@ -1037,9 +1044,9 @@ msgstr ""
 "som är installerade på systemet. Eller så har du redan installerat alla."
 
 #: ../rpmdrake:475
-#, c-format
+#, fuzzy, c-format
 msgid "All"
-msgstr ""
+msgstr "Alla"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:514 ../rpmdrake:517
@@ -1273,7 +1280,7 @@ msgstr "Återställ valet"
 msgid "Reload the packages list"
 msgstr "Ladda om paketlistan"
 
-#: ../rpmdrake:805 ../rpmdrake.pm:446
+#: ../rpmdrake:805 ../rpmdrake.pm:456
 #, c-format
 msgid "Update media"
 msgstr "Uppdatera medium"
@@ -1403,6 +1410,11 @@ msgid ""
 "\n"
 "Then, restart MandrakeUpdate."
 msgstr ""
+"Du har redan minst ett media för uppdatering konfigurerat, men\n"
+"samtliga är för närvarande inaktiva. Du bör köra 'Programhanteraren\n"
+"för källor' och aktivera minst ett (titta i kolumnen Aktiverad).\n"
+"\n"
+"Starta sedan om 'Uppdatera Mandrake'."
 
 #: ../rpmdrake:975
 #, c-format
@@ -1827,12 +1839,12 @@ msgid "China"
 msgstr "Kina"
 
 #: ../rpmdrake.pm:241 ../rpmdrake.pm:242 ../rpmdrake.pm:243 ../rpmdrake.pm:244
-#: ../rpmdrake.pm:295
+#: ../rpmdrake.pm:303
 #, c-format
 msgid "United States"
 msgstr "Amerikas förenta stater"
 
-#: ../rpmdrake.pm:305
+#: ../rpmdrake.pm:313
 #, c-format
 msgid ""
 "I need to contact MandrakeSoft website to get the mirrors list.\n"
@@ -1845,17 +1857,17 @@ msgstr ""
 "\n"
 "Är det OK att fortsätta?"
 
-#: ../rpmdrake.pm:309
+#: ../rpmdrake.pm:317
 #, c-format
 msgid "Please wait, downloading mirrors addresses from MandrakeSoft website."
 msgstr "Vänta, laddar ner spegeladresser från MandrakeSofts webbplats."
 
-#: ../rpmdrake.pm:318
+#: ../rpmdrake.pm:323
 #, c-format
 msgid "Error during download"
 msgstr "Fel vid nerladdning"
 
-#: ../rpmdrake.pm:319
+#: ../rpmdrake.pm:324
 #, c-format
 msgid ""
 "There was an error downloading the mirrors list:\n"
@@ -1870,12 +1882,12 @@ msgstr ""
 "Nätverket eller MandrakeSofts webbplats är kanske inte tillgängligt.\n"
 "Försök igen senare."
 
-#: ../rpmdrake.pm:327
+#: ../rpmdrake.pm:332
 #, c-format
 msgid "No mirror"
 msgstr "Ingen spegel"
 
-#: ../rpmdrake.pm:328
+#: ../rpmdrake.pm:333
 #, c-format
 msgid ""
 "I can't find any suitable mirror.\n"
@@ -1890,68 +1902,68 @@ msgstr ""
 "är att din processorarkitektur inte stöds av Mandrake Linux officiella "
 "uppdateringar."
 
-#: ../rpmdrake.pm:345
+#: ../rpmdrake.pm:350
 #, c-format
 msgid "Please choose the desired mirror."
 msgstr "Välj önskad spegel."
 
-#: ../rpmdrake.pm:386
+#: ../rpmdrake.pm:396
 #, c-format
 msgid "Copying file for medium `%s'..."
 msgstr "Kopierar fil för medium \"%s\"..."
 
-#: ../rpmdrake.pm:389
+#: ../rpmdrake.pm:399
 #, c-format
 msgid "Examining file of medium `%s'..."
 msgstr "Undersöker fil för medium \"%s\"..."
 
-#: ../rpmdrake.pm:392
+#: ../rpmdrake.pm:402
 #, c-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "Undersöker fjärrfil för medium \"%s\"..."
 
-#: ../rpmdrake.pm:396
+#: ../rpmdrake.pm:406
 #, c-format
 msgid " done."
 msgstr " klar."
 
-#: ../rpmdrake.pm:400
+#: ../rpmdrake.pm:410
 #, c-format
 msgid " failed!"
 msgstr " misslyckades."
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:404
+#: ../rpmdrake.pm:414
 #, c-format
 msgid "%s from medium %s"
 msgstr "%s från media %s"
 
-#: ../rpmdrake.pm:408
+#: ../rpmdrake.pm:418
 #, c-format
 msgid "Starting download of `%s'..."
 msgstr "Startar nedladdning av \"%s\"..."
 
-#: ../rpmdrake.pm:412
+#: ../rpmdrake.pm:422
 #, c-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr "Nedladdnig av \"%s\", återstående tid:%s, hastighet:%s"
 
-#: ../rpmdrake.pm:415
+#: ../rpmdrake.pm:425
 #, c-format
 msgid "Download of `%s', speed:%s"
 msgstr "Nedladdnig av \"%s\", hastighet:%s"
 
-#: ../rpmdrake.pm:452
+#: ../rpmdrake.pm:462
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Välj medium du vill uppdatera:"
 
-#: ../rpmdrake.pm:456
+#: ../rpmdrake.pm:466
 #, c-format
 msgid "Update"
 msgstr "Uppdatera"
 
-#: ../rpmdrake.pm:468
+#: ../rpmdrake.pm:478
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1964,32 +1976,35 @@ msgstr ""
 "Fel:\n"
 "%s"
 
-#: ../rpmdrake.pm:485 ../rpmdrake.pm:490
+#: ../rpmdrake.pm:495 ../rpmdrake.pm:500
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
 "\n"
 "%s"
 msgstr ""
+"Kan inte lägga till media, fel rapporterade:\n"
+"\n"
+"%s"
 
-#: ../rpmdrake.pm:501
+#: ../rpmdrake.pm:511
 #, c-format
 msgid "Unable to create medium."
 msgstr "Kan inte skapa media."
 
-#: ../rpmdrake.pm:506
-#, fuzzy, c-format
+#: ../rpmdrake.pm:516
+#, c-format
 msgid "Failure when adding medium"
-msgstr "Vänta, lägger till media..."
+msgstr "Fel vid tillägg av media"
 
-#: ../rpmdrake.pm:507
-#, fuzzy, c-format
+#: ../rpmdrake.pm:517
+#, c-format
 msgid ""
 "There was a problem adding medium:\n"
 "\n"
 "%s"
 msgstr ""
-"Det uppstod ett fel under installationen:\n"
+"Det uppstod ett fel vid tillägg av media:\n"
 "\n"
 "%s"
 
