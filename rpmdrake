@@ -24,8 +24,9 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
     "@ARGV" =~ /-h/ and do {
 	printf STDERR "Usage: %s [OPTION]...
-  --noconfirmation       don't ask first confirmation question in MandrakeUpdate mode
+  --no-confirmation      don't ask first confirmation question in MandrakeUpdate mode
   --no-verify-rpm        don't verify packages signatures
+  --changelog-first      display changelog before filelist in the description window
 ", $basename->($0);
 	exit 0;
     };
@@ -436,12 +437,13 @@ or you already installed all of them."));
 				     my ($name, $version) = split_fullname($key);
 				     exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
+				     my $files = [ "\n", _("Files:\n"), $pkgs->{$key}{files} || _("(Not available)") ];
+				     my $chglo = [ "\n", _("Changelog:\n"), $pkgs->{$key}{changelog} || _("(Not available)") ];
 				     my @max_info = if_(@$max_info_in_descr,
 					      $MODE eq 'remove' ? ()
 						 : ([ "\n", _("Source: "), pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ],
 						    [ "\n", _("Currently installed version: "), find_installed_version($pkgs->{$key}{pkg}) ]),
-					      [ "\n",   _("Files:\n"), $pkgs->{$key}{files} || _("(Not available)") ],
-					      [ "\n\n", _("Changelog:\n"), $pkgs->{$key}{changelog} || _("(Not available)") ]);
+					      $options{'changelog-first'} ? ($chglo, $files) : ($files, $chglo));
 				     my $col = my_gtk::gtkcolor(32*256, 68*256, 157*256);
 				     $MODE eq 'update' and gtktext_insert($info_update,
 							      [ [ undef, $col, undef, _("Reason for update: ") ],
@@ -716,7 +718,7 @@ sub get_installable_pkgs {
 	undef $urpm;
 	if (@update_medias > 0) {
 	    if (!$opts->{skip_updating_mu}) {
-		$options{noconfirmation} or interactive_msg('rpmdrake',
+		$options{'no-confirmation'} or interactive_msg('rpmdrake',
 _("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
