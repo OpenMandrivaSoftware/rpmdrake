@@ -605,8 +605,8 @@ or you already installed all of them."));
 
     my $do_action = sub {
 	$fake_modality and return;
-	$fake_modality = 1;
 	int(grep { $pkgs->{$_}{selected} } keys %$pkgs) or return;
+	$fake_modality = 1;
 	my $size_added = sum(map { if_($_->flag_selected && !$_->flag_installed, $_->size) } @{$urpm->{depslist}});
 	if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*(1024)) {
 	    interactive_msg(_("Too many packages are selected"),
@@ -616,7 +616,7 @@ during or after package installation ; this is particularly
 dangerous and should be considered with care.
 
 Do you really want to install all the selected packages?"), yesno => 1)
-	      or return;
+	      or $fake_modality = 0, return;
 	}
 	if ($MODE ne 'remove' && %{$urpm->{state}{ask_remove} || {}}) {
 	    interactive_msg(_("Some packages need to be removed"),
@@ -625,7 +625,7 @@ _("The following packages have to be removed for others to be upgraded:
 %s
 
 Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), yesno => 1)
-	      or return;
+	      or $fake_modality = 0, return;
 	}
 	$callback_action->($urpm, $pkgs);
 	($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
