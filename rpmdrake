@@ -110,7 +110,8 @@ sub extract_header {
     my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
     if (-r $hdlist) {  #- packdrake segfaults when giving a missing file :(
 	standalone::explanations("Extracting header of " . $p->header_filename . " from $hdlist");
-	my $packer = new packdrake($hdlist, quiet => 1);
+	my $packer;
+	eval { $packer = new packdrake($hdlist, quiet => 1) } or log::l("Warning, hdlist seems corrupted :-("), goto header_non_available;
 	$packer->extract_archive($headersdir, $p->header_filename);
 	$p->update_header($headersdir . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
 	rm_rf($headersdir);
@@ -119,6 +120,66 @@ sub extract_header {
     } else {
       header_non_available:
 	add2hash($pkg, { summary => _("(Non available)"), description => undef });
+    }
+}
+
+sub do_search($$$$$$) {
+    my ($find_entry, $tree, $options, $current_search_type, $urpm, $pkgs) = @_;
+    my $entry = $find_entry->get_text or return;
+    my ($results_ok, $results_none) = (_("Search results"), _("Search results (none)"));
+    $options->{delete_category}->($_) foreach ($results_ok, $results_none);
+    $options->{state}{flat} and $options->{delete_all}->();
+    $tree->collapse_recursive(undef);
+    my @search_results;
+    if ($current_search_type ne 'normal') {
+	if ($MODE eq 'remove') {
+	    @search_results = map { if_(eval { ($pkgs->{$_}{summary}.$pkgs->{$_}{description}) =~ /$entry/i }, $_) } keys %$pkgs;
+	} else {
+	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}"; if_(!$_->{ignore} && (-r $h), $h) } @{$urpm->{media}};
+	    my $total_size = sum(map { my $pack; eval { $pack = new packdrake($_, quiet => 1) } ? $pack->{toc_f_count} : 0 } @hdlists);
+	    my $searchstop;
+	    my $searchw = my_gtk->new;
+	    gtkadd($searchw->{window}, gtkpack__(new Gtk::VBox(1, 5),
+						 new Gtk::Label(_("Please wait, searching...")),
+						 my $searchprogress = gtkset_usize(new Gtk::ProgressBar, 400, 0),
+						 gtkpack__(gtkset_layout(new Gtk::HButtonBox, 'spread'),
+							   gtksignal_connect(new Gtk::Button(but(_("Stop"))),
+									     clicked => sub { $searchstop = 1 }))));
+	    $searchw->sync;
+	    open SF, "parsehdlist --fileswinfo --description --summary @hdlists |";
+	    my ($pkg, $progresscount);
+	    while (<SF>) {
+		$searchstop and last;
+		if (/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/) {
+		    $pkg = "$1-$2-$3";
+		    $progresscount++; $progresscount <= $total_size and $searchprogress->update($progresscount/$total_size);
+		    $searchw->flush;
+		    next;
+		}
+		$pkg or next;
+		my (undef, $key, $value) = split ':', $_;
+		if ($current_search_type eq 'descriptions') {
+		    $key =~ /^summary|description$/ or next;
+		} else {
+		    $key eq 'files' or next;
+		}
+		if (eval { $value =~ /$entry/i }) {
+		    exists $pkgs->{$pkg} and push @search_results, $pkg;
+		    $pkg = '';
+		}
+	    }
+	    close SF;
+	    @search_results = uniq(@search_results); #- there can be multiple packages with same version/release for different arch's
+	    $searchw->destroy;
+	}
+    } else {
+	@search_results = grep { eval { $_ =~ /$entry/i } } keys %$pkgs;
+    }
+    if (@search_results) {
+	$options->{add_nodes}->(map { [ $_, _("Search results") ] } sort { uc($a) cmp uc($b) } @search_results);
+	$tree->expand($tree->node_nth($tree->rows-1));
+    } else {
+	$options->{add_nodes}->([ '', $results_none ]);
     }
 }
 
@@ -408,42 +469,20 @@ or you already installed all of them."));
 	} @radios_names_ordered;
     }
 
+    my $search_types_menu = new Gtk::Menu;
+    my @search_types = ([ 'normal', _("in names") ], [ 'descriptions', _("in descriptions") ]);
+    $MODE ne 'remove' and push @search_types, [ 'files', _("in files") ];
+    my $current_search_type = $search_types[0]->[0];
+    foreach (@search_types) {
+	my $capt_type = $_->[0];
+	$search_types_menu->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($_->[1])),
+						     activate => sub { $current_search_type = $capt_type }));
+    }
+    my $search_types_optionmenu = new Gtk::OptionMenu;
+    $search_types_optionmenu->set_menu($search_types_menu);
+
     my $find_entry;
-    my $find_callback = sub {
-	my $entry = $find_entry->get_text or return;
-	my ($results_ok, $results_none) = (_("Search results"), _("Search results (none)"));
-	$options->{delete_category}->($_) foreach ($results_ok, $results_none);
-	$options->{state}{flat} and $options->{delete_all}->();
-	$tree->collapse_recursive(undef);
-	my @search_results;
-	if ($MODE ne 'remove' && $entry =~ m|/|) {
-	    my $w = wait_msg(_("Please wait, searching in files..."));
-	    open SF, 'parsehdlist --fileswinfo --quiet ' .
-	             join(' ', map { my $hdlist = "$urpm->{statedir}/$_->{hdlist}";
-				     if_(!$_->{ignore} && (-r $hdlist), "$hdlist ") } @{$urpm->{media}}) .
-		     ' |';
-	    my $pkg;
-	    while (<SF>) {
-		/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/ and $pkg = "$1-$2-$3", next;
-		$pkg or next;
-		my (undef, $file) = split ':', $_;
-		if (eval { $file =~ /$entry/ }) {
-		    exists $pkgs->{$pkg} and push @search_results, $pkg;
-		    $pkg = '';
-		}
-	    }
-	    close SF;
-	    remove_wait_msg($w);
-	} else {
-	    @search_results = grep { eval { $_ =~ /$entry/i } } keys %$pkgs;
-	}
-	if (@search_results) {
-	    $options->{add_nodes}->(map { [ $_, _("Search results") ] } sort { uc($a) cmp uc($b) } @search_results);
-	    $tree->expand($tree->node_nth($tree->rows-1));
-	} else {
-	    $options->{add_nodes}->([ '', $results_none ]);
-	}
-    };
+    my $find_callback = sub { do_search($find_entry, $tree, $options, $current_search_type, $urpm, $pkgs) };
 
     my $do_action = sub {
 	int(grep { $pkgs->{$_}{selected} } keys %$pkgs) or return;
@@ -469,6 +508,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 			      gtkpack_(new Gtk::VBox(0, 3),
 				       0, gtkpack__(new Gtk::HBox(0, 10),
 						    new Gtk::Label(_("Find:")),
+						    $search_types_optionmenu,
 						    gtksignal_connect($find_entry = new Gtk::Entry,
 								      key_press_event => sub { $_[1]->{keyval} == 0xff0d
 												 and $find_callback->() }),
