@@ -19,7 +19,7 @@ Summary: Mandrakelinux graphical front end for choosing packages for installion/
 Requires: perl-MDK-Common >= 1.1.18-2mdk
 Requires: urpmi >= 4.6.8-1mdk
 Requires: perl-URPM >= 1.03-1mdk
-Requires: drakxtools >= 10.1-11mdk
+Requires: drakxtools >= 10.2-0.22mdk
 Requires: rpmtools >= 5.0.5
 Requires: packdrake >= 5.0.5
 Requires: perl-Gtk2 >= 1.054-1mdk

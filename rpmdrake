@@ -37,6 +37,7 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
   --pkg-nosel=pkg1,..    show only these packages
   --pkg-sel=pkg1,..      preselect these packages
   --root                 force to run as root
+  --search=pkg           run search for "pkg"
 ), $basename->($0);
 	exit 0;
     };
@@ -1173,6 +1174,7 @@ Is it ok to continue?",
     $find_entry->grab_focus;
 
     $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
+    $find_entry->set_text($options{search}[0]) if $options{search};
 
     $w->{rwindow}->show_all;
     $options->{widgets} = {
@@ -1184,6 +1186,7 @@ Is it ok to continue?",
 	info => $info,
 	status => $status,
     };
+    $options->{init_callback} = $find_callback if $options{search};
 
     ask_browse_tree_info_given_widgets($options);
 }
