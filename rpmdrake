@@ -400,7 +400,8 @@ sub run_treeview_dialog {
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $::noBorder = 1;
-    $w = ugtk2->new(N("Rpmdrake %s", "10.0"));
+    (my $mdk_version) = (cat_('/etc/mandrake-release') || '') =~ /(\d+\.\d+)/;
+    $w = ugtk2->new(N("Rpmdrake %s", $mdk_version || ''));
     $::noBorder = 0;
 
     my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
