@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.1
-%define release 38mdk
+%define version 2.1.1
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi > 4.4-31mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools > 9.2-5mdk rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.4.1 gurpmi >= 4.4.1 perl-URPM >= 0.90-7mdk drakxtools > 9.2-5mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-6mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: curl-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -101,7 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Mon Jan 12 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-38mdk
+* Mon Jan 12 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.1-1mdk
+- add ability to cancel packages downloads (#6317)
+- together with changes in 2.1-36mdk deserve a subsubversion change
 - remove unecessary provides perl(rpmdrake)
 
 * Fri Jan 09 2004 Warly <warly@mandrakesoft.com> 2.1-37mdk

@@ -1086,6 +1086,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     gurpm::init(N("Package installation..."), N("Initializing..."));
     my $distant_progress;
+    my $canceled;
     my %sources = $urpm->download_source_packages($local_sources, $list, force_local => 1,
                                                   ask_for_medium => sub {
                                                       interactive_msg_(N("Change medium"),
@@ -1096,12 +1097,18 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                       if ($mode eq 'start') {
                                                           gurpm::label(N("Downloading package `%s' (%s/%s)...",
                                                                          basename($file), ++$distant_progress, $distant_number));
+                                                          gurpm::validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
                                                       } elsif ($mode eq 'progress') {
                                                           gurpm::progress($percent/100);
                                                       } elsif ($mode eq 'end') {
                                                           gurpm::progress(1);
+                                                          gurpm::invalidate_cancel();
                                                       }
+                                                      $canceled and return 'canceled';
                                                   });
+    $canceled and goto return_with_error;
+    gurpm::invalidate_cancel_forever();
+
     my %sources_install = %{$urpm->extract_packages_to_install(\%sources) || {}};
     my @rpms_install = grep { !/\.src\.rpm$/ } values %sources_install;
     my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
