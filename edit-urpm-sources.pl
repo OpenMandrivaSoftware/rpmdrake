@@ -32,11 +32,11 @@ Gtk->init;
 
 
 sub add_medium_and_check {
-    my ($urpm, $msg) = splice @_, 0, 2;
+    my ($urpm, $msg, $options) = splice @_, 0, 3;
     standalone::explanations("Adding medium @_");
     my $wait = wait_msg($msg);
     $urpm->add_medium(@_);
-    $urpm->update_media(noclean => 1);
+    $urpm->update_media(%$options, noclean => 1);
     remove_wait_msg($wait);
     my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
     $medium or interactive_msg('rpmdrake', _("Unable to create medium."));
@@ -104,7 +104,7 @@ sub add_callback {
     my $checkok = sub {
 	my $info = $radios_infos{$radios_names_ordered[$notebook->get_current_page]};
 	my ($name, $url, $hdlist) = map { $info->{$_.'_entry'}->get_text } qw(name url hdlist);
-	$name eq '' || $url eq '' || $hdlist eq '' and interactive_msg('rpmdrake', _("You need to fill up all the entries.")), return 0;
+	$name eq '' || $url eq '' and interactive_msg('rpmdrake', _("You need to fill up at least the two first entries.")), return 0;
 	if (member($name, map { $_->{name} } @{$urpm->{media}})) {
 	    $info->{name_entry}->select_region(0, -1);
 	    interactive_msg('rpmdrake', 
@@ -129,21 +129,22 @@ really want to replace it?"), { yesno => 1 } ) or return 0;
     if ($w->main) {
 	my $type = $radios_names_ordered[$w->{retval}{nb}];
 	my $info = $radios_infos{$type};
-	my $name = $info->{name_entry}->get_text;
-	my $url = $info->{url_entry}->get_text;
-	my %make_url = (local => "file:/$url", http => $url, security => $url, removable => "removable:/$url");
+	my %i = (name => $info->{name_entry}->get_text, url => $info->{url_entry}->get_text, hdlist => $info->{hdlist_entry}->get_text);
+	my %make_url = (local => "file:/$i{url}", http => $i{url}, security => $i{url}, removable => "removable:/$i{url}");
 	$make_url{ftp} = sprintf "ftp://%s%s", $info->{login_check}->get_active
 	                                           ? ($info->{login_entry}->get_text.':'.$info->{pass_entry}->get_text.'@')
 						   : '',
-					       $url;
+					       $i{url};
 	$make_url{ftp} =~ s|^ftp://ftp://|ftp://|;
-	if (member($name, map { $_->{name} } @{$urpm->{media}})) {
-	    standalone::explanations("Removing medium $name");
-	    $urpm->select_media($name);
+	if (member($i{name}, map { $_->{name} } @{$urpm->{media}})) {
+	    standalone::explanations("Removing medium $i{name}");
+	    $urpm->select_media($i{name});
 	    $urpm->remove_selected_media;
 	}
+	;
 	add_medium_and_check($urpm, _("Please wait, adding medium..."),
-			     $name, $make_url{$type}, $info->{hdlist_entry}->get_text, update => $type eq 'security');
+			     { probe_with_hdlist => member($type, qw(removable local)) && $i{hdlist} eq '' },
+			     $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security');
 	return 1;
     }
     return 0;
@@ -181,8 +182,7 @@ sub edit_callback {
 	standalone::explanations("Removing medium $name");
 	$urpm->select_media($name);
 	$urpm->remove_selected_media;
-	add_medium_and_check($urpm, _("Please wait, updating medium..."),
-			     $name, $url, $with_hdlist, update => $update);
+	add_medium_and_check($urpm, _("Please wait, updating medium..."), {}, $name, $url, $with_hdlist, update => $update);
 	return 1;
     }
     return 0;
