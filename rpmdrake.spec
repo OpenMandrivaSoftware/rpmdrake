@@ -116,7 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Thu Jan  9 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-2mdk
+* Fri Jan 10 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-2mdk
 - grpmi:
   - verify all signatures at the end of all downloads
   - allow to say "yes to all" to the signatures questions
@@ -128,6 +128,7 @@ rm -rf $RPM_BUILD_ROOT
     stopping the program after resolving a rpmnew
   - add the possibility to view more infos on each package, when
     presenting a list of deps
+- br*tn*y release :)
 
 * Wed Jan  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-1mdk
 - gtk2 (possibly contains important breakages, use with care)
