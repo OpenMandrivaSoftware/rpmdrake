@@ -592,13 +592,15 @@ sub get_installable_pkgs {
     my ($updates, $opts) = @_;
     my $update_name = 'update_source';
     my %update_descr;
+    my @update_medias;
 
     if ($updates) {
 	my $urpm = new urpm;
 	$urpm->configure();
 	my ($statedir, $cachedir) = map { $urpm->{$_} } qw (statedir cachedir);
-	if (grep { $_->{name} eq $update_name } @{$urpm->{media}}) {
-	    undef $urpm;
+	@update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
+	undef $urpm;
+	if (@update_medias > 0) {
 	    if (!$opts->{skip_updating_mu}) {
 		$options{noconfirmation} or interactive_msg('rpmdrake',
 _("I need to contact the mirror to get latest update packages.
@@ -606,19 +608,18 @@ Please check that your network is currently running.
 
 Is it ok to continue?"), { yesno => 1 }) or myexit -1;
 		my $w = wait_msg(_("Please wait, contacting mirror to update packages information."));
-		system("/usr/sbin/urpmi.update $update_name") == 0
+		system('/usr/sbin/urpmi.update', map { $_->{name} } @update_medias) == 0
 		  or fatal_msg(_("Error updating medium"),
 			       _("There was an unrecoverable error while updating packages information."));
 		remove_wait_msg($w);
 	    }
 	} else {
-	    undef $urpm;
 	  mu_retry_another_mirror:
 	    my $m = choose_mirror;
 	    $m or interactive_msg(_("How to choose manually your mirror"),
 _("You may also choose your desired mirror manually: to do so,
 launch the Software Sources Manager, and then add a `Security
-updates' source (keep the default name of the source - `%s').
+updates' source.
 
 Then, restart MandrakeUpdate.", $update_name)), myexit -1;
 	    my ($r) = cat_('/etc/mandrake-release') =~ /release\s(\S+)/;
@@ -639,7 +640,7 @@ Do you want to try another mirror?", $r), { yesno => 1 }) and goto mu_retry_anot
 	}
 
 	my ($cur, $section);
-	foreach (cat_("$statedir/descriptions.update_source")) {
+	foreach (map { cat_("$statedir/descriptions.$_->{name}") } @update_medias) {
 	    /^%package (.+)/ and do {
 		$update_descr{$_} = $cur foreach @{$cur->{pkgs}};
 		$cur = {};
@@ -661,20 +662,14 @@ Do you want to try another mirror?", $r), { yesno => 1 }) and goto mu_retry_anot
     my %installable_pkgs;
 
     $urpm->configure;
-
-    my ($start, $end);
-    if ($updates) {
-	foreach (@{$urpm->{media}}) {
-	    $_->{name} eq $update_name and ($start, $end) = ($_->{start}, $_->{end});
-	}
-    }
+    @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 
     $urpm->compute_installed_flags(db);
 
-    foreach (@{$urpm->{depslist}}) {
-	$_->flag_upgrade or next;
-	$updates and ($_->flag_installed && $_->id >= $start && $_->id <= $end or next);
-	$installable_pkgs{my_fullname($_)} = { selected => 0, pkg => $_ };
+    foreach my $pkg (@{$urpm->{depslist}}) {
+	$pkg->flag_upgrade or next;
+	$updates and ($pkg->flag_installed && grep { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next);
+	$installable_pkgs{my_fullname($pkg)} = { selected => 0, pkg => $pkg };
     }
 
     remove_wait_msg($w);
