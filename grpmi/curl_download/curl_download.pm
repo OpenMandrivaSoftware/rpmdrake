@@ -7,7 +7,6 @@ use urpm::download;
 require DynaLoader;
 
 our @ISA = qw(DynaLoader);
-our @EXPORT = qw(download readproxy writeproxy);
 our $VERSION = '1.1';
 
 bootstrap curl_download $VERSION;
