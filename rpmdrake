@@ -195,7 +195,7 @@ sub run_treeview_dialog {
 			   if ($mode eq 'by_source') {
 			       $add_node->($_->[0], pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm)->{name}) foreach $sortmethods{flat}->(@elems);
 			   } elsif ($mode eq 'by_presence') {
-			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed ? _("Upgradable") : _("Addable"))
+			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed ? _("Upgradeable") : _("Addable"))
 				 foreach $sortmethods{flat}->(@elems);
 			   } else {
 			       #- special case, we don't populate all the tree at first (to speed things up)
@@ -326,22 +326,6 @@ sub run_treeview_dialog {
 				  $tree->expand($_[1]);
 			      }
 			  });
-    my $m = new Gtk::Menu;
-    my @advanced_modes = ([ 'by_size', _("By size"), 1 ], [ 'by_selection', _("By selection"), 1 ]);
-    $MODE eq 'install' and push @advanced_modes, ([ 'by_source', _("By source"), 0 ], [ 'by_presence', _("By presence"), 0 ]);
-    foreach (@advanced_modes) {
-	my ($capt_mode, $capt_flat) = ($_->[0], $_->[2]);
-	$m->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($_->[1])),
-				     activate => sub {
-					 $options->{tree_mode} = $capt_mode;
-					 $options->{state}{flat} = $capt_flat;
-					 $options->{rebuild_tree}->();
-				     }));
-    }
-    $tree->signal_connect(button_press_event => sub {
-			      $_[1]->{button} eq 3 or return;
-			      $m->popup(undef, undef, $_[1]->{button}, $_[1]->{time});
-			  });
 
     my @modes_buttons;
     if ($MODE eq 'update') {
@@ -366,25 +350,49 @@ sub run_treeview_dialog {
 	} \@toggle_names_ordered, \@modes_buttons;
     } else {
 	my %radios_infos = (mandrake_choices => { name => _("Mandrake choices"),           flat => 0 },
-			    by_group         => { name => _("All packages, by group"),     flat => 0 },
-			    flat             => { name => _("All packages, alphabetical"), flat => 1 });
+			    flat             => { name => _("All packages, alphabetical"), flat => 1 },
+	                    by               => { name => _("All packages,"),              flat => 0 });
 	$compssUsers = parse_compssUsers_flat($urpm);
-	my @radios_names_ordered = qw(mandrake_choices by_group flat);
+	my @radios_names_ordered = qw(mandrake_choices flat by);
 	$compssUsers or shift @radios_names_ordered;
 	@modes_buttons = gtkradio($radios_infos{mandrake_choices}{name}, map { $radios_infos{$_}{name} } @radios_names_ordered);
+
 	mapn {
-	    my $capture_value = $_[0];
+	    my $capture_mode = $_[0];
 	    $_[1]->signal_connect(clicked => sub {
 				      if ($_[0]->get_active) {
 					  $disable_treeselect_callback = 1;
-					  $options->{state}{flat} = $radios_infos{$capture_value}{flat};
-					  $options->{tree_mode} = $capture_value;
+					  ($options->{tree_mode}, $options->{state}{flat}) = $capture_mode eq 'by'
+					        ? ($options->{tree_submode}, $options->{tree_subflat})
+					        : ($capture_mode,            $radios_infos{$capture_mode}{flat});
 					  $options->{rebuild_tree}->();
 					  $disable_treeselect_callback = 0;
 				      }
-				  })
+				  });
 	} \@radios_names_ordered, \@modes_buttons;
 	$options->{tree_mode} = $radios_names_ordered[0];
+
+	my $advanced_menu = new Gtk::Menu;
+	my $radio_by;
+	my @advanced_modes = ([ 'by_group', _("by group"), 0 ], [ 'by_size', _("by size"), 1 ], [ 'by_selection', _("by selection"), 1 ]);
+	$MODE eq 'install' and push @advanced_modes, ([ 'by_source', _("by source"), 0 ], [ 'by_presence', _("by presence"), 0 ]);
+	foreach (@advanced_modes) {
+	    my ($capt_mode, $capt_flat) = ($_->[0], $_->[2]);
+	    $advanced_menu->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($_->[1])),
+						     activate => sub {
+							 $options->{tree_submode} = $capt_mode;
+							 $options->{tree_subflat} = $capt_flat;
+							 $radio_by->activate;
+						     }));
+	}
+	$options->{tree_submode} = $advanced_modes[0]->[0];
+	each_index {
+	    if ($_ eq 'by') {
+		$radio_by = $modes_buttons[$::i];
+		$modes_buttons[$::i] = gtkpack(new Gtk::HBox, $modes_buttons[$::i], my $t = new Gtk::OptionMenu);
+		$t->set_menu($advanced_menu);
+	    }
+	} @radios_names_ordered;
     }
 
     my $find_entry;
