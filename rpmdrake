@@ -290,7 +290,7 @@ sub extract_header {
 sub db {
     my ($force) = @_;
     my $host;
-    if ($options{parallel} && (undef, $host) = @{$options{parallel}}) {
+    if ($options{parallel} && ((undef, $host) = @{$options{parallel}})) {
         my $done if 0;
         my $dblocation = "/var/cache/urpmi/distantdb/$host";
         if (!$done || $force) {
@@ -337,10 +337,9 @@ sub do_search($$$$$$$) {
 							   gtksignal_connect(Gtk2::Button->new(but(N("Stop"))),
 									     clicked => sub { $searchstop = 1 }))));
 	    $searchw->sync;
-	    local $SF;
-	    open $SF, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "'$_'" } @hdlists).' |';
+	    open my $sf, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "'$_'" } @hdlists).' |';
 	    my ($pkg, $progresscount);
-	    while (<$SF>) {
+	    while (<$sf>) {
 		$searchstop and last;
 		if (/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/) {
 		    $pkg = "$1-$2-$3";
@@ -360,7 +359,7 @@ sub do_search($$$$$$$) {
 		    $pkg = '';
 		}
 	    }
-	    close $SF;
+	    close $sf;
 	    @search_results = uniq(@search_results); #- there can be multiple packages with same version/release for different arch's
 	    $searchw->destroy;
 	}
@@ -1235,7 +1234,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     $w->{rwindow}->set_sensitive(0);
 
     my $group;
-    if ($options{parallel} && ($group) = @{$options{parallel}}) {
+    if ($options{parallel} && (($group) = @{$options{parallel}})) {
         my $pkgs = join(' ', map { if_($_->flag_requested, my_fullname($_)) } @{$urpm->{depslist}});
         system("urpmi -v --X --parallel $group $pkgs");
         if ($? == 0) {
@@ -1479,7 +1478,7 @@ sub get_installed_pkgs {
     remove_wait_msg($wait);
     my $urpm = urpm->new;
     my $group;
-    if ($options{parallel} && ($group) = @{$options{parallel}}) {
+    if ($options{parallel} && (($group) = @{$options{parallel}})) {
         $urpm->configure(parallel => $group);
     }
     ($urpm, \%installed_pkgs);
