@@ -11,9 +11,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi\n"
-"POT-Creation-Date: 2002-08-06 13:59+0200\n"
-"PO-Revision-Date: 2001-06-07 10:01+0900\n"
-"Last-Translator: Jaegeum Choe <baedaron@hananet.net>\n"
+"POT-Creation-Date: 2002-08-12 01:43+0200\n"
+"PO-Revision-Date: 2002-08-16 01:39+0900\n"
+"Last-Translator: Jaegeum Cze <baedaron@hanafos.com>\n"
 "Language-Team: Korean <baedaron@hananet.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=euc-kr\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../curl_download/curl_download.xs:83
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "내려받을 디렉토리가 존재해야 합니다."
 
 #: ../curl_download/curl_download.xs:86 ../curl_download/curl_download.xs:201
 msgid "Out of memory\n"
@@ -29,7 +29,7 @@ msgstr "메모리 부족\n"
 
 #: ../curl_download/curl_download.xs:99
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "어펜드 모드에서 출력 파일을 열 수 없었습니다."
 
 #: ../curl_download/curl_download.xs:121
 msgid "Unsupported protocol\n"
@@ -210,11 +210,11 @@ msgstr "알 수 없는 오류코드 %d\n"
 
 #: ../grpmi.pl_.c:51
 msgid "Yes"
-msgstr ""
+msgstr "예"
 
 #: ../grpmi.pl_.c:52
 msgid "No"
-msgstr ""
+msgstr "아니오"
 
 #: ../grpmi.pl_.c:53
 msgid "Ok"
@@ -226,29 +226,28 @@ msgstr "오류..."
 
 #: ../grpmi.pl_.c:63
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "팩키지 설치는 root 사용자만 할 수 있습니다."
 
 #: ../grpmi.pl_.c:65
 msgid "RPM initialization error"
-msgstr ""
+msgstr "RPM 초기화 오류"
 
 #: ../grpmi.pl_.c:66
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "RPM 설정 파일들의 초기화가 불가능했습니다."
 
 #: ../grpmi.pl_.c:69
-#, fuzzy
 msgid "Initializing..."
-msgstr "설치하는 과정:"
+msgstr "초기화..."
 
 #: ../grpmi.pl_.c:90
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "팩키지 내려받는 중: [%s] (%s/%s)..."
 
 #: ../grpmi.pl_.c:97
 msgid "Error during download"
-msgstr ""
+msgstr "내려받기 중 오류"
 
 #: ../grpmi.pl_.c:98
 #, c-format
@@ -260,15 +259,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"팩키지를 내려받는 도중에 오류가 있었습니다:\n"
+"\n"
+"%s\n"
+"\n"
+"오류: %s\n"
+"계속 진행할까요? (이 팩키지 건너뜀)"
 
 #: ../grpmi.pl_.c:110
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "[%s]의 서명 검증 중 ..."
 
 #: ../grpmi.pl_.c:112
 msgid "Signature verification error"
-msgstr ""
+msgstr "서명 검증 오류"
 
 #: ../grpmi.pl_.c:113
 #, c-format
@@ -278,11 +283,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"[%s] 팩키지의 서명이 정확하지 않습니다:\n"
+"\n"
+"%s\n"
+"어쨋거나 설치할까요?"
 
 #: ../grpmi.pl_.c:119
-#, fuzzy
 msgid "File error"
-msgstr "쓰기 오류\n"
+msgstr "파일 오류"
 
 #: ../grpmi.pl_.c:120
 #, c-format
@@ -293,15 +301,19 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"다음 파일은 유효하지 않습니다:\n"
+"\n"
+"%s\n"
+"\n"
+"어쨋거나 계속할까요? (이 팩키지 건너뜀)"
 
 #: ../grpmi.pl_.c:135
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "설치 준비 중..."
+msgstr "설치할 팩키지 준비 중..."
 
 #: ../grpmi.pl_.c:143
 msgid "Conflicts detected"
-msgstr ""
+msgstr "충돌이 감지되었습니다."
 
 #: ../grpmi.pl_.c:144
 #, c-format
@@ -311,577 +323,114 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"충돌이 감지되었습니다:\n"
+"%s\n"
+"\n"
+"어쨋거나 강제로 설치할까요?"
 
 #: ../grpmi.pl_.c:151
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "팩키지 설치 중: [%s] (%s/%s)..."
 
 #: ../grpmi.pl_.c:164
 msgid "Problems occurred during installation"
 msgstr "설치중에 문제가 발생했습니다."
 
 #: ../grpmi.pl_.c:164
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "설치 준비 중..."
+msgstr ""
+"팩키지 설치 중 오류가 있었습니다:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:66
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "File 파일을 읽을 수 없습니다.\n"
+msgstr "RPM 설정 파일들을 읽을 수 없었습니다."
 
 #: ../rpm/grpmi_rpm.xs:92
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "접속할 수 없습니다.\n"
+msgstr "파일을 열 수 없었습니다.\n"
 
 #: ../rpm/grpmi_rpm.xs:96
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "호스트를 찾을 수 없습니다.\n"
+msgstr "리드 바이트를 읽을 수 없습니다.\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "이 RPM 버전의 팩키지는 서명을 지원하지 않습니다.\n"
 
 #: ../rpm/grpmi_rpm.xs:104
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "서명 블록을 읽을 수 없었습니다.([rpmReadSignature] 실패)\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "No signatures\n"
-msgstr ""
+msgstr "서명이 없습니다.\n"
 
 #: ../rpm/grpmi_rpm.xs:111
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "[make TempFile] 실패!\n"
 
 #: ../rpm/grpmi_rpm.xs:118
 msgid "Error reading file\n"
-msgstr ""
+msgstr "파일 읽는 중 오류\n"
 
 #: ../rpm/grpmi_rpm.xs:124
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "임시 파일에 기록하는 중 오류\n"
 
 #: ../rpm/grpmi_rpm.xs:147
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "팩키지에 GPG 서명이 없습니다.\n"
 
 #: ../rpm/grpmi_rpm.xs:229
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "RPM DB에 기록할 수 없었습니다. (수퍼유저가 아닌가요?)"
 
 #: ../rpm/grpmi_rpm.xs:231
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "RPM DB에 기록할 수 없었습니다."
 
 #: ../rpm/grpmi_rpm.xs:235
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "트랜잭션을 시작할 수 없었습니다."
 
 #: ../rpm/grpmi_rpm.xs:254
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "팩키지를 열 수 없습니다."
+msgstr "[%s] 팩키지를 열 수 없습니다.\n"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "팩키지에 문제가 있습니다."
+msgstr "[%s] 팩키지에 문제가 있습니다.\n"
 
 #: ../rpm/grpmi_rpm.xs:262
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "팩키지가 설치될 수 없습니다."
+msgstr "[%s] 팩키지를 설치할 수 없습니다.\n"
 
 #: ../rpm/grpmi_rpm.xs:273
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "의존성 검사 중 오류 :("
+msgstr "의존성 검사 중 오류"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "conflicts with"
-msgstr "는 %s-%s-%s와 충돌합니다."
+msgstr "(은)는 다음과 충돌합니다:"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "is needed by"
-msgstr "는 %s-%s-%s가 필요로 합니다."
+msgstr "(을)를 다음이 요구합니다:"
 
 #: ../rpm/grpmi_rpm.xs:312
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "의존성 검사 중 오류 :("
+msgstr "의존성 검사 중 오류 2"
 
 #: ../rpm/grpmi_rpm.xs:318
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "설치중에 문제가 발생했습니다."
-
-#~ msgid "Installing/Upgrading Progress"
-#~ msgstr "설치/업그레이드 진행과정"
-
-#~ msgid "Fetching:"
-#~ msgstr "가져오는 과정:"
-
-#~ msgid "Installing:"
-#~ msgstr "설치하는 과정:"
-
-#~ msgid "Cancel"
-#~ msgstr "취소"
-
-#~ msgid " is needed by %s-%s-%s"
-#~ msgstr "는 %s-%s-%s가 필요로 합니다."
-
-#~ msgid " conflicts with %s-%s-%s"
-#~ msgstr "는 %s-%s-%s와 충돌합니다."
-
-#~ msgid "An error occured while fetching file"
-#~ msgstr "파일을 가져오는 도중 오류가 발생했습니다."
-
-#~ msgid "Skip"
-#~ msgstr "건너뛰기"
-
-#~ msgid "Preparing for install"
-#~ msgstr "설치 준비 중..."
-
-#~ msgid "Can't check the GPG signature"
-#~ msgstr "GPG 서명을 확인할 수 없습니다."
-
-#~ msgid ""
-#~ "The package %s has a wrong signature or\n"
-#~ "GnuPG isn't correctly installed"
-#~ msgstr ""
-#~ "%s 팩키지는 잘못된 서명을 가지고 있거나 \n"
-#~ "GnuPG가 올바르게 설치되어 있지 않습니다."
-
-#~ msgid "The package %s is not signed"
-#~ msgstr "%s 팩키지는 서명되지 않았습니다."
-
-#~ msgid "Install all"
-#~ msgstr "모두 설치"
-
-#~ msgid "Install"
-#~ msgstr "설치"
-
-#~ msgid "Don't install"
-#~ msgstr "설치 안함"
-
-#~ msgid "Quit"
-#~ msgstr "종료"
-
-#~ msgid "Signature problem"
-#~ msgstr "서명 문제"
-
-#~ msgid "Can't open package"
-#~ msgstr "팩키지를 열 수 없습니다."
-
-#~ msgid "Package is corrupted"
-#~ msgstr "팩키지에 문제가 있습니다."
-
-#~ msgid "Package can't be installed"
-#~ msgstr "팩키지가 설치될 수 없습니다."
-
-#~ msgid "Error while checking dependencies :("
-#~ msgstr "의존성 검사 중 오류 :("
-
-#~ msgid "Force"
-#~ msgstr "강제추진"
-
-#~ msgid "Problems occured during installation"
-#~ msgstr "설치중에 문제가 발생했습니다."
-
-#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
-#~ msgstr "사용법: grpmi <[-noupgrade] rpms>\n"
-
-#~ msgid "grpmi error: you must be superuser!\n"
-#~ msgstr "grpmi 오류: 님은 루트 사용자이어야 합니다!\n"
-
-#~ msgid " ~ # ~ "
-#~ msgstr "한국어 번역: 최재금 <baedaron@hananet.net>"
-
-#~ msgid ""
-#~ "Mandrake Update\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 1999-2000\n"
-#~ "released under the GPL"
-#~ msgstr ""
-#~ "맨드레이크 업데이트\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 1999-2000\n"
-#~ "GPL에 따라 배포됩니다."
-
-#~ msgid "Error"
-#~ msgstr "오류"
-
-#~ msgid ""
-#~ "Cannot retrieve the list of mirrors\n"
-#~ "Try again later"
-#~ msgstr ""
-#~ "미러 사이트 목록을 가져올 수 없습니다.\n"
-#~ "나중에 다시 시도하세요."
-
-#~ msgid "Source on network: %s"
-#~ msgstr "네트웍상의 소스: %s"
-
-#~ msgid "Source on network: %s/%s/%s"
-#~ msgstr "네트웍상의 소스: %s/%s/%s"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Fetching the list of mirrors"
-#~ msgstr ""
-#~ "기다려 주세요.\n"
-#~ "미러 사이트 목록을 가져오는 중..."
-
-#~ msgid "%.1f KB"
-#~ msgstr "%.1f KB"
-
-#~ msgid "%.1f MB"
-#~ msgstr "%.1f MB"
-
-#~ msgid " n/a "
-#~ msgstr "n/a"
-
-#~ msgid ""
-#~ "Cannot retrieve the description file\n"
-#~ "Bad things can happen"
-#~ msgstr ""
-#~ "설명 파일을 가져올 수 없습니다.\n"
-#~ "문제가 일어날 수 있습니다."
-
-#~ msgid "n/a"
-#~ msgstr "n/a"
-
-#~ msgid "security"
-#~ msgstr "보안강화"
-
-#~ msgid "general"
-#~ msgstr "기능강화"
-
-#~ msgid "bugfix"
-#~ msgstr "버그수정"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Retrieving the Description file"
-#~ msgstr ""
-#~ "기다려 주세요.\n"
-#~ "설명 파일을 가져오는 중..."
-
-#~ msgid ""
-#~ "Cannot retrieve the list of packages to update\n"
-#~ "Try with an other mirror"
-#~ msgstr ""
-#~ "업데이트할 팩키지 목록을 가져올 수 없습니다.\n"
-#~ "다른 미러 사이트를 이용해 보세요."
-
-#~ msgid "Warning"
-#~ msgstr "경고"
-
-#~ msgid ""
-#~ "Caution! These packages are NOT well tested.\n"
-#~ "You really can screw up your system\n"
-#~ "by installing them.\n"
-#~ msgstr ""
-#~ "주의! 이 팩키지들은 충분히 검증되지 않았습니다.\n"
-#~ "이 팩키지들을 설치하면 님의 시스템에 문제를 일으킬\n"
-#~ "수도 있습니다.\n"
-
-#~ msgid "Source on disk: %s"
-#~ msgstr "디스크상의 소스: %s"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the list of packages"
-#~ msgstr ""
-#~ "기다려 주세요.\n"
-#~ "팩키지 목록 갱신 중..."
-
-#~ msgid ""
-#~ "Name: %s\n"
-#~ "Type: %s"
-#~ msgstr ""
-#~ "팩키지명: %s\n"
-#~ "유형: %s"
-
-#~ msgid "unknown"
-#~ msgstr "알 수 없음"
-
-#~ msgid "Name: %s"
-#~ msgstr "팩키지명: %s"
-
-#~ msgid "%d selected packages: %.1f MB"
-#~ msgstr "%d 개의 선택된 팩키지: %.1f MB"
-
-#~ msgid "GnuPG not found"
-#~ msgstr "GnuPG를 찾을 수 없습니다."
-
-#~ msgid ""
-#~ "GnuPG was not found\n"
-#~ "\n"
-#~ "MandrakeUpdate will not be able to verify the GPG\n"
-#~ "signature of the packages\n"
-#~ "\n"
-#~ "Please install the gpg package\n"
-#~ msgstr ""
-#~ "GnuPG를 찾을 수 없었습니다.\n"
-#~ "\n"
-#~ "맨드레이크업데이트는 팩키지들의 PGP 서명을 확인할 수 \n"
-#~ "없을 것입니다.\n"
-#~ "\n"
-#~ "pgp 팩키지를 먼저 설치하세요.\n"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "이 메시지를 다시 표시하지 않음."
-
-#~ msgid "oops %s not found\n"
-#~ msgstr "%s를 찾을 수 없습니다.\n"
-
-#~ msgid "Please Wait"
-#~ msgstr "기다려 주세요."
-
-#~ msgid "0 selected packages: 0.0 MB"
-#~ msgstr "0 개의 선택된 팩키지: 0.0 MB"
-
-#~ msgid "/_File"
-#~ msgstr "/파일(_F)"
-
-#~ msgid "/File/_Preferences"
-#~ msgstr "/파일(F)/사용자 설정(_P)"
-
-#~ msgid "/File/-"
-#~ msgstr "/파일(F)/-"
-
-#~ msgid "/File/_Quit"
-#~ msgstr "/파일(F)/종료(_Q)"
-
-#~ msgid "/_Help"
-#~ msgstr "/도움말(_H)"
-
-#~ msgid "/Help/_About..."
-#~ msgstr "/도움말(H)/이 프로그램은(_A)..."
-
-#~ msgid "Name"
-#~ msgstr "팩키지명"
-
-#~ msgid "Installed"
-#~ msgstr "설치된 버전"
-
-#~ msgid "Update"
-#~ msgstr "업데이트 버전"
-
-#~ msgid "Size"
-#~ msgstr "크기"
-
-#~ msgid "Type"
-#~ msgstr "유형"
-
-#~ msgid "Summary"
-#~ msgstr "간단한 설명"
-
-#~ msgid "MandrakeUpdate, version 7.2\n"
-#~ msgstr "MandrakeUpdate, 버전 7.2\n"
-
-#~ msgid ""
-#~ "  usage:\n"
-#~ "    -h, --help:    display this help and exit\n"
-#~ "    -v, --version: show the version and exit\n"
-#~ "    -V, --verbose: increase the verbosity level\n"
-#~ msgstr ""
-#~ "  사용법:\n"
-#~ "    -h, --help:   지금 이 메시지를 보이고 종료\n"
-#~ "    -v, --version:   버전 번호를 보이고 종료\n"
-#~ "    -V, --vervose:   출력 메시지 증가\n"
-
-#~ msgid "Source on network: (random mirror)\n"
-#~ msgstr "네트웍상의 소스: (무작위 미러)\n"
-
-#~ msgid ""
-#~ "Update\n"
-#~ "List"
-#~ msgstr ""
-#~ "업데이트\n"
-#~ "목록"
-
-#~ msgid "Update the list of packages to update"
-#~ msgstr "업데이트할 팩키지 목록 갱신"
-
-#~ msgid ""
-#~ "Select\n"
-#~ "all"
-#~ msgstr ""
-#~ "모두\n"
-#~ "선택"
-
-#~ msgid "Select all"
-#~ msgstr "모두 선택"
-
-#~ msgid ""
-#~ "Unselect\n"
-#~ "all"
-#~ msgstr ""
-#~ "모두\n"
-#~ "해제"
-
-#~ msgid "Unselect all"
-#~ msgstr "모든 선택 해제"
-
-#~ msgid ""
-#~ "Do\n"
-#~ "updates"
-#~ msgstr ""
-#~ "업데이트\n"
-#~ "시작"
-
-#~ msgid "Do Updates"
-#~ msgstr "업데이트 시작"
-
-#~ msgid "Normal Updates"
-#~ msgstr "정식버전 업데이트"
-
-#~ msgid "Development Updates"
-#~ msgstr "개발버전 업데이트"
-
-#~ msgid "Descriptions"
-#~ msgstr "설명"
-
-#~ msgid ""
-#~ "The packages are the updates for Mandrake\n"
-#~ "Select the one(s) you want to update\n"
-#~ "When you click on a package you get information about\n"
-#~ "the need to update"
-#~ msgstr ""
-#~ "위 목록은 맨드레이크 업데이트 팩키지들입니다.\n"
-#~ "업데이트할 팩키지들을 선택하세요.\n"
-#~ "팩키지를 클릭하면, 업데이트 정보를 \n"
-#~ "볼 수 있습니다."
-
-#~ msgid "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,*"
-#~ msgstr ""
-#~ "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,-*-gulim-bold-r-"
-#~ "normal--*-120-*-*-*-*-ksc5601.1987-0,*"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Sorting packages"
-#~ msgstr ""
-#~ "기다려 주세요.\n"
-#~ "팩키지 정렬 중..."
-
-#~ msgid "Choose your packages"
-#~ msgstr "팩키지를 선택하세요."
-
-#~ msgid "Packages to update"
-#~ msgstr "업데이트할 팩키지"
-
-#~ msgid "Packages NOT to update"
-#~ msgstr "업데이트하지 않을 팩키지"
-
-#~ msgid ""
-#~ "Caution! You're changing the version.\n"
-#~ "MandrakeUpdate will think you actually have this\n"
-#~ "version installed\n"
-#~ "\n"
-#~ "You should only use this if you really know what you're doing.\n"
-#~ msgstr ""
-#~ "주의! 버전을 변경하려고 합니다.\n"
-#~ "맨드레이크업데이트는 님이 실제로 이 버전을 설치했다고\n"
-#~ "가정할 것입니다.\n"
-#~ "확신이 서지 않는다면 이것을 사용하지 마세요.\n"
-
-#~ msgid "Preferences for Proxies"
-#~ msgstr "프락시 사용자 설정"
-
-#~ msgid "Proxies"
-#~ msgstr "프락시"
-
-#~ msgid "Http Proxy:"
-#~ msgstr "HTTP 프락시:"
-
-#~ msgid "Port:"
-#~ msgstr "포트:"
-
-#~ msgid "Ftp Proxy:"
-#~ msgstr "FTP 프락시:"
-
-#~ msgid "Proxy username:"
-#~ msgstr "프락시 사용자명:"
-
-#~ msgid "Proxy password:"
-#~ msgstr "프락시 암호:"
-
-#~ msgid "Error: curl_easy_init()"
-#~ msgstr "오류: curl_easy_init()"
-
-#~ msgid "Source"
-#~ msgstr "소스"
-
-#~ msgid "Disk"
-#~ msgstr "디스크"
-
-#~ msgid "Network"
-#~ msgstr "네트웍"
-
-#~ msgid "RPM directory"
-#~ msgstr "RPM 디렉토리"
-
-#~ msgid "Network settings:"
-#~ msgstr "네트웍 셋팅:"
-
-#~ msgid "Version:"
-#~ msgstr "버전:"
-
-#~ msgid "Show security updates"
-#~ msgstr "보안 업데이트 보이기"
-
-#~ msgid "Show general updates"
-#~ msgstr "일반 업데이트 보이기"
-
-#~ msgid "Show bugfix updates"
-#~ msgstr "버그수정 업데이트 보이기"
-
-#~ msgid "mirror:"
-#~ msgstr "미러 사이트:"
-
-#~ msgid "Update the list of mirrors"
-#~ msgstr "미러 사이트 목록 갱신"
-
-#~ msgid "Choose Packages"
-#~ msgstr "특정 팩키지 선택"
-
-#~ msgid "Username:"
-#~ msgstr "사용자명:"
-
-#~ msgid "Password:"
-#~ msgstr "암호:"
-
-#~ msgid "Security"
-#~ msgstr "보안"
-
-#~ msgid "Do not warn if GnuPG isn't installed"
-#~ msgstr "GnuPG가 설치되어 있지 않아도 경고하지 않기"
-
-#~ msgid "Do not warn if the package isn't signed"
-#~ msgstr "팩키지가 서명되어 있지 않아도 경고하지 않기"
-
-#~ msgid "Miscellaneous"
-#~ msgstr "기타 등등"
-
-#~ msgid "Timeout:"
-#~ msgstr "시간초과:"
-
-#~ msgid "(in sec)"
-#~ msgstr "(초)"
-
-#~ msgid "MandrakeUpdate Preferences"
-#~ msgstr "맨드레이크업데이트 사용자 설정"
-
-#~ msgid "Categories"
-#~ msgstr "범주"
+msgstr "설치중에 문제가 발생했습니다:\n"
