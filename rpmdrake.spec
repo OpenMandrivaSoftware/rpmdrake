@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.3
+%define version 2.4
 %define release 1mdk
 
 Name: %{name}
@@ -17,7 +17,7 @@ License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrakelinux graphical front end for choosing packages for installion/removal
 Requires: perl-MDK-Common >= 1.1.18-2mdk
-Requires: urpmi >= 4.6.4-1mdk gurpmi >= 4.6.4-1mdk
+Requires: urpmi >= 4.6.4-4mdk gurpmi >= 4.6.4-4mdk
 Requires: perl-URPM >= 1.03-1mdk
 Requires: drakxtools >= 10.1-11mdk
 Requires: rpmtools >= 4.5
@@ -108,6 +108,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Dec 02 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-1mdk
+- Software media manager:
+  - New option setting window, for the downloader and verify-rpm options.
+  - Possibility to add all media for a distribution at once (like
+    urpmi.addmedia --distrib)
+- Add a cancel button in the download progress window
+- Don't show the help button in rpmdrake when embedded in the mcc
+
 * Thu Nov 25 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.3-1mdk
 - edit-urpm-sources: setting per-media proxies should now work.
 - Fix save and restore of package tree display mode in rpmdrake.
