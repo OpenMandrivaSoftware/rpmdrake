@@ -118,7 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
-* Thu Feb 19 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-6mdk
+* Fri Feb 20 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-6mdk
 - edit-urpm-media: fix broken media reordering (program crashed)
 - rpmdrake: hide password in logs (#6260)
 - edit-urpm-media: lock urpmi database while running (#6828)
