@@ -3,7 +3,6 @@
 use Socket;
 
 use lib qw(/usr/lib/libDrakX);
-use lib qw(/home/pixel/gi/perl-install);
 use interactive::gtk; 
 use run_program;
 use standalone;
@@ -64,7 +63,7 @@ sub host_to_string {
 sub scanssh_output_to_hosts {
     [ map { 
 	chomp; 
-	if (my ($ip, $_version) = /(\S+) ([^<].*)/) {
+	if (my ($ip, $_version) = /([.\d]+)/) {
 	    raw_host_to_host($ip);
 	} else {
 	    ();
