@@ -119,7 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Wed Mar 10 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-11mdk
-- fix description and summary field in MandrakeUpdate
+- MandrakeUpdate:
+  o fix description and summary field
+  o download small synthesis rather than big fat hdlist by default
 
 * Wed Mar  3 2004 Pixel <pixel@mandrakesoft.com> 2.1.2-10mdk
 - fix support for "community" and "cooker" classes of mirrors for updates
