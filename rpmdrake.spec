@@ -103,6 +103,8 @@ rm -rf $RPM_BUILD_ROOT
 - new ugtk2.pm API
 - use urpmi reporting reasons for impossibility to select some
   packages, and for needing to remove some
+- fix sorting of translated stuff in the treeview (will need
+  drakxtools > 9.2-0.7mdk to work properly though)
 
 * Fri Jun  6 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-23mdk
 - rpmdrake: at install time, when some local files are impossible

@@ -41,6 +41,13 @@ use common;
 use rpmdrake;
 use gurpm;
 
+#- dirty stuff needed because text printed by gtk2 will always be encoded in UTF-8
+use POSIX;
+use locale;
+my $collation_locale = setlocale(LC_COLLATE);
+$collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8");
+
+
 $MODE = 'install';
 $0 =~ m|/rpmdrake-remove$| and $MODE = 'remove';
 $0 =~ m|/MandrakeUpdate$|  and $MODE = 'update';
