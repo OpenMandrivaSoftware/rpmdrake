@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrakelinux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.1.18-1mdk
+Requires: perl-MDK-Common >= 1.1.18-2mdk
 Requires: urpmi >= 4.5-28mdk gurpmi >= 4.5-28mdk
 Requires: perl-URPM >= 1.03-1mdk
 Requires: drakxtools >= 10.1-11mdk

@@ -40,8 +40,6 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
 }
 
 use strict;
-use vars qw($MODE %options);
-
 use lib qw(/usr/lib/libDrakX);
 use common;
 use rpmdrake;
@@ -60,15 +58,13 @@ if ($collation_locale) {
   $collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8");
 };
 
-
-$MODE = 'install';
+our %options;
+our $MODE = 'install';
 $0 =~ m|remove$|  and $MODE = 'remove';
 $0 =~ m|update$|i and $MODE = 'update';
 
 $MODE eq 'update' || "@ARGV" =~ /--root/ and require_root_capability();
 $ugtk2::wm_icon = "title-$MODE";
-
-
 
 eval { require ugtk2; ugtk2->import(qw(:all)); require Gtk2::Pango; require Gtk2::Gdk::Keysyms };
 if ($@) {
@@ -793,7 +789,10 @@ or you already installed all of them."));
 	} \@toggle_names_ordered, \@modes_buttons;
     } else {
 	my %radios_infos = (
-	    mandrake_choices => { name => N("Mandrakelinux choices"),      flat => 0 },
+	    mandrake_choices => {
+		name => $rpmdrake::branded ? N("%s choices", $rpmdrake::distrib{system}) : N("Mandrakelinux choices"),
+		flat => 0,
+	    },
 	    flat             => { name => N("All packages, alphabetical"), flat => 1 },
 	    by               => { name => '',                              flat => 0 },
 	);
@@ -1133,7 +1132,7 @@ all of them are currently disabled. You should run the Software
 Media Manager to enable at least one (check it in the Enabled?
 column).
 
-Then, restart Mandrakeupdate."));
+Then, restart %s.", $rpmdrake::myname_update));
                 myexit(-1);
             }
 	  mu_retry_another_mirror:
@@ -1143,7 +1142,7 @@ N("You may also choose your desired mirror manually: to do so,
 launch the Software Media Manager, and then add a `Security
 updates' medium.
 
-Then, restart Mandrakeupdate.")), myexit(-1);
+Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
             add_medium_and_check($urpm, {},
                                  $update_name, make_url_mirror($m), 'media_info/synthesis.hdlist.cz', update => 1);
 	    @update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
@@ -1586,16 +1585,17 @@ Is it ok to continue?",
 This tool will help you choose which software you want to remove from
 your computer.")
       : $MODE eq 'update' ?
-  N("Welcome to Mandrakeupdate!
+  N("Welcome to %s!
 
 This tool will help you choose the updates you want to install on your
-computer.")
+computer.", $rpmdrake::myname_update)
       :
-  N("Welcome to the software installation tool!
+  ($rpmdrake::branded ? N("Welcome to the software installation tool!")
+      : N("Welcome to the software installation tool!
 
 Your Mandrakelinux system comes with several thousands of software
 packages on CDROM or DVD. This tool will help you choose which software
-you want to install on your computer."))
+you want to install on your computer.")))
   , yesno => 1) or myexit(-1);
 	push @$already_splashed, $MODE;
     }

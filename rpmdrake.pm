@@ -25,6 +25,7 @@ use lib qw(/usr/lib/libDrakX);
 use standalone;     #- warning, standalone must be loaded very first, for 'explanations'
 
 use MDK::Common;
+use MDK::Common::System;
 use urpm;
 use URPM;
 use URPM::Resolve;
@@ -73,11 +74,6 @@ use curl_download;
 );
 
 
-our $mandrake_release = cat_(
-    -e '/etc/mandrakelinux-release' ? '/etc/mandrakelinux-release' : '/etc/mandrake-release'
-) || '';
-(our $mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
-
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
     print "This program cannot be run in console mode.\n";
@@ -86,6 +82,15 @@ if ($@) {
 ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 
 c::bind_textdomain_codeset('rpmdrake', 'UTF8');
+
+our $mandrake_release = cat_(
+    -e '/etc/mandrakelinux-release' ? '/etc/mandrakelinux-release' : '/etc/mandrake-release'
+) || '';
+(our $mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
+our $branded = -f '/etc/sysconfig/oem'
+    and our %distrib = MDK::Common::System::distrib();
+our $myname_update = $rpmdrake::branded ? N("Software Update") : N("Mandrakelinux Update");
+
 sub translate {
     my ($s) = @_;
     my $r = '';
@@ -394,32 +399,51 @@ sub mirrors {
 
 sub choose_mirror {
     my (%options) = @_;
-    interactive_msg('', 
-N("I need to contact the Mandrakesoft website to get the mirror list.
+    interactive_msg('',
+$branded
+? N("I need to access internet to get the mirror list.
+Please check that your network is currently running.
+
+Is it ok to continue?")
+: N("I need to contact the Mandrakesoft website to get the mirror list.
 Please check that your network is currently running.
 
 Is it ok to continue?"), yesno => 1) or return '';
-    my $wait = wait_msg(N("Please wait, downloading mirror addresses from the Mandrakesoft website."));
+    my $wait = wait_msg(
+	$branded
+	? N("Please wait, downloading mirror addresses.")
+	: N("Please wait, downloading mirror addresses from the Mandrakesoft website.")
+    );
     my @mirrors;
     eval { @mirrors = mirrors('/var/cache/urpmi') };
     remove_wait_msg($wait);
     if ($@) {
 	my $msg = $@;  #- seems that value is bitten before being printed by next func..
 	interactive_msg(N("Error during download"),
-N("There was an error downloading the mirror list:
+$branded
+? N("There was an error downloading the mirror list:
+
+%s
+The network, or the website, may be unavailable.
+Please try again later.", $msg)
+: N("There was an error downloading the mirror list:
 
 %s
 The network, or the Mandrakesoft website, may be unavailable.
-Please try again later.", $msg));
+Please try again later.", $msg)
+	);
 	return '';
     }
 
     !@mirrors and interactive_msg(N("No mirror"),
-N("I can't find any suitable mirror.
+$branded
+? N("I can't find any suitable mirror.")
+: N("I can't find any suitable mirror.
 
 There can be many reasons for this problem; the most frequent is
 the case when the architecture of your processor is not supported
-by Mandrakelinux Official Updates.")), return '';
+by Mandrakelinux Official Updates.")
+    ), return '';
 
     my $w = ugtk2->new('rpmdrake', grab => 1);
     $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
@@ -659,9 +683,13 @@ sub check_update_media_version {
 	if ($_->{name} =~ /(\d+\.\d+).*\bftp\du\b/ && $1 ne $mdk_version) {
 	    interactive_msg(
 		'rpmdrake',
-		N("Your medium `%s', used for updates, does not match the version of Mandrakelinux you're running (%s).
+		$branded
+		? N("Your medium `%s', used for updates, does not match the version of %s you're running (%s).
 It will be disabled.",
-		    $_->{name}, $mdk_version),
+		    $_->{name}, $distrib{system}, $distrib{product})
+		: N("Your medium `%s', used for updates, does not match the version of Mandrakelinux you're running (%s).
+It will be disabled.",
+		    $_->{name}, $mdk_version)
 	    );
 	    $_->{ignore} = 1;
 	    $urpm->write_config if -w $urpm->{config};
