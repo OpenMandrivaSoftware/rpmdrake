@@ -84,7 +84,7 @@ ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 c::bind_textdomain_codeset('rpmdrake', 'UTF8');
 
 our $mandrake_release = cat_(
-    -e '/etc/mandrakelinux-release' ? '/etc/mandrakelinux-release' : '/etc/mandrake-release'
+    -e '/etc/mandrakelinux-release' ? '/etc/mandrakelinux-release' : '/etc/release'
 ) || '';
 chomp $mandrake_release;
 (our $mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
