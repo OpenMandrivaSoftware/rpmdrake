@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.5
-%define release 7mdk
+%define release 8mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Sep 14 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-8mdk
+- Language updates
+- Disable the "update media" button in removal mode
+
 * Thu Sep 09 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-7mdk
 - Language updates
 - Change menu entry to 'Mandrakeupdate'
