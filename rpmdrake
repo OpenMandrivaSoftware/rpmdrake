@@ -703,7 +703,10 @@ or you already installed all of them."));
     my $find_callback = sub { do_search($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) };
 
     my $do_action = sub {
-	int(grep { $pkgs->{$_}{selected} } keys %$pkgs) or return;
+	if (!int(grep { $pkgs->{$_}{selected} } keys %$pkgs)) {
+	    interactive_msg_(N("You need to select some packages first."), N("You need to select some packages first."));
+            return;
+        }
 	my $size_added = sum(map { if_($_->flag_selected && !$_->flag_installed, $_->size) } @{$urpm->{depslist}});
 	if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*1024) {
 	    interactive_msg_(N("Too many packages are selected"),
