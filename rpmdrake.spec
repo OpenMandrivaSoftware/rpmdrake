@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 11mdk
+%define release 12mdk
 
 Name: %{name}
 Version: %{version}
@@ -121,6 +121,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Jul 20 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-12mdk
+- Display fixes
+- Message updates
+- Prevent to select an entire subtree by mistake. (work around for bug #9941)
+
 * Thu Jul 08 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-11mdk
 - After installation or upgrade of an rpm, display the contents of a file
   README{,.install,.upgrade}.urpmi
