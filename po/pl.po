@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2002-08-29 16:03+0200\n"
+"POT-Creation-Date: 2002-08-29 17:02+0200\n"
 "PO-Revision-Date: 2002-08-22 23:46+0100\n"
 "Last-Translator: Arkadiusz Lipiec <alipiec@elka.pw.edu.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -54,7 +54,7 @@ msgstr "¦cie¿ka lub punkt montowania:"
 msgid "Removable device"
 msgstr "Napêd wymienny"
 
-#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:462
+#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:465
 msgid "Security updates"
 msgstr "Aktualizacje z dziedziny bezpieczeñstwa"
 
@@ -104,13 +104,13 @@ msgstr "Rodzaj ¼ród³a:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98 ../rpmdrake.pm_.c:272
-#: ../rpmdrake_.c:319 ../rpmdrake_.c:776 ../rpmdrake_.c:802
+#: ../rpmdrake_.c:322 ../rpmdrake_.c:779 ../rpmdrake_.c:805
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:272 ../rpmdrake_.c:319 ../rpmdrake_.c:802
+#: ../rpmdrake.pm_.c:272 ../rpmdrake_.c:322 ../rpmdrake_.c:805
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -172,7 +172,7 @@ msgstr "W³±czone?"
 msgid "Source"
 msgstr "¬ród³o"
 
-#: ../edit-urpm-sources.pl_.c:245 ../rpmdrake_.c:598
+#: ../edit-urpm-sources.pl_.c:245 ../rpmdrake_.c:601
 msgid "Remove"
 msgstr "Usuñ"
 
@@ -192,11 +192,11 @@ msgstr "Aktualizuj..."
 msgid "Save and quit"
 msgstr "Zapisz i zakoñcz"
 
-#: ../edit-urpm-sources.pl_.c:255 ../rpmdrake_.c:601
+#: ../edit-urpm-sources.pl_.c:255 ../rpmdrake_.c:604
 msgid "Quit"
 msgstr "Zakoñcz"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:901
+#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:904
 #, c-format
 msgid ""
 "%s\n"
@@ -404,11 +404,11 @@ msgstr "Wybierz serwer zwierciadlany."
 msgid "Other"
 msgstr ""
 
-#: ../rpmdrake_.c:135 ../rpmdrake_.c:422 ../rpmdrake_.c:423
+#: ../rpmdrake_.c:135 ../rpmdrake_.c:425 ../rpmdrake_.c:426
 msgid "(Non available)"
 msgstr "(Niedostêpne)"
 
-#: ../rpmdrake_.c:143 ../rpmdrake_.c:196
+#: ../rpmdrake_.c:143 ../rpmdrake_.c:194
 msgid "Search results"
 msgstr "Wyniki wyszukiwania"
 
@@ -424,35 +424,51 @@ msgstr "Proszê czekaæ, wyszukiwanie..."
 msgid "Stop"
 msgstr "Zatrzymaj"
 
-#: ../rpmdrake_.c:229
+#: ../rpmdrake_.c:195 ../rpmdrake_.c:295
+msgid "Addable"
+msgstr "Dodawalne"
+
+#: ../rpmdrake_.c:195 ../rpmdrake_.c:295
+msgid "Upgradable"
+msgstr "Aktualizowalne"
+
+#: ../rpmdrake_.c:197
+msgid "Not selected"
+msgstr ""
+
+#: ../rpmdrake_.c:197
+msgid "Selected"
+msgstr ""
+
+#: ../rpmdrake_.c:232
 msgid "More information on package..."
 msgstr ""
 
-#: ../rpmdrake_.c:231
+#: ../rpmdrake_.c:234
 msgid "One of the following packages is needed:"
 msgstr "Wymagany jest jeden z poni¿szych pakietów:"
 
-#: ../rpmdrake_.c:231
+#: ../rpmdrake_.c:234
 msgid "Please choose"
 msgstr "Proszê wybraæ"
 
-#: ../rpmdrake_.c:247
+#: ../rpmdrake_.c:250
 msgid "unknown package "
 msgstr "nieznany pakiet "
 
-#: ../rpmdrake_.c:257
+#: ../rpmdrake_.c:260
 msgid "Please wait, listing packages..."
 msgstr "Proszê czekaæ, wypisywanie pakietów..."
 
-#: ../rpmdrake_.c:271
+#: ../rpmdrake_.c:274
 msgid "(none)"
 msgstr "(brak)"
 
-#: ../rpmdrake_.c:273
+#: ../rpmdrake_.c:276
 msgid "No update"
 msgstr "Brak aktualizacji"
 
-#: ../rpmdrake_.c:274
+#: ../rpmdrake_.c:277
 msgid ""
 "The list of updates is void. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -462,19 +478,11 @@ msgstr ""
 "dostêpnych aktualizacji dla zainstalowanych na komputerze pakietów\n"
 "albo zosta³y ju¿ zainstalowane wszystkie aktualizacje."
 
-#: ../rpmdrake_.c:292
-msgid "Addable"
-msgstr "Dodawalne"
-
-#: ../rpmdrake_.c:292
-msgid "Upgradable"
-msgstr "Aktualizowalne"
-
-#: ../rpmdrake_.c:325
+#: ../rpmdrake_.c:328
 msgid "Some additional packages need to be removed"
 msgstr "Zostanie usuniêtych kilka dodatkowych pakietów"
 
-#: ../rpmdrake_.c:326
+#: ../rpmdrake_.c:329
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:\n"
@@ -484,11 +492,11 @@ msgstr ""
 "usuniête:\n"
 "\n"
 
-#: ../rpmdrake_.c:332
+#: ../rpmdrake_.c:335
 msgid "Some packages can't be removed"
 msgstr "Niektóre pakiety nie mog± zostaæ usuniête"
 
-#: ../rpmdrake_.c:333 ../rpmdrake_.c:391
+#: ../rpmdrake_.c:336 ../rpmdrake_.c:394
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -498,11 +506,11 @@ msgstr ""
 "teraz odznaczone:\n"
 "\n"
 
-#: ../rpmdrake_.c:361
+#: ../rpmdrake_.c:364
 msgid "Additional packages needed"
 msgstr "Wymagane s± dodatkowe pakiety"
 
-#: ../rpmdrake_.c:362
+#: ../rpmdrake_.c:365
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -512,11 +520,11 @@ msgstr ""
 "zostaæ zainstalowane:\n"
 "\n"
 
-#: ../rpmdrake_.c:375
+#: ../rpmdrake_.c:378
 msgid "Some packages can't be installed"
 msgstr "Niektóre pakiety nie mog± zostaæ zainstalowane"
 
-#: ../rpmdrake_.c:376
+#: ../rpmdrake_.c:379
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -524,21 +532,21 @@ msgstr ""
 "Niestety, poni¿sze pakiety nie mog± zostaæ zaznaczone:\n"
 "\n"
 
-#: ../rpmdrake_.c:390 ../rpmdrake_.c:561
+#: ../rpmdrake_.c:393 ../rpmdrake_.c:564
 msgid "Some packages need to be removed"
 msgstr "Niektóre pakiety musz± zostaæ usuniête"
 
-#: ../rpmdrake_.c:412
+#: ../rpmdrake_.c:415
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Wybranych: %d MB / Miejsce na dysku: %d MB"
 
-#: ../rpmdrake_.c:414
+#: ../rpmdrake_.c:417
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Wybrany rozmiar: %d MB"
 
-#: ../rpmdrake_.c:420
+#: ../rpmdrake_.c:423
 #, c-format
 msgid ""
 "%sFiles:\n"
@@ -548,12 +556,12 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../rpmdrake_.c:421
+#: ../rpmdrake_.c:424
 #, fuzzy, c-format
 msgid "Source: %s\n"
 msgstr "¬ród³o"
 
-#: ../rpmdrake_.c:426
+#: ../rpmdrake_.c:429
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -574,7 +582,7 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:430
+#: ../rpmdrake_.c:433
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -593,68 +601,68 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:465
 msgid "Bugfixes updates"
 msgstr "Aktualizacje poprawiaj±ce b³êdy"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:465
 msgid "Normal updates"
 msgstr "Zwyk³e aktualizacje"
 
-#: ../rpmdrake_.c:481
+#: ../rpmdrake_.c:484
 msgid "Mandrake choices"
 msgstr "Lista wyboru Mandrake"
 
-#: ../rpmdrake_.c:482
+#: ../rpmdrake_.c:485
 msgid "All packages, alphabetical"
 msgstr "Wszystkie pakiety, alfabetycznie"
 
-#: ../rpmdrake_.c:483
+#: ../rpmdrake_.c:486
 msgid "All packages,"
 msgstr "Wszystkie pakiety,"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:509
 msgid "by group"
 msgstr "wed³ug grupy"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:509
 msgid "by size"
 msgstr "wed³ug rozmiaru"
 
-#: ../rpmdrake_.c:507
+#: ../rpmdrake_.c:510
 msgid "by selection state"
 msgstr "wed³ug stanu zaznaczenia"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:511
 msgid "by source repository"
 msgstr "wed³ug repozytorium ¼ród³owego"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:511
 msgid "by update availability"
 msgstr "wed³ug dostêpno¶ci aktualizacji"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:532
 msgid "in descriptions"
 msgstr "w opisach"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:532
 msgid "in names"
 msgstr "w nazwach"
 
-#: ../rpmdrake_.c:530
+#: ../rpmdrake_.c:533
 msgid "in files"
 msgstr "w plikach"
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:544
 msgid "Maximum information"
 msgstr ""
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:544
 #, fuzzy
 msgid "Normal information"
 msgstr "Zwyk³e aktualizacje"
 
-#: ../rpmdrake_.c:562
+#: ../rpmdrake_.c:565
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -669,35 +677,35 @@ msgstr ""
 "\n"
 "Czy chcesz kontynuowaæ?"
 
-#: ../rpmdrake_.c:582
+#: ../rpmdrake_.c:585
 msgid "Find:"
 msgstr "Znajd¼:"
 
-#: ../rpmdrake_.c:587
+#: ../rpmdrake_.c:590
 msgid "Search"
 msgstr "Wyszukaj"
 
-#: ../rpmdrake_.c:599
+#: ../rpmdrake_.c:602
 msgid "Install"
 msgstr "Zainstaluj"
 
-#: ../rpmdrake_.c:610
+#: ../rpmdrake_.c:613
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:611
+#: ../rpmdrake_.c:614
 msgid "Mandrake Update"
 msgstr "Aktualizacja Mandrake"
 
-#: ../rpmdrake_.c:611
+#: ../rpmdrake_.c:614
 msgid "Software Packages Removal"
 msgstr "Usuwanie pakietów oprogramowania"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:615
 msgid "Software Packages Installation"
 msgstr "Intalacja pakietów oprogramowania"
 
-#: ../rpmdrake_.c:644
+#: ../rpmdrake_.c:647
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -710,26 +718,26 @@ msgstr ""
 "\n"
 "Czy chcesz kontynuowaæ?"
 
-#: ../rpmdrake_.c:648
+#: ../rpmdrake_.c:651
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Proszê czekaæ, nawi±zywanie po³±czenia z serwerem zwierciadlanym\n"
 "w celu pobrania informacji o nowych pakietach."
 
-#: ../rpmdrake_.c:650
+#: ../rpmdrake_.c:653
 msgid "Error updating medium"
 msgstr "B³±d podczas aktualizacji no¶nika"
 
-#: ../rpmdrake_.c:651
+#: ../rpmdrake_.c:654
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 "Wyst±pi³ nieodwracalny b³±d podczas aktualizacji informacji o pakietach."
 
-#: ../rpmdrake_.c:657
+#: ../rpmdrake_.c:660
 msgid "How to choose manually your mirror"
 msgstr "Sposób rêcznego wyboru serwera zwierciadlanego"
 
-#: ../rpmdrake_.c:658
+#: ../rpmdrake_.c:661
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -743,17 +751,17 @@ msgstr ""
 "\n"
 "Nastêpnie nale¿y ponownie uruchomiæ MandrakeUpdate."
 
-#: ../rpmdrake_.c:664
+#: ../rpmdrake_.c:667
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Proszê czekaæ, nawi±zywanie po³±czenia z serwerem zwierciadlanym\n"
 "w celu inicjacji pakietów aktualizacyjnych."
 
-#: ../rpmdrake_.c:668
+#: ../rpmdrake_.c:671
 msgid "Error adding update medium"
 msgstr "B³±d podczas dodawania no¶nika aktualizacyjnego"
 
-#: ../rpmdrake_.c:669
+#: ../rpmdrake_.c:672
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -774,48 +782,48 @@ msgstr ""
 "\n"
 "Czy chcesz spróbowaæ innego serwera zwierciadlanego?"
 
-#: ../rpmdrake_.c:698
+#: ../rpmdrake_.c:701
 msgid "Please wait, finding available packages..."
 msgstr "Proszê czekaæ, wyszukiwanie dostêpnych pakietów..."
 
-#: ../rpmdrake_.c:721
+#: ../rpmdrake_.c:724
 msgid "All requested packages were installed successfully."
 msgstr "Wszystkie ¿±dane pakiety zosta³y pomy¶lnie zainstalowane."
 
-#: ../rpmdrake_.c:721
+#: ../rpmdrake_.c:724
 msgid "Everything installed successfully"
 msgstr "Wszystko zosta³o pomy¶lnie zainstalowane"
 
-#: ../rpmdrake_.c:724
+#: ../rpmdrake_.c:727
 #, fuzzy
 msgid "Installation finished"
 msgstr "Instalacja zakoñczona niepowodzeniem"
 
-#: ../rpmdrake_.c:727
+#: ../rpmdrake_.c:730
 #, c-format
 msgid "Inspecting %s"
 msgstr ""
 
-#: ../rpmdrake_.c:743
+#: ../rpmdrake_.c:746
 #, fuzzy, c-format
 msgid "Remove .%s"
 msgstr "Usuñ"
 
-#: ../rpmdrake_.c:745
+#: ../rpmdrake_.c:748
 #, c-format
 msgid "Use .%s as main file"
 msgstr ""
 
-#: ../rpmdrake_.c:747
+#: ../rpmdrake_.c:750
 msgid "Do nothing"
 msgstr ""
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:753
 #, fuzzy
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:757
+#: ../rpmdrake_.c:760
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -824,44 +832,44 @@ msgid ""
 "you may now inspect some in order to take actions:"
 msgstr ""
 
-#: ../rpmdrake_.c:758
+#: ../rpmdrake_.c:761
 #, fuzzy
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr "Niektóre pakiety nie mog± zostaæ zainstalowane"
 
-#: ../rpmdrake_.c:759
+#: ../rpmdrake_.c:762
 #, fuzzy
 msgid "everything was installed correctly"
 msgstr "Wszystko zosta³o pomy¶lnie zainstalowane"
 
-#: ../rpmdrake_.c:764
+#: ../rpmdrake_.c:767
 msgid "Inspect..."
 msgstr ""
 
-#: ../rpmdrake_.c:792
+#: ../rpmdrake_.c:795
 msgid "Unable to get source packages."
 msgstr "Nie mo¿na pobraæ pakietów ¼ród³owych."
 
-#: ../rpmdrake_.c:793
+#: ../rpmdrake_.c:796
 msgid "Unable to get source packages, sorry."
 msgstr "Niestety, nie mo¿na pobraæ pakietów ¼ród³owych."
 
-#: ../rpmdrake_.c:800
+#: ../rpmdrake_.c:803
 msgid "Change medium"
 msgstr "Zmieñ no¶nik"
 
-#: ../rpmdrake_.c:801
+#: ../rpmdrake_.c:804
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Wsuñ no¶nik oznaczony \"%s\" do urz±dzenia [%s]"
 
-#: ../rpmdrake_.c:809
+#: ../rpmdrake_.c:812
 msgid "Installation failed"
 msgstr "Instalacja zakoñczona niepowodzeniem"
 
-#: ../rpmdrake_.c:810
+#: ../rpmdrake_.c:813
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -869,37 +877,37 @@ msgstr ""
 "Instalacja nie powiod³a siê, brak niektórych plików.\n"
 "Mo¿e zachdziæ potrzeba aktualizacji bazy danych ¼róde³."
 
-#: ../rpmdrake_.c:813
+#: ../rpmdrake_.c:816
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "Proszê czekaæ, usuwanie pakietów w celu umo¿liwienia aktualizacji..."
 
-#: ../rpmdrake_.c:822
+#: ../rpmdrake_.c:825
 msgid "Program missing"
 msgstr "Brak programu"
 
-#: ../rpmdrake_.c:823
+#: ../rpmdrake_.c:826
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Brak wymaganego programu (grpmi). Sprawd¼ swoj± instalacjê."
 
-#: ../rpmdrake_.c:841
+#: ../rpmdrake_.c:844
 msgid "Everything already installed."
 msgstr "Wszystko zosta³o ju¿ zainstalowane."
 
-#: ../rpmdrake_.c:842
+#: ../rpmdrake_.c:845
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr ""
 "Wszystko zosta³o ju¿ zainstalowane (czy rzeczywi¶cie taki by³\n"
 "zamierzony efekt?)."
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:855
 msgid "Please wait, reading packages database..."
 msgstr "Proszê czekaæ, odczytywanie bazy danych pakietów..."
 
-#: ../rpmdrake_.c:890
+#: ../rpmdrake_.c:893
 msgid "Please wait, removing packages..."
 msgstr "Proszê czekaæ, usuwanie pakietów..."
 
-#: ../rpmdrake_.c:905
+#: ../rpmdrake_.c:908
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -911,7 +919,7 @@ msgstr ""
 "To narzêdzie pomo¿e ci wybraæ programy, które mog± zostaæ usuniête\n"
 "z komputera."
 
-#: ../rpmdrake_.c:910
+#: ../rpmdrake_.c:913
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -923,7 +931,7 @@ msgstr ""
 "To narzêdzie pomo¿e ci wybraæ aktualizacje, które mo¿esz chcieæ\n"
 "zainstalowaæ na tym komputerze."
 
-#: ../rpmdrake_.c:915
+#: ../rpmdrake_.c:918
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"

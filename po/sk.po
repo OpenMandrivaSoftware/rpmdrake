@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-29 16:03+0200\n"
+"POT-Creation-Date: 2002-08-29 17:02+0200\n"
 "PO-Revision-Date: 2002-08-26 11:18+0100\n"
 "Last-Translator: Pavol Cvengros <orpheus@hq.alert.sk>\n"
 "Language-Team: Sk <i18n@hq.alert.sk>\n"
@@ -57,7 +57,7 @@ msgstr "Cesta alebo bod pripojenia:"
 msgid "Removable device"
 msgstr "Vymeniteµné zariadenie"
 
-#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:462
+#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:465
 msgid "Security updates"
 msgstr "Bezpeènostné aktualizácie"
 
@@ -107,13 +107,13 @@ msgstr "Typ zdroja:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98 ../rpmdrake.pm_.c:272
-#: ../rpmdrake_.c:319 ../rpmdrake_.c:776 ../rpmdrake_.c:802
+#: ../rpmdrake_.c:322 ../rpmdrake_.c:779 ../rpmdrake_.c:805
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:272 ../rpmdrake_.c:319 ../rpmdrake_.c:802
+#: ../rpmdrake.pm_.c:272 ../rpmdrake_.c:322 ../rpmdrake_.c:805
 msgid "Cancel"
 msgstr "Zru¹i»"
 
@@ -175,7 +175,7 @@ msgstr "Povolené?"
 msgid "Source"
 msgstr "Zdroj"
 
-#: ../edit-urpm-sources.pl_.c:245 ../rpmdrake_.c:598
+#: ../edit-urpm-sources.pl_.c:245 ../rpmdrake_.c:601
 msgid "Remove"
 msgstr "Odstráni»"
 
@@ -195,11 +195,11 @@ msgstr "Aktualizácia..."
 msgid "Save and quit"
 msgstr "Ulo¾i» a ukonèi»"
 
-#: ../edit-urpm-sources.pl_.c:255 ../rpmdrake_.c:601
+#: ../edit-urpm-sources.pl_.c:255 ../rpmdrake_.c:604
 msgid "Quit"
 msgstr "Ukonèi»"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:901
+#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:904
 #, c-format
 msgid ""
 "%s\n"
@@ -409,11 +409,11 @@ msgstr "Prosím zvoµte si jeden z mirorov."
 msgid "Other"
 msgstr ""
 
-#: ../rpmdrake_.c:135 ../rpmdrake_.c:422 ../rpmdrake_.c:423
+#: ../rpmdrake_.c:135 ../rpmdrake_.c:425 ../rpmdrake_.c:426
 msgid "(Non available)"
 msgstr "(Nedostupné)"
 
-#: ../rpmdrake_.c:143 ../rpmdrake_.c:196
+#: ../rpmdrake_.c:143 ../rpmdrake_.c:194
 msgid "Search results"
 msgstr "Výsledky vyhµadávania"
 
@@ -429,35 +429,51 @@ msgstr "Prosím èakajte, vyhµadávam..."
 msgid "Stop"
 msgstr "Stop"
 
-#: ../rpmdrake_.c:229
+#: ../rpmdrake_.c:195 ../rpmdrake_.c:295
+msgid "Addable"
+msgstr "Pridateµné"
+
+#: ../rpmdrake_.c:195 ../rpmdrake_.c:295
+msgid "Upgradable"
+msgstr "Aktualizovateµné"
+
+#: ../rpmdrake_.c:197
+msgid "Not selected"
+msgstr ""
+
+#: ../rpmdrake_.c:197
+msgid "Selected"
+msgstr ""
+
+#: ../rpmdrake_.c:232
 msgid "More information on package..."
 msgstr ""
 
-#: ../rpmdrake_.c:231
+#: ../rpmdrake_.c:234
 msgid "One of the following packages is needed:"
 msgstr "Jeden z nasledujúcich balíèkov je potrebný:"
 
-#: ../rpmdrake_.c:231
+#: ../rpmdrake_.c:234
 msgid "Please choose"
 msgstr "Prosím zvoµte"
 
-#: ../rpmdrake_.c:247
+#: ../rpmdrake_.c:250
 msgid "unknown package "
 msgstr "neznámy balíèek"
 
-#: ../rpmdrake_.c:257
+#: ../rpmdrake_.c:260
 msgid "Please wait, listing packages..."
 msgstr "Prosím èakajte, vypisujem balíèky..."
 
-#: ../rpmdrake_.c:271
+#: ../rpmdrake_.c:274
 msgid "(none)"
 msgstr "(¾iaden)"
 
-#: ../rpmdrake_.c:273
+#: ../rpmdrake_.c:276
 msgid "No update"
 msgstr "®iadna aktualizácia"
 
-#: ../rpmdrake_.c:274
+#: ../rpmdrake_.c:277
 msgid ""
 "The list of updates is void. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -467,19 +483,11 @@ msgstr ""
 "momentálne nie sú dostupné ¾iadne aktualizácie pre balíèky nain¹talované\n"
 "na Va¹om poèítaèi, alebo ich u¾ máte v¹etky nain¹talované."
 
-#: ../rpmdrake_.c:292
-msgid "Addable"
-msgstr "Pridateµné"
-
-#: ../rpmdrake_.c:292
-msgid "Upgradable"
-msgstr "Aktualizovateµné"
-
-#: ../rpmdrake_.c:325
+#: ../rpmdrake_.c:328
 msgid "Some additional packages need to be removed"
 msgstr "Je potrebné odstráni» niektoré balíèky"
 
-#: ../rpmdrake_.c:326
+#: ../rpmdrake_.c:329
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:\n"
@@ -488,11 +496,11 @@ msgstr ""
 "Kvôli závislostiam budú tieto balíèky odstránené:\n"
 "\n"
 
-#: ../rpmdrake_.c:332
+#: ../rpmdrake_.c:335
 msgid "Some packages can't be removed"
 msgstr "Niektoré balíèky nie je mo¾né odstráni»"
 
-#: ../rpmdrake_.c:333 ../rpmdrake_.c:391
+#: ../rpmdrake_.c:336 ../rpmdrake_.c:394
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -501,11 +509,11 @@ msgstr ""
 "Kvôli závislostiam musia by» nasledujúce balíèky teraz odznaèené:\n"
 "\n"
 
-#: ../rpmdrake_.c:361
+#: ../rpmdrake_.c:364
 msgid "Additional packages needed"
 msgstr "Sú potrebné ïal¹ie balíèky"
 
-#: ../rpmdrake_.c:362
+#: ../rpmdrake_.c:365
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -514,11 +522,11 @@ msgstr ""
 "Pre vyrie¹enie závislosti, sú potrebné nain¹talova» tieto balíèky:\n"
 "\n"
 
-#: ../rpmdrake_.c:375
+#: ../rpmdrake_.c:378
 msgid "Some packages can't be installed"
 msgstr "Niektoré balíèky nie je mo¾né nain¹talova»"
 
-#: ../rpmdrake_.c:376
+#: ../rpmdrake_.c:379
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -526,21 +534,21 @@ msgstr ""
 "Prepáète, tieto balíèky nie je mo¾né vybra»:\n"
 "\n"
 
-#: ../rpmdrake_.c:390 ../rpmdrake_.c:561
+#: ../rpmdrake_.c:393 ../rpmdrake_.c:564
 msgid "Some packages need to be removed"
 msgstr "Je potrebné odstráni» niektoré balíèky"
 
-#: ../rpmdrake_.c:412
+#: ../rpmdrake_.c:415
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Vybrané: %d MB / Dostupné: %d MB"
 
-#: ../rpmdrake_.c:414
+#: ../rpmdrake_.c:417
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Vybraná veµkos»: %d Mb"
 
-#: ../rpmdrake_.c:420
+#: ../rpmdrake_.c:423
 #, c-format
 msgid ""
 "%sFiles:\n"
@@ -550,12 +558,12 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../rpmdrake_.c:421
+#: ../rpmdrake_.c:424
 #, fuzzy, c-format
 msgid "Source: %s\n"
 msgstr "Zdroj"
 
-#: ../rpmdrake_.c:426
+#: ../rpmdrake_.c:429
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -576,7 +584,7 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:430
+#: ../rpmdrake_.c:433
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -595,68 +603,68 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:465
 msgid "Bugfixes updates"
 msgstr "Aktualizácie opravujúce chyby"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:465
 msgid "Normal updates"
 msgstr "Normálne aktualizácie"
 
-#: ../rpmdrake_.c:481
+#: ../rpmdrake_.c:484
 msgid "Mandrake choices"
 msgstr "Voµby Mandrake"
 
-#: ../rpmdrake_.c:482
+#: ../rpmdrake_.c:485
 msgid "All packages, alphabetical"
 msgstr "V¹etky balíèky, abecedne"
 
-#: ../rpmdrake_.c:483
+#: ../rpmdrake_.c:486
 msgid "All packages,"
 msgstr "V¹etky balíèky,"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:509
 msgid "by group"
 msgstr "podµa skupiny"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:509
 msgid "by size"
 msgstr "podµa veµkosti"
 
-#: ../rpmdrake_.c:507
+#: ../rpmdrake_.c:510
 msgid "by selection state"
 msgstr "podµa stavu výberu"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:511
 msgid "by source repository"
 msgstr "podµa zdroja"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:511
 msgid "by update availability"
 msgstr "podµa dostupnosti zdroja"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:532
 msgid "in descriptions"
 msgstr "v popisoch"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:532
 msgid "in names"
 msgstr "v menách"
 
-#: ../rpmdrake_.c:530
+#: ../rpmdrake_.c:533
 msgid "in files"
 msgstr "v súboroch"
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:544
 msgid "Maximum information"
 msgstr ""
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:544
 #, fuzzy
 msgid "Normal information"
 msgstr "Normálne aktualizácie"
 
-#: ../rpmdrake_.c:562
+#: ../rpmdrake_.c:565
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -672,35 +680,35 @@ msgstr ""
 "\n"
 "Mô¾eme pokraèova»?"
 
-#: ../rpmdrake_.c:582
+#: ../rpmdrake_.c:585
 msgid "Find:"
 msgstr "Hµadaj:"
 
-#: ../rpmdrake_.c:587
+#: ../rpmdrake_.c:590
 msgid "Search"
 msgstr "Hµada»"
 
-#: ../rpmdrake_.c:599
+#: ../rpmdrake_.c:602
 msgid "Install"
 msgstr "In¹taluj"
 
-#: ../rpmdrake_.c:610
+#: ../rpmdrake_.c:613
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:611
+#: ../rpmdrake_.c:614
 msgid "Mandrake Update"
 msgstr "Mandrake Update"
 
-#: ../rpmdrake_.c:611
+#: ../rpmdrake_.c:614
 msgid "Software Packages Removal"
 msgstr "Odstránenie softvérových balíèkov"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:615
 msgid "Software Packages Installation"
 msgstr "In¹talácia softvérových balíèkov"
 
-#: ../rpmdrake_.c:644
+#: ../rpmdrake_.c:647
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -713,24 +721,24 @@ msgstr ""
 "\n"
 "Mô¾eme pokraèova»?"
 
-#: ../rpmdrake_.c:648
+#: ../rpmdrake_.c:651
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Prosím èakajte, kontaktujem miror pre aktualizáciu informácii o balíèkoch."
 
-#: ../rpmdrake_.c:650
+#: ../rpmdrake_.c:653
 msgid "Error updating medium"
 msgstr "Chyba pri aktualizácii média"
 
-#: ../rpmdrake_.c:651
+#: ../rpmdrake_.c:654
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "Nastala neopraviteµná chyba poèas aktualizácie informácii o balíèkoch."
 
-#: ../rpmdrake_.c:657
+#: ../rpmdrake_.c:660
 msgid "How to choose manually your mirror"
 msgstr "Ako si zvoli» mirror manuálne"
 
-#: ../rpmdrake_.c:658
+#: ../rpmdrake_.c:661
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -744,16 +752,16 @@ msgstr ""
 "\n"
 "Potom re¹tartujte MandrakeUpdate."
 
-#: ../rpmdrake_.c:664
+#: ../rpmdrake_.c:667
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Prosím èakajte, kontaktujem miror pre inicializáciu aktualizácie balíèkov."
 
-#: ../rpmdrake_.c:668
+#: ../rpmdrake_.c:671
 msgid "Error adding update medium"
 msgstr "Chyba pri pridávaní média"
 
-#: ../rpmdrake_.c:669
+#: ../rpmdrake_.c:672
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -773,48 +781,48 @@ msgstr ""
 "\n"
 "Chcete pou¾i» iný miror?"
 
-#: ../rpmdrake_.c:698
+#: ../rpmdrake_.c:701
 msgid "Please wait, finding available packages..."
 msgstr "Prosím èakajte, hµadám dostupné balíèky..."
 
-#: ../rpmdrake_.c:721
+#: ../rpmdrake_.c:724
 msgid "All requested packages were installed successfully."
 msgstr "V¹etky po¾adované balíèky boli úspe¹ne nain¹talované."
 
-#: ../rpmdrake_.c:721
+#: ../rpmdrake_.c:724
 msgid "Everything installed successfully"
 msgstr "V¹etko bolo úspe¹ne nain¹talované"
 
-#: ../rpmdrake_.c:724
+#: ../rpmdrake_.c:727
 #, fuzzy
 msgid "Installation finished"
 msgstr "In¹talácia neúspe¹ná"
 
-#: ../rpmdrake_.c:727
+#: ../rpmdrake_.c:730
 #, c-format
 msgid "Inspecting %s"
 msgstr ""
 
-#: ../rpmdrake_.c:743
+#: ../rpmdrake_.c:746
 #, fuzzy, c-format
 msgid "Remove .%s"
 msgstr "Odstráni»"
 
-#: ../rpmdrake_.c:745
+#: ../rpmdrake_.c:748
 #, c-format
 msgid "Use .%s as main file"
 msgstr ""
 
-#: ../rpmdrake_.c:747
+#: ../rpmdrake_.c:750
 msgid "Do nothing"
 msgstr ""
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:753
 #, fuzzy
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:757
+#: ../rpmdrake_.c:760
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -823,44 +831,44 @@ msgid ""
 "you may now inspect some in order to take actions:"
 msgstr ""
 
-#: ../rpmdrake_.c:758
+#: ../rpmdrake_.c:761
 #, fuzzy
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr "Niektoré balíèky nie je mo¾né nain¹talova»"
 
-#: ../rpmdrake_.c:759
+#: ../rpmdrake_.c:762
 #, fuzzy
 msgid "everything was installed correctly"
 msgstr "V¹etko bolo úspe¹ne nain¹talované"
 
-#: ../rpmdrake_.c:764
+#: ../rpmdrake_.c:767
 msgid "Inspect..."
 msgstr ""
 
-#: ../rpmdrake_.c:792
+#: ../rpmdrake_.c:795
 msgid "Unable to get source packages."
 msgstr "Nie je mo¾né prebra» zdrojové balíèky."
 
-#: ../rpmdrake_.c:793
+#: ../rpmdrake_.c:796
 msgid "Unable to get source packages, sorry."
 msgstr "Nemô¾em prevzia» zdrojové balíèky, prepáète."
 
-#: ../rpmdrake_.c:800
+#: ../rpmdrake_.c:803
 msgid "Change medium"
 msgstr "Vymeni» médium"
 
-#: ../rpmdrake_.c:801
+#: ../rpmdrake_.c:804
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Prosím vlo¾te médium s názvom \"%s\" do zariadenia [%s]"
 
-#: ../rpmdrake_.c:809
+#: ../rpmdrake_.c:812
 msgid "Installation failed"
 msgstr "In¹talácia neúspe¹ná"
 
-#: ../rpmdrake_.c:810
+#: ../rpmdrake_.c:813
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -868,35 +876,35 @@ msgstr ""
 "In¹talácia neúspe¹ná, niektoré súbory chýbajú.\n"
 "Mo¾no bude potrebné aktualizova» databázu zdrojov."
 
-#: ../rpmdrake_.c:813
+#: ../rpmdrake_.c:816
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "Prosím èakajte, odstraòujem balíèky aby bolo mo¾né iné aktualizova»..."
 
-#: ../rpmdrake_.c:822
+#: ../rpmdrake_.c:825
 msgid "Program missing"
 msgstr "Chýba program"
 
-#: ../rpmdrake_.c:823
+#: ../rpmdrake_.c:826
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Po¾adovaný program chýba (grpmi). Prosím overte si in¹taláciu."
 
-#: ../rpmdrake_.c:841
+#: ../rpmdrake_.c:844
 msgid "Everything already installed."
 msgstr "V¹etko je u¾ nain¹talované."
 
-#: ../rpmdrake_.c:842
+#: ../rpmdrake_.c:845
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "V¹etko je u¾ nain¹talované (malo sa to vôbec sta»?)."
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:855
 msgid "Please wait, reading packages database..."
 msgstr "Prosím èakajte, naèítavam databázu balíèkov..."
 
-#: ../rpmdrake_.c:890
+#: ../rpmdrake_.c:893
 msgid "Please wait, removing packages..."
 msgstr "Prosím èakajte, odstraòujú balíèky..."
 
-#: ../rpmdrake_.c:905
+#: ../rpmdrake_.c:908
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -908,7 +916,7 @@ msgstr ""
 "Tento nástroj Vám pomô¾e si zvoli» softvér ktorý chcete odstráni»\n"
 "z Vá¹ho poèítaèa."
 
-#: ../rpmdrake_.c:910
+#: ../rpmdrake_.c:913
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -921,7 +929,7 @@ msgstr ""
 "Vá¹ho\n"
 "poèítaèa."
 
-#: ../rpmdrake_.c:915
+#: ../rpmdrake_.c:918
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
