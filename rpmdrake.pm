@@ -179,7 +179,7 @@ sub wait_msg {
     my ($msg, %options) = @_;
     my $mainw = ugtk2->new('rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::Label->new($msg);
-    gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label, if_(exists $options{widgets}, @{$options{widgets}}))));
+    gtkadd($mainw->{window}, gtkpack__(gtkadd(Gtk2::VBox->new(0, 5), $label, if_(exists $options{widgets}, @{$options{widgets}}))));
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });
     $mainw->{rwindow}->set_position('center_always');
     $mainw->sync until $mainw->{displayed};
@@ -414,7 +414,7 @@ sub show_urpm_progress {
 sub update_sources {
     my ($urpm, %options) = @_;
     my $w = wait_msg(my $label = Gtk2::Label->new(N("Please wait, updating media...")),
-		     widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 400, 0) ]);
+		     widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1) ]);
     $urpm->update_media(%options, callback => sub { show_urpm_progress($label, $pb, @_) });
     remove_wait_msg($w);
 }
