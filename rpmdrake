@@ -324,8 +324,10 @@ or you already installed all of them."));
     $::noBorder = 0;
     $tree = Gtk::CTree->new(3, 0);
     $tree->set_selection_mode('browse');
-    $tree->set_column_auto_resize($_, 1) foreach 1..2;
-    $tree->set_column_width(0, 260);
+    $tree->set_column_auto_resize($_, 1) foreach 0..2;
+    my $typical_width = $tree->get_style->font->string_width("Develop xmms-more-vis-plugins-1.6.0.0-2mdk");
+    $typical_width > 500 and $typical_width = 500;  #- try to not being crazy with a too large value
+    $tree->set_column_max_width(0, $typical_width);
     $tree->signal_connect(tree_select_row => sub { 
 			      $disable_treeselect_callback and return;
 			      if (!$_[1]->row->is_leaf && !$_[1]->row->children) {
@@ -498,7 +500,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 		       0;
 		   });
 
-    $w->{window}->set_usize(660, 500);
+    $w->{window}->set_usize($typical_width*2.7, 500);
     $w->{rwindow}->show_all;
     my $widgets = { w => $w, tree => $tree, info => $info, status => $status};
 
