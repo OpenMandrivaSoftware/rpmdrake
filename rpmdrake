@@ -27,6 +27,7 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
   --no-confirmation      don't ask first confirmation question in MandrakeUpdate mode
   --no-verify-rpm        don't verify packages signatures
   --changelog-first      display changelog before filelist in the description window
+  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found
 ", $basename->($0);
 	exit 0;
     };
@@ -793,13 +794,15 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
 }
 
 sub dialog_rpmnew {
-    my ($exitstatus, %p2r) = @_;
+    my ($exitstatus, $msg, %p2r) = @_;
+    # /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
+    my @ignores_rpmnew = qw(/etc/group /etc/passwd /etc/localtime /etc/shells /etc/adjtime /etc/ld.so.conf /etc/modules 
+                        /etc/security/fileshare.conf /etc/sudoers /etc/sysconfig/alsa /etc/sysconfig/autofsck /etc/sysconfig/harddisks
+                        /etc/sysconfig/installkernel /etc/sysconfig/msec /etc/sysconfig/nfs /etc/sysconfig/pcmcia /etc/sysconfig/init
+                        /etc/sysconfig/rawdevices /etc/sysconfig/saslauthd /etc/sysconfig/syslog /etc/sysconfig/usb /etc/sysconfig/xinetd);
+    @{$p2r{$_}} = grep { !member($_, @ignores_rpmnew) } @{$p2r{$_}} foreach keys %p2r;
     my $sum_rpmnew = sum(map { int @{$p2r{$_}} } keys %p2r);
-    if ($sum_rpmnew == 0) {
-	$exitstatus == 0
-	  and interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
-	return;
-    }
+    $sum_rpmnew == 0 and return 1;
     my $d = my_gtk->new(_("Installation finished"));
     my $inspect = sub {
 	my ($file) = @_;
@@ -856,13 +859,12 @@ sub dialog_rpmnew {
 				       } keys %p2r);
     gtkadd($d->{window},
 	   gtkpack__(new Gtk::VBox(0,5),
-		     new Gtk::Label(_("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:",
-				      $exitstatus ? _("some packages failed to install\ncorrectly")
-				      : _("everything was installed correctly"))),
+		     new Gtk::Label($msg),
 		     $sum_rpmnew < 6 ? $packtable
 		                     : gtkset_usize(createScrolledWindow($packtable), $typical_width*1.7, min(70 + $sum_rpmnew*20, 450)),
 		     gtkpack__(create_hbox(), gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit }))));
     $d->main;
+    return 0;
 }
 
 sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
@@ -913,19 +915,18 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 			   _("A required program is missing (grpmi). Check your installation.")), myexit(-1);
 	}
 	my $exitstatus = $?;
-	# /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
-	my @ignores_rpmnew = qw(/etc/group /etc/passwd /etc/localtime /etc/shells /etc/adjtime /etc/ld.so.conf /etc/modules 
-                        /etc/security/fileshare.conf /etc/sudoers /etc/sysconfig/alsa /etc/sysconfig/autofsck /etc/sysconfig/harddisks
-                        /etc/sysconfig/installkernel /etc/sysconfig/msec /etc/sysconfig/nfs /etc/sysconfig/pcmcia /etc/sysconfig/init
-                        /etc/sysconfig/rawdevices /etc/sysconfig/saslauthd /etc/sysconfig/syslog /etc/sysconfig/usb /etc/sysconfig/xinetd);
-
 	my %pkg2rpmnew;
 	foreach my $u (@rpms_upgrade) {
 	    $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
-	      and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") && !member($_, @ignores_rpmnew) }
+	      and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
 				      map { chomp_($_) } `rpm -ql $1` ];
 	}
-	dialog_rpmnew($exitstatus, %pkg2rpmnew);
+	dialog_rpmnew($exitstatus,
+		      _("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:", $exitstatus ? _("some packages failed to install\ncorrectly")
+			                           : _("everything was installed correctly")),
+		      %pkg2rpmnew)
+	  && !$exitstatus and interactive_msg(_("Everything installed successfully"),
+					      _("All requested packages were installed successfully."));
     } else {
 	interactive_msg(_("Everything already installed."),
 			_("Everything already installed (is this supposed to happen at all?)."));
@@ -982,6 +983,18 @@ sub perform_removal {
 
 
 # -=-=-=---=-=-=---=-=-=-- main -=-=-=---=-=-=---=-=-=-
+
+if ($options{'merge-all-rpmnew'}) {
+    my %pkg2rpmnew;
+    db->traverse(sub {
+		     my $n = my_fullname($_[0]);
+		     $pkg2rpmnew{$n} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") } map { chomp_($_) } $_[0]->files ];
+		 });
+    $typical_width = 280;
+    dialog_rpmnew(0, '', %pkg2rpmnew);
+    myexit(0);
+}
+
 
 readconf();
 
