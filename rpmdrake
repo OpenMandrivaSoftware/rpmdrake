@@ -628,7 +628,7 @@ or you already installed all of them."));
 		    sort { $b->[1] <=> $a->[1] } grep { exists $pkgs->{$_->[0]} } map { [ split ] } `$pkgs_times`;
 		},
 		flat => sub { sort { uc($a->[0]) cmp uc($b->[0]) } @_ },
-		by_medium => sub { sort { $a->[3] <=> $b->[3] || uc($a->[0]) cmp uc($b->[0]) } @_ },
+		by_medium => sub { sort { $a->[2] <=> $b->[2] || uc($a->[0]) cmp uc($b->[0]) } @_ },
 	    );
 	    if ($flat) {
 		$add_node->($_->[0], '') foreach $sortmethods{$mode || 'flat'}->(@elems);
@@ -637,8 +637,8 @@ or you already installed all of them."));
 		    $add_node->($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
 		    $tree->expand_row($tree_model->get_path($tree_model->get_iter_first), 0);
 		} elsif ($mode eq 'by_source') {
-		    $add_node->($_->[0], $_->[2]) foreach $sortmethods{by_medium}->(map {
-			my $m = pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm); [ @$_, $m->{name}, $m->{priority} ];
+		    $add_node->($_->[0], $_->[1]) foreach $sortmethods{by_medium}->(map {
+			my $m = pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm); [ $_->[0], $m->{name}, $m->{priority} ];
 		    } @elems);
 		} elsif ($mode eq 'by_presence') {
 		    $add_node->(
