@@ -14,7 +14,7 @@ PREFIX = $(RPM_BUILD_ROOT)/usr
 DATADIR = $(PREFIX)/share
 LOCALEDIR=$(DATADIR)/locale
 
-all: $(PGOAL).pot $(MOFILES)
+all: $(MOFILES)
 
 %.mo: %.po
 	msgfmt -o $@ $<

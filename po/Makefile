@@ -15,7 +15,7 @@ PREFIX = $(RPM_BUILD_ROOT)/usr
 DATADIR = $(PREFIX)/share
 LOCALEDIR=$(DATADIR)/locale
 
-all: $(PGOAL).pot $(MOFILES)
+all: $(MOFILES)
 
 %.mo: %.po
 	if [ -z "`echo $(IGNOREPOMS) | grep $<`" ]; then cat $< "$<"m >> "$<"f; else cp $< "$<"f; fi
