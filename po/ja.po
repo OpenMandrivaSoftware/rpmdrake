@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ja\n"
-"POT-Creation-Date: 2003-05-16 18:40+0200\n"
+"POT-Creation-Date: 2003-05-16 18:58+0200\n"
 "PO-Revision-Date: 2003-04-05 00:06+0900\n"
 "Last-Translator: UTUMI Hirosi\n"
 "Language-Team: japanese <ja@li.org>\n"
@@ -77,11 +77,6 @@ msgstr "いくつかのパッケージを削除します"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Already existing update sources"
-msgstr "その更新元は既存です"
-
-#: ../rpmdrake:1
-#, c-format
 msgid "More information on package..."
 msgstr "パッケージの詳細情報"
 
@@ -110,6 +105,21 @@ msgstr "全て正しくインストールしました"
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Medias Manager, and then add a `Security\n"
+"updates' media.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"ミラーを手動で選ぶこともできます。この場合は\n"
+"RPMデータベースマネージャを起動して、「セキュリティアップデート」の\n"
+"データベースを追加します。\n"
+"\n"
+"そのあとでMandrakeアップデートを再起動してください。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -156,6 +166,11 @@ msgid "Security updates"
 msgstr "セキュリティアップデート"
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update medias"
+msgstr "その更新元は既存です"
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Maximum information"
 msgstr "詳細情報"
@@ -165,15 +180,19 @@ msgstr "詳細情報"
 msgid "Proxy..."
 msgstr "プロクシ"
 
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your medias database."
+msgstr ""
+"インストールは失敗しました。一部のファイルがありません。\n"
+"インストール元のデータベースを更新してください。"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United Kingdom"
 msgstr "イギリス"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Configure sources"
-msgstr "データベースの設定"
 
 #: ../rpmdrake:1
 #, c-format
@@ -200,18 +219,13 @@ msgstr ""
 msgid "Remove .%s"
 msgstr ".%s を削除する"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Source"
-msgstr "データベース"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Finland"
 msgstr "フィンランド"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following packages have bad signatures:\n"
 "\n"
@@ -219,16 +233,21 @@ msgid ""
 "\n"
 "Do you want to continue installation?"
 msgstr ""
-"以下のパッケージを削除しないと他が更新できません:\n"
+"以下のパッケージの署名は間違っています:\n"
 "\n"
 "%s\n"
 "\n"
-"続けていいですか?"
+"インストールを続けますか?"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining distant file of media `%s'..."
+msgstr "データベース %s のファイルを調べています.."
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Verifying packages signatures..."
-msgstr ""
+msgstr "パッケージの署名を照合.."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -262,11 +281,6 @@ msgstr "パッケージリストを読み直す"
 msgid "Choose a mirror..."
 msgstr "ミラーを選んでください"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Adding a source:"
-msgstr "データベースを追加:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Some packages can't be installed"
@@ -282,6 +296,11 @@ msgstr "回復不能なエラー: インストールするパッケージが見つかりません。"
 msgid "All packages,"
 msgstr "全パッケージ"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of media:"
+msgstr "インストール元の種類:"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "in files"
@@ -296,11 +315,6 @@ msgstr "指定したパッケージを全てインストールしました。"
 #, c-format
 msgid "Proxy hostname:"
 msgstr "プロクシのホスト名:"
-
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, c-format
-msgid "Update source(s)"
-msgstr "データベースを更新"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -326,21 +340,6 @@ msgstr "ヘルプ"
 #, c-format
 msgid "HTTP server"
 msgstr "HTTPサーバ"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid ""
-"Welcome to the packages source editor!\n"
-"\n"
-"This tool will help you configure the packages sources you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"RPMデータベースマネージャへようこそ\n"
-"\n"
-"このツールはRPMのデータベースを設定します。\n"
-"設定したデータベースから新しいRPMをインストールしたり\n"
-"更新したりできるようになります。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -459,11 +458,6 @@ msgstr "パスワード:"
 
 #: ../rpmdrake.pm:1
 #, c-format
-msgid "Examining distant file of source `%s'..."
-msgstr "データベース %s のファイルを調べています.."
-
-#: ../rpmdrake.pm:1
-#, c-format
 msgid "Taiwan"
 msgstr "台湾"
 
@@ -484,21 +478,6 @@ msgstr "RPMを並べかえています。お待ちください。"
 
 #: ../rpmdrake:1
 #, c-format
-msgid ""
-"You already have at least one update source configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Sources Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"更新元は設定済みですが、現在それら全てが無効になっています。\n"
-"RPMデータベースマネージャを起動して、少なくとも１つは有効にしてください。\n"
-"\n"
-"その後でMandrakeUpdateを起動してください。"
-
-#: ../rpmdrake:1
-#, c-format
 msgid "Information on packages"
 msgstr "パッケージの情報"
 
@@ -511,6 +490,11 @@ msgstr "キャンセル"
 #, c-format
 msgid "Everything installed successfully"
 msgstr "インストールは全て成功しました"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media(s) you wish to update:"
+msgstr "更新したいデータベースを選んでください:"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -570,11 +554,6 @@ msgstr "選んでください"
 msgid "Selected size: %d MB"
 msgstr "選択サイズ: %d MB"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Add a source"
-msgstr "データベースを追加"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Initializing..."
@@ -591,9 +570,9 @@ msgid "Error during download"
 msgstr "ダウンロード中にエラー"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid "Package installation..."
-msgstr "インストール用にパッケージ準備中"
+msgstr "パッケージをインストール.."
 
 #: ../rpmdrake:1
 #, c-format
@@ -654,10 +633,10 @@ msgstr "情報"
 msgid "You need to insert the medium to continue"
 msgstr "続けるにはメディアを挿入してください"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Editing source \"%s\":"
-msgstr "データベース %s を編集:"
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for media `%s'..."
+msgstr "データベース `%s' 用のファイルをコピー中.."
 
 #: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
@@ -665,9 +644,14 @@ msgid "Remove"
 msgstr "削除"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing packages installation..."
-msgstr "インストール用にパッケージ準備中"
+msgstr "パッケージをインストールする準備.."
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "by media repository"
+msgstr "データベース順"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -707,15 +691,6 @@ msgstr "説明: "
 #: ../rpmdrake:1
 #, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your sources database."
-msgstr ""
-"インストールは失敗しました。一部のファイルがありません。\n"
-"インストール元のデータベースを更新してください。"
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
 "during or after package installation ; this is particularly\n"
@@ -738,6 +713,11 @@ msgstr "名前: "
 #, c-format
 msgid "Inspect..."
 msgstr "検索"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing media \"%s\":"
+msgstr "データベース %s を編集:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -789,11 +769,6 @@ msgstr "完了しました。"
 msgid "Software Packages Installation"
 msgstr "RPMのインストール"
 
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining file of source `%s'..."
-msgstr "データベース %s のファイルを調べています.."
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Additional packages needed"
@@ -835,14 +810,29 @@ msgid "Search"
 msgstr "検索"
 
 #: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Edit a source"
+#, fuzzy, c-format
+msgid "Edit a media"
 msgstr "データベースを編集"
 
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Czech Republic"
 msgstr "チェコ"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You already have at least one update media configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Medias Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"更新元は設定済みですが、現在それら全てが無効になっています。\n"
+"RPMデータベースマネージャを起動して、少なくとも１つは有効にしてください。\n"
+"\n"
+"その後でMandrakeUpdateを起動してください。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -866,13 +856,23 @@ msgstr "標準情報"
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Media: "
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr "以下のパッケージダウンロード中 `%s' (%s/%s)..."
+msgstr "以下のパッケージダウンロード中 `%s' (%s/%s).."
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "選択: %d MB / ディスクの空き容量: %d MB"
+
+#: ../edit-urpm-sources.pl:1
+#, c-format
+msgid "Media"
+msgstr ""
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -899,6 +899,11 @@ msgstr "お待ちください。Mandrakeのウェブサイトからミラーサイトを取得中です。"
 msgid "Login:"
 msgstr "Login:"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a media:"
+msgstr "データベースを追加:"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
@@ -908,11 +913,6 @@ msgstr "オーストリア"
 #, c-format
 msgid "Fatal error"
 msgstr "回復不能なエラー"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Select the source(s) you wish to update:"
-msgstr "更新したいデータベースを選んでください:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1018,6 +1018,16 @@ msgstr "rpmdrake"
 msgid "No"
 msgstr "いいえ"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure medias"
+msgstr "データベースの設定"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Add a media"
+msgstr "データベースを追加"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Summary: "
@@ -1050,16 +1060,6 @@ msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Source: "
-msgstr "データベース: "
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Copying file for source `%s'..."
-msgstr "データベース `%s' 用のファイルをコピー中.."
-
-#: ../rpmdrake:1
-#, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "パッケージを取得できません。%s"
 
@@ -1072,11 +1072,6 @@ msgstr "パス:"
 #, c-format
 msgid "Problem during removal"
 msgstr "削除中に問題が発生しました"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "by source repository"
-msgstr "データベース順"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1156,6 +1151,11 @@ msgstr ""
 "更新版がないか、それら全てを既にインストールしています。"
 
 #: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of media `%s'..."
+msgstr "データベース %s のファイルを調べています.."
+
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Download of `%s', speed:%s"
 msgstr "`%s'をダウンロード。速度:%s"
@@ -1183,6 +1183,11 @@ msgstr ""
 "\n"
 "続けますか?"
 
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media(s)"
+msgstr "データベースを更新"
+
 #: ../rpmdrake:1 ../edit-urpm-sources.pl:1 ../rpmdrake.pm:1
 #, c-format
 msgid "Ok"
@@ -1193,11 +1198,6 @@ msgstr "OK"
 msgid "Please wait, adding medium..."
 msgstr "お待ちください。メディアを追加中です。"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Type of source:"
-msgstr "インストール元の種類:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Unable to get source packages."
@@ -1207,6 +1207,21 @@ msgstr "パッケージを取得できません。"
 #, c-format
 msgid "Too many packages are selected"
 msgstr "選んだパッケージが多すぎます"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Medias Manager!\n"
+"\n"
+"This tool will help you configure the packages medias you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"RPMデータベースマネージャへようこそ\n"
+"\n"
+"このツールはRPMのデータベースを設定します。\n"
+"設定したデータベースから新しいRPMをインストールしたり\n"
+"更新したりできるようになります。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1229,21 +1244,6 @@ msgstr ""
 #, c-format
 msgid "Mandrake choices"
 msgstr "Mandrakeの分類"
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Sources Manager, and then add a `Security\n"
-"updates' source.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"ミラーを手動で選ぶこともできます。この場合は\n"
-"RPMデータベースマネージャを起動して、「セキュリティアップデート」の\n"
-"データベースを追加します。\n"
-"\n"
-"そのあとでMandrakeアップデートを再起動してください。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1490,52 +1490,51 @@ msgstr "コールの順序が不正\n"
 
 #: ../grpmi/curl_download/curl_download.xs:267
 msgid "HTTP Interface operation failed\n"
-msgstr ""
+msgstr "HTTPインタフェースの操作に失敗しました\n"
 
 #: ../grpmi/curl_download/curl_download.xs:270
 msgid "my_getpass() returns fail\n"
-msgstr ""
+msgstr "my_getpass()が不正値を返しました\n"
 
 #: ../grpmi/curl_download/curl_download.xs:273
 msgid "catch endless re-direct loops\n"
-msgstr ""
+msgstr "無限ループになっています\n"
 
 #: ../grpmi/curl_download/curl_download.xs:276
 msgid "User specified an unknown option\n"
-msgstr ""
+msgstr "不明なオプションを指定しています\n"
 
 #: ../grpmi/curl_download/curl_download.xs:279
 msgid "Malformed telnet option\n"
-msgstr ""
+msgstr "不正なtelnetオプションです\n"
 
 #: ../grpmi/curl_download/curl_download.xs:282
 msgid "removed after 7.7.3\n"
-msgstr ""
+msgstr "7.7.3以降で削除しました\n"
 
 #: ../grpmi/curl_download/curl_download.xs:285
 msgid "peer's certificate wasn't ok\n"
-msgstr ""
+msgstr "peerの認証に失敗しました\n"
 
 #: ../grpmi/curl_download/curl_download.xs:288
 msgid "when this is a specific error\n"
 msgstr ""
 
 #: ../grpmi/curl_download/curl_download.xs:291
-#, fuzzy
 msgid "SSL crypto engine not found\n"
-msgstr "関数がみつかりません\n"
+msgstr "SSL暗号エンジンがありません\n"
 
 #: ../grpmi/curl_download/curl_download.xs:294
 msgid "can not set SSL crypto engine as default\n"
-msgstr ""
+msgstr "SSL暗号エンジンをデフォルトに設定できません\n"
 
 #: ../grpmi/curl_download/curl_download.xs:297
 msgid "failed sending network data\n"
-msgstr ""
+msgstr "ネットワークデータの送信に失敗\n"
 
 #: ../grpmi/curl_download/curl_download.xs:300
 msgid "failure in receiving network data\n"
-msgstr ""
+msgstr "ネットワークデータの受信に失敗\n"
 
 #: ../grpmi/curl_download/curl_download.xs:303
 msgid "share is in use\n"
@@ -1543,19 +1542,19 @@ msgstr ""
 
 #: ../grpmi/curl_download/curl_download.xs:306
 msgid "problem with the local certificate\n"
-msgstr ""
+msgstr "ローカル認証の問題\n"
 
 #: ../grpmi/curl_download/curl_download.xs:309
 msgid "couldn't use specified cipher\n"
-msgstr ""
+msgstr "指定した暗号は使えません\n"
 
 #: ../grpmi/curl_download/curl_download.xs:312
 msgid "problem with the CA cert (path?)\n"
-msgstr ""
+msgstr "CA cert(パス？)の問題\n"
 
 #: ../grpmi/curl_download/curl_download.xs:315
 msgid "Unrecognized transfer encoding\n"
-msgstr ""
+msgstr "判別不能な転送エンコード\n"
 
 #: ../grpmi/curl_download/curl_download.xs:320
 #, c-format
@@ -1573,6 +1572,62 @@ msgstr "RPMを削除"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "RPMデータベースマネージャ"
+
+#~ msgid "Already existing update sources"
+#~ msgstr "その更新元は既存です"
+
+#~ msgid "Source"
+#~ msgstr "データベース"
+
+#~ msgid ""
+#~ "Welcome to the packages source editor!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages sources you wish to use "
+#~ "on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "RPMデータベースマネージャへようこそ\n"
+#~ "\n"
+#~ "このツールはRPMのデータベースを設定します。\n"
+#~ "設定したデータベースから新しいRPMをインストールしたり\n"
+#~ "更新したりできるようになります。"
+
+#~ msgid "Examining distant file of source `%s'..."
+#~ msgstr "データベース %s のファイルを調べています.."
+
+#~ msgid ""
+#~ "Installation failed, some files are missing.\n"
+#~ "You may want to update your sources database."
+#~ msgstr ""
+#~ "インストールは失敗しました。一部のファイルがありません。\n"
+#~ "インストール元のデータベースを更新してください。"
+
+#~ msgid "Examining file of source `%s'..."
+#~ msgstr "データベース %s のファイルを調べています.."
+
+#~ msgid "Select the source(s) you wish to update:"
+#~ msgstr "更新したいデータベースを選んでください:"
+
+#~ msgid "Source: "
+#~ msgstr "データベース: "
+
+#~ msgid "Copying file for source `%s'..."
+#~ msgstr "データベース `%s' 用のファイルをコピー中.."
+
+#~ msgid ""
+#~ "You may also choose your desired mirror manually: to do so,\n"
+#~ "launch the Software Sources Manager, and then add a `Security\n"
+#~ "updates' source.\n"
+#~ "\n"
+#~ "Then, restart MandrakeUpdate."
+#~ msgstr ""
+#~ "ミラーを手動で選ぶこともできます。この場合は\n"
+#~ "RPMデータベースマネージャを起動して、「セキュリティアップデート」の\n"
+#~ "データベースを追加します。\n"
+#~ "\n"
+#~ "そのあとでMandrakeアップデートを再起動してください。"
 
 #~ msgid ""
 #~ "some packages failed to install\n"
@@ -1626,7 +1681,7 @@ msgstr "RPMデータベースマネージャ"
 #~ msgstr "お待ちください。ミラーに接続してパッケージ情報を更新しています。"
 
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
-#~ msgstr "すべてインストール済み（こんなことがあっていいのか？）"
+#~ msgstr "全てインストール済み(こんなことってあるのだろうか？)"
 
 #~ msgid "Everything already installed."
 #~ msgstr "すべてインストール済み。"
@@ -1788,20 +1843,20 @@ msgstr "RPMデータベースマネージャ"
 #~ msgstr "ファイル取得中にエラーが起きました"
 
 #~ msgid "Skip"
-#~ msgstr "とばす"
+#~ msgstr "スキップ"
 
 #~ msgid "Preparing for install"
-#~ msgstr "インストール準備中"
+#~ msgstr "インストールの準備"
 
 #~ msgid "Can't check the GPG signature"
-#~ msgstr "GPG 署名がチェックできません"
+#~ msgstr "GPG署名をチェックできません"
 
 #~ msgid ""
 #~ "The package %s has a wrong signature or\n"
 #~ "GnuPG isn't correctly installed"
 #~ msgstr ""
 #~ "パッケージ %s の署名がまちがっているか、\n"
-#~ "GnuPG がきちんとインストールされていません"
+#~ "GnuPGをきちんとインストールしていません"
 
 #~ msgid "Don't install"
 #~ msgstr "インストールしない"
@@ -1864,7 +1919,7 @@ msgstr "RPMデータベースマネージャ"
 #~ "Please Wait\n"
 #~ "Fetching the list of mirrors"
 #~ msgstr ""
-#~ "少々お待ちを\n"
+#~ "お待ちください\n"
 #~ "ミラー一覧を取得しています"
 
 #~ msgid "%.1f MB"
@@ -1877,7 +1932,7 @@ msgstr "RPMデータベースマネージャ"
 #~ "Cannot retrieve the description file\n"
 #~ "Bad things can happen"
 #~ msgstr ""
-#~ "説明ファイルが取得できません。\n"
+#~ "説明ファイルを取得できません。\n"
 #~ "まずいことになるかもしれません。"
 
 #~ msgid "n/a"
@@ -1896,7 +1951,7 @@ msgstr "RPMデータベースマネージャ"
 #~ "Please Wait\n"
 #~ "Retrieving the Description file"
 #~ msgstr ""
-#~ "少々お待ちを\n"
+#~ "お待ちください\n"
 #~ "説明ファイルを取得しています"
 
 #~ msgid ""
@@ -1925,7 +1980,7 @@ msgstr "RPMデータベースマネージャ"
 #~ "Please Wait\n"
 #~ "Updating the list of packages"
 #~ msgstr ""
-#~ "少々お待ちを\n"
+#~ "お待ちください\n"
 #~ "パッケージ一覧を更新しています"
 
 #~ msgid ""
@@ -1963,19 +2018,19 @@ msgstr "RPMデータベースマネージャ"
 #~ "gpg パッケージをインストールしましょう。\n"
 
 #~ msgid "Don't show this message again"
-#~ msgstr "今後、このメッセージを表示しない"
+#~ msgstr "今後このメッセージを表示しない"
 
 #~ msgid "oops %s not found\n"
-#~ msgstr "おっと、 %s がみつかりません\n"
+#~ msgstr "%s がみつかりません\n"
 
 #~ msgid "Please Wait"
-#~ msgstr "少々お待ちを"
+#~ msgstr "お待ちください"
 
 #~ msgid "0 selected packages: 0.0 MB"
 #~ msgstr "選択したパッケージ数は 0個: 0.0 MB"
 
 #~ msgid "/File/_Preferences"
-#~ msgstr "/ファイル(F)/プレファレンス(_P)"
+#~ msgstr "/ファイル(F)/設定(_P)"
 
 #~ msgid "/File/-"
 #~ msgstr "/ファイル(F)/-"
@@ -1984,7 +2039,7 @@ msgstr "RPMデータベースマネージャ"
 #~ msgstr "/ファイル(F)/終了(_Q)"
 
 #~ msgid "/Help/_About..."
-#~ msgstr "/ヘルプ(H)/このソフトについて(_A)..."
+#~ msgstr "/ヘルプ(H)/このソフトについて(_A).."
 
 #~ msgid "Name"
 #~ msgstr "名前"
@@ -2010,7 +2065,7 @@ msgstr "RPMデータベースマネージャ"
 #~ "    -V, --verbose: メッセージを省略なしで表示\n"
 
 #~ msgid "Source on network: (random mirror)\n"
-#~ msgstr "ネットワーク上のソース: （ランダムなミラー）\n"
+#~ msgstr "ネットワーク上のソース: (ランダムなミラー)\n"
 
 #~ msgid ""
 #~ "Update\n"
@@ -2068,7 +2123,7 @@ msgstr "RPMデータベースマネージャ"
 #~ "Please Wait\n"
 #~ "Sorting packages"
 #~ msgstr ""
-#~ "少々お待ちを\n"
+#~ "お待ちください\n"
 #~ "パッケージを並べています"
 
 #~ msgid "Choose your packages"
@@ -2160,7 +2215,7 @@ msgstr "RPMデータベースマネージャ"
 #~ msgstr "タイムアウト："
 
 #~ msgid "(in sec)"
-#~ msgstr "（秒）"
+#~ msgstr "(秒)"
 
 #~ msgid "MandrakeUpdate Preferences"
 #~ msgstr "MandrakeUpdate 設定"
