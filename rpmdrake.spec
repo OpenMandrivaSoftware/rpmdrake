@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 32mdk
+%define release 33mdk
 
 Name: %{name}
 Version: %{version}
@@ -101,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Sep 02 2003 David Baudens <baudens@mandrakesoft.com> 2.1-33mdk
+- Update banners
+
 * Mon Aug 18 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-32mdk
 - edit-urpm-media:
   - handle modality in parallel and key editors
