@@ -1163,7 +1163,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                       $canceled and return 'canceled';
                                                   });
     $canceled and goto return_with_error;
-    gurpm::invalidate_cancel_forever();
 
     my %sources_install = %{$urpm->extract_packages_to_install(\%sources) || {}};
     my @rpms_install = grep { !/\.src\.rpm$/ } values %sources_install;
