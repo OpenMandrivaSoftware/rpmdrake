@@ -73,7 +73,7 @@ cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
 ?package(%{name}): command="/usr/sbin/rpmdrake-remove --root" needs="x11" section="Configuration/Packaging" icon="rpmdrake-remove.png" \
   title="Remove Software" longtitle="A graphical front end for removing packages"
 ?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.png" \
-  title="Mandrakeupdate" longtitle="A graphical front end for software updates"
+  title="Mandrakelinux Update" longtitle="A graphical front end for software updates"
 ?package(%{name}): command="/usr/sbin/edit-urpm-media" needs="x11" section="Configuration/Packaging" icon="edit-urpm-sources.png" \
   title="Software Media Manager" longtitle="A graphical front end to add/remove/edit media for installing packages"
 ?package(%{name}): command="/usr/sbin/gurpmi.addmedia" needs="gnome" section=".hidden" \
