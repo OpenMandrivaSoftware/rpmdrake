@@ -726,7 +726,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		      _("A required program is missing (grpmi). Check your installation."));
 	    myexit -1;
 	}
-	interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
+	$? or interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
     } else {
 	interactive_msg(_("Everything already installed."),
 			_("Everything already installed (is this supposed to happen at all?)."));
