@@ -44,10 +44,6 @@ install: $(ALL)
 	ln -sf $(RELATIVE_SBIN)/edit-urpm-sources.pl $(BINDIR)/edit-urpm-sources.pl
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
-	@for i in icons/title/*; do \
-		install -d $(DATADIR)/rpmdrake/$$i; \
-		install -m644 $$i/*.png $(DATADIR)/rpmdrake/$$i; \
-	done
 	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
 
 clean: 
@@ -74,5 +70,5 @@ GIHOME = /home/gc/cvs/gi
 hack:
 	cp -f $(SOFTHOME)/rpmdrake/rpmdrake $(SOFTHOME)/rpmdrake/edit-urpm-sources.pl /usr/sbin
 	cp -f $(SOFTHOME)/rpmdrake/rpmdrake.pm $(shell rpm --eval %perl_vendorlib)
-	cp -f $(GIHOME)/perl-install/my_gtk.pm $(GIHOME)/perl-install/ugtk.pm /usr/lib/libDrakX
-#	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' /usr/lib/libDrakX/*.pm /usr/sbin/{rpmdrake,edit-urpm-sources.pl}
+	cp -f $(GIHOME)/perl-install/ugtk2.pm /usr/lib/libDrakX
+	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' /usr/lib/libDrakX/*.pm /usr/sbin/{rpmdrake,edit-urpm-sources.pl}

@@ -34,22 +34,22 @@ use c;
 
 use curl_download;
 
-eval { require my_gtk; my_gtk->import(qw(:helpers :wrappers :ask)) };
+eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
     print "This program cannot be run in console mode.\n";
-    c::_exit(0);  #- skip my_gtk::END
+    c::_exit(0);  #- skip ugtk2::END
 }
-my_gtk::add_icon_path('/usr/share/rpmdrake/icons');
+ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 
 sub translate {
     my ($s) = @_;
     $s ? c::dgettext('rpmdrake', $s) : '';
 }
-sub _ {
+sub N {
     my $s = shift @_; my $t = translate($s);
     sprintf $t, @_;
 }
-sub myexit { my_gtk::exit(undef, @_) }
+sub myexit { ugtk2::exit(undef, @_) }
 
 $ENV{HOME} ||= '/root';
 
@@ -72,41 +72,44 @@ sub writeconf {
 
 sub interactive_msg {
     my ($title, $contents, %options) = @_;
-    my $d = my_gtk->new($title);
+    my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     gtkadd($d->{window},
-	   gtkpack_(new Gtk::VBox(0,5),
-		    1, $options{scroll} ? gtkset_usize(createScrolledWindow(gtktext_insert(new Gtk::Text, $contents)), $typical_width*2, 300)
-					: new Gtk::Label($contents),
+	   gtkpack_(Gtk2::VBox->new(0,5),
+		    1, $options{scroll} ? gtkset_size_request(create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)),
+						       $typical_width*2, 300)
+					: Gtk2::Label->new($contents),
 		    0, gtkpack(create_hbox(),
-			       $options{yesno} ? (gtksignal_connect(new Gtk::Button($options{text}{yes} || _("Yes")),
-								    clicked => sub { $d->{retval} = 1; Gtk->main_quit }),
-						  gtksignal_connect(new Gtk::Button($options{text}{no} || _("No")),
-								    clicked => sub { $d->{retval} = 0; Gtk->main_quit }))
-			       : gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit })
+			       $options{yesno} ? (gtksignal_connect(Gtk2::Button->new($options{text}{yes} || N("Yes")),
+								    clicked => sub { $d->{retval} = 1; Gtk2->main_quit }),
+						  gtksignal_connect(Gtk2::Button->new($options{text}{no} || N("No")),
+								    clicked => sub { $d->{retval} = 0; Gtk2->main_quit }))
+			       : gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit })
 			      )));
     $d->main;
 }
 
 sub interactive_list {
-    my ($title, $contents, $list, $callback) = @_;
-    my $d = my_gtk->new($title);
+    my ($title, $contents, $list, $callback, %options) = @_;
+    my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     my @radios = gtkradio('', @$list);
     my $vbradios = $callback ? create_packtable({},
 						mapn { my $n = $_[1];
 						       [ $_[0],
-							 gtksignal_connect(new Gtk::Button(but(_("Info..."))),
+							 gtksignal_connect(Gtk2::Button->new(but(N("Info..."))),
 									   clicked => sub { $callback->($n) }) ]
 						   } \@radios, $list)
-                             : gtkpack__(new Gtk::VBox(0, 0), @radios);
+                             : gtkpack__(Gtk2::VBox->new(0, 0), @radios);
+    my $choice;
     gtkadd($d->{window},
-	   gtkpack__(new Gtk::VBox(0,5),
-		     new Gtk::Label($contents),
-		     int(@$list) > 8 ? gtkset_usize(createScrolledWindow($vbradios), 250, 320) : $vbradios,
-		     gtkpack__(create_hbox(), gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit }))));
+	   gtkpack__(Gtk2::VBox->new(0,5),
+		     Gtk2::Label->new($contents),
+		     int(@$list) > 8 ? gtkset_size_request(create_scrolled_window($vbradios), 250, 320) : $vbradios,
+		     gtkpack__(create_hbox(), gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub {
+								    each_index { $_->get_active and $choice = $::i } @radios;
+								    Gtk2->main_quit
+								}))));
     $d->main;
-    my $tmp;
-    each_index { $_->get_active and $tmp = $::i } @radios;
-    $tmp;
+    $choice;
 }
 
 sub fatal_msg {
@@ -115,8 +118,8 @@ sub fatal_msg {
 }
 
 sub wait_msg {
-    my $mainw = my_gtk->new('rpmdrake');
-    my $label = new Gtk::Label($_[0]);
+    my $mainw = ugtk2->new('rpmdrake', grab => 1);
+    my $label = Gtk2::Label->new($_[0]);
     gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label)));
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1 });
     $mainw->sync until $mainw->{displayed};
@@ -132,7 +135,7 @@ sub slow_func($&) {
     my ($param, $func) = @_;
     if (ref($param) =~ /^Gtk/) {
 	gtkset_mousecursor_wait($param);
-	my_gtk::flush();
+	ugtk2::flush();
 	$func->();
 	gtkset_mousecursor_normal($param);
     } else {
@@ -144,37 +147,37 @@ sub slow_func($&) {
 
 
 my %u2l = (
-	   at => _("Austria"),
-	   au => _("Australia"),
-	   be => _("Belgium"),
-	   br => _("Brazil"),
-	   ca => _("Canada"),
-	   cr => _("Costa Rica"),
-	   cz => _("Czech Republic"),
-	   de => _("Germany"),
-	   dk => _("Danmark"),
-	   el => _("Greece"),
-	   es => _("Spain"),
-	   fi => _("Finland"),
-	   fr => _("France"),
-	   gr => _("Greece"),
-	   il => _("Israel"),
-	   it => _("Italy"),
-	   jp => _("Japan"),
-	   ko => _("Korea"),
-	   nl => _("Netherlands"),
-	   no => _("Norway"),
-	   pl => _("Poland"),
-	   pt => _("Portugal"),
-	   ru => _("Russia"),
-	   se => _("Sweden"),
-	   tw => _("Taiwan"),
-	   uk => _("United Kingdom"),
-	   zh => _("China"),
-	   com => _("United States"),
-	   org => _("United States"),
-	   net => _("United States"),
-	   edu => _("United States"),
+	   at => N("Austria"),
+	   au => N("Australia"),
+	   be => N("Belgium"),
+	   br => N("Brazil"),
+	   ca => N("Canada"),
+	   cr => N("Costa Rica"),
+	   cz => N("Czech Republic"),
+	   de => N("Germany"),
+	   dk => N("Danmark"),
+	   el => N("Greece"),
+	   es => N("Spain"),
+	   fi => N("Finland"),
+	   fr => N("France"),
+	   gr => N("Greece"),
+	   il => N("Israel"),
+	   it => N("Italy"),
+	   jp => N("Japan"),
+	   ko => N("Korea"),
+	   nl => N("Netherlands"),
+	   no => N("Norway"),
+	   pl => N("Poland"),
+	   pt => N("Portugal"),
+	   ru => N("Russia"),
+	   se => N("Sweden"),
+	   tw => N("Taiwan"),
+	   uk => N("United Kingdom"),
+	   zh => N("China"),
+	   com => N("United States"),
+	   org => N("United States"),
+	   net => N("United States"),
+	   edu => N("United States"),
 	  );
 my $us = [ qw(com org net edu) ];
 my %t2l = (
@@ -212,19 +215,21 @@ my %sites2countries = ('proxad.net' => 'fr',
 
 sub mirrors {
     my ($cachedir, $class) = @_;
+    $cachedir = '/tmp';
     my $mirrorslist = "$cachedir/mirrorsfull.list";
     unlink $mirrorslist;
     my $res = curl_download::download('http://www.linux-mandrake.com/mirrorsfull.list', $cachedir, sub {});
     $res and die $res;
     require timezone;
     my $tz = ${timezone::read()}{timezone};
-    my @mirrors = map { my ($land, $goodness);
-			my ($arch, $url) = m|\Q$class\E([^:]*):(.+)|;
-			$url =~ m|\.\Q$_\E/| and $land = $_ foreach keys %u2l;
-			$url =~ m|\W\Q$_\E/| and $land = $sites2countries{$_} foreach keys %sites2countries;
-			each_index { $_ eq $land and $goodness ||= 100-$::i } (map { if_($tz =~ /^$_$/, @{$t2l{$_}}) } keys %t2l), @$us;
-			if_($arch && MDK::Common::System::compat_arch($arch),
-			    { url => $url, land => $u2l{$land} || _("United States"), goodness => $goodness + rand })
+    my @mirrors = map { my ($arch, $url) = m|\Q$class\E([^:]*):(.+)|;
+			if ($arch && MDK::Common::System::compat_arch($arch)) {
+	                    my ($land, $goodness);
+			    $url =~ m|\.\Q$_\E/| and $land = $_ foreach keys %u2l;
+			    $url =~ m|\W\Q$_\E/| and $land = $sites2countries{$_} foreach keys %sites2countries;
+			    each_index { $_ eq $land and $goodness ||= 100-$::i } (map { if_($tz =~ /^$_$/, @{$t2l{$_}}) } keys %t2l), @$us;
+			    { url => $url, land => $u2l{$land} || N("United States"), goodness => $goodness + rand };
+			} else { () }
 		    } cat_($mirrorslist);
     unlink $mirrorslist;
     return sort { $::b->{goodness} <=> $::a->{goodness} } @mirrors;
@@ -232,18 +237,18 @@ sub mirrors {
 
 sub choose_mirror {
     interactive_msg('', 
-_("I need to contact MandrakeSoft website to get the mirrors list.
+N("I need to contact MandrakeSoft website to get the mirrors list.
 Please check that your network is currently running.
 
 Is it ok to continue?"), yesno => 1) or return '';
-    my $wait = wait_msg(_("Please wait, downloading mirrors addresses from MandrakeSoft website."));
+    my $wait = wait_msg(N("Please wait, downloading mirrors addresses from MandrakeSoft website."));
     my @mirrors;
     eval { @mirrors = mirrors('/var/cache/urpmi', 'updates') };
     remove_wait_msg($wait);
     if ($@) {
 	my $msg = $@;  #- seems that value is bitten before being printed by next func..
-	interactive_msg(_("Error during download"),
-_("There was an error downloading the mirrors list:
+	interactive_msg(N("Error during download"),
+N("There was an error downloading the mirrors list:
 
 %s
 The network, or MandrakeSoft website, are maybe unavailable.
@@ -251,61 +256,76 @@ Please try again later.", $msg));
 	return '';
     }
 
-    !@mirrors and interactive_msg(_("No mirror"),
-_("I can't find any suitable mirror.
+    !@mirrors and interactive_msg(N("No mirror"),
+N("I can't find any suitable mirror.
 
 There can be many reasons for this problem; the most frequent is
 the case when the architecture of your processor is not supported
 by Mandrake Linux Official Updates.")), return '';
 
-    my $w = my_gtk->new('rpmdrake');
-    my $tree = Gtk::CTree->new(1, 0);
-    $tree->set_selection_mode('browse');
-    $tree->set_column_auto_resize(0, 1);
-    $tree->set_row_height($tree->style->font->ascent + $tree->style->font->descent + 1);
+    my $w = ugtk2->new('rpmdrake', grab => 1);
+    my $tree_model = Gtk2::TreeStore->new(Gtk2::GType->STRING);
+    my $tree = Gtk2::TreeView->new_with_model($tree_model);
+    $tree->get_selection->set_mode('browse');
+#    $tree->set_row_height($tree->style->font->ascent + $tree->style->font->descent + 1); FIXME is that still needed?
+    my $column = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0);
+    $tree->append_column($column);
+    $tree->set_headers_visible(0);
 
     gtkadd($w->{window}, 
-	   gtkpack_(new Gtk::VBox(0,5),
-		    0, _("Please choose the desired mirror."),
-		    1, createScrolledWindow($tree),
-		    0, gtkpack(new Gtk::HBox(1, 20),
+	   gtkpack_(Gtk2::VBox->new(0,5),
+		    0, N("Please choose the desired mirror."),
+		    1, create_scrolled_window($tree),
+		    0, gtkpack(Gtk2::HBox->new(1, 20),
 			       map {
 				   my $retv = $_->[1];
-				   gtksignal_connect(new Gtk::Button(but($_->[0])), "clicked" => sub {
-						 $retv and $w->{retval} = { sel => ($tree->node_get_pixtext($tree->selection, 0))[0] };
-						 Gtk->main_quit })
-			       } ([ _("Ok"), 1], [ _("Cancel"), 0 ])),
+				   gtksignal_connect(Gtk2::Button->new(but($_->[0])), clicked => sub {
+						 if ($retv) {
+						     my ($model, $iter) = $tree->get_selection->get_selected;
+						     $model and $w->{retval} = { sel => $model->get($iter, 0) };
+						     $iter and $iter->free;
+						 }
+						 Gtk2->main_quit })
+			       } ([ N("Ok"), 1], [ N("Cancel"), 0 ])),
 		   ));
-    $tree->freeze;
     my %roots;
-    $tree->insert_node($roots{$_->{land}} ||= $tree->insert_node(undef, undef, [ $_->{land}, '', '' ], 5, (undef) x 4, 0, 0),
-		       undef, [ $_->{url}, '', '' ], 5, (undef) x 4, 1, 0) foreach @mirrors;
-    $tree->expand($tree->node_nth(0));
-    $tree->select($tree->node_nth(1));
-    $tree->thaw;
-    $w->{window}->set_usize(400, 300);
+    $tree_model->append_set($roots{$_->{land}} ||= $tree_model->append_set(undef, [ 0 => $_->{land} ]),
+			    [ 0 => $_->{url} ])->free foreach @mirrors;
+
+    $w->{window}->set_size_request(400, 300);
     $w->{rwindow}->show_all;
+
+    my $path = Gtk2::TreePath->new_first;
+    $tree->expand_row($path, 0);
+    $path->down;
+    $tree->get_selection->select_path($path);
+    $path->free;
+
     $w->main && member($w->{retval}{sel}, map { $_->{url} } @mirrors) and $w->{retval}{sel};
 }
 
 sub update_sources {
-    my ($urpm) = @_;
-    my $w = my_gtk->new(_("Update source(s)"));
+    my ($urpm, %opts) = @_;
+    my $w = ugtk2->new(N("Update source(s)"), grab => 1, center => 1, %opts);
+    my (@buttons, @sources_to_update);
     gtkadd($w->{window},
-	   gtkpack__(new Gtk::VBox(0,5),
-		     new Gtk::Label(_("Select the source(s) you wish to update:")),
-		     (my @buttons = map { new Gtk::CheckButton($_->{name}) } @{$urpm->{media}}),
-		     new Gtk::HSeparator,
+	   gtkpack__(Gtk2::VBox->new(0,5),
+		     Gtk2::Label->new(N("Select the source(s) you wish to update:")),
+		     (@buttons = map { Gtk2::CheckButton->new($_->{name}) } @{$urpm->{media}}),
+		     Gtk2::HSeparator->new,
 		     gtkpack(create_hbox(),
-			     gtksignal_connect(new Gtk::Button(_("Update")), clicked => sub { $w->{retval} = 1; Gtk->main_quit }),
-			     gtksignal_connect(new Gtk::Button(_("Cancel")), clicked => sub { $w->{retval} = 0; Gtk->main_quit }))));
-    $w->{rwindow}->set_position('center');
-    if ($w->main && grep { $_->get_active } @buttons) {
-	each_index { $_->get_active and $urpm->select_media($urpm->{media}[$::i]{name}) } @buttons;
+			     gtksignal_connect(Gtk2::Button->new(N("Update")), clicked => sub {
+						   $w->{retval} = 1;
+						   @sources_to_update = grep { $_->get_active } @buttons;
+						   Gtk2->main_quit;
+					       }),
+			     gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
+    if ($w->main && @sources_to_update) {
+	each_index { $urpm->select_media($urpm->{media}[$::i]{name}) } @sources_to_update;
 	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
 	    $_->{modified} and delete $_->{ignore};
 	}
-	slow_func(_("Please wait, updating media..."),
+	slow_func(N("Please wait, updating media..."),
 		  sub { $urpm->update_media(noclean => 1) });
 	return 1;
     }

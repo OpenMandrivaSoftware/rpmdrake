@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.0
-%define release 27mdk
+%define version 2.1
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-36mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-36mdk grpmi >= 9.0 rpmtools >= 4.5 perl-GTK2
 BuildRequires: curl-devel rpm-devel gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -33,7 +33,7 @@ Mandrake Linux system; it has 3 different modes:
 A fourth program manages the sources (add, remove, edit).
 
 %package -n grpmi
-Version: 9.0
+Version: 9.1
 Summary: Mandrake Linux graphical frontend for packages installation
 Group: System/Configuration/Packaging
 
@@ -56,14 +56,6 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 
 %find_lang rpmdrake
 %find_lang grpmi
-
-builddir=`pwd`; rm -f $builddir/title.lang
-pushd $RPM_BUILD_ROOT/%{_prefix}/share/rpmdrake/icons/title
-for po in *; do
-		echo "%lang($po) %{_prefix}/share/rpmdrake/icons/title/$po" >> $builddir/title.lang
-done
-popd
-cat title.lang >> rpmdrake.lang
 
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
@@ -123,6 +115,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Nov 26 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-1mdk
+- gtk2 (possibly contains important breakages, use with care)
+
 * Mon Sep 16 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-27mdk
 - fix not finding grpmi in sudo mode
 - fix unclickable "not finding grpmi" dialog

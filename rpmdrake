@@ -35,21 +35,22 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
 }
 
 use strict;
-use vars qw($MODE %options $fake_modality);
+use vars qw($MODE %options);
 
 use rpmdrake;
 
 
 $MODE = 'install';
-$0 =~ '/rpmdrake-remove$' and $MODE = 'remove';
-$0 =~ '/MandrakeUpdate$'  and $MODE = 'update';
+$0 =~ m|/rpmdrake-remove$| and $MODE = 'remove';
+$0 =~ m|/MandrakeUpdate$|  and $MODE = 'update';
 
 /^-?-(\S+)$/ and $options{$1} = 1 foreach @ARGV;
 
 
 $::isStandalone = 1;
-Gtk->init;
 
+my $w;
+sub interactive_msg_ { interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 
 sub ctreefy { $_[0] =~ s,/,|,g; $_[0] }
 
@@ -58,7 +59,7 @@ sub beautify_description {
     foreach (split "\n", $_[0]) {
 	s/^\s*//;
         if (/^$/ || /^\s*(-|\*|\+|o)\s/) {
-            ($t || $tmp) and $t .= "$tmp\n";
+            $t || $tmp and $t .= "$tmp\n";
             $tmp = $_;
         } else {
             $tmp = ($tmp ? "$tmp " : ($t && "\n") . $tmp) . $_;
@@ -93,7 +94,7 @@ sub parse_compssUsers_flat {
 	    }
 	} elsif (/^\t(\d) (\S+)\s*$/) {
 	    $category or print STDERR "Entry without category <$_>\n";
-	    push @{$compssUsers{$2}}, $category . ($1 <= 3 ? '|'._("Other") : '');
+	    push @{$compssUsers{$2}}, $category . ($1 <= 3 ? '|'.N("Other") : '');
 	}
     }
     \%compssUsers;
@@ -108,10 +109,14 @@ sub pkg2medium {
 
 sub extract_header {
     my ($pkg, $urpm) = @_;
+    my $chg_prepro = sub {
+	#- preprocess changelog for faster TextView insert reaction
+	[ map { [ "$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->WEIGHT_BOLD }) ] } split("\n", $_[0]) ]
+    };
     if ($MODE eq 'remove') {
 	@$max_info_in_descr or return;
 	my $name = my_fullname($pkg->{pkg});
-	add2hash($pkg, { files => scalar(`rpm -ql $name`) || _("(none)"), changelog => scalar(`rpm -q --changelog $name`) });
+	add2hash($pkg, { files => scalar(`rpm -ql $name`) || N("(none)"), changelog => $chg_prepro->(scalar(`rpm -q --changelog $name`)) });
     } else {
 	my ($headersdir, $p, $medium) = ('/root/tmp/headers/', $pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
@@ -124,33 +129,34 @@ sub extract_header {
 	    rm_rf($headersdir);
 	    add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
 	    my $localtime2changelog = sub { scalar(localtime($_[0])) =~ /(.*) \S+ (\d{4})$/; "$1 $2" };
-	    @$max_info_in_descr and add2hash($pkg, { files => join("\n", $p->files) || _("(none)"),
-						     changelog => join("\n", mapn { "* ".$localtime2changelog->($_[2])." $_[0]\n\n$_[1]\n" }
-							   [ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ]) });
+	    @$max_info_in_descr and add2hash($pkg, {
+	        files => join("\n", $p->files) || N("(none)"),
+		changelog => $chg_prepro->(join("\n", mapn { "* ".$localtime2changelog->($_[2])." $_[0]\n\n$_[1]\n" }
+						[ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ])) });
 	    $p->pack_header;
 	} else {
 	  header_non_available:
-	    add2hash($pkg, { summary => _("(Not available)"), description => undef });
+	    add2hash($pkg, { summary => N("(Not available)"), description => undef });
 	}
     }
 }
 
 sub db { URPM::DB::open or die 'Couldn\'t open RPM DB' }
 
-sub do_search($$$$$$) {
-    my ($find_entry, $tree, $options, $current_search_type, $urpm, $pkgs) = @_;
+sub do_search($$$$$$$) {
+    my ($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) = @_;
     my $entry = $find_entry->get_text or return;
-    my ($results_ok, $results_none) = (_("Search results"), _("Search results (none)"));
-    $options->{delete_category}->($_) foreach ($results_ok, $results_none);
+    my ($results_ok, $results_none) = (N("Search results"), N("Search results (none)"));
+    $options->{delete_category}->($_) foreach $results_ok, $results_none;
     $options->{state}{flat} and $options->{delete_all}->();
-    $tree->collapse_recursive(undef);
+    $tree->collapse_all();
     my @search_results;
     if ($current_search_type ne 'normal') {
 	if ($MODE eq 'remove') {
 	    if ($current_search_type eq 'descriptions') {
 		@search_results = map { if_(eval { ($pkgs->{$_}{summary}.$pkgs->{$_}{description}) =~ /$entry/i }, $_) } keys %$pkgs;
 	    } else {
-		slow_func(_("Please wait, searching..."),
+		slow_func(N("Please wait, searching..."),
 			  sub { db->traverse(sub { push @search_results, map { if_(eval { /$entry/i }, my_fullname($_[0])) } $_[0]->files });
 				@search_results = grep { exists $pkgs->{$_} } uniq(@search_results) });
 	    }
@@ -159,12 +165,12 @@ sub do_search($$$$$$) {
 				if_(!$_->{ignore} && (!($MODE eq 'update') || $_->{update}) && (-r $h), $h) } @{$urpm->{media}};
 	    my $total_size = sum(map { my $pack; eval { $pack = new packdrake($_, quiet => 1) } ? $pack->{toc_f_count} : 0 } @hdlists);
 	    my $searchstop;
-	    my $searchw = my_gtk->new('rpmdrake');
-	    gtkadd($searchw->{window}, gtkpack__(new Gtk::VBox(1, 5),
-						 new Gtk::Label(_("Please wait, searching...")),
-						 my $searchprogress = gtkset_usize(new Gtk::ProgressBar, 400, 0),
-						 gtkpack__(gtkset_layout(new Gtk::HButtonBox, 'spread'),
-							   gtksignal_connect(new Gtk::Button(but(_("Stop"))),
+	    my $searchw = ugtk2->new('rpmdrake', grab => 1, transient => $w->{rwindow});
+	    gtkadd($searchw->{window}, gtkpack__(Gtk2::VBox->new(1, 5),
+						 Gtk2::Label->new(N("Please wait, searching...")),
+						 my $searchprogress = gtkset_size_request(Gtk2::ProgressBar->new, 400, -1),
+						 gtkpack__(gtkset_layout(Gtk2::HButtonBox->new, 'spread'),
+							   gtksignal_connect(Gtk2::Button->new(but(N("Stop"))),
 									     clicked => sub { $searchstop = 1 }))));
 	    $searchw->sync;
 	    open SF, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "\'$_\'" } @hdlists).' |';
@@ -173,7 +179,7 @@ sub do_search($$$$$$) {
 		$searchstop and last;
 		if (/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/) {
 		    $pkg = "$1-$2-$3";
-		    $progresscount++; $progresscount <= $total_size and $searchprogress->update($progresscount/$total_size);
+		    $progresscount++; $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
 		    $searchw->flush;
 		    next;
 		}
@@ -197,13 +203,16 @@ sub do_search($$$$$$) {
 	@search_results = grep { eval { /$entry/i } } keys %$pkgs;
     }
     if (@search_results) {
-	$options->{add_nodes}->(map { [ $_, _("Search results").($options->{tree_mode} eq 'by_presence'
-								 ? '|'.($pkgs->{$_}{pkg}->flag_installed ? _("Upgradable") : _("Addable"))
+	$options->{add_nodes}->(map { [ $_, N("Search results").($options->{tree_mode} eq 'by_presence'
+								 ? '|'.($pkgs->{$_}{pkg}->flag_installed ? N("Upgradable") : N("Addable"))
 								 : ($options->{tree_mode} eq 'by_selection'
-								    ? '|'.($pkgs->{$_}{selected} ? _("Selected") : _("Not selected"))
+								    ? '|'.($pkgs->{$_}{selected} ? N("Selected") : N("Not selected"))
 								    : ''))
 				      ] } sort { uc($a) cmp uc($b) } @search_results);
-	$tree->expand($tree->node_nth($tree->rows-1));
+	my $last_iter = $tree_model->iter_nth_child(undef, $tree_model->iter_n_children(undef) - 1);
+	my $path = $tree_model->get_path($last_iter);
+	$tree->expand_row($path, 0);
+	$path->free; $last_iter->free;
     } else {
 	$options->{add_nodes}->([ '', $results_none, { nochild => 1 }]);
     }
@@ -213,7 +222,7 @@ sub find_installed_version {
     my ($p) = @_;
     my @version;
     db->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version.'-'.$_[0]->release });
-    @version ? join(',', sort @version) : _("(none)");
+    @version ? join(',', sort @version) : N("(none)");
 }
 
 sub run_treeview_dialog {
@@ -224,6 +233,10 @@ sub run_treeview_dialog {
     my ($options, $size_selected, $compssUsers, $info, $info_update, $tree, $disable_treeselect_callback, %elems);
     $size_selected = 0;  #- to remove the use strict warning
     my (undef, $size_free) = MDK::Common::System::df('/usr');
+
+    $::noBorder = 1;
+    $w = ugtk2->new(N("rpmdrake")." 9.0");
+    $::noBorder = 0;
 
     my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
     my $is_locale_available = sub {
@@ -240,11 +253,9 @@ sub run_treeview_dialog {
 		$is_locale_available->($_) and return $pkg;
 	    }
 	}
-	my $callback = sub {
-	    interactive_msg(_("More information on package..."), $options->{get_info}->($_[0]), scroll => 1);
-	};
-	$choices->[interactive_list(_("Please choose"), _("One of the following packages is needed:"),
-				    [ map { my_fullname($_) } @$choices ], $callback)];
+	my $callback = sub { interactive_msg_(N("More information on package..."), $options->{get_info}->($_[0]), scroll => 1) };
+	$choices->[interactive_list(N("Please choose"), N("One of the following packages is needed:"),
+				    [ map { my_fullname($_) } @$choices ], $callback, transient => $w->{rwindow})];
     };
     my $choices_auto;
     my $callback_choices_auto = sub {
@@ -259,7 +270,7 @@ sub run_treeview_dialog {
 	    $db->traverse_tag('name', [ (split_fullname($_))[0] ], sub {
 				  my_fullname($_[0]) eq $_ or return;
 				  $urpm->resolve_closure_ask_remove($db, $urpm->{state}, $_[0]);
-			      }) or die _("unknown package ") . "$_\n";
+			      }) or die N("unknown package ") . "$_\n";
 	}
 	keys %{$urpm->{state}{ask_remove}};
     };
@@ -269,7 +280,7 @@ sub run_treeview_dialog {
 		   build_tree => sub {
 		       my ($add_node, $flat, $mode) = @_;
 		       my @elems;
-		       my $w = wait_msg(_("Please wait, listing packages..."));
+		       my $wait = wait_msg(N("Please wait, listing packages..."));
 		       $disable_treeselect_callback = 1;
 		       if ($mode eq 'mandrake_choices') {
 			   foreach my $pkg (keys %$pkgs) {
@@ -282,10 +293,10 @@ sub run_treeview_dialog {
 			       @keys = grep { my ($name) = split_fullname($_);
 					      member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories) } @keys;
 			       if (@keys == 0) {
-				   $add_node->('', _("(none)"), { nochild => 1 });
+				   $add_node->('', N("(none)"), { nochild => 1 });
 				   my $explanation_only_once if 0;
-				   $explanation_only_once or interactive_msg(_("No update"),
-_("The list of updates is void. This means that either there is
+				   $explanation_only_once or interactive_msg_(N("No update"),
+N("The list of updates is void. This means that either there is
 no available update for the packages installed on your computer,
 or you already installed all of them."));
 				   $explanation_only_once = 1;
@@ -303,7 +314,7 @@ or you already installed all of them."));
 			   if ($mode eq 'by_source') {
 			       $add_node->($_->[0], pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm)->{name}) foreach $sortmethods{flat}->(@elems);
 			   } elsif ($mode eq 'by_presence') {
-			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed ? _("Upgradable") : _("Addable"))
+			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed ? N("Upgradable") : N("Addable"))
 				 foreach $sortmethods{flat}->(@elems);
 			   } else {
 			       #- special case, we don't populate all the tree at first (to speed things up)
@@ -316,7 +327,7 @@ or you already installed all of them."));
 			   }
 		       }
 		       $disable_treeselect_callback = 0;
-		       remove_wait_msg($w);
+		       remove_wait_msg($wait);
 		   },
 		   grep_unselected => sub { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ },
 		   partialsel_unsel => sub {
@@ -335,22 +346,22 @@ or you already installed all of them."));
 			   my ($title, $msg, $nodes, $nodes_with_deps) = @_;
 			   my @deps = difference2($nodes_with_deps, $nodes);
 			   @deps > 0 or return 1;
-			   interactive_msg($title, $msg . $formatlistpkg->(sort { $a cmp $b } @deps),
-					   yesno => 1, text => { yes => _("Ok"), no => _("Cancel") });
+			   interactive_msg_($title, $msg . $formatlistpkg->(sort { $a cmp $b } @deps),
+					    yesno => 1, text => { yes => N("Ok"), no => N("Cancel") });
 		       };
 		       if ($MODE eq 'remove') {
 			   if ($new_state) {
 			       slow_func($tree->window, sub { $closure_removal->(@nodes) });
 			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} } keys %{$urpm->{state}{ask_remove}};
-			       $deps_msg->(_("Some additional packages need to be removed"),
-					   _("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
+			       $deps_msg->(N("Some additional packages need to be removed"),
+					   N("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
 					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
 			   } else {
 			       slow_func($tree->window,
 					 sub { @nodes_with_deps = grep { intersection(\@nodes, [ $closure_removal->($_) ]) }
 						                  grep { $pkgs->{$_}{selected} } keys %$pkgs });
-			       $deps_msg->(_("Some packages can't be removed"),
-					   _("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
+			       $deps_msg->(N("Some packages can't be removed"),
+					   N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
 					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
 			   }
 		       } else {
@@ -378,8 +389,8 @@ or you already installed all of them."));
 				   @nodes_with_deps = map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{selected}};
 			       };
 			       $pkg_sel_after_selection->();
-			       if (!$deps_msg->(_("Additional packages needed"), 
-						_("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
+			       if (!$deps_msg->(N("Additional packages needed"), 
+						N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
 						\@nodes, \@nodes_with_deps)) {
 				   @nodes_with_deps = ();
 				   goto packages_selection_ok;
@@ -392,8 +403,8 @@ or you already installed all of them."));
 									callback_choices => $callback_choices_auto) });
 			       $pkg_sel_after_selection->();
 			       if (my @cant = difference2(\@nodes, \@nodes_with_deps)) {
-				   interactive_msg(_("Some packages can't be installed"),
-						   _("Sorry, the following package(s) can't be selected:\n\n") . $formatlistpkg->(@cant));
+				   interactive_msg_(N("Some packages can't be installed"),
+						    N("Sorry, the following package(s) can't be selected:\n\n") . $formatlistpkg->(@cant));
 				   foreach (@cant) {
 				       $pkgs->{$_}{pkg}->set_flag_requested(0);
 				       $pkgs->{$_}{pkg}->set_flag_required(0);
@@ -407,8 +418,8 @@ or you already installed all of them."));
 									  { map { $pkgs->{$_}{pkg}->id => undef } @nodes },
 									  no_flag_update => 1) });
 			       @nodes_with_deps = map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{unselected}};
-			       if (!$deps_msg->(_("Some packages need to be removed"),
-						_("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
+			       if (!$deps_msg->(N("Some packages need to be removed"),
+						N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
 						\@nodes, \@nodes_with_deps)) {
 				   @nodes_with_deps = ();
 				   goto packages_unselection_ok;
@@ -429,63 +440,85 @@ or you already installed all of them."));
 			   $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
 		       }
 		   },
-		   get_status => sub { $MODE eq 'install' ? _("Selected: %d MB / Free disk space: %d MB",
+		   get_status => sub { $MODE eq 'install' ? N("Selected: %d MB / Free disk space: %d MB",
 							      $size_selected/(1024*1024), $size_free/1024)
-					                  : _("Selected size: %d MB", $size_selected/(1024*1024)) },
+					                  : N("Selected size: %d MB", $size_selected/(1024*1024)) },
 		   get_info => sub { my ($key) = @_;
 				     exists $pkgs->{$key} or return;  #- related to the partial tree displaying hackery ($key can be '')
 				     my ($name, $version) = split_fullname($key);
 				     exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
-				     my $files = [ "\n", _("Files:\n"), $pkgs->{$key}{files} || _("(Not available)") ];
-				     my $chglo = [ "\n", _("Changelog:\n"), $pkgs->{$key}{changelog} || _("(Not available)") ];
+				     my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->WEIGHT_BOLD };
+				     my $tag_fix = { 'font' => 'fixed' };
+				     my @files = ([ N("Files:\n"), $tag_tag ], [ $pkgs->{$key}{files} || N("(Not available)"), $tag_fix ]);
+				     my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
 				     my @max_info = if_(@$max_info_in_descr,
 					      $MODE eq 'remove' ? ()
-						 : ([ "\n", _("Source: "), pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ],
-						    [ "\n", _("Currently installed version: "), find_installed_version($pkgs->{$key}{pkg}) ]),
-					      $options{'changelog-first'} ? ($chglo, $files) : ($files, $chglo));
-				     my $col = my_gtk::gtkcolor(32*256, 68*256, 157*256);
+						 : ([ N("Source: "), $tag_tag ], [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
+						    [ N("Currently installed version: "), $tag_tag ],
+						          [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]),
+					      $options{'changelog-first'} ? (@chglo, [ "\n" ], @files) : (@files, [ "\n" ], @chglo));
 				     $MODE eq 'update' and gtktext_insert($info_update,
-							      [ [ undef, $col, undef, _("Reason for update: ") ],
-								[ undef, undef, undef, beautify_description($descriptions->{$name}{pre}) ] ]);
-				     my @fields = ([ '',     _("Name: "), $name ],
-						   [ "\n",   _("Version: "), $version ],
-						   [ "\n",   _("Size: "), _("%s KB", int($pkgs->{$key}{pkg}->size/1024)) ],
-						   if_($MODE eq 'update', [ "\n", _("Importance: "), $descriptions->{$name}{importance} ]),
-						   [ "\n\n", _("Summary: "), $pkgs->{$key}{summary} ],
-						   [ "\n\n", _("Description: "), $pkgs->{$key}{description} ]);
-				     [ map { [ undef, $col, undef, $_->[0].$_->[1] ], [ undef, undef, undef, $_->[2] ] } @fields, @max_info ];
+							      [ [ N("Reason for update: "), $tag_tag ],
+								[ beautify_description($descriptions->{$name}{pre}) ] ]);
+				     [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
+				       [ N("Version: "), $tag_tag ], [ "$version\n" ],
+				       [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024))."\n" ],
+				       if_($MODE eq 'update',
+					   [ N("Importance: "), $tag_tag ], [ "$descriptions->{$name}{importance}\n" ]),
+				       [ "\n".N("Summary: "),   $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
+				       [ N("Description: "),    $tag_tag ], [ "$pkgs->{$key}{description}\n" ],
+				       @max_info ];
 				 },
 		   check_interactive_to_toggle => sub { 1 },
 		   grep_allowed_to_toggle => sub { @_ },
 		   rebuild_tree => sub {},
 		  };
 
-    $::noBorder = 1;
-    my $w = my_gtk->new(_("rpmdrake")." 9.0");
-    $::noBorder = 0;
-    $tree = Gtk::CTree->new(3, 0);
-    $tree->set_selection_mode('browse');
-    $tree->set_column_auto_resize($_, 1) foreach 0..2;
-    $typical_width = $tree->get_style->font->string_width(translate("Graphical Environment")."xmms-more-vis-plugins");
+    my $tree_model = Gtk2::TreeStore->new(Gtk2::GType->STRING, Gtk2::GType->OBJECT, Gtk2::GType->STRING);
+    $tree = Gtk2::TreeView->new_with_model($tree_model);
+    $tree->get_selection->set_mode('browse');
+    $tree->append_column(my $textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+    $tree->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererPixbuf->new, 'pixbuf' => 1));
+    $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 2));
+    $tree->set_headers_visible(0);
+    $tree->set_rules_hint(1);
+
+    ($typical_width) = string_size($tree, translate("Graphical Environment")."xmms-more-vis-plugins");
     $typical_width > 500 and $typical_width = 500;  #- try to not being crazy with a too large value
     $typical_width < 150 and $typical_width = 150;
-    $tree->set_column_max_width(0, $typical_width);
-    $tree->signal_connect(tree_expand => sub { 
+    $textcolumn->set_min_width($typical_width*0.7);
+    $textcolumn->set_max_width($typical_width);
+
+    my $cursor_to_restore;
+    $tree->signal_connect(expose_event => sub {
+			      $cursor_to_restore or return;
+			      gtkset_mousecursor_normal($tree->window);
+			      undef $cursor_to_restore;
+			  });
+    $tree->signal_connect(row_expanded => sub { 
+			      my ($tree, $iter, $path) = @_;
 			      #- hackish: if first child has '' as name, then we need to expand on the fly
-			      if (($_[0]->node_get_pixtext($_[1]->row->children, 0))[0] eq '') {
-				  $_[0]->remove_node($_[1]->row->children);
-				  my $row_name = ($_[0]->node_get_pixtext($_[1], 0))[0];
-				  slow_func($tree->window, sub { $options->{add_nodes}->(@{$elems{$row_name}}) });
+			      my $child = $tree_model->iter_children($iter);
+			      if ($tree_model->get($child, 0) eq '') {
+				  $tree_model->remove($child);
+				  slow_func($tree->window, sub { $options->{add_nodes}->(@{$elems{$tree_model->get($iter, 0)}}) });
+			      } else {
+				  if ($tree_model->iter_n_children($iter) > 500) { #- populating large groups is slow
+				      $cursor_to_restore = 1;
+				      gtkset_mousecursor_wait($tree->window);
+				  }
 			      }
+			      $child->free;
+			      $tree->expand_row($path, 0);
 			  });
 
     my @modes_buttons;
     if ($MODE eq 'update') {
 	$options->{state}{flat} = 1;
-	my %toggle_infos = (security => _("Security updates"), bugfix => _("Bugfixes updates"), normal => _("Normal updates"));
+	my %toggle_infos = (security => N("Security updates"), bugfix => N("Bugfixes updates"), normal => N("Normal updates"));
 	my @toggle_names_ordered = qw(security bugfix normal);
-	@modes_buttons = map { new Gtk::CheckButton(but($toggle_infos{$_})) } @toggle_names_ordered;
+	@modes_buttons = map { Gtk2::CheckButton->new(but($toggle_infos{$_})) } @toggle_names_ordered;
 	mapn {
 	    member($_[0], @$mandrakeupdate_wanted_categories) and $_[1]->set_active(1);
 	    my $capture_value = $_[0];
@@ -502,9 +535,9 @@ or you already installed all of them."));
 				  });
 	} \@toggle_names_ordered, \@modes_buttons;
     } else {
-	my %radios_infos = (mandrake_choices => { name => _("Mandrake choices"),           flat => 0 },
-			    flat             => { name => _("All packages, alphabetical"), flat => 1 },
-	                    by               => { name => _("All packages,"),              flat => 0 });
+	my %radios_infos = (mandrake_choices => { name => N("Mandrake choices"),           flat => 0 },
+			    flat             => { name => N("All packages, alphabetical"), flat => 1 },
+	                    by               => { name => N("All packages,"),              flat => 0 });
 	$compssUsers = parse_compssUsers_flat($urpm);
 	my @radios_names_ordered = qw(mandrake_choices flat by);
 	$compssUsers or shift @radios_names_ordered;
@@ -525,14 +558,14 @@ or you already installed all of them."));
 	} \@radios_names_ordered, \@modes_buttons;
 	$options->{tree_mode} = $radios_names_ordered[0];
 
-	my $advanced_menu = new Gtk::Menu;
+	my $advanced_menu = Gtk2::Menu->new;
 	my $radio_by;
-	my @advanced_modes = ([ 'by_group', _("by group"), 0 ], [ 'by_size', _("by size"), 1 ],
-			      [ 'by_selection', _("by selection state"), 1 ]);
-	$MODE eq 'install' and push @advanced_modes, ([ 'by_source', _("by source repository"), 0 ], [ 'by_presence', _("by update availability"), 0 ]);
+	my @advanced_modes = ([ 'by_group', N("by group"), 0 ], [ 'by_size', N("by size"), 1 ],
+			      [ 'by_selection', N("by selection state"), 1 ]);
+	$MODE eq 'install' and push @advanced_modes, ([ 'by_source', N("by source repository"), 0 ], [ 'by_presence', N("by update availability"), 0 ]);
 	foreach (@advanced_modes) {
 	    my ($capt_mode, $capt_flat) = ($_->[0], $_->[2]);
-	    $advanced_menu->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($_->[1])),
+	    $advanced_menu->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($_->[1])),
 						     activate => sub {
 							 $options->{tree_submode} = $capt_mode;
 							 $options->{tree_subflat} = $capt_flat;
@@ -543,26 +576,26 @@ or you already installed all of them."));
 	each_index {
 	    if ($_ eq 'by') {
 		$radio_by = $modes_buttons[$::i];
-		$modes_buttons[$::i] = gtkpack(new Gtk::HBox(0, 0), $modes_buttons[$::i], my $t = new Gtk::OptionMenu);
+		$modes_buttons[$::i] = gtkpack(Gtk2::HBox->new(0, 0), $modes_buttons[$::i], my $t = Gtk2::OptionMenu->new);
 		$t->set_menu($advanced_menu);
 	    }
 	} @radios_names_ordered;
     }
 
-    my $search_types_menu = new Gtk::Menu;
-    my @search_types = ([ 'normal', _("in names") ], [ 'descriptions', _("in descriptions") ], [ 'files', _("in files") ]);
+    my $search_types_menu = Gtk2::Menu->new;
+    my @search_types = ([ 'normal', N("in names") ], [ 'descriptions', N("in descriptions") ], [ 'files', N("in files") ]);
     my $current_search_type = $search_types[0][0];
     foreach (@search_types) {
 	my $capt_type = $_->[0];
-	$search_types_menu->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($_->[1])),
+	$search_types_menu->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($_->[1])),
 						     activate => sub { $current_search_type = $capt_type }));
     }
-    my $search_types_optionmenu = new Gtk::OptionMenu;
+    my $search_types_optionmenu = Gtk2::OptionMenu->new;
     $search_types_optionmenu->set_menu($search_types_menu);
 
-    my $menu_treeview = new Gtk::Menu;
-    my @menu_treeview_actions = ([ 'reset_selection', _("Reset the selection") ], [ 'reload_pkg', _("Reload the packages list") ]);
-    $MODE ne 'remove' and push @menu_treeview_actions, [ 'update_sources', _("Update source(s)") ];
+    my $menu_treeview = Gtk2::Menu->new;
+    my @menu_treeview_actions = ([ 'reset_selection', N("Reset the selection") ], [ 'reload_pkg', N("Reload the packages list") ]);
+    $MODE ne 'remove' and push @menu_treeview_actions, [ 'update_sources', N("Update source(s)") ];
     foreach (@menu_treeview_actions) {
 	my ($action, $text) = @$_;
 	my %action2fun; %action2fun = (
@@ -581,125 +614,112 @@ or you already installed all of them."));
 			      $size_selected = 0;
 			      $options->{rebuild_tree}->();
 			  },
-			  update_sources => sub { update_sources($urpm) and $action2fun{reload_pkg}->() });
-	$menu_treeview->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($text)), activate => sub { $action2fun{$action}->() }));
+			  update_sources => sub { update_sources($urpm, transient => $w->{rwindow}) and $action2fun{reload_pkg}->() });
+	$menu_treeview->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($text)), activate => sub { $action2fun{$action}->() }));
     }
-    $tree->signal_connect(button_press_event => sub { $_[1]{button} eq 3 or return 0;
-						      $menu_treeview->popup(undef, undef, $_[1]{button}, $_[1]8{time}) });
+    $tree->signal_connect(button_press_event => sub { $_[1]->button eq 3 or return 0;
+						      $menu_treeview->popup(undef, undef, undef, undef, $_[1]->button, $_[1]->time) });
 
-    my $menu_descr = new Gtk::Menu;
-    my @menu_descr_modes = ([ 'normal', _("Normal information"), [] ], [ 'max', _("Maximum information"), [1] ]);
-    foreach (@menu_descr_modes) {
-	my ($mode, $text, $val) = @$_;
-	$menu_descr->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($text)),
-					      activate => sub {
-						  $max_info_in_descr = $val;
-						  $options->{display_info}->();
-					      }));
-    }
-    $info = new Gtk::Text;
-    $info->signal_connect(button_press_event => sub { $_[1]{button} eq 3 or return 0;
-						      $menu_descr->popup(undef, undef, $_[1]{button}, $_[1]{time}) });
+    my @menu_descr_modes = ([ N("Normal information"), [] ], [ N("Maximum information"), [1] ]);
+    my @descr_modes = gtkradio($menu_descr_modes[@$max_info_in_descr ? 1 : 0][0], map { $_->[0] } @menu_descr_modes);
+    mapn {
+	my $val = $_[1][1];
+	$_[0]->signal_connect(clicked => sub {
+				  if ($_[0]->get_active) {
+				      $max_info_in_descr = $val;
+				      $options->{display_info}->();
+				  }
+			      });
+    } \@descr_modes, \@menu_descr_modes;
+    $info = Gtk2::TextView->new;
+    $info->set_left_margin(2);
+    $info->set_right_margin(15);  #- workaround when right elevator of scrolled window appears
 
     my $find_entry;
-    my $find_callback = sub { do_search($find_entry, $tree, $options, $current_search_type, $urpm, $pkgs) };
+    my $find_callback = sub { do_search($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) };
 
     my $do_action = sub {
-	$fake_modality and return;
 	int(grep { $pkgs->{$_}{selected} } keys %$pkgs) or return;
-	$fake_modality = 1;
 	my $size_added = sum(map { if_($_->flag_selected && !$_->flag_installed, $_->size) } @{$urpm->{depslist}});
 	if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*1024) {
-	    interactive_msg(_("Too many packages are selected"),
-_("Warning: it seems that you are attempting to add so much
+	    interactive_msg_(N("Too many packages are selected"),
+N("Warning: it seems that you are attempting to add so much
 packages that your filesystem may run out of free diskspace,
 during or after package installation ; this is particularly
 dangerous and should be considered with care.
 
 Do you really want to install all the selected packages?"), yesno => 1)
-	      or $fake_modality = 0, return;
+	      or return;
 	}
 	if ($MODE ne 'remove' && %{$urpm->{state}{ask_remove} || {}}) {
-	    interactive_msg(_("Some packages need to be removed"),
-_("The following packages have to be removed for others to be upgraded:
+	    interactive_msg_(N("Some packages need to be removed"),
+N("The following packages have to be removed for others to be upgraded:
 
 %s
 
 Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), yesno => 1)
-	      or $fake_modality = 0, return;
+	      or return;
 	}
 	$callback_action->($urpm, $pkgs);
 	($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
 	$size_selected = 0;
 	(undef, $size_free) = MDK::Common::System::df('/usr');
 	$options->{rebuild_tree}->();
-	$fake_modality = 0;
     };
 
+    my $table = Gtk2::Table->new(0, 0, 0);
+    $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), @modes_buttons)),
+		   0, 1, 0, 1, 'fill', 'fill', 0, 0);
+    $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), Gtk2::Label->new, @descr_modes)),
+		   1, 2, 0, 1, 'fill', 'fill', 0, 0);
+    $table->attach(gtkset_size_request(create_scrolled_window($tree), $typical_width*1.25, -1),
+		   0, 1, 1, 2, 'fill', 'fill', 0, 0);
+    $table->attach($MODE eq 'update' ? create_vpaned(create_scrolled_window($info),
+									 create_scrolled_window($info_update = Gtk2::TextView->new),
+									 resize1 => 1)
+		                     : create_scrolled_window($info),
+		   1, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
     my $darea;
     gtkadd($w->{window}, 
-	   gtkpack_(new Gtk::VBox(0, 3),
-		    0, gtkset_usize($darea = new Gtk::DrawingArea, 0, 57),
-		    1, gtkadd(gtkset_shadow_type(gtkset_border_width(new Gtk::Frame, 3), 'none'),
-			      gtkpack_(new Gtk::VBox(0, 3),
-				       0, gtkpack__(new Gtk::HBox(0, 10),
-						    new Gtk::Label(_("Find:")),
+	   gtkpack_(Gtk2::VBox->new(0, 3),
+		    0, gtkset_size_request($darea = Gtk2::DrawingArea->new, -1, 57),
+		    1, gtkadd(gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
+			      gtkpack_(Gtk2::VBox->new(0, 3),
+				       0, gtkpack__(Gtk2::HBox->new(0, 10),
+						    Gtk2::Label->new(N("Find:")),
 						    $search_types_optionmenu,
-						    gtksignal_connect($find_entry = new Gtk::Entry,
-								      key_press_event => sub { $_[1]{keyval} == 0xff0d
-												 and $find_callback->() }),
-						    gtksignal_connect(new Gtk::Button(but(_("Search"))), clicked => $find_callback)),
-				       0, gtkpack__(new Gtk::HBox(0, 0), gtkpack(new Gtk::VBox(0, 0), @modes_buttons)),
-				       1, gtkpack(new Gtk::HBox(0, 0),
-						  createScrolledWindow($tree),
-						  $MODE eq 'update' ? gtkpack(new Gtk::VBox(0, 0),
-									      createScrolledWindow($info),
-									      createScrolledWindow($info_update = new Gtk::Text))
-						                    : createScrolledWindow($info)),
-				       0, gtkpack(new Gtk::HBox(1, 20),
-						  my $status = new Gtk::Label,
-						  gtkpack(new Gtk::HBox(1, 20),
-							  gtksignal_connect(new Gtk::Button(but($MODE eq 'remove' ? _("Remove")
-												                  : _("Install"))),
+						    gtksignal_connect($find_entry = Gtk2::Entry->new,
+							      key_press_event => sub { $_[1]->keyval == Gtk2::Gdk::Event::Key->Sym_Return
+											 and $find_callback->() }),
+						    gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback)),
+				       1, $table,
+				       0, gtkpack(Gtk2::HBox->new(1, 20),
+						  my $status = Gtk2::Label->new,
+						  gtkpack(Gtk2::HBox->new(1, 20),
+							  gtksignal_connect(Gtk2::Button->new(but($MODE eq 'remove' ? N("Remove")
+												                    : N("Install"))),
 									    clicked => sub { $do_action->() }),
-							  gtksignal_connect(new Gtk::Button(but(_("Quit"))),
-									    clicked => sub { Gtk->main_quit })))
+							  gtksignal_connect(Gtk2::Button->new(but(N("Quit"))),
+									    clicked => sub { Gtk2->main_quit })))
 				       ))));
-    my ($pixmap_back) = gtkcreate_png('title-tile');
-    my ($pixmap_icon) = gtkcreate_png('title-icon');
+    my $pixbuf_back = gtkcreate_pixbuf('title-tile');
+    my $pixbuf_icon = gtkcreate_pixbuf('title-icon');
+    $darea->modify_font(Gtk2::Pango::FontDescription->from_string('Sans Italic 24'));
+    my %t = (remove => N("Software Packages Removal"), update => N("Mandrake Update"), install => N("Software Packages Installation"));
+    my $layout = $darea->create_pango_layout($t{$MODE});
     $darea->signal_connect(expose_event => sub {
-		       my (undef, undef, $dx, $dy) = @{$darea->allocation};
-		       my $dbl_area = new Gtk::Gdk::Pixmap($darea->window, $dx, $dy);
-		       fill_tiled($darea, $dbl_area, $pixmap_back, 1, 57, $dx, $dy);
-		       $dbl_area->draw_pixmap($darea->style->white_gc, $pixmap_icon, 0, 0, $dx-($pixmap_icon->get_size)[1], 0, $dx, $dy);
-		       my $style = $darea->style->copy();
-		       my $pixmap_text if 0;
-		       if (!$pixmap_text) {
-			   my ($langs) = ($ENV{LANGUAGE} || $ENV{LC_ALL} || $ENV{LC_MESSAGES} || $ENV{LANG}).':en';
-			   my @langs = map { /^(..)_/ ? ($_, $1) : $_ } split(':', $langs);
-			   foreach (@langs) {
-			       eval { $pixmap_text or ($pixmap_text) = gtkcreate_png("title/$_/title-$MODE") };
-			       !$@ and last;
-			   }
-			   $pixmap_text ||= -1;
-		       }
-		       if ($pixmap_text && $pixmap_text != -1) {
-			   $dbl_area->draw_pixmap($darea->style->white_gc, $pixmap_text,
-						  0, 0, ($dx-($pixmap_text->get_size)[1])/2, 9, $dx, $dy);
-		       } else {
-			   $style->font(Gtk::Gdk::Font->fontset_load(_("-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*")));
-			   my %t = (remove => _("Software Packages Removal"), update => _("Mandrake Update"),
-				    install => _("Software Packages Installation"));
-			   $dbl_area->draw_string($style->font, $darea->style->white_gc,
-						  ($dx-$style->font->string_width($t{$MODE}))/2, 40, $t{$MODE});
-		       }
-		       $darea->window->draw_pixmap($darea->style->white_gc, $dbl_area, 0, 0, 0, 0, $dx, $dy);
+		       my $dx = $darea->allocation->width;
+		       fill_tiled($darea, $pixbuf_back);
+		       $pixbuf_icon->render_to_drawable($darea->window, $darea->style->white_gc,
+							0, 0, $dx - $pixbuf_icon->get_width, 0, -1, -1, 'none', 0, 0);
+		       $darea->window->draw_layout($darea->style->white_gc, ($dx-($layout->get_pixel_size)[0])/2, 17, $layout);
 		       0;
 		   });
 
-    $w->{window}->set_usize($typical_width*2.7, 500);
+    $w->{window}->set_default_size($typical_width*2.7, 500);
     $w->{rwindow}->show_all;
-    my $widgets = { w => $w, tree => $tree, info => $info, status => $status };
+    my $widgets = { w => $w, tree => $tree, tree_model => $tree_model, textcolumn => $textcolumn, pixcolumn => $pixcolumn,
+		    info => $info, status => $status };
 
     ask_browse_tree_info_given_widgets($options, $widgets);
 }
@@ -716,38 +736,37 @@ sub get_installable_pkgs {
     if ($updates) {
 	my $urpm = new urpm;
 	$urpm->configure();
-	my ($statedir, $cachedir) = map { $urpm->{$_} } qw (statedir cachedir);
+	my ($statedir, $cachedir) = map { $urpm->{$_} } qw(statedir cachedir);
 	@update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 	undef $urpm;
 	if (@update_medias > 0) {
 	    if (!$opts->{skip_updating_mu}) {
-		$options{'no-confirmation'} or interactive_msg('rpmdrake',
-_("I need to contact the mirror to get latest update packages.
+		$options{'no-confirmation'} or interactive_msg_('rpmdrake',
+N("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
 Is it ok to continue?"), yesno => 1) or myexit(-1);
-		my $w = wait_msg(_("Please wait, contacting mirror to update packages information."));
-		system('/usr/sbin/urpmi.update', map { $_->{name} } @update_medias) == 0
-		  or fatal_msg(_("Error updating medium"),
-			       _("There was an unrecoverable error while updating packages information."));
-		remove_wait_msg($w);
+		slow_func(N("Please wait, contacting mirror to update packages information."),
+			  sub { system('/usr/sbin/urpmi.update', map { $_->{name} } @update_medias) == 0
+				  or fatal_msg(N("Error updating medium"),
+					       N("There was an unrecoverable error while updating packages information.")) });
 	    }
 	} else {
 	  mu_retry_another_mirror:
 	    my $m = choose_mirror;
-	    $m or interactive_msg(_("How to choose manually your mirror"),
-_("You may also choose your desired mirror manually: to do so,
+	    $m or interactive_msg_(N("How to choose manually your mirror"),
+N("You may also choose your desired mirror manually: to do so,
 launch the Software Sources Manager, and then add a `Security
 updates' source.
 
 Then, restart MandrakeUpdate.", $update_name)), myexit(-1);
 	    my ($r) = cat_('/etc/mandrake-release') =~ /release\s(\S+)/;
-	    my $w = wait_msg(_("Please wait, contacting mirror to initialize updates packages."));
-	    my $retval = system("/usr/sbin/urpmi.addmedia --update $update_name $m/$r/RPMS/ with ../base/hdlist.cz");
-	    remove_wait_msg($w);
+	    my $retval;
+	    slow_func(N("Please wait, contacting mirror to initialize updates packages."),
+		      sub { $retval = system("/usr/sbin/urpmi.addmedia --update $update_name $m/$r/RPMS/ with ../base/hdlist.cz") });
 	    if ($retval != 0) {
-		interactive_msg(_("Error adding update medium"),
-_("There was an error while adding the update medium via urpmi.
+		interactive_msg_(N("Error adding update medium"),
+N("There was an error while adding the update medium via urpmi.
 
 This may be due to a broken or temporary unavailable mirror, or when your
 Mandrake Linux version (%s) is not yet / no more supported by Mandrake Linux
@@ -778,7 +797,7 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
 	}
     }
 
-    my $w = wait_msg(_("Please wait, finding available packages..."));
+    my $wait = wait_msg(N("Please wait, finding available packages..."));
     my $urpm = new urpm;
     my %installable_pkgs;
 
@@ -793,7 +812,7 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
 	$installable_pkgs{my_fullname($pkg)} = { selected => 0, pkg => $pkg };
     }
 
-    remove_wait_msg($w);
+    remove_wait_msg($wait);
     ($urpm, \%installable_pkgs, \%update_descr);
 }
 
@@ -807,66 +826,69 @@ sub dialog_rpmnew {
     @{$p2r{$_}} = grep { !member($_, @ignores_rpmnew) } @{$p2r{$_}} foreach keys %p2r;
     my $sum_rpmnew = sum(map { int @{$p2r{$_}} } keys %p2r);
     $sum_rpmnew == 0 and return 1;
-    my $d = my_gtk->new(_("Installation finished"));
+    my $d = ugtk2->new(N("Installation finished"));
+    my @inspect_wsize = ($typical_width*2.5, 500);
     my $inspect = sub {
 	my ($file) = @_;
-	my $d = my_gtk->new(_("Inspecting %s", $file));
+	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1);
+	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my ($rpmnew, $rpmsave) = ("$file.rpmnew", "$file.rpmsave");
 	my $rpmfile = 'rpmnew';
 	-r $rpmnew or $rpmfile = 'rpmsave';
 	-r $rpmnew && -r $rpmsave && (stat $rpmsave)[9] > (stat $rpmnew)[9] and $rpmfile = 'rpmsave';
 	$rpmfile eq 'rpmsave' and $rpmnew = $rpmsave;
-	my %texts;
+	my ($vbox, %texts);
 	gtkadd($d->{window},
-	       gtkpack_(gtkset_usize(new Gtk::VBox(0, 5), $typical_width*2.5, 500),
-			0, new Gtk::Label("$file:"),
-			1, createScrolledWindow($texts{file} = new Gtk::Text),
-			0, new Gtk::Label("$rpmnew:"),
-			1, createScrolledWindow($texts{rpmnew} = new Gtk::Text),
-			0, new Gtk::Label("changes:"),
-			1, createScrolledWindow($texts{diff} = new Gtk::Text),
+	       gtkpack_(Gtk2::VBox->new(0, 5),
+			1, create_vpaned(
+				  create_vpaned(gtkpack_(Gtk2::VBox->new(0, 0),
+							 0, gtkset_markup(Gtk2::Label->new, "<span font_desc=\"fixed\">$file:</span>"),
+							 1, create_scrolled_window($texts{file} = Gtk2::TextView->new)),
+						gtkpack_(Gtk2::VBox->new(0, 0),
+							 0, gtkset_markup(Gtk2::Label->new, "<span font_desc=\"fixed\">$rpmnew:</span>"),
+							 1, create_scrolled_window($texts{rpmnew} = Gtk2::TextView->new)),
+						resize1 => 1),
+				  gtkpack_(Gtk2::VBox->new(0, 0),
+					   0, Gtk2::Label->new(N("changes:")),
+					   1, create_scrolled_window($texts{diff} = Gtk2::TextView->new)),
+				  resize1 => 1),
 			0, gtkpack__(create_hbox(),
-				     gtksignal_connect(new Gtk::Button(_("Remove .%s", $rpmfile)),
-						       clicked => sub { unlink $rpmnew; Gtk->main_quit }),
-				     gtksignal_connect(new Gtk::Button(_("Use .%s as main file", $rpmfile)),
-						       clicked => sub { renamef($rpmnew, $file); Gtk->main_quit }),
-				     gtksignal_connect(new Gtk::Button(_("Do nothing")),
-						       clicked => sub { Gtk->main_quit }),
+				     gtksignal_connect(Gtk2::Button->new(N("Remove .%s", $rpmfile)),
+						       clicked => sub { $save_wsize->(); unlink $rpmnew; Gtk2->main_quit }),
+				     gtksignal_connect(Gtk2::Button->new(N("Use .%s as main file", $rpmfile)),
+						       clicked => sub { $save_wsize->(); renamef($rpmnew, $file); Gtk2->main_quit }),
+				     gtksignal_connect(Gtk2::Button->new(N("Do nothing")),
+						       clicked => sub { $save_wsize->(); Gtk2->main_quit }),
 				    )));
-	my $fixedfont = Gtk::Gdk::Font->fontset_load(_("-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"));
 	my %contents = (file => scalar(cat_($file)), rpmnew => scalar(cat_($rpmnew)));
-	$texts{$_}->insert($fixedfont, undef, undef, $contents{$_}) foreach keys %contents;
-	foreach my $line (`diff -u $file $rpmnew`) {
-	    my %c = (red => my_gtk::gtkcolor(0xFFFF, 655, 655), green => my_gtk::gtkcolor(0x0, 0x9898,0x0),
-		     cyan => my_gtk::gtkcolor(0x0, 0x9898, 0x9898), blue => my_gtk::gtkcolor(655, 655, 0xFFFF));
-	    my @regexps = ([ '^(--- )|(\+\+\+ )', $c{blue} ], [ '^@@ ', $c{cyan} ], [ '^-', $c{red} ], [ '^\+', $c{green} ]);   #-#
-	    my $color;
-	    $line =~ /$_->[0]/ and $color ||= $_->[1] foreach @regexps;
-	    $texts{diff}->insert($fixedfont, $color, undef, $line);
-	}
+	gtktext_insert($texts{$_}, [ [ $contents{$_}, { 'font' => 'fixed' } ] ]) foreach keys %contents;
+	my @regexps = ([ '^(--- )|(\+\+\+ )', 'blue' ], [ '^@@ ', 'darkcyan' ], [ '^-', 'red3' ], [ '^\+', 'green3' ]);
+	my $line2col = sub { $_[0] =~ /$_->[0]/ and return $_->[1] foreach @regexps; 'black' };
+	gtktext_insert($texts{diff}, [ map { [ $_, { 'font' => 'fixed', 'foreground' => $line2col->($_) } ] } `diff -u $file $rpmnew` ]);
+	$d->{rwindow}->set_default_size(@inspect_wsize);
 	$d->main;
     };
     my $packtable = create_packtable({},
 				     map { my $pkg = $_;
 					   map {
 					       my $f = $_;
-					       my $b = new Gtk::Button(but(_("Inspect...")));
-					       [ gtkpack__(new Gtk::HBox(0, 0),
-							   new Gtk::Label("$pkg:$f")),
-						 gtksignal_connect($b,
-								   clicked => sub {
-								       $inspect->($f);
-								       -r "$f.rpmnew" || -r "$f.rpmsave"
-									 or $b->set_sensitive(0)
-								     }) ]
+					       [ gtkpack__(Gtk2::HBox->new(0, 0),
+							   gtkset_selectable(gtkset_markup(Gtk2::Label->new,
+											   "$pkg:<span font_desc=\"fixed\">$f</span>"), 1)),
+						 my $b = gtksignal_connect(Gtk2::Button->new(but(N("Inspect..."))),
+									   clicked => sub {
+									       $inspect->($f);
+									       -r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0)
+									     }) ]
 					   } @{$p2r{$pkg}}
 				       } keys %p2r);
     gtkadd($d->{window},
-	   gtkpack__(new Gtk::VBox(0,5),
-		     new Gtk::Label($msg),
+	   gtkpack__(Gtk2::VBox->new(0,5),
+		     Gtk2::Label->new($msg),
 		     $sum_rpmnew < 6 ? $packtable
-		                     : gtkset_usize(createScrolledWindow($packtable), $typical_width*1.7, min(70 + $sum_rpmnew*20, 450)),
-		     gtkpack__(create_hbox(), gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit }))));
+		                     : gtkset_size_request(create_scrolled_window($packtable),
+							   $typical_width*1.7, min(70 + $sum_rpmnew*20, 450)),
+		     gtkpack__(create_hbox(), gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
     $d->main;
     return 0;
 }
@@ -875,74 +897,76 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($urpm) = @_;
 
     my $grpmi = '/usr/sbin/grpmi';
-    -x $grpmi or fatal_msg(_("Program missing"),
-			   _("A required program is missing (grpmi). Check your installation.")), myexit(-1);
+    -x $grpmi or fatal_msg(N("Program missing"),
+			   N("A required program is missing (grpmi). Check your installation.")), myexit(-1);
 
-my $fatal_msg;
-local $urpm->{fatal} = sub { $fatal_msg = $_[1]; die };
+    my $fatal_msg;
+    local $urpm->{fatal} = sub { $fatal_msg = $_[1]; die };
 
-eval {
-    standalone::explanations("Removing package $_") foreach keys %{$urpm->{state}{ask_remove}};
+    eval {
+	standalone::explanations("Removing package $_") foreach keys %{$urpm->{state}{ask_remove}};
 
-    my %pkgs;
-    @pkgs{ map { $_->id } grep { $_->flag_selected } @{$urpm->{depslist}} } = undef;
-    my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
-    foreach my $l (@$list) {
-	standalone::explanations("Installing package $_") foreach sort values %$l;
-    }
-    if (!$local_sources && !$list) {
-	fatal_msg(_("Unable to get source packages."),
-		  _("Unable to get source packages, sorry."));
-    }
-    foreach (@$local_to_removes) {
-	unlink $_;
-    }
-
-    my %sources = $urpm->download_source_packages($local_sources, $list, '',
-						  sub { interactive_msg(_("Change medium"),
-									_("Please insert the medium named \"%s\" on device [%s]", @_),
-									yesno => 1, text => { yes => _("Ok"), no => _("Cancel") }) });
-    my @rpms_install = grep { !/\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
-    my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
-
-    if (@rpms_install || @rpms_upgrade) {
-	foreach (@rpms_install, @rpms_upgrade) {
-	    m|^/| && ! -e $_ or next;
-	    interactive_msg(_("Installation failed"),
-			    _("Installation failed, some files are missing.\nYou may want to update your sources database."));
-	    return;
+	my %pkgs;
+	@pkgs{ map { $_->id } grep { $_->flag_selected } @{$urpm->{depslist}} } = undef;
+	my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
+	foreach my $l (@$list) {
+	    standalone::explanations("Installing package $_") foreach sort values %$l;
 	}
-	%{$urpm->{state}{ask_remove}} and slow_func(_("Please wait, removing packages to allow others to be upgraded..."),
-						    sub { system('rpm', '-e', '--nodeps', keys %{$urpm->{state}{ask_remove}}) });
-	if (my $pid = fork()) {
-	    while (!waitpid($pid, c::WNOHANG())) {
-		select(undef, undef, undef, 0.1);
-		my_gtk::flush();
+	if (!$local_sources && !$list) {
+	    fatal_msg(N("Unable to get source packages."),
+		      N("Unable to get source packages, sorry."));
+	}
+	foreach (@$local_to_removes) {
+	    unlink $_;
+	}
+
+	my %sources = $urpm->download_source_packages($local_sources, $list, '',
+						      sub { interactive_msg_(N("Change medium"),
+									     N("Please insert the medium named \"%s\" on device [%s]", @_),
+									     yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) });
+	my @rpms_install = grep { !/\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
+	my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
+
+	if (@rpms_install || @rpms_upgrade) {
+	    foreach (@rpms_install, @rpms_upgrade) {
+		m|^/| && ! -e $_ or next;
+		interactive_msg_(N("Installation failed"),
+				 N("Installation failed, some files are missing.\nYou may want to update your sources database."));
+		return;
 	    }
+	    %{$urpm->{state}{ask_remove}} and slow_func(N("Please wait, removing packages to allow others to be upgraded..."),
+							sub { system('rpm', '-e', '--nodeps', keys %{$urpm->{state}{ask_remove}}) });
+	    if (my $pid = fork()) {
+		$w->{rwindow}->set_sensitive(0);
+		while (!waitpid($pid, c::WNOHANG())) {
+		    select(undef, undef, undef, 0.1);
+		    ugtk2::flush();
+		}
+		$w->{rwindow}->set_sensitive(1);
+	    } else {
+		exec($grpmi, if_($options{'no-verify-rpm'}, '--no-verify-rpm'), (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade)
+		  or print(STDERR "   *** ERROR *** Could not exec $grpmi.\n"), c::_exit(-1);
+	    }
+	    my $exitstatus = $?;
+	    my %pkg2rpmnew;
+	    foreach my $u (@rpms_upgrade) {
+		$u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
+		  and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
+					  map { chomp_($_) } `rpm -ql $1` ];
+	    }
+	    dialog_rpmnew($exitstatus,
+			  N("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:", $exitstatus ? N("some packages failed to install\ncorrectly")
+			    : N("everything was installed correctly")),
+			  %pkg2rpmnew)
+	      && !$exitstatus and interactive_msg_(N("Everything installed successfully"),
+						   N("All requested packages were installed successfully."));
 	} else {
-	    exec($grpmi, if_($options{'no-verify-rpm'}, '--no-verify-rpm'), (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade)
-	      or print(STDERR "   *** ERROR *** Could not exec $grpmi.\n"), c::_exit(-1);
+	    interactive_msg_(N("Everything already installed."),
+			     N("Everything already installed (is this supposed to happen at all?)."));
 	}
-	my $exitstatus = $?;
-	my %pkg2rpmnew;
-	foreach my $u (@rpms_upgrade) {
-	    $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
-	      and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
-				      map { chomp_($_) } `rpm -ql $1` ];
-	}
-	dialog_rpmnew($exitstatus,
-		      _("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:", $exitstatus ? _("some packages failed to install\ncorrectly")
-			                           : _("everything was installed correctly")),
-		      %pkg2rpmnew)
-	  && !$exitstatus and interactive_msg(_("Everything installed successfully"),
-					      _("All requested packages were installed successfully."));
-    } else {
-	interactive_msg(_("Everything already installed."),
-			_("Everything already installed (is this supposed to happen at all?)."));
-    }
-};
-$@ and interactive_msg(_("Problem during installation"),
-		       _("There was a problem during the installation:\n\n%s", $fatal_msg));
+    };
+    $@ and interactive_msg_(N("Problem during installation"),
+			    N("There was a problem during the installation:\n\n%s", $fatal_msg));
 
 }
 
@@ -952,7 +976,7 @@ $@ and interactive_msg(_("Problem during installation"),
 sub get_installed_pkgs {
     use URPM;
 
-    my $w = wait_msg(_("Please wait, reading packages database..."));
+    my $wait = wait_msg(N("Please wait, reading packages database..."));
     my @base = qw(basesystem);
     my (%base, %basepackages);
     my $db = db;
@@ -982,7 +1006,7 @@ sub get_installed_pkgs {
 							  description => beautify_description($pkg->description) };
 		      $pkg->pack_header;
 		  });
-    remove_wait_msg($w);
+    remove_wait_msg($wait);
     (new urpm, \%installed_pkgs);
 }
 
@@ -990,7 +1014,7 @@ sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = grep { $pkgs->{$_}{selected} } keys %$pkgs;
     standalone::explanations("Removing package $_") foreach sort @toremove;
-    slow_func(_("Please wait, removing packages..."),
+    slow_func(N("Please wait, removing packages..."),
 	      sub { $urpm->install(\@toremove, {}, {}) });
 }
 
@@ -999,10 +1023,12 @@ sub perform_removal {
 
 if ($options{'merge-all-rpmnew'}) {
     my %pkg2rpmnew;
+    print "Searching .rpmnew and .rpmsave files...\n";
     db->traverse(sub {
 		     my $n = my_fullname($_[0]);
 		     $pkg2rpmnew{$n} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") } map { chomp_($_) } $_[0]->files ];
 		 });
+    print "done.\n";
     $typical_width = 280;
     dialog_rpmnew(0, '', %pkg2rpmnew);
     myexit(0);
@@ -1013,21 +1039,21 @@ readconf();
 
 if (!member($MODE, @$already_splashed)) {
     interactive_msg('rpmdrake',
-_("%s
+N("%s
 
 Is it ok to continue?",
         $MODE eq 'remove' ?
-  _("Welcome to the software removal tool!
+  N("Welcome to the software removal tool!
 
 This tool will help you choose which software you want to remove from
 your computer.")
       : $MODE eq 'update' ?
-  _("Welcome to MandrakeUpdate!
+  N("Welcome to MandrakeUpdate!
 
 This tool will help you choose the updates you want to install on your
 computer.")
       :
-  _("Welcome to the software installation tool!
+  N("Welcome to the software installation tool!
 
 Your Mandrake Linux system comes with several thousands of software
 packages on CDROM or DVD. This tool will help you choose which software

@@ -25,7 +25,7 @@ use curl_download;
 use grpmi_rpm;
 
 use lib qw(/usr/lib/libDrakX);
-use my_gtk qw(:helpers :wrappers);
+use ugtk2 qw(:all);
 $::isStandalone = 1;
 
 @ARGV or die "usage: ", basename($0), " [--no-verify-rpm] <[-noupgrade] PACKAGE>...\n";
@@ -38,27 +38,25 @@ sub _ {
     my $s = shift @_; my $t = translate($s);
     sprintf $t, @_;
 }
-sub mexit { my_gtk::exit(undef, @_) }
+sub mexit { ugtk2::exit(undef, @_) }
 
 sub interactive_msg {
     my ($title, $contents, $yesno) = @_;
-    my $d = my_gtk->new($title);
+    my $d = ugtk2->new($title);
     my $lines; $lines++ while $contents =~ /\n/g;
-    my $l = new Gtk::Label($contents);
+    my $l = Gtk2::Label->new($contents);
     gtkadd($d->{window},
-	   gtkpack_(new Gtk::VBox(0,5),
-		    1, $lines > 20 ? gtkset_usize(createScrolledWindow($l), 300, 300) : $l,
+	   gtkpack_(Gtk2::VBox->new(0,5),
+		    1, $lines > 20 ? gtkset_size_request(create_scrolled_window($l), 300, 300) : $l,
 		    0, gtkpack(create_hbox(),
-			       $yesno ? (gtksignal_connect(new Gtk::Button(_("Yes")), clicked => sub { $d->{retval} = 1; Gtk->main_quit }),
-					 gtksignal_connect(new Gtk::Button(_("No")), clicked => sub { $d->{retval} = 0; Gtk->main_quit }))
-			       : gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit })
+			       $yesno ? (gtksignal_connect(Gtk2::Button->new(_("Yes")), clicked => sub { $d->{retval} = 1; Gtk2->main_quit }),
+					 gtksignal_connect(Gtk2::Button->new(_("No")), clicked => sub { $d->{retval} = 0; Gtk2->main_quit }))
+			       : gtksignal_connect(Gtk2::Button->new(_("Ok")), clicked => sub { Gtk2->main_quit })
 			      )));
     $l->set_justify('left');
     $d->main;
     return $d->{retval};
 }
-
-Gtk->init;
 
 $> and interactive_msg(_("Error..."),
 		       _("You need to be root to install packages, sorry.")), mexit -1;
@@ -69,9 +67,9 @@ grpmi_rpm::init_rcstuff() and interactive_msg(_("RPM initialization error"),
 $ENV{HOME} ||= '/root';
 my @grpmi_config = map { chomp_($_) } cat_("$ENV{HOME}/.grpmi");
 
-my $mainw = my_gtk->new('grpmi');
-my $label = new Gtk::Label(_("Initializing..."));
-my $progressbar = gtkset_usize(new Gtk::ProgressBar, 400, 0);
+my $mainw = ugtk2->new('grpmi');
+my $label = Gtk2::Label->new(_("Initializing..."));
+my $progressbar = gtkset_size_request(Gtk2::ProgressBar->new, 400, 0);
 gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label, $progressbar)));
 $mainw->{rwindow}->set_position('center');
 $mainw->sync;
@@ -87,14 +85,15 @@ my $url_regexp = '^http://|^https://|^ftp://';
 my $nb_downloads = int(grep { m,$url_regexp, } @ARGV);
 my $download_progress;
 
-for (my $i=0; $i<@ARGV; $i++) {
-    if ($ARGV[$i] =~ m,$url_regexp,) {
+for my $arg (@ARGV) {
+    if ($arg =~ m,$url_regexp,) {
 	$download_progress++;
-	$label->set(_("Downloading package `%s' (%s/%s)...", basename($ARGV[$i]), $download_progress, $nb_downloads));
+	$label->set(_("Downloading package `%s' (%s/%s)...", basename($arg), $download_progress, $nb_downloads));
 	select(undef, undef, undef, 0.1); $mainw->flush;  #- hackish :-(
-	my $res = curl_download::download($ARGV[$i], $cache_location, sub { $_[0] and $progressbar->update($_[1]/$_[0]); $mainw->flush });
-	my $url = $ARGV[$i];
-	$ARGV[$i] = "$cache_location/" . basename($ARGV[$i]);
+	my $res = curl_download::download($arg, $cache_location,
+					  sub { $_[0] and $progressbar->set_fraction($_[1]/$_[0]); $mainw->flush });
+	my $url = $arg;
+	$arg = "$cache_location/" . basename($arg);
 	if ($res) {
 	    interactive_msg(_("Error during download"),
 _("There was an error downloading package:
@@ -103,20 +102,20 @@ _("There was an error downloading package:
 
 Error: %s
 Do you want to continue (skipping this package)?", $url, $res), 1) or goto cleanup;
-	    $ARGV[$i] = "-skipped&$ARGV[$i]&";
+	    $arg = "-skipped&$arg&";
 	}
     }
 
-    if ($ARGV[$i] !~ /^-/ && !member('--no-verify-rpm', @ARGV)) {
-	if (-f $ARGV[$i]) {
-	    $label->set(_("Verifying signature of `%s'...", basename($ARGV[$i]))); $mainw->flush;
-	    my $res = grpmi_rpm::verify_sig("$ARGV[$i]");
+    if ($arg !~ /^-/ && !member('--no-verify-rpm', @ARGV)) {
+	if (-f $arg) {
+	    $label->set(_("Verifying signature of `%s'...", basename($arg))); $mainw->flush;
+	    my $res = grpmi_rpm::verify_sig("$arg");
 	    $res and (interactive_msg(_("Signature verification error"),
 _("The signature of the package `%s' is not correct:
 
 %s
 Do you want to install it anyway?",
-					basename($ARGV[$i]), $res), 1) or $ARGV[$i] = "-skipped&$ARGV[$i]&");
+					basename($arg), $res), 1) or $arg = "-skipped&$arg&");
 	} else {
 	    interactive_msg(_("File error"),
 _("The following file is not valid:
@@ -124,8 +123,8 @@ _("The following file is not valid:
 %s
 
 Do you want to continue anyway (skipping this package)?",
-			      $ARGV[$i]), 1) or goto cleanup;
-	    $ARGV[$i] = "-skipped&$ARGV[$i]&";
+			      $arg), 1) or goto cleanup;
+	    $arg = "-skipped&$arg&";
 	}
     }
 }
@@ -156,7 +155,7 @@ Install aborted.",
 					      $mainw->flush },
 			'inst-progress' => sub {
 			    $1 =~ /(\d+) (\d+)/;
-			    $progressbar->update($1/$2); $mainw->flush
+			    $progressbar->set_fraction($1/$2); $mainw->flush
 			},
 		      );
 	$msg =~ /^$_ (.*)/ and return &{$actions{$_}} foreach keys %actions;
