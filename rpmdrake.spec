@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 36mdk
+%define release 35mdk
 
 Name: %{name}
 Version: %{version}
@@ -101,14 +101,12 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Fri Sep  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-36mdk
+* Fri Sep  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-35mdk
+- fix invalid-build-requires libcurl2-devel
 - fix garbled UTF8 in "summary" and "description" of pkgs when i18n'ed
 - use new urpmi API to verify signatures, so that we don't miss
   signatures problems when key of package is not in urpmi allowed pool
 - fix "Reset the selection" that didn't really reset it for urpmi :/
-
-* Thu Sep  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-35mdk
-- fix invalid-build-requires libcurl2-devel
 
 * Tue Sep  2 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-34mdk
 - s/9.1/9.2/ (#5201)
