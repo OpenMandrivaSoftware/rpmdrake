@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 11mdk
+%define release 12mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.4.1 gurpmi >= 4.4.1 perl-URPM >= 0.90-7mdk drakxtools > 10-12mdk rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.4.1 gurpmi >= 4.4.1 perl-URPM >= 0.90-7mdk drakxtools > 10-23mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-6mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: curl-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -118,6 +118,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Mar 17 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-12mdk
+- rpmdrake:
+  o set xwindow icon
+  o fix icon in banner (use same icon as in mcc)
+- park-rpmdrake: if mcc icon is there, use it for the wm icon (pixel)
+- edit-urpm-sources.pl: just like MandrakeUpdate, edit-urpm-sources
+  can also configure a "update" media, so just like MandrakeUpdate
+  defaulting it to synthesis instead of hdlist (pixel)
+
 * Wed Mar 10 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-11mdk
 - follow std button order
 - MandrakeUpdate:
