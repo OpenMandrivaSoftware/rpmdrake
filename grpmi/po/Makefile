@@ -32,7 +32,7 @@ merge: $(PGOAL).pot
 
 $(PGOAL).pot: $(PL_CFILES) $(CFILES)
 	xgettext -F -n --add-comments='-PO' \
-	--keyword=_ --keyword=__ --keyword=N_ \
+	--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
 	--language=C -o $@ $(PL_CFILES) $(CFILES)
 	@rm -rf $(PL_CFILES)
 
