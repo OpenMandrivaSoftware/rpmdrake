@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -115,6 +115,11 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Jan  9 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-2mdk
+- grpmi:
+  - verify all signatures at the end of all downloads
+  - allow to say "yes to all" to the signatures questions
+
 * Wed Jan  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-1mdk
 - gtk2 (possibly contains important breakages, use with care)
 - other fixes:

@@ -55,9 +55,13 @@ sub interactive_msg {
 	   gtkpack_(Gtk2::VBox->new(0,5),
 		    1, $lines > 20 ? gtkset_size_request(create_scrolled_window($l), 300, 300) : $l,
 		    0, gtkpack(create_hbox(),
-			       $yesno ? (gtksignal_connect(Gtk2::Button->new(_("Yes")), clicked => sub { $d->{retval} = 1; Gtk2->main_quit }),
-					 gtksignal_connect(Gtk2::Button->new(_("No")), clicked => sub { $d->{retval} = 0; Gtk2->main_quit }))
-			       : gtksignal_connect(Gtk2::Button->new(_("Ok")), clicked => sub { Gtk2->main_quit })
+	       ref($yesno) eq 'ARRAY' ? map {
+		       my $label = $_;
+		       gtksignal_connect(Gtk2::Button->new($label), clicked => sub { $d->{retval} = $label; Gtk2->main_quit })
+		   } @$yesno
+	       : $yesno ? (gtksignal_connect(Gtk2::Button->new(_("Yes")), clicked => sub { $d->{retval} = 1; Gtk2->main_quit }),
+			   gtksignal_connect(Gtk2::Button->new(_("No")), clicked => sub { $d->{retval} = 0; Gtk2->main_quit }))
+	       : gtksignal_connect(Gtk2::Button->new(_("Ok")), clicked => sub { Gtk2->main_quit })
 			      )));
     $l->set_justify('left');
     $d->main;
@@ -91,7 +95,7 @@ my $url_regexp = '^http://|^https://|^ftp://';
 my $nb_downloads = int(grep { m,$url_regexp, } @ARGV);
 my $download_progress;
 
-for my $arg (@ARGV) {
+foreach my $arg (@ARGV) {
     if ($arg =~ m,$url_regexp,) {
 	$download_progress++;
 	$label->set(_("Downloading package `%s' (%s/%s)...", basename($arg), $download_progress, $nb_downloads));
@@ -112,25 +116,39 @@ Do you want to continue (skipping this package)?", $url, $res), 1) or goto clean
 	}
     }
 
-    if ($arg !~ /^-/ && !member('--no-verify-rpm', @ARGV)) {
-	if (-f $arg) {
-	    $label->set(_("Verifying signature of `%s'...", basename($arg))); $mainw->flush;
-	    my $res = grpmi_rpm::verify_sig("$arg");
-	    $res and (interactive_msg(_("Signature verification error"),
+}
+
+
+# -=-=-=---=-=-=---=-=-=-- verify signatures -=-=-=---=-=-=--
+
+if (!member('--no-verify-rpm', @ARGV)) {
+    my $yes_to_all;
+    foreach my $arg (@ARGV) {
+	if ($arg !~ /^-/) {
+	    if (-f $arg) {
+		$yes_to_all and next;
+		$label->set(_("Verifying signature of `%s'...", basename($arg))); $mainw->flush;
+		if (my $res = grpmi_rpm::verify_sig($arg)) {
+		    my $results = interactive_msg(_("Signature verification error"),
 _("The signature of the package `%s' is not correct:
 
 %s
 Do you want to install it anyway?",
-					basename($arg), $res), 1) or $arg = "-skipped&$arg&");
-	} else {
-	    interactive_msg(_("File error"),
+		                          basename($arg), $res),
+					  [ _("Yes"), _("Yes to all"), _("No") ]);
+		    $results eq _("No") and $arg = "-skipped&$arg&";
+		    $results eq _("Yes to all") and $yes_to_all = 1;
+		}
+	    } else {
+		interactive_msg(_("File error"),
 _("The following file is not valid:
 
 %s
 
 Do you want to continue anyway (skipping this package)?",
-			      $arg), 1) or goto cleanup;
-	    $arg = "-skipped&$arg&";
+			        $arg), 1) or goto cleanup;
+		$arg = "-skipped&$arg&";
+	    }
 	}
     }
 }
