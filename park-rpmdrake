@@ -317,7 +317,6 @@ sub networks_to_scanned_hosts {
 
 sub group_modify {
     my ($in, $group, $groups) = @_;
-    my $orig_name = $group->{name};
     my @orig_raw_hosts = @{$group->{raw_hosts}};
     my %widgets = (
 	name => gtkset_text(Gtk2::Entry->new, $group->{name}),
@@ -467,7 +466,7 @@ Do you really want to use this network?"));
 	$get_from_widgets->();
 
 	$group->{name} or $in->ask_warn(N("Error"), N("Name missing")), return 0;
-	$group->{name} eq $orig_name || every { $group->{name} ne $_->{name} } @$groups or 
+	every { $_ == $group || $group->{name} ne $_->{name} } @$groups or 
 	  $in->ask_warn(N("Error"), N("Name already used")), return 0;
 
 	(my $pkg_for_protocol = "urpm::parallel_$group->{protocol}") =~ s/-/_/g;
