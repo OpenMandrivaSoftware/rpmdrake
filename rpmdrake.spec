@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 25mdk
+%define release 26mdk
 
 Name: %{name}
 Version: %{version}
@@ -123,6 +123,12 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Sep 12 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-26mdk
+- fixes not parsing descriptions file when MU adds itself the
+  security source
+- fixes all packages are displayed when "normal" updates are
+  selected, even "security" and "bugfix" packages
+
 * Wed Sep 11 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-25mdk
 - when installing packages, set urpm->{fatal} so that I can intercept
   when "cancel" is clicked for the change of CD's -> we no more exit
