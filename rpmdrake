@@ -26,15 +26,17 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
     any { /^--?h/ } @ARGV and do {
 	printf qq(Usage: %s [OPTION]...
-  --no-confirmation      don't ask first confirmation question in update mode
-  --no-verify-rpm        don't verify packages signatures
   --changelog-first      display changelog before filelist in the description window
-  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found
-  --parallel=alias,host  be in parallel mode, use "alias" group, use "host" machine to show needed deps
   --media=medium1,..     limit to given media
-  --pkg-sel=pkg1,..      preselect these packages
-  --pkg-nosel=pkg1,..    show only these packages
+  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found
+  --mode=MODE            set mode (install (default), remove, update)
+  --no-confirmation      don't ask first confirmation question in update mode
   --no-media-update      don't update media at startup
+  --no-verify-rpm        don't verify packages signatures
+  --parallel=alias,host  be in parallel mode, use "alias" group, use "host" machine to show needed deps
+  --pkg-nosel=pkg1,..    show only these packages
+  --pkg-sel=pkg1,..      preselect these packages
+  --root                 force to run as root
 ), $basename->($0);
 	exit 0;
     };
@@ -59,19 +61,6 @@ if ($collation_locale) {
 }
 
 our %options;
-our $MODE = 'install';
-$0 =~ m|remove$|  and $MODE = 'remove';
-$0 =~ m|update$|i and $MODE = 'update';
-
-$MODE eq 'update' || "@ARGV" =~ /--root/ and require_root_capability();
-$ugtk2::wm_icon = "title-$MODE";
-
-eval { require ugtk2; ugtk2->import(qw(:all)); require Gtk2::Pango; require Gtk2::Gdk::Keysyms };
-if ($@) {
-    print "This program cannot be run in console mode.\n";
-    c::_exit(0);  #- skip ugtk2::END
-}
-
 foreach (@ARGV) {
     /^-?-(\S+)$/ or next;
     my $val = $1;
@@ -84,6 +73,21 @@ foreach (@ARGV) {
     }
 }
 
+our $MODE = ref $options{mode} ? $options{mode}[0] : undef;
+unless ($MODE) {
+    $MODE = 'install';
+    $0 =~ m|remove$|  and $MODE = 'remove';
+    $0 =~ m|update$|i and $MODE = 'update';
+}
+
+eval { require ugtk2; ugtk2->import(qw(:all)); require Gtk2::Pango; require Gtk2::Gdk::Keysyms };
+if ($@) {
+    print "This program cannot be run in console mode.\n";
+    c::_exit(0);  #- skip ugtk2::END
+}
+
+$MODE eq 'update' || $options{root} and require_root_capability();
+$ugtk2::wm_icon = "title-$MODE";
 $::isStandalone = 1;
 
 package gurpm;
