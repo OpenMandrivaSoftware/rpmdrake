@@ -873,6 +873,10 @@ sub dialog_rpmnew {
 sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($urpm) = @_;
 
+my $fatal_msg;
+local $urpm->{fatal} = sub { $fatal_msg = $_[1]; die };
+
+eval {
     standalone::explanations("Removing package $_") foreach keys %{$urpm->{state}{ask_remove}};
 
     my %pkgs;
@@ -934,6 +938,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	interactive_msg(_("Everything already installed."),
 			_("Everything already installed (is this supposed to happen at all?)."));
     }
+};
+$@ and interactive_msg(_("Problem during installation"),
+		       _("There was a problem during the installation:\n\n%s", $fatal_msg));
+
 }
 
 
