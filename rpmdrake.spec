@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.10
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -94,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/rpmdrake*
 %{_sbindir}/MandrakeUpdate
 %{_sbindir}/edit-urpm-*
+%{_sbindir}/drakrpm-edit-media
 %{_sbindir}/gurpmi.addmedia
 %{_bindir}/*
 %{_datadir}/%{name}
@@ -111,6 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Mar 16 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.10-2mdk
+- Install drakrpm-edit-media as a symlink to edit-urpm-sources.pl
+
 * Wed Mar 16 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.10-1mdk
 - Don't install drakrpm-edit-media
 - rpmdrake --help works again
