@@ -162,7 +162,7 @@ sub do_search($$$$$$$) {
 	    }
 	} else {
 	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}";
-				if_(!$_->{ignore} && (!($MODE eq 'update') || $_->{update}) && (-r $h), $h) } @{$urpm->{media}};
+				if_(!$_->{ignore} && (!($MODE eq 'update') || $_->{update}) && -r $h, $h) } @{$urpm->{media}};
 	    my $total_size = sum(map { my $pack; eval { $pack = new packdrake($_, quiet => 1) } ? $pack->{toc_f_count} : 0 } @hdlists);
 	    my $searchstop;
 	    my $searchw = ugtk2->new('rpmdrake', grab => 1, transient => $w->{rwindow});
@@ -214,7 +214,7 @@ sub do_search($$$$$$$) {
 	$tree->expand_row($path, 0);
 	$path->free; $last_iter->free;
     } else {
-	$options->{add_nodes}->([ '', $results_none, { nochild => 1 }]);
+	$options->{add_nodes}->([ '', $results_none, { nochild => 1 } ]);
     }
 }
 
@@ -784,7 +784,7 @@ Official Updates.
 Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_mirror;
 		myexit(-1);
 	    }
-	    @update_medias = ({ name => $update_name });  #- hack to simulate a medium for parsing of descriptions
+	    @update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
 	}
 
 	my ($cur, $section);
@@ -915,8 +915,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     eval {
 	standalone::explanations("Removing package $_") foreach keys %{$urpm->{state}{ask_remove}};
 
-	my %pkgs;
-	@pkgs{ map { $_->id } grep { $_->flag_selected } @{$urpm->{depslist}} } = undef;
+	my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}}; 
 	my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
 	foreach my $l (@$list) {
 	    standalone::explanations("Installing package $_") foreach sort values %$l;
