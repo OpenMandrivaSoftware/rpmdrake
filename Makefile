@@ -13,7 +13,7 @@
  #
  #*****************************************************************************
 
-DIRS = grpmi po
+DIRS = grpmi po data
 
 PREFIX = /usr/local
 DATADIR = $(PREFIX)/share
@@ -33,10 +33,10 @@ install: $(ALL)
 	install -d $(BINDIR)
 	install rpmdrake edit-urpm-sources.pl $(BINDIR)
 	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(BINDIR)/*
-	ln -s rpmdrake $(BINDIR)/rpmdrake-remove
-	ln -s rpmdrake $(BINDIR)/MandrakeUpdate
+	ln -s -f rpmdrake $(BINDIR)/rpmdrake-remove
+	ln -s -f rpmdrake $(BINDIR)/MandrakeUpdate
 	install -d $(DATADIR)/rpmdrake/icons
-	install -m644 icons/* $(DATADIR)/rpmdrake/icons
+	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
 	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
 
 clean: 
