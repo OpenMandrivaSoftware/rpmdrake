@@ -1269,7 +1269,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
             $pkg->flag_installed or next;
             any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next;
             if ($options{'pkg-sel'} || $options{'pkg-nosel'}) {
-		if ($#{$options{'pkg-sel'}} != -1 || $#{$option{'pkg-nosel'}} != -1) {
+		if ($#{$options{'pkg-sel'}} != -1 || $#{$options{'pkg-nosel'}} != -1) {
 		    member(urpm_name($pkg), @{$options{'pkg-sel'}}, @{$options{'pkg-nosel'}}) or next;
 		    member(urpm_name($pkg), @{$options{'pkg-sel'}}) and $selected = 1;
 		}
