@@ -20,7 +20,8 @@ all: $(MOFILES)
 
 %.mo: %.po
 	if [ -z "`echo $(IGNOREPOMS) | grep $<`" ]; then cat $< "$<"m >> "$<"f; else cp $< "$<"f; fi
-	msgfmt -o $@ "$<"f
+	./clean_po.pl "$<"f > "$<"g
+	msgfmt -o $@ "$<"g
 
 merge: $(PGOAL).pot
 	@for n in $(POFILES); do \
@@ -46,5 +47,5 @@ install:
 	done
 
 clean:
-	@rm -rf *.mo *.pof $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot desktopstuff.pot rpmdrake_tmp.pot
+	@rm -rf *.mo *.pof *.pog $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot desktopstuff.pot rpmdrake_tmp.pot
 
