@@ -17,10 +17,10 @@ uc($enc_rpmdrake) ne uc($enc_drakx) and die "Encodings differ for $po! rpmdrake'
 our $current;
 our $entry;
 foreach my $line (cat_($drakxfile)) {
-    $line =~ m|^\Q#: ../../share/compssUsers:999| || ($line =~ m|^msgid "([^"]+)"| && member($1, @miss)) and do {
+    $line =~ m|^\Q#: share/compssUsers.pl:| || ($line =~ m|^msgid "([^"]+)"| && member($1, @miss)) and do {
 	$current = 'inside';
         $entry = "# DO NOT BOTHER TO MODIFY HERE, BUT IN DRAKX PO\n";
-        $line =~ m|^#:| or $entry .= "#: ../../share/compssUsers:999\n";
+        $line =~ m|^#:| or $entry .= "#: share/compssUsers.pl:999\n";
     };
     $current eq 'inside' and $entry .= $line;
     $line =~ m|^msgid "([^"]+)"| && member($1, @exceptions) and $current = 'outside';
