@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 4mdk
+%define release 5mdk
 
 Name: %{name}
 Version: %{version}
@@ -117,6 +117,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Feb 13 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-5mdk
+- make it embeddable
+
 * Fri Feb 13 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-4mdk
 - use new banner style
 
