@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 27mdk
+%define release 28mdk
 
 Name: %{name}
 Version: %{version}
@@ -99,6 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Jul 23 2003 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1-28mdk
+- fix #4248 (crash when asking for more infos in rpmdrake-remove)
+
 * Tue Jul 22 2003 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1-27mdk
 - let selected packages be visible
 
