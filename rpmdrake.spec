@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.5
-%define release 8mdk
+%define release 9mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Sep 21 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-9mdk
+- Display the path of the README.urpmi file
+- Language updates
+- Change menu entry to 'Mandrakelinux Update'
+
 * Tue Sep 14 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-8mdk
 - Language updates
 - Disable the "update media" button in removal mode
