@@ -133,6 +133,8 @@ sub extract_header {
     }
 }
 
+sub db { URPM::DB::open or die 'Couldn\'t open RPM DB' }
+
 sub do_search($$$$$$) {
     my ($find_entry, $tree, $options, $current_search_type, $urpm, $pkgs) = @_;
     my $entry = $find_entry->get_text or return;
@@ -143,7 +145,13 @@ sub do_search($$$$$$) {
     my @search_results;
     if ($current_search_type ne 'normal') {
 	if ($MODE eq 'remove') {
-	    @search_results = map { if_(eval { ($pkgs->{$_}{summary}.$pkgs->{$_}{description}) =~ /$entry/i }, $_) } keys %$pkgs;
+	    if ($current_search_type eq 'descriptions') {
+		@search_results = map { if_(eval { ($pkgs->{$_}{summary}.$pkgs->{$_}{description}) =~ /$entry/i }, $_) } keys %$pkgs;
+	    } else {
+		slow_func(_("Please wait, searching..."),
+			  sub { db->traverse(sub { push @search_results, map { if_(eval { /$entry/i }, my_fullname($_[0])) } $_[0]->files });
+				@search_results = grep { exists $pkgs->{$_} } uniq(@search_results); });
+	    }
 	} else {
 	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}";
 				if_(!$_->{ignore} && (!($MODE eq 'update') || $_->{update}) && (-r $h), $h) } @{$urpm->{media}};
@@ -198,8 +206,6 @@ sub do_search($$$$$$) {
 	$options->{add_nodes}->([ '', $results_none, { nochild => 1 }]);
     }
 }
-
-sub db { URPM::DB::open or die 'Couldn\'t open RPM DB' }
 
 sub find_installed_version {
     my ($p) = @_;
@@ -537,8 +543,7 @@ or you already installed all of them."));
     }
 
     my $search_types_menu = new Gtk::Menu;
-    my @search_types = ([ 'normal', _("in names") ], [ 'descriptions', _("in descriptions") ]);
-    $MODE ne 'remove' and push @search_types, [ 'files', _("in files") ];
+    my @search_types = ([ 'normal', _("in names") ], [ 'descriptions', _("in descriptions") ], [ 'files', _("in files") ]);
     my $current_search_type = $search_types[0]->[0];
     foreach (@search_types) {
 	my $capt_type = $_->[0];
