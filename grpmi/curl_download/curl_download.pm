@@ -24,9 +24,11 @@ sub readproxy {
 
 sub writeproxy {
     my ($proxy, $proxy_user) = @_;
-    output("/etc/urpmi/proxy.cfg",
+    my $f = '/etc/urpmi/proxy.cfg'; 
+    output($f,
 	   if_($proxy, "http_proxy=$proxy\n"),
 	   if_($proxy_user, "proxy_user=$proxy_user\n"));
+    chmod 0600, $f;
 }
 
 sub download {
