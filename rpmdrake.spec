@@ -16,7 +16,8 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-36mdk grpmi >= 9.0 rpmtools >= 4.5 perl-GTK2
+Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-36mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-GTK2 > 0.0.cvs.2003.01.08.1
 BuildRequires: curl-devel rpm-devel gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -122,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
   - allow to retry downloads
 - rpmdrake:
   - don't reset selection list when no package was installed/removed
+  - try to have a more sensible default size for the rpmnew dialog
 
 * Wed Jan  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-1mdk
 - gtk2 (possibly contains important breakages, use with care)

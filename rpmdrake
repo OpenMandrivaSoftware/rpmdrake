@@ -894,12 +894,14 @@ sub dialog_rpmnew {
 					   } @{$p2r{$pkg}}
 				       } keys %p2r);
     gtkadd($d->{window},
-	   gtkpack__(Gtk2::VBox->new(0,5),
-		     Gtk2::Label->new($msg),
-		     $sum_rpmnew < 6 ? $packtable
-		                     : gtkset_size_request(create_scrolled_window($packtable),
-							   $typical_width*1.7, min(70 + $sum_rpmnew*20, 450)),
-		     gtkpack__(create_hbox(), gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
+	   gtkpack_(Gtk2::VBox->new(0,5),
+		    0, Gtk2::Label->new($msg),
+		    1, create_scrolled_window($packtable),
+		    0, gtkpack__(create_hbox(), gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
+    my ($xpreq, $ypreq) = $packtable->size_request->values;
+    my ($xwreq, $ywreq) = $d->{rwindow}->size_request->values;
+    $d->{rwindow}->set_default_size(max($typical_width, min($typical_width*2.5, $xpreq+$xwreq)),
+				    max(200, min(450, $ypreq+$ywreq)));
     $d->main;
     return 0;
 }
