@@ -732,7 +732,7 @@ or you already installed all of them."));
     }
 
     my $search_types_menu = Gtk2::Menu->new;
-    my @search_types = ([ 'normal', N("in names") ], [ 'descriptions', N("in descriptions") ], [ 'files', N("in files") ]);
+    my @search_types = ([ 'normal', N("in names") ], [ 'descriptions', N("in descriptions") ], [ 'files', N("in file names") ]);
     my $current_search_type = $search_types[0][0];
     foreach (@search_types) {
 	my $capt_type = $_->[0];
