@@ -30,6 +30,7 @@ use vars qw($configfile %config $mandrakeupdate_wanted_categories $already_splas
 use my_gtk qw(:helpers :wrappers :ask);
 my_gtk::add_icon_path('/usr/share/rpmdrake/icons');
 use log;
+use c;
 
 use curl_download;
 
