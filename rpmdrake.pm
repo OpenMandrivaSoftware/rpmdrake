@@ -511,6 +511,8 @@ sub update_sources {
 	widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1) ],
     );
     my @media; @media = @{$options{medialist}} if ref $options{medialist};
+    my $outerfatal = $urpm->{fatal};
+    local $urpm->{fatal} = sub { remove_wait_msg($w); $outerfatal->(@_) };
     $urpm->update_media(
 	%options,
 	callback => sub {
@@ -621,7 +623,7 @@ sub add_medium_and_check {
     if (update_sources_check($urpm, $options, N_("Unable to add medium, errors reported:\n\n%s"), $_[0])) {
         $urpm->write_config;
     } else {
-        $urpm->read_config;
+	$urpm->read_config;
         return 0;
     }
 
