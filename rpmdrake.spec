@@ -105,6 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 - add ability to use rpmdrake/rpmdrake-remove with a "parallel"
   urpmi configuration (drawbacks: deps are shown only valid for a
   given node; multiple choices will work in --auto mode only)
+- reword "void" for "empty" (#6873)
 
 * Wed Jan 14 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.1-2mdk
 - fix wrongly using unavailable sorting method in remove mode after
