@@ -68,7 +68,8 @@ distribution (%s).
 I need to contact the Mandrakesoft website to get the mirror list.
 Please check that your network is currently running.
 
-Is it ok to continue?", $rpmdrake::mandrake_release)
+Is it ok to continue?", $rpmdrake::mandrake_release),
+	want_base_distro => 1,
     ) or return 0;
     my $wait = wait_msg(N("Please wait, adding media..."));
     my $url = make_url_mirror_dist($m);

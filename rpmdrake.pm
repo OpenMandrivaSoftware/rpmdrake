@@ -61,7 +61,6 @@ our @EXPORT = qw(
     but
     but_
     slow_func
-    mirrors
     choose_mirror
     make_url_mirror
     make_url_mirror_dist
@@ -373,15 +372,21 @@ my %t2l = (
 	   'Europe/Stockholm' =>  [ qw(se no dk fi nl de at cz fr it) ],
 	   'Europe/Vienna' =>     [ qw(at de cz it fr nl se) ],
 	  );
-my %sites2countries = ('proxad.net' => 'fr',
-		       'planetmirror.com' => 'au');
+my %sites2countries = (
+  'proxad.net' => 'fr',
+  'planetmirror.com' => 'au',
+);
 
-
+#- returns the keyword describing the type of the distribution.
+#- the parameter indicates whether we want base or update sources
 sub distro_type {
+    my ($want_base_distro) = @_;
     return 'cooker'  if $mandrake_release =~ /cooker/i;
     return 'updates' if $mandrake_release !~ /community/i;
     (my $v) = split / /, cat_('/etc/version');
-    return $v =~ /\.0$/ ? 'community' : 'updates';
+    return $v =~ /\.0$/ ? 'community' : (
+	$want_base_distro ? 'official' : 'updates'
+    );
 }
 
 sub compat_arch_for_updates($) {
@@ -393,7 +398,7 @@ sub compat_arch_for_updates($) {
 }
 
 sub mirrors {
-    my ($cachedir) = @_;
+    my ($cachedir, $want_base_distro) = @_;
     $cachedir ||= '/root';
     my $mirrorslist = "$cachedir/mirrorsfull.list";
     unlink $mirrorslist;
@@ -401,21 +406,19 @@ sub mirrors {
     $res and die $res;
     require timezone;
     my $tz = ${timezone::read()}{timezone};
-    my $distro_type = distro_type();
-    my @mirrors = map { my ($arch, $url) = m|\Q$distro_type\E([^:]*):(.+)|;
-			if ($arch && compat_arch_for_updates($arch)) {
-	                    my ($land, $goodness);
-			    foreach (keys %u2l) {
-				if ($url =~ m|//[^/]+\.\Q$_\E/|) {
-				    $land = $_;
-				    last;
-				}
-			    }
-			    $url =~ m|\W\Q$_\E/| and $land = $sites2countries{$_} foreach keys %sites2countries;
-			    each_index { $_ eq $land and $goodness ||= 100-$::i } (map { if_($tz =~ /^$_$/, @{$t2l{$_}}) } keys %t2l), @$us;
-			    { url => $url, land => $u2l{$land} || N("United States"), goodness => $goodness + rand() };
-			} else { () }
-		    } cat_($mirrorslist);
+    my $distro_type = distro_type($want_base_distro);
+    my @mirrors = map {
+	my ($arch, $url) = m|\Q$distro_type\E([^:]*):(.+)|;
+	if ($arch && compat_arch_for_updates($arch)) {
+	    my ($land, $goodness);
+	    foreach (keys %u2l) {
+		if ($url =~ m|//[^/]+\.\Q$_\E/|) { $land = $_; last }
+	    }
+	    $url =~ m|\W\Q$_\E/| and $land = $sites2countries{$_} foreach keys %sites2countries;
+	    each_index { $_ eq $land and $goodness ||= 100-$::i } (map { if_($tz =~ /^$_$/, @{$t2l{$_}}) } keys %t2l), @$us;
+	    { url => $url, land => $u2l{$land} || N("United States"), goodness => $goodness + rand() };
+	} else { () }
+    } cat_($mirrorslist);
     unlink $mirrorslist;
     return sort { $b->{goodness} <=> $a->{goodness} } @mirrors;
 }
@@ -438,8 +441,7 @@ Is it ok to continue?"), yesno => 1) or return '';
 	? N("Please wait, downloading mirror addresses.")
 	: N("Please wait, downloading mirror addresses from the Mandrakesoft website.")
     );
-    my @mirrors;
-    eval { @mirrors = mirrors('/var/cache/urpmi') };
+    my @mirrors = eval { mirrors('/var/cache/urpmi', $options{want_base_distro}) };
     remove_wait_msg($wait);
     if ($@) {
 	my $msg = $@;  #- seems that value is bitten before being printed by next func..
