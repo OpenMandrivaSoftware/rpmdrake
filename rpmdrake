@@ -169,9 +169,17 @@ sub ctreefy {
     join('|', map { translate($_) } split m|/|, $_[0]);
 }
 
-sub beautify_description {
+sub rpm_summary {
+    my ($summary) = @_;
+    c::set_tagged_utf8($summary);
+    $summary;
+}
+
+sub rpm_description {
+    my ($description) = @_;
+    c::set_tagged_utf8($description);
     my ($t, $tmp);
-    foreach (split "\n", $_[0]) {
+    foreach (split "\n", $description) {
 	s/^\s*//;
         if (/^$/ || /^\s*(-|\*|\+|o)\s/) {
             $t || $tmp and $t .= "$tmp\n";
@@ -245,7 +253,7 @@ sub extract_header {
 	    $packer->extract_archive($headersdir, $p->header_filename);
 	    $p->update_header("$headersdir/" . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
 	    rm_rf($headersdir);
-	    add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
+	    add2hash($pkg, { summary => rpm_summary($p->summary), description => rpm_description($p->description) });
 	    my $localtime2changelog = sub { scalar(localtime($_[0])) =~ /(.*) \S+ (\d{4})$/ && "$1 $2" };
 	    @$max_info_in_descr and add2hash($pkg, {
 	        files => join("\n", $p->files) || N("(none)"),
@@ -612,7 +620,7 @@ or you already installed all of them."));
 				       [ "\n".N("Summary: "),   $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
                                        if_($MODE eq 'update',
                                            [ N("Reason for update: "), $tag_tag ],
-                                           [ beautify_description($descriptions->{$name}{pre})."\n" ]),
+                                           [ rpm_description($descriptions->{$name}{pre})."\n" ]),
 				       [ N("Description: "),    $tag_tag ], [ "$pkgs->{$key}{description}\n" ],
 				       @max_info ];
 				 },
@@ -1216,8 +1224,9 @@ sub get_installed_pkgs {
 		      my $fullname = my_fullname($pkg);
 		      if (!$base{$fullname} || ${$base{$fullname}} != 1) {
 			  #- I need to extract summary and description since they'll be lost when $pkg->pack_header
-			  $installed_pkgs{$fullname} = { selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg), summary => $pkg->summary,
-							 description => beautify_description($pkg->description) };
+			  $installed_pkgs{$fullname} = { selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
+                                                         summary => rpm_summary($pkg->summary),
+							 description => rpm_description($pkg->description) };
 			  $base{$fullname} and $installed_pkgs{$fullname}{base} = \${$base{$fullname}};
 		      }
 		      $pkg->pack_header;
