@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.10
-%define release 3mdk
+%define release 4mdk
 
 Name: %{name}
 Version: %{version}
@@ -112,6 +112,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Mar 30 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.10-4mdk
+- po updates
+- make gurpmi.addmedia more robust (bug #15028)
+
 * Mon Mar 21 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.10-3mdk
 - Change window title, doesn't include internal version name
 - po updates
