@@ -89,7 +89,7 @@ sub parse_compssUsers_flat {
     foreach (cat_($compss)) {
 	s/#.*//;
 	/^\s*$/ and next;
-	if (/^\S.*/) {
+	if (/^\S/) {
 	    if (/^(.+?) \[icon=.+?\] \[path=(.+?)\]/) {
 		$category = translate($2).'|'.translate($1);
 	    } else {
@@ -177,7 +177,7 @@ sub do_search($$$$$$$) {
 									     clicked => sub { $searchstop = 1 }))));
 	    $searchw->sync;
 	    local *SF;
-	    open SF, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "\'$_\'" } @hdlists).' |';
+	    open SF, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "'$_'" } @hdlists).' |';
 	    my ($pkg, $progresscount);
 	    while (<SF>) {
 		$searchstop and last;
@@ -324,7 +324,7 @@ or you already installed all of them."));
 			   } else {
 			       #- special case, we don't populate all the tree at first (to speed things up)
 			       %elems = ();
-			       foreach my $root (sort { $a cmp $b } uniq(map { ($_->[1] =~ /([^\|]+)\|?.*/)[0] } @elems)) {
+			       foreach my $root (sort { $a cmp $b } uniq(map { ($_->[1] =~ /([^\|]+)\|?/)[0] } @elems)) {
 				   $add_node->('', $root);
 				   @{$elems{$root}} = sort { $a->[1] cmp $b->[1] || uc($a->[0]) cmp uc($b->[0]) }
 				                      grep { $_->[1] =~ /^\Q$root|\E?/ } @elems;
@@ -496,7 +496,7 @@ or you already installed all of them."));
 							: ([ N("Source: "), $tag_tag ],
 							   [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
 							   [ N("Currently installed version: "), $tag_tag ],
-							   [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ] ));
+							   [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]));
 				     my @max_info = if_(@$max_info_in_descr, $options{'changelog-first'} ? (@chglo, [ "\n" ], @files)
                                                                                                          : (@files, [ "\n\n" ], @chglo));
 				     [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
@@ -660,7 +660,7 @@ or you already installed all of them."));
 						    and $action2fun{reload_pkg}->() });
 	$menu_treeview->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($text)), activate => sub { $action2fun{$action}->() }));
     }
-    $tree->signal_connect(button_press_event => sub { $_[1]->button eq 3 or return 0;
+    $tree->signal_connect(button_press_event => sub { $_[1]->button == 3 or return 0;
 						      $menu_treeview->popup(undef, undef, undef, undef, $_[1]->button, $_[1]->time) });
 
     my @menu_descr_modes = ([ N("Normal information"), [] ], [ N("Maximum information"), [1] ]);
@@ -970,7 +970,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    foreach (@rpms_install, @rpms_upgrade) {
 		m|^/| && ! -e $_ or next;
 		interactive_msg_(N("Installation failed"),
-				 N("Installation failed, some files are missing.\nYou may want to update your sources database.").
+				 N("Installation failed, some files are missing.\nYou may want to update your sources database.") .
 				 (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
 		die "return 1\n";
 	    }
@@ -1035,7 +1035,7 @@ sub get_installed_pkgs {
     local $SIG{QUIT} = $sig_handler;
     while (defined(local $_ = shift @base)) {
 	exists $basepackages{$_} and next;
-	$db->traverse_tag(/^\// ? 'path' : 'whatprovides', [ $_ ], sub {
+	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
 			      push @{$basepackages{$_}}, my_fullname($_[0]);
 			      push @base, $_[0]->requires_nosense;
 			  });
