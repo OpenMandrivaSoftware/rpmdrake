@@ -16,7 +16,7 @@ msgstr ""
 
 #: ../curl_download/curl_download.xs:83
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "Katalog for lagring av nedlastede filer må eksistere"
 
 #: ../curl_download/curl_download.xs:86 ../curl_download/curl_download.xs:201
 msgid "Out of memory\n"
@@ -24,7 +24,7 @@ msgstr "Tomt for minne\n"
 
 #: ../curl_download/curl_download.xs:99
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "Kunne ikke åpne output fil i legge til modus"
 
 #: ../curl_download/curl_download.xs:121
 msgid "Unsupported protocol\n"
@@ -205,11 +205,11 @@ msgstr "Ukjent feilkode %d\n"
 
 #: ../grpmi.pl_.c:51
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: ../grpmi.pl_.c:52
 msgid "No"
-msgstr ""
+msgstr "Nei"
 
 #: ../grpmi.pl_.c:53
 msgid "Ok"
@@ -221,29 +221,28 @@ msgstr "Feil..."
 
 #: ../grpmi.pl_.c:63
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "Du må være root for å installere pakker, beklager"
 
 #: ../grpmi.pl_.c:65
 msgid "RPM initialization error"
-msgstr ""
+msgstr "RPM initialiseringsfeil"
 
 #: ../grpmi.pl_.c:66
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "Initialisering av config-filer av RPM var ikke mulig, beklager."
 
 #: ../grpmi.pl_.c:72
-#, fuzzy
 msgid "Initializing..."
-msgstr "Installerer:"
+msgstr "Initialiserer..."
 
 #: ../grpmi.pl_.c:93
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Laster ned pakke `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:100
 msgid "Error during download"
-msgstr ""
+msgstr "Feil under nedlasting"
 
 #: ../grpmi.pl_.c:101
 #, c-format
@@ -255,15 +254,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"Det var en feil ved nedlasting av pakke:\n"
+"\n"
+"%s\n"
+"\n"
+"Feil: %s\n"
+"Ønsker du å fortsette (droppe denne pakken)?"
 
 #: ../grpmi.pl_.c:113
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "Verifiserer signatur av `%s'..."
 
 #: ../grpmi.pl_.c:115
 msgid "Signature verification error"
-msgstr ""
+msgstr "Signaturverifiseringsfeil"
 
 #: ../grpmi.pl_.c:116
 #, c-format
@@ -273,11 +278,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"Signaturen til pakke `%s' er ikke korrekt:\n"
+"\n"
+"%s\n"
+"Vil du installere den allikvel?"
 
 #: ../grpmi.pl_.c:122
-#, fuzzy
 msgid "File error"
-msgstr "Feil ved skriving\n"
+msgstr "Fil feil"
 
 #: ../grpmi.pl_.c:123
 #, c-format
@@ -288,15 +296,19 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"Følgende fil er ikke gyldig:\n"
+"\n"
+"%s\n"
+"\n"
+"Vil du fortsette allikvel (dropper denne pakken)?"
 
 #: ../grpmi.pl_.c:138
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "Forbereder installasjon"
+msgstr "Forbereder pakker for installasjon..."
 
 #: ../grpmi.pl_.c:146
 msgid "Conflicts detected"
-msgstr ""
+msgstr "Konflikter oppdaget"
 
 #: ../grpmi.pl_.c:147
 #, c-format
@@ -306,23 +318,30 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"Konflikter ble oppdaget:\n"
+"%s\n"
+"\n"
+"Ønsker du å tvinge frem installasjonen allikevel?"
 
 #: ../grpmi.pl_.c:154
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Installerer pakke `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:168
 msgid "Problems occurred during installation"
 msgstr "Det oppsto problemer under installasjonen"
 
 #: ../grpmi.pl_.c:168
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Forbereder installasjon"
+msgstr ""
+"Det var en feil under installasjonen av pakker:\n"
+"\n"
+"%s"
 
 #: ../grpmi.pl_.c:175
 msgid "All requested packages were installed successfully."
@@ -333,99 +352,91 @@ msgid "Everything installed successfully"
 msgstr ""
 
 #: ../rpm/grpmi_rpm.xs:66
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "File kunne ikke lese fil\n"
+msgstr "Kunne ikke lese RPM config filer"
 
 #: ../rpm/grpmi_rpm.xs:92
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Kunne ikke koble opp\n"
+msgstr "Kunne ikke åpne fil\n"
 
 #: ../rpm/grpmi_rpm.xs:96
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "Kunne ikke bestemme vert\n"
+msgstr "Kunne ikke lese lead bytes\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "RPM versjon av pakker støtter ikke signaturer\n"
 
 #: ../rpm/grpmi_rpm.xs:104
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "Kunne ikke lese signaturblokk (`rpmReadSignature' mislykket)\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "No signatures\n"
-msgstr ""
+msgstr "Ingen signaturer\n"
 
 #: ../rpm/grpmi_rpm.xs:111
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "`makeTempFile' mislykket!\n"
 
 #: ../rpm/grpmi_rpm.xs:118
 msgid "Error reading file\n"
-msgstr ""
+msgstr "Feil ved lesing av fil\n"
 
 #: ../rpm/grpmi_rpm.xs:124
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "Feil ved skriving av temp fil\n"
 
 #: ../rpm/grpmi_rpm.xs:147
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "Ingen GPG signatur i pakke\n"
 
 #: ../rpm/grpmi_rpm.xs:229
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "Kunne ikke åpne RPM DB for skriving (ikke superuser?)"
 
 #: ../rpm/grpmi_rpm.xs:231
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "Kunne ikke åpne RPM DB for skriving"
 
 #: ../rpm/grpmi_rpm.xs:235
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "Kunne ikke starte transaksjon"
 
 #: ../rpm/grpmi_rpm.xs:254
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Kan ikke åpne pakke"
+msgstr "Kan ikke åpne pakke `%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Pakken er ødelagt"
+msgstr "Pakke  `%s' er ødelagt\n"
 
 #: ../rpm/grpmi_rpm.xs:262
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Pakken kan ikke installeres"
+msgstr "Pakke `%s' kan ikke installeres\n"
 
 #: ../rpm/grpmi_rpm.xs:273
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Feil ved sjekking av avhengigheter :("
+msgstr "Feil ved sjekking av avhengigheter"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "conflicts with"
-msgstr "er i konflikt med %s-%s-%s"
+msgstr "er i konflikt"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "is needed by"
-msgstr "behøves av %s-%s-%s"
+msgstr "behøves av"
 
 #: ../rpm/grpmi_rpm.xs:312
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Feil ved sjekking av avhengigheter :("
+msgstr "Feil ved sjekking av avhengigheter 2"
 
 #: ../rpm/grpmi_rpm.xs:318
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Det oppsto problemer under installasjonen"
+msgstr "Det oppsto problemer under installasjonen:\n"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "Fremgang installering/oppgradering"
