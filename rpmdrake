@@ -743,6 +743,9 @@ sub get_installed_pkgs {
     my @base = qw(basesystem);
     my (%base, %basepackages);
     my $db = db;
+    my $sig_handler = sub { undef $db; exit 3 };
+    local $SIG{INT} = $sig_handler;
+    local $SIG{QUIT} = $sig_handler;
     while (defined($_ = shift @base)) {
 	exists $basepackages{$_} and next;
 	$db->traverse_tag(/^\// ? 'path' : 'whatprovides', [ $_ ], sub {
@@ -757,15 +760,15 @@ sub get_installed_pkgs {
 	}
     }
     my %installed_pkgs;
-    db->traverse(sub {
-		     my ($pkg) = @_;
-		     my $fullname = my_fullname($pkg);
-		     $base{$fullname} && ${$base{$fullname}}
-		       #- I need to extract summary and description since they'll be lost when $pkg->pack_header
-		       or $installed_pkgs{$fullname} = { selected => 0, pkg => $pkg, summary => $pkg->summary,
-							 description => beautify_description($pkg->description) };
-		     $pkg->pack_header;
-		 });
+    $db->traverse(sub {
+		      my ($pkg) = @_;
+		      my $fullname = my_fullname($pkg);
+		      $base{$fullname} && ${$base{$fullname}}
+			#- I need to extract summary and description since they'll be lost when $pkg->pack_header
+			or $installed_pkgs{$fullname} = { selected => 0, pkg => $pkg, summary => $pkg->summary,
+							  description => beautify_description($pkg->description) };
+		      $pkg->pack_header;
+		  });
     remove_wait_msg($w);
     (new urpm, \%installed_pkgs);
 }
