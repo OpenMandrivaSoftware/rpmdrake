@@ -464,7 +464,7 @@ sub update_sources_check {
     local $urpm->{error} = sub { push @error_msgs, to_utf8($_[0]) };
     update_sources($urpm, %$options, noclean => 1);
   fatal_error:
-    if (@error_msgs || any { member($_->{name}, @media) && $_->{modified} } @{$urpm->{media}}) {
+    if (@error_msgs) {
         interactive_msg('rpmdrake', sprintf_fixutf8(translate($error_msg), join("\n", @error_msgs)));
         return 0;
     }
