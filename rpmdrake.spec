@@ -7,15 +7,15 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.1.2
-%define release 12mdk
+%define version 2.1.3
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
 Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
-Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
+Summary: Mandrakelinux graphical front end for choosing packages for installion/removal
 Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.4.1 gurpmi >= 4.4.1 perl-URPM >= 0.90-7mdk drakxtools > 10-23mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-6mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: curl-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
@@ -28,10 +28,10 @@ Conflicts: drakconf < 10-0.8mdk
 
 %description
 rpmdrake is a simple graphical frontend to manage software packages on a
-Mandrake Linux system; it has 3 different modes:
+Mandrakelinux system; it has 3 different modes:
 - software packages installation;
 - software packages removal;
-- Mandrake Update (software packages updates).
+- MandrakeUpdate (software packages updates).
 
 A fourth program manages the media (add, remove, edit).
 
@@ -118,6 +118,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Apr 26 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-1mdk
+- MandrakeUpdate: didn't notify the user when it failed to retrieve
+  the hdlist or synthesis file from a mirror. As a consequence no
+  update was ever appearing.
+
 * Mon Mar 22 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-12mdk
 - fix unsane big progressbar for embedded wait messages
 - rpmdrake:
