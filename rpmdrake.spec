@@ -104,7 +104,9 @@ rm -rf $RPM_BUILD_ROOT
 * Wed Jan 14 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.1-2mdk
 - fix wrongly using unavailable sorting method in remove mode after
   save in install mode
-
+- fix big performance penalty on long filelists since 2.1-36mdk
+  allowing correct display of filenames in RTL languages (#6865)
+ 
 * Mon Jan 12 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.1-1mdk
 - add ability to cancel packages downloads (#6317)
 - save sorting method at exit of rpmdrake for Lord Titi (#6051)
