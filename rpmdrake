@@ -252,7 +252,7 @@ sub pkg2medium {
     $tmp;
 }
 
-sub localtime2changelog { strftime("%a %b %e %Y", localtime($_[0])) }
+sub localtime2changelog { strftime("%c", localtime($_[0])) }
 
 sub extract_header {
     my ($pkg, $urpm) = @_;
