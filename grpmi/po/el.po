@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: grpmi\n"
 "POT-Creation-Date: 2002-09-02 12:57+0200\n"
-"PO-Revision-Date: 2001-07-12 13:49+0300\n"
-"Last-Translator: Thanos Kyritsis <djart@hellug.gr>\n"
-"Language-Team: Greek <nls@tux.hellug.gr>\n"
+"PO-Revision-Date: 2002-08-30 16:19+0300\n"
+"Last-Translator: Νίκος Νύκταρης (Nick Niktaris) <niktaris@yahoo.com>\n"
+"Language-Team: Greek <nls@hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-7\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.8\n"
+"X-Generator: KBabel 0.9.6\n"
 
 #: ../curl_download/curl_download.xs:86
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "Ο κατάλογος όπου θα γίνεται η λήψη πρέπει να υπάρχει"
 
 #: ../curl_download/curl_download.xs:89 ../curl_download/curl_download.xs:206
 msgid "Out of memory\n"
@@ -26,6 +26,7 @@ msgstr "Τελείωσε η μνήμη\n"
 #: ../curl_download/curl_download.xs:102
 msgid "Could not open output file in append mode"
 msgstr ""
+"Δεν ήταν δυνατό το άνοιγμα του αρχείου εξόδου κατά την λειτουργία προσάρτησης"
 
 #: ../curl_download/curl_download.xs:126
 msgid "Unsupported protocol\n"
@@ -85,7 +86,7 @@ msgstr "Περίεργη μορφή 227 του Ftp\n"
 
 #: ../curl_download/curl_download.xs:168
 msgid "Ftp can't get host\n"
-msgstr "Το ftp δεν μπορεί να βρεί το host\n"
+msgstr "Το ftp δεν μπορεί να βρει το host\n"
 
 #: ../curl_download/curl_download.xs:171
 msgid "Ftp can't reconnect\n"
@@ -121,7 +122,7 @@ msgstr "Σφάλμα εγγραφής\n"
 
 #: ../curl_download/curl_download.xs:197
 msgid "User name illegally specified\n"
-msgstr "Το username προδιορίστηκε λανθασμένα\n"
+msgstr "Το όνομα χρήστη προσδιορίστηκε λανθασμένα\n"
 
 #: ../curl_download/curl_download.xs:200
 msgid "ftp couldn't STOR file\n"
@@ -206,11 +207,11 @@ msgstr "Άγνωστος κωδικός σφάλματος %d\n"
 
 #: ../grpmi.pl_.c:52
 msgid "Yes"
-msgstr ""
+msgstr "Ναι"
 
 #: ../grpmi.pl_.c:53
 msgid "No"
-msgstr ""
+msgstr "Όχι"
 
 #: ../grpmi.pl_.c:54
 msgid "Ok"
@@ -222,29 +223,28 @@ msgstr "Σφάλμα..."
 
 #: ../grpmi.pl_.c:64
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "Πρέπει να είστε root για να εγκαταστήσετε πακέτα, συγνώμη."
 
 #: ../grpmi.pl_.c:66
 msgid "RPM initialization error"
-msgstr ""
+msgstr "Σφάλμα κατά την αρχικοποίηση του RPM"
 
 #: ../grpmi.pl_.c:67
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η αρχικοποίηση των αρχείων ρυθμίσεων του RPM, συγνώμη."
 
 #: ../grpmi.pl_.c:73
-#, fuzzy
 msgid "Initializing..."
-msgstr "Εγκατάσταση:"
+msgstr "Αρχικοποίηση..."
 
 #: ../grpmi.pl_.c:92
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Γίνεται η λήψη του πακέτου `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:98
 msgid "Error during download"
-msgstr ""
+msgstr "Σφάλμα κατά τη λήψη"
 
 #: ../grpmi.pl_.c:99
 #, c-format
@@ -256,15 +256,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"Συνέβη ένα σφάλμα κατά τη λήψη του πακέτου:\n"
+"\n"
+"%s\n"
+"\n"
+"Σφάλμα: %s\n"
+"Θέλετε να συνεχίσετε (παραλείποντας αυτό το πακέτο);"
 
 #: ../grpmi.pl_.c:111
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "Επαλήθευση υπογραφής του `%s'..."
 
 #: ../grpmi.pl_.c:113
 msgid "Signature verification error"
-msgstr ""
+msgstr "Σφάλμα κατά την επαλήθευση της υπογραφής"
 
 #: ../grpmi.pl_.c:114
 #, c-format
@@ -274,11 +280,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"Η υπογραφή του πακέτου`%s' δεν είναι σωστή:\n"
+"\n"
+"%s\n"
+"Θέλετε να το εγκαταστήσετε οπωσδήποτε;"
 
 #: ../grpmi.pl_.c:120
-#, fuzzy
 msgid "File error"
-msgstr "Σφάλμα εγγραφής\n"
+msgstr "Σφάλμα αρχείου"
 
 #: ../grpmi.pl_.c:121
 #, c-format
@@ -289,15 +298,19 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"Το παρακάτω αρχείο δεν είναι έγκυρο:\n"
+"\n"
+"%s\n"
+"\n"
+"Θέλετε να το εγκαταστήσετε οπωσδήποτε (παραλείποντας αυτό το πακέτο);"
 
 #: ../grpmi.pl_.c:136
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "Προετοιμασία για εγκατάσταση"
+msgstr "Προετοιμασία πακέτων για εγκατάσταση..."
 
 #: ../grpmi.pl_.c:144
 msgid "Conflicts detected"
-msgstr ""
+msgstr "Βρέθηκαν συγκρούσεις"
 
 #: ../grpmi.pl_.c:145
 #, c-format
@@ -307,118 +320,120 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"Βρέθηκαν συγκρούσεις:\n"
+"%s\n"
+"\n"
+"Θέλετε οπωσδήποτε να γίνει η εγκατάσταση;"
 
 #: ../grpmi.pl_.c:152
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Εγκατάσταση πακέτου `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:166
 msgid "Problems occurred during installation"
 msgstr "Υπήρξαν προβλήματα κατά την εγκατάσταση"
 
 #: ../grpmi.pl_.c:166
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Προετοιμασία για εγκατάσταση"
+msgstr ""
+"Συνέβη ένα σφάλμα κατά την εγκατάσταση των πακέτων:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:69
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "Το αρχείο δεν κατάφερε να διαβάσει το αρχείο\n"
+msgstr "Αδυναμία ανάγνωσης των αρχείων ρυθμίσεων RPM"
 
 #: ../rpm/grpmi_rpm.xs:95
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Αδυναμία σύνδεσης\n"
+msgstr "Αδυναμία ανοίγματος του αρχείου\n"
 
 #: ../rpm/grpmi_rpm.xs:99
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "Δε μπορώ να ξεδιαλύνω το host\n"
+msgstr "Αδυναμία ανάγνωσης αρχικών bytes\n"
 
 #: ../rpm/grpmi_rpm.xs:102
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "Η έκδοση RPM του πακέτου δεν υποστηρίζει υπογραφές\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
 msgstr ""
+"Αδυναμία ανάγνωσης του τμήματος υπογραφής (το `rpmReadSignature' απέτυχε)\n"
 
 #: ../rpm/grpmi_rpm.xs:110
 msgid "No signatures\n"
-msgstr ""
+msgstr "Χωρίς υπογραφές\n"
 
 #: ../rpm/grpmi_rpm.xs:114
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "το `makeTempFile' απέτυχε!\n"
 
 #: ../rpm/grpmi_rpm.xs:121
 msgid "Error reading file\n"
-msgstr ""
+msgstr "Σφάλμα κατά την ανάγνωση του αρχείου\n"
 
 #: ../rpm/grpmi_rpm.xs:127
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "Σφάλμα κατά την εγγραφή του προσωρινού αρχείου\n"
 
 #: ../rpm/grpmi_rpm.xs:152
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "Δεν υπάρχει υπογραφή GPG στο πακέτο\n"
 
 #: ../rpm/grpmi_rpm.xs:234
 msgid "Couldn't open RPM DB for writing (not superuser?)"
 msgstr ""
+"Αδυναμία ανοίγματος της βάσης δεδομένων RPM για εγγραφή (μήπως δεν είστε "
+"υπερχρήστης;)"
 
 #: ../rpm/grpmi_rpm.xs:236
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "Αδυναμία ανοίγματος της βάσης δεδομένων RPM για εγγραφή"
 
 #: ../rpm/grpmi_rpm.xs:240
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "Αδυναμία εκκίνησης της συναλλαγής"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Αδυναμία ανοίγματος πακέτου"
+msgstr "Αδυναμία ανοίγματος του πακέτου`%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:264
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Το πακέτο είναι κατεστραμμένο"
+msgstr "Το πακέτο `%s' είναι κατεστραμμένο\n"
 
 #: ../rpm/grpmi_rpm.xs:267
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Το πακέτο δεν μπορεί να εγκατασταθεί"
+msgstr "Το πακέτο `%s' δεν μπορεί να εγκατασταθεί\n"
 
 #: ../rpm/grpmi_rpm.xs:278
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Σφάλμα κατά τον έλεγχο των εξαρτήσεων :("
+msgstr "Σφάλμα κατά τον έλεγχο των εξαρτήσεων"
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "conflicts with"
-msgstr " συγκρούεται με το %s-%s-%s"
+msgstr " συγκρούεται με"
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "is needed by"
-msgstr " χρειάζεται από το %s-%s-%s"
+msgstr " χρειάζεται από "
 
 #: ../rpm/grpmi_rpm.xs:317
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Σφάλμα κατά τον έλεγχο των εξαρτήσεων :("
+msgstr "Σφάλμα κατά τον έλεγχο των εξαρτήσεων 2"
 
 #: ../rpm/grpmi_rpm.xs:323
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Υπήρξαν προβλήματα κατά την εγκατάσταση"
+msgstr "Υπήρξαν προβλήματα κατά την εγκατάσταση:\n"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "Πρόοδος Εγκατάστασης/Αναβάθμισης"
