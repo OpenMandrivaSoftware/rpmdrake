@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.5
-%define release 4mdk
+%define release 5mdk
 
 Name: %{name}
 Version: %{version}
@@ -111,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Feb 10 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.5-5mdk
+- Fix crash when displaying changelog
+
 * Wed Feb 09 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.5-4mdk
 - Add a new command-line option, --search=pkg, to launch search for "pkg" at
   startup
