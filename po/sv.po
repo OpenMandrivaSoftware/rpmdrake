@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-02-28 21:48+0100\n"
 "Last-Translator: Mattias Newzella <newzella@linux.nu>\n"
 "Language-Team: svenska <sv@li.org>\n"
@@ -270,35 +270,10 @@ msgstr "Undersöker %s"
 msgid "Please wait, finding available packages..."
 msgstr "Vänta, hittar tillgängliga paket..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Det uppstod ett fel när uppdateringsmediat skulle läggas till via urpmi.\n"
-"\n"
-"Det här kan bero på en trasig eller otillgänglig spegel eller när din\n"
-"Mandrake Linux-version (%s) inte ännu/inte längre stöds av Mandrake Linux\n"
-"officiella uppdateringar.\n"
-"\n"
-"Vill du försöka med en annan spegel?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Fel vid tillägg av uppdateringsmedia"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "Vänta, kontaktar spegel för att initiera uppdateringspaket."
+msgid "Please wait, adding medium..."
+msgstr "Vänta, lägger till media..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -322,19 +297,19 @@ msgstr "Hur du manuellt väljer en spegel"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Ett fel som ej kan återställas uppstod under uppdatering av paketinformation."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Fel vid uppdatering av media"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "Vänta, kontaktar spegel för att uppdatera paketinformation."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -348,6 +323,16 @@ msgstr ""
 "Kontrollera att ditt nätverk fungerar.\n"
 "\n"
 "Är det OK att fortsätta?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -929,11 +914,6 @@ msgstr "Vänta, tar bort media..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Vänta, lägger till media..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Typ av källa:"
 
@@ -1011,12 +991,16 @@ msgstr "Lokala filer"
 msgid "Add a source"
 msgstr "Lägg till en källa"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Kan inte uppdatera media; det kommer att inaktiveras automatiskt."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Kan inte skapa media."
@@ -1300,3 +1284,41 @@ msgstr "Ta bort program"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Programhanterare för källor"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Det uppstod ett fel när uppdateringsmediat skulle läggas till via urpmi.\n"
+#~ "\n"
+#~ "Det här kan bero på en trasig eller otillgänglig spegel eller när din\n"
+#~ "Mandrake Linux-version (%s) inte ännu/inte längre stöds av Mandrake "
+#~ "Linux\n"
+#~ "officiella uppdateringar.\n"
+#~ "\n"
+#~ "Vill du försöka med en annan spegel?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Fel vid tillägg av uppdateringsmedia"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "Vänta, kontaktar spegel för att initiera uppdateringspaket."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Ett fel som ej kan återställas uppstod under uppdatering av "
+#~ "paketinformation."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Fel vid uppdatering av media"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "Vänta, kontaktar spegel för att uppdatera paketinformation."

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-02 12:49+0100\n"
 "Last-Translator: Arpad Biro <biro_arpad@yahoo.com>\n"
 "Language-Team: Hungarian\n"
@@ -271,37 +271,10 @@ msgstr "%s vizsgálata"
 msgid "Please wait, finding available packages..."
 msgstr "A rendelkezésre álló csomagok lekérdezése..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Hiba történt a frissítési adatforrásnak az Urpmi programmal való\n"
-"felvétele közben.\n"
-"\n"
-"Ezt okozhatja például egy hibásan mûködõ vagy elérhetetlen\n"
-"tükörkiszolgáló, vagy esetleg az, hogy az Ön által használt\n"
-"Mandrake Linux-verzióhoz (%s) még / már nincsen hivatalos\n"
-"frissítés.\n"
-"\n"
-"Próbálkozik egy másik tükörkiszolgálóval?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Hiba a frissítési adatforrás felvétele közben"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "Kapcsolódás a tükörkiszolgálóhoz; a frissítõcsomagok inicializálása..."
+msgid "Please wait, adding medium..."
+msgstr "Az adatforrás felvétele folyamatban..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -325,18 +298,19 @@ msgstr "Hogyan lehet tükörkiszolgálót választani saját kezûleg"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "Helyrehozhatatlan hiba történt a csomaginformációk frissítése közben."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Hiba az adatforrás frissítése közben"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "Kapcsolódás a tükörkiszolgálóhoz; csomaginformációk lekérdezése..."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -350,6 +324,16 @@ msgstr ""
 "tükörkiszolgálóhoz. Ellenõrizze, hogy a hálózat elérhetõ-e.\n"
 "\n"
 "Kívánja folytatni?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Olvasási hiba\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -940,11 +924,6 @@ msgstr "Az adatforrás eltávolítása folyamatban..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Az adatforrás felvétele folyamatban..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Az adatforrás típusa:"
 
@@ -1020,12 +999,16 @@ msgstr "Helyi fájlok"
 msgid "Add a source"
 msgstr "Forrás felvétele"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Az adatforrás frissítése nem sikerült, ezért letiltásra kerül."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Az adatforrás létrehozása nem sikerült."
@@ -1310,6 +1293,45 @@ msgstr "Szoftvereltávolítás"
 msgid "Software Sources Manager"
 msgstr "Szoftverforrás-kezelõ"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Hiba történt a frissítési adatforrásnak az Urpmi programmal való\n"
+#~ "felvétele közben.\n"
+#~ "\n"
+#~ "Ezt okozhatja például egy hibásan mûködõ vagy elérhetetlen\n"
+#~ "tükörkiszolgáló, vagy esetleg az, hogy az Ön által használt\n"
+#~ "Mandrake Linux-verzióhoz (%s) még / már nincsen hivatalos\n"
+#~ "frissítés.\n"
+#~ "\n"
+#~ "Próbálkozik egy másik tükörkiszolgálóval?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Hiba a frissítési adatforrás felvétele közben"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Kapcsolódás a tükörkiszolgálóhoz; a frissítõcsomagok inicializálása..."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Helyrehozhatatlan hiba történt a csomaginformációk frissítése közben."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Hiba az adatforrás frissítése közben"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "Kapcsolódás a tükörkiszolgálóhoz; csomaginformációk lekérdezése..."
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Már minden telepítve van (esetleg hiba történt?)."
 
@@ -1474,9 +1496,6 @@ msgstr "Szoftverforrás-kezelõ"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "FTP: a STOR parancs végrehajtása nem sikerült\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Olvasási hiba\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "Nem áll elég memória rendelkezésre\n"

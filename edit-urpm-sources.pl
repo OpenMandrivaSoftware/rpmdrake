@@ -32,19 +32,6 @@ use rpmdrake;
 $::isStandalone = 1;
 
 
-sub add_medium_and_check {
-    my ($urpm, $msg, $options) = splice @_, 0, 3;
-    standalone::explanations("Adding medium @_");
-    my $wait = wait_msg($msg);
-    $urpm->add_medium(@_);
-    update_sources($urpm, %$options, noclean => 1);
-    remove_wait_msg($wait);
-    my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
-    $medium or interactive_msg('rpmdrake', N("Unable to create medium."));
-    $medium->{modified} and interactive_msg('rpmdrake', N("Unable to update medium; it will be automatically disabled."));
-    $urpm->write_config;
-}
-
 my $urpm;
 
 my ($mainw, $remove, $edit, $list_tv);

@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 2\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
-"PO-Revision-Date: 2003-04-16 17:00+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
+"PO-Revision-Date: 2003-04-17 16:18+0200\n"
 "Last-Translator: Guillaume Cottenceau <gc at mandrakesoft.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -280,36 +280,10 @@ msgstr "Examen de %s"
 msgid "Please wait, finding available packages..."
 msgstr "Veuillez patienter, recherche des paquetages disponibles..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Une erreur est survenue pendant l'ajout du médium de mise à jour par urpmi.\n"
-"\n"
-"Cela peut être dû à un miroir temporairement indisponible, ou bien si\n"
-"votre version de Mandrake Linux (%s) n'est pas encore supportée (ou plus\n"
-"du tout supportée) par les Mises à jour Officielles Mandrake Linux.\n"
-"\n"
-"Voulez-vous essayer avec un autre miroir ?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Erreur pendant l'ajout du médium de mise à jour"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Veuillez patienter, connexion au miroir afin de trouver les mises à jour."
+msgid "Please wait, adding medium..."
+msgstr "Veuillez patienter, ajout du médium..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -322,7 +296,7 @@ msgid ""
 msgstr ""
 "Vous pouvez aussi choisir votre mirroir manuellement : pour ce\n"
 "faire, lancez le Gestionnaire de Sources Logicielles, puis\n"
-"ajoutez une `Mise à jour de sécurité'.\n"
+"ajoutez une « Mise à jour de sécurité ».\n"
 "\n"
 "Puis, redémarrez MandrakeUpdate."
 
@@ -333,22 +307,25 @@ msgstr "Comment choisir manuellement votre mirroir"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Une erreur fatale est survenue pendant la mise à jour des informations sur "
-"les paquetages."
+"Vous possédez déjà au moins une source de mise-à-jour configurée, mais\n"
+"elles sont toutes désactivées actuellement. Vous devriez lancer le\n"
+"Gestionnaire de Sources Logicielles pour en activer au moins une\n"
+"(cochez-la dans la colonne « Activée ? »)\n"
+"\n"
+"Ensuite, redémarrez MandrakeUpdate."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Erreur pendant la mise à jour du médium"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr ""
-"Veuillez patienter, connexion au miroir afin de mettre à jour les "
-"informations sur les paquetages."
+msgid "Already existing update sources"
+msgstr "Des sources de mise-à-jour existent déjà"
 
 #: ../rpmdrake:1
 #, c-format
@@ -363,6 +340,16 @@ msgstr ""
 "Veuillez vérifier que le réseau est en fonctionnement.\n"
 "\n"
 "Êtes-vous d'accord pour continuer ?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr "Une erreur fatale est survenue : %s."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr "Erreur fatale"
 
 #: ../rpmdrake:1
 #, c-format
@@ -961,11 +948,6 @@ msgstr "Veuillez patienter, suppression du médium..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Veuillez patienter, ajout du médium..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Type de source :"
 
@@ -1043,12 +1025,20 @@ msgstr "Fichiers locaux"
 msgid "Add a source"
 msgstr "Ajout d'une source :"
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
-msgid "Unable to update medium; it will be automatically disabled."
-msgstr "Impossible de mettre à jour le médium ; il sera ignoré."
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
+msgstr ""
+"Impossible de mettre à jour le médium ; il sera ignoré.\n"
+"\n"
+"Erreurs :\n"
+"%s"
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Impossible de créer le médium."
@@ -1336,6 +1326,47 @@ msgstr "Supprimer des Logiciels"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Gestionnaire de Sources Logicielles"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Une erreur est survenue pendant l'ajout du médium de mise à jour par "
+#~ "urpmi.\n"
+#~ "\n"
+#~ "Cela peut être dû à un miroir temporairement indisponible, ou bien si\n"
+#~ "votre version de Mandrake Linux (%s) n'est pas encore supportée (ou plus\n"
+#~ "du tout supportée) par les Mises à jour Officielles Mandrake Linux.\n"
+#~ "\n"
+#~ "Voulez-vous essayer avec un autre miroir ?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Erreur pendant l'ajout du médium de mise à jour"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Veuillez patienter, connexion au miroir afin de trouver les mises à jour."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Une erreur fatale est survenue pendant la mise à jour des informations "
+#~ "sur les paquetages."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Erreur pendant la mise à jour du médium"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Veuillez patienter, connexion au miroir afin de mettre à jour les "
+#~ "informations sur les paquetages."
 
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr ""

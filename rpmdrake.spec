@@ -17,7 +17,7 @@ License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
 Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3 perl-URPM >= 0.82-2mdk drakxtools >= 9.1-0.12mdk grpmi >= 9.0 rpmtools >= 4.5
-Requires: perl-GTK2 > 0.0.cvs.2003.02.12.1-2mdk
+Requires: perl-GTK2 > 0.0.cvs.2003.02.12.1-2mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: libcurl2-devel >= 7.10.3-2mdk rpm-devel gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -119,6 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 * Thu Apr 17 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-18mdk
 - fix problem shown by #3768: correctly handle case when there
   are already update source(s), but they are all disabled
+- report more urpmi errors in the GUI
 
 * Wed Apr 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-17mdk
 - fix drakhelp zombie process (thx titi)

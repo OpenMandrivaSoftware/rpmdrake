@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.1\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-08 16:48+0500\n"
 "Last-Translator: Dilshod Marupov <dma165@hotmail.com>\n"
 "Language-Team: Tajik\n"
@@ -268,36 +268,10 @@ msgstr "Бозрасии(Назорати) %s"
 msgid "Please wait, finding available packages..."
 msgstr "Интизор шавед, ёфтани қуттиҳои дастрас..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Ҳангоми иловаи муҳити нав бо воситаи urpmi хатогӣ рух дод.\n"
-"\n"
-"Ин мумкин аз сабаби шикаста ё муаваққатан дастрас набудани оина, ё\n"
-"нашри (%s) Mandrake Linux ҳоло/аллакай бо Навигариҳои Расмии Mandrake Linux\n"
-"дастгирӣ карда намешавад.\n"
-"\n"
-"Шумо дигар оинаро истифода бурдан мехоҳед?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Хатогии иловаи миёнаи навшуда"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Интизор шавед, пайвастшавӣ бо оина барои шинохтани навигариҳои қуттиҳо."
+msgid "Please wait, adding medium..."
+msgstr "Интизор шавед, иловаи миёна..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -321,18 +295,19 @@ msgstr "Чӣ тавр оинаатонро дастӣ интихоб мекун�
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "Хатогии бартарафнашаванда ҳангоми навкунии маълумоти қуттиҳо руй дод."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
-#, c-format
-msgid "Error updating medium"
-msgstr "Хатогии навкунии миёна"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "Интизор шавед, пайвастшавӣ бо оина барои навкунии маълумоти қуттиҳо."
+#, fuzzy, c-format
+msgid "Already existing update sources"
+msgstr "Сарчашмаи %s дар таҳлил аст"
 
 #: ../rpmdrake:1
 #, c-format
@@ -346,6 +321,18 @@ msgstr ""
 "Лутфан мӯътақид шавед, ки шабакаи шумо кор карда истодааст.\n"
 "\n"
 "Давом додан гирем?"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+"Хатогии дохили рух дод :\n"
+"%s"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Хатогии дохилӣ"
 
 #: ../rpmdrake:1
 #, c-format
@@ -932,11 +919,6 @@ msgstr "Интизор шавед, хориҷи миёна..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Интизор шавед, иловаи миёна..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Навъи сарчашма:"
 
@@ -1014,12 +996,16 @@ msgstr "Файлҳои маҳаллӣ"
 msgid "Add a source"
 msgstr "Иловаи сарчашма"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Навкунии миёна номумкин, ин автоматикӣ хомӯш карда мешавад."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Сохтани миёна номумкин."
@@ -1305,6 +1291,45 @@ msgstr "Хориҷи Нармафзор"
 msgid "Software Sources Manager"
 msgstr "Менеҷери Сарчашмаҳои Нармафзор"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Ҳангоми иловаи муҳити нав бо воситаи urpmi хатогӣ рух дод.\n"
+#~ "\n"
+#~ "Ин мумкин аз сабаби шикаста ё муаваққатан дастрас набудани оина, ё\n"
+#~ "нашри (%s) Mandrake Linux ҳоло/аллакай бо Навигариҳои Расмии Mandrake "
+#~ "Linux\n"
+#~ "дастгирӣ карда намешавад.\n"
+#~ "\n"
+#~ "Шумо дигар оинаро истифода бурдан мехоҳед?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Хатогии иловаи миёнаи навшуда"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Интизор шавед, пайвастшавӣ бо оина барои шинохтани навигариҳои қуттиҳо."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Хатогии бартарафнашаванда ҳангоми навкунии маълумоти қуттиҳо руй дод."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Хатогии навкунии миёна"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Интизор шавед, пайвастшавӣ бо оина барои навкунии маълумоти қуттиҳо."
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Ҳамачиз аллакай коргузошта шудааст (ин умуман шуданаш шарт аст?)"
 
@@ -1352,9 +1377,6 @@ msgstr "Менеҷери Сарчашмаҳои Нармафзор"
 #~ msgstr ""
 #~ "Файли /var/lib/urpmi/compssUsers.flat ёфт намешавад\n"
 #~ "усули шоха дастрас нахоҳад шуд"
-
-#~ msgid "Analysing the %s source"
-#~ msgstr "Сарчашмаи %s дар таҳлил аст"
 
 #~ msgid "looking for installed packages"
 #~ msgstr "ҷустуҷӯи қуттиҳои коргузошта шуда"
@@ -1604,13 +1626,6 @@ msgstr "Менеҷери Сарчашмаҳои Нармафзор"
 #~ msgid "You must use at least one of --files or --packages !"
 #~ msgstr "Шумо бояд аққалан яке аз --файлҳо ё --қуттиҳоро истифода баред !"
 
-#~ msgid ""
-#~ "An internal error occured :\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Хатогии дохили рух дод :\n"
-#~ "%s"
-
 #~ msgid "Error"
 #~ msgstr "Хатогӣ"
 
@@ -1728,9 +1743,6 @@ msgstr "Менеҷери Сарчашмаҳои Нармафзор"
 
 #~ msgid "urpmi return value"
 #~ msgstr "қимати баргардандаи urpmi"
-
-#~ msgid "Internal error"
-#~ msgstr "Хатогии дохилӣ"
 
 #~ msgid "Brief"
 #~ msgstr "Мухтасар"

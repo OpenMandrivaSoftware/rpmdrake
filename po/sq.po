@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2002-11-27 21:45:+0100\n"
 "Last-Translator: Naim Daka <naim70@freesurf>\n"
 "Language-Team: Albanian <LL@li.org>\n"
@@ -271,38 +271,10 @@ msgstr "Inspektim i %s"
 msgid "Please wait, finding available packages..."
 msgstr "Një moment ju lutemi, gjetja e pakove të lira..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Një gabim është paraqitur gjatë shtimit të azhurnimit, via urpmi.\n"
-"\n"
-"Kjo mundë të ndodhë ngase pasqyrja nuk është e lirë momentalishtë ose,\n"
-"nëse versioni i Mandrake Linux (%s) nuk është në përkrahje / apo nuk "
-"përkrahet fare nga Mandrake Linux\n"
-"Azhurnim zyrtarë.\n"
-"\n"
-"A dëshironi të provoni një pasqyre tjetër?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Gabim gjatë shtimit të burimit azhurnues"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Një moment ju lutemi, kyqje në pasqyre që më në fund ti gjeni pakot për ti "
-"azhurnuar."
+msgid "Please wait, adding medium..."
+msgstr "Ju letemi keni durim, shtim i burimit..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -326,21 +298,19 @@ msgstr "Si ta zgjedhni pasqyrën nga ana juaj"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Një gabim fatal është paraqitur gjatë azhrunimit, të pakove me infomacione."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Gabim mbi azhurnimin e burimit"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid "Already existing update sources"
 msgstr ""
-"Një moment ju lutemi, kyqja në pasqyre, që më në fund të bëhet azhurnimi i "
-"informacoineve mbi pakot"
 
 #: ../rpmdrake:1
 #, c-format
@@ -355,6 +325,16 @@ msgstr ""
 "azhurnimin. Verifikoni rrjetin dhe funksionimin e tij.\n"
 "\n"
 "A dëshironi të vazhdoni?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -944,11 +924,6 @@ msgstr "Ju lutemi një moment, zhdukje e burimit..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Ju letemi keni durim, shtim i burimit..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Tip i burimit:"
 
@@ -1026,12 +1001,16 @@ msgstr "Skedaret lokale"
 msgid "Add a source"
 msgstr "Shtim i një burimi:"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "I pa mundur azhurnimi i burimit; do të çkyqet automatikisht."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "I pa mundur krijimi i burimit."
@@ -1318,6 +1297,48 @@ msgstr "Zhdukje e Software"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Administrim i Burimeve Software"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Një gabim është paraqitur gjatë shtimit të azhurnimit, via urpmi.\n"
+#~ "\n"
+#~ "Kjo mundë të ndodhë ngase pasqyrja nuk është e lirë momentalishtë ose,\n"
+#~ "nëse versioni i Mandrake Linux (%s) nuk është në përkrahje / apo nuk "
+#~ "përkrahet fare nga Mandrake Linux\n"
+#~ "Azhurnim zyrtarë.\n"
+#~ "\n"
+#~ "A dëshironi të provoni një pasqyre tjetër?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Gabim gjatë shtimit të burimit azhurnues"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Një moment ju lutemi, kyqje në pasqyre që më në fund ti gjeni pakot për "
+#~ "ti azhurnuar."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Një gabim fatal është paraqitur gjatë azhrunimit, të pakove me "
+#~ "infomacione."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Gabim mbi azhurnimin e burimit"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Një moment ju lutemi, kyqja në pasqyre, që më në fund të bëhet azhurnimi "
+#~ "i informacoineve mbi pakot"
 
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Janë instaluar më heret (a duhej të arritej me të vërtet?)."

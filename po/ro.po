@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-03 17:15+0200\n"
 "Last-Translator: Ovidiu Constantin <ovidiu.constantin@gmx.net>\n"
 "Language-Team: Romanian Translators for Free Software <rtfs-"
@@ -276,39 +276,10 @@ msgstr "Inspectez %s"
 msgid "Please wait, finding available packages..."
 msgstr "Vã rog sã aºteptaþi, caut pachetele disponibile..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"A fost detectatã o eroare în timpul adãugãrii mediului de actualizare via "
-"urpmi.\n"
-"\n"
-"Aceasta poate fi datoritã unui server indisponibil temporar, sau dacã "
-"versiunea\n"
-"dvs. a Mandrake Linux (%s) nu (mai) este (încã) suportatã de\n"
-"actualizãrile oficiale Mandrake Linux.\n"
-"\n"
-"Doriþi sã încercaþi alt server oglindã?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Eroare la adãugarea mediului de actualizare"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Vã rog sã aºteptaþi, contactez serverul oglindã pentru iniþializarea "
-"actualizãrii pachetelor."
+msgid "Please wait, adding medium..."
+msgstr "Vã rog sã aºteptaþi, adaug mediul..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -332,22 +303,19 @@ msgstr "Cum sã selectaþi manual serverul oglindã"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"A fost detectatã o eroare majorã în timpul actualizãrii informaþiei "
-"pachetelor."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Eroare la actualizarea mediului"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid "Already existing update sources"
 msgstr ""
-"Vã rog sã aºteptaþi, contactez serverul oglindã pentru actualizarea "
-"informaþiei pachetelor."
 
 #: ../rpmdrake:1
 #, c-format
@@ -362,6 +330,16 @@ msgstr ""
 "Vã rog sã ferificaþi dacã acum reþeaua funcþioneazã.\n"
 "\n"
 "Doriþi sã continuaþi?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -946,11 +924,6 @@ msgstr "Vã rog sã aºteptaþi, ºterg mediul..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Vã rog sã aºteptaþi, adaug mediul..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Tipul sursei:"
 
@@ -1028,12 +1001,16 @@ msgstr "Fiºiere locale"
 msgid "Add a source"
 msgstr "Adaugã o sursã"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Nu pot actualiza mediul, el va fi dezactivat automat."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Nu pot creea mediul."
@@ -1320,3 +1297,46 @@ msgstr "ªtergere programe"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Administrator surse de programe"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "A fost detectatã o eroare în timpul adãugãrii mediului de actualizare via "
+#~ "urpmi.\n"
+#~ "\n"
+#~ "Aceasta poate fi datoritã unui server indisponibil temporar, sau dacã "
+#~ "versiunea\n"
+#~ "dvs. a Mandrake Linux (%s) nu (mai) este (încã) suportatã de\n"
+#~ "actualizãrile oficiale Mandrake Linux.\n"
+#~ "\n"
+#~ "Doriþi sã încercaþi alt server oglindã?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Eroare la adãugarea mediului de actualizare"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Vã rog sã aºteptaþi, contactez serverul oglindã pentru iniþializarea "
+#~ "actualizãrii pachetelor."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "A fost detectatã o eroare majorã în timpul actualizãrii informaþiei "
+#~ "pachetelor."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Eroare la actualizarea mediului"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Vã rog sã aºteptaþi, contactez serverul oglindã pentru actualizarea "
+#~ "informaþiei pachetelor."

@@ -44,8 +44,12 @@ ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 c::bind_textdomain_codeset('rpmdrake', 'UTF8');
 sub translate {
     my ($s) = @_;
-    my $r = $s ? c::dgettext('rpmdrake', $s) : '';
-    c::set_tagged_utf8($r);
+    my $r = '';
+    if ($s) {
+        $r = c::dgettext('rpmdrake', $s);
+        $r eq $s and $r = Locale::gettext::iconv(c::dgettext('urpmi', $s), undef, "UTF-8");
+        c::set_tagged_utf8($r);
+    }
     $r;
 }
 sub sprintf_fixutf8 {
@@ -402,4 +406,22 @@ sub update_sources_interactive {
 	return 1;
     }
     return 0;
+}
+
+sub add_medium_and_check {
+    my ($urpm, $msg, $options) = splice @_, 0, 3;
+    standalone::explanations("Adding medium @_");
+    my $wait = wait_msg($msg);
+    $urpm->add_medium(@_);
+    my @error_msgs;
+    local $urpm->{fatal} = sub { push @error_msgs, $_[1] };
+    local $urpm->{error} = sub { push @error_msgs, $_[0] };
+    update_sources($urpm, %$options, noclean => 1);
+    remove_wait_msg($wait);
+    my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
+    $medium or interactive_msg('rpmdrake', N("Unable to create medium."));
+    $medium->{modified} and interactive_msg('rpmdrake',
+                                            N("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s",
+                                              join("\n", @error_msgs)));
+    $urpm->write_config;
 }

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-16 12:07+0200\n"
 "Last-Translator: Alice Lafox <alice@lafox.com.ua>\n"
 "Language-Team: russian <cooker-i18n@linux-mandrake.com>\n"
@@ -271,37 +271,10 @@ msgstr "Изучается %s"
 msgid "Please wait, finding available packages..."
 msgstr "Подождите, пожалуйста, выполняется поиск доступных пакетов..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Произошла ошибка при добавлении носителя с обновлениями через urpmi.\n"
-"\n"
-"Это может быть из-за неверного или временно недоступного зеркала или \n"
-"в случае, если версия вашего Mandrake Linux (%s) еще/уже не\n"
-"поддерживается Mandrake Linux Official Updates.\n"
-"\n"
-"Желаете попробовать другое зеркало?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Ошибка при добавлении носителя с обновлениями"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Пожалуйста, подождите, устанавливается соединение с зеркалом для "
-"инициализации пакетов с обновлениями."
+msgid "Please wait, adding medium..."
+msgstr "Пожалуйста, подождите, добавляется носитель..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -325,20 +298,19 @@ msgstr "Как вручную выбрать свое зеркало"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "Произошла неустранимая ошибка при обновлении информации о пакетах."
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error updating medium"
-msgstr "Ошибка обновления носителя"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Пожалуйста, подождите, устанавливается соединение с зеркалом для обновления "
-"информации о пакетах."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -352,6 +324,16 @@ msgstr ""
 "последние пакеты обновлений. Пожалуйста, убедитесь,\n"
 "что ваша сеть в данный момент работает.\n"
 "Все в порядке? Можно продолжать?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -936,11 +918,6 @@ msgstr "Пожалуйста, подождите, удаляется носитель..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Пожалуйста, подождите, добавляется носитель..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Тип источника:"
 
@@ -1018,12 +995,16 @@ msgstr "Локальные файлы"
 msgid "Add a source"
 msgstr "Добавить источник"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Невозможно обновить носитель, он будет автоматически отключен."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Невозможно создать носитель."
@@ -1309,3 +1290,42 @@ msgstr "Удалить программное обеспечение"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Менеджер источников программного обеспечения"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Произошла ошибка при добавлении носителя с обновлениями через urpmi.\n"
+#~ "\n"
+#~ "Это может быть из-за неверного или временно недоступного зеркала или \n"
+#~ "в случае, если версия вашего Mandrake Linux (%s) еще/уже не\n"
+#~ "поддерживается Mandrake Linux Official Updates.\n"
+#~ "\n"
+#~ "Желаете попробовать другое зеркало?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Ошибка при добавлении носителя с обновлениями"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Пожалуйста, подождите, устанавливается соединение с зеркалом для "
+#~ "инициализации пакетов с обновлениями."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "Произошла неустранимая ошибка при обновлении информации о пакетах."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Ошибка обновления носителя"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Пожалуйста, подождите, устанавливается соединение с зеркалом для "
+#~ "обновления информации о пакетах."

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-bg\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-02-14 09:21+0200\n"
 "Last-Translator: Borislav Aleksandrov <B.Aleksandrov@cnsys.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -266,30 +266,12 @@ msgstr "Преглеждам %s"
 msgid "Please wait, finding available packages..."
 msgstr "Моля изчакайте, търся наличните пакети..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
+msgid "Please wait, adding medium..."
 msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Грешка при добавяне на източник за обновяване"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Моля почакайте, контактувам с огледален сървър за инициализиране обновяване "
-"на пакети."
+"Моля Изчакайте\n"
+"Добавя се източник..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -308,20 +290,19 @@ msgstr "Как да изберете ръчно вашият огледален сървър"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "Има непоправима грешка при обновяване информация за пакети."
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error updating medium"
-msgstr "Грешка при обновяване на източник"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Моля, почакайте. Контактувам с огледален сървър за обновяване инормация за "
-"пакети."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -331,6 +312,16 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Грешка при четене\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -901,13 +892,6 @@ msgstr ""
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr ""
-"Моля Изчакайте\n"
-"Добавя се източник..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Тип на източника:"
 
@@ -983,12 +967,16 @@ msgstr "Локални файлове"
 msgid "Add a source"
 msgstr "Добавя на източник"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Не мога да обновя източник; той ще бъде автомаично забранен."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Невъзможност за създаване на източник."
@@ -1260,6 +1248,26 @@ msgstr "Изтрива софтуер"
 msgid "Software Sources Manager"
 msgstr "Мениджър за софтуерни източници"
 
+#~ msgid "Error adding update medium"
+#~ msgstr "Грешка при добавяне на източник за обновяване"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Моля почакайте, контактувам с огледален сървър за инициализиране "
+#~ "обновяване на пакети."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "Има непоправима грешка при обновяване информация за пакети."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Грешка при обновяване на източник"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Моля, почакайте. Контактувам с огледален сървър за обновяване инормация "
+#~ "за пакети."
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Всичко вече е инсталирано."
 
@@ -1364,9 +1372,6 @@ msgstr "Мениджър за софтуерни източници"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "ftp не позволява STOR\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Грешка при четене\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "Недостатъчно памет\n"

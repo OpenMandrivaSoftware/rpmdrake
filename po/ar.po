@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2001-11-28 17:26GMT+3\n"
 "Last-Translator: Mohammed Gamal <f2c2001@yahoo.com>\n"
 "Language-Team: Arabic\n"
@@ -269,36 +269,10 @@ msgstr "جاري التحقق من %s"
 msgid "Please wait, finding available packages..."
 msgstr "اتنظر من فضلك, جاري ايجاد الحزم المتوفرة..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"كان هناك خطأ أثناء تحديث الوسيط عن طريق urpmi.\n"
-"\n"
-"ربما يكون هذا بسبب مرآة مكسورة أو غير موجودة مؤقتاً, أو عندما\n"
-"يكون اصدار Mandrake Linux الخاص بك (%s) غير مدعوم الى الآن/ اطلاقاً من "
-"تحديثات Linux\n"
-"Mandrake الرسمية.\n"
-"\n"
-"هل تريد المحاولة مع مرآة أخرى؟"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "خطأ أثناء اضافة وسيط التحديث"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "انتظر من فضلك, جاري الإتصال بالمرآة لبدء تحديث الحزم."
+msgid "Please wait, adding medium..."
+msgstr "انتظر من فضلك, جاري اضافة الوسيط..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -322,18 +296,19 @@ msgstr "كيفية اختيار المرآة يدوياً"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "كان هناك خطأ غير قابل للإصلاح أثناء تحديث معلومات الحزم"
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "خطأ في تحديث الوسيط"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "انتظر من فضلك, جاري الإتصال بالمرآة لتحديث معلومات الحزم"
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -347,6 +322,16 @@ msgstr ""
 "فضلاً تأكد من أن الشبكة الخاصة بك تعمل حالياً.\n"
 "\n"
 "هل من الممكن المتابعة؟"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "خطأ في القراءة\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -930,11 +915,6 @@ msgstr "انتظر من فضلك, جاري اضافة الوسيط...."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "انتظر من فضلك, جاري اضافة الوسيط..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "نوع المصدر:"
 
@@ -1010,12 +990,16 @@ msgstr "ملفات محلية"
 msgid "Add a source"
 msgstr "أضف مصدر"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "تعذر تحديث الوسيط;  سيتم تعطيله آلياً"
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "تعذر انشاء الوسيط"
@@ -1300,6 +1284,42 @@ msgstr "احذف البرنامج"
 msgid "Software Sources Manager"
 msgstr "مدير مصادر البرمجيات"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "كان هناك خطأ أثناء تحديث الوسيط عن طريق urpmi.\n"
+#~ "\n"
+#~ "ربما يكون هذا بسبب مرآة مكسورة أو غير موجودة مؤقتاً, أو عندما\n"
+#~ "يكون اصدار Mandrake Linux الخاص بك (%s) غير مدعوم الى الآن/ اطلاقاً من "
+#~ "تحديثات Linux\n"
+#~ "Mandrake الرسمية.\n"
+#~ "\n"
+#~ "هل تريد المحاولة مع مرآة أخرى؟"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "خطأ أثناء اضافة وسيط التحديث"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "انتظر من فضلك, جاري الإتصال بالمرآة لبدء تحديث الحزم."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "كان هناك خطأ غير قابل للإصلاح أثناء تحديث معلومات الحزم"
+
+#~ msgid "Error updating medium"
+#~ msgstr "خطأ في تحديث الوسيط"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "انتظر من فضلك, جاري الإتصال بالمرآة لتحديث معلومات الحزم"
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "كل شئ مثبت مسبقا (أليس المفروض أن يحدث هذا؟)"
 
@@ -1457,9 +1477,6 @@ msgstr "مدير مصادر البرمجيات"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "لم يتمكن Ftp من وضع الملف في الخادم\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "خطأ في القراءة\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "الذاكرة قد نفذت\n"

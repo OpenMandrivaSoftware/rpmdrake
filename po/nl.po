@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-05 15:30+0100\n"
 "Last-Translator: Reinout van Schouwen <reinout@cs.vu.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -270,40 +270,10 @@ msgstr "Bezig met inspecteren van %s"
 msgid "Please wait, finding available packages..."
 msgstr "Even geduld, bezig met opzoeken van verkrijgbare pakketten..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Er is een fout opgetreden bij het toevoegen van een vernieuwingsmedium via "
-"urpmi.\n"
-"\n"
-"Dit zou veroorzaakt kunnen zijn door een kapotte of tijdelijk onbeschikbare "
-"mirror, of\n"
-"wanneer uw Mandrake Linux-versie (%s) nog niet / niet meer ondersteund wordt "
-"door\n"
-"de officiële Mandrake Linux vernieuwingen. \n"
-"\n"
-"Wilt u een andere mirror proberen?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Er is een fout opgetreden bij het toevoegen van een vernieuwingsmedium"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Even geduld, bezig met verbinden met mirror om pakketvernieuwingen te "
-"initialiseren."
+msgid "Please wait, adding medium..."
+msgstr "Even geduld, bezig met toevoegen medium..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -327,21 +297,19 @@ msgstr "Hoe u handmatig uw mirror kunt kiezen"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Er is een onherstelbare fout opgetreden bij het verversen van "
-"pakketinformatie."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Er is een fout opgetreden bij het verversen van het medium"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid "Already existing update sources"
 msgstr ""
-"Even geduld, bezig met verbinden met mirror om pakketinformatie te verversen"
 
 #: ../rpmdrake:1
 #, c-format
@@ -356,6 +324,16 @@ msgstr ""
 "momenteel draait.\n"
 "\n"
 "Is het goed om door te gaan?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -951,11 +929,6 @@ msgstr "Even geduld, bezig met verwijderen van medium..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Even geduld, bezig met toevoegen medium..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Brontype:"
 
@@ -1034,13 +1007,17 @@ msgstr "Lokale bestanden"
 msgid "Add a source"
 msgstr "Bron toevoegen"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr ""
 "Niet in staat medium te verversen; het wordt automatisch uitgeschakeld."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Niet in staat medium te creëren"
@@ -1331,6 +1308,51 @@ msgstr "Software verwijderen"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Software Bronnenbeheer"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Er is een fout opgetreden bij het toevoegen van een vernieuwingsmedium "
+#~ "via urpmi.\n"
+#~ "\n"
+#~ "Dit zou veroorzaakt kunnen zijn door een kapotte of tijdelijk "
+#~ "onbeschikbare mirror, of\n"
+#~ "wanneer uw Mandrake Linux-versie (%s) nog niet / niet meer ondersteund "
+#~ "wordt door\n"
+#~ "de officiële Mandrake Linux vernieuwingen. \n"
+#~ "\n"
+#~ "Wilt u een andere mirror proberen?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr ""
+#~ "Er is een fout opgetreden bij het toevoegen van een vernieuwingsmedium"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Even geduld, bezig met verbinden met mirror om pakketvernieuwingen te "
+#~ "initialiseren."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Er is een onherstelbare fout opgetreden bij het verversen van "
+#~ "pakketinformatie."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Er is een fout opgetreden bij het verversen van het medium"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Even geduld, bezig met verbinden met mirror om pakketinformatie te "
+#~ "verversen"
 
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Alles reeds geïnstalleerd (wordt dit geacht ooit te gebeuren?)"

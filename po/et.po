@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2002-12-12 16:57+0200\n"
 "Last-Translator: Marek Laane <bald@online.ee>\n"
 "Language-Team: Estonian <kde-et@linux.ee>\n"
@@ -266,35 +266,10 @@ msgstr "%s uurimine"
 msgid "Please wait, finding available packages..."
 msgstr "Palun oodake, otsin kättesaadavaid pakette..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Uuenduste andmekandja lisamisel urpmi vahendusel tekkis viga.\n"
-"\n"
-"Selle põhjuseks võib olla mittetoimiv või ajutiselt kättesaamatu\n"
-"peegelsait või siis asjaolu, et Mandrake Linuxi ametlikud uuendused\n"
-"ei toeta veel / enam Teie Mandrake Linuxi versiooni (%s).\n"
-"\n"
-"Kas soovite proovida mõnda muud peegelsaiti?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Viga uuenduste andmekandja lisamisel."
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "Palun oodake, võtan ühendust uuenduste saidiga."
+msgid "Please wait, adding medium..."
+msgstr "Palun oodake, lisan andmekandja..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -318,18 +293,19 @@ msgstr "Kuidas valida peeglit käsitsi"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "Paketiinfo uuendamisel tekkis viga, ei saa jätkata."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Viga andmekandja uuendamisel"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "Palun oodake, uuendan pakettide infot."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -343,6 +319,16 @@ msgstr ""
 "Kontrollige palun, et Internetiühendus töötaks.\n"
 "\n"
 "Kas jätkata?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -923,11 +909,6 @@ msgstr "Palun oodake, eemaldan andmekandja..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Palun oodake, lisan andmekandja..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Andmekandja tüüp:"
 
@@ -1005,12 +986,16 @@ msgstr "Kohalikud failid"
 msgid "Add a source"
 msgstr "Lisa allikas"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Andmekandja uuendamine ebaõnnestus; sellest loobutakse automaatselt."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Andmekandja loomine ebaõnnestus."
@@ -1293,3 +1278,38 @@ msgstr "Tarkvara eemaldamine"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Tarkvaraallikate haldur"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Uuenduste andmekandja lisamisel urpmi vahendusel tekkis viga.\n"
+#~ "\n"
+#~ "Selle põhjuseks võib olla mittetoimiv või ajutiselt kättesaamatu\n"
+#~ "peegelsait või siis asjaolu, et Mandrake Linuxi ametlikud uuendused\n"
+#~ "ei toeta veel / enam Teie Mandrake Linuxi versiooni (%s).\n"
+#~ "\n"
+#~ "Kas soovite proovida mõnda muud peegelsaiti?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Viga uuenduste andmekandja lisamisel."
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "Palun oodake, võtan ühendust uuenduste saidiga."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "Paketiinfo uuendamisel tekkis viga, ei saa jätkata."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Viga andmekandja uuendamisel"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "Palun oodake, uuendan pakettide infot."

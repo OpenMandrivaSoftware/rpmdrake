@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2002-08-30 16:13+0300\n"
 "Last-Translator: Νίκος Νύκταρης (Nick Niktaris) <niktaris@yahoo.com>\n"
 "Language-Team: Greek <nls@hellug.gr>\n"
@@ -259,39 +259,10 @@ msgstr "Ελέγχεται το %s"
 msgid "Please wait, finding available packages..."
 msgstr "Παρακαλώ περιμένετε, αναζητούνται τα διαθέσιμα πακέτα..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Συνέβη ένα σφάλμα κατά την ανανέωση του μέσου μέσω του urpmi.\n"
-"\n"
-"Αυτό μπορεί να συμβαίνει επειδή αυτή τη στιγμή δεν είναι διαθέσιμη η \n"
-"εναλλακτική ή αν η έκδοση Mandrake Linux (%s) δεν υποστηρίζεται\n"
-"ακόμα/πια από τις \n"
-"Επίσημες Αναβαθμίσεις \n"
-"της Mandrake Linux \n"
-"\n"
-"Θέλετε να δοκιμάσετε άλλη εναλλακτική;"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Σφάλμα κατά την προσθήκη του μέσου αναβαθμίσεων"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Παρακαλώ περιμένετε, γίνεται σύνδεση με την εναλλακτική διεύθυνση για την "
-"εκκίνηση των αναβαθμίσεων των πακέτων."
+msgid "Please wait, adding medium..."
+msgstr "Παρακαλώ περιμένετε, προστίθεται το μέσο..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -315,22 +286,19 @@ msgstr "Πως να διαλέξετε μόνοι σας την εναλλακτική σας"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Υπήρξε ένα ανεπανόρθωτο σφάλμα κατά την αναβάθμιση των πληροφοριών των "
-"πακέτων."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Σφάλμα κατά την ανανέωση του μέσου"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid "Already existing update sources"
 msgstr ""
-"Παρακαλώ περιμένετε, γίνεται σύνδεση με την εναλλακτική διεύθυνση για την "
-"αναβάθμιση των πληροφοριών των πακέτων."
 
 #: ../rpmdrake:1
 #, c-format
@@ -345,6 +313,16 @@ msgstr ""
 "είναι ενεργό\n"
 "\n"
 "Να συνεχίσω;"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Σφάλμα ανάγνωσης\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -921,11 +899,6 @@ msgstr "Παρακαλώ περιμένετε, αφαιρείται το μέσο..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Παρακαλώ περιμένετε, προστίθεται το μέσο..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Τύπος πηγής:"
 
@@ -1003,12 +976,16 @@ msgstr "Τοπικά αρχεία"
 msgid "Add a source"
 msgstr "Προσθήκη πηγής:"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Αδυναμία αναβάθμισης του μέσου, θα απενεργοποιηθεί αυτόματα."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Αδυναμία δημιουργίας μέσου."
@@ -1297,6 +1274,49 @@ msgstr "Αφαίρεση Λογισμικού"
 msgid "Software Sources Manager"
 msgstr "Διαχειριστής Πηγαίου Λογισμικού"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Συνέβη ένα σφάλμα κατά την ανανέωση του μέσου μέσω του urpmi.\n"
+#~ "\n"
+#~ "Αυτό μπορεί να συμβαίνει επειδή αυτή τη στιγμή δεν είναι διαθέσιμη η \n"
+#~ "εναλλακτική ή αν η έκδοση Mandrake Linux (%s) δεν υποστηρίζεται\n"
+#~ "ακόμα/πια από τις \n"
+#~ "Επίσημες Αναβαθμίσεις \n"
+#~ "της Mandrake Linux \n"
+#~ "\n"
+#~ "Θέλετε να δοκιμάσετε άλλη εναλλακτική;"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Σφάλμα κατά την προσθήκη του μέσου αναβαθμίσεων"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Παρακαλώ περιμένετε, γίνεται σύνδεση με την εναλλακτική διεύθυνση για την "
+#~ "εκκίνηση των αναβαθμίσεων των πακέτων."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Υπήρξε ένα ανεπανόρθωτο σφάλμα κατά την αναβάθμιση των πληροφοριών των "
+#~ "πακέτων."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Σφάλμα κατά την ανανέωση του μέσου"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Παρακαλώ περιμένετε, γίνεται σύνδεση με την εναλλακτική διεύθυνση για την "
+#~ "αναβάθμιση των πληροφοριών των πακέτων."
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Όλα είναι ήδη εγκατεστημένα.(θα έπρεπε να συμβαίνει αυτό;)"
 
@@ -1461,9 +1481,6 @@ msgstr "Διαχειριστής Πηγαίου Λογισμικού"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "Το ftp δεν μπόρεσε να αποθηκεύσει το αρχείο\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Σφάλμα ανάγνωσης\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "Τελείωσε η μνήμη\n"

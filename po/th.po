@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2002-11-27 21:43+0700\n"
 "Last-Translator: Varokas Panusuwan <varokasp@hotmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -261,35 +261,10 @@ msgstr "กำลังตรวจสอบ %s"
 msgid "Please wait, finding available packages..."
 msgstr "กำลังหาเพกเกจที่มีอยู่, กรุณารอสักครู่..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"มีข้อผิดพลาดเกิดขึ้นขณะกำลังเพื่มสื่อข้อมูลอัพเดทผ่าน urpmi\n"
-"\n"
-"สาเหตุอาจจะมาจากลิงก์ mirror เสีย หรือ ปิดบริการชั่วคราว หรือ เวอร์ชันของ\n"
-"Mandrake Linux ของคุณ (%s) ไม่ได้รับหรือยกเลิก การสนับสนุนจาก Mandrake Linux\n"
-"Offical Updates\n"
-"\n"
-"คุณต้องการจะลอง mirror อื่นหรือไม่?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "เกิดข้อผิดพลาดขณะกำลังเพื่มแผ่นข้อมูลอัพเดท"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "กำลังติดต่อกับ mirror เพื่อขออัพเดทเพกเกจ กรุณารอสักครู่"
+msgid "Please wait, adding medium..."
+msgstr "กำลังเพิ่มแผ่นข้อมูล, กรุณารอสักครู่"
 
 #: ../rpmdrake:1
 #, c-format
@@ -312,18 +287,19 @@ msgstr "วิธีเลือก mirror ของคุณเอง"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "มีข้อผิดพลาดที่ไม่สามารถกู้คืนได้เกิดขึ้นขณะที่กำลังอัพเดทข้อมูลเพกเกจ"
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "้้เกิดข้อผิดผลาดขณะพยายามอัพเดทสื่อข้อมูล"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "กำลังติดต่อกับ mirror เพื่ออัพเดทข้อมูลเพกเกจ, กรุณารอสักครู่"
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -337,6 +313,16 @@ msgstr ""
 "กรุณาตรวจสอบว่าระบบเนตเวอร์กกำลังใช้งานอยู่\n"
 "\n"
 "คุณต้องการจะทำต่อไปหรือไม่?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -911,11 +897,6 @@ msgstr "กำลังเอาสื่อข้อมูลออก, กร�
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "กำลังเพิ่มแผ่นข้อมูล, กรุณารอสักครู่"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "ชนิดของ source:"
 
@@ -993,12 +974,16 @@ msgstr "ไฟล์ในเครื่องนี้"
 msgid "Add a source"
 msgstr "เพิ่ม source: "
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "ไม่สามารถอัพเดทแผ่นข้อมูลได้; แผ่นข้อมูลนี้จะไม่ถูกใช้โดยอัตโนมัติ"
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "ไม่สามารถสร้างแผ่นข้อมูลได้"
@@ -1280,6 +1265,41 @@ msgstr "ลบโปรแกรท"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "ตัวจัดการ Software Sources"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "มีข้อผิดพลาดเกิดขึ้นขณะกำลังเพื่มสื่อข้อมูลอัพเดทผ่าน urpmi\n"
+#~ "\n"
+#~ "สาเหตุอาจจะมาจากลิงก์ mirror เสีย หรือ ปิดบริการชั่วคราว หรือ เวอร์ชันของ\n"
+#~ "Mandrake Linux ของคุณ (%s) ไม่ได้รับหรือยกเลิก การสนับสนุนจาก Mandrake Linux\n"
+#~ "Offical Updates\n"
+#~ "\n"
+#~ "คุณต้องการจะลอง mirror อื่นหรือไม่?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "เกิดข้อผิดพลาดขณะกำลังเพื่มแผ่นข้อมูลอัพเดท"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "กำลังติดต่อกับ mirror เพื่อขออัพเดทเพกเกจ กรุณารอสักครู่"
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "มีข้อผิดพลาดที่ไม่สามารถกู้คืนได้เกิดขึ้นขณะที่กำลังอัพเดทข้อมูลเพกเกจ"
+
+#~ msgid "Error updating medium"
+#~ msgstr "้้เกิดข้อผิดผลาดขณะพยายามอัพเดทสื่อข้อมูล"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "กำลังติดต่อกับ mirror เพื่ออัพเดทข้อมูลเพกเกจ, กรุณารอสักครู่"
 
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "ทุกอย่างถูก install ไว้หมดแล้ว"

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sl\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-08 14:29+0100\n"
 "Last-Translator: Gregor Pirnaver <gregor.pirnaver@email.si>\n"
 "Language-Team: Sloven¹èina <lugos-slo@lugos.si>\n"
@@ -271,39 +271,10 @@ msgstr "Preverjam %s"
 msgid "Please wait, finding available packages..."
 msgstr "Prosim poèakajte, i¹èem dostopne pakete..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Med dodajanjem update medija z urpmi se je pojavila napaka.\n"
-"\n"
-"To se je morda zgodilo zaradi pokvarjenega ali zaèasno nedostopnega "
-"zrcalnega stre¾nika\n"
-"ali pa zato ker Mandrake Linux razlièica (%s) ¹e ni oz. ni veè podprta z "
-"uradnimi nadgradnjami\n"
-"(Mandrake Linux Official Updates).\n"
-"\n"
-"®elite poskusiti drug zrcalni stre¾nik?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Napaka pri dodajanju medija za nadgradnje (update)"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Prosim poèakajte, v teku je povezovanje z zrcalnim stre¾nikom glede paketov "
-"za nadgradnjo."
+msgid "Please wait, adding medium..."
+msgstr "Pro"
 
 #: ../rpmdrake:1
 #, c-format
@@ -327,21 +298,19 @@ msgstr "Kako roèno izbrati zrcalni stre¾nik"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Med obnavljanjem informacij o podatki je pri¹lo do neodpravljive napake"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Napaka pri obnovi medija"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid "Already existing update sources"
 msgstr ""
-"Prosim poèakajte, v teku je povezovanje z zrcalnim s stre¾nikom zaradi "
-"obnove informacij o paketih."
 
 #: ../rpmdrake:1
 #, c-format
@@ -356,6 +325,16 @@ msgstr ""
 "Prosim preverite, da ste povezani v Internet.\n"
 "\n"
 "Lahko nadaljujem?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Napaka pri branju\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -938,11 +917,6 @@ msgstr "Prosim poèakajte, odstranjevanje medija..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Pro"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Vrsta vira:"
 
@@ -1020,12 +994,16 @@ msgstr "Lokalne datoteke"
 msgid "Add a source"
 msgstr "Dodaj vir"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Ni mo¾no obnoviti medija, zato bo samodejno onemogoèen"
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Medija ni mogoèe ustvariti"
@@ -1313,6 +1291,48 @@ msgstr "Odstrani programsko opremo"
 msgid "Software Sources Manager"
 msgstr "Upravnik virov programske opreme"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Med dodajanjem update medija z urpmi se je pojavila napaka.\n"
+#~ "\n"
+#~ "To se je morda zgodilo zaradi pokvarjenega ali zaèasno nedostopnega "
+#~ "zrcalnega stre¾nika\n"
+#~ "ali pa zato ker Mandrake Linux razlièica (%s) ¹e ni oz. ni veè podprta z "
+#~ "uradnimi nadgradnjami\n"
+#~ "(Mandrake Linux Official Updates).\n"
+#~ "\n"
+#~ "®elite poskusiti drug zrcalni stre¾nik?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Napaka pri dodajanju medija za nadgradnje (update)"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Prosim poèakajte, v teku je povezovanje z zrcalnim stre¾nikom glede "
+#~ "paketov za nadgradnjo."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Med obnavljanjem informacij o podatki je pri¹lo do neodpravljive napake"
+
+#~ msgid "Error updating medium"
+#~ msgstr "Napaka pri obnovi medija"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Prosim poèakajte, v teku je povezovanje z zrcalnim s stre¾nikom zaradi "
+#~ "obnove informacij o paketih."
+
 #, fuzzy
 #~ msgid "Everything already installed."
 #~ msgstr "Paket je ¾e name¹èen"
@@ -1407,9 +1427,6 @@ msgstr "Upravnik virov programske opreme"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "Ftp ne morem STOR dateke\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Napaka pri branju\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "Zmanjkalo je spomina\n"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2002-09-30 17:02+0200\n"
 "Last-Translator: Raivo Saars <spaiks@inbox.lv>\n"
 "Language-Team: ll10nt <ll10nt@listes.murds.lv>\n"
@@ -265,37 +265,10 @@ msgstr "Pârbaudu %s"
 msgid "Please wait, finding available packages..."
 msgstr "Lûdzu gaidiet, meklçju pieejamâs pakotnes..."
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Bija kïûda, pievienojot atjauninâðanas datu nesçju ar urpmi.\n"
-"\n"
-"Tas varçtu bût, jo ir laicîgi nepieejams spoguïserveris, vai arî Jûsu "
-"lietotâ\n"
-"Mandrake Linux versija (%s) vçl / vairs netiek atbalstîta no Mandrake Linux\n"
-"ifociâlo jauninâjumu puses.\n"
-"\n"
-"Vai vçlaties izvçlçties citu spoguïserveri?"
-
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Error adding update medium"
-msgstr "Kïûda pievienojot atjaunoðanas datu nesçju"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Lûdzu gaidiet, sazinos ar spoguïserveri lai uzsâktu pakotòu atjauninâðanu."
+msgid "Please wait, adding medium..."
+msgstr "Lûdzu gaidiet, pievienoju datu nesçju..."
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -319,19 +292,19 @@ msgstr "Kâ ar rokâm izvçlçties spoguïserveri"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "Atjaunojot pakotòu informâciju, notika neatgriezeniska kïûda."
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error updating medium"
-msgstr "Kïûda atjaunojot datu nesçju"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Lûdzu gaidiet, sazinos ar spoguïserveri, lai atjauninâtu pakotòu informâciju."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -346,6 +319,16 @@ msgstr ""
 "ir patreiz pieejams.\n"
 "\n"
 "Vai ir labi turpinât?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -926,11 +909,6 @@ msgid "Please wait, removing medium..."
 msgstr "Lûdzu gaidiet, atvienoju datu nesçju..."
 
 #: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Please wait, adding medium..."
-msgstr "Lûdzu gaidiet, pievienoju datu nesçju..."
-
-#: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
 msgid "Type of source:"
 msgstr "Avota tips:"
@@ -1009,12 +987,16 @@ msgstr "Lokâlie faili"
 msgid "Add a source"
 msgstr "Pievienoju avotu:"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Nav iespçjams atjauninât datu nesçju; tas tiks automâtiski atslçgts."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Nevaru izveidot datu nesçju."
@@ -1303,6 +1285,48 @@ msgstr "Noòemt programmatûru"
 #, fuzzy
 msgid "Software Sources Manager"
 msgstr "Programmatûras avotu pârvaldnieks"
+
+#, fuzzy
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Bija kïûda, pievienojot atjauninâðanas datu nesçju ar urpmi.\n"
+#~ "\n"
+#~ "Tas varçtu bût, jo ir laicîgi nepieejams spoguïserveris, vai arî Jûsu "
+#~ "lietotâ\n"
+#~ "Mandrake Linux versija (%s) vçl / vairs netiek atbalstîta no Mandrake "
+#~ "Linux\n"
+#~ "ifociâlo jauninâjumu puses.\n"
+#~ "\n"
+#~ "Vai vçlaties izvçlçties citu spoguïserveri?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Kïûda pievienojot atjaunoðanas datu nesçju"
+
+#, fuzzy
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Lûdzu gaidiet, sazinos ar spoguïserveri lai uzsâktu pakotòu atjauninâðanu."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "Atjaunojot pakotòu informâciju, notika neatgriezeniska kïûda."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Kïûda atjaunojot datu nesçju"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Lûdzu gaidiet, sazinos ar spoguïserveri, lai atjauninâtu pakotòu "
+#~ "informâciju."
 
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Viss jau uzinstalçts (vai tâ vispâr var gadîties?)."

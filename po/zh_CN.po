@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-13 22:13+0800\n"
 "Last-Translator: Shiyu Tang <shiyutang@netscape.net>\n"
 "Language-Team: Mandrake Simplified Chinese <mandrake@en2china.com>\n"
@@ -264,34 +264,10 @@ msgstr "正在检查 %s"
 msgid "Please wait, finding available packages..."
 msgstr "正在寻找可用的软件包，请稍候..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"通过 urpmi 添加更新介质时发生错误。\n"
-"\n"
-"这可能是由于介质已损坏或者临时不可用，不然就是您的 Mandrake Linux 版本\n"
-"(%s)不为 Mandrake Linux 官方升级所支持。\n"
-"\n"
-"您是否想要尝试另外的镜像？"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "添加更新介质出错"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "正在连接镜像以便初始化更新软件包，请稍候。"
+msgid "Please wait, adding medium..."
+msgstr "正在添加介质，请稍候..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -314,18 +290,19 @@ msgstr "如何手工选择您的镜像"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "更新软件包信息时发生不可恢复的错误。"
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "更新介质出错"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "正在连接镜像服务器以得到更新的软件包信息，请稍候。"
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -339,6 +316,16 @@ msgstr ""
 "请检查您的网络是否运转正常。\n"
 "\n"
 "确定继续吗？"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -914,11 +901,6 @@ msgstr "正在删除介质，请稍候..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "正在添加介质，请稍候..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "来源类型："
 
@@ -994,12 +976,16 @@ msgstr "本机文件"
 msgid "Add a source"
 msgstr "添加一个来源"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "无法更新介质；该介质将被自动停用。"
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "无法创建介质。"
@@ -1281,3 +1267,37 @@ msgstr "删除软件"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "软件源管理器"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "通过 urpmi 添加更新介质时发生错误。\n"
+#~ "\n"
+#~ "这可能是由于介质已损坏或者临时不可用，不然就是您的 Mandrake Linux 版本\n"
+#~ "(%s)不为 Mandrake Linux 官方升级所支持。\n"
+#~ "\n"
+#~ "您是否想要尝试另外的镜像？"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "添加更新介质出错"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "正在连接镜像以便初始化更新软件包，请稍候。"
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "更新软件包信息时发生不可恢复的错误。"
+
+#~ msgid "Error updating medium"
+#~ msgstr "更新介质出错"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "正在连接镜像服务器以得到更新的软件包信息，请稍候。"

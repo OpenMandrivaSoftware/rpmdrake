@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2002-10-17 12:17+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandrakesoft.com>\n"
 "Language-Team: Brezhoneg <ofisk@wanadoo.fr>\n"
@@ -232,28 +232,10 @@ msgstr "Adskrivañ %s"
 msgid "Please wait, finding available packages..."
 msgstr "O klask ar pakadoÃ¹ hegerz"
 
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Please wait, adding medium..."
+msgstr "Gortozit mar plij, o prientiñ ar staliadur"
 
 #: ../rpmdrake:1
 #, c-format
@@ -271,18 +253,19 @@ msgid "How to choose manually your mirror"
 msgstr ""
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "Ur fazi a zo bet en ur staliañ ar pakadoÃ¹Â :"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Error updating medium"
-msgstr "Fazi en ur lenn ar restr %s"
+#, c-format
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid "Already existing update sources"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -293,6 +276,16 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Ne m'eus ket gallet lenn\n"
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -842,11 +835,6 @@ msgstr "O termeniñ al live surentez"
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid "Please wait, adding medium..."
-msgstr "Gortozit mar plij, o prientiñ ar staliadur"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
 msgid "Type of source:"
 msgstr "Dibabit pakadoÃ¹ da staliañ"
 
@@ -922,12 +910,16 @@ msgstr "RestroÃ¹ lec'hel"
 msgid "Add a source"
 msgstr "Ouzhpennañ un arveriad"
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr ""
@@ -1202,6 +1194,15 @@ msgid "Software Sources Manager"
 msgstr "Anv rannet"
 
 #, fuzzy
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "Ur fazi a zo bet en ur staliañ ar pakadoÃ¹Â :"
+
+#, fuzzy
+#~ msgid "Error updating medium"
+#~ msgstr "Fazi en ur lenn ar restr %s"
+
+#, fuzzy
 #~ msgid "Everything already installed."
 #~ msgstr "N'hellit ket andiuz ar pakad-mañ. Staliet eo endo"
 
@@ -1238,9 +1239,6 @@ msgstr "Anv rannet"
 #, fuzzy
 #~ msgid "Write error\n"
 #~ msgstr "Servijer moullañ"
-
-#~ msgid "Read error\n"
-#~ msgstr "Ne m'eus ket gallet lenn\n"
 
 #~ msgid "Time out\n"
 #~ msgstr "Amzer-hont\n"

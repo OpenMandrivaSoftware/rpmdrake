@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-fi - MDK Release 9.1\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-01 20:37+0200\n"
 "Last-Translator: Thomas Backlund <tmb@iki.fi>\n"
 "Language-Team: Finnish <cooker-i18n@linux-mandrake.com>\n"
@@ -274,35 +274,10 @@ msgstr "Tarkistan %s"
 msgid "Please wait, finding available packages..."
 msgstr "Odota, etsitään saatavilla olevia paketteja"
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Sattui virhe lisättäessä pävitymediaa 'urpmi':n kautta.\n"
-"\n"
-"Tämä voi johtua rikkoutuneesta tai tilapäisesti käytöstä poistettu\n"
-"peilipalvelimesta, tai Mandrake Linux versiosi (%s) ei ole vielä/enää\n"
-"tuettu Mandrake Linux:in virallisessa päivityksissä.\n"
-"\n"
-"Haluatko kokeilla toista peilipalvelinta?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Virhe lisättäessä päivitysmediaa"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "Odota, yhdistetään peilipalvelimelle pakettitietojen alustamiseksi."
+msgid "Please wait, adding medium..."
+msgstr "Odota, media lisätään ..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -326,18 +301,19 @@ msgstr "Miten manuaalisesti valitset peilipalvelinta"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "Sattui ylipääsemätön virhe päivittäessä pakkauksien tietoja."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Virhe median päivityksessä"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "Odota, yhdistetään peilipalvelimelle pakettitietojen päivittämiseksi."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -351,6 +327,16 @@ msgstr ""
 "päivityspaketit. Varmista että verkkoyhteytesi on avattu.\n"
 "\n"
 "Sopiiko että jatkan?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Lukuvirhe\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -934,11 +920,6 @@ msgstr "Odota, media poistetaan ..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Odota, media lisätään ..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Lähteen tyyppi:"
 
@@ -1016,12 +997,16 @@ msgstr "Paikalliset tiedostot"
 msgid "Add a source"
 msgstr "Lisätään lähde"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Median päivittäminen epäonnistui, poistetaan käytöstä automaattisesti."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Median luonti epäonnistui."
@@ -1307,6 +1292,42 @@ msgstr "Poista Ohjelmia"
 msgid "Software Sources Manager"
 msgstr "Ohjelmisto Lähteiden Hallinta"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Sattui virhe lisättäessä pävitymediaa 'urpmi':n kautta.\n"
+#~ "\n"
+#~ "Tämä voi johtua rikkoutuneesta tai tilapäisesti käytöstä poistettu\n"
+#~ "peilipalvelimesta, tai Mandrake Linux versiosi (%s) ei ole vielä/enää\n"
+#~ "tuettu Mandrake Linux:in virallisessa päivityksissä.\n"
+#~ "\n"
+#~ "Haluatko kokeilla toista peilipalvelinta?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Virhe lisättäessä päivitysmediaa"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "Odota, yhdistetään peilipalvelimelle pakettitietojen alustamiseksi."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "Sattui ylipääsemätön virhe päivittäessä pakkauksien tietoja."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Virhe median päivityksessä"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Odota, yhdistetään peilipalvelimelle pakettitietojen päivittämiseksi."
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Kaikki on jo asennettu. (pitäisikö tämä ollenkaan tapahtua?)"
 
@@ -1408,9 +1429,6 @@ msgstr "Ohjelmisto Lähteiden Hallinta"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "ftp: tiedoston STOR epäonnistui\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Lukuvirhe\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "Muisti loppu\n"

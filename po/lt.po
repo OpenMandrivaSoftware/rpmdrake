@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2001-03-04 15:30+0200\n"
 "Last-Translator: Mykolas Norvaiðas <Myka@centras.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -235,28 +235,12 @@ msgstr ""
 msgid "Please wait, finding available packages..."
 msgstr "Praðom palaukti.Paðalinami paketai"
 
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Please wait, adding medium..."
 msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
+"Praðom palaukti\n"
+"Iðmetama laikmena"
 
 #: ../rpmdrake:1
 #, c-format
@@ -275,17 +259,18 @@ msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid "Already existing update sources"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -296,6 +281,16 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Skaitymo klaida\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -858,13 +853,6 @@ msgstr ""
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid "Please wait, adding medium..."
-msgstr ""
-"Praðom palaukti\n"
-"Iðmetama laikmena"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
 msgid "Type of source:"
 msgstr "Laikmenos tipas:"
 
@@ -940,12 +928,16 @@ msgstr "%d bylos"
 msgid "Add a source"
 msgstr "Redaguoti Laikmena"
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, fuzzy, c-format
 msgid "Unable to create medium."
 msgstr "Nepavyko sukurti raporto bylos, nutraukiu.\n"
@@ -1323,9 +1315,6 @@ msgstr ""
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "FTP negalëjo áraðyti (STOR) bylos\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Skaitymo klaida\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "Trûksta atminties\n"

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-he\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-12 21:10+0000\n"
 "Last-Translator: dovix <dovix2003@yahoo.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -263,35 +263,10 @@ msgstr "בחינת %s"
 msgid "Please wait, finding available packages..."
 msgstr "נא להמתין בעת חיפוש חבילות זמינות..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"חלה תקלה בעת הוספת מאגר תוכנה ע\"י urpmi.\n"
-"\n"
-"תקלה זו עלולה להתרחש עקב כתובת לא תקינה של המאגר, שרת לא זמין או כאשר\n"
-"גרסת הלינוקס מנדרייק שלך (%s) עדיין אינה/כבר לא נתמכת ע\"י העדכונים הרשמיים\n"
-"של לינוקס מנדרייק.\n"
-"\n"
-"האם ברצונך לנסות אתר מראה אחר?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "חלה תקלה בעת הוספת מאגר לעדכוני תוכנה"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr " נא להמתין בעת יצירת קשר עם אתרי המראה לצורך התחלת תהליך העידכון."
+msgid "Please wait, adding medium..."
+msgstr "נא להמתין בעת הוספת המאגר..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -315,18 +290,19 @@ msgstr "איך לבחור את אתר המראה באופן ידני"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "חלה תקלה ללא אפשרות תיקון בזמן עדכון המידע אודות החבילות."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "חלה תקלה בעת עדכון המאגר"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "נא להמתין, מתחבר לשרת על מנת לעדכן את המידע אודות החבילות."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -340,6 +316,16 @@ msgstr ""
 "נא לבדוק שהמחשב שלך מחובר לרשת.\n"
 "\n"
 "האם ניתן להמשיך?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -921,11 +907,6 @@ msgstr "נא להמתין בעת הסרת המאגר..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "נא להמתין בעת הוספת המאגר..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "סוג המאגר:"
 
@@ -1003,12 +984,16 @@ msgstr "קבצים מקומיים"
 msgid "Add a source"
 msgstr "הוספת מאגר"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "עדכון המאגר נכשל, מאגר זה ינוטרל באופן אוטומטי."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "הגדרת המאגר נכשלה."
@@ -1292,3 +1277,39 @@ msgstr "הסרת תוכנה"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "ניהול מקורות תוכנה"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "חלה תקלה בעת הוספת מאגר תוכנה ע\"י urpmi.\n"
+#~ "\n"
+#~ "תקלה זו עלולה להתרחש עקב כתובת לא תקינה של המאגר, שרת לא זמין או כאשר\n"
+#~ "גרסת הלינוקס מנדרייק שלך (%s) עדיין אינה/כבר לא נתמכת ע\"י העדכונים "
+#~ "הרשמיים\n"
+#~ "של לינוקס מנדרייק.\n"
+#~ "\n"
+#~ "האם ברצונך לנסות אתר מראה אחר?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "חלה תקלה בעת הוספת מאגר לעדכוני תוכנה"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr " נא להמתין בעת יצירת קשר עם אתרי המראה לצורך התחלת תהליך העידכון."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "חלה תקלה ללא אפשרות תיקון בזמן עדכון המידע אודות החבילות."
+
+#~ msgid "Error updating medium"
+#~ msgstr "חלה תקלה בעת עדכון המאגר"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "נא להמתין, מתחבר לשרת על מנת לעדכן את המידע אודות החבילות."

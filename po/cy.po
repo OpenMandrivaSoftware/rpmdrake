@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-03 21:58-0000\n"
 "Last-Translator: Rhoslyn Prys <rhoslyn.prys@meddal.org.uk>\n"
 "Language-Team: Cymraeg/Welsh <rhoslyn.prys@meddal.org.uk>\n"
@@ -265,35 +265,10 @@ msgstr "Archwilio %s"
 msgid "Please wait, finding available packages..."
 msgstr "Arhoswch, canfod pecynnau sydd ar gael..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Cafwyd gwall wrth ychwanegu'r cyfrwng diweddaru drwy urpmi.\n"
-"\n"
-"Gall hyn fod oherwydd drych wedi torri neu heb fod ar gael, neu pan nad\n"
-"yw eich fersiwn (%s) o Mandrake Linux yn / wedi gorffen cael ei gynnal gan\n"
-"Ddiweddariadau Swyddogol Mandrake Linux\n"
-"\n"
-"Hoffech chi fynd at ddrych arall?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Gwall wrth ychwanegu cyfrwng diweddaru"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "Arhoswch, yn cysylltu â'r drych i gychwyn pecynnau diweddaru."
+msgid "Please wait, adding medium..."
+msgstr "Arhoswch, ychwanegu cyfrwng..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -317,19 +292,19 @@ msgstr "Sut i ddewis drych gyda llaw."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Digwyddodd gwall anadferadwy wrth ddiweddaru'r wybodaeth am y pecynnau."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Gwall wrth ddiweddaru'r cyfrwng"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "Arhoswch, yn cysylltu â'r drych i ddiweddaru gwybodaeth am y pecynnau."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -343,6 +318,16 @@ msgstr ""
 "Gwiriwch fod y rhyngrwyd yn rhedeg.\n"
 "\n"
 "Ydi hi'n iawn parhau?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -919,11 +904,6 @@ msgstr "Arhoswch, tynnu cyfrwng..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Arhoswch, ychwanegu cyfrwng..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Math o ffynonellau:"
 
@@ -1001,12 +981,16 @@ msgstr "Ffeiliau lleol"
 msgid "Add a source"
 msgstr "Ychwanegu ffynhonnell"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Methu diweddaru'r cyfrwng; bydd yn cael ei anablu'n awtomatig."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Methu creu cyfrwng."
@@ -1291,3 +1275,41 @@ msgstr "Tynnu Meddalwedd"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Rheolwr Ffynhonnell Meddalwedd"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Cafwyd gwall wrth ychwanegu'r cyfrwng diweddaru drwy urpmi.\n"
+#~ "\n"
+#~ "Gall hyn fod oherwydd drych wedi torri neu heb fod ar gael, neu pan nad\n"
+#~ "yw eich fersiwn (%s) o Mandrake Linux yn / wedi gorffen cael ei gynnal "
+#~ "gan\n"
+#~ "Ddiweddariadau Swyddogol Mandrake Linux\n"
+#~ "\n"
+#~ "Hoffech chi fynd at ddrych arall?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Gwall wrth ychwanegu cyfrwng diweddaru"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "Arhoswch, yn cysylltu â'r drych i gychwyn pecynnau diweddaru."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Digwyddodd gwall anadferadwy wrth ddiweddaru'r wybodaeth am y pecynnau."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Gwall wrth ddiweddaru'r cyfrwng"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Arhoswch, yn cysylltu â'r drych i ddiweddaru gwybodaeth am y pecynnau."

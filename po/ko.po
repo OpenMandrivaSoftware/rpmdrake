@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2002-09-09 06:57+0900\n"
 "Last-Translator: Jaegeum Cze <baedaron@hanafos.com>\n"
 "Language-Team: Korean <baedaron@hananet.net>\n"
@@ -260,35 +260,10 @@ msgstr "%s 조사중"
 msgid "Please wait, finding available packages..."
 msgstr "기다려 주세요. 유효한 팩키지 검색 중..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"[urpmi]로 업데이트 매체를 추가하는 도중에 오류가 있었습니다.\n"
-"\n"
-"잘못된 또는 일시적으로 유효하지 않은 미러이거나,\n"
-"맨드레이크 리눅스 공식 업데이트가 아직 또는 더 이상 지원하지 않는\n"
-"맨드레이크 리눅스 버전(%s)입니다.\n"
-"\n"
-"다른 미러를 사용해 보시겠습니까?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "업데이트 매체 추가 중 오류"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "기다려 주세요. 업데이트 팩키지를 초기화하기 위해 미러에 접속 중..."
+msgid "Please wait, adding medium..."
+msgstr "기다려 주세요. 매체 추가 중..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -312,18 +287,19 @@ msgstr "수동으로 미러를 선택하는 방법"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "팩키지 정보 업데이트 도중에 복구 불가능한 오류가 있었습니다."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "매체 업데이트 중 오류"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "기다려 주세요. 팩키지 정보를 업데이트하기 위해 미러에 접속 중..."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -337,6 +313,16 @@ msgstr ""
 "현재 네트웍이 가능한지 확인하세요.\n"
 "\n"
 "계속할까요?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -919,11 +905,6 @@ msgstr "기다려 주세요. 매체 제거 중..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "기다려 주세요. 매체 추가 중..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "소스 유형:"
 
@@ -1001,12 +982,16 @@ msgstr "지역 파일"
 msgid "Add a source"
 msgstr "소스 추가:"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "매체를 업데이트할 수 없습니다; 자동으로 사용불가될 것입니다."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "매체를 생성할 수 없습니다."
@@ -1291,6 +1276,41 @@ msgstr "소프트웨어 제거"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "소프트웨어 소스 관리자"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "[urpmi]로 업데이트 매체를 추가하는 도중에 오류가 있었습니다.\n"
+#~ "\n"
+#~ "잘못된 또는 일시적으로 유효하지 않은 미러이거나,\n"
+#~ "맨드레이크 리눅스 공식 업데이트가 아직 또는 더 이상 지원하지 않는\n"
+#~ "맨드레이크 리눅스 버전(%s)입니다.\n"
+#~ "\n"
+#~ "다른 미러를 사용해 보시겠습니까?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "업데이트 매체 추가 중 오류"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "기다려 주세요. 업데이트 팩키지를 초기화하기 위해 미러에 접속 중..."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "팩키지 정보 업데이트 도중에 복구 불가능한 오류가 있었습니다."
+
+#~ msgid "Error updating medium"
+#~ msgstr "매체 업데이트 중 오류"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "기다려 주세요. 팩키지 정보를 업데이트하기 위해 미러에 접속 중..."
 
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "이미 설치되어 있습니다.(과연 이런 일이 있을 수 있나요?)"

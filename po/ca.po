@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2001-09-20 20:49+0200\n"
 "Last-Translator: Softcatalà <traddrake@softcatala.org>\n"
 "Language-Team: Catalan <info@softcatala.org>\n"
@@ -271,40 +271,10 @@ msgstr "Inspeccionant %s"
 msgid "Please wait, finding available packages..."
 msgstr "Si us plau espereu, s'estan buscant els paquets disponibles..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Hi ha hagut un error quant s'estava afegint el suport d'actualització via "
-"urpmi.\n"
-"\n"
-"Això pot ser degut a una rèplica que no és correcte o està temporalment "
-"inaccessible, o la\n"
-"versió (%s) del vostre Mandrake Linux no és encara suportada o ja ha estat "
-"discontinuada per Mandrake Linux\n"
-"Official Updates.\n"
-"\n"
-"Voleu provar algun altra rèplica?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "S'ha produït un error afegint el suport d'actualització"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Espereu si us plau, s'està contactant la rèplica per inicialitzar les "
-"actualitzacions."
+msgid "Please wait, adding medium..."
+msgstr "Si us plau espereu, s'està afegint el suport..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -328,22 +298,19 @@ msgstr "Com escollir manualment la rèplica"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Hi ha hagut un error irrecuperable mentres s'actualitzava la informació de "
-"paquets."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "S'ha produït un error actualitzant el suport"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
+msgid "Already existing update sources"
 msgstr ""
-"Per favor espereu, contactant la rèplica per a info d'actualitzacions de "
-"paquets."
 
 #: ../rpmdrake:1
 #, c-format
@@ -357,6 +324,16 @@ msgstr ""
 "actualitzacions de paquets. Comproveu que la xarxa funcioni ara.\n"
 "\n"
 "Esteu d'acord en continuar?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Error de lectura\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -944,11 +921,6 @@ msgstr "Si us plau espereu, s'està afegint el suport..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Si us plau espereu, s'està afegint el suport..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Tipus de font:"
 
@@ -1026,12 +998,16 @@ msgstr "Fitxers locals"
 msgid "Add a source"
 msgstr "Afegeix una font"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "No es pot actualitzar el support; es deshabilitarà automàticament."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "No es pot crear el support."
@@ -1319,6 +1295,50 @@ msgstr "Elimina el Programari"
 msgid "Software Sources Manager"
 msgstr "Manejador de Fonts del Programari"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Hi ha hagut un error quant s'estava afegint el suport d'actualització via "
+#~ "urpmi.\n"
+#~ "\n"
+#~ "Això pot ser degut a una rèplica que no és correcte o està temporalment "
+#~ "inaccessible, o la\n"
+#~ "versió (%s) del vostre Mandrake Linux no és encara suportada o ja ha "
+#~ "estat discontinuada per Mandrake Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Voleu provar algun altra rèplica?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "S'ha produït un error afegint el suport d'actualització"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Espereu si us plau, s'està contactant la rèplica per inicialitzar les "
+#~ "actualitzacions."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Hi ha hagut un error irrecuperable mentres s'actualitzava la informació "
+#~ "de paquets."
+
+#~ msgid "Error updating medium"
+#~ msgstr "S'ha produït un error actualitzant el suport"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr ""
+#~ "Per favor espereu, contactant la rèplica per a info d'actualitzacions de "
+#~ "paquets."
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Tot ja està instal·lat (això se suposa que pot passar?)."
 
@@ -1411,9 +1431,6 @@ msgstr "Manejador de Fonts del Programari"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "FTP: no s'ha pogut STOR el fitxer\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Error de lectura\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "Sense memòria\n"

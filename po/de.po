@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: RpmDrake\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-02-09 17:17+0100\n"
 "Last-Translator: Stefan Siegel <siegel@linux-mandrake.com>\n"
 "Language-Team: German <cooker-i18n@linux-mandrake.com>\n"
@@ -267,35 +267,10 @@ msgstr "Untersuche %s"
 msgid "Please wait, finding available packages..."
 msgstr "Suche nach vorhandenen Pakete, bitte warten ..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Beim Hinzufügen des Aktualisierungsmediums mit urpmi trat ein Fehler auf.\n"
-"Ein Grund dafür kann ein nicht gepflegter oder nicht erreichbarer\n"
-"Spiegelserver sein. Möglicherweise wird Ihre Mandrake Linux Version\n"
-"(%s) auch noch nicht/nichtmehr mit offiziellen Aktualisierungen versorgt.\n"
-"\n"
-"Wollen Sie einen anderen Server versuchen?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Fehler beim Erstellen eines Aktualisierungsmediums"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
-"Besorge Liste der zu aktualisierenden Pakete vom Server, bitte warten ..."
+msgid "Please wait, adding medium..."
+msgstr "Hinzufügen der Quelle, bitte warten ..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -319,20 +294,19 @@ msgstr "Wie Sie Ihren Paketserver selbst auswählen"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"Es trat ein gravierender Fehler beim Aktualisieren der Paketinformationen "
-"auf."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Fehler beim Aktualisieren des Mediums"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "Besorge Paketinformationen vom Server, bitte warten ..."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -346,6 +320,16 @@ msgstr ""
 "zu besorgen. Stelen Sie sicher, dass Ihre Netzwerkverbindung besteht.\n"
 "\n"
 "Soll ich fortfahren?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Lesefehler\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -931,11 +915,6 @@ msgstr "Entfernen der Quelle, bitte warten ..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Hinzufügen der Quelle, bitte warten ..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Typ der Quelle:"
 
@@ -1013,12 +992,16 @@ msgstr "Lokale Dateien"
 msgid "Add a source"
 msgstr "Hinzufügen einer Quelle"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Da ich das Medium nicht aktualisieren kann, wird es deaktiviert."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Ich kann das Medium nicht anlegen."
@@ -1302,6 +1285,45 @@ msgstr "Software entfernen"
 msgid "Software Sources Manager"
 msgstr "Paketquellen verwalten"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Beim Hinzufügen des Aktualisierungsmediums mit urpmi trat ein Fehler "
+#~ "auf.\n"
+#~ "Ein Grund dafür kann ein nicht gepflegter oder nicht erreichbarer\n"
+#~ "Spiegelserver sein. Möglicherweise wird Ihre Mandrake Linux Version\n"
+#~ "(%s) auch noch nicht/nichtmehr mit offiziellen Aktualisierungen "
+#~ "versorgt.\n"
+#~ "\n"
+#~ "Wollen Sie einen anderen Server versuchen?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Fehler beim Erstellen eines Aktualisierungsmediums"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr ""
+#~ "Besorge Liste der zu aktualisierenden Pakete vom Server, bitte warten ..."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "Es trat ein gravierender Fehler beim Aktualisieren der Paketinformationen "
+#~ "auf."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Fehler beim Aktualisieren des Mediums"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "Besorge Paketinformationen vom Server, bitte warten ..."
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr ""
 #~ "Alle gewünschten Pakete sind bereits installiert (Das sollte eigentlich "
@@ -1438,9 +1460,6 @@ msgstr "Paketquellen verwalten"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "FTP konnte STOR nicht für die Datei ausführen\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Lesefehler\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "Kein Speicher mehr verfügbar\n"

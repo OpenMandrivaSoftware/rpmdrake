@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-03-18 16:01+0900\n"
 "Last-Translator: Budi Rachmanto <rac@linux-mandrake.com>\n"
 "Language-Team: Bahasa Indonesia <id@li.org>\n"
@@ -267,35 +267,10 @@ msgstr "Pemeriksaan %s"
 msgid "Please wait, finding available packages..."
 msgstr "Tunggu, sedang mencari paket yg tersedia..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Ada error saat penambahan media update via urpmi.\n"
-"\n"
-"Ini mungkin disebabkan oleh mirror yg rusak / sementara tak dapat dipakai,\n"
-"atau bila versi Linux Mandrake (%s) Anda belum / tak ditunjang lagi oleh\n"
-"Update Resmi Linux Mandrake.\n"
-"\n"
-"Do you want to try another mirror?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Error saat penambahan media"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "Mirror sedang dihubungi untuk memulai update paket."
+msgid "Please wait, adding medium..."
+msgstr "Media sedang ditambahkan..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -319,18 +294,19 @@ msgstr "Cara memilih mirror"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "Ada error yang tak dapat dipulihkan saat meng-update info paket."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Error saat meng-update media"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "Mirror sedang dihubungi untuk meng-update info paket."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -344,6 +320,16 @@ msgstr ""
 "Pastikan bahwa jaringan Anda sedang berjalan.\n"
 "\n"
 "Jalan terus?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "Error saat membaca\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -918,11 +904,6 @@ msgstr "Media sedang dihapus..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Media sedang ditambahkan..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Jenis source:"
 
@@ -998,12 +979,16 @@ msgstr "File lokal"
 msgid "Add a source"
 msgstr "Tambah source"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Update media gagal; media akan dinon-aktifkan."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Gagal membuat media."
@@ -1287,6 +1272,42 @@ msgstr "Hapus Software"
 msgid "Software Sources Manager"
 msgstr "Manajer Source Software"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Ada error saat penambahan media update via urpmi.\n"
+#~ "\n"
+#~ "Ini mungkin disebabkan oleh mirror yg rusak / sementara tak dapat "
+#~ "dipakai,\n"
+#~ "atau bila versi Linux Mandrake (%s) Anda belum / tak ditunjang lagi oleh\n"
+#~ "Update Resmi Linux Mandrake.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Error saat penambahan media"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "Mirror sedang dihubungi untuk memulai update paket."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "Ada error yang tak dapat dipulihkan saat meng-update info paket."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Error saat meng-update media"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "Mirror sedang dihubungi untuk meng-update info paket."
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Semua sudah diinstal (inikah yg diharapkan?)."
 
@@ -1466,9 +1487,6 @@ msgstr "Manajer Source Software"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "Tidak dapat STOR file pada FTP\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Error saat membaca\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "Adaaaaawwwww memori habis nih\n"

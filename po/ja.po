@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-16 16:58+0200\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2000-09-13 14:44+0200\n"
 "Last-Translator: YAMAGATA Hiroo <hiyori13@alum.mit.edu>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -263,35 +263,10 @@ msgstr "%s 検査中"
 msgid "Please wait, finding available packages..."
 msgstr "提供パッケージを探しています、少々お待ちを"
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"更新メディアをurpmiで追加中にエラーがおきました。\n"
-"\n"
-"これはミラーが壊れているせいか、あるいはあなたのMandrake Linuxの\n"
-"バージョン (%s) がMandrake Linux 公式アップデートでサポートされて\n"
-"いないからかもしれません。\n"
-"\n"
-"別のミラーを試してみますか?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "更新メディア追加でエラー"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "ミラーにつないで更新パッケージを初期化します。少々お待ちを"
+msgid "Please wait, adding medium..."
+msgstr "少々お待ちを、メディア追加中"
 
 #: ../rpmdrake:1
 #, c-format
@@ -315,18 +290,19 @@ msgstr "ミラーをマニュアルで選ぶには"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
-msgstr "パッケージ情報更新中に回復不能エラー発生。"
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "メディア更新でエラー"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "少々お待ちを、ミラーにつないでパッケージ情報更新中。"
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -340,6 +316,16 @@ msgstr ""
 "ネットワークが有効か確認してください。\n"
 "\n"
 "続けますか?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Fatal error"
+msgstr "読み込みエラー\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -920,11 +906,6 @@ msgstr "少々お待ちを、メディア取り出し中"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "少々お待ちを、メディア追加中"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "ソースの種類:"
 
@@ -1002,12 +983,16 @@ msgstr "ローカルファイル"
 msgid "Add a source"
 msgstr "ソースの追加"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "メディアを更新できません。使用不能にします。"
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "メディアが作れません。"
@@ -1292,6 +1277,41 @@ msgstr "ソフトウェア削除"
 msgid "Software Sources Manager"
 msgstr "ソフトウェアソースマネージャ"
 
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "更新メディアをurpmiで追加中にエラーがおきました。\n"
+#~ "\n"
+#~ "これはミラーが壊れているせいか、あるいはあなたのMandrake Linuxの\n"
+#~ "バージョン (%s) がMandrake Linux 公式アップデートでサポートされて\n"
+#~ "いないからかもしれません。\n"
+#~ "\n"
+#~ "別のミラーを試してみますか?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "更新メディア追加でエラー"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "ミラーにつないで更新パッケージを初期化します。少々お待ちを"
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr "パッケージ情報更新中に回復不能エラー発生。"
+
+#~ msgid "Error updating medium"
+#~ msgstr "メディア更新でエラー"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "少々お待ちを、ミラーにつないでパッケージ情報更新中。"
+
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "すべてインストール済み（こんなことがあっていいのか？）"
 
@@ -1456,9 +1476,6 @@ msgstr "ソフトウェアソースマネージャ"
 
 #~ msgid "ftp couldn't STOR file\n"
 #~ msgstr "ftp ファイルを STOR できません\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "読み込みエラー\n"
 
 #~ msgid "Out of memory\n"
 #~ msgstr "メモリ不足\n"
