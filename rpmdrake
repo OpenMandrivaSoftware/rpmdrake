@@ -22,7 +22,7 @@
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
-    "@ARGV" =~ /-h/ and do {
+    grep { /^--?h/ } @ARGV and do {
 	printf qq(Usage: %s [OPTION]...
   --no-confirmation      don't ask first confirmation question in update mode
   --no-verify-rpm        don't verify packages signatures
