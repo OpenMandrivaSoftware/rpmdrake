@@ -883,14 +883,15 @@ sub dialog_rpmnew {
 				     map { my $pkg = $_;
 					   map {
 					       my $f = $_;
+					       my $b;
 					       [ gtkpack__(Gtk2::HBox->new(0, 0),
 							   gtkset_selectable(gtkset_markup(Gtk2::Label->new,
 											   "$pkg:<span font_desc=\"monospace\">$f</span>"), 1)),
-						 my $b = gtksignal_connect(Gtk2::Button->new(but(N("Inspect..."))),
-									   clicked => sub {
-									       $inspect->($f);
-									       -r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0)
-									     }) ]
+						 $b = gtksignal_connect(Gtk2::Button->new(but(N("Inspect..."))),
+									clicked => sub {
+									    $inspect->($f);
+									    -r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0)
+									}) ]
 					   } @{$p2r{$pkg}}
 				       } keys %p2r);
     gtkadd($d->{window},

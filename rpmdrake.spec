@@ -124,6 +124,8 @@ rm -rf $RPM_BUILD_ROOT
 - rpmdrake:
   - don't reset selection list when no package was installed/removed
   - try to have a more sensible default size for the rpmnew dialog
+  - fix "Can't call method set_sensitive on an undefined value"
+    stopping the program after resolving a rpmnew
 
 * Wed Jan  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-1mdk
 - gtk2 (possibly contains important breakages, use with care)
