@@ -782,10 +782,13 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    myexit -1;
 	}
 	my $exitstatus = $?;
+	# /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
+	my @ignores_rpmnew = qw(/etc/group /etc/passwd /etc/localtime /etc/shells /etc/adjtime /etc/ld.so.conf /etc/modules
+                                /etc/security/fileshare.conf /etc/sudoers);
 	my %pkg2rpmnew;
 	foreach my $u (@rpms_upgrade) {
 	    $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
-	      and $pkg2rpmnew{$1} = [ grep { m|^/etc| && -r "$_.rpmnew" } map { chomp_($_) } `rpm -ql $1` ];
+	      and $pkg2rpmnew{$1} = [ grep { m|^/etc| && -r "$_.rpmnew" && !member($_, @ignores_rpmnew) } map { chomp_($_) } `rpm -ql $1` ];
 	}
 	if ($exitstatus == 0 && keys(%pkg2rpmnew) == 0) {
 	    interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
