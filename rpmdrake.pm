@@ -561,7 +561,7 @@ sub update_sources {
 		    Gtk2::Button->new(N("Cancel")),
 		    clicked => sub {
 			$cancel = 1;
-			$label->set_label(N("Media update cancelled..."));
+			$w->destroy;
 		    },
 		),
 	    ),
@@ -589,8 +589,8 @@ later.",
 	    }
 	},
     );
-  cancel_update:
     $w->destroy;
+  cancel_update:
 }
 
 sub update_sources_check {
