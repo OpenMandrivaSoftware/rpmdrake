@@ -429,7 +429,9 @@ sub update_sources_check {
         interactive_msg('rpmdrake',
                         N("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s",
                           join("\n", @error_msgs)));
+        return 0;
     }
+    return 1;
 }
 
 sub update_sources_interactive {
@@ -474,17 +476,23 @@ sub add_medium_and_check {
         interactive_msg('rpmdrake',
                         N("Unable to add medium, errors reported:\n\n%s",
                           join("\n", @error_msgs)));
-        return;
+        return 0;
     }
 
-    update_sources_check($urpm, $options, $_[0]);
-    my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
-    $medium or interactive_msg('rpmdrake', N("Unable to create medium."));
+    update_sources_check($urpm, $options, $_[0]) or return 0;
     $urpm->write_config;
-    return;
+
+    my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
+    if ($medium) {
+        return 1;
+    } else {
+        interactive_msg('rpmdrake', N("Unable to create medium."));
+        return 0;
+    }
 
   fatal_error:
     interactive_msg(N("Failure when adding medium"),
                     N("There was a problem adding medium:\n\n%s", $fatal_msg));
+    return 0;
 }
 
