@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.4
-%define release 2mdk
+%define release 3mdk
 
 Name: %{name}
 Version: %{version}
@@ -109,6 +109,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Dec 17 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-3mdk
+- Add the ability to reorder the media in the software media manager
+
 * Wed Dec 15 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-2mdk
 - Remove dependency on gurpmi
 - Only load packdrake when needed
