@@ -13,8 +13,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-08-13 05:36+0200\n"
-"PO-Revision-Date: 2003-06-27 14:03+0200\n"
+"POT-Creation-Date: 2003-08-13 14:00+0200\n"
+"PO-Revision-Date: 2003-08-13 14:02+0200\n"
 "Last-Translator: Christophe Combelles <ccomb@free.fr>\n"
 "Language-Team: french <cooker-i18n@linux-mandrake.com>\n"
 "MIME-Version: 1.0\n"
@@ -156,9 +156,9 @@ msgid "Publishing"
 msgstr "Publication"
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
+#, c-format
 msgid "Remove key"
-msgstr "Supprimer"
+msgstr "Supprimer une clé"
 
 #: ../rpmdrake:1
 #, c-format
@@ -189,6 +189,16 @@ msgstr "Interpréteurs de commandes"
 #, c-format
 msgid "Chemistry"
 msgstr "Chimie"
+
+#: ../edit-urpm-sources.pl:1
+#, c-format
+msgid "Choose a key for adding to the medium %s"
+msgstr "Choisissez une clé à ajouter au médium %s"
+
+#: ../edit-urpm-sources.pl:1
+#, c-format
+msgid "Add a key"
+msgstr "Ajouter une clé"
 
 #: ../rpmdrake:1
 #, c-format
@@ -268,9 +278,9 @@ msgstr ""
 "\n"
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
+#, c-format
 msgid "Add a key..."
-msgstr "Ajouter..."
+msgstr "Ajouter une clé..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -431,15 +441,15 @@ msgstr ""
 msgid "No mirror"
 msgstr "Pas de miroir"
 
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Poland"
-msgstr "Pologne"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Reload the packages list"
 msgstr "Rafraîchir la liste des paquetages"
+
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Poland"
+msgstr "Pologne"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -954,7 +964,7 @@ msgstr "Livres informatiques"
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "If left blank, synthesis/hdlist will be automatically probed"
-msgstr ""
+msgstr "Laissé vide, le synthesis/hdlist sera détecté automatiquement"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -1315,7 +1325,7 @@ msgstr "Nouveaux"
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Keys"
-msgstr ""
+msgstr "Clés"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1333,6 +1343,8 @@ msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
 "(name of the key: %s)"
 msgstr ""
+"Êtes-vous sûr de vouloir supprimer la clé %s du médium %s ?\n"
+"(nom de la clé : %s)"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1392,7 +1404,7 @@ msgstr "Mises à jour normales"
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Manage keys..."
-msgstr ""
+msgstr "Gérer les clés..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1532,6 +1544,11 @@ msgstr " fini."
 msgid "You need to insert the medium to continue"
 msgstr "Vous devez insérer le médium pour continuer"
 
+#: ../edit-urpm-sources.pl:1
+#, c-format
+msgid "no name found, key doesn't exist in rpm keyring!"
+msgstr "aucun nom trouvé, la clé est inconnue de rpm"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Too many packages are selected"
@@ -1612,10 +1629,11 @@ msgstr "Compression"
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr "Téléchargement de `%s', temps : %s, vitesse : %s"
 
+#. -PO: We're downloading the said file from the said medium
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "%s from medium %s"
-msgstr ""
+msgstr "%s à partir du médium %s"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1636,11 +1654,6 @@ msgstr "Non"
 #, c-format
 msgid "Media limit"
 msgstr "Limité aux média"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "no name found"
-msgstr "Fonction introuvable\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1751,7 +1764,7 @@ msgstr ""
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Manage keys for digital signatures of packages"
-msgstr ""
+msgstr "Gérer les clés qui effectuent la signature des paquetages"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1912,9 +1925,9 @@ msgstr ""
 "souhaiter installer sur votre ordinateur."
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
+#, c-format
 msgid "Remove a key"
-msgstr "Supprimer des Logiciels"
+msgstr "Supprimer une clé"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -2193,9 +2206,12 @@ msgid "Remove Software"
 msgstr "Supprimer des Logiciels"
 
 #: data/rpmdrake-sources.desktop.in.h:1
-#, fuzzy
 msgid "Software Media Manager"
-msgstr "Gestionnaire de Sources Logicielles"
+msgstr "Gestionnaire de Média Logiciels"
+
+#, fuzzy
+#~ msgid "no name found"
+#~ msgstr "Fonction introuvable\n"
 
 #, fuzzy
 #~ msgid "Internet station"

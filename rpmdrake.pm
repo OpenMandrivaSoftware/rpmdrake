@@ -372,8 +372,8 @@ sub show_urpm_progress {
 	$label->set_label($label->get_label . N(" failed!"));
         $medium = undef;
     } else {
-        #-PO: We're downloading the said file from the said medium
-        length($file) > 60 and $file = $medium ? N("%s from medium %s", basename($file), $medium)
+        length($file) > 60 and $file = $medium ? #-PO: We're downloading the said file from the said medium
+                                                 N("%s from medium %s", basename($file), $medium)
                                                : basename($file);
         if ($mode eq 'start') {
             $pb->set_fraction(0);
