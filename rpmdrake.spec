@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.1
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -101,6 +101,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Jan 14 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.1-2mdk
+- fix wrongly using unavailable sorting method in remove mode after
+  save in install mode
+
 * Mon Jan 12 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.1-1mdk
 - add ability to cancel packages downloads (#6317)
 - save sorting method at exit of rpmdrake for Lord Titi (#6051)
