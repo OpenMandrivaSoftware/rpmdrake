@@ -49,8 +49,8 @@ $collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8")
 
 
 $MODE = 'install';
-$0 =~ m|/remove$| and $MODE = 'remove';
-$0 =~ m|/update$|i  and $MODE = 'update';
+$0 =~ m|remove$| and $MODE = 'remove';
+$0 =~ m|update$|i  and $MODE = 'update';
 
 $MODE eq 'update' || "@ARGV" =~ /--root/ and require_root_capability();
 
