@@ -102,7 +102,7 @@ srpm: dis ../$(NAME)-$(VERSION).tar.bz2 $(RPM)
 	cp -f ../$(NAME)-$(VERSION).tar.bz2 $(RPM)/SOURCES
 	cp -f $(NAME).spec $(RPM)/SPECS/
 	rm -f ../$(NAME)-$(VERSION).tar.bz2
-	rpm -bs $(NAME).spec --nodeps
+	rpm -bs $(NAME).spec
 
 rpm: srpm
 	rpm -bb --clean --rmsource $(NAME).spec
