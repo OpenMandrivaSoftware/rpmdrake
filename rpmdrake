@@ -20,6 +20,16 @@
 #
 # $Id$
 
+"@ARGV" =~ /-h/ and do {
+    printf STDERR "Usage: %s [OPTION]...
+  --noconfirmation       don't ask first confirmation question in MandrakeUpdate mode
+           ", basename($0);
+    exit 0;
+};
+
+$> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
+
+
 use lib qw(/usr/lib/libDrakX);
 
 use strict;
@@ -27,12 +37,6 @@ use vars qw($MODE %options $XID $CCPID);
 
 use rpmdrake;
 
-
-"@ARGV" =~ /-h/ and do { print STDERR _("Usage: %s [OPTION]...
-  --noconfirmation       don't ask first confirmation question in MandrakeUpdate mode
-", basename($0)); exit 0; };
-
-$> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
 
 $MODE = 'install';
 $0 =~ '/rpmdrake-remove$' and $MODE = 'remove';
@@ -389,7 +393,7 @@ sub run_treeview_dialog {
 	each_index {
 	    if ($_ eq 'by') {
 		$radio_by = $modes_buttons[$::i];
-		$modes_buttons[$::i] = gtkpack(new Gtk::HBox, $modes_buttons[$::i], my $t = new Gtk::OptionMenu);
+		$modes_buttons[$::i] = gtkpack(new Gtk::HBox(0, 0), $modes_buttons[$::i], my $t = new Gtk::OptionMenu);
 		$t->set_menu($advanced_menu);
 	    }
 	} @radios_names_ordered;
