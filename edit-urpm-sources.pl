@@ -87,8 +87,8 @@ sub add_callback {
 								   $info->{login_check}->set_active($_[0]->get_active);
 							       }),
 			     1, new Gtk::Label),
-		    gtkset_sensitive($info->{$_->[0].'_entry'} = gtkentry, 0) ] }
-	      ([ 'login', _("Login:") ], [ 'pass', _("Password:") ])
+		    gtkset_visibility(gtkset_sensitive($info->{$_->[0].'_entry'} = gtkentry, 0), $_->[2]) ] }
+	      ([ 'login', _("Login:"), 1 ], [ 'pass', _("Password:"), 0 ])
 	};
 	my $nb = $count_nbs++;
 	gtksignal_connect($_[1], 'clicked' => sub { $_[0]->get_active and $notebook->set_page($nb) });
@@ -208,7 +208,7 @@ sub proxy_callback {
 			      0, gtkset_active(my $proxyuserbutton = new Gtk::CheckButton(_("User:")), to_bool($proxy_user)),
 			      1, gtkset_sensitive(my $proxyuserentry = gtkentry($user), to_bool($proxy_user)),
 			      0, new Gtk::Label(_("Password:")),
-			      1, gtkset_sensitive(my $proxypasswordentry = gtkentry($pass), to_bool($proxy_user))),
+			      1, gtkset_visibility(gtkset_sensitive(my $proxypasswordentry = gtkentry($pass), to_bool($proxy_user)), 0)),
 		     new Gtk::HSeparator,
 		     gtkpack(create_hbox(),
 			     gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { $w->{retval} = 1; Gtk->main_quit }),
