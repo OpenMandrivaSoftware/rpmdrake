@@ -529,8 +529,11 @@ or you already installed all of them."));
 			   my @deps = sort { $a cmp $b } difference2($nodes_with_deps, $nodes);
 			   @deps > 0 or return 1;
 			 deps_msg_again:
-			   my $results = interactive_msg_($title, $msg . $formatlistpkg->(@deps),
-							  yesno => [ N("Cancel"), N("More info"), N("Ok") ]);
+			   my $results = interactive_msg_(
+			       $title, $msg . $formatlistpkg->(@deps),
+			       yesno => [ N("Cancel"), N("More info"), N("Ok") ],
+			       scroll => 1,
+			   );
 			   if ($results eq 
 			                   #-PO: Keep it short, this is gonna be on a button
 			                   N("More info"))
