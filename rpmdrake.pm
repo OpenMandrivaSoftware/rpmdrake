@@ -29,6 +29,7 @@ use packdrake;
 use vars qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed);
 use my_gtk qw(:helpers :wrappers :ask);
 my_gtk::add_icon_path('/usr/share/rpmdrake/icons');
+use log;
 
 use curl_download;
 
