@@ -1339,13 +1339,15 @@ sub dialog_rpmnew {
     my @inspect_wsize = ($typical_width*2.5, 500);
     my $inspect = sub {
 	my ($file) = @_;
-	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $w->{rwindow});
-	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my ($rpmnew, $rpmsave) = ("$file.rpmnew", "$file.rpmsave");
 	my $rpmfile = 'rpmnew';
 	-r $rpmnew or $rpmfile = 'rpmsave';
 	-r $rpmnew && -r $rpmsave && (stat $rpmsave)[9] > (stat $rpmnew)[9] and $rpmfile = 'rpmsave';
 	$rpmfile eq 'rpmsave' and $rpmnew = $rpmsave;
+	my @diff = `/usr/bin/diff -u '$file' '$rpmnew'`;
+	return if !@diff;
+	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $w->{rwindow});
+	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my %texts;
 	gtkadd($d->{window},
 	       gtkpack_(Gtk2::VBox->new(0, 5),
@@ -1373,7 +1375,7 @@ sub dialog_rpmnew {
 	gtktext_insert($texts{$_}, [ [ $contents{$_}, { 'font' => 'monospace' } ] ]) foreach keys %contents;
 	my @regexps = ([ '^(--- )|(\+\+\+ )', 'blue' ], [ '^@@ ', 'darkcyan' ], [ '^-', 'red3' ], [ '^\+', 'green3' ]);
 	my $line2col = sub { $_[0] =~ /$_->[0]/ and return $_->[1] foreach @regexps; 'black' };
-	gtktext_insert($texts{diff}, [ map { [ $_, { 'font' => 'monospace', 'foreground' => $line2col->($_) } ] } `diff -u $file $rpmnew` ]);
+	gtktext_insert($texts{diff}, [ map { [ $_, { 'font' => 'monospace', 'foreground' => $line2col->($_) } ] } @diff ]);
 	$d->{rwindow}->set_default_size(@inspect_wsize);
 	$d->main;
     };
