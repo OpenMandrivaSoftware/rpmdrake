@@ -683,6 +683,11 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
 
 sub dialog_rpmnew {
     my ($exitstatus, %p2r) = @_;
+    my $sum_rpmnew = sum(map { int @{$p2r{$_}} } keys %p2r);
+    if ($exitstatus == 0 && $sum_rpmnew == 0) {
+	interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
+	return;
+    }
     my $d = my_gtk->new(_("Installation finished"));
     my $inspect = sub {
 	my ($file) = @_;
@@ -730,7 +735,7 @@ sub dialog_rpmnew {
 													}) ]
 									      } @{$p2r{$pkg}}
 									  } keys %p2r)),
-				  $typical_width*1.5, 70 + sum(map { int @{$p2r{$_}} } keys %p2r)*20),
+				  $typical_width*1.5, 70 + $sum_rpmnew*20),
 		     gtkpack__(create_hbox(), gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit }))));
     $d->main;
 }
@@ -790,10 +795,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
 	      and $pkg2rpmnew{$1} = [ grep { m|^/etc| && -r "$_.rpmnew" && !member($_, @ignores_rpmnew) } map { chomp_($_) } `rpm -ql $1` ];
 	}
-	if ($exitstatus == 0 && keys(%pkg2rpmnew) == 0) {
-	    interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
-	}
-	keys(%pkg2rpmnew) > 0 and dialog_rpmnew($exitstatus, %pkg2rpmnew);
+	dialog_rpmnew($exitstatus, %pkg2rpmnew);
     } else {
 	interactive_msg(_("Everything already installed."),
 			_("Everything already installed (is this supposed to happen at all?)."));
