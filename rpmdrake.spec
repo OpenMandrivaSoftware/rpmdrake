@@ -99,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Thu May 22 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-21mdk
+* Wed May 28 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-21mdk
 - let medias be reorderable in the medias editor (drag and drop the list)
 - add ability to list leaves (sorted by installation date) in remove mode
 - add ability to run the rpmdrake suite as a user (you can browse
