@@ -3,7 +3,7 @@
 use MDK::Common;
 
 our @miss = (qw(Server Workstation), 'Graphical Environment');
-our @exceptions = qw(Configuration Mail);
+our @exceptions = qw(Development Configuration Mail);
 
 my $po = $ARGV[0];
 my $drakxfile = "../../../gi/perl-install/share/po/$po";
