@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 3mdk
+%define release 4mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,11 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Jan 22 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-4mdk
+- edit-urpm-sources:
+  - fix wrong display of medium as "enabled", after adding a medium
+    that has problems and is hence automatically disabled (#995)
+
 * Tue Jan 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-3mdk
 - rpmdrake:
   - fix "update sources" dialog which didn't update the asked mediums

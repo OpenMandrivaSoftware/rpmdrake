@@ -41,8 +41,7 @@ sub add_medium_and_check {
     $urpm->write_config;
 }
 
-my $urpm = urpm->new;
-$urpm->read_config; 
+my $urpm;
 
 my ($mainw, $remove, $edit, $list_tv);
 
@@ -263,6 +262,8 @@ sub mainwindow {
 			});
 
     my $reread_media = sub {
+	$urpm = urpm->new;
+	$urpm->read_config; 
 	$list->clear;
 	$list->append_set([ 0 => !$_->{ignore}, 1 => $_->{name} ])->free foreach @{$urpm->{media}};
     };
