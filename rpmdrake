@@ -819,8 +819,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	}
 	my $exitstatus = $?;
 	# /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
-	my @ignores_rpmnew = qw(/etc/group /etc/passwd /etc/localtime /etc/shells /etc/adjtime /etc/ld.so.conf /etc/modules
-                                /etc/security/fileshare.conf /etc/sudoers);
+	my @ignores_rpmnew = qw(/etc/group /etc/passwd /etc/localtime /etc/shells /etc/adjtime /etc/ld.so.conf /etc/modules 
+                        /etc/security/fileshare.conf /etc/sudoers /etc/sysconfig/alsa /etc/sysconfig/autofsck /etc/sysconfig/harddisks
+                        /etc/sysconfig/installkernel /etc/sysconfig/msec /etc/sysconfig/nfs /etc/sysconfig/pcmcia /etc/sysconfig/init
+                        /etc/sysconfig/rawdevices /etc/sysconfig/saslauthd /etc/sysconfig/syslog /etc/sysconfig/usb /etc/sysconfig/xinetd);
+
 	my %pkg2rpmnew;
 	foreach my $u (@rpms_upgrade) {
 	    $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
