@@ -1,6 +1,6 @@
 %define name rpmdrake
 %define version 2.0
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -99,5 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri Aug  2 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-2mdk
+- workaround packdrake segfault when hdlist is not available for
+  a source (by file testing if the hdlist is readable)
+
 * Thu Aug  1 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-1mdk
 - c'mon rpmdrake, strike back in Perl!

@@ -106,12 +106,17 @@ sub pkg2medium {
 sub extract_header {
     my ($pkg, $urpm) = @_;
     my ($headersdir, $p, $medium) = ('/root/tmp/headers/', $pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
-    my $packer = new packdrake("$urpm->{statedir}/$medium->{hdlist}", quiet => 1);
-    $packer->extract_archive($headersdir, $p->header_filename);
-    $p->update_header($headersdir . $p->header_filename) or die('unable to open header file');
-    rm_rf($headersdir);
-    add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
-    $p->pack_header;
+    my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
+    if (-r $hdlist) {  #- packdrake segfaults when giving a missing file :(
+	my $packer = new packdrake($hdlist, quiet => 1);
+	$packer->extract_archive($headersdir, $p->header_filename);
+	$p->update_header($headersdir . $p->header_filename) or die('unable to open header file');
+	rm_rf($headersdir);
+	add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
+	$p->pack_header;
+    } else {
+	add2hash($pkg, { summary => _("(Non available)"), description => undef });
+    }
 }
 
 sub db { URPM::DB::open or die 'Couldn\'t open RPM DB' }
