@@ -569,10 +569,7 @@ sub run_treeview_dialog {
     my ($options, $size_selected, $compssUsers, $tree, $tree_model, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
-    {
-	local $::noBorder = 1;
-	$w = ugtk2->new(N("Rpmdrake"));
-    }
+    $w = ugtk2->new(N("Rpmdrake"));
 
     my $is_locale_available = sub {
 	any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
