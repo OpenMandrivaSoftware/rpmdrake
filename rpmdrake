@@ -951,6 +951,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 							  interactive_msg_(N("Change medium"),
 									   N("Please insert the medium named \"%s\" on device [%s]", @_),
 									   yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) });
+	$urpm->try_umounting_removables;
 	my @rpms_install = grep { !/\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
 	my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
 

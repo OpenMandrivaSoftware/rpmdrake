@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 6mdk
+%define release 7mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Feb 17 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-7mdk
+- rpmdrake:
+  - fix locking of CD after installation (#1311)
+
 * Thu Feb 13 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-6mdk
 - grpmi: if there was an error during installation, propose to
   remove the cached/downloaded packages or not (partially follows
