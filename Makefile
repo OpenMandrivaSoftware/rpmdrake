@@ -60,13 +60,14 @@ tar:
 	mkdir ../t; \
 	cd ../t; \
 	cp -a ../rpmdrake .; \
+	mv rpmdrake rpmdrake-$(VERSION); \
 	find -name "CVS" | xargs rm -rf; \
-	tar jcvf ../rpmdrake.tar.bz2 rpmdrake; \
+	tar jcvf ../rpmdrake-$(VERSION).tar.bz2 rpmdrake-$(VERSION); \
 	cd ..; \
 	rm -rf t
 
 clust:
-	scp ../rpmdrake.tar.bz2 bi:rpm/SOURCES
+	scp ../rpmdrake-$(VERSION).tar.bz2 bi:rpm/SOURCES/rpmdrake-$(VERSION).tar.bz2
 	scp rpmdrake.spec bi:rpm/SPECS
 
 SOFTHOME = /home/gc/cvs/soft
