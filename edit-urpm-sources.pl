@@ -214,7 +214,7 @@ sub update_callback {
 sub proxy_callback {
     my $w = my_gtk->new(_("Configure proxies"));
     my ($proxy, $proxy_user) = curl_download::readproxy;
-    my ($user, $pass) = $proxy_user =~ /^([^:]+):([^:]+)$/;
+    my ($user, $pass) = $proxy_user =~ /^(.+):(.+)$/;
     gtkadd($w->{window},
 	   gtkpack__(new Gtk::VBox(0, 5),
 		     new Gtk::Label(_("If you need a proxy, enter the hostname and an optional port (syntax: <proxyhost[:port]>):")),
