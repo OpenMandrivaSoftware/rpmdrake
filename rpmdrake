@@ -176,6 +176,8 @@ sub do_search($$$$$$) {
     } else {
 	@search_results = grep { eval { $_ =~ /$entry/i } } keys %$pkgs;
     }
+    $options->{tree_mode} eq 'by_presence' and @search_results = grep { $pkgs->{$_}{pkg}->flag_installed } @search_results;
+    $options->{tree_mode} eq 'by_selection' and @search_results = grep { $pkgs->{$_}{selected} } @search_results;
     if (@search_results) {
 	$options->{add_nodes}->(map { [ $_, _("Search results") ] } sort { uc($a) cmp uc($b) } @search_results);
 	$tree->expand($tree->node_nth($tree->rows-1));
