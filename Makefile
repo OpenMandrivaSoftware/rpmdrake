@@ -80,7 +80,7 @@ SOFTHOME = /home/gc/cvs/soft
 GIHOME = /home/gc/cvs/gi
 
 hack:
-	cp -f $(SOFTHOME)/rpmdrake/rpmdrake $(SOFTHOME)/rpmdrake/edit-urpm-sources.pl /usr/sbin
+	cp -f $(SOFTHOME)/rpmdrake/rpmdrake $(SOFTHOME)/rpmdrake/edit-urpm-sources.pl $(SOFTHOME)/rpmdrake/gurpmi.addmedia /usr/sbin
 	ln -sf edit-urpm-sources.pl /usr/sbin/edit-urpm-media
 	cp -f $(SOFTHOME)/rpmdrake/rpmdrake.pm $(shell rpm --eval %perl_vendorlib)
 	cp -f $(GIHOME)/perl-install/ugtk2.pm /usr/lib/libDrakX
