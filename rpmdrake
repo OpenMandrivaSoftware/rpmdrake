@@ -458,7 +458,7 @@ or you already installed all of them."));
 				     exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
 				     my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->WEIGHT_BOLD };
-				     my $tag_fix = { 'font' => 'fixed' };
+				     my $tag_fix = { 'font' => 'monospace' };
 				     my @files = ([ N("Files:\n"), $tag_tag ], [ $pkgs->{$key}{files} || N("(Not available)"), $tag_fix ]);
 				     my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
 				     my @max_info = if_(@$max_info_in_descr,
@@ -851,10 +851,10 @@ sub dialog_rpmnew {
 	       gtkpack_(Gtk2::VBox->new(0, 5),
 			1, create_vpaned(
 				  create_vpaned(gtkpack_(Gtk2::VBox->new(0, 0),
-							 0, gtkset_markup(Gtk2::Label->new, "<span font_desc=\"fixed\">$file:</span>"),
+							 0, gtkset_markup(Gtk2::Label->new, "<span font_desc=\"monospace\">$file:</span>"),
 							 1, create_scrolled_window($texts{file} = Gtk2::TextView->new)),
 						gtkpack_(Gtk2::VBox->new(0, 0),
-							 0, gtkset_markup(Gtk2::Label->new, "<span font_desc=\"fixed\">$rpmnew:</span>"),
+							 0, gtkset_markup(Gtk2::Label->new, "<span font_desc=\"monospace\">$rpmnew:</span>"),
 							 1, create_scrolled_window($texts{rpmnew} = Gtk2::TextView->new)),
 						resize1 => 1),
 				  gtkpack_(Gtk2::VBox->new(0, 0),
@@ -870,10 +870,10 @@ sub dialog_rpmnew {
 						       clicked => sub { $save_wsize->(); Gtk2->main_quit }),
 				    )));
 	my %contents = (file => scalar(cat_($file)), rpmnew => scalar(cat_($rpmnew)));
-	gtktext_insert($texts{$_}, [ [ $contents{$_}, { 'font' => 'fixed' } ] ]) foreach keys %contents;
+	gtktext_insert($texts{$_}, [ [ $contents{$_}, { 'font' => 'monospace' } ] ]) foreach keys %contents;
 	my @regexps = ([ '^(--- )|(\+\+\+ )', 'blue' ], [ '^@@ ', 'darkcyan' ], [ '^-', 'red3' ], [ '^\+', 'green3' ]);
 	my $line2col = sub { $_[0] =~ /$_->[0]/ and return $_->[1] foreach @regexps; 'black' };
-	gtktext_insert($texts{diff}, [ map { [ $_, { 'font' => 'fixed', 'foreground' => $line2col->($_) } ] } `diff -u $file $rpmnew` ]);
+	gtktext_insert($texts{diff}, [ map { [ $_, { 'font' => 'monospace', 'foreground' => $line2col->($_) } ] } `diff -u $file $rpmnew` ]);
 	$d->{rwindow}->set_default_size(@inspect_wsize);
 	$d->main;
     };
@@ -883,7 +883,7 @@ sub dialog_rpmnew {
 					       my $f = $_;
 					       [ gtkpack__(Gtk2::HBox->new(0, 0),
 							   gtkset_selectable(gtkset_markup(Gtk2::Label->new,
-											   "$pkg:<span font_desc=\"fixed\">$f</span>"), 1)),
+											   "$pkg:<span font_desc=\"monospace\">$f</span>"), 1)),
 						 my $b = gtksignal_connect(Gtk2::Button->new(but(N("Inspect..."))),
 									   clicked => sub {
 									       $inspect->($f);
