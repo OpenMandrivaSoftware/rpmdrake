@@ -500,7 +500,9 @@ sub update_sources_interactive {
 		    Gtk2::Button->new(N("Update")),
 		    clicked => sub {
 			$w->{retval} = any { $_->get_active } @buttons;
-			@media = map_index { if_($_->get_active, $urpm->{media}[$::i]{name}) } @buttons;
+			# list of media listed in the checkbox panel
+			my @buttonmedia = grep { !$_->{ignore} } @{$urpm->{media}};
+			@media = map_index { if_($_->get_active, $buttonmedia[$::i]{name}) } @buttons;
 			Gtk2->main_quit;
 		    },
 		),
