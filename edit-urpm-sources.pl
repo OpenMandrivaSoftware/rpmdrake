@@ -303,6 +303,29 @@ sub remove_callback {
     remove_wait_msg($wait);
 }
 
+sub renum_media ($$$) {
+    my ($model, @iters) = @_;
+    my @rows = map { $model->get_path($_)->to_string } @iters;
+    my @media = map { $urpm->{media}[$_] } @rows;
+    $urpm->{media}[$rows[$_]] = $media[1 - $_] foreach 0, 1;
+    my $i = 1;
+    $_->{priority} = $i++ foreach @{$urpm->{media}};
+    $model->swap(@iters);
+    $urpm->write_config; $urpm = urpm->new; $urpm->read_config; 
+}
+
+sub upwards_callback {
+    my ($model, $iter) = $list_tv->get_selection->get_selected; $model && $iter or return;
+    my $prev = $model->get_iter_from_string($model->get_path($iter)->to_string - 1);
+    defined $prev and renum_media($model, $iter, $prev);
+}
+
+sub downwards_callback {
+    my ($model, $iter) = $list_tv->get_selection->get_selected; $model && $iter or return;
+    my $next = $model->iter_next($iter);
+    defined $next and renum_media($model, $iter, $next);
+}
+
 #- returns the name of the media for which edition failed, or undef on success
 sub edit_callback {
     my $row = selrow();
@@ -783,7 +806,6 @@ sub keys_callback {
     $w->main;
 }
 
-
 sub mainwindow {
     $mainw = ugtk2->new(N("Configure media"), center => 1);
 
@@ -913,6 +935,11 @@ sub mainwindow {
 		    gtksignal_connect(Gtk2::Button->new(but(N("Proxy..."))), clicked => \&proxy_callback),
 		    gtksignal_connect(Gtk2::Button->new(but(N("Parallel..."))), clicked => \&parallel_callback),
 		    gtksignal_connect(Gtk2::Button->new(but(N("Global options..."))), clicked => \&options_callback),
+		    gtkpack(
+			Gtk2::HBox->new(0, 0),
+			gtksignal_connect(gtkadd(Gtk2::Button->new, Gtk2::Arrow->new("up", "none")), clicked => \&upwards_callback),
+			gtksignal_connect(gtkadd(Gtk2::Button->new, Gtk2::Arrow->new("down", "none")), clicked => \&downwards_callback),
+		    ),
 		)
 	    ),
 	    0, Gtk2::HSeparator->new,
@@ -932,7 +959,6 @@ sub mainwindow {
     );
     $mainw->main;
 }
-
 
 readconf();
 
