@@ -124,8 +124,10 @@ sub interactive_packtable {
 		    if_($top_label, 0, Gtk2::Label->new($top_label)),
 		    1, create_scrolled_window($packtable),
 		    0, gtkpack__(create_hbox(), @$action_buttons)));
-    my ($xpreq, $ypreq) = $packtable->get_size_request;
-    my ($xwreq, $ywreq) = $w->{rwindow}->get_size_request;
+    my $preq = $packtable->size_request;
+    my ($xpreq, $ypreq) = ($preq->width, $preq->height);
+    my $wreq = $w->{rwindow}->size_request;
+    my ($xwreq, $ywreq) = ($wreq->width, $wreq->height);
     $w->{rwindow}->set_default_size(max($typical_width, min($typical_width*2.5, $xpreq+$xwreq)),
  				    max(200, min(450, $ypreq+$ywreq)));
     $w->main;
