@@ -1,19 +1,21 @@
-PL_FILES = ../grpmi.pl
-PL_CFILES = $(PL_FILES:%=%_.c)
+# the domain name for gettext
+PGOAL = grpmi
 
+# perl files to search translatable strings in
+PL_FILES = ../grpmi.pl
+# C-like files to search translatable strings in
 CFILES = ../curl_download/curl_download.xs ../rpm/grpmi_rpm.xs
 
+PL_CFILES = $(PL_FILES:%=%_.c)
 POFILES = $(shell ls *.po)
 MOFILES = $(POFILES:%.po=%.mo)
 LANGS = $(POFILES:%.po=%)
 
-PREFIX = /usr/local
+PREFIX = $(RPM_BUILD_ROOT)/usr
 DATADIR = $(PREFIX)/share
 LOCALEDIR=$(DATADIR)/locale
 
-CFILES =  ../curl_download/curl_download.xs ../rpm/grpmi_rpm.xs
-
-all: $(MOFILES)
+all: $(PGOAL).pot $(MOFILES)
 
 %.mo: %.po
 	msgfmt -o $@ $<
@@ -24,22 +26,25 @@ $(PL_CFILES): %_.c: %
 %.mo: %.po
 	msgfmt -o $@ $<
 
-merge: grpmi.pot
+merge: $(PGOAL).pot
 	@for n in $(POFILES); do \
 		echo "Merging $$n"; \
 		msgmerge "$$n" $< > "$$n"t; \
 		mv -f "$$n"t "$$n"; \
 	done
 
-grpmi.pot: $(PL_CFILES) $(CFILES)
-	xgettext -F -n --add-comments='-PO' --keyword=_ --language=C -o $@ $(PL_CFILES) $(CFILES)
-	rm $(PL_CFILES)
+$(PGOAL).pot: $(PL_CFILES) $(CFILES)
+	xgettext -F -n --add-comments='-PO' \
+	--keyword=_ --keyword=__ --keyword=N_ \
+	--language=C -o $@ $(PL_CFILES) $(CFILES)
+	@rm -rf $(PL_CFILES)
 
 install:
 	for l in $(LANGS); do \
 		install -d $(LOCALEDIR)/$$l/LC_MESSAGES; \
-		install -m 644 $$l.mo $(LOCALEDIR)/$$l/LC_MESSAGES/grpmi.mo; \
+		install -m 644 $$l.mo $(LOCALEDIR)/$$l/LC_MESSAGES/$(PGOAL).mo; \
 	done
 
 clean:
-	@rm -rf *.mo $(POFILES:%=%t) $(PL_CFILES) grpmi.pot
+	@rm -rf *.mo $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot
+
