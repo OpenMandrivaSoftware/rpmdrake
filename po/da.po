@@ -13,7 +13,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
-"POT-Creation-Date: 2004-11-26 13:51+0100\n"
+"POT-Creation-Date: 2004-12-02 11:22+0100\n"
 "PO-Revision-Date: 2004-10-28 13:15+0200\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <<dansk@klid.dk>>\n"
@@ -43,7 +43,7 @@ msgid "FTP server"
 msgstr "FTP-server"
 
 #: ../edit-urpm-sources.pl:65 ../edit-urpm-sources.pl:66
-#: ../edit-urpm-sources.pl:68 ../edit-urpm-sources.pl:220
+#: ../edit-urpm-sources.pl:68 ../edit-urpm-sources.pl:320
 #, c-format
 msgid "URL:"
 msgstr "URL:"
@@ -68,47 +68,52 @@ msgstr "sti eller monteringspunkt:"
 msgid "Security updates"
 msgstr "Sikkerhedsopdateringer"
 
-#: ../edit-urpm-sources.pl:80
+#: ../edit-urpm-sources.pl:84
 #, c-format
 msgid "Browse..."
 msgstr "Gennemse..."
 
-#: ../edit-urpm-sources.pl:82
+#: ../edit-urpm-sources.pl:91
 #, c-format
 msgid "Choose a mirror..."
 msgstr "Vælg et spejl..."
 
-#: ../edit-urpm-sources.pl:109
+#: ../edit-urpm-sources.pl:129
 #, c-format
 msgid "Login:"
 msgstr "Login:"
 
-#: ../edit-urpm-sources.pl:109 ../edit-urpm-sources.pl:297
+#: ../edit-urpm-sources.pl:129 ../edit-urpm-sources.pl:397
 #, c-format
 msgid "Password:"
 msgstr "Adgangskode:"
 
-#: ../edit-urpm-sources.pl:114
-#, c-format
-msgid "Name:"
-msgstr "Navn:"
-
-#: ../edit-urpm-sources.pl:118 ../edit-urpm-sources.pl:221
+#: ../edit-urpm-sources.pl:134 ../edit-urpm-sources.pl:321
 #, c-format
 msgid "Relative path to synthesis/hdlist:"
 msgstr "Relativ sti til syntese eller hdlist:"
 
-#: ../edit-urpm-sources.pl:119
+#: ../edit-urpm-sources.pl:136
 #, c-format
 msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "Hvis ladt være, vil synthesis/hdlist automatisk blive søgt efter"
 
-#: ../edit-urpm-sources.pl:127
+#: ../edit-urpm-sources.pl:141
+#, c-format
+msgid "Name:"
+msgstr "Navn:"
+
+#: ../edit-urpm-sources.pl:154
+#, c-format
+msgid "Create media for a whole distribution"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:173
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Du skal udfylde i det mindste de to første indgange."
 
-#: ../edit-urpm-sources.pl:131
+#: ../edit-urpm-sources.pl:177
 #, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
@@ -117,100 +122,125 @@ msgstr ""
 "Der er allerede et medie med dette navn, ønsker du\n"
 "virkelig at erstatte dette?"
 
-#: ../edit-urpm-sources.pl:142
+#: ../edit-urpm-sources.pl:188
 #, c-format
 msgid "Adding a medium:"
 msgstr "Tilføjer et medie:"
 
-#: ../edit-urpm-sources.pl:143
+#: ../edit-urpm-sources.pl:189
 #, c-format
 msgid "Type of medium:"
 msgstr "Medietype:"
 
-#: ../edit-urpm-sources.pl:148 ../edit-urpm-sources.pl:227
-#: ../edit-urpm-sources.pl:252 ../edit-urpm-sources.pl:314
-#: ../edit-urpm-sources.pl:394 ../edit-urpm-sources.pl:428
-#: ../edit-urpm-sources.pl:475 ../edit-urpm-sources.pl:594 ../rpmdrake:99
-#: ../rpmdrake:544 ../rpmdrake:1338 ../rpmdrake:1346 ../rpmdrake.pm:479
-#: ../rpmdrake.pm:616
+#: ../edit-urpm-sources.pl:194 ../edit-urpm-sources.pl:264
+#: ../edit-urpm-sources.pl:327 ../edit-urpm-sources.pl:352
+#: ../edit-urpm-sources.pl:414 ../edit-urpm-sources.pl:495
+#: ../edit-urpm-sources.pl:535 ../edit-urpm-sources.pl:593
+#: ../edit-urpm-sources.pl:733 ../rpmdrake:99 ../rpmdrake:544 ../rpmdrake:1341
+#: ../rpmdrake:1349 ../rpmdrake.pm:479 ../rpmdrake.pm:561 ../rpmdrake.pm:632
 #, c-format
 msgid "Cancel"
 msgstr "Annullér"
 
-#: ../edit-urpm-sources.pl:150 ../edit-urpm-sources.pl:252
-#: ../edit-urpm-sources.pl:304 ../edit-urpm-sources.pl:389
-#: ../edit-urpm-sources.pl:427 ../edit-urpm-sources.pl:468
-#: ../edit-urpm-sources.pl:525 ../edit-urpm-sources.pl:589
-#: ../edit-urpm-sources.pl:626 ../edit-urpm-sources.pl:762 ../rpmdrake:99
-#: ../rpmdrake:544 ../rpmdrake:562 ../rpmdrake:567 ../rpmdrake:1273
-#: ../rpmdrake:1338 ../rpmdrake:1479 ../rpmdrake.pm:189 ../rpmdrake.pm:238
-#: ../rpmdrake.pm:479
+#: ../edit-urpm-sources.pl:196 ../edit-urpm-sources.pl:266
+#: ../edit-urpm-sources.pl:352 ../edit-urpm-sources.pl:404
+#: ../edit-urpm-sources.pl:492 ../edit-urpm-sources.pl:534
+#: ../edit-urpm-sources.pl:586 ../edit-urpm-sources.pl:658
+#: ../edit-urpm-sources.pl:726 ../edit-urpm-sources.pl:779
+#: ../edit-urpm-sources.pl:929 ../rpmdrake:99 ../rpmdrake:544 ../rpmdrake:562
+#: ../rpmdrake:567 ../rpmdrake:1276 ../rpmdrake:1341 ../rpmdrake:1482
+#: ../rpmdrake.pm:189 ../rpmdrake.pm:238 ../rpmdrake.pm:479
 #, c-format
 msgid "Ok"
 msgstr "O.k."
 
-#: ../edit-urpm-sources.pl:192
+#: ../edit-urpm-sources.pl:248
+#, fuzzy, c-format
+msgid "Global options for package installation"
+msgstr "Forbereder installation af pakker"
+
+#: ../edit-urpm-sources.pl:250
+#, c-format
+msgid "always"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:251
+#, fuzzy, c-format
+msgid "never"
+msgstr "System/Servere"
+
+#: ../edit-urpm-sources.pl:260
+#, fuzzy, c-format
+msgid "Verify RPMs to be installed:"
+msgstr "Visse pakker kan ikke installeres"
+
+#: ../edit-urpm-sources.pl:261
+#, fuzzy, c-format
+msgid "Download program to use:"
+msgstr "Hentning af `%s', hastighed:%s"
+
+#: ../edit-urpm-sources.pl:291
 #, c-format
 msgid "Source Removal"
 msgstr "Fjernelse af kilde"
 
-#: ../edit-urpm-sources.pl:193
+#: ../edit-urpm-sources.pl:292
 #, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Er du sikker på at du vil fjerne kilden '%s'?"
 
-#: ../edit-urpm-sources.pl:197
+#: ../edit-urpm-sources.pl:297
 #, c-format
 msgid "Please wait, removing medium..."
 msgstr "Vent venligst, fjerner medie..."
 
-#: ../edit-urpm-sources.pl:211
+#: ../edit-urpm-sources.pl:311
 #, c-format
 msgid "Edit a medium"
 msgstr "Redigér et medie"
 
-#: ../edit-urpm-sources.pl:217
+#: ../edit-urpm-sources.pl:317
 #, c-format
 msgid "Editing medium \"%s\":"
 msgstr "Redigerer medie '%s':"
 
-#: ../edit-urpm-sources.pl:231
+#: ../edit-urpm-sources.pl:331
 #, c-format
 msgid "Save changes"
 msgstr "Gem ændringer"
 
-#: ../edit-urpm-sources.pl:239 ../edit-urpm-sources.pl:747
+#: ../edit-urpm-sources.pl:339 ../edit-urpm-sources.pl:913
 #, c-format
 msgid "Proxy..."
 msgstr "Proxy..."
 
-#: ../edit-urpm-sources.pl:250
+#: ../edit-urpm-sources.pl:350
 #, c-format
 msgid "You need to insert the medium to continue"
 msgstr "Du skal indsætte mediet for at fortsætte"
 
-#: ../edit-urpm-sources.pl:251
+#: ../edit-urpm-sources.pl:351
 #, c-format
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr "For at gemme ændringerne skal du indsætte mediet i drevet."
 
-#: ../edit-urpm-sources.pl:273
+#: ../edit-urpm-sources.pl:373
 #, c-format
 msgid "Configure proxies"
 msgstr "Konfigurér proxyer"
 
-#: ../edit-urpm-sources.pl:283
+#: ../edit-urpm-sources.pl:383
 #, c-format
 msgid "Proxy settings for media \"%s\""
 msgstr "Proxy-opsætning for medie '%s'"
 
-#: ../edit-urpm-sources.pl:284
+#: ../edit-urpm-sources.pl:384
 #, c-format
 msgid "Global proxy settings"
 msgstr "Global proxy-opsætning"
 
-#: ../edit-urpm-sources.pl:286
+#: ../edit-urpm-sources.pl:386
 #, c-format
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
@@ -219,165 +249,165 @@ msgstr ""
 "Hvis du har brug for en proxy, skal du indtaste værtsnavnet og eventuelt en "
 "port (syntaks: <proxyvært[:port]>):"
 
-#: ../edit-urpm-sources.pl:289
+#: ../edit-urpm-sources.pl:389
 #, c-format
 msgid "Proxy hostname:"
 msgstr "Værtsnavn for proxy:"
 
-#: ../edit-urpm-sources.pl:292
+#: ../edit-urpm-sources.pl:392
 #, c-format
 msgid "You may specify a user/password for the proxy authentication:"
 msgstr ""
 "Du kan angive en bruger og en adgangskode for autentifikation af proxy:"
 
-#: ../edit-urpm-sources.pl:295
+#: ../edit-urpm-sources.pl:395
 #, c-format
 msgid "User:"
 msgstr "Bruger:"
 
-#: ../edit-urpm-sources.pl:364
+#: ../edit-urpm-sources.pl:463
 #, c-format
 msgid "Add a parallel group"
 msgstr "Tilføj en parallel gruppe"
 
-#: ../edit-urpm-sources.pl:364
+#: ../edit-urpm-sources.pl:463
 #, c-format
 msgid "Edit a parallel group"
 msgstr "Redigér en parallel gruppe"
 
-#: ../edit-urpm-sources.pl:375
+#: ../edit-urpm-sources.pl:474
 #, c-format
 msgid "Add a medium limit"
 msgstr "Tilføj en mediegrænse"
 
-#: ../edit-urpm-sources.pl:385
+#: ../edit-urpm-sources.pl:486
 #, c-format
 msgid "Choose a medium for adding in the media limit:"
 msgstr "Vælg et medie at tilføje i mediebegrænsningen"
 
-#: ../edit-urpm-sources.pl:419
+#: ../edit-urpm-sources.pl:523
 #, c-format
 msgid "Add a host"
 msgstr "Tilføj en vært"
 
-#: ../edit-urpm-sources.pl:423
+#: ../edit-urpm-sources.pl:529
 #, c-format
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr "Indtast værtsnavnet eller ip-adressen der skal tilføjes:"
 
-#: ../edit-urpm-sources.pl:447
+#: ../edit-urpm-sources.pl:560
 #, c-format
 msgid "Editing parallel group \"%s\":"
 msgstr "Redigerer parallel gruppe '%s':"
 
-#: ../edit-urpm-sources.pl:449
+#: ../edit-urpm-sources.pl:564
 #, c-format
 msgid "Group name:"
 msgstr "Gruppenavn:"
 
-#: ../edit-urpm-sources.pl:450
+#: ../edit-urpm-sources.pl:565
 #, c-format
 msgid "Protocol:"
 msgstr "Protokol:"
 
-#: ../edit-urpm-sources.pl:452
+#: ../edit-urpm-sources.pl:567
 #, c-format
 msgid "Media limit:"
 msgstr "Mediegrænse:"
 
-#: ../edit-urpm-sources.pl:457 ../edit-urpm-sources.pl:464
+#: ../edit-urpm-sources.pl:572 ../edit-urpm-sources.pl:579
 #, c-format
 msgid "Add"
 msgstr "Tilføj"
 
-#: ../edit-urpm-sources.pl:458 ../edit-urpm-sources.pl:465
-#: ../edit-urpm-sources.pl:514 ../edit-urpm-sources.pl:729 ../rpmdrake:1057
+#: ../edit-urpm-sources.pl:573 ../edit-urpm-sources.pl:580
+#: ../edit-urpm-sources.pl:638 ../edit-urpm-sources.pl:895 ../rpmdrake:1060
 #, c-format
 msgid "Remove"
 msgstr "Fjern"
 
-#: ../edit-urpm-sources.pl:459
+#: ../edit-urpm-sources.pl:574
 #, c-format
 msgid "Hosts:"
 msgstr "Værter:"
 
-#: ../edit-urpm-sources.pl:489
+#: ../edit-urpm-sources.pl:608
 #, c-format
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr "Konfigurér parallel urpmi (distribueret udførelse af urpmi)"
 
-#: ../edit-urpm-sources.pl:492
+#: ../edit-urpm-sources.pl:611
 #, c-format
 msgid "Group"
 msgstr "Gruppe"
 
-#: ../edit-urpm-sources.pl:492
+#: ../edit-urpm-sources.pl:611
 #, c-format
 msgid "Protocol"
 msgstr "Protokol"
 
-#: ../edit-urpm-sources.pl:492
+#: ../edit-urpm-sources.pl:611
 #, c-format
 msgid "Media limit"
 msgstr "Medie-begrænsking"
 
-#: ../edit-urpm-sources.pl:493
+#: ../edit-urpm-sources.pl:612
 #, c-format
 msgid "Command"
 msgstr "Kommando"
 
-#: ../edit-urpm-sources.pl:503 ../rpmdrake:280 ../rpmdrake:296 ../rpmdrake:406
+#: ../edit-urpm-sources.pl:622 ../rpmdrake:280 ../rpmdrake:296 ../rpmdrake:406
 #: ../rpmdrake:478
 #, c-format
 msgid "(none)"
 msgstr "(ingen)"
 
-#: ../edit-urpm-sources.pl:516 ../edit-urpm-sources.pl:733
+#: ../edit-urpm-sources.pl:642 ../edit-urpm-sources.pl:899
 #, c-format
 msgid "Edit"
 msgstr "Redigér"
 
-#: ../edit-urpm-sources.pl:521 ../edit-urpm-sources.pl:739
+#: ../edit-urpm-sources.pl:650 ../edit-urpm-sources.pl:905
 #, c-format
 msgid "Add..."
 msgstr "Tilføj..."
 
-#: ../edit-urpm-sources.pl:533
+#: ../edit-urpm-sources.pl:666
 #, c-format
 msgid "Manage keys for digital signatures of packages"
 msgstr "Administrér nøgler for digitale underskrifter på pakker"
 
-#: ../edit-urpm-sources.pl:537 ../edit-urpm-sources.pl:657
+#: ../edit-urpm-sources.pl:670 ../edit-urpm-sources.pl:814
 #, c-format
 msgid "Medium"
 msgstr "Medie"
 
-#: ../edit-urpm-sources.pl:542
+#: ../edit-urpm-sources.pl:675
 #, c-format
 msgid "Keys"
 msgstr "Nøgler"
 
-#: ../edit-urpm-sources.pl:561
+#: ../edit-urpm-sources.pl:694
 #, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr "intet navn fundet, nøgle eksisterer ikke i rpm-nøglering!"
 
-#: ../edit-urpm-sources.pl:575
+#: ../edit-urpm-sources.pl:708
 #, c-format
 msgid "Add a key"
 msgstr "Tilføj en nøgle"
 
-#: ../edit-urpm-sources.pl:585
+#: ../edit-urpm-sources.pl:720
 #, c-format
 msgid "Choose a key for adding to the medium %s"
 msgstr "Vælg en nøgle at tilføje i mediet %s"
 
-#: ../edit-urpm-sources.pl:606
+#: ../edit-urpm-sources.pl:748
 #, c-format
 msgid "Remove a key"
 msgstr "Fjern en nøgle"
 
-#: ../edit-urpm-sources.pl:607
+#: ../edit-urpm-sources.pl:749
 #, c-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
@@ -386,79 +416,84 @@ msgstr ""
 "Er du sikker på at du vil fjerne nøglen %s fra mediet %s?\n"
 "(navn på nøglen: %s)"
 
-#: ../edit-urpm-sources.pl:620
+#: ../edit-urpm-sources.pl:767
 #, c-format
 msgid "Add a key..."
 msgstr "Tilføj en nøgle..."
 
-#: ../edit-urpm-sources.pl:622
+#: ../edit-urpm-sources.pl:771
 #, c-format
 msgid "Remove key"
 msgstr "Fjern nøgle"
 
-#: ../edit-urpm-sources.pl:634
+#: ../edit-urpm-sources.pl:788
 #, c-format
 msgid "Configure media"
 msgstr "Konfigurér medier"
 
-#: ../edit-urpm-sources.pl:656
+#: ../edit-urpm-sources.pl:813
 #, c-format
 msgid "Enabled?"
 msgstr "Aktiveret?"
 
-#: ../edit-urpm-sources.pl:667
+#: ../edit-urpm-sources.pl:826
 #, c-format
 msgid "Update medium"
 msgstr "Opdatér medie"
 
-#: ../edit-urpm-sources.pl:667
+#: ../edit-urpm-sources.pl:826
 #, c-format
 msgid "Regenerate hdlist"
 msgstr "Genskab hdlist"
 
-#: ../edit-urpm-sources.pl:679 ../rpmdrake.pm:553
+#: ../edit-urpm-sources.pl:838 ../rpmdrake.pm:554
 #, c-format
 msgid "Please wait, updating media..."
 msgstr "Vent venligst, opdaterer medie..."
 
-#: ../edit-urpm-sources.pl:683
+#: ../edit-urpm-sources.pl:842
 #, c-format
 msgid "Please wait, generating hdlist..."
 msgstr "Vent venligst, opdaterer hdlist..."
 
-#: ../edit-urpm-sources.pl:743
+#: ../edit-urpm-sources.pl:909
 #, c-format
 msgid "Update..."
 msgstr "Opdatér..."
 
-#: ../edit-urpm-sources.pl:746
+#: ../edit-urpm-sources.pl:912
 #, c-format
 msgid "Manage keys..."
 msgstr "Administrér nøgler..."
 
-#: ../edit-urpm-sources.pl:748
+#: ../edit-urpm-sources.pl:914
 #, c-format
 msgid "Parallel..."
 msgstr "Parallel..."
 
-#: ../edit-urpm-sources.pl:754 ../rpmdrake:1049
+#: ../edit-urpm-sources.pl:915
+#, fuzzy, c-format
+msgid "Global options..."
+msgstr "Global proxy-opsætning"
+
+#: ../edit-urpm-sources.pl:921 ../rpmdrake:1051
 #, c-format
 msgid "Help"
 msgstr "Hjælp"
 
-#: ../edit-urpm-sources.pl:757 ../rpmdrake:1052
+#: ../edit-urpm-sources.pl:924 ../rpmdrake:1054
 #, c-format
 msgid "Help launched in background"
 msgstr "Hjælp startes i baggrunden"
 
-#: ../edit-urpm-sources.pl:758 ../rpmdrake:1053
+#: ../edit-urpm-sources.pl:925 ../rpmdrake:1055
 #, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
 msgstr ""
 "Hjælpevinduer er blevet startet, det bør vise sig snart på dit skrivebord."
 
-#: ../edit-urpm-sources.pl:774 ../gurpmi.addmedia:75 ../rpmdrake:1590
+#: ../edit-urpm-sources.pl:941 ../gurpmi.addmedia:75 ../rpmdrake:1593
 #, c-format
 msgid ""
 "%s\n"
@@ -469,7 +504,7 @@ msgstr ""
 "\n"
 "Er det O.k. at fortsætte?"
 
-#: ../edit-urpm-sources.pl:777
+#: ../edit-urpm-sources.pl:944
 #, c-format
 msgid ""
 "Welcome to the Software Media Manager!\n"
@@ -485,7 +520,7 @@ msgstr ""
 "på maskinen. De vil derefter være tilgængelige så du kan installere nye\n"
 "programmer eller udføre opdateringer."
 
-#: ../edit-urpm-sources.pl:789
+#: ../edit-urpm-sources.pl:956
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -1035,7 +1070,7 @@ msgstr "Søgeresultater (ingen)"
 msgid "Please wait, searching..."
 msgstr "Vent venligst, søger..."
 
-#: ../rpmdrake:349 ../rpmdrake:1119 ../rpmdrake:1375 ../rpmdrake:1589
+#: ../rpmdrake:349 ../rpmdrake:1122 ../rpmdrake:1378 ../rpmdrake:1592
 #, c-format
 msgid "Rpmdrake"
 msgstr "Rpmdrake"
@@ -1070,8 +1105,7 @@ msgstr "Ikke valgt"
 msgid "Rpmdrake %s"
 msgstr "Rpmdrake %s"
 
-#: ../rpmdrake:442 ../rpmdrake:557 ../rpmdrake:559 ../rpmdrake:1469
-#: ../rpmdrake:1472
+#: ../rpmdrake:442 ../rpmdrake:557 ../rpmdrake:559 ../rpmdrake:1472
 #, c-format
 msgid "More information on package..."
 msgstr "Mere information om pakken..."
@@ -1118,7 +1152,7 @@ msgstr "Alt"
 msgid "More info"
 msgstr "Mere info"
 
-#: ../rpmdrake:552 ../rpmdrake:1458
+#: ../rpmdrake:552 ../rpmdrake:1461
 #, c-format
 msgid "Information on packages"
 msgstr "Information om pakker"
@@ -1359,7 +1393,7 @@ msgstr "Nulstil det valgte"
 msgid "Reload the packages list"
 msgstr "Genindlæs pakkelisten"
 
-#: ../rpmdrake:909 ../rpmdrake:1061 ../rpmdrake.pm:596
+#: ../rpmdrake:909 ../rpmdrake:1064 ../rpmdrake.pm:612
 #, c-format
 msgid "Update media"
 msgstr "Opdatér medier"
@@ -1445,27 +1479,27 @@ msgstr "Søg"
 msgid "Show automatically selected packages"
 msgstr "Vis automatisk valgte pakker"
 
-#: ../rpmdrake:1057
+#: ../rpmdrake:1060
 #, c-format
 msgid "Install"
 msgstr "Installér"
 
-#: ../rpmdrake:1073
+#: ../rpmdrake:1076
 #, c-format
 msgid "Quit"
 msgstr "Afslut"
 
-#: ../rpmdrake:1111
+#: ../rpmdrake:1114
 #, c-format
 msgid "Fatal error"
 msgstr "fatal fejl"
 
-#: ../rpmdrake:1112
+#: ../rpmdrake:1115
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "En fatal fejl skete: %s."
 
-#: ../rpmdrake:1120
+#: ../rpmdrake:1123
 #, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
@@ -1478,12 +1512,12 @@ msgstr ""
 "\n"
 "Er det O.k. at fortsætte?"
 
-#: ../rpmdrake:1129
+#: ../rpmdrake:1132
 #, c-format
 msgid "Already existing update media"
 msgstr "Allerede eksisterende opdateringsmedier"
 
-#: ../rpmdrake:1130
+#: ../rpmdrake:1133
 #, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -1500,12 +1534,12 @@ msgstr ""
 "\n"
 "Derefter skal %s genstartes."
 
-#: ../rpmdrake:1140
+#: ../rpmdrake:1143
 #, c-format
 msgid "How to choose manually your mirror"
 msgstr "Hvordan du manuelt vælger dit spejl"
 
-#: ../rpmdrake:1141
+#: ../rpmdrake:1144
 #, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -1520,62 +1554,62 @@ msgstr ""
 "\n"
 "Derefter skal %s genstartes."
 
-#: ../rpmdrake:1170
+#: ../rpmdrake:1173
 #, c-format
 msgid "Please wait, finding available packages..."
 msgstr "Vent venligst, finder tilgængelige pakker..."
 
-#: ../rpmdrake:1218
+#: ../rpmdrake:1221
 #, c-format
 msgid "Inspecting %s"
 msgstr "Undersøger %s"
 
-#: ../rpmdrake:1237
+#: ../rpmdrake:1240
 #, c-format
 msgid "changes:"
 msgstr "ændringer:"
 
-#: ../rpmdrake:1241
+#: ../rpmdrake:1244
 #, c-format
 msgid "Remove .%s"
 msgstr "Fjern .%s"
 
-#: ../rpmdrake:1243
+#: ../rpmdrake:1246
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Brug .%s som hovedfil"
 
-#: ../rpmdrake:1245
+#: ../rpmdrake:1248
 #, c-format
 msgid "Do nothing"
 msgstr "Gør ingenting"
 
-#: ../rpmdrake:1257
+#: ../rpmdrake:1260
 #, c-format
 msgid "Installation finished"
 msgstr "Installationen færdig"
 
-#: ../rpmdrake:1267
+#: ../rpmdrake:1270
 #, c-format
 msgid "Inspect..."
 msgstr "Undersøg..."
 
-#: ../rpmdrake:1293 ../rpmdrake:1454
+#: ../rpmdrake:1296 ../rpmdrake:1457
 #, c-format
 msgid "Everything installed successfully"
 msgstr "Alting installeret uden problemer"
 
-#: ../rpmdrake:1294 ../rpmdrake:1455
+#: ../rpmdrake:1297 ../rpmdrake:1458
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Alle ønskede pakker blev installeret uden problemer."
 
-#: ../rpmdrake:1296 ../rpmdrake:1439
+#: ../rpmdrake:1299 ../rpmdrake:1442
 #, c-format
 msgid "Problem during installation"
 msgstr "Problem ved installationen"
 
-#: ../rpmdrake:1297 ../rpmdrake:1440 ../rpmdrake:1495
+#: ../rpmdrake:1300 ../rpmdrake:1443 ../rpmdrake:1498
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -1586,17 +1620,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1318
+#: ../rpmdrake:1321
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Kunne ikke hente kildepakker."
 
-#: ../rpmdrake:1319
+#: ../rpmdrake:1322
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Desværre, kunne ikke hente kildepakker. %s"
 
-#: ../rpmdrake:1320 ../rpmdrake:1386
+#: ../rpmdrake:1323 ../rpmdrake:1389
 #, c-format
 msgid ""
 "\n"
@@ -1609,37 +1643,37 @@ msgstr ""
 "Fejl rapporteret:\n"
 "%s"
 
-#: ../rpmdrake:1327
+#: ../rpmdrake:1330
 #, c-format
 msgid "Package installation..."
 msgstr "Installation af pakker"
 
-#: ../rpmdrake:1327
+#: ../rpmdrake:1330
 #, c-format
 msgid "Initializing..."
 msgstr "Initialiserer..."
 
-#: ../rpmdrake:1336
+#: ../rpmdrake:1339
 #, c-format
 msgid "Change medium"
 msgstr "Skift media"
 
-#: ../rpmdrake:1337
+#: ../rpmdrake:1340
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Indsæt venligst mediet med navnet \"%s\" i enhed [%s]"
 
-#: ../rpmdrake:1344
+#: ../rpmdrake:1347
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Henter pakke `%s' (%s/%s)..."
 
-#: ../rpmdrake:1367
+#: ../rpmdrake:1370
 #, c-format
 msgid "Verifying packages signatures..."
 msgstr "Efterprøver pakkeunderskrifter..."
 
-#: ../rpmdrake:1376
+#: ../rpmdrake:1379
 #, c-format
 msgid ""
 "The following packages have bad signatures:\n"
@@ -1654,12 +1688,12 @@ msgstr ""
 "\n"
 "Ønsker du at fortsætte installeringen?"
 
-#: ../rpmdrake:1383 ../rpmdrake:1494
+#: ../rpmdrake:1386 ../rpmdrake:1497
 #, c-format
 msgid "Installation failed"
 msgstr "Installationen mislykkedes"
 
-#: ../rpmdrake:1384
+#: ../rpmdrake:1387
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -1672,22 +1706,22 @@ msgstr ""
 "\n"
 "Du skal måske opdatere din mediedatabase."
 
-#: ../rpmdrake:1398
+#: ../rpmdrake:1401
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Forbereder installation af pakker"
 
-#: ../rpmdrake:1401
+#: ../rpmdrake:1404
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Installerer pakke `%s' (%s/%s)..."
 
-#: ../rpmdrake:1417
+#: ../rpmdrake:1420
 #, c-format
 msgid "unable to access rpm file [%s]"
 msgstr "kunne ikke få adgang til rpm-fil [%s]"
 
-#: ../rpmdrake:1452
+#: ../rpmdrake:1455
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -1700,42 +1734,47 @@ msgstr ""
 "Nogen konfigurationsfiler blev oprette som '.rpmnew' eller '.rpmsave',\n"
 "du kan nu kigge på nogen for at tage aktion:"
 
-#: ../rpmdrake:1452
+#: ../rpmdrake:1455
 #, c-format
 msgid "everything was installed correctly"
 msgstr "alting blev installeret korrekt"
 
-#: ../rpmdrake:1460
+#: ../rpmdrake:1463
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr "Disse pakker har opgraderings-information"
 
-#: ../rpmdrake:1485
+#: ../rpmdrake:1475
+#, fuzzy, c-format
+msgid "More information on package... [%s]"
+msgstr "Mere information om pakken..."
+
+#: ../rpmdrake:1488
 #, c-format
 msgid "No package found for installation."
 msgstr "Ingen pakke fundet til installation."
 
-#: ../rpmdrake:1486
+#: ../rpmdrake:1489
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Alvorlig fejl: ingen pakke fundet til installation. Beklager."
 
-#: ../rpmdrake:1508
+#: ../rpmdrake:1511
 #, c-format
 msgid "Please wait, reading packages database..."
 msgstr "Vent venligst, læser pakkedatabase..."
 
-#: ../rpmdrake:1555
+#: ../rpmdrake:1558
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Vent venligst, fjerner pakker..."
 
-#: ../rpmdrake:1560
+#: ../rpmdrake:1563
 #, c-format
 msgid "Problem during removal"
 msgstr "Problem ved fjernelse"
 
-#: ../rpmdrake:1561
+#: ../rpmdrake:1564
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -1746,7 +1785,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1594
+#: ../rpmdrake:1597
 #, c-format
 msgid ""
 "Welcome to the software removal tool!\n"
@@ -1759,7 +1798,7 @@ msgstr ""
 "Dette værktøj hjælper dig med at vælge hvilke programmer du vil fjerne fra\n"
 "maskinen."
 
-#: ../rpmdrake:1599
+#: ../rpmdrake:1602
 #, c-format
 msgid ""
 "Welcome to %s!\n"
@@ -1772,12 +1811,12 @@ msgstr ""
 "Dette værktøj hjælper dig med at vælge opdateringerne du vil\n"
 "installere på maskinen."
 
-#: ../rpmdrake:1604
+#: ../rpmdrake:1607
 #, c-format
 msgid "Welcome to the software installation tool!"
 msgstr "Velkommen til værktøjet for programinstallering!"
 
-#: ../rpmdrake:1605
+#: ../rpmdrake:1608
 #, c-format
 msgid ""
 "Welcome to the software installation tool!\n"
@@ -2117,12 +2156,12 @@ msgstr "Hentning af `%s', resterende tid:%s, hastighed:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "Hentning af `%s', hastighed:%s"
 
-#: ../rpmdrake.pm:565
+#: ../rpmdrake.pm:580
 #, c-format
 msgid "Error retrieving packages"
 msgstr "Fejl ved hentning af pakker"
 
-#: ../rpmdrake.pm:566
+#: ../rpmdrake.pm:581
 #, c-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
@@ -2138,17 +2177,22 @@ msgstr ""
 "det igen for at omkonfigurere det - eller også er det utilgængeligt i \n"
 "øjeblikket, og du bør da prøve igen senere."
 
-#: ../rpmdrake.pm:604
+#: ../rpmdrake.pm:620
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Venligst vælg det medie du ønsker at opdatere:"
 
-#: ../rpmdrake.pm:620
+#: ../rpmdrake.pm:636
+#, fuzzy, c-format
+msgid "Select all"
+msgstr "Valgt"
+
+#: ../rpmdrake.pm:640
 #, c-format
 msgid "Update"
 msgstr "Opdatér"
 
-#: ../rpmdrake.pm:642
+#: ../rpmdrake.pm:662
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -2161,7 +2205,7 @@ msgstr ""
 "Fejl:\n"
 "%s"
 
-#: ../rpmdrake.pm:661 ../rpmdrake.pm:668
+#: ../rpmdrake.pm:686 ../rpmdrake.pm:695
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -2172,17 +2216,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:680
+#: ../rpmdrake.pm:707
 #, c-format
 msgid "Unable to create medium."
 msgstr "Kan ikke lave medie."
 
-#: ../rpmdrake.pm:685
+#: ../rpmdrake.pm:712
 #, c-format
 msgid "Failure when adding medium"
 msgstr "Fejl ved tilføjelse af medie"
 
-#: ../rpmdrake.pm:686
+#: ../rpmdrake.pm:713
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -2193,7 +2237,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:699
+#: ../rpmdrake.pm:726
 #, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
@@ -2204,7 +2248,7 @@ msgstr ""
 "kører (%s).\n"
 "Det vil blive deaktiveret."
 
-#: ../rpmdrake.pm:702
+#: ../rpmdrake.pm:729
 #, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of "
@@ -2503,10 +2547,6 @@ msgstr "Administration af programmelmedier"
 #, fuzzy
 #~ msgid "Network Computer (client)"
 #~ msgstr "Naturvidenskab/datalogi"
-
-#, fuzzy
-#~ msgid "Server"
-#~ msgstr "System/Servere"
 
 #, fuzzy
 #~ msgid "Graphical Environment"

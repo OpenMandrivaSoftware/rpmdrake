@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ru\n"
-"POT-Creation-Date: 2004-11-26 13:51+0100\n"
+"POT-Creation-Date: 2004-12-02 11:22+0100\n"
 "PO-Revision-Date: 2004-10-14 11:16+0300\n"
 "Last-Translator: Pavel Maryanov <acid_jack@ukr.net>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -40,7 +40,7 @@ msgid "FTP server"
 msgstr "Сервер FTP"
 
 #: ../edit-urpm-sources.pl:65 ../edit-urpm-sources.pl:66
-#: ../edit-urpm-sources.pl:68 ../edit-urpm-sources.pl:220
+#: ../edit-urpm-sources.pl:68 ../edit-urpm-sources.pl:320
 #, c-format
 msgid "URL:"
 msgstr "URL:"
@@ -65,48 +65,53 @@ msgstr "Путь или точка монтирования:"
 msgid "Security updates"
 msgstr "Обновления по безопасности"
 
-#: ../edit-urpm-sources.pl:80
+#: ../edit-urpm-sources.pl:84
 #, c-format
 msgid "Browse..."
 msgstr "Найти..."
 
-#: ../edit-urpm-sources.pl:82
+#: ../edit-urpm-sources.pl:91
 #, c-format
 msgid "Choose a mirror..."
 msgstr "Выберите зеркало..."
 
-#: ../edit-urpm-sources.pl:109
+#: ../edit-urpm-sources.pl:129
 #, c-format
 msgid "Login:"
 msgstr "Логин:"
 
-#: ../edit-urpm-sources.pl:109 ../edit-urpm-sources.pl:297
+#: ../edit-urpm-sources.pl:129 ../edit-urpm-sources.pl:397
 #, c-format
 msgid "Password:"
 msgstr "Пароль:"
 
-#: ../edit-urpm-sources.pl:114
-#, c-format
-msgid "Name:"
-msgstr "Имя:"
-
-#: ../edit-urpm-sources.pl:118 ../edit-urpm-sources.pl:221
+#: ../edit-urpm-sources.pl:134 ../edit-urpm-sources.pl:321
 #, c-format
 msgid "Relative path to synthesis/hdlist:"
 msgstr "Относительный путь к synthesis/hdlist:"
 
-#: ../edit-urpm-sources.pl:119
+#: ../edit-urpm-sources.pl:136
 #, c-format
 msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr ""
 "Если ничего не указывать, synthesis/hdlist будет исследован автоматически"
 
-#: ../edit-urpm-sources.pl:127
+#: ../edit-urpm-sources.pl:141
+#, c-format
+msgid "Name:"
+msgstr "Имя:"
+
+#: ../edit-urpm-sources.pl:154
+#, c-format
+msgid "Create media for a whole distribution"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:173
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Вам необходимо заполнить по крайней мере два первых пункта."
 
-#: ../edit-urpm-sources.pl:131
+#: ../edit-urpm-sources.pl:177
 #, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
@@ -115,100 +120,125 @@ msgstr ""
 "Источник с таким названием уже существует,\n"
 "вы действительно хотите его заменить?"
 
-#: ../edit-urpm-sources.pl:142
+#: ../edit-urpm-sources.pl:188
 #, c-format
 msgid "Adding a medium:"
 msgstr "Добавляется источник:"
 
-#: ../edit-urpm-sources.pl:143
+#: ../edit-urpm-sources.pl:189
 #, c-format
 msgid "Type of medium:"
 msgstr "Тип источника:"
 
-#: ../edit-urpm-sources.pl:148 ../edit-urpm-sources.pl:227
-#: ../edit-urpm-sources.pl:252 ../edit-urpm-sources.pl:314
-#: ../edit-urpm-sources.pl:394 ../edit-urpm-sources.pl:428
-#: ../edit-urpm-sources.pl:475 ../edit-urpm-sources.pl:594 ../rpmdrake:99
-#: ../rpmdrake:544 ../rpmdrake:1338 ../rpmdrake:1346 ../rpmdrake.pm:479
-#: ../rpmdrake.pm:616
+#: ../edit-urpm-sources.pl:194 ../edit-urpm-sources.pl:264
+#: ../edit-urpm-sources.pl:327 ../edit-urpm-sources.pl:352
+#: ../edit-urpm-sources.pl:414 ../edit-urpm-sources.pl:495
+#: ../edit-urpm-sources.pl:535 ../edit-urpm-sources.pl:593
+#: ../edit-urpm-sources.pl:733 ../rpmdrake:99 ../rpmdrake:544 ../rpmdrake:1341
+#: ../rpmdrake:1349 ../rpmdrake.pm:479 ../rpmdrake.pm:561 ../rpmdrake.pm:632
 #, c-format
 msgid "Cancel"
 msgstr "Отмена"
 
-#: ../edit-urpm-sources.pl:150 ../edit-urpm-sources.pl:252
-#: ../edit-urpm-sources.pl:304 ../edit-urpm-sources.pl:389
-#: ../edit-urpm-sources.pl:427 ../edit-urpm-sources.pl:468
-#: ../edit-urpm-sources.pl:525 ../edit-urpm-sources.pl:589
-#: ../edit-urpm-sources.pl:626 ../edit-urpm-sources.pl:762 ../rpmdrake:99
-#: ../rpmdrake:544 ../rpmdrake:562 ../rpmdrake:567 ../rpmdrake:1273
-#: ../rpmdrake:1338 ../rpmdrake:1479 ../rpmdrake.pm:189 ../rpmdrake.pm:238
-#: ../rpmdrake.pm:479
+#: ../edit-urpm-sources.pl:196 ../edit-urpm-sources.pl:266
+#: ../edit-urpm-sources.pl:352 ../edit-urpm-sources.pl:404
+#: ../edit-urpm-sources.pl:492 ../edit-urpm-sources.pl:534
+#: ../edit-urpm-sources.pl:586 ../edit-urpm-sources.pl:658
+#: ../edit-urpm-sources.pl:726 ../edit-urpm-sources.pl:779
+#: ../edit-urpm-sources.pl:929 ../rpmdrake:99 ../rpmdrake:544 ../rpmdrake:562
+#: ../rpmdrake:567 ../rpmdrake:1276 ../rpmdrake:1341 ../rpmdrake:1482
+#: ../rpmdrake.pm:189 ../rpmdrake.pm:238 ../rpmdrake.pm:479
 #, c-format
 msgid "Ok"
 msgstr "ОК"
 
-#: ../edit-urpm-sources.pl:192
+#: ../edit-urpm-sources.pl:248
+#, fuzzy, c-format
+msgid "Global options for package installation"
+msgstr "Подготовка к установке пакетов..."
+
+#: ../edit-urpm-sources.pl:250
+#, c-format
+msgid "always"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:251
+#, fuzzy, c-format
+msgid "never"
+msgstr "Серверы"
+
+#: ../edit-urpm-sources.pl:260
+#, fuzzy, c-format
+msgid "Verify RPMs to be installed:"
+msgstr "Некоторые пакеты не могут быть установлены"
+
+#: ../edit-urpm-sources.pl:261
+#, fuzzy, c-format
+msgid "Download program to use:"
+msgstr "Загрузка `%s', скорость:%s"
+
+#: ../edit-urpm-sources.pl:291
 #, c-format
 msgid "Source Removal"
 msgstr "Удаление источников"
 
-#: ../edit-urpm-sources.pl:193
+#: ../edit-urpm-sources.pl:292
 #, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Вы действительно хотите удалить источник \"%s\"?"
 
-#: ../edit-urpm-sources.pl:197
+#: ../edit-urpm-sources.pl:297
 #, c-format
 msgid "Please wait, removing medium..."
 msgstr "Пожалуйста, подождите, удаляется источник..."
 
-#: ../edit-urpm-sources.pl:211
+#: ../edit-urpm-sources.pl:311
 #, c-format
 msgid "Edit a medium"
 msgstr "Редактировать источник"
 
-#: ../edit-urpm-sources.pl:217
+#: ../edit-urpm-sources.pl:317
 #, c-format
 msgid "Editing medium \"%s\":"
 msgstr "Редактирование источника \"%s\":"
 
-#: ../edit-urpm-sources.pl:231
+#: ../edit-urpm-sources.pl:331
 #, c-format
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
-#: ../edit-urpm-sources.pl:239 ../edit-urpm-sources.pl:747
+#: ../edit-urpm-sources.pl:339 ../edit-urpm-sources.pl:913
 #, c-format
 msgid "Proxy..."
 msgstr "Прокси..."
 
-#: ../edit-urpm-sources.pl:250
+#: ../edit-urpm-sources.pl:350
 #, c-format
 msgid "You need to insert the medium to continue"
 msgstr "Вам необходимо вставить носитель для продолжения"
 
-#: ../edit-urpm-sources.pl:251
+#: ../edit-urpm-sources.pl:351
 #, c-format
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr "Чтобы сохранить изменения, вам необходимо вставить носитель в привод."
 
-#: ../edit-urpm-sources.pl:273
+#: ../edit-urpm-sources.pl:373
 #, c-format
 msgid "Configure proxies"
 msgstr "Настроить прокси"
 
-#: ../edit-urpm-sources.pl:283
+#: ../edit-urpm-sources.pl:383
 #, c-format
 msgid "Proxy settings for media \"%s\""
 msgstr "Настройки proxy для носителя \"%s\""
 
-#: ../edit-urpm-sources.pl:284
+#: ../edit-urpm-sources.pl:384
 #, c-format
 msgid "Global proxy settings"
 msgstr "Общие настройки proxy"
 
-#: ../edit-urpm-sources.pl:286
+#: ../edit-urpm-sources.pl:386
 #, c-format
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
@@ -217,164 +247,164 @@ msgstr ""
 "Если вам нужен прокси, введите имя хоста и, при необходимости, порт "
 "(синтаксис: <хост_прокси[:порт]>):"
 
-#: ../edit-urpm-sources.pl:289
+#: ../edit-urpm-sources.pl:389
 #, c-format
 msgid "Proxy hostname:"
 msgstr "Имя хоста прокси:"
 
-#: ../edit-urpm-sources.pl:292
+#: ../edit-urpm-sources.pl:392
 #, c-format
 msgid "You may specify a user/password for the proxy authentication:"
 msgstr "Вы можете указать пользователя/пароль для аутентификации на прокси:"
 
-#: ../edit-urpm-sources.pl:295
+#: ../edit-urpm-sources.pl:395
 #, c-format
 msgid "User:"
 msgstr "Пользователь:"
 
-#: ../edit-urpm-sources.pl:364
+#: ../edit-urpm-sources.pl:463
 #, c-format
 msgid "Add a parallel group"
 msgstr "Добавить параллельную группу"
 
-#: ../edit-urpm-sources.pl:364
+#: ../edit-urpm-sources.pl:463
 #, c-format
 msgid "Edit a parallel group"
 msgstr "Редактировать параллельную группу"
 
-#: ../edit-urpm-sources.pl:375
+#: ../edit-urpm-sources.pl:474
 #, c-format
 msgid "Add a medium limit"
 msgstr "Добавить предел источника"
 
-#: ../edit-urpm-sources.pl:385
+#: ../edit-urpm-sources.pl:486
 #, c-format
 msgid "Choose a medium for adding in the media limit:"
 msgstr "Выберите источник для установки его предела:"
 
-#: ../edit-urpm-sources.pl:419
+#: ../edit-urpm-sources.pl:523
 #, c-format
 msgid "Add a host"
 msgstr "Добавить хост"
 
-#: ../edit-urpm-sources.pl:423
+#: ../edit-urpm-sources.pl:529
 #, c-format
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr "Введите имя добавляемого хоста или его IP-адрес:"
 
-#: ../edit-urpm-sources.pl:447
+#: ../edit-urpm-sources.pl:560
 #, c-format
 msgid "Editing parallel group \"%s\":"
 msgstr "Редактирование параллельной группы \"%s\":"
 
-#: ../edit-urpm-sources.pl:449
+#: ../edit-urpm-sources.pl:564
 #, c-format
 msgid "Group name:"
 msgstr "Имя группы:"
 
-#: ../edit-urpm-sources.pl:450
+#: ../edit-urpm-sources.pl:565
 #, c-format
 msgid "Protocol:"
 msgstr "Протокол:"
 
-#: ../edit-urpm-sources.pl:452
+#: ../edit-urpm-sources.pl:567
 #, c-format
 msgid "Media limit:"
 msgstr "Предел источника:"
 
-#: ../edit-urpm-sources.pl:457 ../edit-urpm-sources.pl:464
+#: ../edit-urpm-sources.pl:572 ../edit-urpm-sources.pl:579
 #, c-format
 msgid "Add"
 msgstr "Добавить"
 
-#: ../edit-urpm-sources.pl:458 ../edit-urpm-sources.pl:465
-#: ../edit-urpm-sources.pl:514 ../edit-urpm-sources.pl:729 ../rpmdrake:1057
+#: ../edit-urpm-sources.pl:573 ../edit-urpm-sources.pl:580
+#: ../edit-urpm-sources.pl:638 ../edit-urpm-sources.pl:895 ../rpmdrake:1060
 #, c-format
 msgid "Remove"
 msgstr "Удалить"
 
-#: ../edit-urpm-sources.pl:459
+#: ../edit-urpm-sources.pl:574
 #, c-format
 msgid "Hosts:"
 msgstr "Хосты:"
 
-#: ../edit-urpm-sources.pl:489
+#: ../edit-urpm-sources.pl:608
 #, c-format
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr "Настроить параллельный urpmi (распределенное выполнение urpmi)"
 
-#: ../edit-urpm-sources.pl:492
+#: ../edit-urpm-sources.pl:611
 #, c-format
 msgid "Group"
 msgstr "Группа"
 
-#: ../edit-urpm-sources.pl:492
+#: ../edit-urpm-sources.pl:611
 #, c-format
 msgid "Protocol"
 msgstr "Протокол"
 
-#: ../edit-urpm-sources.pl:492
+#: ../edit-urpm-sources.pl:611
 #, c-format
 msgid "Media limit"
 msgstr "Предел источника"
 
-#: ../edit-urpm-sources.pl:493
+#: ../edit-urpm-sources.pl:612
 #, c-format
 msgid "Command"
 msgstr "Команда"
 
-#: ../edit-urpm-sources.pl:503 ../rpmdrake:280 ../rpmdrake:296 ../rpmdrake:406
+#: ../edit-urpm-sources.pl:622 ../rpmdrake:280 ../rpmdrake:296 ../rpmdrake:406
 #: ../rpmdrake:478
 #, c-format
 msgid "(none)"
 msgstr "(нет)"
 
-#: ../edit-urpm-sources.pl:516 ../edit-urpm-sources.pl:733
+#: ../edit-urpm-sources.pl:642 ../edit-urpm-sources.pl:899
 #, c-format
 msgid "Edit"
 msgstr "Редактировать"
 
-#: ../edit-urpm-sources.pl:521 ../edit-urpm-sources.pl:739
+#: ../edit-urpm-sources.pl:650 ../edit-urpm-sources.pl:905
 #, c-format
 msgid "Add..."
 msgstr "Добавить..."
 
-#: ../edit-urpm-sources.pl:533
+#: ../edit-urpm-sources.pl:666
 #, c-format
 msgid "Manage keys for digital signatures of packages"
 msgstr "Управление ключами для цифровых подписей пакетов"
 
-#: ../edit-urpm-sources.pl:537 ../edit-urpm-sources.pl:657
+#: ../edit-urpm-sources.pl:670 ../edit-urpm-sources.pl:814
 #, c-format
 msgid "Medium"
 msgstr "Источник"
 
-#: ../edit-urpm-sources.pl:542
+#: ../edit-urpm-sources.pl:675
 #, c-format
 msgid "Keys"
 msgstr "Ключи"
 
-#: ../edit-urpm-sources.pl:561
+#: ../edit-urpm-sources.pl:694
 #, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr "имя не найдено, ключ отсутствует в rpm keyring!"
 
-#: ../edit-urpm-sources.pl:575
+#: ../edit-urpm-sources.pl:708
 #, c-format
 msgid "Add a key"
 msgstr "Добавить ключ"
 
-#: ../edit-urpm-sources.pl:585
+#: ../edit-urpm-sources.pl:720
 #, c-format
 msgid "Choose a key for adding to the medium %s"
 msgstr "Выберите ключ для добавления к источнику %s"
 
-#: ../edit-urpm-sources.pl:606
+#: ../edit-urpm-sources.pl:748
 #, c-format
 msgid "Remove a key"
 msgstr "Удалить ключ"
 
-#: ../edit-urpm-sources.pl:607
+#: ../edit-urpm-sources.pl:749
 #, c-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
@@ -383,72 +413,77 @@ msgstr ""
 "Вы действительно хотите удалить ключ %s из источника %s?\n"
 "(имя ключа: %s)"
 
-#: ../edit-urpm-sources.pl:620
+#: ../edit-urpm-sources.pl:767
 #, c-format
 msgid "Add a key..."
 msgstr "Добавить ключ"
 
-#: ../edit-urpm-sources.pl:622
+#: ../edit-urpm-sources.pl:771
 #, c-format
 msgid "Remove key"
 msgstr "Удалить ключ"
 
-#: ../edit-urpm-sources.pl:634
+#: ../edit-urpm-sources.pl:788
 #, c-format
 msgid "Configure media"
 msgstr "Настроить источник"
 
-#: ../edit-urpm-sources.pl:656
+#: ../edit-urpm-sources.pl:813
 #, c-format
 msgid "Enabled?"
 msgstr "Включен?"
 
-#: ../edit-urpm-sources.pl:667
+#: ../edit-urpm-sources.pl:826
 #, c-format
 msgid "Update medium"
 msgstr "Обновить источник"
 
-#: ../edit-urpm-sources.pl:667
+#: ../edit-urpm-sources.pl:826
 #, c-format
 msgid "Regenerate hdlist"
 msgstr "Восстановить hdlist"
 
-#: ../edit-urpm-sources.pl:679 ../rpmdrake.pm:553
+#: ../edit-urpm-sources.pl:838 ../rpmdrake.pm:554
 #, c-format
 msgid "Please wait, updating media..."
 msgstr "Пожалуйста, подождите, обновляется носитель..."
 
-#: ../edit-urpm-sources.pl:683
+#: ../edit-urpm-sources.pl:842
 #, c-format
 msgid "Please wait, generating hdlist..."
 msgstr "Пожалуйста, подождите, создается hdlist..."
 
-#: ../edit-urpm-sources.pl:743
+#: ../edit-urpm-sources.pl:909
 #, c-format
 msgid "Update..."
 msgstr "Обновить..."
 
-#: ../edit-urpm-sources.pl:746
+#: ../edit-urpm-sources.pl:912
 #, c-format
 msgid "Manage keys..."
 msgstr "Управление ключами..."
 
-#: ../edit-urpm-sources.pl:748
+#: ../edit-urpm-sources.pl:914
 #, c-format
 msgid "Parallel..."
 msgstr "Распараллеливание..."
 
-#: ../edit-urpm-sources.pl:754 ../rpmdrake:1049
+#: ../edit-urpm-sources.pl:915
+#, fuzzy, c-format
+msgid "Global options..."
+msgstr "Общие настройки proxy"
+
+#: ../edit-urpm-sources.pl:921 ../rpmdrake:1051
 #, c-format
 msgid "Help"
 msgstr "Справка"
 
-#: ../edit-urpm-sources.pl:757 ../rpmdrake:1052
+#: ../edit-urpm-sources.pl:924 ../rpmdrake:1054
 #, c-format
 msgid "Help launched in background"
 msgstr "Справка запущена в фоновом режиме"
 
-#: ../edit-urpm-sources.pl:758 ../rpmdrake:1053
+#: ../edit-urpm-sources.pl:925 ../rpmdrake:1055
 #, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
@@ -456,7 +491,7 @@ msgstr ""
 "Окно справки было запущено, скоро оно должно появиться на вашем рабочем "
 "столе."
 
-#: ../edit-urpm-sources.pl:774 ../gurpmi.addmedia:75 ../rpmdrake:1590
+#: ../edit-urpm-sources.pl:941 ../gurpmi.addmedia:75 ../rpmdrake:1593
 #, c-format
 msgid ""
 "%s\n"
@@ -467,7 +502,7 @@ msgstr ""
 "\n"
 "Готовы продолжить?"
 
-#: ../edit-urpm-sources.pl:777
+#: ../edit-urpm-sources.pl:944
 #, c-format
 msgid ""
 "Welcome to the Software Media Manager!\n"
@@ -483,7 +518,7 @@ msgstr ""
 "они будут доступны для установки пакетов новых программ или\n"
 "для выполнения обновлений."
 
-#: ../edit-urpm-sources.pl:789
+#: ../edit-urpm-sources.pl:956
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -1033,7 +1068,7 @@ msgstr "Результаты поиска (нет)"
 msgid "Please wait, searching..."
 msgstr "Пожалуйста, подождите, выполняется поиск..."
 
-#: ../rpmdrake:349 ../rpmdrake:1119 ../rpmdrake:1375 ../rpmdrake:1589
+#: ../rpmdrake:349 ../rpmdrake:1122 ../rpmdrake:1378 ../rpmdrake:1592
 #, c-format
 msgid "Rpmdrake"
 msgstr "Rpmdrake"
@@ -1068,8 +1103,7 @@ msgstr "Не выбрано"
 msgid "Rpmdrake %s"
 msgstr "Rpmdrake %s"
 
-#: ../rpmdrake:442 ../rpmdrake:557 ../rpmdrake:559 ../rpmdrake:1469
-#: ../rpmdrake:1472
+#: ../rpmdrake:442 ../rpmdrake:557 ../rpmdrake:559 ../rpmdrake:1472
 #, c-format
 msgid "More information on package..."
 msgstr "Дополнительная информация о пакете..."
@@ -1116,7 +1150,7 @@ msgstr "Все"
 msgid "More info"
 msgstr "Дополнительно"
 
-#: ../rpmdrake:552 ../rpmdrake:1458
+#: ../rpmdrake:552 ../rpmdrake:1461
 #, c-format
 msgid "Information on packages"
 msgstr "Информация о пакетах"
@@ -1358,7 +1392,7 @@ msgstr "Сбросить выбор"
 msgid "Reload the packages list"
 msgstr "Перезагрузить список пакетов"
 
-#: ../rpmdrake:909 ../rpmdrake:1061 ../rpmdrake.pm:596
+#: ../rpmdrake:909 ../rpmdrake:1064 ../rpmdrake.pm:612
 #, c-format
 msgid "Update media"
 msgstr "Обновить источник"
@@ -1445,27 +1479,27 @@ msgstr "Поиск"
 msgid "Show automatically selected packages"
 msgstr "Показывать автоматически выбранные пакеты"
 
-#: ../rpmdrake:1057
+#: ../rpmdrake:1060
 #, c-format
 msgid "Install"
 msgstr "Установить"
 
-#: ../rpmdrake:1073
+#: ../rpmdrake:1076
 #, c-format
 msgid "Quit"
 msgstr "Выйти"
 
-#: ../rpmdrake:1111
+#: ../rpmdrake:1114
 #, c-format
 msgid "Fatal error"
 msgstr "Неисправимая ошибка"
 
-#: ../rpmdrake:1112
+#: ../rpmdrake:1115
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "Произошла критическая ошибка: %s."
 
-#: ../rpmdrake:1120
+#: ../rpmdrake:1123
 #, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
@@ -1478,12 +1512,12 @@ msgstr ""
 "что ваша сеть в данный момент работает.\n"
 "Готовы продолжить?"
 
-#: ../rpmdrake:1129
+#: ../rpmdrake:1132
 #, c-format
 msgid "Already existing update media"
 msgstr "Уже существующий источник обновления"
 
-#: ../rpmdrake:1130
+#: ../rpmdrake:1133
 #, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -1501,12 +1535,12 @@ msgstr ""
 "\n"
 "Затем перезапустите %s."
 
-#: ../rpmdrake:1140
+#: ../rpmdrake:1143
 #, c-format
 msgid "How to choose manually your mirror"
 msgstr "Как вручную выбрать свое зеркало"
 
-#: ../rpmdrake:1141
+#: ../rpmdrake:1144
 #, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -1521,62 +1555,62 @@ msgstr ""
 "\n"
 "Затем перезапустите %s."
 
-#: ../rpmdrake:1170
+#: ../rpmdrake:1173
 #, c-format
 msgid "Please wait, finding available packages..."
 msgstr "Подождите, пожалуйста, выполняется поиск доступных пакетов..."
 
-#: ../rpmdrake:1218
+#: ../rpmdrake:1221
 #, c-format
 msgid "Inspecting %s"
 msgstr "Изучается %s"
 
-#: ../rpmdrake:1237
+#: ../rpmdrake:1240
 #, c-format
 msgid "changes:"
 msgstr "изменения:"
 
-#: ../rpmdrake:1241
+#: ../rpmdrake:1244
 #, c-format
 msgid "Remove .%s"
 msgstr "Удалить .%s"
 
-#: ../rpmdrake:1243
+#: ../rpmdrake:1246
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Использовать .%s в качестве главного файла"
 
-#: ../rpmdrake:1245
+#: ../rpmdrake:1248
 #, c-format
 msgid "Do nothing"
 msgstr "Ничего не делать"
 
-#: ../rpmdrake:1257
+#: ../rpmdrake:1260
 #, c-format
 msgid "Installation finished"
 msgstr "Установка завершена"
 
-#: ../rpmdrake:1267
+#: ../rpmdrake:1270
 #, c-format
 msgid "Inspect..."
 msgstr "Изучение..."
 
-#: ../rpmdrake:1293 ../rpmdrake:1454
+#: ../rpmdrake:1296 ../rpmdrake:1457
 #, c-format
 msgid "Everything installed successfully"
 msgstr "Все установлено успешно."
 
-#: ../rpmdrake:1294 ../rpmdrake:1455
+#: ../rpmdrake:1297 ../rpmdrake:1458
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Все запрошенные пакеты были успешно установлены."
 
-#: ../rpmdrake:1296 ../rpmdrake:1439
+#: ../rpmdrake:1299 ../rpmdrake:1442
 #, c-format
 msgid "Problem during installation"
 msgstr "Во время установки возникла проблема"
 
-#: ../rpmdrake:1297 ../rpmdrake:1440 ../rpmdrake:1495
+#: ../rpmdrake:1300 ../rpmdrake:1443 ../rpmdrake:1498
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -1587,17 +1621,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1318
+#: ../rpmdrake:1321
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Невозможно получить исходные пакеты."
 
-#: ../rpmdrake:1319
+#: ../rpmdrake:1322
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "К сожалению невозможно получить пакеты с исходниками. %s"
 
-#: ../rpmdrake:1320 ../rpmdrake:1386
+#: ../rpmdrake:1323 ../rpmdrake:1389
 #, c-format
 msgid ""
 "\n"
@@ -1610,37 +1644,37 @@ msgstr ""
 "Об ошибке(ах) сообщено:\n"
 "%s"
 
-#: ../rpmdrake:1327
+#: ../rpmdrake:1330
 #, c-format
 msgid "Package installation..."
 msgstr "Устанавливается пакет..."
 
-#: ../rpmdrake:1327
+#: ../rpmdrake:1330
 #, c-format
 msgid "Initializing..."
 msgstr "Инициализация..."
 
-#: ../rpmdrake:1336
+#: ../rpmdrake:1339
 #, c-format
 msgid "Change medium"
 msgstr "Изменить носитель"
 
-#: ../rpmdrake:1337
+#: ../rpmdrake:1340
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Пожалуйста, вставьте носитель с меткой \"%s\" в устройство [%s]"
 
-#: ../rpmdrake:1344
+#: ../rpmdrake:1347
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Загружается пакет `%s' (%s/%s)..."
 
-#: ../rpmdrake:1367
+#: ../rpmdrake:1370
 #, c-format
 msgid "Verifying packages signatures..."
 msgstr "Проверяются подписи пакетов..."
 
-#: ../rpmdrake:1376
+#: ../rpmdrake:1379
 #, c-format
 msgid ""
 "The following packages have bad signatures:\n"
@@ -1655,12 +1689,12 @@ msgstr ""
 "\n"
 "Хотите продолжить установку?"
 
-#: ../rpmdrake:1383 ../rpmdrake:1494
+#: ../rpmdrake:1386 ../rpmdrake:1497
 #, c-format
 msgid "Installation failed"
 msgstr "Установка была прервана"
 
-#: ../rpmdrake:1384
+#: ../rpmdrake:1387
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -1673,22 +1707,22 @@ msgstr ""
 "\n"
 "Возможно вам понадобится обновить свою базу данных источников."
 
-#: ../rpmdrake:1398
+#: ../rpmdrake:1401
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Подготовка к установке пакетов..."
 
-#: ../rpmdrake:1401
+#: ../rpmdrake:1404
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Устанавливается пакет `%s' (%s/%s)..."
 
-#: ../rpmdrake:1417
+#: ../rpmdrake:1420
 #, c-format
 msgid "unable to access rpm file [%s]"
 msgstr "нет доступа к rpm-файлу [%s]"
 
-#: ../rpmdrake:1452
+#: ../rpmdrake:1455
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -1701,42 +1735,47 @@ msgstr ""
 "Некоторые конфигурационные файлы созданы как `.rpmnew' или `.rpmsave',\n"
 "теперь вы можете просмотреть их чтобы принять меры:"
 
-#: ../rpmdrake:1452
+#: ../rpmdrake:1455
 #, c-format
 msgid "everything was installed correctly"
 msgstr "все было установлено правильно"
 
-#: ../rpmdrake:1460
+#: ../rpmdrake:1463
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr "Данные пакеты поставляются с информацией об обновлении"
 
-#: ../rpmdrake:1485
+#: ../rpmdrake:1475
+#, fuzzy, c-format
+msgid "More information on package... [%s]"
+msgstr "Дополнительная информация о пакете..."
+
+#: ../rpmdrake:1488
 #, c-format
 msgid "No package found for installation."
 msgstr "Не найден пакет для установки."
 
-#: ../rpmdrake:1486
+#: ../rpmdrake:1489
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Неисправимая ошибка: к сожалению не найден пакет для установки."
 
-#: ../rpmdrake:1508
+#: ../rpmdrake:1511
 #, c-format
 msgid "Please wait, reading packages database..."
 msgstr "Пожалуйста, подождите, читается база пакетов..."
 
-#: ../rpmdrake:1555
+#: ../rpmdrake:1558
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Пожалуйста, подождите, удаляются пакеты..."
 
-#: ../rpmdrake:1560
+#: ../rpmdrake:1563
 #, c-format
 msgid "Problem during removal"
 msgstr "Проблема во время удаления"
 
-#: ../rpmdrake:1561
+#: ../rpmdrake:1564
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -1747,7 +1786,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1594
+#: ../rpmdrake:1597
 #, c-format
 msgid ""
 "Welcome to the software removal tool!\n"
@@ -1760,7 +1799,7 @@ msgstr ""
 "Этот инструмент поможет вам выбрать пакеты для удаления с вашего\n"
 "компьютера."
 
-#: ../rpmdrake:1599
+#: ../rpmdrake:1602
 #, c-format
 msgid ""
 "Welcome to %s!\n"
@@ -1773,12 +1812,12 @@ msgstr ""
 "Этот инструмент поможет вам выбрать обновления для установки на ваш\n"
 "компьютер."
 
-#: ../rpmdrake:1604
+#: ../rpmdrake:1607
 #, c-format
 msgid "Welcome to the software installation tool!"
 msgstr ""
 
-#: ../rpmdrake:1605
+#: ../rpmdrake:1608
 #, c-format
 msgid ""
 "Welcome to the software installation tool!\n"
@@ -2121,12 +2160,12 @@ msgstr "Загрузка `%s', осталось времени:%s, скорос�
 msgid "Download of `%s', speed:%s"
 msgstr "Загрузка `%s', скорость:%s"
 
-#: ../rpmdrake.pm:565
+#: ../rpmdrake.pm:580
 #, c-format
 msgid "Error retrieving packages"
 msgstr "Ошибка при получении пакетов"
 
-#: ../rpmdrake.pm:566
+#: ../rpmdrake.pm:581
 #, c-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
@@ -2142,17 +2181,22 @@ msgstr ""
 "и повторного добавления для того, чтобы перенастроить его, либо он в\n"
 "данный момент недоступен и вам следует попробовать еще раз позднее."
 
-#: ../rpmdrake.pm:604
+#: ../rpmdrake.pm:620
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Выберите источник, который желаете обновить:"
 
-#: ../rpmdrake.pm:620
+#: ../rpmdrake.pm:636
+#, fuzzy, c-format
+msgid "Select all"
+msgstr "Выбранные"
+
+#: ../rpmdrake.pm:640
 #, c-format
 msgid "Update"
 msgstr "Обновить"
 
-#: ../rpmdrake.pm:642
+#: ../rpmdrake.pm:662
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -2165,7 +2209,7 @@ msgstr ""
 "Ошибки:\n"
 "%s"
 
-#: ../rpmdrake.pm:661 ../rpmdrake.pm:668
+#: ../rpmdrake.pm:686 ../rpmdrake.pm:695
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -2176,17 +2220,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:680
+#: ../rpmdrake.pm:707
 #, c-format
 msgid "Unable to create medium."
 msgstr "Невозможно создать источник."
 
-#: ../rpmdrake.pm:685
+#: ../rpmdrake.pm:712
 #, c-format
 msgid "Failure when adding medium"
 msgstr "Неудача при добавлении источника"
 
-#: ../rpmdrake.pm:686
+#: ../rpmdrake.pm:713
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -2197,7 +2241,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:699
+#: ../rpmdrake.pm:726
 #, fuzzy, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
@@ -2208,7 +2252,7 @@ msgstr ""
 "Mandrakelinux, которая сейчас запущена (%s).\n"
 "Будет отключен."
 
-#: ../rpmdrake.pm:702
+#: ../rpmdrake.pm:729
 #, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of "
