@@ -26,7 +26,7 @@ use lib qw(/usr/lib/libDrakX);
 use common;
 use rpmdrake;
 use URPM::Signature;
-use MDK::Common qw/max/;
+use MDK::Common qw(max);
 
 BEGIN {
     eval { require ugtk2; ugtk2->import(qw(:all)) };
@@ -104,7 +104,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
     } else {
 	$medium_name = 'update_source';
 	#- ensure a unique medium name
-	my $nb_sources = max map { $_->{name} =~ /^\Q$medium_name\E(\d*)$/ ? ($1 || 1) : 0 } @{$urpm->{media}};
+	my $nb_sources = max map { $_->{name} =~ /^\Q$medium_name\E(\d*)$/ ? $1 || 1 : 0 } @{$urpm->{media}};
 	if ($nb_sources) { $medium_name .= $nb_sources + 1 }
 	add_medium_and_check(
 	    $urpm,
@@ -167,8 +167,8 @@ sub add_callback {
 			$info->{pass_check}->set_active($_[0]->get_active);
 			$info->{login_check}->set_active($_[0]->get_active);
 		    }
-		)
-	    } ([ 'login', N("Login:"), 1 ], [ 'pass', N("Password:"), 0 ])
+		);
+	    } ([ 'login', N("Login:"), 1 ], [ 'pass', N("Password:"), 0 ]);
 	};
 	my $nb = $count_nbs++;
 	gtksignal_connect($_[1], 'clicked' => sub { $_[0]->get_active and $notebook->set_current_page($nb) });
@@ -289,9 +289,9 @@ sub options_callback {
 	{ name => N("always"), value => 1 },
 	{ name => N("never"),  value => 0 },
     );
-    my @verif_radio = gtkradio( $verif_radio_infos[$urpm->{options}{'verify-rpm'} ? 0 : 1]{name}, map { $_->{name} } @verif_radio_infos );
+    my @verif_radio = gtkradio($verif_radio_infos[$urpm->{options}{'verify-rpm'} ? 0 : 1]{name}, map { $_->{name} } @verif_radio_infos);
     my @avail_downloaders = grep { -f "/usr/bin/$_" } qw(curl wget);
-    my @downl_radio = gtkradio( $urpm->{options}{downloader} || $avail_downloaders[0], @avail_downloaders );
+    my @downl_radio = gtkradio($urpm->{options}{downloader} || $avail_downloaders[0], @avail_downloaders);
     gtkadd(
 	$w->{window},
 	gtkpack(
@@ -578,8 +578,8 @@ sub edit_parallel {
     $hosts->set_headers_visible(0);
     $hosts->get_selection->set_mode('browse');
     my $hosts_list;
-    if ($edited->{protocol} eq 'ssh')    { $hosts_list = [ split /:/, $edited->{command} ] };
-    if ($edited->{protocol} eq 'ka-run') { push @$hosts_list, $1 while $edited->{command} =~ /-m (\S+)/g };
+    if    ($edited->{protocol} eq 'ssh')    { $hosts_list = [ split /:/, $edited->{command} ] }
+    elsif ($edited->{protocol} eq 'ka-run') { push @$hosts_list, $1 while $edited->{command} =~ /-m (\S+)/g }
     $hosts_ls->append_set([ 0 => $_ ]) foreach @$hosts_list;
     my $add_host = sub {
         my $w = ugtk2->new(N("Add a host"), grab => 1);
