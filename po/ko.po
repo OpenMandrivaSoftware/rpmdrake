@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-30 13:33+0200\n"
+"POT-Creation-Date: 2003-06-13 21:08+0200\n"
 "PO-Revision-Date: 2002-08-25 14:32+0900\n"
 "Last-Translator: Jaegeum Cze <baedaron@hanafos.com>\n"
 "Language-Team: Korean <baedaron@hananet.net>\n"
@@ -566,11 +566,6 @@ msgid "Summary: "
 msgstr "요약 설명: "
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "%s conflicts with %s"
-msgstr "(은)는 다음과 충돌합니다:"
-
-#: ../rpmdrake:1
 #, c-format
 msgid "System/Fonts/Type1"
 msgstr ""
@@ -599,21 +594,6 @@ msgstr "중요도: "
 #, c-format
 msgid "Unable to create medium."
 msgstr "매체를 생성할 수 없습니다."
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"The following packages have to be removed for others to be upgraded:\n"
-"\n"
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"다른 팩키지를 업그레이드하기 위해, 다음 팩키지들은 제거되어야 합니다:\n"
-"\n"
-"%s\n"
-"\n"
-"계속할까요?"
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
@@ -659,11 +639,6 @@ msgstr "모든 설치를 마쳤습니다."
 #, c-format
 msgid "Add a parallel group"
 msgstr ""
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "unknown package "
-msgstr "[%s] 팩키지를 열 수 없습니다.\n"
 
 #: ../rpmdrake:1 ../rpmdrake.pm:1
 #, fuzzy, c-format
@@ -1035,6 +1010,23 @@ msgid "Removable device"
 msgstr "탈착식 장치"
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"The following packages have to be removed for others to be upgraded:\n"
+"\n"
+"%s\n"
+"\n"
+"(waiting for urpmi subroutine for explanation)\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"다른 팩키지를 업그레이드하기 위해, 다음 팩키지들은 제거되어야 합니다:\n"
+"\n"
+"%s\n"
+"\n"
+"계속할까요?"
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/Icewm"
 msgstr ""
@@ -1205,12 +1197,12 @@ msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Help launched in background"
+msgid "Graphical desktop/Enlightenment"
 msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Graphical desktop/Enlightenment"
+msgid "Help launched in background"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1487,15 +1479,6 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your media database."
-msgstr ""
-"설치 실패. 일부 파일이 없습니다.\n"
-"소스 데이터베이스를 업데이트해 보세요."
-
-#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1649,6 +1632,17 @@ msgstr ""
 #, c-format
 msgid "System/Base"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing:\n"
+"%s\n"
+"\n"
+"You may want to update your media database."
+msgstr ""
+"설치 실패. 일부 파일이 없습니다.\n"
+"소스 데이터베이스를 업데이트해 보세요."
 
 #: ../rpmdrake:1
 #, c-format
@@ -2115,6 +2109,14 @@ msgstr "소프트웨어 제거"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "소프트웨어 소스 관리자"
+
+#, fuzzy
+#~ msgid "%s conflicts with %s"
+#~ msgstr "(은)는 다음과 충돌합니다:"
+
+#, fuzzy
+#~ msgid "unknown package "
+#~ msgstr "[%s] 팩키지를 열 수 없습니다.\n"
 
 #, fuzzy
 #~ msgid "Update source"
