@@ -18,7 +18,7 @@ Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
 Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.2-25mdk perl-URPM >= 0.60 drakxtools >= 9.1-0.12mdk grpmi >= 9.0 rpmtools >= 4.5
 Requires: perl-GTK2 > 0.0.cvs.2003.02.12.1-2mdk
-BuildRequires: curl-devel rpm-devel gettext openssl-devel perl-devel
+BuildRequires: libcurl2-devel >= 7.10.3-2mdk rpm-devel gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
 URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
