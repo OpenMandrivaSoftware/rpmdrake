@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.2
-%define release 2mdk
+%define release 3mdk
 
 Name: %{name}
 Version: %{version}
@@ -108,6 +108,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Nov 16 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.2-3mdk
+- Fix adding an update media in the software media manager.
+- Fix sort by country in the mirror list.
+
 * Mon Nov 15 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.2-2mdk
 - Rebuild for new perl
 
