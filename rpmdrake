@@ -1096,7 +1096,7 @@ Is it ok to continue?",
 	$w->{window}, 
 	gtkpack_(
 	    Gtk2::VBox->new(0, 3),
-	    if_(!$::isEmbedded, 0, Gtk2::Banner->new("title-$MODE", $mode2title{$MODE})),
+	    0, Gtk2::Banner->new("title-$MODE", $mode2title{$MODE}),
 	    1, gtkadd(
 		gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
 		gtkpack_(
