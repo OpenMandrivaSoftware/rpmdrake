@@ -518,8 +518,8 @@ or you already installed all of them."));
 		       my ($set_state, @nodes) = @_;
 		       @nodes = grep { exists $pkgs->{$_} } @nodes
 			   or return;
-		       return if @nodes == keys %$pkgs; #- avoid selecting every package
-		       return if !$dont_show_selections && @nodes > 2000; #- avoid selecting too many packages at once
+		       #- avoid selecting too many packages at once
+		       return if !$dont_show_selections && (@nodes == keys %$pkgs || @nodes > 2000);
 		       my $new_state = !$pkgs->{$nodes[0]}{selected};
 
 		       my @nodes_with_deps;
