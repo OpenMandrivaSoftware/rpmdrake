@@ -297,6 +297,7 @@ my %u2l = (
 	   be => N("Belgium"),
 	   br => N("Brazil"),
 	   ca => N("Canada"),
+	   ch => N("Switzerland"),
 	   cr => N("Costa Rica"),
 	   cz => N("Czech Republic"),
 	   de => N("Germany"),
@@ -306,6 +307,7 @@ my %u2l = (
 	   fi => N("Finland"),
 	   fr => N("France"),
 	   gr => N("Greece"),
+	   hu => N("Hungary"),
 	   il => N("Israel"),
 	   it => N("Italy"),
 	   jp => N("Japan"),
@@ -316,6 +318,7 @@ my %u2l = (
 	   pt => N("Portugal"),
 	   ru => N("Russia"),
 	   se => N("Sweden"),
+	   sk => N("Slovakia"),
 	   tw => N("Taiwan"),
 	   uk => N("United Kingdom"),
 	   zh => N("China"),
@@ -387,7 +390,12 @@ sub mirrors {
     my @mirrors = map { my ($arch, $url) = m|\Q$distro_type\E([^:]*):(.+)|;
 			if ($arch && compat_arch_for_updates($arch)) {
 	                    my ($land, $goodness);
-			    $url =~ m|\.\Q$_\E/| and $land = $_ foreach keys %u2l;
+			    foreach (keys %u2l) {
+				if ($url =~ m|\.\Q$_\E/|) {
+				    $land = $_;
+				    last;
+				}
+			    }
 			    $url =~ m|\W\Q$_\E/| and $land = $sites2countries{$_} foreach keys %sites2countries;
 			    each_index { $_ eq $land and $goodness ||= 100-$::i } (map { if_($tz =~ /^$_$/, @{$t2l{$_}}) } keys %t2l), @$us;
 			    { url => $url, land => $u2l{$land} || N("United States"), goodness => $goodness + rand() };
