@@ -885,8 +885,8 @@ sub dialog_rpmnew {
 					       my $f = $_;
 					       my $b;
 					       [ gtkpack__(Gtk2::HBox->new(0, 0),
-							   gtkset_selectable(gtkset_markup(Gtk2::Label->new,
-											   "$pkg:<span font_desc=\"monospace\">$f</span>"), 1)),
+							   gtkset_markup(gtkset_selectable(Gtk2::Label->new, 1),
+									 "$pkg:<span font_desc=\"monospace\">$f</span>")),
 						 $b = gtksignal_connect(Gtk2::Button->new(but(N("Inspect..."))),
 									clicked => sub {
 									    $inspect->($f);
