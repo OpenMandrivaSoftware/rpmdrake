@@ -25,6 +25,7 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     "@ARGV" =~ /-h/ and do {
 	printf STDERR "Usage: %s [OPTION]...
   --noconfirmation       don't ask first confirmation question in MandrakeUpdate mode
+  --no-verify-rpm        don't verify packages signatures
 ", $basename->($0);
 	exit 0;
     };
@@ -868,7 +869,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		my_gtk::flush();
 	    }
 	} else {
-	    exec('grpmi', (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade)
+	    exec('grpmi', if_($options{'no-verify-rpm'}, '--no-verify-rpm'),
+		          (map { ("-noupgrade", $_) } @rpms_install),
+		          @rpms_upgrade)
 	      or fatal_msg(_("Program missing"),
 			   _("A required program is missing (grpmi). Check your installation.")), myexit(-1);
 	}

@@ -28,7 +28,7 @@ use lib qw(/usr/lib/libDrakX);
 use my_gtk qw(:helpers :wrappers);
 $::isStandalone = 1;
 
-@ARGV or die "usage: ", basename($0), " <[-noupgrade] PACKAGE>...\n";
+@ARGV or die "usage: ", basename($0), " [--no-verify-rpm] <[-noupgrade] PACKAGE>...\n";
 
 sub translate {
     my ($s) = @_;
@@ -106,7 +106,7 @@ Do you want to continue (skipping this package)?", $url, $res), 1) or goto clean
 	}
     }
 
-    if ($ARGV[$i] !~ /^-/) {
+    if ($ARGV[$i] !~ /^-/ && !member('--no-verify-rpm', @ARGV)) {
 	if (-f $ARGV[$i]) {
 	    $label->set(_("Verifying signature of `%s'...", basename($ARGV[$i]))); $mainw->flush;
 	    my $res = grpmi_rpm::verify_sig("$ARGV[$i]");
