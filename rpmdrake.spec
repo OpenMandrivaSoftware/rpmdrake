@@ -107,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
   drakxtools > 9.2-0.7mdk to work properly though)
 - split translation of groups to ease i18n job
 - fix some missing translations for compssUsers ("Mandrake Choices")
+- scroll to the search results
 
 * Fri Jun  6 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-23mdk
 - rpmdrake: at install time, when some local files are impossible

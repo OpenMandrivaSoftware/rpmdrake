@@ -331,6 +331,7 @@ sub do_search($$$$$$$) {
 	my $last_iter = $tree_model->iter_nth_child(undef, $tree_model->iter_n_children(undef) - 1);
 	my $path = $tree_model->get_path($last_iter);
 	$tree->expand_row($path, 0);
+    	$tree->scroll_to_cell($path, undef, 1, 0.5, 0);
 	$path->free; $last_iter->free;
     } else {
 	$options->{add_nodes}->([ '', $results_none, { nochild => 1 } ]);
