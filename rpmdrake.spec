@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.5
-%define release 5mdk
+%define release 6mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Sep 01 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-6mdk
+- Fix position of "quit" button (Titi)
+- Fix display of localized dates in the changelog (Pablo)
+
 * Mon Aug 30 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-5mdk
 - Small cleanups in GUI
 
