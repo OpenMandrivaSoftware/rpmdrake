@@ -38,6 +38,7 @@ sub _ {
     my $s = shift @_; my $t = translate($s);
     sprintf $t, @_;
 }
+sub mexit { my_gtk::exit @_ }
 
 sub interactive_msg {
     my ($title, $contents, $yesno) = @_;
@@ -60,10 +61,10 @@ sub interactive_msg {
 Gtk->init;
 
 $> and interactive_msg(_("Error..."),
-		       _("You need to be root to install packages, sorry.")), exit -1;
+		       _("You need to be root to install packages, sorry.")), mexit -1;
 
 grpmi_rpm::init_rcstuff() and interactive_msg(_("RPM initialization error"),
-					      _("The initialization of config files of RPM was not possible, sorry.")), exit -1;
+					      _("The initialization of config files of RPM was not possible, sorry.")), mexit -1;
 
 $ENV{HOME} ||= '/root';
 my @grpmi_config = map { chomp_($_) } cat_("$ENV{HOME}/.grpmi");
@@ -172,6 +173,7 @@ Do you want to force the install anyway?",
 
 # -=-=-=---=-=-=---=-=-=-- cleanup -=-=-=---=-=-=--
 $exitstatus = 0;
+$mainw->{rwindow}->hide;
 interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
 cleanup:
 if (!member('noclearcache', @grpmi_config)) {
@@ -180,4 +182,4 @@ if (!member('noclearcache', @grpmi_config)) {
 	/^\Q$cache_location/ and unlink;
     }
 }
-exit $exitstatus;
+mexit $exitstatus;
