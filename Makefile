@@ -50,7 +50,6 @@ install: $(ALL)
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/drakrpm
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/drakrpm-remove
 	ln -sf $(RELATIVE_SBIN)/MandrakeUpdate $(BINDIR)/drakrpm-update
-	ln -sf $(RELATIVE_SBIN)/edit-urpm-sources.pl $(BINDIR)/drakrpm-edit-media
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
 	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
