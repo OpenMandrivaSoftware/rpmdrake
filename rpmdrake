@@ -874,6 +874,10 @@ sub dialog_rpmnew {
 sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($urpm) = @_;
 
+    my $grpmi = '/usr/sbin/grpmi';
+    -x $grpmi or fatal_msg(_("Program missing"),
+			   _("A required program is missing (grpmi). Check your installation.")), myexit(-1);
+
 my $fatal_msg;
 local $urpm->{fatal} = sub { $fatal_msg = $_[1]; die };
 
@@ -916,11 +920,8 @@ eval {
 		my_gtk::flush();
 	    }
 	} else {
-	    exec('grpmi', if_($options{'no-verify-rpm'}, '--no-verify-rpm'),
-		          (map { ("-noupgrade", $_) } @rpms_install),
-		          @rpms_upgrade)
-	      or fatal_msg(_("Program missing"),
-			   _("A required program is missing (grpmi). Check your installation.")), myexit(-1);
+	    exec($grpmi, if_($options{'no-verify-rpm'}, '--no-verify-rpm'), (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade)
+	      or print(STDERR "   *** ERROR *** Could not exec $grpmi.\n"), c::_exit(-1);
 	}
 	my $exitstatus = $?;
 	my %pkg2rpmnew;
