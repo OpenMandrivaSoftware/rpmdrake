@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 12mdk
+%define release 13mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Jul 28 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-13mdk
+- Recognize README.update.urpmi, in addition to README.upgrade.urpmi
+- Update requires.
+- Allow selection of subtrees, except when the whole tree would be selected.
+
 * Tue Jul 20 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-12mdk
 - Display fixes
 - Message updates
