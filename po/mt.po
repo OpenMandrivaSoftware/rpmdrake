@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-mt\n"
-"POT-Creation-Date: 2002-09-11 15:17+0200\n"
-"PO-Revision-Date: 2002-08-31 12:02+0200\n"
+"POT-Creation-Date: 2002-09-11 16:58+0200\n"
+"PO-Revision-Date: 2002-09-05 19:49CET\n"
 "Last-Translator: Ramon Casha <ramon.casha@linux.org.mt>\n"
 "Language-Team: Maltese <mt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -148,27 +148,28 @@ msgid "Please wait, updating medium..."
 msgstr "Stenna ftit, qed jiġi aġġornat il-medju..."
 
 #: ../edit-urpm-sources.pl_.c:197
-#, fuzzy
 msgid "Configure proxies"
-msgstr "Ikkonfigura sorsi"
+msgstr "Ikkonfigura proxies"
 
 #: ../edit-urpm-sources.pl_.c:202
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
 "<proxyhost[:port]>):"
 msgstr ""
+"Jekk trid proxy, daħħal isem il-kompjuter u opzjonalment port (sintassi: "
+"<kompjuterproxy[:port]>):"
 
 #: ../edit-urpm-sources.pl_.c:204
 msgid "Proxy hostname:"
-msgstr ""
+msgstr "Kompjuter tal-proxy:"
 
 #: ../edit-urpm-sources.pl_.c:206
 msgid "You may specify a user/password for the proxy authentication:"
-msgstr ""
+msgstr "Trid tispeċifika user/password għall-awtenitikazzjoni tal-proxy:"
 
 #: ../edit-urpm-sources.pl_.c:208
 msgid "User:"
-msgstr ""
+msgstr "User:"
 
 #: ../edit-urpm-sources.pl_.c:232
 msgid "Configure sources"
@@ -199,9 +200,8 @@ msgid "Update..."
 msgstr "Aġġorna..."
 
 #: ../edit-urpm-sources.pl_.c:268
-#, fuzzy
 msgid "Proxy..."
-msgstr "Problema..."
+msgstr "Proxy..."
 
 #: ../edit-urpm-sources.pl_.c:271
 msgid "Save and quit"
@@ -437,6 +437,10 @@ msgstr "Stenna ftit, qed jiġu aġġornati l-medji..."
 msgid "Other"
 msgstr "Oħrajn"
 
+#: ../rpmdrake_.c:114 ../rpmdrake_.c:127 ../rpmdrake_.c:216 ../rpmdrake_.c:286
+msgid "(none)"
+msgstr "(ebda)"
+
 #: ../rpmdrake_.c:133 ../rpmdrake_.c:441 ../rpmdrake_.c:442
 msgid "(Not available)"
 msgstr "(Mhux disponibbli)"
@@ -467,15 +471,11 @@ msgstr "Jistgħu jiġu aġġornati"
 
 #: ../rpmdrake_.c:203
 msgid "Not selected"
-msgstr ""
+msgstr "Mhux magħżul"
 
 #: ../rpmdrake_.c:203
 msgid "Selected"
-msgstr ""
-
-#: ../rpmdrake_.c:216 ../rpmdrake_.c:286
-msgid "(none)"
-msgstr "(ebda)"
+msgstr "Magħżul"
 
 #: ../rpmdrake_.c:244
 msgid "More information on package..."
@@ -580,11 +580,11 @@ msgstr "Daqs magħżula: %d MB"
 
 #: ../rpmdrake_.c:441
 msgid "Files:\n"
-msgstr ""
+msgstr "Fajls:\n"
 
 #: ../rpmdrake_.c:442
 msgid "Changelog:\n"
-msgstr ""
+msgstr "Log tal-bidliet:\n"
 
 #: ../rpmdrake_.c:445
 msgid "Source: "
@@ -592,11 +592,11 @@ msgstr "Sors: "
 
 #: ../rpmdrake_.c:446
 msgid "Currently installed version: "
-msgstr ""
+msgstr "Verżjoni nstallata bħalissa: "
 
 #: ../rpmdrake_.c:450
 msgid "Reason for update: "
-msgstr ""
+msgstr "Raġuni għall-aġġornament: "
 
 #: ../rpmdrake_.c:452
 msgid "Name: "
@@ -625,7 +625,7 @@ msgstr "Sommarju: "
 
 #: ../rpmdrake_.c:457
 msgid "Description: "
-msgstr ""
+msgstr "Deskrizzjoni: "
 
 #: ../rpmdrake_.c:466
 msgid "rpmdrake"
@@ -684,13 +684,12 @@ msgid "in names"
 msgstr "fl-ismijiet"
 
 #: ../rpmdrake_.c:565
-#, fuzzy
 msgid "Reload the packages list"
-msgstr "Il-pakkett %s mhux iffirmat"
+msgstr "Erġa' aqra l-lista ta' pakketti"
 
 #: ../rpmdrake_.c:565
 msgid "Reset the selection"
-msgstr ""
+msgstr "Irrisettja l-għażla"
 
 #: ../rpmdrake_.c:592
 msgid "Maximum information"
@@ -701,9 +700,8 @@ msgid "Normal information"
 msgstr "Informazzjoni normali"
 
 #: ../rpmdrake_.c:614
-#, fuzzy
 msgid "Too many packages are selected"
-msgstr "Xi pakketti ma jistgħux jiġu nstallati"
+msgstr "Hemm wisq pakketti magħżula"
 
 #: ../rpmdrake_.c:615
 msgid ""
@@ -714,6 +712,12 @@ msgid ""
 "\n"
 "Do you really want to install all the selected packages?"
 msgstr ""
+"Twissija: jidher li qed tipprova żżid tant pakketti li l-\n"
+"filesystem tista' timtela waqt jew wara l-installazzjoni\n"
+"tal-pakketti ; dan huwa partikularment perikoluż u għandu\n"
+"jiġi kkunsidrat bl-attenzjoni.\n"
+"\n"
+"Żgur li trid tinstalla l-pakketti kollha magħżula?"
 
 #: ../rpmdrake_.c:625
 #, c-format
@@ -1020,10 +1024,6 @@ msgstr "Maniġġjar ta' sorsi tas-softwer"
 #: data/rpmdrake.desktop.in.h:1
 msgid "Install Software"
 msgstr "Installa softwer"
-
-#, fuzzy
-#~ msgid "Update sources"
-#~ msgstr "Aġġorna sorsi"
 
 #~ msgid "(Non available)"
 #~ msgstr "(Mhux disponibbli)"
