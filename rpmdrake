@@ -1073,7 +1073,7 @@ if ($options{'merge-all-rpmnew'}) {
 		 });
     print "done.\n";
     $typical_width = 280;
-    dialog_rpmnew(0, '', %pkg2rpmnew);
+    dialog_rpmnew(0, '', %pkg2rpmnew) and print "Nothing to do.\n";
     myexit(0);
 }
 
