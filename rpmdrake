@@ -848,8 +848,12 @@ or you already installed all of them."));
     }
 
     my $menu_treeview = Gtk2::Menu->new;
-    my @menu_treeview_actions = ([ 'reset_selection', N("Reset the selection") ], [ 'reload_pkg', N("Reload the packages list") ]);
-    $MODE ne 'remove' and push @menu_treeview_actions, [ 'update_sources', N("Update media") ];
+    my @menu_treeview_actions = (
+	[ 'reset_selection', N("Reset the selection") ],
+	[ 'reload_pkg', N("Reload the packages list") ],
+    );
+    $MODE ne 'remove' && $> == 0
+	and push @menu_treeview_actions, [ 'update_sources', N("Update media") ];
     foreach (@menu_treeview_actions) {
 	my ($action, $text) = @$_;
 	my %action2fun;
