@@ -31,7 +31,7 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
 ", $basename->($0);
 	exit 0;
     };
-    $> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
+    $> and (exec { 'consolehelper' } $0, @ARGV or die "consolehelper missing");
 }
 
 use strict;
@@ -81,7 +81,7 @@ sub parse_compssUsers_flat {
     my (%compssUsers, $category);
     my $compss = '/var/lib/urpmi/compssUsers.flat';
     -r $compss or $compss = '/usr/share/rpmdrake/compssUsers.flat.default';
-    -r $compss or die "Internal error, please report";;
+    -r $compss or die "Internal error, please report";
     foreach (cat_($compss)) {
 	s/#.*//;
 	/^\s*$/ and next;
@@ -152,7 +152,7 @@ sub do_search($$$$$$) {
 	    } else {
 		slow_func(_("Please wait, searching..."),
 			  sub { db->traverse(sub { push @search_results, map { if_(eval { /$entry/i }, my_fullname($_[0])) } $_[0]->files });
-				@search_results = grep { exists $pkgs->{$_} } uniq(@search_results); });
+				@search_results = grep { exists $pkgs->{$_} } uniq(@search_results) });
 	    }
 	} else {
 	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}";
@@ -194,7 +194,7 @@ sub do_search($$$$$$) {
 	    $searchw->destroy;
 	}
     } else {
-	@search_results = grep { eval { $_ =~ /$entry/i } } keys %$pkgs;
+	@search_results = grep { eval { /$entry/i } } keys %$pkgs;
     }
     if (@search_results) {
 	$options->{add_nodes}->(map { [ $_, _("Search results").($options->{tree_mode} eq 'by_presence'
@@ -539,7 +539,7 @@ or you already installed all of them."));
 							 $radio_by->activate;
 						     }));
 	}
-	$options->{tree_submode} = $advanced_modes[0]->[0];
+	$options->{tree_submode} = $advanced_modes[0][0];
 	each_index {
 	    if ($_ eq 'by') {
 		$radio_by = $modes_buttons[$::i];
@@ -551,7 +551,7 @@ or you already installed all of them."));
 
     my $search_types_menu = new Gtk::Menu;
     my @search_types = ([ 'normal', _("in names") ], [ 'descriptions', _("in descriptions") ], [ 'files', _("in files") ]);
-    my $current_search_type = $search_types[0]->[0];
+    my $current_search_type = $search_types[0][0];
     foreach (@search_types) {
 	my $capt_type = $_->[0];
 	$search_types_menu->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($_->[1])),
@@ -584,8 +584,8 @@ or you already installed all of them."));
 			  update_sources => sub { update_sources($urpm) and $action2fun{reload_pkg}->() });
 	$menu_treeview->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($text)), activate => sub { $action2fun{$action}->() }));
     }
-    $tree->signal_connect(button_press_event => sub { $_[1]->{button} eq 3 or return 0;
-						      $menu_treeview->popup(undef, undef, $_[1]->{button}, $_[1]->{time}); });
+    $tree->signal_connect(button_press_event => sub { $_[1]{button} eq 3 or return 0;
+						      $menu_treeview->popup(undef, undef, $_[1]{button}, $_[1]8{time}) });
 
     my $menu_descr = new Gtk::Menu;
     my @menu_descr_modes = ([ 'normal', _("Normal information"), [] ], [ 'max', _("Maximum information"), [1] ]);
@@ -598,8 +598,8 @@ or you already installed all of them."));
 					      }));
     }
     $info = new Gtk::Text;
-    $info->signal_connect(button_press_event => sub { $_[1]->{button} eq 3 or return 0;
-						      $menu_descr->popup(undef, undef, $_[1]->{button}, $_[1]->{time}); });
+    $info->signal_connect(button_press_event => sub { $_[1]{button} eq 3 or return 0;
+						      $menu_descr->popup(undef, undef, $_[1]{button}, $_[1]{time}) });
 
     my $find_entry;
     my $find_callback = sub { do_search($find_entry, $tree, $options, $current_search_type, $urpm, $pkgs) };
@@ -646,7 +646,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 						    new Gtk::Label(_("Find:")),
 						    $search_types_optionmenu,
 						    gtksignal_connect($find_entry = new Gtk::Entry,
-								      key_press_event => sub { $_[1]->{keyval} == 0xff0d
+								      key_press_event => sub { $_[1]{keyval} == 0xff0d
 												 and $find_callback->() }),
 						    gtksignal_connect(new Gtk::Button(but(_("Search"))), clicked => $find_callback)),
 				       0, gtkpack__(new Gtk::HBox(0, 0), gtkpack(new Gtk::VBox(0, 0), @modes_buttons)),
@@ -699,7 +699,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 
     $w->{window}->set_usize($typical_width*2.7, 500);
     $w->{rwindow}->show_all;
-    my $widgets = { w => $w, tree => $tree, info => $info, status => $status};
+    my $widgets = { w => $w, tree => $tree, info => $info, status => $status };
 
     ask_browse_tree_info_given_widgets($options, $widgets);
 }
@@ -771,8 +771,8 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
 	    };
 	    /^Update: (.+)/ && $section eq 'pkg' and $cur->{update} = $1;
 	    /^Importance: (.+)/ && $section eq 'pkg' and $cur->{importance} = $1;
-	    /^%pre/ and do { $section = 'pre'; next; };
-	    /^%description/ and do { $section = 'description'; next; };
+	    /^%pre/ and do { $section = 'pre'; next };
+	    /^%description/ and do { $section = 'description'; next };
 	    $section eq 'pre' and $cur->{pre} .= $_;
 	    $section eq 'description' and $cur->{description} .= $_;
 	}
@@ -839,7 +839,7 @@ sub dialog_rpmnew {
 	foreach my $line (`diff -u $file $rpmnew`) {
 	    my %c = (red => my_gtk::gtkcolor(0xFFFF, 655, 655), green => my_gtk::gtkcolor(0x0, 0x9898,0x0),
 		     cyan => my_gtk::gtkcolor(0x0, 0x9898, 0x9898), blue => my_gtk::gtkcolor(655, 655, 0xFFFF));
-	    my @regexps = ([ '^(--- )|(\+\+\+ )', $c{blue} ], [ '^@@ ', $c{cyan} ], [ '^-', $c{red} ], [ '^\+', $c{green} ]);
+	    my @regexps = ([ '^(--- )|(\+\+\+ )', $c{blue} ], [ '^@@ ', $c{cyan} ], [ '^-', $c{red} ], [ '^\+', $c{green} ]);   #-#
 	    my $color;
 	    $line =~ /$_->[0]/ and $color ||= $_->[1] foreach @regexps;
 	    $texts{diff}->insert($fixedfont, $color, undef, $line);
@@ -902,8 +902,8 @@ eval {
 						  sub { interactive_msg(_("Change medium"),
 									_("Please insert the medium named \"%s\" on device [%s]", @_),
 									yesno => 1, text => { yes => _("Ok"), no => _("Cancel") }) });
-    my @rpms_install = grep { $_ !~ /\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
-    my @rpms_upgrade = grep { $_ !~ /\.src\.rpm$/ } values %sources;
+    my @rpms_install = grep { !/\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
+    my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
 
     if (@rpms_install || @rpms_upgrade) {
 	foreach (@rpms_install, @rpms_upgrade) {
