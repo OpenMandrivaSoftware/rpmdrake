@@ -71,12 +71,11 @@ title="Software Sources Manager" longtitle="A graphical front end to add/remove/
 EOF
 
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
-cp pixmaps/mandrakeupdate16.png $RPM_BUILD_ROOT%{_miconsdir}/mandrakeupdate.png
-cp pixmaps/mandrakeupdate32.png $RPM_BUILD_ROOT%{_iconsdir}/mandrakeupdate.png
-cp pixmaps/mandrakeupdate48.png $RPM_BUILD_ROOT%{_liconsdir}/mandrakeupdate.png
-cp pixmaps/rpmdrake16.png $RPM_BUILD_ROOT%{_miconsdir}/rpmdrake.png
-cp pixmaps/rpmdrake32.png $RPM_BUILD_ROOT%{_iconsdir}/rpmdrake.png
-cp pixmaps/rpmdrake48.png $RPM_BUILD_ROOT%{_liconsdir}/rpmdrake.png
+for i in rpmdrake rpmdrake-remove mandrakeupdate edit-urpm-sources; do
+  cp pixmaps/${i}16.png $RPM_BUILD_ROOT%{_miconsdir}/${i}.png
+  cp pixmaps/${i}32.png $RPM_BUILD_ROOT%{_iconsdir}/${i}.png
+  cp pixmaps/${i}48.png $RPM_BUILD_ROOT%{_liconsdir}/${i}.png
+done
 
 # bloody RPM..
 mkdir -p $RPM_BUILD_ROOT/var/lib/urpmi
