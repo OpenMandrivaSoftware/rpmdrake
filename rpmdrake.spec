@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 5mdk
+%define release 6mdk
 
 Name: %{name}
 Version: %{version}
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Feb 19 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-6mdk
+- edit-urpm-media: fix broken media reordering (program crashed)
+
 * Fri Feb 13 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-5mdk
 - make it embeddable
 

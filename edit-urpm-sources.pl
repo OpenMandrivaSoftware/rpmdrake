@@ -573,8 +573,8 @@ sub mainwindow {
                               $reorder_ok or return;
                               my @media;
                               $model->foreach(sub {
-                                              my (undef, $path) = @_;
-                                              my $name = $model->get($path, 1);
+                                              my (undef, undef, $iter) = @_;
+                                              my $name = $model->get($iter, 1);
                                               push @media, find { $_->{name} eq $name } @{$urpm->{media}};
                                               0;
                                           }, undef);
