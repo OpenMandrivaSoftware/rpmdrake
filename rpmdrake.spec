@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 16mdk
+%define release 17mdk
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,12 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri Aug 30 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-17mdk
+- rpmdrake:
+  - support proxies using /etc/urpmi/proxy.cfg
+- edit-urpm-sources:
+  - add a proxy configuration editor
+
 * Fri Aug 30 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-16mdk
 - when a small amount of .rpmnew, don't have a scrolledwindow; when a
   very large amount, don't create a window higher than the screen

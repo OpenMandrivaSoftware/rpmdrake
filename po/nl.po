@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2002-08-30 15:40+0200\n"
+"POT-Creation-Date: 2002-08-30 20:11+0200\n"
 "PO-Revision-Date: 2002-08-30 13:26+0100\n"
 "Last-Translator: Reinout van Schouwen <reinout@cs.vu.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -73,7 +73,7 @@ msgstr "Kies uw mirror..."
 msgid "Login:"
 msgstr "Aanmeldnaam:"
 
-#: ../edit-urpm-sources.pl_.c:92
+#: ../edit-urpm-sources.pl_.c:92 ../edit-urpm-sources.pl_.c:228
 msgid "Password:"
 msgstr "Wachtwoord:"
 
@@ -107,14 +107,16 @@ msgid "Type of source:"
 msgstr "Brontype:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
-#: ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98 ../rpmdrake.pm_.c:272
-#: ../rpmdrake_.c:318 ../rpmdrake_.c:777 ../rpmdrake_.c:803
+#: ../edit-urpm-sources.pl_.c:232 ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98
+#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:318 ../rpmdrake_.c:777
+#: ../rpmdrake_.c:803
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:272 ../rpmdrake_.c:318 ../rpmdrake_.c:803
+#: ../edit-urpm-sources.pl_.c:233 ../rpmdrake.pm_.c:270 ../rpmdrake_.c:318
+#: ../rpmdrake_.c:803
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -166,44 +168,71 @@ msgstr "Verversen"
 msgid "Please wait, updating media..."
 msgstr "Even geduld, bezig met verversen van media..."
 
-#: ../edit-urpm-sources.pl_.c:216
+#: ../edit-urpm-sources.pl_.c:215
+#, fuzzy
+msgid "Configure proxies"
+msgstr "Bronnen configureren"
+
+#: ../edit-urpm-sources.pl_.c:220
+msgid ""
+"If you need a proxy, enter the hostname and an optional port (syntax: "
+"<proxyhost[:port]>):"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:222
+msgid "Proxy hostname:"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:224
+msgid "You may specify a user/password for the proxy authentication:"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:226
+msgid "User:"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:250
 msgid "Configure sources"
 msgstr "Bronnen configureren"
 
-#: ../edit-urpm-sources.pl_.c:217
+#: ../edit-urpm-sources.pl_.c:251
 msgid "Enabled?"
 msgstr "Ingeschakeld?"
 
-#: ../edit-urpm-sources.pl_.c:217
+#: ../edit-urpm-sources.pl_.c:251
 msgid "Source"
 msgstr "Bron"
 
 #  Removable media
-#: ../edit-urpm-sources.pl_.c:245 ../rpmdrake_.c:598
+#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:598
 msgid "Remove"
 msgstr "Verwisselen"
 
-#: ../edit-urpm-sources.pl_.c:247
+#: ../edit-urpm-sources.pl_.c:281
 msgid "Edit"
 msgstr "Bewerken"
 
-#: ../edit-urpm-sources.pl_.c:249
+#: ../edit-urpm-sources.pl_.c:283
 msgid "Add..."
 msgstr "Toevoegen..."
 
-#: ../edit-urpm-sources.pl_.c:251
+#: ../edit-urpm-sources.pl_.c:285
 msgid "Update..."
 msgstr "Verversen..."
 
-#: ../edit-urpm-sources.pl_.c:254
+#: ../edit-urpm-sources.pl_.c:286
+msgid "Proxy..."
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:289
 msgid "Save and quit"
 msgstr "Opslaan en afsluiten"
 
-#: ../edit-urpm-sources.pl_.c:255 ../rpmdrake_.c:601
+#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:601
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:902
+#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:902
 #, c-format
 msgid ""
 "%s\n"
@@ -214,7 +243,7 @@ msgstr ""
 "\n"
 "Is het goed om door te gaan?"
 
-#: ../edit-urpm-sources.pl_.c:268
+#: ../edit-urpm-sources.pl_.c:303
 msgid ""
 "Welcome to the packages source editor!\n"
 "\n"
@@ -349,11 +378,11 @@ msgid "China"
 msgstr "China"
 
 #: ../rpmdrake.pm_.c:167 ../rpmdrake.pm_.c:168 ../rpmdrake.pm_.c:169
-#: ../rpmdrake.pm_.c:170 ../rpmdrake.pm_.c:222
+#: ../rpmdrake.pm_.c:170 ../rpmdrake.pm_.c:220
 msgid "United States"
 msgstr "Verenigde Staten"
 
-#: ../rpmdrake.pm_.c:230
+#: ../rpmdrake.pm_.c:228
 msgid ""
 "I need to contact MandrakeSoft website to get the mirrors list.\n"
 "Please check that your network is currently running.\n"
@@ -365,17 +394,17 @@ msgstr ""
 "\n"
 "Is het goed om door te gaan?"
 
-#: ../rpmdrake.pm_.c:234
+#: ../rpmdrake.pm_.c:232
 msgid "Please wait, downloading mirrors addresses from MandrakeSoft website."
 msgstr ""
 "Even geduld, bezig met downloaden van mirror-adressen van de MandrakeSoft "
 "website."
 
-#: ../rpmdrake.pm_.c:240
+#: ../rpmdrake.pm_.c:238
 msgid "Error during download"
 msgstr "Er is een fout opgetreden tijdens het downloaden"
 
-#: ../rpmdrake.pm_.c:241
+#: ../rpmdrake.pm_.c:239
 #, c-format
 msgid ""
 "There was an error downloading the mirrors list:\n"
@@ -390,11 +419,11 @@ msgstr ""
 "Het netwerk, of de MandrakeSoft-website, zijn wellicht onbereikbaar.\n"
 "Probeert u het later opnieuw."
 
-#: ../rpmdrake.pm_.c:249
+#: ../rpmdrake.pm_.c:247
 msgid "No mirror"
 msgstr "Geen mirror"
 
-#: ../rpmdrake.pm_.c:250
+#: ../rpmdrake.pm_.c:248
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
@@ -408,7 +437,7 @@ msgstr ""
 "is het geval waarin de architectuur van uw centrale verwerkingseenheid\n"
 "niet ondersteund wordt door de officiële Mandrake Linux vernieuwingen."
 
-#: ../rpmdrake.pm_.c:264
+#: ../rpmdrake.pm_.c:262
 msgid "Please choose the desired mirror."
 msgstr "Kies de gewenste mirror."
 

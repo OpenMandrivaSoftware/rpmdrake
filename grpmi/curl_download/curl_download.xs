@@ -71,7 +71,7 @@ int my_progress_func(void *ptr, double td, double dd, double tu, double du)
 	return 0;
 }
 
-char * download_url_real(char * url, char * location, char * proxy)
+char * download_url_real(char * url, char * location, char * proxy, char * proxy_user)
 {
 	CURL *curl;
 	CURLcode rescurl = CURL_LAST;
@@ -108,6 +108,8 @@ char * download_url_real(char * url, char * location, char * proxy)
 
 		if (proxy && strcmp(proxy, ""))
 			curl_easy_setopt(curl, CURLOPT_PROXY, proxy);
+		if (proxy_user && strcmp(proxy_user, ""))
+			curl_easy_setopt(curl, CURLOPT_PROXYUSERPWD, proxy_user);
 
 		rescurl = curl_easy_perform(curl);
 
@@ -269,14 +271,15 @@ MODULE = curl_download		PACKAGE = curl_download
 PROTOTYPES : DISABLE
 
 char *
-download(url, location, proxy, downloadprogress_callback)
+download_real(url, location, downloadprogress_callback, proxy, proxy_user)
      char * url
      char * location
-     char * proxy
      SV * downloadprogress_callback
+     char * proxy
+     char * proxy_user
 	CODE:
                 downloadprogress_callback_sv = downloadprogress_callback;
-                RETVAL = download_url_real(url, location, proxy);
+                RETVAL = download_url_real(url, location, proxy, proxy_user);
         OUTPUT:
                 RETVAL
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-30 12:15+0200\n"
+"POT-Creation-Date: 2002-08-30 20:11+0200\n"
 "PO-Revision-Date: 2002-08-30 10:48+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
 "Language-Team: Euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -56,7 +56,7 @@ msgstr "bidea edo muntatze-puntua:"
 msgid "Removable device"
 msgstr "Gailu aldagarriak"
 
-#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:465
+#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:461
 msgid "Security updates"
 msgstr "Segurtasunaren eguneratzeak"
 
@@ -72,7 +72,7 @@ msgstr "Aukeratu ispilua..."
 msgid "Login:"
 msgstr "Sarrera:"
 
-#: ../edit-urpm-sources.pl_.c:92
+#: ../edit-urpm-sources.pl_.c:92 ../edit-urpm-sources.pl_.c:228
 msgid "Password:"
 msgstr "Pasahitza:"
 
@@ -105,14 +105,16 @@ msgid "Type of source:"
 msgstr "Sorburu-mota:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
-#: ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98 ../rpmdrake.pm_.c:272
-#: ../rpmdrake_.c:322 ../rpmdrake_.c:781 ../rpmdrake_.c:807
+#: ../edit-urpm-sources.pl_.c:232 ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98
+#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:318 ../rpmdrake_.c:777
+#: ../rpmdrake_.c:803
 msgid "Ok"
 msgstr "Ados"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:272 ../rpmdrake_.c:322 ../rpmdrake_.c:807
+#: ../edit-urpm-sources.pl_.c:233 ../rpmdrake.pm_.c:270 ../rpmdrake_.c:318
+#: ../rpmdrake_.c:803
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -162,43 +164,71 @@ msgstr "Eguneratu"
 msgid "Please wait, updating media..."
 msgstr "Itxoin mesedez, euskarria eguneratzen..."
 
-#: ../edit-urpm-sources.pl_.c:216
+#: ../edit-urpm-sources.pl_.c:215
+#, fuzzy
+msgid "Configure proxies"
+msgstr "Sorburuak konfiguratu"
+
+#: ../edit-urpm-sources.pl_.c:220
+msgid ""
+"If you need a proxy, enter the hostname and an optional port (syntax: "
+"<proxyhost[:port]>):"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:222
+msgid "Proxy hostname:"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:224
+msgid "You may specify a user/password for the proxy authentication:"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:226
+msgid "User:"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:250
 msgid "Configure sources"
 msgstr "Sorburuak konfiguratu"
 
-#: ../edit-urpm-sources.pl_.c:217
+#: ../edit-urpm-sources.pl_.c:251
 msgid "Enabled?"
 msgstr "Gaitu?"
 
-#: ../edit-urpm-sources.pl_.c:217
+#: ../edit-urpm-sources.pl_.c:251
 msgid "Source"
 msgstr "Sorburua"
 
-#: ../edit-urpm-sources.pl_.c:245 ../rpmdrake_.c:602
+#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:598
 msgid "Remove"
 msgstr "Ezabatu"
 
-#: ../edit-urpm-sources.pl_.c:247
+#: ../edit-urpm-sources.pl_.c:281
 msgid "Edit"
 msgstr "Editatu"
 
-#: ../edit-urpm-sources.pl_.c:249
+#: ../edit-urpm-sources.pl_.c:283
 msgid "Add..."
 msgstr "Gehitu..."
 
-#: ../edit-urpm-sources.pl_.c:251
+#: ../edit-urpm-sources.pl_.c:285
 msgid "Update..."
 msgstr "Eguneratu..."
 
-#: ../edit-urpm-sources.pl_.c:254
+#: ../edit-urpm-sources.pl_.c:286
+#, fuzzy
+msgid "Proxy..."
+msgstr "Errorea..."
+
+#: ../edit-urpm-sources.pl_.c:289
 msgid "Save and quit"
 msgstr "Gorde eta irten"
 
-#: ../edit-urpm-sources.pl_.c:255 ../rpmdrake_.c:605
+#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:601
 msgid "Quit"
 msgstr "Irten"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:906
+#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:902
 #, c-format
 msgid ""
 "%s\n"
@@ -209,7 +239,7 @@ msgstr ""
 "\n"
 "Jarraitu nahi dezaket?"
 
-#: ../edit-urpm-sources.pl_.c:268
+#: ../edit-urpm-sources.pl_.c:303
 msgid ""
 "Welcome to the packages source editor!\n"
 "\n"
@@ -341,11 +371,11 @@ msgid "China"
 msgstr "Txina"
 
 #: ../rpmdrake.pm_.c:167 ../rpmdrake.pm_.c:168 ../rpmdrake.pm_.c:169
-#: ../rpmdrake.pm_.c:170 ../rpmdrake.pm_.c:222
+#: ../rpmdrake.pm_.c:170 ../rpmdrake.pm_.c:220
 msgid "United States"
 msgstr "Estatu Batuak"
 
-#: ../rpmdrake.pm_.c:230
+#: ../rpmdrake.pm_.c:228
 msgid ""
 "I need to contact MandrakeSoft website to get the mirrors list.\n"
 "Please check that your network is currently running.\n"
@@ -358,15 +388,15 @@ msgstr ""
 "\n"
 "Jarraitu dezaket?"
 
-#: ../rpmdrake.pm_.c:234
+#: ../rpmdrake.pm_.c:232
 msgid "Please wait, downloading mirrors addresses from MandrakeSoft website."
 msgstr "Itxoin mesedez, ispiluen helbideak eskuratzen MandrakeSoft webgunetik."
 
-#: ../rpmdrake.pm_.c:240
+#: ../rpmdrake.pm_.c:238
 msgid "Error during download"
 msgstr "Okerra jaisterakoan"
 
-#: ../rpmdrake.pm_.c:241
+#: ../rpmdrake.pm_.c:239
 #, c-format
 msgid ""
 "There was an error downloading the mirrors list:\n"
@@ -381,11 +411,11 @@ msgstr ""
 "Sarea, edo MandrakeSoft webgunea ez daude eskuragarri seguraski.\n"
 "Mesedez saiatu berriro beranduago."
 
-#: ../rpmdrake.pm_.c:249
+#: ../rpmdrake.pm_.c:247
 msgid "No mirror"
 msgstr "Ispilurik ez"
 
-#: ../rpmdrake.pm_.c:250
+#: ../rpmdrake.pm_.c:248
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
@@ -399,7 +429,7 @@ msgstr ""
 "prozesagailuaren arkitekturak Mandrake Linux Eguneratze Ofizialen\n"
 "euskarririk ez izatea."
 
-#: ../rpmdrake.pm_.c:264
+#: ../rpmdrake.pm_.c:262
 msgid "Please choose the desired mirror."
 msgstr "Mesedez hautatu nahi duzun ispilua."
 
@@ -407,71 +437,71 @@ msgstr "Mesedez hautatu nahi duzun ispilua."
 msgid "Other"
 msgstr "Beste bat"
 
-#: ../rpmdrake_.c:135 ../rpmdrake_.c:425 ../rpmdrake_.c:426
+#: ../rpmdrake_.c:131 ../rpmdrake_.c:421 ../rpmdrake_.c:422
 msgid "(Non available)"
 msgstr "(Ez dago eskuragarri)"
 
-#: ../rpmdrake_.c:143 ../rpmdrake_.c:194
+#: ../rpmdrake_.c:139 ../rpmdrake_.c:190
 msgid "Search results"
 msgstr "Bilaketaren emaitzak"
 
-#: ../rpmdrake_.c:143
+#: ../rpmdrake_.c:139
 msgid "Search results (none)"
 msgstr "Bilaketaren emaitzak (batere ez)"
 
-#: ../rpmdrake_.c:158
+#: ../rpmdrake_.c:154
 msgid "Please wait, searching..."
 msgstr "Itxoin mesedez, bilatzen..."
 
-#: ../rpmdrake_.c:161
+#: ../rpmdrake_.c:157
 msgid "Stop"
 msgstr "Gelditu"
 
-#: ../rpmdrake_.c:195 ../rpmdrake_.c:295
+#: ../rpmdrake_.c:191 ../rpmdrake_.c:291
 msgid "Addable"
 msgstr "Gehigarria"
 
-#: ../rpmdrake_.c:195 ../rpmdrake_.c:295
+#: ../rpmdrake_.c:191 ../rpmdrake_.c:291
 msgid "Upgradable"
 msgstr "Eguneragarria"
 
-#: ../rpmdrake_.c:197
+#: ../rpmdrake_.c:193
 msgid "Not selected"
 msgstr ""
 
-#: ../rpmdrake_.c:197
+#: ../rpmdrake_.c:193
 msgid "Selected"
 msgstr ""
 
-#: ../rpmdrake_.c:232
+#: ../rpmdrake_.c:228
 msgid "More information on package..."
 msgstr "Paketeari buruzko informazio gehiago..."
 
-#: ../rpmdrake_.c:234
+#: ../rpmdrake_.c:230
 msgid "One of the following packages is needed:"
 msgstr "Ondorengo paketeetako bat behar da:"
 
-#: ../rpmdrake_.c:234
+#: ../rpmdrake_.c:230
 msgid "Please choose"
 msgstr "Hautatu mesedez"
 
-#: ../rpmdrake_.c:250
+#: ../rpmdrake_.c:246
 msgid "unknown package "
 msgstr "pakete ezezaguna"
 
-#: ../rpmdrake_.c:260
+#: ../rpmdrake_.c:256
 msgid "Please wait, listing packages..."
 msgstr "Itxoin, paketeak zerrendatzen..."
 
-#: ../rpmdrake_.c:274
+#: ../rpmdrake_.c:270
 msgid "(none)"
 msgstr "(bat ere ez)"
 
-#: ../rpmdrake_.c:276
+#: ../rpmdrake_.c:272
 msgid "No update"
 msgstr "Eguneratzerik ez"
 
-#: ../rpmdrake_.c:277
+#: ../rpmdrake_.c:273
 msgid ""
 "The list of updates is void. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -481,11 +511,11 @@ msgstr ""
 "zure konputagailuan instalatutako paketeentzako eguneratzerik, edo\n"
 "guztiak instalatuta dauzkazula dagoeneko."
 
-#: ../rpmdrake_.c:328
+#: ../rpmdrake_.c:324
 msgid "Some additional packages need to be removed"
 msgstr "Pakete osagarri batzu kendu behar dira"
 
-#: ../rpmdrake_.c:329
+#: ../rpmdrake_.c:325
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:\n"
@@ -495,11 +525,11 @@ msgstr ""
 "dira:\n"
 "\n"
 
-#: ../rpmdrake_.c:335
+#: ../rpmdrake_.c:331
 msgid "Some packages can't be removed"
 msgstr "Pakete batzu ezin dira ezabatu"
 
-#: ../rpmdrake_.c:336 ../rpmdrake_.c:394
+#: ../rpmdrake_.c:332 ../rpmdrake_.c:390
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -509,11 +539,11 @@ msgstr ""
 "behar dira:\n"
 "\n"
 
-#: ../rpmdrake_.c:364
+#: ../rpmdrake_.c:360
 msgid "Additional packages needed"
 msgstr "Pakete osagarriak behar dira"
 
-#: ../rpmdrake_.c:365
+#: ../rpmdrake_.c:361
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -523,11 +553,11 @@ msgstr ""
 "behar dira:\n"
 "\n"
 
-#: ../rpmdrake_.c:378
+#: ../rpmdrake_.c:374
 msgid "Some packages can't be installed"
 msgstr "Pakete batzu ezin dira instalatu"
 
-#: ../rpmdrake_.c:379
+#: ../rpmdrake_.c:375
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -535,21 +565,21 @@ msgstr ""
 "Barkatu, ondorengo paketeak ezin dira hautatu:\n"
 "\n"
 
-#: ../rpmdrake_.c:393 ../rpmdrake_.c:564
+#: ../rpmdrake_.c:389 ../rpmdrake_.c:560
 msgid "Some packages need to be removed"
 msgstr "Zenbait pakete ezabatu egin behar dira"
 
-#: ../rpmdrake_.c:415
+#: ../rpmdrake_.c:411
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Aukeratutakoak: %d MB / Diskoan leku askea: %d MB"
 
-#: ../rpmdrake_.c:417
+#: ../rpmdrake_.c:413
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Aukeratutakoen neurria: %d MB"
 
-#: ../rpmdrake_.c:423
+#: ../rpmdrake_.c:419
 #, c-format
 msgid ""
 "%sFiles:\n"
@@ -564,12 +594,12 @@ msgstr ""
 "Aldakketa-Erregistroa:\n"
 "%s"
 
-#: ../rpmdrake_.c:424
+#: ../rpmdrake_.c:420
 #, c-format
 msgid "Source: %s\n"
 msgstr "Sorburua: %s\n"
 
-#: ../rpmdrake_.c:429
+#: ../rpmdrake_.c:425
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -590,7 +620,7 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:433
+#: ../rpmdrake_.c:429
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -609,67 +639,67 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:461
 msgid "Bugfixes updates"
 msgstr "Akatsak konpontzeko eguneratzeak"
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:461
 msgid "Normal updates"
 msgstr "Eguneratze arruntak"
 
-#: ../rpmdrake_.c:484
+#: ../rpmdrake_.c:480
 msgid "Mandrake choices"
 msgstr "Mandrake aukerak"
 
-#: ../rpmdrake_.c:485
+#: ../rpmdrake_.c:481
 msgid "All packages, alphabetical"
 msgstr "Pakete guztiak, alfabetikoki"
 
-#: ../rpmdrake_.c:486
+#: ../rpmdrake_.c:482
 msgid "All packages,"
 msgstr "Pakete guztiak,"
 
-#: ../rpmdrake_.c:509
+#: ../rpmdrake_.c:505
 msgid "by group"
 msgstr "talde arabera"
 
-#: ../rpmdrake_.c:509
+#: ../rpmdrake_.c:505
 msgid "by size"
 msgstr "neurri arabera"
 
-#: ../rpmdrake_.c:510
+#: ../rpmdrake_.c:506
 msgid "by selection state"
 msgstr "hautapenaren arabera"
 
-#: ../rpmdrake_.c:511
+#: ../rpmdrake_.c:507
 msgid "by source repository"
 msgstr "sorburu gordailuaren arabera"
 
-#: ../rpmdrake_.c:511
+#: ../rpmdrake_.c:507
 msgid "by update availability"
 msgstr "eguneratze eskuragarritasun arabera"
 
-#: ../rpmdrake_.c:532
+#: ../rpmdrake_.c:528
 msgid "in descriptions"
 msgstr "deskribapenetan"
 
-#: ../rpmdrake_.c:532
+#: ../rpmdrake_.c:528
 msgid "in names"
 msgstr "izenetan"
 
-#: ../rpmdrake_.c:533
+#: ../rpmdrake_.c:529
 msgid "in files"
 msgstr "fitxategitan"
 
-#: ../rpmdrake_.c:544
+#: ../rpmdrake_.c:540
 msgid "Maximum information"
 msgstr "Informazio zabalenak"
 
-#: ../rpmdrake_.c:544
+#: ../rpmdrake_.c:540
 msgid "Normal information"
 msgstr "Informazio arruntak"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:561
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -683,35 +713,35 @@ msgstr ""
 "%s\n"
 "Jarraitu dezaket?"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:582
 msgid "Find:"
 msgstr "Aurkitu:"
 
-#: ../rpmdrake_.c:591
+#: ../rpmdrake_.c:587
 msgid "Search"
 msgstr "Bilatu"
 
-#: ../rpmdrake_.c:603
+#: ../rpmdrake_.c:599
 msgid "Install"
 msgstr "Instalatu"
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:610
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:615
+#: ../rpmdrake_.c:611
 msgid "Mandrake Update"
 msgstr "Mandrake Eguneratu"
 
-#: ../rpmdrake_.c:615
+#: ../rpmdrake_.c:611
 msgid "Software Packages Removal"
 msgstr "Software Paketeen Ezabaketa"
 
-#: ../rpmdrake_.c:616
+#: ../rpmdrake_.c:612
 msgid "Software Packages Installation"
 msgstr "Software Paketeen instalazioa"
 
-#: ../rpmdrake_.c:648
+#: ../rpmdrake_.c:644
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -724,24 +754,24 @@ msgstr ""
 "\n"
 "Jarraitu dezaket?"
 
-#: ../rpmdrake_.c:652
+#: ../rpmdrake_.c:648
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Itxoin mesedez, ispiluarekin kontaktatzen paketeen informazioa eguneratzeko."
 
-#: ../rpmdrake_.c:654
+#: ../rpmdrake_.c:650
 msgid "Error updating medium"
 msgstr "Okerra euskarria eguneratzen"
 
-#: ../rpmdrake_.c:655
+#: ../rpmdrake_.c:651
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "Oker zuzenezina gertatu da paketeen informazioa eguneratzekoan."
 
-#: ../rpmdrake_.c:661
+#: ../rpmdrake_.c:657
 msgid "How to choose manually your mirror"
 msgstr "Nola hautatu eskuz zure ispilua"
 
-#: ../rpmdrake_.c:662
+#: ../rpmdrake_.c:658
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -755,16 +785,16 @@ msgstr ""
 "\n"
 "Gero, berrabiarazi MandrakeUpdate"
 
-#: ../rpmdrake_.c:668
+#: ../rpmdrake_.c:664
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Itxoin mesedez, ispiluarekin kontaktatzen eguneratze paketeak hasieratzeko."
 
-#: ../rpmdrake_.c:672
+#: ../rpmdrake_.c:668
 msgid "Error adding update medium"
 msgstr "Okerra eguneratze euskarria gehitzerakoan"
 
-#: ../rpmdrake_.c:673
+#: ../rpmdrake_.c:669
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -786,50 +816,50 @@ msgstr ""
 "\n"
 "Beste ispilu batekin froga egin nahi duzu?"
 
-#: ../rpmdrake_.c:702
+#: ../rpmdrake_.c:698
 msgid "Please wait, finding available packages..."
 msgstr "Itxoin mesedez, eskuratu daitezkeen paketeak bilatzen..."
 
-#: ../rpmdrake_.c:725
+#: ../rpmdrake_.c:721
 msgid "All requested packages were installed successfully."
 msgstr "Eskatutako pakete guztiak ondo instalatu dira."
 
-#: ../rpmdrake_.c:725
+#: ../rpmdrake_.c:721
 msgid "Everything installed successfully"
 msgstr "Guztia ondo instalatu da."
 
-#: ../rpmdrake_.c:728
+#: ../rpmdrake_.c:724
 msgid "Installation finished"
 msgstr "Instalazioa amaitu da"
 
-#: ../rpmdrake_.c:731
+#: ../rpmdrake_.c:727
 #, c-format
 msgid "Inspecting %s"
 msgstr "%s ikertzen"
 
-#: ../rpmdrake_.c:747
+#: ../rpmdrake_.c:743
 #, c-format
 msgid "Remove .%s"
 msgstr "Ezabatu .%s"
 
-#: ../rpmdrake_.c:749
+#: ../rpmdrake_.c:745
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Erabili %s fitxategi nagusi gisa"
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:747
 msgid "Do nothing"
 msgstr "Ez egin ezer"
 
-#: ../rpmdrake_.c:754
+#: ../rpmdrake_.c:750
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 
-#: ../rpmdrake_.c:763
+#: ../rpmdrake_.c:759
 msgid "Inspect..."
 msgstr "Ikertu..."
 
-#: ../rpmdrake_.c:776
+#: ../rpmdrake_.c:772
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -842,7 +872,7 @@ msgstr ""
 "Zenbait konfigurazio fitxategi `.rpmnew' edo `.rpmsave' bezala\n"
 "gorde dira, orain aztertu ditzakezu behar diren ekintzak burutzeko:"
 
-#: ../rpmdrake_.c:777
+#: ../rpmdrake_.c:773
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -850,32 +880,32 @@ msgstr ""
 "Zenbait pakete ezin dira ondo\n"
 "instalatu"
 
-#: ../rpmdrake_.c:778
+#: ../rpmdrake_.c:774
 msgid "everything was installed correctly"
 msgstr "guztia ondo instalatu da"
 
-#: ../rpmdrake_.c:797
+#: ../rpmdrake_.c:793
 msgid "Unable to get source packages."
 msgstr "Ezin dira sorburuko paketeak jaso."
 
-#: ../rpmdrake_.c:798
+#: ../rpmdrake_.c:794
 msgid "Unable to get source packages, sorry."
 msgstr "Barkatu, ezin dira sorburuko paketeak jaso."
 
-#: ../rpmdrake_.c:805
+#: ../rpmdrake_.c:801
 msgid "Change medium"
 msgstr "Aldatu euskarria"
 
-#: ../rpmdrake_.c:806
+#: ../rpmdrake_.c:802
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Mesedez sartu \"%s\" izeneko euskarria [%s] gailuan"
 
-#: ../rpmdrake_.c:814
+#: ../rpmdrake_.c:810
 msgid "Installation failed"
 msgstr "Instalazioak huts egin du"
 
-#: ../rpmdrake_.c:815
+#: ../rpmdrake_.c:811
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -883,36 +913,36 @@ msgstr ""
 "Instalazioak hutsegin du, zenbait fitxategi falta dira.\n"
 "Zure sorburuen datubasea eguneratu nahia izan dezakezu."
 
-#: ../rpmdrake_.c:818
+#: ../rpmdrake_.c:814
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Itxoin mesedez, paketeak ezabatzen beste batzu eguneratu ahal daitezen..."
 
-#: ../rpmdrake_.c:827
+#: ../rpmdrake_.c:823
 msgid "Program missing"
 msgstr "Programa falta da"
 
-#: ../rpmdrake_.c:828
+#: ../rpmdrake_.c:824
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Behar den programa bat falta da (grpmi). Egiaztatu zure instalazioa."
 
-#: ../rpmdrake_.c:846
+#: ../rpmdrake_.c:842
 msgid "Everything already installed."
 msgstr "Guztia instalatuta dago."
 
-#: ../rpmdrake_.c:847
+#: ../rpmdrake_.c:843
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Guztia dagoeneko instalatuta (hau gertatu daiteke?)"
 
-#: ../rpmdrake_.c:857
+#: ../rpmdrake_.c:853
 msgid "Please wait, reading packages database..."
 msgstr "Itxoin mesedez, paketeen datubasea irakurtzen..."
 
-#: ../rpmdrake_.c:895
+#: ../rpmdrake_.c:891
 msgid "Please wait, removing packages..."
 msgstr "Itxaoin mesedez, paketeak ezabatzen..."
 
-#: ../rpmdrake_.c:910
+#: ../rpmdrake_.c:906
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -924,7 +954,7 @@ msgstr ""
 "Tresna honek zure konputagailutik ezabatu nahi duzun softwarea aukeratzen\n"
 "lagunduko dizu."
 
-#: ../rpmdrake_.c:915
+#: ../rpmdrake_.c:911
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -937,7 +967,7 @@ msgstr ""
 "aukeratzen\n"
 "lagunduko dizu."
 
-#: ../rpmdrake_.c:920
+#: ../rpmdrake_.c:916
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1175,9 +1205,6 @@ msgstr "Instalatu Softwarea"
 
 #~ msgid "Force"
 #~ msgstr "Behartu"
-
-#~ msgid "Error..."
-#~ msgstr "Errorea..."
 
 #~ msgid "Problems occured during installation"
 #~ msgstr "Arazoak izan dira instalazioan zehar"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-29 17:02+0200\n"
+"POT-Creation-Date: 2002-08-30 20:11+0200\n"
 "PO-Revision-Date: 2002-08-24 04:20-+800\n"
 "Last-Translator: Kenduest Lee <kenduest@i18n.linux.org.tw>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -56,7 +56,7 @@ msgstr "路徑或是掛載點："
 msgid "Removable device"
 msgstr "可移除裝置"
 
-#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:465
+#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:461
 msgid "Security updates"
 msgstr "安全更新"
 
@@ -72,7 +72,7 @@ msgstr "選擇映射地址..."
 msgid "Login:"
 msgstr "登入："
 
-#: ../edit-urpm-sources.pl_.c:92
+#: ../edit-urpm-sources.pl_.c:92 ../edit-urpm-sources.pl_.c:228
 msgid "Password:"
 msgstr "密碼："
 
@@ -105,14 +105,16 @@ msgid "Type of source:"
 msgstr "來源類別："
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
-#: ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98 ../rpmdrake.pm_.c:272
-#: ../rpmdrake_.c:322 ../rpmdrake_.c:779 ../rpmdrake_.c:805
+#: ../edit-urpm-sources.pl_.c:232 ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98
+#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:318 ../rpmdrake_.c:777
+#: ../rpmdrake_.c:803
 msgid "Ok"
 msgstr "確定"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:272 ../rpmdrake_.c:322 ../rpmdrake_.c:805
+#: ../edit-urpm-sources.pl_.c:233 ../rpmdrake.pm_.c:270 ../rpmdrake_.c:318
+#: ../rpmdrake_.c:803
 msgid "Cancel"
 msgstr "取消"
 
@@ -162,43 +164,73 @@ msgstr "更新"
 msgid "Please wait, updating media..."
 msgstr "請稍後，更新媒介中..."
 
-#: ../edit-urpm-sources.pl_.c:216
+#: ../edit-urpm-sources.pl_.c:215
+#, fuzzy
+msgid "Configure proxies"
+msgstr "設定套件來源位置？"
+
+#: ../edit-urpm-sources.pl_.c:220
+msgid ""
+"If you need a proxy, enter the hostname and an optional port (syntax: "
+"<proxyhost[:port]>):"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:222
+#, fuzzy
+msgid "Proxy hostname:"
+msgstr "使用者名稱 (代理伺服器)："
+
+#: ../edit-urpm-sources.pl_.c:224
+msgid "You may specify a user/password for the proxy authentication:"
+msgstr ""
+
+#: ../edit-urpm-sources.pl_.c:226
+#, fuzzy
+msgid "User:"
+msgstr "使用者名稱："
+
+#: ../edit-urpm-sources.pl_.c:250
 msgid "Configure sources"
 msgstr "設定套件來源位置？"
 
-#: ../edit-urpm-sources.pl_.c:217
+#: ../edit-urpm-sources.pl_.c:251
 msgid "Enabled?"
 msgstr "開啟"
 
-#: ../edit-urpm-sources.pl_.c:217
+#: ../edit-urpm-sources.pl_.c:251
 msgid "Source"
 msgstr "來源"
 
-#: ../edit-urpm-sources.pl_.c:245 ../rpmdrake_.c:601
+#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:598
 msgid "Remove"
 msgstr "移除"
 
-#: ../edit-urpm-sources.pl_.c:247
+#: ../edit-urpm-sources.pl_.c:281
 msgid "Edit"
 msgstr "編輯"
 
-#: ../edit-urpm-sources.pl_.c:249
+#: ../edit-urpm-sources.pl_.c:283
 msgid "Add..."
 msgstr "新增..."
 
-#: ../edit-urpm-sources.pl_.c:251
+#: ../edit-urpm-sources.pl_.c:285
 msgid "Update..."
 msgstr "更新..."
 
-#: ../edit-urpm-sources.pl_.c:254
+#: ../edit-urpm-sources.pl_.c:286
+#, fuzzy
+msgid "Proxy..."
+msgstr "錯誤..."
+
+#: ../edit-urpm-sources.pl_.c:289
 msgid "Save and quit"
 msgstr "儲存並離開"
 
-#: ../edit-urpm-sources.pl_.c:255 ../rpmdrake_.c:604
+#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:601
 msgid "Quit"
 msgstr "離開"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:904
+#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:902
 #, c-format
 msgid ""
 "%s\n"
@@ -209,7 +241,7 @@ msgstr ""
 "\n"
 "您要繼續嗎？"
 
-#: ../edit-urpm-sources.pl_.c:268
+#: ../edit-urpm-sources.pl_.c:303
 msgid ""
 "Welcome to the packages source editor!\n"
 "\n"
@@ -339,11 +371,11 @@ msgid "China"
 msgstr "中國大陸"
 
 #: ../rpmdrake.pm_.c:167 ../rpmdrake.pm_.c:168 ../rpmdrake.pm_.c:169
-#: ../rpmdrake.pm_.c:170 ../rpmdrake.pm_.c:222
+#: ../rpmdrake.pm_.c:170 ../rpmdrake.pm_.c:220
 msgid "United States"
 msgstr "美國"
 
-#: ../rpmdrake.pm_.c:230
+#: ../rpmdrake.pm_.c:228
 msgid ""
 "I need to contact MandrakeSoft website to get the mirrors list.\n"
 "Please check that your network is currently running.\n"
@@ -355,15 +387,15 @@ msgstr ""
 "\n"
 "您要繼續嗎？"
 
-#: ../rpmdrake.pm_.c:234
+#: ../rpmdrake.pm_.c:232
 msgid "Please wait, downloading mirrors addresses from MandrakeSoft website."
 msgstr "請稍後，正在由 MandrakeSoft 總部取回映射站台清單。"
 
-#: ../rpmdrake.pm_.c:240
+#: ../rpmdrake.pm_.c:238
 msgid "Error during download"
 msgstr "下載發生錯誤"
 
-#: ../rpmdrake.pm_.c:241
+#: ../rpmdrake.pm_.c:239
 #, c-format
 msgid ""
 "There was an error downloading the mirrors list:\n"
@@ -378,11 +410,11 @@ msgstr ""
 "也許是網路連線失敗，或者是 MandrakeSoft 站台暫時無法聯繫上，\n"
 "請稍後再試。"
 
-#: ../rpmdrake.pm_.c:249
+#: ../rpmdrake.pm_.c:247
 msgid "No mirror"
 msgstr "無映射站台"
 
-#: ../rpmdrake.pm_.c:250
+#: ../rpmdrake.pm_.c:248
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
@@ -395,7 +427,7 @@ msgstr ""
 "會發生這個問題的情況相當多，比方 Mandrake Linux\n"
 "更新站台目前尚不支援您目前用的機器平台。"
 
-#: ../rpmdrake.pm_.c:264
+#: ../rpmdrake.pm_.c:262
 msgid "Please choose the desired mirror."
 msgstr "請選擇更新的地址項目"
 
@@ -403,75 +435,75 @@ msgstr "請選擇更新的地址項目"
 msgid "Other"
 msgstr ""
 
-#: ../rpmdrake_.c:135 ../rpmdrake_.c:425 ../rpmdrake_.c:426
+#: ../rpmdrake_.c:131 ../rpmdrake_.c:421 ../rpmdrake_.c:422
 msgid "(Non available)"
 msgstr "(無法使用)"
 
-#: ../rpmdrake_.c:143 ../rpmdrake_.c:194
+#: ../rpmdrake_.c:139 ../rpmdrake_.c:190
 msgid "Search results"
 msgstr "搜尋結果"
 
-#: ../rpmdrake_.c:143
+#: ../rpmdrake_.c:139
 msgid "Search results (none)"
 msgstr "搜尋結果 (無任何符合的項目)"
 
-#: ../rpmdrake_.c:158
+#: ../rpmdrake_.c:154
 msgid "Please wait, searching..."
 msgstr "請稍候，搜尋中..."
 
-#: ../rpmdrake_.c:161
+#: ../rpmdrake_.c:157
 msgid "Stop"
 msgstr "停止"
 
-#: ../rpmdrake_.c:195 ../rpmdrake_.c:295
+#: ../rpmdrake_.c:191 ../rpmdrake_.c:291
 msgid "Addable"
 msgstr "可供加入"
 
-#: ../rpmdrake_.c:195 ../rpmdrake_.c:295
+#: ../rpmdrake_.c:191 ../rpmdrake_.c:291
 msgid "Upgradable"
 msgstr "可供更新"
 
-#: ../rpmdrake_.c:197
+#: ../rpmdrake_.c:193
 #, fuzzy
 msgid "Not selected"
 msgstr ""
 "全部\n"
 "不選 "
 
-#: ../rpmdrake_.c:197
+#: ../rpmdrake_.c:193
 #, fuzzy
 msgid "Selected"
 msgstr "全選"
 
-#: ../rpmdrake_.c:232
+#: ../rpmdrake_.c:228
 msgid "More information on package..."
 msgstr ""
 
-#: ../rpmdrake_.c:234
+#: ../rpmdrake_.c:230
 msgid "One of the following packages is needed:"
 msgstr "將需要下列的其中之一套件："
 
-#: ../rpmdrake_.c:234
+#: ../rpmdrake_.c:230
 msgid "Please choose"
 msgstr "請選擇"
 
-#: ../rpmdrake_.c:250
+#: ../rpmdrake_.c:246
 msgid "unknown package "
 msgstr "不明的套件"
 
-#: ../rpmdrake_.c:260
+#: ../rpmdrake_.c:256
 msgid "Please wait, listing packages..."
 msgstr "請稍候，正在列出套件..."
 
-#: ../rpmdrake_.c:274
+#: ../rpmdrake_.c:270
 msgid "(none)"
 msgstr "(無)"
 
-#: ../rpmdrake_.c:276
+#: ../rpmdrake_.c:272
 msgid "No update"
 msgstr "無更新"
 
-#: ../rpmdrake_.c:277
+#: ../rpmdrake_.c:273
 msgid ""
 "The list of updates is void. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -480,11 +512,11 @@ msgstr ""
 "更新的清單項目是空的，也許是您尚未新增任何更新的媒介項目，\n"
 "或者是您的系統目前都已經安裝上最新的套件了。"
 
-#: ../rpmdrake_.c:328
+#: ../rpmdrake_.c:324
 msgid "Some additional packages need to be removed"
 msgstr "為了可以全面運作正常這些額外的套件必須一同安裝"
 
-#: ../rpmdrake_.c:329
+#: ../rpmdrake_.c:325
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:\n"
@@ -493,11 +525,11 @@ msgstr ""
 "為了要滿足相依性需求，這些套件需要被移除：\n"
 "\n"
 
-#: ../rpmdrake_.c:335
+#: ../rpmdrake_.c:331
 msgid "Some packages can't be removed"
 msgstr "某些套件無法被移除"
 
-#: ../rpmdrake_.c:336 ../rpmdrake_.c:394
+#: ../rpmdrake_.c:332 ../rpmdrake_.c:390
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -506,11 +538,11 @@ msgstr ""
 "由於相依性的要求，下面的套件將會取消選取以便於能夠繼續進行下去：\n"
 "\n"
 
-#: ../rpmdrake_.c:364
+#: ../rpmdrake_.c:360
 msgid "Additional packages needed"
 msgstr "需要額外的套件項目"
 
-#: ../rpmdrake_.c:365
+#: ../rpmdrake_.c:361
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -519,11 +551,11 @@ msgstr ""
 "為了能夠滿足相依性的要求，下面的套件也必須一同安裝上：\n"
 "\n"
 
-#: ../rpmdrake_.c:378
+#: ../rpmdrake_.c:374
 msgid "Some packages can't be installed"
 msgstr "某些套件無法安裝上"
 
-#: ../rpmdrake_.c:379
+#: ../rpmdrake_.c:375
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -531,21 +563,21 @@ msgstr ""
 "抱歉，下面的套件項目將不能夠被選取：\n"
 "\n"
 
-#: ../rpmdrake_.c:393 ../rpmdrake_.c:564
+#: ../rpmdrake_.c:389 ../rpmdrake_.c:560
 msgid "Some packages need to be removed"
 msgstr "某些套件需要順便移除"
 
-#: ../rpmdrake_.c:415
+#: ../rpmdrake_.c:411
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "已選擇：%d MB / 可用磁碟空間：%d MB"
 
-#: ../rpmdrake_.c:417
+#: ../rpmdrake_.c:413
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "選取的大小：%d MB"
 
-#: ../rpmdrake_.c:423
+#: ../rpmdrake_.c:419
 #, c-format
 msgid ""
 "%sFiles:\n"
@@ -555,12 +587,12 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../rpmdrake_.c:424
+#: ../rpmdrake_.c:420
 #, fuzzy, c-format
 msgid "Source: %s\n"
 msgstr "來源"
 
-#: ../rpmdrake_.c:429
+#: ../rpmdrake_.c:425
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -581,7 +613,7 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:433
+#: ../rpmdrake_.c:429
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -600,68 +632,68 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:461
 msgid "Bugfixes updates"
 msgstr "臭蟲更新"
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:461
 msgid "Normal updates"
 msgstr "一般更新"
 
-#: ../rpmdrake_.c:484
+#: ../rpmdrake_.c:480
 msgid "Mandrake choices"
 msgstr "Mandrake 選擇"
 
-#: ../rpmdrake_.c:485
+#: ../rpmdrake_.c:481
 msgid "All packages, alphabetical"
 msgstr "所有套件，依照字母順序分類"
 
-#: ../rpmdrake_.c:486
+#: ../rpmdrake_.c:482
 msgid "All packages,"
 msgstr "所有套件，"
 
-#: ../rpmdrake_.c:509
+#: ../rpmdrake_.c:505
 msgid "by group"
 msgstr "依群組分類"
 
-#: ../rpmdrake_.c:509
+#: ../rpmdrake_.c:505
 msgid "by size"
 msgstr "依大小分類"
 
-#: ../rpmdrake_.c:510
+#: ../rpmdrake_.c:506
 msgid "by selection state"
 msgstr "依選擇狀態分類"
 
-#: ../rpmdrake_.c:511
+#: ../rpmdrake_.c:507
 msgid "by source repository"
 msgstr "依來源倉儲分類"
 
-#: ../rpmdrake_.c:511
+#: ../rpmdrake_.c:507
 msgid "by update availability"
 msgstr "依可供更新分類"
 
-#: ../rpmdrake_.c:532
+#: ../rpmdrake_.c:528
 msgid "in descriptions"
 msgstr "依照描述"
 
-#: ../rpmdrake_.c:532
+#: ../rpmdrake_.c:528
 msgid "in names"
 msgstr "依照名稱"
 
-#: ../rpmdrake_.c:533
+#: ../rpmdrake_.c:529
 msgid "in files"
 msgstr "依照檔案"
 
-#: ../rpmdrake_.c:544
+#: ../rpmdrake_.c:540
 msgid "Maximum information"
 msgstr ""
 
-#: ../rpmdrake_.c:544
+#: ../rpmdrake_.c:540
 #, fuzzy
 msgid "Normal information"
 msgstr "一般更新"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:561
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -676,35 +708,35 @@ msgstr ""
 "\n"
 "您確定要繼續嗎？"
 
-#: ../rpmdrake_.c:585
+#: ../rpmdrake_.c:582
 msgid "Find:"
 msgstr "尋找："
 
-#: ../rpmdrake_.c:590
+#: ../rpmdrake_.c:587
 msgid "Search"
 msgstr "尋找"
 
-#: ../rpmdrake_.c:602
+#: ../rpmdrake_.c:599
 msgid "Install"
 msgstr "安裝"
 
-#: ../rpmdrake_.c:613
+#: ../rpmdrake_.c:610
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:611
 msgid "Mandrake Update"
 msgstr "Mandrake 更新"
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:611
 msgid "Software Packages Removal"
 msgstr "移除套件程式"
 
-#: ../rpmdrake_.c:615
+#: ../rpmdrake_.c:612
 msgid "Software Packages Installation"
 msgstr "安裝套件程式"
 
-#: ../rpmdrake_.c:647
+#: ../rpmdrake_.c:644
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -716,23 +748,23 @@ msgstr ""
 "\n"
 "您現在要繼續嗎？"
 
-#: ../rpmdrake_.c:651
+#: ../rpmdrake_.c:648
 msgid "Please wait, contacting mirror to update packages information."
 msgstr "請稍後，正在取得可供更新的套件清單資訊"
 
-#: ../rpmdrake_.c:653
+#: ../rpmdrake_.c:650
 msgid "Error updating medium"
 msgstr "更新媒介時發生錯誤"
 
-#: ../rpmdrake_.c:654
+#: ../rpmdrake_.c:651
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "在更新套件資訊時發生了無法更正的錯誤情況。"
 
-#: ../rpmdrake_.c:660
+#: ../rpmdrake_.c:657
 msgid "How to choose manually your mirror"
 msgstr "如何手動選擇您需要的映射站台"
 
-#: ../rpmdrake_.c:661
+#: ../rpmdrake_.c:658
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -745,15 +777,15 @@ msgstr ""
 "\n"
 "完成後，請重新啟動 MandrakeUpdate 程式。"
 
-#: ../rpmdrake_.c:667
+#: ../rpmdrake_.c:664
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr "請稍後，正連線到映射站台初始畫提供更新的套件項目。"
 
-#: ../rpmdrake_.c:671
+#: ../rpmdrake_.c:668
 msgid "Error adding update medium"
 msgstr "新增更新媒介時發生錯誤"
 
-#: ../rpmdrake_.c:672
+#: ../rpmdrake_.c:669
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -772,48 +804,52 @@ msgstr ""
 "\n"
 "您要另外嘗試使用其他更新站台嗎？"
 
-#: ../rpmdrake_.c:701
+#: ../rpmdrake_.c:698
 msgid "Please wait, finding available packages..."
 msgstr "請稍後，正在尋找可用的套件清單..."
 
-#: ../rpmdrake_.c:724
+#: ../rpmdrake_.c:721
 msgid "All requested packages were installed successfully."
 msgstr "已經成功地安裝您需要的套件。"
 
-#: ../rpmdrake_.c:724
+#: ../rpmdrake_.c:721
 msgid "Everything installed successfully"
 msgstr "所有項目已經都安裝成功了。"
 
-#: ../rpmdrake_.c:727
+#: ../rpmdrake_.c:724
 #, fuzzy
 msgid "Installation finished"
 msgstr "安裝失敗"
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:727
 #, c-format
 msgid "Inspecting %s"
 msgstr ""
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:743
 #, fuzzy, c-format
 msgid "Remove .%s"
 msgstr "移除"
 
-#: ../rpmdrake_.c:748
+#: ../rpmdrake_.c:745
 #, c-format
 msgid "Use .%s as main file"
 msgstr ""
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:747
 msgid "Do nothing"
 msgstr ""
 
-#: ../rpmdrake_.c:753
+#: ../rpmdrake_.c:750
 #, fuzzy
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:760
+#: ../rpmdrake_.c:759
+msgid "Inspect..."
+msgstr ""
+
+#: ../rpmdrake_.c:772
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -822,44 +858,40 @@ msgid ""
 "you may now inspect some in order to take actions:"
 msgstr ""
 
-#: ../rpmdrake_.c:761
+#: ../rpmdrake_.c:773
 #, fuzzy
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr "某些套件無法安裝上"
 
-#: ../rpmdrake_.c:762
+#: ../rpmdrake_.c:774
 #, fuzzy
 msgid "everything was installed correctly"
 msgstr "所有項目已經都安裝成功了。"
 
-#: ../rpmdrake_.c:767
-msgid "Inspect..."
-msgstr ""
-
-#: ../rpmdrake_.c:795
+#: ../rpmdrake_.c:793
 msgid "Unable to get source packages."
 msgstr "大件事，無法取得原始套件"
 
-#: ../rpmdrake_.c:796
+#: ../rpmdrake_.c:794
 msgid "Unable to get source packages, sorry."
 msgstr "真抱歉，無法取得原始套件"
 
-#: ../rpmdrake_.c:803
+#: ../rpmdrake_.c:801
 msgid "Change medium"
 msgstr "變更媒介"
 
-#: ../rpmdrake_.c:804
+#: ../rpmdrake_.c:802
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "請置入媒介名稱為 \"%s\" 的項目放置於 %s 裝置"
 
-#: ../rpmdrake_.c:812
+#: ../rpmdrake_.c:810
 msgid "Installation failed"
 msgstr "安裝失敗"
 
-#: ../rpmdrake_.c:813
+#: ../rpmdrake_.c:811
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -867,35 +899,35 @@ msgstr ""
 "安裝失敗，安裝程式找不到一些要安裝上的程式套件。\n"
 "也許是系統資料庫太舊了，請先更新資料庫後再繼續。"
 
-#: ../rpmdrake_.c:816
+#: ../rpmdrake_.c:814
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "請稍後，移除一些套件項目，以便於能夠進行其他套件的更新..."
 
-#: ../rpmdrake_.c:825
+#: ../rpmdrake_.c:823
 msgid "Program missing"
 msgstr "找不到所需要的程式"
 
-#: ../rpmdrake_.c:826
+#: ../rpmdrake_.c:824
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "無法呼叫 grpmi 程式，也許程式遺失或者是不正確。"
 
-#: ../rpmdrake_.c:844
+#: ../rpmdrake_.c:842
 msgid "Everything already installed."
 msgstr "所有套件已經安裝上。"
 
-#: ../rpmdrake_.c:845
+#: ../rpmdrake_.c:843
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "所有套件已經安裝上。"
 
-#: ../rpmdrake_.c:855
+#: ../rpmdrake_.c:853
 msgid "Please wait, reading packages database..."
 msgstr "請稍後，讀取套件資料庫資訊中..."
 
-#: ../rpmdrake_.c:893
+#: ../rpmdrake_.c:891
 msgid "Please wait, removing packages..."
 msgstr "請稍候，正在移除套件..."
 
-#: ../rpmdrake_.c:908
+#: ../rpmdrake_.c:906
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -906,7 +938,7 @@ msgstr ""
 "\n"
 "接下來程式將會引導你完成移除您認為不需要的套件項目。"
 
-#: ../rpmdrake_.c:913
+#: ../rpmdrake_.c:911
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -916,7 +948,7 @@ msgstr ""
 "歡迎來到套件更新程式!\n"
 "接下來程式將會引導你完成套件更新與安裝。"
 
-#: ../rpmdrake_.c:918
+#: ../rpmdrake_.c:916
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1161,9 +1193,6 @@ msgstr "安裝軟體"
 
 #~ msgid "Force"
 #~ msgstr "強迫"
-
-#~ msgid "Error..."
-#~ msgstr "錯誤..."
 
 #~ msgid "Problems occured during installation"
 #~ msgstr "安裝時發生問題"
@@ -1465,9 +1494,6 @@ msgstr "安裝軟體"
 #~ msgid "Ftp Proxy:"
 #~ msgstr "FTP 代理伺服器："
 
-#~ msgid "Proxy username:"
-#~ msgstr "使用者名稱 (代理伺服器)："
-
 #~ msgid "Proxy password:"
 #~ msgstr "密碼 (代理伺服器)："
 
@@ -1506,9 +1532,6 @@ msgstr "安裝軟體"
 
 #~ msgid "Choose Packages"
 #~ msgstr "選擇套件"
-
-#~ msgid "Username:"
-#~ msgstr "使用者名稱："
 
 #~ msgid "Security"
 #~ msgstr "保安"

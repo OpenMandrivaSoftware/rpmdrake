@@ -81,8 +81,6 @@ my $exitstatus = -1;
 
 # -=-=-=---=-=-=---=-=-=-- download potential URL's, and verify signatures -=-=-=---=-=-=--
 
-my $proxy;
-/http_proxy = (http:[^:]+:\d+)/ and $proxy = $1 foreach cat_("$ENV{HOME}/.wgetrc");
 my $cache_location = '/var/cache/urpmi/rpms';
 my $url_regexp = '^http://|^https://|^ftp://';
 my $nb_downloads = int(grep { m,$url_regexp, } @ARGV);
@@ -93,8 +91,7 @@ for (my $i=0; $i<@ARGV; $i++) {
 	$download_progress++;
 	$label->set(_("Downloading package `%s' (%s/%s)...", basename($ARGV[$i]), $download_progress, $nb_downloads));
 	select(undef, undef, undef, 0.1); $mainw->flush;  #- hackish :-(
-	my $res = curl_download::download($ARGV[$i], $cache_location, $proxy,
-					  sub { $_[0] and $progressbar->update($_[1]/$_[0]); $mainw->flush });
+	my $res = curl_download::download($ARGV[$i], $cache_location, sub { $_[0] and $progressbar->update($_[1]/$_[0]); $mainw->flush });
 	my $url = $ARGV[$i];
 	$ARGV[$i] = "$cache_location/" . basename($ARGV[$i]);
 	if ($res) {

@@ -211,6 +211,40 @@ sub update_callback {
     }
 }
 
+sub proxy_callback {
+    my $w = my_gtk->new(_("Configure proxies"));
+    my ($proxy, $proxy_user) = curl_download::readproxy;
+    my ($user, $pass) = $proxy_user =~ /^([^:]+):([^:]+)$/;
+    gtkadd($w->{window},
+	   gtkpack__(new Gtk::VBox(0, 5),
+		     new Gtk::Label(_("If you need a proxy, enter the hostname and an optional port (syntax: <proxyhost[:port]>):")),
+		     gtkpack_(new Gtk::HBox(0, 10),
+			      0, gtkset_active(my $proxybutton = new Gtk::CheckButton(_("Proxy hostname:")), to_bool($proxy)),
+			      1, gtkset_sensitive(my $proxyentry = gtkentry($proxy), to_bool($proxy))),
+		     new Gtk::Label(_("You may specify a user/password for the proxy authentication:")),
+		     gtkpack_(new Gtk::HBox(0, 10),
+			      0, gtkset_active(my $proxyuserbutton = new Gtk::CheckButton(_("User:")), to_bool($proxy_user)),
+			      1, gtkset_sensitive(my $proxyuserentry = gtkentry($user), to_bool($proxy_user)),
+			      0, new Gtk::Label(_("Password:")),
+			      1, gtkset_sensitive(my $proxypasswordentry = gtkentry($pass), to_bool($proxy_user))),
+		     new Gtk::HSeparator,
+		     gtkpack(create_hbox(),
+			     gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { $w->{retval} = 1; Gtk->main_quit }),
+			     gtksignal_connect(new Gtk::Button(_("Cancel")), clicked => sub { $w->{retval} = 0; Gtk->main_quit }))));
+    $proxybutton->signal_connect(clicked => sub { $proxyentry->set_sensitive($_[0]->get_active);
+						  $_[0]->get_active and return;
+						  $proxyuserbutton->set_active(0);
+						  $proxyuserentry->set_sensitive(0);
+						  $proxypasswordentry->set_sensitive(0); });
+    $proxyuserbutton->signal_connect(clicked => sub { $proxyuserentry->set_sensitive($_[0]->get_active);
+						      $proxypasswordentry->set_sensitive($_[0]->get_active) });
+    $w->{rwindow}->set_position('center');
+    if ($w->main) {
+	curl_download::writeproxy($proxybutton->get_active ? $proxyentry->get_text : '',
+				  $proxyuserbutton->get_active ? ($proxyuserentry->get_text.':'.$proxypasswordentry->get_text) : '');
+    }
+}
+
 sub mainwindow {
     my %pixmaps = (selected => [ gtkcreate_png('selected') ], unselected => [ gtkcreate_png('unselected') ]);
     my $mainw = my_gtk->new(_("Configure sources"));
@@ -248,7 +282,8 @@ sub mainwindow {
 										clicked => sub { edit_callback and $reread_media->() }), 0),
 					     gtksignal_connect(new Gtk::Button(but(_("Add..."))), 
 							       clicked => sub { add_callback and $reread_media->(); }),
-					     gtksignal_connect(new Gtk::Button(but(_("Update..."))), clicked => \&update_callback))),
+					     gtksignal_connect(new Gtk::Button(but(_("Update..."))), clicked => \&update_callback),
+					     gtksignal_connect(new Gtk::Button(but(_("Proxy..."))), clicked => \&proxy_callback))),
 		    0, new Gtk::HSeparator,
 		    0, gtkpack(create_hbox(),
 			       gtksignal_connect(new Gtk::Button(_("Save and quit")), clicked => sub { $mainw->{retval} = 1; Gtk->main_quit }),

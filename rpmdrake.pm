@@ -207,9 +207,7 @@ sub mirrors {
     my ($cachedir, $class) = @_;
     my $mirrorslist = "$cachedir/mirrorsfull.list";
     unlink $mirrorslist;
-    my $proxy;
-    /http_proxy = (http:[^:]+:\d+)/ and $proxy = $1 foreach cat_("$ENV{HOME}/.wgetrc");
-    my $res = curl_download::download('http://www.linux-mandrake.com/mirrorsfull.list', $cachedir, $proxy, sub {});
+    my $res = curl_download::download('http://www.linux-mandrake.com/mirrorsfull.list', $cachedir, sub {});
     $res and die $res;
     require timezone;
     my $tz = ${timezone::read()}{timezone};
