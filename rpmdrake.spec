@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 21mdk
+%define release 22mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-35mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-36mdk grpmi >= 9.0 rpmtools >= 4.5
 BuildRequires: curl-devel rpm-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -123,6 +123,16 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri Sep  6 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-22mdk
+- don't display passwords in clear text for Lord Beranger
+- set /etc/urpmi/proxy.cfg as 0600 when saving it
+- add --changelog-first commandline option to display changelog before
+  filelist in the description window
+- add --merge-all-rpmnew commandline option to ask for merging all
+  .rpmnew/.rpmsave files of the system
+- fix impossibility of install packages after user refuses one
+  time to remove some packages to allow others to be upgraded
+
 * Thu Sep  5 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-21mdk
 - add "search in files" in rpmdrake-remove
 - when grpmi detects conflicts, don't aask for force, but abort
