@@ -38,7 +38,7 @@ merge: $(PGOAL).pot
 $(PGOAL).pot: $(PL_CFILES) $(CFILES)
 	INTLTOOL_EXTRACT=./intltool-extract ./intltool-update --gettext-package rpmdrake --pot
 	xgettext -j -F -n --add-comments='-PO' \
-	--keyword=_ --keyword=__ --keyword=N_ \
+	--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
 	--language=C -o $@ $(PL_CFILES) $(CFILES)
 	@rm -rf $(PL_CFILES)
 
