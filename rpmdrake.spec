@@ -34,6 +34,14 @@ Mandrake Linux system; it has 3 different modes:
 
 A fourth program manages the media (add, remove, edit).
 
+%package -n park-rpmdrake
+Summary: Configure and update rpms on a park
+Group: System/Configuration/Packaging
+Requires: rsync scanssh perl-Expect
+
+%description -n park-rpmdrake
+Configure and update rpms on a park of hosts. The backend is parallel urpmi.
+
 %prep
 rm -rf $RPM_BUILD_ROOT
 
@@ -100,6 +108,10 @@ rm -rf $RPM_BUILD_ROOT
 %ghost /var/lib/urpmi/compssUsers.flat
 %{perl_vendorarch}/auto/*
 %{perl_vendorarch}/*.pm
+
+%files -n park-rpmdrake
+%defattr(-,root,root)
+%{_sbindir}/park-rpmdrake
 
 %changelog
 * Wed Jan 21 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-2mdk

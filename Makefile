@@ -37,7 +37,7 @@ install: $(ALL)
 		(cd $$n; $(MAKE) install) \
 	done
 	install -d $(SBINDIR)
-	install rpmdrake edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
+	install rpmdrake park-rpmdrake edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
 	ln -sf edit-urpm-sources.pl $(SBINDIR)/edit-urpm-media
 	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(SBINDIR)/*
 	ln -sf rpmdrake $(SBINDIR)/rpmdrake-remove
