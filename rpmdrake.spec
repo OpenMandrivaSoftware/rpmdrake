@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 10mdk
+%define release 11mdk
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,17 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Aug 27 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-11mdk
+- edit-urpm-sources
+  - when editing a removable medium, warn we need the medium in
+    drive
+  - some questions were only presentend with an "Ok" button
+- rpmdrake
+  - after installing packages, the "size selected" was not reset to 0
+  - import compssUsers translations from drakx, take them for mandrake
+    choices tree form
+  - provide a nice interface to choose to keep or remove .rpmnew files
+
 * Tue Aug 27 2002 David BAUDENS <baudens@mandrakesoft.com> 2.0-10mdk
 - Update icons
 
