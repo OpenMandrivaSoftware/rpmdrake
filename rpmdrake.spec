@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.5
-%define release 9mdk
+%define release 10mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Sep 22 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-10mdk
+- fix parsing of scanssh output in park-rpmdrake (Pixel)
+
 * Tue Sep 21 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-9mdk
 - Display the path of the README.urpmi file
 - Language updates
