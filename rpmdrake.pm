@@ -363,6 +363,9 @@ sub show_urpm_progress {
     } elsif ($mode eq 'done') {
 	$pb->set_fraction(1.0);
 	$label->set_label($label->get_label . N(" done."));
+    } elsif ($mode eq 'failed') {
+	$pb->set_fraction(1.0);
+	$label->set_label($label->get_label . N(" failed!"));
     }
     Gtk2->update_ui;
 }
