@@ -191,26 +191,48 @@ sub edit_callback {
     my $medium = $urpm->{media}[$row];
     my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1, transient => $mainw->{rwindow});
     my ($url_entry, $hdlist_entry, $url, $with_hdlist);
-    gtkadd($w->{window},
-	   gtkpack_(Gtk2::VBox->new(0,5),
-		    0, Gtk2::Label->new(N("Editing medium \"%s\":", $medium->{name})),
-		    0, create_packtable({},
-					[ N("URL:"), $url_entry = gtkentry($medium->{url}) ],
-					[ N("Relative path to synthesis/hdlist:"), $hdlist_entry = gtkentry($medium->{with_hdlist}) ]),
-		    0, Gtk2::HSeparator->new,
-		    0, gtkpack(create_hbox(),
-			       gtksignal_connect(Gtk2::Button->new(N("Save changes")), clicked => sub {
-						     $w->{retval} = 1;
-						     ($url, $with_hdlist) = ($url_entry->get_text, $hdlist_entry->get_text);
-						     Gtk2->main_quit;
-						 }),
-			       gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
+    gtkadd(
+	$w->{window},
+	gtkpack_(
+	    Gtk2::VBox->new(0,5),
+	    0, Gtk2::Label->new(N("Editing medium \"%s\":", $medium->{name})),
+	    0, create_packtable(
+		{},
+		[ N("URL:"), $url_entry = gtkentry($medium->{url}) ],
+		[ N("Relative path to synthesis/hdlist:"), $hdlist_entry = gtkentry($medium->{with_hdlist}) ],
+	    ),
+	    0, Gtk2::HSeparator->new,
+	    0, gtkpack(
+		create_hbox(),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Save changes")),
+		    clicked => sub {
+			$w->{retval} = 1;
+			($url, $with_hdlist) = ($url_entry->get_text, $hdlist_entry->get_text);
+			Gtk2->main_quit;
+		    },
+		),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Cancel")),
+		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
+		),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Proxy...")),
+		    clicked => sub { proxy_callback($medium) },
+		),
+	    )
+	)
+    );
     $w->{rwindow}->set_size_request(600, -1);
     if ($w->main) {
 	my ($name, $update) = map { $medium->{$_} } qw(name update);
-	$url =~ m|^removable://| and (interactive_msg(N("You need to insert the medium to continue"),
-						      N("In order to save the changes, you need to insert the medium in the drive."),
-						      yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) or return 0);
+	$url =~ m|^removable://| and (
+	    interactive_msg(
+		N("You need to insert the medium to continue"),
+		N("In order to save the changes, you need to insert the medium in the drive."),
+		yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }
+	    ) or return 0
+	);
 	standalone::explanations("Removing medium $name");
 	$urpm->select_media($name);
 	$urpm->remove_selected_media;
@@ -225,41 +247,68 @@ sub update_callback {
 }
 
 sub proxy_callback {
+    my ($medium) = @_;
+    my $medium_name = $medium ? $medium->{name} : '';
     my $w = ugtk2->new(N("Configure proxies"), grab => 1, center => 1, transient => $mainw->{rwindow});
-    my ($proxy, $proxy_user) = curl_download::readproxy();
-    my ($user, $pass) = $proxy_user =~ /^(.+):(.+)$/;
+    my ($proxy, $proxy_user) = curl_download::readproxy($medium_name);
+    my ($user, $pass) = $proxy_user =~ /^([^:]*):(.*)$/;
     my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry, $proxypasswordentry);
-    gtkadd($w->{window},
-	   gtkpack__(Gtk2::VBox->new(0, 5),
-		     gtkset_justify(Gtk2::Label->new(N("If you need a proxy, enter the hostname and an optional port (syntax: <proxyhost[:port]>):")), 'center'),
-		     gtkpack_(Gtk2::HBox->new(0, 10),
-			      0, gtkset_active($proxybutton = Gtk2::CheckButton->new(N("Proxy hostname:")), to_bool($proxy)),
-			      1, gtkset_sensitive($proxyentry = gtkentry($proxy), to_bool($proxy))),
-		     gtkset_justify(Gtk2::Label->new(N("You may specify a user/password for the proxy authentication:")), 'center'),
-		     gtkpack_(Gtk2::HBox->new(0, 10),
-			      0, gtkset_active($proxyuserbutton = Gtk2::CheckButton->new(N("User:")), to_bool($proxy_user)),
-			      1, gtkset_sensitive($proxyuserentry = gtkentry($user), to_bool($proxy_user)),
-			      0, Gtk2::Label->new(N("Password:")),
-			      1, gtkset_visibility(gtkset_sensitive($proxypasswordentry = gtkentry($pass), to_bool($proxy_user)), 0)),
-		     Gtk2::HSeparator->new,
-		     gtkpack(create_hbox(),
-			     gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub {
-						   $w->{retval} = 1;
-						   $proxy = $proxybutton->get_active ? $proxyentry->get_text : '';
-						   $proxy_user = $proxyuserbutton->get_active
-						     ? ($proxyuserentry->get_text.':'.$proxypasswordentry->get_text) : '';
-						   Gtk2->main_quit;
-					       }),
-			     gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
-    $proxybutton->signal_connect(clicked => sub { $proxyentry->set_sensitive($_[0]->get_active);
-						  $_[0]->get_active and return;
-						  $proxyuserbutton->set_active(0);
-						  $proxyuserentry->set_sensitive(0);
-						  $proxypasswordentry->set_sensitive(0); });
+    gtkadd(
+	$w->{window},
+	gtkpack__(
+	    Gtk2::VBox->new(0, 5),
+	    gtkset_justify(Gtk2::Label->new(
+		$medium_name
+		    ? N("Proxy settings for media \"%s\"", $medium_name)
+		    : N("Global proxy settings")
+	    ), 'center'),
+	    gtkset_justify(Gtk2::Label->new(N("If you need a proxy, enter the hostname and an optional port (syntax: <proxyhost[:port]>):")), 'center'),
+	    gtkpack_(
+		Gtk2::HBox->new(0, 10),
+		0, gtkset_active($proxybutton = Gtk2::CheckButton->new(N("Proxy hostname:")), to_bool($proxy)),
+		1, gtkset_sensitive($proxyentry = gtkentry($proxy), to_bool($proxy)),
+	    ),
+	    gtkset_justify(Gtk2::Label->new(N("You may specify a user/password for the proxy authentication:")), 'center'),
+	    gtkpack_(
+		Gtk2::HBox->new(0, 10),
+		0, gtkset_active($proxyuserbutton = Gtk2::CheckButton->new(N("User:")), to_bool($proxy_user)),
+		1, gtkset_sensitive($proxyuserentry = gtkentry($user), to_bool($proxy_user)),
+		0, Gtk2::Label->new(N("Password:")),
+		1, gtkset_visibility(gtkset_sensitive($proxypasswordentry = gtkentry($pass), to_bool($proxy_user)), 0),
+	    ),
+	    Gtk2::HSeparator->new,
+	    gtkpack(
+		create_hbox(),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Ok")),
+		    clicked => sub {
+			$w->{retval} = 1;
+			$proxy = $proxybutton->get_active ? $proxyentry->get_text : '';
+			$proxy_user = $proxyuserbutton->get_active
+			    ? ($proxyuserentry->get_text.':'.$proxypasswordentry->get_text) : '';
+			Gtk2->main_quit;
+		    },
+		),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Cancel")),
+		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
+		)
+	    )
+	)
+    );
+    $proxybutton->signal_connect(
+	clicked => sub {
+	    $proxyentry->set_sensitive($_[0]->get_active);
+	    $_[0]->get_active and return;
+	    $proxyuserbutton->set_active(0);
+	    $proxyuserentry->set_sensitive(0);
+	    $proxypasswordentry->set_sensitive(0);
+	}
+    );
     $proxyuserbutton->signal_connect(clicked => sub { $proxyuserentry->set_sensitive($_[0]->get_active);
-						      $proxypasswordentry->set_sensitive($_[0]->get_active) });
+    $proxypasswordentry->set_sensitive($_[0]->get_active) });
 
-    $w->main and curl_download::writeproxy($proxy, $proxy_user);
+    $w->main and curl_download::writeproxy($proxy, $proxy_user, $medium_name);
 }
 
 sub parallel_read_sysconf {
