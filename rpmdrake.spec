@@ -106,6 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 - help:
   - use --id
   - launch the good sub-chapter
+  - add an help button to the Media Editor
 
 * Tue Sep 02 2003 David Baudens <baudens@mandrakesoft.com> 2.1-33mdk
 - Update banners
