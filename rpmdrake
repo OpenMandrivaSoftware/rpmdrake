@@ -239,7 +239,7 @@ sub extract_header {
     if ($MODE eq 'remove') {
 	@$max_info_in_descr or return;
 	my $name = my_fullname($pkg->{pkg});
-	add2hash($pkg, { files => chomp_(scalar(`rpm -ql $name`)) || N("(none)"),
+	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(`rpm -ql $name`)) || N("(none)") ],
                          changelog => $chg_prepro->(scalar(`LC_ALL=C rpm -q --changelog $name`)) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
@@ -256,7 +256,7 @@ sub extract_header {
 	    add2hash($pkg, { summary => rpm_summary($p->summary), description => rpm_description($p->description) });
 	    my $localtime2changelog = sub { scalar(localtime($_[0])) =~ /(.*) \S+ (\d{4})$/ && "$1 $2" };
 	    @$max_info_in_descr and add2hash($pkg, {
-	        files => join("\n", $p->files) || N("(none)"),
+	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
 		changelog => $chg_prepro->(join("\n", mapn { "* ".$localtime2changelog->($_[2])." $_[0]\n\n$_[1]\n" }
 						[ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ])) });
 	    $p->pack_header;
@@ -602,7 +602,9 @@ or you already installed all of them."));
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
 				     my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD };
 				     my $tag_fix = { 'font' => 'monospace' };
-				     my @files = ([ N("Files:\n"), $tag_tag ], [ $pkgs->{$key}{files} || N("(Not available)"), $tag_fix ]);
+				     my @files = ([ N("Files:\n"), $tag_tag ], exists $pkgs->{$key}{files}
+                                                                               ? map { [ "\x{200e}$_\n", $tag_fix ] } @{$pkgs->{$key}{files}}
+                                                                               : [ N("(Not available)") ]);
 				     my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
 				     my @source_info = ($MODE eq 'remove' || !@$max_info_in_descr ? ()
 							: ([ N("Medium: "), $tag_tag ],
@@ -610,7 +612,7 @@ or you already installed all of them."));
 							   [ N("Currently installed version: "), $tag_tag ],
 							   [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]));
 				     my @max_info = if_(@$max_info_in_descr, $options{'changelog-first'} ? (@chglo, [ "\n" ], @files)
-                                                                                                         : (@files, [ "\n\n" ], @chglo));
+                                                                                                         : (@files, [ "\n" ], @chglo));
 				     [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
 				       [ N("Version: "), $tag_tag ], [ "$version\n" ],
 				       [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024))."\n" ],
