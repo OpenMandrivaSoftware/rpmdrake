@@ -601,7 +601,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
     my $darea;
     gtkadd($w->{window}, 
 	   gtkpack_(new Gtk::VBox(0, 3),
-		    0, gtkset_usize($darea = new Gtk::DrawingArea, 0, 40),
+		    0, gtkset_usize($darea = new Gtk::DrawingArea, 0, 57),
 		    1, gtkadd(gtkset_shadow_type(gtkset_border_width(new Gtk::Frame, 3), 'none'),
 			      gtkpack_(new Gtk::VBox(0, 3),
 				       0, gtkpack__(new Gtk::HBox(0, 10),
@@ -628,12 +628,12 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 									    clicked => sub { Gtk->main_quit })))
 				       ))));
     my ($pixmap_back) = gtkcreate_png('title-tile');
-#    my ($pixmap_icon) = gtkcreate_png('title-icon');
+    my ($pixmap_icon) = gtkcreate_png('title-icon');
     $darea->signal_connect(expose_event => sub {
 		       my (undef, undef, $dx, $dy) = @{$darea->allocation};
 		       my $dbl_area = new Gtk::Gdk::Pixmap($darea->window, $dx, $dy);
-		       fill_tiled($darea, $dbl_area, $pixmap_back, 1, 40, $dx, $dy);
-#		       $dbl_area->draw_pixmap($darea->style->white_gc, $pixmap_icon, 0, 0, 5, 0, $dx, $dy);
+		       fill_tiled($darea, $dbl_area, $pixmap_back, 1, 57, $dx, $dy);
+		       $dbl_area->draw_pixmap($darea->style->white_gc, $pixmap_icon, 0, 0, $dx-($pixmap_icon->get_size)[1], 0, $dx, $dy);
 		       my $style = $darea->style->copy();
 		       my $pixmap_text if 0;
 		       if (!$pixmap_text) {
@@ -646,7 +646,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 		       }
 		       if ($pixmap_text && $pixmap_text != -1) {
 			   $dbl_area->draw_pixmap($darea->style->white_gc, $pixmap_text,
-						  0, 0, ($dx-($pixmap_text->get_size)[1])/2, 0, $dx, $dy);
+						  0, 0, ($dx-($pixmap_text->get_size)[1])/2, 9, $dx, $dy);
 		       } else {
 			   $style->font(Gtk::Gdk::Font->fontset_load(_("-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*")));
 			   my %t = (remove => _("Software Packages Removal"), update => _("Mandrake Update"),
