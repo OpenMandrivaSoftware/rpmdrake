@@ -83,7 +83,7 @@ char * download_url_real(char * url, char * location, char * proxy, char * proxy
 		FILE * outfile;
 
 		if (stat(location, &statbuf) || !S_ISDIR(statbuf.st_mode))
-			return _("Directory where to put download must be existing");
+			return _("Download directory does not exist");
 
 		if (asprintf(&outfilename, "%s/%s", location, filename) == -1)
 			return _("Out of memory\n");
@@ -144,51 +144,51 @@ char * download_url_real(char * url, char * location, char * proxy, char * proxy
 			return _("Couldn't connect\n");
 			break;
 		case CURLE_FTP_WEIRD_SERVER_REPLY:
-			return _("Ftp weird server reply\n");
+			return _("FTP unexpected server reply\n");
 			break;
 		case CURLE_FTP_ACCESS_DENIED:
-			return _("Ftp access denied\n");
+			return _("FTP access denied\n");
 			break;
 		case CURLE_FTP_USER_PASSWORD_INCORRECT:
-			return _("Ftp user password incorrect\n");
+			return _("FTP user password incorrect\n");
 			break;
 		case CURLE_FTP_WEIRD_PASS_REPLY:
-			return _("Ftp weird PASS reply\n");
+			return _("FTP unexpected PASS reply\n");
 			break;
 		case CURLE_FTP_WEIRD_USER_REPLY:
-			return _("Ftp weird USER reply\n");
+			return _("FTP unexpected USER reply\n");
 			break;
 		case CURLE_FTP_WEIRD_PASV_REPLY:
-			return _("ftp weird PASV reply\n");
+			return _("FTP unexpected PASV reply\n");
 			break;
 		case CURLE_FTP_WEIRD_227_FORMAT:
-			return _("Ftp weird 227 format\n");
+			return _("FTP unexpected 227 format\n");
 			break;
 		case CURLE_FTP_CANT_GET_HOST:
-			return _("Ftp can't get host\n");
+			return _("FTP can't get host\n");
 			break;
 		case CURLE_FTP_CANT_RECONNECT:
-			return _("Ftp can't reconnect\n");
+			return _("FTP can't reconnect\n");
 			break;
 		case CURLE_FTP_COULDNT_SET_BINARY:
-			return _("Ftp couldn't set binary\n");
+			return _("FTP couldn't set binary\n");
 			break;
 		case CURLE_PARTIAL_FILE:
 			return _("Partial file\n");
 			break;
 		case CURLE_FTP_COULDNT_RETR_FILE:
-			return _("Ftp couldn't RETR file\n");
+			return _("FTP couldn't RETR file\n");
 			break;
 		case CURLE_FTP_WRITE_ERROR:
-			return _("Ftp write error\n");
+			return _("FTP write error\n");
 			break;
 		case CURLE_FTP_QUOTE_ERROR:
 			/* "quote" is an ftp command, not the typographic things, so
 			 * don't translate that word */
-			return _("Ftp quote error\n");
+			return _("FTP quote error\n");
 			break;
 		case CURLE_HTTP_NOT_FOUND:
-			return _("http not found\n");
+			return _("HTTP not found\n");
 			break;
 		case CURLE_WRITE_ERROR:
 			return _("Write error\n");
@@ -197,7 +197,7 @@ char * download_url_real(char * url, char * location, char * proxy, char * proxy
 			return _("User name illegally specified\n");
 			break;
 		case CURLE_FTP_COULDNT_STOR_FILE: /* failed FTP upload */
-			return _("ftp couldn't STOR file\n");
+			return _("FTP couldn't STOR file\n");
 			break;
 		case CURLE_READ_ERROR: /* could open/read from file */
 			return _("Read error\n");
@@ -209,28 +209,28 @@ char * download_url_real(char * url, char * location, char * proxy, char * proxy
 			return _("Time out\n");
 			break;
 		case CURLE_FTP_COULDNT_SET_ASCII: /* TYPE A failed */
-			return _("Ftp couldn't set ASCII\n");
+			return _("FTP couldn't set ASCII\n");
 			break;
 		case CURLE_FTP_PORT_FAILED: /* FTP PORT operation failed */
-			return _("Ftp PORT failed\n");
+			return _("FTP PORT failed\n");
 			break;
 		case CURLE_FTP_COULDNT_USE_REST: /* the REST command failed */
-			return _("Ftp couldn't use REST\n");
+			return _("FTP couldn't use REST\n");
 			break;
 		case CURLE_FTP_COULDNT_GET_SIZE: /* the SIZE command failed */
-			return _("Ftp couldn't get size\n");
+			return _("FTP couldn't get size\n");
 			break;
 		case CURLE_HTTP_RANGE_ERROR: /* The RANGE "command" didn't seem to work */
-			return _("Http range error\n");
+			return _("HTTP range error\n");
 			break;
 		case CURLE_HTTP_POST_ERROR:
-			return _("Http POST error\n");
+			return _("HTTP POST error\n");
 			break;
 		case CURLE_SSL_CONNECT_ERROR: /* something was wrong when connecting with SSL */
-			return _("Ssl connect error\n");
+			return _("SSL connect error\n");
 			break;
 		case CURLE_FTP_BAD_DOWNLOAD_RESUME: /* couldn't resume download */
-			return _("Ftp bad download resume\n");
+			return _("FTP bad download resume\n");
 			break;
 		case CURLE_FILE_COULDNT_READ_FILE:
 			return _("File couldn't read file\n");
