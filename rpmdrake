@@ -881,7 +881,6 @@ Is it ok to continue?", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{a
     $options->{widgets} = { w => $w, tree => $tree, tree_model => $tree_model, textcolumn => $textcolumn, pixcolumn => $pixcolumn,
 		            info => $info, status => $status };
 
-    use Data::Dumper; print Dumper($options);
     ask_browse_tree_info_given_widgets($options);
 }
 
