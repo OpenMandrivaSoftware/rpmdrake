@@ -109,12 +109,12 @@ sub init {
 sub label {
     $label->set($_[0]);
     select(undef, undef, undef, 0.1);  #- hackish :-(
-    $mainw->flush;  
+    $mainw->flush;
 }
 
 sub progress {
     $progressbar->set_fraction($_[0]);
-    $mainw->flush;  
+    $mainw->flush;
 }
 
 sub end {
@@ -333,7 +333,7 @@ sub pkg2medium {
 #- but gtk2 requires UTF-8, so we use to_utf8() to ensure the
 #- output of localtime2changelog() is always in UTF-8
 #- as to_utf8() uses LC_CTYPE for locale encoding and strftime() uses LC_TIME,
-#- it doesn't work if those two variables have values with different 
+#- it doesn't work if those two variables have values with different
 #- encodings; but if a user has a so broken setup we can't do much anyway
 sub localtime2changelog { to_utf8(strftime("%c", localtime($_[0]))) }
 
@@ -539,267 +539,270 @@ sub run_treeview_dialog {
         @to_remove;
     };
     $options = {
-		   node_state => sub { $_[0] ? ($pkgs->{$_[0]}{selected} ? 'selected' : 'unselected')
-					     : 'XXX' },  #- checks $_[0] -> hack for partial tree displaying
-		   build_tree => sub {
-		       my ($add_node, $flat, $mode) = @_;
-		       my @elems;
-		       my $wait = wait_msg_(N("Please wait, listing packages..."));
-		       if ($mode eq 'mandrake_choices') {
-			   foreach my $pkg (keys %$pkgs) {
-			       my ($name) = split_fullname($pkg);
-			       push @elems, [ $pkg, $_ ] foreach @{$compssUsers->{$name}};
-			   }
-		       } else {
-			   my @keys = keys %$pkgs;
-			   if ($MODE eq 'update') {
-			       @keys = grep {
-				   my ($name) = split_fullname($_);
-				   member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories)
-				     || ! $descriptions->{$name}{importance};
-			       } @keys;
-			       if (@keys == 0) {
-				   $add_node->('', N("(none)"), { nochild => 1 });
-				   my $explanation_only_once if 0;
-				   $explanation_only_once or interactive_msg_(N("No update"),
+	node_state => sub {
+	    $_[0] ? ($pkgs->{$_[0]}{selected} ? 'selected' : 'unselected') : 'XXX';
+	},  #- checks $_[0] -> hack for partial tree displaying
+	build_tree => sub {
+	    my ($add_node, $flat, $mode) = @_;
+	    my @elems;
+	    my $wait = wait_msg_(N("Please wait, listing packages..."));
+	    if ($mode eq 'mandrake_choices') {
+		foreach my $pkg (keys %$pkgs) {
+		    my ($name) = split_fullname($pkg);
+		    push @elems, [ $pkg, $_ ] foreach @{$compssUsers->{$name}};
+		}
+	    } else {
+		my @keys = keys %$pkgs;
+		if ($MODE eq 'update') {
+		    @keys = grep {
+			my ($name) = split_fullname($_);
+			member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories)
+			|| ! $descriptions->{$name}{importance};
+		    } @keys;
+		    if (@keys == 0) {
+			$add_node->('', N("(none)"), { nochild => 1 });
+			my $explanation_only_once if 0;
+			$explanation_only_once or interactive_msg_(N("No update"),
 N("The list of updates is empty. This means that either there is
 no available update for the packages installed on your computer,
 or you already installed all of them."));
-				   $explanation_only_once = 1;
-			       }
-			   }
-			   @elems = map { [ $_, !$flat && ctreefy($pkgs->{$_}{pkg}->group) ] } @keys;
-		       }
-		       my %sortmethods = (by_size => sub { sort { $pkgs->{$b->[0]}{pkg}->size <=> $pkgs->{$a->[0]}{pkg}->size } @_ },
-					  by_selection => sub { sort { $pkgs->{$b->[0]}{selected} <=> $pkgs->{$a->[0]}{selected}
-								       || uc($a->[0]) cmp uc($b->[0]) } @_ },
-                                          by_leaves => sub {
-                                              my $pkgs_times = 'rpm -q --qf "%{name}-%{version}-%{release} %{installtime}\n" `urpmi_rpm-find-leaves`';
-                                              sort { $b->[1] <=> $a->[1] } grep { exists $pkgs->{$_->[0]} } map { [ split ] } `$pkgs_times`;
-                                          },
-					  flat => sub { sort { uc($a->[0]) cmp uc($b->[0]) } @_ });
-		       if ($flat) {
-			   $add_node->($_->[0], '') foreach $sortmethods{$mode || 'flat'}->(@elems);
-		       } else {
-			   if ($MODE eq 'update') {
-			       $add_node->($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
-                               $tree->expand_row($tree_model->get_path($tree_model->get_iter_first), 0);
-                           } elsif ($mode eq 'by_source') {
-			       $add_node->($_->[0], pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm)->{name}) foreach $sortmethods{flat}->(@elems);
-			   } elsif ($mode eq 'by_presence') {
-			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed && !$pkgs->{$_->[0]}{pkg}->flag_skip
-                                                    ? N("Upgradable") : N("Addable"))
-				 foreach $sortmethods{flat}->(@elems);
-			   } else {
-			       #- special case, we don't populate all the tree at first (to speed things up)
-			       %elems = ();
-			       foreach my $root (sort { $a cmp $b } uniq(map { ($_->[1] =~ /([^\|]+)\|?/)[0] } @elems)) {
-				   $add_node->('', $root);
-				   @{$elems{$root}} = sort { $a->[1] cmp $b->[1] || uc($a->[0]) cmp uc($b->[0]) }
-				                      grep { $_->[1] =~ /^\Q$root|\E?/ } @elems;
-			       }
-			   }
-		       }
-		       remove_wait_msg($wait);
-		   },
-		   grep_unselected => sub { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ },
-		   partialsel_unsel => sub {
-		       my ($unsel, $sel) = @_;
-		       @$sel = grep { exists $pkgs->{$_} } @$sel;
-		       @$unsel < @$sel;
-		   },
-		   toggle_nodes => sub {
-		       my ($set_state, @nodes) = @_;
-		       @nodes = grep { exists $pkgs->{$_} } @nodes
-			   or return;
-		       #- avoid selecting too many packages at once
-		       return if !$dont_show_selections && (($MODE ne 'update' && @nodes == keys %$pkgs) || @nodes > 2000);
-		       my $new_state = !$pkgs->{$nodes[0]}{selected};
+			$explanation_only_once = 1;
+		    }
+		}
+		@elems = map { [ $_, !$flat && ctreefy($pkgs->{$_}{pkg}->group) ] } @keys;
+	    }
+	    my %sortmethods = (by_size => sub { sort { $pkgs->{$b->[0]}{pkg}->size <=> $pkgs->{$a->[0]}{pkg}->size } @_ },
+		by_selection => sub { sort { $pkgs->{$b->[0]}{selected} <=> $pkgs->{$a->[0]}{selected}
+			|| uc($a->[0]) cmp uc($b->[0]) } @_ },
+		by_leaves => sub {
+		    my $pkgs_times = 'rpm -q --qf "%{name}-%{version}-%{release} %{installtime}\n" `urpmi_rpm-find-leaves`';
+		    sort { $b->[1] <=> $a->[1] } grep { exists $pkgs->{$_->[0]} } map { [ split ] } `$pkgs_times`;
+		},
+		flat => sub { sort { uc($a->[0]) cmp uc($b->[0]) } @_ },
+	    );
+	    if ($flat) {
+		$add_node->($_->[0], '') foreach $sortmethods{$mode || 'flat'}->(@elems);
+	    } else {
+		if ($MODE eq 'update') {
+		    $add_node->($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
+		    $tree->expand_row($tree_model->get_path($tree_model->get_iter_first), 0);
+		} elsif ($mode eq 'by_source') {
+		    $add_node->($_->[0], pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm)->{name}) foreach $sortmethods{flat}->(@elems);
+		} elsif ($mode eq 'by_presence') {
+		    $add_node->(
+			$_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed && !$pkgs->{$_->[0]}{pkg}->flag_skip
+			? N("Upgradable") : N("Addable")
+		    ) foreach $sortmethods{flat}->(@elems);
+		} else {
+		    #- special case, we don't populate all the tree at first (to speed things up)
+		    %elems = ();
+		    foreach my $root (sort { $a cmp $b } uniq(map { ($_->[1] =~ /([^\|]+)\|?/)[0] } @elems)) {
+			$add_node->('', $root);
+			@{$elems{$root}} = sort { $a->[1] cmp $b->[1] || uc($a->[0]) cmp uc($b->[0]) }
+			grep { $_->[1] =~ /^\Q$root|\E?/ } @elems;
+		    }
+		}
+	    }
+	    remove_wait_msg($wait);
+	},
+	grep_unselected => sub { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ },
+	partialsel_unsel => sub {
+	    my ($unsel, $sel) = @_;
+	    @$sel = grep { exists $pkgs->{$_} } @$sel;
+	    @$unsel < @$sel;
+	},
+	toggle_nodes => sub {
+	    my ($set_state, @nodes) = @_;
+	    @nodes = grep { exists $pkgs->{$_} } @nodes
+		or return;
+	    #- avoid selecting too many packages at once
+	    return if !$dont_show_selections && (($MODE ne 'update' && @nodes == keys %$pkgs) || @nodes > 2000);
+	    my $new_state = !$pkgs->{$nodes[0]}{selected};
 
-		       my @nodes_with_deps;
-		       my $deps_msg = sub {
-			   return 1 if $dont_show_selections;
-			   my ($title, $msg, $nodes, $nodes_with_deps) = @_;
-			   my @deps = sort { $a cmp $b } difference2($nodes_with_deps, $nodes);
-			   @deps > 0 or return 1;
-			 deps_msg_again:
-			   my $results = interactive_msg_(
-			       $title, $msg . formatlistpkg(@deps),
-			       yesno => [ N("Cancel"), N("More info"), N("Ok") ],
-			       scroll => 1,
-			   );
-			   if ($results eq 
-			                   #-PO: Keep it short, this is gonna be on a button
-			                   N("More info"))
-			   {
-			       interactive_packtable(
-				   N("Information on packages"),
-				   $w->{rwindow},
-				   undef,
-				   [ map { my $pkg = $_;
-				       [ gtkpack__(Gtk2::HBox->new(0,0), gtkset_selectable(Gtk2::Label->new($pkg),1)),
-				         gtksignal_connect(Gtk2::Button->new(N("More information on package...")),
-					   clicked => sub {
-					       interactive_msg(
-						   N("More information on package..."),
-						   $options->{get_info}->($pkg), scroll => 1,
-					       );
-					   }) ] } @deps ],
-				   [ gtksignal_connect(Gtk2::Button->new(N("Ok")),
-				       clicked => sub { Gtk2->main_quit }) ]
-			       );
-			       goto deps_msg_again;
-			   } else {
-			       return $results eq N("Ok");
-			   }
-		       };
-		       if ($MODE eq 'remove') {
-			   if ($new_state) {
-                               my @remove;
-			       slow_func($tree->window, sub { @remove = $closure_removal->(@nodes) });
-			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } @remove;
-			       $deps_msg->(N("Some additional packages need to be removed"),
-					   N("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
-					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
-			       my @impossible_to_remove;
-			       foreach (grep { exists $pkgs->{$_}{base} } @remove) {
-				   ${$pkgs->{$_}{base}} == 1 ? push @impossible_to_remove, $_ : ${$pkgs->{$_}{base}}--;
-			       }
-			       @impossible_to_remove and interactive_msg_(N("Some packages can't be removed"),
-									  N("Removing these packages would break your system, sorry:\n\n") .
-									  formatlistpkg(@impossible_to_remove));
-			       @nodes_with_deps = difference2(\@nodes_with_deps, \@impossible_to_remove);
-			   } else {
-			       slow_func($tree->window,
-					 sub { @nodes_with_deps = grep { intersection(\@nodes, [ $closure_removal->($_) ]) }
-						                  grep { $pkgs->{$_}{selected} && !member($_, @nodes) } keys %$pkgs });
-                               push @nodes_with_deps, @nodes;
-			       $deps_msg->(N("Some packages can't be removed"),
-					   N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
-					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
-			       $pkgs->{$_}{base} && ${$pkgs->{$_}{base}}++ foreach @nodes_with_deps;
-			   }
-		       } else {
-			   if ($new_state) {
-			       if (@nodes > 1) {
-				   #- unselect i18n packages of which locales is not already present (happens when user clicks on KDE group)
-				   my @bad_i18n_pkgs;
-				   foreach my $sel (@nodes) {
-				       foreach ($pkgs->{$sel}{pkg}->requires_nosense) {
-					   /locales-([^-]+)/ or next;
-					   $sel =~ /-$1[-_]/ && !$is_locale_available->($_) and push @bad_i18n_pkgs, $sel;
-				       }
-				   }
-				   @nodes = difference2(\@nodes, \@bad_i18n_pkgs);
-			       }
-                               my @requested;
-			       slow_func(
-				   $tree->window,
-				   sub {
-				       @requested = $urpm->resolve_requested(
-					   db(), $urpm->{state},
-					   { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
-					   callback_choices => $callback_choices,
-				       );
-				   },
-			       );
-                               @nodes_with_deps = map { my_fullname($_) } @requested;
-			       if (!$deps_msg->(N("Additional packages needed"), 
-						N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
-						\@nodes, \@nodes_with_deps)) {
-				   @nodes_with_deps = ();
-                                   $urpm->disable_selected(db(), $urpm->{state}, @requested);
-				   goto packages_selection_ok;
-			       }
+	    my @nodes_with_deps;
+	    my $deps_msg = sub {
+		return 1 if $dont_show_selections;
+		my ($title, $msg, $nodes, $nodes_with_deps) = @_;
+		my @deps = sort { $a cmp $b } difference2($nodes_with_deps, $nodes);
+		@deps > 0 or return 1;
+		deps_msg_again:
+		my $results = interactive_msg_(
+		    $title, $msg . formatlistpkg(@deps),
+		    yesno => [ N("Cancel"), N("More info"), N("Ok") ],
+		    scroll => 1,
+		);
+		if ($results eq
+		    #-PO: Keep it short, this is gonna be on a button
+		    N("More info"))
+		{
+		    interactive_packtable(
+			N("Information on packages"),
+			$w->{rwindow},
+			undef,
+			[ map { my $pkg = $_;
+			    [ gtkpack__(Gtk2::HBox->new(0,0), gtkset_selectable(Gtk2::Label->new($pkg),1)),
+			    gtksignal_connect(Gtk2::Button->new(N("More information on package...")),
+				clicked => sub {
+				    interactive_msg(N("More information on package..."), $options->{get_info}->($pkg), scroll => 1);
+				}) ] } @deps ],
+			[ gtksignal_connect(Gtk2::Button->new(N("Ok")),
+			    clicked => sub { Gtk2->main_quit }) ]
+		    );
+		    goto deps_msg_again;
+		} else {
+		    return $results eq N("Ok");
+		}
+	    };
+	    if ($MODE eq 'remove') {
+		if ($new_state) {
+		    my @remove;
+		    slow_func($tree->window, sub { @remove = $closure_removal->(@nodes) });
+		    @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } @remove;
+		    $deps_msg->(N("Some additional packages need to be removed"),
+			N("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
+			\@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
+		    my @impossible_to_remove;
+		    foreach (grep { exists $pkgs->{$_}{base} } @remove) {
+			${$pkgs->{$_}{base}} == 1 ? push @impossible_to_remove, $_ : ${$pkgs->{$_}{base}}--;
+		    }
+		    @impossible_to_remove and interactive_msg_(N("Some packages can't be removed"),
+			N("Removing these packages would break your system, sorry:\n\n") .
+			formatlistpkg(@impossible_to_remove));
+		    @nodes_with_deps = difference2(\@nodes_with_deps, \@impossible_to_remove);
+		} else {
+		    slow_func($tree->window,
+			sub { @nodes_with_deps = grep { intersection(\@nodes, [ $closure_removal->($_) ]) }
+			    grep { $pkgs->{$_}{selected} && !member($_, @nodes) } keys %$pkgs });
+		    push @nodes_with_deps, @nodes;
+		    $deps_msg->(N("Some packages can't be removed"),
+			N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
+			\@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
+		    $pkgs->{$_}{base} && ${$pkgs->{$_}{base}}++ foreach @nodes_with_deps;
+		}
+	    } else {
+		if ($new_state) {
+		    if (@nodes > 1) {
+			#- unselect i18n packages of which locales is not already present (happens when user clicks on KDE group)
+			my @bad_i18n_pkgs;
+			foreach my $sel (@nodes) {
+			    foreach ($pkgs->{$sel}{pkg}->requires_nosense) {
+				/locales-([^-]+)/ or next;
+				$sel =~ /-$1[-_]/ && !$is_locale_available->($_) and push @bad_i18n_pkgs, $sel;
+			    }
+			}
+			@nodes = difference2(\@nodes, \@bad_i18n_pkgs);
+		    }
+		    my @requested;
+		    slow_func(
+			$tree->window,
+			sub {
+			    @requested = $urpm->resolve_requested(
+				db(), $urpm->{state},
+				{ map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
+				callback_choices => $callback_choices,
+			    );
+			},
+		    );
+		    @nodes_with_deps = map { my_fullname($_) } @requested;
+		    if (!$deps_msg->(N("Additional packages needed"),
+			    N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
+			    \@nodes, \@nodes_with_deps))
+		    {
+			@nodes_with_deps = ();
+			$urpm->disable_selected(db(), $urpm->{state}, @requested);
+			goto packages_selection_ok;
+		    }
 
-			       if (my @cant = sort(difference2(\@nodes, \@nodes_with_deps))) {
-                                   my @ask_unselect = $urpm->unselected_packages($urpm->{state});
-                                   my @reasons = map {
-                                       my $cant = $_;
-				       my $unsel = find { remove_arch($_) eq $cant } @ask_unselect;
-                                       $unsel
-					   ? to_utf8(join "\n", $urpm->translate_why_unselected($urpm->{state}, $unsel))
-					   : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
-                                   } @cant;
-				   interactive_msg_(N("Some packages can't be installed"),
-						    N("Sorry, the following package(s) can't be selected:\n\n%s", join("\n", @reasons)));
-				   foreach (@cant) {
-				       $pkgs->{$_}{pkg}->set_flag_requested(0);
-				       $pkgs->{$_}{pkg}->set_flag_required(0);
-				   }
-			       }
-			     packages_selection_ok:
-			   } else {
-                               my @unrequested;
-			       slow_func($tree->window,
-					 sub { @unrequested = $urpm->disable_selected(db(), $urpm->{state},
-                                                                                      map { $pkgs->{$_}{pkg} } @nodes) });
-                               @nodes_with_deps = map { my_fullname($_) } @unrequested;
-			       if (!$deps_msg->(N("Some packages need to be removed"),
-						N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
-						\@nodes, \@nodes_with_deps)) {
-				   @nodes_with_deps = ();
-                                   $urpm->resolve_requested(db(), $urpm->{state}, { map { $_->id => 1 } @unrequested });
-				   goto packages_unselection_ok;
-			       }
-			     packages_unselection_ok:
-			   }
-		       }
+		    if (my @cant = sort(difference2(\@nodes, \@nodes_with_deps))) {
+			my @ask_unselect = $urpm->unselected_packages($urpm->{state});
+			my @reasons = map {
+			    my $cant = $_;
+			    my $unsel = find { remove_arch($_) eq $cant } @ask_unselect;
+			    $unsel
+			    ? to_utf8(join "\n", $urpm->translate_why_unselected($urpm->{state}, $unsel))
+			    : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
+			} @cant;
+			interactive_msg_(N("Some packages can't be installed"),
+			    N("Sorry, the following package(s) can't be selected:\n\n%s", join("\n", @reasons)));
+			foreach (@cant) {
+			    $pkgs->{$_}{pkg}->set_flag_requested(0);
+			    $pkgs->{$_}{pkg}->set_flag_required(0);
+			}
+		    }
+		    packages_selection_ok:
+		} else {
+		    my @unrequested;
+		    slow_func($tree->window,
+			sub { @unrequested = $urpm->disable_selected(db(), $urpm->{state},
+				map { $pkgs->{$_}{pkg} } @nodes) });
+		    @nodes_with_deps = map { my_fullname($_) } @unrequested;
+		    if (!$deps_msg->(N("Some packages need to be removed"),
+			    N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
+			    \@nodes, \@nodes_with_deps))
+		    {
+			@nodes_with_deps = ();
+			$urpm->resolve_requested(db(), $urpm->{state}, { map { $_->id => 1 } @unrequested });
+			goto packages_unselection_ok;
+		    }
+		    packages_unselection_ok:
+		}
+	    }
 
-		       foreach (@nodes_with_deps) {
-			   #- some deps may exist on some packages which aren't listed because
-			   #- not upgradable (older than what currently installed)
-			   exists $pkgs->{$_} or next;
-			   $pkgs->{$_}{pkg} or $new_state = 0; #- can't be removed
-			   $set_state->($_, $new_state ? 'selected' : 'unselected');
-			   $pkgs->{$_}{selected} = $new_state;
-			   $pkgs->{$_}{pkg}
-			       and $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
-		       }
-		   },
-		   get_status => sub { $MODE eq 'install' ? N("Selected: %d MB / Free disk space: %d MB",
-							      $size_selected/(1024*1024), $size_free/1024)
-					                  : N("Selected size: %d MB", $size_selected/(1024*1024)) },
-		   get_info => sub {
-		       my ($key) = @_;
-		       return if $key eq ''; #- related to the partial tree displaying hackery
-		       #- the package information hasn't been loaded. Instead of rescanning the media, just give up.
-		       exists $pkgs->{$key}
-			   or return [ [ N("Description not available for this package\n") ] ];
-		       my ($name, $version) = split_fullname($key);
-		       exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
-			   or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
-		       my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD };
-		       my $tag_fix = { 'font' => 'monospace' };
-		       my @files = ([ N("Files:\n"), $tag_tag ], exists $pkgs->{$key}{files}
-			   ? [ join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}), $tag_fix ]
-			   : [ N("(Not available)") ]);
-		       my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
-		       my @source_info = ($MODE eq 'remove' || !@$max_info_in_descr ? ()
-			   : ([ N("Medium: "), $tag_tag ],
-			   [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
-			   [ N("Currently installed version: "), $tag_tag ],
-			   [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]));
-		       my @max_info = if_(@$max_info_in_descr, $changelog_first
-			   ? (@chglo, [ "\n" ], @files)
-			   : (@files, [ "\n\n" ], @chglo));
-		       [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
-		         [ N("Version: "), $tag_tag ], [ "$version\n" ],
-		         [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024)) . "\n" ],
-		         if_($MODE eq 'update',
-			     [ N("Importance: "), $tag_tag ], [ "$descriptions->{$name}{importance}\n" ]),
-		         @source_info,
-		         [ "\n" . N("Summary: "), $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
-		         if_($MODE eq 'update',
-			     [ N("Reason for update: "), $tag_tag ],
-			     [ rpm_description($descriptions->{$name}{pre}) . "\n" ]),
-		         [ N("Description: "), $tag_tag ], [ ($pkgs->{$key}{description} || $descriptions->{$name}{description} || 'no description') . "\n" ],
-		       @max_info ];
-		   },
-		   check_interactive_to_toggle => sub { 1 },
-		   grep_allowed_to_toggle => sub { @_ },
-		   rebuild_tree => sub {},
-		  };
+	    foreach (@nodes_with_deps) {
+		#- some deps may exist on some packages which aren't listed because
+		#- not upgradable (older than what currently installed)
+		exists $pkgs->{$_} or next;
+		$pkgs->{$_}{pkg} or $new_state = 0; #- can't be removed
+		$set_state->($_, $new_state ? 'selected' : 'unselected');
+		$pkgs->{$_}{selected} = $new_state;
+		$pkgs->{$_}{pkg}
+		    and $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
+	    }
+	}, #- toggle_nodes
+	get_status => sub { $MODE eq 'install' ? N("Selected: %d MB / Free disk space: %d MB",
+		$size_selected/(1024*1024), $size_free/1024)
+	    : N("Selected size: %d MB", $size_selected/(1024*1024)) },
+	get_info => sub {
+	    my ($key) = @_;
+	    return if $key eq ''; #- related to the partial tree displaying hackery
+	    #- the package information hasn't been loaded. Instead of rescanning the media, just give up.
+	    exists $pkgs->{$key}
+		or return [ [ N("Description not available for this package\n") ] ];
+	    my ($name, $version) = split_fullname($key);
+	    exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
+		or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
+	    my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD };
+	    my $tag_fix = { 'font' => 'monospace' };
+	    my @files = ([ N("Files:\n"), $tag_tag ], exists $pkgs->{$key}{files}
+		? [ join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}), $tag_fix ]
+		: [ N("(Not available)") ]);
+	    my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
+	    my @source_info = ($MODE eq 'remove' || !@$max_info_in_descr ? ()
+		: ([ N("Medium: "), $tag_tag ],
+		    [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
+		    [ N("Currently installed version: "), $tag_tag ],
+		    [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]));
+	    my @max_info = if_(@$max_info_in_descr, $changelog_first
+		? (@chglo, [ "\n" ], @files)
+		: (@files, [ "\n\n" ], @chglo));
+	    [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
+	      [ N("Version: "), $tag_tag ], [ "$version\n" ],
+	      [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024)) . "\n" ],
+	      if_($MODE eq 'update',
+		  [ N("Importance: "), $tag_tag ], [ "$descriptions->{$name}{importance}\n" ]),
+	      @source_info,
+	      [ "\n" . N("Summary: "), $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
+	      if_($MODE eq 'update',
+		  [ N("Reason for update: "), $tag_tag ],
+		  [ rpm_description($descriptions->{$name}{pre}) . "\n" ]),
+	      [ N("Description: "), $tag_tag ], [ ($pkgs->{$key}{description} || $descriptions->{$name}{description} || 'no description') . "\n" ],
+	      @max_info,
+	    ];
+	},
+	check_interactive_to_toggle => sub { 1 },
+	grep_allowed_to_toggle => sub { @_ },
+	rebuild_tree => sub {},
+    };
 
     if (my @initial_selection = grep { $pkgs->{$_}{selected} } keys %$pkgs) {
         $options->{initial_selection} = \@initial_selection;
@@ -832,7 +835,7 @@ or you already installed all of them."));
 	},
     );
     $tree->signal_connect(
-	row_expanded => sub { 
+	row_expanded => sub {
 	    my ($tree, $iter, $path) = @_;
 	    #- hackish: if first child has '' as name, and if we're not listing by update
 	    # availability, then we need to expand on the fly. (by update availability,
@@ -962,7 +965,7 @@ or you already installed all of them."));
 	    }
 	} @radios_names_ordered;
     }
-    
+
     my @search_types = qw(normal descriptions files);
     my $current_search_type = $search_types[0];
     my $search_types_optionmenu = Gtk2::ComboBox->new;
@@ -1058,8 +1061,8 @@ Is it ok to continue?",
     $table->attach($hpaned, 0, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
 
     my %mode2title = (
-	remove => N("Software Packages Removal"), 
-	update => N("Software Packages Update"), 
+	remove => N("Software Packages Removal"),
+	update => N("Software Packages Update"),
 	install => N("Software Packages Installation"),
     );
     my $status = Gtk2::Label->new;
@@ -1108,7 +1111,7 @@ Is it ok to continue?",
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections);
     gtkadd(
-	$w->{window}, 
+	$w->{window},
 	gtkpack_(
 	    Gtk2::VBox->new(0, 3),
 	    0, $menu,
@@ -1261,7 +1264,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 sub dialog_rpmnew {
     my ($msg, %p2r) = @_;
     # /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
-    my @ignores_rpmnew = qw(/etc/group /etc/passwd /etc/localtime /etc/shells /etc/adjtime /etc/ld.so.conf /etc/modules 
+    my @ignores_rpmnew = qw(/etc/group /etc/passwd /etc/localtime /etc/shells /etc/adjtime /etc/ld.so.conf /etc/modules
                         /etc/security/fileshare.conf /etc/sudoers /etc/sysconfig/alsa /etc/sysconfig/autofsck /etc/sysconfig/harddisks
                         /etc/sysconfig/installkernel /etc/sysconfig/msec /etc/sysconfig/nfs /etc/sysconfig/pcmcia /etc/sysconfig/init
                         /etc/sysconfig/rawdevices /etc/sysconfig/saslauthd /etc/sysconfig/syslog /etc/sysconfig/usb /etc/sysconfig/xinetd);
@@ -1367,8 +1370,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     }
 
     standalone::explanations("Removing package $_") foreach sort @{$urpm->{ask_remove}};
-    
-    my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}}; 
+
+    my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}};
     my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
     my $distant_number = scalar keys %pkgs;
     if (!$local_sources && (!$list || !@$list)) {
@@ -1452,7 +1455,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         my $callback_inst = sub {
             my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
             my $pkg = defined $id && $urpm->{depslist}[$id];
-            
             if ($subtype eq 'start') {
                 if ($type eq 'trans') {
                     gurpm::label(N("Preparing packages installation..."));
