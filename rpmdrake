@@ -677,7 +677,8 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 		       my $pixmap_text if 0;
 		       if (!$pixmap_text) {
 			   my ($langs) = ($ENV{LANGUAGE} || $ENV{LC_ALL} || $ENV{LC_MESSAGES} || $ENV{LANG}).':en';
-			   foreach (split(':', $langs)) {
+			   my @langs = map { /^(..)_/ ? ($_, $1) : $_ } split(':', $langs);
+			   foreach (@langs) {
 			       eval { $pixmap_text or ($pixmap_text) = gtkcreate_png("title/$_/title-$MODE") };
 			       !$@ and last;
 			   }
@@ -691,7 +692,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 			   my %t = (remove => _("Software Packages Removal"), update => _("Mandrake Update"),
 				    install => _("Software Packages Installation"));
 			   $dbl_area->draw_string($style->font, $darea->style->white_gc,
-						  ($dx-$style->font->string_width($t{$MODE}))/2, 30, $t{$MODE});
+						  ($dx-$style->font->string_width($t{$MODE}))/2, 40, $t{$MODE});
 		       }
 		       $darea->window->draw_pixmap($darea->style->white_gc, $dbl_area, 0, 0, 0, 0, $dx, $dy);
 		       0;
