@@ -330,14 +330,13 @@ by Mandrake Linux Official Updates.")), return '';
 						 if ($retv) {
 						     my ($model, $iter) = $tree->get_selection->get_selected;
 						     $model and $w->{retval} = { sel => $model->get($iter, 0) };
-						     $iter and $iter->free;
 						 }
 						 Gtk2->main_quit })
 			       } ([ N("Ok"), 1 ], [ N("Cancel"), 0 ])),
 		   ));
     my %roots;
     $tree_model->append_set($roots{$_->{land}} ||= $tree_model->append_set(undef, [ 0 => $_->{land} ]),
-			    [ 0 => $_->{url} ])->free foreach @mirrors;
+			    [ 0 => $_->{url} ]) foreach @mirrors;
 
     $w->{window}->set_size_request(500, 400);
     $w->{rwindow}->show_all;
@@ -346,7 +345,6 @@ by Mandrake Linux Official Updates.")), return '';
     $tree->expand_row($path, 0);
     $path->down;
     $tree->get_selection->select_path($path);
-    $path->free;
 
     $w->main && member($w->{retval}{sel}, map { $_->{url} } @mirrors) and $w->{retval}{sel};
 }

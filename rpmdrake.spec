@@ -117,6 +117,8 @@ rm -rf $RPM_BUILD_ROOT
   - right-align left labels
   - use a checkbutton for "hdlist" so that user better understands
     it's optional (and say in a tooltip that it is)
+  - fix browsing for adding a security update (port gtk2-perl-xs
+    not complete)
 
 * Mon Aug  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-30mdk
 - revert "use checkboxes instead of icons"
