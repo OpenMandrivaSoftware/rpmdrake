@@ -101,10 +101,13 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Tue Aug  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
+* Thu Aug  7 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
 - require root capability when run "Install Sofware" and add a new
   menu entry reading "Browse Available Software"
 - s/Medias/Media/ in the program name of the menu entry
+- fixes interactive_packtables dialogs initially much too small
+  because titi replaced ->size_request by ->get_size_request
+  (such dialog is for example "more information on packages")
 
 * Mon Aug  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-30mdk
 - revert "use checkboxes instead of icons"
