@@ -20,7 +20,8 @@ Requires: perl-MDK-Common >= 1.1.18-2mdk
 Requires: urpmi >= 4.6.4-4mdk gurpmi >= 4.6.4-4mdk
 Requires: perl-URPM >= 1.03-1mdk
 Requires: drakxtools >= 10.1-11mdk
-Requires: rpmtools >= 4.5
+Requires: rpmtools >= 5.0.5
+Requires: packdrake >= 5.0.5
 Requires: perl-Gtk2 >= 1.054-1mdk
 Requires: perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: curl-devel >= 7.12.1-1mdk gettext openssl-devel perl-devel
