@@ -252,8 +252,9 @@ sub run_treeview_dialog {
 		       } else {
 			   my @keys = keys %$pkgs;
 			   if ($MODE eq 'update') {
-			       @keys = grep { my ($name) = split_fullname($_);
-					      member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories) } @keys;
+			       member('normal', @$mandrakeupdate_wanted_categories)
+				 or @keys = grep { my ($name) = split_fullname($_);
+						   member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories) } @keys;
 			       if (@keys == 0) {
 				   $add_node->('', _("(none)"), { nochild => 1 });
 				   my $explanation_only_once if 0;
