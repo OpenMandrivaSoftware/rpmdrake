@@ -36,6 +36,10 @@ if ($@) {
 }
 $::isStandalone = 1;
 
+if (@ARGV == 1 && $ARGV[0] =~ /\.urpm-media$/) {
+    @ARGV = split /\n/, cat_($ARGV[0]);
+}
+
 my $update = 0;
 if ($ARGV[0] =~ /-?-update/) {
     $update = 1;
