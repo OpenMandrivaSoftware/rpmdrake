@@ -260,7 +260,7 @@ sub extract_header {
     if ($MODE eq 'remove') {
 	@$max_info_in_descr or return;
 	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(`rpm -ql $name`)) || N("(none)") ],
-                         changelog => $chg_prepro->(scalar(`rpm -q --changelog $name`)) });
+                         changelog => $chg_prepro->(to_utf8(scalar(`rpm -q --changelog $name`))) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
