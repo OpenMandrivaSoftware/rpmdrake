@@ -100,7 +100,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Thu May 22 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-21mdk
-- fix some distlint DIRM
 - let medias be reorderable in the medias editor (drag and drop the list)
 - add ability to list leaves (sorted by installation date) in remove mode
 - add ability to run the rpmdrake suite as a user (you can browse
@@ -108,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 - edit-medias: remove weird looking Save&Quit / Quit buttons, use Ok only
 - adding an update source: fix sorting according to tz
 - let rpm groups be translatable (exhausts many invalid groups...)
+- fix some distlint DIRM
 
 * Fri May 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-20mdk
 - perl-URPM API change: gives architecture in ask_remove
