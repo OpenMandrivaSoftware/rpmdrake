@@ -116,7 +116,8 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Mon Mar 10 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-12mdk
+* Tue Mar 11 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-12mdk
+- new icons
 - latest po's
 
 * Wed Mar  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-11mdk
