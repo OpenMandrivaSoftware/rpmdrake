@@ -94,11 +94,11 @@ sub add_callback {
             my ($name, $label, $visibility, $callback, $tip) = @_;
             [ gtkpack_(Gtk2::HBox->new(0, 0),
                        1, Gtk2::Label->new,
-                       0, gtksignal_connect($info->{$name.'_check'} = gtkset_tip($tips, Gtk2::CheckButton->new($label), $tip),
-                                            clicked => sub { $info->{$name.'_entry'}->set_sensitive($_[0]->get_active);
+                       0, gtksignal_connect($info->{$name . '_check'} = gtkset_tip($tips, Gtk2::CheckButton->new($label), $tip),
+                                            clicked => sub { $info->{$name . '_entry'}->set_sensitive($_[0]->get_active);
                                                              $callback and $callback->(@_);
                                                          })),
-              gtkset_visibility(gtkset_sensitive($info->{$name.'_entry'} = gtkentry(), 0), $visibility) ];
+              gtkset_visibility(gtkset_sensitive($info->{$name . '_entry'} = gtkentry(), 0), $visibility) ];
         };
 	my $loginpass_entries = sub {
 	    map { 
@@ -112,7 +112,7 @@ sub add_callback {
 	gtksignal_connect($_[1], 'clicked' => sub { $_[0]->get_active and $notebook->set_current_page($nb) });
 	$notebook->append_page(my $book = create_packtable({},
 		      [ gtkset_alignment(Gtk2::Label->new(N("Name:")), 1, 0.5),
-                        $info->{name_entry} = gtkentry($_[0] eq 'security' and 'update_source') ],
+                        $info->{name_entry} = gtkentry($_[0] eq 'security' ? 'update_source' : '') ],
 		      [ gtkset_alignment(Gtk2::Label->new($info->{url}), 1, 0.5),
                         $url_entry->() ],
 		      $checkbut_entry->('hdlist', N("Relative path to synthesis/hdlist:"), 1, undef,
@@ -123,7 +123,7 @@ sub add_callback {
 
     my $checkok = sub {
 	my $info = $radios_infos{$radios_names_ordered[$notebook->get_current_page]};
-	my ($name, $url) = map { $info->{$_.'_entry'}->get_text } qw(name url);
+	my ($name, $url) = map { $info->{$_ . '_entry'}->get_text } qw(name url);
 	$name eq '' || $url eq '' and interactive_msg('rpmdrake', N("You need to fill up at least the two first entries.")), return 0;
 	if (member($name, map { $_->{name} } @{$urpm->{media}})) {
 	    $info->{name_entry}->select_region(0, -1);
@@ -157,7 +157,7 @@ really want to replace it?"), yesno => 1) or return 0;
 			    $i{url} =~ s|^ftp://||;
 			    $make_url{ftp} = sprintf "ftp://%s%s",
 				$info->{login_check}->get_active
-				    ? ($info->{login_entry}->get_text.':'.$info->{pass_entry}->get_text.'@')
+				    ? ($info->{login_entry}->get_text . ':' . $info->{pass_entry}->get_text . '@')
 				    : '',
 				$i{url};
 			    $probe = $info->{hdlist_check}->get_active == 0 || $i{hdlist} eq '';
@@ -301,7 +301,7 @@ sub proxy_callback {
 			$w->{retval} = 1;
 			$proxy = $proxybutton->get_active ? $proxyentry->get_text : '';
 			$proxy_user = $proxyuserbutton->get_active
-			    ? ($proxyuserentry->get_text.':'.$proxypasswordentry->get_text) : '';
+			    ? ($proxyuserentry->get_text . ':' . $proxypasswordentry->get_text) : '';
 			Gtk2->main_quit;
 		    },
 		),
@@ -340,7 +340,7 @@ sub parallel_read_sysconf {
 sub parallel_write_sysconf {
     my ($conf) = @_;
     output '/etc/urpmi/parallel.cfg',
-           map { my $m = @{$_->{medias}} ? '('.join(',', @{$_->{medias}}).')' : '';
+           map { my $m = @{$_->{medias}} ? '(' . join(',', @{$_->{medias}}) . ')' : '';
                  "$_->{name}:$_->{protocol}$m:$_->{command}\n" } @$conf;
 }
 
@@ -473,7 +473,7 @@ sub edit_parallel {
     if ($w->main) {
         $num == -1 and push @$conf, $edited;
         if ($edited->{protocol} eq 'ssh')    { $edited->{command} = join(':', @$hosts_list) }
-        if ($edited->{protocol} eq 'ka-run') { $edited->{command} = "-c ssh ".join(' ', map { "-m $_" } @$hosts_list) }
+        if ($edited->{protocol} eq 'ka-run') { $edited->{command} = "-c ssh " . join(' ', map { "-m $_" } @$hosts_list) }
         parallel_write_sysconf($conf);
 	return 1;
     }        
@@ -708,11 +708,11 @@ sub mainwindow {
 				1, $list_tv,
 				0, gtkpack__(Gtk2::VBox->new(0, 5),
 					     gtksignal_connect($remove = Gtk2::Button->new(but(N("Remove"))),
-										clicked => sub { remove_callback(); $reread_media->(); }),
+										clicked => sub { remove_callback(); $reread_media->() }),
 					     gtksignal_connect($edit = Gtk2::Button->new(but(N("Edit"))),
 										clicked => sub { edit_callback() and $reread_media->() }),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Add..."))), 
-							       clicked => sub { add_callback() and $reread_media->(); }),
+							       clicked => sub { add_callback() and $reread_media->() }),
 					     gtksignal_connect(
 						 Gtk2::Button->new(but(N("Update..."))),
 						 clicked => sub {
