@@ -100,6 +100,7 @@ srpm: dis ../$(NAME)-$(VERSION).tar.bz2 $(RPM)
 rpm: srpm
 	rpm -bb --clean --rmsource $(NAME).spec
 
+.PHONY: ChangeLog
 ChangeLog:
 	cvs2cl -W 400 -I Changelog --accum -U ../../soft/common/username
 	rm -f *.bak
