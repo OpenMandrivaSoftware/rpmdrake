@@ -353,7 +353,9 @@ or you already installed all of them."));
 			 deps_msg_again:
 			   my $results = interactive_msg_($title, $msg . $formatlistpkg->(@deps),
 							  yesno => [ N("Ok"), N("More infos"), N("Cancel") ]);
-			   if ($results eq N("More infos")) {
+			   if ($results eq 
+			                   #-PO: Keep it short, this is gonna be on a button
+			                   N("More infos")) {
 			       interactive_packtable(N("Information on packages"),
 						     $w->{rwindow},
 						     undef,
