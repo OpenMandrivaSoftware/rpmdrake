@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 26mdk
+%define release 27mdk
 
 Name: %{name}
 Version: %{version}
@@ -123,6 +123,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Sep 16 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-27mdk
+- fix not finding grpmi in sudo mode
+- fix unclickable "not finding grpmi" dialog
+
 * Thu Sep 12 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-26mdk
 - fixes not parsing descriptions file when MU adds itself the
   security source
