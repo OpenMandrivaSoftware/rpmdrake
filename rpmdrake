@@ -807,9 +807,11 @@ or you already installed all of them."));
 		    and $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
 	    }
 	}, #- toggle_nodes
-	get_status => sub { $MODE eq 'install' ? N("Selected: %d MB / Free disk space: %d MB",
-		$size_selected/(1024*1024), $size_free/1024)
-	    : N("Selected size: %d MB", $size_selected/(1024*1024)) },
+	get_status => sub {
+	    $MODE eq 'install'
+		? N("Selected: %d MB / Free disk space: %d MB", $size_selected/(1024*1024), $size_free/1024)
+		: N("Selected size: %d MB", $size_selected/(1024*1024));
+	},
 	get_info => sub {
 	    my ($key) = @_;
 	    return if $key eq ''; #- related to the partial tree displaying hackery
@@ -1157,6 +1159,7 @@ Is it ok to continue?",
 			    Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove") : N("Install"))),
 			    clicked => sub { $do_action->() },
 			),
+			1, $status,
 		    ),
 		),
 	    ),
@@ -1168,8 +1171,15 @@ Is it ok to continue?",
     $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
 
     $w->{rwindow}->show_all;
-    $options->{widgets} = { w => $w, tree => $tree, tree_model => $tree_model, textcolumn => $textcolumn, pixcolumn => $pixcolumn,
-		            info => $info, status => $status };
+    $options->{widgets} = {
+	w => $w,
+	tree => $tree,
+	tree_model => $tree_model,
+	textcolumn => $textcolumn,
+	pixcolumn => $pixcolumn,
+	info => $info,
+	status => $status,
+    };
 
     ask_browse_tree_info_given_widgets($options);
 }
