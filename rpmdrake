@@ -319,9 +319,9 @@ sub do_search($$$$$$$) {
 	    my $total_size = sum(map { my $pack; eval { $pack = new packdrake($_, quiet => 1) } ? $pack->{toc_f_count} : 0 } @hdlists);
 	    my $searchstop;
 	    my $searchw = ugtk2->new('rpmdrake', grab => 1, transient => $w->{rwindow});
-	    gtkadd($searchw->{window}, gtkpack__(Gtk2::VBox->new(1, 5),
+	    gtkadd($searchw->{window}, gtkpack__(Gtk2::VBox->new(0, 5),
 						 Gtk2::Label->new(N("Please wait, searching...")),
-						 my $searchprogress = gtkset_size_request(Gtk2::ProgressBar->new, 400, -1),
+						 my $searchprogress = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1),
 						 gtkpack__(gtkset_layout(Gtk2::HButtonBox->new, 'spread'),
 							   gtksignal_connect(Gtk2::Button->new(but(N("Stop"))),
 									     clicked => sub { $searchstop = 1 }))));
