@@ -192,7 +192,11 @@ sub wait_msg {
     $mainw->flush;
     $mainw;
 }
-sub remove_wait_msg { $_[0]->destroy }
+sub remove_wait_msg {
+    my $w = shift;
+    gtkset_mousecursor_normal($w->{rwindow}->window);
+    $w->destroy;
+}
 
 sub but { "    $_[0]    " }
 sub but_ { "        $_[0]        " }
