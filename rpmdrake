@@ -519,19 +519,22 @@ or you already installed all of them."));
 							  yesno => [ N("Cancel"), N("More info"), N("Ok") ]);
 			   if ($results eq 
 			                   #-PO: Keep it short, this is gonna be on a button
-			                   N("More info")) {
-			       interactive_packtable(N("Information on packages"),
-						     $w->{rwindow},
-						     undef,
-						     [ map { my $pkg = $_;
-							     [ gtkpack__(Gtk2::HBox->new(0, 0), gtkset_selectable(Gtk2::Label->new($pkg), 1)),
-							       gtksignal_connect(Gtk2::Button->new(N("More information on package...")),
-										 clicked => sub {
-										     interactive_msg(N("More information on package..."),
-											      $options->{get_info}->($pkg), scroll => 1)
-										 }) ] } @deps ],
-						     [ gtksignal_connect(Gtk2::Button->new(N("Ok")),
-									 clicked => sub { Gtk2->main_quit }) ]);
+			                   N("More info"))
+			   {
+			       interactive_packtable(
+				   N("Information on packages"),
+				   $w->{rwindow},
+				   undef,
+				   [ map { my $pkg = $_;
+				       [ gtkpack__(Gtk2::HBox->new(0,0), gtkset_selectable(Gtk2::Label->new($pkg),1)),
+				         gtksignal_connect(Gtk2::Button->new(N("More information on package...")),
+					   clicked => sub {
+					       interactive_msg(N("More information on package..."),
+						   $options->{get_info}->($pkg), scroll => 1)
+					   }) ] } @deps ],
+				   [ gtksignal_connect(Gtk2::Button->new(N("Ok")),
+				       clicked => sub { Gtk2->main_quit }) ]
+			       );
 			       goto deps_msg_again;
 			   } else {
 			       return $results eq N("Ok");
@@ -1323,8 +1326,24 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                 gurpm::progress($amount/$total);
             }
         };
-        my @errors = $urpm->install($urpm->{ask_remove}, \%sources_install, \%sources, translate_message => 1,
-                                    post_clean_cache => 1, callback_inst => $callback_inst, callback_trans => $callback_inst);
+        my @errors = $urpm->install(
+	    $urpm->{ask_remove},
+	    \%sources_install,
+	    \%sources,
+	    translate_message => 1,
+	    post_clean_cache => 1,
+	    callback_inst => $callback_inst,
+	    callback_trans => $callback_inst,
+	    callback_close => sub {
+		my ($urpm, undef, $pkgid) = @_;
+		return unless defined $pkgid;
+		return if $MODE ne 'install' && $MODE ne 'update';
+		my $pkg = $urpm->{depslist}[$pkgid];
+		push our @Readmes, map {
+		    [ $_, $pkg->fullname() ]
+		} grep { /\bREADME(\.$MODE)?\.urpmi$/ } $pkg->files();
+	    },
+	);
         gurpm::end();
         $urpm->try_umounting_removables;
 
@@ -1346,6 +1365,31 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                       %pkg2rpmnew)
           and interactive_msg_(N("Everything installed successfully"),
                                N("All requested packages were installed successfully."));
+	if (our @Readmes) { #- display the README*.urpmi files
+	    interactive_packtable(
+		N("Information on packages"),
+		$w->{rwindow},
+		N("These packages come with upgrade information"),
+		[ map {
+		    my $pkg = $_;
+		    [ gtkpack__(
+			    Gtk2::HBox->new(0, 0),
+			    gtkset_selectable(Gtk2::Label->new($pkg->[1]),1),
+			),
+			gtksignal_connect(
+			    Gtk2::Button->new(N("More information on package...")),
+			    clicked => sub {
+				interactive_msg(
+				    N("More information on package..."),
+				    (join '' => cat_($pkg->[0])),
+				    scroll => 1,
+				);
+			    },
+			),
+		    ] } @Readmes ],
+		[ gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }) ]
+	    );
+	}
     } else {
         gurpm::end();
         $urpm->try_umounting_removables;
