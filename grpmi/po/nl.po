@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi\n"
-"POT-Creation-Date: 2003-01-17 13:19+0100\n"
+"POT-Creation-Date: 2003-01-28 17:04+0100\n"
 "PO-Revision-Date: 2002-08-16 14:37+0100\n"
 "Last-Translator: Reinout van Schouwen <reinout@cs.vu.nl>\n"
 "Language-Team: (nl) Dutch team <vertaling@nl.linux.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../curl_download/curl_download.xs:86
-msgid "Directory where to put download must be existing"
+msgid "Download directory does not exist"
 msgstr "De map waar het te ontvangen bestand in moet, moet reeds bestaan"
 
 #: ../curl_download/curl_download.xs:89 ../curl_download/curl_download.xs:206
@@ -56,43 +56,43 @@ msgid "Couldn't connect\n"
 msgstr "Kon geen verbinding maken\n"
 
 #: ../curl_download/curl_download.xs:147
-msgid "Ftp weird server reply\n"
+msgid "FTP unexpected server reply\n"
 msgstr "Raar FTP-server antwoord\n"
 
 #: ../curl_download/curl_download.xs:150
-msgid "Ftp access denied\n"
+msgid "FTP access denied\n"
 msgstr "FTP-toegang geweigerd\n"
 
 #: ../curl_download/curl_download.xs:153
-msgid "Ftp user password incorrect\n"
+msgid "FTP user password incorrect\n"
 msgstr "FTP gebruikerswachtwoord incorrect\n"
 
 #: ../curl_download/curl_download.xs:156
-msgid "Ftp weird PASS reply\n"
+msgid "FTP unexpected PASS reply\n"
 msgstr "Raar FTP PASS-antwoord\n"
 
 #: ../curl_download/curl_download.xs:159
-msgid "Ftp weird USER reply\n"
+msgid "FTP unexpected USER reply\n"
 msgstr "Raar FTP USER-antwoord\n"
 
 #: ../curl_download/curl_download.xs:162
-msgid "ftp weird PASV reply\n"
+msgid "FTP unexpected PASV reply\n"
 msgstr "Raar FTP PASV-antwoord\n"
 
 #: ../curl_download/curl_download.xs:165
-msgid "Ftp weird 227 format\n"
+msgid "FTP unexpected 227 format\n"
 msgstr "Raar FTP 227-formaat\n"
 
 #: ../curl_download/curl_download.xs:168
-msgid "Ftp can't get host\n"
+msgid "FTP can't get host\n"
 msgstr "Kan FTP-host niet vinden\n"
 
 #: ../curl_download/curl_download.xs:171
-msgid "Ftp can't reconnect\n"
+msgid "FTP can't reconnect\n"
 msgstr "Kan niet herverbinden met FTP\n"
 
 #: ../curl_download/curl_download.xs:174
-msgid "Ftp couldn't set binary\n"
+msgid "FTP couldn't set binary\n"
 msgstr "Kon FTP binaire modus niet instellen\n"
 
 #: ../curl_download/curl_download.xs:177
@@ -100,19 +100,20 @@ msgid "Partial file\n"
 msgstr "Gedeeltelijk bestand\n"
 
 #: ../curl_download/curl_download.xs:180
-msgid "Ftp couldn't RETR file\n"
+msgid "FTP couldn't RETR file\n"
 msgstr "FTP-bestand RETR-fout\n"
 
 #: ../curl_download/curl_download.xs:183
-msgid "Ftp write error\n"
+msgid "FTP write error\n"
 msgstr "FTP-schrijffout\n"
 
 #: ../curl_download/curl_download.xs:188
-msgid "Ftp quote error\n"
+msgid "FTP quote error\n"
 msgstr "FTP-quote-fout\n"
 
 #: ../curl_download/curl_download.xs:191
-msgid "http not found\n"
+#, fuzzy
+msgid "HTTP not found\n"
 msgstr "http niet gevonden\n"
 
 #: ../curl_download/curl_download.xs:194
@@ -124,7 +125,7 @@ msgid "User name illegally specified\n"
 msgstr "Gebruikersnaam onjuist opgegeven\n"
 
 #: ../curl_download/curl_download.xs:200
-msgid "ftp couldn't STOR file\n"
+msgid "FTP couldn't STOR file\n"
 msgstr "Kon FTP-bestand niet STOR'en\n"
 
 #: ../curl_download/curl_download.xs:203
@@ -136,35 +137,35 @@ msgid "Time out\n"
 msgstr "Timeout\n"
 
 #: ../curl_download/curl_download.xs:212
-msgid "Ftp couldn't set ASCII\n"
+msgid "FTP couldn't set ASCII\n"
 msgstr "Kon FTP-ASCII-modus niet instellen\n"
 
 #: ../curl_download/curl_download.xs:215
-msgid "Ftp PORT failed\n"
+msgid "FTP PORT failed\n"
 msgstr "FTP PORT-fout\n"
 
 #: ../curl_download/curl_download.xs:218
-msgid "Ftp couldn't use REST\n"
+msgid "FTP couldn't use REST\n"
 msgstr "FTP kon REST niet gebruiken\n"
 
 #: ../curl_download/curl_download.xs:221
-msgid "Ftp couldn't get size\n"
+msgid "FTP couldn't get size\n"
 msgstr "FTP kon grootte niet bepalen\n"
 
 #: ../curl_download/curl_download.xs:224
-msgid "Http range error\n"
+msgid "HTTP range error\n"
 msgstr "HTTP 'range' fout\n"
 
 #: ../curl_download/curl_download.xs:227
-msgid "Http POST error\n"
+msgid "HTTP POST error\n"
 msgstr "HTTP POST-fout\n"
 
 #: ../curl_download/curl_download.xs:230
-msgid "Ssl connect error\n"
+msgid "SSL connect error\n"
 msgstr "SSL verbindingsfout\n"
 
 #: ../curl_download/curl_download.xs:233
-msgid "Ftp bad download resume\n"
+msgid "FTP bad download resume\n"
 msgstr "FTP kon download niet hervatten\n"
 
 #: ../curl_download/curl_download.xs:236
@@ -204,51 +205,51 @@ msgstr "Verkeerde aanroep-volgorde\n"
 msgid "Unknown error code %d\n"
 msgstr "Onbekende foutcode %d\n"
 
-#: ../grpmi.pl_.c:62 ../grpmi.pl_.c:116 ../grpmi.pl_.c:142
+#: ../grpmi.pl_.c:65 ../grpmi.pl_.c:119 ../grpmi.pl_.c:145
 msgid "Yes"
 msgstr "Ja"
 
-#: ../grpmi.pl_.c:63 ../grpmi.pl_.c:116 ../grpmi.pl_.c:117 ../grpmi.pl_.c:142
-#: ../grpmi.pl_.c:143
+#: ../grpmi.pl_.c:66 ../grpmi.pl_.c:119 ../grpmi.pl_.c:120 ../grpmi.pl_.c:145
+#: ../grpmi.pl_.c:146
 msgid "No"
 msgstr "Nee"
 
-#: ../grpmi.pl_.c:64
+#: ../grpmi.pl_.c:67
 msgid "Ok"
 msgstr "Ok"
 
-#: ../grpmi.pl_.c:71
+#: ../grpmi.pl_.c:74
 msgid "Error..."
 msgstr "Fout..."
 
-#: ../grpmi.pl_.c:72
+#: ../grpmi.pl_.c:75
 msgid "You need to be root to install packages, sorry."
 msgstr "U moet root zijn om pakketjes te kunnen installeren, excuus."
 
-#: ../grpmi.pl_.c:74
+#: ../grpmi.pl_.c:77
 msgid "RPM initialization error"
 msgstr "In werking stellen RPM mislukt"
 
-#: ../grpmi.pl_.c:75
+#: ../grpmi.pl_.c:78
 msgid "The initialization of config files of RPM was not possible, sorry."
 msgstr ""
 "De in werking stelling van de configuratie bestanden van RPM was niet "
 "mogelijk, excuus."
 
-#: ../grpmi.pl_.c:81
+#: ../grpmi.pl_.c:84
 msgid "Initializing..."
 msgstr "In werking stellen..."
 
-#: ../grpmi.pl_.c:104
+#: ../grpmi.pl_.c:107
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Ophalen pakket `%s' (%s/%s)..."
 
-#: ../grpmi.pl_.c:109
+#: ../grpmi.pl_.c:112
 msgid "Error during download"
 msgstr "Fout tijdens ophalen"
 
-#: ../grpmi.pl_.c:110
+#: ../grpmi.pl_.c:113
 #, c-format
 msgid ""
 "There was an error downloading package:\n"
@@ -265,20 +266,20 @@ msgstr ""
 "Fout: %s\n"
 "Wilt u doorgaan (dit pakket overslaan) ?"
 
-#: ../grpmi.pl_.c:116 ../grpmi.pl_.c:118
+#: ../grpmi.pl_.c:119 ../grpmi.pl_.c:121
 msgid "Retry download"
 msgstr ""
 
-#: ../grpmi.pl_.c:134
+#: ../grpmi.pl_.c:137
 #, c-format
 msgid "Verifying signature of `%s'..."
 msgstr "Controleren handtekening van `%s'..."
 
-#: ../grpmi.pl_.c:136
+#: ../grpmi.pl_.c:139
 msgid "Signature verification error"
 msgstr "Handtekening verifikatie mislukt"
 
-#: ../grpmi.pl_.c:137
+#: ../grpmi.pl_.c:140
 #, c-format
 msgid ""
 "The signature of the package `%s' is not correct:\n"
@@ -291,15 +292,15 @@ msgstr ""
 "%s\n"
 "Wilt u het desondanks toch installeren ?"
 
-#: ../grpmi.pl_.c:142 ../grpmi.pl_.c:144
+#: ../grpmi.pl_.c:145 ../grpmi.pl_.c:147
 msgid "Yes to all"
 msgstr ""
 
-#: ../grpmi.pl_.c:147
+#: ../grpmi.pl_.c:150
 msgid "File error"
 msgstr "Bestandsfout"
 
-#: ../grpmi.pl_.c:148
+#: ../grpmi.pl_.c:151
 #, c-format
 msgid ""
 "The following file is not valid:\n"
@@ -314,15 +315,15 @@ msgstr ""
 "\n"
 "Wilt u alsnog doorgaan (pakket overslaan) ?"
 
-#: ../grpmi.pl_.c:164
+#: ../grpmi.pl_.c:167
 msgid "Preparing packages for installation..."
 msgstr "Klaarmaken pakketten voor installatie"
 
-#: ../grpmi.pl_.c:172
+#: ../grpmi.pl_.c:175
 msgid "Conflicts detected"
 msgstr "Tegenstrijdigheden ontdekt"
 
-#: ../grpmi.pl_.c:173
+#: ../grpmi.pl_.c:176
 #, c-format
 msgid ""
 "Conflicts were detected:\n"
@@ -335,16 +336,16 @@ msgstr ""
 "\n"
 "Installatie afgebroken"
 
-#: ../grpmi.pl_.c:182
+#: ../grpmi.pl_.c:185
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Installeren pakket `%s' (%s/%s)..."
 
-#: ../grpmi.pl_.c:196
+#: ../grpmi.pl_.c:199
 msgid "Problems occurred during installation"
 msgstr "Problemen tijdens de installatie"
 
-#: ../grpmi.pl_.c:196
+#: ../grpmi.pl_.c:199
 #, c-format
 msgid ""
 "There was an error during packages installation:\n"
