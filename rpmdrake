@@ -200,6 +200,13 @@ sub do_search($$$$$$) {
 
 sub db { URPM::DB::open or die 'Couldn\'t open RPM DB' }
 
+sub find_installed_version {
+    my ($p) = @_;
+    my @version;
+    db->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version.'-'.$_[0]->release });
+    @version ? join(',', sort @version) : _("(none)");
+}
+
 sub run_treeview_dialog {
     my ($pkgs_provider, $callback_action) = @_;
 
@@ -418,10 +425,11 @@ or you already installed all of them."));
 				     exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
 				     my @max_info = if_(@$max_info_in_descr,
-							$MODE eq 'remove' ? ()
-							    : [ "\n", _("Source: "), pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ],
-							[ "\n",   _("Files:\n"), $pkgs->{$key}{files} || _("(Not available)") ],
-							[ "\n\n", _("Changelog:\n"), $pkgs->{$key}{changelog} || _("(Not available)") ]);
+						     $MODE eq 'remove' ? ()
+							: [ "\n", _("Source: "), pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ],
+						     [ "\n", _("Currently installed version: "), find_installed_version($pkgs->{$key}{pkg}) ],
+						     [ "\n",   _("Files:\n"), $pkgs->{$key}{files} || _("(Not available)") ],
+						     [ "\n\n", _("Changelog:\n"), $pkgs->{$key}{changelog} || _("(Not available)") ]);
 				     my $col = my_gtk::gtkcolor(32*256, 68*256, 157*256);
 				     $MODE eq 'update' and gtktext_insert($info_update,
 							      [ [ undef, $col, undef, _("Reason for update: ") ],
