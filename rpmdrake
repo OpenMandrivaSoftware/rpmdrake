@@ -121,14 +121,9 @@ sub extract_header {
 	    $p->update_header($headersdir . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
 	    rm_rf($headersdir);
 	    add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
-	    if (@$max_info_in_descr) {
-		$pkg->{files} = join("\n", $p->files);
-		my (undef, $list) = $urpm->get_source_packages({ $p->id => undef });
-		if ($list) {
-		    my $localfile = (values %{${$list}[0]})[0];
-		    $localfile =~ m,^file:/(.*)|^removable:/(.*), && -r $1 and $pkg->{changelog} = `rpm -qp --changelog $1`;
-		}
-	    }
+	    @$max_info_in_descr and add2hash($pkg, { files => join("\n", $p->files),
+						     changelog => join("\n", mapn { "* ".scalar(localtime($_[2]))." $_[0]\n\n$_[1]\n" }
+							   [ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ]) });
 	    $p->pack_header;
 	} else {
 	  header_non_available:
