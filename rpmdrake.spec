@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 16mdk
+%define release 17mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Apr 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-17mdk
+- fix drakhelp zombie process (thx titi)
+
 * Tue Apr 15 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-16mdk
 - update for urpmi-4.3 (skipped packages should be better handled
   now: they will appear in package selection and searches, but

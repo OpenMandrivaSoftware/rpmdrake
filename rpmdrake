@@ -726,7 +726,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 				       1, $table,
 				       0, gtkpack_(Gtk2::HBox->new(0, 20),
 						   0, gtksignal_connect(Gtk2::Button->new(but(N("Help"))),
-									clicked => sub { fork() or exec('drakhelp Drakxtools-Guide.html/software-management.html') }),
+									clicked => sub { system('drakhelp Drakxtools-Guide.html/software-management.html &') }),
 						   1, my $status = Gtk2::Label->new,
 						   0, gtkpack(Gtk2::HBox->new(1, 20),
 							      gtksignal_connect(Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove")
