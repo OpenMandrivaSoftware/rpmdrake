@@ -544,6 +544,8 @@ sub group_chooser {
 my $icon = '/usr/share/mcc/themes/default/drakpark-mdk.png';
 $ugtk2::wm_icon = $icon if -f $icon;
 
+push @::textdomains, 'rpmdrake';
+
 my $groups = read_parallel_config();
 my $in = interactive->vnew('su');
 #group_modify($in, $groups->[0], $groups);
