@@ -216,7 +216,7 @@ sub mainwindow {
     $clist->set_column_auto_resize($_, 1) foreach qw(0 1);
     $clist->set_column_justification(0, 'center');
     $clist->signal_connect(button_press_event => sub { my ($row, $col) = $clist->get_selection_info($_[1]->{x}, $_[1]->{'y'});
-						       if ($col == 0) {
+						       if ($col == 0 && $row =~ /^\d+$/) {
 							   invbool(\$urpm->{media}[$row]{ignore});
 							   my $pix = $pixmaps{$urpm->{media}[$row]{ignore} ? 'unselected' : 'selected'};
 							   $clist->set_pixmap($row, 0, $pix->[0], $pix->[1]);
