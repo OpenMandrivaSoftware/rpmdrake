@@ -55,7 +55,7 @@ $0 =~ m|/MandrakeUpdate$|  and $MODE = 'update';
 $MODE eq 'update' and require_root_capability();
 
 
-eval { require ugtk2; ugtk2->import(qw(:all)) };
+eval { require ugtk2; ugtk2->import(qw(:all)); require Gtk2::Pango; require Gtk2::Gdk::Keysyms };
 if ($@) {
     print "This program cannot be run in console mode.\n";
     c::_exit(0);  #- skip ugtk2::END
@@ -226,7 +226,7 @@ sub extract_header {
     my ($pkg, $urpm) = @_;
     my $chg_prepro = sub {
 	#- preprocess changelog for faster TextView insert reaction
-	[ map { [ "$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->WEIGHT_BOLD }) ] } split("\n", $_[0]) ]
+	[ map { [ "$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ]
     };
     if ($MODE eq 'remove') {
 	@$max_info_in_descr or return;
@@ -593,7 +593,7 @@ or you already installed all of them."));
 				     my ($name, $version) = split_fullname($key);
 				     exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
-				     my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->WEIGHT_BOLD };
+				     my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD };
 				     my $tag_fix = { 'font' => 'monospace' };
 				     my @files = ([ N("Files:\n"), $tag_tag ], [ $pkgs->{$key}{files} || N("(Not available)"), $tag_fix ]);
 				     my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
@@ -622,7 +622,7 @@ or you already installed all of them."));
 		   rebuild_tree => sub {},
 		  };
 
-    my $tree_model = Gtk2::TreeStore->new(Gtk2::GType->STRING, Gtk2::GType->OBJECT, Gtk2::GType->STRING);
+    my $tree_model = Gtk2::TreeStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
     $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
     $tree->append_column(my $textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
@@ -656,7 +656,6 @@ or you already installed all of them."));
 				      gtkset_mousecursor_wait($tree->window);
 				  }
 			      }
-			      $child->free;
 			      $tree->expand_row($path, 0);
 			  });
 
@@ -839,7 +838,7 @@ Is it ok to continue?", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{a
 						    Gtk2::Label->new(N("Find:")),
 						    $search_types_optionmenu,
 						    gtksignal_connect($find_entry = Gtk2::Entry->new,
-							      key_press_event => sub { $_[1]->keyval == Gtk2::Gdk::Event::Key->Sym_Return
+							      key_press_event => sub { $_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
 											 and $find_callback->() }),
 						    gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback)),
 				       1, $table,

@@ -46,8 +46,6 @@ sub selrow {
     $model && $iter or return -1;
     my $path = $model->get_path($iter);
     my $row = $path->to_string;
-    $path->free;
-    $iter->free;
     return $row;
 }
 
@@ -56,7 +54,6 @@ sub remove_row {
     my $iter = $model->get_iter_from_string($path_str);
     $iter or return;
     $model->remove($iter);
-    $iter->free;
 }
 
 sub add_callback {
@@ -283,21 +280,21 @@ sub edit_parallel {
     my $w = ugtk2->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"));
     my $name_entry;
 
-    my $medias_ls = Gtk2::ListStore->new(Gtk2::GType->STRING);
+    my $medias_ls = Gtk2::ListStore->new("Glib::String");
     my $medias = Gtk2::TreeView->new_with_model($medias_ls);
     $medias->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
     $medias->set_headers_visible(0);
     $medias->get_selection->set_mode('browse');
-    $medias_ls->append_set([ 0 => $_ ])->free foreach @{$edited->{medias}};
+    $medias_ls->append_set([ 0 => $_ ]) foreach @{$edited->{medias}};
 
     my $add_media = sub {
         my $w = ugtk2->new(N("Add a medium limit"));
-        my $medias_list_ls = Gtk2::ListStore->new(Gtk2::GType->STRING);
+        my $medias_list_ls = Gtk2::ListStore->new("Glib::String");
         my $medias_list = Gtk2::TreeView->new_with_model($medias_list_ls);
         $medias_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
         $medias_list->set_headers_visible(0);
         $medias_list->get_selection->set_mode('browse');
-        $medias_list_ls->append_set([ 0 => $_->{name} ])->free foreach @{$urpm->{media}};
+        $medias_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
         my $sel;
         gtkadd($w->{window},
                gtkpack__(Gtk2::VBox->new(0, 5),
@@ -313,7 +310,7 @@ sub edit_parallel {
            gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
         if ($w->main && $sel != -1) {
             my $media = ${$urpm->{media}}[$sel]{name};
-            $medias_ls->append_set([ 0 => $media ])->free;
+            $medias_ls->append_set([ 0 => $media ]);
             push @{$edited->{medias}}, $media;
         }
     };
@@ -325,7 +322,7 @@ sub edit_parallel {
         }
     };
 
-    my $hosts_ls = Gtk2::ListStore->new(Gtk2::GType->STRING);
+    my $hosts_ls = Gtk2::ListStore->new("Glib::String");
     my $hosts = Gtk2::TreeView->new_with_model($hosts_ls);
     $hosts->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
     $hosts->set_headers_visible(0);
@@ -333,7 +330,7 @@ sub edit_parallel {
     my $hosts_list;
     if ($edited->{protocol} eq 'ssh')    { $hosts_list = [ split /:/, $edited->{command} ] };
     if ($edited->{protocol} eq 'ka-run') { push @$hosts_list, $1 while $edited->{command} =~ /-m (\S+)/g };
-    $hosts_ls->append_set([ 0 => $_ ])->free foreach @$hosts_list;
+    $hosts_ls->append_set([ 0 => $_ ]) foreach @$hosts_list;
     my $add_host = sub {
         my $w = ugtk2->new(N("Add a host"));
         my ($entry, $value);
@@ -346,7 +343,7 @@ sub edit_parallel {
            gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { $w->{retval} = 1; $value = $entry->get_text; Gtk2->main_quit }),
            gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
         if ($w->main) {
-            $hosts_ls->append_set([ 0 => $value ])->free;
+            $hosts_ls->append_set([ 0 => $value ]);
             push @$hosts_list, $value;
         }
     };
@@ -406,7 +403,7 @@ sub edit_parallel {
 
 sub parallel_callback {
     my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"));
-    my $list_ls = Gtk2::ListStore->new(Gtk2::GType->STRING, Gtk2::GType->STRING, Gtk2::GType->STRING, Gtk2::GType->STRING);
+    my $list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String", "Glib::String", "Glib::String");
     my $list = Gtk2::TreeView->new_with_model($list_ls);
     each_index { $list->append_column(Gtk2::TreeViewColumn->new_with_attributes($_, Gtk2::CellRendererText->new, 'text' => $::i)) } N("Group"), N("Protocol"), N("Media limit");
     $list->append_column(my $commandcol = Gtk2::TreeViewColumn->new_with_attributes(N("Command"), Gtk2::CellRendererText->new, 'text' => 3));
@@ -420,7 +417,7 @@ sub parallel_callback {
             $list_ls->append_set([ 0 => $_->{name},
                                    1 => $_->{protocol},
                                    2 => @{$_->{medias}} ? join(', ', @{$_->{medias}}) : N("(none)"),
-                                   3 => $_->{command} ])->free;
+                                   3 => $_->{command} ]);
 	}
     };
     $reread->();
@@ -451,7 +448,7 @@ sub parallel_callback {
 sub mainwindow {
     $mainw = ugtk2->new(N("Configure media"), center => 1);
 
-    my $list = Gtk2::ListStore->new(Gtk2::GType->BOOLEAN, Gtk2::GType->STRING);
+    my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('browse');
     $list_tv->set_rules_hint(1);
@@ -478,8 +475,7 @@ sub mainwindow {
 			    my (undef, $path) = @_;
 			    my $iter = $list->get_iter_from_string($path);
 			    invbool(\$urpm->{media}[$path]{ignore});
-			    $list->set($iter, [ 0, !$urpm->{media}[$path]{ignore} ]);
-			    $iter->free;
+			    $list->set($iter, 0, !$urpm->{media}[$path]{ignore});
 			});
 
     my $menu = Gtk2::Menu->new;
@@ -521,7 +517,7 @@ sub mainwindow {
 	$urpm = urpm->new;
 	$urpm->read_config; 
 	$list->clear;
-	$list->append_set([ 0 => !$_->{ignore}, 1 => $_->{name} ])->free foreach @{$urpm->{media}};
+	$list->append_set([ 0 => !$_->{ignore}, 1 => $_->{name} ]) foreach @{$urpm->{media}};
         $reorder_ok = 1;
     };
     $reread_media->();

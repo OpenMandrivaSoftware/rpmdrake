@@ -309,7 +309,7 @@ the case when the architecture of your processor is not supported
 by Mandrake Linux Official Updates.")), return '';
 
     my $w = ugtk2->new('rpmdrake', grab => 1);
-    my $tree_model = Gtk2::TreeStore->new(Gtk2::GType->STRING);
+    my $tree_model = Gtk2::TreeStore->new("Glib::String");
     my $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
     my $column = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0);
@@ -378,7 +378,7 @@ sub show_urpm_progress {
 	$pb->set_fraction(1.0);
 	$label->set_label($label->get_label . N(" failed!"));
     }
-    Gtk2->update_ui;
+    Gtk2->main_iteration while Gtk2->events_pending;
 }
 
 sub update_sources {
