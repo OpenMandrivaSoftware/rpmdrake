@@ -124,7 +124,8 @@ rm -rf $RPM_BUILD_ROOT
     selected (#970)
 - add a dependency to a recent drakxtools to fix #1030
 - fix problems of characters display in non-latin1 locales
-  
+- fix wait messages breakage when using perl-GTK2 >= 0.0.cvs.2003.01.27.1
+
 * Tue Jan 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-3mdk
 - rpmdrake:
   - fix "update sources" dialog which didn't update the asked mediums
