@@ -255,6 +255,10 @@ my @valid_groups = (
                     N_("Video"),
                    );
 
+#- to highlight information
+my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD };
+my $tag_fix = { 'font' => 'monospace' };
+
 sub ctreefy {
     join('|', map { translate($_) } split m|/|, $_[0]);
 }
@@ -494,6 +498,48 @@ sub remove_arch {
 }
 
 sub formatlistpkg { myformatList(sort { uc($a) cmp uc($b) } @_) }
+
+sub format_pkg_info {
+    my ($pkgs, $key, $urpm, $descriptions) = @_;
+    my ($name, $version) = split_fullname($key);
+    my @files = (
+	[ N("Files:\n"), $tag_tag ],
+	exists $pkgs->{$key}{files}
+	    ? [ join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}), $tag_fix ]
+	    : [ N("(Not available)") ],
+    );
+    my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
+    my @source_info = (
+	$MODE eq 'remove' || !@$max_info_in_descr
+	    ? ()
+	    : (
+		[ N("Medium: "), $tag_tag ],
+		[ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
+		[ N("Currently installed version: "), $tag_tag ],
+		[ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]
+	    )
+    );
+    my @max_info = if_(
+	@$max_info_in_descr,
+	$changelog_first ? (@chglo, [ "\n" ], @files) : (@files, [ "\n\n" ], @chglo),
+    );
+    [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
+      [ N("Version: "), $tag_tag ], [ "$version\n" ],
+      [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024)) . "\n" ],
+      if_(
+	  $MODE eq 'update',
+	  [ N("Importance: "), $tag_tag ], [ "$descriptions->{$name}{importance}\n" ]
+      ),
+      @source_info,
+      [ "\n" . N("Summary: "), $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
+      if_(
+	  $MODE eq 'update',
+	  [ N("Reason for update: "), $tag_tag ], [ rpm_description($descriptions->{$name}{pre}) . "\n" ],
+      ),
+      [ N("Description: "), $tag_tag ], [ ($pkgs->{$key}{description} || $descriptions->{$name}{description} || 'no description') . "\n" ],
+      @max_info,
+    ];
+}
 
 sub run_treeview_dialog {
     my ($pkgs_provider, $callback_action) = @_;
@@ -766,38 +812,10 @@ or you already installed all of them."));
 	    my ($key) = @_;
 	    return if $key eq ''; #- related to the partial tree displaying hackery
 	    #- the package information hasn't been loaded. Instead of rescanning the media, just give up.
-	    exists $pkgs->{$key}
-		or return [ [ N("Description not available for this package\n") ] ];
-	    my ($name, $version) = split_fullname($key);
+	    exists $pkgs->{$key} or return [ [ N("Description not available for this package\n") ] ];
 	    exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 		or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
-	    my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD };
-	    my $tag_fix = { 'font' => 'monospace' };
-	    my @files = ([ N("Files:\n"), $tag_tag ], exists $pkgs->{$key}{files}
-		? [ join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}), $tag_fix ]
-		: [ N("(Not available)") ]);
-	    my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
-	    my @source_info = ($MODE eq 'remove' || !@$max_info_in_descr ? ()
-		: ([ N("Medium: "), $tag_tag ],
-		    [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
-		    [ N("Currently installed version: "), $tag_tag ],
-		    [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]));
-	    my @max_info = if_(@$max_info_in_descr, $changelog_first
-		? (@chglo, [ "\n" ], @files)
-		: (@files, [ "\n\n" ], @chglo));
-	    [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
-	      [ N("Version: "), $tag_tag ], [ "$version\n" ],
-	      [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024)) . "\n" ],
-	      if_($MODE eq 'update',
-		  [ N("Importance: "), $tag_tag ], [ "$descriptions->{$name}{importance}\n" ]),
-	      @source_info,
-	      [ "\n" . N("Summary: "), $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
-	      if_($MODE eq 'update',
-		  [ N("Reason for update: "), $tag_tag ],
-		  [ rpm_description($descriptions->{$name}{pre}) . "\n" ]),
-	      [ N("Description: "), $tag_tag ], [ ($pkgs->{$key}{description} || $descriptions->{$name}{description} || 'no description') . "\n" ],
-	      @max_info,
-	    ];
+	    format_pkg_info($pkgs, $key, $urpm, $descriptions);
 	},
 	check_interactive_to_toggle => sub { 1 },
 	grep_allowed_to_toggle => sub { @_ },
