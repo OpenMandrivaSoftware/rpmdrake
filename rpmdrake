@@ -690,26 +690,36 @@ or you already installed all of them."));
     $textcolumn->set_min_width($typical_width*0.7);
 
     my $cursor_to_restore;
-    $tree->signal_connect(expose_event => sub {
-			      $cursor_to_restore or return;
-			      gtkset_mousecursor_normal($tree->window);
-			      undef $cursor_to_restore;
-			  });
-    $tree->signal_connect(row_expanded => sub { 
-			      my ($tree, $iter, $path) = @_;
-			      #- hackish: if first child has '' as name, then we need to expand on the fly
-			      my $child = $tree_model->iter_children($iter);
-			      if ($tree_model->get($child, 0) eq '') {
-				  $tree_model->remove($child);
-				  slow_func($tree->window, sub { $options->{add_nodes}->(@{$elems{$tree_model->get($iter, 0)}}) });
-			      } else {
-				  if ($tree_model->iter_n_children($iter) > 500) { #- populating large groups is slow
-				      $cursor_to_restore = 1;
-				      gtkset_mousecursor_wait($tree->window);
-				  }
-			      }
-			      $tree->expand_row($path, 0);
-			  });
+    $tree->signal_connect(
+	expose_event => sub {
+	    $cursor_to_restore or return;
+	    gtkset_mousecursor_normal($tree->window);
+	    undef $cursor_to_restore;
+	},
+    );
+    $tree->signal_connect(
+	row_expanded => sub { 
+	    my ($tree, $iter, $path) = @_;
+	    #- hackish: if first child has '' as name, and if we're not listing by update
+	    # availability, then we need to expand on the fly. (by update availability,
+	    # selecting all packages will be too slow and expose too much choice conflicts)
+	    my $child = $tree_model->iter_children($iter);
+	    if ($options->{tree_mode} ne 'by_presence' && $tree_model->get($child, 0) eq '') {
+		$tree_model->remove($child);
+		slow_func(
+		    $tree->window,
+		    sub { $options->{add_nodes}->(@{$elems{$tree_model->get($iter, 0)}}) }
+		);
+	    } else {
+		if ($tree_model->iter_n_children($iter) > 500) {
+		    #- populating large groups is slow
+		    $cursor_to_restore = 1;
+		    gtkset_mousecursor_wait($tree->window);
+		}
+	    }
+	    $tree->expand_row($path, 0);
+	},
+    );
 
     my @modes_buttons;
     if ($MODE eq 'update') {
@@ -738,10 +748,20 @@ or you already installed all of them."));
 	my @radios_names_ordered = qw(mandrake_choices flat by);
 	$compssUsers or shift @radios_names_ordered;
 
-	my @advanced_modes = ([ 'by_group', N("All packages, by group"), 0 ], [ 'by_size', N("All packages, by size"), 1 ],
-			      [ 'by_selection', N("All packages, by selection state"), 1 ]);
-	$MODE eq 'install' and push @advanced_modes, ([ 'by_source', N("All packages, by medium repository"), 0 ], [ 'by_presence', N("All packages, by update availability"), 0 ]);
-	$MODE eq 'remove' and push @advanced_modes, [ 'by_leaves', N("Leaves only, sorted by install date"), 1 ];
+	my @advanced_modes = (
+	    [ 'by_group', N("All packages, by group"), 0 ],
+	    [ 'by_size', N("All packages, by size"), 1 ],
+	    [ 'by_selection', N("All packages, by selection state"), 1 ],
+	);
+	if ($MODE eq 'install') {
+	    push @advanced_modes, (
+		[ 'by_source', N("All packages, by medium repository"), 0 ],
+		[ 'by_presence', N("All packages, by update availability"), 0 ],
+	    );
+	}
+	elsif ($MODE eq 'remove') {
+	    push @advanced_modes, [ 'by_leaves', N("Leaves only, sorted by install date"), 1 ];
+	}
 
 	my $default_radio = $options->{tree_mode} = 'mandrake_choices';
         if (member($tree_mode->[0], keys %radios_infos, map { $_->[0] } @advanced_modes)) {
@@ -774,12 +794,17 @@ or you already installed all of them."));
 	    my ($capt_mode, $capt_flat) = ($_->[0], $_->[2]);
             my $item = Gtk2::MenuItem->new_with_label($_->[1]);
 	    $advanced_menu->append(gtkshow($item));
-            $_->[0] eq $tree_mode->[0] and do { $options->{tree_submode} = $_->[0]; $advanced_menu->set_active($::i) };
-            $item->signal_connect(activate => sub {
-                                      $options->{tree_submode} = $capt_mode;
-                                      $options->{tree_subflat} = $capt_flat;
-                                      $radio_by->activate;
-                                  });
+            if ($_->[0] eq $tree_mode->[0]) {
+		$options->{tree_submode} = $_->[0];
+		$advanced_menu->set_active($::i);
+	    }
+	    $item->signal_connect(
+		activate => sub {
+		    $options->{tree_submode} = $capt_mode;
+		    $options->{tree_subflat} = $capt_flat;
+		    $radio_by->activate;
+		},
+	    );
 	} @advanced_modes;
 	$options->{tree_submode} ||= $advanced_modes[0][0];
 	each_index {
