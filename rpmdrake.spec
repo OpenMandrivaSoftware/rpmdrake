@@ -1,6 +1,14 @@
+##################################################################
+#
+#
+# !!!!!!!! WARNING => THIS HAS TO BE EDITED IN THE CVS !!!!!!!!!!!
+#
+#
+##################################################################
+
 %define name rpmdrake
 %define version 2.0
-%define release 2mdk
+%define release 4mdk
 
 Name: %{name}
 Version: %{version}
@@ -8,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 3.9 perl-URPM >= 0.50 drakxtools >= 1.1.9 grpmi >= 9.0
+Requires: perl-MDK-Common urpmi >= 3.9 perl-URPM >= 0.60 drakxtools >= 1.1.9-5mdk grpmi >= 9.0 rpmtools >= 4.5
 BuildRequires: curl-devel rpm-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -69,6 +77,10 @@ cp pixmaps/rpmdrake16.xpm $RPM_BUILD_ROOT%{_miconsdir}/rpmdrake.xpm
 cp pixmaps/rpmdrake32.xpm $RPM_BUILD_ROOT%{_iconsdir}/rpmdrake.xpm
 cp pixmaps/rpmdrake48.xpm $RPM_BUILD_ROOT%{_liconsdir}/rpmdrake.xpm
 
+# bloody RPM..
+mkdir -p $RPM_BUILD_ROOT/var/lib/urpmi
+touch $RPM_BUILD_ROOT/var/lib/urpmi/compssUsers.flat
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -90,6 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*.xpm
 %{_miconsdir}/*.xpm
 %{_liconsdir}/*.xpm
+%ghost /var/lib/urpmi/compssUsers.flat
 
 %files -n grpmi -f grpmi.lang
 %defattr(-, root, root)
@@ -99,6 +112,29 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Aug  5 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-4mdk
+- grpmi: provide information about the number of current download and
+  number of overall downloads, same with installation of packages
+- have compssUsers.flat a ghost file, so that rpm doesn't remove it
+  when upgrading from rpmdrake-1.5 series
+- substitute popuping Menu to get more sort methods by OptionMenu in
+  one of the Radio, it should be easier for users to find them here
+- don't exit at the end of the action, but restart
+- add "update..." button in edit-urpm-sources to update the desired
+  media
+- when a search didn't get any results, tell it
+- add searching in files facility (decision is made upon the presence
+  of a / in the search field)
+- try harder to really honour ignored media when trying to guess
+  in which medium is a package
+- don't die when a header could not be extracted
+
+* Fri Aug  2 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-3mdk
+- fix mouse cursor problem by calling my_gtk::exit instead of perl's
+- fix grpmi exiting on illegal division by zero when curl reports a
+  download of zero size
+- allow user to cancel on medium changes
+
 * Fri Aug  2 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-2mdk
 - workaround packdrake segfault when hdlist is not available for
   a source (by file testing if the hdlist is readable)
