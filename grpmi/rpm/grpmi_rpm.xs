@@ -139,8 +139,10 @@ char * verify_sig_(char * file)
 		}
 
 		i = rpmVerifySignature(tmpfile, tag, ptr, count, result);
-		if (i != RPMSIG_OK)
+		if (i != RPMSIG_OK) {
+			unlink(tmpfile);
 			return strdup(result);
+		}
 	}
 	unlink(tmpfile);
 	if (!gpg_sig)
