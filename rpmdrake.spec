@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Thu May 22 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-21mdk
 - fix some distlint DIRM
-- let medias be reorderable in the medias editor
+- let medias be reorderable in the medias editor (drag and drop the list)
 
 * Fri May 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-20mdk
 - perl-URPM API change: gives architecture in ask_remove
