@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.5
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -109,6 +109,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Jan 18 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.5-2mdk
+- Quick fix for a crash on some popup windows
+- Regenerate po files
+
 * Mon Jan 17 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.5-1mdk
 - Software media manager: the "Add..." dialog allows to add updates as well
   as official sources (for Official distros), whereas the "security updates"
