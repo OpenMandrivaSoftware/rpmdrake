@@ -18,7 +18,8 @@ LOCALEDIR=$(DATADIR)/locale
 all: $(PGOAL).pot $(MOFILES)
 
 %.mo: %.po
-	msgfmt -o $@ $<
+	cat $< "$<"m >> "$<"f
+	msgfmt -o $@ "$<"f
 
 $(PL_CFILES): %_.c: %
 	../grpmi/po/fake_c.pl $< > $@
@@ -28,6 +29,7 @@ merge: $(PGOAL).pot
 		echo "Merging $$n"; \
 		msgmerge "$$n" $< > "$$n"t; \
 		mv -f "$$n"t "$$n"; \
+		./get_from_compssusers.pl "$$n" >> "$$n"m; \
 	done
 
 $(PGOAL).pot: $(PL_CFILES) $(CFILES)
@@ -44,5 +46,5 @@ install:
 	done
 
 clean:
-	@rm -rf *.mo $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot
+	@rm -rf *.mo *.pom *.pof $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot
 
