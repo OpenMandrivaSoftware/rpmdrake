@@ -856,12 +856,13 @@ or you already installed all of them."));
 		$t->pack_start($search_types_renderer, Glib::FALSE());
 		$t->set_attributes($search_types_renderer, text => 0);
 		my $iter = $t->get_model->iter_nth_child(undef, 0);
-		my $n = 0;
+		my $n = 0; my $active = 0;
 		foreach my $m (@advanced_modes) {
+		    $m->[0] eq $tree_mode->[0] and $active = $n;
 		    $iter = $t->get_model->insert($n++);
 		    $t->get_model->set($iter, 0, $m->[1]);
 		}
-		$t->set_active(0);
+		$t->set_active($active);
 		$t->signal_connect(
 		    changed => sub {
 			my $act = $t->get_active;
