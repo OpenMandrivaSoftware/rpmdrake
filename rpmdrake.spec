@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools > 9.2-0.26mdk rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools > 9.2-0.28mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-6mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: libcurl2-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Thu Aug  7 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
+* Fri Aug  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
 - require root capability when run "Install Sofware" and add a new
   menu entry reading "Browse Available Software"
 - s/Medias/Media/ in the program name of the menu entry
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 - when updating media, if url is too long, don't display it because
   it enlarges much the dialog; better display only the basename
   and the medium name (#4338)
+- edit-urpmi-media/add:
+  - right-align left labels
+  - use a checkbutton for "hdlist" so that user better understands
+    it's optional (and say in a tooltip that it is)
 
 * Mon Aug  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-30mdk
 - revert "use checkboxes instead of icons"

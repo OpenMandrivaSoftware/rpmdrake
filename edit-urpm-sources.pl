@@ -85,25 +85,34 @@ sub add_callback {
 										     }
 										 })));
 	};
+        my $tips = Gtk2::Tooltips->new;
+        my $checkbut_entry = sub {
+            my ($name, $label, $visibility, $callback, $tip) = @_;
+            [ gtkpack_(Gtk2::HBox->new(0, 0),
+                       1, Gtk2::Label->new,
+                       0, gtksignal_connect($info->{$name.'_check'} = gtkset_tip($tips, Gtk2::CheckButton->new($label), $tip),
+                                            clicked => sub { $info->{$name.'_entry'}->set_sensitive($_[0]->get_active);
+                                                             $callback and $callback->(@_);
+                                                         })),
+              gtkset_visibility(gtkset_sensitive($info->{$name.'_entry'} = gtkentry(), 0), $visibility) ];
+        };
 	my $loginpass_entries = sub {
-	    map { my $entry_name = $_->[0];
-		  [ gtkpack_(Gtk2::HBox->new(0, 0),
-			     1, Gtk2::Label->new,
-			     0, gtksignal_connect($info->{$_->[0].'_check'} = Gtk2::CheckButton->new($_->[1]),
-						  clicked => sub { $info->{$entry_name.'_entry'}->set_sensitive($_[0]->get_active);
-								   $info->{pass_check}->set_active($_[0]->get_active);
-								   $info->{login_check}->set_active($_[0]->get_active);
-							       }),
-			     1, Gtk2::Label->new),
-		    gtkset_visibility(gtkset_sensitive($info->{$_->[0].'_entry'} = gtkentry(), 0), $_->[2]) ] }
-	      ([ 'login', N("Login:"), 1 ], [ 'pass', N("Password:"), 0 ])
+	    map { 
+                  $checkbut_entry->(@$_, sub {
+                                        $info->{pass_check}->set_active($_[0]->get_active);
+                                        $info->{login_check}->set_active($_[0]->get_active);
+                                    })
+              } ([ 'login', N("Login:"), 1 ], [ 'pass', N("Password:"), 0 ])
 	};
 	my $nb = $count_nbs++;
 	gtksignal_connect($_[1], 'clicked' => sub { $_[0]->get_active and $notebook->set_current_page($nb) });
 	$notebook->append_page(my $book = create_packtable({},
-		      [ N("Name:"), $info->{name_entry} = gtkentry($_[0] eq 'security' and 'update_source') ],
-		      [ $info->{url}, $url_entry->() ],
-		      [ N("Relative path to synthesis/hdlist:"), $info->{hdlist_entry} = gtkentry() ],
+		      [ gtkset_alignment(Gtk2::Label->new(N("Name:")), 1, 0.5),
+                        $info->{name_entry} = gtkentry($_[0] eq 'security' and 'update_source') ],
+		      [ gtkset_alignment(Gtk2::Label->new($info->{url}), 1, 0.5),
+                        $url_entry->() ],
+		      $checkbut_entry->('hdlist', N("Relative path to synthesis/hdlist:"), 1, undef,
+                                        N("If left blank, synthesis/hdlist will be automatically probed")),
 		      if_($info->{loginpass}, $loginpass_entries->())));
 	$book->show;
     } \@radios_names_ordered, \@modes_buttons;
@@ -152,7 +161,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    $urpm->remove_selected_media;
 	}
 	add_medium_and_check($urpm, N("Please wait, adding medium..."),
-			     { probe_with_hdlist => $i{hdlist} eq '' },
+			     { probe_with_hdlist => $info->{hdlist_check}->get_active && $i{hdlist} eq '' },
 			     $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security');
 	return 1;
     }
