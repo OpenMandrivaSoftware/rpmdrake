@@ -76,7 +76,7 @@ sub to_utf8 {
         $_ = Locale::gettext::iconv($_, undef, "UTF-8");
         c::set_tagged_utf8($_);
     }
-    @_;
+    wantarray() ? @_ : $_[0];
 }
 
 sub myexit { ugtk2::exit(undef, @_) }
@@ -421,10 +421,11 @@ sub update_sources {
 sub update_sources_check {
     my ($urpm, $options, @media) = @_;
     my @error_msgs;
-    local $urpm->{fatal} = sub { push @error_msgs, $_[1] };
-    local $urpm->{error} = sub { push @error_msgs, $_[0] };
+    local $urpm->{fatal} = sub { push @error_msgs, to_utf8($_[1]); goto fatal_error; };
+    local $urpm->{error} = sub { push @error_msgs, to_utf8($_[0]) };
     update_sources($urpm, %$options, noclean => 1);
-    if (any { member($_->{name}, @media) && $_->{modified} } @{$urpm->{media}}) {
+  fatal_error:
+    if (@error_msgs || any { member($_->{name}, @media) && $_->{modified} } @{$urpm->{media}}) {
         interactive_msg('rpmdrake',
                         N("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s",
                           join("\n", @error_msgs)));
@@ -462,11 +463,28 @@ sub update_sources_interactive {
 
 sub add_medium_and_check {
     my ($urpm, $options) = splice @_, 0, 2;
+
+    my $fatal_msg;
+    my @error_msgs;
+    local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = to_utf8($_[1]); goto fatal_error };
+    local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, to_utf8($_[0]) };
     standalone::explanations("Adding medium @_");
     $urpm->add_medium(@_);
+    if (@error_msgs) {
+        interactive_msg('rpmdrake',
+                        N("Unable to add medium, errors reported:\n\n%s",
+                          join("\n", @error_msgs)));
+        return;
+    }
+
     update_sources_check($urpm, $options, $_[0]);
     my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
     $medium or interactive_msg('rpmdrake', N("Unable to create medium."));
     $urpm->write_config;
+    return;
+
+  fatal_error:
+    interactive_msg(N("Failure when adding medium"),
+                    N("There was a problem adding medium:\n\n%s", $fatal_msg));
 }
 
