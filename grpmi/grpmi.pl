@@ -98,20 +98,24 @@ my $download_progress;
 foreach my $arg (@ARGV) {
     if ($arg =~ m,$url_regexp,) {
 	$download_progress++;
-	$label->set(_("Downloading package `%s' (%s/%s)...", basename($arg), $download_progress, $nb_downloads));
-	select(undef, undef, undef, 0.1); $mainw->flush;  #- hackish :-(
-	my $res = curl_download::download($arg, $cache_location,
-					  sub { $_[0] and $progressbar->set_fraction($_[1]/$_[0]); $mainw->flush });
 	my $url = $arg;
-	$arg = "$cache_location/" . basename($arg);
+	$arg = "$cache_location/" . basename($url);
+      retry_download:
+	$label->set(_("Downloading package `%s' (%s/%s)...", basename($url), $download_progress, $nb_downloads));
+	select(undef, undef, undef, 0.1); $mainw->flush;  #- hackish :-(
+	my $res = curl_download::download($url, $cache_location,
+					  sub { $_[0] and $progressbar->set_fraction($_[1]/$_[0]); $mainw->flush });
 	if ($res) {
-	    interactive_msg(_("Error during download"),
+	    my $results = interactive_msg(_("Error during download"),
 _("There was an error downloading package:
 
 %s
 
 Error: %s
-Do you want to continue (skipping this package)?", $url, $res), 1) or goto cleanup;
+Do you want to continue (skipping this package)?", $url, $res),
+					  [ _("Yes"), _("No"), _("Retry download") ]);
+	    $results eq _("No") and goto cleanup;
+	    $results eq _("Retry download") and goto retry_download;
 	    $arg = "-skipped&$arg&";
 	}
     }
