@@ -199,7 +199,7 @@ sub run_treeview_dialog {
 			   if ($mode eq 'by_source') {
 			       $add_node->($_->[0], pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm)->{name}) foreach $sortmethods{flat}->(@elems);
 			   } elsif ($mode eq 'by_presence') {
-			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed ? _("Upgradeable") : _("Addable"))
+			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed ? _("Upgradable") : _("Addable"))
 				 foreach $sortmethods{flat}->(@elems);
 			   } else {
 			       #- special case, we don't populate all the tree at first (to speed things up)
@@ -378,8 +378,9 @@ sub run_treeview_dialog {
 
 	my $advanced_menu = new Gtk::Menu;
 	my $radio_by;
-	my @advanced_modes = ([ 'by_group', _("by group"), 0 ], [ 'by_size', _("by size"), 1 ], [ 'by_selection', _("by selection"), 1 ]);
-	$MODE eq 'install' and push @advanced_modes, ([ 'by_source', _("by source"), 0 ], [ 'by_presence', _("by presence"), 0 ]);
+	my @advanced_modes = ([ 'by_group', _("by group"), 0 ], [ 'by_size', _("by size"), 1 ],
+			      [ 'by_selection', _("by selection state"), 1 ]);
+	$MODE eq 'install' and push @advanced_modes, ([ 'by_source', _("by source repository"), 0 ], [ 'by_presence', _("by update availability"), 0 ]);
 	foreach (@advanced_modes) {
 	    my ($capt_mode, $capt_flat) = ($_->[0], $_->[2]);
 	    $advanced_menu->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($_->[1])),
@@ -406,8 +407,27 @@ sub run_treeview_dialog {
 	$options->{delete_category}->($_) foreach ($results_ok, $results_none);
 	$options->{state}{flat} and $options->{delete_all}->();
 	$tree->collapse_recursive(undef);
-	if (my @search_results = sort { uc($a) cmp uc($b) } grep { eval { $_ =~ /$entry/i } } keys %$pkgs) {
-	    $options->{add_nodes}->(map { [ $_, _("Search results") ] } @search_results);
+	my @search_results;
+	if ($entry =~ m|/|) {
+	    my $w = wait_msg(_("Please wait, searching in files..."));
+	    open SF, "parsehdlist --fileswinfo --quiet $urpm->{statedir}/hdlist.* |";
+	    my $pkg;
+	    while (<SF>) {
+		/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/ and $pkg = "$1-$2-$3", next;
+		$pkg or next;
+		my (undef, $file) = split ':', $_;
+		if (eval { $file =~ /$entry/i }) {
+		    push @search_results, $pkg;
+		    $pkg = '';
+		}
+	    }
+	    close SF;
+	    remove_wait_msg($w);
+	} else {
+	    @search_results = grep { eval { $_ =~ /$entry/i } } keys %$pkgs;
+	}
+	if (@search_results) {
+	    $options->{add_nodes}->(map { [ $_, _("Search results") ] } sort { uc($a) cmp uc($b) } @search_results);
 	    $tree->expand($tree->node_nth($tree->rows-1));
 	} else {
 	    $options->{add_nodes}->([ '', $results_none ]);
