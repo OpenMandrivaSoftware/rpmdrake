@@ -32,9 +32,7 @@ install: $(ALL)
 	done
 	install -d $(BINDIR)
 	install rpmdrake edit-urpm-sources.pl $(BINDIR)
-	perl -pi -e 's|use strict.*||' $(BINDIR)/*
-	perl -pi -e 's|use vars.*||' $(BINDIR)/*
-	perl -pi -e 's|use diagnostics.*||' $(BINDIR)/*
+	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' $(BINDIR)/*
 	ln -s rpmdrake $(BINDIR)/rpmdrake-remove
 	ln -s rpmdrake $(BINDIR)/MandrakeUpdate
 	install -d $(DATADIR)/rpmdrake/icons
@@ -54,3 +52,12 @@ tar:
 	tar jcvf ../rpmdrake.tar.bz2 rpmdrake; \
 	cd ..; \
 	rm -rf t
+
+SOFTHOME = /home/gc/cvs/soft
+GIHOME = /home/gc/cvs/gi
+
+hack:
+	cp -f $(SOFTHOME)/rpmdrake/rpmdrake $(SOFTHOME)/rpmdrake/edit-urpm-sources.pl /usr/sbin
+	cp -f $(SOFTHOME)/rpmdrake/rpmdrake.pm $(shell rpm --eval %perl_vendorlib)
+	cp -f $(GIHOME)/perl-install/my_gtk.pm $(GIHOME)/perl-install/ugtk.pm /usr/lib/libDrakX
+	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' /usr/lib/libDrakX/*.pm /usr/sbin/{rpmdrake,edit-urpm-sources.pl}
