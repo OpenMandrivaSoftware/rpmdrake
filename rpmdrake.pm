@@ -408,7 +408,7 @@ by Mandrake Linux Official Updates.")), return '';
     my $tree_model = Gtk2::TreeStore->new("Glib::String");
     my $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
-    my $column = Gtk2::TreeViewColumn->new_with_attributes('', Gtk2::CellRendererText->new, 'text' => 0);
+    my $column = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0);
     $tree->append_column($column);
     $tree->set_headers_visible(0);
 
