@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.2
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -108,6 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Nov 15 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.2-2mdk
+- Rebuild for new perl
+
 * Tue Nov 09 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.2-1mdk
 - Make the changelog-first option configurable in ~/.rpmdrake (cf bug 11888)
 - Less unnecessary package tree rebuilding
