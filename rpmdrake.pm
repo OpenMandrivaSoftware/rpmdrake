@@ -380,7 +380,7 @@ sub mirrors {
     $cachedir = '/root';
     my $mirrorslist = "$cachedir/mirrorsfull.list";
     unlink $mirrorslist;
-    my $res = curl_download::download('http://www.linux-mandrake.com/mirrorsfull.list', $cachedir, sub {});
+    my $res = curl_download::download('http://www.mandrakelinux.com/mirrorsfull.list', $cachedir, sub {});
     $res and die $res;
     require timezone;
     my $tz = ${timezone::read()}{timezone};
