@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi 8.2\n"
-"POT-Creation-Date: 2002-08-22 18:03+0200\n"
-"PO-Revision-Date: 2002-03-07 08:37-0000\n"
+"POT-Creation-Date: 2002-08-26 16:55+0200\n"
+"PO-Revision-Date: 2002-08-25 22:16-0000\n"
 "Last-Translator: Rhoslyn Prys <rhoslyn.prys@ntlworld.com>\n"
 "Language-Team: Cymraeg/Welsh <cy@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: ../curl_download/curl_download.xs:86
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "Rhaid i'r cyfeiriadur lle bwriedir gofod y llwytho i lawr fodoli"
 
 #: ../curl_download/curl_download.xs:89 ../curl_download/curl_download.xs:204
 msgid "Out of memory\n"
@@ -24,7 +24,7 @@ msgstr "Dim cof\n"
 
 #: ../curl_download/curl_download.xs:102
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "Methu agor ffeil allbwn i'r modd atodi"
 
 #: ../curl_download/curl_download.xs:124
 msgid "Unsupported protocol\n"
@@ -205,11 +205,11 @@ msgstr "Gwall cod anhysbys %d\n"
 
 #: ../grpmi.pl_.c:52
 msgid "Yes"
-msgstr ""
+msgstr "Iawn"
 
 #: ../grpmi.pl_.c:53
 msgid "No"
-msgstr ""
+msgstr "Na"
 
 #: ../grpmi.pl_.c:54
 msgid "Ok"
@@ -221,29 +221,28 @@ msgstr "Gwall..."
 
 #: ../grpmi.pl_.c:64
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "Rhaid eich bod yn wraidd i osod pecyn."
 
 #: ../grpmi.pl_.c:66
 msgid "RPM initialization error"
-msgstr ""
+msgstr "Gwall ymgychwyn RPM"
 
 #: ../grpmi.pl_.c:67
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "Ymddiheuriwn, nid oedd yn bosibl ymgychwyn ffeiliau ffurfweddi RPM"
 
 #: ../grpmi.pl_.c:73
-#, fuzzy
 msgid "Initializing..."
-msgstr "Gosod:"
+msgstr "Ymgychwyn..."
 
 #: ../grpmi.pl_.c:94
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Llwytho pecyn `%s' (%s/%s) i lawr..."
 
 #: ../grpmi.pl_.c:101
 msgid "Error during download"
-msgstr ""
+msgstr "Gwall wrth lwytho i lawr"
 
 #: ../grpmi.pl_.c:102
 #, c-format
@@ -255,15 +254,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"Digwyddodd gwall wrth lwytho i lawr pecyn:\n"
+"\n"
+"%s\n"
+"\n"
+"Gwall: %s\n"
+"Hoffech chi barhau (anwybyddu'r pecyn hwn)?"
 
 #: ../grpmi.pl_.c:114
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "Gwirio llofnod `%s'..."
 
 #: ../grpmi.pl_.c:116
 msgid "Signature verification error"
-msgstr ""
+msgstr "Gwall gwirio llofnod"
 
 #: ../grpmi.pl_.c:117
 #, c-format
@@ -273,11 +278,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"Nid oedd llofnod pecyn '%s' yn gywir:\n"
+"\n"
+"%s\n"
+"Hoffech chi ei osod, beth bynnag?"
 
 #: ../grpmi.pl_.c:123
-#, fuzzy
 msgid "File error"
-msgstr "Gwall ysgrifennu\n"
+msgstr "Gwall ffeil"
 
 #: ../grpmi.pl_.c:124
 #, c-format
@@ -288,15 +296,18 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"Nid yw'r ffeil canlynol yn ddilys:\n"
+"\n"
+"%s\n"
+"Hoffech chi barhau beth bynnag (anwybyddu'r pecyn hwn)?"
 
 #: ../grpmi.pl_.c:139
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "Paratoi i'w osod"
+msgstr "Paratoi pecynnau i'w gosod"
 
 #: ../grpmi.pl_.c:147
 msgid "Conflicts detected"
-msgstr ""
+msgstr "Canfyddwyd gwrthdaro"
 
 #: ../grpmi.pl_.c:148
 #, c-format
@@ -306,202 +317,120 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"Canfyddwyd gwrthdaro:\n"
+"%s\n"
+"\n"
+"Hoffech chi orfodi'r gosod, beth bynnag?"
 
 #: ../grpmi.pl_.c:155
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Gosod pecyn `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:169
 msgid "Problems occurred during installation"
 msgstr "Digwyddodd anhawster wrth osod"
 
 #: ../grpmi.pl_.c:169
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Paratoi i'w osod"
-
-#: ../grpmi.pl_.c:177
-msgid "All requested packages were installed successfully."
 msgstr ""
-
-#: ../grpmi.pl_.c:177
-msgid "Everything installed successfully"
-msgstr ""
+"Digwyddodd gwall wrth osod pecyn:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:69
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "Y ffeil yn methu darllen ffeil\n"
+msgstr "Methu darllen ffeil ffurfweddi RPM"
 
 #: ../rpm/grpmi_rpm.xs:95
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Methu cysylltu\n"
+msgstr "Methu agor ffeil\n"
 
 #: ../rpm/grpmi_rpm.xs:99
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "Methu dadelfennu'r gwesteiwr\n"
+msgstr "Methu darllen beiiau cychwynnol\n"
 
 #: ../rpm/grpmi_rpm.xs:102
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "Nid yw'r fersiwn RPM o'r pecyn yn cynnal llofnodion\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "Methu darllen y bloc llofnod (methodd y `rpmReadSignature')\n"
 
 #: ../rpm/grpmi_rpm.xs:110
 msgid "No signatures\n"
-msgstr ""
+msgstr "Dim llofnod\n"
 
 #: ../rpm/grpmi_rpm.xs:114
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "Methodd `makeTempFile'!\n"
 
 #: ../rpm/grpmi_rpm.xs:121
 msgid "Error reading file\n"
-msgstr ""
+msgstr "Gwall darllen ffeil\n"
 
 #: ../rpm/grpmi_rpm.xs:127
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "Gwall ysgrifennu ffeil dros dro\n"
 
 #: ../rpm/grpmi_rpm.xs:152
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "Dim llofnod GPG yn y pecyn\n"
 
 #: ../rpm/grpmi_rpm.xs:234
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "Methu agod DB RPM ar gyfer ysgrifennu (nid uwch ddefnyddiwr?)"
 
 #: ../rpm/grpmi_rpm.xs:236
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "Methu agor DB RPM ar gyfer ysgrifennu"
 
 #: ../rpm/grpmi_rpm.xs:240
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "Methu cychwyn trosglwyddiad"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Methu agor y pecyn"
+msgstr "Methu agor pecyn `%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:264
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Mae'r pecyn yn llwgr"
+msgstr "Mae pecyn '%sd' yn llwgr\n"
 
 #: ../rpm/grpmi_rpm.xs:267
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Ni fydd y pecyn yn cael ei osod"
+msgstr "Nid oes modd gosod pecyn '%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:278
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Gwall wrth wirio dibyniaethau :["
+msgstr "Gwall wrth wirio dibyniaethau["
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "conflicts with"
-msgstr " gwrthdaro gyda %s-%s-%s"
+msgstr " gwrthdaro gyda"
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "is needed by"
-msgstr " ei angen gan %s-%s-%s"
+msgstr "ei angen gan"
 
 #: ../rpm/grpmi_rpm.xs:317
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Gwall wrth wirio dibyniaethau :["
+msgstr "Gwall wrth wirio dibyniaethau 2["
 
 #: ../rpm/grpmi_rpm.xs:323
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Digwyddodd anhawster wrth osod"
+msgstr "Digwyddodd anhawster wrth osod:\n"
 
-#~ msgid "Installing/Upgrading Progress"
-#~ msgstr "Cynnydd Gosod/Uwchraddio"
+#~ msgid "All requested packages were installed successfully."
+#~ msgstr "Gosodwyd pob pecyn angenrheidiol yn llwyddiannus."
 
-#~ msgid "Fetching:"
-#~ msgstr "Estyn;"
-
-#~ msgid "Installing:"
-#~ msgstr "Gosod:"
-
-#~ msgid "Cancel"
-#~ msgstr "Dileu"
-
-#~ msgid " is needed by %s-%s-%s"
-#~ msgstr " ei angen gan %s-%s-%s"
-
-#~ msgid " conflicts with %s-%s-%s"
-#~ msgstr " gwrthdaro gyda %s-%s-%s"
-
-#~ msgid "An error occured while fetching file"
-#~ msgstr "Digwyddodd gwall wrth estyn ffeil"
-
-#~ msgid "Skip"
-#~ msgstr "Hepgor"
-
-#~ msgid "Preparing for install"
-#~ msgstr "Paratoi i'w osod"
-
-#~ msgid "Can't check the GPG signature"
-#~ msgstr "Methu gwirio llofnod GPG"
-
-#~ msgid ""
-#~ "The package %s has a wrong signature or\n"
-#~ "GnuPG isn't correctly installed"
-#~ msgstr ""
-#~ "Mae gan becyn %s y llofnod anghywir neu\n"
-#~ "nid yw'r GPG wedi ei osod yn gywir"
-
-#~ msgid "The package %s is not signed"
-#~ msgstr "Nid yw pecyn %s wedi ei lofnodi"
-
-#~ msgid "Install all"
-#~ msgstr "Gosod y cyfan"
-
-#~ msgid "Install"
-#~ msgstr "Gosod"
-
-#~ msgid "Don't install"
-#~ msgstr "Peidiwch gosod"
-
-#~ msgid "Quit"
-#~ msgstr "Gadael"
-
-#~ msgid "Signature problem"
-#~ msgstr "Anhawster gyda'r llofnod"
-
-#~ msgid "Can't open package"
-#~ msgstr "Methu agor y pecyn"
-
-#~ msgid "Package is corrupted"
-#~ msgstr "Mae'r pecyn yn llwgr"
-
-#~ msgid "Package can't be installed"
-#~ msgstr "Ni fydd y pecyn yn cael ei osod"
-
-#~ msgid "Error while checking dependencies :("
-#~ msgstr "Gwall wrth wirio dibyniaethau :["
-
-#~ msgid "Force"
-#~ msgstr "Gorfodi"
-
-#~ msgid "Problems occured during installation"
-#~ msgstr "Digwyddodd anhawster wrth osod"
-
-#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
-#~ msgstr "defnydd: grpmi <[-noupgrade] rpms>\n"
-
-#~ msgid "grpmi error: you must be superuser!\n"
-#~ msgstr "gwall grpmi: rhaid i chi fod yn ddefnyddiwr uwch\n"
+#~ msgid "Everything installed successfully"
+#~ msgstr "Gosodwyd popeth yn llwyddiannus"
