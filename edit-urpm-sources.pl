@@ -250,6 +250,20 @@ sub mainwindow {
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('browse');
     $list_tv->set_rules_hint(1);
+    $list_tv->set_reorderable(1);
+
+    my $reorder_ok = 1;
+    $list->signal_connect(row_deleted => sub {
+                              my ($model) = @_;
+                              my @medias;
+                              $model->foreach(sub {
+                                              my (undef, $path) = @_;
+                                              my $name = $model->get($path, 1);
+                                              push @medias, find { $_->{name} eq $name } @{$urpm->{media}};
+                                              0;
+                                          }, undef);
+                              @{$urpm->{media}} = @medias;
+                          });
 
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled?"), my $tr = Gtk2::CellRendererToggle->new, 'active' => 0));
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Media"), Gtk2::CellRendererText->new, 'text' => 1));
@@ -263,10 +277,12 @@ sub mainwindow {
 			});
 
     my $reread_media = sub {
+        $reorder_ok = 0;
 	$urpm = urpm->new;
 	$urpm->read_config; 
 	$list->clear;
 	$list->append_set([ 0 => !$_->{ignore}, 1 => $_->{name} ])->free foreach @{$urpm->{media}};
+        $reorder_ok = 1;
     };
     $reread_media->();
 

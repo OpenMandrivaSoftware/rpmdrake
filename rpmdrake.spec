@@ -99,8 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Tue May 20 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-21mdk
+* Thu May 22 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-21mdk
 - fix some distlint DIRM
+- let medias be reorderable in the medias editor
 
 * Fri May 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-20mdk
 - perl-URPM API change: gives architecture in ask_remove
