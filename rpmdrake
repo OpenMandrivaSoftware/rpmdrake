@@ -692,8 +692,12 @@ sub dialog_rpmnew {
     my $inspect = sub {
 	my ($file) = @_;
 	my $d = my_gtk->new(_("Inspecting %s", $file));
+	my ($rpmnew, $rpmsave) = ("$file.rpmnew", "$file.rpmsave");
+	my $rpmfile = 'rpmnew';
+	-r $rpmnew or $rpmfile = 'rpmsave';
+	-r $rpmnew && -r $rpmsave && (stat $rpmsave)[9] > (stat $rpmnew)[9] and $rpmfile = 'rpmsave';
+	$rpmfile eq 'rpmsave' and $rpmnew = $rpmsave;
 	my %texts;
-	my $rpmnew = "$file.rpmnew";
 	gtkadd($d->{window},
 	       gtkpack_(gtkset_usize(new Gtk::VBox(0, 5), $typical_width*2.5, 500),
 			0, new Gtk::Label("$file:"),
@@ -703,10 +707,10 @@ sub dialog_rpmnew {
 			0, new Gtk::Label("changes:"),
 			1, createScrolledWindow($texts{diff} = new Gtk::Text),
 			0, gtkpack__(create_hbox(),
-				     gtksignal_connect(new Gtk::Button(_("Remove .rpmnew")),
+				     gtksignal_connect(new Gtk::Button(_("Remove .%s", $rpmfile)),
 						       clicked => sub { unlink $rpmnew; Gtk->main_quit }),
-				     gtksignal_connect(new Gtk::Button(_("Use .rpmnew as main file")),
-						       clicked => sub { renamef($rpmnew,$file); Gtk->main_quit }),
+				     gtksignal_connect(new Gtk::Button(_("Use .%s as main file", $rpmfile)),
+						       clicked => sub { renamef($rpmnew, $file); Gtk->main_quit }),
 				     gtksignal_connect(new Gtk::Button(_("Do nothing")),
 						       clicked => sub { Gtk->main_quit }),
 				    )));
@@ -717,20 +721,20 @@ sub dialog_rpmnew {
     };
     gtkadd($d->{window},
 	   gtkpack__(new Gtk::VBox(0,5),
-		     new Gtk::Label(_("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew',\nyou may now inspect some in order to take actions:",
+		     new Gtk::Label(_("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:",
 				      $exitstatus ? _("some packages failed to install\ncorrectly")
 				      : _("everything was installed correctly"))),
 		     gtkset_usize(createScrolledWindow(create_packtable({},
 									map { my $pkg = $_;
 									      map {
-										  my $file = $_;
+										  my $f = $_;
 										  my $b = new Gtk::Button(but(_("Inspect...")));
 										  [ gtkpack__(new Gtk::HBox(0, 0),
-											      new Gtk::Label("$pkg:$file")),
+											      new Gtk::Label("$pkg:$f")),
 										    gtksignal_connect($b,
 												      clicked => sub {
-													  $inspect->($file);
-													  -r "$file.rpmnew"
+													  $inspect->($f);
+													  -r "$f.rpmnew" || -r "$f.rpmsave"
 													    or $b->set_sensitive(0)
 													}) ]
 									      } @{$p2r{$pkg}}
@@ -793,7 +797,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	my %pkg2rpmnew;
 	foreach my $u (@rpms_upgrade) {
 	    $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
-	      and $pkg2rpmnew{$1} = [ grep { m|^/etc| && -r "$_.rpmnew" && !member($_, @ignores_rpmnew) } map { chomp_($_) } `rpm -ql $1` ];
+	      and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") && !member($_, @ignores_rpmnew) }
+				      map { chomp_($_) } `rpm -ql $1` ];
 	}
 	dialog_rpmnew($exitstatus, %pkg2rpmnew);
     } else {
