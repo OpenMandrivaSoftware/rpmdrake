@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-03-11 19:46--100\n"
 "Last-Translator: Tibor Pittich <Tibor.Pittich@phuture.sk>\n"
 "Language-Team: Slovak <i18n@mandrake.sk>\n"
@@ -55,11 +55,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Nastaviť zdroje"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Je potrebné vyplniť najmenej prvé dve položky."
@@ -78,6 +73,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Typ zdroja:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Kopírujem súbor pre zdroj '%s'..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -139,6 +144,11 @@ msgstr "Ako si zvoliť miror manuálne"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Príprava balíčkov na inštaláciu..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Prosím zvoľte zdroj ktorý chcete aktualizovať:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -327,6 +337,11 @@ msgstr "Je potrebné odstrániť niektoré balíčky"
 msgid "All packages, by update availability"
 msgstr "podľa dostupnosti zdroja"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Nastaviť zdroje"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -362,11 +377,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Žiaden miror"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Pridať zdroj"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -427,18 +437,8 @@ msgstr "Prosím čakajte, načítavam databázu balíčkov..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Vitajte v editore zdrojov pre balíčky!\n"
-"\n"
-"Tento nástroj Vám pomôže pri nastavení zdrojov pre balíčky, ktoré môžete\n"
-"použiť pre Váš počítač. Tieto budú dostupné pre inštaláciu nových balíčkov\n"
-"alebo pre vykonanie aktualizácií."
+msgid "Add a medium"
+msgstr "Pridať zdroj"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -462,6 +462,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Preverujem súbory zo zdroja '%s'..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -483,11 +488,6 @@ msgid "Sweden"
 msgstr "Švédsko"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Prosím zvoľte zdroj ktorý chcete aktualizovať:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Rakúsko"
@@ -502,11 +502,6 @@ msgstr "Info..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Typ zdroja:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -520,17 +515,6 @@ msgstr "Preveriť.."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -578,11 +562,6 @@ msgstr "Odstrániť .%s"
 msgid "Importance: "
 msgstr "Dôležitosť: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "podľa zdroja"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -603,15 +582,30 @@ msgstr ""
 "\n"
 "Je možné pokračovať?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Vitajte v editore zdrojov pre balíčky!\n"
+"\n"
+"Tento nástroj Vám pomôže pri nastavení zdrojov pre balíčky, ktoré môžete\n"
+"použiť pre Váš počítač. Tieto budú dostupné pre inštaláciu nových balíčkov\n"
+"alebo pre vykonanie aktualizácií."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Belgicko"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Preverujem súbory zo zdroja '%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -632,6 +626,11 @@ msgstr "Všetko bolo úspešne nainštalované"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "Nieje možné otvoriť balíček `%s'\n"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Aktualizácia zdrojov"
 
 #: ../rpmdrake:1
 #, c-format
@@ -703,6 +702,11 @@ msgstr "Bezpečnostné aktualizácie"
 msgid "Korea"
 msgstr "Korea"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Preverujem súbory zo zdroja '%s'..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -721,11 +725,6 @@ msgstr "Všetky balíčky,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -763,6 +762,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Stop"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Zmeniť zdroj"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -812,21 +816,6 @@ msgstr "Viac informácii o balíčku..."
 #, c-format
 msgid "Save changes"
 msgstr "Uložiť zmeny"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Je možné vybrať si Váš obľúbený mirror manuálne: a to tak,\n"
-"že spustíte Software Sources Manager a pridáte zdroje pre\n"
-"'Bezpečnostné aktualizácie'.\n"
-"\n"
-"Potom je potrebné reštartovať MandrakeUpdate."
 
 #: ../rpmdrake:1
 #, c-format
@@ -879,11 +868,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "Aktualizácia zdrojov"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -893,6 +877,11 @@ msgstr "Súbory:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Chyba pri pridávaní média"
 
 #: ../rpmdrake:1
 #, c-format
@@ -925,6 +914,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Je možné vybrať si Váš obľúbený mirror manuálne: a to tak,\n"
+"že spustíte Software Sources Manager a pridáte zdroje pre\n"
+"'Bezpečnostné aktualizácie'.\n"
+"\n"
+"Potom je potrebné reštartovať MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Pridávam zdroj:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -934,15 +943,21 @@ msgstr ""
 "Kvôli závislostiam budú tieto balíčky odstránené:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "Zmena zdroja \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Prosím čakajte, vypisujem balíčky..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -958,11 +973,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Normálne informácie"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Kopírujem súbor pre zdroj '%s'..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1146,15 +1156,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Inštalácia neúspešná, niektoré súbory chýbajú.\n"
-"Možno bude potrebné aktualizovať databázu zdrojov."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1167,6 +1168,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "Príprava balíčkov na inštaláciu..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1225,11 +1231,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "Networking/IRC"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1291,11 +1292,6 @@ msgstr "Vybrané"
 #, c-format
 msgid "Maximum information"
 msgstr "Maximálne informácie"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Zisťujem vzdialenosť súboru od zdroja '%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1421,6 +1417,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Inštalácia neúspešná, niektoré súbory chýbajú.\n"
+"Možno bude potrebné aktualizovať databázu zdrojov."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1470,11 +1475,6 @@ msgstr "Pomoc"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Na inštaláciu balíčkov musíte byť root, prepáčte."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Zmeniť zdroj"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1489,6 +1489,11 @@ msgstr "(žiaden)"
 #, c-format
 msgid "Germany"
 msgstr "Nemecko"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "podľa zdroja"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1524,11 +1529,6 @@ msgstr "Vymeniť médium"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Pridávam zdroj:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1596,11 +1596,6 @@ msgstr ""
 "\n"
 "Ohlásená chyba:\n"
 "%s"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Chyba pri pridávaní média"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1671,6 +1666,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Zmena zdroja \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2006,6 +2006,10 @@ msgstr "Odstrániť softvér"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Manažér zdrojov softvéru"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Zisťujem vzdialenosť súboru od zdroja '%s'..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Uložiť a ukončiť"

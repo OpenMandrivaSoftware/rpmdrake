@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-02-16 01:08+0200\n"
 "Last-Translator: Ovidiu Constantin <ovidiu.constantin@gmx.net>\n"
 "Language-Team: Romanian Translators for Free Software <rtfs-project@lists."
@@ -59,11 +59,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Configurare surse"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Trebuie sã completaþi cel puþin primele douã intrãri."
@@ -82,6 +77,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Tipul sursei:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Copiez fiºierul pentru sursa `%s'..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -144,6 +149,11 @@ msgstr "Cum sã selectaþi manual serverul oglindã"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Pregãtesc pachetele pentru instalare..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Selectaþi sursele de actualizat:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -334,6 +344,11 @@ msgstr "Trebuie ºterse unele pachete adiþionale"
 msgid "All packages, by update availability"
 msgstr "dupã disponibilitatea actualizãrii"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Configurare surse"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -369,11 +384,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Nu existã servere oglindã"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Adaugã o sursã"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -436,19 +446,8 @@ msgstr "Vã rog sã aºteptaþi, citesc baza de date a pachetelelor..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Bun venit la editorul surselor de pachete!\n"
-"\n"
-"Acest utilitar vã a ajuta sã configuraþi sursele de pachete soft pe care\n"
-"doriþi sã le utilizaþi pe calculatorul dvs. Ele vor fi apoi disponibile "
-"pentru \n"
-"instalare de soft nou sau actualizare."
+msgid "Add a medium"
+msgstr "Adaugã o sursã"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -472,6 +471,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Examinez fiºierul pentru sursa `%s'..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -493,11 +497,6 @@ msgid "Sweden"
 msgstr "Suedia"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Selectaþi sursele de actualizat:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Austria"
@@ -512,11 +511,6 @@ msgstr "Informaþii... "
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Tipul sursei:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -530,17 +524,6 @@ msgstr "Inspectez..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -588,11 +571,6 @@ msgstr "ªterg .%s"
 msgid "Importance: "
 msgstr "Importanþã: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "dupã sursã"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -613,15 +591,31 @@ msgstr ""
 "\n"
 "Doriþi sã continuaþi?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Bun venit la editorul surselor de pachete!\n"
+"\n"
+"Acest utilitar vã a ajuta sã configuraþi sursele de pachete soft pe care\n"
+"doriþi sã le utilizaþi pe calculatorul dvs. Ele vor fi apoi disponibile "
+"pentru \n"
+"instalare de soft nou sau actualizare."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Belgia"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Examinez fiºierul pentru sursa `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -642,6 +636,11 @@ msgstr "Totul a fost instalat cu succes"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "Nu pot deschide pachetul`%s'\n"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Actualizare surse"
 
 #: ../rpmdrake:1
 #, c-format
@@ -713,6 +712,11 @@ msgstr "Actualizãri ale sistemului de securitate"
 msgid "Korea"
 msgstr "Coreea"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Examinez fiºierul pentru sursa `%s'..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -731,11 +735,6 @@ msgstr "Toate pachetele,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -773,6 +772,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Opreºte"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Editare surse"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -825,21 +829,6 @@ msgid "Save changes"
 msgstr "Salveazã schimbãrile"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"De asemenea puteþi selecta manual serverul oglindã:\n"
-"pentru aceasta lansaþi Administratorul de surse de programe ºi adãugaþi o \n"
-"sursã tip 'Actualizãri ale sistemului de securitate'.\n"
-"\n"
-"Apoi reporniþi MandrakeUpdate."
-
-#: ../rpmdrake:1
 #, c-format
 msgid "Networking/News"
 msgstr ""
@@ -890,11 +879,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "Actualizare surse"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -904,6 +888,11 @@ msgstr "Fiºiere:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Eroare la adãugarea mediului de actualizare"
 
 #: ../rpmdrake:1
 #, c-format
@@ -936,6 +925,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"De asemenea puteþi selecta manual serverul oglindã:\n"
+"pentru aceasta lansaþi Administratorul de surse de programe ºi adãugaþi o \n"
+"sursã tip 'Actualizãri ale sistemului de securitate'.\n"
+"\n"
+"Apoi reporniþi MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Adaug sursa:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -946,15 +955,21 @@ msgstr ""
 "urmãtoarele pachete trebuie de asemenea ºterse:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "Editez sursa \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Vã rog sã aºteptaþi, listez pachetele..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -970,11 +985,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Informaþii normale"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Copiez fiºierul pentru sursa `%s'..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1158,15 +1168,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Instalare nereuºitã, unele fiºiere lipsesc.\n"
-"Probabil ar trebui sã actualizaþi baza de date a surselor."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1179,6 +1180,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "Pregãtesc pachetele pentru instalare..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1237,11 +1243,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "Networking/IRC"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1303,11 +1304,6 @@ msgstr "Selectate"
 #, c-format
 msgid "Maximum information"
 msgstr "Informaþii maximale"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Examinez fiºierul distant pentru sursa `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1433,6 +1429,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Instalare nereuºitã, unele fiºiere lipsesc.\n"
+"Probabil ar trebui sã actualizaþi baza de date a surselor."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1482,11 +1487,6 @@ msgstr "Ajutor"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Regret, trebuie sã fiþi root pentru a instala pachete."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Editare surse"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1501,6 +1501,11 @@ msgstr "(nimic)"
 #, c-format
 msgid "Germany"
 msgstr "Germania"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "dupã sursã"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1536,11 +1541,6 @@ msgstr "Schimbã mediul"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Adaug sursa:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1608,11 +1608,6 @@ msgstr ""
 "\n"
 "Eroare(erori) raportatã(e):\n"
 "%s"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Eroare la adãugarea mediului de actualizare"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1683,6 +1678,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Editez sursa \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2018,6 +2018,10 @@ msgstr "ªtergere programe"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Administrator surse de programe"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Examinez fiºierul distant pentru sursa `%s'..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Salvare ºi ieºire"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ja\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-04-05 00:06+0900\n"
 "Last-Translator: UTUMI Hirosi\n"
 "Language-Team: japanese <ja@li.org>\n"
@@ -58,11 +58,6 @@ msgstr "パッケージの署名を照合.."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Configure medias"
-msgstr "メディアの設定"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "少なくとも最初の２つの項目は入力してください。"
 
@@ -80,6 +75,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "メディアの種類:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "メディア`%s'用のファイルをコピー.."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -141,6 +146,11 @@ msgstr "ミラーを手動で選ぶには"
 #, c-format
 msgid "Package installation..."
 msgstr "パッケージをインストール.."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "更新するメディアを選んでください:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -329,6 +339,11 @@ msgstr "削除されるパッケージがあります"
 msgid "All packages, by update availability"
 msgstr "更新順"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "メディアの設定"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -364,11 +379,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "ミラーなし"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Add a media"
-msgstr "メディアを追加"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -427,19 +437,9 @@ msgid "Please wait, reading packages database..."
 msgstr "RPMのメディアを読み込んでいます。お待ちください。"
 
 #: ../edit-urpm-sources.pl:1
-#, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"RPMメディアマネージャへようこそ\n"
-"\n"
-"このツールはRPMのメディアを設定します。\n"
-"設定したメディアから新しいRPMをインストールしたり\n"
-"更新したりできるようになります。"
+#, fuzzy, c-format
+msgid "Add a medium"
+msgstr "メディアを追加"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -463,6 +463,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "メディア %s のファイルを調べています.."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -485,11 +490,6 @@ msgstr "スウェーデン"
 
 #: ../rpmdrake.pm:1
 #, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "更新するメディアを選んでください:"
-
-#: ../rpmdrake.pm:1
-#, c-format
 msgid "Austria"
 msgstr "オーストリア"
 
@@ -502,11 +502,6 @@ msgstr "情報"
 #, c-format
 msgid "Networking/File transfer"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Type of media:"
-msgstr "メディアの種類:"
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -522,21 +517,6 @@ msgstr "検索"
 #, c-format
 msgid "Games/Cards"
 msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"更新元は設定済みですが、現在それら全てが無効になっています。\n"
-"RPMメディアマネージャを起動して、少なくとも１つは有効にしてください。\n"
-"\n"
-"その後でMandrakeUpdateを起動してください。"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -583,11 +563,6 @@ msgstr ".%s を削除する"
 msgid "Importance: "
 msgstr "重要性: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "メディア順"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -608,15 +583,30 @@ msgstr ""
 "\n"
 "続けますか?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"RPMメディアマネージャへようこそ\n"
+"\n"
+"このツールはRPMのメディアを設定します。\n"
+"設定したメディアから新しいRPMをインストールしたり\n"
+"更新したりできるようになります。"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "メディア"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining file of media `%s'..."
-msgstr "メディア %s のファイルを調べています.."
 
 #: ../rpmdrake:1
 #, c-format
@@ -637,6 +627,11 @@ msgstr "インストールは全て成功しました"
 #, c-format
 msgid "unknown package "
 msgstr "不明なパッケージ "
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "メディアを更新"
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -708,6 +703,11 @@ msgstr "セキュリティアップデート"
 msgid "Korea"
 msgstr "韓国"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "メディア %s のファイルを調べています.."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -727,11 +727,6 @@ msgstr "全パッケージ"
 #, c-format
 msgid "Graphical desktop/FVWM based"
 msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
-msgstr "メディア: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -766,6 +761,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "中止"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "メディアを編集"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -818,21 +818,6 @@ msgid "Save changes"
 msgstr "変更を保存"
 
 #: ../rpmdrake:1
-#, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"ミラーを手動で選ぶこともできます。この場合は\n"
-"RPMメディアマネージャを起動して、「セキュリティアップデート」の\n"
-"メディアを追加します。\n"
-"\n"
-"そのあとでMandrakeアップデートを再起動してください。"
-
-#: ../rpmdrake:1
 #, fuzzy, c-format
 msgid "Networking/News"
 msgstr "ネットワークの設定:"
@@ -883,11 +868,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr "開発中の更新"
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, c-format
-msgid "Update media(s)"
-msgstr "メディアを更新"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -897,6 +877,11 @@ msgstr "ファイル: \n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "その更新元は既にあります"
 
 #: ../rpmdrake:1
 #, c-format
@@ -929,6 +914,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"ミラーを手動で選ぶこともできます。この場合は\n"
+"RPMメディアマネージャを起動して、「セキュリティアップデート」の\n"
+"メディアを追加します。\n"
+"\n"
+"そのあとでMandrakeアップデートを再起動してください。"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "メディアを追加:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -939,15 +944,25 @@ msgstr ""
 "以下のパッケージを削除します:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Editing media \"%s\":"
-msgstr "メディア %s を編集:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "RPMを並べかえています。お待ちください。"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"更新元は設定済みですが、現在それら全てが無効になっています。\n"
+"RPMメディアマネージャを起動して、少なくとも１つは有効にしてください。\n"
+"\n"
+"その後でMandrakeUpdateを起動してください。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -963,11 +978,6 @@ msgstr "開発中の更新"
 #, c-format
 msgid "Normal information"
 msgstr "標準情報"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Copying file for media `%s'..."
-msgstr "メディア`%s'用のファイルをコピー.."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1155,15 +1165,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"インストールに失敗しました。一部のファイルがありません。\n"
-"RPMのメディアを更新してください。"
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1176,6 +1177,11 @@ msgstr ""
 #, c-format
 msgid "No package found for installation."
 msgstr "インストールするパッケージが見つかりません。"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Medium: "
+msgstr "メディア: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -1241,11 +1247,6 @@ msgstr ""
 msgid "Networking/IRC"
 msgstr "ネットワーク"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
-msgstr "メディア"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Name: "
@@ -1305,11 +1306,6 @@ msgstr "選択済み"
 #, c-format
 msgid "Maximum information"
 msgstr "詳細情報"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "メディア %s のファイルを調べています.."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1434,6 +1430,15 @@ msgid "Development/KDE and Qt"
 msgstr "開発中の更新"
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"インストールに失敗しました。一部のファイルがありません。\n"
+"RPMのメディアを更新してください。"
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1483,11 +1488,6 @@ msgstr "ヘルプ"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "パッケージを取得できません。%s"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Edit a media"
-msgstr "メディアを編集"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1502,6 +1502,11 @@ msgstr "(なし)"
 #, c-format
 msgid "Germany"
 msgstr "ドイツ"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "メディア順"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1537,11 +1542,6 @@ msgstr "メディアを変更"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Adding a media:"
-msgstr "メディアを追加:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1612,11 +1612,6 @@ msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Already existing update medias"
-msgstr "その更新元は既にあります"
-
-#: ../rpmdrake:1
-#, c-format
 msgid "Currently installed version: "
 msgstr "現在のバージョン: "
 
@@ -1684,6 +1679,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "メディア %s を編集:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2016,6 +2016,9 @@ msgstr "RPMを削除"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "RPMメディアマネージャ"
+
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "メディア %s のファイルを調べています.."
 
 #~ msgid "Save and quit"
 #~ msgstr "保存して終了"

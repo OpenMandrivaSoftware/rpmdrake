@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-29 13:51+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-05-17 15:54+0200\n"
 "Last-Translator: Marek Laane <bald@online.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -58,11 +58,6 @@ msgstr "Signatuuride kontrollimine..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Configure medias"
-msgstr "Allikate seadistamine"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Täitke vähemalt 2 esimest välja."
 
@@ -80,6 +75,16 @@ msgstr "Süsteem/Seadistamine/Võrk"
 #, c-format
 msgid "System/XFree86"
 msgstr "Süsteem/XFree86"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Andmekandja tüüp:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Faili kopeerimine allika `%s' jaoks..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -141,6 +146,11 @@ msgstr "Kuidas valida peeglit käsitsi"
 #, c-format
 msgid "Package installation..."
 msgstr "Paigaldan..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Valige allikad, mida soovite uuendada:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -329,6 +339,11 @@ msgstr "Et kõik töötaks, on vaja lisaks eemaldada mõned paketid"
 msgid "All packages, by update availability"
 msgstr "uuendamisstaatuse järgi"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Allikate seadistamine"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -364,11 +379,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Peeglit ei leitud"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Add a media"
-msgstr "Lisa allikas"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -428,19 +438,9 @@ msgid "Please wait, reading packages database..."
 msgstr "Palun oodake, loen pakettide andmebaasi..."
 
 #: ../edit-urpm-sources.pl:1
-#, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Tarkvara allikad\n"
-"\n"
-"See abivahend aitab määrata pakettide allikaid, mida soovite kasutada oma\n"
-"süsteemi uuendamisel. Kui olete allikad määranud, saate nende abil\n"
-"paigaldada uusi tarkvarapakette või uuendada vanu pakette."
+#, fuzzy, c-format
+msgid "Add a medium"
+msgstr "Lisa allikas"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -464,6 +464,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Allikafaili `%s' uurimine..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -486,11 +491,6 @@ msgstr "Rootsi"
 
 #: ../rpmdrake.pm:1
 #, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Valige allikad, mida soovite uuendada:"
-
-#: ../rpmdrake.pm:1
-#, c-format
 msgid "Austria"
 msgstr "Austria"
 
@@ -503,11 +503,6 @@ msgstr "Info..."
 #, c-format
 msgid "Networking/File transfer"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Type of media:"
-msgstr "Andmekandja tüüp:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -523,22 +518,6 @@ msgstr "Uuri..."
 #, c-format
 msgid "Games/Cards"
 msgstr "Mängud/Kaardimängud"
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Vähemalt üks uuenduste allikas peab olema seadistatud, kuid\n"
-"praegu on kõik keelatud. Teil tuleks käivitada tarkvara allikate\n"
-"haldur, et vähemalt üks lubada (klõpsake selleks veerul Kas lubada?)\n"
-"\n"
-"Seejärel käivitage Mandrake uuendused uuesti."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -585,11 +564,6 @@ msgstr "Eemalda .%s"
 msgid "Importance: "
 msgstr "Tähtsus: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "andmekandja asukoha järgi"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -610,15 +584,30 @@ msgstr ""
 "\n"
 "Kas jätkata?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Tarkvara allikad\n"
+"\n"
+"See abivahend aitab määrata pakettide allikaid, mida soovite kasutada oma\n"
+"süsteemi uuendamisel. Kui olete allikad määranud, saate nende abil\n"
+"paigaldada uusi tarkvarapakette või uuendada vanu pakette."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Andmekandja"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr "Süsteem/Internatsionaliseerimine"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Allikafaili `%s' uurimine..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -639,6 +628,11 @@ msgstr "Kõik paigaldati edukalt"
 #, c-format
 msgid "unknown package "
 msgstr "tundmatu pakett "
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Allika(te) uuendamine"
 
 #: ../rpmdrake:1
 #, c-format
@@ -710,6 +704,11 @@ msgstr "Turvaparandused"
 msgid "Korea"
 msgstr "Korea"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Allikafaili `%s' uurimine..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -729,11 +728,6 @@ msgstr "Kõik paketid,"
 #, c-format
 msgid "Graphical desktop/FVWM based"
 msgstr "Graafiline töölaud/FVWM"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
-msgstr "Andmekandja: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -768,6 +762,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Peata"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Allika muutmine"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -820,21 +819,6 @@ msgstr "Salvesta muutused"
 
 #: ../rpmdrake:1
 #, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Te võite meelepärase peegli ka käsitsi valida. Selleks\n"
-"käivitage tarkvara allikate haldur ja lisage 'turvauuenduste'\n"
-"allikas.\n"
-"\n"
-"Seejärel taaskäivitage Mandrake uuendused."
-
-#: ../rpmdrake:1
-#, c-format
 msgid "Networking/News"
 msgstr "Võrk/Uudised"
 
@@ -883,11 +867,6 @@ msgstr "Teadus/Astronoomina"
 msgid "Development/Kernel"
 msgstr "Arendus/Kernel"
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, c-format
-msgid "Update media(s)"
-msgstr "Allika(te) uuendamine"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -897,6 +876,11 @@ msgstr "Failid:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr "Mängud/Võitlusmängud"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Olemasolevad uuenduste allikad"
 
 #: ../rpmdrake:1
 #, c-format
@@ -929,6 +913,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Te võite meelepärase peegli ka käsitsi valida. Selleks\n"
+"käivitage tarkvara allikate haldur ja lisage 'turvauuenduste'\n"
+"allikas.\n"
+"\n"
+"Seejärel taaskäivitage Mandrake uuendused."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Allika lisamine:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -938,15 +942,26 @@ msgstr ""
 "Kõigi sõltuvuste rahuldamiseks eemaldatakse ka järgmised paketid:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Editing media \"%s\":"
-msgstr "Allika \"%s\" muutmine:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Palun oodake, koostan nimekirja..."
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Vähemalt üks uuenduste allikas peab olema seadistatud, kuid\n"
+"praegu on kõik keelatud. Teil tuleks käivitada tarkvara allikate\n"
+"haldur, et vähemalt üks lubada (klõpsake selleks veerul Kas lubada?)\n"
+"\n"
+"Seejärel käivitage Mandrake uuendused uuesti."
 
 #: ../rpmdrake:1
 #, c-format
@@ -962,11 +977,6 @@ msgstr "Arendus/Perl"
 #, c-format
 msgid "Normal information"
 msgstr "Tavainfo"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Faili kopeerimine allika `%s' jaoks..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1154,15 +1164,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Paigaldus ebaõnnestus, osa faile on puudu.\n"
-"Võimalik, et peate allikate andmebaasi uuendama."
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1175,6 +1176,11 @@ msgstr ""
 #, c-format
 msgid "No package found for installation."
 msgstr "Paigaldamiseks ei leitud ühtegi paketti."
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Medium: "
+msgstr "Andmekandja: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -1240,11 +1246,6 @@ msgstr "Andmebaasid"
 msgid "Networking/IRC"
 msgstr "Võrk/IRC"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
-msgstr "Andmekandja"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Name: "
@@ -1304,11 +1305,6 @@ msgstr "Valitud"
 #, c-format
 msgid "Maximum information"
 msgstr "Täielik info"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Kaugallikafaili `%s' uurimine..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1433,6 +1429,15 @@ msgid "Development/KDE and Qt"
 msgstr "Arendus/KDE ja Qt"
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Paigaldus ebaõnnestus, osa faile on puudu.\n"
+"Võimalik, et peate allikate andmebaasi uuendama."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr "Raamatud/HOWTO-d"
@@ -1482,11 +1487,6 @@ msgstr "Abi"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Vabandust, pakette ei õnnetunud kätte saada. %s"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Edit a media"
-msgstr "Allika muutmine"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1501,6 +1501,11 @@ msgstr "(puudub)"
 #, c-format
 msgid "Germany"
 msgstr "Saksamaa"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "andmekandja asukoha järgi"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1536,11 +1541,6 @@ msgstr "Muuda andmekandjat"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr "Graafiline töölaud/GNOME"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Adding a media:"
-msgstr "Allika lisamine:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1611,11 +1611,6 @@ msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Already existing update medias"
-msgstr "Olemasolevad uuenduste allikad"
-
-#: ../rpmdrake:1
-#, c-format
 msgid "Currently installed version: "
 msgstr "Praegu paigaldatud versioon: "
 
@@ -1683,6 +1678,11 @@ msgstr "Tekstivahendid"
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Allika \"%s\" muutmine:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2015,6 +2015,9 @@ msgstr "Tarkvara eemaldamine"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Tarkvaraallikate haldur"
+
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Kaugallikafaili `%s' uurimine..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Salvesta ja välju"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2002-08-30 16:19+0300\n"
 "Last-Translator: Νίκος Νύκταρης (Nick Niktaris) <niktaris@yahoo.com>\n"
 "Language-Team: Greek <nls@hellug.gr>\n"
@@ -56,11 +56,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Ρύθμιση πηγών"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Πρέπει να συμπληρώσετε τουλάχιστον τα δύο πρώτα πεδία."
@@ -78,6 +73,16 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "System/XFree86"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Τύπος πηγής:"
+
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Copying file for medium `%s'..."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -141,6 +146,11 @@ msgstr "Πως να διαλέξετε μόνοι σας την εναλλακτική σας"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Προετοιμασία πακέτων για εγκατάσταση..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Επιλέξτε τις πηγές που θέλετε να ανανεώσετε:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -329,6 +339,11 @@ msgstr "Ορισμένα επιπλέον πακέτα πρέπει να αφαιρεθούν"
 msgid "All packages, by update availability"
 msgstr "βάση διαθεσιμότητας αναβάθμισης"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Ρύθμιση πηγών"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -364,11 +379,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Χωρίς εναλλακτικές"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Προσθήκη πηγής:"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -425,18 +435,8 @@ msgstr "Παρακαλώ περιμένετε, διαβάζεται η βάση δεδομένων των πακέτων..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Καλώς ορίσατε στον επεξεργαστή των πηγαίων πακέτων!\n"
-"\n"
-"Αυτό το εργαλείο θα σας βοηθήσει να ρυθμίσετε τα πηγαία πακέτα που θέλετε\n"
-"να χρησιμοποιήσετε σε αυτόν τον υπολογιστή. 'Έπειτα θα είναι διαθέσιμα να \n"
-"εγκατασταθούν σαν νέα πακέτα ή να αναβαθμίσετε υπάρχοντα πακέτα."
+msgid "Add a medium"
+msgstr "Προσθήκη πηγής:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -461,6 +461,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Examining file of medium `%s'..."
+msgstr ""
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -482,11 +487,6 @@ msgid "Sweden"
 msgstr "Σουηδία"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Επιλέξτε τις πηγές που θέλετε να ανανεώσετε:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Αυστρία"
@@ -501,11 +501,6 @@ msgstr "Πληροφορίες..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Τύπος πηγής:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -519,17 +514,6 @@ msgstr "Έλεγχος..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -577,11 +561,6 @@ msgstr "Αφαίρεση.%s"
 msgid "Importance: "
 msgstr "Σπουδαιότητα: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "βάση αποθηκευμένων πηγών"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -602,14 +581,29 @@ msgstr ""
 "\n"
 "Να συνεχιστεί;"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Καλώς ορίσατε στον επεξεργαστή των πηγαίων πακέτων!\n"
+"\n"
+"Αυτό το εργαλείο θα σας βοηθήσει να ρυθμίσετε τα πηγαία πακέτα που θέλετε\n"
+"να χρησιμοποιήσετε σε αυτόν τον υπολογιστή. 'Έπειτα θα είναι διαθέσιμα να \n"
+"εγκατασταθούν σαν νέα πακέτα ή να αναβαθμίσετε υπάρχοντα πακέτα."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Βέλγιο"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
-msgstr ""
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining file of media `%s'..."
 msgstr ""
 
 #: ../rpmdrake:1
@@ -631,6 +625,11 @@ msgstr "Όλα εγκαταστάθηκαν επιτυχώς"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "Αδυναμία ανοίγματος του πακέτου`%s'\n"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Ανανέωση πηγής(ών)"
 
 #: ../rpmdrake:1
 #, c-format
@@ -702,6 +701,11 @@ msgstr "Ανανεώσεις Ασφαλείας"
 msgid "Korea"
 msgstr "Εξαναγκασμός"
 
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr ""
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -720,11 +724,6 @@ msgstr "Όλα τα πακέτα,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -761,6 +760,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Τερματισμός"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Επεξεργασία πηγής"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -811,21 +815,6 @@ msgstr "Περισσότερες πληροφορίες για το πακέτο..."
 #, c-format
 msgid "Save changes"
 msgstr "Αποθήκευση αλλαγών"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Μπορείτε μόνοι σας να διαλέξετε την επιθυμητή σε εσάς εναλλακτική\n"
-"διεύθυνση: για να το κάνετε εκκινήστε το Διαχειριστής Πηγαίων Πακέτων\n"
-"και προσθέστε μια  πηγή `Αναβάθμιση ασφαλείας' \n"
-"\n"
-"Μετά, ξεκινήστε ξανά το MandrakeUpdate."
 
 #: ../rpmdrake:1
 #, c-format
@@ -879,11 +868,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "Ανανέωση πηγής(ών)"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -893,6 +877,11 @@ msgstr "Άρχεία:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Σφάλμα κατά την προσθήκη του μέσου αναβαθμίσεων"
 
 #: ../rpmdrake:1
 #, c-format
@@ -925,6 +914,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Μπορείτε μόνοι σας να διαλέξετε την επιθυμητή σε εσάς εναλλακτική\n"
+"διεύθυνση: για να το κάνετε εκκινήστε το Διαχειριστής Πηγαίων Πακέτων\n"
+"και προσθέστε μια  πηγή `Αναβάθμιση ασφαλείας' \n"
+"\n"
+"Μετά, ξεκινήστε ξανά το MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Προσθήκη πηγής:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -935,15 +944,21 @@ msgstr ""
 "να αφαιρεθούν:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "Επεξεργασία πηγής \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Παρακαλώ περιμένετε, ταξινομούνται τα πακέτα"
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -959,11 +974,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Κανονικές πληροφορίες"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Copying file for media `%s'..."
-msgstr ""
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1147,15 +1157,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Η εγκατάσταση απέτυχε, ορισμένα αρχεία δεν υπάρχουν.\n"
-"Ίσως να πρέπει να αναβαθμίσετε την βάση δεδομένων των πηγών."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1168,6 +1169,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "Προετοιμασία πακέτων για εγκατάσταση..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -1226,11 +1232,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "Networking/IRC"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1292,11 +1293,6 @@ msgstr "Επιλεγμένα"
 #, c-format
 msgid "Maximum information"
 msgstr "Μέγιστες πληροφορίες"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1422,6 +1418,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Η εγκατάσταση απέτυχε, ορισμένα αρχεία δεν υπάρχουν.\n"
+"Ίσως να πρέπει να αναβαθμίσετε την βάση δεδομένων των πηγών."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1471,11 +1476,6 @@ msgstr "Βοήθεια"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Πρέπει να είστε root για να εγκαταστήσετε πακέτα, συγνώμη."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Επεξεργασία πηγής"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1490,6 +1490,11 @@ msgstr "(κανένα)"
 #, c-format
 msgid "Germany"
 msgstr "Γερμανία"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "βάση αποθηκευμένων πηγών"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1525,11 +1530,6 @@ msgstr "Αλλαγή μέσου"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Προσθήκη πηγής:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1593,11 +1593,6 @@ msgid ""
 "Error(s) reported:\n"
 "%s"
 msgstr ""
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Σφάλμα κατά την προσθήκη του μέσου αναβαθμίσεων"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1668,6 +1663,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Επεξεργασία πηγής \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format

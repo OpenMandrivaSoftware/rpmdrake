@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-02-24 16:17+0100\n"
 "Last-Translator: Hendrik-Jan Heins <hjh@passys.nl>\n"
 "Language-Team: Nederlands <vertaling@nl.linux.org>\n"
@@ -58,11 +58,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Bronnen configureren"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "U dient tenminste de eerste twee velden in te vullen."
@@ -81,6 +76,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Brontype:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Kopiëren van bestand voor bron `%s'..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -143,6 +148,11 @@ msgstr "Hoe u handmatig uw mirror kunt kiezen"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Klaarmaken pakketten voor installatie"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Selecteer de bron(nen) die u wilt verversen:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -335,6 +345,11 @@ msgstr "Enkele extra pakketten dienen verwijderd te worden"
 msgid "All packages, by update availability"
 msgstr "op beschikbaarheid vernieuwingen"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Bronnen configureren"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -370,11 +385,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Geen mirror"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Bron toevoegen"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -437,18 +447,8 @@ msgstr "Even geduld, bezig met lezen van pakkettendatabase..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Welkom bij de pakketbron-editor!\n"
-"\n"
-"Dit hulpprogramma helpt u om de pakketbronnen te configureren die u wenst\n"
-"te gebruiken op uw computer. Deze zullen dan beschikbaar zijn om nieuwe\n"
-"softwarepakketten te installeren of om vernieuwingen uit te voeren."
+msgid "Add a medium"
+msgstr "Bron toevoegen"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -474,6 +474,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Onderzoeken van bestand van bron `%s'..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -495,11 +500,6 @@ msgid "Sweden"
 msgstr "Zweden"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Selecteer de bron(nen) die u wilt verversen:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Oostenrijk"
@@ -514,11 +514,6 @@ msgstr "Info..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Brontype:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -532,17 +527,6 @@ msgstr "Inspecteren..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -591,11 +575,6 @@ msgstr ".%s verwijderen"
 msgid "Importance: "
 msgstr "Belang: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "op bron"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -617,15 +596,30 @@ msgstr ""
 "\n"
 "Is het goed om door te gaan?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Welkom bij de pakketbron-editor!\n"
+"\n"
+"Dit hulpprogramma helpt u om de pakketbronnen te configureren die u wenst\n"
+"te gebruiken op uw computer. Deze zullen dan beschikbaar zijn om nieuwe\n"
+"softwarepakketten te installeren of om vernieuwingen uit te voeren."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "België"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Onderzoeken van bestand van bron `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -646,6 +640,11 @@ msgstr "Alles is succesvol geïnstalleerd"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "Kan pakket `%s' niet openen\n"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Bron(nen) verversen"
 
 #: ../rpmdrake:1
 #, c-format
@@ -717,6 +716,11 @@ msgstr "Beveiligingsverbeteringen"
 msgid "Korea"
 msgstr "Korea, Republiek"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Onderzoeken van bestand van bron `%s'..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -736,11 +740,6 @@ msgstr "Alle pakketten,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -777,6 +776,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Stoppen"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Een bron bewerken"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -829,21 +833,6 @@ msgid "Save changes"
 msgstr "Veranderingen opslaan"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"U kunt ook uw gewenste mirror handmatig kiezen: daarvoor start\n"
-"u het Software-Bronnenbeheer en voegt u een `Beveiligingsvernieuwingen'-\n"
-"bron toe.\n"
-"\n"
-"Daarna herstart u Mandrake Vernieuwen."
-
-#: ../rpmdrake:1
 #, c-format
 msgid "Networking/News"
 msgstr ""
@@ -894,11 +883,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "Bron(nen) verversen"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -908,6 +892,11 @@ msgstr "Bestanden:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Er is een fout opgetreden bij het toevoegen van een vernieuwingsmedium"
 
 #: ../rpmdrake:1
 #, c-format
@@ -941,6 +930,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"U kunt ook uw gewenste mirror handmatig kiezen: daarvoor start\n"
+"u het Software-Bronnenbeheer en voegt u een `Beveiligingsvernieuwingen'-\n"
+"bron toe.\n"
+"\n"
+"Daarna herstart u Mandrake Vernieuwen."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Bezig met toevoegen van bron:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -951,15 +960,21 @@ msgstr ""
 "verwijderd worden:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "Bewerken van bron \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Even geduld, bezig met opsommen van pakketten..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -975,11 +990,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Normale informatie"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Kopiëren van bestand voor bron `%s'..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1169,15 +1179,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Installatie mislukt, sommige bestanden missen.\n"
-"U wilt misschien uw bronnen-database verversen."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1190,6 +1191,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "Klaarmaken pakketten voor installatie"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1249,11 +1255,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "Networking/IRC"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1316,11 +1317,6 @@ msgstr "Geselecteerd"
 #, c-format
 msgid "Maximum information"
 msgstr "Maximale informatie"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Onderzoeken van afstandsbestand van bron `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1448,6 +1444,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Installatie mislukt, sommige bestanden missen.\n"
+"U wilt misschien uw bronnen-database verversen."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1497,11 +1502,6 @@ msgstr "Hulp"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "U moet root zijn om pakketten te kunnen installeren, excuus."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Een bron bewerken"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1516,6 +1516,11 @@ msgstr "(geen)"
 #, c-format
 msgid "Germany"
 msgstr "Duitsland"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "op bron"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1551,11 +1556,6 @@ msgstr "Medium veranderen"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Bezig met toevoegen van bron:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1626,11 +1626,6 @@ msgstr ""
 "%s"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Er is een fout opgetreden bij het toevoegen van een vernieuwingsmedium"
-
-#: ../rpmdrake:1
 #, c-format
 msgid "Currently installed version: "
 msgstr "Momenteel geïnstalleerde versie: "
@@ -1699,6 +1694,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Bewerken van bron \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2034,6 +2034,10 @@ msgstr "Software verwijderen"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Software Bronnenbeheer"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Onderzoeken van afstandsbestand van bron `%s'..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Opslaan en afsluiten"

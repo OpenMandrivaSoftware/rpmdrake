@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2002-08-25 14:32+0900\n"
 "Last-Translator: Jaegeum Cze <baedaron@hanafos.com>\n"
 "Language-Team: Korean <baedaron@hananet.net>\n"
@@ -60,11 +60,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "소스 설정"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "최소한 처음 두 항목에는 기입해야 합니다."
@@ -82,6 +77,16 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "System/XFree86"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "소스 유형:"
+
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Copying file for medium `%s'..."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -144,6 +149,11 @@ msgstr "수동으로 미러를 선택하는 방법"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "설치할 팩키지 준비 중..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "업데이트하려는 소스을 선택해 주세요:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -333,6 +343,11 @@ msgstr "일부 팩키지가 더 제거 되어야 합니다."
 msgid "All packages, by update availability"
 msgstr "업데이트 가능성별"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "소스 설정"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -368,11 +383,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "미러 없음"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "소스 추가:"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -435,18 +445,8 @@ msgstr "기다려 주세요. 팩키지 데이터베이스 읽는 중..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"팩키지 소스 편집기에 잘 오셨습니다!\n"
-"\n"
-"이 도구는 이 컴퓨터 상에서 사용할 팩키지 소스 설정을 도와 줍니다.\n"
-"설정된 소스는 새 소프트웨어 팩키지를 설치하거나 업데이트할 때\n"
-"사용됩니다."
+msgid "Add a medium"
+msgstr "소스 추가:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -470,6 +470,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Examining file of medium `%s'..."
+msgstr ""
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -491,11 +496,6 @@ msgid "Sweden"
 msgstr "스웨덴"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "업데이트하려는 소스을 선택해 주세요:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "오스트리아"
@@ -510,11 +510,6 @@ msgstr "정보..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "소스 유형:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -528,17 +523,6 @@ msgstr "조사..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -586,11 +570,6 @@ msgstr ".%s 제거"
 msgid "Importance: "
 msgstr "중요도: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "소스 등록별"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -611,14 +590,29 @@ msgstr ""
 "\n"
 "계속할까요?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"팩키지 소스 편집기에 잘 오셨습니다!\n"
+"\n"
+"이 도구는 이 컴퓨터 상에서 사용할 팩키지 소스 설정을 도와 줍니다.\n"
+"설정된 소스는 새 소프트웨어 팩키지를 설치하거나 업데이트할 때\n"
+"사용됩니다."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "벨기에"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
-msgstr ""
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining file of media `%s'..."
 msgstr ""
 
 #: ../rpmdrake:1
@@ -640,6 +634,11 @@ msgstr "모든 설치를 마쳤습니다."
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "[%s] 팩키지를 열 수 없습니다.\n"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "소스 업데이트"
 
 #: ../rpmdrake:1
 #, c-format
@@ -711,6 +710,11 @@ msgstr "보안 업데이트"
 msgid "Korea"
 msgstr "대한민국"
 
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr ""
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -729,11 +733,6 @@ msgstr "모든 팩키지"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -771,6 +770,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "중지"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "소스 편집"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -823,21 +827,6 @@ msgid "Save changes"
 msgstr "변경사항 저장"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"수동으로 원하는 미러를 선택할 수 있습니다: 그러기 위해서는,\n"
-"소프트웨어 소스 관리자를 실행한 후, [보안 업데이트] 소스를\n"
-"추가하세요.\n"
-"\n"
-"그런 후, 맨드레이크 업데이트를 다시 실행하세요."
-
-#: ../rpmdrake:1
 #, c-format
 msgid "Networking/News"
 msgstr ""
@@ -888,11 +877,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "소스 업데이트"
-
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid "Files:\n"
@@ -902,6 +886,11 @@ msgstr "%s파일들:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "업데이트 매체 추가 중 오류"
 
 #: ../rpmdrake:1
 #, c-format
@@ -934,6 +923,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"수동으로 원하는 미러를 선택할 수 있습니다: 그러기 위해서는,\n"
+"소프트웨어 소스 관리자를 실행한 후, [보안 업데이트] 소스를\n"
+"추가하세요.\n"
+"\n"
+"그런 후, 맨드레이크 업데이트를 다시 실행하세요."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "소스 추가:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -944,15 +953,21 @@ msgstr ""
 "다음 팩키지들도 제거 되어야 합니다:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "소스 [%s] 편집:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "기다려 주세요. 팩키지 목록 정렬 중..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -968,11 +983,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "일반 정보"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Copying file for media `%s'..."
-msgstr ""
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1156,15 +1166,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"설치 실패. 일부 파일이 없습니다.\n"
-"소스 데이터베이스를 업데이트해 보세요."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1177,6 +1178,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "설치할 팩키지 준비 중..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1235,11 +1241,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "Networking/IRC"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1301,11 +1302,6 @@ msgstr "선택됨"
 #, c-format
 msgid "Maximum information"
 msgstr "최대 정보"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1431,6 +1427,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"설치 실패. 일부 파일이 없습니다.\n"
+"소스 데이터베이스를 업데이트해 보세요."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1480,11 +1485,6 @@ msgstr "도움말"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "팩키지 설치는 root 사용자만 할 수 있습니다."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "소스 편집"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1499,6 +1499,11 @@ msgstr "(없음)"
 #, c-format
 msgid "Germany"
 msgstr "독일"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "소스 등록별"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1534,11 +1539,6 @@ msgstr "매체 교환"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "소스 추가:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1600,11 +1600,6 @@ msgid ""
 "Error(s) reported:\n"
 "%s"
 msgstr ""
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "업데이트 매체 추가 중 오류"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1675,6 +1670,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "소스 [%s] 편집:"
 
 #: ../rpmdrake:1
 #, c-format

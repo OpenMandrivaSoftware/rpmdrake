@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-02-23 11:02+0100\n"
 "Last-Translator: Arpad Biro <biro_arpad@yahoo.com>\n"
 "Language-Team: Hungarian\n"
@@ -57,11 +57,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Források beállítása"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Legalább az elsõ két bejegyzést ki kell tölteni."
@@ -80,6 +75,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Az adatforrás típusa:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Fájl másolása: \"%s\"..."
 
 #: ../rpmdrake.pm:1
 #, fuzzy, c-format
@@ -141,6 +146,11 @@ msgstr "Hogyan lehet tükörkiszolgálót választani saját kezûleg"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Csomagok elõkészítése a telepítéshez..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Válassza ki, mely forrás(oka)t kívánja frissíteni:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -331,6 +341,11 @@ msgstr "Néhány további csomagot is el kell távolítani"
 msgid "All packages, by update availability"
 msgstr "telepítettség alapján"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Források beállítása"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -366,11 +381,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Tükörkiszolgáló nem található"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Forrás felvétele"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -430,18 +440,8 @@ msgstr "Csomag-adatbázis olvasása..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Üdvözli a csomagforrás-szerkesztõ.\n"
-"\n"
-"Ezzel a programmal beállíthatja a gépen használni kívánt csomagforrásokat.\n"
-"Ezt követõen a források felhasználásával új programokat telepíthet és\n"
-"frissítheti a meglevõket."
+msgid "Add a medium"
+msgstr "Forrás felvétele"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -466,6 +466,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Fájl vizsgálata: \"%s\"..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -487,11 +492,6 @@ msgid "Sweden"
 msgstr "Svédország"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Válassza ki, mely forrás(oka)t kívánja frissíteni:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Ausztria"
@@ -506,11 +506,6 @@ msgstr "Információ..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Az adatforrás típusa:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -524,17 +519,6 @@ msgstr "Vizsgálat..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -582,11 +566,6 @@ msgstr ".%s eltávolítása"
 msgid "Importance: "
 msgstr "Fontosság: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "forrás alapján"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -608,15 +587,30 @@ msgstr ""
 "\n"
 "Kívánja folytatni?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Üdvözli a csomagforrás-szerkesztõ.\n"
+"\n"
+"Ezzel a programmal beállíthatja a gépen használni kívánt csomagforrásokat.\n"
+"Ezt követõen a források felhasználásával új programokat telepíthet és\n"
+"frissítheti a meglevõket."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Belgium"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Fájl vizsgálata: \"%s\"..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -637,6 +631,11 @@ msgstr "Sikeresen telepítve lett minden"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "A(z) \"%s\" csomag nem nyitható meg\n"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Forrás(ok) frissítése"
 
 #: ../rpmdrake:1
 #, c-format
@@ -708,6 +707,11 @@ msgstr "Biztonsági frissítések"
 msgid "Korea"
 msgstr "Akkor is"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Fájl vizsgálata: \"%s\"..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -726,11 +730,6 @@ msgstr "Az összes csomag,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -767,6 +766,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Leállítás"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Forrás szerkesztése"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -814,21 +818,6 @@ msgstr "További információ a csomagról..."
 #, c-format
 msgid "Save changes"
 msgstr "Módosítások mentése"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"A kívánt tükörkiszolgáló saját kezûleg is kiválasztható; ehhez\n"
-"indítsa el a szoftverforrás-kezelõt, majd vegyen fel egy \"Biztonsági\n"
-"frissítések\" forrást.\n"
-"\n"
-"Ez után indítsa el újra a MandrakeUpdate programot."
 
 #: ../rpmdrake:1
 #, c-format
@@ -881,11 +870,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "Forrás(ok) frissítése"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -895,6 +879,11 @@ msgstr "Fájlok:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Hiba a frissítési adatforrás felvétele közben"
 
 #: ../rpmdrake:1
 #, c-format
@@ -927,6 +916,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"A kívánt tükörkiszolgáló saját kezûleg is kiválasztható; ehhez\n"
+"indítsa el a szoftverforrás-kezelõt, majd vegyen fel egy \"Biztonsági\n"
+"frissítések\" forrást.\n"
+"\n"
+"Ez után indítsa el újra a MandrakeUpdate programot."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Forrás felvétele:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -936,15 +945,21 @@ msgstr ""
 "A függõségeik miatt a következõ csomago(ka)t is el kell távolítani:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "\"%s\" forrás szerkesztése:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "A csomagok listázása folyamatban..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -960,11 +975,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Normál mennyiségû információ"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Fájl másolása: \"%s\"..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1148,15 +1158,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"A telepítés sikertelen volt, mivel bizonyos fájlok\n"
-"nem találhatók. Esetleg frissítse a forrás-adatbázist."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1169,6 +1170,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "Csomagok elõkészítése a telepítéshez..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1233,11 +1239,6 @@ msgstr ""
 msgid "Networking/IRC"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
-msgstr ""
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Name: "
@@ -1298,11 +1299,6 @@ msgstr "Kijelölve"
 #, c-format
 msgid "Maximum information"
 msgstr "Maximális mennyiségû információ"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Távoli fájl vizsgálata: \"%s\"..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1428,6 +1424,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"A telepítés sikertelen volt, mivel bizonyos fájlok\n"
+"nem találhatók. Esetleg frissítse a forrás-adatbázist."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1477,11 +1482,6 @@ msgstr "Segítség"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Csomagtelepítéshez rendszergazdai jogosultság szükséges."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Forrás szerkesztése"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1496,6 +1496,11 @@ msgstr "(egyik sem)"
 #, c-format
 msgid "Germany"
 msgstr "Németország"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "forrás alapján"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1531,11 +1536,6 @@ msgstr "Adatforrás váltása"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Forrás felvétele:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1603,11 +1603,6 @@ msgstr ""
 "\n"
 "Hibaüzenetek:\n"
 "%s"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Hiba a frissítési adatforrás felvétele közben"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1680,6 +1675,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "\"%s\" forrás szerkesztése:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2016,6 +2016,10 @@ msgstr "Szoftvereltávolítás"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Szoftverforrás-kezelõ"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Távoli fájl vizsgálata: \"%s\"..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Mentés és kilépés"

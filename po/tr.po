@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-02-13 18:29+0200\n"
 "Last-Translator: Ömer Fadıl USTA <omer_fad@hotmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -57,11 +57,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Kaynakları yapılandır"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "En azından İlk iki girişi doldurmak zorundasınız."
@@ -80,6 +75,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Kaynağın türü"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "'%s' dosyasının kaynağı kopyalanıyor..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -141,6 +146,11 @@ msgstr "Yansınızı elle nasıl seçersiniz?"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Kurulum için paketler hazırlanılıyor..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Lütfen güncellemek istediğiniz kaynakları seçiniz:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -329,6 +339,11 @@ msgstr "Bazı ek paketlerin kaldırılması gerekiyor"
 msgid "All packages, by update availability"
 msgstr "güncellenebilirliğine göre"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Kaynakları yapılandır"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -364,11 +379,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Yansı yok"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Bir kaynak ekle"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -429,19 +439,8 @@ msgstr "Lütfen bekleyin, paket veritabanı okunuyor..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Paket kaynağı düzenleyicisine hoşgeldiniz!\n"
-"\n"
-"Bu araç bilgisayarınızda kullanmak istediğiniz paket kaynaklarını "
-"yapılandırmada\n"
-"size yardımcı olacak. Sonra da yeni yazılım paketi yüklemek veya güncelleme\n"
-"yapmak için bunları kullanabileceksiniz."
+msgid "Add a medium"
+msgstr "Bir kaynak ekle"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -465,6 +464,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "'%s' dosyasının kaynağı sınanıyor..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -486,11 +490,6 @@ msgid "Sweden"
 msgstr "İsveç"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Lütfen güncellemek istediğiniz kaynakları seçiniz:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Avusturya"
@@ -505,11 +504,6 @@ msgstr "Hakkında..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Kaynağın türü"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -523,17 +517,6 @@ msgstr "İncele..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -581,11 +564,6 @@ msgstr "Kaldır .%s"
 msgid "Importance: "
 msgstr "Önem: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "kaynak deposuna göre"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -606,15 +584,31 @@ msgstr ""
 "\n"
 "Devam etmek için herşey tamam mı?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Paket kaynağı düzenleyicisine hoşgeldiniz!\n"
+"\n"
+"Bu araç bilgisayarınızda kullanmak istediğiniz paket kaynaklarını "
+"yapılandırmada\n"
+"size yardımcı olacak. Sonra da yeni yazılım paketi yüklemek veya güncelleme\n"
+"yapmak için bunları kullanabileceksiniz."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Belçika"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "'%s' dosyasının kaynağı sınanıyor..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -635,6 +629,11 @@ msgstr "Herşey başarılı bir şekilde yüklendi"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "'%s' paketi açılamadı\n"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Kaynakları güncelle"
 
 #: ../rpmdrake:1
 #, c-format
@@ -706,6 +705,11 @@ msgstr "Güvenlik güncellemeleri"
 msgid "Korea"
 msgstr "Kore"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "'%s' dosyasının kaynağı sınanıyor..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -724,11 +728,6 @@ msgstr "Tüm paketler,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -766,6 +765,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Dur"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Kaynağı Düzenle"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -818,21 +822,6 @@ msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"İstediğiniz yansıyı elle de seçebilirsiniz: bunu yapmak\n"
-"için Yazılım Kaynakları Yöneticisini açın ve sonra\n"
-"'Güvenlik güncellemeleri' kaynağı ekleyin.\n"
-"\n"
-"Daha sonra, MandrakeUpdate'i yeniden çalıştırın."
-
-#: ../rpmdrake:1
 #, c-format
 msgid "Networking/News"
 msgstr ""
@@ -883,11 +872,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "Kaynakları güncelle"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -897,6 +881,11 @@ msgstr "Dosyalar:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Güncelleme ortamı eklenirken hata"
 
 #: ../rpmdrake:1
 #, c-format
@@ -930,6 +919,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"İstediğiniz yansıyı elle de seçebilirsiniz: bunu yapmak\n"
+"için Yazılım Kaynakları Yöneticisini açın ve sonra\n"
+"'Güvenlik güncellemeleri' kaynağı ekleyin.\n"
+"\n"
+"Daha sonra, MandrakeUpdate'i yeniden çalıştırın."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Kaynak ekleniyor:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -939,15 +948,21 @@ msgstr ""
 "Bağımlılıkları nedeniyle şu paketlerinde kaldırlması gerekiyor:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "\"%s\" kaynağı düzenleniyor:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Lütfen bekleyin, paketler listeleniyor..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -963,11 +978,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Normal bilgi"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "'%s' dosyasının kaynağı kopyalanıyor..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1151,15 +1161,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Kurulum başarısız, bazı dosyalar eksik.\n"
-"Kaynak veritabanınızı güncellemeyi düşünebilirsiniz."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1172,6 +1173,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "Kurulum için paketler hazırlanılıyor..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1230,11 +1236,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "Networking/IRC"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1296,11 +1297,6 @@ msgstr "Seçili"
 #, c-format
 msgid "Maximum information"
 msgstr "En fazla bilgi"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "'%s' uzak dosyasının kaynağı sınanıyor..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1426,6 +1422,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Kurulum başarısız, bazı dosyalar eksik.\n"
+"Kaynak veritabanınızı güncellemeyi düşünebilirsiniz."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1475,11 +1480,6 @@ msgstr "Yardım"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Paketleri yüklemek için root olmanız gerekli, üzgünüm."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Kaynağı Düzenle"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1494,6 +1494,11 @@ msgstr "(hiçbiri)"
 #, c-format
 msgid "Germany"
 msgstr "Almanya"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "kaynak deposuna göre"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1529,11 +1534,6 @@ msgstr "Ortam değiştir"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Kaynak ekleniyor:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1601,11 +1601,6 @@ msgstr ""
 "\n"
 "Hata(lar) rapor edildi:\n"
 "%s"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Güncelleme ortamı eklenirken hata"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1676,6 +1671,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "\"%s\" kaynağı düzenleniyor:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2010,6 +2010,10 @@ msgstr "Yazılımı Kaldır"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Yazılım Kaynakları Yöneticisi"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "'%s' uzak dosyasının kaynağı sınanıyor..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Kaydet ve çık"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-29 13:51+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-05-13 23:54+0200\n"
 "Last-Translator: Arkadiusz Lipiec <alipiec@elka.pw.edu.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -55,11 +55,6 @@ msgstr "Weryfikowanie podpisów pakietów..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Configure medias"
-msgstr "Konfiguracja nośników"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Należy wypełnić co najmniej dwa pierwsze pola."
 
@@ -77,6 +72,16 @@ msgstr "System/Konfiguracja/Sieć"
 #, c-format
 msgid "System/XFree86"
 msgstr "System/XFree86"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Rodzaj nośnika:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Kopiowanie pliku dla nośnika \"%s\"..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -139,6 +144,11 @@ msgstr "Sposób ręcznego wyboru serwera zwierciadlanego"
 #, c-format
 msgid "Package installation..."
 msgstr "Instalacja pakietów..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Wybierz nośnik(i) do aktualizacji:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -329,6 +339,11 @@ msgstr "Zostanie usuniętych kilka dodatkowych pakietów"
 msgid "All packages, by update availability"
 msgstr "według dostępności aktualizacji"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Konfiguracja nośników"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -364,11 +379,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Brak serwerów zwierciadlanych"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Add a media"
-msgstr "Dodawanie nośnika"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -428,19 +438,9 @@ msgid "Please wait, reading packages database..."
 msgstr "Proszę czekać, odczytywanie bazy danych pakietów..."
 
 #: ../edit-urpm-sources.pl:1
-#, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Witaj w Menedżerze Nośników Oprogramowania!\n"
-"\n"
-"To narzędzie pomoże ci skonfigurować nośniki pakietów, które mogą być\n"
-"używane na komputerze. Będą one dostępne w celu instalacji nowych pakietów\n"
-"oprogramowania lub przy przeprowadzaniu aktualizacji."
+#, fuzzy, c-format
+msgid "Add a medium"
+msgstr "Dodawanie nośnika"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -464,6 +464,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Badanie pliku nośnika \"%s\"..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -486,11 +491,6 @@ msgstr "Szwecja"
 
 #: ../rpmdrake.pm:1
 #, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Wybierz nośnik(i) do aktualizacji:"
-
-#: ../rpmdrake.pm:1
-#, c-format
 msgid "Austria"
 msgstr "Austria"
 
@@ -503,11 +503,6 @@ msgstr "Info..."
 #, c-format
 msgid "Networking/File transfer"
 msgstr "Sieć/Przesyłanie plików"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Type of media:"
-msgstr "Rodzaj nośnika:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -523,23 +518,6 @@ msgstr "Sprawdzaj..."
 #, c-format
 msgid "Games/Cards"
 msgstr "Gry/Karciane"
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Posiadasz już co najmniej jeden skonfigurowany nośnik aktualizacyjny\n"
-"lecz jest on aktualnie wyłączony. Należy uruchomić Menedżera\n"
-"Źródeł Nośników aby włączyć co najmniej jeden (zaznacz je\n"
-"w kolumnie Włączone?).\n"
-"\n"
-"Następnie uruchom ponownie MandrakeUpdate."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -586,11 +564,6 @@ msgstr "Usuń %s"
 msgid "Importance: "
 msgstr "Ważność: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "według repozytorium nośników"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -611,15 +584,30 @@ msgstr ""
 "\n"
 "Czy chcesz kontynuować?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Witaj w Menedżerze Nośników Oprogramowania!\n"
+"\n"
+"To narzędzie pomoże ci skonfigurować nośniki pakietów, które mogą być\n"
+"używane na komputerze. Będą one dostępne w celu instalacji nowych pakietów\n"
+"oprogramowania lub przy przeprowadzaniu aktualizacji."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Nośnik"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr "System/Internacjonalizacja"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Badanie pliku nośnika \"%s\"..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -640,6 +628,11 @@ msgstr "Wszystko zostało pomyślnie zainstalowane"
 #, c-format
 msgid "unknown package "
 msgstr "nieznany pakiet "
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Aktualizacja nośnika(-ów)"
 
 #: ../rpmdrake:1
 #, c-format
@@ -711,6 +704,11 @@ msgstr "Aktualizacje z dziedziny bezpieczeństwa"
 msgid "Korea"
 msgstr "Korea"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Badanie pliku nośnika \"%s\"..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -730,11 +728,6 @@ msgstr "Wszystkie pakiety,"
 #, c-format
 msgid "Graphical desktop/FVWM based"
 msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
-msgstr "Nośnik: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -770,6 +763,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Zatrzymaj"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Modyfikuj nośnik"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -822,21 +820,6 @@ msgid "Save changes"
 msgstr "Zapisz zmiany"
 
 #: ../rpmdrake:1
-#, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Można także wybrać żądany serwer zwierciadlany ręcznie: aby\n"
-"to zrobić, uruchom Menedżera Źródeł Oprogramowania, a następnie\n"
-"dodaj nośnik \"Aktualizacje z dziedziny bezpieczeństwa\".\n"
-"\n"
-"Następnie ponownie uruchom MandrakeUpdate."
-
-#: ../rpmdrake:1
 #, fuzzy, c-format
 msgid "Networking/News"
 msgstr "Sieć/Serwery"
@@ -887,11 +870,6 @@ msgstr "Nauka/Astronomia"
 msgid "Development/Kernel"
 msgstr "Programowanie/Jądro"
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, c-format
-msgid "Update media(s)"
-msgstr "Aktualizacja nośnika(-ów)"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -901,6 +879,11 @@ msgstr "Plików:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr "Gry/Przygodowe"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Już istniejące źródła aktulizacyjne"
 
 #: ../rpmdrake:1
 #, c-format
@@ -933,6 +916,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Można także wybrać żądany serwer zwierciadlany ręcznie: aby\n"
+"to zrobić, uruchom Menedżera Źródeł Oprogramowania, a następnie\n"
+"dodaj nośnik \"Aktualizacje z dziedziny bezpieczeństwa\".\n"
+"\n"
+"Następnie ponownie uruchom MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Dodawanie nośnika:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -943,15 +946,27 @@ msgstr ""
 "usunięte:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Editing media \"%s\":"
-msgstr "Modyfikowanie nośnika \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Proszę czekać, wypisywanie pakietów..."
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Posiadasz już co najmniej jeden skonfigurowany nośnik aktualizacyjny\n"
+"lecz jest on aktualnie wyłączony. Należy uruchomić Menedżera\n"
+"Źródeł Nośników aby włączyć co najmniej jeden (zaznacz je\n"
+"w kolumnie Włączone?).\n"
+"\n"
+"Następnie uruchom ponownie MandrakeUpdate."
 
 #: ../rpmdrake:1
 #, c-format
@@ -967,11 +982,6 @@ msgstr "Programowanie/Perl"
 #, c-format
 msgid "Normal information"
 msgstr "Podstawowe informacje"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Kopiowanie pliku dla nośnika \"%s\"..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1158,15 +1168,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Instalacja nie powiodła się, brak niektórych plików.\n"
-"Może zachodzić potrzeba aktualizacji bazy danych nośników."
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1179,6 +1180,11 @@ msgstr ""
 #, c-format
 msgid "No package found for installation."
 msgstr "Nie znaleziono pakietu do instalacji."
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Medium: "
+msgstr "Nośnik: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -1244,11 +1250,6 @@ msgstr "Bazy Danych"
 msgid "Networking/IRC"
 msgstr "Sieć/IRC"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
-msgstr "Nośnik"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Name: "
@@ -1308,11 +1309,6 @@ msgstr "Wybrane"
 #, c-format
 msgid "Maximum information"
 msgstr "Maksimum informacji"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Badanie odległego pliku nośnika \"%s\"..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1438,6 +1434,15 @@ msgid "Development/KDE and Qt"
 msgstr "Programowanie/KDE i Qt"
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Instalacja nie powiodła się, brak niektórych plików.\n"
+"Może zachodzić potrzeba aktualizacji bazy danych nośników."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr "Books/Dokumenty HOWTO"
@@ -1487,11 +1492,6 @@ msgstr "Pomoc"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Niestety, nie można pobrać pakietów źródłowych. %s"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Edit a media"
-msgstr "Modyfikuj nośnik"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1506,6 +1506,11 @@ msgstr "(brak)"
 #, c-format
 msgid "Germany"
 msgstr "Niemcy"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "według repozytorium nośników"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1541,11 +1546,6 @@ msgstr "Zmień nośnik"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr "Pultpit graficzny/GNOME"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Adding a media:"
-msgstr "Dodawanie nośnika:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1616,11 +1616,6 @@ msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Already existing update medias"
-msgstr "Już istniejące źródła aktulizacyjne"
-
-#: ../rpmdrake:1
-#, c-format
 msgid "Currently installed version: "
 msgstr "Aktualnie zainstalowana wersja:"
 
@@ -1688,6 +1683,11 @@ msgstr "Narzędzia tekstowe"
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Modyfikowanie nośnika \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2021,6 +2021,9 @@ msgstr "Usuwanie oprogramowania"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Menedżer źródeł oprogramowania"
+
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Badanie odległego pliku nośnika \"%s\"..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Zapisz i zakończ"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-04-23 15:21-0400\n"
 "Last-Translator: nadav mavor <nadav@mavor.com>\n"
 "Language-Team:  <C@li.org>\n"
@@ -57,11 +57,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "הגדרת מאגרים"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "עליך למלא לפחות את שתי הכניסות הראשונות."
@@ -80,6 +75,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "סוג המאגר:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "העתקת קובץ מהמאגר `%s'..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -141,6 +146,11 @@ msgstr "איך לבחור את אתר המראה באופן ידני"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "מכין חבילות להתקנה..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "נא לבחור את המאגרים אותם ברצונך לעדכן:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -330,6 +340,11 @@ msgstr "יש להסיר מספר חבילות נוספות"
 msgid "All packages, by update availability"
 msgstr "על פי נגישות עדכון"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "הגדרת מאגרים"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -365,11 +380,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "אין שרת"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "הוספת מאגר"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -429,18 +439,8 @@ msgstr "נא להמתין בעת קריאת מסד הנתונים של החבי�
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"ברוך בואך ל\"עורך מקורות התוכנה\"\n"
-"\n"
-"כלי זה יעזור לך להגדיר את מאגרי התוכנה להתקנת חבילות שבהן ברצונך להשתמש\n"
-"במחשב זה. מאגרים אלו ישמשו להתקנת חבילות תוכנה חדשות או על-מנת לעדכן\n"
-"את המערכת."
+msgid "Add a medium"
+msgstr "הוספת מאגר"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -464,6 +464,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "בחינת קובץ במאגר `%s'..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -485,11 +490,6 @@ msgid "Sweden"
 msgstr "שוודיה"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "נא לבחור את המאגרים אותם ברצונך לעדכן:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "אוסטריה"
@@ -503,11 +503,6 @@ msgstr "מידע..."
 #, c-format
 msgid "Networking/File transfer"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "סוג המאגר:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -523,21 +518,6 @@ msgstr "בחינה ...."
 #, c-format
 msgid "Games/Cards"
 msgstr ""
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"יש לך לפחות מקור אחד לעידקונים ,אבל\n"
-"כול המקורות כרגע מבוטלים אתה צריך להריץ את מנהל \n"
-"מקורות עידקונים לאפשר לפחות מקור אחד (תבדוק את העמודה של אישור )\n"
-"ואז התחל את מנהל העידקונים"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -584,11 +564,6 @@ msgstr "הסרת .%s"
 msgid "Importance: "
 msgstr "חשיבות : "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "לפי מאגר התוכנה"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -609,15 +584,30 @@ msgstr ""
 "\n"
 "האם להמשיך ?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"ברוך בואך ל\"עורך מקורות התוכנה\"\n"
+"\n"
+"כלי זה יעזור לך להגדיר את מאגרי התוכנה להתקנת חבילות שבהן ברצונך להשתמש\n"
+"במחשב זה. מאגרים אלו ישמשו להתקנת חבילות תוכנה חדשות או על-מנת לעדכן\n"
+"את המערכת."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "בלגיה"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "בחינת קובץ במאגר `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -638,6 +628,11 @@ msgstr "הכל הותקן בהצלחה."
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "לא יכול לפתוח את החבילה '%s'\n"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "עדכון מאגר/ים"
 
 #: ../rpmdrake:1
 #, c-format
@@ -709,6 +704,11 @@ msgstr "עדכוני אבטחה"
 msgid "Korea"
 msgstr "קוריאה"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "בחינת קובץ במאגר `%s'..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -727,11 +727,6 @@ msgstr "כל החבילות,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -768,6 +763,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "עצירה"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "עריכת מאגר"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -820,21 +820,6 @@ msgid "Save changes"
 msgstr "שמירת שינויים"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"יש באפשרותך לבחור את אתר המראה המבוקש באופן ידני. לצורך זה,\n"
-"יש להפעיל את היישום \"מנהל מאגרי תוכנה\", ולהוסיף את מאגר התוכנה\n"
-"'עדכוני אבטחה'.\n"
-"\n"
-"לאחר מכן, יש להריץ מחדש את MandrakeUpdate."
-
-#: ../rpmdrake:1
 #, c-format
 msgid "Networking/News"
 msgstr ""
@@ -885,11 +870,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "עדכון מאגר/ים"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -899,6 +879,11 @@ msgstr "קבצים:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "כבר קיים מקור לעידקונים"
 
 #: ../rpmdrake:1
 #, c-format
@@ -931,6 +916,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"יש באפשרותך לבחור את אתר המראה המבוקש באופן ידני. לצורך זה,\n"
+"יש להפעיל את היישום \"מנהל מאגרי תוכנה\", ולהוסיף את מאגר התוכנה\n"
+"'עדכוני אבטחה'.\n"
+"\n"
+"לאחר מכן, יש להריץ מחדש את MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "הוספת מאגר: "
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -940,15 +945,25 @@ msgstr ""
 "החבילות הבאות צריכות להימחק בגלל התלויות שלהן:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "עריכת מאגר \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "נא להמתין בעת הכנת רשימת חבילות..."
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"יש לך לפחות מקור אחד לעידקונים ,אבל\n"
+"כול המקורות כרגע מבוטלים אתה צריך להריץ את מנהל \n"
+"מקורות עידקונים לאפשר לפחות מקור אחד (תבדוק את העמודה של אישור )\n"
+"ואז התחל את מנהל העידקונים"
 
 #: ../rpmdrake:1
 #, c-format
@@ -964,11 +979,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "מידע רגיל"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "העתקת קובץ מהמאגר `%s'..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1156,15 +1166,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"ההתקנה נכשלה, כמה קבצים חסרים.\n"
-"יתכן שעלייך לעדכן את בסיס הנתונים של מאגרי התוכנה."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1177,6 +1178,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "מכין חבילות להתקנה..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1242,11 +1248,6 @@ msgstr ""
 msgid "Networking/IRC"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
-msgstr ""
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Name: "
@@ -1306,11 +1307,6 @@ msgstr "נבחרה"
 #, c-format
 msgid "Maximum information"
 msgstr "מידע מירבי"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "בחינת קובץ מרוחק במאגר `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1435,6 +1431,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"ההתקנה נכשלה, כמה קבצים חסרים.\n"
+"יתכן שעלייך לעדכן את בסיס הנתונים של מאגרי התוכנה."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1484,11 +1489,6 @@ msgstr "עזרה"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "צר לי, רק משתמש על יכול להתקין חבילות."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "עריכת מאגר"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1503,6 +1503,11 @@ msgstr "(כלום)"
 #, c-format
 msgid "Germany"
 msgstr "גרמניה"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "לפי מאגר התוכנה"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1538,11 +1543,6 @@ msgstr "החלפת מדיה"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "הוספת מאגר: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -1610,11 +1610,6 @@ msgstr ""
 "\n"
 "דוח שגיאות:\n"
 "%s"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "כבר קיים מקור לעידקונים"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1685,6 +1680,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "עריכת מאגר \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2017,6 +2017,10 @@ msgstr "הסרת תוכנה"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "ניהול מקורות תוכנה"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "בחינת קובץ מרוחק במאגר `%s'..."
 
 #~ msgid "Save and quit"
 #~ msgstr "שמירה ויציאה"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-02-28 22:12+0100\n"
 "Last-Translator: Toma Jankovic_<tomaja@net.yu>\n"
 "Language-Team: Serbian <i18n@mandrake.co.yu>\n"
@@ -56,11 +56,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Pode¹avanje izvora"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Morate da popunite najmanje prva dva polja."
@@ -79,6 +74,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Tip izvora:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Kopiram fajl za izvor `%s'..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -141,6 +146,11 @@ msgstr "Kako ruèno izabrati svoj miror sajt"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Instalacija paketa"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Izaberite koje paket(e) ¾elite da a¾urirate:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -331,6 +341,11 @@ msgstr "Jo¹ neki paketi moraju biti uklonjeni"
 msgid "All packages, by update availability"
 msgstr "po dostupnosti"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Pode¹avanje izvora"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -366,11 +381,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Nema mirora"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Dodaj izvor"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -433,20 +443,8 @@ msgstr "Molim vas saèekajte, uèitavam bazu podataka o paketima..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Dobrodo¹li u Editor izvornog koda u Paketima!\n"
-"\n"
-"Ovaj alat vam mo¾e pomoKji da podesite kod u paketima koje ¾elite da "
-"koristite\n"
-"na va¹em raèunaru. Nakon toga Kje biti spremi za instalaciju kao novi "
-"paketi\n"
-"ili za a¾uriranje starih."
+msgid "Add a medium"
+msgstr "Dodaj izvor"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -470,6 +468,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Ispitujem fajl za izvor `%s'..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -491,11 +494,6 @@ msgid "Sweden"
 msgstr "©vedska"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Izaberite koje paket(e) ¾elite da a¾urirate:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Austrija"
@@ -510,11 +508,6 @@ msgstr "Informacije..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Tip izvora:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -528,17 +521,6 @@ msgstr "Proveri..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -586,11 +568,6 @@ msgstr "Ukloni: %s"
 msgid "Importance: "
 msgstr "Va¾nost: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "po stanju izvornog koda"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -611,15 +588,32 @@ msgstr ""
 "\n"
 "da li je U redu da nastavim?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Dobrodo¹li u Editor izvornog koda u Paketima!\n"
+"\n"
+"Ovaj alat vam mo¾e pomoKji da podesite kod u paketima koje ¾elite da "
+"koristite\n"
+"na va¹em raèunaru. Nakon toga Kje biti spremi za instalaciju kao novi "
+"paketi\n"
+"ili za a¾uriranje starih."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Belgija"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Ispitujem fajl za izvor `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -640,6 +634,11 @@ msgstr "Sve je dobro instalirano"
 #, c-format
 msgid "unknown package "
 msgstr "nepoznati paket "
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "A¾uriranje izvora"
 
 #: ../rpmdrake:1
 #, c-format
@@ -711,6 +710,11 @@ msgstr "Sigurnosne nadogradnje"
 msgid "Korea"
 msgstr "Koreja"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Ispitujem fajl za izvor `%s'..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -729,11 +733,6 @@ msgstr "Svi paketi,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -770,6 +769,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Stop"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Izmeni izvor"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -822,21 +826,6 @@ msgid "Save changes"
 msgstr "Saèuvaj izmene"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Mo¾ete izabrati ¾eljeni miror sajt i ruèno: da bi to uradili,\n"
-"pokrenite Menad¾er Softvera, a zatim dodajte `Security\n"
-"updates' izvor.\n"
-"\n"
-"Zatim, restarujte MandrakeUpdate."
-
-#: ../rpmdrake:1
 #, c-format
 msgid "Networking/News"
 msgstr ""
@@ -887,11 +876,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "A¾uriranje izvora"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -901,6 +885,11 @@ msgstr "Fajlovi:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Gre¹ka prilikom dodavanja medijuma sa nadogradnjom"
 
 #: ../rpmdrake:1
 #, c-format
@@ -933,6 +922,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Mo¾ete izabrati ¾eljeni miror sajt i ruèno: da bi to uradili,\n"
+"pokrenite Menad¾er Softvera, a zatim dodajte `Security\n"
+"updates' izvor.\n"
+"\n"
+"Zatim, restarujte MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Dodajem izvor:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -943,15 +952,21 @@ msgstr ""
 "trebalo da se uklone:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "Menjam izvor \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Molim Vas saèekajte, prikazujem pakete..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -967,11 +982,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Normalana informacija"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Kopiram fajl za izvor `%s'..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1153,15 +1163,6 @@ msgid "Help launched in background"
 msgstr ""
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Instalacija nije uspela, neki fajlovi nedostaju.\n"
-"Mo¾da bi trebalo da a¾urirate bazu paketa."
-
-#: ../rpmdrake:1
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -1176,6 +1177,11 @@ msgstr ""
 #, c-format
 msgid "No package found for installation."
 msgstr "Nije pronaðen paket za instalaciju."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1234,11 +1240,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "Networking/IRC"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1300,11 +1301,6 @@ msgstr "Izabrani"
 #, c-format
 msgid "Maximum information"
 msgstr "Potpuna informacija"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Ispitujem udaljrni fajl za izvor `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1430,6 +1426,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Instalacija nije uspela, neki fajlovi nedostaju.\n"
+"Mo¾da bi trebalo da a¾urirate bazu paketa."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1479,11 +1484,6 @@ msgstr "Pomoæ"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Ne mogu da dobavim izvorne pakete, ¾ao mi je. %s"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Izmeni izvor"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1498,6 +1498,11 @@ msgstr "(nijedan)"
 #, c-format
 msgid "Germany"
 msgstr "Nemaèka"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "po stanju izvornog koda"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1533,11 +1538,6 @@ msgstr "Promeni medijum"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Dodajem izvor:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1605,11 +1605,6 @@ msgstr ""
 "\n"
 "Prijavljena Gre¹ka(e):\n"
 "%s"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Gre¹ka prilikom dodavanja medijuma sa nadogradnjom"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1680,6 +1675,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Menjam izvor \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2016,6 +2016,10 @@ msgstr "Ukloni softver"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Menad¾er Softverskog Koda"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Ispitujem udaljrni fajl za izvor `%s'..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Saèuvaj i izaði"

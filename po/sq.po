@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2002-11-27 21:45:+0100\n"
 "Last-Translator: Naim Daka <naim70@freesurf>\n"
 "Language-Team: Albanian <LL@li.org>\n"
@@ -56,11 +56,6 @@ msgstr "Verifikimi i nënshkrimeve të pakove..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Configure medias"
-msgstr "Konfiguro burimet"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Ju duhet ti mbushni më së paku dy hyrje të para."
 
@@ -78,6 +73,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Tipi i burimit:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Kopjimi i skedares për burimin `%s'..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -139,6 +144,11 @@ msgstr "Si ta zgjedhni pasqyrën tuaj vetë"
 #, c-format
 msgid "Package installation..."
 msgstr "Instalimi i pakos..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Zgjedhni burimin(et) të cilin(at) dëshironi ti azhurnoni:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -329,6 +339,11 @@ msgstr "Disa nga pakot e mbledhura duhet të zhduken"
 msgid "All packages, by update availability"
 msgstr "i lirë simbas azhurnimit"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Konfiguro burimet"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -364,11 +379,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Asnjë pasqyre"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Add a media"
-msgstr "Shtoje një burim:"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -430,19 +440,9 @@ msgid "Please wait, reading packages database..."
 msgstr "Një moment ju lutemi, lexim i pakove në bazën e të dhënave..."
 
 #: ../edit-urpm-sources.pl:1
-#, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Mirësevini në Menagjerin e Burimeve Softver!\n"
-"\n"
-"Kjo vegël do të ju ndihmojë në konfigurimin e pakove në burime, të cilat\n"
-"ju dëshironi ti përdorni në kompjuterin tuaj. Ato do të ju mundësojnë "
-"instalimin e pakove të reja softver ose azhurnimin e tyre."
+#, fuzzy, c-format
+msgid "Add a medium"
+msgstr "Shtoje një burim:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -468,6 +468,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Verifikimi i skedarës së burimit `%s'..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -490,11 +495,6 @@ msgstr "Suedia"
 
 #: ../rpmdrake.pm:1
 #, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Zgjedhni burimin(et) të cilin(at) dëshironi ti azhurnoni:"
-
-#: ../rpmdrake.pm:1
-#, c-format
 msgid "Austria"
 msgstr "Austria"
 
@@ -507,11 +507,6 @@ msgstr "Infomacion..."
 #, c-format
 msgid "Networking/File transfer"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Type of media:"
-msgstr "Tipi i burimit:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -527,23 +522,6 @@ msgstr "Inspektim..."
 #, c-format
 msgid "Games/Cards"
 msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Ju posedoni më së paku një burim azhurnues të konfiguruar, mirëpo\n"
-"ata janë momentalisht të dezaktivizuara. Ju duhet ta nisni\n"
-"Software Sources Manager që t'aktivizoni më së paku një (kuti në\n"
-"kolonën e shënuar Aktivizoje?\n"
-"\n"
-"Dhe, riniseni MandrakeUpdate."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -590,11 +568,6 @@ msgstr "Zhduke .%s"
 msgid "Importance: "
 msgstr "Rëndësia: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "depo simbas burimit"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -615,15 +588,30 @@ msgstr ""
 "\n"
 "A dëshironi të vazhdoni?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Mirësevini në Menagjerin e Burimeve Softver!\n"
+"\n"
+"Kjo vegël do të ju ndihmojë në konfigurimin e pakove në burime, të cilat\n"
+"ju dëshironi ti përdorni në kompjuterin tuaj. Ato do të ju mundësojnë "
+"instalimin e pakove të reja softver ose azhurnimin e tyre."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Burimi"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Verifikimi i skedarës së burimit `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -644,6 +632,11 @@ msgstr "Gjdo gjë është instaluar si duhet"
 #, c-format
 msgid "unknown package "
 msgstr "pako a pa njoftur"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Azhurnimi i burimit(eve)"
 
 #: ../rpmdrake:1
 #, c-format
@@ -715,6 +708,11 @@ msgstr "Azhurnimet e sigurisë"
 msgid "Korea"
 msgstr "Korea"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Verifikimi i skedarës së burimit `%s'..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -734,11 +732,6 @@ msgstr "Gjitha pakot,"
 #, c-format
 msgid "Graphical desktop/FVWM based"
 msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
-msgstr "Burimi: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -775,6 +768,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Ndale"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Botoje një burim"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -828,21 +826,6 @@ msgstr "Shpëtoi ndryshimet"
 
 #: ../rpmdrake:1
 #, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Ju mund ta zgjedhni cilën do pasqyrë nga ana juaj: për t'ia arritur,\n"
-"nisne Software Sources Manager, dhe shtone një burim 'Azhurnimi\n"
-"të sigurisë'.\n"
-"\n"
-"Dhe, riniseni MandrakeUpdate."
-
-#: ../rpmdrake:1
-#, c-format
 msgid "Networking/News"
 msgstr ""
 
@@ -892,11 +875,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, c-format
-msgid "Update media(s)"
-msgstr "Azhurnimi i burimit(eve)"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -906,6 +884,11 @@ msgstr "Skedaret:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Burimet azhurnuese ekzistojnë"
 
 #: ../rpmdrake:1
 #, c-format
@@ -940,6 +923,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Ju mund ta zgjedhni cilën do pasqyrë nga ana juaj: për t'ia arritur,\n"
+"nisne Software Sources Manager, dhe shtone një burim 'Azhurnimi\n"
+"të sigurisë'.\n"
+"\n"
+"Dhe, riniseni MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Shtimi i një burimi:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -949,15 +952,27 @@ msgstr ""
 "Me rastin e mbushjes së mvarësisë, pako(t) e radhitura duhet të zhduken:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Editing media \"%s\":"
-msgstr "Botimi i burimit \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Një moment ju lutemi, numërimi i pakove..."
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Ju posedoni më së paku një burim azhurnues të konfiguruar, mirëpo\n"
+"ata janë momentalisht të dezaktivizuara. Ju duhet ta nisni\n"
+"Software Sources Manager që t'aktivizoni më së paku një (kuti në\n"
+"kolonën e shënuar Aktivizoje?\n"
+"\n"
+"Dhe, riniseni MandrakeUpdate."
 
 #: ../rpmdrake:1
 #, c-format
@@ -973,11 +988,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Infomacion normale"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Kopjimi i skedares për burimin `%s'..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1165,15 +1175,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"instalimi dështoi, disa skedare mungojnë.\n"
-"A dëshironi ti azhurnoni burimet e bazës së të dhënave."
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1186,6 +1187,11 @@ msgstr ""
 #, c-format
 msgid "No package found for installation."
 msgstr "Asnjë pako s'është gjetur për Instalim"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Medium: "
+msgstr "Burimi: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -1251,11 +1257,6 @@ msgstr ""
 msgid "Networking/IRC"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
-msgstr "Burimi"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Name: "
@@ -1315,11 +1316,6 @@ msgstr "Zgjedhur"
 #, c-format
 msgid "Maximum information"
 msgstr "Infomacione maksimale"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Verifikimi i burimit të largët të skedares `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1445,6 +1441,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"instalimi dështoi, disa skedare mungojnë.\n"
+"A dëshironi ti azhurnoni burimet e bazës së të dhënave."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1494,11 +1499,6 @@ msgstr "Ndihmë"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "E pa mundur marrja e burimeve mbi pakot, kemi ndjesë. %s"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Edit a media"
-msgstr "Botoje një burim"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1513,6 +1513,11 @@ msgstr "(asnjë)"
 #, c-format
 msgid "Germany"
 msgstr "Gjermania"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "depo simbas burimit"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1548,11 +1553,6 @@ msgstr "Ndrryshim i burimit"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Adding a media:"
-msgstr "Shtimi i një burimi:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1623,11 +1623,6 @@ msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Already existing update medias"
-msgstr "Burimet azhurnuese ekzistojnë"
-
-#: ../rpmdrake:1
-#, c-format
 msgid "Currently installed version: "
 msgstr "Versioni i tanishëm i instaluar: "
 
@@ -1695,6 +1690,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Botimi i burimit \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2028,6 +2028,9 @@ msgstr "Zhduke Softverin"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Administrues i Burimeve Softver"
+
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Verifikimi i burimit të largët të skedares `%s'..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Shpëtoje dhe braktise"

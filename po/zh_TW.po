@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-29 15:00+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2002-08-25 06:10+0800\n"
 "Last-Translator: Kenduest Lee <kenduest@i18n.linux.org.tw>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -56,11 +56,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "設定套件來源位置？"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "您至少需要輸入前面兩個項目。"
@@ -78,6 +73,16 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "System/XFree86"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "來源類別："
+
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Copying file for medium `%s'..."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -141,6 +146,11 @@ msgstr "如何手動選擇您需要的映射站台"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "正在準備安裝"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "請選擇您要更新的來源："
 
 #: ../rpmdrake:1
 #, c-format
@@ -328,6 +338,11 @@ msgstr "為了可以全面運作正常這些額外的套件必須一同安裝"
 msgid "All packages, by update availability"
 msgstr "依可供更新分類"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "設定套件來源位置？"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -363,11 +378,6 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No mirror"
 msgstr "映射："
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "新增來源："
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -428,17 +438,8 @@ msgstr ""
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"歡迎來到套件來源編輯程式!\n"
-"\n"
-"接下來程式將會引導你完成編輯套件來源的項目，\n"
-"以便於提供您能夠使用您所設定的項目進行軟體的安裝與更新。"
+msgid "Add a medium"
+msgstr "新增來源："
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -462,6 +463,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Examining file of medium `%s'..."
+msgstr ""
+
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
 msgid "Path:"
@@ -483,11 +489,6 @@ msgid "Sweden"
 msgstr "瑞典"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "請選擇您要更新的來源："
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "奧地利"
@@ -502,11 +503,6 @@ msgstr "資訊..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "來源類別："
-
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid "Development/Other"
@@ -520,17 +516,6 @@ msgstr "檢查..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -578,11 +563,6 @@ msgstr "移除 .%s"
 msgid "Importance: "
 msgstr "重要性： "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "依來源倉儲分類"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -603,14 +583,28 @@ msgstr ""
 "\n"
 "您確定要繼續嗎？"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"歡迎來到套件來源編輯程式!\n"
+"\n"
+"接下來程式將會引導你完成編輯套件來源的項目，\n"
+"以便於提供您能夠使用您所設定的項目進行軟體的安裝與更新。"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "比利時"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
-msgstr ""
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining file of media `%s'..."
 msgstr ""
 
 #: ../rpmdrake:1
@@ -632,6 +626,11 @@ msgstr "所有項目已經都安裝成功了。"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "不詳"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "更新來源"
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -703,6 +702,11 @@ msgstr "顯示安全更新套件"
 msgid "Korea"
 msgstr "強迫"
 
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr ""
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -721,11 +725,6 @@ msgstr "所有套件，"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -760,6 +759,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "停止"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "編輯套件來源"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -812,20 +816,6 @@ msgstr "儲存變更"
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"您已經手動選擇您需要的映射站台了，建議您請稍後手動執行\n"
-"套件來源管理員，針對您的映射站台另外加入「安全修正」項目。\n"
-"\n"
-"完成後，請重新啟動 MandrakeUpdate 程式。"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
 msgid "Networking/News"
 msgstr "網路設定："
 
@@ -874,11 +864,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr "開發更新"
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "更新來源"
-
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid "Files:\n"
@@ -888,6 +873,11 @@ msgstr "/檔案 (_F)"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "新增更新媒介時發生錯誤"
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -920,6 +910,25 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"您已經手動選擇您需要的映射站台了，建議您請稍後手動執行\n"
+"套件來源管理員，針對您的映射站台另外加入「安全修正」項目。\n"
+"\n"
+"完成後，請重新啟動 MandrakeUpdate 程式。"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "新增來源："
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -929,17 +938,23 @@ msgstr ""
 "為了要滿足相依性需求，這些套件需要被移除：\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "編輯來源 \"%s\"："
-
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid "Please wait, listing packages..."
 msgstr ""
 "請稍候\n"
 "排序套件"
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -955,11 +970,6 @@ msgstr "開發更新"
 #, c-format
 msgid "Normal information"
 msgstr "一般資訊"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Copying file for media `%s'..."
-msgstr ""
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1147,15 +1157,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"安裝失敗。安裝程式找不到一些要安裝上的程式套件。\n"
-"也許是系統資料庫太舊了，請先更新資料庫後再繼續。"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1168,6 +1169,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "正在準備安裝"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -1227,11 +1233,6 @@ msgstr ""
 #, fuzzy, c-format
 msgid "Networking/IRC"
 msgstr "網路"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
-msgstr ""
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -1294,11 +1295,6 @@ msgstr ""
 #, c-format
 msgid "Maximum information"
 msgstr "完整資訊"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1425,6 +1421,15 @@ msgid "Development/KDE and Qt"
 msgstr "開發更新"
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"安裝失敗。安裝程式找不到一些要安裝上的程式套件。\n"
+"也許是系統資料庫太舊了，請先更新資料庫後再繼續。"
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1474,11 +1479,6 @@ msgstr "說明"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "抱歉，您需要具備 root 權限身份才可以進行套件安裝。"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "編輯套件來源"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1493,6 +1493,11 @@ msgstr "(無)"
 #, c-format
 msgid "Germany"
 msgstr "德國"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "依來源倉儲分類"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1528,11 +1533,6 @@ msgstr "變更媒介"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "新增來源："
 
 #: ../rpmdrake:1
 #, c-format
@@ -1594,11 +1594,6 @@ msgid ""
 "Error(s) reported:\n"
 "%s"
 msgstr ""
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "新增更新媒介時發生錯誤"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1669,6 +1664,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "編輯來源 \"%s\"："
 
 #: ../rpmdrake:1
 #, c-format

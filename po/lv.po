@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2002-08-11 22:16+0200\n"
 "Last-Translator: Vitauts Stoèka <vit@dau.lv>\n"
 "Language-Team: Latvian <cooker-i18n@linux-mandrake.com>\n"
@@ -56,11 +56,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Konfigurçt izejas kodus"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Jums jâaizpilda vismaz pirmie divi ievadlauki."
@@ -78,6 +73,16 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "System/XFree86"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Avota tips:"
+
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Copying file for medium `%s'..."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -141,6 +146,13 @@ msgstr "Kâ ar rokâm izvçlçties spoguïserveri"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Tiek sagatavota instalçðana"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr ""
+"Lûdzu izvçlieties avotus,\n"
+"kurus vçlaties atnunot:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -331,6 +343,11 @@ msgstr "Nepiecieðams noòemt daþas papildus pakotnes"
 msgid "All packages, by update availability"
 msgstr "pçc atjauninâjuma pieejamîbas"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Konfigurçt izejas kodus"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -366,11 +383,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Nav spoguïservera"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Pievienoju avotu:"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -432,18 +444,8 @@ msgstr "Lûdzu gaidiet, nolasu pakotòu datubâzi..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Laipni lûdzam pakotòu avota redaktorâ!\n"
-"\n"
-"Ðis rîks palîdzçs Jums konfigurçt pakotòu avotus, kurus vçlaties lietot\n"
-"uz Jûsu datora. Tie tad bûs pieejami, lai instalçtu jaunu programmatûras\n"
-"pakotni, vai lai veiktu jauninâjumus."
+msgid "Add a medium"
+msgstr "Pievienoju avotu:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -463,6 +465,11 @@ msgid ""
 "\n"
 "%s"
 msgstr "Tiek sagatavota instalçðana"
+
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Examining file of medium `%s'..."
+msgstr ""
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -485,13 +492,6 @@ msgid "Sweden"
 msgstr "Zviedrija"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr ""
-"Lûdzu izvçlieties avotus,\n"
-"kurus vçlaties atnunot:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Austrija"
@@ -506,11 +506,6 @@ msgstr "Info..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Avota tips:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -524,17 +519,6 @@ msgstr "Pârbaude..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -582,11 +566,6 @@ msgstr "Noòemt .%s"
 msgid "Importance: "
 msgstr "Svarîgums: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "pçc avota repozitârija"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -607,14 +586,29 @@ msgstr ""
 "\n"
 "Vai ir labi turpinât?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Laipni lûdzam pakotòu avota redaktorâ!\n"
+"\n"
+"Ðis rîks palîdzçs Jums konfigurçt pakotòu avotus, kurus vçlaties lietot\n"
+"uz Jûsu datora. Tie tad bûs pieejami, lai instalçtu jaunu programmatûras\n"
+"pakotni, vai lai veiktu jauninâjumus."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Beïìija"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
-msgstr ""
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining file of media `%s'..."
 msgstr ""
 
 #: ../rpmdrake:1
@@ -636,6 +630,11 @@ msgstr "Viss tika instalçts veiksmîgi"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "Neizdodas atvçrt pakotni"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Atjaunot avotus"
 
 #: ../rpmdrake:1
 #, c-format
@@ -707,6 +706,11 @@ msgstr "Droðîbas atjauninâjumi"
 msgid "Korea"
 msgstr "Piespiest"
 
+#: ../rpmdrake.pm:1
+#, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr ""
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -725,11 +729,6 @@ msgstr "Visas pakotnes,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -766,6 +765,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "Stop"
 msgstr "Stop"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Labot avotu"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -818,21 +822,6 @@ msgid "Save changes"
 msgstr "Saglabât izmaiòas"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Varat izvçlçties spoguïserveri manuâli: lai to veiktu,\n"
-"palaidiet Programmatûras avotu pârvladnieku, un tad pievienojiet\n"
-"`Droðîbas jauninâjumi' avotu.\n"
-"\n"
-"Tad pârstartçjiet MandrakeUpdate."
-
-#: ../rpmdrake:1
 #, c-format
 msgid "Networking/News"
 msgstr ""
@@ -883,11 +872,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "Atjaunot avotus"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -897,6 +881,11 @@ msgstr "Faili:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Kïûda pievienojot atjaunoðanas datu nesçju"
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -929,6 +918,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Varat izvçlçties spoguïserveri manuâli: lai to veiktu,\n"
+"palaidiet Programmatûras avotu pârvladnieku, un tad pievienojiet\n"
+"`Droðîbas jauninâjumi' avotu.\n"
+"\n"
+"Tad pârstartçjiet MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Pievienoju avotu:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -939,15 +948,21 @@ msgstr ""
 "ir nepiecieðams noòemt arî sekojoða(s) pakotne(s):\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "Laboju avotu \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Lûdzu gaidiet, veidoju pakotòu sarakstu..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -963,11 +978,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Parasta informâcija"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Copying file for media `%s'..."
-msgstr ""
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1151,15 +1161,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Instalçðana neizdevâs, trûkst daþi faili.\n"
-"Jûs varbût vçlaties atjauninât avotu datubâzi."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1169,6 +1170,11 @@ msgstr "Tiek sagatavota instalçðana"
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "Tiek sagatavota instalçðana"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1227,11 +1233,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "Networking/IRC"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1293,11 +1294,6 @@ msgstr "Izvçlçts"
 #, c-format
 msgid "Maximum information"
 msgstr "Maksimâla informâcija"
-
-#: ../rpmdrake.pm:1
-#, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1423,6 +1419,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Instalçðana neizdevâs, trûkst daþi faili.\n"
+"Jûs varbût vçlaties atjauninât avotu datubâzi."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1472,11 +1477,6 @@ msgstr "Palîdzîba"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Atvainojiet, nebija iespçjams paòemt izejas pakotnes."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Labot avotu"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1491,6 +1491,11 @@ msgstr "(neviens)"
 #, c-format
 msgid "Germany"
 msgstr "Vâcija"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "pçc avota repozitârija"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1526,11 +1531,6 @@ msgstr "Nomainiet datu nesçju"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Pievienoju avotu:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1592,11 +1592,6 @@ msgid ""
 "Error(s) reported:\n"
 "%s"
 msgstr ""
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Kïûda pievienojot atjaunoðanas datu nesçju"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1667,6 +1662,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Laboju avotu \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format

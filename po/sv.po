@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-02-17 15:38+0200\n"
 "Last-Translator: Magnus Björklöf <bjorklof@nic.fi>\n"
 "Language-Team: Svenska <sv@li.org>\n"
@@ -58,11 +58,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Anpassa källor"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Du måste fylla i åtminstone de två första posterna."
@@ -81,6 +76,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Typ av källa:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Kopierar fil för källa \"%s\"..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -142,6 +147,11 @@ msgstr "Hur du manuellt väljer en spegel"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Förbereder paket för installation..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Välj källan/källorna du vill uppdatera:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -331,6 +341,11 @@ msgstr "Några ytterligare paket måste tas bort"
 msgid "All packages, by update availability"
 msgstr "efter uppdateringstillgänglighet"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Anpassa källor"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -366,11 +381,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "Ingen spegel"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Lägg till en källa"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -431,19 +441,8 @@ msgstr "Vänta, läser paketdatabas..."
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Välkommen till editorn för paketkällor.\n"
-"\n"
-"Det här verktyget hjälper dig att ställa in paketkällorna som du vill "
-"använda\n"
-"på datorn. De kommer sedan att att finnas tillgängliga när det är dags att\n"
-"installera nya programpaket eller utföra uppdateringar."
+msgid "Add a medium"
+msgstr "Lägg till en källa"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -467,6 +466,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Undersöker fil för källa \"%s\"..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -488,11 +492,6 @@ msgid "Sweden"
 msgstr "Sverige"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Välj källan/källorna du vill uppdatera:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Österrike"
@@ -507,11 +506,6 @@ msgstr "Information..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Typ av källa:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -525,17 +519,6 @@ msgstr "Undersök..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -583,11 +566,6 @@ msgstr "Ta bort .%s"
 msgid "Importance: "
 msgstr "Viktighet: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "efter källagringsplats"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -607,15 +585,31 @@ msgstr ""
 "\n"
 "Är det OK att fortsätta?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Välkommen till editorn för paketkällor.\n"
+"\n"
+"Det här verktyget hjälper dig att ställa in paketkällorna som du vill "
+"använda\n"
+"på datorn. De kommer sedan att att finnas tillgängliga när det är dags att\n"
+"installera nya programpaket eller utföra uppdateringar."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Belgien"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Undersöker fil för källa \"%s\"..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -636,6 +630,11 @@ msgstr "Allt installerades utan problem"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "Kan inte öppna paket \"%s\"\n"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Uppdatera källor"
 
 #: ../rpmdrake:1
 #, c-format
@@ -707,6 +706,11 @@ msgstr "Säkerhetsuppdateringar"
 msgid "Korea"
 msgstr "Korea"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Undersöker fil för källa \"%s\"..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -725,11 +729,6 @@ msgstr "Alla paket,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -766,6 +765,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Stoppa"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Redigera en källa"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -815,21 +819,6 @@ msgstr "Mer information om paket..."
 #, c-format
 msgid "Save changes"
 msgstr "Spara ändringar"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Du kan också välja önskad spegel manuellt. För att göra det\n"
-"startar du Programhanterare för källor och lägger till en\n"
-" \"Säkerhetsuppdatering\"-källa.\n"
-"\n"
-"Starta sedan om MandrakeUpdate."
 
 #: ../rpmdrake:1
 #, c-format
@@ -882,11 +871,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "Uppdatera källor"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -896,6 +880,11 @@ msgstr "Filer:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Fel vid tillägg av uppdateringsmedia"
 
 #: ../rpmdrake:1
 #, c-format
@@ -928,6 +917,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Du kan också välja önskad spegel manuellt. För att göra det\n"
+"startar du Programhanterare för källor och lägger till en\n"
+" \"Säkerhetsuppdatering\"-källa.\n"
+"\n"
+"Starta sedan om MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Lägger till en källa:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -937,15 +946,21 @@ msgstr ""
 "På grund av deras beroenden måste följande paket också tas bort:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "Redigerar källa \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Vänta, listar paket..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -961,11 +976,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "Normal information"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Kopierar fil för källa \"%s\"..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1149,15 +1159,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Installationen misslyckades, vissa filer saknas.\n"
-"Du kanske ska uppdatera din källdatabas."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1170,6 +1171,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "Förbereder paket för installation..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1230,11 +1236,6 @@ msgstr ""
 msgid "Networking/IRC"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
-msgstr ""
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Name: "
@@ -1293,11 +1294,6 @@ msgstr "Vald"
 #, c-format
 msgid "Maximum information"
 msgstr "Maximal information"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Undersöker fjärrfil för källa \"%s\"..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1423,6 +1419,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Installationen misslyckades, vissa filer saknas.\n"
+"Du kanske ska uppdatera din källdatabas."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1472,11 +1477,6 @@ msgstr "Hjälp"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Du måste vara root för att kunna installera paket."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Redigera en källa"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1491,6 +1491,11 @@ msgstr "(inget)"
 #, c-format
 msgid "Germany"
 msgstr "Tyskland"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "efter källagringsplats"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1526,11 +1531,6 @@ msgstr "Byt media"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Lägger till en källa:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1598,11 +1598,6 @@ msgstr ""
 "\n"
 "Fel rapporterade:\n"
 "%s"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Fel vid tillägg av uppdateringsmedia"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1673,6 +1668,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Redigerar källa \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2007,6 +2007,10 @@ msgstr "Ta bort program"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Programhanterare för källor"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Undersöker fjärrfil för källa \"%s\"..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Spara och avsluta"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-29 15:00+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2003-03-18 16:36+0900\n"
 "Last-Translator: Budi Rachmanto <rac@linux-mandrake.com>\n"
 "Language-Team: Bahasa Indonesia <id@li.org>\n"
@@ -57,11 +57,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "Konfigurasikan source"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Setidaknya dua entri pertama harus diisi."
@@ -80,6 +75,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "Jenis source:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "Salin file utk source `%s'..."
 
 #: ../rpmdrake.pm:1
 #, fuzzy, c-format
@@ -142,6 +147,11 @@ msgstr "Cara memilih mirror"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Paket sedang disiapkan untuk instalasi..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "Pilih source yg ingin di-update:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -328,6 +338,11 @@ msgstr "Beberapa paket tambahan perlu dihapus"
 msgid "All packages, by update availability"
 msgstr "menurut kesediaan update"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "Konfigurasikan source"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -363,11 +378,6 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No mirror"
 msgstr "Mirror:"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "Tambah source"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -430,18 +440,8 @@ msgstr ""
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Selamat datang di editor sumber paket!\n"
-"\n"
-"Perkakas ini membantu Anda mengkonfigurasikan sumber paket yang ingin Anda\n"
-"pakai di komputer Anda, yang kemudian dapat digunakan untuk menginstal\n"
-"piranti lunak baru atau meng-update"
+msgid "Add a medium"
+msgstr "Tambah source"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -465,6 +465,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "Periksa file source `%s'..."
+
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
 msgid "Path:"
@@ -486,11 +491,6 @@ msgid "Sweden"
 msgstr "Swedia"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "Pilih source yg ingin di-update:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "Austria"
@@ -505,11 +505,6 @@ msgstr "Info..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "Jenis source:"
-
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid "Development/Other"
@@ -523,17 +518,6 @@ msgstr "Periksa..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -581,11 +565,6 @@ msgstr "Hapus .%s"
 msgid "Importance: "
 msgstr "Derajat Kepentingan: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "menurut repositori sumber"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -606,15 +585,30 @@ msgstr ""
 "\n"
 "Jalan terus?"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"Selamat datang di editor sumber paket!\n"
+"\n"
+"Perkakas ini membantu Anda mengkonfigurasikan sumber paket yang ingin Anda\n"
+"pakai di komputer Anda, yang kemudian dapat digunakan untuk menginstal\n"
+"piranti lunak baru atau meng-update"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "Belgia"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "Periksa file source `%s'..."
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -635,6 +629,11 @@ msgstr "Semua sukses diinstal"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "tidak tahu"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "Update source"
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -706,6 +705,11 @@ msgstr "Tampilkan update sekuriti"
 msgid "Korea"
 msgstr "Force"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "Periksa file source `%s'..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -724,11 +728,6 @@ msgstr "Semua paket,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -765,6 +764,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "Stop"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "Tambah source"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -810,21 +814,6 @@ msgstr "Info tambahan paket..."
 #, c-format
 msgid "Save changes"
 msgstr "Simpan perubahan"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"Anda dapat juga memilih mirror kesukaan Anda secara manual: untuk\n"
-"melakukannya, luncurkan Manajer Source Software, dan tambahkan source\n"
-"`Security updates'.\n"
-"\n"
-"Lalu, restart MandrakeUpdate."
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -876,11 +865,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr "update development"
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "Update source"
-
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid "Files:\n"
@@ -890,6 +874,11 @@ msgstr "/_File"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "Error saat penambahan media"
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -922,6 +911,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"Anda dapat juga memilih mirror kesukaan Anda secara manual: untuk\n"
+"melakukannya, luncurkan Manajer Source Software, dan tambahkan source\n"
+"`Security updates'.\n"
+"\n"
+"Lalu, restart MandrakeUpdate."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "Penambahan source:"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -929,17 +938,23 @@ msgid ""
 "\n"
 msgstr "Untuk memenuhi dependensi, paket-paket berikut perlu dihapus:\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "Edit source \"%s\":"
-
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid "Please wait, listing packages..."
 msgstr ""
 "Silahkan Tunggu\n"
 "Saya sedang mengurutkan paket"
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -955,11 +970,6 @@ msgstr "update development"
 #, c-format
 msgid "Normal information"
 msgstr "Info normal"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "Salin file utk source `%s'..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1147,15 +1157,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"Instalasi gagal, beberapa file hilang.\n"
-"Anda mungkin perlu meng-update database sumber."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1168,6 +1169,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "Paket sedang disiapkan untuk instalasi..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -1227,11 +1233,6 @@ msgstr ""
 #, fuzzy, c-format
 msgid "Networking/IRC"
 msgstr "Jaringan"
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
-msgstr ""
 
 #: ../rpmdrake:1
 #, fuzzy, c-format
@@ -1294,11 +1295,6 @@ msgstr ""
 #, c-format
 msgid "Maximum information"
 msgstr "Info maximum"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "Periksa file jauh source `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1426,6 +1422,15 @@ msgid "Development/KDE and Qt"
 msgstr "update development"
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"Instalasi gagal, beberapa file hilang.\n"
+"Anda mungkin perlu meng-update database sumber."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1475,11 +1480,6 @@ msgstr ""
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Maaf, untuk menginstal paket, Anda harus jadi root."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "Tambah source"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1494,6 +1494,11 @@ msgstr "(tiada)"
 #, c-format
 msgid "Germany"
 msgstr "Jerman"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "menurut repositori sumber"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1529,11 +1534,6 @@ msgstr "Ubah media"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "Penambahan source:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1601,11 +1601,6 @@ msgstr ""
 "\n"
 "Error yg dilaporkan:\n"
 "%s"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "Error saat penambahan media"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1676,6 +1671,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "Edit source \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2011,6 +2011,10 @@ msgstr "Hapus Software"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Manajer Source Software"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "Periksa file jauh source `%s'..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Simpan dan keluar"

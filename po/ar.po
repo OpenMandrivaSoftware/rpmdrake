@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-28 20:14+0200\n"
+"POT-Creation-Date: 2003-05-30 12:10+0200\n"
 "PO-Revision-Date: 2001-06-25 11:21+0200\n"
 "Last-Translator: Mohammed Gamal <f2c2001@yahoo.com>\n"
 "Language-Team: Arabic\n"
@@ -54,11 +54,6 @@ msgid "Verifying packages signatures..."
 msgstr ""
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Configure medias"
-msgstr "تهيئة المصادر"
-
-#: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "يجب عليك ملء الحقلين الأولين على الأقل."
@@ -77,6 +72,16 @@ msgstr ""
 #, c-format
 msgid "System/XFree86"
 msgstr ""
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Type of medium:"
+msgstr "نوع المصدر:"
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Copying file for medium `%s'..."
+msgstr "جاري نسخ الملف للمصدر `%s'..."
 
 #: ../rpmdrake.pm:1
 #, fuzzy, c-format
@@ -138,6 +143,11 @@ msgstr "كيفية اختيار المرآة يدوياً"
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "جاري تحضير الحزم للتثبيت..."
+
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Select the media you wish to update:"
+msgstr "اختر المصدر/المصادر التي تريد تحديثها:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -327,6 +337,11 @@ msgstr "هذه الحزم الاضافية يجب أن تحذف"
 msgid "All packages, by update availability"
 msgstr "بتواجد التحديث"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Configure media"
+msgstr "تهيئة المصادر"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "United States"
@@ -362,11 +377,6 @@ msgstr ""
 #, c-format
 msgid "No mirror"
 msgstr "لا مرايا"
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Add a media"
-msgstr "أضف مصدر"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -427,18 +437,8 @@ msgstr "انتظر من فضلك, جاري قراءة قاعدة بيانات ا
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
-msgid ""
-"Welcome to the Software Medias Manager!\n"
-"\n"
-"This tool will help you configure the packages medias you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"أهلا بك في محرر مصادر الحزم!\n"
-"\n"
-"هذه الأداة ستساعدك على تهيئة مصادر الحزم التي قد تريد استخدامها على\n"
-"حاسوبك. عندها ستكون هذه المصادر موجودة لتثبيت حزم برمجية جديدة\n"
-"أو لعمل التحديثات."
+msgid "Add a medium"
+msgstr "أضف مصدر"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -462,6 +462,11 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining file of medium `%s'..."
+msgstr "جاري اختبار الملف للمصدر `%s'..."
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
@@ -483,11 +488,6 @@ msgid "Sweden"
 msgstr "السويد"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Select the media(s) you wish to update:"
-msgstr "اختر المصدر/المصادر التي تريد تحديثها:"
-
-#: ../rpmdrake.pm:1
 #, c-format
 msgid "Austria"
 msgstr "النمسا"
@@ -502,11 +502,6 @@ msgstr "معلومات..."
 msgid "Networking/File transfer"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Type of media:"
-msgstr "نوع المصدر:"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Development/Other"
@@ -520,17 +515,6 @@ msgstr "تحقَّق..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Cards"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"You already have at least one update media configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Medias Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart MandrakeUpdate."
 msgstr ""
 
 #: ../rpmdrake.pm:1
@@ -578,11 +562,6 @@ msgstr "احذف .%s"
 msgid "Importance: "
 msgstr "الأهمية: "
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "All packages, by media repository"
-msgstr "بمخزن المصدر"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
@@ -603,15 +582,30 @@ msgstr ""
 "\n"
 "هل من الممكن المتابعة؟"
 
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid ""
+"Welcome to the Software Media Manager!\n"
+"\n"
+"This tool will help you configure the packages media you wish to use on\n"
+"your computer. They will then be available to install new software package\n"
+"or to perform updates."
+msgstr ""
+"أهلا بك في محرر مصادر الحزم!\n"
+"\n"
+"هذه الأداة ستساعدك على تهيئة مصادر الحزم التي قد تريد استخدامها على\n"
+"حاسوبك. عندها ستكون هذه المصادر موجودة لتثبيت حزم برمجية جديدة\n"
+"أو لعمل التحديثات."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Medium"
+msgstr "بلجيكا"
+
 #: ../rpmdrake:1
 #, c-format
 msgid "System/Internationalization"
 msgstr ""
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining file of media `%s'..."
-msgstr "جاري اختبار الملف للمصدر `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -632,6 +626,11 @@ msgstr "تم تثبيت كل شئ بنجاح"
 #, fuzzy, c-format
 msgid "unknown package "
 msgstr "لم يمكن فتح الحزمة"
+
+#: ../rpmdrake:1 ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Update media"
+msgstr "حدّث المصدر/المصادر"
 
 #: ../rpmdrake:1
 #, c-format
@@ -703,6 +702,11 @@ msgstr "تحديثات أمنية"
 msgid "Korea"
 msgstr "اجبار"
 
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid "Examining remote file of medium `%s'..."
+msgstr "جاري اختبار الملف للمصدر `%s'..."
+
 #: ../rpmdrake:1
 #, c-format
 msgid "Games/Adventure"
@@ -721,11 +725,6 @@ msgstr "كل الحزم,"
 #: ../rpmdrake:1
 #, c-format
 msgid "Graphical desktop/FVWM based"
-msgstr ""
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Media: "
 msgstr ""
 
 #: ../rpmdrake:1
@@ -762,6 +761,11 @@ msgstr ""
 #, c-format
 msgid "Stop"
 msgstr "قف"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Edit a medium"
+msgstr "تحرير مصدر"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -810,21 +814,6 @@ msgstr "معلومات أكثر حول الحزمة..."
 #, c-format
 msgid "Save changes"
 msgstr "احفظ التغييرات"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Medias Manager, and then add a `Security\n"
-"updates' media.\n"
-"\n"
-"Then, restart MandrakeUpdate."
-msgstr ""
-"يمكنك أيضا اختيار المرآة يدويا: لعمل ذلك,\n"
-"قم بتشغيل مدير مصادر البرمجيات, ثم أضف مصدر 'تحديثات\n"
-"أمنية'.\n"
-"\n"
-"ثم أعد تشغيل أداة تحديث Mandrake."
 
 #: ../rpmdrake:1
 #, c-format
@@ -877,11 +866,6 @@ msgstr ""
 msgid "Development/Kernel"
 msgstr ""
 
-#: ../rpmdrake:1 ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Update media(s)"
-msgstr "حدّث المصدر/المصادر"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
@@ -891,6 +875,11 @@ msgstr "الملفات:\n"
 #, c-format
 msgid "Games/Arcade"
 msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Already existing update media"
+msgstr "خطأ أثناء اضافة وسيط التحديث"
 
 #: ../rpmdrake:1
 #, c-format
@@ -923,6 +912,26 @@ msgid "Running in user mode"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
+"يمكنك أيضا اختيار المرآة يدويا: لعمل ذلك,\n"
+"قم بتشغيل مدير مصادر البرمجيات, ثم أضف مصدر 'تحديثات\n"
+"أمنية'.\n"
+"\n"
+"ثم أعد تشغيل أداة تحديث Mandrake."
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Adding a medium:"
+msgstr "جاري اضافة مصدر"
+
+#: ../rpmdrake:1
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -933,15 +942,21 @@ msgstr ""
 "تحذف:\n"
 "\n"
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Editing media \"%s\":"
-msgstr "جاري تحرير المصدر \"%s\":"
-
 #: ../rpmdrake:1
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "انتظر من فضلك, جاري سرد الحزم..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -957,11 +972,6 @@ msgstr ""
 #, c-format
 msgid "Normal information"
 msgstr "معلومات عادية"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Copying file for media `%s'..."
-msgstr "جاري نسخ الملف للمصدر `%s'..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1145,15 +1155,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, fuzzy, c-format
 msgid ""
-"Installation failed, some files are missing.\n"
-"You may want to update your medias database."
-msgstr ""
-"فشل التثبيت, بعض الملفات مفقودة.\n"
-"ربما تحتاج الى تحديث فاعدة بيانات المصادر."
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
@@ -1166,6 +1167,11 @@ msgstr ""
 #, fuzzy, c-format
 msgid "No package found for installation."
 msgstr "جاري تحضير الحزم للتثبيت..."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Medium: "
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -1224,11 +1230,6 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "Networking/IRC"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Media"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1290,11 +1291,6 @@ msgstr "مختار"
 #, c-format
 msgid "Maximum information"
 msgstr "أقضى المعلومات"
-
-#: ../rpmdrake.pm:1
-#, fuzzy, c-format
-msgid "Examining distant file of media `%s'..."
-msgstr "جاري اختبار الملف البعيد للمصدر `%s'..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -1420,6 +1416,15 @@ msgid "Development/KDE and Qt"
 msgstr ""
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"Installation failed, some files are missing.\n"
+"You may want to update your media database."
+msgstr ""
+"فشل التثبيت, بعض الملفات مفقودة.\n"
+"ربما تحتاج الى تحديث فاعدة بيانات المصادر."
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Books/Howtos"
 msgstr ""
@@ -1469,11 +1474,6 @@ msgstr "مساعدة"
 msgid "Unable to get source packages, sorry. %s"
 msgstr "آسف, يجب عليك أن تكون مستخدم جذر لتثبيت الحزم."
 
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Edit a media"
-msgstr "تحرير مصدر"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Taiwan"
@@ -1488,6 +1488,11 @@ msgstr "(لا شئ)"
 #, c-format
 msgid "Germany"
 msgstr "ألمانيا"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by medium repository"
+msgstr "بمخزن المصدر"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1523,11 +1528,6 @@ msgstr "غير الوسيط"
 #, c-format
 msgid "Graphical desktop/GNOME"
 msgstr ""
-
-#: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
-msgid "Adding a media:"
-msgstr "جاري اضافة مصدر"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1595,11 +1595,6 @@ msgstr ""
 "\n"
 "الأخطاء المقررة:\n"
 "%s"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "Already existing update medias"
-msgstr "خطأ أثناء اضافة وسيط التحديث"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1670,6 +1665,11 @@ msgstr ""
 #, c-format
 msgid "rpmdrake"
 msgstr "rpmdrake"
+
+#: ../edit-urpm-sources.pl:1
+#, fuzzy, c-format
+msgid "Editing medium \"%s\":"
+msgstr "جاري تحرير المصدر \"%s\":"
 
 #: ../rpmdrake:1
 #, c-format
@@ -2005,6 +2005,10 @@ msgstr "احذف البرنامج"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "مدير مصادر البرمجيات"
+
+#, fuzzy
+#~ msgid "Examining distant file of media `%s'..."
+#~ msgstr "جاري اختبار الملف البعيد للمصدر `%s'..."
 
 #~ msgid "Save and quit"
 #~ msgstr "احفظ و اخرج"
