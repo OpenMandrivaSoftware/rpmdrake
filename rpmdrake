@@ -307,7 +307,10 @@ sub parse_compssUsers_flat {
     my (%compssUsers, $category);
     my $compss = '/var/lib/urpmi/compssUsers.flat';
     -r $compss or $compss = '/usr/share/rpmdrake/compssUsers.flat.default';
-    -r $compss or die "Internal error, please report";
+    -r $compss or do {
+	print STDERR "No compssUsers.flat file found\n";
+	return undef;
+    };
     foreach (cat_($compss)) {
 	s/#.*//;
 	/^\s*$/ and next;
