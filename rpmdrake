@@ -1326,12 +1326,19 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                 gurpm::progress($amount/$total);
             }
         };
+	my $fh;
         my @errors = $urpm->install(
 	    $urpm->{ask_remove},
 	    \%sources_install,
 	    \%sources,
 	    translate_message => 1,
 	    post_clean_cache => 1,
+	    callback_open => sub {
+		my ($data, $type, $id) = @_;
+		my $f = $sources_install{$id} || $sources{$id};
+		open $fh, $f or $urpm->{error}(N("unable to access rpm file [%s]", $f));
+		return fileno $fh;
+	    },
 	    callback_inst => $callback_inst,
 	    callback_trans => $callback_inst,
 	    callback_close => sub {
@@ -1344,6 +1351,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		push our @Readmes, map {
 		    [ $_, $fullname ]
 		} grep { /\bREADME(\.$trtype)?\.urpmi$/ } $pkg->files();
+		close $fh;
 	    },
 	);
         gurpm::end();
