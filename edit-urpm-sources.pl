@@ -64,7 +64,13 @@ sub easy_add_callback {
     #- cooker and community don't have update sources
     my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
-	N("You can choose to add sources that correspond to your distribution"),
+N("This step enables you to add sources from a Mandrakelinux web or FTP mirror.
+
+There are two kinds of official mirrors. You can choose to add sources that
+contain the complete set of packages of your distribution (usually a superset
+of what comes on the standard installation CDs), or sources that provide the
+official updates for your distribution. (You can add both, but you'll have
+to do this in two steps.)"),
 	transient => $mainw->{rwindow},
 	yesno => 1, text => { yes => N("Distribution sources"), no => N("Official updates") },
     ) : 1;
