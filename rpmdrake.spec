@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -101,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Jan 21 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-2mdk
+- remove unneeded stuff from grpmi/po/*.po
+
 * Thu Jan 15 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-1mdk
 - add ability to use rpmdrake/rpmdrake-remove with a "parallel"
   urpmi configuration (drawbacks: deps are shown only valid for a
