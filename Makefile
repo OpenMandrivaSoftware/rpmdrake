@@ -13,6 +13,9 @@
  #
  #*****************************************************************************
 
+VERSION = $(shell awk '/define version/ { print $$3 }' $(NAME).spec)
+NAME = rpmdrake
+
 DIRS = grpmi po data
 
 PREFIX = /usr/local
@@ -20,6 +23,7 @@ DATADIR = $(PREFIX)/share
 BINDIR = $(PREFIX)/bin
 SBINDIR = $(PREFIX)/sbin
 RELATIVE_SBIN = ../sbin
+RPM=$(HOME)/rpm
 
 all: dirs
 
@@ -74,3 +78,28 @@ hack:
 	cp -f $(SOFTHOME)/rpmdrake/rpmdrake.pm $(shell rpm --eval %perl_vendorlib)
 	cp -f $(GIHOME)/perl-install/ugtk2.pm /usr/lib/libDrakX
 	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' /usr/lib/libDrakX/*.pm /usr/sbin/{rpmdrake,edit-urpm-sources.pl}
+
+
+
+
+dis: clean
+	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
+	mkdir -p $(NAME)-$(VERSION)
+	find . -not -name "$(NAME)-$(VERSION)"|cpio -pd $(NAME)-$(VERSION)/
+	find $(NAME)-$(VERSION) -type d -name CVS -o -name .cvsignore |xargs rm -rf
+	tar cf ../$(NAME)-$(VERSION).tar $(NAME)-$(VERSION)
+	bzip2 -9f ../$(NAME)-$(VERSION).tar
+	rm -rf $(NAME)-$(VERSION)
+
+srpm: dis ../$(NAME)-$(VERSION).tar.bz2 $(RPM)
+	cp -f ../$(NAME)-$(VERSION).tar.bz2 $(RPM)/SOURCES
+	cp -f $(NAME).spec $(RPM)/SPECS/
+	rm -f ../$(NAME)-$(VERSION).tar.bz2
+	rpm -bs $(NAME).spec
+
+rpm: srpm
+	rpm -bb --clean --rmsource $(NAME).spec
+
+ChangeLog:
+	cvs2cl -W 400 -I Changelog --accum -U ../../soft/common/username
+	rm -f *.bak

@@ -14,7 +14,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 License: GPL
-Source0: rpmdrake.tar.bz2
+Source0: %name-%version.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
 Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools >= 9.2-0.6mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-2mdk perl-Locale-gettext >= 1.01-7mdk
@@ -37,7 +37,7 @@ A fourth program manages the media (add, remove, edit).
 %prep
 rm -rf $RPM_BUILD_ROOT
 
-%setup -q -n rpmdrake
+%setup -q
 
 %build
 make OPTIMIZE="$RPM_OPT_FLAGS -Wall" PREFIX=%{_prefix} INSTALLDIRS=vendor
