@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-cs\n"
 "POT-Creation-Date: 2004-08-19 01:59+0200\n"
-"PO-Revision-Date: 2004-04-26 19:46+0200\n"
+"PO-Revision-Date: 2004-08-19 22:24+0200\n"
 "Last-Translator: Michal Bukovjan <bukm@centrum.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.3\n"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: ../edit-urpm-sources.pl:63
 #, c-format
@@ -150,16 +151,14 @@ msgid "Cancel"
 msgstr "Zrušit"
 
 #: ../edit-urpm-sources.pl:180
-#, fuzzy, c-format
+#, c-format
 msgid "Source Removal"
-msgstr "Odstranění balíčků software"
+msgstr "Odstranění zdroje"
 
 #: ../edit-urpm-sources.pl:181
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
-msgstr ""
-"Opravdu chcete odebrat klíč %s pro zdroj %s?\n"
-"(název klíče je: %s)"
+msgstr "Opravdu chcete odstranit zdroj \"%s\"?"
 
 #: ../edit-urpm-sources.pl:185
 #, c-format
@@ -205,12 +204,12 @@ msgstr "Nastavit proxy"
 #: ../edit-urpm-sources.pl:268
 #, c-format
 msgid "Proxy settings for media \"%s\""
-msgstr ""
+msgstr "Nastavení proxy zdroje \"%s\""
 
 #: ../edit-urpm-sources.pl:269
 #, c-format
 msgid "Global proxy settings"
-msgstr ""
+msgstr "Globální nastavení proxy"
 
 #: ../edit-urpm-sources.pl:271
 #, c-format
@@ -596,17 +595,17 @@ msgstr "Literatura"
 #: ../rpmdrake:111 ../rpmdrake:112
 #, c-format
 msgid "Cluster"
-msgstr ""
+msgstr "Cluster"
 
 #: ../rpmdrake:111
 #, c-format
 msgid "Message Passing"
-msgstr ""
+msgstr "Předávání zpráv"
 
 #: ../rpmdrake:112
 #, c-format
 msgid "Queueing Services"
-msgstr ""
+msgstr "Služby frontování"
 
 #: ../rpmdrake:113
 #, c-format
@@ -671,9 +670,9 @@ msgid "Editors"
 msgstr "Editory"
 
 #: ../rpmdrake:126
-#, fuzzy, c-format
+#, c-format
 msgid "Education"
-msgstr "Komunikace"
+msgstr "Vzdělávání"
 
 #: ../rpmdrake:127
 #, c-format
@@ -837,7 +836,7 @@ msgstr "Kancelář"
 #: ../rpmdrake:158
 #, c-format
 msgid "Public Keys"
-msgstr ""
+msgstr "Veřejné klíče"
 
 #: ../rpmdrake:159
 #, c-format
@@ -936,14 +935,14 @@ msgid "Printing"
 msgstr "Tisk"
 
 #: ../rpmdrake:177
-#, fuzzy, c-format
+#, c-format
 msgid "Deploiement"
-msgstr "Vývoj"
+msgstr "Nasazení"
 
 #: ../rpmdrake:178
-#, fuzzy, c-format
+#, c-format
 msgid "Deployment"
-msgstr "Vývoj"
+msgstr "Nasazení"
 
 #: ../rpmdrake:179 ../rpmdrake:180 ../rpmdrake:181 ../rpmdrake:182
 #, c-format
@@ -1183,7 +1182,7 @@ msgstr ""
 #: ../rpmdrake:623
 #, c-format
 msgid "%s (belongs to the skip list)"
-msgstr ""
+msgstr "%s (patří do přeskakovaných)"
 
 #: ../rpmdrake:625
 #, c-format
@@ -1219,7 +1218,7 @@ msgstr "Velikost výběru: %d MB"
 #: ../rpmdrake:666
 #, c-format
 msgid "Description not available for this package\n"
-msgstr ""
+msgstr "Popis tohoto balíčku není k dispozici\n"
 
 #: ../rpmdrake:672
 #, c-format
@@ -1419,9 +1418,9 @@ msgid "Software Packages Removal"
 msgstr "Odstranění balíčků software"
 
 #: ../rpmdrake:994
-#, fuzzy, c-format
+#, c-format
 msgid "Software Packages Update"
-msgstr "Odstranění balíčků software"
+msgstr "Aktualizace balíčků software"
 
 #: ../rpmdrake:995
 #, c-format
@@ -1705,7 +1704,7 @@ msgstr "vše bylo úspěšně nainstalováno"
 #: ../rpmdrake:1415
 #, c-format
 msgid "These packages come with upgrade information"
-msgstr ""
+msgstr "Tyto balíčky obsahují informace o aktualizaci"
 
 #: ../rpmdrake:1439
 #, c-format
@@ -2131,6 +2130,9 @@ msgid ""
 "Mandrakelinux you're running (%s).\n"
 "It will be disabled."
 msgstr ""
+"Váš zdroj \"%s\", který se používá pro aktualizace, neodpovídá verzi "
+"Mandrakelinuxu, která právě běží (%s).\n"
+"Tento zdroj bude vypnut."
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2405,6 +2407,3 @@ msgstr "Odebrat software"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "Správce zdrojů software"
-
-#~ msgid "Mandrake Update"
-#~ msgstr "Mandrake Update"
