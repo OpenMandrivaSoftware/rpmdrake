@@ -178,6 +178,9 @@ sub edit_callback {
     if ($w->main) {
 	my ($name, $update, $ignore) = map { $medium->{$_} } qw(name update ignore);
 	my ($url, $with_hdlist) = ($url_entry->get_text, $hdlist_entry->get_text);
+	$url =~ m|^removable://| and (interactive_msg(_("You need to insert the medium to continue"),
+						      _("In order to save the changes, you need to insert the medium in the drive."),
+						      yesno => 1, text => { yes => _("Ok"), no => _("Cancel") }) or return 0);
 	standalone::explanations("Removing medium $name");
 	$urpm->select_media($name);
 	$urpm->remove_selected_media;
