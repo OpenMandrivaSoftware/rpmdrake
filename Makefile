@@ -68,6 +68,7 @@ tar:
 
 clust:
 	scp ../rpmdrake-$(VERSION).tar.bz2 bi:rpm/SOURCES/rpmdrake-$(VERSION).tar.bz2
+	rm -f scp ../rpmdrake-$(VERSION).tar.bz2
 	scp rpmdrake.spec bi:rpm/SPECS
 
 SOFTHOME = /home/gc/cvs/soft
