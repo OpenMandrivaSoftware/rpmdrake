@@ -1339,9 +1339,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		return unless defined $pkgid;
 		return if $MODE ne 'install' && $MODE ne 'update';
 		my $pkg = $urpm->{depslist}[$pkgid];
+		my $fullname = $pkg->fullname();
+		my $trtype = (grep { /$fullname/ } values %sources_install) ? 'install' : 'upgrade';
 		push our @Readmes, map {
-		    [ $_, $pkg->fullname() ]
-		} grep { /\bREADME(\.$MODE)?\.urpmi$/ } $pkg->files();
+		    [ $_, $fullname ]
+		} grep { /\bREADME(\.$trtype)?\.urpmi$/ } $pkg->files();
 	    },
 	);
         gurpm::end();
