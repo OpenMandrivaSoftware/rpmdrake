@@ -47,11 +47,18 @@ use common;
 use rpmdrake;
 use gurpm;
 
-#- dirty stuff needed because text printed by gtk2 will always be encoded in UTF-8
+#- dirty stuff needed because text printed by gtk2 will always be encoded
+#- in UTF-8; we first check if LC_ALL is defiend, because if it is,
+#- changinf LC_COLLATE alone will have no effect.
 use POSIX;
 use locale;
-my $collation_locale = setlocale(LC_COLLATE);
-$collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8");
+my $collation_locale = $ENV{LC_ALL};
+if ($collation_locale) {
+  $collation_locale =~ /UTF-8/ or setlocale(LC_ALL, "$collation_locale.UTF-8"); }
+else {
+  $collation_locale = setlocale(LC_COLLATE);
+  $collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8");
+};
 
 
 $MODE = 'install';
@@ -256,7 +263,13 @@ sub pkg2medium {
     $tmp;
 }
 
-sub localtime2changelog { strftime("%c", localtime($_[0])) }
+#- strftime returns a string in the locale charset encoding;
+#- but gtk2 requires UTF-8, so we use to_utf8() to ensure the
+#- output of localtime2changelog() is always in UTF-8
+#- as to_utf8() uses LC_CTYPE for locale encoding and strftime() uses LC_TIME,
+#- it doesn't work if those two variables have values with different 
+#- encodings; but if a user has a so broken setup we can't do much anyway
+sub localtime2changelog { to_utf8(strftime("%c", localtime($_[0]))) }
 
 sub extract_header {
     my ($pkg, $urpm) = @_;
