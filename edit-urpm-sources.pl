@@ -131,17 +131,16 @@ really want to replace it?"), { yesno => 1 } ) or return 0;
 	my $info = $radios_infos{$type};
 	my %i = (name => $info->{name_entry}->get_text, url => $info->{url_entry}->get_text, hdlist => $info->{hdlist_entry}->get_text);
 	my %make_url = (local => "file:/$i{url}", http => $i{url}, security => $i{url}, removable => "removable:/$i{url}");
+	$i{url} =~ s|^ftp://||;
 	$make_url{ftp} = sprintf "ftp://%s%s", $info->{login_check}->get_active
 	                                           ? ($info->{login_entry}->get_text.':'.$info->{pass_entry}->get_text.'@')
 						   : '',
 					       $i{url};
-	$make_url{ftp} =~ s|^ftp://ftp://|ftp://|;
 	if (member($i{name}, map { $_->{name} } @{$urpm->{media}})) {
 	    standalone::explanations("Removing medium $i{name}");
 	    $urpm->select_media($i{name});
 	    $urpm->remove_selected_media;
 	}
-	;
 	add_medium_and_check($urpm, _("Please wait, adding medium..."),
 			     { probe_with_hdlist => member($type, qw(removable local)) && $i{hdlist} eq '' },
 			     $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security');
