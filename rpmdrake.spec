@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 7mdk
+%define release 8mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrakelinux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.4.1 gurpmi >= 4.4.1 perl-URPM >= 0.90-7mdk drakxtools > 10-12mdk rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.5-11mdk gurpmi >= 4.5-11mdk perl-URPM >= 0.90-7mdk drakxtools > 10-12mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 1.023-3mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: curl-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -121,6 +121,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Jun 30 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-8mdk
+- Don't display the "update media" button when not used as root
+- use urpm::download
+- rebuild for new curl
+
 * Wed Jun 23 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-7mdk
 - Message changes and interface cosmetics
 - Software media manager: only update explicitly selected sources
