@@ -107,25 +107,51 @@ sub interactive_msg {
     my ($title, $contents, %options) = @_;
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
-    gtkadd($d->{window},
-	   gtkpack_(Gtk2::VBox->new(0,5),
-		    1, $options{scroll} ? gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
-						 gtkset_size_request(create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)),
-								     $typical_width*2, 300))
-					: Gtk2::Label->new($contents),
-		    0, gtkpack(create_hbox(),
-			       ref($options{yesno}) eq 'ARRAY' ? map {
-				   my $label = $_;
-				   gtksignal_connect(Gtk2::Button->new($label), clicked => sub { $d->{retval} = $label; Gtk2->main_quit })
-			       } @{$options{yesno}}
-			       : $options{yesno} ? (
-                                           gtksignal_connect(Gtk2::Button->new($options{text}{no} || N("No")),
-                                                             clicked => sub { $d->{retval} = 0; Gtk2->main_quit }),
-                                           gtksignal_connect(Gtk2::Button->new($options{text}{yes} || N("Yes")),
-                                                             clicked => sub { $d->{retval} = 1; Gtk2->main_quit }),
-                                          )
-			       : gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit })
-			      )));
+    gtkadd(
+	$d->{window},
+	gtkpack_(
+	    Gtk2::VBox->new(0,5),
+	    1,
+	    (
+		$options{scroll} ? gtkadd(
+		    gtkset_shadow_type(Gtk2::Frame->new, 'in'),
+		    gtkset_size_request(
+			create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)),
+			$typical_width*2, 300
+		    )
+		) : Gtk2::WrappedLabel->new($contents)
+	    ),
+	    0,
+	    gtkpack(
+		create_hbox(),
+		(
+		    ref($options{yesno}) eq 'ARRAY' ? map {
+			my $label = $_;
+			gtksignal_connect(
+			    Gtk2::Button->new($label),
+			    clicked => sub { $d->{retval} = $label; Gtk2->main_quit }
+			)
+		    } @{$options{yesno}}
+		    : (
+			$options{yesno} ? (
+			    gtksignal_connect(
+				Gtk2::Button->new($options{text}{no} || N("No")),
+				clicked => sub { $d->{retval} = 0; Gtk2->main_quit }
+			    ),
+			    gtksignal_connect(
+				Gtk2::Button->new($options{text}{yes} || N("Yes")),
+				clicked => sub { $d->{retval} = 1; Gtk2->main_quit }
+			    ),
+			)
+			: gtksignal_connect(
+			    Gtk2::Button->new(N("Ok")),
+			    clicked => sub { Gtk2->main_quit }
+			)
+		    )
+		)
+	    )
+	)
+    );
     $d->main;
 }
 
@@ -184,7 +210,7 @@ sub wait_msg {
     my ($msg, %options) = @_;
     my $mainw = ugtk2->new('rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $mainw->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
-    my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::Label->new($msg);
+    my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::WrappedLabel->new($msg);
     gtkadd($mainw->{window}, gtkpack__(gtkpack__(Gtk2::VBox->new(0, 5), $label, if_(exists $options{widgets}, @{$options{widgets}}))));
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });
     $mainw->sync until $mainw->{displayed};
@@ -316,21 +342,21 @@ sub mirrors {
 sub choose_mirror {
     my (%options) = @_;
     interactive_msg('', 
-N("I need to contact MandrakeSoft website to get the mirrors list.
+N("I need to contact the Mandrakesoft website to get the mirror list.
 Please check that your network is currently running.
 
 Is it ok to continue?"), yesno => 1) or return '';
-    my $wait = wait_msg(N("Please wait, downloading mirrors addresses from MandrakeSoft website."));
+    my $wait = wait_msg(N("Please wait, downloading mirror addresses from the Mandrakesoft website."));
     my @mirrors;
     eval { @mirrors = mirrors('/var/cache/urpmi') };
     remove_wait_msg($wait);
     if ($@) {
 	my $msg = $@;  #- seems that value is bitten before being printed by next func..
 	interactive_msg(N("Error during download"),
-N("There was an error downloading the mirrors list:
+N("There was an error downloading the mirror list:
 
 %s
-The network, or MandrakeSoft website, are maybe unavailable.
+The network, or the Mandrakesoft website, may be unavailable.
 Please try again later.", $msg));
 	return '';
     }
