@@ -485,27 +485,25 @@ or you already installed all of them."));
 				     my $tag_fix = { 'font' => 'monospace' };
 				     my @files = ([ N("Files:\n"), $tag_tag ], [ $pkgs->{$key}{files} || N("(Not available)"), $tag_fix ]);
 				     my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
-				     my (@max1, @max2);
-                                     if (@$max_info_in_descr) {
-                                         @max1 = 
-                                           $MODE eq 'remove' ? ()
-                                             : ([ N("Source: "), $tag_tag ], [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
-                                                [ N("Currently installed version: "), $tag_tag ],
-                                                  [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]);
-                                         @max2 = $options{'changelog-first'} ? (@chglo, [ "\n" ], @files) : (@files, [ "\n\n" ], @chglo);
-                                     }
-				     $MODE eq 'update' and gtktext_insert($info_update,
-							      [ [ N("Reason for update: "), $tag_tag ],
-								[ beautify_description($descriptions->{$name}{pre}) ] ]);
+				     my @source_info = ($MODE eq 'remove' || !@$max_info_in_descr ? ()
+							: ([ N("Source: "), $tag_tag ],
+							   [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
+							   [ N("Currently installed version: "), $tag_tag ],
+							   [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ] ));
+				     my @max_info = if_(@$max_info_in_descr, $options{'changelog-first'} ? (@chglo, [ "\n" ], @files)
+                                                                                                         : (@files, [ "\n\n" ], @chglo));
 				     [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
 				       [ N("Version: "), $tag_tag ], [ "$version\n" ],
 				       [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024))."\n" ],
 				       if_($MODE eq 'update',
 					   [ N("Importance: "), $tag_tag ], [ "$descriptions->{$name}{importance}\n" ]),
-                                       @max1,
+                                       @source_info,
 				       [ "\n".N("Summary: "),   $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
+                                       if_($MODE eq 'update',
+                                           [ N("Reason for update: "), $tag_tag ],
+                                           [ beautify_description($descriptions->{$name}{pre})."\n" ]),
 				       [ N("Description: "),    $tag_tag ], [ "$pkgs->{$key}{description}\n" ],
-				       @max2 ];
+				       @max_info ];
 				 },
 		   check_interactive_to_toggle => sub { 1 },
 		   grep_allowed_to_toggle => sub { @_ },
@@ -714,10 +712,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
     $table->attach(gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
 			  gtkset_size_request(create_scrolled_window($tree), $typical_width*1.25, -1)),
 		   0, 1, 1, 2, 'fill', 'fill', 0, 0);
-    $table->attach($MODE eq 'update' ? create_vpaned(create_scrolled_window($info),
-						     create_scrolled_window($info_update = Gtk2::TextView->new),
-						     resize1 => 1)
-		                     : create_scrolled_window($info),
+    $table->attach(create_scrolled_window($info),
 		   1, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
     gtkadd($w->{window}, 
 	   gtkpack_(Gtk2::VBox->new(0, 3),

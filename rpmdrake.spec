@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 15mdk
+%define release 16mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Apr 15 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-16mdk
+- MandrakeUpdate: UI change to follow David Walser's suggestions and
+  patches from #3610, e.g. don't use two paned windows anymore
+
 * Tue Apr  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-15mdk
 - rpmdrake: small UI change to follow #3610, e.g. in
   "maximum information" mode, have the source and currently installed
