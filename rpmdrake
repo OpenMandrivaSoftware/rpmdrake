@@ -651,11 +651,14 @@ or you already installed all of them."));
 		       }
 
 		       foreach (@nodes_with_deps) {
-			   exists $pkgs->{$_} or next;  #- some deps may exist on some packages which aren't listed because
-			                                #- not upgradable (older than what currently installed)
+			   #- some deps may exist on some packages which aren't listed because
+			   #- not upgradable (older than what currently installed)
+			   exists $pkgs->{$_} or next;
+			   $pkgs->{$_}{pkg} or $new_state = 0; #- can't be removed
 			   $set_state->($_, $new_state ? 'selected' : 'unselected');
 			   $pkgs->{$_}{selected} = $new_state;
-			   $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
+			   $pkgs->{$_}{pkg}
+			       and $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
 		       }
 		   },
 		   get_status => sub { $MODE eq 'install' ? N("Selected: %d MB / Free disk space: %d MB",
