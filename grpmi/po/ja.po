@@ -15,7 +15,7 @@ msgstr ""
 
 #: ../curl_download/curl_download.xs:83
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "ダウンロード先のディレクトリは既存のものにしてください"
 
 #: ../curl_download/curl_download.xs:86 ../curl_download/curl_download.xs:201
 msgid "Out of memory\n"
@@ -23,7 +23,7 @@ msgstr "メモリ不足\n"
 
 #: ../curl_download/curl_download.xs:99
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "appendモードで出力ファイルを開けません"
 
 #: ../curl_download/curl_download.xs:121
 msgid "Unsupported protocol\n"
@@ -204,11 +204,11 @@ msgstr "未知のエラーコード %d\n"
 
 #: ../grpmi.pl_.c:51
 msgid "Yes"
-msgstr ""
+msgstr "はい"
 
 #: ../grpmi.pl_.c:52
 msgid "No"
-msgstr ""
+msgstr "いいえ"
 
 #: ../grpmi.pl_.c:53
 msgid "Ok"
@@ -220,29 +220,28 @@ msgstr "エラー..."
 
 #: ../grpmi.pl_.c:63
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "パッケージインストールにはroot権限が必要です"
 
 #: ../grpmi.pl_.c:65
 msgid "RPM initialization error"
-msgstr ""
+msgstr "RPM初期化エラー"
 
 #: ../grpmi.pl_.c:66
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "RPM設定ファイルの初期化ができません、ごめんなさい"
 
 #: ../grpmi.pl_.c:69
-#, fuzzy
 msgid "Initializing..."
-msgstr "インストール中："
+msgstr "初期化中："
 
 #: ../grpmi.pl_.c:90
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "以下のパッケージダウンロード中 `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:97
 msgid "Error during download"
-msgstr ""
+msgstr "ダウンロード中にエラー"
 
 #: ../grpmi.pl_.c:98
 #, c-format
@@ -254,15 +253,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"以下のパッケージダウンロード中にエラー:\n"
+"\n"
+"%s\n"
+"\n"
+"エラー: %s\n"
+"このパッケージをとばして続けますか?"
 
 #: ../grpmi.pl_.c:110
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "%s の署名確認中..."
 
 #: ../grpmi.pl_.c:112
 msgid "Signature verification error"
-msgstr ""
+msgstr "署名確認エラー"
 
 #: ../grpmi.pl_.c:113
 #, c-format
@@ -272,14 +277,17 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"パッケージ `%s' の署名が不正です:\n"
+"\n"
+"%s\n"
+"それでもインストールしますか?"
 
 #: ../grpmi.pl_.c:119
-#, fuzzy
 msgid "File error"
-msgstr "書き込みエラー\n"
+msgstr "ファイルエラー"
 
 #: ../grpmi.pl_.c:120
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The following file is not valid:\n"
 "\n"
@@ -287,15 +295,20 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"以下のファイルが無効です:\n"
+"\n"
+"%s\n"
+"\n"
+"エラー: %s\n"
+"このパッケージをとばして続けますか?"
 
 #: ../grpmi.pl_.c:135
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "インストール準備中"
+msgstr "インストール用にパッケージ準備中"
 
 #: ../grpmi.pl_.c:143
 msgid "Conflicts detected"
-msgstr ""
+msgstr "衝突が見つかりました"
 
 #: ../grpmi.pl_.c:144
 #, c-format
@@ -305,118 +318,117 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"衝突が見つかりました:\n"
+"%s\n"
+"\n"
+"インストールを強制しますか?"
 
 #: ../grpmi.pl_.c:151
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "パッケージ `%s' (%s/%s)インストール中"
 
 #: ../grpmi.pl_.c:164
 msgid "Problems occurred during installation"
 msgstr "インストール中に問題が起こりました"
 
 #: ../grpmi.pl_.c:164
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "インストール準備中"
+msgstr ""
+"パッケージインストール中にエラー:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:66
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "ファイルがファイルを読めません\n"
+msgstr "RPM設定ファイルを読めません"
 
 #: ../rpm/grpmi_rpm.xs:92
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "接続できません\n"
+msgstr "ファイルを開けません\n"
 
 #: ../rpm/grpmi_rpm.xs:96
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "ホストを見つけられません\n"
+msgstr "先頭バイトが読めません\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "パッケージのRPMバージョンは署名をサポートしません\n"
 
 #: ../rpm/grpmi_rpm.xs:104
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "署名ブロックが読めません（rpmReadSignature失敗)\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "No signatures\n"
-msgstr ""
+msgstr "署名がありません\n"
 
 #: ../rpm/grpmi_rpm.xs:111
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "`makeTempFile' 失敗!\n"
 
 #: ../rpm/grpmi_rpm.xs:118
 msgid "Error reading file\n"
-msgstr ""
+msgstr "ファイル読み込み失敗\n"
 
 #: ../rpm/grpmi_rpm.xs:124
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "一時ファイル書き込み失敗\n"
 
 #: ../rpm/grpmi_rpm.xs:147
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "パッケージにGPG署名がありません\n"
 
 #: ../rpm/grpmi_rpm.xs:229
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "RPM DBを書き込み用に開けません（スーパーユーザでない？)"
 
 #: ../rpm/grpmi_rpm.xs:231
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "RPM DBを書き込み用に開けません"
 
 #: ../rpm/grpmi_rpm.xs:235
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "やりとりが開始できません"
 
 #: ../rpm/grpmi_rpm.xs:254
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "パッケージが開けません"
+msgstr "パッケージ %s が開けません\n"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "パッケージが壊れています"
+msgstr "パッケージ %s が壊れています\n"
 
 #: ../rpm/grpmi_rpm.xs:262
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "パッケージがインストールできません"
+msgstr "パッケージ %s がインストールできません\n"
 
 #: ../rpm/grpmi_rpm.xs:273
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "依存関係をチェックしているときにエラーがでました :("
+msgstr "依存関係のチェックでエラーがでました :("
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "conflicts with"
-msgstr "は %s-%s-%sとぶつかります"
+msgstr "は以下とぶつかります"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "is needed by"
-msgstr "は %s-%s-%sで必要です"
+msgstr "は以下で必要です"
 
 #: ../rpm/grpmi_rpm.xs:312
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "依存関係をチェックしているときにエラーがでました :("
+msgstr "依存関係のチェック 2 でエラーがでました :("
 
 #: ../rpm/grpmi_rpm.xs:318
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "インストール中に問題が起こりました"
+msgstr "インストール中に問題が起こりました:\n"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "インストール／更新を実行中"
