@@ -22,7 +22,7 @@
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
-    grep { /^--?h/ } @ARGV and do {
+    any { /^--?h/ } @ARGV and do {
 	printf qq(Usage: %s [OPTION]...
   --no-confirmation      don't ask first confirmation question in update mode
   --no-verify-rpm        don't verify packages signatures
@@ -233,13 +233,13 @@ sub parse_compssUsers_flat {
 	/^\s*$/ and next;
 	if (/^\S/) {
 	    if (/^(.+?) \[icon=.+?\] \[path=(.+?)\]/) {
-		$category = translate($2).'|'.translate($1);
+		$category = translate($2) . '|' . translate($1);
 	    } else {
 		print STDERR "Malformed category in compssUsers.flat: <$_>\n";
 	    }
 	} elsif (/^\t(\d) (\S+)\s*$/) {
 	    $category or print STDERR "Entry without category <$_>\n";
-	    push @{$compssUsers{$2}}, $category . ($1 <= 3 ? '|'.N("Other") : '');
+	    push @{$compssUsers{$2}}, $category . ($1 <= 3 ? '|' . N("Other") : '');
 	}
     }
     \%compssUsers;
@@ -280,7 +280,7 @@ sub extract_header {
 	    add2hash($pkg, { summary => rpm_summary($p->summary), description => rpm_description($p->description) });
 	    @$max_info_in_descr and add2hash($pkg, {
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
-		changelog => $chg_prepro->(join("\n", mapn { "* ".localtime2changelog($_[2])." $_[0]\n\n$_[1]\n" }
+		changelog => $chg_prepro->(join("\n", mapn { "* " . localtime2changelog($_[2]) . " $_[0]\n\n$_[1]\n" }
 						[ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ])) });
 	    $p->pack_header;
 	} else {
@@ -321,7 +321,7 @@ sub do_search($$$$$$$) {
     if ($current_search_type ne 'normal') {
 	if ($MODE eq 'remove') {
 	    if ($current_search_type eq 'descriptions') {
-		@search_results = grep { eval { ($pkgs->{$_}{summary}.$pkgs->{$_}{description}) =~ /$entry/i } } keys %$pkgs;
+		@search_results = grep { eval { ($pkgs->{$_}{summary} . $pkgs->{$_}{description}) =~ /$entry/i } } keys %$pkgs;
 	    } else {
 		slow_func(N("Please wait, searching..."),
 			  sub { db->traverse(sub { push @search_results, map { if_(eval { /$entry/i }, my_fullname($_[0])) } $_[0]->files });
@@ -329,7 +329,7 @@ sub do_search($$$$$$$) {
 	    }
 	} else {
 	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}";
-				if_(!$_->{ignore} && (!($MODE eq 'update') || $_->{update}) && -r $h, $h) } @{$urpm->{media}};
+				if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h) } @{$urpm->{media}};
 	    my $total_size = sum(map { my $pack; eval { $pack = new packdrake($_, quiet => 1) } ? $pack->{toc_f_count} : 0 } @hdlists);
 	    my $searchstop;
 	    my $searchw = ugtk2->new(N("Rpmdrake"), grab => 1, transient => $w->{rwindow});
@@ -340,7 +340,7 @@ sub do_search($$$$$$$) {
 							   gtksignal_connect(Gtk2::Button->new(but(N("Stop"))),
 									     clicked => sub { $searchstop = 1 }))));
 	    $searchw->sync;
-	    open my $sf, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "'$_'" } @hdlists).' |';
+	    open my $sf, 'parsehdlist --fileswinfo --description --summary ' . join(' ', map { "'$_'" } @hdlists) . ' |';
 	    my ($pkg, $progresscount);
 	    while (<$sf>) {
 		$searchstop and last;
@@ -370,10 +370,10 @@ sub do_search($$$$$$$) {
 	@search_results = grep { eval { /$entry/i } } keys %$pkgs;
     }
     if (@search_results) {
-	$options->{add_nodes}->(map { [ $_, N("Search results").($options->{tree_mode} eq 'by_presence'
-								 ? '|'.($pkgs->{$_}{pkg}->flag_installed ? N("Upgradable") : N("Addable"))
+	$options->{add_nodes}->(map { [ $_, N("Search results") . ($options->{tree_mode} eq 'by_presence'
+								 ? '|' . ($pkgs->{$_}{pkg}->flag_installed ? N("Upgradable") : N("Addable"))
 								 : ($options->{tree_mode} eq 'by_selection'
-								    ? '|'.($pkgs->{$_}{selected} ? N("Selected") : N("Not selected"))
+								    ? '|' . ($pkgs->{$_}{selected} ? N("Selected") : N("Not selected"))
 								    : ''))
 				      ] } sort { uc($a) cmp uc($b) } @search_results);
 	my $last_iter = $tree_model->iter_nth_child(undef, $tree_model->iter_n_children(undef) - 1);
@@ -388,7 +388,7 @@ sub do_search($$$$$$$) {
 sub find_installed_version {
     my ($p) = @_;
     my @version;
-    db->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version.'-'.$_[0]->release });
+    db->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version . '-' . $_[0]->release });
     @version ? join(',', sort @version) : N("(none)");
 }
 
@@ -678,14 +678,14 @@ or you already installed all of them."));
 			   : (@files, [ "\n\n" ], @chglo));
 		       [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
 		         [ N("Version: "), $tag_tag ], [ "$version\n" ],
-		         [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024))."\n" ],
+		         [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024)) . "\n" ],
 		         if_($MODE eq 'update',
 			     [ N("Importance: "), $tag_tag ], [ "$descriptions->{$name}{importance}\n" ]),
 		         @source_info,
-		         [ "\n".N("Summary: "), $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
+		         [ "\n" . N("Summary: "), $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
 		         if_($MODE eq 'update',
 			     [ N("Reason for update: "), $tag_tag ],
-			     [ rpm_description($descriptions->{$name}{pre})."\n" ]),
+			     [ rpm_description($descriptions->{$name}{pre}) . "\n" ]),
 		         [ N("Description: "), $tag_tag ], [ ($pkgs->{$key}{description} || $descriptions->{$name}{description} || 'no description') . "\n" ],
 		       @max_info ];
 		   },
@@ -711,7 +711,7 @@ or you already installed all of them."));
     $tree->set_headers_visible(0);
     $tree->set_rules_hint(1);
 
-    ($typical_width) = string_size($tree, translate("Graphical Environment")."xmms-more-vis-plugins");
+    ($typical_width) = string_size($tree, translate("Graphical Environment") . "xmms-more-vis-plugins");
     $typical_width > 500 and $typical_width = 500;  #- try to not being crazy with a too large value
     $typical_width < 150 and $typical_width = 150;
     $textcolumn->set_min_width($typical_width*0.7);
@@ -1329,7 +1329,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
             goto return_with_error;
         }
         my $progress_nb;
-        my $total_nb = grep { m|^/| } @rpms_install, @rpms_upgrade;
+        my $total_nb = find { m|^/| } @rpms_install, @rpms_upgrade;
         my $something_installed;
         my $callback_inst = sub {
             my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
@@ -1367,7 +1367,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		return if $MODE ne 'install' && $MODE ne 'update';
 		my $pkg = $urpm->{depslist}[$pkgid];
 		my $fullname = $pkg->fullname;
-		my $trtype = (grep { /$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
+		my $trtype = (any { /$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
 		push our @Readmes, map {
 		    [ $_, $fullname ]
 		} grep { /\bREADME(\.$trtype)?\.urpmi$/ } $pkg->files;
