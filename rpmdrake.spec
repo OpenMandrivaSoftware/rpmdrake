@@ -52,7 +52,7 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
 ?package(%{name}): command="/usr/sbin/rpmdrake" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
-title="Browse Available Software" longtitle="A graphical front end for browsing available packages for installation"
+title="Browse Available Software" longtitle="A graphical front end for browsing available packages for installation (no root password needed)"
 ?package(%{name}): command="/usr/sbin/rpmdrake --root" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
 title="Install Software" longtitle="A graphical front end for installing packages"
 ?package(%{name}): command="/usr/sbin/rpmdrake-remove --root" needs="x11" section="Configuration/Packaging" icon="rpmdrake-remove.png" \
