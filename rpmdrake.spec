@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 20mdk
+%define release 21mdk
 
 Name: %{name}
 Version: %{version}
@@ -88,9 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/MandrakeUpdate
 %{_sbindir}/edit-urpm-*
 %{_bindir}/*
-%{_datadir}/%{name}/compss*
-%{_datadir}/%{name}/desktop
-%{_datadir}/%{name}/icons/*.png
+%{_datadir}/%{name}
 %{perl_vendorlib}/*.pm
 %{_menudir}/%{name}
 %{_iconsdir}/*.png
@@ -101,6 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue May 20 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-21mdk
+- fix some distlint DIRM
+
 * Fri May 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-20mdk
 - perl-URPM API change: gives architecture in ask_remove
 - fix "packages have bad signature dialog": really display a yes/no
