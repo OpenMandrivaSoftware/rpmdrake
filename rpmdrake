@@ -346,10 +346,28 @@ or you already installed all of them."));
 		       my @nodes_with_deps;
 		       my $deps_msg = sub {
 			   my ($title, $msg, $nodes, $nodes_with_deps) = @_;
-			   my @deps = difference2($nodes_with_deps, $nodes);
+			   my @deps = sort { $a cmp $b } difference2($nodes_with_deps, $nodes);
 			   @deps > 0 or return 1;
-			   interactive_msg_($title, $msg . $formatlistpkg->(sort { $a cmp $b } @deps),
-					    yesno => 1, text => { yes => N("Ok"), no => N("Cancel") });
+			 deps_msg_again:
+			   my $results = interactive_msg_($title, $msg . $formatlistpkg->(@deps),
+							  yesno => [ N("Ok"), N("More infos"), N("Cancel") ]);
+			   if ($results eq N("More infos")) {
+			       interactive_packtable(N("Information on packages"),
+						     $w->{rwindow},
+						     undef,
+						     [ map { my $pkg = $_;
+							     [ gtkpack__(Gtk2::HBox->new(0, 0), gtkset_selectable(Gtk2::Label->new($pkg), 1)),
+							       gtksignal_connect(Gtk2::Button->new(N("More information on package...")),
+										 clicked => sub {
+										     interactive_msg(N("More information on package..."),
+											      $options->{get_info}->($pkg), scroll => 1)
+										 }) ] } @deps ],
+						     [ gtksignal_connect(Gtk2::Button->new(N("Ok")),
+									 clicked => sub { Gtk2->main_quit }) ]);
+			       goto deps_msg_again;
+			   } else {
+			       return $results eq N("Ok");
+			   }
 		       };
 		       if ($MODE eq 'remove') {
 			   if ($new_state) {
@@ -837,11 +855,10 @@ sub dialog_rpmnew {
     @{$p2r{$_}} = grep { !member($_, @ignores_rpmnew) } @{$p2r{$_}} foreach keys %p2r;
     my $sum_rpmnew = sum(map { int @{$p2r{$_}} } keys %p2r);
     $sum_rpmnew == 0 and return 1;
-    my $d = ugtk2->new(N("Installation finished"));
     my @inspect_wsize = ($typical_width*2.5, 500);
     my $inspect = sub {
 	my ($file) = @_;
-	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1);
+	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $w->{rwindow});
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my ($rpmnew, $rpmsave) = ("$file.rpmnew", "$file.rpmsave");
 	my $rpmfile = 'rpmnew';
@@ -879,31 +896,25 @@ sub dialog_rpmnew {
 	$d->{rwindow}->set_default_size(@inspect_wsize);
 	$d->main;
     };
-    my $packtable = create_packtable({},
-				     map { my $pkg = $_;
-					   map {
-					       my $f = $_;
-					       my $b;
-					       [ gtkpack__(Gtk2::HBox->new(0, 0),
-							   gtkset_markup(gtkset_selectable(Gtk2::Label->new, 1),
-									 "$pkg:<span font_desc=\"monospace\">$f</span>")),
-						 $b = gtksignal_connect(Gtk2::Button->new(but(N("Inspect..."))),
-									clicked => sub {
-									    $inspect->($f);
-									    -r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0)
-									}) ]
-					   } @{$p2r{$pkg}}
-				       } keys %p2r);
-    gtkadd($d->{window},
-	   gtkpack_(Gtk2::VBox->new(0,5),
-		    0, Gtk2::Label->new($msg),
-		    1, create_scrolled_window($packtable),
-		    0, gtkpack__(create_hbox(), gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
-    my ($xpreq, $ypreq) = $packtable->size_request->values;
-    my ($xwreq, $ywreq) = $d->{rwindow}->size_request->values;
-    $d->{rwindow}->set_default_size(max($typical_width, min($typical_width*2.5, $xpreq+$xwreq)),
-				    max(200, min(450, $ypreq+$ywreq)));
-    $d->main;
+
+    interactive_packtable(N("Installation finished"),
+			  $w->{rwindow},
+			  $msg,
+			  [ map { my $pkg = $_;
+				  map {
+				      my $f = $_;
+				      my $b;
+				      [ gtkpack__(Gtk2::HBox->new(0, 0),
+						  gtkset_markup(gtkset_selectable(Gtk2::Label->new, 1),
+								"$pkg:<span font_desc=\"monospace\">$f</span>")),
+					gtksignal_connect($b = Gtk2::Button->new(N("Inspect...")), clicked => sub {
+							      $inspect->($f);
+							      -r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0)
+							  }) ]
+				  } @{$p2r{$pkg}}
+			      } keys %p2r ],
+			  [ gtksignal_connect(Gtk2::Button->new(N("Ok")),
+					      clicked => sub { Gtk2->main_quit }) ]);
     return 0;
 }
 

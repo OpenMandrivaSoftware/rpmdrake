@@ -126,6 +126,8 @@ rm -rf $RPM_BUILD_ROOT
   - try to have a more sensible default size for the rpmnew dialog
   - fix "Can't call method set_sensitive on an undefined value"
     stopping the program after resolving a rpmnew
+  - add the possibility to view more infos on each package, when
+    presenting a list of deps
 
 * Wed Jan  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-1mdk
 - gtk2 (possibly contains important breakages, use with care)

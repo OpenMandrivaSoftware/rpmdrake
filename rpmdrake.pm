@@ -86,13 +86,35 @@ sub interactive_msg {
 								     $typical_width*2, 300))
 					: Gtk2::Label->new($contents),
 		    0, gtkpack(create_hbox(),
-			       $options{yesno} ? (gtksignal_connect(Gtk2::Button->new($options{text}{yes} || N("Yes")),
-								    clicked => sub { $d->{retval} = 1; Gtk2->main_quit }),
-						  gtksignal_connect(Gtk2::Button->new($options{text}{no} || N("No")),
-								    clicked => sub { $d->{retval} = 0; Gtk2->main_quit }))
+			       ref($options{yesno}) eq 'ARRAY' ? map {
+				   my $label = $_;
+				   gtksignal_connect(Gtk2::Button->new($label), clicked => sub { $d->{retval} = $label; Gtk2->main_quit })
+			       } @{$options{yesno}}
+			       : $options{yesno} ? (gtksignal_connect(Gtk2::Button->new($options{text}{yes} || N("Yes")),
+								      clicked => sub { $d->{retval} = 1; Gtk2->main_quit }),
+						    gtksignal_connect(Gtk2::Button->new($options{text}{no} || N("No")),
+								      clicked => sub { $d->{retval} = 0; Gtk2->main_quit }))
 			       : gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit })
 			      )));
     $d->main;
+}
+
+sub interactive_packtable {
+    my ($title, $parent_window, $top_label, $lines, $action_buttons) = @_;
+    
+    my $w = ugtk2->new($title, grab => 1, transient => $parent_window);
+    my $packtable = create_packtable({}, @$lines);
+
+    gtkadd($w->{window},
+	   gtkpack_(Gtk2::VBox->new(0, 5),
+		    if_($top_label, 0, Gtk2::Label->new($top_label)),
+		    1, create_scrolled_window($packtable),
+		    0, gtkpack__(create_hbox(), @$action_buttons)));
+    my ($xpreq, $ypreq) = $packtable->size_request->values;
+    my ($xwreq, $ywreq) = $w->{rwindow}->size_request->values;
+    $w->{rwindow}->set_default_size(max($typical_width, min($typical_width*2.5, $xpreq+$xwreq)),
+ 				    max(200, min(450, $ypreq+$ywreq)));
+    $w->main;
 }
 
 sub interactive_list {
