@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.1.3
-%define release 14mdk
+%define version 2.1.4
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Aug 11 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.4-1mdk
+- rpmdrake uses localized dates in changelog
+- edit-urpm-sources.pl requires confirmation when removing media
+  (Fabrice Facorat)
+- Update messages
+
 * Wed Aug 04 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-14mdk
 - Update messages
 - Fix some utf-8 handling in error messages
