@@ -86,7 +86,6 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
     ) or return 0;
     my $wait = wait_msg(N("Please wait, adding media..."));
     my $url = $want_base_distro ? make_url_mirror_dist($m) : make_url_mirror($m);
-    warn "$want_base_distro $m $url\n";
     my $medium_name;
     if ($want_base_distro) {
 	if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
