@@ -339,37 +339,39 @@ by Mandrake Linux Official Updates.")), return '';
 
 sub show_urpm_progress {
     my ($label, $pb, $mode, $file, $percent, $total, $eta, $speed) = @_;
-    my $progress_filename if 0;
-    if ($mode eq 'localcopy') {
+    $file =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|; #- if needed...
+    if ($mode eq 'copy') {
 	$pb->set_fraction(0);
-	$label->set_label(N("Copying local file `%s'...", $file));
+	$label->set_label(N("Copying file for source `%s'...", $file));
+    } elsif ($mode eq 'parse') {
+	$pb->set_fraction(0);
+	$label->set_label(N("Examining file of source `%s'...", $file));
+    } elsif ($mode eq 'retrieve') {
+	$pb->set_fraction(0);
+	$label->set_label(N("Examining distant file of source `%s'...", $file));
     } elsif ($mode eq 'start') {
-	($progress_filename = $file) =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|; #- if needed...
 	$pb->set_fraction(0);
-	$label->set_label(N("Starting download of `%s'...", $progress_filename));
-    } elsif ($mode eq 'up2date') {
-	$pb->set_fraction(0);
-	$label->set_label(N("Local file `%s' already up to date", $progress_filename));
+	$label->set_label(N("Starting download of `%s'...", $file));
     } elsif ($mode eq 'progress') {
 	if (defined $total && defined $eta) {
 	    $pb->set_fraction($percent/100);
-	    $label->set_label(N("Download of `%s', time to go:%s, speed:%s", $progress_filename, $eta, $speed));
+	    $label->set_label(N("Download of `%s', time to go:%s, speed:%s", $file, $eta, $speed));
 	} else {
 	    $pb->set_fraction($percent/100);
-	    $label->set_label(N("Download of `%s', speed:%s", $progress_filename, $percent, $speed));
+	    $label->set_label(N("Download of `%s', speed:%s", $file, $percent, $speed));
 	}
-    } elsif ($mode eq 'end') {
-	$label->set_label(N("Please wait, updating media..."));
+    } elsif ($mode eq 'done') {
+	$pb->set_fraction(1.0);
+	$label->set_label($label->get_label . N(" done."));
     }
     Gtk2->update_ui;
 }
 
 sub update_sources {
     my ($urpm, %options) = @_;
-    my $distant = any { /^ftp|http/ } map { if_($_->{modified}, $_->{url}) } @{$urpm->{media}};
     my $w = wait_msg(my $label = Gtk2::Label->new(N("Please wait, updating media...")),
-		     if_($distant, widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 400, 0) ]));
-    $urpm->update_media(%options, if_($distant, callback => sub { show_urpm_progress($label, $pb, @_) }));
+		     widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 400, 0) ]);
+    $urpm->update_media(%options, callback => sub { show_urpm_progress($label, $pb, @_) });
     remove_wait_msg($w);
 }
 

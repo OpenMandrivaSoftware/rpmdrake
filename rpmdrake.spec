@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 7mdk
+%define release 8mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.2-8mdk perl-URPM >= 0.60 drakxtools >= 9.1-0.12mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.2-25mdk perl-URPM >= 0.60 drakxtools >= 9.1-0.12mdk grpmi >= 9.0 rpmtools >= 4.5
 Requires: perl-GTK2 > 0.0.cvs.2003.02.12.1-2mdk
 BuildRequires: curl-devel rpm-devel gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -116,6 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri Feb 28 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-8mdk
+- finish using urpmi callbacks when updating sources
+
 * Fri Feb 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-7mdk
 - fix bug that prevented from having all the translations in
   the PO (#1233)
