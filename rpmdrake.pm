@@ -42,7 +42,7 @@ sub _ {
     my $s = shift @_; my $t = translate($s);
     sprintf $t, @_;
 }
-sub myexit { my_gtk::exit @_ }
+sub myexit { my_gtk::exit(undef, @_) }
   
 $ENV{HOME} ||= '/root';
 
