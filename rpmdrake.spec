@@ -115,8 +115,11 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Tue Nov 26 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-1mdk
+* Wed Jan  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-1mdk
 - gtk2 (possibly contains important breakages, use with care)
+- other fixes:
+  - report errors when removing packages errored out!
+  - rpmdrake-remove: fix absence of packages that are alternatives to basesystem
 
 * Mon Sep 16 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-27mdk
 - fix not finding grpmi in sudo mode
