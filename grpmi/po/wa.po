@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: MandrakeUpdate 7.2\n"
-"POT-Creation-Date: 2002-08-05 10:54+0200\n"
+"Project-Id-Version: grpmi\n"
+"POT-Creation-Date: 2002-08-06 13:59+0200\n"
 "PO-Revision-Date: 1999-08-17 16:56+0200\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: ../curl_download/curl_download.xs:83
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "Li ridant wice aberweter doet egzister"
 
 #: ../curl_download/curl_download.xs:86 ../curl_download/curl_download.xs:201
 msgid "Out of memory\n"
@@ -24,7 +24,7 @@ msgstr "Li memwere est hûte\n"
 
 #: ../curl_download/curl_download.xs:99
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "Dji n' sai drovi l' fitchî d' rexhowe e môde radjoutaedje (append)"
 
 #: ../curl_download/curl_download.xs:121
 msgid "Unsupported protocol\n"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: ../curl_download/curl_download.xs:139
 msgid "Couldn't connect\n"
-msgstr ""
+msgstr "Dji n' a savou m' raloyî\n"
 
 #: ../curl_download/curl_download.xs:142
 msgid "Ftp weird server reply\n"
@@ -205,15 +205,15 @@ msgstr "Côde d' aroke nén cnoxhou %d\n"
 
 #: ../grpmi.pl_.c:51
 msgid "Yes"
-msgstr ""
+msgstr "Oyi"
 
 #: ../grpmi.pl_.c:52
 msgid "No"
-msgstr ""
+msgstr "Neni"
 
 #: ../grpmi.pl_.c:53
 msgid "Ok"
-msgstr "I va"
+msgstr "'l est bon"
 
 #: ../grpmi.pl_.c:62
 msgid "Error..."
@@ -221,29 +221,28 @@ msgstr "Aroke..."
 
 #: ../grpmi.pl_.c:63
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "Vos dvoz esse root po-z astalaer des pacaedjes."
 
 #: ../grpmi.pl_.c:65
 msgid "RPM initialization error"
-msgstr ""
+msgstr "Åk n' a nén stî tot-z inicialijhant RPM"
 
 #: ../grpmi.pl_.c:66
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "L' inicialijhaedje des fitchîs d' apontiaedje di RPM n' s' a nén polou fé"
 
 #: ../grpmi.pl_.c:69
-#, fuzzy
 msgid "Initializing..."
-msgstr "Astalant:"
+msgstr "Inicialijaedje..."
 
 #: ../grpmi.pl_.c:90
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Aberwetant l' pacaedje «%s» (%s/%s)..."
 
 #: ../grpmi.pl_.c:97
 msgid "Error during download"
-msgstr ""
+msgstr "Åk n' anén stî tot-z aberwetant"
 
 #: ../grpmi.pl_.c:98
 #, c-format
@@ -254,16 +253,21 @@ msgid ""
 "\n"
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
-msgstr ""
+msgstr "Åk n' anén stî tot-z aberwetant li pacaedje:\n"
+"\n"
+"%s\n"
+"\n"
+"Aroke: %s\n"
+"Voloz vs continuwer (passer houte di ci pacaedje chal)?"
 
 #: ../grpmi.pl_.c:110
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "Verifiaedje del sinateur di «%s»..."
 
 #: ../grpmi.pl_.c:112
 msgid "Signature verification error"
-msgstr ""
+msgstr "Åk n' a nén stî tot verifiant l' sinateure"
 
 #: ../grpmi.pl_.c:113
 #, c-format
@@ -273,11 +277,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"Li sinateure do pacaedje «%s» n' est nén coreke:\n"
+"\n"
+"%s\n"
+"El voloz vs tot l' minme astaler (c' est foirt riskeus)?"
 
 #: ../grpmi.pl_.c:119
-#, fuzzy
 msgid "File error"
-msgstr "Aroke tot scrijhant\n"
+msgstr "Aroke avou l' fitchî"
 
 #: ../grpmi.pl_.c:120
 #, c-format
@@ -288,11 +295,15 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"Li fitchî shuvant n' est nén valide:\n"
+"\n"
+"%s\n"
+"\n"
+"Voloz vs continuwer cwand minme (passer houte di ci pacaedje chal)?"
 
 #: ../grpmi.pl_.c:135
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "Dj' apresteye l' astalaedje"
+msgstr "Dj' apresteye les pacaedjes po l' astalaedje..."
 
 #: ../grpmi.pl_.c:143
 msgid "Conflicts detected"
@@ -310,51 +321,55 @@ msgstr ""
 #: ../grpmi.pl_.c:151
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Dj' astale li pacaedje «%s» (%s/%s)..."
 
 #: ../grpmi.pl_.c:164
 msgid "Problems occurred during installation"
 msgstr "Åk n' a nén stî cwand dj' astaléve"
 
 #: ../grpmi.pl_.c:164
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Dj' apresteye l' astalaedje"
+msgstr ""
+"Åk n' a nén stî tot-z astalant les pacaedjes:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:66
 msgid "Couldn't read RPM config files"
-msgstr ""
+msgstr "Dji n' a savou lere les fitchîs d' apontiaedje di RPM"
 
 #: ../rpm/grpmi_rpm.xs:92
 msgid "Couldn't open file\n"
-msgstr ""
+msgstr "Dji n' a savou drovi l' fitchî\n"
 
 #: ../rpm/grpmi_rpm.xs:96
 msgid "Could not read lead bytes\n"
-msgstr ""
+msgstr "Dji n' a savou lere les octets d' tiesse\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "Li modêye RPM do pacaedje ni sopoite nén les sinateures\n"
 
 #: ../rpm/grpmi_rpm.xs:104
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "Dji n' a savou lere li bloc di sinateure («rpmReadSignature» a "
+"fwait berwete)\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "No signatures\n"
-msgstr ""
+msgstr "Nole sinateure\n"
 
 #: ../rpm/grpmi_rpm.xs:111
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "«makeTempFile» a fwait berwete!\n"
 
 #: ../rpm/grpmi_rpm.xs:118
 msgid "Error reading file\n"
-msgstr ""
+msgstr "Åk n' a nén stî tot lejhant l' fitchî\n"
 
 #: ../rpm/grpmi_rpm.xs:124
 msgid "Error writing temp file\n"
@@ -362,7 +377,7 @@ msgstr ""
 
 #: ../rpm/grpmi_rpm.xs:147
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "Nole sinateure GPG e l' pacaedje\n"
 
 #: ../rpm/grpmi_rpm.xs:229
 msgid "Couldn't open RPM DB for writing (not superuser?)"
@@ -377,24 +392,23 @@ msgid "Couldn't start transaction"
 msgstr ""
 
 #: ../rpm/grpmi_rpm.xs:254
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Dji n' pout drovi l' pacaedje"
+msgstr "Dji n' pout drovi l' pacaedje «%s»\n"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Li pacaedje est crombe"
+msgstr "Li pacaedje «%s» est crombe\n"
 
 #: ../rpm/grpmi_rpm.xs:262
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Li pacaedje ni pout esse astalé"
+msgstr "Li pacaedje «%s» ni pout nén esse astalé\n"
 
 #: ../rpm/grpmi_rpm.xs:273
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Åk n' a nén stî tot verifiant les aloyances :-("
+msgstr "Åk n' a nén stî tot verifiant les aloyances"
 
 #: ../rpm/grpmi_rpm.xs:294
 #, fuzzy
@@ -407,14 +421,12 @@ msgid "is needed by"
 msgstr " doet esse astalé, %s-%s-%s a mezåjhe di lî"
 
 #: ../rpm/grpmi_rpm.xs:312
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Åk n' a nén stî tot verifiant les aloyances :-("
+msgstr "Åk n' a nén stî tot verifiant les aloyances 2"
 
 #: ../rpm/grpmi_rpm.xs:318
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Åk n' a nén stî cwand dj' astaléve"
+msgstr "Åk n' a nén stî cwand dj' astaléve:\n"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "Avançmint di l' astalåcion/metaedje a djoû"
@@ -422,14 +434,26 @@ msgstr "Åk n' a nén stî cwand dj' astaléve"
 #~ msgid "Fetching:"
 #~ msgstr "Aberwetant:"
 
+#~ msgid "Installing:"
+#~ msgstr "Astalant:"
+
 #~ msgid "Cancel"
 #~ msgstr "Rinoncî"
+
+#~ msgid " is needed by %s-%s-%s"
+#~ msgstr " doet esse astalé, %s-%s-%s a mezåjhe di lî"
+
+#~ msgid " conflicts with %s-%s-%s"
+#~ msgstr " ni pout nén esse astalé e minme tins ki %s-%s-%s"
 
 #~ msgid "An error occured while fetching file"
 #~ msgstr "Åk n' a nén stî tot aberwetant l' fitchî"
 
 #~ msgid "Skip"
 #~ msgstr "Passer hûte"
+
+#~ msgid "Preparing for install"
+#~ msgstr "Dj' apresteye l' astalaedje"
 
 #~ msgid "Can't check the GPG signature"
 #~ msgstr "Dji n' sai verifyî l' signateure GPG"
@@ -459,8 +483,23 @@ msgstr "Åk n' a nén stî cwand dj' astaléve"
 #~ msgid "Signature problem"
 #~ msgstr "Probleme avou l' signateure"
 
+#~ msgid "Can't open package"
+#~ msgstr "Dji n' pout drovi l' pacaedje"
+
+#~ msgid "Package is corrupted"
+#~ msgstr "Li pacaedje est crombe"
+
+#~ msgid "Package can't be installed"
+#~ msgstr "Li pacaedje ni pout esse astalé"
+
+#~ msgid "Error while checking dependencies :("
+#~ msgstr "Åk n' a nén stî tot verifiant les aloyances :-("
+
 #~ msgid "Force"
 #~ msgstr "Foirci"
+
+#~ msgid "Problems occured during installation"
+#~ msgstr "Åk n' a nén stî cwand dj' astaléve"
 
 #~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
 #~ msgstr "Po s' è siervi: grpmi <[-noupgrade] rpms>\n"
