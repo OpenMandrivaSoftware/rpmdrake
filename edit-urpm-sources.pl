@@ -112,13 +112,13 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
 
 sub add_callback {
     my $w = ugtk2->new(N("Add a medium"), grab => 1, center => 1, transient => $mainw->{rwindow});
-    my %radios_infos = (local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
-			ftp => { name => N("FTP server"), url => N("URL:"), loginpass => 1 },
-			http => { name => N("HTTP server"), url => N("URL:") },
-			removable => { name => N("Removable device"), url => N("Path or mount point:"), dirsel => 1 },
-			security => { name => N("Security updates"), url => N("URL:"), securitysel => 1 },
-		       );
-    my @radios_names_ordered = qw(local ftp http removable security);
+    my %radios_infos = (
+	local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
+	ftp => { name => N("FTP server"), url => N("URL:"), loginpass => 1 },
+	http => { name => N("HTTP server"), url => N("URL:") },
+	removable => { name => N("Removable device"), url => N("Path or mount point:"), dirsel => 1 },
+    );
+    my @radios_names_ordered = qw(local ftp http removable);
     my @modes_buttons = gtkradio($radios_infos{local}{name}, map { $radios_infos{$_}{name} } @radios_names_ordered);
     my $notebook = Gtk2::Notebook->new;
     $notebook->set_show_tabs(0); $notebook->set_show_border(0);
@@ -136,21 +136,6 @@ sub add_callback {
 			clicked => sub { $info->{url_entry}->set_text(ask_dir()) },
 		    )
 		),
-		if_(
-		    $info->{securitysel},
-		    0, gtksignal_connect(
-			Gtk2::Button->new(but(N("Choose a mirror..."))),
-			clicked => sub {
-			    my $m = choose_mirror(transient => $w->{rwindow});
-			    if ($m) {
-				$info->{url_entry}->set_text(make_url_mirror($m));
-				$info->{hdlist_entry}->set_text('media_info/synthesis.hdlist.cz');
-				$info->{hdlist_entry}->set_sensitive(1);
-				$info->{hdlist_check}->set_active(1);
-			    }
-			},
-		    )
-		)
 	    );
 	};
         my $tips = Gtk2::Tooltips->new;
@@ -190,29 +175,26 @@ sub add_callback {
 	    my $book = create_packtable(
 		{},
 		[ gtkset_alignment(Gtk2::Label->new(N("Name:")), 1, 0.5),
-		    $info->{name_entry} = gtkentry($_[0] eq 'security' ? 'update_source' : '') ],
+		    $info->{name_entry} = gtkentry('') ],
 		[ gtkset_alignment(Gtk2::Label->new($info->{url}), 1, 0.5),
 		    $url_entry->() ],
 		$with_hdlist_checkbut_entry,
 		if_($info->{loginpass}, $loginpass_entries->()),
-		if_(
-		    !$info->{securitysel},
-		    sub {
-			[ gtkpack_(
-			    Gtk2::HBox->new(0, 0),
-			    1, Gtk2::Label->new,
-			    0, gtksignal_connect(
-				$info->{distrib_check} = Gtk2::CheckButton->new(N("Create media for a whole distribution")),
-				clicked => sub {
-				    if ($_[0]->get_active) {
-					$info->{hdlist_entry}->set_sensitive(0);
-					$info->{hdlist_check}->set_active(0);
-				    }
-				},
-			    )
-			) ];
-		    }->()
-		),
+		sub {
+		    [ gtkpack_(
+			Gtk2::HBox->new(0, 0),
+			1, Gtk2::Label->new,
+			0, gtksignal_connect(
+			    $info->{distrib_check} = Gtk2::CheckButton->new(N("Create media for a whole distribution")),
+			    clicked => sub {
+				if ($_[0]->get_active) {
+				    $info->{hdlist_entry}->set_sensitive(0);
+				    $info->{hdlist_check}->set_active(0);
+				}
+			    },
+			)
+		    ) ];
+		}->()
 	    )
 	);
 	$book->show;
@@ -224,7 +206,7 @@ sub add_callback {
 	$name eq '' || $url eq '' and interactive_msg('rpmdrake', N("You need to fill up at least the two first entries.")), return 0;
 	if (member($name, map { $_->{name} } @{$urpm->{media}})) {
 	    $info->{name_entry}->select_region(0, -1);
-	    interactive_msg('rpmdrake', 
+	    interactive_msg('rpmdrake',
 N("There is already a medium by that name, do you
 really want to replace it?"), yesno => 1) or return 0;
 	}
@@ -255,7 +237,7 @@ really want to replace it?"), yesno => 1) or return 0;
 				hdlist => $info->{hdlist_entry}->get_text,
 				distrib => $info->{distrib_check} ? $info->{distrib_check}->get_active : 0,
 			    );
-			    %make_url = (local => "file:/$i{url}", http => $i{url}, security => $i{url}, removable => "removable:/$i{url}");
+			    %make_url = (local => "file:/$i{url}", http => $i{url}, removable => "removable:/$i{url}");
 			    $i{url} =~ s|^ftp://||;
 			    $make_url{ftp} = sprintf "ftp://%s%s",
 				$info->{login_check}->get_active
@@ -287,7 +269,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    add_medium_and_check(
 		$urpm,
 		{ probe_with => $probe, nolock => 1 },
-		$i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security',
+		$i{name}, $make_url{$type}, $i{hdlist},
 	    );
 	}
 	return 1;
@@ -325,7 +307,7 @@ sub options_callback {
 			}
 			$urpm->write_config;
 			$urpm = urpm->new;
-			$urpm->read_config; 
+			$urpm->read_config;
 			Gtk2->main_quit;
 		    },
 		),
@@ -362,7 +344,7 @@ sub renum_media ($$$) {
     my $i = 1;
     $_->{priority} = $i++ foreach @{$urpm->{media}};
     $model->swap(@iters);
-    $urpm->write_config; $urpm = urpm->new; $urpm->read_config; 
+    $urpm->write_config; $urpm = urpm->new; $urpm->read_config;
 }
 
 sub upwards_callback {
@@ -674,7 +656,7 @@ sub edit_parallel {
         if ($edited->{protocol} eq 'ka-run') { $edited->{command} = "-c ssh " . join(' ', map { "-m $_" } @$hosts_list) }
         parallel_write_sysconf($conf);
 	return 1;
-    }        
+    }
     return 0;
 }
 
@@ -721,7 +703,7 @@ sub parallel_callback {
 			},
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Add..."))), 
+			Gtk2::Button->new(but(N("Add..."))),
 			clicked => sub { edit_parallel(-1, $conf) and $reread->() },
 		    )
 		)
@@ -758,7 +740,7 @@ sub keys_callback {
     my $write = sub {
         $urpm->write_config;
         $urpm = urpm->new;
-        $urpm->read_config; 
+        $urpm->read_config;
         $read_conf->();
         $media_list->get_selection->signal_emit('changed');
     };
@@ -767,7 +749,6 @@ sub keys_callback {
         exists $urpm->{keys}{$_[0]} ? $urpm->{keys}{$_[0]}{name}
                                     : N("no name found, key doesn't exist in rpm keyring!");
     };
-    
     $media_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
     $media_list->get_selection->signal_connect(changed => sub {
         my ($model, $iter) = $_[0]->get_selected;
@@ -940,7 +921,7 @@ sub mainwindow {
 	my ($name) = @_;
         $reorder_ok = 0;
 	$urpm = urpm->new;
-	$urpm->read_config; 
+	$urpm->read_config;
 	if (defined $name) {
 	    #- this media must be reconstructed since editing it failed
 	    foreach (grep { $_->{name} eq $name } @{$urpm->{media}}) {
@@ -975,11 +956,11 @@ sub mainwindow {
 			}
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Add..."))), 
+			Gtk2::Button->new(but(N("Add..."))),
 			clicked => sub { easy_add_callback() and $reread_media->() },
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Add custom..."))), 
+			Gtk2::Button->new(but(N("Add custom..."))),
 			clicked => sub { add_callback() and $reread_media->() },
 		    ),
 		    gtksignal_connect(
