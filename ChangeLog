@@ -1,3 +1,342 @@
+2004-03-10 17:47  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* rpmdrake, rpmdrake.pm: follow std button order (interface team
+	  request)
+
+2004-03-10 13:43  Pixel <pixel@mandrakesoft.com>
+
+	* rpmdrake: when no hdlist, we don't need to parse synthesis, it
+	  has already been done and data is available
+
+2004-03-10 10:12  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* rpmdrake.spec: log one more fix on big boss request
+
+2004-03-10 10:11  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* rpmdrake: (get_installable_pkgs) download synthesis rather than
+	  big fat hdlist by default for update sources
+
+2004-03-10 10:03  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* rpmdrake.spec: 2.1.2-11mdk
+
+2004-03-10 10:02  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* rpmdrake: (extract_header) add simple synthesis parser so that
+	  we've a summary fields for updates (filling it with "not
+	  availlable" whereas we already have reason, description and the
+	  like looks bad)
+
+2004-03-10 09:46  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* rpmdrake: fix description field for updates
+
+2004-03-08 14:47  yrahal
+
+	* grpmi/po/ar.po, po/ar.po: Doing a sync with Arabeyes.org's CVS...
+
+	  There should be no stat differences anymore.
+
+2004-03-08 13:54  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/it.po: updated po file
+
+2004-03-07 15:02  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: ar.po, et.po: updated po file
+
+2004-03-07 05:56  yrahal
+
+	* po/ar.po: Committing Arabeyes.org's Arabic translation of the
+	  week...
+
+2004-03-05 10:41  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: de.po, rpmdrake.pot: updated po file
+
+2004-03-04 20:06  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* grpmi/po/ta.po: updated po file
+
+2004-03-04 15:37  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: Makefile, af.pom, ar.pom, az.pom, bg.pom, br.pom, bs.pom,
+	  ca.pom, cs.pom, cy.pom, da.pom, de.pom, el.pom, eo.pom, es.pom,
+	  et.pom, eu.pom, fa.pom, fi.pom, fr.pom, ga.pom, gl.pom, he.pom,
+	  hi.pom, hr.pom, hu.pom, id.pom, is.pom, it.pom, ja.pom, ko.pom,
+	  lt.pom, lv.pom, ms.pom, mt.pom, nb.pom, nl.pom, pl.pom, pt.pom,
+	  pt_BR.pom, ro.pom, ru.pom, sk.pom, sl.pom, sq.pom, sr.pom,
+	  sr@Latn.pom, sv.pom, ta.pom, tg.pom, th.pom, tr.pom, uk.pom,
+	  uz.pom, uz@Latn.pom, vi.pom, wa.pom, zh_CN.pom, zh_TW.pom:
+	  updated pom files (soe of them had wrong content); there is also
+	  no file to ingore now, as all languages use utf-8 in rpmdrake and
+	  DrakX
+
+2004-03-04 14:54  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: hi.po, sv.po: updated po files
+
+2004-03-03 12:37  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/is.po: updated po file
+
+2004-03-03 12:14  Pixel <pixel@mandrakesoft.com>
+
+	* rpmdrake.spec: fix support for "community" and "cooker" classes
+	  of mirrors for updates
+
+2004-03-03 12:12  Pixel <pixel@mandrakesoft.com>
+
+	* rpmdrake.pm: - detecting cooker|community vs normal updates done
+	  in distro_type() - cooker|community updates do not have a version
+	  directory, and already finish with /RPMS
+
+2004-03-02 13:03  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* grpmi/po/el.po: updated po file
+
+2004-03-02 11:59  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: nl.po, pt_BR.po, ro.po: updated po files
+
+2004-03-02 01:20  reinouts
+
+	* po/nl.po: Updated Dutch (nl) translation by Rob Teng
+	  <mandrake.tips@free.fr>
+
+2004-03-01 23:06  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: af.po, ar.po, az.po, bg.po, bs.po, ca.po, cs.po, cy.po,
+	  da.po, de.po, eo.po, es.po, eu.po, fa.po, fi.po, fr.po, he.po,
+	  hr.po, hu.po, is.po, it.po, ja.po, ko.po, lt.po, lv.po, mt.po,
+	  nb.po, nl.po, pl.po, pt.po, pt_BR.po, ro.po, ru.po, sk.po, sl.po,
+	  sq.po, sr.po, sr@Latn.po, sv.po, ta.po, tg.po, tr.po, uk.po,
+	  uz.po, uz@Latn.po, vi.po, zh_TW.po: updated po files
+
+2004-03-01 22:42  jjorge
+
+	* po/pt.po: ok
+
+2004-03-01 22:05  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/et.po: updated po file
+
+2004-03-01 21:31  fwang
+
+	* po/zh_CN.po: update
+
+2004-03-01 21:06  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: af.po, ar.po, az.po, bg.po, br.po, bs.po, ca.po, cs.po,
+	  cy.po, da.po, de.po, el.po, eo.po, es.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, ga.po, gl.po, he.po, hi.po, hr.po, hu.po, id.po,
+	  is.po, it.po, ja.po, ko.po, lt.po, lv.po, ms.po, mt.po, nb.po,
+	  nl.po, pl.po, pt.po, pt_BR.po, ro.po, rpmdrake.pot, ru.po, sk.po,
+	  sl.po, sq.po, sr.po, sr@Latn.po, sv.po, ta.po, tg.po, th.po,
+	  tr.po, uk.po, uz.po, uz@Latn.po, vi.po, wa.po, zh_CN.po,
+	  zh_TW.po: updated pot file
+
+2004-03-01 10:39  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* rpmdrake: - upcase window titles - mark them as translatable for
+	  languages who need phonetic translations   (arab, korean, ...)
+
+2004-03-01 10:39  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* Makefile: roll-back
+
+2004-03-01 10:37  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* ChangeLog, Makefile, rpmdrake: fix main window title so that it's
+	  localizable (aka do not blindly force version number position
+	  which is bad for quite a lot of languages)
+
+2004-02-29 21:20  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: ar.po, cs.po, rpmdrake.pot: updated po file
+
+2004-02-29 17:36  Alice Lafox <alice@lafox.com.ua>
+
+	* po/ru.po: updated
+
+2004-02-29 14:23  yrahal
+
+	* po/ar.po: Committing Arabeyes.org's Arabic translation for the
+	  past week :-)
+
+2004-02-28 20:39  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: hi.po, tr.po: updated po files
+
+2004-02-27 11:53  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake.spec: [no log message]
+
+2004-02-27 11:52  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake.pm: beurk don't write in /tmp predictable file!
+
+2004-02-27 11:52  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake.pm: support community and cooker classes in
+	  mirrorsfull.list as well
+
+2004-02-26 17:16  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake.spec: [no log message]
+
+2004-02-26 13:24  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake: fix behaviour after something has been installed in
+	  --pkg-sel mode
+
+2004-02-26 12:17  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* grpmi/po/he.po: updated po file
+
+2004-02-26 12:10  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake, rpmdrake.spec: fix initial selection: we really need to
+	  go through toggle_nodes since we want $urpm->{state} to be
+	  updated as well, not only %$pkgs
+
+2004-02-26 11:15  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/he.po: updated po file
+
+2004-02-25 12:35  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: af.po, ar.po, az.po, bg.po, br.po, bs.po, ca.po, cs.po,
+	  cy.po, da.po, de.po, el.po, eo.po, es.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, ga.po, gl.po, he.po, hi.po, hr.po, hu.po, id.po,
+	  is.po, it.po, ja.po, ko.po, lt.po, lv.po, ms.po, mt.po, nb.po,
+	  nl.po, pl.po, pt.po, pt_BR.po, ro.po, rpmdrake.pot, ru.po, sk.po,
+	  sl.po, sq.po, sr.po, sr@Latn.po, sv.po, ta.po, tg.po, th.po,
+	  tr.po, uk.po, uz.po, uz@Latn.po, vi.po, wa.po, zh_CN.po,
+	  zh_TW.po: updated po files
+
+2004-02-24 19:36  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake, rpmdrake.spec: add --media --pkg-sel --pkg-nosel
+	  commandline switches, to be invoked by MandrakeOnline
+
+2004-02-24 17:46  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/uk.po: updated po file
+
+2004-02-24 17:11  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: ar.po, ja.po: updated po file
+
+2004-02-24 15:17  yrahal
+
+	* po/ar.po: Committing Arabeyes.org's Arabic translation
+
+2004-02-23 19:44  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/sl.po: updated po files
+
+2004-02-23 17:45  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: az.po, fi.po, nb.po: updated po files
+
+2004-02-23 15:55  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake, rpmdrake.spec: tell gurpm to be transient (#8146)
+
+2004-02-23 11:21  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* po/fr.po: update
+
+2004-02-23 10:26  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: pl.po, pt_BR.po: updated po file
+
+2004-02-22 21:39  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* grpmi/po/he.po: updated po file
+
+2004-02-22 19:42  Arkadiusz Lipiec <alipiec@elka.pw.edu.pl>
+
+	* po/pl.po: Updated
+
+2004-02-22 12:33  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: cy.po, da.po, es.po, he.po, pt.po, sk.po, zh_CN.po: updated
+	  po files
+
+2004-02-21 21:54  jjorge
+
+	* po/pt.po: update
+
+2004-02-21 21:45  Keld Jørn Simonsen <keld@dkuug.dk>
+
+	* po/da.po: Updates indexhtml/po/da.po soft/control-center/po/da.po
+	  soft/ftw/po/da.po soft/mdkonline/po/da.po soft/rpmdrake/po/da.po
+	  soft/wizard_perl/po/da.po
+
+2004-02-21 12:51  Fabian Mandelbaum <fabman@mandrakesoft.com>
+
+	* po/es.po: Updated Spanish translations
+
+2004-02-21 07:50  fwang
+
+	* po/zh_CN.po: update
+
+2004-02-21 03:10  Tibor Pittich <Tibor.Pittich@phuture.sk>
+
+	* po/sk.po: updated slovak translation
+
+2004-02-20 20:48  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: ca.po, et.po, rpmdrake.pot: updated po files
+
+2004-02-20 19:12  tsdgeos
+
+	* po/ca.po: Some updates and unfuzzying
+
+2004-02-20 17:37  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: af.po, ar.po, az.po, bg.po, br.po, bs.po, ca.po, cs.po,
+	  cy.po, da.po, de.po, el.po, eo.po, es.po, et.po, eu.po, fa.po,
+	  fi.po, fr.po, ga.po, gl.po, he.po, hi.po, hr.po, hu.po, id.po,
+	  is.po, it.po, ja.po, ko.po, lt.po, lv.po, ms.po, mt.po, nb.po,
+	  nl.po, pl.po, pt.po, pt_BR.po, ro.po, rpmdrake.pot, ru.po, sk.po,
+	  sl.po, sq.po, sr.po, sr@Latn.po, sv.po, ta.po, tg.po, th.po,
+	  tr.po, uk.po, uz.po, uz@Latn.po, vi.po, wa.po, zh_CN.po,
+	  zh_TW.po: updated po files
+
+2004-02-20 12:22  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake.spec: [no log message]
+
+2004-02-20 12:22  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* edit-urpm-sources.pl, rpmdrake.spec: lock urpmi database while
+	  running (#6828)
+
+2004-02-19 21:29  jjorge
+
+	* po/pt.po: Updates
+
+2004-02-19 19:20  Pablo Saratxaga <pablo@mandrakesoft.com>
+
+	* po/: pt.po, rpmdrake.pot: updated po file
+
+2004-02-19 11:03  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* rpmdrake, rpmdrake.spec: hide password in logs (#6260)
+
+2004-02-19 10:44  Guillaume Cottenceau <gc@mandrakesoft.com>
+
+	* edit-urpm-sources.pl, rpmdrake.spec: fix broken media reordering
+	  (program crashed)
+
+2004-02-17 15:23  Thierry Vignaud <tvignaud@mandrakesoft.com>
+
+	* rpmdrake.spec: fix requires/conflicts
+
 2004-02-17 14:51  Thierry Vignaud <tvignaud@mandrakesoft.com>
 
 	* ChangeLog: [no log message]
