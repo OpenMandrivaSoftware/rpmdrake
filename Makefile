@@ -37,9 +37,11 @@ install: $(ALL)
 	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(SBINDIR)/*
 	ln -s -f rpmdrake $(SBINDIR)/rpmdrake-remove
 	ln -s -f rpmdrake $(SBINDIR)/MandrakeUpdate
+	install -d $(BINDIR)
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/rpmdrake
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/rpmdrake-remove
 	ln -sf $(RELATIVE_SBIN)/MandrakeUpdate $(BINDIR)/MandrakeUpdate
+	ln -sf $(RELATIVE_SBIN)/edit-urpm-sources.pl $(BINDIR)/edit-urpm-sources.pl
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
 	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
