@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 8mdk
+%define release 9mdk
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,15 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Aug 26 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-9mdk
+- grpmi: don't display successful end message when installing packages
+  so that we have back the old behaviour and it's better for programs
+  requesting several packages installation in a row (standalone apps);
+  the successful message is still here in rpmdrake, it's displayed
+  by rpmdrake itself
+- rpmdrake: when choosing between packages, add the ability to have
+  information about each package choice (one button per package)
+
 * Mon Aug 26 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-8mdk
 - rpmdrake-remove: don't show basesystem packages so that it
   becomes possible to select whole categories in "Mandrake
