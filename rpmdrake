@@ -1140,7 +1140,7 @@ Is it ok to continue?",
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
-	[ N("/_File") . N("/_Quit"), undef, sub { Gtk2->main_quit }, undef, '<Item>', ],
+	[ N("/_File") . N("/_Quit"), N("<control>Q"), sub { Gtk2->main_quit }, undef, '<Item>', ],
 	#[ N("/_View"), undef, undef, undef, '<Branch>' ],
 	if_(!$>,
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
