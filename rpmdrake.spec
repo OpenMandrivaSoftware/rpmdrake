@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 25mdk
+%define release 26mdk
 
 Name: %{name}
 Version: %{version}
@@ -17,7 +17,7 @@ License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
 Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools >= 9.2-0.6mdk rpmtools >= 4.5
-Requires: perl-Gtk2 > 0.26.cvs.2003.07.15.1-4mdk perl-Locale-gettext >= 1.01-7mdk
+Requires: perl-Gtk2 >= 0.90-2mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: libcurl2-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -99,6 +99,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Jul 22 2003 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1-26mdk
+- keep rpmdrake wait messages centered
+- fix search
+
 * Wed Jul 16 2003 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1-25mdk
 - switch to gtk2-perl-xs
 
