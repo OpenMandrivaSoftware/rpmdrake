@@ -61,10 +61,10 @@ sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 
-$> and interactive_msg_(N("Running in user mode"),
+$> and (interactive_msg_(N("Running in user mode"),
 N("You are launching this program as a normal user.
 You will not be able to perform modifications on the system,
-but you may still browse the existing database."), yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) or myexit(0);
+but you may still browse the existing database."), yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) or myexit(0));
 
 
 sub ctreefy { $_[0] =~ s,/,|,g; $_[0] }
@@ -839,7 +839,6 @@ column).
 
 Then, restart MandrakeUpdate.", $update_name));
                 myexit(-1);
-                print "meuh\n";
             }
 	  mu_retry_another_mirror:
 	    my $m = choose_mirror();
