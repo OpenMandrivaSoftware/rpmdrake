@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 5mdk
+%define release 6mdk
 
 Name: %{name}
 Version: %{version}
@@ -121,6 +121,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon May 24 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-6mdk
+- Message changes
+- Replace deprecated OptionMenu widget by ComboBox
+
 * Tue May 11 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-5mdk
 - Avoid selecting all packages when choosing a view sorted by update
   availability
