@@ -32,7 +32,7 @@ Mandrake Linux system; it has 3 different modes:
 - software packages removal;
 - Mandrake Update (software packages updates).
 
-A fourth program manages the sources (add, remove, edit).
+A fourth program manages the media (add, remove, edit).
 
 %prep
 rm -rf $RPM_BUILD_ROOT
