@@ -256,6 +256,59 @@ char * download_url_real(char * url, char * location, char * proxy, char * proxy
 		case CURLE_BAD_CALLING_ORDER:
 			return _("Bad calling order\n");
 			break;
+                case CURLE_HTTP_PORT_FAILED:
+                  return _("HTTP Interface operation failed\n");
+                  break;
+                case CURLE_BAD_PASSWORD_ENTERED:
+                  return _("my_getpass() returns fail\n");
+                  break;
+                case CURLE_TOO_MANY_REDIRECTS :
+                  return _("catch endless re-direct loops\n");
+                  break;
+                case CURLE_UNKNOWN_TELNET_OPTION:
+                  return _("User specified an unknown option\n");
+                  break;
+                case CURLE_TELNET_OPTION_SYNTAX :
+                  return _("Malformed telnet option\n");
+                  break;
+                case CURLE_OBSOLETE:
+                  return _("removed after 7.7.3\n");
+                  break;
+                case CURLE_SSL_PEER_CERTIFICATE:
+                  return _("peer's certificate wasn't ok\n");
+                  break;
+                case CURLE_GOT_NOTHING:
+                  return _("when this is a specific error\n");
+                  break;
+                case CURLE_SSL_ENGINE_NOTFOUND:
+                  return _("SSL crypto engine not found\n");
+                  break;
+                case CURLE_SSL_ENGINE_SETFAILED:
+                  return _("can not set SSL crypto engine as default\n");
+                  break;
+                case CURLE_SEND_ERROR:
+                  return _("failed sending network data\n");
+                  break;
+                case CURLE_RECV_ERROR:
+                  return _("failure in receiving network data\n");
+                  break;
+                case CURLE_SHARE_IN_USE:
+                  return _("share is in use\n");
+                  break;
+                case CURLE_SSL_CERTPROBLEM:
+                  return _("problem with the local certificate\n");
+                  break;
+                case CURLE_SSL_CIPHER:
+                  return _("couldn't use specified cipher\n");
+                  break;
+                case CURLE_SSL_CACERT:
+                  return _("problem with the CA cert (path?)\n");
+                  break;
+                case CURLE_BAD_CONTENT_ENCODING:
+                  return _("Unrecognized transfer encoding\n");
+                  break;
+
+
 		default:
 			return my_asprintf(_("Unknown error code %d\n"), rescurl);
 			break;
