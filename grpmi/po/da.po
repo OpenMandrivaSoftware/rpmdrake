@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: grpmi\n"
 "POT-Creation-Date: 2002-08-05 10:54+0200\n"
-"PO-Revision-Date: 2001-07-02 15:06+0200\n"
+"PO-Revision-Date: 2002-08-14 01:06+0200\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: dansk <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -234,9 +234,8 @@ msgid "The initialization of config files of RPM was not possible, sorry."
 msgstr ""
 
 #: ../grpmi.pl_.c:69
-#, fuzzy
 msgid "Initializing..."
-msgstr "Installerer:"
+msgstr "Initialiserer..."
 
 #: ../grpmi.pl_.c:90
 #, c-format
@@ -277,9 +276,8 @@ msgid ""
 msgstr ""
 
 #: ../grpmi.pl_.c:119
-#, fuzzy
 msgid "File error"
-msgstr "Fejl ved skriving\n"
+msgstr "Filfejl"
 
 #: ../grpmi.pl_.c:120
 #, c-format
@@ -292,9 +290,8 @@ msgid ""
 msgstr ""
 
 #: ../grpmi.pl_.c:135
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "Forbereder installation"
+msgstr "Forbereder pakker til installation..."
 
 #: ../grpmi.pl_.c:143
 msgid "Conflicts detected"
@@ -319,27 +316,27 @@ msgid "Problems occurred during installation"
 msgstr "Der opstod problemer under installationen"
 
 #: ../grpmi.pl_.c:164
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Forbereder installation"
+msgstr ""
+"Der var en fejl under pakkeinstallation:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:66
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "File kunne ikke læse fil\n"
+msgstr "Kunne ikke læse RPM-konfigurationssfiler"
 
 #: ../rpm/grpmi_rpm.xs:92
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Kunne ikke forbinde til\n"
+msgstr "Kunne ikke åbne fil\n"
 
 #: ../rpm/grpmi_rpm.xs:96
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "Kunne ikke finde vært\n"
+msgstr "Kunne ikke læse begyndelsesbyte\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 msgid "RPM version of package doesn't support signatures\n"
@@ -382,475 +379,36 @@ msgid "Couldn't start transaction"
 msgstr ""
 
 #: ../rpm/grpmi_rpm.xs:254
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Kan ikke åbne pakke"
+msgstr "Kan ikke åbne pakke '%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Pakke er ødelagt"
+msgstr "Pakke '%s' er ødelagt\n"
 
 #: ../rpm/grpmi_rpm.xs:262
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Pakke kan ikke blive installeret"
+msgstr "Pakke '%s' kan ikke blive installeret\n"
 
 #: ../rpm/grpmi_rpm.xs:273
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Fejl ved kontrol af afhængigheder :("
+msgstr "Fejl ved kontrol af afhængigheder"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "conflicts with"
-msgstr " konflikter med %s-%s-%s"
+msgstr "konflikter med"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "is needed by"
-msgstr " behøves af %s-%s-%s"
+msgstr "behøves af"
 
 #: ../rpm/grpmi_rpm.xs:312
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Fejl ved kontrol af afhængigheder :("
+msgstr "Fejl ved kontrol af afhængigheder 2"
 
 #: ../rpm/grpmi_rpm.xs:318
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Der opstod problemer under installationen"
-
-#~ msgid "Installing/Upgrading Progress"
-#~ msgstr "Installations/opgraderings-fremskridt"
-
-#~ msgid "Fetching:"
-#~ msgstr "Henter:"
-
-#~ msgid "Cancel"
-#~ msgstr "Annullér"
-
-#~ msgid "An error occured while fetching file"
-#~ msgstr "En fejl opstod under hentning af filen"
-
-#~ msgid "Skip"
-#~ msgstr "Spring over"
-
-#~ msgid "Can't check the GPG signature"
-#~ msgstr "Kan ikke tjekke GPG signatur"
-
-#~ msgid ""
-#~ "The package %s has a wrong signature or\n"
-#~ "GnuPG isn't correctly installed"
-#~ msgstr ""
-#~ "Pakken %s har en forkert signatur eller\n"
-#~ "GnuPG er ikke korrekt installeret"
-
-#~ msgid "The package %s is not signed"
-#~ msgstr "Pakken %s er ikke signeret"
-
-#~ msgid "Install all"
-#~ msgstr "Installér alle"
-
-#~ msgid "Install"
-#~ msgstr "Installér"
-
-#~ msgid "Don't install"
-#~ msgstr "Installér ikke"
-
-#~ msgid "Quit"
-#~ msgstr "Afslut"
-
-#~ msgid "Signature problem"
-#~ msgstr "Signatur problemer"
-
-#~ msgid "Force"
-#~ msgstr "Tving"
-
-#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
-#~ msgstr "brug: grpmi <[-noupgrade] rpm'er>\n"
-
-#~ msgid "grpmi error: you must be superuser!\n"
-#~ msgstr "grpmi fejl: du skal være superbruger!\n"
-
-#~ msgid " ~ # ~ "
-#~ msgstr "HSDG: Keld Simonsen <keld@dkuug.dk>"
-
-#~ msgid ""
-#~ "Mandrake Update\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 1999-2000\n"
-#~ "released under the GPL"
-#~ msgstr ""
-#~ "Mandrake Update\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 1999-2000\n"
-#~ "udgivet under GPL"
-
-#~ msgid "Error"
-#~ msgstr "Fejl"
-
-#~ msgid ""
-#~ "Cannot retrieve the list of mirrors\n"
-#~ "Try again later"
-#~ msgstr ""
-#~ "Kan ikke hente listen over spejle\n"
-#~ "Prøv igen senere"
-
-#~ msgid "Source on network: %s"
-#~ msgstr "Kilde på nettet: %s"
-
-#~ msgid "Source on network: %s/%s/%s"
-#~ msgstr "Kilde på nettet: %s/%s/%s"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Fetching the list of mirrors"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Liste over spejle bliver hentet"
-
-#~ msgid "%.1f KB"
-#~ msgstr "%.1f kb"
-
-#~ msgid "%.1f MB"
-#~ msgstr "%.1f Mb"
-
-#~ msgid " n/a "
-#~ msgstr "-"
-
-#~ msgid ""
-#~ "Cannot retrieve the description file\n"
-#~ "Bad things can happen"
-#~ msgstr ""
-#~ "Kan ikke hente beskrivelsesfilen\n"
-#~ "Slemme ting kan ske"
-
-#~ msgid "n/a"
-#~ msgstr "-"
-
-#~ msgid "security"
-#~ msgstr "sikkerhed"
-
-#~ msgid "general"
-#~ msgstr "generelt"
-
-#~ msgid "bugfix"
-#~ msgstr "fejlrettelse"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Retrieving the Description file"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Beskrivelsesfilen bliver hentet"
-
-#~ msgid ""
-#~ "Cannot retrieve the list of packages to update\n"
-#~ "Try with an other mirror"
-#~ msgstr ""
-#~ "Kan ikke hente listen over pakker der skal opdateres\n"
-#~ "Prøv med et andet spejl"
-
-#~ msgid "Warning"
-#~ msgstr "Advarsel"
-
-#~ msgid ""
-#~ "Caution! These packages are NOT well tested.\n"
-#~ "You really can screw up your system\n"
-#~ "by installing them.\n"
-#~ msgstr ""
-#~ "Forsigtig! Disse pakker er IKKE gennemtestede.\n"
-#~ "Du kan virkelig ødelægge dit system\n"
-#~ "ved at installere dem.\n"
-
-#~ msgid "Source on disk: %s"
-#~ msgstr "Kilde på disken: %s"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the list of packages"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Opdaterer listen over pakker"
-
-#~ msgid ""
-#~ "Name: %s\n"
-#~ "Type: %s"
-#~ msgstr ""
-#~ "Navn: %s\n"
-#~ "Type: %s"
-
-#~ msgid "unknown"
-#~ msgstr "ukendt"
-
-#~ msgid "Name: %s"
-#~ msgstr "Navn: %s"
-
-#~ msgid "%d selected packages: %.1f MB"
-#~ msgstr "%d valgte pakker: %.1f Mb"
-
-#~ msgid "GnuPG not found"
-#~ msgstr "GnuPG ikke fundet"
-
-#~ msgid ""
-#~ "GnuPG was not found\n"
-#~ "\n"
-#~ "MandrakeUpdate will not be able to verify the GPG\n"
-#~ "signature of the packages\n"
-#~ "\n"
-#~ "Please install the gpg package\n"
-#~ msgstr ""
-#~ "GnuPG blev ikke fundet\n"
-#~ "\n"
-#~ "MandrakeUpdate vil ikke være i stand til at\n"
-#~ "verificere GPG signaturen på pakken\n"
-#~ "\n"
-#~ "Installér venligst gpg-pakken\n"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Vis ikke denne besked igen"
-
-#~ msgid "oops %s not found\n"
-#~ msgstr "ups, %s blev ikke fundet\n"
-
-#~ msgid "Please Wait"
-#~ msgstr "Vent venligst"
-
-#~ msgid "0 selected packages: 0.0 MB"
-#~ msgstr "0 valgte pakker: 0.0 Mb"
-
-#~ msgid "/_File"
-#~ msgstr "/_Fil"
-
-#~ msgid "/File/_Preferences"
-#~ msgstr "/Fil/_Foretrukne"
-
-#~ msgid "/File/-"
-#~ msgstr "Fil/_"
-
-#~ msgid "/File/_Quit"
-#~ msgstr "/Fil/_Afslut"
-
-#~ msgid "/_Help"
-#~ msgstr "/_Hjælp"
-
-#~ msgid "/Help/_About..."
-#~ msgstr "/Hjælp/_Om"
-
-#~ msgid "Name"
-#~ msgstr "Navn"
-
-#~ msgid "Installed"
-#~ msgstr "Installeret"
-
-#~ msgid "Update"
-#~ msgstr "Opdatér"
-
-#~ msgid "Size"
-#~ msgstr "Størrelse"
-
-#~ msgid "Type"
-#~ msgstr "Type"
-
-#~ msgid "Summary"
-#~ msgstr "Oversigt"
-
-#~ msgid "MandrakeUpdate, version 7.2\n"
-#~ msgstr "MandrakeUpdate, version 7.2\n"
-
-#~ msgid ""
-#~ "  usage:\n"
-#~ "    -h, --help:    display this help and exit\n"
-#~ "    -v, --version: show the version and exit\n"
-#~ "    -V, --verbose: increase the verbosity level\n"
-#~ msgstr ""
-#~ "  brug:\n"
-#~ "    -h, --help:    vis denne hjælp og luk\n"
-#~ "    -v, --version: vis versionen og luk\n"
-#~ "    -V, --verbose: øg niveauet for oplysninger\n"
-
-#~ msgid "Source on network: (random mirror)\n"
-#~ msgstr "Kilde på nettet: (tilfældigt spejl)\n"
-
-#~ msgid ""
-#~ "Update\n"
-#~ "List"
-#~ msgstr ""
-#~ "Opdatér\n"
-#~ "liste"
-
-#~ msgid "Update the list of packages to update"
-#~ msgstr "Opdatér listen over pakker der skal opdateres"
-
-#~ msgid ""
-#~ "Select\n"
-#~ "all"
-#~ msgstr ""
-#~ "Vælg\n"
-#~ "alle"
-
-#~ msgid "Select all"
-#~ msgstr "Vælg alle"
-
-#~ msgid ""
-#~ "Unselect\n"
-#~ "all"
-#~ msgstr ""
-#~ "Fravælg\n"
-#~ "alle"
-
-#~ msgid "Unselect all"
-#~ msgstr "Fravælg alle"
-
-#~ msgid ""
-#~ "Do\n"
-#~ "updates"
-#~ msgstr ""
-#~ "Udfør\n"
-#~ "opdateringer"
-
-#~ msgid "Do Updates"
-#~ msgstr "Udfør opdateringer"
-
-#~ msgid "Normal Updates"
-#~ msgstr "Normale opdateringer"
-
-#~ msgid "Development Updates"
-#~ msgstr "Udviklings-opdateringer"
-
-#~ msgid "Descriptions"
-#~ msgstr "Beskrivelser"
-
-#~ msgid ""
-#~ "The packages are the updates for Mandrake\n"
-#~ "Select the one(s) you want to update\n"
-#~ "When you click on a package you get information about\n"
-#~ "the need to update"
-#~ msgstr ""
-#~ "Pakkerne er opdateringer til Mandrake\n"
-#~ "Vælg dem du ønsker at opdatere\n"
-#~ "Når du klikker på en pakke, vil du få information om\n"
-#~ "nødvendigheden af opdateringen"
-
-#~ msgid "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,*"
-#~ msgstr "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-1,*"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Sorting packages"
-#~ msgstr ""
-#~ "Vent venligst\n"
-#~ "Sorterer pakker"
-
-#~ msgid "Choose your packages"
-#~ msgstr "Vælg dine pakker"
-
-#~ msgid "Packages to update"
-#~ msgstr "Pakker der skal opgraderes"
-
-#~ msgid "Packages NOT to update"
-#~ msgstr "Pakker der IKKE skal opgraderes"
-
-#~ msgid ""
-#~ "Caution! You're changing the version.\n"
-#~ "MandrakeUpdate will think you actually have this\n"
-#~ "version installed\n"
-#~ "\n"
-#~ "You should only use this if you really know what you're doing.\n"
-#~ msgstr ""
-#~ "Advarsel! Du er i gang med at ændre versionen.\n"
-#~ "MandrakeUpdate vil tro du faktisk har denne version\n"
-#~ "installeret\n"
-#~ "\n"
-#~ "Du bør kun bruge dette hvis du virkelig véd hvad du laver.\n"
-
-#~ msgid "Preferences for Proxies"
-#~ msgstr "Foretrukne proxyer"
-
-#~ msgid "Proxies"
-#~ msgstr "Proxyer"
-
-#~ msgid "Http Proxy:"
-#~ msgstr "Http-Proxy:"
-
-#~ msgid "Port:"
-#~ msgstr "Port:"
-
-#~ msgid "Ftp Proxy:"
-#~ msgstr "Ftp-Proxy:"
-
-#~ msgid "Proxy username:"
-#~ msgstr "Proxy brugernavn:"
-
-#~ msgid "Proxy password:"
-#~ msgstr "Proxy adgangskode:"
-
-#~ msgid "Error: curl_easy_init()"
-#~ msgstr "Fejl: curl_easy_init()"
-
-#~ msgid "Source"
-#~ msgstr "Kilde"
-
-#~ msgid "Disk"
-#~ msgstr "Disk"
-
-#~ msgid "Network"
-#~ msgstr "Netværk"
-
-#~ msgid "RPM directory"
-#~ msgstr "RPM-katalog"
-
-#~ msgid "Network settings:"
-#~ msgstr "Netværksopsætning:"
-
-#~ msgid "Version:"
-#~ msgstr "Version:"
-
-#~ msgid "Show security updates"
-#~ msgstr "Vis sikkerhedsopdateringer"
-
-#~ msgid "Show general updates"
-#~ msgstr "Vis generelle opdateringer"
-
-#~ msgid "Show bugfix updates"
-#~ msgstr "Vis fejlrettelsesopdateringer"
-
-#~ msgid "mirror:"
-#~ msgstr "spejl:"
-
-#~ msgid "Update the list of mirrors"
-#~ msgstr "Opdatér listen over spejle"
-
-#~ msgid "Choose Packages"
-#~ msgstr "Vælg pakker"
-
-#~ msgid "Username:"
-#~ msgstr "Brugernavn:"
-
-#~ msgid "Password:"
-#~ msgstr "Adgangskode:"
-
-#~ msgid "Security"
-#~ msgstr "Sikkerhed"
-
-#~ msgid "Do not warn if GnuPG isn't installed"
-#~ msgstr "Advar ikke, selvom GnuPG ikke er installeret"
-
-#~ msgid "Do not warn if the package isn't signed"
-#~ msgstr "Advar ikke, selvom pakken ikke er underskrevet"
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Forskelligt"
-
-#~ msgid "Timeout:"
-#~ msgstr "Tidsafbrydelse:"
-
-#~ msgid "(in sec)"
-#~ msgstr "(i sek)"
-
-#~ msgid "MandrakeUpdate Preferences"
-#~ msgstr "MandrakeUpdate, indstillinger"
-
-#~ msgid "Categories"
-#~ msgstr "Kategorier"
+msgstr "Der opstod problemer under installationen:\n"
