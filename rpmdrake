@@ -438,7 +438,7 @@ or you already installed all of them."));
 		  };
 
     $::noBorder = 1;
-    my $w = my_gtk->new('rpmdrake');
+    my $w = my_gtk->new(_("rpmdrake")." 9.0");
     $::noBorder = 0;
     $tree = Gtk::CTree->new(3, 0);
     $tree->set_selection_mode('browse');
@@ -613,17 +613,33 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 							  gtksignal_connect(new Gtk::Button(but(_("Quit"))),
 									    clicked => sub { Gtk->main_quit })))
 				       ))));
-    my ($pixmap_back) = gtkcreate_png('title-backpart');
+    my ($pixmap_back) = gtkcreate_png('title-tile');
+    my ($pixmap_icon) = gtkcreate_png('title-icon');
     $darea->signal_connect(expose_event => sub {
 		       my (undef, undef, $dx, $dy) = @{$darea->allocation};
 		       my $dbl_area = new Gtk::Gdk::Pixmap($darea->window, $dx, $dy);
-		       fill_tiled($darea, $dbl_area, $pixmap_back, 110, 55, $dx, $dy);
+		       fill_tiled($darea, $dbl_area, $pixmap_back, 1, 40, $dx, $dy);
+		       $dbl_area->draw_pixmap($darea->style->white_gc, $pixmap_icon, 0, 0, 5, 0, $dx, $dy);
 		       my $style = $darea->style->copy();
-		       $style->font(Gtk::Gdk::Font->fontset_load(_("-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*")));
-		       my %t = (remove => _("Software Packages Removal"), update => _("Mandrake Update"),
-				install => _("Software Packages Installation"));
-		       $dbl_area->draw_string($style->font, $darea->style->white_gc,
-					      ($dx-$style->font->string_width($t{$MODE}))/2, 30, $t{$MODE});
+		       my $pixmap_text if 0;
+		       if (!$pixmap_text) {
+			   my ($langs) = ($ENV{LANGUAGE} || $ENV{LC_ALL} || $ENV{LC_MESSAGES} || $ENV{LANG}).':en';
+			   foreach (split(':', $langs)) {
+			       eval { $pixmap_text or ($pixmap_text) = gtkcreate_png("title/$_/title-$MODE") };
+			       !$@ and last;
+			   }
+			   $pixmap_text ||= -1;
+		       }
+		       if ($pixmap_text && $pixmap_text != -1) {
+			   $dbl_area->draw_pixmap($darea->style->white_gc, $pixmap_text,
+						  0, 0, ($dx-($pixmap_text->get_size)[1])/2, 0, $dx, $dy);
+		       } else {
+			   $style->font(Gtk::Gdk::Font->fontset_load(_("-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*")));
+			   my %t = (remove => _("Software Packages Removal"), update => _("Mandrake Update"),
+				    install => _("Software Packages Installation"));
+			   $dbl_area->draw_string($style->font, $darea->style->white_gc,
+						  ($dx-$style->font->string_width($t{$MODE}))/2, 30, $t{$MODE});
+		       }
 		       $darea->window->draw_pixmap($darea->style->white_gc, $dbl_area, 0, 0, 0, 0, $dx, $dy);
 		       0;
 		   });
