@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 12mdk
+%define release 13mdk
 
 Name: %{name}
 Version: %{version}
@@ -62,11 +62,11 @@ mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
 ?package(%{name}): command="/usr/sbin/rpmdrake" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
 title="Install Software" longtitle="A graphical front end for installing packages"
-?package(%{name}): command="/usr/sbin/rpmdrake-remove" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
+?package(%{name}): command="/usr/sbin/rpmdrake-remove" needs="x11" section="Configuration/Packaging" icon="rpmdrake-remove.png" \
 title="Remove Software" longtitle="A graphical front end for removing packages"
 ?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.png" \
 title="Mandrake Update" longtitle="A graphical front end for software updates"
-?package(%{name}): command="/usr/sbin/edit-urpm-sources.pl" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
+?package(%{name}): command="/usr/sbin/edit-urpm-sources.pl" needs="x11" section="Configuration/Packaging" icon="edit-urpm-sources.png" \
 title="Software Sources Manager" longtitle="A graphical front end to add/remove/edit sources for installing packages"
 EOF
 
@@ -116,6 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Mar 12 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-13mdk
+- update share/icons from mcc new icons
+
 * Tue Mar 11 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-12mdk
 - new icons
 - latest po's
