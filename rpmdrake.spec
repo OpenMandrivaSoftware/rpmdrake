@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 37mdk
+%define release 38mdk
 
 Name: %{name}
 Version: %{version}
@@ -24,7 +24,6 @@ Group: System/Configuration/Packaging
 URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
 Obsoletes: MandrakeUpdate
 Conflicts: perl-URPM < 0.84
-Provides: perl(rpmdrake)
 
 %description
 rpmdrake is a simple graphical frontend to manage software packages on a
@@ -102,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Jan 12 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-38mdk
+- remove unecessary provides perl(rpmdrake)
+
 * Fri Jan 09 2004 Warly <warly@mandrakesoft.com> 2.1-37mdk
 - add provides perl(rpmdrake)
 
