@@ -409,7 +409,7 @@ N("I can't find any suitable mirror.
 
 There can be many reasons for this problem; the most frequent is
 the case when the architecture of your processor is not supported
-by Mandrake Linux Official Updates.")), return '';
+by Mandrakelinux Official Updates.")), return '';
 
     my $w = ugtk2->new('rpmdrake', grab => 1);
     $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
