@@ -110,6 +110,9 @@ rm -rf $RPM_BUILD_ROOT
   (such dialog is for example "more information on packages")
 - don't display a too high message when there are many packages
   with signatures problems (#4335)
+- when updating media, if url is too long, don't display it because
+  it enlarges much the dialog; better display only the basename
+  and the medium name (#4338)
 
 * Mon Aug  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-30mdk
 - revert "use checkboxes instead of icons"

@@ -354,6 +354,7 @@ by Mandrake Linux Official Updates.")), return '';
 sub show_urpm_progress {
     my ($label, $pb, $mode, $file, $percent, $total, $eta, $speed) = @_;
     $file =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|; #- if needed...
+    my $medium if 0;
     if ($mode eq 'copy') {
 	$pb->set_fraction(0);
 	$label->set_label(N("Copying file for medium `%s'...", $file));
@@ -363,23 +364,30 @@ sub show_urpm_progress {
     } elsif ($mode eq 'retrieve') {
 	$pb->set_fraction(0);
 	$label->set_label(N("Examining remote file of medium `%s'...", $file));
-    } elsif ($mode eq 'start') {
-	$pb->set_fraction(0);
-	$label->set_label(N("Starting download of `%s'...", $file));
-    } elsif ($mode eq 'progress') {
-	if (defined $total && defined $eta) {
-	    $pb->set_fraction($percent/100);
-	    $label->set_label(N("Download of `%s', time to go:%s, speed:%s", $file, $eta, $speed));
-	} else {
-	    $pb->set_fraction($percent/100);
-	    $label->set_label(N("Download of `%s', speed:%s", $file, $speed));
-	}
+        $medium = $file;
     } elsif ($mode eq 'done') {
 	$pb->set_fraction(1.0);
 	$label->set_label($label->get_label . N(" done."));
+        $medium = undef;
     } elsif ($mode eq 'failed') {
 	$pb->set_fraction(1.0);
 	$label->set_label($label->get_label . N(" failed!"));
+        $medium = undef;
+    } else {
+        length($file) > 60 and $file = $medium ? N("%s from medium %s", basename($file), $medium)
+                                               : basename($file);
+        if ($mode eq 'start') {
+            $pb->set_fraction(0);
+            $label->set_label(N("Starting download of `%s'...", $file));
+        } elsif ($mode eq 'progress') {
+            if (defined $total && defined $eta) {
+                $pb->set_fraction($percent/100);
+                $label->set_label(N("Download of `%s', time to go:%s, speed:%s", $file, $eta, $speed));
+            } else {
+                $pb->set_fraction($percent/100);
+                $label->set_label(N("Download of `%s', speed:%s", $file, $speed));
+            }
+        }
     }
     Gtk2->main_iteration while Gtk2->events_pending;
 }
