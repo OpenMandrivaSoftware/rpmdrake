@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "POT-Creation-Date: 2002-08-29 17:02+0200\n"
-"PO-Revision-Date: 2002-08-23 15:28+0300\n"
+"PO-Revision-Date: 2002-08-29 18:53+0300\n"
 "Last-Translator: Νίκος Νύκταρης (Nick Niktaris) <niktaris@yahoo.com>\n"
 "Language-Team: Greek <nls@hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -134,12 +134,13 @@ msgstr "Αποθήκευση αλλαγών"
 
 #: ../edit-urpm-sources.pl_.c:181
 msgid "You need to insert the medium to continue"
-msgstr ""
+msgstr "Πρέπει να εισάγετε το μέσο για να συνεχίσετε"
 
 #: ../edit-urpm-sources.pl_.c:182
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr ""
+"Για να αποθηκευτούν οι αλλαγές, θα πρέπει να εισάγετε το μέσο στον οδηγό."
 
 #: ../edit-urpm-sources.pl_.c:187
 msgid "Please wait, updating medium..."
@@ -232,7 +233,7 @@ msgstr "Όχι"
 
 #: ../rpmdrake.pm_.c:90
 msgid "Info..."
-msgstr ""
+msgstr "Πληροφορίες..."
 
 #: ../rpmdrake.pm_.c:140
 msgid "Austria"
@@ -406,7 +407,7 @@ msgstr "Παρακαλώ επιλέξτε την επιθυμητή εναλλακτική."
 
 #: ../rpmdrake_.c:94
 msgid "Other"
-msgstr ""
+msgstr "¶λλα"
 
 #: ../rpmdrake_.c:135 ../rpmdrake_.c:425 ../rpmdrake_.c:426
 msgid "(Non available)"
@@ -446,7 +447,7 @@ msgstr ""
 
 #: ../rpmdrake_.c:232
 msgid "More information on package..."
-msgstr ""
+msgstr "Περισσότερες πληροφορίες για το πακέτο..."
 
 #: ../rpmdrake_.c:234
 msgid "One of the following packages is needed:"
@@ -559,11 +560,16 @@ msgid ""
 "Changelog:\n"
 "%s"
 msgstr ""
+"%s¶ρχεία:\n"
+"%s\n"
+"\n"
+"Αλλαγές:\n"
+"%s"
 
 #: ../rpmdrake_.c:424
-#, fuzzy, c-format
+#, c-format
 msgid "Source: %s\n"
-msgstr "Πηγή"
+msgstr "Πηγή: %s\n"
 
 #: ../rpmdrake_.c:429
 #, c-format
@@ -659,12 +665,11 @@ msgstr "στα αρχεία"
 
 #: ../rpmdrake_.c:544
 msgid "Maximum information"
-msgstr ""
+msgstr "Μέγιστες πληροφορίες"
 
 #: ../rpmdrake_.c:544
-#, fuzzy
 msgid "Normal information"
-msgstr "Κανονικές αναβαθμίσεις"
+msgstr "Κανονικές πληροφορίες"
 
 #: ../rpmdrake_.c:565
 #, c-format
@@ -794,40 +799,38 @@ msgstr "Παρακαλώ περιμένετε, αναζητούνται τα διαθέσιμα πακέτα..."
 
 #: ../rpmdrake_.c:724
 msgid "All requested packages were installed successfully."
-msgstr ""
+msgstr "Όλα τα ζητηθέντα πακέτα εγκαταστάθηκαν επιτυχώς."
 
 #: ../rpmdrake_.c:724
 msgid "Everything installed successfully"
-msgstr ""
+msgstr "Όλα εγκαταστάθηκαν επιτυχώς"
 
 #: ../rpmdrake_.c:727
-#, fuzzy
 msgid "Installation finished"
-msgstr "Η εγκατάσταση απέτυχε"
+msgstr "Η εγκατάσταση τελείωσε"
 
 #: ../rpmdrake_.c:730
 #, c-format
 msgid "Inspecting %s"
-msgstr ""
+msgstr "Ελέγχεται το %s"
 
 #: ../rpmdrake_.c:746
-#, fuzzy, c-format
+#, c-format
 msgid "Remove .%s"
-msgstr "Αφαίρεση"
+msgstr "Αφαίρεση.%s"
 
 #: ../rpmdrake_.c:748
 #, c-format
 msgid "Use .%s as main file"
-msgstr ""
+msgstr "Χρήση του .%s ως κύριο αρχείο"
 
 #: ../rpmdrake_.c:750
 msgid "Do nothing"
-msgstr ""
+msgstr "Να μη γίνει τίποτα"
 
 #: ../rpmdrake_.c:753
-#, fuzzy
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
-msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
+msgstr "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 
 #: ../rpmdrake_.c:760
 #, c-format
@@ -837,22 +840,26 @@ msgid ""
 "Some configuration files were created as `.rpmnew' or `.rpmsave',\n"
 "you may now inspect some in order to take actions:"
 msgstr ""
+"Η εγκατάσταση τελείωσε %s.\n"
+"\n"
+"Ορισμένα αρχεία ρύθμισεων δημιουργήθηκαν ως `.rpmnew' ή`.rpmsave',\n"
+"ίσως να πρέπει να τα ελέγξετε για να εκτελέσετε ορισμένες ενέργειες:"
 
 #: ../rpmdrake_.c:761
-#, fuzzy
 msgid ""
 "some packages failed to install\n"
 "correctly"
-msgstr "Ορισμένα πακέτα δεν μπορούν να εγκατασταθούν"
+msgstr ""
+"ορισμένα πακέτα απέτυχαν να \n"
+"εγκατασταθούν"
 
 #: ../rpmdrake_.c:762
-#, fuzzy
 msgid "everything was installed correctly"
-msgstr "Όλα είναι ήδη εγκατεστημένα."
+msgstr "όλα εγκαταστάθηκαν σωστά"
 
 #: ../rpmdrake_.c:767
 msgid "Inspect..."
-msgstr ""
+msgstr "Έλεγχος..."
 
 #: ../rpmdrake_.c:795
 msgid "Unable to get source packages."
