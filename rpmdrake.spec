@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.4
-%define release 5mdk
+%define version 2.5
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
@@ -109,6 +109,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Jan 17 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.5-1mdk
+- Software media manager: the "Add..." dialog allows to add updates as well
+  as official sources (for Official distros), whereas the "security updates"
+  option from the "Add custom..." dialog has been made redundant.
+- Language updates
+- Fix requires of park-rpmdrake (Pixel)
+
 * Wed Jan 12 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-5mdk
 - rpmdrake now has a menu bar (supported in mcc thanks to Titi)
 - Fix crash with new mygtk2 (Titi)
