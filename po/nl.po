@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2002-11-26 20:09+0100\n"
+"POT-Creation-Date: 2002-12-11 22:06+0100\n"
 "PO-Revision-Date: 2002-08-30 13:26+0100\n"
 "Last-Translator: Reinout van Schouwen <reinout@cs.vu.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -58,7 +58,7 @@ msgstr "Pad of koppelpunt::"
 msgid "Removable device"
 msgstr "Verwisselbaar apparaat"
 
-#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:508
+#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:528
 msgid "Security updates"
 msgstr "Beveiligingsverbeteringen"
 
@@ -101,15 +101,15 @@ msgstr "Brontype:"
 
 #: ../edit-urpm-sources.pl_.c:121 ../edit-urpm-sources.pl_.c:187
 #: ../edit-urpm-sources.pl_.c:219 ../rpmdrake.pm_.c:86 ../rpmdrake.pm_.c:107
-#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:880
-#: ../rpmdrake_.c:915
+#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:898
+#: ../rpmdrake_.c:932
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:180
 #: ../edit-urpm-sources.pl_.c:187 ../edit-urpm-sources.pl_.c:220
 #: ../rpmdrake.pm_.c:289 ../rpmdrake.pm_.c:322 ../rpmdrake_.c:350
-#: ../rpmdrake_.c:915
+#: ../rpmdrake_.c:932
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -187,7 +187,7 @@ msgid "Source"
 msgstr "Bron"
 
 #  Removable media
-#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:688
+#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:707
 msgid "Remove"
 msgstr "Verwisselen"
 
@@ -211,7 +211,7 @@ msgstr "Proxy..."
 msgid "Save and quit"
 msgstr "Opslaan en afsluiten"
 
-#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:691
+#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:710
 msgid "Quit"
 msgstr "Afsluiten"
 
@@ -358,7 +358,7 @@ msgstr "Geen mirror"
 msgid "Please choose the desired mirror."
 msgstr "Kies de gewenste mirror."
 
-#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:587
+#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:607
 msgid "Update source(s)"
 msgstr "Bron(nen) verversen"
 
@@ -382,7 +382,7 @@ msgstr "Overige"
 msgid "(none)"
 msgstr "(geen)"
 
-#: ../rpmdrake_.c:139 ../rpmdrake_.c:453 ../rpmdrake_.c:454
+#: ../rpmdrake_.c:139 ../rpmdrake_.c:462 ../rpmdrake_.c:463
 msgid "(Not available)"
 msgstr "(Niet beschikbaar)"
 
@@ -460,11 +460,17 @@ msgstr ""
 "verwijderd worden:\n"
 "\n"
 
-#: ../rpmdrake_.c:363
+#: ../rpmdrake_.c:363 ../rpmdrake_.c:371
 msgid "Some packages can't be removed"
 msgstr "Sommige pakketten kunnen niet verwijderd worden"
 
-#: ../rpmdrake_.c:364 ../rpmdrake_.c:422
+#: ../rpmdrake_.c:364
+msgid ""
+"Removing these packages would break your system, sorry:\n"
+"\n"
+msgstr ""
+
+#: ../rpmdrake_.c:372 ../rpmdrake_.c:431
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -473,11 +479,11 @@ msgstr ""
 "Vanwege hun afhankelijkheden dienen de volgende pakket(ten)\n"
 "nu gedeselecteerd te worden:\n"
 
-#: ../rpmdrake_.c:392
+#: ../rpmdrake_.c:401
 msgid "Additional packages needed"
 msgstr "Extra pakketten benodigd"
 
-#: ../rpmdrake_.c:393
+#: ../rpmdrake_.c:402
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -487,11 +493,11 @@ msgstr ""
 "pakket(ten) ook geïnstalleerd te worden:\n"
 "\n"
 
-#: ../rpmdrake_.c:406
+#: ../rpmdrake_.c:415
 msgid "Some packages can't be installed"
 msgstr "Sommige pakketten kunnen niet worden geïnstalleerd"
 
-#: ../rpmdrake_.c:407
+#: ../rpmdrake_.c:416
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -499,262 +505,262 @@ msgstr ""
 "Sorry, maar de volgende pakket(ten) kunnen niet geselecteerd worden:\n"
 "\n"
 
-#: ../rpmdrake_.c:421 ../rpmdrake_.c:644
+#: ../rpmdrake_.c:430 ../rpmdrake_.c:664
 msgid "Some packages need to be removed"
 msgstr "Enkele pakketten dienen verwijderd te worden"
 
-#: ../rpmdrake_.c:443
+#: ../rpmdrake_.c:452
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Geselecteerd: %d MB / Vrije schijfruimte: %d MB"
 
-#: ../rpmdrake_.c:445
+#: ../rpmdrake_.c:454
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Geselecteerde grootte: %d MB"
 
-#: ../rpmdrake_.c:453
+#: ../rpmdrake_.c:462
 msgid "Files:\n"
 msgstr "Bestanden:\n"
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:463
 msgid "Changelog:\n"
 msgstr "Veranderingen-logboek:\n"
 
-#: ../rpmdrake_.c:457
+#: ../rpmdrake_.c:466
 msgid "Source: "
 msgstr "Bron: "
 
-#: ../rpmdrake_.c:458
+#: ../rpmdrake_.c:467
 msgid "Currently installed version: "
 msgstr "Momenteel geïnstalleerde versie: "
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:471
 msgid "Reason for update: "
 msgstr "Reden voor vernieuwing: "
 
-#: ../rpmdrake_.c:464
+#: ../rpmdrake_.c:473
 msgid "Name: "
 msgstr "Naam: "
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:474
 msgid "Version: "
 msgstr "Versie: "
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 msgid "Size: "
 msgstr "Grootte: "
 
-#: ../rpmdrake_.c:468
+#: ../rpmdrake_.c:477
 msgid "Importance: "
 msgstr "Belang: "
 
-#: ../rpmdrake_.c:469
+#: ../rpmdrake_.c:478
 msgid "Summary: "
 msgstr "Samenvatting: "
 
-#: ../rpmdrake_.c:470
+#: ../rpmdrake_.c:479
 msgid "Description: "
 msgstr "Beschrijving:"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:528
 msgid "Bugfixes updates"
 msgstr "Programmareparaties vernieuwingen"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:528
 msgid "Normal updates"
 msgstr "Gewone vernieuwingen"
 
-#: ../rpmdrake_.c:527
+#: ../rpmdrake_.c:547
 msgid "Mandrake choices"
 msgstr "Mandrake keuzes"
 
-#: ../rpmdrake_.c:528
+#: ../rpmdrake_.c:548
 msgid "All packages, alphabetical"
 msgstr "Alle pakketten, alfabetisch"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:549
 msgid "All packages,"
 msgstr "Alle pakketten,"
 
-#: ../rpmdrake_.c:552
+#: ../rpmdrake_.c:572
 msgid "by group"
 msgstr "op groep"
 
-#: ../rpmdrake_.c:552
+#: ../rpmdrake_.c:572
 msgid "by size"
 msgstr "op grootte"
 
-#: ../rpmdrake_.c:553
+#: ../rpmdrake_.c:573
 msgid "by selection state"
 msgstr "op selectie-status"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:574
 msgid "by source repository"
 msgstr "op bron"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:574
 msgid "by update availability"
 msgstr "op beschikbaarheid vernieuwingen"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in descriptions"
 msgstr "in omschrijvingen"
 
 #  Local media
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in files"
 msgstr "in bestanden"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in names"
 msgstr "in namen"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:606
 msgid "Reload the packages list"
 msgstr "Pakkettenlijst herladen"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:606
 msgid "Reset the selection"
 msgstr "Alle selecties opheffen"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:632
 msgid "Maximum information"
 msgstr "Maximale informatie"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:632
 msgid "Normal information"
 msgstr "Normale informatie"
 
-#: ../rpmdrake_.c:634
+#: ../rpmdrake_.c:654
 msgid "Too many packages are selected"
 msgstr "Te veel pakketten zijn geselecteerd"
 
-#: ../rpmdrake_.c:678
+#: ../rpmdrake_.c:697
 msgid "Find:"
 msgstr "Zoek:"
 
-#: ../rpmdrake_.c:683
+#: ../rpmdrake_.c:702
 msgid "Search"
 msgstr "Zoeken"
 
-#: ../rpmdrake_.c:689
+#: ../rpmdrake_.c:708
 msgid "Install"
 msgstr "Installeren"
 
-#: ../rpmdrake_.c:697 data/mandrakeupdate.desktop.in.h:1
+#: ../rpmdrake_.c:715 data/mandrakeupdate.desktop.in.h:1
 msgid "Mandrake Update"
 msgstr "Mandrake Vernieuwingen"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:715
 msgid "Software Packages Installation"
 msgstr "Softwarepakketten installeren"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:715
 msgid "Software Packages Removal"
 msgstr "Softwarepakketten verwijderen"
 
-#: ../rpmdrake_.c:738
+#: ../rpmdrake_.c:756
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Even geduld, bezig met verbinden met mirror om pakketinformatie te verversen"
 
-#: ../rpmdrake_.c:740
+#: ../rpmdrake_.c:758
 msgid "Error updating medium"
 msgstr "Er is een fout opgetreden bij het verversen van het medium"
 
-#: ../rpmdrake_.c:741
+#: ../rpmdrake_.c:759
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 "Er is een onherstelbare fout opgetreden bij het verversen van "
 "pakketinformatie."
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:764
 msgid "How to choose manually your mirror"
 msgstr "Hoe u handmatig uw mirror kunt kiezen"
 
-#: ../rpmdrake_.c:754
+#: ../rpmdrake_.c:772
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Even geduld, bezig met verbinden met mirror om pakketvernieuwingen te "
 "initialiseren."
 
-#: ../rpmdrake_.c:757
+#: ../rpmdrake_.c:775
 msgid "Error adding update medium"
 msgstr "Er is een fout opgetreden bij het toevoegen van een vernieuwingsmedium"
 
-#: ../rpmdrake_.c:789
+#: ../rpmdrake_.c:807
 msgid "Please wait, finding available packages..."
 msgstr "Even geduld, bezig met opzoeken van verkrijgbare pakketten..."
 
-#: ../rpmdrake_.c:818
+#: ../rpmdrake_.c:836
 msgid "Installation finished"
 msgstr "Installatie voltooid"
 
-#: ../rpmdrake_.c:822
+#: ../rpmdrake_.c:840
 #, c-format
 msgid "Inspecting %s"
 msgstr "Bezig met inspecteren van %s"
 
-#: ../rpmdrake_.c:841
+#: ../rpmdrake_.c:859
 #, fuzzy
 msgid "changes:"
 msgstr "Veranderingen opslaan"
 
 #  Removable media
-#: ../rpmdrake_.c:845
+#: ../rpmdrake_.c:863
 #, c-format
 msgid "Remove .%s"
 msgstr ".%s verwijderen"
 
-#: ../rpmdrake_.c:847
+#: ../rpmdrake_.c:865
 #, c-format
 msgid "Use .%s as main file"
 msgstr ".%s als hoofdbestand gebruiken"
 
-#: ../rpmdrake_.c:849
+#: ../rpmdrake_.c:867
 msgid "Do nothing"
 msgstr "Niets doen"
 
-#: ../rpmdrake_.c:867
+#: ../rpmdrake_.c:885
 msgid "Inspect..."
 msgstr "Inspecteren..."
 
-#: ../rpmdrake_.c:889
+#: ../rpmdrake_.c:907
 msgid "Program missing"
 msgstr "Programma mist"
 
-#: ../rpmdrake_.c:890
+#: ../rpmdrake_.c:908
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Een vereist programma mist (grpmi). Controleer uw installatie."
 
-#: ../rpmdrake_.c:905
+#: ../rpmdrake_.c:922
 msgid "Unable to get source packages."
 msgstr "Niet in staat bronpakketten op te halen"
 
-#: ../rpmdrake_.c:906
+#: ../rpmdrake_.c:923
 msgid "Unable to get source packages, sorry."
 msgstr "Niet in staat bronpakketten op te halen, excuus."
 
-#: ../rpmdrake_.c:913
+#: ../rpmdrake_.c:930
 msgid "Change medium"
 msgstr "Medium veranderen"
 
-#: ../rpmdrake_.c:914
+#: ../rpmdrake_.c:931
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Voer het medium in met de naam \"%s\" in apparaat [%s]"
 
-#: ../rpmdrake_.c:922
+#: ../rpmdrake_.c:939
 msgid "Installation failed"
 msgstr "Installatie mislukt"
 
-#: ../rpmdrake_.c:923
+#: ../rpmdrake_.c:940
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -762,13 +768,13 @@ msgstr ""
 "Installatie mislukt, sommige bestanden missen.\n"
 "U wilt misschien uw bronnen-database verversen."
 
-#: ../rpmdrake_.c:926
+#: ../rpmdrake_.c:943
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Even geduld, bezig met verwijderen van pakketten om andere te kunnen "
 "opwaarderen..."
 
-#: ../rpmdrake_.c:947
+#: ../rpmdrake_.c:964
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -781,7 +787,7 @@ msgstr ""
 "Sommige configuratiebestanden zijn gecreëerd als `.rpmnew' of `.rpmsave',\n"
 "u kunt er nu enkele inspecteren om zonodig actie te ondernemen:"
 
-#: ../rpmdrake_.c:947
+#: ../rpmdrake_.c:964
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -789,31 +795,31 @@ msgstr ""
 "Sommige pakketten kunnen niet\n"
 "correct worden geïnstalleerd"
 
-#: ../rpmdrake_.c:948
+#: ../rpmdrake_.c:965
 msgid "everything was installed correctly"
 msgstr "Alles is correct geïnstalleerd"
 
-#: ../rpmdrake_.c:950
+#: ../rpmdrake_.c:967
 msgid "Everything installed successfully"
 msgstr "Alles is succesvol geïnstalleerd"
 
-#: ../rpmdrake_.c:951
+#: ../rpmdrake_.c:968
 msgid "All requested packages were installed successfully."
 msgstr "Alle gevraagde pakketten zijn succesvol geïnstalleerd."
 
-#: ../rpmdrake_.c:953
+#: ../rpmdrake_.c:970
 msgid "Everything already installed."
 msgstr "Alles reeds geïnstalleerd"
 
-#: ../rpmdrake_.c:954
+#: ../rpmdrake_.c:971
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Alles reeds geïnstalleerd (wordt dit geacht ooit te gebeuren?)"
 
-#: ../rpmdrake_.c:957
+#: ../rpmdrake_.c:974
 msgid "Problem during installation"
 msgstr "Er is een probleem opgetreden bij het installeren"
 
-#: ../rpmdrake_.c:958
+#: ../rpmdrake_.c:975
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -824,15 +830,31 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake_.c:968
+#: ../rpmdrake_.c:985
 msgid "Please wait, reading packages database..."
 msgstr "Even geduld, bezig met lezen van pakkettendatabase..."
 
-#: ../rpmdrake_.c:1006
+#: ../rpmdrake_.c:1026
 msgid "Please wait, removing packages..."
 msgstr "Even geduld, bezig met het verwijderen van pakketten..."
 
-#: ../rpmdrake_.c:1035
+#: ../rpmdrake_.c:1028
+#, fuzzy
+msgid "Problem during removal"
+msgstr "Er is een probleem opgetreden bij het installeren"
+
+#: ../rpmdrake_.c:1029
+#, fuzzy, c-format
+msgid ""
+"There was a problem during the removal of packages:\n"
+"\n"
+"%s"
+msgstr ""
+"Er is een probleem opgetreden tijdens de installatie:\n"
+"\n"
+"%s"
+
+#: ../rpmdrake_.c:1057
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -844,7 +866,7 @@ msgstr ""
 "Dit hulpprogramma helpt u bij het kiezen welke software u van uw\n"
 "computer wilt verwijderen."
 
-#: ../rpmdrake_.c:1040
+#: ../rpmdrake_.c:1062
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -856,7 +878,7 @@ msgstr ""
 "Dit hulpprogramma helpt u bij het kiezen van de vernieuwingen dit u op\n"
 "uw computer wilt installeren."
 
-#: ../rpmdrake_.c:1045
+#: ../rpmdrake_.c:1067
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-mt\n"
-"POT-Creation-Date: 2002-11-26 20:09+0100\n"
+"POT-Creation-Date: 2002-12-11 22:06+0100\n"
 "PO-Revision-Date: 2002-09-12 17:02CET\n"
 "Last-Translator: Ramon Casha <ramon.casha@linux.org.mt>\n"
 "Language-Team: Maltese <mt@li.org>\n"
@@ -56,7 +56,7 @@ msgstr "Direttorju jew punt ta' mmuntar:"
 msgid "Removable device"
 msgstr "Apparat jinħareġ"
 
-#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:508
+#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:528
 msgid "Security updates"
 msgstr "Aġġornamenti ta' sigurtà"
 
@@ -98,15 +98,15 @@ msgstr "Tip ta' sors:"
 
 #: ../edit-urpm-sources.pl_.c:121 ../edit-urpm-sources.pl_.c:187
 #: ../edit-urpm-sources.pl_.c:219 ../rpmdrake.pm_.c:86 ../rpmdrake.pm_.c:107
-#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:880
-#: ../rpmdrake_.c:915
+#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:898
+#: ../rpmdrake_.c:932
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:180
 #: ../edit-urpm-sources.pl_.c:187 ../edit-urpm-sources.pl_.c:220
 #: ../rpmdrake.pm_.c:289 ../rpmdrake.pm_.c:322 ../rpmdrake_.c:350
-#: ../rpmdrake_.c:915
+#: ../rpmdrake_.c:932
 msgid "Cancel"
 msgstr "Ikkanċella"
 
@@ -180,7 +180,7 @@ msgstr "Mixgħul?"
 msgid "Source"
 msgstr "Sors"
 
-#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:688
+#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:707
 msgid "Remove"
 msgstr "Neħħi"
 
@@ -204,7 +204,7 @@ msgstr "Proxy..."
 msgid "Save and quit"
 msgstr "Ikteb u oħroġ"
 
-#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:691
+#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:710
 msgid "Quit"
 msgstr "Oħroġ"
 
@@ -346,7 +346,7 @@ msgstr "Ebda mera"
 msgid "Please choose the desired mirror."
 msgstr "Jekk jogħġbok agħżel mera li tixtieq."
 
-#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:587
+#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:607
 msgid "Update source(s)"
 msgstr "Aġġorna sorsi"
 
@@ -370,7 +370,7 @@ msgstr "Oħrajn"
 msgid "(none)"
 msgstr "(ebda)"
 
-#: ../rpmdrake_.c:139 ../rpmdrake_.c:453 ../rpmdrake_.c:454
+#: ../rpmdrake_.c:139 ../rpmdrake_.c:462 ../rpmdrake_.c:463
 msgid "(Not available)"
 msgstr "(Mhux disponibbli)"
 
@@ -447,11 +447,20 @@ msgstr ""
 "Minħabba d-dipendenzi tagħhom, dawn il-pakketti wkoll iridu jitneħħew:\n"
 "\n"
 
-#: ../rpmdrake_.c:363
+#: ../rpmdrake_.c:363 ../rpmdrake_.c:371
 msgid "Some packages can't be removed"
 msgstr "Xi pakketti ma jistgħux jitneħħew"
 
-#: ../rpmdrake_.c:364 ../rpmdrake_.c:422
+#: ../rpmdrake_.c:364
+#, fuzzy
+msgid ""
+"Removing these packages would break your system, sorry:\n"
+"\n"
+msgstr ""
+"Jiddispjaċini, jekk tneħħi dawn il-pakketti s-sistema ma tibqax taħdem:\n"
+"\n"
+
+#: ../rpmdrake_.c:372 ../rpmdrake_.c:431
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -461,11 +470,11 @@ msgstr ""
 "mill-għażla issa:\n"
 "\n"
 
-#: ../rpmdrake_.c:392
+#: ../rpmdrake_.c:401
 msgid "Additional packages needed"
 msgstr "Pakketti oħra meħtieġa"
 
-#: ../rpmdrake_.c:393
+#: ../rpmdrake_.c:402
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -475,11 +484,11 @@ msgstr ""
 "jiġu nstallati:\n"
 "\n"
 
-#: ../rpmdrake_.c:406
+#: ../rpmdrake_.c:415
 msgid "Some packages can't be installed"
 msgstr "Xi pakketti ma jistgħux jiġu nstallati"
 
-#: ../rpmdrake_.c:407
+#: ../rpmdrake_.c:416
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -487,258 +496,258 @@ msgstr ""
 "Jiddispjaċini, dawn il-pakketti ma jistgħux jiġu magħżula:\n"
 "\n"
 
-#: ../rpmdrake_.c:421 ../rpmdrake_.c:644
+#: ../rpmdrake_.c:430 ../rpmdrake_.c:664
 msgid "Some packages need to be removed"
 msgstr "Xi pakketti jridu jitneħħew"
 
-#: ../rpmdrake_.c:443
+#: ../rpmdrake_.c:452
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Magħżula: %d MB / Spazju disponibbli: %d MB"
 
-#: ../rpmdrake_.c:445
+#: ../rpmdrake_.c:454
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Daqs magħżula: %d MB"
 
-#: ../rpmdrake_.c:453
+#: ../rpmdrake_.c:462
 msgid "Files:\n"
 msgstr "Fajls:\n"
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:463
 msgid "Changelog:\n"
 msgstr "Log tal-bidliet:\n"
 
-#: ../rpmdrake_.c:457
+#: ../rpmdrake_.c:466
 msgid "Source: "
 msgstr "Sors: "
 
-#: ../rpmdrake_.c:458
+#: ../rpmdrake_.c:467
 msgid "Currently installed version: "
 msgstr "Verżjoni nstallata bħalissa: "
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:471
 msgid "Reason for update: "
 msgstr "Raġuni għall-aġġornament: "
 
-#: ../rpmdrake_.c:464
+#: ../rpmdrake_.c:473
 msgid "Name: "
 msgstr "Isem: "
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:474
 msgid "Version: "
 msgstr "Verżjoni: "
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 msgid "Size: "
 msgstr "Daqs: "
 
-#: ../rpmdrake_.c:468
+#: ../rpmdrake_.c:477
 msgid "Importance: "
 msgstr "Importanza: "
 
-#: ../rpmdrake_.c:469
+#: ../rpmdrake_.c:478
 msgid "Summary: "
 msgstr "Sommarju: "
 
-#: ../rpmdrake_.c:470
+#: ../rpmdrake_.c:479
 msgid "Description: "
 msgstr "Deskrizzjoni: "
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:528
 msgid "Bugfixes updates"
 msgstr "Tiswijiet ta' bugs"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:528
 msgid "Normal updates"
 msgstr "Aġġornamenti normali"
 
-#: ../rpmdrake_.c:527
+#: ../rpmdrake_.c:547
 msgid "Mandrake choices"
 msgstr "Għażliet ta' Mandrake"
 
-#: ../rpmdrake_.c:528
+#: ../rpmdrake_.c:548
 msgid "All packages, alphabetical"
 msgstr "Pakketti kollha, alfabetiċi"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:549
 msgid "All packages,"
 msgstr "Pakketti kollha"
 
-#: ../rpmdrake_.c:552
+#: ../rpmdrake_.c:572
 msgid "by group"
 msgstr "skond il-grupp"
 
-#: ../rpmdrake_.c:552
+#: ../rpmdrake_.c:572
 msgid "by size"
 msgstr "skond id-daqs"
 
-#: ../rpmdrake_.c:553
+#: ../rpmdrake_.c:573
 msgid "by selection state"
 msgstr "skond l-istat tal-għażla"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:574
 msgid "by source repository"
 msgstr "skond is-sors"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:574
 msgid "by update availability"
 msgstr "skond id-disponibbiltà ta' aġġornament"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in descriptions"
 msgstr "fid-deskrizzjonijiet"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in files"
 msgstr "fil-fajls"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in names"
 msgstr "fl-ismijiet"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:606
 msgid "Reload the packages list"
 msgstr "Erġa' aqra l-lista ta' pakketti"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:606
 msgid "Reset the selection"
 msgstr "Irrisettja l-għażla"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:632
 msgid "Maximum information"
 msgstr "Informazzjoni massima"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:632
 msgid "Normal information"
 msgstr "Informazzjoni normali"
 
-#: ../rpmdrake_.c:634
+#: ../rpmdrake_.c:654
 msgid "Too many packages are selected"
 msgstr "Hemm wisq pakketti magħżula"
 
-#: ../rpmdrake_.c:678
+#: ../rpmdrake_.c:697
 msgid "Find:"
 msgstr "Sib:"
 
-#: ../rpmdrake_.c:683
+#: ../rpmdrake_.c:702
 msgid "Search"
 msgstr "Fittex"
 
-#: ../rpmdrake_.c:689
+#: ../rpmdrake_.c:708
 msgid "Install"
 msgstr "Installa"
 
-#: ../rpmdrake_.c:697 data/mandrakeupdate.desktop.in.h:1
+#: ../rpmdrake_.c:715 data/mandrakeupdate.desktop.in.h:1
 msgid "Mandrake Update"
 msgstr "Aġġornament Mandrake"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:715
 msgid "Software Packages Installation"
 msgstr "Installazzjoni ta' pakketti ta' softwer"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:715
 msgid "Software Packages Removal"
 msgstr "Tneħħija ta' pakketti ta' softwer"
 
-#: ../rpmdrake_.c:738
+#: ../rpmdrake_.c:756
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Stenna ftit, qed nikkuntattja l-mera biex naġġorna l-informazzjoni tal-"
 "pakketti"
 
-#: ../rpmdrake_.c:740
+#: ../rpmdrake_.c:758
 msgid "Error updating medium"
 msgstr "Problema fl-aġġornament tas-sors"
 
-#: ../rpmdrake_.c:741
+#: ../rpmdrake_.c:759
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "Kien hemm problema waqt l-aġġornament tal-informazzjoni tal-pakketti"
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:764
 msgid "How to choose manually your mirror"
 msgstr "Kif tagħżel mera manwalment"
 
-#: ../rpmdrake_.c:754
+#: ../rpmdrake_.c:772
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Stenna ftit, qed nikkuntattja l-mera biex nibda' l-aġġornament ta' pakketti."
 
-#: ../rpmdrake_.c:757
+#: ../rpmdrake_.c:775
 msgid "Error adding update medium"
 msgstr "Problema fiż-żieda ta' sors ta' aġġornamenti"
 
-#: ../rpmdrake_.c:789
+#: ../rpmdrake_.c:807
 msgid "Please wait, finding available packages..."
 msgstr "Stenna ftit, qed insib pakketti disponibbli..."
 
-#: ../rpmdrake_.c:818
+#: ../rpmdrake_.c:836
 msgid "Installation finished"
 msgstr "Installazzjoni lesta"
 
-#: ../rpmdrake_.c:822
+#: ../rpmdrake_.c:840
 #, c-format
 msgid "Inspecting %s"
 msgstr "Qed jiġi nspezzjonat %s"
 
-#: ../rpmdrake_.c:841
+#: ../rpmdrake_.c:859
 #, fuzzy
 msgid "changes:"
 msgstr "Ikteb bidliet"
 
-#: ../rpmdrake_.c:845
+#: ../rpmdrake_.c:863
 #, c-format
 msgid "Remove .%s"
 msgstr "Neħħi .%s"
 
-#: ../rpmdrake_.c:847
+#: ../rpmdrake_.c:865
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Uża .%s bħala fajl prinċipali"
 
-#: ../rpmdrake_.c:849
+#: ../rpmdrake_.c:867
 msgid "Do nothing"
 msgstr "Tagħmel xejn"
 
-#: ../rpmdrake_.c:867
+#: ../rpmdrake_.c:885
 msgid "Inspect..."
 msgstr "Spezzjona..."
 
-#: ../rpmdrake_.c:889
+#: ../rpmdrake_.c:907
 msgid "Program missing"
 msgstr "Programm nieqes"
 
-#: ../rpmdrake_.c:890
+#: ../rpmdrake_.c:908
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Programm essenzjali (grpmi) huwa nieqes. Iċċekkja l-installazzjoni."
 
-#: ../rpmdrake_.c:905
+#: ../rpmdrake_.c:922
 msgid "Unable to get source packages."
 msgstr "Ma nistax nikseb pakketti sors."
 
-#: ../rpmdrake_.c:906
+#: ../rpmdrake_.c:923
 msgid "Unable to get source packages, sorry."
 msgstr "Ma nistax nikseb pakketti sors, jiddispjaċini."
 
-#: ../rpmdrake_.c:913
+#: ../rpmdrake_.c:930
 msgid "Change medium"
 msgstr "Ibdel sors"
 
-#: ../rpmdrake_.c:914
+#: ../rpmdrake_.c:931
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Jekk jogħġbok daħħal is-sors imsejjaħ \"%s\" fl-apparat [%s]"
 
-#: ../rpmdrake_.c:922
+#: ../rpmdrake_.c:939
 msgid "Installation failed"
 msgstr "Installazzjoni falliet"
 
-#: ../rpmdrake_.c:923
+#: ../rpmdrake_.c:940
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -746,13 +755,13 @@ msgstr ""
 "Installazzjoni falliet, xi fajls huma neqsin.\n"
 "Jista' jkollok bżonn taġġorna d-database tas-sorsi."
 
-#: ../rpmdrake_.c:926
+#: ../rpmdrake_.c:943
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Stenna ftit, qed jitneħħew pakketti biex ikunu jistgħu jiġu aġġornati "
 "oħrajn..."
 
-#: ../rpmdrake_.c:947
+#: ../rpmdrake_.c:964
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -765,7 +774,7 @@ msgstr ""
 "Xi fajls ta' konfigurazzjoni inħolqu bħala \".rpmnew\" jew \".rpmsave\",\n"
 "issa tista' tinspezzjonahom sabiex tieħu azzjoni:"
 
-#: ../rpmdrake_.c:947
+#: ../rpmdrake_.c:964
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -773,31 +782,31 @@ msgstr ""
 "Xi pakketti ma jistgħux jiġu \n"
 "nstallati sew"
 
-#: ../rpmdrake_.c:948
+#: ../rpmdrake_.c:965
 msgid "everything was installed correctly"
 msgstr "Kollox ġie nstallat sew"
 
-#: ../rpmdrake_.c:950
+#: ../rpmdrake_.c:967
 msgid "Everything installed successfully"
 msgstr "Kollox ġie nstallat."
 
-#: ../rpmdrake_.c:951
+#: ../rpmdrake_.c:968
 msgid "All requested packages were installed successfully."
 msgstr "Il-pakketti kollha mitluba ġew installati."
 
-#: ../rpmdrake_.c:953
+#: ../rpmdrake_.c:970
 msgid "Everything already installed."
 msgstr "Kollox diġà nstallat"
 
-#: ../rpmdrake_.c:954
+#: ../rpmdrake_.c:971
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Kollox diġà nstallat"
 
-#: ../rpmdrake_.c:957
+#: ../rpmdrake_.c:974
 msgid "Problem during installation"
 msgstr "Problema waqt l-installazzjoni"
 
-#: ../rpmdrake_.c:958
+#: ../rpmdrake_.c:975
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -808,15 +817,31 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake_.c:968
+#: ../rpmdrake_.c:985
 msgid "Please wait, reading packages database..."
 msgstr "Stenna ftit, qed jinqara d-database tal-pakketti..."
 
-#: ../rpmdrake_.c:1006
+#: ../rpmdrake_.c:1026
 msgid "Please wait, removing packages..."
 msgstr "Stenna ftit, qed jitneħħew il-pakketti..."
 
-#: ../rpmdrake_.c:1035
+#: ../rpmdrake_.c:1028
+#, fuzzy
+msgid "Problem during removal"
+msgstr "Problema waqt l-installazzjoni"
+
+#: ../rpmdrake_.c:1029
+#, fuzzy, c-format
+msgid ""
+"There was a problem during the removal of packages:\n"
+"\n"
+"%s"
+msgstr ""
+"Inqalgħet problema fl-installazzjoni:\n"
+"\n"
+"%s"
+
+#: ../rpmdrake_.c:1057
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -828,7 +853,7 @@ msgstr ""
 "Din l-għodda tgħinek tagħżel liema softwer trid tneħħi mill-kompjuter\n"
 "tiegħek."
 
-#: ../rpmdrake_.c:1040
+#: ../rpmdrake_.c:1062
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -840,7 +865,7 @@ msgstr ""
 "Din l-għodda tgħinek tagħżel aġġornamenti li trid tinstalla fuq il-\n"
 "kompjuter tiegħek."
 
-#: ../rpmdrake_.c:1045
+#: ../rpmdrake_.c:1067
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1082,13 +1107,6 @@ msgstr "Installa softwer"
 
 #~ msgid "This would break your system"
 #~ msgstr "Dan jista' jirrendi s-sistema ma taħdimx"
-
-#~ msgid ""
-#~ "Sorry, removing these packages would break your system:\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Jiddispjaċini, jekk tneħħi dawn il-pakketti s-sistema ma tibqax taħdem:\n"
-#~ "\n"
 
 #~ msgid ""
 #~ "Could not find /var/lib/urpmi/compssUsers.flat,\n"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2002-11-26 20:09+0100\n"
+"POT-Creation-Date: 2002-12-11 22:06+0100\n"
 "PO-Revision-Date: 2002-09-16 00:11+0900\n"
 "Last-Translator: Budi Rachmanto <rac@linux-mandrake.com>\n"
 "Language-Team: Bahasa Indonesia <id@li.org>\n"
@@ -57,7 +57,7 @@ msgstr "Path atau titik mount:"
 msgid "Removable device"
 msgstr "Perangkat portabel"
 
-#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:508
+#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:528
 msgid "Security updates"
 msgstr "Update sekuriti"
 
@@ -99,15 +99,15 @@ msgstr "Jenis source:"
 
 #: ../edit-urpm-sources.pl_.c:121 ../edit-urpm-sources.pl_.c:187
 #: ../edit-urpm-sources.pl_.c:219 ../rpmdrake.pm_.c:86 ../rpmdrake.pm_.c:107
-#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:880
-#: ../rpmdrake_.c:915
+#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:898
+#: ../rpmdrake_.c:932
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:180
 #: ../edit-urpm-sources.pl_.c:187 ../edit-urpm-sources.pl_.c:220
 #: ../rpmdrake.pm_.c:289 ../rpmdrake.pm_.c:322 ../rpmdrake_.c:350
-#: ../rpmdrake_.c:915
+#: ../rpmdrake_.c:932
 msgid "Cancel"
 msgstr "Batal"
 
@@ -180,7 +180,7 @@ msgstr "Diaktifkan?"
 msgid "Source"
 msgstr "Sumber"
 
-#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:688
+#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:707
 msgid "Remove"
 msgstr "Hapus"
 
@@ -204,7 +204,7 @@ msgstr "Proxy..."
 msgid "Save and quit"
 msgstr "Simpan dan keluar"
 
-#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:691
+#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:710
 msgid "Quit"
 msgstr "Keluar"
 
@@ -345,7 +345,7 @@ msgstr "Tiada mirror"
 msgid "Please choose the desired mirror."
 msgstr "Pilih mirror yang diinginkan."
 
-#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:587
+#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:607
 msgid "Update source(s)"
 msgstr "Update source"
 
@@ -369,7 +369,7 @@ msgstr "Lainnya"
 msgid "(none)"
 msgstr "(tiada)"
 
-#: ../rpmdrake_.c:139 ../rpmdrake_.c:453 ../rpmdrake_.c:454
+#: ../rpmdrake_.c:139 ../rpmdrake_.c:462 ../rpmdrake_.c:463
 msgid "(Not available)"
 msgstr "(Tak tersedia)"
 
@@ -444,11 +444,20 @@ msgid ""
 "\n"
 msgstr "Untuk memenuhi dependensi, paket-paket berikut perlu dihapus:\n"
 
-#: ../rpmdrake_.c:363
+#: ../rpmdrake_.c:363 ../rpmdrake_.c:371
 msgid "Some packages can't be removed"
 msgstr "Beberapa paket tak dapat dihapus"
 
-#: ../rpmdrake_.c:364 ../rpmdrake_.c:422
+#: ../rpmdrake_.c:364
+#, fuzzy
+msgid ""
+"Removing these packages would break your system, sorry:\n"
+"\n"
+msgstr ""
+"Maaf, menghapus paket ini berarti merusak sistem Anda:\n"
+"\n"
+
+#: ../rpmdrake_.c:372 ../rpmdrake_.c:431
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -457,22 +466,22 @@ msgstr ""
 "Karena aspek ketergantungan, paket berikut harus tak dipilih:\n"
 "\n"
 
-#: ../rpmdrake_.c:392
+#: ../rpmdrake_.c:401
 msgid "Additional packages needed"
 msgstr "Dibutuhkan paket tambahan"
 
-#: ../rpmdrake_.c:393
+#: ../rpmdrake_.c:402
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
 "\n"
 msgstr "Untuk memenuhi ketergantungan, paket berikut juga harus diinstal:\n"
 
-#: ../rpmdrake_.c:406
+#: ../rpmdrake_.c:415
 msgid "Some packages can't be installed"
 msgstr "Beberapa paket tak dapat diinstal"
 
-#: ../rpmdrake_.c:407
+#: ../rpmdrake_.c:416
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -480,255 +489,255 @@ msgstr ""
 "Maaf, paket berikut tak dapat dipilih:\n"
 "\n"
 
-#: ../rpmdrake_.c:421 ../rpmdrake_.c:644
+#: ../rpmdrake_.c:430 ../rpmdrake_.c:664
 msgid "Some packages need to be removed"
 msgstr "Beberapa paket perlu dihapus"
 
-#: ../rpmdrake_.c:443
+#: ../rpmdrake_.c:452
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Terpilih: %d MB / Tersedia: %d MB"
 
-#: ../rpmdrake_.c:445
+#: ../rpmdrake_.c:454
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Terpilih: %d MB"
 
-#: ../rpmdrake_.c:453
+#: ../rpmdrake_.c:462
 msgid "Files:\n"
 msgstr "File:\n"
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:463
 msgid "Changelog:\n"
 msgstr "Changelog:\n"
 
-#: ../rpmdrake_.c:457
+#: ../rpmdrake_.c:466
 msgid "Source: "
 msgstr "Sumber: "
 
-#: ../rpmdrake_.c:458
+#: ../rpmdrake_.c:467
 msgid "Currently installed version: "
 msgstr "Versi terinstal: "
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:471
 msgid "Reason for update: "
 msgstr "Alasan update: "
 
-#: ../rpmdrake_.c:464
+#: ../rpmdrake_.c:473
 msgid "Name: "
 msgstr "Nama: "
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:474
 msgid "Version: "
 msgstr "Versi: "
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 msgid "Size: "
 msgstr "Ukuran: "
 
-#: ../rpmdrake_.c:468
+#: ../rpmdrake_.c:477
 msgid "Importance: "
 msgstr "Derajat Kepentingan: "
 
-#: ../rpmdrake_.c:469
+#: ../rpmdrake_.c:478
 msgid "Summary: "
 msgstr "Ringkasan: "
 
-#: ../rpmdrake_.c:470
+#: ../rpmdrake_.c:479
 msgid "Description: "
 msgstr "Keterangan: "
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:528
 msgid "Bugfixes updates"
 msgstr "Update pembetulan kutu"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:528
 msgid "Normal updates"
 msgstr "Update normal"
 
-#: ../rpmdrake_.c:527
+#: ../rpmdrake_.c:547
 msgid "Mandrake choices"
 msgstr "Pilihan Mandrake"
 
-#: ../rpmdrake_.c:528
+#: ../rpmdrake_.c:548
 msgid "All packages, alphabetical"
 msgstr "Semua paket, menurut abjad"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:549
 msgid "All packages,"
 msgstr "Semua paket,"
 
-#: ../rpmdrake_.c:552
+#: ../rpmdrake_.c:572
 msgid "by group"
 msgstr "menurut grup"
 
-#: ../rpmdrake_.c:552
+#: ../rpmdrake_.c:572
 msgid "by size"
 msgstr "menurut ukuran"
 
-#: ../rpmdrake_.c:553
+#: ../rpmdrake_.c:573
 msgid "by selection state"
 msgstr "menurut status pilihan"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:574
 msgid "by source repository"
 msgstr "menurut repositori sumber"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:574
 msgid "by update availability"
 msgstr "menurut kesediaan update"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in descriptions"
 msgstr "dalam keterangan"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in files"
 msgstr "dalam file"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in names"
 msgstr "dalam nama"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:606
 msgid "Reload the packages list"
 msgstr "Muat ulang daftar paket"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:606
 msgid "Reset the selection"
 msgstr "Reset pilihan"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:632
 msgid "Maximum information"
 msgstr "Info maximum"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:632
 msgid "Normal information"
 msgstr "Info normal"
 
-#: ../rpmdrake_.c:634
+#: ../rpmdrake_.c:654
 msgid "Too many packages are selected"
 msgstr "Terlalu banyak paket dipilih"
 
-#: ../rpmdrake_.c:678
+#: ../rpmdrake_.c:697
 msgid "Find:"
 msgstr "Cari:"
 
-#: ../rpmdrake_.c:683
+#: ../rpmdrake_.c:702
 msgid "Search"
 msgstr "Cari"
 
-#: ../rpmdrake_.c:689
+#: ../rpmdrake_.c:708
 msgid "Install"
 msgstr "Install"
 
-#: ../rpmdrake_.c:697 data/mandrakeupdate.desktop.in.h:1
+#: ../rpmdrake_.c:715 data/mandrakeupdate.desktop.in.h:1
 msgid "Mandrake Update"
 msgstr "Update Mandrake"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:715
 msgid "Software Packages Installation"
 msgstr "Instalasi Paket Software"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:715
 msgid "Software Packages Removal"
 msgstr "Penghapusan Paket Software"
 
-#: ../rpmdrake_.c:738
+#: ../rpmdrake_.c:756
 msgid "Please wait, contacting mirror to update packages information."
 msgstr "Mirror sedang dihubungi untuk meng-update info paket."
 
-#: ../rpmdrake_.c:740
+#: ../rpmdrake_.c:758
 msgid "Error updating medium"
 msgstr "Error saat meng-update media"
 
-#: ../rpmdrake_.c:741
+#: ../rpmdrake_.c:759
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "Ada error yang tak dapat dipulihkan saat meng-update info paket."
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:764
 msgid "How to choose manually your mirror"
 msgstr "Cara memilih mirror"
 
-#: ../rpmdrake_.c:754
+#: ../rpmdrake_.c:772
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr "Mirror sedang dihubungi untuk memulai update paket."
 
-#: ../rpmdrake_.c:757
+#: ../rpmdrake_.c:775
 msgid "Error adding update medium"
 msgstr "Error saat penambahan media"
 
-#: ../rpmdrake_.c:789
+#: ../rpmdrake_.c:807
 msgid "Please wait, finding available packages..."
 msgstr "Tunggu, sedang mencari paket yg tersedia..."
 
-#: ../rpmdrake_.c:818
+#: ../rpmdrake_.c:836
 msgid "Installation finished"
 msgstr "Instalasi usai"
 
-#: ../rpmdrake_.c:822
+#: ../rpmdrake_.c:840
 #, c-format
 msgid "Inspecting %s"
 msgstr "Pemeriksaan %s"
 
-#: ../rpmdrake_.c:841
+#: ../rpmdrake_.c:859
 #, fuzzy
 msgid "changes:"
 msgstr "Simpan perubahan"
 
-#: ../rpmdrake_.c:845
+#: ../rpmdrake_.c:863
 #, c-format
 msgid "Remove .%s"
 msgstr "Hapus .%s"
 
-#: ../rpmdrake_.c:847
+#: ../rpmdrake_.c:865
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Gunakan .%s sebagai file utama"
 
-#: ../rpmdrake_.c:849
+#: ../rpmdrake_.c:867
 msgid "Do nothing"
 msgstr "Menganggur"
 
-#: ../rpmdrake_.c:867
+#: ../rpmdrake_.c:885
 msgid "Inspect..."
 msgstr "Periksa..."
 
-#: ../rpmdrake_.c:889
+#: ../rpmdrake_.c:907
 msgid "Program missing"
 msgstr "Program tak ditemukan"
 
-#: ../rpmdrake_.c:890
+#: ../rpmdrake_.c:908
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Tak ditemukan: grpmi. Cek instalasi Anda."
 
-#: ../rpmdrake_.c:905
+#: ../rpmdrake_.c:922
 msgid "Unable to get source packages."
 msgstr "Gagal mendapatkan paket source"
 
-#: ../rpmdrake_.c:906
+#: ../rpmdrake_.c:923
 msgid "Unable to get source packages, sorry."
 msgstr "Gagal mendapatkan paket source, maaf."
 
-#: ../rpmdrake_.c:913
+#: ../rpmdrake_.c:930
 msgid "Change medium"
 msgstr "Ubah media"
 
-#: ../rpmdrake_.c:914
+#: ../rpmdrake_.c:931
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Masukkan media \"%s\" di device [%s]"
 
-#: ../rpmdrake_.c:922
+#: ../rpmdrake_.c:939
 msgid "Installation failed"
 msgstr "Instalasi gagal"
 
-#: ../rpmdrake_.c:923
+#: ../rpmdrake_.c:940
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -736,11 +745,11 @@ msgstr ""
 "Instalasi gagal, beberapa file hilang.\n"
 "Anda mungkin perlu meng-update database sumber."
 
-#: ../rpmdrake_.c:926
+#: ../rpmdrake_.c:943
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "Tunggu, paket sedang dihapus agar yg lain dapat di-upgrade..."
 
-#: ../rpmdrake_.c:947
+#: ../rpmdrake_.c:964
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -754,37 +763,37 @@ msgstr ""
 "rpmsave',\n"
 "Anda mungkin perlu memeriksanya sekarang untuk bertindak selanjutnya:"
 
-#: ../rpmdrake_.c:947
+#: ../rpmdrake_.c:964
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr "beberapa paket gagal diinstal dengan benar"
 
-#: ../rpmdrake_.c:948
+#: ../rpmdrake_.c:965
 msgid "everything was installed correctly"
 msgstr "semua sudah diinstal dengan benar"
 
-#: ../rpmdrake_.c:950
+#: ../rpmdrake_.c:967
 msgid "Everything installed successfully"
 msgstr "Semua sukses diinstal"
 
-#: ../rpmdrake_.c:951
+#: ../rpmdrake_.c:968
 msgid "All requested packages were installed successfully."
 msgstr "Semua paket yg diminta telah sukses diinstal."
 
-#: ../rpmdrake_.c:953
+#: ../rpmdrake_.c:970
 msgid "Everything already installed."
 msgstr "Semua sudah diinstal."
 
-#: ../rpmdrake_.c:954
+#: ../rpmdrake_.c:971
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Semua sudah diinstal (inikah yg diharapkan?)."
 
-#: ../rpmdrake_.c:957
+#: ../rpmdrake_.c:974
 msgid "Problem during installation"
 msgstr "Masalah saat instalasi"
 
-#: ../rpmdrake_.c:958
+#: ../rpmdrake_.c:975
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -795,15 +804,31 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake_.c:968
+#: ../rpmdrake_.c:985
 msgid "Please wait, reading packages database..."
 msgstr "Tunggu, database paket sedang dibaca..."
 
-#: ../rpmdrake_.c:1006
+#: ../rpmdrake_.c:1026
 msgid "Please wait, removing packages..."
 msgstr "Tunggu, paket sedang dihapus..."
 
-#: ../rpmdrake_.c:1035
+#: ../rpmdrake_.c:1028
+#, fuzzy
+msgid "Problem during removal"
+msgstr "Masalah saat instalasi"
+
+#: ../rpmdrake_.c:1029
+#, fuzzy, c-format
+msgid ""
+"There was a problem during the removal of packages:\n"
+"\n"
+"%s"
+msgstr ""
+"Ada masalah saat instalasi:\n"
+"\n"
+"%s"
+
+#: ../rpmdrake_.c:1057
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -815,7 +840,7 @@ msgstr ""
 "Perkakas ini membantu Anda memilih piranti lunak yang ingin Anda hapus\n"
 "dari komputer Anda."
 
-#: ../rpmdrake_.c:1040
+#: ../rpmdrake_.c:1062
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -827,7 +852,7 @@ msgstr ""
 "Perkakas ini membantu Anda memilih update yang ingin Anda instal di\n"
 "komputer Anda."
 
-#: ../rpmdrake_.c:1045
+#: ../rpmdrake_.c:1067
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1071,13 +1096,6 @@ msgstr "Install Software"
 
 #~ msgid "This would break your system"
 #~ msgstr "Ini akan merusak sistem Anda"
-
-#~ msgid ""
-#~ "Sorry, removing these packages would break your system:\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Maaf, menghapus paket ini berarti merusak sistem Anda:\n"
-#~ "\n"
 
 #~ msgid ""
 #~ "Could not find /var/lib/urpmi/compssUsers.flat,\n"

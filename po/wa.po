@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-11-26 20:09+0100\n"
+"POT-Creation-Date: 2002-12-11 22:06+0100\n"
 "PO-Revision-Date: 1999-08-17 16:56+0200\n"
 "Last-Translator: Lorint Hendschel <LorintHendschel@skynet.be>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
@@ -56,7 +56,7 @@ msgstr "Tchimin ou pont di montaedje:"
 msgid "Removable device"
 msgstr "Bodjåve sopoirt"
 
-#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:508
+#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:528
 msgid "Security updates"
 msgstr "Metaedjes a djoû di såvrité"
 
@@ -98,15 +98,15 @@ msgstr "Sôre di sourdant:"
 
 #: ../edit-urpm-sources.pl_.c:121 ../edit-urpm-sources.pl_.c:187
 #: ../edit-urpm-sources.pl_.c:219 ../rpmdrake.pm_.c:86 ../rpmdrake.pm_.c:107
-#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:880
-#: ../rpmdrake_.c:915
+#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:898
+#: ../rpmdrake_.c:932
 msgid "Ok"
 msgstr "'l est bon"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:180
 #: ../edit-urpm-sources.pl_.c:187 ../edit-urpm-sources.pl_.c:220
 #: ../rpmdrake.pm_.c:289 ../rpmdrake.pm_.c:322 ../rpmdrake_.c:350
-#: ../rpmdrake_.c:915
+#: ../rpmdrake_.c:932
 msgid "Cancel"
 msgstr "Rinoncî"
 
@@ -180,7 +180,7 @@ msgstr "En alaedje?"
 msgid "Source"
 msgstr "Sourdant"
 
-#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:688
+#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:707
 msgid "Remove"
 msgstr "Oister"
 
@@ -204,7 +204,7 @@ msgstr "Proxy..."
 msgid "Save and quit"
 msgstr "Schaper et cwiter"
 
-#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:691
+#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:710
 msgid "Quit"
 msgstr "Moussî foû"
 
@@ -347,7 +347,7 @@ msgstr "Nou muroe"
 msgid "Please choose the desired mirror."
 msgstr "Tchoeziwxhoz les muroes ki vos vloz, s' i vs plait."
 
-#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:587
+#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:607
 msgid "Update source(s)"
 msgstr "Mete a djoû sourdant(s)"
 
@@ -371,7 +371,7 @@ msgstr "Ôte"
 msgid "(none)"
 msgstr "(nole)"
 
-#: ../rpmdrake_.c:139 ../rpmdrake_.c:453 ../rpmdrake_.c:454
+#: ../rpmdrake_.c:139 ../rpmdrake_.c:462 ../rpmdrake_.c:463
 msgid "(Not available)"
 msgstr "(Nén disponibe)"
 
@@ -449,11 +449,19 @@ msgstr ""
 "oistés eto:\n"
 "\n"
 
-#: ../rpmdrake_.c:363
+#: ../rpmdrake_.c:363 ../rpmdrake_.c:371
 msgid "Some packages can't be removed"
 msgstr "Des pacaedjes k' i gn a n' polèt nén esse oistés"
 
-#: ../rpmdrake_.c:364 ../rpmdrake_.c:422
+#: ../rpmdrake_.c:364
+msgid ""
+"Removing these packages would break your system, sorry:\n"
+"\n"
+msgstr ""
+"Dji rgrete, mins oister ces pacaedjes la va spiyî l' sistinme da vosse:\n"
+"\n"
+
+#: ../rpmdrake_.c:372 ../rpmdrake_.c:431
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -463,11 +471,11 @@ msgstr ""
 "dizastalés asteure:\n"
 "\n"
 
-#: ../rpmdrake_.c:392
+#: ../rpmdrake_.c:401
 msgid "Additional packages needed"
 msgstr "Ôtes pacaedjes k' end a mezåjhe"
 
-#: ../rpmdrake_.c:393
+#: ../rpmdrake_.c:402
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -477,11 +485,11 @@ msgstr ""
 "astalés eto:\n"
 "\n"
 
-#: ../rpmdrake_.c:406
+#: ../rpmdrake_.c:415
 msgid "Some packages can't be installed"
 msgstr "Des pacaedjes k' i gn a n' polèt nén esse astalés"
 
-#: ../rpmdrake_.c:407
+#: ../rpmdrake_.c:416
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -489,263 +497,263 @@ msgstr ""
 "Dji rgrete, les pacaedjes ki shuvèt n' polèt nén esse tchoezis:\n"
 "\n"
 
-#: ../rpmdrake_.c:421 ../rpmdrake_.c:644
+#: ../rpmdrake_.c:430 ../rpmdrake_.c:664
 msgid "Some packages need to be removed"
 msgstr "Des pacaedjes k' i gn a dvèt esse dizastalés"
 
-#: ../rpmdrake_.c:443
+#: ../rpmdrake_.c:452
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Tchoezi: %d Mo / Plaece libe sol deure plake: %d Mo"
 
-#: ../rpmdrake_.c:445
+#: ../rpmdrake_.c:454
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Grandeu tchoezeye: %d Mo"
 
-#: ../rpmdrake_.c:453
+#: ../rpmdrake_.c:462
 msgid "Files:\n"
 msgstr "Fitchîs:\n"
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:463
 msgid "Changelog:\n"
 msgstr "Djournå des candjmints:\n"
 
-#: ../rpmdrake_.c:457
+#: ../rpmdrake_.c:466
 msgid "Source: "
 msgstr "Sourdant: "
 
-#: ../rpmdrake_.c:458
+#: ../rpmdrake_.c:467
 msgid "Currently installed version: "
 msgstr "Modêye d' astalêye: "
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:471
 msgid "Reason for update: "
 msgstr "Råjhon do metaedje a djoû: "
 
-#: ../rpmdrake_.c:464
+#: ../rpmdrake_.c:473
 msgid "Name: "
 msgstr "No: "
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:474
 msgid "Version: "
 msgstr "Modêye: "
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 #, c-format
 msgid "%s KB"
 msgstr "%s Ko"
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 msgid "Size: "
 msgstr "Grandeu: "
 
-#: ../rpmdrake_.c:468
+#: ../rpmdrake_.c:477
 msgid "Importance: "
 msgstr "Impôrtance: "
 
-#: ../rpmdrake_.c:469
+#: ../rpmdrake_.c:478
 msgid "Summary: "
 msgstr "Rascourti: "
 
-#: ../rpmdrake_.c:470
+#: ../rpmdrake_.c:479
 msgid "Description: "
 msgstr "Discrijhaedje: "
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:528
 msgid "Bugfixes updates"
 msgstr "Metaedjes a djoû di coridjaedje"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:528
 msgid "Normal updates"
 msgstr "Metaedjes a djoû normås"
 
-#: ../rpmdrake_.c:527
+#: ../rpmdrake_.c:547
 msgid "Mandrake choices"
 msgstr "Tchuzes di Mandrake"
 
-#: ../rpmdrake_.c:528
+#: ../rpmdrake_.c:548
 msgid "All packages, alphabetical"
 msgstr "Tos les pacaedjes, relîs alfabeticmint"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:549
 msgid "All packages,"
 msgstr "Tos les pacaedjes,"
 
-#: ../rpmdrake_.c:552
+#: ../rpmdrake_.c:572
 msgid "by group"
 msgstr "pa groupe"
 
-#: ../rpmdrake_.c:552
+#: ../rpmdrake_.c:572
 msgid "by size"
 msgstr "pa grandeu"
 
-#: ../rpmdrake_.c:553
+#: ../rpmdrake_.c:573
 msgid "by selection state"
 msgstr "pa l' etat di tchoezixhadje"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:574
 msgid "by source repository"
 msgstr "pa sourdant"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:574
 msgid "by update availability"
 msgstr "pa disponibilité di metaedjes a djoû"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in descriptions"
 msgstr "ezès discrijhaedjes"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in files"
 msgstr "ezès fitchîs"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:595
 msgid "in names"
 msgstr "ezès Nos"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:606
 msgid "Reload the packages list"
 msgstr "Ritcherdjî li djivêye des pacaedjes"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:606
 msgid "Reset the selection"
 msgstr "Rifé l' tchuze"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:632
 msgid "Maximum information"
 msgstr "Li pus d' informåcions"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:632
 msgid "Normal information"
 msgstr "Informåcions normåles"
 
-#: ../rpmdrake_.c:634
+#: ../rpmdrake_.c:654
 msgid "Too many packages are selected"
 msgstr "Pår trop di pacaedjes ont stî tchoezis"
 
-#: ../rpmdrake_.c:678
+#: ../rpmdrake_.c:697
 msgid "Find:"
 msgstr "Trover:"
 
-#: ../rpmdrake_.c:683
+#: ../rpmdrake_.c:702
 msgid "Search"
 msgstr "Cweri"
 
-#: ../rpmdrake_.c:689
+#: ../rpmdrake_.c:708
 msgid "Install"
 msgstr "Astaler"
 
-#: ../rpmdrake_.c:697 data/mandrakeupdate.desktop.in.h:1
+#: ../rpmdrake_.c:715 data/mandrakeupdate.desktop.in.h:1
 msgid "Mandrake Update"
 msgstr ""
 "Metaedjes a djoû\n"
 "di Mandrake"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:715
 msgid "Software Packages Installation"
 msgstr "Astalaedje des pacaedjes di programes"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:715
 msgid "Software Packages Removal"
 msgstr "Oistaedje des pacaedjes di programes"
 
-#: ../rpmdrake_.c:738
+#: ../rpmdrake_.c:756
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Tårdjîz on pô s' i vs plait, dji m' raloye å muroe po mete a djoû "
 "l' informåcion so les pacaedjes."
 
-#: ../rpmdrake_.c:740
+#: ../rpmdrake_.c:758
 msgid "Error updating medium"
 msgstr "Åk n' a nén stî tot metant a djoû li sopoirt"
 
-#: ../rpmdrake_.c:741
+#: ../rpmdrake_.c:759
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 "I gn a-st avou ene aroke moirt tot metant a djoû l' informåcion so les "
 "pacaedjes."
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:764
 msgid "How to choose manually your mirror"
 msgstr "Kimint tchoezi manuwelmint vosse muroe"
 
-#: ../rpmdrake_.c:754
+#: ../rpmdrake_.c:772
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Tårdjîz on pô s' i vs plait, dji m' raloye å muroe po vey les pacaedjes di "
 "metaedje a djoû k' i gn a..."
 
-#: ../rpmdrake_.c:757
+#: ../rpmdrake_.c:775
 msgid "Error adding update medium"
 msgstr "Åk n' a nén stî tot radjoutant li sopoirt di metaedjes a djoû"
 
-#: ../rpmdrake_.c:789
+#: ../rpmdrake_.c:807
 msgid "Please wait, finding available packages..."
 msgstr "Tårdjîz on pô s' i vs plait, dji cwir après les pacaedjes k' i gn a..."
 
-#: ../rpmdrake_.c:818
+#: ../rpmdrake_.c:836
 msgid "Installation finished"
 msgstr "L' astalaedje a fini"
 
-#: ../rpmdrake_.c:822
+#: ../rpmdrake_.c:840
 #, c-format
 msgid "Inspecting %s"
 msgstr "Analijhant %s"
 
-#: ../rpmdrake_.c:841
+#: ../rpmdrake_.c:859
 msgid "changes:"
 msgstr "candjmints:"
 
-#: ../rpmdrake_.c:845
+#: ../rpmdrake_.c:863
 #, c-format
 msgid "Remove .%s"
 msgstr "Oister les *.%s"
 
-#: ../rpmdrake_.c:847
+#: ../rpmdrake_.c:865
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Eployî les *.%s come mwaisses fitchîs"
 
-#: ../rpmdrake_.c:849
+#: ../rpmdrake_.c:867
 msgid "Do nothing"
 msgstr "Èn rén fé"
 
-#: ../rpmdrake_.c:867
+#: ../rpmdrake_.c:885
 msgid "Inspect..."
 msgstr "Analijhant..."
 
-#: ../rpmdrake_.c:889
+#: ../rpmdrake_.c:907
 msgid "Program missing"
 msgstr "I manke on programe"
 
-#: ../rpmdrake_.c:890
+#: ../rpmdrake_.c:908
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr ""
 "I manke on programe k' end a mezåjhe (grpm). Verifyîz vosse astalåcion."
 
-#: ../rpmdrake_.c:905
+#: ../rpmdrake_.c:922
 msgid "Unable to get source packages."
 msgstr "Dji n' a nén savou prinde les pacaedjes sourdants."
 
-#: ../rpmdrake_.c:906
+#: ../rpmdrake_.c:923
 msgid "Unable to get source packages, sorry."
 msgstr "Dji n' a nén savou prinde les pacaedjes sourdants, dji rgrete."
 
-#: ../rpmdrake_.c:913
+#: ../rpmdrake_.c:930
 msgid "Change medium"
 msgstr "Candjî di sopoirt"
 
-#: ../rpmdrake_.c:914
+#: ../rpmdrake_.c:931
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Metoz l' sopoirt lomé «%s» dins l' lijheu [%s]"
 
-#: ../rpmdrake_.c:922
+#: ../rpmdrake_.c:939
 msgid "Installation failed"
 msgstr "L' astalaedje a fwait berwete"
 
-#: ../rpmdrake_.c:923
+#: ../rpmdrake_.c:940
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -753,13 +761,13 @@ msgstr ""
 "L' astalaedje a fwait berwete, sacwants fitchîs mankèt.\n"
 "Vos dvoz motoit mete a djoû vosse båze di dnêye des sourdants."
 
-#: ../rpmdrake_.c:926
+#: ../rpmdrake_.c:943
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Tårdjîz on pô s' i vs plait, dji oisteye des pacaedjes po ds ôtes poleur "
 "esse astalés..."
 
-#: ../rpmdrake_.c:947
+#: ../rpmdrake_.c:964
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -773,37 +781,37 @@ msgstr ""
 "avou «.rpmnew» ou «.rpmsave» come cawete, vos les dvrîz rloukî\n"
 "po decider cwè fé avou zels:"
 
-#: ../rpmdrake_.c:947
+#: ../rpmdrake_.c:964
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr "Des pacaedjes k' i gn a n' ont nén polou esse astalés comufåt"
 
-#: ../rpmdrake_.c:948
+#: ../rpmdrake_.c:965
 msgid "everything was installed correctly"
 msgstr "totafwait a stî astalé comufåt"
 
-#: ../rpmdrake_.c:950
+#: ../rpmdrake_.c:967
 msgid "Everything installed successfully"
 msgstr "Totafwait a stî astalé comufåt"
 
-#: ../rpmdrake_.c:951
+#: ../rpmdrake_.c:968
 msgid "All requested packages were installed successfully."
 msgstr "Totes les pacaedjes dimandés ont stî astalés comufåt."
 
-#: ../rpmdrake_.c:953
+#: ../rpmdrake_.c:970
 msgid "Everything already installed."
 msgstr "Tot a ddja stî astalé."
 
-#: ../rpmdrake_.c:954
+#: ../rpmdrake_.c:971
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Tot a ddja stî astalé (est çki çoula n' divreut nén måy ariver?)."
 
-#: ../rpmdrake_.c:957
+#: ../rpmdrake_.c:974
 msgid "Problem during installation"
 msgstr "Åk n' a nén stî tins d' l' astalaedje"
 
-#: ../rpmdrake_.c:958
+#: ../rpmdrake_.c:975
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -814,15 +822,30 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake_.c:968
+#: ../rpmdrake_.c:985
 msgid "Please wait, reading packages database..."
 msgstr "Tårdjîz on pô s' i vs plait, dji lé li båze di dnêye des pacaedjes..."
 
-#: ../rpmdrake_.c:1006
+#: ../rpmdrake_.c:1026
 msgid "Please wait, removing packages..."
 msgstr "Tårdjîz on pô s' i vs plait, rpm oisteye les pacaedjes..."
 
-#: ../rpmdrake_.c:1035
+#: ../rpmdrake_.c:1028
+msgid "Problem during removal"
+msgstr "Åk n' a nén stî tins do oistaedje"
+
+#: ../rpmdrake_.c:1029
+#, c-format
+msgid ""
+"There was a problem during the removal of packages:\n"
+"\n"
+"%s"
+msgstr ""
+"Åk n' a nén stî tins do oistaedje des pacaedjes:\n"
+"\n"
+"%s"
+
+#: ../rpmdrake_.c:1057
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -834,7 +857,7 @@ msgstr ""
 "Ciste usteye chal vos aidrè a tchoezi kés programes ki vos vloz dizastaler\n"
 "di vosse copiutrece."
 
-#: ../rpmdrake_.c:1040
+#: ../rpmdrake_.c:1062
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -846,7 +869,7 @@ msgstr ""
 "Ciste usteye chal vos aidrè a tchoezi les metaedjes a djoû ki vos vloz\n"
 "astaler sol copiutrece da vosse."
 
-#: ../rpmdrake_.c:1045
+#: ../rpmdrake_.c:1067
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1093,10 +1116,3 @@ msgstr "Astaler des programes"
 
 #~ msgid "This would break your system"
 #~ msgstr "Çouchal va spiyî l' sistinme da vosse"
-
-#~ msgid ""
-#~ "Sorry, removing these packages would break your system:\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Dji rgrete, mins oister ces pacaedjes la va spiyî l' sistinme da vosse:\n"
-#~ "\n"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-11-28 14:47+0100\n"
+"POT-Creation-Date: 2002-12-11 22:06+0100\n"
 "PO-Revision-Date: 2002-11-30 13:48+0700\n"
 "Last-Translator: Trinh Minh Thanh <tmthanh@linuxmail.org>\n"
 "Language-Team: Gnome-Vi Team <Gnomevi-list@lists.sourceforge.net>\n"
@@ -54,7 +54,7 @@ msgstr "Đường dẫn hoặc điểm gắn kết:"
 msgid "Removable device"
 msgstr "Thiết bị có thể gỡ bỏ"
 
-#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:519
+#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:528
 msgid "Security updates"
 msgstr "Cập nhật bảo mật"
 
@@ -96,15 +96,15 @@ msgstr "Loại nguồn:"
 
 #: ../edit-urpm-sources.pl_.c:121 ../edit-urpm-sources.pl_.c:187
 #: ../edit-urpm-sources.pl_.c:219 ../rpmdrake.pm_.c:86 ../rpmdrake.pm_.c:107
-#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:891
-#: ../rpmdrake_.c:926
+#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:898
+#: ../rpmdrake_.c:932
 msgid "Ok"
 msgstr "OK"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:180
 #: ../edit-urpm-sources.pl_.c:187 ../edit-urpm-sources.pl_.c:220
 #: ../rpmdrake.pm_.c:289 ../rpmdrake.pm_.c:322 ../rpmdrake_.c:350
-#: ../rpmdrake_.c:926
+#: ../rpmdrake_.c:932
 msgid "Cancel"
 msgstr "Bỏ qua"
 
@@ -178,7 +178,7 @@ msgstr "Bật ?"
 msgid "Source"
 msgstr "Nguồn"
 
-#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:699
+#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:707
 msgid "Remove"
 msgstr "Gỡ Bỏ"
 
@@ -202,7 +202,7 @@ msgstr "Proxy..."
 msgid "Save and quit"
 msgstr "Lưu và Thoát"
 
-#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:702
+#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:710
 msgid "Quit"
 msgstr "Thoát"
 
@@ -344,7 +344,7 @@ msgstr "Không có mirror"
 msgid "Please choose the desired mirror."
 msgstr "Hãy chọn mirror mong muốn."
 
-#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:598
+#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:607
 msgid "Update source(s)"
 msgstr "Cập nhật các nguồn"
 
@@ -368,7 +368,7 @@ msgstr "Khác"
 msgid "(none)"
 msgstr "(không có)"
 
-#: ../rpmdrake_.c:139 ../rpmdrake_.c:453 ../rpmdrake_.c:454
+#: ../rpmdrake_.c:139 ../rpmdrake_.c:462 ../rpmdrake_.c:463
 msgid "(Not available)"
 msgstr "(Không có sẵn)"
 
@@ -446,11 +446,20 @@ msgstr ""
 "bỏ:\n"
 "\n"
 
-#: ../rpmdrake_.c:363
+#: ../rpmdrake_.c:363 ../rpmdrake_.c:371
 msgid "Some packages can't be removed"
 msgstr "Không thể gỡ bỏ một số gói"
 
-#: ../rpmdrake_.c:364 ../rpmdrake_.c:422
+#: ../rpmdrake_.c:364
+#, fuzzy
+msgid ""
+"Removing these packages would break your system, sorry:\n"
+"\n"
+msgstr ""
+"Xin lỗi, gỡ bỏ các gói này sẽ làm hỏng hệ thống:\n"
+"\n"
+
+#: ../rpmdrake_.c:372 ../rpmdrake_.c:431
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -460,11 +469,11 @@ msgstr ""
 "ngay bây giờ:\n"
 "\n"
 
-#: ../rpmdrake_.c:392
+#: ../rpmdrake_.c:401
 msgid "Additional packages needed"
 msgstr "Cần thêm các gói bổ sung"
 
-#: ../rpmdrake_.c:393
+#: ../rpmdrake_.c:402
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -474,11 +483,11 @@ msgstr ""
 "cài đặt:\n"
 "\n"
 
-#: ../rpmdrake_.c:406
+#: ../rpmdrake_.c:415
 msgid "Some packages can't be installed"
 msgstr "Một số gói không thể cài đặt"
 
-#: ../rpmdrake_.c:407
+#: ../rpmdrake_.c:416
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -486,257 +495,257 @@ msgstr ""
 "Xin lỗi, không thể chọn các gói sau:\n"
 "\n"
 
-#: ../rpmdrake_.c:421 ../rpmdrake_.c:655
+#: ../rpmdrake_.c:430 ../rpmdrake_.c:664
 msgid "Some packages need to be removed"
 msgstr "Một số gói cần được gỡ bỏ"
 
-#: ../rpmdrake_.c:443
+#: ../rpmdrake_.c:452
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Đã chọn: %d MB / Không gian đĩa trống: %d MB"
 
-#: ../rpmdrake_.c:445
+#: ../rpmdrake_.c:454
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Kích thước được chọn: %d MB"
 
-#: ../rpmdrake_.c:453
+#: ../rpmdrake_.c:462
 msgid "Files:\n"
 msgstr "Tập tin:\n"
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:463
 msgid "Changelog:\n"
 msgstr "Bản ghi thay đổi (Changelog):\n"
 
-#: ../rpmdrake_.c:457
+#: ../rpmdrake_.c:466
 msgid "Source: "
 msgstr "Nguồn: "
 
-#: ../rpmdrake_.c:458
+#: ../rpmdrake_.c:467
 msgid "Currently installed version: "
 msgstr "Phiên bản đã cài đặt hiện thời:"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:471
 msgid "Reason for update: "
 msgstr "Lý do cập nhật:"
 
-#: ../rpmdrake_.c:464
+#: ../rpmdrake_.c:473
 msgid "Name: "
 msgstr "Tên: "
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:474
 msgid "Version: "
 msgstr "Phiên bản: "
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 msgid "Size: "
 msgstr "Kích thước: "
 
-#: ../rpmdrake_.c:468
+#: ../rpmdrake_.c:477
 msgid "Importance: "
 msgstr "Mức độ quan trọng: "
 
-#: ../rpmdrake_.c:469
+#: ../rpmdrake_.c:478
 msgid "Summary: "
 msgstr "Tóm tắt: "
 
-#: ../rpmdrake_.c:470
+#: ../rpmdrake_.c:479
 msgid "Description: "
 msgstr "Mô tả: "
 
-#: ../rpmdrake_.c:519
+#: ../rpmdrake_.c:528
 msgid "Bugfixes updates"
 msgstr "Cập nhật sửa lỗi"
 
-#: ../rpmdrake_.c:519
+#: ../rpmdrake_.c:528
 msgid "Normal updates"
 msgstr "Cập nhật thông thường"
 
-#: ../rpmdrake_.c:538
+#: ../rpmdrake_.c:547
 msgid "Mandrake choices"
 msgstr "Các lựa chọn của Mandrake"
 
-#: ../rpmdrake_.c:539
+#: ../rpmdrake_.c:548
 msgid "All packages, alphabetical"
 msgstr "Mọi gói tin, theo bảng chữ cái"
 
-#: ../rpmdrake_.c:540
+#: ../rpmdrake_.c:549
 msgid "All packages,"
 msgstr "Toàn bộ các gói,"
 
-#: ../rpmdrake_.c:563
+#: ../rpmdrake_.c:572
 msgid "by group"
 msgstr "theo nhóm"
 
-#: ../rpmdrake_.c:563
+#: ../rpmdrake_.c:572
 msgid "by size"
 msgstr "Theo kích thước"
 
-#: ../rpmdrake_.c:564
+#: ../rpmdrake_.c:573
 msgid "by selection state"
 msgstr "theo tình trạng chọn"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:574
 msgid "by source repository"
 msgstr "theo nơi chứa nguồn"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:574
 msgid "by update availability"
 msgstr "theo sự sẵn có để cập nhật"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:595
 msgid "in descriptions"
 msgstr "trong các mô tả"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:595
 msgid "in files"
 msgstr "trong các tập tin"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:595
 msgid "in names"
 msgstr "trong các tên"
 
-#: ../rpmdrake_.c:597
+#: ../rpmdrake_.c:606
 msgid "Reload the packages list"
 msgstr "Nạp lại danh sách các gói"
 
-#: ../rpmdrake_.c:597
+#: ../rpmdrake_.c:606
 msgid "Reset the selection"
 msgstr "Lập lại việc chọn"
 
-#: ../rpmdrake_.c:623
+#: ../rpmdrake_.c:632
 msgid "Maximum information"
 msgstr "Thông tin tối đa"
 
-#: ../rpmdrake_.c:623
+#: ../rpmdrake_.c:632
 msgid "Normal information"
 msgstr "Thông tin thông thường"
 
-#: ../rpmdrake_.c:645
+#: ../rpmdrake_.c:654
 msgid "Too many packages are selected"
 msgstr "Có quá nhiều gói tin được chọn"
 
-#: ../rpmdrake_.c:689
+#: ../rpmdrake_.c:697
 msgid "Find:"
 msgstr "Tìm:"
 
-#: ../rpmdrake_.c:694
+#: ../rpmdrake_.c:702
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: ../rpmdrake_.c:700
+#: ../rpmdrake_.c:708
 msgid "Install"
 msgstr "Cài đặt"
 
-#: ../rpmdrake_.c:708 data/mandrakeupdate.desktop.in.h:1
+#: ../rpmdrake_.c:715 data/mandrakeupdate.desktop.in.h:1
 msgid "Mandrake Update"
 msgstr "Cập Nhật Mandrake"
 
-#: ../rpmdrake_.c:708
+#: ../rpmdrake_.c:715
 msgid "Software Packages Installation"
 msgstr "Cài Đặt Các Gói Phần Mềm"
 
-#: ../rpmdrake_.c:708
+#: ../rpmdrake_.c:715
 msgid "Software Packages Removal"
 msgstr "Gỡ Bỏ Các Gói Phần Mềm"
 
-#: ../rpmdrake_.c:749
+#: ../rpmdrake_.c:756
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Hãy đợi, đang liên lạc với mirror để cập nhật thông tin về các gói cập nhật."
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:758
 msgid "Error updating medium"
 msgstr "Lỗi khi cập nhật phương tiện"
 
-#: ../rpmdrake_.c:752
+#: ../rpmdrake_.c:759
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 "Xảy ra một lỗi không có khả năng phục hồi khi đang cập nhật thông tin về các "
 "gói cập nhật."
 
-#: ../rpmdrake_.c:757
+#: ../rpmdrake_.c:764
 msgid "How to choose manually your mirror"
 msgstr "Cách chọn thủ công mirror của bạn"
 
-#: ../rpmdrake_.c:765
+#: ../rpmdrake_.c:772
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr "Hãy đợi, đang liên lạc với mirror để sơ khởi các gói cập nhật."
 
-#: ../rpmdrake_.c:768
+#: ../rpmdrake_.c:775
 msgid "Error adding update medium"
 msgstr "Lỗi khi thêm phương tiện cập nhật"
 
-#: ../rpmdrake_.c:800
+#: ../rpmdrake_.c:807
 msgid "Please wait, finding available packages..."
 msgstr "Hãy đợi, đang tìm các gói sẵn có..."
 
-#: ../rpmdrake_.c:829
+#: ../rpmdrake_.c:836
 msgid "Installation finished"
 msgstr "Kết thúc cài đặt"
 
-#: ../rpmdrake_.c:833
+#: ../rpmdrake_.c:840
 #, c-format
 msgid "Inspecting %s"
 msgstr "Thẩm tra %s"
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:859
 msgid "changes:"
 msgstr "các thay đổi:"
 
-#: ../rpmdrake_.c:856
+#: ../rpmdrake_.c:863
 #, c-format
 msgid "Remove .%s"
 msgstr "Gỡ Bỏ .%s"
 
-#: ../rpmdrake_.c:858
+#: ../rpmdrake_.c:865
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Dùng .%s là tập tin chính"
 
-#: ../rpmdrake_.c:860
+#: ../rpmdrake_.c:867
 msgid "Do nothing"
 msgstr "Không làm gì"
 
-#: ../rpmdrake_.c:878
+#: ../rpmdrake_.c:885
 msgid "Inspect..."
 msgstr "Thẩm tra..."
 
-#: ../rpmdrake_.c:900
+#: ../rpmdrake_.c:907
 msgid "Program missing"
 msgstr "Thiếu chương trình"
 
-#: ../rpmdrake_.c:901
+#: ../rpmdrake_.c:908
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Thiếu chương trình được yêu cầu (grpmi). Hãy kiểm tra cài đặt của bạn."
 
-#: ../rpmdrake_.c:916
+#: ../rpmdrake_.c:922
 msgid "Unable to get source packages."
 msgstr "Không thể lấy các gói nguồn."
 
-#: ../rpmdrake_.c:917
+#: ../rpmdrake_.c:923
 msgid "Unable to get source packages, sorry."
 msgstr "Xin lỗi, không thể lấy các gói nguồn."
 
-#: ../rpmdrake_.c:924
+#: ../rpmdrake_.c:930
 msgid "Change medium"
 msgstr "Thay phương tiện"
 
-#: ../rpmdrake_.c:925
+#: ../rpmdrake_.c:931
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Hãy nạp phương tiện có tên \"%s\" trên thiết bị [%s]"
 
-#: ../rpmdrake_.c:933
+#: ../rpmdrake_.c:939
 msgid "Installation failed"
 msgstr "Không cài đặt được"
 
-#: ../rpmdrake_.c:934
+#: ../rpmdrake_.c:940
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -744,11 +753,11 @@ msgstr ""
 "Cài đặt không được, thiếu một số tập tin.\n"
 "Có thể bạn muốn cập nhật cơ sở dữ liệu về các nguồn của mình."
 
-#: ../rpmdrake_.c:937
+#: ../rpmdrake_.c:943
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "Hãy đợi, gỡ bỏ các gói để cho phép nâng cấp các gói khác..."
 
-#: ../rpmdrake_.c:958
+#: ../rpmdrake_.c:964
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -761,7 +770,7 @@ msgstr ""
 "Một số tập tin cấu hình được tạo là `.rpmnew' hay `.rpmsave',\n"
 "Bây giờ bạn có thể kiểm tra một số tập tin đó để tạo các hoạt động:"
 
-#: ../rpmdrake_.c:958
+#: ../rpmdrake_.c:964
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -769,31 +778,31 @@ msgstr ""
 "Không cài đặt đúng được một số\n"
 "gói tin"
 
-#: ../rpmdrake_.c:959
+#: ../rpmdrake_.c:965
 msgid "everything was installed correctly"
 msgstr "mọi thứ đã được cài đặt đúng"
 
-#: ../rpmdrake_.c:961
+#: ../rpmdrake_.c:967
 msgid "Everything installed successfully"
 msgstr "Mọi thứ đã được cài đặt thành công"
 
-#: ../rpmdrake_.c:962
+#: ../rpmdrake_.c:968
 msgid "All requested packages were installed successfully."
 msgstr "Mọi gói tin yêu cầu đã được cài đặt thành công."
 
-#: ../rpmdrake_.c:964
+#: ../rpmdrake_.c:970
 msgid "Everything already installed."
 msgstr "Mọi thứ đã được cài đặt."
 
-#: ../rpmdrake_.c:965
+#: ../rpmdrake_.c:971
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Mọi thứ đã được cài đặt rồi "
 
-#: ../rpmdrake_.c:968
+#: ../rpmdrake_.c:974
 msgid "Problem during installation"
 msgstr "Có trục trặc trong khi cài đặt"
 
-#: ../rpmdrake_.c:969
+#: ../rpmdrake_.c:975
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -804,15 +813,31 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake_.c:979
+#: ../rpmdrake_.c:985
 msgid "Please wait, reading packages database..."
 msgstr "Hãy đợi, đang đọc cơ sở dữ liệu các gói..."
 
-#: ../rpmdrake_.c:1017
+#: ../rpmdrake_.c:1026
 msgid "Please wait, removing packages..."
 msgstr "Hãy đợi, đang gỡ bỏ các gói..."
 
-#: ../rpmdrake_.c:1046
+#: ../rpmdrake_.c:1028
+#, fuzzy
+msgid "Problem during removal"
+msgstr "Có trục trặc trong khi cài đặt"
+
+#: ../rpmdrake_.c:1029
+#, fuzzy, c-format
+msgid ""
+"There was a problem during the removal of packages:\n"
+"\n"
+"%s"
+msgstr ""
+"Đã xảy ra trục trặc trong khi cài đặt:\n"
+"\n"
+"%s"
+
+#: ../rpmdrake_.c:1057
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -824,7 +849,7 @@ msgstr ""
 "Công cụ này giúp bạn chọn phần mềm nào muốn gỡ bỏ khỏi máy tính\n"
 "của bạn."
 
-#: ../rpmdrake_.c:1051
+#: ../rpmdrake_.c:1062
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -836,7 +861,7 @@ msgstr ""
 "Công cụ này giúp bạn chọn các cập nhật mà bạn muốn cài đặt lên\n"
 "máy tính."
 
-#: ../rpmdrake_.c:1056
+#: ../rpmdrake_.c:1067
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1078,13 +1103,6 @@ msgstr "Cài đặt Phần mềm"
 
 #~ msgid "This would break your system"
 #~ msgstr "Cái này sẽ làm hỏng hệ thống của bạn"
-
-#~ msgid ""
-#~ "Sorry, removing these packages would break your system:\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Xin lỗi, gỡ bỏ các gói này sẽ làm hỏng hệ thống:\n"
-#~ "\n"
 
 #~ msgid ""
 #~ "Could not find /var/lib/urpmi/compssUsers.flat,\n"

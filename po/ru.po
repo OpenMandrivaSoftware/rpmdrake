@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-11-28 14:47+0100\n"
+"POT-Creation-Date: 2002-12-11 22:06+0100\n"
 "PO-Revision-Date: 2000-11-27 16:24+0200\n"
 "Last-Translator: Pavel Maryanov <acid_jack@ukr.net>\n"
 "Language-Team: Russian\n"
@@ -57,7 +57,7 @@ msgstr "Путь или точка монтирования:"
 msgid "Removable device"
 msgstr "Съемное устройство"
 
-#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:519
+#: ../edit-urpm-sources.pl_.c:56 ../rpmdrake_.c:528
 msgid "Security updates"
 msgstr "Обновления по безопасности"
 
@@ -99,15 +99,15 @@ msgstr "Тип накопителя:"
 
 #: ../edit-urpm-sources.pl_.c:121 ../edit-urpm-sources.pl_.c:187
 #: ../edit-urpm-sources.pl_.c:219 ../rpmdrake.pm_.c:86 ../rpmdrake.pm_.c:107
-#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:891
-#: ../rpmdrake_.c:926
+#: ../rpmdrake.pm_.c:289 ../rpmdrake_.c:350 ../rpmdrake_.c:898
+#: ../rpmdrake_.c:932
 msgid "Ok"
 msgstr "ОК"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:180
 #: ../edit-urpm-sources.pl_.c:187 ../edit-urpm-sources.pl_.c:220
 #: ../rpmdrake.pm_.c:289 ../rpmdrake.pm_.c:322 ../rpmdrake_.c:350
-#: ../rpmdrake_.c:926
+#: ../rpmdrake_.c:932
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -182,7 +182,7 @@ msgstr "Включен?"
 msgid "Source"
 msgstr "Накопитель"
 
-#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:699
+#: ../edit-urpm-sources.pl_.c:264 ../rpmdrake_.c:707
 msgid "Remove"
 msgstr "Удалить"
 
@@ -206,7 +206,7 @@ msgstr "Прокси..."
 msgid "Save and quit"
 msgstr "Сохранить и выйти"
 
-#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:702
+#: ../edit-urpm-sources.pl_.c:275 ../rpmdrake_.c:710
 msgid "Quit"
 msgstr "Выйти"
 
@@ -349,7 +349,7 @@ msgstr "Нет зеркала"
 msgid "Please choose the desired mirror."
 msgstr "Пожалуйста, выберите желаемое зеркало."
 
-#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:598
+#: ../rpmdrake.pm_.c:309 ../rpmdrake_.c:607
 msgid "Update source(s)"
 msgstr "Обновить накопитель(и)"
 
@@ -373,7 +373,7 @@ msgstr "Другое"
 msgid "(none)"
 msgstr "(нет)"
 
-#: ../rpmdrake_.c:139 ../rpmdrake_.c:453 ../rpmdrake_.c:454
+#: ../rpmdrake_.c:139 ../rpmdrake_.c:462 ../rpmdrake_.c:463
 msgid "(Not available)"
 msgstr "(Недоступен)"
 
@@ -451,11 +451,20 @@ msgstr ""
 "для удовлетворения их зависимостей:\n"
 "\n"
 
-#: ../rpmdrake_.c:363
+#: ../rpmdrake_.c:363 ../rpmdrake_.c:371
 msgid "Some packages can't be removed"
 msgstr "Некоторые пакеты не могут быть удалены"
 
-#: ../rpmdrake_.c:364 ../rpmdrake_.c:422
+#: ../rpmdrake_.c:364
+#, fuzzy
+msgid ""
+"Removing these packages would break your system, sorry:\n"
+"\n"
+msgstr ""
+"Извините, но удаление этих пакетов испортит вашу систему:\n"
+"\n"
+
+#: ../rpmdrake_.c:372 ../rpmdrake_.c:431
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -465,11 +474,11 @@ msgstr ""
 "для удовлетворения их зависимостей:\n"
 "\n"
 
-#: ../rpmdrake_.c:392
+#: ../rpmdrake_.c:401
 msgid "Additional packages needed"
 msgstr "Требуются дополнительные пакеты"
 
-#: ../rpmdrake_.c:393
+#: ../rpmdrake_.c:402
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -479,11 +488,11 @@ msgstr ""
 "также должны быть установлены:\n"
 "\n"
 
-#: ../rpmdrake_.c:406
+#: ../rpmdrake_.c:415
 msgid "Some packages can't be installed"
 msgstr "Некоторые пакеты не могут быть установлены"
 
-#: ../rpmdrake_.c:407
+#: ../rpmdrake_.c:416
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -491,258 +500,258 @@ msgstr ""
 "Извините, но следующие пакеты не могут быть выбраны:\n"
 "\n"
 
-#: ../rpmdrake_.c:421 ../rpmdrake_.c:655
+#: ../rpmdrake_.c:430 ../rpmdrake_.c:664
 msgid "Some packages need to be removed"
 msgstr "Некоторые пакеты должны быть удалены"
 
-#: ../rpmdrake_.c:443
+#: ../rpmdrake_.c:452
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Выбрано: %d МБ / Свободно на диске: %d МБ"
 
-#: ../rpmdrake_.c:445
+#: ../rpmdrake_.c:454
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Выбранный размер: %d МБ"
 
-#: ../rpmdrake_.c:453
+#: ../rpmdrake_.c:462
 msgid "Files:\n"
 msgstr "Файлы:\n"
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:463
 msgid "Changelog:\n"
 msgstr "Changelog:\n"
 
-#: ../rpmdrake_.c:457
+#: ../rpmdrake_.c:466
 msgid "Source: "
 msgstr "Накопитель: "
 
-#: ../rpmdrake_.c:458
+#: ../rpmdrake_.c:467
 msgid "Currently installed version: "
 msgstr "Установленная версия:"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:471
 msgid "Reason for update: "
 msgstr "Причина обновления:"
 
-#: ../rpmdrake_.c:464
+#: ../rpmdrake_.c:473
 msgid "Name: "
 msgstr "Название: "
 
-#: ../rpmdrake_.c:465
+#: ../rpmdrake_.c:474
 msgid "Version: "
 msgstr "Версия:"
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 #, c-format
 msgid "%s KB"
 msgstr "%s КБ"
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:475
 msgid "Size: "
 msgstr "Размер: "
 
-#: ../rpmdrake_.c:468
+#: ../rpmdrake_.c:477
 msgid "Importance: "
 msgstr "Важность: "
 
-#: ../rpmdrake_.c:469
+#: ../rpmdrake_.c:478
 msgid "Summary: "
 msgstr "Итог: "
 
-#: ../rpmdrake_.c:470
+#: ../rpmdrake_.c:479
 msgid "Description: "
 msgstr "Описание:"
 
-#: ../rpmdrake_.c:519
+#: ../rpmdrake_.c:528
 msgid "Bugfixes updates"
 msgstr "Обновления багфиксов"
 
-#: ../rpmdrake_.c:519
+#: ../rpmdrake_.c:528
 msgid "Normal updates"
 msgstr "Нормальные обновления"
 
-#: ../rpmdrake_.c:538
+#: ../rpmdrake_.c:547
 msgid "Mandrake choices"
 msgstr "Выбор Mandrake"
 
-#: ../rpmdrake_.c:539
+#: ../rpmdrake_.c:548
 msgid "All packages, alphabetical"
 msgstr "Все пакеты, по алфавиту"
 
-#: ../rpmdrake_.c:540
+#: ../rpmdrake_.c:549
 msgid "All packages,"
 msgstr "Все пакеты"
 
-#: ../rpmdrake_.c:563
+#: ../rpmdrake_.c:572
 msgid "by group"
 msgstr "по группам"
 
-#: ../rpmdrake_.c:563
+#: ../rpmdrake_.c:572
 msgid "by size"
 msgstr "по размеру"
 
-#: ../rpmdrake_.c:564
+#: ../rpmdrake_.c:573
 msgid "by selection state"
 msgstr "по состоянию выбора"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:574
 msgid "by source repository"
 msgstr "по источнику"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:574
 msgid "by update availability"
 msgstr "по доступности обновлений"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:595
 msgid "in descriptions"
 msgstr "по описаниям"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:595
 msgid "in files"
 msgstr "по файлам"
 
-#: ../rpmdrake_.c:586
+#: ../rpmdrake_.c:595
 msgid "in names"
 msgstr "по именам"
 
-#: ../rpmdrake_.c:597
+#: ../rpmdrake_.c:606
 msgid "Reload the packages list"
 msgstr "Перезагрузить список пакетов"
 
-#: ../rpmdrake_.c:597
+#: ../rpmdrake_.c:606
 msgid "Reset the selection"
 msgstr "Сбросить выбор"
 
-#: ../rpmdrake_.c:623
+#: ../rpmdrake_.c:632
 msgid "Maximum information"
 msgstr "Максимум информации"
 
-#: ../rpmdrake_.c:623
+#: ../rpmdrake_.c:632
 msgid "Normal information"
 msgstr "Стандартная информация"
 
-#: ../rpmdrake_.c:645
+#: ../rpmdrake_.c:654
 msgid "Too many packages are selected"
 msgstr "Выбрано слишком много пакетов"
 
-#: ../rpmdrake_.c:689
+#: ../rpmdrake_.c:697
 msgid "Find:"
 msgstr "Найти:"
 
-#: ../rpmdrake_.c:694
+#: ../rpmdrake_.c:702
 msgid "Search"
 msgstr "Поиск"
 
-#: ../rpmdrake_.c:700
+#: ../rpmdrake_.c:708
 msgid "Install"
 msgstr "Установить"
 
-#: ../rpmdrake_.c:708 data/mandrakeupdate.desktop.in.h:1
+#: ../rpmdrake_.c:715 data/mandrakeupdate.desktop.in.h:1
 msgid "Mandrake Update"
 msgstr "Обновление Mandrake"
 
-#: ../rpmdrake_.c:708
+#: ../rpmdrake_.c:715
 msgid "Software Packages Installation"
 msgstr "Установка пакетов программного обеспечения"
 
-#: ../rpmdrake_.c:708
+#: ../rpmdrake_.c:715
 msgid "Software Packages Removal"
 msgstr "Удаление пакетов программного обеспечения"
 
-#: ../rpmdrake_.c:749
+#: ../rpmdrake_.c:756
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Пожалуйста, подождите, устанавливается соединение с зеркалом, чтобы обновить "
 "информацию о пакетах."
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:758
 msgid "Error updating medium"
 msgstr "Ошибка при обновлении накопителя"
 
-#: ../rpmdrake_.c:752
+#: ../rpmdrake_.c:759
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "Произошла неустранимая ошибка при обновлении информации о пакетах."
 
-#: ../rpmdrake_.c:757
+#: ../rpmdrake_.c:764
 msgid "How to choose manually your mirror"
 msgstr "Как вручную выбрать свое зеркало"
 
-#: ../rpmdrake_.c:765
+#: ../rpmdrake_.c:772
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Пожалуйста, подождите, устанавливается соединение с зеркалом, чтобы "
 "инициализировать пакеты с обновлениями."
 
-#: ../rpmdrake_.c:768
+#: ../rpmdrake_.c:775
 msgid "Error adding update medium"
 msgstr "Ошибка при добавлении накопителя с обновлениями"
 
-#: ../rpmdrake_.c:800
+#: ../rpmdrake_.c:807
 msgid "Please wait, finding available packages..."
 msgstr "Подождите, пожалуйста, выполняется поиск доступных пакетов..."
 
-#: ../rpmdrake_.c:829
+#: ../rpmdrake_.c:836
 msgid "Installation finished"
 msgstr "Установка завершена"
 
-#: ../rpmdrake_.c:833
+#: ../rpmdrake_.c:840
 #, c-format
 msgid "Inspecting %s"
 msgstr "Изучается %s"
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:859
 msgid "changes:"
 msgstr "изменения:"
 
-#: ../rpmdrake_.c:856
+#: ../rpmdrake_.c:863
 #, c-format
 msgid "Remove .%s"
 msgstr "Удалить .%s"
 
-#: ../rpmdrake_.c:858
+#: ../rpmdrake_.c:865
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Использовать .%s в качестве главного файла"
 
-#: ../rpmdrake_.c:860
+#: ../rpmdrake_.c:867
 msgid "Do nothing"
 msgstr "Ничеге не делать"
 
-#: ../rpmdrake_.c:878
+#: ../rpmdrake_.c:885
 msgid "Inspect..."
 msgstr "Изучение..."
 
-#: ../rpmdrake_.c:900
+#: ../rpmdrake_.c:907
 msgid "Program missing"
 msgstr "Программа отсутствует"
 
-#: ../rpmdrake_.c:901
+#: ../rpmdrake_.c:908
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Отсутствует требуемая программа (grpmi). Проверьте свою установку."
 
-#: ../rpmdrake_.c:916
+#: ../rpmdrake_.c:922
 msgid "Unable to get source packages."
 msgstr "Невозможно получить накопитель с пакетами."
 
-#: ../rpmdrake_.c:917
+#: ../rpmdrake_.c:923
 msgid "Unable to get source packages, sorry."
 msgstr "Извините, невозможно получить накопитель с пакетами."
 
-#: ../rpmdrake_.c:924
+#: ../rpmdrake_.c:930
 msgid "Change medium"
 msgstr "Изменить накопитель"
 
-#: ../rpmdrake_.c:925
+#: ../rpmdrake_.c:931
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Пожалуйста, вставьте накопитель с именем \"%s\" в устройство [%s]"
 
-#: ../rpmdrake_.c:933
+#: ../rpmdrake_.c:939
 msgid "Installation failed"
 msgstr "Установка была прервана"
 
-#: ../rpmdrake_.c:934
+#: ../rpmdrake_.c:940
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -750,12 +759,12 @@ msgstr ""
 "Установка была прервана, отсутствуют некоторые файлы.\n"
 "Вам может понадобиться обновить свою базу данных накопителей."
 
-#: ../rpmdrake_.c:937
+#: ../rpmdrake_.c:943
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Подождите, пожалуйста, удаляются пакеты, чтобы другие могли быть обновлены..."
 
-#: ../rpmdrake_.c:958
+#: ../rpmdrake_.c:964
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -768,7 +777,7 @@ msgstr ""
 "Некоторые файлы настройки были созданы как `.rpmnew' или `.rpmsave',\n"
 "теперь вы можете подробно изучить некторые действия:"
 
-#: ../rpmdrake_.c:958
+#: ../rpmdrake_.c:964
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -776,31 +785,31 @@ msgstr ""
 "установка некоторых пакетов\n"
 "завершилась неудачей"
 
-#: ../rpmdrake_.c:959
+#: ../rpmdrake_.c:965
 msgid "everything was installed correctly"
 msgstr "все было успешно установлено"
 
-#: ../rpmdrake_.c:961
+#: ../rpmdrake_.c:967
 msgid "Everything installed successfully"
 msgstr "Все успешно установлено."
 
-#: ../rpmdrake_.c:962
+#: ../rpmdrake_.c:968
 msgid "All requested packages were installed successfully."
 msgstr "Все запрошенные пакеты были успешно установлены."
 
-#: ../rpmdrake_.c:964
+#: ../rpmdrake_.c:970
 msgid "Everything already installed."
 msgstr "Все уже установлено."
 
-#: ../rpmdrake_.c:965
+#: ../rpmdrake_.c:971
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Все уже установлено (это вообще случается?)."
 
-#: ../rpmdrake_.c:968
+#: ../rpmdrake_.c:974
 msgid "Problem during installation"
 msgstr "Проблема во время установки"
 
-#: ../rpmdrake_.c:969
+#: ../rpmdrake_.c:975
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -811,15 +820,31 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake_.c:979
+#: ../rpmdrake_.c:985
 msgid "Please wait, reading packages database..."
 msgstr "Подождите, пожалуйста, производится чтение из базы данных..."
 
-#: ../rpmdrake_.c:1017
+#: ../rpmdrake_.c:1026
 msgid "Please wait, removing packages..."
 msgstr "Подождите, пожалуйста, удаляются пакеты..."
 
-#: ../rpmdrake_.c:1046
+#: ../rpmdrake_.c:1028
+#, fuzzy
+msgid "Problem during removal"
+msgstr "Проблема во время установки"
+
+#: ../rpmdrake_.c:1029
+#, fuzzy, c-format
+msgid ""
+"There was a problem during the removal of packages:\n"
+"\n"
+"%s"
+msgstr ""
+"При установке возникла проблема:\n"
+"\n"
+"%s"
+
+#: ../rpmdrake_.c:1057
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -831,7 +856,7 @@ msgstr ""
 "Этот инструмент поможет вам выбрать пакеты для удаления с вашего\n"
 "компьютера."
 
-#: ../rpmdrake_.c:1051
+#: ../rpmdrake_.c:1062
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -843,7 +868,7 @@ msgstr ""
 "Этот инструмент поможет вам выбрать обновления для установки на ва\n"
 "компьютер."
 
-#: ../rpmdrake_.c:1056
+#: ../rpmdrake_.c:1067
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1084,13 +1109,6 @@ msgstr "Установить программное обеспечение"
 
 #~ msgid "This would break your system"
 #~ msgstr "Это испортит вашу систему"
-
-#~ msgid ""
-#~ "Sorry, removing these packages would break your system:\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Извините, но удаление этих пакетов испортит вашу систему:\n"
-#~ "\n"
 
 #~ msgid ""
 #~ "Could not find /var/lib/urpmi/compssUsers.flat,\n"
