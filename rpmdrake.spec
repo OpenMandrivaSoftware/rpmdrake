@@ -121,6 +121,7 @@ rm -rf $RPM_BUILD_ROOT
   the PO (#1233)
 - rpmdrake:
   - fix locking of CD after installation (#1311)
+- some code cleanup thx to titi & perl checker
 
 * Thu Feb 13 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-6mdk
 - grpmi: if there was an error during installation, propose to

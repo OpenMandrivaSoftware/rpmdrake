@@ -52,9 +52,9 @@ $0 =~ m|/MandrakeUpdate$|  and $MODE = 'update';
 $::isStandalone = 1;
 
 my $w;
-sub interactive_msg_  { interactive_msg (@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
+sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
-sub wait_msg_         { wait_msg        (@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
+sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 
 sub ctreefy { $_[0] =~ s,/,|,g; $_[0] }
 
@@ -82,7 +82,6 @@ sub split_fullname { $_[0] =~ /^(.*)-([^-]+-[^-]+)$/ }
 sub my_fullname { my ($name, $version, $release) = $_[0]->fullname; "$name-$version-$release" }
 
 sub parse_compssUsers_flat {
-    my ($urpm) = @_;
     my (%compssUsers, $category);
     my $compss = '/var/lib/urpmi/compssUsers.flat';
     -r $compss or $compss = '/usr/share/rpmdrake/compssUsers.flat.default';
@@ -177,6 +176,7 @@ sub do_search($$$$$$$) {
 							   gtksignal_connect(Gtk2::Button->new(but(N("Stop"))),
 									     clicked => sub { $searchstop = 1 }))));
 	    $searchw->sync;
+	    local *SF;
 	    open SF, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "\'$_\'" } @hdlists).' |';
 	    my ($pkg, $progresscount);
 	    while (<SF>) {
@@ -250,7 +250,7 @@ sub run_treeview_dialog {
 	return $found;
     };
     my $callback_choices = sub {
-	my ($urpm, $db, $state, $choices) = @_;
+	my (undef, $db, $state, $choices) = @_;
 	foreach my $pkg (@$choices) {
 	    foreach ($pkg->requires_nosense) {
 		/locales-/ or next;
@@ -263,13 +263,13 @@ sub run_treeview_dialog {
     };
     my $choices_auto;
     my $callback_choices_auto = sub {
-	my ($urpm, $db, $state, $choices) = @_;
+	my (undef, $db, $state, $choices) = @_;
 	member(my_fullname($_), @$choices_auto) and return $_ foreach @$choices;
 	return $choices->[0];  #- theoretically unreachable, but at least try to fallback on something usable
     };
     my $closure_removal = sub {
 	$urpm->{state}{ask_remove} = {};
-	my $db = db;
+	my $db = db();
 	foreach (@_) {
 	    $db->traverse_tag('name', [ (split_fullname($_))[0] ], sub {
 				  my_fullname($_[0]) eq $_ or return;
@@ -412,7 +412,7 @@ or you already installed all of them."));
 				   @nodes = difference2(\@nodes, \@bad_i18n_pkgs);
 			       }
 			       slow_func($tree->window,
-					 sub { $urpm->resolve_requested(db, $urpm->{state}, { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
+					 sub { $urpm->resolve_requested(db(), $urpm->{state}, { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
 							   callback_choices => $callback_choices, no_flag_update => 1, keep_state => 1) });
 			       my $pkg_sel_after_selection = sub {
 				   $urpm->deselect_unwanted_packages($urpm->{state}{selected});
@@ -432,7 +432,7 @@ or you already installed all of them."));
 			       $choices_auto = \@nodes_with_deps;
 			       $urpm->{state}{selected} = {};
 			       slow_func($tree->window,
-					 sub { $urpm->resolve_requested(db, $urpm->{state}, { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
+					 sub { $urpm->resolve_requested(db(), $urpm->{state}, { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
 									callback_choices => $callback_choices_auto) });
 			       $pkg_sel_after_selection->();
 			       if (my @cant = difference2(\@nodes, \@nodes_with_deps)) {
@@ -447,7 +447,7 @@ or you already installed all of them."));
 			   } else {
 			       $urpm->{state}{unselected} = {};
 			       slow_func($tree->window,
-					 sub { $urpm->resolve_unrequested(db, $urpm->{state},
+					 sub { $urpm->resolve_unrequested(db(), $urpm->{state},
 									  { map { $pkgs->{$_}{pkg}->id => undef } @nodes },
 									  no_flag_update => 1) });
 			       @nodes_with_deps = map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{unselected}};
@@ -458,7 +458,7 @@ or you already installed all of them."));
 				   goto packages_unselection_ok;
 			       }
 			       slow_func($tree->window,
-					 sub { $urpm->resolve_unrequested(db, $urpm->{state},
+					 sub { $urpm->resolve_unrequested(db(), $urpm->{state},
 									  { map { $pkgs->{$_}{pkg}->id => undef } @nodes }) });
 			       @nodes_with_deps = map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{unselected}};
 			     packages_unselection_ok:
@@ -571,7 +571,7 @@ or you already installed all of them."));
 	my %radios_infos = (mandrake_choices => { name => N("Mandrake choices"),           flat => 0 },
 			    flat             => { name => N("All packages, alphabetical"), flat => 1 },
 	                    by               => { name => N("All packages,"),              flat => 0 });
-	$compssUsers = parse_compssUsers_flat($urpm);
+	$compssUsers = parse_compssUsers_flat();
 	my @radios_names_ordered = qw(mandrake_choices flat by);
 	$compssUsers or shift @radios_names_ordered;
 	@modes_buttons = gtkradio($radios_infos{mandrake_choices}{name}, map { $radios_infos{$_}{name} } @radios_names_ordered);
@@ -635,7 +635,7 @@ or you already installed all of them."));
 		          reset_selection => sub {
 			      if ($MODE ne 'remove') {
 				  $urpm->{state}{unselected} = {};
-				  $urpm->resolve_unrequested(db, $urpm->{state},
+				  $urpm->resolve_unrequested(db(), $urpm->{state},
 						   { map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}->id => undef) } keys %$pkgs });
 			      }
 			      $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
@@ -769,7 +769,7 @@ sub get_installable_pkgs {
     if ($updates) {
 	my $urpm = new urpm;
 	$urpm->configure();
-	my ($statedir, $cachedir) = map { $urpm->{$_} } qw(statedir cachedir);
+	my $statedir = $urpm->{statedir};
 	@update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 	undef $urpm;
 	if (@update_medias > 0) {
@@ -786,7 +786,7 @@ Is it ok to continue?"), yesno => 1) or myexit(-1);
 	    }
 	} else {
 	  mu_retry_another_mirror:
-	    my $m = choose_mirror;
+	    my $m = choose_mirror();
 	    $m or interactive_msg_(N("How to choose manually your mirror"),
 N("You may also choose your desired mirror manually: to do so,
 launch the Software Sources Manager, and then add a `Security
@@ -836,7 +836,7 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
     $urpm->configure;
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 
-    $urpm->compute_installed_flags(db);
+    $urpm->compute_installed_flags(db());
 
     foreach my $pkg (@{$urpm->{depslist}}) {
 	$pkg->flag_upgrade or next;
@@ -849,7 +849,7 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
 }
 
 sub dialog_rpmnew {
-    my ($exitstatus, $msg, %p2r) = @_;
+    my ($msg, %p2r) = @_;
     # /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
     my @ignores_rpmnew = qw(/etc/group /etc/passwd /etc/localtime /etc/shells /etc/adjtime /etc/ld.so.conf /etc/modules 
                         /etc/security/fileshare.conf /etc/sudoers /etc/sysconfig/alsa /etc/sysconfig/autofsck /etc/sysconfig/harddisks
@@ -868,7 +868,7 @@ sub dialog_rpmnew {
 	-r $rpmnew or $rpmfile = 'rpmsave';
 	-r $rpmnew && -r $rpmsave && (stat $rpmsave)[9] > (stat $rpmnew)[9] and $rpmfile = 'rpmsave';
 	$rpmfile eq 'rpmsave' and $rpmnew = $rpmsave;
-	my ($vbox, %texts);
+	my %texts;
 	gtkadd($d->{window},
 	       gtkpack_(Gtk2::VBox->new(0, 5),
 			1, create_vpaned(
@@ -983,8 +983,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		  and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
 					  map { chomp_($_) } `rpm -ql $1` ];
 	    }
-	    dialog_rpmnew($exitstatus,
-			  N("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:", $exitstatus ? N("some packages failed to install\ncorrectly")
+	    dialog_rpmnew(N("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:", $exitstatus ? N("some packages failed to install\ncorrectly")
 			    : N("everything was installed correctly")),
 			  %pkg2rpmnew)
 	      && !$exitstatus and interactive_msg_(N("Everything installed successfully"),
@@ -1018,11 +1017,11 @@ sub get_installed_pkgs {
     my $wait = wait_msg_(N("Please wait, reading packages database..."));
     my @base = qw(basesystem);
     my (%base, %basepackages);
-    my $db = db;
+    my $db = db();
     my $sig_handler = sub { undef $db; exit 3 };
     local $SIG{INT} = $sig_handler;
     local $SIG{QUIT} = $sig_handler;
-    while (defined($_ = shift @base)) {
+    while (defined(local $_ = shift @base)) {
 	exists $basepackages{$_} and next;
 	$db->traverse_tag(/^\// ? 'path' : 'whatprovides', [ $_ ], sub {
 			      push @{$basepackages{$_}}, my_fullname($_[0]);
@@ -1079,7 +1078,7 @@ if ($options{'merge-all-rpmnew'}) {
 		 });
     print "done.\n";
     $typical_width = 280;
-    dialog_rpmnew(0, '', %pkg2rpmnew) and print "Nothing to do.\n";
+    dialog_rpmnew('', %pkg2rpmnew) and print "Nothing to do.\n";
     myexit(0);
 }
 
@@ -1112,11 +1111,11 @@ you want to install on your computer."))
     }
 
 if ($MODE eq 'remove') {
-    run_treeview_dialog(sub { get_installed_pkgs }, \&perform_removal);
+    run_treeview_dialog(sub { get_installed_pkgs() }, \&perform_removal);
 } elsif ($MODE eq 'update') {
     run_treeview_dialog(sub { get_installable_pkgs(1, @_) }, \&perform_installation);
 } else {
-    run_treeview_dialog(sub { get_installable_pkgs }, \&perform_installation);
+    run_treeview_dialog(sub { get_installable_pkgs() }, \&perform_installation);
 }
 
 writeconf();

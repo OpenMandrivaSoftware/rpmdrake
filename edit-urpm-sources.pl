@@ -50,7 +50,6 @@ my $urpm;
 my ($mainw, $remove, $edit, $list_tv);
 
 sub add_callback {
-    my ($mode, $rebuild_ui, $name_entry, $url_entry, $hdlist_entry, $count_nbs);
     my $w = ugtk2->new(N("Add a source"), grab => 1, center => 1, transient => $mainw->{rwindow});
     my %radios_infos = (local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
 			ftp => { name => N("FTP server"), url => N("URL:"), loginpass => 1 },
@@ -62,15 +61,16 @@ sub add_callback {
     my @modes_buttons = gtkradio($radios_infos{local}{name}, map { $radios_infos{$_}{name} } @radios_names_ordered);
     my $notebook = Gtk2::Notebook->new;
     $notebook->set_show_tabs(0); $notebook->set_show_border(0);
+    my $count_nbs;
     mapn {
 	my $info = $radios_infos{$_[0]};
 	my $url_entry = sub {
 	    gtkpack_(Gtk2::HBox->new(0, 0),
-		     1, $info->{url_entry} = gtkentry,
+		     1, $info->{url_entry} = gtkentry(),
 		     if_($info->{dirsel}, 0, gtksignal_connect(Gtk2::Button->new(but(N("Browse..."))),
 							       clicked => sub { $info->{url_entry}->set_text(ask_dir()) })),
 		     if_($info->{securitysel}, 0, gtksignal_connect(Gtk2::Button->new(but(N("Choose a mirror..."))),
-								    clicked => sub { my $m = choose_mirror;
+								    clicked => sub { my $m = choose_mirror();
 										     if ($m) {
 											 my ($r) = cat_('/etc/mandrake-release') =~ /release\s(\S+)/;
 											 $info->{url_entry}->set_text("$m/$r/RPMS/");
@@ -81,13 +81,13 @@ sub add_callback {
 	my $loginpass_entries = sub {
 	    map { my $entry_name = $_->[0];
 		  [ gtkpack_(Gtk2::HBox->new(0, 0),
-			     1, Gtk2::Label->new(''),
+			     1, Gtk2::Label->new,
 			     0, gtksignal_connect($info->{$_->[0].'_check'} = Gtk2::CheckButton->new($_->[1]),
 						  clicked => sub { $info->{$entry_name.'_entry'}->set_sensitive($_[0]->get_active);
 								   $info->{pass_check}->set_active($_[0]->get_active);
 								   $info->{login_check}->set_active($_[0]->get_active);
 							       }),
-			     1, Gtk2::Label->new('')),
+			     1, Gtk2::Label->new),
 		    gtkset_visibility(gtkset_sensitive($info->{$_->[0].'_entry'} = gtkentry(), 0), $_->[2]) ] }
 	      ([ 'login', N("Login:"), 1 ], [ 'pass', N("Password:"), 0 ])
 	};
@@ -96,14 +96,14 @@ sub add_callback {
 	$notebook->append_page(my $book = create_packtable({},
 		      [ N("Name:"), $info->{name_entry} = gtkentry($_[0] eq 'security' and 'update_source') ],
 		      [ $info->{url}, $url_entry->() ],
-		      [ N("Relative path to synthesis/hdlist:"), $info->{hdlist_entry} = gtkentry ],
+		      [ N("Relative path to synthesis/hdlist:"), $info->{hdlist_entry} = gtkentry() ],
 		      if_($info->{loginpass}, $loginpass_entries->())));
 	$book->show;
     } \@radios_names_ordered, \@modes_buttons;
 
     my $checkok = sub {
 	my $info = $radios_infos{$radios_names_ordered[$notebook->get_current_page]};
-	my ($name, $url, $hdlist) = map { $info->{$_.'_entry'}->get_text } qw(name url hdlist);
+	my ($name, $url) = map { $info->{$_.'_entry'}->get_text } qw(name url);
 	$name eq '' || $url eq '' and interactive_msg('rpmdrake', N("You need to fill up at least the two first entries.")), return 0;
 	if (member($name, map { $_->{name} } @{$urpm->{media}})) {
 	    $info->{name_entry}->select_region(0, -1);
@@ -196,7 +196,7 @@ sub edit_callback {
 			       gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
     $w->{rwindow}->set_size_request(600, -1);
     if ($w->main) {
-	my ($name, $update, $ignore) = map { $medium->{$_} } qw(name update ignore);
+	my ($name, $update) = map { $medium->{$_} } qw(name update);
 	$url =~ m|^removable://| and (interactive_msg(N("You need to insert the medium to continue"),
 						      N("In order to save the changes, you need to insert the medium in the drive."),
 						      yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) or return 0);
@@ -262,8 +262,8 @@ sub mainwindow {
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled?"), my $tr = Gtk2::CellRendererToggle->new, 'active' => 0));
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Source"), Gtk2::CellRendererText->new, 'text' => 1));
 
-    $tr->signal_connect('toggled', sub {
-			    my ($cell, $path) = @_;
+    $tr->signal_connect(toggled => sub {
+			    my (undef, $path) = @_;
 			    my $iter = $list->get_iter_from_string($path);
 			    invbool(\$urpm->{media}[$path]{ignore});
 			    $list->set($iter, [ 0, !$urpm->{media}[$path]{ignore} ]);
@@ -299,7 +299,7 @@ sub mainwindow {
 }
 
 
-readconf;
+readconf();
 
 if (!member(basename($0), @$already_splashed)) {
     interactive_msg('rpmdrake',
@@ -318,6 +318,6 @@ if (mainwindow()) {
     $urpm->write_config;
 }
 
-writeconf;
+writeconf();
 
 myexit 0;

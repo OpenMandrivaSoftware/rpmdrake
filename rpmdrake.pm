@@ -261,7 +261,7 @@ sub mirrors {
 			    $url =~ m|\.\Q$_\E/| and $land = $_ foreach keys %u2l;
 			    $url =~ m|\W\Q$_\E/| and $land = $sites2countries{$_} foreach keys %sites2countries;
 			    each_index { $_ eq $land and $goodness ||= 100-$::i } (map { if_($tz =~ /^$_$/, @{$t2l{$_}}) } keys %t2l), @$us;
-			    { url => $url, land => $u2l{$land} || N("United States"), goodness => $goodness + rand };
+			    { url => $url, land => $u2l{$land} || N("United States"), goodness => $goodness + rand() };
 			} else { () }
 		    } cat_($mirrorslist);
     unlink $mirrorslist;
@@ -319,7 +319,7 @@ by Mandrake Linux Official Updates.")), return '';
 						     $iter and $iter->free;
 						 }
 						 Gtk2->main_quit })
-			       } ([ N("Ok"), 1], [ N("Cancel"), 0 ])),
+			       } ([ N("Ok"), 1 ], [ N("Cancel"), 0 ])),
 		   ));
     my %roots;
     $tree_model->append_set($roots{$_->{land}} ||= $tree_model->append_set(undef, [ 0 => $_->{land} ]),
