@@ -206,7 +206,7 @@ $exitstatus = 0;
 cleanup:
 if (!member('noclearcache', @grpmi_config)) {
     my @toclean = map { s/^-skipped&([^&]+)&$/$1/; if_(/^\Q$cache_location/, $_) } @ARGV;
-    if ($forced_exitstatus || $exitstatus) {
+    if ($forced_exitstatus || $exitstatus && @toclean) {
 	interactive_msg(_("Cleanup"),
 _("Cleanup question: there was an error during installation, do you want to
 remove the %d downloaded package(s)?
