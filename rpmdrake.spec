@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.9
+%define version 2.10
 %define release 1mdk
 
 Name: %{name}
@@ -111,6 +111,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Mar 16 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.10-1mdk
+- Don't install drakrpm-edit-media
+- rpmdrake --help works again
+- Notes for installed packages are not displayed several times across different
+  installs
+
 * Mon Mar 07 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.9-1mdk
 - Don't install edit-urpm-media as a copy of edit-urpm-sources.pl anymore
 - rpmdrake: restore Quit button, add ctrl-Q as shortcut (Titi)
