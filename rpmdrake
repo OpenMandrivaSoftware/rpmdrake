@@ -1,21 +1,21 @@
 #!/usr/bin/perl
 #*****************************************************************************
-# 
+#
 #  Copyright (c) 2002 Guillaume Cottenceau (gc at mandrakesoft dot com)
-# 
+#
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License version 2, as
 #  published by the Free Software Foundation.
-# 
+#
 #  This program is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
-# 
+#
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-# 
+#
 #*****************************************************************************
 #
 # $Id$
@@ -1452,6 +1452,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $fatal_msg;
     my @error_msgs;
+    my @Readmes;
     local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = to_utf8($_[1]); goto fatal_error };
     local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, to_utf8($_[0]) };
 
@@ -1594,9 +1595,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		my $pkg = $urpm->{depslist}[$pkgid];
 		my $fullname = $pkg->fullname;
 		my $trtype = (any { /$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
-		push our @Readmes, map {
-		    [ $_, $fullname ];
-		} grep { /\bREADME(\.$trtype)?\.urpmi$/ } $pkg->files;
+		push @Readmes, map { [ $_, $fullname ] } grep { /\bREADME(\.$trtype)?\.urpmi$/ } $pkg->files;
 		close $fh;
 	    },
 	);
@@ -1621,7 +1620,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                       %pkg2rpmnew)
           and interactive_msg_(N("Everything installed successfully"),
                                N("All requested packages were installed successfully."));
-	if (our @Readmes) { #- display the README*.urpmi files
+	if (@Readmes) { #- display the README*.urpmi files
 	    interactive_packtable(
 		N("Information on packages"),
 		$w->{rwindow},
