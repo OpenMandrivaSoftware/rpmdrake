@@ -2,15 +2,13 @@
 # Copyright (C) 2000 Free Software Foundation, Inc.
 # Copyright (c) 2000 MandrakeSoft
 # Boyan Ivanov <boyan17@bulgaria.com>, 2000
-# Bozhan Boiadzhiev <bozhan@plov.omega.bg>, 2000
-# Ako se seshtate za dobri dumi ili izrazi po-dobre gi kazhete,
-# wmesto samo da kritikuwate! Bozhan.
+# Bozhan Boiadzhiev <bozhan@plov.omega.bg>, 2002
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi\n"
 "POT-Creation-Date: 2002-08-06 13:59+0200\n"
-"PO-Revision-Date: 2000-02-01 15:33+0100\n"
+"PO-Revision-Date: 2001-08-10 00:06+0100\n"
 "Last-Translator: Bozhan Boiadzhiev <bozhan@plov.omega.bg>\n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +17,7 @@ msgstr ""
 
 #: ../curl_download/curl_download.xs:83
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "Директорията, където ще се записва трябва да съществува"
 
 #: ../curl_download/curl_download.xs:86 ../curl_download/curl_download.xs:201
 msgid "Out of memory\n"
@@ -27,7 +25,7 @@ msgstr "Недостатъчно памет\n"
 
 #: ../curl_download/curl_download.xs:99
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "Не мога да отворя файлът в режим добавяне"
 
 #: ../curl_download/curl_download.xs:121
 msgid "Unsupported protocol\n"
@@ -43,15 +41,15 @@ msgstr "Невалидно URL\n"
 
 #: ../curl_download/curl_download.xs:130
 msgid "Bad user format in URL\n"
-msgstr "Невалиден потребителски формат  в URL\n"
+msgstr "Невалиден потребителски формат в URL\n"
 
 #: ../curl_download/curl_download.xs:133
 msgid "Couldn't resolve proxy\n"
-msgstr "Не е открито прокси\n"
+msgstr "Не намирам прокси\n"
 
 #: ../curl_download/curl_download.xs:136
 msgid "Couldn't resolve host\n"
-msgstr "Не е намерен хост\n"
+msgstr "Не намирам хост\n"
 
 #: ../curl_download/curl_download.xs:139
 msgid "Couldn't connect\n"
@@ -208,11 +206,11 @@ msgstr "Непознат код за грешка %d\n"
 
 #: ../grpmi.pl_.c:51
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: ../grpmi.pl_.c:52
 msgid "No"
-msgstr ""
+msgstr "Не"
 
 #: ../grpmi.pl_.c:53
 msgid "Ok"
@@ -224,29 +222,28 @@ msgstr "Грешка..."
 
 #: ../grpmi.pl_.c:63
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "Трябва да сте root, за да инсталирате пакети, съжалявам"
 
 #: ../grpmi.pl_.c:65
 msgid "RPM initialization error"
-msgstr ""
+msgstr "Грешка при инициализация на RPM"
 
 #: ../grpmi.pl_.c:66
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "Инициализацията на конфиг файловете на RPM не е възможно, съжалявам"
 
 #: ../grpmi.pl_.c:69
-#, fuzzy
 msgid "Initializing..."
-msgstr "Инсталиране:"
+msgstr "Инициализация:"
 
 #: ../grpmi.pl_.c:90
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Изтегляне на пакет `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:97
 msgid "Error during download"
-msgstr ""
+msgstr "Грешка при изтегляне"
 
 #: ../grpmi.pl_.c:98
 #, c-format
@@ -258,15 +255,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"Грешка при изтегляне на пакетът:\n"
+"\n"
+"%s\n"
+"\n"
+"Грешка: %s\n"
+"Искате ли да продължите (пропускайки този пакет)?"
 
 #: ../grpmi.pl_.c:110
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "Проверка на подписът на `%s'..."
 
 #: ../grpmi.pl_.c:112
 msgid "Signature verification error"
-msgstr ""
+msgstr "Грешка при проверка на подписът"
 
 #: ../grpmi.pl_.c:113
 #, c-format
@@ -276,11 +279,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"Подписът на пакетът `%s' е неверен:\n"
+"\n"
+"%s\n"
+"Искате ли да го инсталирате въпреки това?"
 
 #: ../grpmi.pl_.c:119
-#, fuzzy
 msgid "File error"
-msgstr "Грешка при запис\n"
+msgstr "Грешка в файл"
 
 #: ../grpmi.pl_.c:120
 #, c-format
@@ -291,15 +297,19 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"Този файл не е валиден:\n"
+"\n"
+"%s\n"
+"\n"
+"Искате ли да продължите въпреки това (пропускайки този пакет)?"
 
 #: ../grpmi.pl_.c:135
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "Подготвяне за инсталация"
+msgstr "Подготвяне на пакетите за инсталация"
 
 #: ../grpmi.pl_.c:143
 msgid "Conflicts detected"
-msgstr ""
+msgstr "Възникнаха несъвместимости"
 
 #: ../grpmi.pl_.c:144
 #, c-format
@@ -309,118 +319,117 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"Възникнали несъвместимости:\n"
+"%s\n"
+"\n"
+"Искате ли да се инсталира въпреки това?"
 
 #: ../grpmi.pl_.c:151
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Инсталиране на пакет `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:164
 msgid "Problems occurred during installation"
 msgstr "Появиха се проблеми по време на инсталацията"
 
 #: ../grpmi.pl_.c:164
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Подготвяне за инсталация"
+msgstr ""
+"Получи се грешка по време на инсталацията на:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:66
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "Файла не чете файла\n"
+msgstr "Не мога да прочета RPM конфиг файла"
 
 #: ../rpm/grpmi_rpm.xs:92
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Невъзможно свързване\n"
+msgstr "Не мога да отворя файла\n"
 
 #: ../rpm/grpmi_rpm.xs:96
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "Не е намерен хост\n"
+msgstr "Не мога да прочета водешите байтове\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "RPM версията на пакета не поддържа подписи\n"
 
 #: ../rpm/grpmi_rpm.xs:104
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "Не мога да прочета полето с подписът (`rpmReadSignature' се провали)\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "No signatures\n"
-msgstr ""
+msgstr "Няма подписи\n"
 
 #: ../rpm/grpmi_rpm.xs:111
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "`makeTempFile' се провали!\n"
 
 #: ../rpm/grpmi_rpm.xs:118
 msgid "Error reading file\n"
-msgstr ""
+msgstr "Грешка при четене от файла\n"
 
 #: ../rpm/grpmi_rpm.xs:124
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "Гршка при записване на временен файл\n"
 
 #: ../rpm/grpmi_rpm.xs:147
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "Нама GPG подпис в пакета\n"
 
 #: ../rpm/grpmi_rpm.xs:229
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "Не се отваря RPM базата за запис (трябва да сте root)"
 
 #: ../rpm/grpmi_rpm.xs:231
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "Не се отваря RPM базата за запис"
 
 #: ../rpm/grpmi_rpm.xs:235
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "Не мога да стартирам транзакцията"
 
 #: ../rpm/grpmi_rpm.xs:254
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Немога да отворя пакетът"
+msgstr "Немога да отворя пакетът `%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Пакетът е повреден"
+msgstr "Пакетът `%s' е повреден\n"
 
 #: ../rpm/grpmi_rpm.xs:262
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Пакетът не може да бъде инсталиран"
+msgstr "Пакетът `%s' не може да бъде инсталиран\n"
 
 #: ../rpm/grpmi_rpm.xs:273
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Грешка при проверка зависимостите :("
+msgstr "Грешка при проверка на зависимостите"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "conflicts with"
-msgstr " влиза в конфликт с %s-%s-%s"
+msgstr "влиза в конфликт с"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "is needed by"
-msgstr " е необходим на %s-%s-%s"
+msgstr "е необходим на"
 
 #: ../rpm/grpmi_rpm.xs:312
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Грешка при проверка зависимостите :("
+msgstr "Грешка при проверка на зависимостите 2"
 
 #: ../rpm/grpmi_rpm.xs:318
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Появиха се проблеми по време на инсталацията"
+msgstr "Появиха се проблеми по време на инсталацията:\n"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "Процес по Инсталиране/Oбновяване"
@@ -441,7 +450,7 @@ msgstr "Появиха се проблеми по време на инсталацията"
 #~ msgstr " влиза в конфликт с %s-%s-%s"
 
 #~ msgid "An error occured while fetching file"
-#~ msgstr "Появи се грешки про донасяне на файла"
+#~ msgstr "Появи се грешки при донасяне на файла"
 
 #~ msgid "Skip"
 #~ msgstr "Пропусни"
@@ -547,10 +556,10 @@ msgstr "Появиха се проблеми по време на инсталацията"
 #~ msgstr "cигурност"
 
 #~ msgid "general"
-#~ msgstr "основен"
+#~ msgstr "основени"
 
 #~ msgid "bugfix"
-#~ msgstr "подобрен"
+#~ msgstr "подобрения"
 
 #~ msgid ""
 #~ "Please Wait\n"
