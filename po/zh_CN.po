@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-27 21:42+0200\n"
+"POT-Creation-Date: 2002-08-28 10:53+0200\n"
 "PO-Revision-Date: 2002-08-20 11:20+0800\n"
 "Last-Translator: Danny Zeng <danny@zeng.com.cn>\n"
 "Language-Team: Simplified Chinese <future-cjk@mandrakesoft.com>\n"
@@ -106,13 +106,13 @@ msgstr "介质类型:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../rpmdrake.pm_.c:77 ../rpmdrake.pm_.c:97 ../rpmdrake.pm_.c:271
-#: ../rpmdrake_.c:305 ../rpmdrake_.c:734 ../rpmdrake_.c:760
+#: ../rpmdrake_.c:305 ../rpmdrake_.c:743 ../rpmdrake_.c:769
 msgid "Ok"
 msgstr "确定"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:760
+#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:769
 msgid "Cancel"
 msgstr "取消"
 
@@ -198,7 +198,7 @@ msgstr "保存并退出"
 msgid "Quit"
 msgstr "离开"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:855
+#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:865
 #, c-format
 msgid ""
 "%s\n"
@@ -743,81 +743,90 @@ msgstr ""
 msgid "Please wait, finding available packages..."
 msgstr "正在寻找可安装的软件包, 请稍候..."
 
-#: ../rpmdrake_.c:686
+#: ../rpmdrake_.c:688
+msgid "All requested packages were installed successfully."
+msgstr "所有要求的软件包都已成功安装."
+
+#: ../rpmdrake_.c:688
+msgid "Everything installed successfully"
+msgstr "所有东西已成功安装"
+
+#: ../rpmdrake_.c:691
 #, fuzzy
 msgid "Installation finished"
 msgstr "安装失败"
 
-#: ../rpmdrake_.c:689
+#: ../rpmdrake_.c:694
 #, c-format
 msgid "Inspecting %s"
 msgstr ""
 
-#: ../rpmdrake_.c:701
-#, fuzzy
-msgid "Remove .rpmnew"
-msgstr "删除软件"
+#: ../rpmdrake_.c:710
+#, fuzzy, c-format
+msgid "Remove .%s"
+msgstr "可卸装"
 
-#: ../rpmdrake_.c:703
-msgid "Use .rpmnew as main file"
+#: ../rpmdrake_.c:712
+#, c-format
+msgid "Use .%s as main file"
 msgstr ""
 
-#: ../rpmdrake_.c:705
+#: ../rpmdrake_.c:714
 msgid "Do nothing"
 msgstr ""
 
-#: ../rpmdrake_.c:708
+#: ../rpmdrake_.c:717
 #, fuzzy
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:715
+#: ../rpmdrake_.c:724
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
 "\n"
-"Some configuration files were created as `.rpmnew',\n"
+"Some configuration files were created as `.rpmnew' or `.rpmsave',\n"
 "you may now inspect some in order to take actions:"
 msgstr ""
 
-#: ../rpmdrake_.c:716
+#: ../rpmdrake_.c:725
 #, fuzzy
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr "有些软件包无法安装"
 
-#: ../rpmdrake_.c:717
+#: ../rpmdrake_.c:726
 #, fuzzy
 msgid "everything was installed correctly"
 msgstr "所有东西已成功安装"
 
-#: ../rpmdrake_.c:722
+#: ../rpmdrake_.c:731
 msgid "Inspect..."
 msgstr ""
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:759
 msgid "Unable to get source packages."
 msgstr "源软件包未找到."
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:760
 msgid "Unable to get source packages, sorry."
 msgstr "对不起, 无法得到源软件包."
 
-#: ../rpmdrake_.c:758
+#: ../rpmdrake_.c:767
 msgid "Change medium"
 msgstr "更换介质"
 
-#: ../rpmdrake_.c:759
+#: ../rpmdrake_.c:768
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "请把标记为 \"%s\" 的介质放进设备 [%s]"
 
-#: ../rpmdrake_.c:767
+#: ../rpmdrake_.c:776
 msgid "Installation failed"
 msgstr "安装失败"
 
-#: ../rpmdrake_.c:768
+#: ../rpmdrake_.c:777
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -825,43 +834,35 @@ msgstr ""
 "安装失败, 缺少某些文件.\n"
 "您可能需要更新您的来源数据库.."
 
-#: ../rpmdrake_.c:771
+#: ../rpmdrake_.c:780
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "为了升级软件包, 正在删除旧的软件包, 请稍候..."
 
-#: ../rpmdrake_.c:780
+#: ../rpmdrake_.c:789
 msgid "Program missing"
 msgstr "缺少程序"
 
-#: ../rpmdrake_.c:781
+#: ../rpmdrake_.c:790
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "缺少一个需要的程序 (grpmi). 请检查您的安装."
 
-#: ../rpmdrake_.c:791
-msgid "All requested packages were installed successfully."
-msgstr "所有要求的软件包都已成功安装."
-
-#: ../rpmdrake_.c:791
-msgid "Everything installed successfully"
-msgstr "所有东西已成功安装"
-
-#: ../rpmdrake_.c:795
+#: ../rpmdrake_.c:805
 msgid "Everything already installed."
 msgstr "所有软件包已经安装了."
 
-#: ../rpmdrake_.c:796
+#: ../rpmdrake_.c:806
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "所有软件包已经安装了(这是您希望的吗?)."
 
-#: ../rpmdrake_.c:806
+#: ../rpmdrake_.c:816
 msgid "Please wait, reading packages database..."
 msgstr "读取软件包数据库, 请稍候..."
 
-#: ../rpmdrake_.c:844
+#: ../rpmdrake_.c:854
 msgid "Please wait, removing packages..."
 msgstr "正在删除软件包，请稍候..."
 
-#: ../rpmdrake_.c:859
+#: ../rpmdrake_.c:869
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -873,7 +874,7 @@ msgstr ""
 "这个工具帮助您选择想要从您的电脑中删除\n"
 "的软件包."
 
-#: ../rpmdrake_.c:864
+#: ../rpmdrake_.c:874
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -885,7 +886,7 @@ msgstr ""
 "这个工具帮助您为您的电脑中安装\n"
 "更新的软件包."
 
-#: ../rpmdrake_.c:869
+#: ../rpmdrake_.c:879
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -913,6 +914,10 @@ msgstr "软件来源管理员"
 #: data/rpmdrake.desktop.in.h:1
 msgid "Install Software"
 msgstr "安装软件"
+
+#, fuzzy
+#~ msgid "Remove .rpmnew"
+#~ msgstr "删除软件"
 
 #~ msgid "This would break your system"
 #~ msgstr "这会破坏您的系统"

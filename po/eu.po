@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-27 21:42+0200\n"
+"POT-Creation-Date: 2002-08-28 10:53+0200\n"
 "PO-Revision-Date: 2002-08-27 19:16+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
 "Language-Team: Euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -110,13 +110,13 @@ msgstr "Iturburu-mota:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../rpmdrake.pm_.c:77 ../rpmdrake.pm_.c:97 ../rpmdrake.pm_.c:271
-#: ../rpmdrake_.c:305 ../rpmdrake_.c:734 ../rpmdrake_.c:760
+#: ../rpmdrake_.c:305 ../rpmdrake_.c:743 ../rpmdrake_.c:769
 msgid "Ok"
 msgstr "Ados"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:760
+#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:769
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -207,7 +207,7 @@ msgstr "Gorde eta irten"
 msgid "Quit"
 msgstr "Irten"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:855
+#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:865
 #, c-format
 msgid ""
 "%s\n"
@@ -757,126 +757,127 @@ msgstr ""
 msgid "Please wait, finding available packages..."
 msgstr "Itxoin mesedez, eskuratu daitezkeen paketeak bilatzen..."
 
-#: ../rpmdrake_.c:686
+#: ../rpmdrake_.c:688
+msgid "All requested packages were installed successfully."
+msgstr ""
+
+#: ../rpmdrake_.c:688
+#, fuzzy
+msgid "Everything installed successfully"
+msgstr "Guztia instalatuta dago."
+
+#: ../rpmdrake_.c:691
 #, fuzzy
 msgid "Installation finished"
 msgstr "Instalazioak huts egin du"
 
-#: ../rpmdrake_.c:689
+#: ../rpmdrake_.c:694
 #, c-format
 msgid "Inspecting %s"
 msgstr ""
 
-#: ../rpmdrake_.c:701
-#, fuzzy
-msgid "Remove .rpmnew"
-msgstr "Softwarea Ezabatu"
+#: ../rpmdrake_.c:710
+#, fuzzy, c-format
+msgid "Remove .%s"
+msgstr "Ezabatu"
 
-#: ../rpmdrake_.c:703
-msgid "Use .rpmnew as main file"
+#: ../rpmdrake_.c:712
+#, c-format
+msgid "Use .%s as main file"
 msgstr ""
 
-#: ../rpmdrake_.c:705
+#: ../rpmdrake_.c:714
 msgid "Do nothing"
 msgstr ""
 
-#: ../rpmdrake_.c:708
+#: ../rpmdrake_.c:717
 #, fuzzy
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:715
+#: ../rpmdrake_.c:724
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
 "\n"
-"Some configuration files were created as `.rpmnew',\n"
+"Some configuration files were created as `.rpmnew' or `.rpmsave',\n"
 "you may now inspect some in order to take actions:"
 msgstr ""
 
-#: ../rpmdrake_.c:716
+#: ../rpmdrake_.c:725
 #, fuzzy
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr "Pakete batzu ezin dira instalatu"
 
-#: ../rpmdrake_.c:717
+#: ../rpmdrake_.c:726
 #, fuzzy
 msgid "everything was installed correctly"
 msgstr "Guztia instalatuta dago."
 
-#: ../rpmdrake_.c:722
+#: ../rpmdrake_.c:731
 msgid "Inspect..."
 msgstr ""
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:759
 #, fuzzy
 msgid "Unable to get source packages."
 msgstr "Pakete okerra, irakurtezina edo galdua"
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:760
 msgid "Unable to get source packages, sorry."
 msgstr ""
 
-#: ../rpmdrake_.c:758
+#: ../rpmdrake_.c:767
 msgid "Change medium"
 msgstr "Aldatu euskarria"
 
-#: ../rpmdrake_.c:759
+#: ../rpmdrake_.c:768
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Mesedez sartu \"%s\" izeneko euskarria [%s] gailuan"
 
-#: ../rpmdrake_.c:767
+#: ../rpmdrake_.c:776
 msgid "Installation failed"
 msgstr "Instalazioak huts egin du"
 
-#: ../rpmdrake_.c:768
+#: ../rpmdrake_.c:777
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
 msgstr ""
 
-#: ../rpmdrake_.c:771
+#: ../rpmdrake_.c:780
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Itxoin mesedez, paketeak ezabatzen beste batzu eguneratu ahal daitezen..."
 
-#: ../rpmdrake_.c:780
+#: ../rpmdrake_.c:789
 msgid "Program missing"
 msgstr "Programa falta da"
 
-#: ../rpmdrake_.c:781
+#: ../rpmdrake_.c:790
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Behar den programa bat falta da (grpmi). Egiaztatu zure instalazioa."
 
-#: ../rpmdrake_.c:791
-msgid "All requested packages were installed successfully."
-msgstr ""
-
-#: ../rpmdrake_.c:791
-#, fuzzy
-msgid "Everything installed successfully"
-msgstr "Guztia instalatuta dago."
-
-#: ../rpmdrake_.c:795
+#: ../rpmdrake_.c:805
 msgid "Everything already installed."
 msgstr "Guztia instalatuta dago."
 
-#: ../rpmdrake_.c:796
+#: ../rpmdrake_.c:806
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr ""
 
-#: ../rpmdrake_.c:806
+#: ../rpmdrake_.c:816
 msgid "Please wait, reading packages database..."
 msgstr "Itxoin mesedez, paketeen datubasea irakurtzen..."
 
-#: ../rpmdrake_.c:844
+#: ../rpmdrake_.c:854
 msgid "Please wait, removing packages..."
 msgstr "Itxaoin mesedez, paketeak ezabatzen..."
 
-#: ../rpmdrake_.c:859
+#: ../rpmdrake_.c:869
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -888,7 +889,7 @@ msgstr ""
 "Tresna honek zure konputagailutik ezabatu nahi duzun softwarea aukeratzen\n"
 "lagunduko dizu."
 
-#: ../rpmdrake_.c:864
+#: ../rpmdrake_.c:874
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -901,7 +902,7 @@ msgstr ""
 "aukeratzen\n"
 "lagunduko dizu."
 
-#: ../rpmdrake_.c:869
+#: ../rpmdrake_.c:879
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -931,6 +932,10 @@ msgstr ""
 #: data/rpmdrake.desktop.in.h:1
 msgid "Install Software"
 msgstr "Instalatu Softwarea"
+
+#, fuzzy
+#~ msgid "Remove .rpmnew"
+#~ msgstr "Softwarea Ezabatu"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "Instalazioaren/Bertsio-berritzearen progresioa"

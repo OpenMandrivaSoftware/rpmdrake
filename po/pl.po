@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2002-08-27 21:42+0200\n"
+"POT-Creation-Date: 2002-08-28 10:53+0200\n"
 "PO-Revision-Date: 2002-08-22 23:46+0100\n"
 "Last-Translator: Arkadiusz Lipiec <alipiec@elka.pw.edu.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -104,13 +104,13 @@ msgstr "Rodzaj ¼ród³a:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../rpmdrake.pm_.c:77 ../rpmdrake.pm_.c:97 ../rpmdrake.pm_.c:271
-#: ../rpmdrake_.c:305 ../rpmdrake_.c:734 ../rpmdrake_.c:760
+#: ../rpmdrake_.c:305 ../rpmdrake_.c:743 ../rpmdrake_.c:769
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:760
+#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:769
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -196,7 +196,7 @@ msgstr "Zapisz i zakoñcz"
 msgid "Quit"
 msgstr "Zakoñcz"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:855
+#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:865
 #, c-format
 msgid ""
 "%s\n"
@@ -754,81 +754,90 @@ msgstr ""
 msgid "Please wait, finding available packages..."
 msgstr "Proszê czekaæ, wyszukiwanie dostêpnych pakietów..."
 
-#: ../rpmdrake_.c:686
+#: ../rpmdrake_.c:688
+msgid "All requested packages were installed successfully."
+msgstr "Wszystkie ¿±dane pakiety zosta³y pomy¶lnie zainstalowane."
+
+#: ../rpmdrake_.c:688
+msgid "Everything installed successfully"
+msgstr "Wszystko zosta³o pomy¶lnie zainstalowane"
+
+#: ../rpmdrake_.c:691
 #, fuzzy
 msgid "Installation finished"
 msgstr "Instalacja zakoñczona niepowodzeniem"
 
-#: ../rpmdrake_.c:689
+#: ../rpmdrake_.c:694
 #, c-format
 msgid "Inspecting %s"
 msgstr ""
 
-#: ../rpmdrake_.c:701
-#, fuzzy
-msgid "Remove .rpmnew"
-msgstr "Usuwanie oprogramowania"
+#: ../rpmdrake_.c:710
+#, fuzzy, c-format
+msgid "Remove .%s"
+msgstr "Usuñ"
 
-#: ../rpmdrake_.c:703
-msgid "Use .rpmnew as main file"
+#: ../rpmdrake_.c:712
+#, c-format
+msgid "Use .%s as main file"
 msgstr ""
 
-#: ../rpmdrake_.c:705
+#: ../rpmdrake_.c:714
 msgid "Do nothing"
 msgstr ""
 
-#: ../rpmdrake_.c:708
+#: ../rpmdrake_.c:717
 #, fuzzy
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:715
+#: ../rpmdrake_.c:724
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
 "\n"
-"Some configuration files were created as `.rpmnew',\n"
+"Some configuration files were created as `.rpmnew' or `.rpmsave',\n"
 "you may now inspect some in order to take actions:"
 msgstr ""
 
-#: ../rpmdrake_.c:716
+#: ../rpmdrake_.c:725
 #, fuzzy
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr "Niektóre pakiety nie mog± zostaæ zainstalowane"
 
-#: ../rpmdrake_.c:717
+#: ../rpmdrake_.c:726
 #, fuzzy
 msgid "everything was installed correctly"
 msgstr "Wszystko zosta³o pomy¶lnie zainstalowane"
 
-#: ../rpmdrake_.c:722
+#: ../rpmdrake_.c:731
 msgid "Inspect..."
 msgstr ""
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:759
 msgid "Unable to get source packages."
 msgstr "Nie mo¿na pobraæ pakietów ¼ród³owych."
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:760
 msgid "Unable to get source packages, sorry."
 msgstr "Niestety, nie mo¿na pobraæ pakietów ¼ród³owych."
 
-#: ../rpmdrake_.c:758
+#: ../rpmdrake_.c:767
 msgid "Change medium"
 msgstr "Zmieñ no¶nik"
 
-#: ../rpmdrake_.c:759
+#: ../rpmdrake_.c:768
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Wsuñ no¶nik oznaczony \"%s\" do urz±dzenia [%s]"
 
-#: ../rpmdrake_.c:767
+#: ../rpmdrake_.c:776
 msgid "Installation failed"
 msgstr "Instalacja zakoñczona niepowodzeniem"
 
-#: ../rpmdrake_.c:768
+#: ../rpmdrake_.c:777
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -836,45 +845,37 @@ msgstr ""
 "Instalacja nie powiod³a siê, brak niektórych plików.\n"
 "Mo¿e zachdziæ potrzeba aktualizacji bazy danych ¼róde³."
 
-#: ../rpmdrake_.c:771
+#: ../rpmdrake_.c:780
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "Proszê czekaæ, usuwanie pakietów w celu umo¿liwienia aktualizacji..."
 
-#: ../rpmdrake_.c:780
+#: ../rpmdrake_.c:789
 msgid "Program missing"
 msgstr "Brak programu"
 
-#: ../rpmdrake_.c:781
+#: ../rpmdrake_.c:790
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Brak wymaganego programu (grpmi). Sprawd¼ swoj± instalacjê."
 
-#: ../rpmdrake_.c:791
-msgid "All requested packages were installed successfully."
-msgstr "Wszystkie ¿±dane pakiety zosta³y pomy¶lnie zainstalowane."
-
-#: ../rpmdrake_.c:791
-msgid "Everything installed successfully"
-msgstr "Wszystko zosta³o pomy¶lnie zainstalowane"
-
-#: ../rpmdrake_.c:795
+#: ../rpmdrake_.c:805
 msgid "Everything already installed."
 msgstr "Wszystko zosta³o ju¿ zainstalowane."
 
-#: ../rpmdrake_.c:796
+#: ../rpmdrake_.c:806
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr ""
 "Wszystko zosta³o ju¿ zainstalowane (czy rzeczywi¶cie taki by³\n"
 "zamierzony efekt?)."
 
-#: ../rpmdrake_.c:806
+#: ../rpmdrake_.c:816
 msgid "Please wait, reading packages database..."
 msgstr "Proszê czekaæ, odczytywanie bazy danych pakietów..."
 
-#: ../rpmdrake_.c:844
+#: ../rpmdrake_.c:854
 msgid "Please wait, removing packages..."
 msgstr "Proszê czekaæ, usuwanie pakietów..."
 
-#: ../rpmdrake_.c:859
+#: ../rpmdrake_.c:869
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -886,7 +887,7 @@ msgstr ""
 "To narzêdzie pomo¿e ci wybraæ programy, które mog± zostaæ usuniête\n"
 "z komputera."
 
-#: ../rpmdrake_.c:864
+#: ../rpmdrake_.c:874
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -898,7 +899,7 @@ msgstr ""
 "To narzêdzie pomo¿e ci wybraæ aktualizacje, które mo¿esz chcieæ\n"
 "zainstalowaæ na tym komputerze."
 
-#: ../rpmdrake_.c:869
+#: ../rpmdrake_.c:879
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -927,6 +928,10 @@ msgstr "Mened¿er ¼róde³ oprogramowania"
 #: data/rpmdrake.desktop.in.h:1
 msgid "Install Software"
 msgstr "Instalacja oprogramowania"
+
+#, fuzzy
+#~ msgid "Remove .rpmnew"
+#~ msgstr "Usuwanie oprogramowania"
 
 #~ msgid "This would break your system"
 #~ msgstr "To mo¿e spowodowaæ uszkodzenie systemu"
