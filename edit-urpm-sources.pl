@@ -638,7 +638,7 @@ sub mainwindow {
     $tr->signal_connect(toggled => sub {
 			    my (undef, $path) = @_;
 			    my $iter = $list->get_iter_from_string($path);
-			    invbool(\$urpm->{media}[$path]{ignore});
+			    $urpm->{media}[$path]{ignore} = !$urpm->{media}[$path]{ignore} || undef;
 			    $list->set($iter, 0, !$urpm->{media}[$path]{ignore});
 			});
 
