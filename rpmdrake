@@ -791,45 +791,62 @@ or you already installed all of them."));
 				  });
 	} \@radios_names_ordered, \@modes_buttons;
 
-	my $advanced_menu = Gtk2::Menu->new;
 	my $radio_by;
 
-	each_index {
-	    my ($capt_mode, $capt_flat) = ($_->[0], $_->[2]);
-            my $item = Gtk2::MenuItem->new_with_label($_->[1]);
-	    $advanced_menu->append(gtkshow($item));
-            if ($_->[0] eq $tree_mode->[0]) {
-		$options->{tree_submode} = $_->[0];
-		$advanced_menu->set_active($::i);
-	    }
-	    $item->signal_connect(
-		activate => sub {
-		    $options->{tree_submode} = $capt_mode;
-		    $options->{tree_subflat} = $capt_flat;
-		    $radio_by->activate;
-		},
-	    );
-	} @advanced_modes;
 	$options->{tree_submode} ||= $advanced_modes[0][0];
 	each_index {
 	    if ($_ eq 'by') {
 		$radio_by = $modes_buttons[$::i];
-		$modes_buttons[$::i] = gtkpack(Gtk2::HBox->new(0, 0), $modes_buttons[$::i], my $t = Gtk2::OptionMenu->new);
-		$t->set_menu($advanced_menu);
+		$modes_buttons[$::i] = gtkpack(
+		    Gtk2::HBox->new(0, 0),
+		    $modes_buttons[$::i],
+		    my $t = Gtk2::ComboBox->new
+		);
+		$t->set_model(Gtk2::ListStore->new('Glib::String'));
+		my $search_types_renderer = Gtk2::CellRendererText->new;
+		$t->pack_start($search_types_renderer, Glib::FALSE());
+		$t->set_attributes($search_types_renderer, text => 0);
+		my $iter = $t->get_model()->iter_nth_child(undef, 0);
+		my $n = 0;
+		for my $m (@advanced_modes) {
+		    $iter = $t->get_model()->insert($n++);
+		    $t->get_model()->set($iter, 0, $m->[1]);
+		}
+		$t->set_active(0);
+		$t->signal_connect(
+		    changed => sub {
+			my $act = $t->get_active;
+			$options->{tree_submode} = $advanced_modes[$act][0];
+			$options->{tree_subflat} = $advanced_modes[$act][2];
+			$radio_by->activate;
+		    },
+		);
 	    }
 	} @radios_names_ordered;
     }
     
-    my $search_types_menu = Gtk2::Menu->new;
-    my @search_types = ([ 'normal', N("in names") ], [ 'descriptions', N("in descriptions") ], [ 'files', N("in file names") ]);
-    my $current_search_type = $search_types[0][0];
-    foreach (@search_types) {
-	my $capt_type = $_->[0];
-	$search_types_menu->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($_->[1])),
-						     activate => sub { $current_search_type = $capt_type }));
+    my @search_types = qw(normal descriptions files);
+    my $current_search_type = $search_types[0];
+    my $search_types_optionmenu = Gtk2::ComboBox->new;
+    {
+	$search_types_optionmenu->set_model(Gtk2::ListStore->new('Glib::String'));
+	my $search_types_renderer = Gtk2::CellRendererText->new;
+	$search_types_optionmenu->pack_start($search_types_renderer, Glib::FALSE());
+	$search_types_optionmenu->set_attributes($search_types_renderer, text => 0);
+	my $iter = $search_types_optionmenu->get_model()->iter_nth_child(undef, 0);
+	$iter = $search_types_optionmenu->get_model()->insert(0);
+	$search_types_optionmenu->get_model()->set($iter, 0, N("in names"));
+	$iter = $search_types_optionmenu->get_model()->insert(1);
+	$search_types_optionmenu->get_model()->set($iter, 0, N("in descriptions"));
+	$iter = $search_types_optionmenu->get_model()->insert(2);
+	$search_types_optionmenu->get_model()->set($iter, 0, N("in file names"));
+	$search_types_optionmenu->set_active(0);
+	$search_types_optionmenu->signal_connect(
+	    changed => sub {
+		$current_search_type = $search_types[$search_types_optionmenu->get_active];
+	    },
+	);
     }
-    my $search_types_optionmenu = Gtk2::OptionMenu->new;
-    $search_types_optionmenu->set_menu($search_types_menu);
 
     my $menu_treeview = Gtk2::Menu->new;
     my @menu_treeview_actions = ([ 'reset_selection', N("Reset the selection") ], [ 'reload_pkg', N("Reload the packages list") ]);
@@ -932,36 +949,57 @@ Is it ok to continue?",
     
     $table->attach($hpaned, 0, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
 
-    my %mode2title = (remove => N("Software Packages Removal"), 
-                      update => N("Mandrake Update"), 
-                      install => N("Software Packages Installation"));
-    gtkadd($w->{window}, 
-	   gtkpack_(Gtk2::VBox->new(0, 3),
-                    if_(!$::isEmbedded, 0, Gtk2::Banner->new("title-$MODE", $mode2title{$MODE})),
-		    1, gtkadd(gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
-			      gtkpack_(Gtk2::VBox->new(0, 3),
-				       0, gtkpack__(Gtk2::HBox->new(0, 10),
-						    Gtk2::Label->new(N("Find:")),
-						    $search_types_optionmenu,
-						    gtksignal_connect($find_entry = Gtk2::Entry->new,
-							      key_press_event => sub { $_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
-											 and $find_callback->() }),
-						    gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback)),
-				       1, $table,
-				       0, gtkpack_(Gtk2::HBox->new(0, 20),
-						   0, gtksignal_connect(Gtk2::Button->new(but(N("Help"))),
-									clicked => sub {
-                                                           system("drakhelp --id software-management-$MODE &");
-                                                           interactive_msg_(N("Help launched in background"),
-                                                                            N("The help window has been started, it should appear shortly on your desktop."));
-                                                                        }),
-						   1, my $status = Gtk2::Label->new,
-						   0, gtkpack(Gtk2::HBox->new(1, 20),
-                                                              my $action_button = gtksignal_connect(Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove") : N("Install"))),
-                                                                                                    clicked => sub { $do_action->() }),
-							      gtksignal_connect(Gtk2::Button->new(but_(N("Quit"))),
-										clicked => sub { Gtk2->main_quit })))
-				       ))));
+    my %mode2title = (
+	remove => N("Software Packages Removal"), 
+	update => N("Mandrake Update"), 
+	install => N("Software Packages Installation"),
+    );
+    gtkadd(
+	$w->{window}, 
+	gtkpack_(
+	    Gtk2::VBox->new(0, 3),
+	    if_(!$::isEmbedded, 0, Gtk2::Banner->new("title-$MODE", $mode2title{$MODE})),
+	    1, gtkadd(
+		gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
+		gtkpack_(
+		    Gtk2::VBox->new(0, 3),
+		    0, gtkpack__(
+			Gtk2::HBox->new(0, 10),
+			Gtk2::Label->new(N("Find:")),
+			$search_types_optionmenu,
+			gtksignal_connect($find_entry = Gtk2::Entry->new,
+			    key_press_event => sub { $_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
+				    and $find_callback->() }),
+			gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback)
+		    ),
+		    1, $table,
+		    0, gtkpack_(
+			Gtk2::HBox->new(0, 20),
+			0, gtksignal_connect(
+			    Gtk2::Button->new(but(N("Help"))),
+			    clicked => sub {
+				system("drakhelp --id software-management-$MODE &");
+				interactive_msg_(N("Help launched in background"),
+				    N("The help window has been started, it should appear shortly on your desktop."));
+			    },
+			),
+			1, my $status = Gtk2::Label->new,
+			0, gtkpack(
+			    Gtk2::HBox->new(1, 20),
+			    my $action_button = gtksignal_connect(
+				Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove") : N("Install"))),
+				clicked => sub { $do_action->() },
+			    ),
+			    gtksignal_connect(
+				Gtk2::Button->new(but_(N("Quit"))),
+				clicked => sub { Gtk2->main_quit },
+			    )
+			),
+		    ),
+		),
+	    ),
+	),
+    );
     $> and $action_button->set_sensitive(0);
     $find_entry->grab_focus;
 
