@@ -104,7 +104,7 @@ sub translate {
 sub sprintf_fixutf8 {
     my $need_upgrade;
     $need_upgrade |= to_bool(c::is_tagged_utf8($_)) + 1 foreach @_;
-    if ($need_upgrade == 3) { c::upgrade_utf8($_) foreach @_ };
+    if ($need_upgrade == 3) { c::upgrade_utf8($_) foreach @_ }
     sprintf shift, @_;
 }
 sub N {
@@ -173,7 +173,7 @@ sub interactive_msg {
 			gtksignal_connect(
 			    Gtk2::Button->new($label),
 			    clicked => sub { $d->{retval} = $label; Gtk2->main_quit }
-			)
+			);
 		    } @{$options{yesno}}
 		    : (
 			$options{yesno} ? (
@@ -224,22 +224,34 @@ sub interactive_list {
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my @radios = gtkradio('', @$list);
-    my $vbradios = $callback ? create_packtable({},
-						mapn { my $n = $_[1];
-						       [ $_[0],
-							 gtksignal_connect(Gtk2::Button->new(but(N("Info..."))),
-									   clicked => sub { $callback->($n) }) ]
-						   } \@radios, $list)
-                             : gtkpack__(Gtk2::VBox->new(0, 0), @radios);
+    my $vbradios = $callback ? create_packtable(
+	{},
+	mapn {
+	    my $n = $_[1];
+	    [ $_[0],
+	    gtksignal_connect(
+		Gtk2::Button->new(but(N("Info..."))),
+		clicked => sub { $callback->($n) },
+	    ) ];
+	} \@radios, $list,
+    ) : gtkpack__(Gtk2::VBox->new(0, 0), @radios);
     my $choice;
-    gtkadd($d->{window},
-	   gtkpack__(Gtk2::VBox->new(0,5),
-		     Gtk2::Label->new($contents),
-		     int(@$list) > 8 ? gtkset_size_request(create_scrolled_window($vbradios), 250, 320) : $vbradios,
-		     gtkpack__(create_hbox(), gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub {
-								    each_index { $_->get_active and $choice = $::i } @radios;
-								    Gtk2->main_quit
-								}))));
+    gtkadd(
+	$d->{window},
+	gtkpack__(
+	    Gtk2::VBox->new(0,5),
+	    Gtk2::Label->new($contents),
+	    int(@$list) > 8 ? gtkset_size_request(create_scrolled_window($vbradios), 250, 320) : $vbradios,
+	    gtkpack__(
+		create_hbox(), gtksignal_connect(
+		    Gtk2::Button->new(N("Ok")), clicked => sub {
+			each_index { $_->get_active and $choice = $::i } @radios;
+			Gtk2->main_quit;
+		    }
+		)
+	    )
+	)
+    );
     $d->main;
     $choice;
 }
@@ -483,7 +495,7 @@ by Mandrakelinux Official Updates.")
 			    }
 			    Gtk2->main_quit;
 			},
-		    )
+		    );
 		} [ N("Cancel"), 0 ], [ N("Ok"), 1 ]
 	    ),
 	)
@@ -591,7 +603,7 @@ sub update_sources {
 	callback => sub {
 	    $cancel and goto cancel_update;
 	    my ($type, $media) = @_;
-	    return if $type !~ /^(?:start|progress|end)$/ && @media && !grep { $_ eq $media } @media;
+	    return if $type !~ /^(?:start|progress|end)$/ && @media && !member($media, @media);
 	    if ($type eq 'failed') {
 		$urpm->{fatal}->(N("Error retrieving packages"),
 N("It's impossible to retrieve the list of new packages from the media
@@ -637,9 +649,7 @@ sub update_sources_interactive {
 	    (
 		@buttons = map {
 		    Gtk2::CheckButton->new_with_label($_->{name})
-		} grep {
-		    ! $_->{ignore}
-		} @{$urpm->{media}}
+		} grep { ! $_->{ignore} } @{$urpm->{media}}
 	    ),
 	    Gtk2::HSeparator->new,
 	    gtkpack(
@@ -704,7 +714,7 @@ sub add_medium_and_check {
         return 0;
     }
 
-    for my $name (@newnames) {
+    foreach my $name (@newnames) {
 	urpm::download::set_proxy_config($_, $options->{proxy}{$_}, $name) foreach keys %{$options->{proxy} || {}};
     }
 
