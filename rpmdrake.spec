@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 3mdk
+%define release 4mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,13 +16,14 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrakelinux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.4.1 gurpmi >= 4.4.1 perl-URPM >= 0.90-7mdk drakxtools > 10-23mdk rpmtools >= 4.5
-Requires: perl-Gtk2 >= 0.90-6mdk perl-Locale-gettext >= 1.01-7mdk
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.4.1 gurpmi >= 4.4.1 perl-URPM >= 0.90-7mdk drakxtools > 10-12mdk rpmtools >= 4.5
+Requires: perl-Gtk2 >= 1.023-3mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: curl-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
 URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
 Obsoletes: MandrakeUpdate
+Provides: MandrakeUpdate
 Conflicts: perl-URPM < 0.84
 Conflicts: drakconf < 10-0.8mdk
 
@@ -71,9 +72,11 @@ cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
 ?package(%{name}): command="/usr/sbin/edit-urpm-media" needs="x11" section="Configuration/Packaging" icon="edit-urpm-sources.png" \
   title="Software Media Manager" longtitle="A graphical front end to add/remove/edit media for installing packages"
 ?package(%{name}): command="/usr/sbin/gurpmi.addmedia" needs="gnome" section=".hidden" \
-  title="Medium installer" mimetypes="application/x-urpmi-media"
+  title="Medium installer" mimetypes="application/x-urpmi-media" \
+  longtitle="A graphical front end for adding media"
 ?package(%{name}): command="/usr/sbin/gurpmi.addmedia" needs="kde" section=".hidden" InitialPreference="9" \
-  title="Medium installer" mimetypes="application/x-urpmi-media"
+  title="Medium installer" mimetypes="application/x-urpmi-media" \
+  longtitle="A graphical front end for adding media"
 EOF
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
 for i in rpmdrake rpmdrake-remove mandrakeupdate edit-urpm-sources; do
@@ -118,6 +121,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue May 04 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-4mdk
+- Make the package list pane resizable (Robert Vojta)
+
 * Mon May 03 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-3mdk
 - Fix reset of the wait cursor when run embedded in drakconf
 
