@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.5
-%define release 2mdk
+%define release 3mdk
 
 Name: %{name}
 Version: %{version}
@@ -109,6 +109,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Jan 20 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.5-3mdk
+- When displaying rpms by medium, display media in the order they appear in
+  urpmi.cfg
+- Restore view of selected size in rpmdrake
+- Remove the view menu (for later)
+
 * Tue Jan 18 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.5-2mdk
 - Quick fix for a crash on some popup windows
 - Regenerate po files
