@@ -44,7 +44,7 @@ A fourth program manages the media (add, remove, edit).
 %package -n park-rpmdrake
 Summary: Configure and update rpms on a park
 Group: System/Configuration/Packaging
-Requires: rsync scanssh perl-Expect
+Requires: rsync scanssh perl-Expect rpmdrake
 
 %description -n park-rpmdrake
 Configure and update rpms on a park of hosts. The backend is parallel urpmi.
