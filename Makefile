@@ -52,6 +52,10 @@ tar:
 	cd ..; \
 	rm -rf t
 
+clust:
+	scp ../rpmdrake.tar.bz2 bi:rpm/SOURCES
+	scp rpmdrake.spec bi:rpm/SPECS
+
 SOFTHOME = /home/gc/cvs/soft
 GIHOME = /home/gc/cvs/gi
 
