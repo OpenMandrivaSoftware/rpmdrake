@@ -319,7 +319,7 @@ sub parse_compssUsers_flat {
 
 sub pkg2medium {
     my ($p, $urpm) = @_;
-    foreach ( @{$urpm->{media}} ) {
+    foreach (@{$urpm->{media}}) {
 	!$_->{ignore} && $p->id <= $_->{end} and return $_;
     }
     undef;
@@ -337,7 +337,7 @@ sub extract_header {
     my ($pkg, $urpm) = @_;
     my $chg_prepro = sub {
 	#- preprocess changelog for faster TextView insert reaction
-	[ map { [ "$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ]
+	[ map { [ "$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
     };
     my $name = my_fullname($pkg->{pkg});
     if ($MODE eq 'remove') {
@@ -634,8 +634,10 @@ or you already installed all of them."));
 				       [ gtkpack__(Gtk2::HBox->new(0,0), gtkset_selectable(Gtk2::Label->new($pkg),1)),
 				         gtksignal_connect(Gtk2::Button->new(N("More information on package...")),
 					   clicked => sub {
-					       interactive_msg(N("More information on package..."),
-						   $options->{get_info}->($pkg), scroll => 1)
+					       interactive_msg(
+						   N("More information on package..."),
+						   $options->{get_info}->($pkg), scroll => 1,
+					       );
 					   }) ] } @deps ],
 				   [ gtksignal_connect(Gtk2::Button->new(N("Ok")),
 				       clicked => sub { Gtk2->main_quit }) ]
@@ -1221,7 +1223,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     $urpm->{state} = {};
     my %installable_pkgs;
 
-    my $media = $options{media} ? join(',', @{$options{media}}) : '';
+    my $media = ref $options{media} ? join(',', @{$options{media}}) : '';
     $urpm->configure(media => $media);
 
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
@@ -1303,24 +1305,33 @@ sub dialog_rpmnew {
 	$d->main;
     };
 
-    interactive_packtable(N("Installation finished"),
-			  $w->{rwindow},
-			  $msg,
-			  [ map { my $pkg = $_;
-				  map {
-				      my $f = $_;
-				      my $b;
-				      [ gtkpack__(Gtk2::HBox->new(0, 0),
-						  gtkset_markup(gtkset_selectable(Gtk2::Label->new, 1),
-								qq($pkg:<span font_desc="monospace">$f</span>))),
-					gtksignal_connect($b = Gtk2::Button->new(N("Inspect...")), clicked => sub {
-							      $inspect->($f);
-							      -r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0)
-							  }) ]
-				  } @{$p2r{$pkg}}
-			      } keys %p2r ],
-			  [ gtksignal_connect(Gtk2::Button->new(N("Ok")),
-					      clicked => sub { Gtk2->main_quit }) ]);
+    interactive_packtable(
+	N("Installation finished"),
+	$w->{rwindow},
+	$msg,
+	[ map { my $pkg = $_;
+	    map {
+		my $f = $_;
+		my $b;
+		[ gtkpack__(
+		    Gtk2::HBox->new(0, 0),
+		    gtkset_markup(
+			gtkset_selectable(Gtk2::Label->new, 1),
+			qq($pkg:<span font_desc="monospace">$f</span>),
+		    )
+		),
+		gtksignal_connect(
+		    $b = Gtk2::Button->new(N("Inspect...")),
+		    clicked => sub {
+			$inspect->($f);
+			-r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0);
+		    },
+		) ];
+	    } @{$p2r{$pkg}};
+	} keys %p2r ],
+	[ gtksignal_connect(Gtk2::Button->new(N("Ok")),
+	    clicked => sub { Gtk2->main_quit }) ]
+    );
     return 0;
 }
 
@@ -1375,7 +1386,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	ask_for_medium => sub {
 	    interactive_msg_(
 		N("Change medium"),
-		N("Please insert the medium named \"%s\" on device [%s]", @_),
+		N("Please insert the medium named \"%s\" on device [%s]", $_[0], $_[1]),
 		yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
 	    );
 	},
@@ -1471,7 +1482,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		my $fullname = $pkg->fullname;
 		my $trtype = (any { /$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
 		push our @Readmes, map {
-		    [ $_, $fullname ]
+		    [ $_, $fullname ];
 		} grep { /\bREADME(\.$trtype)?\.urpmi$/ } $pkg->files;
 		close $fh;
 	    },
