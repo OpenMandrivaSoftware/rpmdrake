@@ -120,6 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Thu Feb 19 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-6mdk
 - edit-urpm-media: fix broken media reordering (program crashed)
+- rpmdrake: hide password in logs (#6260)
 
 * Fri Feb 13 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-5mdk
 - make it embeddable

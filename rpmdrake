@@ -1119,7 +1119,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $distant_number;
     foreach my $l (@$list) {
         foreach (sort values %$l) {
-            standalone::explanations("Installing package $_");
+            my $showable = $_;
+            $showable =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|;  #- hide password
+            standalone::explanations("Installing package $showable");
             /^file|removable/ or $distant_number++;
         }
     }
