@@ -632,7 +632,7 @@ sub update_sources_check {
     update_sources($urpm, %$options, noclean => 1, medialist => \@media);
   fatal_error:
     if (@error_msgs) {
-        interactive_msg('rpmdrake', sprintf_fixutf8(translate($error_msg), join("\n", @error_msgs)));
+        interactive_msg('rpmdrake', sprintf(N($error_msg, join("\n", @error_msgs))));
         return 0;
     }
     return 1;
