@@ -60,17 +60,20 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
 ?package(%{name}): command="/usr/sbin/rpmdrake" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
-title="Browse Available Software" longtitle="A graphical front end for browsing available packages for installation (no root password needed)"
+  title="Browse Available Software" longtitle="A graphical front end for browsing available packages for installation (no root password needed)"
 ?package(%{name}): command="/usr/sbin/rpmdrake --root" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
-title="Install Software" longtitle="A graphical front end for installing packages"
+  title="Install Software" longtitle="A graphical front end for installing packages"
 ?package(%{name}): command="/usr/sbin/rpmdrake-remove --root" needs="x11" section="Configuration/Packaging" icon="rpmdrake-remove.png" \
-title="Remove Software" longtitle="A graphical front end for removing packages"
+  title="Remove Software" longtitle="A graphical front end for removing packages"
 ?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.png" \
-title="Mandrake Update" longtitle="A graphical front end for software updates"
+  title="Mandrake Update" longtitle="A graphical front end for software updates"
 ?package(%{name}): command="/usr/sbin/edit-urpm-media" needs="x11" section="Configuration/Packaging" icon="edit-urpm-sources.png" \
-title="Software Media Manager" longtitle="A graphical front end to add/remove/edit media for installing packages"
+  title="Software Media Manager" longtitle="A graphical front end to add/remove/edit media for installing packages"
+?package(%{name}): command="/usr/sbin/gurpmi.addmedia" needs="gnome" section=".hidden" \
+  title="Medium installer" mimetypes="application/x-urpmi-media"
+?package(%{name}): command="/usr/sbin/gurpmi.addmedia" needs="kde" section=".hidden" InitialPreference="9" \
+  title="Medium installer" mimetypes="application/x-urpmi-media"
 EOF
-
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
 for i in rpmdrake rpmdrake-remove mandrakeupdate edit-urpm-sources; do
   cp pixmaps/${i}16.png $RPM_BUILD_ROOT%{_miconsdir}/${i}.png
@@ -114,8 +117,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
-* Fri Feb  6 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-3mdk
+* Mon Feb  9 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-3mdk
 - some #7472-alike progressbar sizing fixes
+- menu: specify that gurpmi.addmedia handles application/x-urpmi-media
 
 * Wed Jan 21 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-2mdk
 - remove unneeded stuff from grpmi/po/*.po
