@@ -65,6 +65,9 @@ $> and interactive_msg(_("Error..."),
 grpmi_rpm::init_rcstuff() and interactive_msg(_("RPM initialization error"),
 					      _("The initialization of config files of RPM was not possible, sorry.")), exit -1;
 
+$ENV{HOME} ||= '/root';
+my @grpmi_config = map { chomp_($_) } cat_("$ENV{HOME}/.grpmi");
+
 my $mainw = my_gtk->new('grpmi');
 my $label = new Gtk::Label(_("Initializing..."));
 my $progressbar = gtkset_usize(new Gtk::ProgressBar, 400, 0);
@@ -168,8 +171,10 @@ Do you want to force the install anyway?",
 # -=-=-=---=-=-=---=-=-=-- cleanup -=-=-=---=-=-=--
 $exitstatus = 0;
 cleanup:
-foreach (@ARGV) {
-    s/^-skipped&([^&]+)&$/$1/;
-    /^\Q$cache_location/ and unlink;
+if (!member('noclearcache', @grpmi_config)) {
+    foreach (@ARGV) {
+	s/^-skipped&([^&]+)&$/$1/;
+	/^\Q$cache_location/ and unlink;
+    }
 }
 exit $exitstatus;
