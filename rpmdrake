@@ -756,27 +756,28 @@ sub dialog_rpmnew {
 	$texts{$_}->insert($fixedfont, undef, undef, $contents{$_}) foreach keys %contents;
 	$d->main;
     };
+    my $packtable = create_packtable({},
+				     map { my $pkg = $_;
+					   map {
+					       my $f = $_;
+					       my $b = new Gtk::Button(but(_("Inspect...")));
+					       [ gtkpack__(new Gtk::HBox(0, 0),
+							   new Gtk::Label("$pkg:$f")),
+						 gtksignal_connect($b,
+								   clicked => sub {
+								       $inspect->($f);
+								       -r "$f.rpmnew" || -r "$f.rpmsave"
+									 or $b->set_sensitive(0)
+								     }) ]
+					   } @{$p2r{$pkg}}
+				       } keys %p2r);
     gtkadd($d->{window},
 	   gtkpack__(new Gtk::VBox(0,5),
 		     new Gtk::Label(_("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:",
 				      $exitstatus ? _("some packages failed to install\ncorrectly")
 				      : _("everything was installed correctly"))),
-		     gtkset_usize(createScrolledWindow(create_packtable({},
-									map { my $pkg = $_;
-									      map {
-										  my $f = $_;
-										  my $b = new Gtk::Button(but(_("Inspect...")));
-										  [ gtkpack__(new Gtk::HBox(0, 0),
-											      new Gtk::Label("$pkg:$f")),
-										    gtksignal_connect($b,
-												      clicked => sub {
-													  $inspect->($f);
-													  -r "$f.rpmnew" || -r "$f.rpmsave"
-													    or $b->set_sensitive(0)
-													}) ]
-									      } @{$p2r{$pkg}}
-									  } keys %p2r)),
-				  $typical_width*1.5, 70 + $sum_rpmnew*20),
+		     $sum_rpmnew < 6 ? $packtable
+		                     : gtkset_usize(createScrolledWindow($packtable), $typical_width*1.7, min(70 + $sum_rpmnew*20, 450)),
 		     gtkpack__(create_hbox(), gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit }))));
     $d->main;
 }
