@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 33mdk
+%define release 34mdk
 
 Name: %{name}
 Version: %{version}
@@ -101,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Sep  2 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-34mdk
+- s/9.1/9.2/ (#5201)
+
 * Tue Sep 02 2003 David Baudens <baudens@mandrakesoft.com> 2.1-33mdk
 - Update banners
 
