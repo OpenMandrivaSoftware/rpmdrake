@@ -428,7 +428,7 @@ or you already installed all of them."));
 					  by_selection => sub { sort { $pkgs->{$b->[0]}{selected} <=> $pkgs->{$a->[0]}{selected}
 								       || uc($a->[0]) cmp uc($b->[0]) } @_ },
                                           by_leaves => sub {
-                                              my @pkgs_times = qx{rpm -q --qf "%{name}-%{version}-%{release} %{installtime}\n" `urpmi_rpm-find-leaves`};
+#                                              my @pkgs_times = qx{rpm -q --qf "%{name}-%{version}-%{release} %{installtime}\n" `urpmi_rpm-find-leaves`};
                                               sort { $b->[1] <=> $a->[1] } grep { exists $pkgs->{$_->[0]} } map { [ split ] } @pkgs_times;
                                           },
 					  flat => sub { sort { uc($a->[0]) cmp uc($b->[0]) } @_ });

@@ -101,6 +101,10 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Fri May 30 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-22mdk
 - fix media/medias by medium/media
+- edit-medias:
+  - add ability to edit parallel urpmi
+  - add ability to update a medium or regenerate its hdlist through
+    right-click on the medium name
 
 * Wed May 28 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-21mdk
 - let medias be reorderable in the medias editor (drag and drop the list)
