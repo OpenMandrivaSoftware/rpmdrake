@@ -228,8 +228,16 @@ sub myformatList {
 }
 
 sub split_fullname { $_[0] =~ /^(.*)-([^-]+-[^-]+)$/ }
-sub my_fullname { my ($name, $version, $release) = $_[0]->fullname; "$name-$version-$release" }
-sub urpm_name { my ($name, $version, $release, $arch) = $_[0]->fullname; "$name-$version-$release.$arch" }
+sub my_fullname {
+    return '?-?-?' unless ref $_[0];
+    my ($name, $version, $release) = $_[0]->fullname;
+    "$name-$version-$release";
+}
+sub urpm_name {
+    return '?-?-?.?' unless ref $_[0];
+    my ($name, $version, $release, $arch) = $_[0]->fullname;
+    "$name-$version-$release.$arch";
+}
 
 sub parse_compssUsers_flat {
     my (%compssUsers, $category);
