@@ -741,9 +741,11 @@ or you already installed all of them."));
 				  });
 	} \@toggle_names_ordered, \@modes_buttons;
     } else {
-	my %radios_infos = (mandrake_choices => { name => N("Mandrake choices"),           flat => 0 },
-			    flat             => { name => N("All packages, alphabetical"), flat => 1 },
-	                    by               => { name => '',                              flat => 0 });
+	my %radios_infos = (
+	    mandrake_choices => { name => N("Mandrakelinux choices"),      flat => 0 },
+	    flat             => { name => N("All packages, alphabetical"), flat => 1 },
+	    by               => { name => '',                              flat => 0 },
+	);
 	$compssUsers = parse_compssUsers_flat();
 	my @radios_names_ordered = qw(mandrake_choices flat by);
 	$compssUsers or shift @radios_names_ordered;
