@@ -25,6 +25,23 @@ use strict;
 use lib qw(/usr/lib/libDrakX);
 use common;
 
+BEGIN {  #- we want to run this code standalone.pm can output its sucking help
+    "@ARGV" =~ /-h/ and do {
+        printf "usage: gurpmi.addmedia [options] <name> <url> [with <relative_path>]
+where <url> is one of
+       file://<path>
+       ftp://<login>:<password>@<host>/<path> with <relative filename of hdlist>
+       ftp://<host>/<path> with <relative filename of hdlist>
+       http://<host>/<path> with <relative filename of hdlist>
+       removable://<path>
+
+and [options] are from
+  --update       - create an update medium.
+";    
+        exit(0);
+    };
+}
+
 require_root_capability();
 
 use rpmdrake;
