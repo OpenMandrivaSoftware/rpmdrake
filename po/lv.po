@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2002-08-11 22:16+0200\n"
 "Last-Translator: Vitauts Stočka <vit@dau.lv>\n"
 "Language-Team: Latvian <cooker-i18n@linux-mandrake.com>\n"
@@ -139,7 +139,7 @@ msgstr "Labi"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Atcelt"
@@ -454,6 +454,11 @@ msgstr ""
 "Šis rīks palīdzēs Jums konfigurēt pakotņu avotus, kurus vēlaties lietot\n"
 "uz Jūsu datora. Tie tad būs pieejami, lai instalētu jaunu programmatūras\n"
 "pakotni, vai lai veiktu jauninājumus."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1229,7 +1234,7 @@ msgstr "Izvēlēties no jauna"
 msgid "Reload the packages list"
 msgstr "Pārlādējiet pakotņu sarakstu"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, fuzzy, c-format
 msgid "Update media"
 msgstr "Atjaunot avotus"
@@ -1888,7 +1893,7 @@ msgstr ""
 msgid "Download of `%s', speed:%s"
 msgstr ""
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, fuzzy, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1897,22 +1902,43 @@ msgid ""
 "%s"
 msgstr "Nav iespējams atjaunināt datu nesēju; tas tiks automātiski atslēgts."
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, fuzzy, c-format
 msgid "Select the media you wish to update:"
 msgstr ""
 "Lūdzu izvēlieties avotus,\n"
 "kurus vēlaties atnunot:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Atjaunināt"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "Nevaru izveidot datu nesēju."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Lūdzu gaidiet, pievienoju datu nesēju..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr "Tiek sagatavota instalēšana"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2190,9 +2216,6 @@ msgstr "Programmatūras avotu pārvaldnieks"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Lūdzu gaidiet, atjauninu datu nesēju..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Lūdzu gaidiet, pievienoju datu nesēju..."
 
 #, fuzzy
 #~ msgid "no name found"

@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: zh_TW\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2004-01-20 21:23+0800\n"
 "Last-Translator: Hilbert <h@mandrake.org>\n"
 "Language-Team: Chinese Traditional <zh@li.org>\n"
@@ -144,7 +144,7 @@ msgstr "確定"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "取消"
@@ -176,7 +176,8 @@ msgstr "你需要插入媒體以便繼續"
 
 #: ../edit-urpm-sources.pl:210
 #, c-format
-msgid "In order to save the changes, you need to insert the medium in the drive."
+msgid ""
+"In order to save the changes, you need to insert the medium in the drive."
 msgstr "為了能夠儲存變更, 你需要置入該媒體於磁碟機."
 
 #: ../edit-urpm-sources.pl:226
@@ -431,7 +432,8 @@ msgstr "說明發射於背景"
 
 #: ../edit-urpm-sources.pl:658 ../rpmdrake:900
 #, c-format
-msgid "The help window has been started, it should appear shortly on your desktop."
+msgid ""
+"The help window has been started, it should appear shortly on your desktop."
 msgstr "說明視窗已經被開始了, 它將會在短時間內出現於您的桌面."
 
 #: ../edit-urpm-sources.pl:669 ../rpmdrake:1342
@@ -458,6 +460,11 @@ msgstr ""
 "\n"
 "此工具將會幫助你設定您想要用於系統上的套件媒體\n"
 "他們將會用於安裝軟體套件或執行更新."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1235,7 +1242,7 @@ msgstr "重置選取"
 msgid "Reload the packages list"
 msgstr "重新載入套件清單"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "更新媒體"
@@ -1906,7 +1913,7 @@ msgstr "下載 `%s', 次數:%s, 速度:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "下載 `%s', 速度:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1919,20 +1926,44 @@ msgstr ""
 "錯誤:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "請選擇您要更新的媒體:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "更新"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "無法建立媒體."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "請稍後，正在加入媒介來源..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"安裝時發生了下面的錯誤:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2206,9 +2237,6 @@ msgstr "軟件媒體管理員"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "請稍後，更新媒介中..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "請稍後，正在加入媒介來源..."
 
 #, fuzzy
 #~ msgid "no name found"
@@ -2931,4 +2959,3 @@ msgstr "軟件媒體管理員"
 #~ msgstr ""
 #~ "全部\n"
 #~ "不選 "
-

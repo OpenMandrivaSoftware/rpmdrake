@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sr\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2003-07-27 16:44+0200\n"
 "Last-Translator: Toma Jankovic <tomaja@net.yu>\n"
 "Language-Team: serbian <i18n@mandrake.co.yu>\n"
@@ -140,7 +140,7 @@ msgstr "У реду"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Одустани"
@@ -457,6 +457,11 @@ msgstr ""
 "користите\n"
 "на вашем рачунару. Након тога ће бити спреми за инсталацију као нови пакети\n"
 "или за ажурирање старих."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1239,7 +1244,7 @@ msgstr "Поново изабери"
 msgid "Reload the packages list"
 msgstr "Поново учитај листу пакета"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "Ажурирање медија"
@@ -1917,7 +1922,7 @@ msgstr "Download са `%s', време до краја:%s, брзина:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "Download са `%s', брзина:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1930,20 +1935,44 @@ msgstr ""
 "Грешке:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Изаберите медиј који желите да ажурирате:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Aжурирaњe"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "Не могу да направим медијум."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Молимо Вас да сачекате, додајем медијум..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"Наишао сам на проблем током инсталирања:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2218,9 +2247,6 @@ msgstr "Менаџер Софтверског Кода"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Молим Вас сачекајте, ажурирам медијум..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Молимо Вас да сачекате, додајем медијум..."
 
 #, fuzzy
 #~ msgid "no name found"

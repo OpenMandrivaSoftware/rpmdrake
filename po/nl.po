@@ -6,21 +6,20 @@
 # Copyright (C) 2000-1 Mandrakesoft
 # Tom Laermans <tom.laermans@powersource.cx>, 2000-1.
 # Jeroen ten Berge <j.ten.berge@twinbit.nl>, 2002
-# Reinout van Schouwen <reinout@cs.vu.nl>, 2002, 2003
+# Reinout van Schouwen <reinout@cs.vu.nl>, 2002-2004
 # Hendrik-Jan Heins <hjh@passys.nl>, 2003,2004
 # Peter Bosch <peter@dromas.student.utwente.nl>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-nl\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
-"PO-Revision-Date: 2004-01-19 10:46+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
+"PO-Revision-Date: 2004-01-15 20:27+0100\n"
 "Last-Translator: Hendrik-Jan Heins <hjh@passys.nl>\n"
 "Language-Team: Nederlands <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.1\n"
 
 #: ../edit-urpm-sources.pl:61
 #, c-format
@@ -146,7 +145,7 @@ msgstr "Ok"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Annuleren"
@@ -308,7 +307,7 @@ msgstr "Media limiet"
 #: ../edit-urpm-sources.pl:421
 #, c-format
 msgid "Command"
-msgstr "Commando"
+msgstr "Opdracht"
 
 #: ../edit-urpm-sources.pl:431 ../rpmdrake:252 ../rpmdrake:269 ../rpmdrake:379
 #: ../rpmdrake:447
@@ -379,7 +378,7 @@ msgstr "Een sleutel toevoegen..."
 #: ../edit-urpm-sources.pl:550
 #, c-format
 msgid "Remove key"
-msgstr "Verwijder sleutel"
+msgstr "Sleutel verwijderen"
 
 #: ../edit-urpm-sources.pl:562
 #, c-format
@@ -419,7 +418,7 @@ msgstr "Verversen..."
 #: ../edit-urpm-sources.pl:650
 #, c-format
 msgid "Manage keys..."
-msgstr "Beheer sleutels..."
+msgstr "Sleutelbeheer..."
 
 #: ../edit-urpm-sources.pl:651
 #, c-format
@@ -472,6 +471,11 @@ msgstr ""
 "Dit hulpprogramma helpt u om de pakketmedia die u wenst te gebruiken\n"
 "op uw computer in te stellen. Dezen zullen dan beschikbaar zijn om nieuwe\n"
 "softwarepakketten te installeren of om bijgewerkte paketten te leveren."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -835,7 +839,7 @@ msgstr "Toegang op afstand"
 #: ../rpmdrake:158
 #, c-format
 msgid "Office"
-msgstr "Kantoortoepassingen"
+msgstr "Kantoor"
 
 #: ../rpmdrake:159
 #, c-format
@@ -1257,7 +1261,7 @@ msgstr "Alle selecties opheffen"
 msgid "Reload the packages list"
 msgstr "Pakkettenlijst herladen"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "Media verversen"
@@ -1509,7 +1513,7 @@ msgstr ""
 #: ../rpmdrake:1143
 #, c-format
 msgid "Package installation..."
-msgstr "Pakket installatie..."
+msgstr "Pakketinstallatie..."
 
 #: ../rpmdrake:1143
 #, c-format
@@ -1941,7 +1945,7 @@ msgstr "Downloaden van `%s', tijd over:%s, snelheid:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "Downloaden van `%s', snelheid:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1954,20 +1958,44 @@ msgstr ""
 "Foutmeldingen:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Selecteer de media die u wilt bijwerken:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Verversen"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "Niet in staat medium aan te maken"
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Even geduld, bezig met toevoegen medium..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"Er is een fout opgetreden tijdens de installatie:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2237,13 +2265,20 @@ msgstr "Software verwijderen"
 
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
-msgstr "Software Bronnen beheer"
+msgstr "Software Bronnenbeheer"
+
+#~ msgid ""
+#~ "The list of updates is void. This means that either there is\n"
+#~ "no available update for the packages installed on your computer,\n"
+#~ "or you already installed all of them."
+#~ msgstr ""
+#~ "De lijst met vernieuwingen is leeg. Dit betekent dat er ofwel\n"
+#~ "geen bijgewerkte paketten beschikbaar zijn voor de op uw computer\n"
+#~ "geïnstalleerde pakketten, ofwel dat u ze reeds allemaal\n"
+#~ "geïnstalleerd heeft."
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Even geduld, bezig met verversen van medium..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Even geduld, bezig met toevoegen medium..."
 
 #, fuzzy
 #~ msgid "no name found"

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2003-09-18 10:31GMT\n"
 "Last-Translator: Pjetur G. Hjaltason <pjetur@pjetur.net>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -138,7 +138,7 @@ msgstr "Í lagi"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Hætta við"
@@ -451,6 +451,11 @@ msgid ""
 "This tool will help you configure the packages media you wish to use on\n"
 "your computer. They will then be available to install new software package\n"
 "or to perform updates."
+msgstr ""
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
 msgstr ""
 
 #: ../rpmdrake:85
@@ -1218,7 +1223,7 @@ msgstr ""
 msgid "Reload the packages list"
 msgstr "Endurlesa pakkalista"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "Uppfæra miðil"
@@ -1836,7 +1841,7 @@ msgstr ""
 msgid "Download of `%s', speed:%s"
 msgstr ""
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1849,20 +1854,44 @@ msgstr ""
 "Villur:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Veldu miðil sem þú vilt uppfæra:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Uppfæra"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "Gat ekki búið til miðil."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Augnablik, bæti við miðli..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"Það voru vandræði við uppsetningu:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2136,9 +2165,6 @@ msgstr "Hugbúnaðar-miðils-stjóri"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Augnablik, uppfæri miðil..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Augnablik, bæti við miðli..."
 
 #~ msgid "no name found"
 #~ msgstr "ekkert nafn fannst"

@@ -13,7 +13,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2004-01-07 13:09-0300\n"
 "Last-Translator: Fabian Mandelbaum <fabman@mandrakesoft.com>\n"
 "Language-Team: Español <es@li.org>\n"
@@ -143,7 +143,7 @@ msgstr "Aceptar"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Cancelar"
@@ -464,6 +464,11 @@ msgstr ""
 "Esta herramienta lo ayudará a configurar los soportes de paquetes que desea\n"
 "utilizar en su computadora. Luego, los mismos estarán disponibles para\n"
 "instalar paquetes de software nuevos o realizar actualizaciones."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1245,7 +1250,7 @@ msgstr "Reiniciar la selección"
 msgid "Reload the packages list"
 msgstr "Recargar la lista de paquetes"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "Actualizar soportes"
@@ -1924,7 +1929,7 @@ msgstr "Descarga de `%s', faltan:%s, velocidad:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "Descarga de `%s', velocidad:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1937,20 +1942,44 @@ msgstr ""
 "Errores:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Seleccione los soportes que desea actualizar:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Actualizar"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "No se puede crear el soporte."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Por favor espere, agregando soporte..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"Hubo un problema durante la instalación:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2224,9 +2253,6 @@ msgstr "Administrador de soportes de software"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Por favor espere, actualizando soporte..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Por favor espere, agregando soporte..."
 
 #~ msgid "no name found"
 #~ msgstr "no se encontró nombre alguno"

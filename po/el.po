@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-el\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2003-09-06 02:07+0300\n"
 "Last-Translator:  Νίκος Νύκταρης (Nick Niktaris)  <niktarin@yahoo.com>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -141,7 +141,7 @@ msgstr "OK"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -460,6 +460,11 @@ msgstr ""
 "να χρησιμοποιήσετε σε αυτόν τον υπολογιστή. 'Έπειτα θα είναι διαθέσιμα για "
 "να \n"
 "εγκατασταθούν σαν νέα πακέτα ή να αναβαθμίσετε υπάρχοντα πακέτα."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1241,7 +1246,7 @@ msgstr "Επαναφορά της επιλογής"
 msgid "Reload the packages list"
 msgstr "Ανανέωση της λίστας πακέτων"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "Ανανέωση μέσων"
@@ -1914,7 +1919,7 @@ msgstr "Λήψη του `%s', χρόνος που απομένει:%s, ταχύ�
 msgid "Download of `%s', speed:%s"
 msgstr "Λήψη του `%s', ταχύτητα:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1926,20 +1931,44 @@ msgstr ""
 "Σφάλματα:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Επιλέξτε τα μέσα που θέλετε να ανανεώσετε:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Ανανέωση"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "Αδυναμία δημιουργίας μέσου."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Παρακαλώ περιμένετε, προστίθεται το μέσο..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"Συνέβη ένα σφάλμα κατά την εγκατάσταση:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2215,9 +2244,6 @@ msgstr "Διαχειριστής Μέσων Λογισμικού"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Παρακαλώ περιμένετε, ανανεώνεται το μέσο..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Παρακαλώ περιμένετε, προστίθεται το μέσο..."
 
 #~ msgid "Save and quit"
 #~ msgstr "Αποθήκευση και έξοδος"

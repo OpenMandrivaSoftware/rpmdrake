@@ -13,7 +13,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2004-01-12 18:21+0100\n"
 "Last-Translator: Christophe Combelles <ccomb@free.fr>\n"
 "Language-Team: french <cooker-i18n@linux-mandrake.com>\n"
@@ -143,7 +143,7 @@ msgstr "Ok"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Annuler"
@@ -469,6 +469,11 @@ msgstr ""
 "vous souhaitez utiliser sur votre ordinateur. Ils seront\n"
 "disponibles par la suite pour installer de nouveaux paquetages\n"
 "logiciels ou pour réaliser des mises à jour."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1251,7 +1256,7 @@ msgstr "Remettre à zéro la sélection"
 msgid "Reload the packages list"
 msgstr "Rafraîchir la liste des paquetages"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "Mise à jour de média"
@@ -1935,7 +1940,7 @@ msgstr "Téléchargement de `%s', temps : %s, vitesse : %s"
 msgid "Download of `%s', speed:%s"
 msgstr "Téléchargement de `%s', vitesse : %s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1948,20 +1953,44 @@ msgstr ""
 "Erreurs :\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Veuillez choisir les média que vous voulez mettre à jour :"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "Impossible de créer le médium."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Veuillez patienter, ajout du médium..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"Une erreur est survenue pendant l'installation des paquetages :\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2235,9 +2264,6 @@ msgstr "Gestionnaire de Média Logiciels"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Veuillez patienter, mise à jour du médium..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Veuillez patienter, ajout du médium..."
 
 #, fuzzy
 #~ msgid "no name found"

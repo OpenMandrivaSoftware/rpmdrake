@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-fa\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2004-01-19 00:15+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -136,7 +136,7 @@ msgstr "تأیید"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "لغو"
@@ -453,6 +453,11 @@ msgstr ""
 "این ابزار به شما در پیکربندی رسانه‌های بسته‌هایی که می‌خواهید بر رایانه‌ی خود\n"
 "استفاده کنید کمک خواهد کرد. آنها سپس برای نصب بسته‌ی جدید نرم‌افزار یا \n"
 "انجام بروزسازی در دسترس خواهند بود."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1233,7 +1238,7 @@ msgstr "بازنشاندن انتخاب"
 msgid "Reload the packages list"
 msgstr "بارگذاری مجدد لیست بسته‌ها"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "رسانه‌ی بروزسازی"
@@ -1907,7 +1912,7 @@ msgstr "بارگیری `%s'، زمان باقیمانده: %s، سرعت:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "بارگیری `%s'، سرعت:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1920,20 +1925,44 @@ msgstr ""
 "خطاها:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "انتخاب کردن رسانه‌ای که می‌خواهید بروزسازی کنید:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "بروزسازی"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "نمی‌توانم رسانه را ایجاد کنم."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "لطفا صبر نمایید، در حال اضافه کردن رسانه..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"اشکالی هنگام نصب وجود داشت:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2207,9 +2236,6 @@ msgstr "مدیر رسانه‌های نرم‌افزاری"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "لطفا صبر نمایید، در حال بروزسازی رسانه..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "لطفا صبر نمایید، در حال اضافه کردن رسانه..."
 
 #, fuzzy
 #~ msgid "no name found"

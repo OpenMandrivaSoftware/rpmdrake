@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-eo\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2003-08-21 11:57+0000\n"
 "Last-Translator: Vilhelmo Lutermano <vlutermano@free.fr>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -140,7 +140,7 @@ msgstr "Jes"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Forigu"
@@ -457,6 +457,11 @@ msgstr ""
 "via komputilo. Ili estos poste atingeblaj por instali novajn program-"
 "pakaĵojn\n"
 "aŭ por ĝisdatigi."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1238,7 +1243,7 @@ msgstr "Reŝargu la elekton"
 msgid "Reload the packages list"
 msgstr "Reŝargu la liston de pakaĵoj"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "Ĝisdatigu datenportilon"
@@ -1913,7 +1918,7 @@ msgstr "Deŝuto de '%s', tempo por fari:%s, rapideco:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "Deŝuto de `%s', rapideco:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1926,20 +1931,44 @@ msgstr ""
 "Eraroj:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Bonvole elektu la datenportilon kiun vi deziras ĝisdatigi:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Ĝisdatigu"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "Ne povis krei datenportilon."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Bonvole atendu, mi aldonas portilon..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"Okazis eraro dum instalado:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2214,9 +2243,6 @@ msgstr "Programfont-mastrumilo"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Bonvole atendu, mi ĝisdatigas portilon..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Bonvole atendu, mi aldonas portilon..."
 
 #~ msgid "in files"
 #~ msgstr "en dosieroj"

@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2002-08-25 14:32+0900\n"
 "Last-Translator: Jaegeum Cze <baedaron@hanafos.com>\n"
 "Language-Team: Korean <baedaron@hananet.net>\n"
@@ -143,7 +143,7 @@ msgstr "확인"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "취소"
@@ -458,6 +458,11 @@ msgstr ""
 "이 도구는 이 컴퓨터 상에서 사용할 팩키지 소스 설정을 도와 줍니다.\n"
 "설정된 소스는 새 소프트웨어 팩키지를 설치하거나 업데이트할 때\n"
 "사용됩니다."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1233,7 +1238,7 @@ msgstr "선택 재설정"
 msgid "Reload the packages list"
 msgstr "팩키지 목록 다시 읽기"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, fuzzy, c-format
 msgid "Update media"
 msgstr "소스 업데이트"
@@ -1898,7 +1903,7 @@ msgstr ""
 msgid "Download of `%s', speed:%s"
 msgstr ""
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, fuzzy, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1907,20 +1912,44 @@ msgid ""
 "%s"
 msgstr "매체를 업데이트할 수 없습니다; 자동으로 사용불가될 것입니다."
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, fuzzy, c-format
 msgid "Select the media you wish to update:"
 msgstr "업데이트하려는 소스을 선택해 주세요:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "업데이트 버전"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "매체를 생성할 수 없습니다."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "기다려 주세요. 매체 추가 중..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"팩키지 설치 중 오류가 있었습니다:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2197,9 +2226,6 @@ msgstr "소프트웨어 소스 관리자"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "기다려 주세요. 매체 업데이트 중..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "기다려 주세요. 매체 추가 중..."
 
 #, fuzzy
 #~ msgid "no name found"

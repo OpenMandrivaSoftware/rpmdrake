@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-vi\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2004-01-28 21:37+0700\n"
 "Last-Translator: Trinh Minh Thanh <tmthanh@yahoo.com>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -134,7 +134,7 @@ msgstr "OK"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Bỏ qua"
@@ -451,6 +451,11 @@ msgstr ""
 "Công cụ này giúp cấu hình phương tiện chứa gói tin bạn muốn dùng trên\n"
 "máy tính này. Chúng sẽ có sẵn để cài đặt các gói phần mềm mới hoặc thực\n"
 "hiện cập nhật."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1232,7 +1237,7 @@ msgstr "Lập lại việc chọn"
 msgid "Reload the packages list"
 msgstr "Nạp lại danh sách các gói"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "Phương tiện cập nhật"
@@ -1907,7 +1912,7 @@ msgstr "Tải xuống của `%s', thời gian tải:%s, tốc độ:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "Tải xuống của `%s', tốc độ:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1920,20 +1925,44 @@ msgstr ""
 "Lỗi:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Hãy chọn phương tiện bạn muốn cập nhật:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Cập nhật"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "Không thể tạo phương tiện."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Hãy đợi, đang thêm phương tiện..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"Xả ra lỗi khi đang cài đặt:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2207,6 +2236,3 @@ msgstr "Trình Quản Lý Nguồn Phần Mềm"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Hãy đợi, đang cập nhật phương tiện..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Hãy đợi, đang thêm phương tiện..."

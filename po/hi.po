@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-hi\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2004-01-11 21:22+0530\n"
 "Last-Translator: धनञ्जय शर्मा (Dhananjaya Sharma) <dysxhi@yahoo.co.in>\n"
 "Language-Team: हिन्दी, भारत (Hindi, India) <dysxhi@yahoo.co.in>\n"
@@ -135,7 +135,7 @@ msgstr "ओ०के०"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "निरस्त"
@@ -453,6 +453,11 @@ msgstr ""
 "यह टूल आपकी सहायता उन पैकेजों को संरचित करने में करेगा, जिन्हें आप अपने कम्पयूटर पर\n"
 "उपयोग करना चाहते है। यह सभी, तब नये सॉफ़्टवेयर पैकेजों को संसाधित करने में या अपडेट्स\n"
 "को करने के लिए उपलब्ध होगें।"
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1234,7 +1239,7 @@ msgstr "चयन को पुनः स्थापित करें"
 msgid "Reload the packages list"
 msgstr "पैकेजों की सूची को पुनः ताजा करें"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "माध्यम को अपडेट करें"
@@ -1910,7 +1915,7 @@ msgstr "`%s' का डॉउनलोड, समय अनुमान:%s, ग�
 msgid "Download of `%s', speed:%s"
 msgstr "`%s' का डॉउनलोड, गति:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1923,20 +1928,44 @@ msgstr ""
 "त्रुटियां:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "उस माध्यम का चयन करें जिसे आप अपडेट करना चाहते है:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "अपडेट"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "माध्यम का निर्माण करने में असमर्थ।"
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "कृपया प्रतीक्षा करें, माध्यम को जोड़ा जा रहा है..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"संसाधन के दौरान, एक समस्या थी:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2210,9 +2239,6 @@ msgstr "सॉफ़्टवेयर मीडीया प्रबंधक"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "कृपया प्रतीक्षा करें, माध्यम को उनन्यन किया जा रहा है..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "कृपया प्रतीक्षा करें, माध्यम को जोड़ा जा रहा है..."
 
 #, fuzzy
 #~ msgid "no name found"

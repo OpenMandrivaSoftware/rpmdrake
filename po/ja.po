@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ja\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2003-11-17 19:19+0900\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
 "Language-Team:  <ja@li.org>\n"
@@ -141,7 +141,7 @@ msgstr "OK"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "キャンセル"
@@ -458,6 +458,11 @@ msgstr ""
 "このツールはRPMのメディアを設定します。\n"
 "設定したメディアから新しいRPMをインストールしたり\n"
 "更新したりできるようになります。"
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1238,7 +1243,7 @@ msgstr "選択をリセット"
 msgid "Reload the packages list"
 msgstr "パッケージリストを読み直す"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "メディアを更新"
@@ -1906,7 +1911,7 @@ msgstr "'%s'をダウンロード。残り時間:%s, 速度:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "`%s'をダウンロード。速度:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1919,20 +1924,44 @@ msgstr ""
 "エラー:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "更新するメディアを選んでください:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "更新"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "メディアを作成できません。"
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "お待ちください。メディアを追加中です。"
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"インストール中に問題が発生:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2206,9 +2235,6 @@ msgstr "RPMメディアマネージャ"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "お待ちください。メディアを更新中です。"
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "お待ちください。メディアを追加中です。"
 
 #, fuzzy
 #~ msgid "no name found"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2004-01-17 17:49+0100\n"
+"POT-Creation-Date: 2004-02-02 18:18+0100\n"
 "PO-Revision-Date: 2002-11-27 21:45:+0100\n"
 "Last-Translator: Naim Daka <naim70@freesurf>\n"
 "Language-Team: Albanian <LL@li.org>\n"
@@ -136,7 +136,7 @@ msgstr "Ok"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:88
 #: ../rpmdrake:509 ../rpmdrake:1150 ../rpmdrake:1156 ../rpmdrake.pm:347
-#: ../rpmdrake.pm:450
+#: ../rpmdrake.pm:451
 #, c-format
 msgid "Cancel"
 msgstr "Anulo"
@@ -458,6 +458,11 @@ msgstr ""
 "Kjo vegël do të ju ndihmojë në konfigurimin e pakove në burime, të cilat\n"
 "ju dëshironi ti përdorni në kompjuterin tuaj. Ato do të ju mundësojnë\n"
 "instalimin e pakove të reja softver ose azhurnimin e tyre."
+
+#: ../gurpmi.addmedia:47
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
 
 #: ../rpmdrake:85
 #, c-format
@@ -1238,7 +1243,7 @@ msgstr "Vërja e zgjedhjeve në fillim"
 msgid "Reload the packages list"
 msgstr "Ringarkoje listën e pakove"
 
-#: ../rpmdrake:795 ../rpmdrake.pm:436
+#: ../rpmdrake:795 ../rpmdrake.pm:437
 #, c-format
 msgid "Update media"
 msgstr "Azhurnim i burimit"
@@ -1917,7 +1922,7 @@ msgstr "Shkarkimi i `%s', koha e kaluar:%s, shpejtësia:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "Shkarkimi i `%s', shpejtësia:%s"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:430
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1930,20 +1935,44 @@ msgstr ""
 "Gabimet:\n"
 "%s"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Zgjedhni burimin të cilin dëshironi t'azhurnoni:"
 
-#: ../rpmdrake.pm:445
+#: ../rpmdrake.pm:446
 #, c-format
 msgid "Update"
 msgstr "Azhurnimi"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:475
+#, c-format
+msgid ""
+"Unable to add medium, errors reported:\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Unable to create medium."
 msgstr "I pa mundur krijimi i burimit."
+
+#: ../rpmdrake.pm:487
+#, fuzzy, c-format
+msgid "Failure when adding medium"
+msgstr "Një moment ju lutemi, shtimi i një burimi..."
+
+#: ../rpmdrake.pm:488
+#, fuzzy, c-format
+msgid ""
+"There was a problem adding medium:\n"
+"\n"
+"%s"
+msgstr ""
+"Një problem është paraqitur gjatë instalimit:\n"
+"\n"
+"%s"
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2217,9 +2246,6 @@ msgstr "Menagjues i Burimit Softver"
 
 #~ msgid "Please wait, updating medium..."
 #~ msgstr "Ju lutemi një moment, azhurnimi i burimit..."
-
-#~ msgid "Please wait, adding medium..."
-#~ msgstr "Një moment ju lutemi, shtimi i një burimi..."
 
 #, fuzzy
 #~ msgid "no name found"
