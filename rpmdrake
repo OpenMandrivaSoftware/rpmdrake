@@ -23,16 +23,16 @@
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
     "@ARGV" =~ /-h/ and do {
-	printf "Usage: %s [OPTION]...
+	printf qq(Usage: %s [OPTION]...
   --no-confirmation      don't ask first confirmation question in MandrakeUpdate mode
   --no-verify-rpm        don't verify packages signatures
   --changelog-first      display changelog before filelist in the description window
   --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found
-  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps
+  --parallel=alias,host  be in parallel mode, use "alias" group, use "host" machine to show needed deps
   --media=medium1,..     limit to given media
   --pkg-sel=pkg1,..      preselect these packages
   --pkg-nosel=pkg1,..    show only these packages
-", $basename->($0);
+), $basename->($0);
 	exit 0;
     };
 }
@@ -290,7 +290,7 @@ sub extract_header {
 sub db {
     my ($force) = @_;
     my $host;
-    if ($options{parallel} and (undef, $host) = @{$options{parallel}}) {
+    if ($options{parallel} && (undef, $host) = @{$options{parallel}}) {
         my $done if 0;
         my $dblocation = "/var/cache/urpmi/distantdb/$host";
         if (!$done || $force) {
@@ -337,10 +337,10 @@ sub do_search($$$$$$$) {
 							   gtksignal_connect(Gtk2::Button->new(but(N("Stop"))),
 									     clicked => sub { $searchstop = 1 }))));
 	    $searchw->sync;
-	    local *SF;
-	    open SF, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "'$_'" } @hdlists).' |';
+	    local $SF;
+	    open $SF, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "'$_'" } @hdlists).' |';
 	    my ($pkg, $progresscount);
-	    while (<SF>) {
+	    while (<$SF>) {
 		$searchstop and last;
 		if (/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/) {
 		    $pkg = "$1-$2-$3";
@@ -360,7 +360,7 @@ sub do_search($$$$$$$) {
 		    $pkg = '';
 		}
 	    }
-	    close SF;
+	    close $SF;
 	    @search_results = uniq(@search_results); #- there can be multiple packages with same version/release for different arch's
 	    $searchw->destroy;
 	}
@@ -828,11 +828,11 @@ or you already installed all of them."));
 		my $search_types_renderer = Gtk2::CellRendererText->new;
 		$t->pack_start($search_types_renderer, Glib::FALSE());
 		$t->set_attributes($search_types_renderer, text => 0);
-		my $iter = $t->get_model()->iter_nth_child(undef, 0);
+		my $iter = $t->get_model->iter_nth_child(undef, 0);
 		my $n = 0;
-		for my $m (@advanced_modes) {
-		    $iter = $t->get_model()->insert($n++);
-		    $t->get_model()->set($iter, 0, $m->[1]);
+		foreach my $m (@advanced_modes) {
+		    $iter = $t->get_model->insert($n++);
+		    $t->get_model->set($iter, 0, $m->[1]);
 		}
 		$t->set_active(0);
 		$t->signal_connect(
@@ -855,13 +855,13 @@ or you already installed all of them."));
 	my $search_types_renderer = Gtk2::CellRendererText->new;
 	$search_types_optionmenu->pack_start($search_types_renderer, Glib::FALSE());
 	$search_types_optionmenu->set_attributes($search_types_renderer, text => 0);
-	my $iter = $search_types_optionmenu->get_model()->iter_nth_child(undef, 0);
-	$iter = $search_types_optionmenu->get_model()->insert(0);
-	$search_types_optionmenu->get_model()->set($iter, 0, N("in names"));
-	$iter = $search_types_optionmenu->get_model()->insert(1);
-	$search_types_optionmenu->get_model()->set($iter, 0, N("in descriptions"));
-	$iter = $search_types_optionmenu->get_model()->insert(2);
-	$search_types_optionmenu->get_model()->set($iter, 0, N("in file names"));
+	my $iter = $search_types_optionmenu->get_model->iter_nth_child(undef, 0);
+	$iter = $search_types_optionmenu->get_model->insert(0);
+	$search_types_optionmenu->get_model->set($iter, 0, N("in names"));
+	$iter = $search_types_optionmenu->get_model->insert(1);
+	$search_types_optionmenu->get_model->set($iter, 0, N("in descriptions"));
+	$iter = $search_types_optionmenu->get_model->insert(2);
+	$search_types_optionmenu->get_model->set($iter, 0, N("in file names"));
 	$search_types_optionmenu->set_active(0);
 	$search_types_optionmenu->signal_connect(
 	    changed => sub {
@@ -970,7 +970,7 @@ Is it ok to continue?",
     $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), Gtk2::Label->new, @descr_modes)),
 		   1, 2, 0, 1, 'fill', 'fill', 0, 0);
 
-    my $hpaned = Gtk2::HPaned->new();
+    my $hpaned = Gtk2::HPaned->new;
 
     my $tree_window = create_scrolled_window($tree);
     $hpaned->pack1(gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
@@ -1176,10 +1176,10 @@ sub dialog_rpmnew {
 	       gtkpack_(Gtk2::VBox->new(0, 5),
 			1, create_vpaned(
 				  create_vpaned(gtkpack_(Gtk2::VBox->new(0, 0),
-							 0, gtkset_markup(Gtk2::Label->new, "<span font_desc=\"monospace\">$file:</span>"),
+							 0, gtkset_markup(Gtk2::Label->new, qq(<span font_desc="monospace">$file:</span>)),
 							 1, create_scrolled_window($texts{file} = Gtk2::TextView->new)),
 						gtkpack_(Gtk2::VBox->new(0, 0),
-							 0, gtkset_markup(Gtk2::Label->new, "<span font_desc=\"monospace\">$rpmnew:</span>"),
+							 0, gtkset_markup(Gtk2::Label->new, qq(<span font_desc="monospace">$rpmnew:</span>)),
 							 1, create_scrolled_window($texts{rpmnew} = Gtk2::TextView->new)),
 						resize1 => 1),
 				  gtkpack_(Gtk2::VBox->new(0, 0),
@@ -1212,7 +1212,7 @@ sub dialog_rpmnew {
 				      my $b;
 				      [ gtkpack__(Gtk2::HBox->new(0, 0),
 						  gtkset_markup(gtkset_selectable(Gtk2::Label->new, 1),
-								"$pkg:<span font_desc=\"monospace\">$f</span>")),
+								qq($pkg:<span font_desc="monospace">$f</span>))),
 					gtksignal_connect($b = Gtk2::Button->new(N("Inspect...")), clicked => sub {
 							      $inspect->($f);
 							      -r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0)
@@ -1235,7 +1235,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     $w->{rwindow}->set_sensitive(0);
 
     my $group;
-    if ($options{parallel} and ($group) = @{$options{parallel}}) {
+    if ($options{parallel} && ($group) = @{$options{parallel}}) {
         my $pkgs = join(' ', map { if_($_->flag_requested, my_fullname($_)) } @{$urpm->{depslist}});
         system("urpmi -v --X --parallel $group $pkgs");
         if ($? == 0) {
@@ -1363,11 +1363,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		return unless defined $pkgid;
 		return if $MODE ne 'install' && $MODE ne 'update';
 		my $pkg = $urpm->{depslist}[$pkgid];
-		my $fullname = $pkg->fullname();
+		my $fullname = $pkg->fullname;
 		my $trtype = (grep { /$fullname/ } values %sources_install) ? 'install' : 'upgrade';
 		push our @Readmes, map {
 		    [ $_, $fullname ]
-		} grep { /\bREADME(\.$trtype)?\.urpmi$/ } $pkg->files();
+		} grep { /\bREADME(\.$trtype)?\.urpmi$/ } $pkg->files;
 		close $fh;
 	    },
 	);
@@ -1479,7 +1479,7 @@ sub get_installed_pkgs {
     remove_wait_msg($wait);
     my $urpm = urpm->new;
     my $group;
-    if ($options{parallel} and ($group) = @{$options{parallel}}) {
+    if ($options{parallel} && ($group) = @{$options{parallel}}) {
         $urpm->configure(parallel => $group);
     }
     ($urpm, \%installed_pkgs);
@@ -1493,7 +1493,7 @@ sub perform_removal {
     slow_func(N("Please wait, removing packages..."),
 	      sub { @results = $options{parallel} ? $urpm->parallel_remove(\@toremove, translate_message => 1) :
                                                     $urpm->install(\@toremove, {}, {}, translate_message => 1);
-                    db('force_sync'); });
+                    db('force_sync') });
     if (@results) {
 	interactive_msg_(N("Problem during removal"),
 			 N("There was a problem during the removal of packages:\n\n%s", join("\n",  @results)));

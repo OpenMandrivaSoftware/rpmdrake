@@ -355,7 +355,7 @@ sub compat_arch_for_updates($) {
     # FIXME: We prefer 64-bit packages to update on biarch platforms,
     # since the system is populated with 64-bit packages anyway.
     my ($arch) = @_;
-    return $arch =~ /x86_64|amd64/ if (arch() eq 'x86_64');
+    return $arch =~ /x86_64|amd64/ if arch() eq 'x86_64';
     MDK::Common::System::compat_arch($arch);
 }
 
@@ -643,7 +643,7 @@ sub add_medium_and_check {
 #- matches the current mdk version
 sub check_update_media_version {
     my $urpm = shift;
-    for (@_) {
+    foreach (@_) {
 	if ($_->{name} =~ /(\d+\.\d+).*\bftp\du\b/ && $1 ne $mdk_version) {
 	    interactive_msg(
 		'rpmdrake',
