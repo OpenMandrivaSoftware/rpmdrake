@@ -32,7 +32,7 @@ merge: $(PGOAL).pot
 		echo "Merging $$n"; \
 		msgmerge "$$n" $< > "$$n"t; \
 		mv -f "$$n"t "$$n"; \
-		./get_from_compssusers.pl "$$n" >> "$$n"m; \
+		./get_from_compssusers.pl "$$n" > "$$n"m; \
 	done
 
 $(PGOAL).pot: $(PL_CFILES) $(CFILES)
