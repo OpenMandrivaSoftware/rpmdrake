@@ -30,14 +30,14 @@ use URPM;
 use URPM::Resolve;
 use packdrake;
 use strict;
-use vars qw(@ISA @EXPORT $configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $typical_width);
+use vars qw(@ISA @EXPORT $configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $tree_mode $tree_flat $typical_width);
 use log;
 use c;
 
 use curl_download;
 
 @ISA = qw(Exporter);
-@EXPORT = qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $typical_width
+@EXPORT = qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $tree_mode $tree_flat $typical_width
              N translate to_utf8 myexit readconf writeconf interactive_msg interactive_packtable interactive_list fatal_msg
              wait_msg remove_wait_msg but but_ slow_func mirrors choose_mirror make_url_mirror show_urpm_progress
              update_sources update_sources_interactive add_medium_and_check);
@@ -88,6 +88,8 @@ sub readconf {
     %config = (mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
 	       already_splashed => { var => \$already_splashed, default => [] },
 	       max_info_in_descr => { var => \$max_info_in_descr, default => [] },
+               tree_mode => { var => \$tree_mode, default => [ qw(mandrake_choices) ] },
+               tree_flat => { var => \$tree_flat, default => [ 0 ] },
 	      );
     ${$config{$_}{var}} = $config{$_}{default} foreach keys %config;
     
