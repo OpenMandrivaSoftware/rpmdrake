@@ -174,7 +174,6 @@ Do you want to force the install anyway?",
 # -=-=-=---=-=-=---=-=-=-- cleanup -=-=-=---=-=-=--
 $exitstatus = 0;
 $mainw->{rwindow}->hide;
-interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
 cleanup:
 if (!member('noclearcache', @grpmi_config)) {
     foreach (@ARGV) {

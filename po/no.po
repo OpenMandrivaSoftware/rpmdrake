@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-22 22:55+0200\n"
+"POT-Creation-Date: 2002-08-26 15:54+0200\n"
 "PO-Revision-Date: 2002-02-03 14:16CET\n"
 "Last-Translator: Terje Bjerrkelia <terje@bjerkelia.com>\n"
 "Language-Team: Norsk\n"
@@ -57,7 +57,7 @@ msgstr "Sti eller monteringspunkt:"
 msgid "Removable device"
 msgstr "Fjernbare enheter"
 
-#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:442
+#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:440
 msgid "Security updates"
 msgstr "Sikkerhetsoppdateringer"
 
@@ -106,13 +106,13 @@ msgid "Type of source:"
 msgstr "Type kilde:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../rpmdrake.pm_.c:76 ../rpmdrake.pm_.c:89
-#: ../rpmdrake.pm_.c:263 ../rpmdrake_.c:308 ../rpmdrake_.c:703
+#: ../rpmdrake.pm_.c:263 ../rpmdrake_.c:301 ../rpmdrake_.c:701
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
-#: ../edit-urpm-sources.pl_.c:199 ../rpmdrake.pm_.c:263 ../rpmdrake_.c:308
-#: ../rpmdrake_.c:703
+#: ../edit-urpm-sources.pl_.c:199 ../rpmdrake.pm_.c:263 ../rpmdrake_.c:301
+#: ../rpmdrake_.c:701
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -165,7 +165,7 @@ msgstr "Slått på?"
 msgid "Source"
 msgstr "Kilde"
 
-#: ../edit-urpm-sources.pl_.c:242 ../rpmdrake_.c:562
+#: ../edit-urpm-sources.pl_.c:242 ../rpmdrake_.c:560
 msgid "Remove"
 msgstr "Fjern"
 
@@ -185,11 +185,11 @@ msgstr "Oppdater..."
 msgid "Save and quit"
 msgstr "Lagre og avslutt"
 
-#: ../edit-urpm-sources.pl_.c:252 ../rpmdrake_.c:565
+#: ../edit-urpm-sources.pl_.c:252 ../rpmdrake_.c:563
 msgid "Quit"
 msgstr "Avslutt"
 
-#: ../edit-urpm-sources.pl_.c:262 ../rpmdrake_.c:767
+#: ../edit-urpm-sources.pl_.c:262 ../rpmdrake_.c:784
 #, c-format
 msgid ""
 "%s\n"
@@ -395,7 +395,7 @@ msgstr "Vennligst velg ønsket speil."
 msgid "(Non available)"
 msgstr "(Ingen tilgjengelig)"
 
-#: ../rpmdrake_.c:129 ../rpmdrake_.c:180
+#: ../rpmdrake_.c:129 ../rpmdrake_.c:182
 msgid "Search results"
 msgstr "Søkeresultater"
 
@@ -412,31 +412,31 @@ msgstr "Vennligst vent, søker i filer..."
 msgid "Stop"
 msgstr ""
 
-#: ../rpmdrake_.c:200
+#: ../rpmdrake_.c:214
 msgid "One of the following packages is needed:"
 msgstr "En av følgende pakker behøves:"
 
-#: ../rpmdrake_.c:200
+#: ../rpmdrake_.c:214
 msgid "Please choose"
 msgstr "Vennligst velg"
 
-#: ../rpmdrake_.c:236
+#: ../rpmdrake_.c:229
 msgid "unknown package "
 msgstr "Ukjent pakke "
 
-#: ../rpmdrake_.c:246
+#: ../rpmdrake_.c:239
 msgid "Please wait, listing packages..."
 msgstr "Vennligst vent, lister pakker..."
 
-#: ../rpmdrake_.c:260
+#: ../rpmdrake_.c:253
 msgid "(none)"
 msgstr "(ingen)"
 
-#: ../rpmdrake_.c:262
+#: ../rpmdrake_.c:255
 msgid "No update"
 msgstr "Ingen oppdatering"
 
-#: ../rpmdrake_.c:263
+#: ../rpmdrake_.c:256
 msgid ""
 "The list of updates is void. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -446,31 +446,19 @@ msgstr ""
 "noen tilgjengelige oppdateringer for pakkene som er installert på\n"
 "din maskin, eller at du allerede har installert alle sammen."
 
-#: ../rpmdrake_.c:281
+#: ../rpmdrake_.c:274
 msgid "Addable"
 msgstr "Kan legge til"
 
-#: ../rpmdrake_.c:281
+#: ../rpmdrake_.c:274
 msgid "Upgradable"
 msgstr "Kan oppgraderes"
 
-#: ../rpmdrake_.c:315
-msgid "This would break your system"
-msgstr "Dette vil ødelegge systemet ditt"
-
-#: ../rpmdrake_.c:316
-msgid ""
-"Sorry, removing these packages would break your system:\n"
-"\n"
-msgstr ""
-"Beklager, men fjerning av disse pakkene vil ødelegge systemet ditt:\n"
-"\n"
-
-#: ../rpmdrake_.c:320
+#: ../rpmdrake_.c:307
 msgid "Some additional packages need to be removed"
 msgstr "Noen ytterligere pakker renger å fjernes"
 
-#: ../rpmdrake_.c:321
+#: ../rpmdrake_.c:308
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:\n"
@@ -480,11 +468,11 @@ msgstr ""
 "å bli fjernet:\n"
 "\n"
 
-#: ../rpmdrake_.c:328
+#: ../rpmdrake_.c:314
 msgid "Some packages can't be removed"
 msgstr "Noen pakker kan ikke fjernes"
 
-#: ../rpmdrake_.c:329 ../rpmdrake_.c:376
+#: ../rpmdrake_.c:315 ../rpmdrake_.c:373
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -494,11 +482,11 @@ msgstr ""
 "vekk nå:\n"
 "\n"
 
-#: ../rpmdrake_.c:346
+#: ../rpmdrake_.c:343
 msgid "Additional packages needed"
 msgstr "Ytterligere pakker trengs"
 
-#: ../rpmdrake_.c:347
+#: ../rpmdrake_.c:344
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -508,11 +496,11 @@ msgstr ""
 "installeres:\n"
 "\n"
 
-#: ../rpmdrake_.c:360
+#: ../rpmdrake_.c:357
 msgid "Some packages can't be installed"
 msgstr "Noen pakker kan ikke installeres"
 
-#: ../rpmdrake_.c:361
+#: ../rpmdrake_.c:358
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -520,21 +508,21 @@ msgstr ""
 "Beklager, følgende pakke(r) kan ikke velges:\n"
 "\n"
 
-#: ../rpmdrake_.c:375 ../rpmdrake_.c:526
+#: ../rpmdrake_.c:372 ../rpmdrake_.c:524
 msgid "Some packages need to be removed"
 msgstr "Noen pakker må fjernes"
 
-#: ../rpmdrake_.c:397
+#: ../rpmdrake_.c:394
 #, fuzzy, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Valgte: %d MB / Tilgjengelig: %d MB"
 
-#: ../rpmdrake_.c:399
+#: ../rpmdrake_.c:396
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Størrelse valgte: %d MB"
 
-#: ../rpmdrake_.c:407
+#: ../rpmdrake_.c:404
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -555,7 +543,7 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:411
+#: ../rpmdrake_.c:408
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -574,61 +562,61 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:442
+#: ../rpmdrake_.c:440
 msgid "Bugfixes updates"
 msgstr "Bugfix-oppdateringer"
 
-#: ../rpmdrake_.c:442
+#: ../rpmdrake_.c:440
 msgid "Normal updates"
 msgstr "Normale oppdateringer"
 
-#: ../rpmdrake_.c:461
+#: ../rpmdrake_.c:459
 msgid "Mandrake choices"
 msgstr "Mandrake valg"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:460
 msgid "All packages, alphabetical"
 msgstr "Alle pakker, alfabetisk"
 
-#: ../rpmdrake_.c:463
+#: ../rpmdrake_.c:461
 msgid "All packages,"
 msgstr "Alle pakker,"
 
-#: ../rpmdrake_.c:486
+#: ../rpmdrake_.c:484
 msgid "by group"
 msgstr "ved gruppe"
 
-#: ../rpmdrake_.c:486
+#: ../rpmdrake_.c:484
 msgid "by size"
 msgstr "ved størrelse"
 
-#: ../rpmdrake_.c:487
+#: ../rpmdrake_.c:485
 msgid "by selection state"
 msgstr "ved utvelgelsestilstand"
 
-#: ../rpmdrake_.c:488
+#: ../rpmdrake_.c:486
 msgid "by source repository"
 msgstr "ved kildelager"
 
-#: ../rpmdrake_.c:488
+#: ../rpmdrake_.c:486
 msgid "by update availability"
 msgstr "ved oppdateringstilgjengelighet"
 
-#: ../rpmdrake_.c:509
+#: ../rpmdrake_.c:507
 #, fuzzy
 msgid "in descriptions"
 msgstr "Beskrivelser"
 
-#: ../rpmdrake_.c:509
+#: ../rpmdrake_.c:507
 msgid "in names"
 msgstr ""
 
-#: ../rpmdrake_.c:510
+#: ../rpmdrake_.c:508
 #, fuzzy
 msgid "in files"
 msgstr "Lokale filer"
 
-#: ../rpmdrake_.c:527
+#: ../rpmdrake_.c:525
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -643,35 +631,35 @@ msgstr ""
 "\n"
 "ER det ok å fortsette?"
 
-#: ../rpmdrake_.c:546
+#: ../rpmdrake_.c:544
 msgid "Find:"
 msgstr "Finn:"
 
-#: ../rpmdrake_.c:551
+#: ../rpmdrake_.c:549
 msgid "Search"
 msgstr "søk"
 
-#: ../rpmdrake_.c:563
+#: ../rpmdrake_.c:561
 msgid "Install"
 msgstr "Installer"
 
-#: ../rpmdrake_.c:574
+#: ../rpmdrake_.c:572
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:573
 msgid "Mandrake Update"
 msgstr "Mandrake Update"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:573
 msgid "Software Packages Removal"
 msgstr "Fjerning av programvarepakker"
 
-#: ../rpmdrake_.c:576
+#: ../rpmdrake_.c:574
 msgid "Software Packages Installation"
 msgstr "Installasjon av programvarepakker"
 
-#: ../rpmdrake_.c:608
+#: ../rpmdrake_.c:606
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -683,23 +671,23 @@ msgstr ""
 "\n"
 "Er det ok å fortsette?"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:610
 msgid "Please wait, contacting mirror to update packages information."
 msgstr "Vennligst vent, kontakter speil for å oppdatere pakkeinformasjon."
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:612
 msgid "Error updating medium"
 msgstr "Feil ved oppdatering av media"
 
-#: ../rpmdrake_.c:615
+#: ../rpmdrake_.c:613
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "Det oppsto en uidentifistert feil ved oppdatering av pakkeinformasjon."
 
-#: ../rpmdrake_.c:621
+#: ../rpmdrake_.c:619
 msgid "How to choose manually your mirror"
 msgstr ""
 
-#: ../rpmdrake_.c:622
+#: ../rpmdrake_.c:620
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -708,15 +696,15 @@ msgid ""
 "Then, restart MandrakeUpdate."
 msgstr ""
 
-#: ../rpmdrake_.c:628
+#: ../rpmdrake_.c:626
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr "Vennligst vent, kontakter speil for å initialisere oppdateringspakker."
 
-#: ../rpmdrake_.c:632
+#: ../rpmdrake_.c:630
 msgid "Error adding update medium"
 msgstr "Kunne ikke legge til oppdateringsmedia"
 
-#: ../rpmdrake_.c:633
+#: ../rpmdrake_.c:631
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -738,32 +726,32 @@ msgstr ""
 "\n"
 "Vil du prøve et annet speil?"
 
-#: ../rpmdrake_.c:662
+#: ../rpmdrake_.c:660
 msgid "Please wait, finding available packages..."
 msgstr "Vennligst vent, finner tilgjengelige pakker..."
 
-#: ../rpmdrake_.c:693
+#: ../rpmdrake_.c:691
 msgid "Unable to get source packages."
 msgstr "Ikke i stand til å få tak i kildepakker."
 
-#: ../rpmdrake_.c:694
+#: ../rpmdrake_.c:692
 msgid "Unable to get source packages, sorry."
 msgstr "Ikke i stand til å få tak i kildepakker, beklager."
 
-#: ../rpmdrake_.c:701
+#: ../rpmdrake_.c:699
 msgid "Change medium"
 msgstr "Endre media"
 
-#: ../rpmdrake_.c:702
+#: ../rpmdrake_.c:700
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Vennligst sett inn media kalt \"%s\" på enhet [%s]"
 
-#: ../rpmdrake_.c:710
+#: ../rpmdrake_.c:708
 msgid "Installation failed"
 msgstr "Installasjon mislykket"
 
-#: ../rpmdrake_.c:711
+#: ../rpmdrake_.c:709
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -771,36 +759,45 @@ msgstr ""
 "Installasjon mislykket, noen filer mangler.\n"
 "Du vil kanskje oppdatere din kildedatabase."
 
-#: ../rpmdrake_.c:714
+#: ../rpmdrake_.c:712
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Vennligst vent, fjerner pakker for at andre skal kunne bli oppgradert..."
 
-#: ../rpmdrake_.c:723
+#: ../rpmdrake_.c:721
 msgid "Program missing"
 msgstr ""
 
-#: ../rpmdrake_.c:724
+#: ../rpmdrake_.c:722
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr ""
 
-#: ../rpmdrake_.c:728
+#: ../rpmdrake_.c:725
+msgid "All requested packages were installed successfully."
+msgstr ""
+
+#: ../rpmdrake_.c:725
+#, fuzzy
+msgid "Everything installed successfully"
+msgstr "Alt er allerede installert."
+
+#: ../rpmdrake_.c:727
 msgid "Everything already installed."
 msgstr "Alt er allerede installert."
 
-#: ../rpmdrake_.c:729
+#: ../rpmdrake_.c:728
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Alt er allerede installert (skal dette skje i det hele tatt?)."
 
-#: ../rpmdrake_.c:739
+#: ../rpmdrake_.c:738
 msgid "Please wait, reading packages database..."
 msgstr "Vennligst vent, leser pakkedatabase..."
 
-#: ../rpmdrake_.c:756
+#: ../rpmdrake_.c:773
 msgid "Please wait, removing packages..."
 msgstr "Vennligst vent, fjerner pakker..."
 
-#: ../rpmdrake_.c:771
+#: ../rpmdrake_.c:788
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -812,7 +809,7 @@ msgstr ""
 "Dette verktøyet vil hjelpe deg å velge vilken programvare du skal fjerne\n"
 "fra maskinen din."
 
-#: ../rpmdrake_.c:776
+#: ../rpmdrake_.c:793
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -824,7 +821,7 @@ msgstr ""
 "Dette verktøyet vil hjelpe deg å velge oppdateringene du skal installere\n"
 "på maskinen din."
 
-#: ../rpmdrake_.c:781
+#: ../rpmdrake_.c:798
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -855,6 +852,16 @@ msgstr ""
 #, fuzzy
 msgid "Install Software"
 msgstr "Installer alle"
+
+#~ msgid "This would break your system"
+#~ msgstr "Dette vil ødelegge systemet ditt"
+
+#~ msgid ""
+#~ "Sorry, removing these packages would break your system:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Beklager, men fjerning av disse pakkene vil ødelegge systemet ditt:\n"
+#~ "\n"
 
 #~ msgid "There was a problem during installation."
 #~ msgstr "Det var et problem under installasjonen."

@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-22 22:55+0200\n"
-"PO-Revision-Date: 2002-08-22 21:21+0200\n"
+"POT-Creation-Date: 2002-08-26 15:54+0200\n"
+"PO-Revision-Date: 2002-08-26 15:55+0200\n"
 "Last-Translator: David BAUDENS <baudens@mandrakesoft.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr "Chemin ou point de montage :"
 msgid "Removable device"
 msgstr "Périphérique amovible"
 
-#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:442
+#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:440
 msgid "Security updates"
 msgstr "Mises à jour de sécurité"
 
@@ -108,13 +108,13 @@ msgid "Type of source:"
 msgstr "Type de source :"
 
 #: ../edit-urpm-sources.pl_.c:124 ../rpmdrake.pm_.c:76 ../rpmdrake.pm_.c:89
-#: ../rpmdrake.pm_.c:263 ../rpmdrake_.c:308 ../rpmdrake_.c:703
+#: ../rpmdrake.pm_.c:263 ../rpmdrake_.c:301 ../rpmdrake_.c:701
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
-#: ../edit-urpm-sources.pl_.c:199 ../rpmdrake.pm_.c:263 ../rpmdrake_.c:308
-#: ../rpmdrake_.c:703
+#: ../edit-urpm-sources.pl_.c:199 ../rpmdrake.pm_.c:263 ../rpmdrake_.c:301
+#: ../rpmdrake_.c:701
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -167,7 +167,7 @@ msgstr "Activée ?"
 msgid "Source"
 msgstr "Source"
 
-#: ../edit-urpm-sources.pl_.c:242 ../rpmdrake_.c:562
+#: ../edit-urpm-sources.pl_.c:242 ../rpmdrake_.c:560
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -187,11 +187,11 @@ msgstr "Mettre à jour..."
 msgid "Save and quit"
 msgstr "Sauver et quitter"
 
-#: ../edit-urpm-sources.pl_.c:252 ../rpmdrake_.c:565
+#: ../edit-urpm-sources.pl_.c:252 ../rpmdrake_.c:563
 msgid "Quit"
 msgstr "Quitter"
 
-#: ../edit-urpm-sources.pl_.c:262 ../rpmdrake_.c:767
+#: ../edit-urpm-sources.pl_.c:262 ../rpmdrake_.c:784
 #, c-format
 msgid ""
 "%s\n"
@@ -399,7 +399,7 @@ msgstr "Veuillez choisir le miroir."
 msgid "(Non available)"
 msgstr "(Non disponible)"
 
-#: ../rpmdrake_.c:129 ../rpmdrake_.c:180
+#: ../rpmdrake_.c:129 ../rpmdrake_.c:182
 msgid "Search results"
 msgstr "Résultats de la recherche"
 
@@ -415,31 +415,31 @@ msgstr "Veuillez patienter, recherche en cours..."
 msgid "Stop"
 msgstr "Arrêter"
 
-#: ../rpmdrake_.c:200
+#: ../rpmdrake_.c:214
 msgid "One of the following packages is needed:"
 msgstr "L'un des paquetages suivants est nécessaire :"
 
-#: ../rpmdrake_.c:200
+#: ../rpmdrake_.c:214
 msgid "Please choose"
 msgstr "Veuillez choisir"
 
-#: ../rpmdrake_.c:236
+#: ../rpmdrake_.c:229
 msgid "unknown package "
 msgstr "paquetage inconnu "
 
-#: ../rpmdrake_.c:246
+#: ../rpmdrake_.c:239
 msgid "Please wait, listing packages..."
 msgstr "Veuillez patienter, énumération des paquetages..."
 
-#: ../rpmdrake_.c:260
+#: ../rpmdrake_.c:253
 msgid "(none)"
 msgstr "(aucun)"
 
-#: ../rpmdrake_.c:262
+#: ../rpmdrake_.c:255
 msgid "No update"
 msgstr "Pas de mise à jour"
 
-#: ../rpmdrake_.c:263
+#: ../rpmdrake_.c:256
 msgid ""
 "The list of updates is void. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -449,31 +449,19 @@ msgstr ""
 "pas de mises à jour pour les paquetages installés sur votre\n"
 "ordinateur, ou bien que vous les avez déjà toutes installées."
 
-#: ../rpmdrake_.c:281
+#: ../rpmdrake_.c:274
 msgid "Addable"
 msgstr "Nouveaux"
 
-#: ../rpmdrake_.c:281
+#: ../rpmdrake_.c:274
 msgid "Upgradable"
 msgstr "Mises à jour"
 
-#: ../rpmdrake_.c:315
-msgid "This would break your system"
-msgstr "Cela détruirait votre système"
-
-#: ../rpmdrake_.c:316
-msgid ""
-"Sorry, removing these packages would break your system:\n"
-"\n"
-msgstr ""
-"Désolé, supprimer ces paquetages détruirait votre système :\n"
-"\n"
-
-#: ../rpmdrake_.c:320
+#: ../rpmdrake_.c:307
 msgid "Some additional packages need to be removed"
 msgstr "Des paquetages supplémentaires doivent être supprimés"
 
-#: ../rpmdrake_.c:321
+#: ../rpmdrake_.c:308
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:\n"
@@ -484,11 +472,11 @@ msgstr ""
 "doivent aussi être supprimés :\n"
 "\n"
 
-#: ../rpmdrake_.c:328
+#: ../rpmdrake_.c:314
 msgid "Some packages can't be removed"
 msgstr "Des paquetages ne peuvent pas être enlevés"
 
-#: ../rpmdrake_.c:329 ../rpmdrake_.c:376
+#: ../rpmdrake_.c:315 ../rpmdrake_.c:373
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -498,11 +486,11 @@ msgstr ""
 "doivent être déselectionnés :\n"
 "\n"
 
-#: ../rpmdrake_.c:346
+#: ../rpmdrake_.c:343
 msgid "Additional packages needed"
 msgstr "Des paquetages supplémentaires sont nécessaires"
 
-#: ../rpmdrake_.c:347
+#: ../rpmdrake_.c:344
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -512,11 +500,11 @@ msgstr ""
 "doivent aussi être installés :\n"
 "\n"
 
-#: ../rpmdrake_.c:360
+#: ../rpmdrake_.c:357
 msgid "Some packages can't be installed"
 msgstr "Certains paquetages ne peuvent pas être installés"
 
-#: ../rpmdrake_.c:361
+#: ../rpmdrake_.c:358
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -524,21 +512,21 @@ msgstr ""
 "Désolé, le(s) paquetage(s) suivant(s) ne peuvent pas être sélectionnés :\n"
 "\n"
 
-#: ../rpmdrake_.c:375 ../rpmdrake_.c:526
+#: ../rpmdrake_.c:372 ../rpmdrake_.c:524
 msgid "Some packages need to be removed"
 msgstr "Certains paquetages doivent être enlevés"
 
-#: ../rpmdrake_.c:397
+#: ../rpmdrake_.c:394
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Sélectionnés : %d Mo / Place libre sur disque : %d Mo"
 
-#: ../rpmdrake_.c:399
+#: ../rpmdrake_.c:396
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Taille sélectionnée : %d Mo"
 
-#: ../rpmdrake_.c:407
+#: ../rpmdrake_.c:404
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -559,7 +547,7 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:411
+#: ../rpmdrake_.c:408
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -578,59 +566,59 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: ../rpmdrake_.c:442
+#: ../rpmdrake_.c:440
 msgid "Bugfixes updates"
 msgstr "Corrections de bogues"
 
-#: ../rpmdrake_.c:442
+#: ../rpmdrake_.c:440
 msgid "Normal updates"
 msgstr "Mises à jour normales"
 
-#: ../rpmdrake_.c:461
+#: ../rpmdrake_.c:459
 msgid "Mandrake choices"
 msgstr "Choix Mandrake"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:460
 msgid "All packages, alphabetical"
 msgstr "Tous les paquetages, classement alphabétique"
 
-#: ../rpmdrake_.c:463
+#: ../rpmdrake_.c:461
 msgid "All packages,"
 msgstr "Tous les paquetages,"
 
-#: ../rpmdrake_.c:486
+#: ../rpmdrake_.c:484
 msgid "by group"
 msgstr "par groupe"
 
-#: ../rpmdrake_.c:486
+#: ../rpmdrake_.c:484
 msgid "by size"
 msgstr "par taille"
 
-#: ../rpmdrake_.c:487
+#: ../rpmdrake_.c:485
 msgid "by selection state"
 msgstr "par sélection"
 
-#: ../rpmdrake_.c:488
+#: ../rpmdrake_.c:486
 msgid "by source repository"
 msgstr "par source"
 
-#: ../rpmdrake_.c:488
+#: ../rpmdrake_.c:486
 msgid "by update availability"
 msgstr "nouveaux ou mis à jour"
 
-#: ../rpmdrake_.c:509
+#: ../rpmdrake_.c:507
 msgid "in descriptions"
 msgstr "parmi les descriptions"
 
-#: ../rpmdrake_.c:509
+#: ../rpmdrake_.c:507
 msgid "in names"
 msgstr "parmi les noms"
 
-#: ../rpmdrake_.c:510
+#: ../rpmdrake_.c:508
 msgid "in files"
 msgstr "parmi les fichiers"
 
-#: ../rpmdrake_.c:527
+#: ../rpmdrake_.c:525
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -646,35 +634,35 @@ msgstr ""
 "\n"
 "Voulez-vous continuer ?"
 
-#: ../rpmdrake_.c:546
+#: ../rpmdrake_.c:544
 msgid "Find:"
 msgstr "Rechercher :"
 
-#: ../rpmdrake_.c:551
+#: ../rpmdrake_.c:549
 msgid "Search"
 msgstr "Chercher"
 
-#: ../rpmdrake_.c:563
+#: ../rpmdrake_.c:561
 msgid "Install"
 msgstr "Installer"
 
-#: ../rpmdrake_.c:574
+#: ../rpmdrake_.c:572
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:573
 msgid "Mandrake Update"
 msgstr "Mandrake Update"
 
-#: ../rpmdrake_.c:575
+#: ../rpmdrake_.c:573
 msgid "Software Packages Removal"
 msgstr "Suppression de Paquetages Logiciels"
 
-#: ../rpmdrake_.c:576
+#: ../rpmdrake_.c:574
 msgid "Software Packages Installation"
 msgstr "Installation de Paquetages Logiciels"
 
-#: ../rpmdrake_.c:608
+#: ../rpmdrake_.c:606
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -687,27 +675,27 @@ msgstr ""
 "\n"
 "Êtes-vous d'accord pour continuer ?"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:610
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Veuillez patienter, connexion au miroir afin de mettre à jour les "
 "informations sur les paquetages."
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:612
 msgid "Error updating medium"
 msgstr "Erreur pendant la mise à jour du médium"
 
-#: ../rpmdrake_.c:615
+#: ../rpmdrake_.c:613
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 "Une erreur fatale est survenue pendant la mise à jour des informations sur "
 "les paquetages."
 
-#: ../rpmdrake_.c:621
+#: ../rpmdrake_.c:619
 msgid "How to choose manually your mirror"
 msgstr "Comment choisir manuellement votre mirroir"
 
-#: ../rpmdrake_.c:622
+#: ../rpmdrake_.c:620
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -721,16 +709,16 @@ msgstr ""
 "\n"
 "Puis, redémarrez MandrakeUpdate."
 
-#: ../rpmdrake_.c:628
+#: ../rpmdrake_.c:626
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Veuillez patienter, connexion au miroir afin de trouver les mises à jour."
 
-#: ../rpmdrake_.c:632
+#: ../rpmdrake_.c:630
 msgid "Error adding update medium"
 msgstr "Erreur pendant l'ajout du médium de mise à jour"
 
-#: ../rpmdrake_.c:633
+#: ../rpmdrake_.c:631
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -750,32 +738,32 @@ msgstr ""
 "\n"
 "Voulez-vous essayer avec un autre miroir ?"
 
-#: ../rpmdrake_.c:662
+#: ../rpmdrake_.c:660
 msgid "Please wait, finding available packages..."
 msgstr "Veuillez patienter, recherche des paquetages disponibles..."
 
-#: ../rpmdrake_.c:693
+#: ../rpmdrake_.c:691
 msgid "Unable to get source packages."
 msgstr "Impossible d'obtenir les paquetages sources."
 
-#: ../rpmdrake_.c:694
+#: ../rpmdrake_.c:692
 msgid "Unable to get source packages, sorry."
 msgstr "Impossible d'obtenir les paquetages sources, désolé."
 
-#: ../rpmdrake_.c:701
+#: ../rpmdrake_.c:699
 msgid "Change medium"
 msgstr "Changement de médium"
 
-#: ../rpmdrake_.c:702
+#: ../rpmdrake_.c:700
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Veuillez insérer le médium nommé \"%s\" dans le périphérique [%s]"
 
-#: ../rpmdrake_.c:710
+#: ../rpmdrake_.c:708
 msgid "Installation failed"
 msgstr "L'installation a échoué"
 
-#: ../rpmdrake_.c:711
+#: ../rpmdrake_.c:709
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -783,39 +771,47 @@ msgstr ""
 "L'installation a échoué, certains fichiers sont introuvables.\n"
 "Vous pouvez mettre à jour vos sources."
 
-#: ../rpmdrake_.c:714
+#: ../rpmdrake_.c:712
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Veuillez patienter, suppression de paquetages afin de pouvoir installer les "
 "autres..."
 
-#: ../rpmdrake_.c:723
+#: ../rpmdrake_.c:721
 msgid "Program missing"
 msgstr "Un programme manque"
 
-#: ../rpmdrake_.c:724
+#: ../rpmdrake_.c:722
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr ""
 "Un programme indispensable (grpmi) est manquant. Vérifiez votre\n"
 "installation."
 
-#: ../rpmdrake_.c:728
+#: ../rpmdrake_.c:725
+msgid "All requested packages were installed successfully."
+msgstr "Tous les paquetages demandés ont été installés correctement."
+
+#: ../rpmdrake_.c:725
+msgid "Everything installed successfully"
+msgstr "Tout a été installé correctement."
+
+#: ../rpmdrake_.c:727
 msgid "Everything already installed."
 msgstr "Tout a déjà été installé."
 
-#: ../rpmdrake_.c:729
+#: ../rpmdrake_.c:728
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Tout a déjà été installé (est-ce que c'est vraiment censé arriver ?)."
 
-#: ../rpmdrake_.c:739
+#: ../rpmdrake_.c:738
 msgid "Please wait, reading packages database..."
 msgstr "Veuillez patienter, lecture de la base de donnée des paquetages..."
 
-#: ../rpmdrake_.c:756
+#: ../rpmdrake_.c:773
 msgid "Please wait, removing packages..."
 msgstr "Veuillez patienter, suppression des paquetages..."
 
-#: ../rpmdrake_.c:771
+#: ../rpmdrake_.c:788
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -827,7 +823,7 @@ msgstr ""
 "Cet outil va vous aider à choisir quel(s) logiciel(s) vous\n"
 "souhaitez supprimer de votre ordinateur."
 
-#: ../rpmdrake_.c:776
+#: ../rpmdrake_.c:793
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -839,7 +835,7 @@ msgstr ""
 "Cet outil va vous aider à choisir les mises à jour que vous\n"
 "souhaiter installer sur votre ordinateur."
 
-#: ../rpmdrake_.c:781
+#: ../rpmdrake_.c:798
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -869,687 +865,3 @@ msgstr "Gestionnaire de Sources Logicielles"
 #: data/rpmdrake.desktop.in.h:1
 msgid "Install Software"
 msgstr "Installer des Logiciels"
-
-#~ msgid "There was a problem during installation."
-#~ msgstr "Un problème est survenu pendant l'installation."
-
-#~ msgid ""
-#~ "Could not find /var/lib/urpmi/compssUsers.flat,\n"
-#~ "the installer should have generated it for me :-(.\n"
-#~ "\n"
-#~ "Disabling \"Mandrake choices\" classification."
-#~ msgstr ""
-#~ "Impossible de trouver /var/lib/urpmi/compssUsers.flat,\n"
-#~ "l'installation aurait pourtant du le générer :-(.\n"
-#~ "\n"
-#~ "La classification \"Choix Mandrake\" sera désactivée."
-
-#~ msgid "Total size: %d / %d MB"
-#~ msgstr "Taille totale : %d / %d Mo"
-
-#~ msgid ""
-#~ "Usage: %s [OPTION]...\n"
-#~ "  --noconfirmation       don't ask first confirmation question in "
-#~ "MandrakeUpdate mode\n"
-#~ msgstr ""
-#~ "Usage: %s [OPTION]...\n"
-#~ "  --noconfirmation      ne pas demander la première question de "
-#~ "confirmation en mode MandrakeUpdate\n"
-
-#~ msgid "By presence"
-#~ msgstr "Par présence"
-
-#~ msgid "By source"
-#~ msgstr "Par source"
-
-#~ msgid "Unable to update medium."
-#~ msgstr "Impossible de mettre à jour le médium."
-
-#~ msgid "Please wait, checking dependencies..."
-#~ msgstr "Veuillez patienter, vérification des dépendances..."
-
-#, fuzzy
-#~ msgid ""
-#~ "Unable to update medium \"%s\"\n"
-#~ "(todo: propose to revert)\n"
-#~ msgstr "Impossible de créer le médium \"%s\"\n"
-
-#~ msgid ""
-#~ "There was an error downloading the mirrors list:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Please try again later."
-#~ msgstr ""
-#~ "Une erreur est survenue pendant le téléchargement de la liste des "
-#~ "miroirs :\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Veuillez réessayer ultérieurement."
-
-#~ msgid "Error checking distribution version"
-#~ msgstr "Erreur pendant la vérification de la version de la distribution"
-
-#~ msgid ""
-#~ "There was an unrecoverable error while guessing distribution version."
-#~ msgstr ""
-#~ "Une erreur fatale est survenue pendant le calcul de la version de la "
-#~ "distribution."
-
-#, fuzzy
-#~ msgid "rpmdrake.pl"
-#~ msgstr "Lancer rpmdrake"
-
-#, fuzzy
-#~ msgid "rpmdrake"
-#~ msgstr "Lancer rpmdrake"
-
-#~ msgid "Please wait"
-#~ msgstr "Veuillez patienter"
-
-#, fuzzy
-#~ msgid "Relative path to synthesis or hdlist:"
-#~ msgstr "chemin relatif au hdlist ou au fichier de synthèse : "
-
-#~ msgid "%d packages, %Ld bytes"
-#~ msgstr "%d paquetages, %Ld octets"
-
-#~ msgid "Cannot read this source: %s"
-#~ msgstr "Impossible de lire cette source : %s"
-
-#~ msgid "Cannot open the source: %s"
-#~ msgstr "Impossible d'ouvrir la source : %s"
-
-#~ msgid " Searching the %s source"
-#~ msgstr "Recherche dans la source « %s »"
-
-#~ msgid "filling lists"
-#~ msgstr "Remplissage des listes"
-
-#~ msgid "filling trees"
-#~ msgstr "Remplissage des arbres"
-
-#~ msgid ""
-#~ "Error!\n"
-#~ "Cannot open rpm database"
-#~ msgstr ""
-#~ "Erreur!\n"
-#~ "Impossible d'ouvrir la base de donnée rpm"
-
-#~ msgid "Error!"
-#~ msgstr "Erreur !"
-
-#~ msgid ""
-#~ "It looks like you don't have\n"
-#~ "configured a source for\n"
-#~ "security updates.\n"
-#~ "Do you want to configure one now?"
-#~ msgstr ""
-#~ "Il semble que vous n'ayez pas encore\n"
-#~ "configuré de source pour les mises à\n"
-#~ "jour de sécurité.\n"
-#~ "Voulez-vous le faire maintenant ?"
-
-#~ msgid "Do not show this message again"
-#~ msgstr "Ne plus montrer ce message"
-
-#~ msgid "Configure a Cooker source?"
-#~ msgstr "Configurer une source « Cooker » ?"
-
-#~ msgid ""
-#~ "Cooker is a development and unstable distribution.\n"
-#~ "It is not supported by MandrakeSoft.\n"
-#~ "Use it at your own risk.\n"
-#~ msgstr ""
-#~ "Cooker est une distribution de développement, instable.\n"
-#~ "Elle n'est pas supportée par MandrakeSoft.\n"
-#~ "Utilisez-la à vos risques et périls.\n"
-
-#~ msgid ""
-#~ "Can't find the /var/lib/urpmi/compssUsers.flat file\n"
-#~ "the tree mode won't be available"
-#~ msgstr ""
-#~ "Impossible de trouver le fichier /var/lib/urpmi/compssUsers.flat\n"
-#~ "Le mode arborescent ne sera pas disponible"
-
-#~ msgid "Others"
-#~ msgstr "Autres"
-
-#~ msgid "Analysing the %s source"
-#~ msgstr "Analyse de la source « %s »"
-
-#~ msgid "looking for installed packages"
-#~ msgstr "recherche des paquetages installés"
-
-#~ msgid "Frederic Lepied <flepied@mandrakesoft.com>"
-#~ msgstr "Frédéric Lepied <flepied@mandrakesoft.com>"
-
-#~ msgid "Francois Pons <fpons@mandrakesoft.com>"
-#~ msgstr "François Pons <fpons@mandrakesoft.com>"
-
-#~ msgid " ~ # ~ "
-#~ msgstr " ~ # ~ "
-
-#~ msgid ""
-#~ "Software Manager\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "released under the GPL"
-#~ msgstr ""
-#~ "Gestionnaire de programmes\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 2001\n"
-#~ "diffusé sous la GPL"
-
-#~ msgid "building dependencies for packages removing"
-#~ msgstr "recherche des dépendances pour la désintallation des paquetages"
-
-#~ msgid "oops %s not found\n"
-#~ msgstr "%s non trouvé\n"
-
-#~ msgid "Uninstalling packages"
-#~ msgstr "Désinstallation de paquetage(s)"
-
-#~ msgid "Looking for dependencies"
-#~ msgstr "Recherche des dépendances"
-
-#~ msgid ""
-#~ "In order to satisfy all the dependencies,\n"
-#~ "these packages will be removed:"
-#~ msgstr ""
-#~ "Afin de satisfaire toutes les dépendances,\n"
-#~ "les paquetages suivants vont être supprimés :"
-
-#~ msgid "The selected packages have been removed succesfully"
-#~ msgstr "Les paquetages sélectionnés ont été supprimés avec succès"
-
-#~ msgid "Security warning : The Software Manager won't start browser as root"
-#~ msgstr ""
-#~ "Avertissement de sécurité : le Gestionnaire de programmes ne lancera pas "
-#~ "de navigateur en étant root"
-
-#~ msgid "Unable to run browser"
-#~ msgstr "Impossible de lancer le navigateur"
-
-#~ msgid "verbosity set to %s"
-#~ msgstr "mode verbeux configuré à %s"
-
-#~ msgid "TRUE"
-#~ msgstr "VRAI"
-
-#~ msgid "FALSE"
-#~ msgstr "FAUX"
-
-#~ msgid "be verbose"
-#~ msgstr "mode verbeux"
-
-#~ msgid "Close"
-#~ msgstr "Fermer"
-
-#~ msgid "/_File"
-#~ msgstr "/_Fichier"
-
-#~ msgid "/File/Display Logs"
-#~ msgstr "/Fichier/Afficher le journal"
-
-#~ msgid "/File/_Install"
-#~ msgstr "/Fichier/_Installer"
-
-#~ msgid "/File/_Uninstall"
-#~ msgstr "/Fichier/_Désinstaller"
-
-#~ msgid "/File/-"
-#~ msgstr "/Fichier/-"
-
-#~ msgid "/File/_Proxies"
-#~ msgstr "/Fichier/_Mandataires"
-
-#~ msgid "/File/_Quit"
-#~ msgstr "/Fichier/_Quitter"
-
-#~ msgid "/_Help"
-#~ msgstr "/_Aide"
-
-#~ msgid "/Help/_About..."
-#~ msgstr "/Aide/_A propos..."
-
-#~ msgid "/Help/-"
-#~ msgstr "/Aide/-"
-
-#~ msgid "/Help/MandrakeCampus.com"
-#~ msgstr "/Aide/MandrakeCampus.com"
-
-#~ msgid "/Help/MandrakeExpert.com"
-#~ msgstr "/Aide/MandrakeExpert.com"
-
-#~ msgid "/Help/Show Console Logs"
-#~ msgstr "/Aide/Afficher les logs sur la console"
-
-#~ msgid "Version"
-#~ msgstr "Version"
-
-#~ msgid "Installed version"
-#~ msgstr "Version installée"
-
-#~ msgid "Size"
-#~ msgstr "Taille"
-
-#~ msgid ""
-#~ "Install/\n"
-#~ "Remove"
-#~ msgstr ""
-#~ "Installe/\n"
-#~ "Supprime"
-
-#~ msgid "Install and remove selected packages"
-#~ msgstr "Installe et supprime les paquetages sélectionnés"
-
-#~ msgid ""
-#~ "Define\n"
-#~ "sources"
-#~ msgstr ""
-#~ "Définition\n"
-#~ "des sources"
-
-#~ msgid "Define sources of packages available for installation and update"
-#~ msgstr ""
-#~ "Définit les sources de paquetages disponibles pour l'installation et la "
-#~ "mise à jour"
-
-#~ msgid ""
-#~ "Reload\n"
-#~ "lists"
-#~ msgstr ""
-#~ "Recharger\n"
-#~ "les listes"
-
-#~ msgid "Launch the Mandrake Update wizard"
-#~ msgstr "Lance l'assistant de mise à jour Mandrake"
-
-#~ msgid "Reset"
-#~ msgstr "Remise à zéro"
-
-#~ msgid "Search by file"
-#~ msgstr "Recherche par fichiers"
-
-#~ msgid "Search by description"
-#~ msgstr "Recherche par description"
-
-#~ msgid "Flat List"
-#~ msgstr "Liste plate"
-
-#~ msgid "Tree view"
-#~ msgstr "Arbre"
-
-#~ msgid "Selected"
-#~ msgstr "Sélectionnés"
-
-#~ msgid "All"
-#~ msgstr "Tout"
-
-#~ msgid "Non-installed only"
-#~ msgstr "non installés uniquement"
-
-#~ msgid "Delete"
-#~ msgstr "Suppression"
-
-#~ msgid "Error: curl_easy_init()"
-#~ msgstr "Erreur: curl_easy_init()"
-
-#~ msgid "You must provide a valid source name!"
-#~ msgstr "Veuillez donner un nom de source valide"
-
-#~ msgid "An error occured when adding this source"
-#~ msgstr "Une erreur est survenue lors de l'ajout de cette source"
-
-#~ msgid "New Source"
-#~ msgstr "Nouvelle source"
-
-#~ msgid "New source's name:"
-#~ msgstr "Nom de la nouvelle source :"
-
-#~ msgid "path or mount point"
-#~ msgstr "chemin ou point de montage"
-
-#~ msgid "path"
-#~ msgstr "chemin"
-
-#~ msgid "http"
-#~ msgstr "http"
-
-#~ msgid "ftp"
-#~ msgstr "ftp"
-
-#~ msgid "Update the list of mirrors"
-#~ msgstr "Mettre la liste des miroirs à jour"
-
-#~ msgid "Cooker"
-#~ msgstr "Cooker"
-
-#~ msgid "Do you really want to delete the %s source?\n"
-#~ msgstr "Voulez-vous réellement supprimer la source « %s » ?\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Removing the %s source"
-#~ msgstr ""
-#~ "Veuillez patienter\n"
-#~ "Suppression de la source « %s »"
-
-#~ msgid "Editing %s"
-#~ msgstr "Édition de « %s »"
-
-#~ msgid "Please change one or more parameter\n"
-#~ msgstr "Veuillez changer un ou plusieurs paramètres\n"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the parameters for the %s source"
-#~ msgstr ""
-#~ "Veuillez patienter\n"
-#~ "Mise à jour des paramètres de source « %s »"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the sources"
-#~ msgstr ""
-#~ "Veuillez patienter\n"
-#~ "Mise à jour des base sources"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the database for the %s source"
-#~ msgstr ""
-#~ "Veuillez patienter\n"
-#~ "Mise à jour de la base pour la source « %s »"
-
-#~ msgid "Sources to update"
-#~ msgstr "Sources à mettre à jour"
-
-#~ msgid ""
-#~ "Welcome to the Mandrake Update utility!\n"
-#~ "\n"
-#~ "Here, you'll be able to upgrade your system\n"
-#~ "with the latest Mandrake Linux updates\n"
-#~ msgstr ""
-#~ "Bienvenue dans l'utilitaire de mise à jour de Mandrake\n"
-#~ "\n"
-#~ "Ici, vous pourrez mettre à jour votre système\n"
-#~ "avec les mises à jour les plus récentes de Mandrake Linux\n"
-
-#~ msgid "Please choose which types of update you want to perform:"
-#~ msgstr ""
-#~ "Veuillez choisir quel(s) type(s) de mises à jour vous desirez effectuer :"
-
-#~ msgid "bugfixes"
-#~ msgstr "correction de bugs"
-
-#~ msgid "security updates"
-#~ msgstr "mises à jours de sécurité"
-
-#~ msgid "No changelog found..."
-#~ msgstr "Aucun « Changelog » trouvé"
-
-#~ msgid "Importance"
-#~ msgstr "Importance"
-
-#~ msgid "Please select the packages you want to upgrade"
-#~ msgstr "Veuillez choisir les paquetages que vous voulez mettre à jour"
-
-#~ msgid "No Changelog found..."
-#~ msgstr "Aucun « Changelog » trouvé"
-
-#~ msgid "please select at least one type of update\n"
-#~ msgstr "Veuillez choisir au moins un type de mise à jour\n"
-
-#~ msgid ""
-#~ "Cannot grab the list of mirrors.\n"
-#~ "The network could be unreachable.\n"
-#~ "Please try again later.\n"
-#~ msgstr ""
-#~ "Impossible de récupérer la liste des miroirs.\n"
-#~ "L'accès au réseau n'est peut-être pas disponible.\n"
-#~ "Veuillez réessayer plus tard.\n"
-
-#~ msgid "Http Proxy:"
-#~ msgstr "Serveur mandataire HTTP :"
-
-#~ msgid "Ftp Proxy:"
-#~ msgstr "Serveur mandataire FTP :"
-
-#~ msgid "Initialisation"
-#~ msgstr "Initialisation"
-
-#~ msgid "Welcome"
-#~ msgstr "Bienvenue"
-
-#~ msgid "Packages informations"
-#~ msgstr "Informations sur les paquetages"
-
-#~ msgid "Errors found"
-#~ msgstr "Erreurs trouvées"
-
-#~ msgid "Packages dependencies informations"
-#~ msgstr "Informations des dépendances de paquetages"
-
-#~ msgid "Disk usage"
-#~ msgstr "Utilisation de l'espace disque"
-
-#~ msgid "Good bye"
-#~ msgstr "A bientôt"
-
-#, fuzzy
-#~ msgid "Software Installer"
-#~ msgstr "Gestionnaire de programmes"
-
-#~ msgid "Unable to safely create the temporary directory"
-#~ msgstr "Impossible de créer un répertoire temporaire"
-
-#~ msgid "Unable to safely create the temporary file"
-#~ msgstr "Impossible de créer le fichier temporaire de rapport"
-
-#~ msgid "Unable to create report file, aborting.\n"
-#~ msgstr "Impossible de créer le fichier de rapport, arrêt.\n"
-
-#~ msgid "Some errors where encountered while checking your wishes :"
-#~ msgstr ""
-#~ "Des erreurs sont survenues lors de la vérification de votre demande :"
-
-#~ msgid "Files or packages format error"
-#~ msgstr "Mauvais format de fichier ou de paquetage"
-
-#~ msgid "Conflicting packages"
-#~ msgstr "Conflits entre paquetages"
-
-#~ msgid "Packages already installed"
-#~ msgstr "Paquetages déjà installés"
-
-#~ msgid ""
-#~ "Despite these errors some package can be installed.\n"
-#~ "If you want to go on, click the \"Next\" button below."
-#~ msgstr ""
-#~ "Malgré ces erreurs, certains paquetages peuvent être installés.\n"
-#~ "Si vous voulez continuer, cliquez sur le bouton « Suivant » en bas."
-
-#~ msgid ""
-#~ "Sorry, but all packages raised an error.\n"
-#~ "So I can't proceed with the installation."
-#~ msgstr ""
-#~ "Malheureusement, tous les paquetages ont provoqué une erreur.\n"
-#~ "Il est donc impossible de poursuivre l'installation."
-
-#~ msgid ""
-#~ "Congratulations!\n"
-#~ "You successfully installed your packages, now you can enjoy your new "
-#~ "programs. Simply click the \"Quit\" button below.\n"
-#~ "See you soon!"
-#~ msgstr ""
-#~ "Félicitations !\n"
-#~ "Vous avez installé ces packages avec succès, vous pouvez dès à présent "
-#~ "utiliser ces nouveaux programmes. Cliquez simplement sur le bouton "
-#~ "« Quitter » ci-dessous.\n"
-#~ "A bientôt !"
-
-#~ msgid "Unfortunately, some packages were not installed due to some errors."
-#~ msgstr "Des erreurs ont empêché l'installation de quelques paquetages."
-
-#~ msgid "All required additional software is already installed, just go on."
-#~ msgstr ""
-#~ "Tous les logiciels additionnels requis sont déjà installés, continuons."
-
-#~ msgid ""
-#~ "This additional package needs to be installed in order to everything "
-#~ "working well:"
-#~ msgstr ""
-#~ "Ce paquetage additionnel doit être installé pour que tout fonctionne "
-#~ "bien :"
-
-#~ msgid ""
-#~ "These additional packages need to be installed in order to everything "
-#~ "working well:"
-#~ msgstr ""
-#~ "Ces paquetages additionnels doivent être installés pour que tout "
-#~ "fonctionne bien :"
-
-#~ msgid ""
-#~ "Install in progress...\n"
-#~ "\n"
-#~ "You can see below the installation state."
-#~ msgstr ""
-#~ "Installation en cours...\n"
-#~ "\n"
-#~ "Vous pouvez voir l'état d'avancement ci-dessous."
-
-#~ msgid "Welcome to rpminst"
-#~ msgstr "Bienvenue dans rpminst"
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "An RPM package is a \"case\" containing a software (or a piece of "
-#~ "software) that you can install on your system to use it later."
-#~ msgstr ""
-#~ "Ce programme va installer les paquetages RPM demandés.\n"
-#~ "Un paquetage RPM est une « boîte » qui contient un logiciel (ou une "
-#~ "partie d'un logiciel) que vous pouvez installer sur votre système afin de "
-#~ "l'utiliser ensuite."
-
-#~ msgid ""
-#~ "This program will install the RPM packages you asked for.\n"
-#~ "Please wait while packages and dependencies are checked."
-#~ msgstr ""
-#~ "Ce programme va installer les paquetages RPM demandés.\n"
-#~ "Veuillez patienter pendant la vérification des paquetages et de leurs "
-#~ "dépendances."
-
-#~ msgid "Now doing:"
-#~ msgstr "En cours :"
-
-#~ msgid "Checking packages..."
-#~ msgstr "Vérification des paquetages..."
-
-#~ msgid "Building interface..."
-#~ msgstr "Construction de l'interface..."
-
-#~ msgid "Install selected with rpminst"
-#~ msgstr "Installation avec rpminst sélectionnée"
-
-#~ msgid "Select all"
-#~ msgstr "Tout sélectionner"
-
-#~ msgid "Unselect all"
-#~ msgstr "Tout désélectionner"
-
-#~ msgid "Unknown error code"
-#~ msgstr "Code d'erreur inconnu"
-
-#~ msgid "RPM file not found"
-#~ msgstr "Fichier RPM non trouvé"
-
-#~ msgid "Bad RPM file format (header)"
-#~ msgstr "Mauvais en-tête de fichier RPM"
-
-#~ msgid "Package unknown by urpmq"
-#~ msgstr "Paquetage inconnu de urpmq"
-
-#~ msgid "Conflicting package"
-#~ msgstr "Conflits entre paquetages"
-
-#~ msgid "Not enough available disk space"
-#~ msgstr "Pas assez d'espace disque"
-
-#~ msgid "Unreadable RPM file"
-#~ msgstr "Fichier RPM illisible"
-
-#~ msgid "Added for dependencies"
-#~ msgstr "Ajouté pour les dépendances"
-
-#~ msgid "Header format error (from urpmq)"
-#~ msgstr "Erreur du format d'en-tête (selon urpmq)"
-
-#~ msgid "Canceled by user"
-#~ msgstr "Annulé par l'utilisateur"
-
-#~ msgid "Refused by grpmi"
-#~ msgstr "Refusé par grpmi"
-
-#~ msgid "urpmi return value"
-#~ msgstr "valeur retournée par urpmi"
-
-#~ msgid "Internal error"
-#~ msgstr "Erreur interne"
-
-#~ msgid "Brief"
-#~ msgstr "Bref"
-
-#~ msgid "Details"
-#~ msgstr "Détails"
-
-#~ msgid "Files"
-#~ msgstr "Fichiers"
-
-#~ msgid ""
-#~ "Sorry, but no suitable web browser seems to be installed on your system."
-#~ msgstr ""
-#~ "Désolé, mais aucun navigateur web approprié ne semble être installé sur "
-#~ "votre système"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Changelog"
-#~ msgstr "Historique du développement"
-
-#~ msgid "Group: "
-#~ msgstr "Groupe :"
-
-#~ msgid "License: "
-#~ msgstr "Licence :"
-
-#~ msgid "Packager: "
-#~ msgstr "Responsable du paquetage :"
-
-#~ msgid "Size: "
-#~ msgstr "Taille :"
-
-#~ msgid "Empty changelog"
-#~ msgstr "Historique vide"
-
-#~ msgid "(undefined)"
-#~ msgstr "(non défini)"
-
-#~ msgid "Summary"
-#~ msgstr "Résumé"
-
-#~ msgid "%1.2f kB"
-#~ msgstr "%1.2f Ko"
-
-#~ msgid "%1.2f MB"
-#~ msgstr "%1.2f Mo"
-
-#~ msgid "%1.2f GB"
-#~ msgstr "%1.2f Go"
