@@ -20,6 +20,8 @@
 #
 # $Id$
 
+use MDK::Common 'any';
+
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
     any { /^--?h/ } @ARGV and do {
