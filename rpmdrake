@@ -325,7 +325,7 @@ sub db {
 
 sub do_search($$$$$$$) {
     my ($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) = @_;
-    my $entry = $find_entry->get_text or return;
+    my $entry = quotemeta $find_entry->get_text or return;
     my ($results_ok, $results_none) = (N("Search results"), N("Search results (none)"));
     $options->{delete_category}->($_) foreach $results_ok, $results_none;
     $options->{state}{flat} and $options->{delete_all}->();
