@@ -827,6 +827,7 @@ Is it ok to continue?", to_utf8($urpm->translate_why_removed($urpm->{state}, @{$
 	    $size_selected = 0;
 	    (undef, $size_free) = MDK::Common::System::df('/usr');
 	    $options->{rebuild_tree}->();
+            gtktext_insert($info, '');
 	}
     };
 
