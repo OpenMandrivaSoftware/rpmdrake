@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.4
-%define release 4mdk
+%define release 5mdk
 
 Name: %{name}
 Version: %{version}
@@ -30,7 +30,7 @@ Group: System/Configuration/Packaging
 URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
 Obsoletes: MandrakeUpdate
 Provides: MandrakeUpdate
-Conflicts: drakconf < 10-0.8mdk
+Conflicts: drakconf < 10.1-4mdk
 
 %description
 rpmdrake is a simple graphical frontend to manage software packages on a
@@ -109,6 +109,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Jan 12 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-5mdk
+- rpmdrake now has a menu bar (supported in mcc thanks to Titi)
+- Fix crash with new mygtk2 (Titi)
+- Move the 'Quit', 'Update media' and 'Help' buttons to it, as well as the
+  right-click popup menu.
+- Software media manager: requalify the "Add..." button to add the sources for
+  the current distribution, and rename the old "Add..." button to "Add
+  custom...". (The implementation is not complete yet)
+
 * Fri Jan 07 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-4mdk
 - New command-line option --no-media-update to Mandrakeupdate, to avoid
   updating media at startup
