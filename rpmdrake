@@ -641,7 +641,7 @@ Do you want to try another mirror?", $r), { yesno => 1 }) and goto mu_retry_anot
 	}
 
 	my ($cur, $section);
-	foreach (map { cat_("$statedir/descriptions.$_->{name}") } @update_medias) {
+	foreach (map { cat_("$statedir/descriptions.$_->{name}"), '%package dummy' } @update_medias) {
 	    /^%package (.+)/ and do {
 		$update_descr{$_} = $cur foreach @{$cur->{pkgs}};
 		$cur = {};
