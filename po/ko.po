@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2002-09-11 15:17+0200\n"
+"POT-Creation-Date: 2002-11-07 18:26+0100\n"
 "PO-Revision-Date: 2002-09-09 06:57+0900\n"
 "Last-Translator: Jaegeum Cze <baedaron@hanafos.com>\n"
 "Language-Team: Korean <baedaron@hananet.net>\n"
@@ -23,9 +23,10 @@ msgstr "매체를 생성할 수 없습니다."
 msgid "Unable to update medium; it will be automatically disabled."
 msgstr "매체를 업데이트할 수 없습니다; 자동으로 사용불가될 것입니다."
 
-#: ../edit-urpm-sources.pl_.c:53 ../edit-urpm-sources.pl_.c:163
-msgid "Edit a source"
-msgstr "소스 편집"
+#: ../edit-urpm-sources.pl_.c:53
+#, fuzzy
+msgid "Add a source"
+msgstr "소스 추가:"
 
 #: ../edit-urpm-sources.pl_.c:54
 msgid "Local files"
@@ -56,7 +57,7 @@ msgstr "경로 또는 마운트 위치:"
 msgid "Removable device"
 msgstr "탈착식 장치"
 
-#: ../edit-urpm-sources.pl_.c:58 ../rpmdrake_.c:487
+#: ../edit-urpm-sources.pl_.c:58 ../rpmdrake_.c:486
 msgid "Security updates"
 msgstr "보안 업데이트"
 
@@ -106,15 +107,15 @@ msgstr "소스 유형:"
 
 #: ../edit-urpm-sources.pl_.c:123 ../edit-urpm-sources.pl_.c:182
 #: ../edit-urpm-sources.pl_.c:214 ../rpmdrake.pm_.c:85 ../rpmdrake.pm_.c:105
-#: ../rpmdrake.pm_.c:277 ../rpmdrake_.c:340 ../rpmdrake_.c:868
-#: ../rpmdrake_.c:899
+#: ../rpmdrake.pm_.c:277 ../rpmdrake_.c:339 ../rpmdrake_.c:869
+#: ../rpmdrake_.c:904
 msgid "Ok"
 msgstr "확인"
 
 #: ../edit-urpm-sources.pl_.c:126 ../edit-urpm-sources.pl_.c:174
 #: ../edit-urpm-sources.pl_.c:182 ../edit-urpm-sources.pl_.c:215
-#: ../rpmdrake.pm_.c:277 ../rpmdrake.pm_.c:301 ../rpmdrake_.c:340
-#: ../rpmdrake_.c:899
+#: ../rpmdrake.pm_.c:277 ../rpmdrake.pm_.c:301 ../rpmdrake_.c:339
+#: ../rpmdrake_.c:904
 msgid "Cancel"
 msgstr "취소"
 
@@ -125,6 +126,10 @@ msgstr "기다려 주세요. 매체 추가 중..."
 #: ../edit-urpm-sources.pl_.c:152
 msgid "Please wait, removing medium..."
 msgstr "기다려 주세요. 매체 제거 중..."
+
+#: ../edit-urpm-sources.pl_.c:163
+msgid "Edit a source"
+msgstr "소스 편집"
 
 #: ../edit-urpm-sources.pl_.c:167
 #, c-format
@@ -184,7 +189,7 @@ msgstr "사용가?"
 msgid "Source"
 msgstr "소스"
 
-#: ../edit-urpm-sources.pl_.c:261 ../rpmdrake_.c:663
+#: ../edit-urpm-sources.pl_.c:261 ../rpmdrake_.c:662
 msgid "Remove"
 msgstr "제거"
 
@@ -208,11 +213,11 @@ msgstr "프락시..."
 msgid "Save and quit"
 msgstr "저장 후 종료"
 
-#: ../edit-urpm-sources.pl_.c:272 ../rpmdrake_.c:666
+#: ../edit-urpm-sources.pl_.c:272 ../rpmdrake_.c:665
 msgid "Quit"
 msgstr "종료"
 
-#: ../edit-urpm-sources.pl_.c:282 ../rpmdrake_.c:1014
+#: ../edit-urpm-sources.pl_.c:282 ../rpmdrake_.c:1016
 #, c-format
 msgid ""
 "%s\n"
@@ -416,7 +421,7 @@ msgstr ""
 msgid "Please choose the desired mirror."
 msgstr "희망하는 미러를 선택하세요."
 
-#: ../rpmdrake.pm_.c:293 ../rpmdrake_.c:566
+#: ../rpmdrake.pm_.c:293 ../rpmdrake_.c:565
 msgid "Update source(s)"
 msgstr "소스 업데이트"
 
@@ -436,7 +441,11 @@ msgstr "기다려 주세요. 매체 업데이트 중..."
 msgid "Other"
 msgstr "기타"
 
-#: ../rpmdrake_.c:133 ../rpmdrake_.c:441 ../rpmdrake_.c:442
+#: ../rpmdrake_.c:114 ../rpmdrake_.c:127 ../rpmdrake_.c:216 ../rpmdrake_.c:285
+msgid "(none)"
+msgstr "(없음)"
+
+#: ../rpmdrake_.c:133 ../rpmdrake_.c:440 ../rpmdrake_.c:441
 msgid "(Not available)"
 msgstr "(유효하지 않음)"
 
@@ -456,11 +465,11 @@ msgstr "기다려 주세요. 검색 중..."
 msgid "Stop"
 msgstr "중지"
 
-#: ../rpmdrake_.c:201 ../rpmdrake_.c:307
+#: ../rpmdrake_.c:201 ../rpmdrake_.c:306
 msgid "Addable"
 msgstr "추가 가능"
 
-#: ../rpmdrake_.c:201 ../rpmdrake_.c:307
+#: ../rpmdrake_.c:201 ../rpmdrake_.c:306
 msgid "Upgradable"
 msgstr "업그레이드 가능"
 
@@ -471,10 +480,6 @@ msgstr "선택 안됨"
 #: ../rpmdrake_.c:203
 msgid "Selected"
 msgstr "선택됨"
-
-#: ../rpmdrake_.c:216 ../rpmdrake_.c:286
-msgid "(none)"
-msgstr "(없음)"
 
 #: ../rpmdrake_.c:244
 msgid "More information on package..."
@@ -496,11 +501,11 @@ msgstr "알 수 없는 팩키지"
 msgid "Please wait, listing packages..."
 msgstr "기다려 주세요. 팩키지 목록 정렬 중..."
 
-#: ../rpmdrake_.c:288
+#: ../rpmdrake_.c:287
 msgid "No update"
 msgstr "업데이트 없음"
 
-#: ../rpmdrake_.c:289
+#: ../rpmdrake_.c:288
 msgid ""
 "The list of updates is void. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -510,11 +515,11 @@ msgstr ""
 "팩키지에 대한 업데이트가 없거나,\n"
 "이미 다 설치된 경우입니다."
 
-#: ../rpmdrake_.c:346
+#: ../rpmdrake_.c:345
 msgid "Some additional packages need to be removed"
 msgstr "일부 팩키지가 더 제거 되어야 합니다."
 
-#: ../rpmdrake_.c:347
+#: ../rpmdrake_.c:346
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:\n"
@@ -524,11 +529,11 @@ msgstr ""
 "다음 팩키지들도 제거 되어야 합니다:\n"
 "\n"
 
-#: ../rpmdrake_.c:353
+#: ../rpmdrake_.c:352
 msgid "Some packages can't be removed"
 msgstr "일부 팩키지는 제거될 수 없습니다."
 
-#: ../rpmdrake_.c:354 ../rpmdrake_.c:412
+#: ../rpmdrake_.c:353 ../rpmdrake_.c:411
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -538,11 +543,11 @@ msgstr ""
 "지금 선택 해제되어야 합니다:\n"
 "\n"
 
-#: ../rpmdrake_.c:382
+#: ../rpmdrake_.c:381
 msgid "Additional packages needed"
 msgstr "추가 팩키지가 필요합니다."
 
-#: ../rpmdrake_.c:383
+#: ../rpmdrake_.c:382
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -552,11 +557,11 @@ msgstr ""
 "설치되어야 합니다.\n"
 "\n"
 
-#: ../rpmdrake_.c:396
+#: ../rpmdrake_.c:395
 msgid "Some packages can't be installed"
 msgstr "일부 팩키지는 설치될 수 없습니다."
 
-#: ../rpmdrake_.c:397
+#: ../rpmdrake_.c:396
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -564,146 +569,146 @@ msgstr ""
 "다음 팩키지들은 선택될 수 없습니다:\n"
 "\n"
 
-#: ../rpmdrake_.c:411 ../rpmdrake_.c:624
+#: ../rpmdrake_.c:410 ../rpmdrake_.c:623
 msgid "Some packages need to be removed"
 msgstr "일부 팩키지는 제거되어야 합니다."
 
-#: ../rpmdrake_.c:433
+#: ../rpmdrake_.c:432
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "선택된 용량: %d MB / 여유 공간: %d MB"
 
-#: ../rpmdrake_.c:435
+#: ../rpmdrake_.c:434
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "선택된 크기: %d MB"
 
-#: ../rpmdrake_.c:441
+#: ../rpmdrake_.c:440
 msgid "Files:\n"
 msgstr "%s파일들:\n"
 
-#: ../rpmdrake_.c:442
+#: ../rpmdrake_.c:441
 msgid "Changelog:\n"
 msgstr "변경사항:\n"
 
-#: ../rpmdrake_.c:445
+#: ../rpmdrake_.c:444
 msgid "Source: "
 msgstr "소스: "
 
-#: ../rpmdrake_.c:446
+#: ../rpmdrake_.c:445
 msgid "Currently installed version: "
 msgstr "설치된 버전:"
 
-#: ../rpmdrake_.c:450
+#: ../rpmdrake_.c:449
 msgid "Reason for update: "
 msgstr "업데이트 이유:"
 
-#: ../rpmdrake_.c:452
+#: ../rpmdrake_.c:451
 msgid "Name: "
 msgstr "이름: "
 
-#: ../rpmdrake_.c:453
+#: ../rpmdrake_.c:452
 msgid "Version: "
 msgstr "버전: "
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:453
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:453
 msgid "Size: "
 msgstr "크기: "
 
-#: ../rpmdrake_.c:455
+#: ../rpmdrake_.c:454
 msgid "Importance: "
 msgstr "중요도: "
 
-#: ../rpmdrake_.c:456
+#: ../rpmdrake_.c:455
 msgid "Summary: "
 msgstr "요약 설명: "
 
-#: ../rpmdrake_.c:457
+#: ../rpmdrake_.c:456
 msgid "Description: "
 msgstr "설명:"
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:465
 msgid "rpmdrake"
 msgstr "rpmdrake"
 
-#: ../rpmdrake_.c:487
+#: ../rpmdrake_.c:486
 msgid "Bugfixes updates"
 msgstr "버그수정 업데이트"
 
-#: ../rpmdrake_.c:487
+#: ../rpmdrake_.c:486
 msgid "Normal updates"
 msgstr "일반 업데이트"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:505
 msgid "Mandrake choices"
 msgstr "맨드레이크 선택"
 
-#: ../rpmdrake_.c:507
+#: ../rpmdrake_.c:506
 msgid "All packages, alphabetical"
 msgstr "모든 팩키지, 가나다순"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:507
 msgid "All packages,"
 msgstr "모든 팩키지"
 
-#: ../rpmdrake_.c:531
+#: ../rpmdrake_.c:530
 msgid "by group"
 msgstr "그룹별"
 
-#: ../rpmdrake_.c:531
+#: ../rpmdrake_.c:530
 msgid "by size"
 msgstr "크기별"
 
-#: ../rpmdrake_.c:532
+#: ../rpmdrake_.c:531
 msgid "by selection state"
 msgstr "선택 상태별"
 
-#: ../rpmdrake_.c:533
+#: ../rpmdrake_.c:532
 msgid "by source repository"
 msgstr "소스 등록별"
 
-#: ../rpmdrake_.c:533
+#: ../rpmdrake_.c:532
 msgid "by update availability"
 msgstr "업데이트 가능성별"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:553
 msgid "in descriptions"
 msgstr "설명별"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:553
 msgid "in files"
 msgstr "파일별"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:553
 msgid "in names"
 msgstr "이름별"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:564
 msgid "Reload the packages list"
 msgstr "팩키지 목록 다시 읽기"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:564
 msgid "Reset the selection"
 msgstr "선택 재설정"
 
-#: ../rpmdrake_.c:592
+#: ../rpmdrake_.c:591
 msgid "Maximum information"
 msgstr "최대 정보"
 
-#: ../rpmdrake_.c:592
+#: ../rpmdrake_.c:591
 msgid "Normal information"
 msgstr "일반 정보"
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:613
 msgid "Too many packages are selected"
 msgstr "너무 많은 팩키지를 선택하였습니다."
 
-#: ../rpmdrake_.c:615
+#: ../rpmdrake_.c:614
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -720,7 +725,7 @@ msgstr ""
 "\n"
 "정말로 선택된 모든 팩키지를 설치하시겠습니까?"
 
-#: ../rpmdrake_.c:625
+#: ../rpmdrake_.c:624
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -735,37 +740,37 @@ msgstr ""
 "\n"
 "계속할까요?"
 
-#: ../rpmdrake_.c:647
+#: ../rpmdrake_.c:646
 msgid "Find:"
 msgstr "찾기"
 
-#: ../rpmdrake_.c:652
+#: ../rpmdrake_.c:651
 msgid "Search"
 msgstr "검색"
 
-#: ../rpmdrake_.c:664
+#: ../rpmdrake_.c:663
 msgid "Install"
 msgstr "설치"
 
-#: ../rpmdrake_.c:691
+#: ../rpmdrake_.c:690
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr ""
 "-adobe-times-medium-r-normal--18-*-75-75-p-*-iso8859-1,-*-batang-medium-r-"
 "normal--18-*-75-75-*-*-ksc5601.1987-0,*-r-*"
 
-#: ../rpmdrake_.c:692 data/mandrakeupdate.desktop.in.h:1
+#: ../rpmdrake_.c:691 data/mandrakeupdate.desktop.in.h:1
 msgid "Mandrake Update"
 msgstr "맨드레이크 업데이트"
 
-#: ../rpmdrake_.c:692
+#: ../rpmdrake_.c:691
 msgid "Software Packages Removal"
 msgstr "소프트웨어 팩키지 제거"
 
-#: ../rpmdrake_.c:693
+#: ../rpmdrake_.c:692
 msgid "Software Packages Installation"
 msgstr "소프트웨어 팩키지 설치"
 
-#: ../rpmdrake_.c:726
+#: ../rpmdrake_.c:725
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -777,23 +782,23 @@ msgstr ""
 "\n"
 "계속할까요?"
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:729
 msgid "Please wait, contacting mirror to update packages information."
 msgstr "기다려 주세요. 팩키지 정보를 업데이트하기 위해 미러에 접속 중..."
 
-#: ../rpmdrake_.c:732
+#: ../rpmdrake_.c:731
 msgid "Error updating medium"
 msgstr "매체 업데이트 중 오류"
 
-#: ../rpmdrake_.c:733
+#: ../rpmdrake_.c:732
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "팩키지 정보 업데이트 도중에 복구 불가능한 오류가 있었습니다."
 
-#: ../rpmdrake_.c:739
+#: ../rpmdrake_.c:738
 msgid "How to choose manually your mirror"
 msgstr "수동으로 미러를 선택하는 방법"
 
-#: ../rpmdrake_.c:740
+#: ../rpmdrake_.c:739
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -807,15 +812,15 @@ msgstr ""
 "\n"
 "그런 후, 맨드레이크 업데이트를 다시 실행하세요."
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:745
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr "기다려 주세요. 업데이트 팩키지를 초기화하기 위해 미러에 접속 중..."
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:749
 msgid "Error adding update medium"
 msgstr "업데이트 매체 추가 중 오류"
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:750
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -835,65 +840,73 @@ msgstr ""
 "\n"
 "다른 미러를 사용해 보시겠습니까?"
 
-#: ../rpmdrake_.c:780
+#: ../rpmdrake_.c:781
 msgid "Please wait, finding available packages..."
 msgstr "기다려 주세요. 유효한 팩키지 검색 중..."
 
-#: ../rpmdrake_.c:809
+#: ../rpmdrake_.c:810
 msgid "Installation finished"
 msgstr "설치 완료"
 
-#: ../rpmdrake_.c:812
+#: ../rpmdrake_.c:813
 #, c-format
 msgid "Inspecting %s"
 msgstr "%s 조사중"
 
-#: ../rpmdrake_.c:828
+#: ../rpmdrake_.c:829
 #, c-format
 msgid "Remove .%s"
 msgstr ".%s 제거"
 
-#: ../rpmdrake_.c:830
+#: ../rpmdrake_.c:831
 #, c-format
 msgid "Use .%s as main file"
 msgstr ".%s을(를) 주 파일로 사용"
 
-#: ../rpmdrake_.c:832
+#: ../rpmdrake_.c:833
 msgid "Do nothing"
 msgstr "그냥 둠"
 
-#: ../rpmdrake_.c:835
+#: ../rpmdrake_.c:836
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr ""
 "-misc-fixed-medium-r-normal--12-*-75-75-p-*-iso8859-1,-*-gulim-medium-r-"
 "normal--12-*-75-75-*-*-ksc5601.1987-0,*-r-*"
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:853
 msgid "Inspect..."
 msgstr "조사..."
 
-#: ../rpmdrake_.c:889
+#: ../rpmdrake_.c:878
+msgid "Program missing"
+msgstr "프로그램 존재하지 않음"
+
+#: ../rpmdrake_.c:879
+msgid "A required program is missing (grpmi). Check your installation."
+msgstr "요청한 프로그램이 존재하지 않습니다(grpmi). 설치를 확인하세요."
+
+#: ../rpmdrake_.c:894
 msgid "Unable to get source packages."
 msgstr "소스 팩키지를 가져올 수 없습니다."
 
-#: ../rpmdrake_.c:890
+#: ../rpmdrake_.c:895
 msgid "Unable to get source packages, sorry."
 msgstr "소스 팩키지를 가져올 수 없습니다."
 
-#: ../rpmdrake_.c:897
+#: ../rpmdrake_.c:902
 msgid "Change medium"
 msgstr "매체 교환"
 
-#: ../rpmdrake_.c:898
+#: ../rpmdrake_.c:903
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "[%s] 매체를 [%s]장치에 넣어 주세요."
 
-#: ../rpmdrake_.c:906
+#: ../rpmdrake_.c:911
 msgid "Installation failed"
 msgstr "설치 실패"
 
-#: ../rpmdrake_.c:907
+#: ../rpmdrake_.c:912
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -901,20 +914,12 @@ msgstr ""
 "설치 실패. 일부 파일이 없습니다.\n"
 "소스 데이터베이스를 업데이트해 보세요."
 
-#: ../rpmdrake_.c:910
+#: ../rpmdrake_.c:915
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "기다려 주세요. 다른 팩키지를 업그레이드하기 위해 일부 팩키지를 제거 중..."
 
-#: ../rpmdrake_.c:921
-msgid "Program missing"
-msgstr "프로그램 존재하지 않음"
-
-#: ../rpmdrake_.c:922
-msgid "A required program is missing (grpmi). Check your installation."
-msgstr "요청한 프로그램이 존재하지 않습니다(grpmi). 설치를 확인하세요."
-
-#: ../rpmdrake_.c:932
+#: ../rpmdrake_.c:934
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -927,7 +932,7 @@ msgstr ""
 "일부 설정 파일들은 '.rpmnew' 또는 '.rpmsave'로 생성되었습니다.\n"
 "조치를 취하기 위해 일부를 조사해 볼 수 있습니다:"
 
-#: ../rpmdrake_.c:932
+#: ../rpmdrake_.c:934
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -935,31 +940,31 @@ msgstr ""
 "일부 팩키지는 올바르게 설치되지\n"
 "않았습니다."
 
-#: ../rpmdrake_.c:933
+#: ../rpmdrake_.c:935
 msgid "everything was installed correctly"
 msgstr "모두 올바르게 설치되었습니다."
 
-#: ../rpmdrake_.c:935
+#: ../rpmdrake_.c:937
 msgid "Everything installed successfully"
 msgstr "모든 설치를 마쳤습니다."
 
-#: ../rpmdrake_.c:936
+#: ../rpmdrake_.c:938
 msgid "All requested packages were installed successfully."
 msgstr "요청된 모든 팩키지의 설치를 마쳤습니다."
 
-#: ../rpmdrake_.c:938
+#: ../rpmdrake_.c:940
 msgid "Everything already installed."
 msgstr "이미 설치되어 있습니다."
 
-#: ../rpmdrake_.c:939
+#: ../rpmdrake_.c:941
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "이미 설치되어 있습니다.(과연 이런 일이 있을 수 있나요?)"
 
-#: ../rpmdrake_.c:942
+#: ../rpmdrake_.c:944
 msgid "Problem during installation"
 msgstr ""
 
-#: ../rpmdrake_.c:943
+#: ../rpmdrake_.c:945
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -967,15 +972,15 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../rpmdrake_.c:953
+#: ../rpmdrake_.c:955
 msgid "Please wait, reading packages database..."
 msgstr "기다려 주세요. 팩키지 데이터베이스 읽는 중..."
 
-#: ../rpmdrake_.c:991
+#: ../rpmdrake_.c:993
 msgid "Please wait, removing packages..."
 msgstr "기다려 주세요. 팩키지 제거 중..."
 
-#: ../rpmdrake_.c:1018
+#: ../rpmdrake_.c:1020
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -987,7 +992,7 @@ msgstr ""
 "이 도구는 컴퓨터에서 제거할 소프트웨어를 선택할 수 있도록\n"
 "도와 줍니다."
 
-#: ../rpmdrake_.c:1023
+#: ../rpmdrake_.c:1025
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -999,7 +1004,7 @@ msgstr ""
 "이 도구는 컴퓨터에 설치할 업데이트된 소프트웨어를 선택할 수 있도록\n"
 "도와 줍니다."
 
-#: ../rpmdrake_.c:1028
+#: ../rpmdrake_.c:1030
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-09-11 15:17+0200\n"
+"POT-Creation-Date: 2002-11-07 18:26+0100\n"
 "PO-Revision-Date: 2000-09-13 14:44+0200\n"
 "Last-Translator: YAMAGATA Hiroo <hiyori13@alum.mit.edu>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -21,9 +21,10 @@ msgstr "メディアが作れません。"
 msgid "Unable to update medium; it will be automatically disabled."
 msgstr "メディアを更新できません。使用不能にします。"
 
-#: ../edit-urpm-sources.pl_.c:53 ../edit-urpm-sources.pl_.c:163
-msgid "Edit a source"
-msgstr "ソースの編集"
+#: ../edit-urpm-sources.pl_.c:53
+#, fuzzy
+msgid "Add a source"
+msgstr "ソースの追加"
 
 #: ../edit-urpm-sources.pl_.c:54
 msgid "Local files"
@@ -54,7 +55,7 @@ msgstr "パスまたはマウントポイント："
 msgid "Removable device"
 msgstr "リムーバブルデバイス"
 
-#: ../edit-urpm-sources.pl_.c:58 ../rpmdrake_.c:487
+#: ../edit-urpm-sources.pl_.c:58 ../rpmdrake_.c:486
 msgid "Security updates"
 msgstr "セキュリティ上の更新"
 
@@ -104,15 +105,15 @@ msgstr "ソースの種類:"
 
 #: ../edit-urpm-sources.pl_.c:123 ../edit-urpm-sources.pl_.c:182
 #: ../edit-urpm-sources.pl_.c:214 ../rpmdrake.pm_.c:85 ../rpmdrake.pm_.c:105
-#: ../rpmdrake.pm_.c:277 ../rpmdrake_.c:340 ../rpmdrake_.c:868
-#: ../rpmdrake_.c:899
+#: ../rpmdrake.pm_.c:277 ../rpmdrake_.c:339 ../rpmdrake_.c:869
+#: ../rpmdrake_.c:904
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:126 ../edit-urpm-sources.pl_.c:174
 #: ../edit-urpm-sources.pl_.c:182 ../edit-urpm-sources.pl_.c:215
-#: ../rpmdrake.pm_.c:277 ../rpmdrake.pm_.c:301 ../rpmdrake_.c:340
-#: ../rpmdrake_.c:899
+#: ../rpmdrake.pm_.c:277 ../rpmdrake.pm_.c:301 ../rpmdrake_.c:339
+#: ../rpmdrake_.c:904
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -123,6 +124,10 @@ msgstr "少々お待ちを、メディア追加中"
 #: ../edit-urpm-sources.pl_.c:152
 msgid "Please wait, removing medium..."
 msgstr "少々お待ちを、メディア取り出し中"
+
+#: ../edit-urpm-sources.pl_.c:163
+msgid "Edit a source"
+msgstr "ソースの編集"
 
 #: ../edit-urpm-sources.pl_.c:167
 #, c-format
@@ -182,7 +187,7 @@ msgstr "有効ですか？"
 msgid "Source"
 msgstr "ソース"
 
-#: ../edit-urpm-sources.pl_.c:261 ../rpmdrake_.c:663
+#: ../edit-urpm-sources.pl_.c:261 ../rpmdrake_.c:662
 msgid "Remove"
 msgstr "取り除く"
 
@@ -206,11 +211,11 @@ msgstr "プロクシ..."
 msgid "Save and quit"
 msgstr "保存して終了"
 
-#: ../edit-urpm-sources.pl_.c:272 ../rpmdrake_.c:666
+#: ../edit-urpm-sources.pl_.c:272 ../rpmdrake_.c:665
 msgid "Quit"
 msgstr "終了"
 
-#: ../edit-urpm-sources.pl_.c:282 ../rpmdrake_.c:1014
+#: ../edit-urpm-sources.pl_.c:282 ../rpmdrake_.c:1016
 #, c-format
 msgid ""
 "%s\n"
@@ -412,7 +417,7 @@ msgstr ""
 msgid "Please choose the desired mirror."
 msgstr "希望のミラーを選んでください。"
 
-#: ../rpmdrake.pm_.c:293 ../rpmdrake_.c:566
+#: ../rpmdrake.pm_.c:293 ../rpmdrake_.c:565
 msgid "Update source(s)"
 msgstr "ソース更新"
 
@@ -432,7 +437,11 @@ msgstr "少々お待ちを、メディア更新中"
 msgid "Other"
 msgstr "その他"
 
-#: ../rpmdrake_.c:133 ../rpmdrake_.c:441 ../rpmdrake_.c:442
+#: ../rpmdrake_.c:114 ../rpmdrake_.c:127 ../rpmdrake_.c:216 ../rpmdrake_.c:285
+msgid "(none)"
+msgstr "(なし)"
+
+#: ../rpmdrake_.c:133 ../rpmdrake_.c:440 ../rpmdrake_.c:441
 msgid "(Not available)"
 msgstr "（一つもありません）"
 
@@ -452,11 +461,11 @@ msgstr "ファイル検索中、少々お待ちを"
 msgid "Stop"
 msgstr "停止"
 
-#: ../rpmdrake_.c:201 ../rpmdrake_.c:307
+#: ../rpmdrake_.c:201 ../rpmdrake_.c:306
 msgid "Addable"
 msgstr "追加可能なもの"
 
-#: ../rpmdrake_.c:201 ../rpmdrake_.c:307
+#: ../rpmdrake_.c:201 ../rpmdrake_.c:306
 msgid "Upgradable"
 msgstr "更新可能なもの"
 
@@ -467,10 +476,6 @@ msgstr "選択されていません"
 #: ../rpmdrake_.c:203
 msgid "Selected"
 msgstr "選択済み"
-
-#: ../rpmdrake_.c:216 ../rpmdrake_.c:286
-msgid "(none)"
-msgstr "(なし)"
 
 #: ../rpmdrake_.c:244
 msgid "More information on package..."
@@ -492,11 +497,11 @@ msgstr "知らないパッケージです"
 msgid "Please wait, listing packages..."
 msgstr "パッケージ一覧表示中、少々お待ちを"
 
-#: ../rpmdrake_.c:288
+#: ../rpmdrake_.c:287
 msgid "No update"
 msgstr "更新なし"
 
-#: ../rpmdrake_.c:289
+#: ../rpmdrake_.c:288
 msgid ""
 "The list of updates is void. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -505,11 +510,11 @@ msgstr ""
 "更新一覧が無効です。コンピュータのインストールされたパッケージの\n"
 "更新版がないか、それがすでにインストール済みということです。"
 
-#: ../rpmdrake_.c:346
+#: ../rpmdrake_.c:345
 msgid "Some additional packages need to be removed"
 msgstr "他に削除すべきパッケージがあります"
 
-#: ../rpmdrake_.c:347
+#: ../rpmdrake_.c:346
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:\n"
@@ -519,11 +524,11 @@ msgstr ""
 "以下のパッケージを削除します:\n"
 "\n"
 
-#: ../rpmdrake_.c:353
+#: ../rpmdrake_.c:352
 msgid "Some packages can't be removed"
 msgstr "削除できないパッケージがあります"
 
-#: ../rpmdrake_.c:354 ../rpmdrake_.c:412
+#: ../rpmdrake_.c:353 ../rpmdrake_.c:411
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -533,11 +538,11 @@ msgstr ""
 "以下のパッケージを今は非選択にしてください:\n"
 "\n"
 
-#: ../rpmdrake_.c:382
+#: ../rpmdrake_.c:381
 msgid "Additional packages needed"
 msgstr "追加パッケージが必要です"
 
-#: ../rpmdrake_.c:383
+#: ../rpmdrake_.c:382
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -547,11 +552,11 @@ msgstr ""
 "以下のパッケージの追加が必要です:\n"
 "\n"
 
-#: ../rpmdrake_.c:396
+#: ../rpmdrake_.c:395
 msgid "Some packages can't be installed"
 msgstr "インストールできないパッケージがあります"
 
-#: ../rpmdrake_.c:397
+#: ../rpmdrake_.c:396
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -559,146 +564,146 @@ msgstr ""
 "すみません、以下のパッケージは選択できません:\n"
 "\n"
 
-#: ../rpmdrake_.c:411 ../rpmdrake_.c:624
+#: ../rpmdrake_.c:410 ../rpmdrake_.c:623
 msgid "Some packages need to be removed"
 msgstr "いくつかのパッケージを削除します"
 
-#: ../rpmdrake_.c:433
+#: ../rpmdrake_.c:432
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "選択：%d MB / ディスク空き容量: %d MB"
 
-#: ../rpmdrake_.c:435
+#: ../rpmdrake_.c:434
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "選択サイズ: %d MB"
 
-#: ../rpmdrake_.c:441
+#: ../rpmdrake_.c:440
 msgid "Files:\n"
 msgstr "ファイル: \n"
 
-#: ../rpmdrake_.c:442
+#: ../rpmdrake_.c:441
 msgid "Changelog:\n"
 msgstr "変更ログ: \n"
 
-#: ../rpmdrake_.c:445
+#: ../rpmdrake_.c:444
 msgid "Source: "
 msgstr "ソース: "
 
-#: ../rpmdrake_.c:446
+#: ../rpmdrake_.c:445
 msgid "Currently installed version: "
 msgstr "インストールされているバージョン: "
 
-#: ../rpmdrake_.c:450
+#: ../rpmdrake_.c:449
 msgid "Reason for update: "
 msgstr "更新の理由: "
 
-#: ../rpmdrake_.c:452
+#: ../rpmdrake_.c:451
 msgid "Name: "
 msgstr "名称: "
 
-#: ../rpmdrake_.c:453
+#: ../rpmdrake_.c:452
 msgid "Version: "
 msgstr "バージョン: "
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:453
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:453
 msgid "Size: "
 msgstr "サイズ: "
 
-#: ../rpmdrake_.c:455
+#: ../rpmdrake_.c:454
 msgid "Importance: "
 msgstr "重要性: "
 
-#: ../rpmdrake_.c:456
+#: ../rpmdrake_.c:455
 msgid "Summary: "
 msgstr "概要: "
 
-#: ../rpmdrake_.c:457
+#: ../rpmdrake_.c:456
 msgid "Description: "
 msgstr "説明: "
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:465
 msgid "rpmdrake"
 msgstr "rpmdrake"
 
-#: ../rpmdrake_.c:487
+#: ../rpmdrake_.c:486
 msgid "Bugfixes updates"
 msgstr "バグ修正の更新"
 
-#: ../rpmdrake_.c:487
+#: ../rpmdrake_.c:486
 msgid "Normal updates"
 msgstr "通常の更新"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:505
 msgid "Mandrake choices"
 msgstr "Mandrakeの選択"
 
-#: ../rpmdrake_.c:507
+#: ../rpmdrake_.c:506
 msgid "All packages, alphabetical"
 msgstr "全パッケージ、ABC順"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:507
 msgid "All packages,"
 msgstr "全パッケージ"
 
-#: ../rpmdrake_.c:531
+#: ../rpmdrake_.c:530
 msgid "by group"
 msgstr "グループ別"
 
-#: ../rpmdrake_.c:531
+#: ../rpmdrake_.c:530
 msgid "by size"
 msgstr "サイズ順"
 
-#: ../rpmdrake_.c:532
+#: ../rpmdrake_.c:531
 msgid "by selection state"
 msgstr "選択状態順"
 
-#: ../rpmdrake_.c:533
+#: ../rpmdrake_.c:532
 msgid "by source repository"
 msgstr "ソースrepository順"
 
-#: ../rpmdrake_.c:533
+#: ../rpmdrake_.c:532
 msgid "by update availability"
 msgstr "更新の有無順"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:553
 msgid "in descriptions"
 msgstr "説明の中"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:553
 msgid "in files"
 msgstr "ファイルの中"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:553
 msgid "in names"
 msgstr "名称の中"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:564
 msgid "Reload the packages list"
 msgstr "パッケージ一覧を読み直す"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:564
 msgid "Reset the selection"
 msgstr "選択をリセット"
 
-#: ../rpmdrake_.c:592
+#: ../rpmdrake_.c:591
 msgid "Maximum information"
 msgstr "情報量を最大に"
 
-#: ../rpmdrake_.c:592
+#: ../rpmdrake_.c:591
 msgid "Normal information"
 msgstr "通常の情報"
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:613
 msgid "Too many packages are selected"
 msgstr "選んだパッケージが多すぎます"
 
-#: ../rpmdrake_.c:615
+#: ../rpmdrake_.c:614
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -713,7 +718,7 @@ msgstr ""
 "\n"
 "本当にこの選んだパッケージを全部インストールしますか？"
 
-#: ../rpmdrake_.c:625
+#: ../rpmdrake_.c:624
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -728,37 +733,37 @@ msgstr ""
 "\n"
 "続けていいですか?"
 
-#: ../rpmdrake_.c:647
+#: ../rpmdrake_.c:646
 msgid "Find:"
 msgstr "以下を探す："
 
-#: ../rpmdrake_.c:652
+#: ../rpmdrake_.c:651
 msgid "Search"
 msgstr "検索"
 
-#: ../rpmdrake_.c:664
+#: ../rpmdrake_.c:663
 msgid "Install"
 msgstr "インストール"
 
-#: ../rpmdrake_.c:691
+#: ../rpmdrake_.c:690
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr ""
 "-adobe-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,-misc-fixed-medium-r-normal--"
 "12-*-75-75-c-*-jisx0208.1983-0,*"
 
-#: ../rpmdrake_.c:692 data/mandrakeupdate.desktop.in.h:1
+#: ../rpmdrake_.c:691 data/mandrakeupdate.desktop.in.h:1
 msgid "Mandrake Update"
 msgstr "Mandrakeアップデート"
 
-#: ../rpmdrake_.c:692
+#: ../rpmdrake_.c:691
 msgid "Software Packages Removal"
 msgstr "ソフトウェアパッケージ削除"
 
-#: ../rpmdrake_.c:693
+#: ../rpmdrake_.c:692
 msgid "Software Packages Installation"
 msgstr "ソフトパッケージのインストール"
 
-#: ../rpmdrake_.c:726
+#: ../rpmdrake_.c:725
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -770,23 +775,23 @@ msgstr ""
 "\n"
 "続けますか?"
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:729
 msgid "Please wait, contacting mirror to update packages information."
 msgstr "少々お待ちを、ミラーにつないでパッケージ情報更新中。"
 
-#: ../rpmdrake_.c:732
+#: ../rpmdrake_.c:731
 msgid "Error updating medium"
 msgstr "メディア更新でエラー"
 
-#: ../rpmdrake_.c:733
+#: ../rpmdrake_.c:732
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "パッケージ情報更新中に回復不能エラー発生。"
 
-#: ../rpmdrake_.c:739
+#: ../rpmdrake_.c:738
 msgid "How to choose manually your mirror"
 msgstr "ミラーをマニュアルで選ぶには"
 
-#: ../rpmdrake_.c:740
+#: ../rpmdrake_.c:739
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -800,15 +805,15 @@ msgstr ""
 "\n"
 "それからMandrakeUpdateを再起動します。"
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:745
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr "ミラーにつないで更新パッケージを初期化します。少々お待ちを"
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:749
 msgid "Error adding update medium"
 msgstr "更新メディア追加でエラー"
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:750
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -828,65 +833,73 @@ msgstr ""
 "\n"
 "別のミラーを試してみますか?"
 
-#: ../rpmdrake_.c:780
+#: ../rpmdrake_.c:781
 msgid "Please wait, finding available packages..."
 msgstr "提供パッケージを探しています、少々お待ちを"
 
-#: ../rpmdrake_.c:809
+#: ../rpmdrake_.c:810
 msgid "Installation finished"
 msgstr "インストール完了"
 
-#: ../rpmdrake_.c:812
+#: ../rpmdrake_.c:813
 #, c-format
 msgid "Inspecting %s"
 msgstr "%s 検査中"
 
-#: ../rpmdrake_.c:828
+#: ../rpmdrake_.c:829
 #, c-format
 msgid "Remove .%s"
 msgstr ".%s を取り除く"
 
-#: ../rpmdrake_.c:830
+#: ../rpmdrake_.c:831
 #, c-format
 msgid "Use .%s as main file"
 msgstr ".%s をメインファイルとして使う"
 
-#: ../rpmdrake_.c:832
+#: ../rpmdrake_.c:833
 msgid "Do nothing"
 msgstr "なにもしない"
 
-#: ../rpmdrake_.c:835
+#: ../rpmdrake_.c:836
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr ""
 "-adobe-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*,-misc-fixed-medium-r-normal--"
 "12-*-75-75-c-*-jisx0208.1983-0,*"
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:853
 msgid "Inspect..."
 msgstr "検査..."
 
-#: ../rpmdrake_.c:889
+#: ../rpmdrake_.c:878
+msgid "Program missing"
+msgstr "プログラムがありません"
+
+#: ../rpmdrake_.c:879
+msgid "A required program is missing (grpmi). Check your installation."
+msgstr "必要プログラムがありません (grpmi)。インストールを確認しましょう。"
+
+#: ../rpmdrake_.c:894
 msgid "Unable to get source packages."
 msgstr "ソースパッケージが見つかりません"
 
-#: ../rpmdrake_.c:890
+#: ../rpmdrake_.c:895
 msgid "Unable to get source packages, sorry."
 msgstr "ソースパッケージが得られません、ごめんなさい。"
 
-#: ../rpmdrake_.c:897
+#: ../rpmdrake_.c:902
 msgid "Change medium"
 msgstr "メディア変更"
 
-#: ../rpmdrake_.c:898
+#: ../rpmdrake_.c:903
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "%sというメディアをデバイス[%s]に挿入してください"
 
-#: ../rpmdrake_.c:906
+#: ../rpmdrake_.c:911
 msgid "Installation failed"
 msgstr "インストール失敗"
 
-#: ../rpmdrake_.c:907
+#: ../rpmdrake_.c:912
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -894,19 +907,11 @@ msgstr ""
 "インストール失敗、一部ファイルがありません。\n"
 "ソースデータベースを更新してみてはいかがでしょう。"
 
-#: ../rpmdrake_.c:910
+#: ../rpmdrake_.c:915
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "他の更新ができるようにパッケージ削除中、少々お待ちを"
 
-#: ../rpmdrake_.c:921
-msgid "Program missing"
-msgstr "プログラムがありません"
-
-#: ../rpmdrake_.c:922
-msgid "A required program is missing (grpmi). Check your installation."
-msgstr "必要プログラムがありません (grpmi)。インストールを確認しましょう。"
-
-#: ../rpmdrake_.c:932
+#: ../rpmdrake_.c:934
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -919,7 +924,7 @@ msgstr ""
 "`.rpmnew' や `.rpmsave'という設定ファイルが生成されました。\n"
 "これを検討して追加の設定をすることもできます:"
 
-#: ../rpmdrake_.c:932
+#: ../rpmdrake_.c:934
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -927,32 +932,32 @@ msgstr ""
 "正しくインストールできなかった\n"
 "パッケージがあります"
 
-#: ../rpmdrake_.c:933
+#: ../rpmdrake_.c:935
 msgid "everything was installed correctly"
 msgstr "すべて正しくインストールされました"
 
-#: ../rpmdrake_.c:935
+#: ../rpmdrake_.c:937
 msgid "Everything installed successfully"
 msgstr "すべてインストールに成功しました"
 
-#: ../rpmdrake_.c:936
+#: ../rpmdrake_.c:938
 msgid "All requested packages were installed successfully."
 msgstr "要求されたパッケージはすべてインストール成功です。"
 
-#: ../rpmdrake_.c:938
+#: ../rpmdrake_.c:940
 msgid "Everything already installed."
 msgstr "すべてインストール済み。"
 
-#: ../rpmdrake_.c:939
+#: ../rpmdrake_.c:941
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "すべてインストール済み（こんなことがあっていいのか？）"
 
-#: ../rpmdrake_.c:942
+#: ../rpmdrake_.c:944
 #, fuzzy
 msgid "Problem during installation"
 msgstr "インストール中に問題が起こりました"
 
-#: ../rpmdrake_.c:943
+#: ../rpmdrake_.c:945
 #, fuzzy, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -960,15 +965,15 @@ msgid ""
 "%s"
 msgstr "インストール中に問題発生。"
 
-#: ../rpmdrake_.c:953
+#: ../rpmdrake_.c:955
 msgid "Please wait, reading packages database..."
 msgstr "パッケージデータベース読み込み中、少々お待ちを"
 
-#: ../rpmdrake_.c:991
+#: ../rpmdrake_.c:993
 msgid "Please wait, removing packages..."
 msgstr "パッケージ削除中、少々お待ちを"
 
-#: ../rpmdrake_.c:1018
+#: ../rpmdrake_.c:1020
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -979,7 +984,7 @@ msgstr ""
 "\n"
 "このツールは、削除したいソフトウェアを選ぶ支援をします。"
 
-#: ../rpmdrake_.c:1023
+#: ../rpmdrake_.c:1025
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -990,7 +995,7 @@ msgstr ""
 "\n"
 "このツールは、インストールしたい更新を選ぶお手伝いをします。"
 
-#: ../rpmdrake_.c:1028
+#: ../rpmdrake_.c:1030
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"

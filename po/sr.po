@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-09-11 15:17+0200\n"
+"POT-Creation-Date: 2002-11-07 18:26+0100\n"
 "PO-Revision-Date: 2002-08-23 19:11GMT+1\n"
 "Last-Translator: Toma Jankovic_<tomaja@net.yu>\n"
 "Language-Team: Serbian <i18n@mandrake.co.yu>\n"
@@ -23,9 +23,10 @@ msgstr "Ne mogu da kreiram medijum."
 msgid "Unable to update medium; it will be automatically disabled."
 msgstr "Ne mogu da a¾uriram medijum; on Kje biti automatski iskljuèen."
 
-#: ../edit-urpm-sources.pl_.c:53 ../edit-urpm-sources.pl_.c:163
-msgid "Edit a source"
-msgstr "Izmeni izvorni kod"
+#: ../edit-urpm-sources.pl_.c:53
+#, fuzzy
+msgid "Add a source"
+msgstr "Dodajem izvor:"
 
 #: ../edit-urpm-sources.pl_.c:54
 msgid "Local files"
@@ -56,7 +57,7 @@ msgstr "Putanja ili taèke montiranja:"
 msgid "Removable device"
 msgstr "Prenosni uregjaj"
 
-#: ../edit-urpm-sources.pl_.c:58 ../rpmdrake_.c:487
+#: ../edit-urpm-sources.pl_.c:58 ../rpmdrake_.c:486
 msgid "Security updates"
 msgstr "Bezbednosni paketi za a¾uriranje"
 
@@ -106,15 +107,15 @@ msgstr "Tip izvora:"
 
 #: ../edit-urpm-sources.pl_.c:123 ../edit-urpm-sources.pl_.c:182
 #: ../edit-urpm-sources.pl_.c:214 ../rpmdrake.pm_.c:85 ../rpmdrake.pm_.c:105
-#: ../rpmdrake.pm_.c:277 ../rpmdrake_.c:340 ../rpmdrake_.c:868
-#: ../rpmdrake_.c:899
+#: ../rpmdrake.pm_.c:277 ../rpmdrake_.c:339 ../rpmdrake_.c:869
+#: ../rpmdrake_.c:904
 msgid "Ok"
 msgstr "OK"
 
 #: ../edit-urpm-sources.pl_.c:126 ../edit-urpm-sources.pl_.c:174
 #: ../edit-urpm-sources.pl_.c:182 ../edit-urpm-sources.pl_.c:215
-#: ../rpmdrake.pm_.c:277 ../rpmdrake.pm_.c:301 ../rpmdrake_.c:340
-#: ../rpmdrake_.c:899
+#: ../rpmdrake.pm_.c:277 ../rpmdrake.pm_.c:301 ../rpmdrake_.c:339
+#: ../rpmdrake_.c:904
 msgid "Cancel"
 msgstr "Poni¹ti"
 
@@ -125,6 +126,10 @@ msgstr "Molim vas saèekajte, dodajem medij..."
 #: ../edit-urpm-sources.pl_.c:152
 msgid "Please wait, removing medium..."
 msgstr "Molim Vas saèekajte, uklanjam medij..."
+
+#: ../edit-urpm-sources.pl_.c:163
+msgid "Edit a source"
+msgstr "Izmeni izvorni kod"
 
 #: ../edit-urpm-sources.pl_.c:167
 #, c-format
@@ -183,7 +188,7 @@ msgstr "OmoguKji?"
 msgid "Source"
 msgstr "Izvor"
 
-#: ../edit-urpm-sources.pl_.c:261 ../rpmdrake_.c:663
+#: ../edit-urpm-sources.pl_.c:261 ../rpmdrake_.c:662
 msgid "Remove"
 msgstr "Ukloni"
 
@@ -207,11 +212,11 @@ msgstr ""
 msgid "Save and quit"
 msgstr "Saèuvaj i Izagji"
 
-#: ../edit-urpm-sources.pl_.c:272 ../rpmdrake_.c:666
+#: ../edit-urpm-sources.pl_.c:272 ../rpmdrake_.c:665
 msgid "Quit"
 msgstr "Kraj"
 
-#: ../edit-urpm-sources.pl_.c:282 ../rpmdrake_.c:1014
+#: ../edit-urpm-sources.pl_.c:282 ../rpmdrake_.c:1016
 #, c-format
 msgid ""
 "%s\n"
@@ -417,7 +422,7 @@ msgstr ""
 msgid "Please choose the desired mirror."
 msgstr "Izaberite miror sajt po ¾elji."
 
-#: ../rpmdrake.pm_.c:293 ../rpmdrake_.c:566
+#: ../rpmdrake.pm_.c:293 ../rpmdrake_.c:565
 msgid "Update source(s)"
 msgstr "A¾uriranje Izvora"
 
@@ -437,7 +442,11 @@ msgstr "Molim Vas saèekajte, a¾uriram medij..."
 msgid "Other"
 msgstr ""
 
-#: ../rpmdrake_.c:133 ../rpmdrake_.c:441 ../rpmdrake_.c:442
+#: ../rpmdrake_.c:114 ../rpmdrake_.c:127 ../rpmdrake_.c:216 ../rpmdrake_.c:285
+msgid "(none)"
+msgstr "(nijedan)"
+
+#: ../rpmdrake_.c:133 ../rpmdrake_.c:440 ../rpmdrake_.c:441
 msgid "(Not available)"
 msgstr "(Nije dostupno)"
 
@@ -457,11 +466,11 @@ msgstr "Molim Vas saèekajte,tra¾im..."
 msgid "Stop"
 msgstr "Stop"
 
-#: ../rpmdrake_.c:201 ../rpmdrake_.c:307
+#: ../rpmdrake_.c:201 ../rpmdrake_.c:306
 msgid "Addable"
 msgstr "Mogu se dodati"
 
-#: ../rpmdrake_.c:201 ../rpmdrake_.c:307
+#: ../rpmdrake_.c:201 ../rpmdrake_.c:306
 msgid "Upgradable"
 msgstr "Mogu se a¾urirati"
 
@@ -472,10 +481,6 @@ msgstr ""
 #: ../rpmdrake_.c:203
 msgid "Selected"
 msgstr ""
-
-#: ../rpmdrake_.c:216 ../rpmdrake_.c:286
-msgid "(none)"
-msgstr "(nijedan)"
 
 #: ../rpmdrake_.c:244
 msgid "More information on package..."
@@ -497,11 +502,11 @@ msgstr "nepoznati paket "
 msgid "Please wait, listing packages..."
 msgstr "Molim Vas saèekajte, prikazujem pakete..."
 
-#: ../rpmdrake_.c:288
+#: ../rpmdrake_.c:287
 msgid "No update"
 msgstr "Bez a¾uriranja"
 
-#: ../rpmdrake_.c:289
+#: ../rpmdrake_.c:288
 msgid ""
 "The list of updates is void. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -512,11 +517,11 @@ msgstr ""
 "paketa za a¾uriranje za va¹ raèunar,\n"
 "ili su oni veKj instalirani."
 
-#: ../rpmdrake_.c:346
+#: ../rpmdrake_.c:345
 msgid "Some additional packages need to be removed"
 msgstr "Jo¹ neki paketi moraju biti uklonjeni"
 
-#: ../rpmdrake_.c:347
+#: ../rpmdrake_.c:346
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:\n"
@@ -526,11 +531,11 @@ msgstr ""
 "treba da budu uklonjeni:\n"
 "\n"
 
-#: ../rpmdrake_.c:353
+#: ../rpmdrake_.c:352
 msgid "Some packages can't be removed"
 msgstr "Neki paketi se ne mogu ukloniti"
 
-#: ../rpmdrake_.c:354 ../rpmdrake_.c:412
+#: ../rpmdrake_.c:353 ../rpmdrake_.c:411
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -540,11 +545,11 @@ msgstr ""
 "sada da se deselektuju:\n"
 "\n"
 
-#: ../rpmdrake_.c:382
+#: ../rpmdrake_.c:381
 msgid "Additional packages needed"
 msgstr "Potrebni su dodatni paketi"
 
-#: ../rpmdrake_.c:383
+#: ../rpmdrake_.c:382
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -554,11 +559,11 @@ msgstr ""
 "da budu instalirani:\n"
 "\n"
 
-#: ../rpmdrake_.c:396
+#: ../rpmdrake_.c:395
 msgid "Some packages can't be installed"
 msgstr "Neki paketi ne mogu biti instalirani"
 
-#: ../rpmdrake_.c:397
+#: ../rpmdrake_.c:396
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -566,149 +571,149 @@ msgstr ""
 "®alim, ali sledeKji paket(i) ne mogu da budu selektovani:\n"
 "\n"
 
-#: ../rpmdrake_.c:411 ../rpmdrake_.c:624
+#: ../rpmdrake_.c:410 ../rpmdrake_.c:623
 msgid "Some packages need to be removed"
 msgstr "Neki paketi moraju da budu uklonjeni"
 
-#: ../rpmdrake_.c:433
+#: ../rpmdrake_.c:432
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Selektovano: %d MB / Slobodni prostor na disku: %d MB"
 
-#: ../rpmdrake_.c:435
+#: ../rpmdrake_.c:434
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Velièina selektovanog: %d MB"
 
-#: ../rpmdrake_.c:441
+#: ../rpmdrake_.c:440
 msgid "Files:\n"
 msgstr ""
 
-#: ../rpmdrake_.c:442
+#: ../rpmdrake_.c:441
 msgid "Changelog:\n"
 msgstr ""
 
-#: ../rpmdrake_.c:445
+#: ../rpmdrake_.c:444
 msgid "Source: "
 msgstr "Izvor: "
 
-#: ../rpmdrake_.c:446
+#: ../rpmdrake_.c:445
 msgid "Currently installed version: "
 msgstr ""
 
-#: ../rpmdrake_.c:450
+#: ../rpmdrake_.c:449
 msgid "Reason for update: "
 msgstr ""
 
-#: ../rpmdrake_.c:452
+#: ../rpmdrake_.c:451
 msgid "Name: "
 msgstr "Ime: "
 
-#: ../rpmdrake_.c:453
+#: ../rpmdrake_.c:452
 msgid "Version: "
 msgstr "Verzija: "
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:453
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake_.c:454
+#: ../rpmdrake_.c:453
 msgid "Size: "
 msgstr "Velièina: "
 
-#: ../rpmdrake_.c:455
+#: ../rpmdrake_.c:454
 msgid "Importance: "
 msgstr "Va¾nost: "
 
-#: ../rpmdrake_.c:456
+#: ../rpmdrake_.c:455
 msgid "Summary: "
 msgstr "Sa¾etak: "
 
-#: ../rpmdrake_.c:457
+#: ../rpmdrake_.c:456
 #, fuzzy
 msgid "Description: "
 msgstr "u opisima"
 
-#: ../rpmdrake_.c:466
+#: ../rpmdrake_.c:465
 msgid "rpmdrake"
 msgstr "rpmdrake"
 
-#: ../rpmdrake_.c:487
+#: ../rpmdrake_.c:486
 msgid "Bugfixes updates"
 msgstr "Paketi sa ispravnjenim gre¹kama za a¾uriranje"
 
-#: ../rpmdrake_.c:487
+#: ../rpmdrake_.c:486
 msgid "Normal updates"
 msgstr "Normalno a¾uriranje"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:505
 msgid "Mandrake choices"
 msgstr "Mandrake Izbor"
 
-#: ../rpmdrake_.c:507
+#: ../rpmdrake_.c:506
 msgid "All packages, alphabetical"
 msgstr "Svi paketi, po abecedi"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:507
 msgid "All packages,"
 msgstr "Svi paketi,"
 
-#: ../rpmdrake_.c:531
+#: ../rpmdrake_.c:530
 msgid "by group"
 msgstr "po grupi"
 
-#: ../rpmdrake_.c:531
+#: ../rpmdrake_.c:530
 msgid "by size"
 msgstr "po velièini"
 
-#: ../rpmdrake_.c:532
+#: ../rpmdrake_.c:531
 msgid "by selection state"
 msgstr "po stanju selekcije"
 
-#: ../rpmdrake_.c:533
+#: ../rpmdrake_.c:532
 msgid "by source repository"
 msgstr "po stanju izvornog koda"
 
-#: ../rpmdrake_.c:533
+#: ../rpmdrake_.c:532
 msgid "by update availability"
 msgstr "po dostupnosti"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:553
 msgid "in descriptions"
 msgstr "u opisima"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:553
 msgid "in files"
 msgstr "u fajlovima"
 
-#: ../rpmdrake_.c:554
+#: ../rpmdrake_.c:553
 msgid "in names"
 msgstr "u imenima"
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:564
 msgid "Reload the packages list"
 msgstr ""
 
-#: ../rpmdrake_.c:565
+#: ../rpmdrake_.c:564
 msgid "Reset the selection"
 msgstr ""
 
-#: ../rpmdrake_.c:592
+#: ../rpmdrake_.c:591
 msgid "Maximum information"
 msgstr ""
 
-#: ../rpmdrake_.c:592
+#: ../rpmdrake_.c:591
 #, fuzzy
 msgid "Normal information"
 msgstr "Normalno a¾uriranje"
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:613
 #, fuzzy
 msgid "Too many packages are selected"
 msgstr "Neki paketi ne mogu biti instalirani"
 
-#: ../rpmdrake_.c:615
+#: ../rpmdrake_.c:614
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -718,7 +723,7 @@ msgid ""
 "Do you really want to install all the selected packages?"
 msgstr ""
 
-#: ../rpmdrake_.c:625
+#: ../rpmdrake_.c:624
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -733,35 +738,35 @@ msgstr ""
 "\n"
 "da li je U redu da nastavim?"
 
-#: ../rpmdrake_.c:647
+#: ../rpmdrake_.c:646
 msgid "Find:"
 msgstr "Pronaði: "
 
-#: ../rpmdrake_.c:652
+#: ../rpmdrake_.c:651
 msgid "Search"
 msgstr "Tra¾i"
 
-#: ../rpmdrake_.c:664
+#: ../rpmdrake_.c:663
 msgid "Install"
 msgstr "Instaliraj"
 
-#: ../rpmdrake_.c:691
+#: ../rpmdrake_.c:690
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:692 data/mandrakeupdate.desktop.in.h:1
+#: ../rpmdrake_.c:691 data/mandrakeupdate.desktop.in.h:1
 msgid "Mandrake Update"
 msgstr "Mandrake Update"
 
-#: ../rpmdrake_.c:692
+#: ../rpmdrake_.c:691
 msgid "Software Packages Removal"
 msgstr "Uklanjanje Softverskih Paketa"
 
-#: ../rpmdrake_.c:693
+#: ../rpmdrake_.c:692
 msgid "Software Packages Installation"
 msgstr "Instalacija Softverskih Paketa"
 
-#: ../rpmdrake_.c:726
+#: ../rpmdrake_.c:725
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -773,26 +778,26 @@ msgstr ""
 "\n"
 "Da li je U redu da nastavim?"
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:729
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Molim Vas saèekajte, uspostavljam vezu sa miror sajtom radi informacije o "
 "a¾uriranim paketima."
 
-#: ../rpmdrake_.c:732
+#: ../rpmdrake_.c:731
 msgid "Error updating medium"
 msgstr "Gre¹ka pri a¾uriranju medija"
 
-#: ../rpmdrake_.c:733
+#: ../rpmdrake_.c:732
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 "Pojavila sa nepopravljiva gre¹ka tokom a¾uriranja informacija o paketima."
 
-#: ../rpmdrake_.c:739
+#: ../rpmdrake_.c:738
 msgid "How to choose manually your mirror"
 msgstr "Kako ruèno izabrati svoj miror sajt"
 
-#: ../rpmdrake_.c:740
+#: ../rpmdrake_.c:739
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -806,16 +811,16 @@ msgstr ""
 "\n"
 "Zatim, restarujte MandrakeUpdate."
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:745
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Milm Vas saèekajte, komtaktiram miror sajt radi iniciranja a¾uriranja paketa."
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:749
 msgid "Error adding update medium"
 msgstr "Gre¹ka prilikom dodavanja paketa"
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:750
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -837,65 +842,73 @@ msgstr ""
 "\n"
 "Da li ¾elite da probate sa drugim mirorom?"
 
-#: ../rpmdrake_.c:780
+#: ../rpmdrake_.c:781
 msgid "Please wait, finding available packages..."
 msgstr "Milim Vas saèekajte, pronalazim dostupne pakete..."
 
-#: ../rpmdrake_.c:809
+#: ../rpmdrake_.c:810
 #, fuzzy
 msgid "Installation finished"
 msgstr "Instalacija neuspela"
 
-#: ../rpmdrake_.c:812
+#: ../rpmdrake_.c:813
 #, c-format
 msgid "Inspecting %s"
 msgstr ""
 
-#: ../rpmdrake_.c:828
+#: ../rpmdrake_.c:829
 #, fuzzy, c-format
 msgid "Remove .%s"
 msgstr "Ukloni"
 
-#: ../rpmdrake_.c:830
+#: ../rpmdrake_.c:831
 #, c-format
 msgid "Use .%s as main file"
 msgstr ""
 
-#: ../rpmdrake_.c:832
+#: ../rpmdrake_.c:833
 msgid "Do nothing"
 msgstr ""
 
-#: ../rpmdrake_.c:835
+#: ../rpmdrake_.c:836
 #, fuzzy
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:853
 msgid "Inspect..."
 msgstr ""
 
-#: ../rpmdrake_.c:889
+#: ../rpmdrake_.c:878
+msgid "Program missing"
+msgstr "Program nedostaje"
+
+#: ../rpmdrake_.c:879
+msgid "A required program is missing (grpmi). Check your installation."
+msgstr "Nedostaje potrebni program (grpmi). Proverite svoju instalaciju."
+
+#: ../rpmdrake_.c:894
 msgid "Unable to get source packages."
 msgstr "Ne mogu da dobavim izvorne pakete."
 
-#: ../rpmdrake_.c:890
+#: ../rpmdrake_.c:895
 msgid "Unable to get source packages, sorry."
 msgstr "Ne mogu da dobavim izvorne pakete, ¾ao mi je."
 
-#: ../rpmdrake_.c:897
+#: ../rpmdrake_.c:902
 msgid "Change medium"
 msgstr "Promeni medij"
 
-#: ../rpmdrake_.c:898
+#: ../rpmdrake_.c:903
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Ubacite medij sa imenom \"%s\" u uregjaj [%s]"
 
-#: ../rpmdrake_.c:906
+#: ../rpmdrake_.c:911
 msgid "Installation failed"
 msgstr "Instalacija neuspela"
 
-#: ../rpmdrake_.c:907
+#: ../rpmdrake_.c:912
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -903,20 +916,12 @@ msgstr ""
 "Instalacija neuspela, neki fajlovi nedostaju.\n"
 "Mo¾da bi trebalo da a¾urirate va¹u bazu paketa."
 
-#: ../rpmdrake_.c:910
+#: ../rpmdrake_.c:915
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Molim Vas saèekajte, uklanjam pakete da bi omoguKjio a¾uriranje ostalih..."
 
-#: ../rpmdrake_.c:921
-msgid "Program missing"
-msgstr "Program nedostaje"
-
-#: ../rpmdrake_.c:922
-msgid "A required program is missing (grpmi). Check your installation."
-msgstr "Nedostaje potrebni program (grpmi). Proverite svoju instalaciju."
-
-#: ../rpmdrake_.c:932
+#: ../rpmdrake_.c:934
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -925,39 +930,39 @@ msgid ""
 "you may now inspect some in order to take actions:"
 msgstr ""
 
-#: ../rpmdrake_.c:932
+#: ../rpmdrake_.c:934
 #, fuzzy
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr "Neki paketi ne mogu biti instalirani"
 
-#: ../rpmdrake_.c:933
+#: ../rpmdrake_.c:935
 #, fuzzy
 msgid "everything was installed correctly"
 msgstr "Sve je veKj instalirano."
 
-#: ../rpmdrake_.c:935
+#: ../rpmdrake_.c:937
 msgid "Everything installed successfully"
 msgstr ""
 
-#: ../rpmdrake_.c:936
+#: ../rpmdrake_.c:938
 msgid "All requested packages were installed successfully."
 msgstr ""
 
-#: ../rpmdrake_.c:938
+#: ../rpmdrake_.c:940
 msgid "Everything already installed."
 msgstr "Sve je veKj instalirano."
 
-#: ../rpmdrake_.c:939
+#: ../rpmdrake_.c:941
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Sve je veKj instalirano (da li je ovo uop¹te trebalo da se dogodi?)."
 
-#: ../rpmdrake_.c:942
+#: ../rpmdrake_.c:944
 msgid "Problem during installation"
 msgstr ""
 
-#: ../rpmdrake_.c:943
+#: ../rpmdrake_.c:945
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -965,15 +970,15 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../rpmdrake_.c:953
+#: ../rpmdrake_.c:955
 msgid "Please wait, reading packages database..."
 msgstr "Molim vas saèekajte, uèitavam bazu podataka o paketima..."
 
-#: ../rpmdrake_.c:991
+#: ../rpmdrake_.c:993
 msgid "Please wait, removing packages..."
 msgstr "Molim Vas saèekajte, uklanjam pakete..."
 
-#: ../rpmdrake_.c:1018
+#: ../rpmdrake_.c:1020
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -985,7 +990,7 @@ msgstr ""
 "Ovaj alat vam mo¾e pomoKji da izaberete koji softver ¾elite da uklonite sa\n"
 "va¹eg raèunara."
 
-#: ../rpmdrake_.c:1023
+#: ../rpmdrake_.c:1025
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -998,7 +1003,7 @@ msgstr ""
 "instalirate na\n"
 "va¹ raèunar."
 
-#: ../rpmdrake_.c:1028
+#: ../rpmdrake_.c:1030
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
