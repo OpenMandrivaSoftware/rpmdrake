@@ -343,10 +343,6 @@ sub find_installed_version {
 sub remove_arch {
     $_[0] =~ /(.*)\.[^\.]+$/ ? $1 : $_[0];
 }
-sub ask_remove_ {
-    my ($state) = @_;
-    map { remove_arch($_) } keys %{$state->{ask_remove}};
-}
 
 sub run_treeview_dialog {
     my ($pkgs_provider, $callback_action) = @_;
@@ -381,15 +377,14 @@ sub run_treeview_dialog {
 				     [ map { my_fullname($_) } @$choices ], $callback)];
     };
     my $closure_removal = sub {
-	$urpm->{state}{ask_remove} = {};
-	my $db = db();
+        my @to_remove;
 	foreach (@_) {
-	    $db->traverse_tag('name', [ (split_fullname($_))[0] ], sub {
-				  my_fullname($_[0]) eq $_ or return;
-				  $urpm->resolve_closure_ask_remove($db, $urpm->{state}, $_[0]);
-			      }) or die N("unknown package ") . "$_\n";
+            $urpm->resolve_rejected(db(), $urpm->{state}, $pkgs->{$_}{pkg}, removed => 1);
+            foreach (keys %{$urpm->{state}{rejected}}) {
+                $urpm->{state}{rejected}{$_}{removed} && !$urpm->{state}{rejected}{$_}{obsoleted} and push @to_remove, remove_arch($_);
+            }
 	}
-	ask_remove_($urpm->{state});
+        @to_remove;
     };
     $options = {
 		   node_state => sub { $_[0] ? ($pkgs->{$_[0]}{selected} ? 'selected' : 'unselected')
@@ -492,14 +487,16 @@ or you already installed all of them."));
 			   }
 		       };
 		       if ($MODE eq 'remove') {
+                           $urpm->{state} = {};
 			   if ($new_state) {
-			       slow_func($tree->window, sub { $closure_removal->(@nodes) });
-			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } ask_remove_($urpm->{state});
+                               my @remove;
+			       slow_func($tree->window, sub { @remove = $closure_removal->(@nodes) });
+			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } @remove;
 			       $deps_msg->(N("Some additional packages need to be removed"),
 					   N("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
 					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
 			       my @impossible_to_remove;
-			       foreach (grep { exists $pkgs->{$_}{base} } ask_remove_($urpm->{state})) {
+			       foreach (grep { exists $pkgs->{$_}{base} } @remove) {
 				   ${$pkgs->{$_}{base}} == 1 ? push @impossible_to_remove, $_ : ${$pkgs->{$_}{base}}--;
 			       }
 			       @impossible_to_remove and interactive_msg_(N("Some packages can't be removed"),
@@ -798,16 +795,16 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	      or return;
 	}
 	if ($MODE ne 'remove') {
-            my @ask_remove = grep { $urpm->{state}{rejected}{$_}{removed}
-                                    && !$urpm->{state}{rejected}{$_}{obsoleted} } keys %{$urpm->{state}{rejected} || {}};
-            @ask_remove and (interactive_msg_(N("Some packages need to be removed"),
+            @{$urpm->{ask_remove}} = grep { $urpm->{state}{rejected}{$_}{removed}
+                                            && !$urpm->{state}{rejected}{$_}{obsoleted} } keys %{$urpm->{state}{rejected} || {}};
+            @{$urpm->{ask_remove}} and (interactive_msg_(N("Some packages need to be removed"),
 N("The following packages have to be removed for others to be upgraded:
 
 %s
 
 (waiting for urpmi subroutine for explanation)
 
-Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } @ask_remove)), yesno => 1) or return);
+Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } @{$urpm->{ask_remove}})), yesno => 1) or return);
 	}
 	if (!$callback_action->($urpm, $pkgs)) {
 	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
@@ -1051,7 +1048,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     $w->{rwindow}->set_sensitive(0);
 
-    standalone::explanations("Removing package $_") foreach keys %{$urpm->{state}{ask_remove}};
+    standalone::explanations("Removing package $_") foreach sort @{$urpm->{ask_remove}};
     
     my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}}; 
     my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
@@ -1136,7 +1133,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                 gurpm::progress($amount/$total);
             }
         };
-        my @errors = $urpm->install([ keys %{$urpm->{state}{ask_remove} || {}} ], \%sources_install, \%sources, translate_message => 1,
+        my @errors = $urpm->install($urpm->{ask_remove}, \%sources_install, \%sources, translate_message => 1,
                                     post_clean_cache => 1, callback_inst => $callback_inst, callback_trans => $callback_inst);
         gurpm::end();
         $urpm->try_umounting_removables;
