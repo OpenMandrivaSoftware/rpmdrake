@@ -308,7 +308,10 @@ Please check that your network is currently running.
 Is it ok to continue?"), yesno => 1) or return '';
     my $wait = wait_msg(N("Please wait, downloading mirrors addresses from MandrakeSoft website."));
     my @mirrors;
-    eval { @mirrors = mirrors('/var/cache/urpmi', 'updates') };
+    my $class = cat_('/etc/mandrake-release') =~ /community/i ? 'community'
+              : cat_('/etc/mandrake-release') =~ /cooker/i ? 'cooker'
+              : 'updates';
+    eval { @mirrors = mirrors('/var/cache/urpmi', $class) };
     remove_wait_msg($wait);
     if ($@) {
 	my $msg = $@;  #- seems that value is bitten before being printed by next func..
