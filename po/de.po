@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RpmDrake 1.4\n"
 "POT-Creation-Date: 2002-08-22 22:55+0200\n"
-"PO-Revision-Date: 2001-08-07 21:23+0100\n"
+"PO-Revision-Date: 2002-08-25 09:15+0200\n"
 "Last-Translator: Stefan Siegel <siegel@linux-mandrake.com>\n"
 "Language-Team: German <cooker-i18n@linux-mandrake.com>\n"
 "MIME-Version: 1.0\n"
@@ -206,6 +206,11 @@ msgid ""
 "your computer. They will then be available to install new software package\n"
 "or to perform updates."
 msgstr ""
+"Willkommen zum Paketquellen-Editor!\n"
+"\n"
+"Mit diesem Programm können Sie einstellen, welche Paketquellen Sie für\n"
+"Ihren Rechner verwenden wollen. Sie stehen dann zur Verfgung, um\n"
+"Softwarepakete von dort zu installieren bzw. zu aktualisieren."
 
 #: ../rpmdrake.pm_.c:72
 msgid "Yes"
@@ -217,35 +222,35 @@ msgstr "Nein"
 
 #: ../rpmdrake.pm_.c:131
 msgid "Austria"
-msgstr ""
+msgstr "Östereich"
 
 #: ../rpmdrake.pm_.c:132
 msgid "Australia"
-msgstr ""
+msgstr "Australien"
 
 #: ../rpmdrake.pm_.c:133
 msgid "Belgium"
-msgstr ""
+msgstr "Belgien"
 
 #: ../rpmdrake.pm_.c:134
 msgid "Brazil"
-msgstr ""
+msgstr "Brasilien"
 
 #: ../rpmdrake.pm_.c:135
 msgid "Canada"
-msgstr ""
+msgstr "Kanada"
 
 #: ../rpmdrake.pm_.c:136
 msgid "Costa Rica"
-msgstr ""
+msgstr "Costa Rica"
 
 #: ../rpmdrake.pm_.c:137
 msgid "Czech Republic"
-msgstr ""
+msgstr "Tschechei"
 
 #: ../rpmdrake.pm_.c:138
 msgid "Germany"
-msgstr ""
+msgstr "Deutschland"
 
 #: ../rpmdrake.pm_.c:139
 msgid "Danmark"
@@ -305,24 +310,24 @@ msgstr "Russland"
 
 #: ../rpmdrake.pm_.c:154
 msgid "Sweden"
-msgstr ""
+msgstr "Schweden"
 
 #: ../rpmdrake.pm_.c:155
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 #: ../rpmdrake.pm_.c:156
 msgid "United Kingdom"
-msgstr ""
+msgstr "Großbritannien"
 
 #: ../rpmdrake.pm_.c:157
 msgid "China"
-msgstr ""
+msgstr "China"
 
 #: ../rpmdrake.pm_.c:158 ../rpmdrake.pm_.c:159 ../rpmdrake.pm_.c:160
 #: ../rpmdrake.pm_.c:161 ../rpmdrake.pm_.c:213
 msgid "United States"
-msgstr ""
+msgstr "Vereinigte Staaten"
 
 #: ../rpmdrake.pm_.c:221
 msgid ""
@@ -331,10 +336,14 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+"Ich muss die Liste der Paketserver von der MandrakeSoft Web-Seite\n"
+"laden. Stelen Sie sicher, dass Ihre Netzwerkverbindung besteht.\n"
+"\n"
+"Soll ich fortfahren?"
 
 #: ../rpmdrake.pm_.c:225
 msgid "Please wait, downloading mirrors addresses from MandrakeSoft website."
-msgstr ""
+msgstr "Bitte Waten: Besorgen der Serverliste vom MandrakeSoft-Server ..."
 
 #: ../rpmdrake.pm_.c:231
 msgid "Error during download"
@@ -348,7 +357,10 @@ msgid ""
 "%s\n"
 "The network, or MandrakeSoft website, are maybe unavailable.\n"
 "Please try again later."
-msgstr ""
+msgstr "Es trat ein Fehler beim Besorgen der Serverliste auf:\n"
+"\n"
+"%s\n"
+"Bitte versuchen Sie es später erneut."
 
 #: ../rpmdrake.pm_.c:240
 msgid "No mirror"
@@ -362,6 +374,11 @@ msgid ""
 "the case when the architecture of your processor is not supported\n"
 "by Mandrake Linux Official Updates."
 msgstr ""
+"Ich kan keinen passenden Paketserver finden.\n"
+"\n"
+"Es gibt zahlreiche mögliche Fehlerquellen. Der häufigste Fehler\n"
+"ist, dass es für Ihre Prozessorarchitektur keine regulären Mandrake\n"
+"Linux Aktualisierungen gibt."
 
 #: ../rpmdrake.pm_.c:255
 msgid "Please choose the desired mirror."
@@ -380,13 +397,12 @@ msgid "Search results (none)"
 msgstr "Suchergebnisse (keine)"
 
 #: ../rpmdrake_.c:144
-#, fuzzy
 msgid "Please wait, searching..."
-msgstr "Suche in de Dateien, bitte warten ..."
+msgstr "Bitte warten, ich suche ..."
 
 #: ../rpmdrake_.c:147
 msgid "Stop"
-msgstr ""
+msgstr "Stopp"
 
 #: ../rpmdrake_.c:200
 msgid "One of the following packages is needed:"
@@ -418,6 +434,9 @@ msgid ""
 "no available update for the packages installed on your computer,\n"
 "or you already installed all of them."
 msgstr ""
+"Die Aktualisierungsliste ist leer. Das bedeutet entwerder, das es\n"
+"(noch) keine Aktualisierungen für Ihr System gibt oder das Sie\n"
+"breits alle Aktualisierungen auf Ihren Rechner aufgespielt haben."
 
 #: ../rpmdrake_.c:281
 msgid "Addable"
@@ -429,20 +448,19 @@ msgstr "Aktualisierbar"
 
 #: ../rpmdrake_.c:315
 msgid "This would break your system"
-msgstr ""
+msgstr "Das würde Ihr System unbrauchbar machen."
 
 #: ../rpmdrake_.c:316
 msgid ""
 "Sorry, removing these packages would break your system:\n"
 "\n"
 msgstr ""
+"Entfernen dieser Pakete wühr System unbrauchbar machen:\n"
+"\n"
 
 #: ../rpmdrake_.c:320
-#, fuzzy
 msgid "Some additional packages need to be removed"
-msgstr ""
-"Folgende Pakete müssen ebenfalls installiert werden, um sicherzustellen,dass "
-"alles reibungslos funktioniert:"
+msgstr "Einige weitere Pakete müssen ebenfalls entfernt werden."
 
 #: ../rpmdrake_.c:321
 msgid ""
@@ -464,6 +482,8 @@ msgid ""
 "unselected now:\n"
 "\n"
 msgstr ""
+"Um die Abhängigkeiten zu berücksichtigen, muss die Auswahl folgender\n"
+"Pakete zurüchgesetzt werden:\n"
 
 #: ../rpmdrake_.c:346
 msgid "Additional packages needed"
@@ -475,31 +495,35 @@ msgid ""
 "to be installed:\n"
 "\n"
 msgstr ""
+"Um die Abhängigkeiten zu berücksichtigen, müssen die folgenden\n"
+"Pakete ebenfalls installiert werden:\n"
+"\n"
 
 #: ../rpmdrake_.c:360
-#, fuzzy
 msgid "Some packages can't be installed"
-msgstr "Pakete bereits installiert"
+msgstr "Einige Pakete konnten nicht installiert werden"
 
 #: ../rpmdrake_.c:361
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
 msgstr ""
+"Die folgenden Pakete können nicht ausgewählt werden:\n"
+"\n"
 
 #: ../rpmdrake_.c:375 ../rpmdrake_.c:526
 msgid "Some packages need to be removed"
-msgstr ""
+msgstr "Einige Pakete müssen entfernt werden"
 
 #: ../rpmdrake_.c:397
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
-msgstr ""
+msgstr "Ausgewählt: %d MB / Freier Plattenplatz: %d MB"
 
 #: ../rpmdrake_.c:399
 #, c-format
 msgid "Selected size: %d MB"
-msgstr ""
+msgstr "Gewählte Größe: %d MB"
 
 #: ../rpmdrake_.c:407
 #, c-format
@@ -513,6 +537,14 @@ msgid ""
 "\n"
 "%s\n"
 msgstr ""
+"Name: %s\n"
+"Version: %s\n"
+"Größe: %s KB\n"
+"Wichtigkeit: %s\n"
+"\n"
+"Zusammenfassung: %s\n"
+"\n"
+"%s\n"
 
 #: ../rpmdrake_.c:411
 #, c-format
@@ -525,21 +557,25 @@ msgid ""
 "\n"
 "%s\n"
 msgstr ""
+"Name: %s\n"
+"Version: %s\n"
+"Größe: %s KB\n"
+"\n"
+"Zusammenfassung: %s\n"
+"\n"
+"%s\n"
 
 #: ../rpmdrake_.c:442
-#, fuzzy
 msgid "Bugfixes updates"
 msgstr "Sicherheitsaktualisierungen"
 
 #: ../rpmdrake_.c:442
-#, fuzzy
 msgid "Normal updates"
 msgstr "Normale Aktualisierungen"
 
 #: ../rpmdrake_.c:461
-#, fuzzy
 msgid "Mandrake choices"
-msgstr "MandrakeUpdate"
+msgstr "Mandrake Auswahl"
 
 #: ../rpmdrake_.c:462
 msgid "All packages, alphabetical"
@@ -570,18 +606,16 @@ msgid "by update availability"
 msgstr "nach Verfügbarkeit"
 
 #: ../rpmdrake_.c:509
-#, fuzzy
 msgid "in descriptions"
-msgstr "Beschreibung"
+msgstr "in Beschreibungen"
 
 #: ../rpmdrake_.c:509
 msgid "in names"
-msgstr ""
+msgstr "in Namen"
 
 #: ../rpmdrake_.c:510
-#, fuzzy
 msgid "in files"
-msgstr "Lokale Dateien"
+msgstr "in Dateien"
 
 #: ../rpmdrake_.c:527
 #, c-format
@@ -592,13 +626,17 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+"Die Folgenden Pakete müssen entfernt weden, um andere zu aktualisieren:\n"
+"\n"
+"%s\n"
+"\n"
+"Soll ich fortfahren?"
 
 #: ../rpmdrake_.c:546
 msgid "Find:"
 msgstr "Finden:"
 
 #: ../rpmdrake_.c:551
-#, fuzzy
 msgid "Search"
 msgstr "Suche"
 
@@ -607,26 +645,20 @@ msgid "Install"
 msgstr "Installieren"
 
 #: ../rpmdrake_.c:574
-#, fuzzy
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
-msgstr "-adobe-helvetica-bold-r-*-*-*-100-*-*-*-*-*-*,*"
+msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
 #: ../rpmdrake_.c:575
-#, fuzzy
 msgid "Mandrake Update"
-msgstr ""
-"Mandrake\n"
-"Aktualisierung"
+msgstr "Mandrake Aktualisierung"
 
 #: ../rpmdrake_.c:575
-#, fuzzy
 msgid "Software Packages Removal"
-msgstr " Software Manager "
+msgstr "Softwarepakete-Entferner"
 
 #: ../rpmdrake_.c:576
-#, fuzzy
 msgid "Software Packages Installation"
-msgstr "Paketinstallation"
+msgstr "Softwarepakete-Installierer"
 
 #: ../rpmdrake_.c:608
 msgid ""
@@ -635,22 +667,26 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+"Ich muss Kontakt mit dem Paketserver aufnehmen, um die neuen Pakete\n"
+"zu besorgen. Stelen Sie sicher, dass Ihre Netzwerkverbindung besteht.\n"
+"\n"
+"Soll ich fortfahren?"
 
 #: ../rpmdrake_.c:612
 msgid "Please wait, contacting mirror to update packages information."
-msgstr ""
+msgstr "Besorge Paketinformationen vom Server, bitte warten ..."
 
 #: ../rpmdrake_.c:614
 msgid "Error updating medium"
-msgstr ""
+msgstr "Fehler beim Aktualisieren des Mediums"
 
 #: ../rpmdrake_.c:615
 msgid "There was an unrecoverable error while updating packages information."
-msgstr ""
+msgstr "Es trat ein gravierender Fehler beim Aktualisieren der Paketinformationen auf."
 
 #: ../rpmdrake_.c:621
 msgid "How to choose manually your mirror"
-msgstr ""
+msgstr "Wie Sie Ihren Paketserver selbst auswählen"
 
 #: ../rpmdrake_.c:622
 msgid ""
@@ -660,14 +696,19 @@ msgid ""
 "\n"
 "Then, restart MandrakeUpdate."
 msgstr ""
+"Sie kön Ihren bevorzugten Paketserver auch selbst angeben:\n"
+"Starten Sie den Paketquellen-Manager, und fügen Sie eine \n"
+"„Sicherheitsaktualisierungen“ Quelle hinzu.\n"
+"\n"
+"Starten Sie anschließend erneut MandrakeUpdate."
 
 #: ../rpmdrake_.c:628
 msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr ""
+msgstr "Besorge Liste der zu aktualisierenden Pakete vom Server, bitte warten ..."
 
 #: ../rpmdrake_.c:632
 msgid "Error adding update medium"
-msgstr ""
+msgstr "Fehler beim Erstellen eines Aktualisierungsmediums"
 
 #: ../rpmdrake_.c:633
 #, c-format
@@ -683,70 +724,65 @@ msgid ""
 msgstr ""
 
 #: ../rpmdrake_.c:662
-#, fuzzy
 msgid "Please wait, finding available packages..."
-msgstr "Bitte warten, ich entferne Pakete"
+msgstr "Suche nach vorhandenen Pakete, bitte warten ..."
 
 #: ../rpmdrake_.c:693
-#, fuzzy
 msgid "Unable to get source packages."
-msgstr "Defekte, nicht lesbare oder fehlende Pakete"
+msgstr "Kann Quellpakete nicht bekommen."
 
 #: ../rpmdrake_.c:694
 msgid "Unable to get source packages, sorry."
-msgstr ""
+msgstr "Ich kann leider die Quellpakete nicht bekommen."
 
 #: ../rpmdrake_.c:701
 msgid "Change medium"
-msgstr ""
+msgstr "Medienwechsel"
 
 #: ../rpmdrake_.c:702
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
-msgstr ""
+msgstr "Bitte legen Sie das Medium „%s“ in Laufwerk [%s]."
 
 #: ../rpmdrake_.c:710
-#, fuzzy
 msgid "Installation failed"
-msgstr "Installierbare"
+msgstr "Installation schlug fehl"
 
 #: ../rpmdrake_.c:711
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
 msgstr ""
+"Die Installation schlug fehl, da einige Pakete fehlen.\n"
+"Sie sollten Ihre Paketliste aktualisieren."
 
 #: ../rpmdrake_.c:714
-#, fuzzy
 msgid "Please wait, removing packages to allow others to be upgraded..."
-msgstr "Bitte warten, ich entferne Pakete"
+msgstr "Pakete entfernen, um Aktualisierung anderer zu ermöglichen, bitte warten ..."
 
 #: ../rpmdrake_.c:723
 msgid "Program missing"
-msgstr ""
+msgstr "Programm fehlt"
 
 #: ../rpmdrake_.c:724
 msgid "A required program is missing (grpmi). Check your installation."
-msgstr ""
+msgstr "Ein zum Funktionieren benötigtes Programm (grpmi) fehlt, bitte Kontrollieren Sie Ihr System."
 
 #: ../rpmdrake_.c:728
-#, fuzzy
 msgid "Everything already installed."
-msgstr "Das Paket ist bereits installiert"
+msgstr "Alle gewünschten Pakete sind bereits installiert"
 
 #: ../rpmdrake_.c:729
 msgid "Everything already installed (is this supposed to happen at all?)."
-msgstr ""
+msgstr "Alle gewünschten Pakete sind bereits installiert (Das sollte eigentlich nie Workommen!)"
 
 #: ../rpmdrake_.c:739
-#, fuzzy
 msgid "Please wait, reading packages database..."
-msgstr "Bitte warten, ich entferne Pakete"
+msgstr "Lesen der Paketdatenbank, bitte warten ..."
 
 #: ../rpmdrake_.c:756
-#, fuzzy
 msgid "Please wait, removing packages..."
-msgstr "Bitte warten, ich entferne Pakete"
+msgstr "Entfernen der Pakete, bitte warten ..."
 
 #: ../rpmdrake_.c:771
 msgid ""
@@ -755,6 +791,10 @@ msgid ""
 "This tool will help you choose which software you want to remove from\n"
 "your computer."
 msgstr ""
+"Wilkommen zum Paketentfernungs-Programm!\n"
+"\n"
+"Dieses Programm wird Ihnen helfen, die Softwarepakete auszuwählen,\n"
+"die Sie von Ihrem Rechner entfernen wollen.."
 
 #: ../rpmdrake_.c:776
 msgid ""
@@ -774,22 +814,20 @@ msgid ""
 msgstr ""
 
 #: data/SoftwareManagement.directory.in.h:1
-#, fuzzy
 msgid "Software Management"
-msgstr " Software Manager "
+msgstr "Software verwalten"
 
 #: data/rpmdrake-remove.desktop.in.h:1
 msgid "Remove Software"
-msgstr ""
+msgstr "Software entfernen"
 
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
-msgstr ""
+msgstr "Paketquellen verwalten"
 
 #: data/rpmdrake.desktop.in.h:1
-#, fuzzy
 msgid "Install Software"
-msgstr "Alle Installieren"
+msgstr "Software installieren"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "Fortschritt der Installation/des Upgrades"
