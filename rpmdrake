@@ -769,7 +769,7 @@ sub perform_removal {
     my @toremove = grep { $pkgs->{$_}{selected} } keys %$pkgs;
     standalone::explanations("Removing package $_") foreach sort @toremove;
     slow_func(_("Please wait, removing packages..."),
-	      sub { $urpm->install('/', \@toremove, {}, {}) });
+	      sub { $urpm->install(\@toremove, {}, {}) });
 }
 
 
