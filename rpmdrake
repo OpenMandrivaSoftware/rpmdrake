@@ -135,7 +135,8 @@ sub do_search($$$$$$) {
 	if ($MODE eq 'remove') {
 	    @search_results = map { if_(eval { ($pkgs->{$_}{summary}.$pkgs->{$_}{description}) =~ /$entry/i }, $_) } keys %$pkgs;
 	} else {
-	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}"; if_(!$_->{ignore} && (-r $h), $h) } @{$urpm->{media}};
+	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}";
+				if_(!$_->{ignore} && (!($MODE eq 'update') || $_->{update}) && (-r $h), $h) } @{$urpm->{media}};
 	    my $total_size = sum(map { my $pack; eval { $pack = new packdrake($_, quiet => 1) } ? $pack->{toc_f_count} : 0 } @hdlists);
 	    my $searchstop;
 	    my $searchw = my_gtk->new;
