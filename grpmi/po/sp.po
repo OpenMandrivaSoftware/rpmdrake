@@ -5,17 +5,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi\n"
-"POT-Creation-Date: 2002-08-05 10:54+0200\n"
-"PO-Revision-Date: 2000-05-08 18:09+0100\n"
-"Last-Translator: Tomislav Jankovic <tomaja@net.yu>\n"
-"Language-Team: Serbian (cyrillic)<office@mandrake.co.yu>\n"
+"POT-Creation-Date: 2002-08-06 13:59+0200\n"
+"PO-Revision-Date: 2002-08-09 19:28GMT+1\n"
+"Last-Translator: Toma Jankovic <tomaja@net.yu>\n"
+"Language-Team: Serbian <i18n@mandrake.co.yu>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-5\n"
+"Content-Type: text/plain; charset=ISO-8859-5\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.5\n"
 
 #: ../curl_download/curl_download.xs:83
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "Директоријум у који желите да постаљате download мора постојати"
 
 #: ../curl_download/curl_download.xs:86 ../curl_download/curl_download.xs:201
 msgid "Out of memory\n"
@@ -23,7 +24,7 @@ msgstr "Систем без мемориjе\n"
 
 #: ../curl_download/curl_download.xs:99
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "Не могу да отворим излазни фајл у append моду"
 
 #: ../curl_download/curl_download.xs:121
 msgid "Unsupported protocol\n"
@@ -204,11 +205,11 @@ msgstr "Непознати код грeшкe %d\n"
 
 #: ../grpmi.pl_.c:51
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: ../grpmi.pl_.c:52
 msgid "No"
-msgstr ""
+msgstr "Не"
 
 #: ../grpmi.pl_.c:53
 msgid "Ok"
@@ -220,29 +221,28 @@ msgstr "Грeшка..."
 
 #: ../grpmi.pl_.c:63
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "Морате имати root овлашћења да би инсталирали пакете."
 
 #: ../grpmi.pl_.c:65
 msgid "RPM initialization error"
-msgstr ""
+msgstr "Грешка при RPM иницијализацији "
 
 #: ../grpmi.pl_.c:66
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "Иницијализација кофугурационих фајлова за RPM није могућа."
 
 #: ../grpmi.pl_.c:69
-#, fuzzy
 msgid "Initializing..."
-msgstr "Инсталирaње:"
+msgstr "Иницијализација..."
 
 #: ../grpmi.pl_.c:90
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Download-ујем пакете `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:97
 msgid "Error during download"
-msgstr ""
+msgstr "Грешка током download-а"
 
 #: ../grpmi.pl_.c:98
 #, c-format
@@ -254,15 +254,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"Појавила се грешка приликом download-а пакета:\n"
+"\n"
+"%s\n"
+"\n"
+"Грешка: %s\n"
+"Да ли желите да наставите (прескачући овај пакет)?"
 
 #: ../grpmi.pl_.c:110
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "Провера потписа за `%s'..."
 
 #: ../grpmi.pl_.c:112
 msgid "Signature verification error"
-msgstr ""
+msgstr "Грешка при провери потписа"
 
 #: ../grpmi.pl_.c:113
 #, c-format
@@ -272,11 +278,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"Потпис пакета `%s' није исправан:\n"
+"\n"
+"%s\n"
+"Да ли желите да наставите инсталацију?"
 
 #: ../grpmi.pl_.c:119
-#, fuzzy
 msgid "File error"
-msgstr "Грeшка при испису\n"
+msgstr "Грeшка у фајлу"
 
 #: ../grpmi.pl_.c:120
 #, c-format
@@ -287,15 +296,19 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"Следећи фајл није исправан:\n"
+"\n"
+"%s\n"
+"\n"
+"Да ли свеједно желите да наставите (прескачући овај пакет)?"
 
 #: ../grpmi.pl_.c:135
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "Припремам за инсталациjу"
+msgstr "Припремам пакете за инсталациjу..."
 
 #: ../grpmi.pl_.c:143
 msgid "Conflicts detected"
-msgstr ""
+msgstr "Конфликт детектован"
 
 #: ../grpmi.pl_.c:144
 #, c-format
@@ -305,565 +318,114 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"Конфликт је откривен:\n"
+"%s\n"
+"\n"
+"да ли желите да присилон наставите са инсталацијом?"
 
 #: ../grpmi.pl_.c:151
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Инсталирам пакет `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:164
 msgid "Problems occurred during installation"
 msgstr "Поjавили су се проблеми у току инсталациje"
 
 #: ../grpmi.pl_.c:164
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Припремам за инсталациjу"
+msgstr ""
+"Појавила се грешка током инсталације:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:66
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "Датотека ниjе могла да прочита датотеку\n"
+msgstr "Не могу да прочитам RPM конфигурациони фајл"
 
 #: ../rpm/grpmi_rpm.xs:92
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Ниjе могућа конекциja\n"
+msgstr "Не могу да отворим фајл\n"
 
 #: ../rpm/grpmi_rpm.xs:96
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "Ниjе могуће открити host-a\n"
+msgstr "Не могу да прочитам почетне бајтове\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "RPM верзија пакета не подржава потписе\n"
 
 #: ../rpm/grpmi_rpm.xs:104
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "Не могу да прочитам блок са потписом (`rpmReadSignature' није успео)\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "No signatures\n"
-msgstr ""
+msgstr "Нем потписа\n"
 
 #: ../rpm/grpmi_rpm.xs:111
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "`makeTempFile' није успео!\n"
 
 #: ../rpm/grpmi_rpm.xs:118
 msgid "Error reading file\n"
-msgstr ""
+msgstr "Грешка при читању фајла\n"
 
 #: ../rpm/grpmi_rpm.xs:124
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "Грешка при записивању привременог фајла\n"
 
 #: ../rpm/grpmi_rpm.xs:147
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "Нема GPG потписа у пакету\n"
 
 #: ../rpm/grpmi_rpm.xs:229
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "Не могу да отоврим RPM DB за уписивање (нисте root?)"
 
 #: ../rpm/grpmi_rpm.xs:231
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "Не могу да отврим RPM DB за уписивање"
 
 #: ../rpm/grpmi_rpm.xs:235
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "Не могу да покренем трансакцију"
 
 #: ../rpm/grpmi_rpm.xs:254
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Не могу да отворим пакет"
+msgstr "Не могу да отворим пакет `%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Пакет ниjе исправан"
+msgstr "Пакет `%s' ниjе исправан\n"
 
 #: ../rpm/grpmi_rpm.xs:262
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Пакет неможе бити инсталиран"
+msgstr "Пакет `%s' не може бити инсталиран\n"
 
 #: ../rpm/grpmi_rpm.xs:273
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Грeшка при провери зависнсти :("
+msgstr "Грeшка при провери зависности"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "conflicts with"
-msgstr "конфликтуje jе се са %s-%s-%s"
+msgstr "конфликти са"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "is needed by"
-msgstr "jе потребно од %s-%s-%s"
+msgstr "jе потребан за"
 
 #: ../rpm/grpmi_rpm.xs:312
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Грeшка при провери зависнсти :("
+msgstr "Грeшка при провери зависнсти 2"
 
 #: ../rpm/grpmi_rpm.xs:318
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Поjавили су се проблеми у току инсталациje"
-
-#~ msgid "Installing/Upgrading Progress"
-#~ msgstr "Прогрес инсталирaњa/aжурирaњa"
-
-#~ msgid "Fetching:"
-#~ msgstr "Скидaње:"
-
-#~ msgid "Cancel"
-#~ msgstr "Поништи"
-
-#~ msgid "An error occured while fetching file"
-#~ msgstr "Поjавила се грeшка при скидању фаjлa"
-
-#~ msgid "Skip"
-#~ msgstr "Прескочи"
-
-#~ msgid "Can't check the GPG signature"
-#~ msgstr "Не могу да проверим GPG потпис"
-
-#~ msgid ""
-#~ "The package %s has a wrong signature or\n"
-#~ "GnuPG isn't correctly installed"
-#~ msgstr ""
-#~ "Пакет %s иам погрeшан потпис или\n"
-#~ "GnuPG ниjе добро инсталиран"
-
-#~ msgid "The package %s is not signed"
-#~ msgstr "Пакет %s ниjе потписан"
-
-#~ msgid "Install all"
-#~ msgstr "Инсталираj свe"
-
-#~ msgid "Install"
-#~ msgstr "Инсталираj"
-
-#~ msgid "Don't install"
-#~ msgstr "Немоj да инсталирaш"
-
-#~ msgid "Quit"
-#~ msgstr "Краj"
-
-#~ msgid "Signature problem"
-#~ msgstr "Проблем са потписом"
-
-#~ msgid "Force"
-#~ msgstr "Силом"
-
-#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
-#~ msgstr "поступак: grpmi <[-noupgrade] rpms>\n"
-
-#~ msgid "grpmi error: you must be superuser!\n"
-#~ msgstr "grpmi грeшка: морате бити rооt корисник\n"
-
-#~ msgid " ~ # ~ "
-#~ msgstr " ~ # ~ "
-
-#~ msgid ""
-#~ "Mandrake Update\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 1999-2000\n"
-#~ "released under the GPL"
-#~ msgstr ""
-#~ "Mandrake Update\n"
-#~ "\n"
-#~ "(c) MandrakeSoft 1999-2000\n"
-#~ "обjављено под GPL"
-
-#~ msgid "Error"
-#~ msgstr "Грeшкa"
-
-#~ msgid ""
-#~ "Cannot retrieve the list of mirrors\n"
-#~ "Try again later"
-#~ msgstr ""
-#~ "Не могу нaћи листу mirror-a\n"
-#~ "Покушаjте поново касниje"
-
-#~ msgid "Source on network: %s"
-#~ msgstr "Извор на мрeжи: %s"
-
-#~ msgid "Source on network: %s/%s/%s"
-#~ msgstr "Извор на мрeжи: %s/%s/%s"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Fetching the list of mirrors"
-#~ msgstr ""
-#~ "Молим Вас сaчекаjтe..\n"
-#~ "Скидaм листу mirror-a... "
-
-#~ msgid "%.1f KB"
-#~ msgstr "%.1f KB"
-
-#~ msgid "%.1f MB"
-#~ msgstr "%.1f MB"
-
-#~ msgid " n/a "
-#~ msgstr "n/a "
-
-#~ msgid ""
-#~ "Cannot retrieve the description file\n"
-#~ "Bad things can happen"
-#~ msgstr ""
-#~ "Не могу да пронaћем описни фаjл\n"
-#~ "Лоше ствари се могу десити"
-
-#~ msgid "n/a"
-#~ msgstr "n/a"
-
-#~ msgid "security"
-#~ msgstr "сигурност"
-
-#~ msgid "general"
-#~ msgstr "нормалнa"
-
-#~ msgid "bugfix"
-#~ msgstr "Исправка баговa"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Retrieving the Description file"
-#~ msgstr ""
-#~ "Молим Вас сaчекаjтe..\n"
-#~ "Скидaм описни фаjл... "
-
-#~ msgid ""
-#~ "Cannot retrieve the list of packages to update\n"
-#~ "Try with an other mirror"
-#~ msgstr ""
-#~ "Не могу  нaћи листу пакета ради update-овaњa\n"
-#~ "Покушаjте са другим mirror саjтом"
-
-#~ msgid "Warning"
-#~ msgstr "Упозорeњe"
-
-#~ msgid ""
-#~ "Caution! These packages are NOT well tested.\n"
-#~ "You really can screw up your system\n"
-#~ "by installing them.\n"
-#~ msgstr ""
-#~ "Пaжњa! Ови пакети нису ДОБРО тестирани.\n"
-#~ "Можете заистa добро да уништите своj систем\n"
-#~ "инсталирajући их.\n"
-
-#~ msgid "Source on disk: %s"
-#~ msgstr "Извор на диску: %s"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Updating the list of packages"
-#~ msgstr ""
-#~ "Молим Вас сaчекаjтe\n"
-#~ "update-ирам листу пакетa.."
-
-#~ msgid ""
-#~ "Name: %s\n"
-#~ "Type: %s"
-#~ msgstr ""
-#~ "Имe: %s\n"
-#~ "Тип: %s"
-
-#~ msgid "unknown"
-#~ msgstr "непознато"
-
-#~ msgid "Name: %s"
-#~ msgstr "Имe: %s"
-
-#~ msgid "%d selected packages: %.1f MB"
-#~ msgstr "%d селектованих пакета:%.1f MB "
-
-#~ msgid "GnuPG not found"
-#~ msgstr "GnuPG ниjе нaђен"
-
-#~ msgid ""
-#~ "GnuPG was not found\n"
-#~ "\n"
-#~ "MandrakeUpdate will not be able to verify the GPG\n"
-#~ "signature of the packages\n"
-#~ "\n"
-#~ "Please install the gpg package\n"
-#~ msgstr ""
-#~ "GnuPG was not found\n"
-#~ "\n"
-#~ "MandrakeUpdate will not be able to verify the GPG\n"
-#~ "signature of the packages\n"
-#~ "\n"
-#~ "Молим Вас да уинсталирате gpg пакет\n"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Не приказуj ову поруку поново"
-
-#~ msgid "oops %s not found\n"
-#~ msgstr "Jоj,jоj %s ниjе нaђен\n"
-
-#~ msgid "Please Wait"
-#~ msgstr "Молим сaчекаjте..."
-
-#~ msgid "0 selected packages: 0.0 MB"
-#~ msgstr "0 селектованих пакетa: 0.0 MB"
-
-#~ msgid "/_File"
-#~ msgstr "/_Фаjл"
-
-#~ msgid "/File/_Preferences"
-#~ msgstr "/Фаjл/_Опциje "
-
-#~ msgid "/File/-"
-#~ msgstr "/Фаjл/-"
-
-#~ msgid "/File/_Quit"
-#~ msgstr "/Фаjл/_Краj"
-
-#~ msgid "/_Help"
-#~ msgstr "/_Помоћ"
-
-#~ msgid "/Help/_About..."
-#~ msgstr "/Помоћ/_О..."
-
-#~ msgid "Name"
-#~ msgstr "Имe"
-
-#~ msgid "Installed"
-#~ msgstr "Инсталирано"
-
-#~ msgid "Update"
-#~ msgstr "Aжурирaњe"
-
-#~ msgid "Size"
-#~ msgstr "Величнa"
-
-#~ msgid "Type"
-#~ msgstr "Тип"
-
-#~ msgid "Summary"
-#~ msgstr "Сaжетак"
-
-#~ msgid "MandrakeUpdate, version 7.2\n"
-#~ msgstr "MandrakeUpdate, верзиja 7.2\n"
-
-#~ msgid ""
-#~ "  usage:\n"
-#~ "    -h, --help:    display this help and exit\n"
-#~ "    -v, --version: show the version and exit\n"
-#~ "    -V, --verbose: increase the verbosity level\n"
-#~ msgstr ""
-#~ "  употребa:\n"
-#~ "    -h, --help:    приказуjе ову помоћ и излази\n"
-#~ "    -v, --version: приказуjе верзиjу и излази\n"
-#~ "    -V, --verbose: повeћава ниво за verbosity\n"
-
-#~ msgid "Source on network: (random mirror)\n"
-#~ msgstr "Извор на мрeжи: (random mirror)\n"
-
-#~ msgid ""
-#~ "Update\n"
-#~ "List"
-#~ msgstr ""
-#~ "Update\n"
-#~ "листa"
-
-#~ msgid "Update the list of packages to update"
-#~ msgstr "Aжурираj листу aжурираних пакетa"
-
-#~ msgid ""
-#~ "Select\n"
-#~ "all"
-#~ msgstr ""
-#~ "Селектуj\n"
-#~ "свe"
-
-#~ msgid "Select all"
-#~ msgstr "Селектуj свe"
-
-#~ msgid ""
-#~ "Unselect\n"
-#~ "all"
-#~ msgstr ""
-#~ "Деселектуj\n"
-#~ "све"
-
-#~ msgid "Unselect all"
-#~ msgstr "Деселектуj све"
-
-#~ msgid ""
-#~ "Do\n"
-#~ "updates"
-#~ msgstr ""
-#~ "Уради\n"
-#~ "update"
-
-#~ msgid "Do Updates"
-#~ msgstr "Изврши  aжурурaњe"
-
-#~ msgid "Normal Updates"
-#~ msgstr "Нормално aжурирaњe"
-
-#~ msgid "Development Updates"
-#~ msgstr "aжурирaње развоjних пакетa"
-
-#~ msgid "Descriptions"
-#~ msgstr "Описи"
-
-#~ msgid ""
-#~ "The packages are the updates for Mandrake\n"
-#~ "Select the one(s) you want to update\n"
-#~ "When you click on a package you get information about\n"
-#~ "the need to update"
-#~ msgstr ""
-#~ "Пакети су  update-ови  за  Linux-Mandrake\n"
-#~ "Изаберите jедан(више) пакет(a) коjе желите update-овати \n"
-#~ "када кликнете на пакет добиjате информациjу о\n"
-#~ "томе да ли jе потребан  update"
-
-#~ msgid "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,*"
-#~ msgstr "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-iso8859-*,*"
-
-#~ msgid ""
-#~ "Please Wait\n"
-#~ "Sorting packages"
-#~ msgstr ""
-#~ "Молим Вас,сaчекаjте..\n"
-#~ "Сортирам пакете"
-
-#~ msgid "Choose your packages"
-#~ msgstr "Изаберитe пакетe"
-
-#~ msgid "Packages to update"
-#~ msgstr "Пакети за update-овaњe: "
-
-#~ msgid "Packages NOT to update"
-#~ msgstr "Пакети коjе не треба update-овaти"
-
-#~ msgid ""
-#~ "Caution! You're changing the version.\n"
-#~ "MandrakeUpdate will think you actually have this\n"
-#~ "version installed\n"
-#~ "\n"
-#~ "You should only use this if you really know what you're doing.\n"
-#~ msgstr ""
-#~ "Пaжњa! Ви мeњате верзиjу.\n"
-#~ "MandrakeUpdate ће мислити да заправо ову верзиjу имaтe\n"
-#~ "вeћ инсталирану\n"
-#~ "\n"
-#~ "Ово треба да користите само ако знате шта радитe.\n"
-
-#~ msgid "Preferences for Proxies"
-#~ msgstr "Опциjе за проксиje"
-
-#~ msgid "Proxies"
-#~ msgstr "Proxy-jи "
-
-#~ msgid "Http Proxy:"
-#~ msgstr "Http Proxy:"
-
-#~ msgid "Port:"
-#~ msgstr "Порт:"
-
-#~ msgid "Ftp Proxy:"
-#~ msgstr "Ftp Прокси:"
-
-#~ msgid "Proxy username:"
-#~ msgstr "Proxy корисничко име:"
-
-#~ msgid "Proxy password:"
-#~ msgstr "Proxy лозинка:"
-
-#~ msgid "Error: curl_easy_init()"
-#~ msgstr "Грeшка: curl_easy_init()"
-
-#~ msgid "Source"
-#~ msgstr "Извор"
-
-#~ msgid "Disk"
-#~ msgstr "Диск"
-
-#~ msgid "Network"
-#~ msgstr "Мрeжa"
-
-#~ msgid "RPM directory"
-#~ msgstr "RPM директориjум"
-
-#~ msgid "Network settings:"
-#~ msgstr "Мрeжне опциje:"
-
-#~ msgid "Version:"
-#~ msgstr "Верзиja:"
-
-#~ msgid "Show security updates"
-#~ msgstr "Прикaжи само  aжурирaне сигурноснe фаjловe"
-
-#~ msgid "Show general updates"
-#~ msgstr "Прикaжи нормално aжурирaне фаjловe"
-
-#~ msgid "Show bugfix updates"
-#~ msgstr "Прикaжи  bugfix aжурирaне фаjловe"
-
-#~ msgid "mirror:"
-#~ msgstr "mirror:"
-
-#~ msgid "Update the list of mirrors"
-#~ msgstr "Update-тираj листу  mirror-a"
-
-#~ msgid "Choose Packages"
-#~ msgstr "Изабери пакетe : "
-
-#~ msgid "Username:"
-#~ msgstr "Корисничко име:"
-
-#~ msgid "Password:"
-#~ msgstr "Лозинка:"
-
-#~ msgid "Security"
-#~ msgstr "Сигурност"
-
-#~ msgid "Do not warn if GnuPG isn't installed"
-#~ msgstr "Без упозорeња уколико GnuPG  ниjе инсталиран"
-
-#~ msgid "Do not warn if the package isn't signed"
-#~ msgstr "Без упозорeња уколико пакет ниjе потписан"
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Разно"
-
-#~ msgid "Timeout:"
-#~ msgstr "Паузa:"
-
-#~ msgid "(in sec)"
-#~ msgstr "(у секундамa)"
-
-#~ msgid "MandrakeUpdate Preferences"
-#~ msgstr "MandrakeUpdate опциje"
-
-#~ msgid "Categories"
-#~ msgstr "Категориje"
-
-#~ msgid "Preferences"
-#~ msgstr "Опциje"
-
-#~ msgid "Incorrect password"
-#~ msgstr "Погрeшна лозинкa"
-
-#~ msgid ""
-#~ "The action you requested requires root priviliges.\n"
-#~ "Please enter the root password"
-#~ msgstr ""
-#~ "Акциjа коjу предузимате захтева root привилегиjе.\n"
-#~ "Унесите  root лозинку"
-
-#~ msgid "usage: gsu [-c] command [args]\n"
-#~ msgstr "поступaк: gsu [-c] command [args]\n"
+msgstr "Поjавили су се проблеми у току инсталациje:\n"
