@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.5
-%define release 2mdk
+%define release 3mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Aug 23 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-3mdk
+- fix some error popups too large
+- fix a crash when trying to remove base packages
+- fix download bars for packages (displayed wrong info) and for hdlists (wasn't
+  properly updated)
+- button reordering
+- message updates
+
 * Thu Aug 19 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-2mdk
 - Message updates
 - Don't ask for selections in browse mode (read-only)
