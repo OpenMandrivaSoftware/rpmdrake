@@ -28,6 +28,7 @@ use common;
 require_root_capability();
 
 use rpmdrake;
+use URPM::Signature;
 
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
@@ -456,6 +457,81 @@ sub parallel_callback {
 }
 
 
+sub keys_callback {
+    my $w = ugtk2->new(N("Manage keys for digital signatures of packages"));
+
+    my $media_list_ls = Gtk2::ListStore->new("Glib::String");
+    my $media_list = Gtk2::TreeView->new_with_model($media_list_ls);
+    $media_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 0));
+    $media_list->get_selection->set_mode('browse');
+
+    my $keys_list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
+    my $keys_list = Gtk2::TreeView->new_with_model($keys_list_ls);
+    $keys_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Keys"), Gtk2::CellRendererText->new, 'text' => 0));
+    $keys_list->get_selection->set_mode('browse');
+
+    my ($current_medium, $current_medium_nb, @keys);
+
+    my $read_conf = sub {
+        $urpm->parse_pubkeys(root => $urpm->{root});
+        @keys = map { [ split /[,\s]+/, $_->{'key-ids'} ] } @{$urpm->{media}};
+    };
+    my $write = sub {
+        $urpm->write_config;
+	$urpm = urpm->new;
+	$urpm->read_config; 
+        $read_conf->();
+    };
+    $read_conf->();
+    my $key_name = sub {
+        $urpm->{keys}{$_[0] || {}}{name} || N("no name found");
+    };
+    
+    $media_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
+    $media_list->get_selection->signal_connect(changed => sub {
+        my ($model, $iter) = $_[0]->get_selected;
+        $model && $iter or return;
+        $current_medium = $model->get($iter, 0);
+        $current_medium_nb = $model->get_path($iter)->to_string;
+        $keys_list_ls->clear;
+        $keys_list_ls->append_set([ 0 => sprintf("%s (%s)", $_, $key_name->($_)), 1 => $_ ]) foreach @{$keys[$current_medium_nb]};
+    });
+
+    my $add_key = sub {
+    };
+
+    my $remove_key = sub {
+        my ($model, $iter) = $keys_list->get_selection->get_selected;
+        $model && $iter or return;
+        my $key = $model->get($iter, 1);
+	interactive_msg(N("Remove a key"),
+                        N("Are you sure you want to remove the key %s from medium %s?\n(name of the key: %s)",
+                          $key, $current_medium, $key_name->($key)),
+                        yesno => 1) or return;
+        $urpm->{media}[$current_medium_nb]{'key-ids'} = join(',', difference2(\@{$keys[$current_medium_nb]}, [ $key ]));
+        $write->();
+        $media_list->get_selection->signal_emit('changed');
+    };
+
+    gtkadd($w->{window},
+	   gtkpack_(Gtk2::VBox->new(0,5),
+		    1, gtkpack_(Gtk2::HBox->new(0, 10),
+				1, $media_list,
+				1, $keys_list,
+				0, gtkpack__(Gtk2::VBox->new(0, 5),
+					     gtksignal_connect($remove = Gtk2::Button->new(but(N("Add a key..."))),
+                                                               clicked => \&$add_key),
+					     gtksignal_connect($remove = Gtk2::Button->new(but(N("Remove key"))),
+                                                               clicked => \&$remove_key))),
+		    0, Gtk2::HSeparator->new,
+		    0, gtkpack(create_hbox(),
+			       gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
+    $w->{rwindow}->set_position('center');
+
+    $w->main;
+}
+
+
 sub mainwindow {
     $mainw = ugtk2->new(N("Configure media"), center => 1);
 
@@ -545,6 +621,7 @@ sub mainwindow {
 					     gtksignal_connect(Gtk2::Button->new(but(N("Add..."))), 
 							       clicked => sub { add_callback() and $reread_media->(); }),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Update..."))), clicked => \&update_callback),
+					     gtksignal_connect(Gtk2::Button->new(but(N("Manage keys..."))), clicked => \&keys_callback),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Proxy..."))), clicked => \&proxy_callback),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Parallel..."))), clicked => \&parallel_callback))),
 		    0, Gtk2::HSeparator->new,

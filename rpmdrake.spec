@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Fri Aug  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
+* Tue Aug 12 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
 - require root capability when run "Install Sofware" and add a new
   menu entry reading "Browse Available Software"
 - s/Medias/Media/ in the program name of the menu entry
@@ -113,12 +113,13 @@ rm -rf $RPM_BUILD_ROOT
 - when updating media, if url is too long, don't display it because
   it enlarges much the dialog; better display only the basename
   and the medium name (#4338)
-- edit-urpmi-media/add:
+- edit-urpm-media/add:
   - right-align left labels
   - use a checkbutton for "hdlist" so that user better understands
     it's optional (and say in a tooltip that it is)
   - fix browsing for adding a security update (port gtk2-perl-xs
     not complete)
+- edit-urpm-media: add ability to manage media keys
 
 * Mon Aug  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-30mdk
 - revert "use checkboxes instead of icons"
