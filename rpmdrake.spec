@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.6
+%define version 2.7
 %define release 1mdk
 
 Name: %{name}
@@ -111,6 +111,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Feb 14 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.7-1mdk
+- Don't show diffs for rpmnew files that haven't changed
+- Make the software media manager cope with variables in media (M. Scherer)
+
 * Fri Feb 11 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.6-1mdk
 - Fix utf-8 changelog display in rpmdrake-remove
 - Fix view by group
