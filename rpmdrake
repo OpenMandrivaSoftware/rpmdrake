@@ -781,7 +781,6 @@ sub get_installable_pkgs {
 	$urpm->configure();
 	my $statedir = $urpm->{statedir};
 	@update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
-	undef $urpm;
 	if (@update_medias > 0) {
 	    if (!$opts->{skip_updating_mu}) {
 		$options{'no-confirmation'} or interactive_msg_('rpmdrake',
@@ -789,10 +788,8 @@ N("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
 Is it ok to continue?"), yesno => 1) or myexit(-1);
-		slow_func(N("Please wait, contacting mirror to update packages information."),
-			  sub { system('/usr/sbin/urpmi.update', map { $_->{name} } @update_medias) == 0
-				  or fatal_msg(N("Error updating medium"),
-					       N("There was an unrecoverable error while updating packages information.")) });
+                $urpm->select_media(map { $_->{name} } @update_medias);
+                update_sources($urpm, noclean => 1);
 	    }
 	} else {
 	  mu_retry_another_mirror:

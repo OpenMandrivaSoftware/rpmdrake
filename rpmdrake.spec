@@ -123,6 +123,8 @@ rm -rf $RPM_BUILD_ROOT
   in -16mdk, when trying to select a package that conflicts with
   a previously selected
 - add urpmi reasons when "sorry this package can't be selected"
+- show download progress of update medias when starting
+  MandrakeUpdate
 
 * Tue Apr 15 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-16mdk
 - update for urpmi-4.3 (skipped packages should be better handled
