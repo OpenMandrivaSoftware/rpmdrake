@@ -75,8 +75,9 @@ sub interactive_msg {
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     gtkadd($d->{window},
 	   gtkpack_(Gtk2::VBox->new(0,5),
-		    1, $options{scroll} ? gtkset_size_request(create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)),
-						       $typical_width*2, 300)
+		    1, $options{scroll} ? gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
+						 gtkset_size_request(create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)),
+								     $typical_width*2, 300))
 					: Gtk2::Label->new($contents),
 		    0, gtkpack(create_hbox(),
 			       $options{yesno} ? (gtksignal_connect(Gtk2::Button->new($options{text}{yes} || N("Yes")),
