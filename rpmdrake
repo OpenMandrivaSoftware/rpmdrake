@@ -585,10 +585,16 @@ or you already installed all of them."));
 				   @nodes = difference2(\@nodes, \@bad_i18n_pkgs);
 			       }
                                my @requested;
-			       slow_func($tree->window,
-                                         sub { @requested = $urpm->resolve_requested(db(), $urpm->{state},
-                                                                                     { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
-                                                                                     callback_choices => $callback_choices) });
+			       slow_func(
+				   $tree->window,
+				   sub {
+				       @requested = $urpm->resolve_requested(
+					   db(), $urpm->{state},
+					   { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
+					   callback_choices => $callback_choices,
+				       );
+				   },
+			       );
                                @nodes_with_deps = map { my_fullname($_) } @requested;
 			       if (!$deps_msg->(N("Additional packages needed"), 
 						N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
@@ -602,10 +608,10 @@ or you already installed all of them."));
                                    my @ask_unselect = $urpm->unselected_packages($urpm->{state});
                                    my @reasons = map {
                                        my $cant = $_;
-                                       my $unsel = find { remove_arch($_) eq $cant } @ask_unselect;
+				       my $unsel = find { remove_arch($_) eq $cant } @ask_unselect;
                                        $unsel
 					   ? to_utf8(join "\n", $urpm->translate_why_unselected($urpm->{state}, $unsel))
-					   : $cant;
+					   : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
                                    } @cant;
 				   interactive_msg_(N("Some packages can't be installed"),
 						    N("Sorry, the following package(s) can't be selected:\n\n%s", join("\n", @reasons)));
