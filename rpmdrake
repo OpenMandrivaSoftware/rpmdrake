@@ -392,6 +392,7 @@ sub db {
 sub do_search($$$$$$$) {
     my ($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) = @_;
     my $entry = quotemeta $find_entry->get_text or return;
+    my $entry_rx = eval { qr/$entry/i } or return;
     my ($results_ok, $results_none) = (N("Search results"), N("Search results (none)"));
     $options->{delete_category}->($_) foreach $results_ok, $results_none;
     $options->{state}{flat} and $options->{delete_all}->();
@@ -400,11 +401,17 @@ sub do_search($$$$$$$) {
     if ($current_search_type ne 'normal') {
 	if ($MODE eq 'remove') {
 	    if ($current_search_type eq 'descriptions') {
-		@search_results = grep { eval { ($pkgs->{$_}{summary} . $pkgs->{$_}{description}) =~ /$entry/i } } keys %$pkgs;
+		@search_results = grep { ($pkgs->{$_}{summary} . $pkgs->{$_}{description}) =~ $entry_rx } keys %$pkgs;
 	    } else {
-		slow_func(N("Please wait, searching..."),
-			  sub { db->traverse(sub { push @search_results, map { if_(eval { /$entry/i }, my_fullname($_[0])) } $_[0]->files });
-				@search_results = grep { exists $pkgs->{$_} } uniq(@search_results) });
+		slow_func(
+		    N("Please wait, searching..."),
+		    sub {
+			db->traverse(sub {
+			    push @search_results, map { if_(($_ =~ $entry_rx), my_fullname($_[0])) } $_[0]->files;
+			});
+			@search_results = grep { exists $pkgs->{$_} } uniq(@search_results);
+		    },
+		);
 	    }
 	} else {
 	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}";
@@ -441,7 +448,7 @@ sub do_search($$$$$$$) {
 		} else {
 		    $key eq 'files' or next;
 		}
-		if (eval { $value =~ /$entry/i }) {
+		if ($value =~ $entry_rx) {
 		    exists $pkgs->{$pkg} and push @search_results, $pkg;
 		    $pkg = '';
 		}
@@ -451,7 +458,7 @@ sub do_search($$$$$$$) {
 	    $searchw->destroy;
 	}
     } else {
-	@search_results = grep { eval { /$entry/i } } keys %$pkgs;
+	@search_results = grep { $_ =~ $entry_rx } keys %$pkgs;
     }
     if (@search_results) {
 	$options->{add_nodes}->(map { [ $_, N("Search results") . ($options->{tree_mode} eq 'by_presence'
@@ -867,9 +874,9 @@ or you already installed all of them."));
 	    flat             => { name => N("All packages, alphabetical"), flat => 1 },
 	    by               => { name => '',                              flat => 0 },
 	);
-	$compssUsers = parse_compssUsers_flat();
 	my @radios_names_ordered = qw(mandrake_choices flat by);
-	$compssUsers or shift @radios_names_ordered;
+	$compssUsers = parse_compssUsers_flat()
+	    or shift @radios_names_ordered;
 
 	my @advanced_modes = (
 	    [ 'by_group', N("All packages, by group"), 0 ],
