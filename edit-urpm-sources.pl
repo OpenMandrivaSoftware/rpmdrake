@@ -213,7 +213,7 @@ sub proxy_callback {
     my $w = ugtk2->new(N("Configure proxies"), grab => 1, center => 1, transient => $mainw->{rwindow});
     my ($proxy, $proxy_user) = curl_download::readproxy();
     my ($user, $pass) = $proxy_user =~ /^(.+):(.+)$/;
-    my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry);
+    my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry, $proxypasswordentry);
     gtkadd($w->{window},
 	   gtkpack__(Gtk2::VBox->new(0, 5),
 		     Gtk2::Label->new(N("If you need a proxy, enter the hostname and an optional port (syntax: <proxyhost[:port]>):")),
@@ -225,7 +225,7 @@ sub proxy_callback {
 			      0, gtkset_active($proxyuserbutton = Gtk2::CheckButton->new(N("User:")), to_bool($proxy_user)),
 			      1, gtkset_sensitive($proxyuserentry = gtkentry($user), to_bool($proxy_user)),
 			      0, Gtk2::Label->new(N("Password:")),
-			      1, gtkset_visibility(gtkset_sensitive(my $proxypasswordentry = gtkentry($pass), to_bool($proxy_user)), 0)),
+			      1, gtkset_visibility(gtkset_sensitive($proxypasswordentry = gtkentry($pass), to_bool($proxy_user)), 0)),
 		     Gtk2::HSeparator->new,
 		     gtkpack(create_hbox(),
 			     gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub {
