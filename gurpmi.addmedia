@@ -54,7 +54,7 @@ if ($@) {
 $::isStandalone = 1;
 
 my $fromfile;
-if (@ARGV == 1 && $ARGV[0] =~ /\.urpm-media$/) {
+if (@ARGV == 1 && $ARGV[0] =~ /\.urpmi-media$/) {
     @ARGV = split /\n/, cat_($ARGV[0]);
     $fromfile = 1;
 }
