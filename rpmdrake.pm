@@ -351,7 +351,7 @@ by Mandrake Linux Official Updates.")), return '';
 	   gtkpack_(Gtk2::VBox->new(0,5),
 		    0, N("Please choose the desired mirror."),
 		    1, create_scrolled_window($tree),
-		    0, gtkpack(Gtk2::HBox->new(1, 20),
+		    0, gtkpack(create_hbox('edge'),
 			       map {
 				   my $retv = $_->[1];
 				   gtksignal_connect(Gtk2::Button->new(but($_->[0])), clicked => sub {
