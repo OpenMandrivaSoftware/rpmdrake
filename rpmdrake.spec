@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 9mdk
+%define release 10mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Mar  3 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-10mdk
+- grpmi: fix error reporting (of gpg, rpm, curl) broken in non english
+
 * Fri Feb 28 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-9mdk
 - add help support thx to drakhelp
 

@@ -47,6 +47,7 @@ sub N {
     my $s = shift @_; my $t = translate($s);
     sprintf_fixutf8 $t, @_;
 }
+sub utf8ize { c::set_tagged_utf8($_[0]); $_[0] }
 sub mexit { ugtk2::exit(undef, @_) }
 
 sub interactive_msg {
@@ -106,8 +107,8 @@ foreach my $arg (@ARGV) {
       retry_download:
 	$label->set(N("Downloading package `%s' (%s/%s)...", basename($url), $download_progress, $nb_downloads));
 	select(undef, undef, undef, 0.1); $mainw->flush;  #- hackish :-(
-	my $res = curl_download::download($url, $cache_location,
-					  sub { $_[0] and $progressbar->set_fraction($_[1]/$_[0]); $mainw->flush });
+	my $res = utf8ize(curl_download::download($url, $cache_location,
+						  sub { $_[0] and $progressbar->set_fraction($_[1]/$_[0]); $mainw->flush }));
 	if ($res) {
 	    my $results = interactive_msg(N("Error during download"),
 N("There was an error downloading package:
@@ -135,7 +136,7 @@ if (!member('--no-verify-rpm', @ARGV)) {
 	    if (-f $arg) {
 		$yes_to_all and next;
 		$label->set(N("Verifying signature of `%s'...", basename($arg))); $mainw->flush;
-		if (my $res = grpmi_rpm::verify_sig($arg)) {
+		if (my $res = utf8ize(grpmi_rpm::verify_sig($arg))) {
 		    my $results = interactive_msg(N("Signature verification error"),
 N("The signature of the package `%s' is not correct:
 
@@ -194,7 +195,7 @@ Install aborted.",
 	return 0;
     }
     
-    my $res = chomp_(grpmi_rpm::install_packages(\&install_packages_callback, @ARGV));
+    my $res = chomp_(utf8ize(grpmi_rpm::install_packages(\&install_packages_callback, @ARGV)));
     if ($res) {
 	interactive_msg(N("Problems occurred during installation"), N("There was an error during packages installation:\n\n%s", $res));
 	goto cleanup;
