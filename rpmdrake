@@ -967,7 +967,7 @@ all of them are currently disabled. You should run the Software
 Media Manager to enable at least one (check it in the Enabled?
 column).
 
-Then, restart MandrakeUpdate.", $update_name));
+Then, restart MandrakeUpdate."));
                 myexit(-1);
             }
 	  mu_retry_another_mirror:
@@ -977,7 +977,7 @@ N("You may also choose your desired mirror manually: to do so,
 launch the Software Media Manager, and then add a `Security
 updates' medium.
 
-Then, restart MandrakeUpdate.", $update_name)), myexit(-1);
+Then, restart MandrakeUpdate.")), myexit(-1);
             add_medium_and_check($urpm, {},
                                  $update_name, make_url_mirror($m), '../base/hdlist.cz', update => 1);
 	    @update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
