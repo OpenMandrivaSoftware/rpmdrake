@@ -318,6 +318,11 @@ or you already installed all of them."));
 		       remove_wait_msg($w);
 		   },
 		   grep_unselected => sub { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ },
+		   partialsel_unsel => sub {
+		       my ($unsel, $sel) = @_;
+		       @$sel = grep { exists $pkgs->{$_} } @$sel;
+		       @$unsel < @$sel;
+		   },
 		   toggle_nodes => sub {
 		       my ($set_state, @nodes) = @_;
 		       @nodes = grep { exists $pkgs->{$_} } @nodes;
