@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 29mdk
+%define release 30mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools >= 9.2-0.24mdk rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools > 9.2-0.26md rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-2mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: libcurl2-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -99,6 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Aug  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-30mdk
+- revert "use checkboxes instead of icons"
+
 * Fri Jul 25 2003 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1-29mdk
 - use checkboxes instead of icons
 - fix mouse selection
