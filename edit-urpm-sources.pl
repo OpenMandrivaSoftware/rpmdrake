@@ -187,6 +187,41 @@ really want to replace it?"), yesno => 1) or return 0;
 
 sub options_callback {
     my $w = ugtk2->new(N("Global options for package installation"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my @verif_radio_infos = (
+	{ name => N("always"), value => 1 },
+	{ name => N("never"),  value => 0 },
+    );
+    my @verif_radio = gtkradio( $verif_radio_infos[$urpm->{options}{'verify-rpm'} ? 0 : 1]{name}, map { $_->{name} } @verif_radio_infos );
+    my @avail_downloaders = grep { -f "/usr/bin/$_" } qw(curl wget);
+    my @downl_radio = gtkradio( $urpm->{options}{downloader} || $avail_downloaders[0], @avail_downloaders );
+    gtkadd(
+	$w->{window},
+	gtkpack(
+	    Gtk2::VBox->new(0,5),
+	    gtkpack(Gtk2::HBox->new(0,0), Gtk2::Label->new(N("Verify RPMs to be installed:")), @verif_radio),
+	    gtkpack(Gtk2::HBox->new(0,0), Gtk2::Label->new(N("Download program to use:")), @downl_radio),
+	    gtkpack(
+		create_hbox(),
+		gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit }),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Ok")), clicked => sub {
+			foreach my $i (0 .. $#verif_radio) {
+			    $verif_radio[$i]->get_active
+				and $urpm->{global_config}{'verify-rpm'} = $verif_radio_infos[$i]{value};
+			}
+			foreach my $i (0 .. $#downl_radio) {
+			    $downl_radio[$i]->get_active
+				and $urpm->{global_config}{downloader} = $avail_downloaders[$i];
+			}
+			$urpm->write_config;
+			$urpm = urpm->new;
+			$urpm->read_config; 
+			Gtk2->main_quit;
+		    },
+		),
+	    ),
+	),
+    );
     $w->main;
 }
 
@@ -745,6 +780,7 @@ sub mainwindow {
 		    gtksignal_connect(Gtk2::Button->new(but(N("Manage keys..."))), clicked => \&keys_callback),
 		    gtksignal_connect(Gtk2::Button->new(but(N("Proxy..."))), clicked => \&proxy_callback),
 		    gtksignal_connect(Gtk2::Button->new(but(N("Parallel..."))), clicked => \&parallel_callback),
+		    gtksignal_connect(Gtk2::Button->new(but(N("Advanced..."))), clicked => \&options_callback),
 		)
 	    ),
 	    0, Gtk2::HSeparator->new,
