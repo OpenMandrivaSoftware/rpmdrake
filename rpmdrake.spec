@@ -122,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Tue May 04 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-4mdk
-- Make the package list pane resizable (Robert Vojta)
+- Make the package list pane resizable (Robert Vojta) (#8925)
 
 * Mon May 03 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-3mdk
 - Fix reset of the wait cursor when run embedded in drakconf
