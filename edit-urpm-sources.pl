@@ -302,8 +302,7 @@ sub mainwindow {
 					     gtksignal_connect(Gtk2::Button->new(but(N("Proxy..."))), clicked => \&proxy_callback))),
 		    0, Gtk2::HSeparator->new,
 		    0, gtkpack(create_hbox(),
-			       gtksignal_connect(Gtk2::Button->new(N("Save and quit")), clicked => sub { $mainw->{retval} = 1; Gtk2->main_quit }),
-			       gtksignal_connect(Gtk2::Button->new(N("Quit")), clicked => sub { $mainw->{retval} = 0; Gtk2->main_quit }))));
+			       gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
     $mainw->main;
 }
 
@@ -323,9 +322,8 @@ or to perform updates.")), yesno => 1) or myexit -1;
     push @$already_splashed, basename($0);
 }
 
-if (mainwindow()) {
-    $urpm->write_config;
-}
+mainwindow();
+$urpm->write_config;
 
 writeconf();
 
