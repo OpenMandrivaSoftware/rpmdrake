@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 3mdk
+%define release 4mdk
 
 Name: %{name}
 Version: %{version}
@@ -117,6 +117,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Feb 13 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-4mdk
+- use new banner style
+
 * Thu Feb 12 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-3mdk
 - some #7472-alike progressbar sizing fixes
 - menu: specify that gurpmi.addmedia handles application/x-urpmi-media
