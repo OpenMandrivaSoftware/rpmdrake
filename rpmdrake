@@ -41,15 +41,18 @@ use common;
 use rpmdrake;
 use gurpm;
 
+$MODE = 'install';
+$0 =~ m|/rpmdrake-remove$| and $MODE = 'remove';
+$0 =~ m|/MandrakeUpdate$|  and $MODE = 'update';
+
+$MODE eq 'update' and require_root_capability();
+
+
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
     print "This program cannot be run in console mode.\n";
     c::_exit(0);  #- skip ugtk2::END
 }
-
-$MODE = 'install';
-$0 =~ m|/rpmdrake-remove$| and $MODE = 'remove';
-$0 =~ m|/MandrakeUpdate$|  and $MODE = 'update';
 
 /^-?-(\S+)$/ and $options{$1} = 1 foreach @ARGV;
 
@@ -60,6 +63,7 @@ my $w;
 sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
+
 
 $> and (interactive_msg_(N("Running in user mode"),
 N("You are launching this program as a normal user.
