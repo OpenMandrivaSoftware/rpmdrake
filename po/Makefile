@@ -19,7 +19,7 @@ LOCALEDIR=$(DATADIR)/locale
 all: $(MOFILES)
 
 %.mo: %.po
-	if [ -z "`echo $(IGNOREPOMS) | grep $<`" ]; then cat $< "$<"m >> "$<"f; else cp $< "$<"f; fi
+	-if [ -z "`echo $(IGNOREPOMS) | grep $<`" ]; then cat $< "$<"m >> "$<"f; else cp $< "$<"f; fi
 	./clean_po.pl "$<"f > "$<"g
 	msgfmt -o $@ "$<"g
 
