@@ -468,7 +468,7 @@ or you already installed all of them."));
 						 : ([ N("Source: "), $tag_tag ], [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
 						    [ N("Currently installed version: "), $tag_tag ],
 						          [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]),
-					      $options{'changelog-first'} ? (@chglo, [ "\n" ], @files) : (@files, [ "\n" ], @chglo));
+					      $options{'changelog-first'} ? (@chglo, [ "\n" ], @files) : (@files, [ "\n\n" ], @chglo));
 				     $MODE eq 'update' and gtktext_insert($info_update,
 							      [ [ N("Reason for update: "), $tag_tag ],
 								[ beautify_description($descriptions->{$name}{pre}) ] ]);
