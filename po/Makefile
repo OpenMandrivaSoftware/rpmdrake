@@ -5,7 +5,7 @@ PGOAL = rpmdrake
 PL_FILES = ../rpmdrake ../edit-urpm-sources.pl ../rpmdrake.pm
 CFILES = ../grpmi/curl_download/curl_download.xs
 
-POFILES = $(shell ls *.po)
+POFILES = $(wildcard *.po)
 MOFILES = $(POFILES:%.po=%.mo)
 LANGS = $(POFILES:%.po=%)
 
