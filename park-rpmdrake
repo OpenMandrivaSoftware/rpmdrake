@@ -375,6 +375,9 @@ sub group_modify {
 	    $add_host->($network);
 	}
     };
+    if (!@{$group->{networks}}) {
+	$group->{networks} = default_networks();
+    }
     populate_networks_with_raw_hosts($group);
     $add_network->($_) foreach @{$group->{networks}};
 
