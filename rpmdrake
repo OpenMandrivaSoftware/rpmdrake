@@ -1099,8 +1099,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $fatal_msg;
     my @error_msgs;
-    local $urpm->{fatal} = sub { $fatal_msg = $_[1]; printf STDERR "Fatal: %s\n", $_[1]; goto fatal_error };
-    local $urpm->{error} = sub { push @error_msgs, $_[0]; printf STDERR "Error: %s\n", $_[0] };
+    local $urpm->{fatal} = sub { $fatal_msg = to_utf8($_[1]); printf STDERR "Fatal: %s\n", $_[1]; goto fatal_error };
+    local $urpm->{error} = sub { push @error_msgs, to_utf8($_[0]); printf STDERR "Error: %s\n", $_[0] };
 
     $w->{rwindow}->set_sensitive(0);
 
