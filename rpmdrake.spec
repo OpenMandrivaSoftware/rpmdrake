@@ -68,7 +68,7 @@ cat title.lang >> rpmdrake.lang
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
 ?package(%{name}): command="/usr/sbin/rpmdrake" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png"\
-title="Install Software" longtitle="A graphical front end for installing packages" InitialPreference="5" 
+title="Install Software" longtitle="A graphical front end for installing packages"
 ?package(%{name}): command="/usr/sbin/rpmdrake-remove" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png"\
 title="Remove Software" longtitle="A graphical front end for removing packages"
 ?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.png"\
@@ -123,9 +123,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Sun Sep  8 2002 Daouda LO <daouda@mandrakesoft.com> 2.0-23mdk
-- rpmdrake priority on kpackage when clicking on an rpm package 
-  under konqueror.
+* Mon Sep  9 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-23mdk
+- in removal mode, fix misleading presence of "update sources"; fix
+  behaviour of "reset selection"
 
 * Fri Sep  6 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-22mdk
 - don't display passwords in clear text for Lord Beranger
