@@ -175,9 +175,11 @@ really want to replace it?"), yesno => 1) or return 0;
 	    $urpm->select_media($i{name});
 	    $urpm->remove_selected_media;
 	}
-	add_medium_and_check($urpm,
-			     { probe_with => $probe, nolock => 1 },
-			     $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security');
+	add_medium_and_check(
+	    $urpm,
+	    { probe_with => $probe, nolock => 1 },
+	    $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security',
+	);
 	return 1;
     }
     return 0;
@@ -251,9 +253,11 @@ sub edit_callback {
 	    ) or return 0
 	);
 	standalone::explanations("Removing medium $name");
+	my $saved_proxy = urpm::download::get_proxy($name);
+	undef $saved_proxy if !defined $saved_proxy->{http_proxy} && !defined $saved_proxy->{ftp_proxy};
 	$urpm->select_media($name);
 	$urpm->remove_selected_media;
-	add_medium_and_check($urpm, { nolock => 1 }, $name, $url, $with_hdlist, update => $update);
+	add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, $with_hdlist, update => $update);
 	return $name;
     }
     return undef;

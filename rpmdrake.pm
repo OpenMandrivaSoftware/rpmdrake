@@ -23,6 +23,7 @@ package rpmdrake;
 
 use lib qw(/usr/lib/libDrakX);
 use standalone;     #- warning, standalone must be loaded very first, for 'explanations'
+use urpm::download ();
 
 use MDK::Common;
 use MDK::Common::System;
@@ -662,8 +663,11 @@ sub add_medium_and_check {
         return 0;
     }
 
+    urpm::download::set_proxy_config($_, $options->{proxy}{$_}, $_[0]) foreach keys %{$options->{proxy} || {}};
+
     if (update_sources_check($urpm, $options, N_("Unable to add medium, errors reported:\n\n%s"), $_[0])) {
         $urpm->write_config;
+	$options->{proxy} and urpm::download::dump_proxy_config();
     } else {
 	$urpm->read_config;
         return 0;
