@@ -9,7 +9,7 @@ MOFILES = $(POFILES:%.po=%.mo)
 LANGS = $(POFILES:%.po=%)
 
 # because of different charsets or encodings.. :-(
-IGNOREPOMS = cs.po
+IGNOREPOMS =
 
 PREFIX = $(RPM_BUILD_ROOT)/usr
 DATADIR = $(PREFIX)/share
