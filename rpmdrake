@@ -152,7 +152,7 @@ sub do_search($$$$$$$) {
     my ($results_ok, $results_none) = (N("Search results"), N("Search results (none)"));
     $options->{delete_category}->($_) foreach $results_ok, $results_none;
     $options->{state}{flat} and $options->{delete_all}->();
-    $tree->collapse_all();
+    $tree->collapse_all;
     my @search_results;
     if ($current_search_type ne 'normal') {
 	if ($MODE eq 'remove') {
@@ -778,7 +778,7 @@ sub get_installable_pkgs {
 
     if ($updates) {
 	my $urpm = new urpm;
-	$urpm->configure();
+	$urpm->configure;
 	my $statedir = $urpm->{statedir};
 	@update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 	if (@update_medias > 0) {
