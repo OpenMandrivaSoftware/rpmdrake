@@ -826,21 +826,20 @@ or you already installed all of them."));
 
 	mapn {
 	    my $capture_mode = $_[0];
-            $_[0] eq $tree_mode->[0] and $_[1]->set_active(1);
+            $capture_mode eq $tree_mode->[0] and $_[1]->set_active(1);
 	    $_[1]->signal_connect(clicked => sub {
-				      if ($_[0]->get_active) {
-					  ($options->{tree_mode}, $options->{state}{flat}) = $capture_mode eq 'by'
-					        ? ($options->{tree_submode}, $options->{tree_subflat})
-					        : ($capture_mode,            $radios_infos{$capture_mode}{flat});
-                                          $tree_mode->[0] = $options->{tree_mode};
-                                          $tree_flat->[0] = $options->{state}{flat};
-					  $options->{rebuild_tree}->();
-				      }
-				  });
+		if ($options->{tree_mode} ne $capture_mode && $_[0]->get_active) {
+		    ($options->{tree_mode}, $options->{state}{flat}) = $capture_mode eq 'by'
+			? ($options->{tree_submode}, $options->{tree_subflat})
+			: ($capture_mode,            $radios_infos{$capture_mode}{flat});
+		    $tree_mode->[0] = $options->{tree_mode};
+		    $tree_flat->[0] = $options->{state}{flat};
+		    $options->{rebuild_tree}->();
+		}
+	    });
 	} \@radios_names_ordered, \@modes_buttons;
 
 	my $radio_by;
-
 	$options->{tree_submode} ||= $advanced_modes[0][0];
 	each_index {
 	    if ($_ eq 'by') {
