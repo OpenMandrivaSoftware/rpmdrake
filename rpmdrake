@@ -103,7 +103,7 @@ Disabling \"Mandrake choices\" classification.")), return;
 sub pkg2medium {
     my ($p, $urpm) = @_;
     my $tmp;
-    each_index { $p->id <= $_ and $tmp ||= ${$urpm->{media}}[$::i] } map { $_->{end} } @{$urpm->{media}};
+    each_index { !$_->{ignore} && $p->id <= $_->{end} and $tmp ||= ${$urpm->{media}}[$::i] } @{$urpm->{media}};
     $tmp;
 }
 
