@@ -105,21 +105,6 @@ sub wait_msg {
 }
 sub remove_wait_msg { $_[0]->destroy }
 
-sub progress_msg {
-    my ($msg, $max) = @_;
-    my $mainw = my_gtk->new('rpmdrake');
-    my $label = new Gtk::Label($msg);
-    my $progressbar = gtkset_usize(new Gtk::ProgressBar, 400, 0);
-    gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label, $progressbar)));
-    $mainw->{rwindow}->set_position('center');
-    $mainw->sync;
-    my $progress_val; my $progress_callback = sub {
-	$progressbar->update($max == -1 ? $_[0] : $progress_val++/$max); #/);
-	$mainw->flush;
-    };
-    ($mainw, $progress_callback);
-}
-
 sub but { "    $_[0]    " }
 
 sub slow_func($&) {
