@@ -31,16 +31,14 @@ use URPM;
 use URPM::Resolve;
 use packdrake;
 use strict;
-use vars qw(@ISA @EXPORT $configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $tree_mode $tree_flat $typical_width);
 use log;
 use c;
 
 use curl_download;
 
-@ISA = qw(Exporter);
-@EXPORT = qw(
-    $configfile
-    %config
+our @ISA = qw(Exporter);
+our @EXPORT = qw(
+    $changelog_first_config
     $mandrakeupdate_wanted_categories
     $already_splashed
     $max_info_in_descr
@@ -72,7 +70,7 @@ use curl_download;
     add_medium_and_check
     check_update_media_version
 );
-
+our $typical_width;
 
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
@@ -124,16 +122,18 @@ sub myexit { ugtk2::exit(undef, @_) }
 
 $ENV{HOME} ||= '/root';
 
+our $configfile = "$ENV{HOME}/.rpmdrake";
+our %config = (
+    mandrakeupdate_wanted_categories => { var => \our $mandrakeupdate_wanted_categories, default => [ qw(security) ] },
+    already_splashed => { var => \our $already_splashed, default => [] },
+    max_info_in_descr => { var => \our $max_info_in_descr, default => [] },
+    tree_mode => { var => \our $tree_mode, default => [ qw(mandrake_choices) ] },
+    tree_flat => { var => \our $tree_flat, default => [ 0 ] },
+    changelog_first_config => { var => \our $changelog_first_config, default => [ 0 ] },
+);
+
 sub readconf {
-    $configfile = "$ENV{HOME}/.rpmdrake";
-    %config = (mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
-	       already_splashed => { var => \$already_splashed, default => [] },
-	       max_info_in_descr => { var => \$max_info_in_descr, default => [] },
-               tree_mode => { var => \$tree_mode, default => [ qw(mandrake_choices) ] },
-               tree_flat => { var => \$tree_flat, default => [ 0 ] },
-	      );
     ${$config{$_}{var}} = $config{$_}{default} foreach keys %config;
-    
     foreach my $l (cat_($configfile)) {
 	$l =~ /^\Q$_\E (.*)/ and ${$config{$_}{var}} = [ split ' ', $1 ] foreach keys %config;
     }

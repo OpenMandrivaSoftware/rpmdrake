@@ -87,10 +87,11 @@ foreach (@ARGV) {
 $::isStandalone = 1;
 
 my $w;
+my $changelog_first;
+
 sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
-
 
 $> and (interactive_msg_(N("Running in user mode"),
 N("You are launching this program as a normal user.
@@ -693,7 +694,7 @@ or you already installed all of them."));
 			   [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
 			   [ N("Currently installed version: "), $tag_tag ],
 			   [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]));
-		       my @max_info = if_(@$max_info_in_descr, $options{'changelog-first'}
+		       my @max_info = if_(@$max_info_in_descr, $changelog_first
 			   ? (@chglo, [ "\n" ], @files)
 			   : (@files, [ "\n\n" ], @chglo));
 		       [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
@@ -997,14 +998,11 @@ Is it ok to continue?",
 		   1, 2, 0, 1, 'fill', 'fill', 0, 0);
 
     my $hpaned = Gtk2::HPaned->new;
-
-    my $tree_window = create_scrolled_window($tree);
-    $hpaned->pack1(gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
-			  gtkset_size_request($tree_window, $typical_width*1.25, -1)), 0, 0);
-
-    my $info_window = create_scrolled_window($info);
-    $hpaned->pack2($info_window, 1, 0);
-    
+    $hpaned->pack1(gtkadd(
+	    gtkset_shadow_type(Gtk2::Frame->new, 'in'),
+	    gtkset_size_request(create_scrolled_window($tree), $typical_width*1.25, -1)
+	), 0, 0);
+    $hpaned->pack2(create_scrolled_window($info), 1, 0);
     $table->attach($hpaned, 0, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
 
     my %mode2title = (
@@ -1570,8 +1568,9 @@ if ($options{'merge-all-rpmnew'}) {
     myexit(0);
 }
 
-
 readconf();
+$changelog_first = $changelog_first_config->[0];
+$changelog_first = 1 if $options{'changelog-first'};
 
 if (!$> && !member($MODE, @$already_splashed)) {
     interactive_msg(N("Rpmdrake"),
