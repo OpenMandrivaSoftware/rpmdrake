@@ -289,7 +289,7 @@ sub edit_parallel {
     my ($num, $conf) = @_;
     my $edited = $num == -1 ? {} : $conf->[$num];
 
-    my $w = ugtk2->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"));
+    my $w = ugtk2->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"), grab => 1);
     my $name_entry;
 
     my $medias_ls = Gtk2::ListStore->new("Glib::String");
@@ -300,7 +300,7 @@ sub edit_parallel {
     $medias_ls->append_set([ 0 => $_ ]) foreach @{$edited->{medias}};
 
     my $add_media = sub {
-        my $w = ugtk2->new(N("Add a medium limit"));
+        my $w = ugtk2->new(N("Add a medium limit"), grab => 1);
         my $medias_list_ls = Gtk2::ListStore->new("Glib::String");
         my $medias_list = Gtk2::TreeView->new_with_model($medias_list_ls);
         $medias_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
@@ -344,7 +344,7 @@ sub edit_parallel {
     if ($edited->{protocol} eq 'ka-run') { push @$hosts_list, $1 while $edited->{command} =~ /-m (\S+)/g };
     $hosts_ls->append_set([ 0 => $_ ]) foreach @$hosts_list;
     my $add_host = sub {
-        my $w = ugtk2->new(N("Add a host"));
+        my $w = ugtk2->new(N("Add a host"), grab => 1);
         my ($entry, $value);
         gtkadd($w->{window},
                gtkpack__(Gtk2::VBox->new(0, 5),
@@ -414,7 +414,7 @@ sub edit_parallel {
 }
 
 sub parallel_callback {
-    my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"));
+    my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"), grab => 1, transient => $mainw->{rwindow});
     my $list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String", "Glib::String", "Glib::String");
     my $list = Gtk2::TreeView->new_with_model($list_ls);
     each_index { $list->append_column(Gtk2::TreeViewColumn->new_with_attributes($_, Gtk2::CellRendererText->new, 'text' => $::i)) } N("Group"), N("Protocol"), N("Media limit");
@@ -458,7 +458,7 @@ sub parallel_callback {
 
 
 sub keys_callback {
-    my $w = ugtk2->new(N("Manage keys for digital signatures of packages"));
+    my $w = ugtk2->new(N("Manage keys for digital signatures of packages"), grab => 1, transient => $mainw->{rwindow});
 
     my $media_list_ls = Gtk2::ListStore->new("Glib::String");
     my $media_list = Gtk2::TreeView->new_with_model($media_list_ls);
@@ -500,7 +500,7 @@ sub keys_callback {
     });
 
     my $add_key = sub {
-        my $w = ugtk2->new(N("Add a key"));
+        my $w_add = ugtk2->new(N("Add a key"), grab => 1, transient => $w->{rwindow});
         my $available_keyz_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
         my $available_keyz = Gtk2::TreeView->new_with_model($available_keyz_ls);
         $available_keyz->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
@@ -508,7 +508,7 @@ sub keys_callback {
         $available_keyz->get_selection->set_mode('browse');
         $available_keyz_ls->append_set([ 0 => sprintf("%s (%s)", $_, $key_name->($_)), 1 => $_ ]) foreach keys %{$urpm->{keys}};
         my $key;
-        gtkadd($w->{window},
+        gtkadd($w_add->{window},
                gtkpack__(Gtk2::VBox->new(0, 5),
                          Gtk2::Label->new(N("Choose a key for adding to the medium %s", $current_medium)),
                          $available_keyz,
@@ -520,7 +520,7 @@ sub keys_callback {
                                                        Gtk2->main_quit;
                                                    }),
                                  gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit }))));
-        $w->main;
+        $w_add->main;
         if (defined $key) {
             $urpm->{media}[$current_medium_nb]{'key-ids'} = join(',', sort(uniq(@{$keys[$current_medium_nb]}, $key)));
             $write->();
@@ -534,7 +534,7 @@ sub keys_callback {
 	interactive_msg(N("Remove a key"),
                         N("Are you sure you want to remove the key %s from medium %s?\n(name of the key: %s)",
                           $key, $current_medium, $key_name->($key)),
-                        yesno => 1) or return;
+                        yesno => 1, transient => $w->{rwindow}) or return;
         $urpm->{media}[$current_medium_nb]{'key-ids'} = join(',', difference2(\@{$keys[$current_medium_nb]}, [ $key ]));
         $write->();
     };

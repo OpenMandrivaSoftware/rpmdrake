@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 31mdk
+%define release 32mdk
 
 Name: %{name}
 Version: %{version}
@@ -101,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Aug 18 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-32mdk
+- edit-urpm-media: handle modality in parallel and key editors
+
 * Wed Aug 13 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
 - require root capability when run "Install Sofware" and add a new
   menu entry reading "Browse Available Software"
