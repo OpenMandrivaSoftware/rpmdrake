@@ -181,7 +181,7 @@ sub fatal_msg {
 sub wait_msg {
     my ($msg, %options) = @_;
     my $mainw = ugtk2->new('rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
-    $mainw->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
+    $mainw->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::Label->new($msg);
     gtkadd($mainw->{window}, gtkpack__(gtkadd(Gtk2::VBox->new(0, 5), $label, if_(exists $options{widgets}, @{$options{widgets}}))));
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });

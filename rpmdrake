@@ -882,12 +882,14 @@ Is it ok to continue?", to_utf8($urpm->translate_why_removed($urpm->{state}, @{$
 		   1, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
     gtkadd($w->{window}, 
 	   gtkpack_(Gtk2::VBox->new(0, 3),
-                 0, Gtk2::Banner->new("title-$MODE",
-                                      { remove => N("Software Packages Removal"), 
-                                        update => N("Mandrake Update"), 
-                                        install => N("Software Packages Installation"),
-                                      }->{$MODE}
-                                     ),
+                 if_(!$::isEmbedded,
+                     0, Gtk2::Banner->new("title-$MODE",
+                                          { remove => N("Software Packages Removal"), 
+                                            update => N("Mandrake Update"), 
+                                            install => N("Software Packages Installation"),
+                                          }->{$MODE}
+                                         ),
+                    ),
 		    1, gtkadd(gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
 			      gtkpack_(Gtk2::VBox->new(0, 3),
 				       0, gtkpack__(Gtk2::HBox->new(0, 10),
@@ -915,7 +917,7 @@ Is it ok to continue?", to_utf8($urpm->translate_why_removed($urpm->{state}, @{$
     $> and $action_button->set_sensitive(0);
     $find_entry->grab_focus;
 
-    $w->{window}->set_default_size($typical_width*2.7, 500);
+    $w->{window}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
     $w->{rwindow}->show_all;
     $options->{widgets} = { w => $w, tree => $tree, tree_model => $tree_model, textcolumn => $textcolumn, pixcolumn => $pixcolumn,
 		            info => $info, status => $status };
