@@ -142,6 +142,7 @@ sub interactive_msg {
     my ($title, $contents, %options) = @_;
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
+    $contents = formatAlaTeX($contents) unless $options{scroll}; #- because we'll use a WrappedLabel
     gtkadd(
 	$d->{window},
 	gtkpack_(
