@@ -37,7 +37,7 @@ install: $(ALL)
 		(cd $$n; $(MAKE) install) \
 	done
 	install -d $(SBINDIR)
-	install rpmdrake edit-urpm-sources.pl $(SBINDIR)
+	install rpmdrake edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
 	ln -sf edit-urpm-sources.pl $(SBINDIR)/edit-urpm-media
 	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(SBINDIR)/*
 	ln -sf rpmdrake $(SBINDIR)/rpmdrake-remove
@@ -47,6 +47,7 @@ install: $(ALL)
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/rpmdrake-remove
 	ln -sf $(RELATIVE_SBIN)/MandrakeUpdate $(BINDIR)/MandrakeUpdate
 	ln -sf $(RELATIVE_SBIN)/edit-urpm-sources.pl $(BINDIR)/edit-urpm-sources.pl
+	ln -sf $(RELATIVE_SBIN)/gurpmi.addmedia $(BINDIR)/gurpmi.addmedia
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/drakrpm
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/drakrpm-remove
 	ln -sf $(RELATIVE_SBIN)/MandrakeUpdate $(BINDIR)/drakrpm-update

@@ -2,7 +2,7 @@
 PGOAL = rpmdrake
 
 # perl files to search translatable strings in
-PL_FILES = ../rpmdrake ../edit-urpm-sources.pl ../rpmdrake.pm
+PL_FILES = ../rpmdrake ../edit-urpm-sources.pl ../rpmdrake.pm ../gurpmi.addmedia
 CFILES = ../grpmi/curl_download/curl_download.xs
 
 POFILES = $(wildcard *.po)
