@@ -78,11 +78,8 @@ sub parse_compssUsers_flat {
     my ($urpm) = @_;
     my (%compssUsers, $category);
     my $compss = '/var/lib/urpmi/compssUsers.flat';
-    -r $compss or interactive_msg('rpmdrake',
-_("Could not find /var/lib/urpmi/compssUsers.flat,
-the installer should have generated it for me :-(.
-
-Disabling \"Mandrake choices\" classification.")), return;
+    -r $compss or $compss = '/usr/share/rpmdrake/compssUsers.flat.default';
+    -r $compss or die "Internal error, please report";;
     foreach (cat_($compss)) {
 	s/#.*//;
 	/^\s*$/ and next;

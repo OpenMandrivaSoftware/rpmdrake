@@ -37,6 +37,7 @@ install: $(ALL)
 	ln -s rpmdrake $(BINDIR)/MandrakeUpdate
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/* $(DATADIR)/rpmdrake/icons
+	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
 
 clean: 
 	@for n in $(DIRS); do \
