@@ -681,6 +681,60 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
     ($urpm, \%installable_pkgs, \%update_descr);
 }
 
+sub dialog_rpmnew {
+    my ($exitstatus, %p2r) = @_;
+    my $d = my_gtk->new(_("Installation finished"));
+    my $inspect = sub {
+	my ($file) = @_;
+	my $d = my_gtk->new(_("Inspecting %s", $file));
+	my %texts;
+	my $rpmnew = "$file.rpmnew";
+	gtkadd($d->{window},
+	       gtkpack_(gtkset_usize(new Gtk::VBox(0, 5), $typical_width*2.5, 500),
+			0, new Gtk::Label("$file:"),
+			1, createScrolledWindow($texts{file} = new Gtk::Text),
+			0, new Gtk::Label("$rpmnew:"),
+			1, createScrolledWindow($texts{rpmnew} = new Gtk::Text),
+			0, new Gtk::Label("changes:"),
+			1, createScrolledWindow($texts{diff} = new Gtk::Text),
+			0, gtkpack__(create_hbox(),
+				     gtksignal_connect(new Gtk::Button(_("Remove .rpmnew")),
+						       clicked => sub { unlink $rpmnew; Gtk->main_quit }),
+				     gtksignal_connect(new Gtk::Button(_("Use .rpmnew as main file")),
+						       clicked => sub { renamef($rpmnew,$file); Gtk->main_quit }),
+				     gtksignal_connect(new Gtk::Button(_("Do nothing")),
+						       clicked => sub { Gtk->main_quit }),
+				    )));
+	my $fixedfont = Gtk::Gdk::Font->fontset_load(_("-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"));
+	my %contents = (file => scalar(cat_($file)), rpmnew => scalar(cat_($rpmnew)), diff => join('', `diff -u $file $rpmnew`));
+	$texts{$_}->insert($fixedfont, undef, undef, $contents{$_}) foreach keys %contents;
+	$d->main;
+    };
+    gtkadd($d->{window},
+	   gtkpack__(new Gtk::VBox(0,5),
+		     new Gtk::Label(_("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew',\nyou may now inspect some in order to take actions:",
+				      $exitstatus ? _("some packages failed to install\ncorrectly")
+				      : _("everything was installed correctly"))),
+		     gtkset_usize(createScrolledWindow(create_packtable({},
+									map { my $pkg = $_;
+									      map {
+										  my $file = $_;
+										  my $b = new Gtk::Button(but(_("Inspect...")));
+										  [ gtkpack__(new Gtk::HBox(0, 0),
+											      new Gtk::Label("$pkg:$file")),
+										    gtksignal_connect($b,
+												      clicked => sub {
+													  $inspect->($file);
+													  -r "$file.rpmnew"
+													    or $b->set_sensitive(0)
+													}) ]
+									      } @{$p2r{$pkg}}
+									  } keys %p2r)),
+				  $typical_width*1.5, 70 + sum(map { int @{$p2r{$_}} } keys %p2r)*20),
+		     gtkpack__(create_hbox(), gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit }))));
+    $d->main;
+}
+
 sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($urpm) = @_;
 
@@ -727,7 +781,16 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		      _("A required program is missing (grpmi). Check your installation."));
 	    myexit -1;
 	}
-	$? or interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
+	my $exitstatus = $?;
+	my %pkg2rpmnew;
+	foreach my $u (@rpms_upgrade) {
+	    $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
+	      and $pkg2rpmnew{$1} = [ grep { m|^/etc| && -r "$_.rpmnew" } map { chomp_($_) } `rpm -ql $1` ];
+	}
+	if ($exitstatus == 0 && keys(%pkg2rpmnew) == 0) {
+	    interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
+	}
+	keys(%pkg2rpmnew) > 0 and dialog_rpmnew($exitstatus, %pkg2rpmnew);
     } else {
 	interactive_msg(_("Everything already installed."),
 			_("Everything already installed (is this supposed to happen at all?)."));
