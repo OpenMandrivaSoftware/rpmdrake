@@ -164,9 +164,11 @@ Do you want to force the install anyway?",
     }
     
     my $res = chomp_(grpmi_rpm::install_packages(\&install_packages_callback, @ARGV));
-    $res and interactive_msg(_("Problems occurred during installation"), _("There was an error during packages installation:\n\n%s", $res));
+    if ($res) {
+	interactive_msg(_("Problems occurred during installation"), _("There was an error during packages installation:\n\n%s", $res));
+	goto cleanup;
+    }
 }
-
 
 # -=-=-=---=-=-=---=-=-=-- cleanup -=-=-=---=-=-=--
 $exitstatus = 0;
