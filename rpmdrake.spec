@@ -88,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f rpmdrake.lang
 %defattr(-, root, root)
-%doc COPYING AUTHORS
+%doc COPYING AUTHORS README
 %{_sbindir}/rpmdrake*
 %{_sbindir}/MandrakeUpdate
 %{_sbindir}/edit-urpm-*
