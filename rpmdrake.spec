@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 4mdk
+%define release 5mdk
 
 Name: %{name}
 Version: %{version}
@@ -121,6 +121,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue May 11 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-5mdk
+- Avoid selecting all packages when choosing a view sorted by update
+  availability
+- Remove spurious error messages in the Software Media Manager
+
 * Tue May 04 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-4mdk
 - Make the package list pane resizable (Robert Vojta) (#8925)
 
