@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 2mdk
+%define release 3mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-36mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-36mdk grpmi >= 9.0 rpmtools >= 4.5
 Requires: perl-GTK2 > 0.0.cvs.2003.01.08.1
 BuildRequires: curl-devel rpm-devel gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -116,6 +116,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Jan 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-3mdk
+- rpmdrake:
+  - fix "update sources" dialog which didn't update the asked mediums
+
 * Fri Jan 10 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-2mdk
 - grpmi:
   - verify all signatures at the end of all downloads

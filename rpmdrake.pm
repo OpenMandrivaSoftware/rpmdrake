@@ -337,7 +337,7 @@ by Mandrake Linux Official Updates.")), return '';
 sub update_sources {
     my ($urpm, %opts) = @_;
     my $w = ugtk2->new(N("Update source(s)"), grab => 1, center => 1, %opts);
-    my (@buttons, @sources_to_update);
+    my @buttons;
     gtkadd($w->{window},
 	   gtkpack__(Gtk2::VBox->new(0,5),
 		     Gtk2::Label->new(N("Select the source(s) you wish to update:")),
@@ -345,13 +345,12 @@ sub update_sources {
 		     Gtk2::HSeparator->new,
 		     gtkpack(create_hbox(),
 			     gtksignal_connect(Gtk2::Button->new(N("Update")), clicked => sub {
-						   $w->{retval} = 1;
-						   @sources_to_update = grep { $_->get_active } @buttons;
+						   $w->{retval} = any { $_->get_active } @buttons;
+						   each_index { $_->get_active and $urpm->select_media($urpm->{media}[$::i]{name}) } @buttons;
 						   Gtk2->main_quit;
 					       }),
 			     gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
-    if ($w->main && @sources_to_update) {
-	each_index { $urpm->select_media($urpm->{media}[$::i]{name}) } @sources_to_update;
+    if ($w->main) {
 	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
 	    $_->{modified} and delete $_->{ignore};
 	}
