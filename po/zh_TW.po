@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-27 18:23+0200\n"
+"POT-Creation-Date: 2002-08-27 21:42+0200\n"
 "PO-Revision-Date: 2002-08-24 04:20-+800\n"
 "Last-Translator: Kenduest Lee <kenduest@i18n.linux.org.tw>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -106,13 +106,13 @@ msgstr "來源類別："
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../rpmdrake.pm_.c:77 ../rpmdrake.pm_.c:97 ../rpmdrake.pm_.c:271
-#: ../rpmdrake_.c:305 ../rpmdrake_.c:706
+#: ../rpmdrake_.c:305 ../rpmdrake_.c:734 ../rpmdrake_.c:760
 msgid "Ok"
 msgstr "確定"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:706
+#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:760
 msgid "Cancel"
 msgstr "取消"
 
@@ -198,7 +198,7 @@ msgstr "儲存並離開"
 msgid "Quit"
 msgstr "離開"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:792
+#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:855
 #, c-format
 msgid ""
 "%s\n"
@@ -740,28 +740,81 @@ msgstr ""
 msgid "Please wait, finding available packages..."
 msgstr "請稍後，正在尋找可用的套件清單..."
 
-#: ../rpmdrake_.c:696
+#: ../rpmdrake_.c:686
+#, fuzzy
+msgid "Installation finished"
+msgstr "安裝失敗"
+
+#: ../rpmdrake_.c:689
+#, c-format
+msgid "Inspecting %s"
+msgstr ""
+
+#: ../rpmdrake_.c:701
+#, fuzzy
+msgid "Remove .rpmnew"
+msgstr "移除套件"
+
+#: ../rpmdrake_.c:703
+msgid "Use .rpmnew as main file"
+msgstr ""
+
+#: ../rpmdrake_.c:705
+msgid "Do nothing"
+msgstr ""
+
+#: ../rpmdrake_.c:708
+#, fuzzy
+msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
+msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
+
+#: ../rpmdrake_.c:715
+#, c-format
+msgid ""
+"The installation is finished; %s.\n"
+"\n"
+"Some configuration files were created as `.rpmnew',\n"
+"you may now inspect some in order to take actions:"
+msgstr ""
+
+#: ../rpmdrake_.c:716
+#, fuzzy
+msgid ""
+"some packages failed to install\n"
+"correctly"
+msgstr "某些套件無法安裝上"
+
+#: ../rpmdrake_.c:717
+#, fuzzy
+msgid "everything was installed correctly"
+msgstr "所有項目已經都安裝成功了。"
+
+#: ../rpmdrake_.c:722
+msgid "Inspect..."
+msgstr ""
+
+#: ../rpmdrake_.c:750
 msgid "Unable to get source packages."
 msgstr "大件事，無法取得原始套件"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:751
 msgid "Unable to get source packages, sorry."
 msgstr "真抱歉，無法取得原始套件"
 
-#: ../rpmdrake_.c:704
+#: ../rpmdrake_.c:758
 msgid "Change medium"
 msgstr "變更媒介"
 
-#: ../rpmdrake_.c:705
+#: ../rpmdrake_.c:759
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "請置入媒介名稱為 \"%s\" 的項目放置於 %s 裝置"
 
-#: ../rpmdrake_.c:713
+#: ../rpmdrake_.c:767
 msgid "Installation failed"
 msgstr "安裝失敗"
 
-#: ../rpmdrake_.c:714
+#: ../rpmdrake_.c:768
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -769,43 +822,43 @@ msgstr ""
 "安裝失敗，安裝程式找不到一些要安裝上的程式套件。\n"
 "也許是系統資料庫太舊了，請先更新資料庫後再繼續。"
 
-#: ../rpmdrake_.c:717
+#: ../rpmdrake_.c:771
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "請稍後，移除一些套件項目，以便於能夠進行其他套件的更新..."
 
-#: ../rpmdrake_.c:726
+#: ../rpmdrake_.c:780
 msgid "Program missing"
 msgstr "找不到所需要的程式"
 
-#: ../rpmdrake_.c:727
+#: ../rpmdrake_.c:781
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "無法呼叫 grpmi 程式，也許程式遺失或者是不正確。"
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:791
 msgid "All requested packages were installed successfully."
 msgstr "已經成功地安裝您需要的套件。"
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:791
 msgid "Everything installed successfully"
 msgstr "所有項目已經都安裝成功了。"
 
-#: ../rpmdrake_.c:732
+#: ../rpmdrake_.c:795
 msgid "Everything already installed."
 msgstr "所有套件已經安裝上。"
 
-#: ../rpmdrake_.c:733
+#: ../rpmdrake_.c:796
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "所有套件已經安裝上。"
 
-#: ../rpmdrake_.c:743
+#: ../rpmdrake_.c:806
 msgid "Please wait, reading packages database..."
 msgstr "請稍後，讀取套件資料庫資訊中..."
 
-#: ../rpmdrake_.c:781
+#: ../rpmdrake_.c:844
 msgid "Please wait, removing packages..."
 msgstr "請稍候，正在移除套件..."
 
-#: ../rpmdrake_.c:796
+#: ../rpmdrake_.c:859
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -816,7 +869,7 @@ msgstr ""
 "\n"
 "接下來程式將會引導你完成移除您認為不需要的套件項目。"
 
-#: ../rpmdrake_.c:801
+#: ../rpmdrake_.c:864
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -826,7 +879,7 @@ msgstr ""
 "歡迎來到套件更新程式!\n"
 "接下來程式將會引導你完成套件更新與安裝。"
 
-#: ../rpmdrake_.c:806
+#: ../rpmdrake_.c:869
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"

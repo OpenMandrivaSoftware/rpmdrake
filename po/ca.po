@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-27 18:23+0200\n"
+"POT-Creation-Date: 2002-08-27 21:42+0200\n"
 "PO-Revision-Date: 2001-09-20 20:49+0200\n"
 "Last-Translator: Softcatalà <traddrake@softcatala.org>\n"
 "Language-Team: Catalan <info@softcatala.org>\n"
@@ -114,13 +114,13 @@ msgstr "Tipus de font:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../rpmdrake.pm_.c:77 ../rpmdrake.pm_.c:97 ../rpmdrake.pm_.c:271
-#: ../rpmdrake_.c:305 ../rpmdrake_.c:706
+#: ../rpmdrake_.c:305 ../rpmdrake_.c:734 ../rpmdrake_.c:760
 msgid "Ok"
 msgstr "D'acord"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:706
+#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:760
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -225,7 +225,7 @@ msgstr ""
 msgid "Quit"
 msgstr "Surt"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:792
+#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:855
 #, c-format
 msgid ""
 "%s\n"
@@ -742,76 +742,129 @@ msgstr ""
 msgid "Please wait, finding available packages..."
 msgstr "Si us plau, espereu; s'estan eliminant els paquets"
 
-#: ../rpmdrake_.c:696
+#: ../rpmdrake_.c:686
+#, fuzzy
+msgid "Installation finished"
+msgstr "S'està instal·lant "
+
+#: ../rpmdrake_.c:689
+#, c-format
+msgid "Inspecting %s"
+msgstr ""
+
+#: ../rpmdrake_.c:701
+#, fuzzy
+msgid "Remove .rpmnew"
+msgstr "Extraïble"
+
+#: ../rpmdrake_.c:703
+msgid "Use .rpmnew as main file"
+msgstr ""
+
+#: ../rpmdrake_.c:705
+msgid "Do nothing"
+msgstr ""
+
+#: ../rpmdrake_.c:708
+#, fuzzy
+msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
+msgstr "-adobe-helvetica-bold-r-*-*-*-100-*-*-*-*-iso8859-*,*"
+
+#: ../rpmdrake_.c:715
+#, c-format
+msgid ""
+"The installation is finished; %s.\n"
+"\n"
+"Some configuration files were created as `.rpmnew',\n"
+"you may now inspect some in order to take actions:"
+msgstr ""
+
+#: ../rpmdrake_.c:716
+#, fuzzy
+msgid ""
+"some packages failed to install\n"
+"correctly"
+msgstr "Els paquets ja estan instal·lats"
+
+#: ../rpmdrake_.c:717
+#, fuzzy
+msgid "everything was installed correctly"
+msgstr "El paquet ja està instal·lat"
+
+#: ../rpmdrake_.c:722
+msgid "Inspect..."
+msgstr ""
+
+#: ../rpmdrake_.c:750
 #, fuzzy
 msgid "Unable to get source packages."
 msgstr "Paquets incorrectes, il·legibles o no trobats"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:751
 msgid "Unable to get source packages, sorry."
 msgstr ""
 
-#: ../rpmdrake_.c:704
+#: ../rpmdrake_.c:758
 msgid "Change medium"
 msgstr ""
 
-#: ../rpmdrake_.c:705
+#: ../rpmdrake_.c:759
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr ""
 
-#: ../rpmdrake_.c:713
+#: ../rpmdrake_.c:767
 #, fuzzy
 msgid "Installation failed"
 msgstr "S'està instal·lant "
 
-#: ../rpmdrake_.c:714
+#: ../rpmdrake_.c:768
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
 msgstr ""
 
-#: ../rpmdrake_.c:717
+#: ../rpmdrake_.c:771
 #, fuzzy
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "Si us plau, espereu; s'estan eliminant els paquets"
 
-#: ../rpmdrake_.c:726
+#: ../rpmdrake_.c:780
 msgid "Program missing"
 msgstr ""
 
-#: ../rpmdrake_.c:727
+#: ../rpmdrake_.c:781
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr ""
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:791
 msgid "All requested packages were installed successfully."
 msgstr ""
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:791
 msgid "Everything installed successfully"
 msgstr ""
 
-#: ../rpmdrake_.c:732
+#: ../rpmdrake_.c:795
 #, fuzzy
 msgid "Everything already installed."
 msgstr "El paquet ja està instal·lat"
 
-#: ../rpmdrake_.c:733
+#: ../rpmdrake_.c:796
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr ""
 
-#: ../rpmdrake_.c:743
+#: ../rpmdrake_.c:806
 #, fuzzy
 msgid "Please wait, reading packages database..."
 msgstr "Si us plau, espereu; s'estan eliminant els paquets"
 
-#: ../rpmdrake_.c:781
+#: ../rpmdrake_.c:844
 #, fuzzy
 msgid "Please wait, removing packages..."
 msgstr "Si us plau, espereu; s'estan eliminant els paquets"
 
-#: ../rpmdrake_.c:796
+#: ../rpmdrake_.c:859
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -819,7 +872,7 @@ msgid ""
 "your computer."
 msgstr ""
 
-#: ../rpmdrake_.c:801
+#: ../rpmdrake_.c:864
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -827,7 +880,7 @@ msgid ""
 "computer."
 msgstr ""
 
-#: ../rpmdrake_.c:806
+#: ../rpmdrake_.c:869
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"

@@ -46,5 +46,5 @@ install:
 	done
 
 clean:
-	@rm -rf *.mo *.pom *.pof $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot
+	@rm -rf *.mo *.pof $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2002-08-27 18:23+0200\n"
+"POT-Creation-Date: 2002-08-27 21:42+0200\n"
 "PO-Revision-Date: 2002-08-20 05:18+0200\n"
 "Last-Translator: Ramon Casha <ramon.casha@linux.org.mt>\n"
 "Language-Team: Maltese <mt@li.org>\n"
@@ -105,13 +105,13 @@ msgstr "Tip ta' sors:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../rpmdrake.pm_.c:77 ../rpmdrake.pm_.c:97 ../rpmdrake.pm_.c:271
-#: ../rpmdrake_.c:305 ../rpmdrake_.c:706
+#: ../rpmdrake_.c:305 ../rpmdrake_.c:734 ../rpmdrake_.c:760
 msgid "Ok"
 msgstr "Ok"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:706
+#: ../rpmdrake.pm_.c:271 ../rpmdrake_.c:305 ../rpmdrake_.c:760
 msgid "Cancel"
 msgstr "Ikkanċella"
 
@@ -197,7 +197,7 @@ msgstr "Ikteb u oħroġ"
 msgid "Quit"
 msgstr "Oħroġ"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:792
+#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:855
 #, c-format
 msgid ""
 "%s\n"
@@ -749,28 +749,81 @@ msgstr ""
 msgid "Please wait, finding available packages..."
 msgstr "Stenna ftit, qed insib pakketti disponibbli..."
 
-#: ../rpmdrake_.c:696
+#: ../rpmdrake_.c:686
+#, fuzzy
+msgid "Installation finished"
+msgstr "Installazzjoni falliet"
+
+#: ../rpmdrake_.c:689
+#, c-format
+msgid "Inspecting %s"
+msgstr ""
+
+#: ../rpmdrake_.c:701
+#, fuzzy
+msgid "Remove .rpmnew"
+msgstr "Neħħi"
+
+#: ../rpmdrake_.c:703
+msgid "Use .rpmnew as main file"
+msgstr ""
+
+#: ../rpmdrake_.c:705
+msgid "Do nothing"
+msgstr ""
+
+#: ../rpmdrake_.c:708
+#, fuzzy
+msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
+msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
+
+#: ../rpmdrake_.c:715
+#, c-format
+msgid ""
+"The installation is finished; %s.\n"
+"\n"
+"Some configuration files were created as `.rpmnew',\n"
+"you may now inspect some in order to take actions:"
+msgstr ""
+
+#: ../rpmdrake_.c:716
+#, fuzzy
+msgid ""
+"some packages failed to install\n"
+"correctly"
+msgstr "Xi pakketti ma jistgħux jiġu nstallati"
+
+#: ../rpmdrake_.c:717
+#, fuzzy
+msgid "everything was installed correctly"
+msgstr "Kollox diġà nstallat"
+
+#: ../rpmdrake_.c:722
+msgid "Inspect..."
+msgstr ""
+
+#: ../rpmdrake_.c:750
 msgid "Unable to get source packages."
 msgstr "Ma nistax nikseb pakketti sors."
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:751
 msgid "Unable to get source packages, sorry."
 msgstr "Ma nistax nikseb pakketti sors, jiddispjaċini."
 
-#: ../rpmdrake_.c:704
+#: ../rpmdrake_.c:758
 msgid "Change medium"
 msgstr "Ibdel sors"
 
-#: ../rpmdrake_.c:705
+#: ../rpmdrake_.c:759
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Jekk jogħġbok daħħal is-sors imsejjaħ \"%s\" fl-apparat [%s]"
 
-#: ../rpmdrake_.c:713
+#: ../rpmdrake_.c:767
 msgid "Installation failed"
 msgstr "Installazzjoni falliet"
 
-#: ../rpmdrake_.c:714
+#: ../rpmdrake_.c:768
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -778,45 +831,45 @@ msgstr ""
 "Installazzjoni falliet, xi fajls huma neqsin.\n"
 "Jista' jkollok bżonn taġġorna d-database tas-sorsi."
 
-#: ../rpmdrake_.c:717
+#: ../rpmdrake_.c:771
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Stenna ftit, qed jitneħħew pakketti biex ikunu jistgħu jiġu aġġornati "
 "oħrajn..."
 
-#: ../rpmdrake_.c:726
+#: ../rpmdrake_.c:780
 msgid "Program missing"
 msgstr ""
 
-#: ../rpmdrake_.c:727
+#: ../rpmdrake_.c:781
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr ""
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:791
 msgid "All requested packages were installed successfully."
 msgstr ""
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:791
 msgid "Everything installed successfully"
 msgstr ""
 
-#: ../rpmdrake_.c:732
+#: ../rpmdrake_.c:795
 msgid "Everything already installed."
 msgstr "Kollox diġà nstallat"
 
-#: ../rpmdrake_.c:733
+#: ../rpmdrake_.c:796
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Kollox diġà nstallat"
 
-#: ../rpmdrake_.c:743
+#: ../rpmdrake_.c:806
 msgid "Please wait, reading packages database..."
 msgstr "Stenna ftit, qed jinqara d-database tal-pakketti..."
 
-#: ../rpmdrake_.c:781
+#: ../rpmdrake_.c:844
 msgid "Please wait, removing packages..."
 msgstr "Stenna ftit, qed jitneħħew il-pakketti..."
 
-#: ../rpmdrake_.c:796
+#: ../rpmdrake_.c:859
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -828,7 +881,7 @@ msgstr ""
 "Din l-għodda tgħinek tagħżel liema softwer trid tneħħi mill-kompjuter\n"
 "tiegħek."
 
-#: ../rpmdrake_.c:801
+#: ../rpmdrake_.c:864
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -840,7 +893,7 @@ msgstr ""
 "Din l-għodda tgħinek tagħżel aġġornamenti li trid tinstalla fuq il-\n"
 "kompjuter tiegħek."
 
-#: ../rpmdrake_.c:806
+#: ../rpmdrake_.c:869
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
