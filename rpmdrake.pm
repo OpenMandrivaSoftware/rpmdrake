@@ -263,7 +263,7 @@ sub wait_msg {
     );
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });
     $mainw->sync until $mainw->{displayed};
-    gtkset_mousecursor_wait($mainw->{rwindow}->window);
+    gtkset_mousecursor_wait($mainw->{rwindow}->window) unless $options{no_wait_cursor};
     $mainw->flush;
     $mainw;
 }
@@ -549,16 +549,31 @@ sub show_urpm_progress {
 
 sub update_sources {
     my ($urpm, %options) = @_;
-    my $w = wait_msg(
-	my $label = Gtk2::Label->new(N("Please wait, updating media...")),
-	widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1) ],
+    my $cancel = 0;
+    my $w; my $label; $w = wait_msg(
+	$label = Gtk2::Label->new(N("Please wait, updating media...")),
+	no_wait_cursor => 1,
+	widgets => [
+	    (my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1)),
+	    gtkpack(
+		create_hbox(),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Cancel")),
+		    clicked => sub {
+			$cancel = 1;
+			$label->set_label(N("Media update cancelled..."));
+		    },
+		),
+	    ),
+	],
     );
     my @media; @media = @{$options{medialist}} if ref $options{medialist};
     my $outerfatal = $urpm->{fatal};
-    local $urpm->{fatal} = sub { remove_wait_msg($w); $outerfatal->(@_) };
+    local $urpm->{fatal} = sub { $w->destroy; $outerfatal->(@_) };
     $urpm->update_media(
 	%options,
 	callback => sub {
+	    $cancel and goto cancel_update;
 	    my ($type, $media) = @_;
 	    return if $type !~ /^(?:start|progress|end)$/ && @media && !grep { $_ eq $media } @media;
 	    if ($type eq 'failed') {
@@ -574,7 +589,8 @@ later.",
 	    }
 	},
     );
-    remove_wait_msg($w);
+  cancel_update:
+    $w->destroy;
 }
 
 sub update_sources_check {
