@@ -28,6 +28,7 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
   --no-verify-rpm        don't verify packages signatures
   --changelog-first      display changelog before filelist in the description window
   --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found
+  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps
 ", $basename->($0);
 	exit 0;
     };
@@ -61,8 +62,17 @@ if ($@) {
     c::_exit(0);  #- skip ugtk2::END
 }
 
-/^-?-(\S+)$/ and $options{$1} = 1 foreach @ARGV;
-
+foreach (@ARGV) {
+    /^-?-(\S+)$/ or next;
+    my $val = $1;
+    if ($val =~ /=/) {
+        my ($name, $values) = split /=/, $val;
+        my @values = split /,/, $values;
+        $options{$name} = \@values;
+    } else {
+        $options{$val} = 1;
+    }
+}
 
 $::isStandalone = 1;
 
@@ -267,7 +277,24 @@ sub extract_header {
     }
 }
 
-sub db { URPM::DB::open or die 'Couldn\'t open RPM DB' }
+sub db {
+    my ($force) = @_;
+    if (my (undef, $host) = @{$options{parallel}}) {
+        my $done if 0;
+        my $dblocation = "/var/cache/urpmi/distantdb/$host";
+        if (!$done || $force) {
+            print "syncing db from $host to $dblocation...";
+            mkdir_p "$dblocation/var/lib/rpm";
+            system "rsync -Sauz -e ssh $host:/var/lib/rpm/ $dblocation/var/lib/rpm";
+            $? == 0 or die "Couldn't sync db from $host to $dblocation";
+            $done = 1;
+            print "done.\n";
+        }
+        URPM::DB::open($dblocation) or die 'Couldn\'t open RPM DB';
+    } else {
+        URPM::DB::open or die 'Couldn\'t open RPM DB';
+    }
+}
 
 sub do_search($$$$$$$) {
     my ($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) = @_;
@@ -1077,6 +1104,21 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     $w->{rwindow}->set_sensitive(0);
 
+    if (my ($group) = @{$options{parallel}}) {
+        my $pkgs = join(' ', map { if_($_->flag_requested, my_fullname($_)) } @{$urpm->{depslist}});
+        system("urpmi -v --X --parallel $group $pkgs");
+        if ($? == 0) {
+            interactive_msg_(N("Everything installed successfully"),
+                             N("All requested packages were installed successfully."));
+        } else {
+            interactive_msg_(N("Problem during installation"),
+                             N("There was a problem during the installation:\n\n%s", join("\n", @error_msgs)));
+        }
+        db('force_sync');
+        $w->{rwindow}->set_sensitive(1);
+        return 0;
+    }
+
     standalone::explanations("Removing package $_") foreach sort @{$urpm->{ask_remove}};
     
     my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}}; 
@@ -1251,7 +1293,11 @@ sub get_installed_pkgs {
 		      $pkg->pack_header;
 		  });
     remove_wait_msg($wait);
-    (urpm->new, \%installed_pkgs);
+    my $urpm = urpm->new;
+    if (my ($group) = @{$options{parallel}}) {
+        $urpm->configure(parallel => $group);
+    }
+    ($urpm, \%installed_pkgs);
 }
 
 sub perform_removal {
@@ -1260,7 +1306,9 @@ sub perform_removal {
     standalone::explanations("Removing package $_") foreach sort @toremove;
     my @results;
     slow_func(N("Please wait, removing packages..."),
-	      sub { @results = $urpm->install(\@toremove, {}, {}, translate_message => 1) });
+	      sub { @results = $options{parallel} ? $urpm->parallel_remove(\@toremove, translate_message => 1) :
+                                                    $urpm->install(\@toremove, {}, {}, translate_message => 1);
+                    db('force_sync'); });
     if (@results) {
 	interactive_msg_(N("Problem during removal"),
 			 N("There was a problem during the removal of packages:\n\n%s", join("\n",  @results)));
