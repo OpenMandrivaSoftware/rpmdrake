@@ -1349,28 +1349,48 @@ sub dialog_rpmnew {
 	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $w->{rwindow});
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my %texts;
-	gtkadd($d->{window},
-	       gtkpack_(Gtk2::VBox->new(0, 5),
-			1, create_vpaned(
-				  create_vpaned(gtkpack_(Gtk2::VBox->new(0, 0),
-							 0, gtkset_markup(Gtk2::Label->new, qq(<span font_desc="monospace">$file:</span>)),
-							 1, create_scrolled_window($texts{file} = Gtk2::TextView->new)),
-						gtkpack_(Gtk2::VBox->new(0, 0),
-							 0, gtkset_markup(Gtk2::Label->new, qq(<span font_desc="monospace">$rpmnew:</span>)),
-							 1, create_scrolled_window($texts{rpmnew} = Gtk2::TextView->new)),
-						resize1 => 1),
-				  gtkpack_(Gtk2::VBox->new(0, 0),
-					   0, Gtk2::Label->new(N("changes:")),
-					   1, create_scrolled_window($texts{diff} = Gtk2::TextView->new)),
-				  resize1 => 1),
-			0, gtkpack__(create_hbox(),
-				     gtksignal_connect(Gtk2::Button->new(N("Remove .%s", $rpmfile)),
-						       clicked => sub { $save_wsize->(); unlink $rpmnew; Gtk2->main_quit }),
-				     gtksignal_connect(Gtk2::Button->new(N("Use .%s as main file", $rpmfile)),
-						       clicked => sub { $save_wsize->(); renamef($rpmnew, $file); Gtk2->main_quit }),
-				     gtksignal_connect(Gtk2::Button->new(N("Do nothing")),
-						       clicked => sub { $save_wsize->(); Gtk2->main_quit }),
-				    )));
+	gtkadd(
+	    $d->{window},
+	    gtkpack_(
+		Gtk2::VBox->new(0, 5),
+		1, create_vpaned(
+		    create_vpaned(
+			gtkpack_(
+			    Gtk2::VBox->new(0, 0),
+			    0, gtkset_markup(Gtk2::Label->new, qq(<span font_desc="monospace">$file:</span>)),
+			    1, create_scrolled_window($texts{file} = Gtk2::TextView->new),
+			),
+			gtkpack_(
+			    Gtk2::VBox->new(0, 0),
+			    0, gtkset_markup(Gtk2::Label->new, qq(<span font_desc="monospace">$rpmnew:</span>)),
+			    1, create_scrolled_window($texts{rpmnew} = Gtk2::TextView->new),
+			),
+			resize1 => 1,
+		    ),
+		    gtkpack_(
+			Gtk2::VBox->new(0, 0),
+			0, Gtk2::Label->new(N("changes:")),
+			1, create_scrolled_window($texts{diff} = Gtk2::TextView->new),
+		    ),
+		    resize1 => 1,
+		),
+		0, gtkpack__(
+		    create_hbox(),
+		    gtksignal_connect(
+			Gtk2::Button->new(N("Remove .%s", $rpmfile)),
+			clicked => sub { $save_wsize->(); unlink $rpmnew; Gtk2->main_quit },
+		    ),
+		    gtksignal_connect(
+			Gtk2::Button->new(N("Use .%s as main file", $rpmfile)),
+			clicked => sub { $save_wsize->(); renamef($rpmnew, $file); Gtk2->main_quit },
+		    ),
+		    gtksignal_connect(
+			Gtk2::Button->new(N("Do nothing")),
+			clicked => sub { $save_wsize->(); Gtk2->main_quit },
+		    ),
+		)
+	    )
+	);
 	my %contents = (file => scalar(cat_($file)), rpmnew => scalar(cat_($rpmnew)));
 	gtktext_insert($texts{$_}, [ [ $contents{$_}, { 'font' => 'monospace' } ] ]) foreach keys %contents;
 	my @regexps = ([ '^(--- )|(\+\+\+ )', 'blue' ], [ '^@@ ', 'darkcyan' ], [ '^-', 'red3' ], [ '^\+', 'green3' ]);
