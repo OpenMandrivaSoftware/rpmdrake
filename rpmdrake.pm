@@ -38,7 +38,7 @@ use curl_download;
 
 @ISA = qw(Exporter);
 @EXPORT = qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $tree_mode $tree_flat $typical_width
-             N translate to_utf8 myexit readconf writeconf interactive_msg interactive_packtable interactive_list fatal_msg
+             N N_ translate to_utf8 myexit readconf writeconf interactive_msg interactive_packtable interactive_list fatal_msg
              wait_msg remove_wait_msg but but_ slow_func mirrors choose_mirror make_url_mirror show_urpm_progress
              update_sources update_sources_interactive add_medium_and_check);
 
@@ -71,6 +71,7 @@ sub N {
     my $s = shift @_; my $t = translate($s);
     sprintf_fixutf8 $t, @_;
 }
+sub N_ { $_[0] }
 sub to_utf8 {
     foreach (@_) {
         $_ = Locale::gettext::iconv($_, undef, "UTF-8");
@@ -419,16 +420,14 @@ sub update_sources {
 }
 
 sub update_sources_check {
-    my ($urpm, $options, @media) = @_;
+    my ($urpm, $options, $error_msg, @media) = @_;
     my @error_msgs;
     local $urpm->{fatal} = sub { push @error_msgs, to_utf8($_[1]); goto fatal_error; };
     local $urpm->{error} = sub { push @error_msgs, to_utf8($_[0]) };
     update_sources($urpm, %$options, noclean => 1);
   fatal_error:
     if (@error_msgs || any { member($_->{name}, @media) && $_->{modified} } @{$urpm->{media}}) {
-        interactive_msg('rpmdrake',
-                        N("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s",
-                          join("\n", @error_msgs)));
+        interactive_msg('rpmdrake', sprintf_fixutf8(translate($error_msg), join("\n", @error_msgs)));
         return 0;
     }
     return 1;
@@ -457,7 +456,7 @@ sub update_sources_interactive {
 	}
         standalone::explanations("Updating media @media");
         $urpm->select_media(@media);
-        update_sources_check($urpm, {}, @media);
+        update_sources_check($urpm, {}, N_("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s"), @media);
 	return 1;
     }
     return 0;
@@ -479,8 +478,12 @@ sub add_medium_and_check {
         return 0;
     }
 
-    update_sources_check($urpm, $options, $_[0]) or return 0;
-    $urpm->write_config;
+    if (update_sources_check($urpm, $options, N_("Unable to add medium, errors reported:\n\n%s"), $_[0])) {
+        $urpm->write_config;
+    } else {
+        $urpm->read_config;
+        return 0;
+    }
 
     my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
     if ($medium) {
