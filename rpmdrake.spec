@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 11mdk
+%define release 12mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Mar 10 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-12mdk
+- latest po's
+
 * Wed Mar  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-11mdk
 - rpmdrake: when installation fails because some files are missing,
   display any encountered urpmi error
