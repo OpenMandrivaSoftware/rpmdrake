@@ -20,7 +20,10 @@
 #
 # $Id$
 
+use strict;
 use MDK::Common 'any';
+use lib qw(/usr/lib/libDrakX);
+use common;
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
@@ -38,14 +41,12 @@ N("  --pkg-nosel=pkg1,..    show only these packages"),
 N("  --pkg-sel=pkg1,..      preselect these packages"),
 N("  --root                 force to run as root"),
 N("  --search=pkg           run search for \"pkg\""),
+""
 ), $basename->($0);
 	exit 0;
     };
 }
 
-use strict;
-use lib qw(/usr/lib/libDrakX);
-use common;
 use rpmdrake;
 
 #- This is needed because text printed by Gtk2 will always be encoded
