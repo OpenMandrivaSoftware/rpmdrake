@@ -535,8 +535,8 @@ later.",
 sub update_sources_check {
     my ($urpm, $options, $error_msg, @media) = @_;
     my @error_msgs;
-    local $urpm->{fatal} = sub { push @error_msgs, to_utf8($_[1]); goto fatal_error };
-    local $urpm->{error} = sub { push @error_msgs, to_utf8($_[0]) };
+    local $urpm->{fatal} = sub { push @error_msgs, $_[1]; goto fatal_error };
+    local $urpm->{error} = sub { push @error_msgs, $_[0] };
     update_sources($urpm, %$options, noclean => 1, medialist => \@media);
   fatal_error:
     if (@error_msgs) {
