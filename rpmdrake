@@ -514,7 +514,6 @@ or you already installed all of them."));
 			   }
 		       } else {
 			   if ($new_state) {
-			       $urpm->{state}{selected} = {};
 			       if (@nodes > 1) {
 				   #- unselect i18n packages of which locales is not already present (happens when user clicks on KDE group)
 				   my @bad_i18n_pkgs;
@@ -744,7 +743,7 @@ or you already installed all of them."));
 	my %action2fun; %action2fun = (
 		          reset_selection => sub {
 			      if ($MODE ne 'remove') {
-				  $urpm->{state}{unselected} = {};
+				  $urpm->{state} = {};
 				  $urpm->resolve_unrequested(db(), $urpm->{state},
 						   { map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}->id => undef) } keys %$pkgs });
 			      }
@@ -949,6 +948,7 @@ Then, restart MandrakeUpdate.", $update_name)), myexit(-1);
     }
     my $wait = wait_msg_(N("Please wait, finding available packages..."));
     my $urpm = urpm->new;
+    $urpm->{state} = {};
     my %installable_pkgs;
 
     $urpm->configure;
