@@ -1079,7 +1079,7 @@ Is it ok to continue?",
 	),
     );
     $show_selections_button and $show_selections_button->set_active(!$dont_show_selections);
-    $update_button->set_sensitive($MODE eq 'remove');
+    $update_button->set_sensitive($MODE ne 'remove');
     if ($>) {
         $action_button->set_sensitive(0);
         $update_button->set_sensitive(0);
