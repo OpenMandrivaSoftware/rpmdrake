@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 9mdk
+%define release 10mdk
 
 Name: %{name}
 Version: %{version}
@@ -121,6 +121,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Jul 07 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-10mdk
+- Rebuild and fix for new perl
+
 * Mon Jul 05 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-9mdk
 - MandrakeUpdate: list packages even when not found in the description file
 - Software media manager: allow to set a proxy for only one media
