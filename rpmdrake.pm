@@ -166,6 +166,7 @@ sub wait_msg {
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::Label->new($msg);
     gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label, if_(exists $options{widgets}, @{$options{widgets}}))));
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });
+    $mainw->{rwindow}->set_position('center_always');
     $mainw->sync until $mainw->{displayed};
     gtkset_mousecursor_wait($mainw->{rwindow}->window);
     $mainw->flush;
