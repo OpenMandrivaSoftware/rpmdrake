@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 6mdk
+%define release 7mdk
 
 Name: %{name}
 Version: %{version}
@@ -121,6 +121,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Jun 23 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-7mdk
+- Message changes and interface cosmetics
+- Software media manager: only update explicitly selected sources
+- rpmdrake: checks whether the update media added by the installer corresponds
+  to the current MDK release
+
 * Mon May 24 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-6mdk
 - Message changes
 - Replace deprecated OptionMenu widget by ComboBox
