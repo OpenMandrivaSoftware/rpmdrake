@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 5mdk
+%define release 6mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,11 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Feb 13 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-6mdk
+- grpmi: if there was an error during installation, propose to
+  remove the cached/downloaded packages or not (partially follows
+  a nice suggestion by Jeff Martin <jeffm at tampabay.rr.com>)
+
 * Tue Feb 11 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-5mdk
 - rpmdrake:
   - mark version as 9.1

@@ -203,12 +203,16 @@ Install aborted.",
 
 # -=-=-=---=-=-=---=-=-=-- cleanup -=-=-=---=-=-=--
 $exitstatus = 0;
-$mainw->{rwindow}->hide;
 cleanup:
 if (!member('noclearcache', @grpmi_config)) {
-    foreach (@ARGV) {
-	s/^-skipped&([^&]+)&$/$1/;
-	/^\Q$cache_location/ and unlink;
+    my @toclean = map { s/^-skipped&([^&]+)&$/$1/; if_(/^\Q$cache_location/, $_) } @ARGV;
+    if ($forced_exitstatus || $exitstatus) {
+	interactive_msg(_("Cleanup"),
+_("Cleanup question: there was an error during installation, do you want to
+remove the %d downloaded package(s)?
+(they are located in %s)", scalar(@toclean), $cache_location), 1) or goto exiting;
     }
+    unlink @toclean;
 }
+exiting:
 mexit($forced_exitstatus || $exitstatus);
