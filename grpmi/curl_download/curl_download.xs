@@ -106,6 +106,13 @@ char * download_url_real(char * url, char * location, char * proxy, char * proxy
 		curl_easy_setopt(curl, CURLOPT_NOPROGRESS, FALSE);
 		curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, my_progress_func);
 
+                /* needed for "insecure" SSL accesses (don't verify the peer's certificate) */
+                curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+                /* allow Location: to be followed (needed for MandrakeClub) */
+                curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, TRUE);
+                /* when following Location:, allow to still send user+password when hostname changed (needed for Club) */
+                curl_easy_setopt(curl, CURLOPT_NO_HOSTNAME_CHECK_BEFORE_AUTHENTICATION, TRUE);
+
 		if (proxy && strcmp(proxy, ""))
 			curl_easy_setopt(curl, CURLOPT_PROXY, proxy);
 		if (proxy_user && strcmp(proxy_user, ""))

@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 13mdk
+%define release 14mdk
 
 Name: %{name}
 Version: %{version}
@@ -37,6 +37,7 @@ A fourth program manages the sources (add, remove, edit).
 Version: 9.1
 Summary: Mandrake Linux graphical frontend for packages installation
 Group: System/Configuration/Packaging
+Requires: libcurl2 >= 7.10.3-2mdk
 
 %description -n grpmi
 grpmi is a graphical frontend to show progression of download and
@@ -115,6 +116,14 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Mar 26 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-14mdk
+- grpmi/curl_download: fixes for MandrakeClub:
+  - don't verify peer's certificate (-k option of commandline curl)
+  - allow following locations (allow HTTP redirections)
+  - don't check for hostname before sending authentication (allow HTTP
+    redirection needing authentication to another host)
+- grpmi/curl_download: add missing recent curl error codes
+
 * Wed Mar 12 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-13mdk
 - update share/icons from mcc new icons
 
