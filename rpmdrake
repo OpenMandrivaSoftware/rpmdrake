@@ -1348,7 +1348,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
             goto return_with_error;
         }
         my $progress_nb;
-        my $total_nb = find { m|^/| } @rpms_install, @rpms_upgrade;
+        my $total_nb = scalar grep { m|^/| } @rpms_install, @rpms_upgrade;
         my $something_installed;
         my $callback_inst = sub {
             my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
