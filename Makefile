@@ -18,6 +18,8 @@ DIRS = grpmi po data
 PREFIX = /usr/local
 DATADIR = $(PREFIX)/share
 BINDIR = $(PREFIX)/bin
+SBINDIR = $(PREFIX)/sbin
+RELATIVE_SBIN = ../sbin
 
 all: dirs
 
@@ -30,11 +32,14 @@ install: $(ALL)
 	@for n in $(DIRS); do \
 		(cd $$n; $(MAKE) install) \
 	done
-	install -d $(BINDIR)
-	install rpmdrake edit-urpm-sources.pl $(BINDIR)
-	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(BINDIR)/*
-	ln -s -f rpmdrake $(BINDIR)/rpmdrake-remove
-	ln -s -f rpmdrake $(BINDIR)/MandrakeUpdate
+	install -d $(SBINDIR)
+	install rpmdrake edit-urpm-sources.pl $(SBINDIR)
+	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(SBINDIR)/*
+	ln -s -f rpmdrake $(SBINDIR)/rpmdrake-remove
+	ln -s -f rpmdrake $(SBINDIR)/MandrakeUpdate
+	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/rpmdrake
+	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/rpmdrake-remove
+	ln -sf $(RELATIVE_SBIN)/MandrakeUpdate $(BINDIR)/MandrakeUpdate
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
 	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake

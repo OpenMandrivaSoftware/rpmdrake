@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 17mdk
+%define release 18mdk
 
 Name: %{name}
 Version: %{version}
@@ -50,7 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 make OPTIMIZE="$RPM_OPT_FLAGS -Wall" PREFIX=%{_prefix} INSTALLDIRS=vendor
 
 %install
-make install PREFIX=$RPM_BUILD_ROOT/%{_prefix} BINDIR=$RPM_BUILD_ROOT/%{_sbindir}
+make install PREFIX=$RPM_BUILD_ROOT/%{_prefix} BINDIR=$RPM_BUILD_ROOT/%{_bindir} SBINDIR=$RPM_BUILD_ROOT/%{_sbindir}
 mkdir -p $RPM_BUILD_ROOT/%{perl_vendorlib}
 install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 
@@ -97,6 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/rpmdrake*
 %{_sbindir}/MandrakeUpdate
 %{_sbindir}/edit-urpm-sources.pl
+%{_bindir}/rpmdrake*
+%{_bindir}/MandrakeUpdate
+%{_bindir}/edit-urpm-sources.pl
 %{_datadir}/rpmdrake
 %{perl_vendorlib}/*.pm
 %{_menudir}/%{name}
@@ -113,6 +116,13 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Sep  2 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-18mdk
+- rpmdrake:
+  - fix displaying of dependencies: sometimes, when some packages
+    can't be selected, it didn't correctly display the
+    dependencies
+  - add symlinks in /usr/bin so that user has the binaries in his path
+
 * Fri Aug 30 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-17mdk
 - rpmdrake:
   - support proxies using /etc/urpmi/proxy.cfg
