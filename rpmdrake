@@ -1391,7 +1391,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                     gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$progress_nb, $total_nb));
                 }
             } elsif ($subtype eq 'progress') {
-                gurpm::progress($amount/$total);
+                gurpm::progress($total ? $amount/$total : 1);
             }
         };
 	my $fh;
