@@ -290,8 +290,9 @@ or you already installed all of them."));
 		       my @nodes_with_deps;
 		       my $deps_msg = sub {
 			   my ($title, $msg, $nodes, $nodes_with_deps) = @_;
-			   @$nodes_with_deps > @$nodes or return;
-			   interactive_msg($title, $msg . $formatlistpkg->(sort { $a cmp $b } difference2($nodes_with_deps, $nodes)));
+			   @$nodes_with_deps > @$nodes or return 1;
+			   interactive_msg($title, $msg . $formatlistpkg->(sort { $a cmp $b } difference2($nodes_with_deps, $nodes)),
+					   { yesno => 1, text => { yes => _("Ok"), no => _("Cancel") } });
 		       };
 		       if ($MODE eq 'remove') {
 			   if ($new_state) {
@@ -305,7 +306,7 @@ or you already installed all of them."));
 			       } else {
 				   $deps_msg->(_("Some additional packages need to be removed"),
 					       _("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
-					       \@nodes, \@nodes_with_deps);
+					       \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
 			       }
 			   } else {
 			       slow_func($tree->window,
@@ -495,7 +496,7 @@ _("The following packages have to be removed for others to be upgraded:
 Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), { yesno => 1 })
 	      or return;
 	}
-	$callback_action->($urpm);
+	$callback_action->($urpm, $pkgs);
 	($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
 	$options->{rebuild_tree}->();
     };
@@ -719,14 +720,6 @@ sub perform_removal {
     standalone::explanations("Removing package $_") foreach @toremove;
     slow_func(_("Please wait, removing packages..."),
 	      sub { $urpm->install('/', \@toremove, {}, {}) });
-}
-
-sub rpmdrake_remove {
-    while (1) {
-	my $installed = get_installed_pkgs();
-	run_treeview_dialog(new urpm, $installed) or return;
-	perform_removal(new urpm, $installed);
-    }
 }
 
 
