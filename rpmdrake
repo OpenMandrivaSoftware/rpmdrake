@@ -868,10 +868,10 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } @{$urpm->{ask_remove
 
     $w->{window}->set_default_size($typical_width*2.7, 500);
     $w->{rwindow}->show_all;
-    my $widgets = { w => $w, tree => $tree, tree_model => $tree_model, textcolumn => $textcolumn, pixcolumn => $pixcolumn,
-		    info => $info, status => $status };
+    $options->{widgets} = { w => $w, tree => $tree, tree_model => $tree_model, textcolumn => $textcolumn, pixcolumn => $pixcolumn,
+		            info => $info, status => $status };
 
-    ask_browse_tree_info_given_widgets($options, $widgets);
+    ask_browse_tree_info_given_widgets($options);
 }
 
 
