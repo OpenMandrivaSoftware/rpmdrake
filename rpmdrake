@@ -609,7 +609,7 @@ or you already installed all of them."));
 	int(grep { $pkgs->{$_}{selected} } keys %$pkgs) or return;
 	$fake_modality = 1;
 	my $size_added = sum(map { if_($_->flag_selected && !$_->flag_installed, $_->size) } @{$urpm->{depslist}});
-	if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*(1024)) {
+	if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*1024) {
 	    interactive_msg(_("Too many packages are selected"),
 _("Warning: it seems that you are attempting to add so much
 packages that your filesystem may run out of free diskspace,
