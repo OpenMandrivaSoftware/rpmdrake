@@ -493,20 +493,21 @@ sub remove_arch {
     $_[0] =~ /(.*)\.[^\.]+$/ ? $1 : $_[0];
 }
 
+sub formatlistpkg { myformatList(sort { uc($a) cmp uc($b) } @_) }
+
 sub run_treeview_dialog {
     my ($pkgs_provider, $callback_action) = @_;
 
     my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
 
     my ($options, $size_selected, $compssUsers, $info, $info_update, $tree, $tree_model, %elems);
-    $size_selected = 0;  #- to remove the use strict warning
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
-    $::noBorder = 1;
-    $w = ugtk2->new(N("Rpmdrake %s", $rpmdrake::mdk_version || ''));
-    $::noBorder = 0;
+    {
+	local $::noBorder = 1;
+	$w = ugtk2->new(N("Rpmdrake %s", $rpmdrake::mdk_version || ''));
+    }
 
-    my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
     my $is_locale_available = sub {
 	any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
 	my $found;
@@ -622,7 +623,7 @@ or you already installed all of them."));
 			   @deps > 0 or return 1;
 			 deps_msg_again:
 			   my $results = interactive_msg_(
-			       $title, $msg . $formatlistpkg->(@deps),
+			       $title, $msg . formatlistpkg(@deps),
 			       yesno => [ N("Cancel"), N("More info"), N("Ok") ],
 			       scroll => 1,
 			   );
@@ -665,7 +666,7 @@ or you already installed all of them."));
 			       }
 			       @impossible_to_remove and interactive_msg_(N("Some packages can't be removed"),
 									  N("Removing these packages would break your system, sorry:\n\n") .
-									  $formatlistpkg->(sort { $a cmp $b } @impossible_to_remove));
+									  formatlistpkg(@impossible_to_remove));
 			       @nodes_with_deps = difference2(\@nodes_with_deps, \@impossible_to_remove);
 			   } else {
 			       slow_func($tree->window,
