@@ -6,6 +6,7 @@ use lib qw(/usr/lib/libDrakX);
 use lib qw(/home/pixel/gi/perl-install);
 use interactive::gtk; 
 use run_program;
+use standalone;
 use common;
 use ugtk2 qw(:helpers :wrappers :create);
 
@@ -45,9 +46,19 @@ sub raw_host_to_host {
     }
 }
 
-sub host_to_string {
+sub raw_hosts_to_hosts {
+    my ($raw_hosts) = @_;
+    [ map { raw_host_to_host($_) } @$raw_hosts ];
+}
+
+sub host_to_raw_host {
     my ($host) = @_;
     $host->{ip} || $host->{name};
+}
+
+sub host_to_string {
+    my ($host) = @_;
+    $host->{name} || $host->{ip};
 }
 
 sub scanssh_output_to_hosts {
@@ -63,7 +74,7 @@ sub scanssh_output_to_hosts {
 
 
 ################################################################################
-# network ######################################################################
+# networks #####################################################################
 ################################################################################
 sub apply_netmask {
     my ($ip, $network) = @_;
@@ -94,7 +105,7 @@ sub string_to_networks {
 }
 sub network_to_string {
     my ($network) = @_;
-    $network->{mask_class} ? $network->{base} . '/' . $network->{mask_class} : host_to_string($network);
+    $network->{mask_class} ? $network->{base} . '/' . $network->{mask_class} : host_to_raw_host($network);
 }
 sub networks_to_string {
     my ($networks) = @_;
@@ -143,9 +154,97 @@ sub populated_networks_to_raw_hosts {
 	$_->{mask_class} && @l
     } @{$group->{networks}};
 
-    $group->{raw_hosts} = [ map { host_to_string($_) } @hosts ];
+    $group->{raw_hosts} = [ map { host_to_raw_host($_) } @hosts ];
 }
 
+################################################################################
+# ssh ##########################################################################
+################################################################################
+sub private_key() { "$ENV{HOME}/.ssh/id_dsa" }
+sub public_key() { private_key() . '.pub' }
+
+sub generate_keygen {
+    my ($private_key) = @_;
+    system('ssh-keygen', '-P', '', '-t', 'dsa', '-f', $private_key);
+}
+
+sub ssh_command_interactive {
+    my ($command, $host_name, $get_password) = @_;
+
+    require Expect;
+		
+    my $expect = Expect->spawn(@$command) or die "can't run @$command\n";
+
+    $expect->log_stdout($::testing);
+
+    my $timeout = 10;
+    my $nb_retry;
+    $expect->expect($timeout,
+		    [ qr/password: $/, sub { 
+			  my $password = $get_password->($nb_retry++);
+			  $expect->send("$password\n");
+			  Expect::exp_continue();
+		      } ],
+		    [ qr!The authenticity of host .* can't be established.*continue connecting \Q(yes/no)?\E $!s, sub { $expect->send("yes\n") } ],
+		    [ qr/Permission denied/, sub { die sprintf("Permission denied transferring on %s", $host_name) } ],
+		    [ qr/No such file or directory/, sub { die sprintf("No such file or directory on %s", $host_name) } ],
+		    [ timeout => sub { die sprintf("%s not responding", $host_name) } ],
+		   ); 
+
+    my $exit_stat = $expect->exitstatus;
+    $expect->hard_close;
+    $exit_stat == 0 or die "@$command failed\n";
+}
+
+sub ssh_copy_id {
+    my ($public_key, $login_user, $host_name, $get_password) = @_;
+
+    if (system('ssh', '-o', 'PasswordAuthentication no', '-o', 'StrictHostKeyChecking no', $login_user . '@' . $host_name, 'true') == 0) {
+	#- already configured
+	1;
+    } else {
+	my @command = ('ssh-copy-id', '-i', $public_key, $login_user . '@' . $host_name);
+	warn "ssh_copy_id @command\n";
+	ssh_command_interactive(\@command, $host_name, $get_password);
+    }
+}
+
+sub allow_ssh_on_hosts {
+    my ($in, $hosts) = @_;
+
+    if (! -e public_key()) {
+	my $_w = $in->wait_message('', N("Generating SSH authentication keys"));
+	generate_keygen(private_key());
+    }
+    eval {
+	my $password;
+	foreach my $host (map { host_to_string($_) } @$hosts) {
+	    my $ask_password = sub {
+		my ($retry) = @_;
+		if ($retry || ! defined $password) {
+		    $in->ask_from_({ messages => 
+N("We propose to configure hosts to allow access from this root account using the key %s.
+
+If you enter the root password for host %s, we will copy the public key to the authorized_keys", private_key(), $host),
+				     focus_first => 1,
+				   },
+				  [ { val => \$password, hidden => 1 } ]) or die 'cancel';
+		}
+		$password;
+	    };
+	    ssh_copy_id(public_key(), 'root', $host, $ask_password);
+	}
+    };
+    if ($@) {
+	return if $@ =~ /^cancel/;
+	die;
+    }
+    1;
+}
+
+################################################################################
+# urpmi config file ############################################################
+################################################################################
 my $parallel_config_file = '/etc/urpmi/parallel.cfg';
 sub read_parallel_config() {
     [ map {
@@ -183,6 +282,9 @@ sub write_parallel_config {
     output($parallel_config_file, @l);
 }
 
+################################################################################
+# interface ####################################################################
+################################################################################
 sub networks_to_scanned_hosts {
     my ($networks) = @_;
     my $nb_hosts = networks_to_nb_hosts($networks);
@@ -198,7 +300,7 @@ sub networks_to_scanned_hosts {
 					    my $ratio = listlength($output =~ /\n/g) / ($nb_hosts + 1);
 					    $progress->set_fraction($ratio); 
 					    $_[0] },
-				      sub { Gtk2->main_quit });
+				      sub { Gtk2->main_quit }) or return;
 
     gtkadd($w->{window}, 
 	   gtkpack_(Gtk2::VBox->new,
@@ -216,6 +318,7 @@ sub networks_to_scanned_hosts {
 sub group_modify {
     my ($in, $group, $groups) = @_;
     my $orig_name = $group->{name};
+    my @orig_raw_hosts = @{$group->{raw_hosts}};
     my %widgets = (
 	name => gtkset_text(Gtk2::Entry->new, $group->{name}),
 	protocol => Gtk2::OptionMenu->new_with_strings([ 'ssh', 'ka-run' ], $group->{protocol}),
@@ -287,7 +390,7 @@ sub group_modify {
 	    $network->{selected} = $tree_model->get($iter, 0);
 	    $tree_model->iter_each_children($iter, sub {
 		my $s = $tree_model->get($_[0], 1);
-		my $host = find { $s eq host_to_string($_) } @{$network->{hosts}};
+		my $host = find { $s eq $_->{ip} } @{$network->{hosts}};
 		$host->{selected} = $tree_model->get($_[0], 0);
 	    })
 	});
@@ -333,6 +436,10 @@ sub group_modify {
 			 focus_first => 1 },
 		       [ { val => \$s } ]) or return;
 	my $network = string_to_network($s);
+	if (0) {
+	    $in->ask_yesorno('', N("The network %s is public, not a local network (scanning over internet could be illegal)
+Do you really want to use this network?"));
+	}
 	push @{$group->{networks}}, $network;
 	$add_network->($network);
     });
@@ -363,7 +470,13 @@ sub group_modify {
 	populated_networks_to_raw_hosts($group);
 	write_parallel_config($groups);
 	1;
-    }) && $group;
+    }) or return;
+
+    if (my @new_hosts = difference2($group->{raw_hosts}, \@orig_raw_hosts)) {
+	allow_ssh_on_hosts($in, raw_hosts_to_hosts(\@new_hosts));
+    }
+
+    $group;
 }
 
 sub group_add {
@@ -426,5 +539,6 @@ sub group_chooser {
 }
 
 my $groups = read_parallel_config();
-#group_modify(interactive::gtk->new, $groups->[0], $groups);
-group_chooser(interactive::gtk->new, $groups);
+my $in = interactive->vnew('su');
+#group_modify($in, $groups->[0], $groups);
+group_chooser($in, $groups);
