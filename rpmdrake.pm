@@ -339,22 +339,27 @@ by Mandrake Linux Official Updates.")), return '';
 
 sub show_urpm_progress {
     my ($label, $pb, $mode, $file, $percent, $total, $eta, $speed) = @_;
-    my $filename if 0;
-    if ($mode eq 'start') {
-	($filename = $file) =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|; #- if needed...
+    my $progress_filename if 0;
+    if ($mode eq 'localcopy') {
 	$pb->set_fraction(0);
-	$label->set_label(N("Starting download of `%s'", $filename));
+	$label->set_label(N("Copying local file `%s'...", $file));
+    } elsif ($mode eq 'start') {
+	($progress_filename = $file) =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|; #- if needed...
+	$pb->set_fraction(0);
+	$label->set_label(N("Starting download of `%s'...", $progress_filename));
+    } elsif ($mode eq 'up2date') {
+	$pb->set_fraction(0);
+	$label->set_label(N("Local file `%s' already up to date", $progress_filename));
     } elsif ($mode eq 'progress') {
 	if (defined $total && defined $eta) {
 	    $pb->set_fraction($percent/100);
-	    $label->set_label(N("Download of `%s', time to go:%s, speed:%s", $filename, $eta, $speed));
+	    $label->set_label(N("Download of `%s', time to go:%s, speed:%s", $progress_filename, $eta, $speed));
 	} else {
 	    $pb->set_fraction($percent/100);
-	    $label->set_label(N("Download of `%s', speed:%s", $filename, $percent, $speed));
+	    $label->set_label(N("Download of `%s', speed:%s", $progress_filename, $percent, $speed));
 	}
     } elsif ($mode eq 'end') {
 	$label->set_label(N("Please wait, updating media..."));
-	undef $filename;
     }
     Gtk2->update_ui;
 }
