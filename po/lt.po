@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-09-03 18:58+0200\n"
+"POT-Creation-Date: 2002-09-03 20:08+0200\n"
 "PO-Revision-Date: 2001-03-04 15:30+0200\n"
 "Last-Translator: Mykolas Norvaiðas <Myka@centras.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -63,7 +63,7 @@ msgstr "prijungimo vieta:"
 msgid "Removable device"
 msgstr "Iðmesti laikmenà"
 
-#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:462
+#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:464
 msgid "Security updates"
 msgstr "Saugumo atnaujinimai"
 
@@ -116,15 +116,15 @@ msgstr "Laikmenos tipas:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../edit-urpm-sources.pl_.c:232 ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98
-#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319 ../rpmdrake_.c:805
-#: ../rpmdrake_.c:831
+#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319 ../rpmdrake_.c:818
+#: ../rpmdrake_.c:844
 msgid "Ok"
 msgstr "Gerai"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
 #: ../edit-urpm-sources.pl_.c:233 ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319
-#: ../rpmdrake_.c:831
+#: ../rpmdrake_.c:844
 msgid "Cancel"
 msgstr "Nutraukti"
 
@@ -230,7 +230,7 @@ msgstr ""
 msgid "Source"
 msgstr "Ðaltinis"
 
-#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:610
+#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:615
 #, fuzzy
 msgid "Remove"
 msgstr "Iðimama"
@@ -256,11 +256,11 @@ msgstr "Klaida..."
 msgid "Save and quit"
 msgstr ""
 
-#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:613
+#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:618
 msgid "Quit"
 msgstr "Iðeiti"
 
-#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:930
+#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:943
 #, c-format
 msgid ""
 "%s\n"
@@ -453,7 +453,7 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: ../rpmdrake_.c:131 ../rpmdrake_.c:422 ../rpmdrake_.c:423
+#: ../rpmdrake_.c:131 ../rpmdrake_.c:423 ../rpmdrake_.c:424
 msgid "(Not available)"
 msgstr ""
 
@@ -584,7 +584,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../rpmdrake_.c:390 ../rpmdrake_.c:572
+#: ../rpmdrake_.c:390 ../rpmdrake_.c:576
 msgid "Some packages need to be removed"
 msgstr ""
 
@@ -598,121 +598,133 @@ msgstr "%d paþymëti paketai: %.1f MB"
 msgid "Selected size: %d MB"
 msgstr "%d paþymëti paketai: %.1f MB"
 
-#: ../rpmdrake_.c:420
-#, c-format
-msgid ""
-"%sFiles:\n"
-"%s\n"
-"\n"
-"Changelog:\n"
-"%s"
-msgstr ""
-
-#: ../rpmdrake_.c:421
-#, fuzzy, c-format
-msgid "Source: %s\n"
+#: ../rpmdrake_.c:422
+#, fuzzy
+msgid "Source: "
 msgstr "Ðaltinis"
 
-#: ../rpmdrake_.c:426
-#, c-format
-msgid ""
-"Name: %s\n"
-"Version: %s\n"
-"Size: %s KB\n"
-"Importance: %s\n"
-"\n"
-"Summary: %s\n"
-"\n"
-"%s\n"
+#: ../rpmdrake_.c:423
+#, fuzzy
+msgid "Files:\n"
+msgstr "/_Byla"
+
+#: ../rpmdrake_.c:424
+msgid "Changelog:\n"
 msgstr ""
+
+#: ../rpmdrake_.c:427
+msgid "Reason for update: "
+msgstr ""
+
+#: ../rpmdrake_.c:429
+#, fuzzy
+msgid "Name: "
+msgstr "Pavadinimas:"
 
 #: ../rpmdrake_.c:430
-#, c-format
-msgid ""
-"Name: %s\n"
-"Version: %s\n"
-"Size: %s KB\n"
-"\n"
-"Summary: %s\n"
-"\n"
-"%s\n"
+#, fuzzy
+msgid "Version: "
+msgstr "Versija:"
+
+#: ../rpmdrake_.c:431
+#, fuzzy, c-format
+msgid "%s KB"
+msgstr "%.1f KB"
+
+#: ../rpmdrake_.c:431
+#, fuzzy
+msgid "Size: "
+msgstr "Dydis"
+
+#: ../rpmdrake_.c:432
+msgid "Importance: "
 msgstr ""
 
-#: ../rpmdrake_.c:441
+#: ../rpmdrake_.c:433
+#, fuzzy
+msgid "Summary: "
+msgstr "Turinys"
+
+#: ../rpmdrake_.c:434
+#, fuzzy
+msgid "Description: "
+msgstr "Apraðymai"
+
+#: ../rpmdrake_.c:443
 msgid "rpmdrake"
 msgstr "rpmdrake"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:464
 #, fuzzy
 msgid "Bugfixes updates"
 msgstr "Saugumo atnaujinimai"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:464
 #, fuzzy
 msgid "Normal updates"
 msgstr "Saugumo atnaujinimai"
 
-#: ../rpmdrake_.c:481
+#: ../rpmdrake_.c:483
 msgid "Mandrake choices"
 msgstr ""
 
-#: ../rpmdrake_.c:482
+#: ../rpmdrake_.c:484
 msgid "All packages, alphabetical"
 msgstr ""
 
-#: ../rpmdrake_.c:483
+#: ../rpmdrake_.c:485
 #, fuzzy
 msgid "All packages,"
 msgstr "0 paketø, 0 baitø"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:508
 msgid "by group"
 msgstr ""
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:508
 msgid "by size"
 msgstr ""
 
-#: ../rpmdrake_.c:507
+#: ../rpmdrake_.c:509
 msgid "by selection state"
 msgstr ""
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:510
 msgid "by source repository"
 msgstr ""
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:510
 msgid "by update availability"
 msgstr ""
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:531
 #, fuzzy
 msgid "in descriptions"
 msgstr "Apraðymai"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:531
 msgid "in names"
 msgstr ""
 
-#: ../rpmdrake_.c:530
+#: ../rpmdrake_.c:532
 #, fuzzy
 msgid "in files"
 msgstr "%d bylos"
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:543
 msgid "Maximum information"
 msgstr ""
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:543
 #, fuzzy
 msgid "Normal information"
 msgstr "Saugumo atnaujinimai"
 
-#: ../rpmdrake_.c:562
+#: ../rpmdrake_.c:566
 msgid "Too many packages are selected"
 msgstr ""
 
-#: ../rpmdrake_.c:563
+#: ../rpmdrake_.c:567
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -722,7 +734,7 @@ msgid ""
 "Do you really want to install all the selected packages?"
 msgstr ""
 
-#: ../rpmdrake_.c:573
+#: ../rpmdrake_.c:577
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -732,38 +744,38 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#: ../rpmdrake_.c:594
+#: ../rpmdrake_.c:599
 msgid "Find:"
 msgstr "Surasti:"
 
-#: ../rpmdrake_.c:599
+#: ../rpmdrake_.c:604
 msgid "Search"
 msgstr "Ieðkoti"
 
-#: ../rpmdrake_.c:611
+#: ../rpmdrake_.c:616
 msgid "Install"
 msgstr "Ádiegti"
 
-#: ../rpmdrake_.c:637
+#: ../rpmdrake_.c:642
 #, fuzzy
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr ""
 "-filija-arija-bold-r-*-*-*-100-*-*-*-*-*-*,-*-helvetica-bold-r-*-*-*-100-*-*-"
 "*-*-*-*,*"
 
-#: ../rpmdrake_.c:638
+#: ../rpmdrake_.c:643
 msgid "Mandrake Update"
 msgstr ""
 
-#: ../rpmdrake_.c:638
+#: ../rpmdrake_.c:643
 msgid "Software Packages Removal"
 msgstr ""
 
-#: ../rpmdrake_.c:639
+#: ../rpmdrake_.c:644
 msgid "Software Packages Installation"
 msgstr ""
 
-#: ../rpmdrake_.c:672
+#: ../rpmdrake_.c:677
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -771,23 +783,23 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#: ../rpmdrake_.c:676
+#: ../rpmdrake_.c:681
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 
-#: ../rpmdrake_.c:678
+#: ../rpmdrake_.c:683
 msgid "Error updating medium"
 msgstr ""
 
-#: ../rpmdrake_.c:679
+#: ../rpmdrake_.c:684
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 
-#: ../rpmdrake_.c:685
+#: ../rpmdrake_.c:690
 msgid "How to choose manually your mirror"
 msgstr ""
 
-#: ../rpmdrake_.c:686
+#: ../rpmdrake_.c:691
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -796,15 +808,15 @@ msgid ""
 "Then, restart MandrakeUpdate."
 msgstr ""
 
-#: ../rpmdrake_.c:692
+#: ../rpmdrake_.c:697
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 
-#: ../rpmdrake_.c:696
+#: ../rpmdrake_.c:701
 msgid "Error adding update medium"
 msgstr ""
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:702
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -817,55 +829,55 @@ msgid ""
 "Do you want to try another mirror?"
 msgstr ""
 
-#: ../rpmdrake_.c:726
+#: ../rpmdrake_.c:731
 #, fuzzy
 msgid "Please wait, finding available packages..."
 msgstr "Praðom palaukti.Paðalinami paketai"
 
-#: ../rpmdrake_.c:749
+#: ../rpmdrake_.c:754
 msgid "All requested packages were installed successfully."
 msgstr ""
 
-#: ../rpmdrake_.c:749
+#: ../rpmdrake_.c:754
 msgid "Everything installed successfully"
 msgstr ""
 
-#: ../rpmdrake_.c:752
+#: ../rpmdrake_.c:757
 #, fuzzy
 msgid "Installation finished"
 msgstr "Ádiegiama "
 
-#: ../rpmdrake_.c:755
+#: ../rpmdrake_.c:760
 #, c-format
 msgid "Inspecting %s"
 msgstr ""
 
-#: ../rpmdrake_.c:771
+#: ../rpmdrake_.c:776
 #, fuzzy, c-format
 msgid "Remove .%s"
 msgstr "Iðimama"
 
-#: ../rpmdrake_.c:773
+#: ../rpmdrake_.c:778
 #, c-format
 msgid "Use .%s as main file"
 msgstr ""
 
-#: ../rpmdrake_.c:775
+#: ../rpmdrake_.c:780
 msgid "Do nothing"
 msgstr ""
 
-#: ../rpmdrake_.c:778
+#: ../rpmdrake_.c:783
 #, fuzzy
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr ""
 "-filija-arija-bold-r-*-*-*-100-*-*-*-*-*-*,-*-helvetica-bold-r-*-*-*-100-*-*-"
 "*-*-*-*,*"
 
-#: ../rpmdrake_.c:787
+#: ../rpmdrake_.c:800
 msgid "Inspect..."
 msgstr ""
 
-#: ../rpmdrake_.c:800
+#: ../rpmdrake_.c:813
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -874,76 +886,76 @@ msgid ""
 "you may now inspect some in order to take actions:"
 msgstr ""
 
-#: ../rpmdrake_.c:801
+#: ../rpmdrake_.c:814
 msgid ""
 "some packages failed to install\n"
 "correctly"
 msgstr ""
 
-#: ../rpmdrake_.c:802
+#: ../rpmdrake_.c:815
 msgid "everything was installed correctly"
 msgstr ""
 
-#: ../rpmdrake_.c:821
+#: ../rpmdrake_.c:834
 msgid "Unable to get source packages."
 msgstr ""
 
-#: ../rpmdrake_.c:822
+#: ../rpmdrake_.c:835
 msgid "Unable to get source packages, sorry."
 msgstr ""
 
-#: ../rpmdrake_.c:829
+#: ../rpmdrake_.c:842
 msgid "Change medium"
 msgstr ""
 
-#: ../rpmdrake_.c:830
+#: ../rpmdrake_.c:843
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr ""
 
-#: ../rpmdrake_.c:838
+#: ../rpmdrake_.c:851
 #, fuzzy
 msgid "Installation failed"
 msgstr "Ádiegiama "
 
-#: ../rpmdrake_.c:839
+#: ../rpmdrake_.c:852
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
 msgstr ""
 
-#: ../rpmdrake_.c:842
+#: ../rpmdrake_.c:855
 #, fuzzy
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "Praðom palaukti.Paðalinami paketai"
 
-#: ../rpmdrake_.c:851
+#: ../rpmdrake_.c:864
 msgid "Program missing"
 msgstr ""
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:865
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr ""
 
-#: ../rpmdrake_.c:870
+#: ../rpmdrake_.c:883
 msgid "Everything already installed."
 msgstr ""
 
-#: ../rpmdrake_.c:871
+#: ../rpmdrake_.c:884
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr ""
 
-#: ../rpmdrake_.c:881
+#: ../rpmdrake_.c:894
 #, fuzzy
 msgid "Please wait, reading packages database..."
 msgstr "Praðom palaukti.Paðalinami paketai"
 
-#: ../rpmdrake_.c:919
+#: ../rpmdrake_.c:932
 #, fuzzy
 msgid "Please wait, removing packages..."
 msgstr "Praðom palaukti.Paðalinami paketai"
 
-#: ../rpmdrake_.c:934
+#: ../rpmdrake_.c:947
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -951,7 +963,7 @@ msgid ""
 "your computer."
 msgstr ""
 
-#: ../rpmdrake_.c:939
+#: ../rpmdrake_.c:952
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -959,7 +971,7 @@ msgid ""
 "computer."
 msgstr ""
 
-#: ../rpmdrake_.c:944
+#: ../rpmdrake_.c:957
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -984,6 +996,10 @@ msgstr ""
 #, fuzzy
 msgid "Install Software"
 msgstr "Ádiegti visus"
+
+#, fuzzy
+#~ msgid "Source: %s\n"
+#~ msgstr "Ðaltinis"
 
 #, fuzzy
 #~ msgid "Remove .rpmnew"
@@ -1211,9 +1227,6 @@ msgstr "Ádiegti visus"
 #~ "Praðome palaukti\n"
 #~ "Gaunamas atvaizdø (mirror) sàraðas..."
 
-#~ msgid "%.1f KB"
-#~ msgstr "%.1f KB"
-
 #~ msgid "%.1f MB"
 #~ msgstr "%.1f MB"
 
@@ -1320,9 +1333,6 @@ msgstr "Ádiegti visus"
 #~ msgid "0 selected packages: 0.0 MB"
 #~ msgstr "0 pasirinktø paketø: 0.0 MB"
 
-#~ msgid "/_File"
-#~ msgstr "/_Byla"
-
 #~ msgid "/File/_Preferences"
 #~ msgstr "/Byla/_Nustatymai"
 
@@ -1344,14 +1354,8 @@ msgstr "Ádiegti visus"
 #~ msgid "Installed"
 #~ msgstr "Ádiegtas"
 
-#~ msgid "Size"
-#~ msgstr "Dydis"
-
 #~ msgid "Type"
 #~ msgstr "Tipas"
-
-#~ msgid "Summary"
-#~ msgstr "Turinys"
 
 #~ msgid "MandrakeUpdate, version 7.2\n"
 #~ msgstr "MandrakeUpdate, versija 7.2\n"
@@ -1478,9 +1482,6 @@ msgstr "Ádiegti visus"
 
 #~ msgid "Network settings:"
 #~ msgstr "Tinklo nustatymai:"
-
-#~ msgid "Version:"
-#~ msgstr "Versija:"
 
 #~ msgid "Show security updates"
 #~ msgstr "Rodyti saugumo atnaujinimus"

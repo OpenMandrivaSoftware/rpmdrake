@@ -19,6 +19,7 @@
 #
 # $Id$
 
+use lib qw(/usr/lib/libDrakX);
 use standalone;     #- warning, standalone must be loaded very first, for 'explanations'
 
 use MDK::Common;
@@ -26,13 +27,19 @@ use urpm;
 use URPM;
 use URPM::Resolve;
 use packdrake;
-use vars qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed);
-use my_gtk qw(:helpers :wrappers :ask);
-my_gtk::add_icon_path('/usr/share/rpmdrake/icons');
+use strict;
+use vars qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $typical_width);
 use log;
 use c;
 
 use curl_download;
+
+eval { require my_gtk; my_gtk->import(qw(:helpers :wrappers :ask)) };
+if ($@) {
+    print "This program cannot be run in console mode.\n";
+    c::_exit(0);  #- skip my_gtk::END
+}
+my_gtk::add_icon_path('/usr/share/rpmdrake/icons');
 
 sub translate {
     my ($s) = @_;
@@ -43,7 +50,7 @@ sub _ {
     sprintf $t, @_;
 }
 sub myexit { my_gtk::exit(undef, @_) }
-  
+
 $ENV{HOME} ||= '/root';
 
 sub readconf {
@@ -125,12 +132,12 @@ sub slow_func($&) {
     my ($param, $func) = @_;
     if (ref($param) =~ /^Gtk/) {
 	gtkset_mousecursor_wait($param);
-	my_gtk::flush;
-	&$func;
+	my_gtk::flush();
+	$func->();
 	gtkset_mousecursor_normal($param);
     } else {
 	my $w = wait_msg($param);
-	&$func;
+	$func->();
 	remove_wait_msg($w);
     }
 }

@@ -44,6 +44,10 @@ install: $(ALL)
 	ln -sf $(RELATIVE_SBIN)/edit-urpm-sources.pl $(BINDIR)/rpmdrake-sources
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
+	@for i in icons/title/*; do \
+		install -d $(DATADIR)/rpmdrake/$$i; \
+		install -m644 $$i/*.png $(DATADIR)/rpmdrake/$$i; \
+	done
 	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
 
 clean: 

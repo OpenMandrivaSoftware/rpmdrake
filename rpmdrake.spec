@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 18mdk
+%define release 19mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-24mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-31mdk grpmi >= 9.0 rpmtools >= 4.5
 BuildRequires: curl-devel rpm-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -56,7 +56,18 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 
 %find_lang rpmdrake
 %find_lang grpmi
-cat rpmdrake.lang grpmi.lang
+
+builddir=`pwd`; rm -f $builddir/title.lang
+pushd $RPM_BUILD_ROOT/%{_prefix}/share/rpmdrake/icons/title
+for po in *; do
+		pushd $po
+		for file in *.png; do
+				echo "%lang($po) %{_prefix}/share/rpmdrake/icons/title/$po/$file" >> $builddir/title.lang
+		done
+		popd
+done
+popd
+#cat title.lang >> rpmdrake.lang
 
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
@@ -97,10 +108,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/rpmdrake*
 %{_sbindir}/MandrakeUpdate
 %{_sbindir}/edit-urpm-sources.pl
-%{_bindir}/rpmdrake*
-%{_bindir}/MandrakeUpdate
-%{_bindir}/edit-urpm-sources.pl
-%{_datadir}/rpmdrake
+%{_bindir}/*
+%{_datadir}/rpmdrake/compss*
+%{_datadir}/rpmdrake/desktop
+%{_datadir}/rpmdrake/icons/*.png
 %{perl_vendorlib}/*.pm
 %{_menudir}/%{name}
 %{_iconsdir}/*.png
@@ -116,6 +127,16 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Sep  3 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-19mdk
+- fix should not report "everything installed successfully" when not
+- colorize the .rpmnew/.rpmsave diff
+- colorize a bit the package description textfield
+- use a fake modality to prevent user from clicking on "install"
+  button while current installation is not yet finished
+- fix error message when in console mode or XFree not available
+- consolehelper should startup faster (when rpmdrake isexecuted
+  as user)
+
 * Mon Sep  2 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-18mdk
 - rpmdrake:
   - fix displaying of dependencies: sometimes, when some packages

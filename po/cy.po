@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
-"POT-Creation-Date: 2002-09-03 18:58+0200\n"
+"POT-Creation-Date: 2002-09-03 20:08+0200\n"
 "PO-Revision-Date: 2002-08-29 18:09-0000\n"
 "Last-Translator: Rhoslyn Prys <rhoslyn.prys@ntlworld.com>\n"
 "Language-Team: Cymraeg/Welsh <cy@li.org>\n"
@@ -54,7 +54,7 @@ msgstr "Llwybr neu bwynt gosod:"
 msgid "Removable device"
 msgstr "Dyfais symudol"
 
-#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:462
+#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:464
 msgid "Security updates"
 msgstr "Diweddariadau diogelwch"
 
@@ -104,15 +104,15 @@ msgstr "Math o ffynonellau:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../edit-urpm-sources.pl_.c:232 ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98
-#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319 ../rpmdrake_.c:805
-#: ../rpmdrake_.c:831
+#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319 ../rpmdrake_.c:818
+#: ../rpmdrake_.c:844
 msgid "Ok"
 msgstr "Iawn"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
 #: ../edit-urpm-sources.pl_.c:233 ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319
-#: ../rpmdrake_.c:831
+#: ../rpmdrake_.c:844
 msgid "Cancel"
 msgstr "Dileu"
 
@@ -197,7 +197,7 @@ msgstr "Galluogwyd?"
 msgid "Source"
 msgstr "Ffynhonell"
 
-#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:610
+#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:615
 msgid "Remove"
 msgstr "Tynnu"
 
@@ -221,11 +221,11 @@ msgstr ""
 msgid "Save and quit"
 msgstr "Cadw a gadael"
 
-#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:613
+#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:618
 msgid "Quit"
 msgstr "Gadael"
 
-#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:930
+#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:943
 #, c-format
 msgid ""
 "%s\n"
@@ -432,7 +432,7 @@ msgstr "Dewiswch ddrych"
 msgid "Other"
 msgstr "Arall"
 
-#: ../rpmdrake_.c:131 ../rpmdrake_.c:422 ../rpmdrake_.c:423
+#: ../rpmdrake_.c:131 ../rpmdrake_.c:423 ../rpmdrake_.c:424
 msgid "(Not available)"
 msgstr "(Dim ar gael)"
 
@@ -559,7 +559,7 @@ msgstr ""
 "Yn anffodus, nid oes modd dewis y pecyn(nau) canlynol:\n"
 "\n"
 
-#: ../rpmdrake_.c:390 ../rpmdrake_.c:572
+#: ../rpmdrake_.c:390 ../rpmdrake_.c:576
 msgid "Some packages need to be removed"
 msgstr "Rhaid tynnu rhai pecynnau"
 
@@ -573,136 +573,124 @@ msgstr "Dewiswyd: %d MB / Lle gwag ar ddisg: %d MB"
 msgid "Selected size: %d MB"
 msgstr "Maint dewisiwyd: %d MB"
 
-#: ../rpmdrake_.c:420
-#, c-format
-msgid ""
-"%sFiles:\n"
-"%s\n"
-"\n"
-"Changelog:\n"
-"%s"
-msgstr ""
-"%sFfeiliau:\n"
-"%s\n"
-"\n"
-"Cofnod Newid:\n"
-"%s"
+#: ../rpmdrake_.c:422
+#, fuzzy
+msgid "Source: "
+msgstr "Ffynhonell"
 
-#: ../rpmdrake_.c:421
-#, c-format
-msgid "Source: %s\n"
-msgstr "Ffynhonell: %s\n"
-
-#: ../rpmdrake_.c:426
-#, c-format
-msgid ""
-"Name: %s\n"
-"Version: %s\n"
-"Size: %s KB\n"
-"Importance: %s\n"
-"\n"
-"Summary: %s\n"
-"\n"
-"%s\n"
+#: ../rpmdrake_.c:423
+msgid "Files:\n"
 msgstr ""
-"Enw: %s\n"
-"Fersiwn: %s\n"
-"Maint: %s KB\n"
-"Pwysigrwydd: %s\n"
-"\n"
-"Crynodeb: %s\n"
-"\n"
-"%s\n"
+
+#: ../rpmdrake_.c:424
+msgid "Changelog:\n"
+msgstr ""
+
+#: ../rpmdrake_.c:427
+msgid "Reason for update: "
+msgstr ""
+
+#: ../rpmdrake_.c:429
+#, fuzzy
+msgid "Name: "
+msgstr "Enw:"
 
 #: ../rpmdrake_.c:430
-#, c-format
-msgid ""
-"Name: %s\n"
-"Version: %s\n"
-"Size: %s KB\n"
-"\n"
-"Summary: %s\n"
-"\n"
-"%s\n"
+msgid "Version: "
 msgstr ""
-"Enw: %s\n"
-"Fersiwn: %s\n"
-"Maint: %s KB\n"
-"\n"
-"Crynodeb: %s\n"
-"\n"
-"%s\n"
 
-#: ../rpmdrake_.c:441
+#: ../rpmdrake_.c:431
+#, c-format
+msgid "%s KB"
+msgstr ""
+
+#: ../rpmdrake_.c:431
+msgid "Size: "
+msgstr ""
+
+#: ../rpmdrake_.c:432
+msgid "Importance: "
+msgstr ""
+
+#: ../rpmdrake_.c:433
+msgid "Summary: "
+msgstr ""
+
+#: ../rpmdrake_.c:434
+#, fuzzy
+msgid "Description: "
+msgstr "disgrifiadau"
+
+#: ../rpmdrake_.c:443
 msgid "rpmdrake"
 msgstr "rpmdrake"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:464
 msgid "Bugfixes updates"
 msgstr "Diweddariad cywiro gwallau"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:464
 msgid "Normal updates"
 msgstr "Diweddariadau arferol"
 
-#: ../rpmdrake_.c:481
+#: ../rpmdrake_.c:483
 msgid "Mandrake choices"
 msgstr "Dewisiadau Mandrake"
 
-#: ../rpmdrake_.c:482
+#: ../rpmdrake_.c:484
 msgid "All packages, alphabetical"
 msgstr "Pob pecyn, trefn yr wyddor"
 
-#: ../rpmdrake_.c:483
+#: ../rpmdrake_.c:485
 msgid "All packages,"
 msgstr "Pob pecyn,"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:508
 msgid "by group"
 msgstr "yn ôl grwp"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:508
 msgid "by size"
 msgstr "yn ôl maint"
 
-#: ../rpmdrake_.c:507
+#: ../rpmdrake_.c:509
 msgid "by selection state"
 msgstr "yn ôl cyflwr dewis"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:510
 msgid "by source repository"
 msgstr "yn ôl ffynhonnell eu tarddiad"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:510
 msgid "by update availability"
 msgstr "yn ôl diweddariad"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:531
 msgid "in descriptions"
 msgstr "disgrifiadau"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:531
 msgid "in names"
 msgstr "enwau"
 
-#: ../rpmdrake_.c:530
+#: ../rpmdrake_.c:532
 msgid "in files"
 msgstr "mewn ffeiliau"
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:543
 msgid "Maximum information"
 msgstr "Gwybodath lawn"
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:543
 msgid "Normal information"
 msgstr "Gwybodaeth arferol"
 
-#: ../rpmdrake_.c:562
+#: ../rpmdrake_.c:566
 #, fuzzy
 msgid "Too many packages are selected"
 msgstr "Nid oes modd gosod rhai pecynnau"
 
-#: ../rpmdrake_.c:563
+#: ../rpmdrake_.c:567
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -712,7 +700,7 @@ msgid ""
 "Do you really want to install all the selected packages?"
 msgstr ""
 
-#: ../rpmdrake_.c:573
+#: ../rpmdrake_.c:577
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -727,35 +715,35 @@ msgstr ""
 "\n"
 "Ydi hi'n iawn parhau?"
 
-#: ../rpmdrake_.c:594
+#: ../rpmdrake_.c:599
 msgid "Find:"
 msgstr "Canfod:"
 
-#: ../rpmdrake_.c:599
+#: ../rpmdrake_.c:604
 msgid "Search"
 msgstr "Chwilio"
 
-#: ../rpmdrake_.c:611
+#: ../rpmdrake_.c:616
 msgid "Install"
 msgstr "Gosod"
 
-#: ../rpmdrake_.c:637
+#: ../rpmdrake_.c:642
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:638
+#: ../rpmdrake_.c:643
 msgid "Mandrake Update"
 msgstr "Diweddaru Mandrake"
 
-#: ../rpmdrake_.c:638
+#: ../rpmdrake_.c:643
 msgid "Software Packages Removal"
 msgstr "Tynnu Pecynnau Meddalwedd"
 
-#: ../rpmdrake_.c:639
+#: ../rpmdrake_.c:644
 msgid "Software Packages Installation"
 msgstr "Gosodiad Pecynnau Meddalwedd"
 
-#: ../rpmdrake_.c:672
+#: ../rpmdrake_.c:677
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -767,24 +755,24 @@ msgstr ""
 "\n"
 "Ydi hi'n iawn i mi barhau?"
 
-#: ../rpmdrake_.c:676
+#: ../rpmdrake_.c:681
 msgid "Please wait, contacting mirror to update packages information."
 msgstr "Arhoswch, yn cysylltu â'r drych i ddiweddaru gwybodaeth am y pecynnau."
 
-#: ../rpmdrake_.c:678
+#: ../rpmdrake_.c:683
 msgid "Error updating medium"
 msgstr "Gwall wrth ddiweddaru'r cyfrwng"
 
-#: ../rpmdrake_.c:679
+#: ../rpmdrake_.c:684
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 "Digwyddodd gwall anadferadwy wrth ddiweddaru'r wybodaeth am y pecynnau."
 
-#: ../rpmdrake_.c:685
+#: ../rpmdrake_.c:690
 msgid "How to choose manually your mirror"
 msgstr "Sut i ddewis drych gyda llaw."
 
-#: ../rpmdrake_.c:686
+#: ../rpmdrake_.c:691
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -798,15 +786,15 @@ msgstr ""
 "\n"
 "Yna ailgychwynnwch MandrakeUpdate."
 
-#: ../rpmdrake_.c:692
+#: ../rpmdrake_.c:697
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr "Arhoswch, yn cysylltu â'r drych i gychwyn pecynnau diweddaru."
 
-#: ../rpmdrake_.c:696
+#: ../rpmdrake_.c:701
 msgid "Error adding update medium"
 msgstr "Gwall wrth ychwanegu cyfrwng diweddaru"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:702
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -828,50 +816,50 @@ msgstr ""
 "\n"
 "Hoffech chi drio drych arall?"
 
-#: ../rpmdrake_.c:726
+#: ../rpmdrake_.c:731
 msgid "Please wait, finding available packages..."
 msgstr "Arhoswch, canfod pecynnau sydd ar gael..."
 
-#: ../rpmdrake_.c:749
+#: ../rpmdrake_.c:754
 msgid "All requested packages were installed successfully."
 msgstr "Gosodwyd pob pecyn angenrheidiol yn llwyddiannus."
 
-#: ../rpmdrake_.c:749
+#: ../rpmdrake_.c:754
 msgid "Everything installed successfully"
 msgstr "Gosodwyd popeth yn llwyddiannus"
 
-#: ../rpmdrake_.c:752
+#: ../rpmdrake_.c:757
 msgid "Installation finished"
 msgstr "Gorffennodd y gosodiad"
 
-#: ../rpmdrake_.c:755
+#: ../rpmdrake_.c:760
 #, c-format
 msgid "Inspecting %s"
 msgstr "Archwilio %s"
 
-#: ../rpmdrake_.c:771
+#: ../rpmdrake_.c:776
 #, c-format
 msgid "Remove .%s"
 msgstr "Tynnu .%s"
 
-#: ../rpmdrake_.c:773
+#: ../rpmdrake_.c:778
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Defnyddio .%s fel y brif ffeil"
 
-#: ../rpmdrake_.c:775
+#: ../rpmdrake_.c:780
 msgid "Do nothing"
 msgstr "Gwneud dim"
 
-#: ../rpmdrake_.c:778
+#: ../rpmdrake_.c:783
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 
-#: ../rpmdrake_.c:787
+#: ../rpmdrake_.c:800
 msgid "Inspect..."
 msgstr "Archwilio..."
 
-#: ../rpmdrake_.c:800
+#: ../rpmdrake_.c:813
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -884,7 +872,7 @@ msgstr ""
 "Cafodd rhai ffeiliau ffurfweddu eu creu fel  `.rpmnew' neu `.rpmsave',\n"
 "mae modd eu harchwilio i weithredu arnynt:"
 
-#: ../rpmdrake_.c:801
+#: ../rpmdrake_.c:814
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -892,32 +880,32 @@ msgstr ""
 "methodd rhai pecynnau a chael eu gosod\n"
 "yn gywir"
 
-#: ../rpmdrake_.c:802
+#: ../rpmdrake_.c:815
 msgid "everything was installed correctly"
 msgstr "gosodwyd popeth yn llwyddiannus"
 
-#: ../rpmdrake_.c:821
+#: ../rpmdrake_.c:834
 msgid "Unable to get source packages."
 msgstr "Methu estyn pecynnau ffynhonnell."
 
-#: ../rpmdrake_.c:822
+#: ../rpmdrake_.c:835
 msgid "Unable to get source packages, sorry."
 msgstr "Methu estyn pecynnau ffynhonnell."
 
-#: ../rpmdrake_.c:829
+#: ../rpmdrake_.c:842
 msgid "Change medium"
 msgstr "Newid cyfrwng"
 
-#: ../rpmdrake_.c:830
+#: ../rpmdrake_.c:843
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Rhowch gyfrwng \"%s\" ar ddyfais [%s]"
 
-#: ../rpmdrake_.c:838
+#: ../rpmdrake_.c:851
 msgid "Installation failed"
 msgstr "Methodd y gosodiad"
 
-#: ../rpmdrake_.c:839
+#: ../rpmdrake_.c:852
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -925,35 +913,35 @@ msgstr ""
 "Methodd y gosodiad, mae rhai ffeiliau ar goll.\n"
 "Efallai'r hoffech ddiweddaru eich cronfa ddata o ffynonellau."
 
-#: ../rpmdrake_.c:842
+#: ../rpmdrake_.c:855
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "Arhoswch, tynnu pecynnau i eraill gael eu diweddaru"
 
-#: ../rpmdrake_.c:851
+#: ../rpmdrake_.c:864
 msgid "Program missing"
 msgstr "Rhaglen ar goll"
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:865
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Mae rhaglen angenrheidiol ar goll (grpmi). Gwiriwch eich gosodiad."
 
-#: ../rpmdrake_.c:870
+#: ../rpmdrake_.c:883
 msgid "Everything already installed."
 msgstr "Popeth wedi ei osod eisoes"
 
-#: ../rpmdrake_.c:871
+#: ../rpmdrake_.c:884
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Mae popeth wedi ei osod (ydy hyn i fod i ddigwydd o gwbl?)"
 
-#: ../rpmdrake_.c:881
+#: ../rpmdrake_.c:894
 msgid "Please wait, reading packages database..."
 msgstr "Arhoswch, darlen cronfa ddata'r pecynnau..."
 
-#: ../rpmdrake_.c:919
+#: ../rpmdrake_.c:932
 msgid "Please wait, removing packages..."
 msgstr "Arhoswch tynnu'r pecynnau..."
 
-#: ../rpmdrake_.c:934
+#: ../rpmdrake_.c:947
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -965,7 +953,7 @@ msgstr ""
 "Bydd yr offeryn hwn yn eich cynorthwyo o ddewis pa feddalwedd rydych\n"
 "am ei dynnu oddi ar eich cyfrifiadur."
 
-#: ../rpmdrake_.c:939
+#: ../rpmdrake_.c:952
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -976,7 +964,7 @@ msgstr ""
 "Bydd yr offeryn hwn yn eich cynorthwyo i ddewis diweddariadau i'w gosod\n"
 "ar eich cyfrifiadur."
 
-#: ../rpmdrake_.c:944
+#: ../rpmdrake_.c:957
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1005,3 +993,55 @@ msgstr "Rheolwr Ffynhonnell Meddalwedd"
 #: data/rpmdrake.desktop.in.h:1
 msgid "Install Software"
 msgstr "Gosod Meddalwedd"
+
+#~ msgid ""
+#~ "%sFiles:\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Changelog:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "%sFfeiliau:\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Cofnod Newid:\n"
+#~ "%s"
+
+#~ msgid "Source: %s\n"
+#~ msgstr "Ffynhonell: %s\n"
+
+#~ msgid ""
+#~ "Name: %s\n"
+#~ "Version: %s\n"
+#~ "Size: %s KB\n"
+#~ "Importance: %s\n"
+#~ "\n"
+#~ "Summary: %s\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Enw: %s\n"
+#~ "Fersiwn: %s\n"
+#~ "Maint: %s KB\n"
+#~ "Pwysigrwydd: %s\n"
+#~ "\n"
+#~ "Crynodeb: %s\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid ""
+#~ "Name: %s\n"
+#~ "Version: %s\n"
+#~ "Size: %s KB\n"
+#~ "\n"
+#~ "Summary: %s\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Enw: %s\n"
+#~ "Fersiwn: %s\n"
+#~ "Maint: %s KB\n"
+#~ "\n"
+#~ "Crynodeb: %s\n"
+#~ "\n"
+#~ "%s\n"

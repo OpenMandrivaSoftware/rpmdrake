@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-09-03 18:58+0200\n"
+"POT-Creation-Date: 2002-09-03 20:08+0200\n"
 "PO-Revision-Date: 2002-08-30 16:13+0300\n"
 "Last-Translator: Νίκος Νύκταρης (Nick Niktaris) <niktaris@yahoo.com>\n"
 "Language-Team: Greek <nls@hellug.gr>\n"
@@ -55,7 +55,7 @@ msgstr "Θέση ή σημείο προσάρτησης: "
 msgid "Removable device"
 msgstr "Αφαιρούμενη συσκευή"
 
-#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:462
+#: ../edit-urpm-sources.pl_.c:59 ../rpmdrake_.c:464
 msgid "Security updates"
 msgstr "Ανανεώσεις Ασφαλείας"
 
@@ -105,15 +105,15 @@ msgstr "Τύπος πηγής:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../edit-urpm-sources.pl_.c:232 ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98
-#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319 ../rpmdrake_.c:805
-#: ../rpmdrake_.c:831
+#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319 ../rpmdrake_.c:818
+#: ../rpmdrake_.c:844
 msgid "Ok"
 msgstr "OK"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
 #: ../edit-urpm-sources.pl_.c:233 ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319
-#: ../rpmdrake_.c:831
+#: ../rpmdrake_.c:844
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -199,7 +199,7 @@ msgstr "Ενεργοποίηση;"
 msgid "Source"
 msgstr "Πηγή"
 
-#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:610
+#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:615
 msgid "Remove"
 msgstr "Αφαίρεση"
 
@@ -224,11 +224,11 @@ msgstr "Σφάλμα..."
 msgid "Save and quit"
 msgstr "Αποθήκευση και έξοδος"
 
-#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:613
+#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:618
 msgid "Quit"
 msgstr "Έξοδος"
 
-#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:930
+#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:943
 #, c-format
 msgid ""
 "%s\n"
@@ -439,7 +439,7 @@ msgstr "Παρακαλώ επιλέξτε την επιθυμητή εναλλακτική."
 msgid "Other"
 msgstr "Άλλα"
 
-#: ../rpmdrake_.c:131 ../rpmdrake_.c:422 ../rpmdrake_.c:423
+#: ../rpmdrake_.c:131 ../rpmdrake_.c:423 ../rpmdrake_.c:424
 msgid "(Not available)"
 msgstr "(Δεν είναι διαθέσιμο/η)"
 
@@ -567,7 +567,7 @@ msgstr ""
 "Συγνώμη, τα παρακάτω πακέτα δεν μπορούν να επιλεγούν:\n"
 "\n"
 
-#: ../rpmdrake_.c:390 ../rpmdrake_.c:572
+#: ../rpmdrake_.c:390 ../rpmdrake_.c:576
 msgid "Some packages need to be removed"
 msgstr "Ορισμένα πακέτα πρέπει να αφαιρεθούν"
 
@@ -581,136 +581,124 @@ msgstr "Επιλεγμένο: %d MB/ Ελεύθερος χώρος στον δίσκο: %d MB"
 msgid "Selected size: %d MB"
 msgstr "Επιλεγμένο μέγεθος: %d MB"
 
-#: ../rpmdrake_.c:420
-#, c-format
-msgid ""
-"%sFiles:\n"
-"%s\n"
-"\n"
-"Changelog:\n"
-"%s"
-msgstr ""
-"%sΆρχεία:\n"
-"%s\n"
-"\n"
-"Αλλαγές:\n"
-"%s"
+#: ../rpmdrake_.c:422
+#, fuzzy
+msgid "Source: "
+msgstr "Πηγή"
 
-#: ../rpmdrake_.c:421
-#, c-format
-msgid "Source: %s\n"
-msgstr "Πηγή: %s\n"
-
-#: ../rpmdrake_.c:426
-#, c-format
-msgid ""
-"Name: %s\n"
-"Version: %s\n"
-"Size: %s KB\n"
-"Importance: %s\n"
-"\n"
-"Summary: %s\n"
-"\n"
-"%s\n"
+#: ../rpmdrake_.c:423
+msgid "Files:\n"
 msgstr ""
-"Όνομα: %s\n"
-"Έκδοση: %s\n"
-"Μέγεθος: %s KB Σπουδαιότητα: %s\n"
-"\n"
-"\n"
-"Σύνοψη: %s\n"
-"\n"
-"%s\n"
+
+#: ../rpmdrake_.c:424
+msgid "Changelog:\n"
+msgstr ""
+
+#: ../rpmdrake_.c:427
+msgid "Reason for update: "
+msgstr ""
+
+#: ../rpmdrake_.c:429
+#, fuzzy
+msgid "Name: "
+msgstr "Όνομα:"
 
 #: ../rpmdrake_.c:430
-#, c-format
-msgid ""
-"Name: %s\n"
-"Version: %s\n"
-"Size: %s KB\n"
-"\n"
-"Summary: %s\n"
-"\n"
-"%s\n"
+msgid "Version: "
 msgstr ""
-"Όνομα: %s\n"
-"Έκδοση: %s\n"
-"Μέγεθος: %s KB\n"
-"\n"
-"Σύνοψη: %s\n"
-"\n"
-"%s\n"
 
-#: ../rpmdrake_.c:441
+#: ../rpmdrake_.c:431
+#, c-format
+msgid "%s KB"
+msgstr ""
+
+#: ../rpmdrake_.c:431
+msgid "Size: "
+msgstr ""
+
+#: ../rpmdrake_.c:432
+msgid "Importance: "
+msgstr ""
+
+#: ../rpmdrake_.c:433
+msgid "Summary: "
+msgstr ""
+
+#: ../rpmdrake_.c:434
+#, fuzzy
+msgid "Description: "
+msgstr "στις περιγραφές"
+
+#: ../rpmdrake_.c:443
 msgid "rpmdrake"
 msgstr "rpmdrake"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:464
 msgid "Bugfixes updates"
 msgstr "Αναβαθμίσεις διορθώσεων"
 
-#: ../rpmdrake_.c:462
+#: ../rpmdrake_.c:464
 msgid "Normal updates"
 msgstr "Κανονικές αναβαθμίσεις"
 
-#: ../rpmdrake_.c:481
+#: ../rpmdrake_.c:483
 msgid "Mandrake choices"
 msgstr "Επιλογές Mandrake"
 
-#: ../rpmdrake_.c:482
+#: ../rpmdrake_.c:484
 msgid "All packages, alphabetical"
 msgstr "Όλα τα πακέτα, αλφαβητικά"
 
-#: ../rpmdrake_.c:483
+#: ../rpmdrake_.c:485
 msgid "All packages,"
 msgstr "Όλα τα πακέτα,"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:508
 msgid "by group"
 msgstr "βάση ομάδας"
 
-#: ../rpmdrake_.c:506
+#: ../rpmdrake_.c:508
 msgid "by size"
 msgstr "βάση μεγέθους"
 
-#: ../rpmdrake_.c:507
+#: ../rpmdrake_.c:509
 msgid "by selection state"
 msgstr "βάση κατάστασης επιλογής"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:510
 msgid "by source repository"
 msgstr "βάση αποθηκευμένων πηγών"
 
-#: ../rpmdrake_.c:508
+#: ../rpmdrake_.c:510
 msgid "by update availability"
 msgstr "βάση διαθεσιμότητας αναβάθμισης"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:531
 msgid "in descriptions"
 msgstr "στις περιγραφές"
 
-#: ../rpmdrake_.c:529
+#: ../rpmdrake_.c:531
 msgid "in names"
 msgstr "στα ονόματα"
 
-#: ../rpmdrake_.c:530
+#: ../rpmdrake_.c:532
 msgid "in files"
 msgstr "στα αρχεία"
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:543
 msgid "Maximum information"
 msgstr "Μέγιστες πληροφορίες"
 
-#: ../rpmdrake_.c:541
+#: ../rpmdrake_.c:543
 msgid "Normal information"
 msgstr "Κανονικές πληροφορίες"
 
-#: ../rpmdrake_.c:562
+#: ../rpmdrake_.c:566
 #, fuzzy
 msgid "Too many packages are selected"
 msgstr "Ορισμένα πακέτα δεν μπορούν να εγκατασταθούν"
 
-#: ../rpmdrake_.c:563
+#: ../rpmdrake_.c:567
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -720,7 +708,7 @@ msgid ""
 "Do you really want to install all the selected packages?"
 msgstr ""
 
-#: ../rpmdrake_.c:573
+#: ../rpmdrake_.c:577
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -735,35 +723,35 @@ msgstr ""
 "\n"
 "Να συνεχιστεί;"
 
-#: ../rpmdrake_.c:594
+#: ../rpmdrake_.c:599
 msgid "Find:"
 msgstr "Εύρεση:"
 
-#: ../rpmdrake_.c:599
+#: ../rpmdrake_.c:604
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: ../rpmdrake_.c:611
+#: ../rpmdrake_.c:616
 msgid "Install"
 msgstr "Εγκατάσταση"
 
-#: ../rpmdrake_.c:637
+#: ../rpmdrake_.c:642
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:638
+#: ../rpmdrake_.c:643
 msgid "Mandrake Update"
 msgstr "Mandrake Update"
 
-#: ../rpmdrake_.c:638
+#: ../rpmdrake_.c:643
 msgid "Software Packages Removal"
 msgstr "Αφαίρεση Πακέτων Λογισμικού"
 
-#: ../rpmdrake_.c:639
+#: ../rpmdrake_.c:644
 msgid "Software Packages Installation"
 msgstr "Εγκατάσταση Πακέτων Λογισμικού"
 
-#: ../rpmdrake_.c:672
+#: ../rpmdrake_.c:677
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -776,27 +764,27 @@ msgstr ""
 "\n"
 "Να συνεχίσω;"
 
-#: ../rpmdrake_.c:676
+#: ../rpmdrake_.c:681
 msgid "Please wait, contacting mirror to update packages information."
 msgstr ""
 "Παρακαλώ περιμένετε, γίνεται σύνδεση με την εναλλακτική διεύθυνση για την "
 "αναβάθμιση των πληροφοριών των πακέτων."
 
-#: ../rpmdrake_.c:678
+#: ../rpmdrake_.c:683
 msgid "Error updating medium"
 msgstr "Σφάλμα κατά την ανανέωση του μέσου"
 
-#: ../rpmdrake_.c:679
+#: ../rpmdrake_.c:684
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 "Υπήρξε ένα ανεπανόρθωτο σφάλμα κατά την αναβάθμιση των πληροφοριών των "
 "πακέτων."
 
-#: ../rpmdrake_.c:685
+#: ../rpmdrake_.c:690
 msgid "How to choose manually your mirror"
 msgstr "Πως να διαλέξετε μόνοι σας την εναλλακτική σας"
 
-#: ../rpmdrake_.c:686
+#: ../rpmdrake_.c:691
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -810,17 +798,17 @@ msgstr ""
 "\n"
 "Μετά, ξεκινήστε ξανά το MandrakeUpdate."
 
-#: ../rpmdrake_.c:692
+#: ../rpmdrake_.c:697
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr ""
 "Παρακαλώ περιμένετε, γίνεται σύνδεση με την εναλλακτική διεύθυνση για την "
 "εκκίνηση των αναβαθμίσεων των πακέτων."
 
-#: ../rpmdrake_.c:696
+#: ../rpmdrake_.c:701
 msgid "Error adding update medium"
 msgstr "Σφάλμα κατά την προσθήκη του μέσου αναβαθμίσεων"
 
-#: ../rpmdrake_.c:697
+#: ../rpmdrake_.c:702
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -842,50 +830,50 @@ msgstr ""
 "\n"
 "Θέλετε να δοκιμάσετε άλλη εναλλακτική;"
 
-#: ../rpmdrake_.c:726
+#: ../rpmdrake_.c:731
 msgid "Please wait, finding available packages..."
 msgstr "Παρακαλώ περιμένετε, αναζητούνται τα διαθέσιμα πακέτα..."
 
-#: ../rpmdrake_.c:749
+#: ../rpmdrake_.c:754
 msgid "All requested packages were installed successfully."
 msgstr "Όλα τα ζητηθέντα πακέτα εγκαταστάθηκαν επιτυχώς."
 
-#: ../rpmdrake_.c:749
+#: ../rpmdrake_.c:754
 msgid "Everything installed successfully"
 msgstr "Όλα εγκαταστάθηκαν επιτυχώς"
 
-#: ../rpmdrake_.c:752
+#: ../rpmdrake_.c:757
 msgid "Installation finished"
 msgstr "Η εγκατάσταση τελείωσε"
 
-#: ../rpmdrake_.c:755
+#: ../rpmdrake_.c:760
 #, c-format
 msgid "Inspecting %s"
 msgstr "Ελέγχεται το %s"
 
-#: ../rpmdrake_.c:771
+#: ../rpmdrake_.c:776
 #, c-format
 msgid "Remove .%s"
 msgstr "Αφαίρεση.%s"
 
-#: ../rpmdrake_.c:773
+#: ../rpmdrake_.c:778
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Χρήση του .%s ως κύριο αρχείο"
 
-#: ../rpmdrake_.c:775
+#: ../rpmdrake_.c:780
 msgid "Do nothing"
 msgstr "Να μη γίνει τίποτα"
 
-#: ../rpmdrake_.c:778
+#: ../rpmdrake_.c:783
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 
-#: ../rpmdrake_.c:787
+#: ../rpmdrake_.c:800
 msgid "Inspect..."
 msgstr "Έλεγχος..."
 
-#: ../rpmdrake_.c:800
+#: ../rpmdrake_.c:813
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -898,7 +886,7 @@ msgstr ""
 "Ορισμένα αρχεία ρύθμισεων δημιουργήθηκαν ως `.rpmnew' ή`.rpmsave',\n"
 "ίσως να πρέπει να τα ελέγξετε για να εκτελέσετε ορισμένες ενέργειες:"
 
-#: ../rpmdrake_.c:801
+#: ../rpmdrake_.c:814
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -906,32 +894,32 @@ msgstr ""
 "ορισμένα πακέτα απέτυχαν να \n"
 "εγκατασταθούν"
 
-#: ../rpmdrake_.c:802
+#: ../rpmdrake_.c:815
 msgid "everything was installed correctly"
 msgstr "όλα εγκαταστάθηκαν σωστά"
 
-#: ../rpmdrake_.c:821
+#: ../rpmdrake_.c:834
 msgid "Unable to get source packages."
 msgstr "Αδύνατη η λήψη των πηγαίων πακέτων."
 
-#: ../rpmdrake_.c:822
+#: ../rpmdrake_.c:835
 msgid "Unable to get source packages, sorry."
 msgstr "Αδύνατη η λήψη των πηγαίων πακέτων, συγνώμη."
 
-#: ../rpmdrake_.c:829
+#: ../rpmdrake_.c:842
 msgid "Change medium"
 msgstr "Αλλαγή μέσου"
 
-#: ../rpmdrake_.c:830
+#: ../rpmdrake_.c:843
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Παρακαλώ εισάγετε το μέσο με όνομα \"%s\" στη συσκευή [%s]"
 
-#: ../rpmdrake_.c:838
+#: ../rpmdrake_.c:851
 msgid "Installation failed"
 msgstr "Η εγκατάσταση απέτυχε"
 
-#: ../rpmdrake_.c:839
+#: ../rpmdrake_.c:852
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -939,37 +927,37 @@ msgstr ""
 "Η εγκατάσταση απέτυχε, ορισμένα αρχεία δεν υπάρχουν.\n"
 "Ίσως να πρέπει να αναβαθμίσετε την βάση δεδομένων των πηγών."
 
-#: ../rpmdrake_.c:842
+#: ../rpmdrake_.c:855
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Παρακαλώ περιμένετε, αφαιρούνται πακέτα για να μπορέσουν να αναβαθμιστούν "
 "άλλα..."
 
-#: ../rpmdrake_.c:851
+#: ../rpmdrake_.c:864
 msgid "Program missing"
 msgstr "Λείπει πρόγραμμα"
 
-#: ../rpmdrake_.c:852
+#: ../rpmdrake_.c:865
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Ένα απαιτούμενο πρόγραμμα (το grpmi).Ελέγξτε την εγκατάστασή σας"
 
-#: ../rpmdrake_.c:870
+#: ../rpmdrake_.c:883
 msgid "Everything already installed."
 msgstr "Όλα είναι ήδη εγκατεστημένα."
 
-#: ../rpmdrake_.c:871
+#: ../rpmdrake_.c:884
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Όλα είναι ήδη εγκατεστημένα.(θα έπρεπε να συμβαίνει αυτό;)"
 
-#: ../rpmdrake_.c:881
+#: ../rpmdrake_.c:894
 msgid "Please wait, reading packages database..."
 msgstr "Παρακαλώ περιμένετε, διαβάζεται η βάση δεδομένων των πακέτων..."
 
-#: ../rpmdrake_.c:919
+#: ../rpmdrake_.c:932
 msgid "Please wait, removing packages..."
 msgstr "Παρακαλώ περιμένετε, αφαιρούνται τα πακέτα..."
 
-#: ../rpmdrake_.c:934
+#: ../rpmdrake_.c:947
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -981,7 +969,7 @@ msgstr ""
 "Αυτό το εργαλείο θα σας βοηθήσει να επιλέξετε το πρόγραμμα που θέλετε\n"
 "να αφαιρέσετε από τον υπολογιστή σας."
 
-#: ../rpmdrake_.c:939
+#: ../rpmdrake_.c:952
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -993,7 +981,7 @@ msgstr ""
 "Αυτό το εργαλείο θα σας βοηθήσει να επιλέξετε τις αναβαθμίσεις που θέλετε\n"
 "να εγκαταστήσετε στον υπολογιστή σας."
 
-#: ../rpmdrake_.c:944
+#: ../rpmdrake_.c:957
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1022,6 +1010,58 @@ msgstr "Διαχειριστής Πηγαίου Λογισμικού"
 #: data/rpmdrake.desktop.in.h:1
 msgid "Install Software"
 msgstr "Εγκατάσταση Λογισμικού"
+
+#~ msgid ""
+#~ "%sFiles:\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Changelog:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "%sΆρχεία:\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Αλλαγές:\n"
+#~ "%s"
+
+#~ msgid "Source: %s\n"
+#~ msgstr "Πηγή: %s\n"
+
+#~ msgid ""
+#~ "Name: %s\n"
+#~ "Version: %s\n"
+#~ "Size: %s KB\n"
+#~ "Importance: %s\n"
+#~ "\n"
+#~ "Summary: %s\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Όνομα: %s\n"
+#~ "Έκδοση: %s\n"
+#~ "Μέγεθος: %s KB Σπουδαιότητα: %s\n"
+#~ "\n"
+#~ "\n"
+#~ "Σύνοψη: %s\n"
+#~ "\n"
+#~ "%s\n"
+
+#~ msgid ""
+#~ "Name: %s\n"
+#~ "Version: %s\n"
+#~ "Size: %s KB\n"
+#~ "\n"
+#~ "Summary: %s\n"
+#~ "\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Όνομα: %s\n"
+#~ "Έκδοση: %s\n"
+#~ "Μέγεθος: %s KB\n"
+#~ "\n"
+#~ "Σύνοψη: %s\n"
+#~ "\n"
+#~ "%s\n"
 
 #~ msgid "(Non available)"
 #~ msgstr "(Δεν είναι διαθέσιμο/η)"

@@ -22,7 +22,6 @@
 
 $> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
 
-use lib qw(/usr/lib/libDrakX);
 use strict;
 
 use rpmdrake;
@@ -201,7 +200,7 @@ sub update_callback {
 			     gtksignal_connect(new Gtk::Button(_("Update")), clicked => sub { $w->{retval} = 1; Gtk->main_quit }),
 			     gtksignal_connect(new Gtk::Button(_("Cancel")), clicked => sub { $w->{retval} = 0; Gtk->main_quit }))));
     $w->{rwindow}->set_position('center');
-    if ($w->main) {
+    if ($w->main && grep { $_->get_active } @buttons) {
 	each_index { $_->get_active and $urpm->select_media($urpm->{media}[$::i]{name}) } @buttons;
 	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
 	    $_->{modified} and delete $_->{ignore};
@@ -213,7 +212,7 @@ sub update_callback {
 
 sub proxy_callback {
     my $w = my_gtk->new(_("Configure proxies"));
-    my ($proxy, $proxy_user) = curl_download::readproxy;
+    my ($proxy, $proxy_user) = curl_download::readproxy();
     my ($user, $pass) = $proxy_user =~ /^(.+):(.+)$/;
     gtkadd($w->{window},
 	   gtkpack__(new Gtk::VBox(0, 5),

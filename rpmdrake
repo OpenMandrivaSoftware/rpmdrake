@@ -20,20 +20,19 @@
 #
 # $Id$
 
-"@ARGV" =~ /-h/ and do {
-    printf STDERR "Usage: %s [OPTION]...
+BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
+    my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
+    "@ARGV" =~ /-h/ and do {
+	printf STDERR "Usage: %s [OPTION]...
   --noconfirmation       don't ask first confirmation question in MandrakeUpdate mode
-", basename($0);
-    exit 0;
-};
-
-$> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
-
-
-use lib qw(/usr/lib/libDrakX);
+", $basename->($0);
+	exit 0;
+    };
+    $> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
+}
 
 use strict;
-use vars qw($MODE %options $typical_width $max_info_in_descr $fake_modality);
+use vars qw($MODE %options $fake_modality);
 
 use rpmdrake;
 
@@ -207,6 +206,7 @@ sub run_treeview_dialog {
     my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
 
     my ($options, $size_selected, $compssUsers, $info, $info_update, $tree, $disable_treeselect_callback, %elems);
+    $size_selected = 0;  #- to remove the use strict warning
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
@@ -601,7 +601,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 						    gtksignal_connect($find_entry = new Gtk::Entry,
 								      key_press_event => sub { $_[1]->{keyval} == 0xff0d
 												 and $find_callback->() }),
-						    gtksignal_connect(new Gtk::Button(but(_("Search"))), clicked => \&$find_callback)),
+						    gtksignal_connect(new Gtk::Button(but(_("Search"))), clicked => $find_callback)),
 				       0, gtkpack__(new Gtk::HBox(0, 0), gtkpack(new Gtk::VBox(0, 0), @modes_buttons)),
 				       1, gtkpack(new Gtk::HBox(0, 0),
 						  createScrolledWindow($tree),
@@ -619,12 +619,12 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 									    clicked => sub { Gtk->main_quit })))
 				       ))));
     my ($pixmap_back) = gtkcreate_png('title-tile');
-    my ($pixmap_icon) = gtkcreate_png('title-icon');
+#    my ($pixmap_icon) = gtkcreate_png('title-icon');
     $darea->signal_connect(expose_event => sub {
 		       my (undef, undef, $dx, $dy) = @{$darea->allocation};
 		       my $dbl_area = new Gtk::Gdk::Pixmap($darea->window, $dx, $dy);
 		       fill_tiled($darea, $dbl_area, $pixmap_back, 1, 40, $dx, $dy);
-		       $dbl_area->draw_pixmap($darea->style->white_gc, $pixmap_icon, 0, 0, 5, 0, $dx, $dy);
+#		       $dbl_area->draw_pixmap($darea->style->white_gc, $pixmap_icon, 0, 0, 5, 0, $dx, $dy);
 		       my $style = $darea->style->copy();
 		       my $pixmap_text if 0;
 		       if (!$pixmap_text) {
@@ -677,7 +677,7 @@ sub get_installable_pkgs {
 _("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
-Is it ok to continue?"), yesno => 1) or myexit -1;
+Is it ok to continue?"), yesno => 1) or myexit(-1);
 		my $w = wait_msg(_("Please wait, contacting mirror to update packages information."));
 		system('/usr/sbin/urpmi.update', map { $_->{name} } @update_medias) == 0
 		  or fatal_msg(_("Error updating medium"),
@@ -692,7 +692,7 @@ _("You may also choose your desired mirror manually: to do so,
 launch the Software Sources Manager, and then add a `Security
 updates' source.
 
-Then, restart MandrakeUpdate.", $update_name)), myexit -1;
+Then, restart MandrakeUpdate.", $update_name)), myexit(-1);
 	    my ($r) = cat_('/etc/mandrake-release') =~ /release\s(\S+)/;
 	    my $w = wait_msg(_("Please wait, contacting mirror to initialize updates packages."));
 	    my $retval = system("/usr/sbin/urpmi.addmedia --update $update_name $m/$r/RPMS/ with ../base/hdlist.cz");
@@ -706,7 +706,7 @@ Mandrake Linux version (%s) is not yet / no more supported by Mandrake Linux
 Official Updates.
 
 Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_mirror;
-		myexit -1;
+		myexit(-1);
 	    }
 	}
 
@@ -857,13 +857,12 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	if (my $pid = fork()) {
 	    while (!waitpid($pid, c::WNOHANG())) {
 		select(undef, undef, undef, 0.1);
-		my_gtk::flush;
+		my_gtk::flush();
 	    }
 	} else {
-	    exec('grpmi', (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade);
-	    fatal_msg(_("Program missing"),
-		      _("A required program is missing (grpmi). Check your installation."));
-	    myexit -1;
+	    exec('grpmi', (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade)
+	      or fatal_msg(_("Program missing"),
+			   _("A required program is missing (grpmi). Check your installation.")), myexit(-1);
 	}
 	my $exitstatus = $?;
 	# /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
@@ -936,7 +935,7 @@ sub perform_removal {
 
 # -=-=-=---=-=-=---=-=-=-- main -=-=-=---=-=-=---=-=-=-
 
-readconf;
+readconf();
 
 if (!member($MODE, @$already_splashed)) {
     interactive_msg('rpmdrake',
@@ -959,7 +958,7 @@ computer.")
 Your Mandrake Linux system comes with several thousands of software
 packages on CDROM or DVD. This tool will help you choose which software
 you want to install on your computer."))
-  , yesno => 1) or myexit -1;
+  , yesno => 1) or myexit(-1);
 	push @$already_splashed, $MODE;
     }
 
@@ -971,6 +970,6 @@ if ($MODE eq 'remove') {
     run_treeview_dialog(sub { get_installable_pkgs }, \&perform_installation);
 }
 
-writeconf;
+writeconf();
 
-myexit 0;
+myexit(0);
