@@ -146,7 +146,7 @@ sub do_search($$$$$$) {
 							   gtksignal_connect(new Gtk::Button(but(_("Stop"))),
 									     clicked => sub { $searchstop = 1 }))));
 	    $searchw->sync;
-	    open SF, "parsehdlist --fileswinfo --description --summary @hdlists |";
+	    open SF, 'parsehdlist --fileswinfo --description --summary '.join(' ', map { "\'$_\'" } @hdlists).' |';
 	    my ($pkg, $progresscount);
 	    while (<SF>) {
 		$searchstop and last;
