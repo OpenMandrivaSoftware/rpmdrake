@@ -32,7 +32,7 @@ install: $(ALL)
 	done
 	install -d $(BINDIR)
 	install rpmdrake edit-urpm-sources.pl $(BINDIR)
-	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' $(BINDIR)/*
+	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(BINDIR)/*
 	ln -s rpmdrake $(BINDIR)/rpmdrake-remove
 	ln -s rpmdrake $(BINDIR)/MandrakeUpdate
 	install -d $(DATADIR)/rpmdrake/icons
