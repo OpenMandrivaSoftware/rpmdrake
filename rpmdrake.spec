@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 2mdk
+%define release 3mdk
 
 Name: %{name}
 Version: %{version}
@@ -114,6 +114,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Feb  6 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-3mdk
+- some #7472-alike progressbar sizing fixes
+
 * Wed Jan 21 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-2mdk
 - remove unneeded stuff from grpmi/po/*.po
 - fix garbled characters for fatal and error msgs reported by urpm
