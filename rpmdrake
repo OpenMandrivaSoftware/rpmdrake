@@ -402,11 +402,15 @@ sub run_treeview_dialog {
     my $find_entry;
     my $find_callback = sub {
 	my $entry = $find_entry->get_text or return;
-	$options->{state}{flat} ? $options->{delete_all}->() : $options->{delete_category}->(_("Search results"));
+	my ($results_ok, $results_none) = (_("Search results"), _("Search results (none)"));
+	$options->{delete_category}->($_) foreach ($results_ok, $results_none);
+	$options->{state}{flat} and $options->{delete_all}->();
+	$tree->collapse_recursive(undef);
 	if (my @search_results = sort { uc($a) cmp uc($b) } grep { eval { $_ =~ /$entry/i } } keys %$pkgs) {
 	    $options->{add_nodes}->(map { [ $_, _("Search results") ] } @search_results);
-	    $tree->collapse_recursive(undef);
 	    $tree->expand($tree->node_nth($tree->rows-1));
+	} else {
+	    $options->{add_nodes}->([ '', $results_none ]);
 	}
     };
 
