@@ -593,7 +593,9 @@ or you already installed all of them."));
                                    my @reasons = map {
                                        my $cant = $_;
                                        my $unsel = find { remove_arch($_) eq $cant } @ask_unselect;
-                                       $unsel ? to_utf8($urpm->translate_why_unselected($urpm->{state}, $unsel)) : $cant;
+                                       $unsel
+					   ? to_utf8(join "\n", $urpm->translate_why_unselected($urpm->{state}, $unsel))
+					   : $cant;
                                    } @cant;
 				   interactive_msg_(N("Some packages can't be installed"),
 						    N("Sorry, the following package(s) can't be selected:\n\n%s", join("\n", @reasons)));
@@ -892,12 +894,17 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	}
 	if ($MODE ne 'remove') {
             @{$urpm->{ask_remove}} = sort $urpm->removed_packages($urpm->{state});
-            @{$urpm->{ask_remove}} and (interactive_msg_(N("Some packages need to be removed"),
+            if (@{$urpm->{ask_remove}}) {
+		my $r = join "\n", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{ask_remove}});
+		interactive_msg_(N("Some packages need to be removed"),
 N("The following packages have to be removed for others to be upgraded:
 
 %s
 
-Is it ok to continue?", to_utf8($urpm->translate_why_removed($urpm->{state}, @{$urpm->{ask_remove}}))), yesno => 1) or return);
+Is it ok to continue?",
+		    to_utf8($r)),
+		yesno => 1) or return;
+	    }
 	}
 	if (!$callback_action->($urpm, $pkgs)) {
 	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
