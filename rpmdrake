@@ -239,7 +239,7 @@ sub run_treeview_dialog {
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $::noBorder = 1;
-    $w = ugtk2->new(N("rpmdrake")." 9.0");
+    $w = ugtk2->new(N("rpmdrake")." 9.1");
     $::noBorder = 0;
 
     my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
@@ -946,10 +946,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    unlink $_;
 	}
 
-	my %sources = $urpm->download_source_packages($local_sources, $list, '',
-						      sub { interactive_msg_(N("Change medium"),
-									     N("Please insert the medium named \"%s\" on device [%s]", @_),
-									     yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) });
+	my %sources = $urpm->download_source_packages($local_sources, $list,
+						      ask_for_medium => sub {
+							  interactive_msg_(N("Change medium"),
+									   N("Please insert the medium named \"%s\" on device [%s]", @_),
+									   yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) });
 	my @rpms_install = grep { !/\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
 	my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
 

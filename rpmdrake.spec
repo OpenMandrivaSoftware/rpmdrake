@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 4mdk
+%define release 5mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 9.1-0.12mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.2-8mdk perl-URPM >= 0.60 drakxtools >= 9.1-0.12mdk grpmi >= 9.0 rpmtools >= 4.5
 Requires: perl-GTK2 > 0.0.cvs.2003.01.08.1
 BuildRequires: curl-devel rpm-devel gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -116,6 +116,11 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Feb 11 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-5mdk
+- rpmdrake:
+  - mark version as 9.1
+  - fixes error "source not selected" (#966 and its army of duplicates)
+
 * Thu Jan 23 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-4mdk
 - edit-urpm-sources:
   - fix wrong display of medium as "enabled", after adding a medium
