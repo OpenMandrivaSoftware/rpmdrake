@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.2
-%define release 4mdk
+%define version 2.3
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
@@ -108,6 +108,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Nov 25 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.3-1mdk
+- edit-urpm-sources: setting per-media proxies should now work.
+- Fix save and restore of package tree display mode in rpmdrake.
+- Take into account limit-rate, compress and resume options from urpmi.cfg.
+
 * Thu Nov 18 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.2-4mdk
 - edit-urpm-sources: When modifying a media has failed, restore it (don't die,
   and don't keep it in the intermediate state of being ignored)
