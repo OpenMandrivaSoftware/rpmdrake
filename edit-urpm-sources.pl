@@ -201,6 +201,7 @@ sub remove_callback {
     remove_wait_msg($wait);
 }
 
+#- returns the name of the media for which edition failed, or undef on success
 sub edit_callback {
     my $row = selrow();
     $row == -1 and return;
@@ -253,9 +254,9 @@ sub edit_callback {
 	$urpm->select_media($name);
 	$urpm->remove_selected_media;
 	add_medium_and_check($urpm, { nolock => 1 }, $name, $url, $with_hdlist, update => $update);
-	return 1;
+	return $name;
     }
-    return 0;
+    return undef;
 }
 
 sub update_callback {
@@ -693,9 +694,18 @@ sub mainwindow {
                              });
 
     my $reread_media = sub {
+	my ($name) = @_;
         $reorder_ok = 0;
 	$urpm = urpm->new;
 	$urpm->read_config; 
+	if (defined $name) {
+	    #- this media must be reconstructed since editing it failed
+	    foreach (grep { $_->{name} eq $name } @{$urpm->{media}}) {
+		delete $_->{ignore};
+	    }
+	    $urpm->select_media($name);
+	    $urpm->update_media(noclean => 1, nolock => 1);
+	}
 	$list->clear;
 	$list->append_set([ 0 => !$_->{ignore}, 1 => $_->{name} ]) foreach @{$urpm->{media}};
         $reorder_ok = 1;
@@ -709,8 +719,12 @@ sub mainwindow {
 				0, gtkpack__(Gtk2::VBox->new(0, 5),
 					     gtksignal_connect($remove = Gtk2::Button->new(but(N("Remove"))),
 										clicked => sub { remove_callback(); $reread_media->() }),
-					     gtksignal_connect($edit = Gtk2::Button->new(but(N("Edit"))),
-										clicked => sub { edit_callback() and $reread_media->() }),
+					     gtksignal_connect(
+						 $edit = Gtk2::Button->new(but(N("Edit"))),
+						 clicked => sub {
+						     my $name = edit_callback(); defined $name and $reread_media->($name);
+						 }
+					     ),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Add..."))), 
 							       clicked => sub { add_callback() and $reread_media->() }),
 					     gtksignal_connect(
