@@ -41,14 +41,11 @@ use common;
 use rpmdrake;
 use gurpm;
 
-require_root_capability();
-
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
     print "This program cannot be run in console mode.\n";
     c::_exit(0);  #- skip ugtk2::END
 }
-
 
 $MODE = 'install';
 $0 =~ m|/rpmdrake-remove$| and $MODE = 'remove';
@@ -63,6 +60,12 @@ my $w;
 sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
+
+$> and interactive_msg_(N("Running in user mode"),
+N("You are launching this program as a normal user.
+You will not be able to perform modifications on the system,
+but you may still browse the existing database."), yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) or myexit(0);
+
 
 sub ctreefy { $_[0] =~ s,/,|,g; $_[0] }
 
@@ -131,14 +134,16 @@ sub extract_header {
 	add2hash($pkg, { files => chomp_(scalar(`rpm -ql $name`)) || N("(none)"),
                          changelog => $chg_prepro->(scalar(`LC_ALL=C rpm -q --changelog $name`)) });
     } else {
-	my ($headersdir, $p, $medium) = ('/root/tmp/headers/', $pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
+	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
 	if (-r $hdlist) {  #- packdrake segfaults when giving a missing file :(
 	    standalone::explanations("Extracting header of " . $p->header_filename . " from $hdlist");
 	    my $packer;
 	    eval { $packer = new packdrake($hdlist, quiet => 1) } or log::l("Warning, hdlist seems corrupted :-("), goto header_non_available;
+            my $headersdir = chomp_(`mktemp -d /tmp/rpmdrake.XXXXXX`);
+            -d $headersdir or die "Could not create temporary directory";
 	    $packer->extract_archive($headersdir, $p->header_filename);
-	    $p->update_header($headersdir . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
+	    $p->update_header("$headersdir/" . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
 	    rm_rf($headersdir);
 	    add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
 	    my $localtime2changelog = sub { scalar(localtime($_[0])) =~ /(.*) \S+ (\d{4})$/ && "$1 $2" };
@@ -767,12 +772,12 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
                                                                         }),
 						   1, my $status = Gtk2::Label->new,
 						   0, gtkpack(Gtk2::HBox->new(1, 20),
-							      gtksignal_connect(Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove")
-												                         : N("Install"))),
-										clicked => sub { $do_action->() }),
+                                                              my $action_button = gtksignal_connect(Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove") : N("Install"))),
+                                                                                                    clicked => sub { $do_action->() }),
 							      gtksignal_connect(Gtk2::Button->new(but_(N("Quit"))),
 										clicked => sub { Gtk2->main_quit })))
 				       ))));
+    $> and $action_button->set_sensitive(0);
     my $pixbuf_icon = gtkcreate_pixbuf("title-$MODE");
     $darea->modify_font(Gtk2::Pango::FontDescription->from_string('Sans Italic 24'));
     my %t = (remove => N("Software Packages Removal"), update => N("Mandrake Update"), install => N("Software Packages Installation"));
@@ -1175,7 +1180,7 @@ if ($options{'merge-all-rpmnew'}) {
 
 readconf();
 
-if (!member($MODE, @$already_splashed)) {
+if (!$> && !member($MODE, @$already_splashed)) {
     interactive_msg('rpmdrake',
 N("%s
 
