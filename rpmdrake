@@ -1305,14 +1305,35 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     ($urpm, \%installable_pkgs, \%update_descr);
 }
 
+# /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
+my %ignores_rpmnew = map { $_ => 1 } qw(
+    /etc/adjtime
+    /etc/group
+    /etc/ld.so.conf
+    /etc/localtime
+    /etc/modules
+    /etc/passwd
+    /etc/security/fileshare.conf
+    /etc/shells
+    /etc/sudoers
+    /etc/sysconfig/alsa
+    /etc/sysconfig/autofsck
+    /etc/sysconfig/harddisks
+    /etc/sysconfig/init
+    /etc/sysconfig/installkernel
+    /etc/sysconfig/msec
+    /etc/sysconfig/nfs
+    /etc/sysconfig/pcmcia
+    /etc/sysconfig/rawdevices
+    /etc/sysconfig/saslauthd
+    /etc/sysconfig/syslog
+    /etc/sysconfig/usb
+    /etc/sysconfig/xinetd
+);
+
 sub dialog_rpmnew {
     my ($msg, %p2r) = @_;
-    # /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
-    my @ignores_rpmnew = qw(/etc/group /etc/passwd /etc/localtime /etc/shells /etc/adjtime /etc/ld.so.conf /etc/modules
-                        /etc/security/fileshare.conf /etc/sudoers /etc/sysconfig/alsa /etc/sysconfig/autofsck /etc/sysconfig/harddisks
-                        /etc/sysconfig/installkernel /etc/sysconfig/msec /etc/sysconfig/nfs /etc/sysconfig/pcmcia /etc/sysconfig/init
-                        /etc/sysconfig/rawdevices /etc/sysconfig/saslauthd /etc/sysconfig/syslog /etc/sysconfig/usb /etc/sysconfig/xinetd);
-    @{$p2r{$_}} = grep { !member($_, @ignores_rpmnew) } @{$p2r{$_}} foreach keys %p2r;
+    @{$p2r{$_}} = grep { !$ignores_rpmnew{$_} } @{$p2r{$_}} foreach keys %p2r;
     my $sum_rpmnew = sum(map { int @{$p2r{$_}} } keys %p2r);
     $sum_rpmnew == 0 and return 1;
     my @inspect_wsize = ($typical_width*2.5, 500);
