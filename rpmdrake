@@ -681,12 +681,14 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 		   0, 1, 0, 1, 'fill', 'fill', 0, 0);
     $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), Gtk2::Label->new, @descr_modes)),
 		   1, 2, 0, 1, 'fill', 'fill', 0, 0);
-    $table->attach(gtkset_size_request(create_scrolled_window($tree), $typical_width*1.25, -1),
+    $table->attach(gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
+			  gtkset_size_request(create_scrolled_window($tree), $typical_width*1.25, -1)),
 		   0, 1, 1, 2, 'fill', 'fill', 0, 0);
-    $table->attach($MODE eq 'update' ? create_vpaned(create_scrolled_window($info),
-									 create_scrolled_window($info_update = Gtk2::TextView->new),
-									 resize1 => 1)
-		                     : create_scrolled_window($info),
+    $table->attach(gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
+			  $MODE eq 'update' ? create_vpaned(create_scrolled_window($info),
+							    create_scrolled_window($info_update = Gtk2::TextView->new),
+							    resize1 => 1)
+			                    : create_scrolled_window($info)),
 		   1, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
     gtkadd($w->{window}, 
 	   gtkpack_(Gtk2::VBox->new(0, 3),
