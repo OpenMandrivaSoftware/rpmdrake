@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 18mdk
+%define release 19mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Apr 24 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-19mdk
+- fix percent completed shown as "speed" in some situations, thx
+  David Walser
+
 * Thu Apr 17 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-18mdk
 - fix problem shown by #3768: correctly handle case when there
   are already update source(s), but they are all disabled

@@ -362,7 +362,7 @@ sub show_urpm_progress {
 	    $label->set_label(N("Download of `%s', time to go:%s, speed:%s", $file, $eta, $speed));
 	} else {
 	    $pb->set_fraction($percent/100);
-	    $label->set_label(N("Download of `%s', speed:%s", $file, $percent, $speed));
+	    $label->set_label(N("Download of `%s', speed:%s", $file, $speed));
 	}
     } elsif ($mode eq 'done') {
 	$pb->set_fraction(1.0);
