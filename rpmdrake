@@ -656,7 +656,7 @@ or you already installed all of them."));
                                        if_($MODE eq 'update',
                                            [ N("Reason for update: "), $tag_tag ],
                                            [ rpm_description($descriptions->{$name}{pre})."\n" ]),
-				       [ N("Description: "),    $tag_tag ], [ "$pkgs->{$key}{description}\n" ],
+				       [ N("Description: "),    $tag_tag ], [ ($pkgs->{$key}{description} || $descriptions->{$name}{description}) . "\n" ],
 				       @max_info ];
 				 },
 		   check_interactive_to_toggle => sub { 1 },
