@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.5
-%define release 5mdk
+%define version 2.6
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
@@ -111,6 +111,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Feb 11 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.6-1mdk
+- Fix utf-8 changelog display in rpmdrake-remove
+- Fix view by group
+
 * Thu Feb 10 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.5-5mdk
 - Fix crash when displaying changelog
 
