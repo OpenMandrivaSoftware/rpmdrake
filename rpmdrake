@@ -394,7 +394,7 @@ sub run_treeview_dialog {
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $::noBorder = 1;
-    $w = ugtk2->new(N("rpmdrake")." 9.2");
+    $w = ugtk2->new(N("rpmdrake")." 10.0");
     $::noBorder = 0;
 
     my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
