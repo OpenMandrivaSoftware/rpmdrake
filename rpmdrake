@@ -1105,13 +1105,13 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         my $progress;
         my @invalid_sources;
         foreach (@rpms_install, @rpms_upgrade) {
-            URPM::verify_rpm($_) =~ /NOT OK/ and push @invalid_sources, $_;
+            URPM::verify_rpm($_) =~ /NOT OK/ and push @invalid_sources, basename($_);
             gurpm::progress(++$progress/$total);
         }
         if (@invalid_sources) {
             interactive_msg_('rpmdrake',
                              N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
-                               join "\n", @invalid_sources), yesno => 1) or goto return_with_error;
+                               join "\n", sort @invalid_sources), yesno => 1, if_(@invalid_sources > 10, scroll => 1)) or goto return_with_error;
         }
     }
 
