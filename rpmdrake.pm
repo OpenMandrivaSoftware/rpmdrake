@@ -38,7 +38,9 @@ use curl_download;
 
 @ISA = qw(Exporter);
 @EXPORT = qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $typical_width
-             N translate myexit readconf writeconf interactive_msg interactive_packtable interactive_list fatal_msg wait_msg remove_wait_msg but but_ slow_func mirrors choose_mirror show_urpm_progress update_sources update_sources_interactive add_medium_and_check);
+             N translate myexit readconf writeconf interactive_msg interactive_packtable interactive_list fatal_msg
+             wait_msg remove_wait_msg but but_ slow_func mirrors choose_mirror make_url_mirror show_urpm_progress
+             update_sources update_sources_interactive add_medium_and_check);
 
 
 eval { require ugtk2; ugtk2->import(qw(:all)) };
@@ -347,6 +349,13 @@ by Mandrake Linux Official Updates.")), return '';
     $tree->get_selection->select_path($path);
 
     $w->main && member($w->{retval}{sel}, map { $_->{url} } @mirrors) and $w->{retval}{sel};
+}
+
+sub make_url_mirror {
+    my ($mirror) = @_;
+    my ($class, $release) = cat_('/etc/mandrake-release') =~ /(\S+)\s+release\s+(\S+)/;
+    $class !~ /linux/i and $release = lc($class) . "/$release";  #- handle subdirectory for corporate/clustering/etc
+    return "$mirror/$release/RPMS/";
 }
 
 sub show_urpm_progress {

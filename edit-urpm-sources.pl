@@ -80,8 +80,7 @@ sub add_callback {
 		     if_($info->{securitysel}, 0, gtksignal_connect(Gtk2::Button->new(but(N("Choose a mirror..."))),
 								    clicked => sub { my $m = choose_mirror();
 										     if ($m) {
-											 my ($r) = cat_('/etc/mandrake-release') =~ /release\s(\S+)/;
-											 $info->{url_entry}->set_text("$m/$r/RPMS/");
+											 $info->{url_entry}->set_text(make_url_mirror($m));
 											 $info->{hdlist_entry}->set_text('../base/hdlist.cz');
                                                                                          $info->{hdlist_entry}->set_sensitive(1);
                                                                                          $info->{hdlist_check}->set_active(1);
