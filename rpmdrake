@@ -125,7 +125,9 @@ sub extract_header {
 sub db { URPM::DB::open or die 'Couldn\'t open RPM DB' }
 
 sub run_treeview_dialog {
-    my ($urpm, $pkgs, $descriptions) = @_;
+    my ($pkgs_provider, $callback_action) = @_;
+
+    my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
 
     my ($size_selected, $compssUsers, $info, $info_update, $tree, $disable_treeselect_callback, %elems, %base);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
@@ -443,7 +445,8 @@ or you already installed all of them."));
 	}
     };
 
-    my $validate = sub {
+    my $do_action = sub {
+	int(grep { $pkgs->{$_}{selected} } keys %$pkgs) or return;
 	if ($MODE ne 'remove' && %{$urpm->{state}{ask_remove} || {}}) {
 	    interactive_msg(_("Some packages need to be removed"),
 _("The following packages have to be removed for others to be upgraded:
@@ -451,9 +454,11 @@ _("The following packages have to be removed for others to be upgraded:
 %s
 
 Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), { yesno => 1 })
-	      or return 0;
+	      or return;
 	}
-	1;
+	$callback_action->($urpm);
+	($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+	$options->{rebuild_tree}->();
     };
 
     my $darea;
@@ -480,10 +485,9 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 						  gtkpack(new Gtk::HBox(1, 20),
 							  gtksignal_connect(new Gtk::Button(but($MODE eq 'remove' ? _("Remove")
 												                  : _("Install"))),
-									    clicked => sub { $validate->()
-											       and $w->{retval} = 1, Gtk->main_quit }),
+									    clicked => sub { $do_action->() }),
 							  gtksignal_connect(new Gtk::Button(but(_("Quit"))),
-									    clicked => sub { $w->{retval} = 0; Gtk->main_quit })))
+									    clicked => sub { Gtk->main_quit })))
 				       ))));
     my ($pixmap_back) = gtkcreate_png('title-backpart');
     $darea->signal_connect(expose_event => sub {
@@ -511,7 +515,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 # -=-=-=---=-=-=---=-=-=-- install packages -=-=-=---=-=-=---=-=-=-
 
 sub get_installable_pkgs {
-    my ($updates) = @_;
+    my ($updates, $opts) = @_;
     my $update_name = 'update_source';
     my %update_descr;
 
@@ -521,16 +525,18 @@ sub get_installable_pkgs {
 	my ($statedir, $cachedir) = map { $urpm->{$_} } qw (statedir cachedir);
 	if (grep { $_->{name} eq $update_name } @{$urpm->{media}}) {
 	    undef $urpm;
-	    $options{noconfirmation} or interactive_msg('rpmdrake',
+	    if (!$opts->{skip_updating_mu}) {
+		$options{noconfirmation} or interactive_msg('rpmdrake',
 _("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
 Is it ok to continue?"), { yesno => 1 }) or myexit -1;
-	    my $w = wait_msg(_("Please wait, contacting mirror to update packages information."));
-	    system("/usr/sbin/urpmi.update $update_name") == 0
-	      or fatal_msg(_("Error updating medium"),
-			   _("There was an unrecoverable error while updating packages information."));
-	    remove_wait_msg($w);
+		my $w = wait_msg(_("Please wait, contacting mirror to update packages information."));
+		system("/usr/sbin/urpmi.update $update_name") == 0
+		  or fatal_msg(_("Error updating medium"),
+			       _("There was an unrecoverable error while updating packages information."));
+		remove_wait_msg($w);
+	    }
 	} else {
 	    undef $urpm;
 	  mu_retry_another_mirror:
@@ -631,23 +637,20 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	}
 	%{$urpm->{state}{ask_remove}} and slow_func(_("Please wait, removing packages to allow others to be upgraded..."),
 						    sub { system('rpm', '-e', '--nodeps', keys %{$urpm->{state}{ask_remove}}) });
-	system('grpmi', (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade);
-	if ($?) {
-	    fatal_msg(_("Installation failed"),
-		      _("There was a problem during installation."));
-	    exit(($? >> 8) + 32); #- forward grpmi error + 32
+	if (my $pid = fork()) {
+	    while (!waitpid($pid, c::WNOHANG())) {
+		select(undef, undef, undef, 0.1);
+		my_gtk::flush;
+	    }
+	} else {
+	    exec('grpmi', (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade);
+	    fatal_msg(_("Program missing"),
+		      _("A required program is missing (grpmi). Check your installation."));
+	    myexit -1;
 	}
     } else {
 	interactive_msg(_("Everything already installed."),
 			_("Everything already installed (is this supposed to happen at all?)."));
-    }
-}
-
-sub rpmdrake_install {
-    while (1) {
-	my ($urpm, $installable) = get_installable_pkgs();
-	run_treeview_dialog($urpm, $installable) or return;
-	perform_installation($urpm);
     }
 }
 
@@ -667,7 +670,7 @@ sub get_installed_pkgs {
 		     $pkg->pack_header;
 		 });
     remove_wait_msg($w);
-    \%installed_pkgs;
+    (new urpm, \%installed_pkgs);
 }
 
 sub perform_removal {
@@ -683,17 +686,6 @@ sub rpmdrake_remove {
 	my $installed = get_installed_pkgs();
 	run_treeview_dialog(new urpm, $installed) or return;
 	perform_removal(new urpm, $installed);
-    }
-}
-
-
-# -=-=-=---=-=-=---=-=-=-- mandrakeupdate -=-=-=---=-=-=---=-=-=-
-
-sub rpmdrake_mandrakeupdate {
-    while (1) {
-	my ($urpm, $installable_updates, $descriptions) = get_installable_pkgs(1);
-	run_treeview_dialog($urpm, $installable_updates, $descriptions) or return;
-	perform_installation($urpm);
     }
 }
 
@@ -728,11 +720,11 @@ you want to install on your computer."))
     }
 
 if ($MODE eq 'remove') {
-    rpmdrake_remove();
+    run_treeview_dialog(sub { get_installed_pkgs }, \&perform_removal);
 } elsif ($MODE eq 'update') {
-    rpmdrake_mandrakeupdate();
+    run_treeview_dialog(sub { get_installable_pkgs(1, @_) }, \&perform_installation);
 } else {
-    rpmdrake_install();
+    run_treeview_dialog(sub { get_installable_pkgs }, \&perform_installation);
 }
 
 writeconf;
