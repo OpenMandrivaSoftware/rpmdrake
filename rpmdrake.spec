@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 13mdk
+%define release 14mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-16mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-24mdk grpmi >= 9.0 rpmtools >= 4.5
 BuildRequires: curl-devel rpm-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -113,6 +113,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Aug 29 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-14mdk
+- meuh, forgot to upload the change in drakxtools necessary for -13mdk
+
 * Wed Aug 28 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-13mdk
 - rpmdrake: right-click on the descriptions of a package to get more
   informations (source name, filelist, changelog when available)
