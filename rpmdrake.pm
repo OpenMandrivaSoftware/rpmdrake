@@ -517,7 +517,7 @@ sub update_sources {
 	%options,
 	callback => sub {
 	    my ($type, $media) = @_;
-	    return if @media && !grep { $_ eq $media } @media;
+	    return if $type !~ /^(?:start|progress|end)$/ && @media && !grep { $_ eq $media } @media;
 	    if ($type eq 'failed') {
 		fatal_msg(N("Error retrieving packages"),
 N("It's impossible to retrieve the list of new packages from the media
