@@ -119,6 +119,10 @@ rm -rf $RPM_BUILD_ROOT
 * Wed Apr 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-17mdk
 - fix drakhelp zombie process (thx titi)
 - More infos -> More info thx David Walser
+- fix /me sux breaking the "sorry this package can't be selected"
+  in -16mdk, when trying to select a package that conflicts with
+  a previously selected
+- add urpmi reasons when "sorry this package can't be selected"
 
 * Tue Apr 15 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-16mdk
 - update for urpmi-4.3 (skipped packages should be better handled

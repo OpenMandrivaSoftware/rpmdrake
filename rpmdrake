@@ -415,8 +415,16 @@ or you already installed all of them."));
 			       slow_func($tree->window,
 					 sub { $urpm->resolve_requested(db(), $urpm->{state}, { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
 							   callback_choices => $callback_choices, no_flag_update => 1, keep_state => 1) });
+                               my @conflict;
 			       my $pkg_sel_after_selection = sub {
-				   @nodes_with_deps = map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{selected}};
+                                   if (%{$urpm->{state}{ask_unselect} || {}}) {
+                                       foreach my $p (keys %{$urpm->{state}{ask_unselect}}) {
+                                           push @conflict, [ my_fullname($urpm->{depslist}[$p]),
+                                                             [ map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{ask_unselect}{$p}} ] ];
+                                       }
+                                       delete @{$urpm->{state}{selected}}{keys %{delete $urpm->{state}{ask_unselect}}};
+                                   }
+ 				   @nodes_with_deps = map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{selected}};
 			       };
 			       $pkg_sel_after_selection->();
 			       if (!$deps_msg->(N("Additional packages needed"), 
@@ -434,7 +442,9 @@ or you already installed all of them."));
 			       $pkg_sel_after_selection->();
 			       if (my @cant = difference2(\@nodes, \@nodes_with_deps)) {
 				   interactive_msg_(N("Some packages can't be installed"),
-						    N("Sorry, the following package(s) can't be selected:\n\n") . $formatlistpkg->(@cant));
+						    N("Sorry, the following package(s) can't be selected:\n\n%s\n\nReasons follow:\n\n%s",
+                                                      $formatlistpkg->(@cant),
+                                                      join '', map { N("%s conflicts with %s", $_->[0], join(', ', @{$_->[1]})) } @conflict));
 				   foreach (@cant) {
 				       $pkgs->{$_}{pkg}->set_flag_requested(0);
 				       $pkgs->{$_}{pkg}->set_flag_required(0);
