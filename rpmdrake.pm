@@ -87,7 +87,7 @@ sub interactive_list {
     my $vbradios = $callback ? create_packtable({},
 						mapn { my $n = $_[1];
 						       [ $_[0],
-							 gtksignal_connect(new Gtk::Button(_("Info...")),
+							 gtksignal_connect(new Gtk::Button(but(_("Info..."))),
 									   clicked => sub { $callback->($n) }) ]
 						   } \@radios, $list)
                              : gtkpack__(new Gtk::VBox(0, 0), @radios);
