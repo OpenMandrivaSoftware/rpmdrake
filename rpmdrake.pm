@@ -40,7 +40,8 @@ sub _ {
     my $s = shift @_; my $t = translate($s);
     sprintf $t, @_;
 }
-
+sub myexit { my_gtk::exit @_ }
+  
 $ENV{HOME} ||= '/root';
 
 sub readconf {
@@ -90,7 +91,7 @@ sub interactive_list {
 
 sub fatal_msg {
     interactive_msg @_;
-    exit -1;
+    myexit -1;
 }
 
 sub wait_msg {

@@ -244,7 +244,7 @@ _("Welcome to the packages source editor!
 
 This tool will help you configure the packages sources you wish to use on
 your computer. They will then be available to install new software package
-or to perform updates.")), 1) or exit -1;
+or to perform updates.")), 1) or myexit -1;
     push @$already_splashed, basename($0);
 }
 
@@ -253,3 +253,5 @@ if (mainwindow()) {
 }
 
 writeconf;
+
+myexit 0;

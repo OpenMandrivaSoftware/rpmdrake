@@ -479,7 +479,7 @@ sub get_installable_pkgs {
 _("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
-Is it ok to continue?"), 1) or exit -1;
+Is it ok to continue?"), 1) or myexit -1;
 	    my $w = wait_msg(_("Please wait, contacting mirror to update packages information."));
 	    system("/usr/sbin/urpmi.update $update_name") == 0
 	      or fatal_msg(_("Error updating medium"),
@@ -489,7 +489,7 @@ Is it ok to continue?"), 1) or exit -1;
 	    undef $urpm;
 	  mu_retry_another_mirror:
 	    my $m = choose_mirror;
-	    $m or exit -1;
+	    $m or myexit -1;
 	    my ($r) = cat_('/etc/mandrake-release') =~ /release\s(\S+)/;
 	    my $w = wait_msg(_("Please wait, contacting mirror to initialize updates packages."));
 	    my $retval = system("/usr/sbin/urpmi.addmedia --update $update_name $m/$r/RPMS/ with ../base/hdlist.cz");
@@ -503,7 +503,7 @@ Mandrake Linux version (%s) is not yet / no more supported by Mandrake Linux
 Official Updates.
 
 Do you want to try another mirror?", $r), 1) and goto mu_retry_another_mirror;
-		exit -1;
+		myexit -1;
 	    }
 	}
 
@@ -581,7 +581,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    m|^/| && ! -e $_ or next;
 	    fatal_msg(_("Installation failed"),
 		      _("Installation failed, some files are missing.\nYou may want to update your sources database."));
-	    exit -1;
+	    myexit -1;
 	}
 	%{$urpm->{state}{ask_remove}} and slow_func(_("Please wait, removing packages to allow others to be upgraded..."),
 						    sub { system('rpm', '-e', '--nodeps', keys %{$urpm->{state}{ask_remove}}) });
@@ -672,7 +672,7 @@ computer.")
 Your Mandrake Linux system comes with several thousands of software
 packages on CDROM or DVD. This tool will help you choose which software
 you want to install on your computer."))
-  , 1) or exit -1;
+  , 1) or myexit -1;
 	push @$already_splashed, $MODE;
     }
 
@@ -685,3 +685,5 @@ if ($MODE eq 'remove') {
 }
 
 writeconf;
+
+myexit 0;
