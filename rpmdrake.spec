@@ -24,6 +24,8 @@ Requires: rpmtools >= 5.0.5
 Requires: packdrake >= 5.0.5
 Requires: perl-Gtk2 >= 1.054-1mdk
 Requires: perl-Locale-gettext >= 1.01-7mdk
+# for now, packdrake (5.0.9) works better with this
+Requires: perl-Compress-Zlib >= 1.33
 BuildRequires: curl-devel >= 7.12.1-1mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
