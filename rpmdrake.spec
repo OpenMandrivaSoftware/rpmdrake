@@ -118,6 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Wed Apr 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-17mdk
 - fix drakhelp zombie process (thx titi)
+- More infos -> More info thx David Walser
 
 * Tue Apr 15 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-16mdk
 - update for urpmi-4.3 (skipped packages should be better handled
