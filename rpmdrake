@@ -127,9 +127,13 @@ sub end {
 sub validate_cancel {
     my ($cancel_msg, $cancel_cb) = @_;
     if (!$cancel) {
-        gtkpack__($vbox,
-                  $hbox_cancel = gtkpack__(create_hbox(),
-                                           $cancel = gtksignal_connect(Gtk2::Button->new($cancel_msg), clicked => \&$cancel_cb)));
+        gtkpack__(
+	    $vbox,
+	    $hbox_cancel = gtkpack__(
+		create_hbox(),
+		$cancel = gtksignal_connect(Gtk2::Button->new($cancel_msg), clicked => \&$cancel_cb),
+	    ),
+	);
     }
     $cancel->set_sensitive(1);
     $cancel->show;
@@ -439,12 +443,21 @@ sub do_search($$$$$$$) {
 	    );
 	    my $searchstop;
 	    my $searchw = ugtk2->new(N("Rpmdrake"), grab => 1, transient => $w->{rwindow});
-	    gtkadd($searchw->{window}, gtkpack__(Gtk2::VBox->new(0, 5),
-						 Gtk2::Label->new(N("Please wait, searching...")),
-						 my $searchprogress = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1),
-						 gtkpack__(gtkset_layout(Gtk2::HButtonBox->new, 'spread'),
-							   gtksignal_connect(Gtk2::Button->new(but(N("Stop"))),
-									     clicked => sub { $searchstop = 1 }))));
+	    gtkadd(
+		$searchw->{window},
+		gtkpack__(
+		    Gtk2::VBox->new(0, 5),
+		    Gtk2::Label->new(N("Please wait, searching...")),
+		    my $searchprogress = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1),
+		    gtkpack__(
+			gtkset_layout(Gtk2::HButtonBox->new, 'spread'),
+			gtksignal_connect(
+			    Gtk2::Button->new(but(N("Stop"))),
+			    clicked => sub { $searchstop = 1 },
+			),
+		    ),
+		),
+	    );
 	    $searchw->sync;
 	    open my $sf, 'parsehdlist --fileswinfo --description --summary ' . join(' ', map { "'$_'" } @hdlists) . ' |';
 	    my ($pkg, $progresscount);
@@ -1167,6 +1180,10 @@ Is it ok to continue?",
 			    clicked => sub { $do_action->() },
 			),
 			1, $status,
+			0, gtksignal_connect(
+			    Gtk2::Button->new(but_(N("Quit"))),
+			    clicked => sub { Gtk2->main_quit },
+			),
 		    ),
 		),
 	    ),
