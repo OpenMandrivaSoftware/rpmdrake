@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-fi - MDK Release 9.1\n"
-"POT-Creation-Date: 2003-03-05 20:46+0100\n"
+"POT-Creation-Date: 2003-04-16 16:58+0200\n"
 "PO-Revision-Date: 2003-03-01 20:37+0200\n"
 "Last-Translator: Thomas Backlund <tmb@iki.fi>\n"
 "Language-Team: Finnish <cooker-i18n@linux-mandrake.com>\n"
@@ -541,6 +541,11 @@ msgstr "Kuvaus: "
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Reason for update: "
+msgstr "Syy päivitykseen: "
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Summary: "
 msgstr "Yhteenveto: "
 
@@ -568,11 +573,6 @@ msgstr "Versio: "
 #, c-format
 msgid "Name: "
 msgstr "Nimi: "
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Reason for update: "
-msgstr "Syy päivitykseen: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -621,13 +621,23 @@ msgstr ""
 "\n"
 
 #: ../rpmdrake:1
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
+"%s\n"
+"\n"
+"Reasons follow:\n"
+"\n"
+"%s"
 msgstr ""
 "Valitan, seuraavat paketit ei voida valita\n"
 "\n"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "%s conflicts with %s"
+msgstr " konflikti paketin %s-%s-%s kanssa"
 
 #: ../rpmdrake:1
 #, c-format
@@ -691,8 +701,8 @@ msgstr "Lisätietoa paketista."
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
-#, c-format
-msgid "More infos"
+#, fuzzy, c-format
+msgid "More info"
 msgstr "Lisää tietoa"
 
 #: ../rpmdrake:1
@@ -1323,9 +1333,6 @@ msgstr "Ohjelmisto Lähteiden Hallinta"
 
 #~ msgid " is needed by %s-%s-%s"
 #~ msgstr " tarvitaan paketille %s-%s-%s"
-
-#~ msgid " conflicts with %s-%s-%s"
-#~ msgstr " konflikti paketin %s-%s-%s kanssa"
 
 #~ msgid "Unsupported protocol\n"
 #~ msgstr "Protokollaa ei tueta\n"

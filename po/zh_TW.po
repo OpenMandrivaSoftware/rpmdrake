@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-03-05 20:46+0100\n"
+"POT-Creation-Date: 2003-04-16 16:58+0200\n"
 "PO-Revision-Date: 2002-09-13 05:50-+800\n"
 "Last-Translator: Kenduest Lee <kenduest@i18n.linux.org.tw>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -521,6 +521,11 @@ msgstr "描述： "
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Reason for update: "
+msgstr "更新的原因： "
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Summary: "
 msgstr "簡介： "
 
@@ -548,11 +553,6 @@ msgstr "版本： "
 #, c-format
 msgid "Name: "
 msgstr "名稱： "
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Reason for update: "
-msgstr "更新的原因： "
 
 #: ../rpmdrake:1
 #, c-format
@@ -600,13 +600,23 @@ msgstr ""
 "\n"
 
 #: ../rpmdrake:1
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
+"%s\n"
+"\n"
+"Reasons follow:\n"
+"\n"
+"%s"
 msgstr ""
 "抱歉，下面的套件項目將不能夠被選取：\n"
 "\n"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "%s conflicts with %s"
+msgstr " 與 %s-%s-%s 沖突"
 
 #: ../rpmdrake:1
 #, c-format
@@ -668,7 +678,7 @@ msgstr "更多該套件資訊..."
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
 #, c-format
-msgid "More infos"
+msgid "More info"
 msgstr ""
 
 #: ../rpmdrake:1
@@ -1371,9 +1381,6 @@ msgstr "套件來源管理員"
 
 #~ msgid " is needed by %s-%s-%s"
 #~ msgstr " 是 %s-%s-%s 需要的"
-
-#~ msgid " conflicts with %s-%s-%s"
-#~ msgstr " 與 %s-%s-%s 沖突"
 
 #~ msgid "Unsupported protocol\n"
 #~ msgstr "不支援的通訊協定\n"

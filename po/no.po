@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-03-05 20:46+0100\n"
+"POT-Creation-Date: 2003-04-16 16:58+0200\n"
 "PO-Revision-Date: 2003-03-02 21:48+0100\n"
 "Last-Translator: Per Øyvind Karlsen <peroyvind@sintrax.net>\n"
 "Language-Team: Norsk Bokmål <cooker-i18n@linux-mandrake.com>\n"
@@ -539,6 +539,11 @@ msgstr "Beskrivelse: "
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Reason for update: "
+msgstr "Grunn til oppdatering: "
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Summary: "
 msgstr "Oppsummering: "
 
@@ -566,11 +571,6 @@ msgstr "Versjon: "
 #, c-format
 msgid "Name: "
 msgstr "Navn: "
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Reason for update: "
-msgstr "Grunn til oppdatering: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -619,13 +619,23 @@ msgstr ""
 "\n"
 
 #: ../rpmdrake:1
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
+"%s\n"
+"\n"
+"Reasons follow:\n"
+"\n"
+"%s"
 msgstr ""
 "Beklager, følgende pakke(r) kan ikke velges:\n"
 "\n"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "%s conflicts with %s"
+msgstr "er i konflikt med %s-%s-%s"
 
 #: ../rpmdrake:1
 #, c-format
@@ -690,8 +700,8 @@ msgstr "Informasjon om pakker"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
-#, c-format
-msgid "More infos"
+#, fuzzy, c-format
+msgid "More info"
 msgstr "Mere info"
 
 #: ../rpmdrake:1
@@ -1368,9 +1378,6 @@ msgstr "Programvare kilde håndterer"
 
 #~ msgid " is needed by %s-%s-%s"
 #~ msgstr "behøves av %s-%s-%s"
-
-#~ msgid " conflicts with %s-%s-%s"
-#~ msgstr "er i konflikt med %s-%s-%s"
 
 #~ msgid "Unsupported protocol\n"
 #~ msgstr "Ikke støttet protokoll\n"

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-bg\n"
-"POT-Creation-Date: 2003-03-05 20:46+0100\n"
+"POT-Creation-Date: 2003-04-16 16:58+0200\n"
 "PO-Revision-Date: 2003-02-14 09:21+0200\n"
 "Last-Translator: Borislav Aleksandrov <B.Aleksandrov@cnsys.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -510,6 +510,11 @@ msgstr "Описание: "
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Reason for update: "
+msgstr "Причина за обновяване: "
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Summary: "
 msgstr "Резюме: "
 
@@ -537,11 +542,6 @@ msgstr "Версия: "
 #, c-format
 msgid "Name: "
 msgstr "Име: "
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Reason for update: "
-msgstr "Причина за обновяване: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -590,13 +590,23 @@ msgstr ""
 "\n"
 
 #: ../rpmdrake:1
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
+"%s\n"
+"\n"
+"Reasons follow:\n"
+"\n"
+"%s"
 msgstr ""
 "Съжалявам, следните пакети не могат да бъдат избрани:\n"
 "\n"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "%s conflicts with %s"
+msgstr " влиза в конфликт с %s-%s-%s"
 
 #: ../rpmdrake:1
 #, c-format
@@ -661,8 +671,8 @@ msgstr "Информация на пакети"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
-#, c-format
-msgid "More infos"
+#, fuzzy, c-format
+msgid "More info"
 msgstr "Повече информация"
 
 #: ../rpmdrake:1
@@ -1279,9 +1289,6 @@ msgstr "Мениджър за софтуерни източници"
 
 #~ msgid " is needed by %s-%s-%s"
 #~ msgstr " е необходим на %s-%s-%s"
-
-#~ msgid " conflicts with %s-%s-%s"
-#~ msgstr " влиза в конфликт с %s-%s-%s"
 
 #~ msgid "Unsupported protocol\n"
 #~ msgstr "Неподдържан протокол\n"

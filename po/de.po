@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: RpmDrake\n"
-"POT-Creation-Date: 2003-03-05 20:46+0100\n"
+"POT-Creation-Date: 2003-04-16 16:58+0200\n"
 "PO-Revision-Date: 2003-02-09 17:17+0100\n"
 "Last-Translator: Stefan Siegel <siegel@linux-mandrake.com>\n"
 "Language-Team: German <cooker-i18n@linux-mandrake.com>\n"
@@ -536,6 +536,11 @@ msgstr "Beschreibung: "
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Reason for update: "
+msgstr "Aktualisierungsgründe:"
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Summary: "
 msgstr "Zusammenfassung: "
 
@@ -563,11 +568,6 @@ msgstr "Version:"
 #, c-format
 msgid "Name: "
 msgstr "Name: "
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Reason for update: "
-msgstr "Aktualisierungsgründe:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -615,13 +615,23 @@ msgstr ""
 "Pakete zurüchgesetzt werden:\n"
 
 #: ../rpmdrake:1
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
+"%s\n"
+"\n"
+"Reasons follow:\n"
+"\n"
+"%s"
 msgstr ""
 "Die folgenden Pakete können nicht ausgewählt werden:\n"
 "\n"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "%s conflicts with %s"
+msgstr " wirft Konflikte mit %s-%s-%s auf."
 
 #: ../rpmdrake:1
 #, c-format
@@ -686,8 +696,8 @@ msgstr "Paketinformationen"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
-#, c-format
-msgid "More infos"
+#, fuzzy, c-format
+msgid "More info"
 msgstr "Weitere Infos"
 
 #: ../rpmdrake:1
@@ -1353,9 +1363,6 @@ msgstr "Paketquellen verwalten"
 
 #~ msgid " is needed by %s-%s-%s"
 #~ msgstr " wird benötigt von %s-%s-%s"
-
-#~ msgid " conflicts with %s-%s-%s"
-#~ msgstr " wirft Konflikte mit %s-%s-%s auf."
 
 #~ msgid "Unsupported protocol\n"
 #~ msgstr "Protokoll wird nicht unterstützt\n"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-03-05 20:46+0100\n"
+"POT-Creation-Date: 2003-04-16 16:58+0200\n"
 "PO-Revision-Date: 2001-11-28 17:26GMT+3\n"
 "Last-Translator: Mohammed Gamal <f2c2001@yahoo.com>\n"
 "Language-Team: Arabic\n"
@@ -537,6 +537,11 @@ msgstr "وصف:"
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Reason for update: "
+msgstr "سبب التحديث:"
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Summary: "
 msgstr "نبذة: "
 
@@ -564,11 +569,6 @@ msgstr "الإصدار: "
 #, c-format
 msgid "Name: "
 msgstr "الإسم: "
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Reason for update: "
-msgstr "سبب التحديث:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -617,13 +617,23 @@ msgstr ""
 "\n"
 
 #: ../rpmdrake:1
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
+"%s\n"
+"\n"
+"Reasons follow:\n"
+"\n"
+"%s"
 msgstr ""
 "عفواً, لا يمكن اختيار الحزمة/الحزم التالية:\n"
 "\n"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "%s conflicts with %s"
+msgstr " يتعارض مع %s-%s-%s"
 
 #: ../rpmdrake:1
 #, c-format
@@ -688,8 +698,8 @@ msgstr "معلومات حول الحزم"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
-#, c-format
-msgid "More infos"
+#, fuzzy, c-format
+msgid "More info"
 msgstr "مزيد من المعلومات"
 
 #: ../rpmdrake:1
@@ -1372,9 +1382,6 @@ msgstr "مدير مصادر البرمجيات"
 
 #~ msgid " is needed by %s-%s-%s"
 #~ msgstr " يُحتاج اليه من قِبل %s-%s-%s"
-
-#~ msgid " conflicts with %s-%s-%s"
-#~ msgstr " يتعارض مع %s-%s-%s"
 
 #~ msgid "Unsupported protocol\n"
 #~ msgstr "بروتوكول غير مدعوم\n"

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sl\n"
-"POT-Creation-Date: 2003-03-05 20:46+0100\n"
+"POT-Creation-Date: 2003-04-16 16:58+0200\n"
 "PO-Revision-Date: 2003-03-08 14:29+0100\n"
 "Last-Translator: Gregor Pirnaver <gregor.pirnaver@email.si>\n"
 "Language-Team: Sloven¹èina <lugos-slo@lugos.si>\n"
@@ -545,6 +545,11 @@ msgstr "Opis:"
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Reason for update: "
+msgstr "Razlog za nadgradnjo: "
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Summary: "
 msgstr "Povzetek:"
 
@@ -572,11 +577,6 @@ msgstr "Razlièica: "
 #, c-format
 msgid "Name: "
 msgstr "Ime: "
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Reason for update: "
-msgstr "Razlog za nadgradnjo: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -625,13 +625,23 @@ msgstr ""
 "\n"
 
 #: ../rpmdrake:1
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
+"%s\n"
+"\n"
+"Reasons follow:\n"
+"\n"
+"%s"
 msgstr ""
 "Oprostite, nalsednjih paketov ni mogoèe izbrati:\n"
 "\n"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "%s conflicts with %s"
+msgstr " je v sporu z %s-%s-%s"
 
 #: ../rpmdrake:1
 #, c-format
@@ -696,8 +706,8 @@ msgstr "Informacije o paketih"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
-#, c-format
-msgid "More infos"
+#, fuzzy, c-format
+msgid "More info"
 msgstr "Veè informacij"
 
 #: ../rpmdrake:1
@@ -1322,9 +1332,6 @@ msgstr "Upravnik virov programske opreme"
 
 #~ msgid " is needed by %s-%s-%s"
 #~ msgstr " je potreben za namestitev %s-%s-%s"
-
-#~ msgid " conflicts with %s-%s-%s"
-#~ msgstr " je v sporu z %s-%s-%s"
 
 #~ msgid "Unsupported protocol\n"
 #~ msgstr "Nepodprt protokol\n"
