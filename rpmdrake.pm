@@ -118,10 +118,12 @@ sub interactive_msg {
 				   my $label = $_;
 				   gtksignal_connect(Gtk2::Button->new($label), clicked => sub { $d->{retval} = $label; Gtk2->main_quit })
 			       } @{$options{yesno}}
-			       : $options{yesno} ? (gtksignal_connect(Gtk2::Button->new($options{text}{yes} || N("Yes")),
-								      clicked => sub { $d->{retval} = 1; Gtk2->main_quit }),
-						    gtksignal_connect(Gtk2::Button->new($options{text}{no} || N("No")),
-								      clicked => sub { $d->{retval} = 0; Gtk2->main_quit }))
+			       : $options{yesno} ? (
+                                           gtksignal_connect(Gtk2::Button->new($options{text}{no} || N("No")),
+                                                             clicked => sub { $d->{retval} = 0; Gtk2->main_quit }),
+                                           gtksignal_connect(Gtk2::Button->new($options{text}{yes} || N("Yes")),
+                                                             clicked => sub { $d->{retval} = 1; Gtk2->main_quit }),
+                                          )
 			       : gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit })
 			      )));
     $d->main;
@@ -358,7 +360,7 @@ by Mandrake Linux Official Updates.")), return '';
 						     $model and $w->{retval} = { sel => $model->get($iter, 0) };
 						 }
 						 Gtk2->main_quit })
-			       } ([ N("Ok"), 1 ], [ N("Cancel"), 0 ])),
+			       } ([ N("Cancel"), 0 ], [ N("Ok"), 1 ]  )),
 		   ));
     my %roots;
     $tree_model->append_set($roots{$_->{land}} ||= $tree_model->append_set(undef, [ 0 => $_->{land} ]),
@@ -463,12 +465,13 @@ sub update_sources_interactive {
 		     (@buttons = map { Gtk2::CheckButton->new($_->{name}) } @{$urpm->{media}}),
 		     Gtk2::HSeparator->new,
 		     gtkpack(create_hbox(),
+			     gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }),
 			     gtksignal_connect(Gtk2::Button->new(N("Update")), clicked => sub {
 						   $w->{retval} = any { $_->get_active } @buttons;
 						   @media = map_index { if_($_->get_active, $urpm->{media}[$::i]{name}) } @buttons;
 						   Gtk2->main_quit;
 					       }),
-			     gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
+                      )));
     if ($w->main) {
 	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
 	    $_->{modified} and delete $_->{ignore};

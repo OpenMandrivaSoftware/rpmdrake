@@ -88,7 +88,7 @@ sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient
 $> and (interactive_msg_(N("Running in user mode"),
 N("You are launching this program as a normal user.
 You will not be able to perform modifications on the system,
-but you may still browse the existing database."), yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) or myexit(0));
+but you may still browse the existing database."), yesno => 1, text => { no => N("Cancel"), yes => N("Ok") }) or myexit(0));
 
 
 #- /usr/share/rpmlint/TagsCheck.py (duplicates are normal, so that we are not too far away from .py)
@@ -511,7 +511,7 @@ or you already installed all of them."));
 			   @deps > 0 or return 1;
 			 deps_msg_again:
 			   my $results = interactive_msg_($title, $msg . $formatlistpkg->(@deps),
-							  yesno => [ N("Ok"), N("More info"), N("Cancel") ]);
+							  yesno => [ N("Cancel"), N("More info"), N("Ok") ]);
 			   if ($results eq 
 			                   #-PO: Keep it short, this is gonna be on a button
 			                   N("More info")) {
@@ -1164,7 +1164,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                   ask_for_medium => sub {
                                                       interactive_msg_(N("Change medium"),
                                                                        N("Please insert the medium named \"%s\" on device [%s]", @_),
-                                                                       yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) },
+                                                                       yesno => 1, text => { no => N("Cancel"), yes => N("Ok"),  }) },
                                                   callback => sub {
                                                       my ($mode, $file, $percent) = @_;
                                                       if ($mode eq 'start') {
