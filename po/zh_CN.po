@@ -3,13 +3,14 @@
 # Danny Zeng <danny@zeng.com.cn>
 # Jesse Kuang <kjx@mandrakesoft.com>
 # Shiyu Tang <ShiyuTang@netscape.net>
+# Funda Wang <fundawang@en2china.com>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "POT-Creation-Date: 2002-12-05 19:52+0100\n"
-"PO-Revision-Date: 2003-02-10 19:49+0800\n"
-"Last-Translator: Shiyu Tang <shiyutang@netscape.net>\n"
+"PO-Revision-Date: 2003-02-23 05:21+0800\n"
+"Last-Translator: Funda Wang <fundawang@en2china.com>\n"
 "Language-Team: Mandrake Simplified Chinese <mandrake@en2china.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=gb2312\n"
@@ -22,6 +23,9 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+"%s\n"
+"\n"
+"确定继续吗?"
 
 #: ../rpmdrake:1
 #, c-format
@@ -32,10 +36,10 @@ msgid ""
 "packages on CDROM or DVD. This tool will help you choose which software\n"
 "you want to install on your computer."
 msgstr ""
-"欢迎使用软件包安装工具！\n"
+"欢迎使用软件包安装工具!\n"
 "\n"
 "您的 Mandrake Linux 的安装光盘包含有数千个软件包。\n"
-"这个工具帮助您选择要为您的电脑安装的软件包。"
+"本工具将帮助您选择要为您的电脑安装的软件包。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -45,10 +49,9 @@ msgid ""
 "This tool will help you choose the updates you want to install on your\n"
 "computer."
 msgstr ""
-"欢迎使用 MandrakeUpdate 自动更新工具！\n"
+"欢迎使用 MandrakeUpdate 自动更新工具!\n"
 "\n"
-"这个工具帮助您为您的电脑中安装\n"
-"更新的软件包。"
+"本工具将帮助您为您的电脑中安装更新的软件包。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -58,10 +61,9 @@ msgid ""
 "This tool will help you choose which software you want to remove from\n"
 "your computer."
 msgstr ""
-"欢迎使用软件包删除工具！\n"
+"欢迎使用软件包删除工具!\n"
 "\n"
-"这个工具帮助您选择想要从您的电脑中删除\n"
-"的软件包。"
+"本工具将帮助您选择想要从您的电脑中删除的软件包。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -70,7 +72,7 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"删除包过程中发生一个问题：\n"
+"删除包过程中发生一个问题:\n"
 "\n"
 "%s"
 
@@ -96,7 +98,7 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"安装过程中有一个问题：\n"
+"安装过程中发生了问题:\n"
 "\n"
 "%s"
 
@@ -108,7 +110,7 @@ msgstr "在安装过程中发生问题"
 #: ../rpmdrake:1
 #, c-format
 msgid "Everything already installed (is this supposed to happen at all?)."
-msgstr "所有软件包已经安装了（这是您希望的吗？）。"
+msgstr "所有软件包已经安装了(这是您希望的吗?)。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -136,7 +138,7 @@ msgstr ""
 "安装完成；%s。\n"
 "\n"
 "一些配置文件被保存为“.rpmnew”或“.rpmsave”，\n"
-"在执行动作以前，您需要检查一下："
+"在执行操作以前，您需要检查一下:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -148,9 +150,7 @@ msgstr "所有软件包都已正确安装"
 msgid ""
 "some packages failed to install\n"
 "correctly"
-msgstr ""
-"有些软件包出现安装\n"
-"失败"
+msgstr "有些软件包无法正确安装"
 
 #: ../rpmdrake:1
 #, c-format
@@ -204,7 +204,7 @@ msgstr "源软件包未找到。"
 #: ../rpmdrake:1
 #, c-format
 msgid "A required program is missing (grpmi). Check your installation."
-msgstr "缺少一个需要的程序（grpmi）。请检查您的安装。"
+msgstr "缺少一个需要的程序(grpmi)。请检查您的安装。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -239,7 +239,7 @@ msgstr "删除 .%s"
 #: ../rpmdrake:1
 #, c-format
 msgid "changes:"
-msgstr "更改："
+msgstr "更改:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -263,6 +263,12 @@ msgid ""
 "\n"
 "Do you want to try another mirror?"
 msgstr ""
+"通过 urpmi 添加更新介质时发生错误。\n"
+"\n"
+"这可能是由于介质已损坏或者临时不可用，不然就是您的 Mandrake Linux 版本\n"
+"(%s)不为 Mandrake Linux 官方升级所支持。\n"
+"\n"
+"您是否想要尝试另外的镜像?"
 
 #: ../rpmdrake:1
 #, c-format
@@ -283,11 +289,15 @@ msgid ""
 "\n"
 "Then, restart MandrakeUpdate."
 msgstr ""
+"您还可以手动选择您希望使用的镜像: 方法是，使用软件源管理器，\n"
+"然后添加“安全更新”源。\n"
+"\n"
+"然后重新启动 MandrakeUpdate。"
 
 #: ../rpmdrake:1
 #, c-format
 msgid "How to choose manually your mirror"
-msgstr "如何手工挑选您的镜像"
+msgstr "如何手工选择您的镜像"
 
 #: ../rpmdrake:1
 #, c-format
@@ -312,6 +322,10 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+"我需要连接镜像才能获得最新的更新软件包。\n"
+"请检查您的网络是否运转正常。\n"
+"\n"
+"确定继续吗?"
 
 #: ../rpmdrake:1
 #, c-format
@@ -351,7 +365,7 @@ msgstr "搜索"
 #: ../rpmdrake:1
 #, c-format
 msgid "Find:"
-msgstr "查找："
+msgstr "查找:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -362,6 +376,11 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+"要升级其它软件包，必须删除下列软件包:\n"
+"\n"
+"%s\n"
+"\n"
+"确定继续吗?"
 
 #: ../rpmdrake:1
 #, c-format
@@ -369,7 +388,7 @@ msgid "Some packages need to be removed"
 msgstr "需要删除一些软件包"
 
 #: ../rpmdrake:1
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -378,6 +397,8 @@ msgid ""
 "\n"
 "Do you really want to install all the selected packages?"
 msgstr ""
+"警告: 您试图添加的软件包太多，有可能在安装的过程中导致剩余磁\n"
+"盘空间告罄；这是很危险的，您应当小心操作。\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -482,17 +503,17 @@ msgstr "安全更新"
 #: ../rpmdrake:1
 #, c-format
 msgid "Description: "
-msgstr "描述："
+msgstr "描述: "
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Summary: "
-msgstr "摘要："
+msgstr "摘要: "
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Importance: "
-msgstr "重要性："
+msgstr "重要性: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -502,57 +523,57 @@ msgstr "%s KB"
 #: ../rpmdrake:1
 #, c-format
 msgid "Size: "
-msgstr "大小："
+msgstr "大小: "
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Version: "
-msgstr "版本："
+msgstr "版本: "
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Name: "
-msgstr "名称："
+msgstr "名称: "
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Reason for update: "
-msgstr "更新原因："
+msgstr "更新原因: "
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Currently installed version: "
-msgstr "当前安装的版本："
+msgstr "当前安装的版本: "
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Source: "
-msgstr "来源："
+msgstr "来源: "
 
 #: ../rpmdrake:1
 #, c-format
 msgid "(Not available)"
-msgstr "（不可用）"
+msgstr "(不可用)"
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Changelog:\n"
-msgstr "更新日志：\n"
+msgstr "更新日志:\n"
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Files:\n"
-msgstr "文件：\n"
+msgstr "文件:\n"
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Selected size: %d MB"
-msgstr "选中大小：%d MB"
+msgstr "选中大小: %d MB"
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
-msgstr "选中软件：%d MB / 剩余磁盘空间：%d MB"
+msgstr "选中软件: %d MB / 剩余磁盘空间: %d MB"
 
 #: ../rpmdrake:1
 #, c-format
@@ -561,8 +582,7 @@ msgid ""
 "unselected now:\n"
 "\n"
 msgstr ""
-"由于软件包之间的依赖关系，您不可以选择\n"
-"下列软件包：\n"
+"由于软件包之间的依赖关系，您不可以选择下列软件包:\n"
 "\n"
 
 #: ../rpmdrake:1
@@ -571,7 +591,7 @@ msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
 msgstr ""
-"对不起，不能选择下列软件包：\n"
+"对不起，不能选择下列软件包:\n"
 "\n"
 
 #: ../rpmdrake:1
@@ -586,8 +606,7 @@ msgid ""
 "to be installed:\n"
 "\n"
 msgstr ""
-"为满足依赖关系，还需要安装\n"
-"下列软件包：\n"
+"为满足依赖关系，还需要安装下列软件包:\n"
 "\n"
 
 #: ../rpmdrake:1
@@ -606,7 +625,7 @@ msgid ""
 "Removing these packages would break your system, sorry:\n"
 "\n"
 msgstr ""
-"对不起，删除这些软件包将可能毁坏您的系统：\n"
+"对不起，删除这些软件包将可能毁坏您的系统:\n"
 "\n"
 
 #: ../rpmdrake:1
@@ -616,8 +635,7 @@ msgid ""
 "removed:\n"
 "\n"
 msgstr ""
-"为了满足所有的依赖关系，\n"
-"需要删除下列软件包：\n"
+"为了满足所有的依赖关系，需要删除下列软件包:\n"
 "\n"
 
 #: ../rpmdrake:1
@@ -658,6 +676,8 @@ msgid ""
 "no available update for the packages installed on your computer,\n"
 "or you already installed all of them."
 msgstr ""
+"更新列表为空。这意味着可能您所安装的软件包没有相应的更新，\n"
+"或者您已经安装了全部更新。"
 
 #: ../rpmdrake:1
 #, c-format
@@ -667,7 +687,7 @@ msgstr "没有更新"
 #: ../rpmdrake:1
 #, c-format
 msgid "(none)"
-msgstr "（无）"
+msgstr "(无)"
 
 #: ../rpmdrake:1
 #, c-format
@@ -682,7 +702,7 @@ msgstr "未知软件包"
 #: ../rpmdrake:1
 #, c-format
 msgid "One of the following packages is needed:"
-msgstr "需要下列软件之一："
+msgstr "需要下列软件之一:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -722,7 +742,7 @@ msgstr "正在搜索，请稍候..."
 #: ../rpmdrake:1
 #, c-format
 msgid "Search results (none)"
-msgstr "搜索结果（无）"
+msgstr "搜索结果(无)"
 
 #: ../rpmdrake:1
 #, c-format
@@ -738,6 +758,10 @@ msgid ""
 "your computer. They will then be available to install new software package\n"
 "or to perform updates."
 msgstr ""
+"欢迎使用软件包源编辑器!\n"
+"\n"
+"本工具将帮助您配置想要在您的电脑上所使用的软件包来源。这些来源将在安装新\n"
+"软件包或执行更新时使用。"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -772,7 +796,7 @@ msgstr "来源"
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Enabled?"
-msgstr "启用吗？"
+msgstr "已启用?"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -782,30 +806,29 @@ msgstr "配置来源"
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Password:"
-msgstr "口令："
+msgstr "密码:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "User:"
-msgstr "用户名："
+msgstr "用户名:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "You may specify a user/password for the proxy authentication:"
-msgstr "在登录代理服务器时，您可能要指定用户名和密码："
+msgstr "在登录代理服务器时，您可能要指定用户名和密码:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Proxy hostname:"
-msgstr "代理服务器主机名："
+msgstr "代理服务器主机名:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
 "<proxyhost[:port]>):"
-msgstr ""
-"如果您需要用代理服务器，请输入主机名和端口（语法：<proxyhost[:port]>）："
+msgstr "如果您需要用代理服务器，请输入主机名和端口(语法:<proxyhost[:port]>):"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -836,17 +859,17 @@ msgstr "保存修改"
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Relative path to synthesis/hdlist:"
-msgstr "相对 synthesis/hdlist 的路径："
+msgstr "相对 synthesis/hdlist 的路径:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "URL:"
-msgstr "URL："
+msgstr "URL:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Editing source \"%s\":"
-msgstr "编辑来源“%s”："
+msgstr "编辑来源“%s”:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -866,19 +889,19 @@ msgstr "正在添加介质，请稍候..."
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Type of source:"
-msgstr "来源类型："
+msgstr "来源类型:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Adding a source:"
-msgstr "添加一个来源："
+msgstr "添加一个来源:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
 "really want to replace it?"
-msgstr ""
+msgstr "已经有该名称的介质，您真的想要替换吗?"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -888,12 +911,12 @@ msgstr "您至少要填写头两项。"
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Name:"
-msgstr "名称："
+msgstr "名称:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Login:"
-msgstr "登录名："
+msgstr "登录名:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -908,7 +931,7 @@ msgstr "浏览..."
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path or mount point:"
-msgstr "路径或装载点："
+msgstr "路径或装载点:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -928,7 +951,7 @@ msgstr "FTP 服务器"
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Path:"
-msgstr "路径："
+msgstr "路径:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -968,27 +991,27 @@ msgstr "正在更新介质，请稍候..."
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Download of `%s', speed:%s"
-msgstr ""
+msgstr "下载“%s”，速度: %s"
 
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Download of `%s', time to go:%s, speed:%s"
-msgstr ""
+msgstr "下载“%s”，剩余时间: %s，速度: %s"
 
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Local file `%s' already up to date"
-msgstr ""
+msgstr "本地文件“%s”已是最新"
 
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Starting download of `%s'..."
-msgstr ""
+msgstr "开始下载“%s”..."
 
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Copying local file `%s'..."
-msgstr ""
+msgstr "正在复制本地文件“%s”..."
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -1004,6 +1027,9 @@ msgid ""
 "the case when the architecture of your processor is not supported\n"
 "by Mandrake Linux Official Updates."
 msgstr ""
+"找不到任何适合的镜像。\n"
+"此问题可能有很多原因；最常见的就是您的处理器架构不为 Mandrake\n"
+"Linux 官方更新所支持。"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -1019,6 +1045,11 @@ msgid ""
 "The network, or MandrakeSoft website, are maybe unavailable.\n"
 "Please try again later."
 msgstr ""
+"下载镜像列表时发生错误:\n"
+"\n"
+"%s\n"
+"您的网络或 MandrakeSoft 网站可能不可用。\n"
+"请稍后再试。"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -1038,6 +1069,10 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
+"需要连接 MandrakeSoft 网站才能获得镜像列表。\n"
+"请检查您的网络是否运转正常。\n"
+"\n"
+"确定继续吗?"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -1142,7 +1177,7 @@ msgstr "德国"
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Czech Republic"
-msgstr "捷克"
+msgstr "捷克共和国"
 
 #: ../rpmdrake.pm:1
 #, c-format
