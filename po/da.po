@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "POT-Creation-Date: 2003-04-17 16:13+0200\n"
-"PO-Revision-Date: 2003-04-13 22:35+0200\n"
+"PO-Revision-Date: 2003-05-09 22:35+0200\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -304,11 +304,16 @@ msgid ""
 "\n"
 "Then, restart MandrakeUpdate."
 msgstr ""
+"Du har allerede mindst én opdateringskilde konfigureret, men de\n"
+"er alle deaktiveret i øjeblikket. Du bør køre Administrationen\n"
+"for programmelkilder for at aktivere mindst én. (Markér det i Aktiveret?-kolonnen\n"
+"\n"
+"Derefter skal MandrakeUpdate genstartes."
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Already existing update sources"
-msgstr ""
+msgstr "Allerede eksisterende opdateringskilder"
 
 #: ../rpmdrake:1
 #, c-format
@@ -326,12 +331,12 @@ msgstr ""
 #: ../rpmdrake:1
 #, c-format
 msgid "A fatal error occurred: %s."
-msgstr ""
+msgstr "En fatal fejl skete: %s."
 
 #: ../rpmdrake:1
 #, c-format
 msgid "Fatal error"
-msgstr ""
+msgstr "fatal fejl"
 
 #: ../rpmdrake:1
 #, c-format
@@ -601,7 +606,7 @@ msgstr ""
 "\n"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
@@ -613,11 +618,16 @@ msgid ""
 msgstr ""
 "Desværre, følgende pakker kan ikke vælges:\n"
 "\n"
+"%s\n"
+"\n"
+"Årsager følger:\n"
+"\n"
+"%s"
 
 #: ../rpmdrake:1
 #, c-format
 msgid "%s conflicts with %s"
-msgstr ""
+msgstr "%s er i konflikt med %s"
 
 #: ../rpmdrake:1
 #, c-format
@@ -680,7 +690,7 @@ msgstr "Information om pakker"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid "More info"
 msgstr "Mere info"
 
@@ -991,13 +1001,17 @@ msgid "Add a source"
 msgstr "Tilføj en kilde"
 
 #: ../rpmdrake.pm:1
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
 "\n"
 "Errors:\n"
 "%s"
-msgstr "Kan ikke opdatere media; det vil automatisk være deaktiveret."
+msgstr ""
+"Kan ikke opdatere medie; det vil automatisk være deaktiveret.\n"
+"\n"
+"Fejl:\n"
+"%s"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -1283,134 +1297,3 @@ msgstr "Fjern programmel"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Administration af programmelkilder"
-
-#~ msgid ""
-#~ "There was an error while adding the update medium via urpmi.\n"
-#~ "\n"
-#~ "This may be due to a broken or temporary unavailable mirror, or when "
-#~ "your\n"
-#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-#~ "Linux\n"
-#~ "Official Updates.\n"
-#~ "\n"
-#~ "Do you want to try another mirror?"
-#~ msgstr ""
-#~ "Der opstod en fejl da opdateringsmedia skulle tilføjes.\n"
-#~ "\n"
-#~ "Dette kan ske på grund af et ødelagt eller temporært utilgængeligt spejl "
-#~ "eller\n"
-#~ "hvis din Mandrake Linux version (%s) endnu ikke/ikke længere understøttes "
-#~ "af Mandrake Linux'\n"
-#~ "officielle opdateringer.\n"
-#~ "\n"
-#~ "Vil du forsøge med et andet spejl?"
-
-#~ msgid "Error adding update medium"
-#~ msgstr "Fejl ved tilføjelse af opdateringsmedia"
-
-#~ msgid "Please wait, contacting mirror to initialize updates packages."
-#~ msgstr "Vent venligst, kontakter spejl for at initiere opdateringspakker."
-
-#~ msgid ""
-#~ "There was an unrecoverable error while updating packages information."
-#~ msgstr ""
-#~ "En fejl som ikke kan reddes opstod under opdatering af pakkeinformation."
-
-#~ msgid "Error updating medium"
-#~ msgstr "Fejl ved opdatering af medie"
-
-#~ msgid "Please wait, contacting mirror to update packages information."
-#~ msgstr "Vent venligst, kontakter spejl for at opdatere pakkeinformation."
-
-#~ msgid "Everything already installed (is this supposed to happen at all?)."
-#~ msgstr "Alt er allerede installeret (bør dette ske overhovedet?)."
-
-#~ msgid "Everything already installed."
-#~ msgstr "Alting er allerede installeret."
-
-#~ msgid "Local file `%s' already up to date"
-#~ msgstr "Lokal fil `%s' er allerede opdateret"
-
-#~ msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
-#~ msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
-
-#~ msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
-#~ msgstr "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
-
-#~ msgid "Update sources"
-#~ msgstr "Opdatér kilder"
-
-#~ msgid "(Non available)"
-#~ msgstr "(Ingen tilgængelig)"
-
-#~ msgid ""
-#~ "%sFiles:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Changelog:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "%sFiler:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Ændringslog:\n"
-#~ "%s"
-
-#~ msgid "Source: %s\n"
-#~ msgstr "Kilde: %s\n"
-
-#~ msgid ""
-#~ "Name: %s\n"
-#~ "Version: %s\n"
-#~ "Size: %s KB\n"
-#~ "Importance: %s\n"
-#~ "\n"
-#~ "Summary: %s\n"
-#~ "\n"
-#~ "%s\n"
-#~ msgstr ""
-#~ "Navn: %s\n"
-#~ "Version: %s\n"
-#~ "Størrelse: %s KB\n"
-#~ "Vigtighed: %s\n"
-#~ "\n"
-#~ "Resumé: %s\n"
-#~ "\n"
-#~ "%s\n"
-
-#~ msgid ""
-#~ "Name: %s\n"
-#~ "Version: %s\n"
-#~ "Size: %s KB\n"
-#~ "\n"
-#~ "Summary: %s\n"
-#~ "\n"
-#~ "%s\n"
-#~ msgstr ""
-#~ "Navn: %s\n"
-#~ "Version: %s\n"
-#~ "Størrelse: %s KB\n"
-#~ "\n"
-#~ "Resumé: %s\n"
-#~ "\n"
-#~ "%s\n"
-
-#~ msgid "Software Management"
-#~ msgstr "Administration af programmel"
-
-#~ msgid "Remove .rpmnew"
-#~ msgstr "Fjern programmel"
-
-#~ msgid "This would break your system"
-#~ msgstr "Dette ville ødelægge systemet"
-
-#~ msgid ""
-#~ "Could not find /var/lib/urpmi/compssUsers.flat,\n"
-#~ "the installer should have generated it for me :-(.\n"
-#~ "\n"
-#~ "Disabling \"Mandrake choices\" classification."
-#~ msgstr ""
-#~ "Kunne ikke finde /var/lib/urpmi/compssUsers.flat,\n"
-#~ "installereren skulle have genereret den.\n"
-#~ "\n"
-#~ "Deaktiverer \"Mandrake-valg\" klassificering."
