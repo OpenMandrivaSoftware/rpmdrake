@@ -23,9 +23,6 @@ all: $(PGOAL).pot $(MOFILES)
 $(PL_CFILES): %_.c: %
 	../grpmi/po/fake_c.pl $< > $@
 
-%.mo: %.po
-	msgfmt -o $@ $<
-
 merge: $(PGOAL).pot
 	@for n in $(POFILES); do \
 		echo "Merging $$n"; \
