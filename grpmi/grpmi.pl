@@ -178,7 +178,7 @@ N("Conflicts were detected:
 %s
 
 Install aborted.",
-					      join("\n", split(/\|/, $1))));
+					      utf8ize(join("\n", split(/\|/, $1)))));
 			    $forced_exitstatus = -1;
 			    return 1;
 					},
