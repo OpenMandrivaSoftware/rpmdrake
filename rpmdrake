@@ -1116,7 +1116,7 @@ Is it ok to continue?",
 	    $options->{rebuild_tree}->();
 	}, undef, '<StockItem>', 'gtk-default' ],
 	[ N("/_File") . N("/_Quit"), undef, sub { Gtk2->main_quit }, undef, '<StockItem>', 'gtk-default' ],
-	[ N("/_View"), undef, undef, undef, '<Branch>' ],
+	#[ N("/_View"), undef, undef, undef, '<Branch>' ],
 	if_(!$>,
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
 	    [ N("/_Options") . N("/_Show automatically selected packages"), undef, sub {
