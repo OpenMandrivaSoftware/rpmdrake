@@ -1122,7 +1122,7 @@ Is it ok to continue?",
 			$size_selected = 0;
 			$options->{rebuild_tree}->();
 		    };
-	    }, undef, '<StockItem>', 'gtk-default' ]
+	    }, undef, '<Item>' ]
 	),
 	[ N("/_File") . N("/_Reset the selection"), undef, sub {
 	    if ($MODE ne 'remove') {
@@ -1134,13 +1134,13 @@ Is it ok to continue?",
 	    $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
-	}, undef, '<StockItem>', 'gtk-default' ],
+	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
 	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
-	}, undef, '<StockItem>', 'gtk-default' ],
-	[ N("/_File") . N("/_Quit"), undef, sub { Gtk2->main_quit }, undef, '<StockItem>', 'gtk-default' ],
+	}, undef, '<Item>' ],
+	[ N("/_File") . N("/_Quit"), undef, sub { Gtk2->main_quit }, undef, '<Item>', ],
 	#[ N("/_View"), undef, undef, undef, '<Branch>' ],
 	if_(!$>,
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
@@ -1149,7 +1149,7 @@ Is it ok to continue?",
 	    }, undef, '<CheckItem>' ],
 	),
 	[ N("/_Help"), undef, undef, undef, '<Branch>' ],
-	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help($MODE) }, undef, '<StockItem>', 'gtk-default' ],
+	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help($MODE) }, undef, '<Item>' ],
     );
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections);
