@@ -413,7 +413,9 @@ sub run_treeview_dialog {
 	my @search_results;
 	if ($entry =~ m|/|) {
 	    my $w = wait_msg(_("Please wait, searching in files..."));
-	    open SF, "parsehdlist --fileswinfo --quiet $urpm->{statedir}/hdlist.* |";
+	    open SF, 'parsehdlist --fileswinfo --quiet ' .
+	             join(' ', map { if_(!$_->{ignore}, "$urpm->{statedir}/$_->{hdlist} ") } @{$urpm->{media}}) .
+		     ' |';
 	    my $pkg;
 	    while (<SF>) {
 		/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/ and $pkg = "$1-$2-$3", next;
