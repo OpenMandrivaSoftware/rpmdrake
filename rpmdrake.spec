@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.7
+%define version 2.8
 %define release 1mdk
 
 Name: %{name}
@@ -111,6 +111,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Feb 23 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.8-1mdk
+- Don't hardcode mirror list url, use /etc/urpmi/mirror.config like
+  urpmi.addmedia does
+
 * Mon Feb 14 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.7-1mdk
 - Don't show diffs for rpmnew files that haven't changed
 - Make the software media manager cope with variables in media (M. Scherer)
