@@ -561,7 +561,7 @@ sub update_sources {
 	    my ($type, $media) = @_;
 	    return if $type !~ /^(?:start|progress|end)$/ && @media && !grep { $_ eq $media } @media;
 	    if ($type eq 'failed') {
-		fatal_msg(N("Error retrieving packages"),
+		$urpm->{fatal}->(N("Error retrieving packages"),
 N("It's impossible to retrieve the list of new packages from the media
 `%s'. Either this update media is misconfigured, and in this case
 you should use the Software Media Manager to remove it and re-add it in order
