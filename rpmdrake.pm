@@ -754,4 +754,13 @@ It will be disabled.",
     1;
 }
 
+sub open_help {
+    my ($mode) = @_;
+    system("drakhelp --id software-management-$mode &");
+    interactive_msg(
+	N("Help launched in background"),
+	N("The help window has been started, it should appear shortly on your desktop."),
+    );
+}
+
 1;

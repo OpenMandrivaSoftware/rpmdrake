@@ -978,15 +978,7 @@ sub mainwindow {
 	    ),
 	    0, Gtk2::HSeparator->new,
 	    0, gtkpack(create_hbox('edge'),
-		gtksignal_connect(
-		    Gtk2::Button->new(but(N("Help"))), clicked => sub {
-			system("drakhelp --id software-management-sources &");
-			interactive_msg(
-			    N("Help launched in background"),
-			    N("The help window has been started, it should appear shortly on your desktop."),
-			);
-		    }
-		),
+		gtksignal_connect(Gtk2::Button->new(but(N("Help"))), clicked => sub { rpmdrake::open_help('sources') }),
 		gtksignal_connect(Gtk2::Button->new(but(N("Ok"))), clicked => sub { Gtk2->main_quit })
 	    )
 	)
