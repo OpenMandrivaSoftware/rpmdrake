@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.2
-%define release 3mdk
+%define release 4mdk
 
 Name: %{name}
 Version: %{version}
@@ -108,6 +108,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Nov 18 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.2-4mdk
+- edit-urpm-sources: When modifying a media has failed, restore it (don't die,
+  and don't keep it in the intermediate state of being ignored)
+
 * Tue Nov 16 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.2-3mdk
 - Fix adding an update media in the software media manager.
 - Fix sort by country in the mirror list.
