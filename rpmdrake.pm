@@ -498,11 +498,16 @@ sub show_urpm_progress {
 
 sub update_sources {
     my ($urpm, %options) = @_;
-    my $w = wait_msg(my $label = Gtk2::Label->new(N("Please wait, updating media...")),
-		     widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1) ]);
-    $urpm->update_media(%options,
+    my $w = wait_msg(
+	my $label = Gtk2::Label->new(N("Please wait, updating media...")),
+	widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1) ],
+    );
+    my @media; @media = @{$options{medialist}} if ref $options{medialist};
+    $urpm->update_media(
+	%options,
 	callback => sub {
 	    my ($type, $media) = @_;
+	    return if @media && !grep { $_ eq $media } @media;
 	    if ($type eq 'failed') {
 		fatal_msg(N("Error retrieving packages"),
 N("It's impossible to retrieve the list of new packages from the media
@@ -514,7 +519,8 @@ later.",
 	    } else {
 		show_urpm_progress($label, $pb, @_);
 	    }
-	});
+	},
+    );
     remove_wait_msg($w);
 }
 
@@ -523,7 +529,7 @@ sub update_sources_check {
     my @error_msgs;
     local $urpm->{fatal} = sub { push @error_msgs, to_utf8($_[1]); goto fatal_error };
     local $urpm->{error} = sub { push @error_msgs, to_utf8($_[0]) };
-    update_sources($urpm, %$options, noclean => 1);
+    update_sources($urpm, %$options, noclean => 1, medialist => \@media);
   fatal_error:
     if (@error_msgs) {
         interactive_msg('rpmdrake', sprintf_fixutf8(translate($error_msg), join("\n", @error_msgs)));
