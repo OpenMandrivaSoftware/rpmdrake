@@ -75,49 +75,73 @@ sub add_callback {
     mapn {
 	my $info = $radios_infos{$_[0]};
 	my $url_entry = sub {
-	    gtkpack_(Gtk2::HBox->new(0, 0),
-		     1, $info->{url_entry} = gtkentry(),
-		     if_($info->{dirsel}, 0, gtksignal_connect(Gtk2::Button->new(but(N("Browse..."))),
-							       clicked => sub { $info->{url_entry}->set_text(ask_dir()) })),
-		     if_($info->{securitysel}, 0, gtksignal_connect(Gtk2::Button->new(but(N("Choose a mirror..."))),
-								    clicked => sub { my $m = choose_mirror(transient => $w->{rwindow});
-										     if ($m) {
-											 $info->{url_entry}->set_text(make_url_mirror($m));
-											 $info->{hdlist_entry}->set_text('media_info/synthesis.hdlist.cz');
-                                                                                         $info->{hdlist_entry}->set_sensitive(1);
-                                                                                         $info->{hdlist_check}->set_active(1);
-										     }
-										 })));
+	    gtkpack_(
+		Gtk2::HBox->new(0, 0),
+		1, $info->{url_entry} = gtkentry(),
+		if_(
+		    $info->{dirsel},
+		    0, gtksignal_connect(
+			Gtk2::Button->new(but(N("Browse..."))),
+			clicked => sub { $info->{url_entry}->set_text(ask_dir()) },
+		    )
+		),
+		if_(
+		    $info->{securitysel},
+		    0, gtksignal_connect(
+			Gtk2::Button->new(but(N("Choose a mirror..."))),
+			clicked => sub {
+			    my $m = choose_mirror(transient => $w->{rwindow});
+			    if ($m) {
+				$info->{url_entry}->set_text(make_url_mirror($m));
+				$info->{hdlist_entry}->set_text('media_info/synthesis.hdlist.cz');
+				$info->{hdlist_entry}->set_sensitive(1);
+				$info->{hdlist_check}->set_active(1);
+			    }
+			},
+		    )
+		)
+	    );
 	};
         my $tips = Gtk2::Tooltips->new;
         my $checkbut_entry = sub {
             my ($name, $label, $visibility, $callback, $tip) = @_;
-            [ gtkpack_(Gtk2::HBox->new(0, 0),
-                       1, Gtk2::Label->new,
-                       0, gtksignal_connect($info->{$name . '_check'} = gtkset_tip($tips, Gtk2::CheckButton->new($label), $tip),
-                                            clicked => sub { $info->{$name . '_entry'}->set_sensitive($_[0]->get_active);
-                                                             $callback and $callback->(@_);
-                                                         })),
-              gtkset_visibility(gtkset_sensitive($info->{$name . '_entry'} = gtkentry(), 0), $visibility) ];
+            [ gtkpack_(
+		Gtk2::HBox->new(0, 0),
+		1, Gtk2::Label->new,
+		0, gtksignal_connect(
+		    $info->{$name . '_check'} = gtkset_tip($tips, Gtk2::CheckButton->new($label), $tip),
+		    clicked => sub {
+			$info->{$name . '_entry'}->set_sensitive($_[0]->get_active);
+			$callback and $callback->(@_);
+		    },
+		)
+	    ),
+	    gtkset_visibility(gtkset_sensitive($info->{$name . '_entry'} = gtkentry(), 0), $visibility) ];
         };
 	my $loginpass_entries = sub {
-	    map { 
-                  $checkbut_entry->(@$_, sub {
-                                        $info->{pass_check}->set_active($_[0]->get_active);
-                                        $info->{login_check}->set_active($_[0]->get_active);
-                                    })
-              } ([ 'login', N("Login:"), 1 ], [ 'pass', N("Password:"), 0 ])
+	    map {
+		$checkbut_entry->(
+		    @$_, sub {
+			$info->{pass_check}->set_active($_[0]->get_active);
+			$info->{login_check}->set_active($_[0]->get_active);
+		    }
+		)
+	    } ([ 'login', N("Login:"), 1 ], [ 'pass', N("Password:"), 0 ])
 	};
 	my $nb = $count_nbs++;
 	gtksignal_connect($_[1], 'clicked' => sub { $_[0]->get_active and $notebook->set_current_page($nb) });
-	$notebook->append_page(my $book = create_packtable({},
-		      [ gtkset_alignment(Gtk2::Label->new(N("Name:")), 1, 0.5),
-                        $info->{name_entry} = gtkentry($_[0] eq 'security' ? 'update_source' : '') ],
-		      [ gtkset_alignment(Gtk2::Label->new($info->{url}), 1, 0.5),
-                        $url_entry->() ],
-		      $checkbut_entry->('hdlist', N("Relative path to synthesis/hdlist:"), 1, undef,
-                                        N("If left blank, synthesis/hdlist will be automatically probed")),
-		      if_($info->{loginpass}, $loginpass_entries->())));
+	$notebook->append_page(
+	    my $book = create_packtable(
+		{},
+		[ gtkset_alignment(Gtk2::Label->new(N("Name:")), 1, 0.5),
+		$info->{name_entry} = gtkentry($_[0] eq 'security' ? 'update_source' : '') ],
+		[ gtkset_alignment(Gtk2::Label->new($info->{url}), 1, 0.5),
+		    $url_entry->() ],
+		$checkbut_entry->('hdlist', N("Relative path to synthesis/hdlist:"), 1, undef,
+		    N("If left blank, synthesis/hdlist will be automatically probed")),
+		if_($info->{loginpass}, $loginpass_entries->())
+	    )
+	);
 	$book->show;
     } \@radios_names_ordered, \@modes_buttons;
 
@@ -420,18 +444,23 @@ sub edit_parallel {
         $medias_list->get_selection->set_mode('browse');
         $medias_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
         my $sel;
-        gtkadd($w->{window},
-               gtkpack__(Gtk2::VBox->new(0, 5),
-                         Gtk2::Label->new(N("Choose a medium for adding in the media limit:")),
-                         $medias_list,
-                         Gtk2::HSeparator->new,
-                         gtkpack(create_hbox(),
-           gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub {
-                                 $w->{retval} = 1;
-                                 $sel = selrow($medias_list);
-                                 Gtk2->main_quit
-                             }),
-           gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
+        gtkadd(
+	    $w->{window},
+	    gtkpack__(
+		Gtk2::VBox->new(0, 5),
+		Gtk2::Label->new(N("Choose a medium for adding in the media limit:")),
+		$medias_list,
+		Gtk2::HSeparator->new,
+		gtkpack(
+		    create_hbox(),
+		    gtksignal_connect(
+			Gtk2::Button->new(N("Ok")),
+			clicked => sub { $w->{retval} = 1; $sel = selrow($medias_list); Gtk2->main_quit },
+		    ),
+		    gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit })
+		)
+	    )
+	);
         if ($w->main && $sel != -1) {
             my $media = ${$urpm->{media}}[$sel]{name};
             $medias_ls->append_set([ 0 => $media ]);
@@ -458,14 +487,20 @@ sub edit_parallel {
     my $add_host = sub {
         my $w = ugtk2->new(N("Add a host"), grab => 1);
         my ($entry, $value);
-        gtkadd($w->{window},
-               gtkpack__(Gtk2::VBox->new(0, 5),
-                         Gtk2::Label->new(N("Type in the hostname or IP address of the host to add:")),
-                         $entry = gtkentry(),
-                         Gtk2::HSeparator->new,
-                         gtkpack(create_hbox(),
-           gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { $w->{retval} = 1; $value = $entry->get_text; Gtk2->main_quit }),
-           gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
+	gtkadd(
+	    $w->{window},
+	    gtkpack__(
+		Gtk2::VBox->new(0, 5),
+		Gtk2::Label->new(N("Type in the hostname or IP address of the host to add:")),
+		$entry = gtkentry(),
+		Gtk2::HSeparator->new,
+		gtkpack(
+		    create_hbox(),
+		    gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { $w->{retval} = 1; $value = $entry->get_text; Gtk2->main_quit }),
+		    gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit })
+		)
+	    )
+	);
         if ($w->main) {
             $hosts_ls->append_set([ 0 => $value ]);
             push @$hosts_list, $value;
@@ -481,38 +516,48 @@ sub edit_parallel {
 
     my @protocols_names = qw(ka-run ssh);
     my @protocols;
-    gtkadd($w->{window},
-	   gtkpack_(Gtk2::VBox->new(0, 5),
-                    if_($num != -1,
-                        0, Gtk2::Label->new(N("Editing parallel group \"%s\":", $edited->{name}))),
-		    1, create_packtable({},
-					[ N("Group name:"), $name_entry = gtkentry($edited->{name}) ],
-                                        [ N("Protocol:"), gtkpack__(Gtk2::HBox->new(0, 0),
-                                                                    @protocols = gtkradio($edited->{protocol}, @protocols_names)) ],
-                                        [ N("Media limit:"),
-                                          gtkpack_(Gtk2::HBox->new(0, 5),
-                                                   1, gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
-                                                             create_scrolled_window($medias, [ 'never', 'automatic' ])),
-                                                   0, gtkpack__(Gtk2::VBox->new(0, 0),
-                                             gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_media->() }),
-                                             gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_media->() }))) ],
-                                        [ N("Hosts:"),
-                                          gtkpack_(Gtk2::HBox->new(0, 5),
-                                                   1, gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
-                                                             create_scrolled_window($hosts, [ 'never', 'automatic' ])),
-                                                   0, gtkpack__(Gtk2::VBox->new(0, 0),
-                                             gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_host->() }),
-                                             gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_host->() }))) ]),
-		    0, Gtk2::HSeparator->new,
-		    0, gtkpack(create_hbox(),
-			       gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub {
-                                                     $w->{retval} = 1;
-                                                     $edited->{name} = $name_entry->get_text;
-                                                     mapn {
-                                                         $_[0]->get_active and $edited->{protocol} = $_[1];
-                                                     } \@protocols, \@protocols_names;
-                                                     Gtk2->main_quit }),
-			       gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
+    gtkadd(
+	$w->{window},
+	gtkpack_(
+	    Gtk2::VBox->new(0, 5),
+	    if_(
+		$num != -1,
+		0, Gtk2::Label->new(N("Editing parallel group \"%s\":", $edited->{name}))
+	    ),
+	    1, create_packtable(
+		{},
+		[ N("Group name:"), $name_entry = gtkentry($edited->{name}) ],
+		[ N("Protocol:"), gtkpack__(Gtk2::HBox->new(0, 0),
+		    @protocols = gtkradio($edited->{protocol}, @protocols_names)) ],
+		[ N("Media limit:"),
+		gtkpack_(Gtk2::HBox->new(0, 5),
+		    1, gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
+			create_scrolled_window($medias, [ 'never', 'automatic' ])),
+		    0, gtkpack__(Gtk2::VBox->new(0, 0),
+			gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_media->() }),
+			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_media->() }))) ],
+		[ N("Hosts:"),
+		gtkpack_(Gtk2::HBox->new(0, 5),
+		    1, gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
+			create_scrolled_window($hosts, [ 'never', 'automatic' ])),
+		    0, gtkpack__(Gtk2::VBox->new(0, 0),
+			gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_host->() }),
+			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_host->() }))) ]
+	    ),
+	    0, Gtk2::HSeparator->new,
+	    0, gtkpack(
+		create_hbox(),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Ok")), clicked => sub {
+			$w->{retval} = 1;
+			$edited->{name} = $name_entry->get_text;
+			mapn { $_[0]->get_active and $edited->{protocol} = $_[1] } \@protocols, \@protocols_names;
+			Gtk2->main_quit;
+		    }
+		),
+		gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))
+	)
+    );
     $w->{rwindow}->set_size_request(600, -1);
     if ($w->main) {
         $num == -1 and push @$conf, $edited;
@@ -545,23 +590,40 @@ sub parallel_callback {
     };
     $reread->();
 
-    gtkadd($w->{window},
-	   gtkpack_(Gtk2::VBox->new(0,5),
-		    1, gtkpack_(Gtk2::HBox->new(0, 10),
-				1, $list,
-				0, gtkpack__(Gtk2::VBox->new(0, 5),
-					     gtksignal_connect($remove = Gtk2::Button->new(but(N("Remove"))),
-                                                               clicked => sub { remove_parallel(selrow($list), $conf); $reread->() }),
-					     gtksignal_connect($edit = Gtk2::Button->new(but(N("Edit"))),
-                                                               clicked => sub {
-                                                                   my $row = selrow($list);
-                                                                   $row != -1 and edit_parallel($row, $conf);
-                                                                   $reread->() }),
-					     gtksignal_connect(Gtk2::Button->new(but(N("Add..."))), 
-							       clicked => sub { edit_parallel(-1, $conf) and $reread->() }))),
-		    0, Gtk2::HSeparator->new,
-		    0, gtkpack(create_hbox(),
-			       gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
+    gtkadd(
+	$w->{window},
+	gtkpack_(
+	    Gtk2::VBox->new(0,5),
+	    1, gtkpack_(
+		Gtk2::HBox->new(0, 10),
+		1, $list,
+		0, gtkpack__(
+		    Gtk2::VBox->new(0, 5),
+		    gtksignal_connect(
+			$remove = Gtk2::Button->new(but(N("Remove"))),
+			clicked => sub { remove_parallel(selrow($list), $conf); $reread->() },
+		    ),
+		    gtksignal_connect(
+			$edit = Gtk2::Button->new(but(N("Edit"))),
+			clicked => sub {
+			    my $row = selrow($list);
+			    $row != -1 and edit_parallel($row, $conf);
+			    $reread->();
+			},
+		    ),
+		    gtksignal_connect(
+			Gtk2::Button->new(but(N("Add..."))), 
+			clicked => sub { edit_parallel(-1, $conf) and $reread->() },
+		    )
+		)
+	    ),
+	    0, Gtk2::HSeparator->new,
+	    0, gtkpack(
+		create_hbox(),
+		gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit })
+	    )
+	)
+    );
     $w->main;
 }
 
@@ -616,18 +678,27 @@ sub keys_callback {
         $available_keyz->get_selection->set_mode('browse');
         $available_keyz_ls->append_set([ 0 => sprintf("%s (%s)", $_, $key_name->($_)), 1 => $_ ]) foreach keys %{$urpm->{keys}};
         my $key;
-        gtkadd($w_add->{window},
-               gtkpack__(Gtk2::VBox->new(0, 5),
-                         Gtk2::Label->new(N("Choose a key for adding to the medium %s", $current_medium)),
-                         $available_keyz,
-                         Gtk2::HSeparator->new,
-                         gtkpack(create_hbox(),
-                                 gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub {
-                                                       my ($model, $iter) = $available_keyz->get_selection->get_selected;
-                                                       $model && $iter and $key = $model->get($iter, 1);
-                                                       Gtk2->main_quit;
-                                                   }),
-                                 gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit }))));
+	gtkadd(
+	    $w_add->{window},
+	    gtkpack__(
+		Gtk2::VBox->new(0, 5),
+		Gtk2::Label->new(N("Choose a key for adding to the medium %s", $current_medium)),
+		$available_keyz,
+		Gtk2::HSeparator->new,
+		gtkpack(
+		    create_hbox(),
+		    gtksignal_connect(
+			Gtk2::Button->new(N("Ok")),
+			clicked => sub {
+			    my ($model, $iter) = $available_keyz->get_selection->get_selected;
+			    $model && $iter and $key = $model->get($iter, 1);
+			    Gtk2->main_quit;
+			},
+		    ),
+		    gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit })
+		)
+	    )
+	);
         $w_add->main;
         if (defined $key) {
             $urpm->{media}[$current_medium_nb]{'key-ids'} = join(',', sort(uniq(@{$keys[$current_medium_nb]}, $key)));
@@ -647,19 +718,33 @@ sub keys_callback {
         $write->();
     };
 
-    gtkadd($w->{window},
-	   gtkpack_(Gtk2::VBox->new(0,5),
-		    1, gtkpack_(Gtk2::HBox->new(0, 10),
-				1, $media_list,
-				1, $keys_list,
-				0, gtkpack__(Gtk2::VBox->new(0, 5),
-					     gtksignal_connect($remove = Gtk2::Button->new(but(N("Add a key..."))),
-                                                               clicked => \&$add_key),
-					     gtksignal_connect($remove = Gtk2::Button->new(but(N("Remove key"))),
-                                                               clicked => \&$remove_key))),
-		    0, Gtk2::HSeparator->new,
-		    0, gtkpack(create_hbox(),
-			       gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }))));
+    gtkadd(
+	$w->{window},
+	gtkpack_(
+	    Gtk2::VBox->new(0,5),
+	    1, gtkpack_(
+		Gtk2::HBox->new(0, 10),
+		1, $media_list,
+		1, $keys_list,
+		0, gtkpack__(
+		    Gtk2::VBox->new(0, 5),
+		    gtksignal_connect(
+			$remove = Gtk2::Button->new(but(N("Add a key..."))),
+			clicked => \&$add_key,
+		    ),
+		    gtksignal_connect(
+			$remove = Gtk2::Button->new(but(N("Remove key"))),
+			clicked => \&$remove_key,
+		    )
+		)
+	    ),
+	    0, Gtk2::HSeparator->new,
+	    0, gtkpack(
+		create_hbox(),
+		gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit })
+	    ),
+	),
+    );
     $w->main;
 }
 
@@ -674,28 +759,33 @@ sub mainwindow {
     $list_tv->set_reorderable(1);
 
     my $reorder_ok = 1;
-    $list->signal_connect(row_deleted => sub {
-                              my ($model) = @_;
-                              $reorder_ok or return;
-                              my @media;
-                              $model->foreach(sub {
-                                              my (undef, undef, $iter) = @_;
-                                              my $name = $model->get($iter, 1);
-                                              push @media, find { $_->{name} eq $name } @{$urpm->{media}};
-                                              0;
-                                          }, undef);
-                              @{$urpm->{media}} = @media;
-                          });
+    $list->signal_connect(
+	row_deleted => sub {
+	    my ($model) = @_;
+	    $reorder_ok or return;
+	    my @media;
+	    $model->foreach(
+		sub {
+		    my (undef, undef, $iter) = @_;
+		    my $name = $model->get($iter, 1);
+		    push @media, find { $_->{name} eq $name } @{$urpm->{media}};
+		    0;
+		}, undef);
+	    @{$urpm->{media}} = @media;
+	},
+    );
 
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled?"), my $tr = Gtk2::CellRendererToggle->new, 'active' => 0));
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 1));
 
-    $tr->signal_connect(toggled => sub {
-			    my (undef, $path) = @_;
-			    my $iter = $list->get_iter_from_string($path);
-			    $urpm->{media}[$path]{ignore} = !$urpm->{media}[$path]{ignore} || undef;
-			    $list->set($iter, 0, !$urpm->{media}[$path]{ignore});
-			});
+    $tr->signal_connect(
+	toggled => sub {
+	    my (undef, $path) = @_;
+	    my $iter = $list->get_iter_from_string($path);
+	    $urpm->{media}[$path]{ignore} = !$urpm->{media}[$path]{ignore} || undef;
+	    $list->set($iter, 0, !$urpm->{media}[$path]{ignore});
+	},
+    );
 
     my $menu = Gtk2::Menu->new;
     my @menu_actions = ([ 'update_source', N("Update medium") ], [ 'generate_hdlist', N("Regenerate hdlist") ]);
@@ -709,27 +799,34 @@ sub mainwindow {
             }
         };
 	my %action2fun; %action2fun = (
-			  update_source => sub {
-                              slow_func(N("Please wait, updating media..."),
-                                        sub { $urpm->update_media(noclean => 1, nolock => 1) });
-                          },
-			  generate_hdlist => sub {
-                              slow_func(N("Please wait, generating hdlist..."),
-                                        sub { $urpm->update_media(noclean => 1, force => 1, nolock => 1) });
-                          });
-	$menu->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($text)),
-                                        activate => sub {
-                                            $row = selrow();
-                                            $row == -1 and return;
-                                            $select_media->();
-                                            $action2fun{$action}->()
-                                        }));
+	    update_source => sub {
+		slow_func(N("Please wait, updating media..."),
+		    sub { $urpm->update_media(noclean => 1, nolock => 1) });
+	    },
+	    generate_hdlist => sub {
+		slow_func(N("Please wait, generating hdlist..."),
+		    sub { $urpm->update_media(noclean => 1, force => 1, nolock => 1) });
+	    },
+	);
+	$menu->append(
+	    gtksignal_connect(
+		gtkshow(Gtk2::MenuItem->new_with_label($text)),
+		activate => sub {
+		    $row = selrow();
+		    $row == -1 and return;
+		    $select_media->();
+		    $action2fun{$action}->();
+		},
+	    )
+	);
     }
-    $list_tv->signal_connect(button_press_event => sub {
-                                 $_[1]->button == 3 or return 0;
-                                 $menu->popup(undef, undef, undef, undef, $_[1]->button, $_[1]->time);
-                                 1;
-                             });
+    $list_tv->signal_connect(
+	button_press_event => sub {
+	    $_[1]->button == 3 or return 0;
+	    $menu->popup(undef, undef, undef, undef, $_[1]->button, $_[1]->time);
+	    1;
+	}
+    );
 
     my $reread_media = sub {
 	my ($name) = @_;
