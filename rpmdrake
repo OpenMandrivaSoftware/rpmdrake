@@ -279,7 +279,8 @@ sub extract_header {
 
 sub db {
     my ($force) = @_;
-    if (my (undef, $host) = @{$options{parallel}}) {
+    my $host;
+    if ($options{parallel} and (undef, $host) = @{$options{parallel}}) {
         my $done if 0;
         my $dblocation = "/var/cache/urpmi/distantdb/$host";
         if (!$done || $force) {
@@ -1289,7 +1290,8 @@ sub get_installed_pkgs {
 		  });
     remove_wait_msg($wait);
     my $urpm = urpm->new;
-    if (my ($group) = @{$options{parallel}}) {
+    my $group;
+    if ($options{parallel} and ($group) = @{$options{parallel}}) {
         $urpm->configure(parallel => $group);
     }
     ($urpm, \%installed_pkgs);
