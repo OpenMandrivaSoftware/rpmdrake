@@ -155,7 +155,7 @@ sub interactive_msg {
 			create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)),
 			$typical_width*2, 300
 		    )
-		) : Gtk2::WrappedLabel->new($contents)
+		) : gtkpack(create_hbox(), Gtk2::WrappedLabel->new($contents))
 	    ),
 	    0,
 	    gtkpack(
