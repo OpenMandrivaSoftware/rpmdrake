@@ -26,6 +26,7 @@ use lib qw(/usr/lib/libDrakX);
 use common;
 use rpmdrake;
 use URPM::Signature;
+use MDK::Common qw/max/;
 
 BEGIN {
     eval { require ugtk2; ugtk2->import(qw(:all)) };
@@ -57,6 +58,35 @@ sub remove_row {
     my $iter = $model->get_iter_from_string($path_str);
     $iter or return;
     $model->remove($iter);
+}
+
+sub easy_add_callback {
+    my $m = choose_mirror(message =>
+N("This will attempt to install all official sources corresponding to your
+distribution (%s).
+
+I need to contact the Mandrakesoft website to get the mirror list.
+Please check that your network is currently running.
+
+Is it ok to continue?", $rpmdrake::mandrake_release)
+    ) or return 0;
+    my $wait = wait_msg(N("Please wait, adding media..."));
+    my $url = make_url_mirror_dist($m);
+    my $medium_name;
+    if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
+	$medium_name = $2 . $1 . '-';
+    } else {
+	$medium_name = 'distrib';
+    }
+    #- ensure a unique medium name
+    my $initial_number = 1 + max map { $_->{name} =~ /\(\Q$medium_name\E(\d+)\b/ ? $1 : 0 } @{$urpm->{media}};
+    add_medium_and_check(
+	$urpm,
+	{ nolock => 1, distrib => 1 },
+	$medium_name, $url, probe_with => 'synthesis', initial_number => $initial_number,
+    );
+    remove_wait_msg($wait);
+    return 1;
 }
 
 sub add_callback {
@@ -925,6 +955,10 @@ sub mainwindow {
 		    ),
 		    gtksignal_connect(
 			Gtk2::Button->new(but(N("Add..."))), 
+			clicked => sub { easy_add_callback() and $reread_media->() },
+		    ),
+		    gtksignal_connect(
+			Gtk2::Button->new(but(N("Add custom..."))), 
 			clicked => sub { add_callback() and $reread_media->() },
 		    ),
 		    gtksignal_connect(
