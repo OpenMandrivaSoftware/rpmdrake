@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 8mdk
+%define release 9mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri Feb 28 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-9mdk
+- add help support thx to drakhelp
+
 * Fri Feb 28 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-8mdk
 - finish using urpmi callbacks when updating sources
 

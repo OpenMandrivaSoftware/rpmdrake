@@ -163,6 +163,7 @@ sub wait_msg {
 sub remove_wait_msg { $_[0]->destroy }
 
 sub but { "    $_[0]    " }
+sub but_ { "        $_[0]        " }
 
 sub slow_func($&) {
     my ($param, $func) = @_;

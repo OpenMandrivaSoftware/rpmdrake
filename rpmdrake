@@ -728,14 +728,16 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 											 and $find_callback->() }),
 						    gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback)),
 				       1, $table,
-				       0, gtkpack(Gtk2::HBox->new(1, 20),
-						  my $status = Gtk2::Label->new,
-						  gtkpack(Gtk2::HBox->new(1, 20),
-							  gtksignal_connect(Gtk2::Button->new(but($MODE eq 'remove' ? N("Remove")
-												                    : N("Install"))),
-									    clicked => sub { $do_action->() }),
-							  gtksignal_connect(Gtk2::Button->new(but(N("Quit"))),
-									    clicked => sub { Gtk2->main_quit })))
+				       0, gtkpack_(Gtk2::HBox->new(0, 20),
+						   0, gtksignal_connect(Gtk2::Button->new(but(N("Help"))),
+									clicked => sub { fork() or exec('drakhelp Drakxtools-Guide.html/software-management.html') }),
+						   1, my $status = Gtk2::Label->new,
+						   0, gtkpack(Gtk2::HBox->new(1, 20),
+							      gtksignal_connect(Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove")
+												                         : N("Install"))),
+										clicked => sub { $do_action->() }),
+							      gtksignal_connect(Gtk2::Button->new(but_(N("Quit"))),
+										clicked => sub { Gtk2->main_quit })))
 				       ))));
     my $pixbuf_icon = gtkcreate_pixbuf('title-icon');
     $darea->modify_font(Gtk2::Pango::FontDescription->from_string('Sans Italic 24'));
