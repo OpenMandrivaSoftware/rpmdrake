@@ -396,6 +396,7 @@ or you already installed all of them."));
 							      $size_selected/(1024*1024), $size_free/1024)
 					                  : _("Selected size: %d MB", $size_selected/(1024*1024)) },
 		   get_info => sub { my ($key) = @_;
+				     exists $pkgs->{$key} or return;  #- related to the partial tree displaying hackery ($key can be '')
 				     my ($name, $version) = split_fullname($key);
 				     exists $pkgs->{$key}{description}
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
@@ -424,12 +425,12 @@ or you already installed all of them."));
     my $typical_width = $tree->get_style->font->string_width("Develop xmms-more-vis-plugins-1.6.0.0-2mdk");
     $typical_width > 500 and $typical_width = 500;  #- try to not being crazy with a too large value
     $tree->set_column_max_width(0, $typical_width);
-    $tree->signal_connect(tree_select_row => sub { 
-			      $disable_treeselect_callback and return;
-			      if (!$_[1]->row->is_leaf && !$_[1]->row->children) {
+    $tree->signal_connect(tree_expand => sub { 
+			      #- hackish: if first child has '' as name, then we need to expand on the fly
+			      if (($_[0]->node_get_pixtext($_[1]->row->children, 0))[0] eq '') {
+				  $_[0]->remove_node($_[1]->row->children);
 				  my $row_name = ($_[0]->node_get_pixtext($_[1], 0))[0];
 				  slow_func($tree->window, sub { $options->{add_nodes}->(@{$elems{$row_name}}) });
-				  $tree->expand($_[1]);
 			      }
 			  });
 
