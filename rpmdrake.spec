@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 7mdk
+%define release 8mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 3.9 perl-URPM >= 0.60 drakxtools >= 1.1.9-16mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-16mdk grpmi >= 9.0 rpmtools >= 4.5
 BuildRequires: curl-devel rpm-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -113,6 +113,13 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Aug 26 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-8mdk
+- rpmdrake-remove: don't show basesystem packages so that it
+  becomes possible to select whole categories in "Mandrake
+  Choices" mode (Development/Development for example)
+- rpmdrake-remove: API of urpm.pm has changed (fixes "/" not an ARRAY
+  reference)
+
 * Fri Aug 23 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-7mdk
 - rpmdrake: when a choice has to be made involving locales,
   autochoose the package requiring the locales already installed
