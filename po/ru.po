@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-09-11 15:17+0200\n"
+"POT-Creation-Date: 2002-09-11 16:58+0200\n"
 "PO-Revision-Date: 2000-11-27 16:24+0200\n"
 "Last-Translator: Pavel Maryanov <acid_jack@ukr.net>\n"
 "Language-Team: Russian\n"
@@ -439,6 +439,10 @@ msgstr "Пожалуйста, подождите, обновляется накопитель..."
 msgid "Other"
 msgstr "Другое"
 
+#: ../rpmdrake_.c:114 ../rpmdrake_.c:127 ../rpmdrake_.c:216 ../rpmdrake_.c:286
+msgid "(none)"
+msgstr "(нет)"
+
 #: ../rpmdrake_.c:133 ../rpmdrake_.c:441 ../rpmdrake_.c:442
 msgid "(Not available)"
 msgstr "(Недоступен)"
@@ -474,10 +478,6 @@ msgstr "Не выбранные"
 #: ../rpmdrake_.c:203
 msgid "Selected"
 msgstr "Выбранные"
-
-#: ../rpmdrake_.c:216 ../rpmdrake_.c:286
-msgid "(none)"
-msgstr "(нет)"
 
 #: ../rpmdrake_.c:244
 msgid "More information on package..."
@@ -958,17 +958,19 @@ msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Все уже установлено (это вообще случается?)."
 
 #: ../rpmdrake_.c:942
-#, fuzzy
 msgid "Problem during installation"
-msgstr "В процессе установки возникли проблемы"
+msgstr "Проблема во время установки"
 
 #: ../rpmdrake_.c:943
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
-msgstr "При установке возникла проблема."
+msgstr ""
+"При установке возникла проблема:\n"
+"\n"
+"%s"
 
 #: ../rpmdrake_.c:953
 msgid "Please wait, reading packages database..."
