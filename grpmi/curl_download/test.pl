@@ -15,7 +15,9 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-# 
+#
+#  $Id$
+#
 #*****************************************************************************
 
 use strict;
@@ -29,4 +31,4 @@ $| = 1;
 my $res = curl_download::download($ARGV[0], '/tmp',
                                   sub { $_[0] and printf "Progressing download, %d%% done.\r", 100*$_[1]/$_[0] });
 
-printf "Download finished. Results is (void resultas == success):\n%s\n", $res;
+printf "Download finished. Results is (void results == success):\n%s\n", $res;
