@@ -1100,7 +1100,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     $w->{rwindow}->set_sensitive(0);
 
-    if (my ($group) = @{$options{parallel}}) {
+    my $group;
+    if ($options{parallel} and ($group) = @{$options{parallel}}) {
         my $pkgs = join(' ', map { if_($_->flag_requested, my_fullname($_)) } @{$urpm->{depslist}});
         system("urpmi -v --X --parallel $group $pkgs");
         if ($? == 0) {
