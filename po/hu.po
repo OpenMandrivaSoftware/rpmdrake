@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-05-16 18:58+0200\n"
+"POT-Creation-Date: 2003-05-28 16:30+0200\n"
 "PO-Revision-Date: 2003-02-23 11:02+0100\n"
 "Last-Translator: Arpad Biro <biro_arpad@yahoo.com>\n"
 "Language-Team: Hungarian\n"
@@ -15,6 +15,11 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by size"
+msgstr "Az összes csomag,"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -46,11 +51,6 @@ msgstr ""
 "szoftvercsomagot tartalmaz. Ezzel a programmal kiválaszthatja,\n"
 "mely szoftvercsomagokat kívánja telepíteni a gépére."
 
-#: ../rpmdrake:1
-#, c-format
-msgid "by group"
-msgstr "csoport szerint"
-
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Name:"
@@ -75,6 +75,13 @@ msgstr "URL:"
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Bizonyos csomagokat el kell távolítani"
+
+# it's a sort method
+# "selected or not"
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by selection state"
+msgstr "kijelölési állapot szerint"
 
 #: ../rpmdrake:1
 #, c-format
@@ -161,6 +168,13 @@ msgstr ""
 #, c-format
 msgid "Size: "
 msgstr "Méret: "
+
+# it's a sort method
+# "new or update"
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by update availability"
+msgstr "telepítettség alapján"
 
 #: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
@@ -293,11 +307,6 @@ msgstr "A(z) \"%s\" csomag nem telepíthetõ\n"
 #, fuzzy, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Csomagok elõkészítése a telepítéshez..."
-
-#: ../rpmdrake:1
-#, c-format
-msgid "All packages,"
-msgstr "Az összes csomag,"
 
 #: ../edit-urpm-sources.pl:1
 #, fuzzy, c-format
@@ -477,6 +486,11 @@ msgid "Please wait, listing packages..."
 msgstr "A csomagok listázása folyamatban..."
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by media repository"
+msgstr "forrás alapján"
+
+#: ../rpmdrake:1
 #, c-format
 msgid "Information on packages"
 msgstr "Információ a csomagokról"
@@ -648,11 +662,6 @@ msgstr "Eltávolítás"
 msgid "Preparing packages installation..."
 msgstr "Csomagok elõkészítése a telepítéshez..."
 
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid "by media repository"
-msgstr "forrás alapján"
-
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "No mirror"
@@ -733,13 +742,6 @@ msgstr "Ausztrália"
 #, c-format
 msgid "Installation finished"
 msgstr "A telepítés befejezõdött"
-
-# it's a sort method
-# "new or update"
-#: ../rpmdrake:1
-#, c-format
-msgid "by update availability"
-msgstr "telepítettség alapján"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -881,13 +883,6 @@ msgstr "Spanyolország"
 #, c-format
 msgid "Normal updates"
 msgstr "Normál frissítések"
-
-# it's a sort method
-# "selected or not"
-#: ../rpmdrake:1
-#, c-format
-msgid "by selection state"
-msgstr "kijelölési állapot szerint"
 
 #: ../rpmdrake.pm:1
 #, c-format
@@ -1068,6 +1063,11 @@ msgstr "Csomagtelepítéshez rendszergazdai jogosultság szükséges."
 #, c-format
 msgid "Path:"
 msgstr "Útvonal:"
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "All packages, by group"
+msgstr "Az összes csomag,"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1277,11 +1277,6 @@ msgstr "Adatforrás váltása"
 msgid "Mandrake Update"
 msgstr "Mandrake-frissítés"
 
-#: ../rpmdrake:1
-#, c-format
-msgid "by size"
-msgstr "méret szerint"
-
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "FTP server"
@@ -1300,6 +1295,11 @@ msgid ""
 "Errors:\n"
 "%s"
 msgstr "Az adatforrás frissítése nem sikerült, ezért letiltásra kerül."
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Leaves only, sorted by install date"
+msgstr ""
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -1572,6 +1572,12 @@ msgstr "Szoftvereltávolítás"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Szoftverforrás-kezelõ"
+
+#~ msgid "by group"
+#~ msgstr "csoport szerint"
+
+#~ msgid "by size"
+#~ msgstr "méret szerint"
 
 #, fuzzy
 #~ msgid "Source: "
