@@ -400,8 +400,7 @@ sub run_treeview_dialog {
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $::noBorder = 1;
-    (my $mdk_version) = (cat_('/etc/mandrake-release') || '') =~ /(\d+\.\d+)/;
-    $w = ugtk2->new(N("Rpmdrake %s", $mdk_version || ''));
+    $w = ugtk2->new(N("Rpmdrake %s", $rpmdrake::mdk_version || ''));
     $::noBorder = 0;
 
     my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
@@ -853,23 +852,29 @@ or you already installed all of them."));
     $MODE ne 'remove' and push @menu_treeview_actions, [ 'update_sources', N("Update media") ];
     foreach (@menu_treeview_actions) {
 	my ($action, $text) = @$_;
-	my %action2fun; %action2fun = (
-		          reset_selection => sub {
-			      if ($MODE ne 'remove') {
-                                  $urpm->disable_selected(db(), $urpm->{state},
-                                                          map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs);
-			      }
-			      $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
-			      $size_selected = 0;
-			      $options->{rebuild_tree}->();
-			  },
-		          reload_pkg => sub {
-			      ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
-			      $size_selected = 0;
-			      $options->{rebuild_tree}->();
-			  },
-			  update_sources => sub { update_sources_interactive($urpm, transient => $w->{rwindow})
-						    and $action2fun{reload_pkg}->() });
+	my %action2fun;
+	%action2fun = (
+	    reset_selection => sub {
+		if ($MODE ne 'remove') {
+		    $urpm->disable_selected(
+			db(), $urpm->{state},
+			map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs
+		    );
+		}
+		$pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
+		$size_selected = 0;
+		$options->{rebuild_tree}->();
+	    },
+	    reload_pkg => sub {
+		($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+		$size_selected = 0;
+		$options->{rebuild_tree}->();
+	    },
+	    update_sources => sub {
+		update_sources_interactive($urpm, transient => $w->{rwindow})
+		    and $action2fun{reload_pkg}->();
+	    }
+	);
 	$menu_treeview->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($text)), activate => sub { $action2fun{$action}->() }));
     }
     $tree->signal_connect(button_press_event => sub { $_[1]->button == 3 or return 0;
@@ -1092,6 +1097,7 @@ Then, restart MandrakeUpdate.")), myexit(-1);
     $urpm->configure(media => $media);
 
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
+    check_update_media_version($urpm, @update_medias);
 
     $urpm->compute_installed_flags(db());
 

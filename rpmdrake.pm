@@ -37,11 +37,46 @@ use c;
 use curl_download;
 
 @ISA = qw(Exporter);
-@EXPORT = qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $tree_mode $tree_flat $typical_width
-             N N_ translate to_utf8 myexit readconf writeconf interactive_msg interactive_packtable interactive_list fatal_msg
-             wait_msg remove_wait_msg but but_ slow_func mirrors choose_mirror make_url_mirror show_urpm_progress
-             update_sources update_sources_interactive add_medium_and_check);
+@EXPORT = qw(
+    $configfile
+    %config
+    $mandrakeupdate_wanted_categories
+    $already_splashed
+    $max_info_in_descr
+    $tree_mode
+    $tree_flat
+    $typical_width
+    N
+    N_
+    translate
+    to_utf8
+    myexit
+    readconf
+    writeconf
+    interactive_msg
+    interactive_packtable
+    interactive_list
+    fatal_msg
+    wait_msg
+    remove_wait_msg
+    but
+    but_
+    slow_func
+    mirrors
+    choose_mirror
+    make_url_mirror
+    show_urpm_progress
+    update_sources
+    update_sources_interactive
+    add_medium_and_check
+    check_update_media_version
+);
 
+
+our $mandrake_release = cat_(
+    -e '/etc/mandrakelinux-release' ? '/etc/mandrakelinux-release' : '/etc/mandrake-release'
+) || '';
+(our $mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
 
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
@@ -311,8 +346,8 @@ my %sites2countries = ('proxad.net' => 'fr',
 
 
 sub distro_type {
-    cat_('/etc/mandrake-release') =~ /community/i ? 'community'
-      : cat_('/etc/mandrake-release') =~ /cooker/i ? 'cooker'
+    $mandrake_release =~ /community/i ? 'community'
+      : $mandrake_release =~ /cooker/i ? 'cooker'
 	: 'updates';
 }
 
@@ -413,7 +448,7 @@ sub make_url_mirror {
 	#- esp. for distro_type() =~ /cooker|community/
 	"$mirror/";
     } else {
-	my ($class, $release) = cat_('/etc/mandrake-release') =~ /(\S+)\s+release\s+(\S+)/;
+	my ($class, $release) = $mandrake_release =~ /(\S+)\s+release\s+(\S+)/;
 	$class !~ /linux/i and $release = lc($class) . "/$release";  #- handle subdirectory for corporate/clustering/etc
 	"$mirror/$release/RPMS/";
     }
@@ -536,7 +571,8 @@ sub update_sources_interactive {
 	)
     );
     if ($w->main) {
-	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
+	#- force ignored media to be returned alive (forked from urpmi.updatemedia...)
+	foreach (@{$urpm->{media}}) {
 	    $_->{modified} and delete $_->{ignore};
 	}
         standalone::explanations("Updating media @media");
@@ -589,3 +625,24 @@ sub add_medium_and_check {
     return 0;
 }
 
+#- Check whether the default update media (added by installation)
+#- matches the current mdk version
+sub check_update_media_version {
+    my $urpm = shift;
+    for (@_) {
+	if ($_->{name} =~ /(\d+\.\d+).*\bftp\du\b/ && $1 ne $mdk_version) {
+	    interactive_msg(
+		'rpmdrake',
+		N("Your medium `%s', used for updates, does not match the version of Mandrakelinux you're running (%s).
+It will be disabled.",
+		    $_->{name}, $mdk_version),
+	    );
+	    $_->{ignore} = 1;
+	    $urpm->write_config if -w $urpm->{config};
+	    return 0;
+	}
+    }
+    1;
+}
+
+1;
