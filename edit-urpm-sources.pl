@@ -138,7 +138,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    $urpm->remove_selected_media;
 	}
 	add_medium_and_check($urpm, N("Please wait, adding medium..."),
-			     { probe_with_hdlist => member($type, qw(removable local)) && $i{hdlist} eq '' },
+			     { probe_with_hdlist => $i{hdlist} eq '' },
 			     $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security');
 	return 1;
     }
