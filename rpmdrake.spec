@@ -119,6 +119,10 @@ rm -rf $RPM_BUILD_ROOT
 * Tue Jan 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-3mdk
 - rpmdrake:
   - fix "update sources" dialog which didn't update the asked mediums
+- edit-urpm-sources:
+  - fix many errors originating from not being able to access toggle
+    buttons and entries after the dialog is finished (empty source
+    name, impossible to add mediums without hdlists, etc)
 
 * Fri Jan 10 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-2mdk
 - grpmi:
