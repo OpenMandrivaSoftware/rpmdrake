@@ -669,13 +669,18 @@ sub update_sources_interactive {
 
 sub add_medium_and_check {
     my ($urpm, $options) = splice @_, 0, 2;
-
+    my @newnames = ($_[0]); #- names of added media
     my $fatal_msg;
     my @error_msgs;
     local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = to_utf8($_[1]); goto fatal_error };
     local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, to_utf8($_[0]) };
-    standalone::explanations("Adding medium @_");
-    $urpm->add_medium(@_);
+    if ($options->{distrib}) {
+	standalone::explanations("Adding distrib media @_");
+	@newnames = $urpm->add_distrib_media(@_);
+    } else {
+	standalone::explanations("Adding medium @_");
+	$urpm->add_medium(@_);
+    }
     if (@error_msgs) {
         interactive_msg('rpmdrake',
                         N("Unable to add medium, errors reported:\n\n%s",
@@ -683,9 +688,11 @@ sub add_medium_and_check {
         return 0;
     }
 
-    urpm::download::set_proxy_config($_, $options->{proxy}{$_}, $_[0]) foreach keys %{$options->{proxy} || {}};
+    for my $name (@newnames) {
+	urpm::download::set_proxy_config($_, $options->{proxy}{$_}, $name) foreach keys %{$options->{proxy} || {}};
+    }
 
-    if (update_sources_check($urpm, $options, N_("Unable to add medium, errors reported:\n\n%s"), $_[0])) {
+    if (update_sources_check($urpm, $options, N_("Unable to add medium, errors reported:\n\n%s"), @newnames)) {
         $urpm->write_config;
 	$options->{proxy} and urpm::download::dump_proxy_config();
     } else {
@@ -693,8 +700,8 @@ sub add_medium_and_check {
         return 0;
     }
 
-    my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
-    if ($medium) {
+    my %newnames; @newnames{@newnames} = ();
+    if (any { exists $newnames{$_->{name}} } @{$urpm->{media}}) {
         return 1;
     } else {
         interactive_msg('rpmdrake', N("Unable to create medium."));

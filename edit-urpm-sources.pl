@@ -130,16 +130,38 @@ sub add_callback {
 	};
 	my $nb = $count_nbs++;
 	gtksignal_connect($_[1], 'clicked' => sub { $_[0]->get_active and $notebook->set_current_page($nb) });
+	my $with_hdlist_checkbut_entry = $checkbut_entry->(
+	    'hdlist', N("Relative path to synthesis/hdlist:"), 1,
+	    sub { $info->{distrib_check} and $_[0]->get_active and $info->{distrib_check}->set_active(0) },
+	    N("If left blank, synthesis/hdlist will be automatically probed"),
+	);
 	$notebook->append_page(
 	    my $book = create_packtable(
 		{},
 		[ gtkset_alignment(Gtk2::Label->new(N("Name:")), 1, 0.5),
-		$info->{name_entry} = gtkentry($_[0] eq 'security' ? 'update_source' : '') ],
+		    $info->{name_entry} = gtkentry($_[0] eq 'security' ? 'update_source' : '') ],
 		[ gtkset_alignment(Gtk2::Label->new($info->{url}), 1, 0.5),
 		    $url_entry->() ],
-		$checkbut_entry->('hdlist', N("Relative path to synthesis/hdlist:"), 1, undef,
-		    N("If left blank, synthesis/hdlist will be automatically probed")),
-		if_($info->{loginpass}, $loginpass_entries->())
+		$with_hdlist_checkbut_entry,
+		if_($info->{loginpass}, $loginpass_entries->()),
+		if_(
+		    !$info->{securitysel},
+		    sub {
+			[ gtkpack_(
+			    Gtk2::HBox->new(0, 0),
+			    1, Gtk2::Label->new,
+			    0, gtksignal_connect(
+				$info->{distrib_check} = Gtk2::CheckButton->new(N("Create media for a whole distribution")),
+				clicked => sub {
+				    if ($_[0]->get_active) {
+					$info->{hdlist_entry}->set_sensitive(0);
+					$info->{hdlist_check}->set_active(0);
+				    }
+				},
+			    )
+			) ];
+		    }->()
+		),
 	    )
 	);
 	$book->show;
@@ -176,7 +198,12 @@ really want to replace it?"), yesno => 1) or return 0;
 			    $w->{retval} = { nb => $notebook->get_current_page };
 			    $type = $radios_names_ordered[$w->{retval}{nb}];
 			    my $info = $radios_infos{$type};
-			    %i = (name => $info->{name_entry}->get_text, url => $info->{url_entry}->get_text, hdlist => $info->{hdlist_entry}->get_text);
+			    %i = (
+				name => $info->{name_entry}->get_text,
+				url => $info->{url_entry}->get_text,
+				hdlist => $info->{hdlist_entry}->get_text,
+				distrib => $info->{distrib_check} ? $info->{distrib_check}->get_active : 0,
+			    );
 			    %make_url = (local => "file:/$i{url}", http => $i{url}, security => $i{url}, removable => "removable:/$i{url}");
 			    $i{url} =~ s|^ftp://||;
 			    $make_url{ftp} = sprintf "ftp://%s%s",
@@ -194,16 +221,24 @@ really want to replace it?"), yesno => 1) or return 0;
     );
 
     if ($w->main) {
-	if (member($i{name}, map { $_->{name} } @{$urpm->{media}})) {
-	    standalone::explanations("Removing medium $i{name}");
-	    $urpm->select_media($i{name});
-	    $urpm->remove_selected_media;
+	if ($i{distrib}) {
+	    add_medium_and_check(
+		$urpm,
+		{ nolock => 1, distrib => 1 },
+		$i{name}, $make_url{$type}, $i{hdlist}, probe_with => 'synthesis',
+	    );
+	} else {
+	    if (member($i{name}, map { $_->{name} } @{$urpm->{media}})) {
+		standalone::explanations("Removing medium $i{name}");
+		$urpm->select_media($i{name});
+		$urpm->remove_selected_media;
+	    }
+	    add_medium_and_check(
+		$urpm,
+		{ probe_with => $probe, nolock => 1 },
+		$i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security',
+	    );
 	}
-	add_medium_and_check(
-	    $urpm,
-	    { probe_with => $probe, nolock => 1 },
-	    $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security',
-	);
 	return 1;
     }
     return 0;
