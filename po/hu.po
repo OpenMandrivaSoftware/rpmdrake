@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2002-08-29 17:02+0200\n"
-"PO-Revision-Date: 2002-08-28 22:01+0000\n"
+"POT-Creation-Date: 2002-08-30 10:17+0200\n"
+"PO-Revision-Date: 2002-08-30 00:35+0000\n"
 "Last-Translator: Arpad Biro <biro_arpad@yahoo.com>\n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
@@ -106,13 +106,13 @@ msgstr "Az adatforrás típusa:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98 ../rpmdrake.pm_.c:272
-#: ../rpmdrake_.c:322 ../rpmdrake_.c:779 ../rpmdrake_.c:805
+#: ../rpmdrake_.c:322 ../rpmdrake_.c:780 ../rpmdrake_.c:806
 msgid "Ok"
 msgstr "OK"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
-#: ../rpmdrake.pm_.c:272 ../rpmdrake_.c:322 ../rpmdrake_.c:805
+#: ../rpmdrake.pm_.c:272 ../rpmdrake_.c:322 ../rpmdrake_.c:806
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -175,7 +175,7 @@ msgstr "Engedélyezve?"
 msgid "Source"
 msgstr "Forrás"
 
-#: ../edit-urpm-sources.pl_.c:245 ../rpmdrake_.c:601
+#: ../edit-urpm-sources.pl_.c:245 ../rpmdrake_.c:602
 msgid "Remove"
 msgstr "Eltávolítás"
 
@@ -195,11 +195,11 @@ msgstr "Frissítés..."
 msgid "Save and quit"
 msgstr "Mentés és kilépés"
 
-#: ../edit-urpm-sources.pl_.c:255 ../rpmdrake_.c:604
+#: ../edit-urpm-sources.pl_.c:255 ../rpmdrake_.c:605
 msgid "Quit"
 msgstr "Kilépés"
 
-#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:904
+#: ../edit-urpm-sources.pl_.c:265 ../rpmdrake_.c:905
 #, c-format
 msgid ""
 "%s\n"
@@ -426,9 +426,13 @@ msgstr "Keresés..."
 msgid "Stop"
 msgstr "Leállítás"
 
+# "Addable" and "Upgradable": these are the two lists of packages when user selects
+# "by update availability"; the first lists the packages you can "add" to your computer
+# (new packages), the second lists the packages which are newer versions of already
+# installed packages
 #: ../rpmdrake_.c:195 ../rpmdrake_.c:295
 msgid "Addable"
-msgstr "Felvehetõ"
+msgstr "Telepíthetõ"
 
 #: ../rpmdrake_.c:195 ../rpmdrake_.c:295
 msgid "Upgradable"
@@ -546,7 +550,7 @@ msgid "Selected size: %d MB"
 msgstr "Kijelölve: %d MB"
 
 #: ../rpmdrake_.c:423
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%sFiles:\n"
 "%s\n"
@@ -554,17 +558,16 @@ msgid ""
 "Changelog:\n"
 "%s"
 msgstr ""
-"Forrás: %s\n"
-"Fájlok:\n"
+"%sFájlok:\n"
 "%s\n"
 "\n"
 "Változások jegyzéke:\n"
 "%s"
 
 #: ../rpmdrake_.c:424
-#, fuzzy, c-format
+#, c-format
 msgid "Source: %s\n"
-msgstr "Forrás"
+msgstr "Forrás: %s\n"
 
 #: ../rpmdrake_.c:429
 #, c-format
@@ -628,23 +631,27 @@ msgstr "Az összes csomag,"
 
 #: ../rpmdrake_.c:509
 msgid "by group"
-msgstr "csoportonként"
+msgstr "csoport szerint"
 
 #: ../rpmdrake_.c:509
 msgid "by size"
 msgstr "méret szerint"
 
+# it's a sort method
+# "selected or not"
 #: ../rpmdrake_.c:510
 msgid "by selection state"
-msgstr "kiválasztási állapot szerint"
+msgstr "kijelölési állapot szerint"
 
 #: ../rpmdrake_.c:511
 msgid "by source repository"
 msgstr "forrás alapján"
 
+# it's a sort method
+# "new or update"
 #: ../rpmdrake_.c:511
 msgid "by update availability"
-msgstr "frissítés-elérhetõség alapján"
+msgstr "telepítettség alapján"
 
 #: ../rpmdrake_.c:532
 msgid "in descriptions"
@@ -682,35 +689,35 @@ msgstr ""
 "\n"
 "Kívánja folytatni?"
 
-#: ../rpmdrake_.c:585
+#: ../rpmdrake_.c:586
 msgid "Find:"
 msgstr "Keresés:"
 
-#: ../rpmdrake_.c:590
+#: ../rpmdrake_.c:591
 msgid "Search"
 msgstr "Keresés"
 
-#: ../rpmdrake_.c:602
+#: ../rpmdrake_.c:603
 msgid "Install"
 msgstr "Telepítés"
 
-#: ../rpmdrake_.c:613
+#: ../rpmdrake_.c:614
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:615
 msgid "Mandrake Update"
 msgstr "Mandrake-frissítés"
 
-#: ../rpmdrake_.c:614
+#: ../rpmdrake_.c:615
 msgid "Software Packages Removal"
 msgstr "Szoftvercsomag-eltávolítás"
 
-#: ../rpmdrake_.c:615
+#: ../rpmdrake_.c:616
 msgid "Software Packages Installation"
 msgstr "Szoftvercsomag-telepítés"
 
-#: ../rpmdrake_.c:647
+#: ../rpmdrake_.c:648
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -722,23 +729,23 @@ msgstr ""
 "\n"
 "Kívánja folytatni?"
 
-#: ../rpmdrake_.c:651
+#: ../rpmdrake_.c:652
 msgid "Please wait, contacting mirror to update packages information."
 msgstr "Kapcsolódás a tükörkiszolgálóhoz; csomaginformációk lekérdezése..."
 
-#: ../rpmdrake_.c:653
+#: ../rpmdrake_.c:654
 msgid "Error updating medium"
 msgstr "Hiba az adatforrás frissítése közben"
 
-#: ../rpmdrake_.c:654
+#: ../rpmdrake_.c:655
 msgid "There was an unrecoverable error while updating packages information."
 msgstr "Helyrehozhatatlan hiba történt a csomaginformációk frissítése közben."
 
-#: ../rpmdrake_.c:660
+#: ../rpmdrake_.c:661
 msgid "How to choose manually your mirror"
 msgstr "Hogyan lehet tükörkiszolgálót választani saját kezûleg"
 
-#: ../rpmdrake_.c:661
+#: ../rpmdrake_.c:662
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -752,15 +759,15 @@ msgstr ""
 "\n"
 "Ez után indítsa el újra a MandrakeUpdate programot."
 
-#: ../rpmdrake_.c:667
+#: ../rpmdrake_.c:668
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr "Kapcsolódás a tükörkiszolgálóhoz; a frissítõcsomagok inicializálása..."
 
-#: ../rpmdrake_.c:671
+#: ../rpmdrake_.c:672
 msgid "Error adding update medium"
 msgstr "Hiba a frissítési adatforrás felvétele közben"
 
-#: ../rpmdrake_.c:672
+#: ../rpmdrake_.c:673
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -782,46 +789,46 @@ msgstr ""
 "\n"
 "Megpróbál egy másik tükörkiszolgálót?"
 
-#: ../rpmdrake_.c:701
+#: ../rpmdrake_.c:702
 msgid "Please wait, finding available packages..."
 msgstr "A rendelkezésre álló csomagok lekérdezése..."
 
-#: ../rpmdrake_.c:724
+#: ../rpmdrake_.c:725
 msgid "All requested packages were installed successfully."
 msgstr "Az összes kért csomag telepítve lett."
 
-#: ../rpmdrake_.c:724
+#: ../rpmdrake_.c:725
 msgid "Everything installed successfully"
 msgstr "Sikeresen telepítve lett minden"
 
-#: ../rpmdrake_.c:727
+#: ../rpmdrake_.c:728
 msgid "Installation finished"
 msgstr "A telepítés befejezõdött"
 
-#: ../rpmdrake_.c:730
+#: ../rpmdrake_.c:731
 #, c-format
 msgid "Inspecting %s"
 msgstr "%s vizsgálata"
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:747
 #, c-format
 msgid "Remove .%s"
 msgstr ".%s eltávolítása"
 
-#: ../rpmdrake_.c:748
+#: ../rpmdrake_.c:749
 #, c-format
 msgid "Use .%s as main file"
 msgstr ".%s használata fõfájlként"
 
-#: ../rpmdrake_.c:750
+#: ../rpmdrake_.c:751
 msgid "Do nothing"
 msgstr "Ne tegyen semmit"
 
-#: ../rpmdrake_.c:753
+#: ../rpmdrake_.c:754
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 
-#: ../rpmdrake_.c:760
+#: ../rpmdrake_.c:761
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -834,7 +841,7 @@ msgstr ""
 "Létre lett hozva néhány beállítási fájl \".rpmnew\" vagy \".rpmsave\"\n"
 "néven; ha kívánja, tekintse meg a tartalmukat."
 
-#: ../rpmdrake_.c:761
+#: ../rpmdrake_.c:762
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -842,36 +849,36 @@ msgstr ""
 "bizonyos csomagokat nem sikerült\n"
 "telepíteni"
 
-#: ../rpmdrake_.c:762
+#: ../rpmdrake_.c:763
 msgid "everything was installed correctly"
 msgstr "megfelelõen telepítve lett minden"
 
-#: ../rpmdrake_.c:767
+#: ../rpmdrake_.c:768
 msgid "Inspect..."
 msgstr "Vizsgálat..."
 
-#: ../rpmdrake_.c:795
+#: ../rpmdrake_.c:796
 msgid "Unable to get source packages."
 msgstr "A forráscsomagok letöltése sikertelen."
 
-#: ../rpmdrake_.c:796
+#: ../rpmdrake_.c:797
 msgid "Unable to get source packages, sorry."
 msgstr "A forráscsomagok letöltése sikertelen."
 
-#: ../rpmdrake_.c:803
+#: ../rpmdrake_.c:804
 msgid "Change medium"
 msgstr "Adatforrás váltása"
 
-#: ../rpmdrake_.c:804
+#: ../rpmdrake_.c:805
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Helyezze be a(z) \"%s\" nevû adatforrást a(z) \"%s\" eszközbe"
 
-#: ../rpmdrake_.c:812
+#: ../rpmdrake_.c:813
 msgid "Installation failed"
 msgstr "A telepítés nem sikerült"
 
-#: ../rpmdrake_.c:813
+#: ../rpmdrake_.c:814
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -879,37 +886,37 @@ msgstr ""
 "A telepítés sikertelen volt, mivel bizonyos fájlok\n"
 "nem találhatók. Esetleg frissítse a forrás-adatbázist."
 
-#: ../rpmdrake_.c:816
+#: ../rpmdrake_.c:817
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr ""
 "Csomagok eltávolítása annak érdekében, hogy más csomagokat frissíteni "
 "lehessen..."
 
-#: ../rpmdrake_.c:825
+#: ../rpmdrake_.c:826
 msgid "Program missing"
 msgstr "Egy program nem található"
 
-#: ../rpmdrake_.c:826
+#: ../rpmdrake_.c:827
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Egy szükséges program (grpmi) nem található. Ellenõrizze a telepítést."
 
-#: ../rpmdrake_.c:844
+#: ../rpmdrake_.c:845
 msgid "Everything already installed."
 msgstr "Már minden telepítve van."
 
-#: ../rpmdrake_.c:845
+#: ../rpmdrake_.c:846
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Már minden telepítve van (esetleg hiba történt?)."
 
-#: ../rpmdrake_.c:855
+#: ../rpmdrake_.c:856
 msgid "Please wait, reading packages database..."
 msgstr "Csomag-adatbázis olvasása..."
 
-#: ../rpmdrake_.c:893
+#: ../rpmdrake_.c:894
 msgid "Please wait, removing packages..."
 msgstr "Csomagok eltávolítása folyamatban..."
 
-#: ../rpmdrake_.c:908
+#: ../rpmdrake_.c:909
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -921,7 +928,7 @@ msgstr ""
 "Ezzel a programmal kiválaszthatja, mely szoftvertermékeket kívánja\n"
 "eltávolítani a gépérõl."
 
-#: ../rpmdrake_.c:913
+#: ../rpmdrake_.c:914
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -933,7 +940,7 @@ msgstr ""
 "Ezzel a programmal kiválaszthatja, mely frissítéseket kívánja\n"
 "telepíteni a gépére."
 
-#: ../rpmdrake_.c:918
+#: ../rpmdrake_.c:919
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
