@@ -418,6 +418,7 @@ sub run_treeview_dialog {
     };
     my $closure_removal = sub {
         my @to_remove;
+        $urpm->{state} = {};
 	foreach (@_) {
             $urpm->resolve_rejected(db(), $urpm->{state}, $pkgs->{$_}{pkg}, removed => 1);
             foreach (keys %{$urpm->{state}{rejected}}) {
@@ -528,7 +529,6 @@ or you already installed all of them."));
 			   }
 		       };
 		       if ($MODE eq 'remove') {
-                           $urpm->{state} = {};
 			   if ($new_state) {
                                my @remove;
 			       slow_func($tree->window, sub { @remove = $closure_removal->(@nodes) });
@@ -547,7 +547,8 @@ or you already installed all of them."));
 			   } else {
 			       slow_func($tree->window,
 					 sub { @nodes_with_deps = grep { intersection(\@nodes, [ $closure_removal->($_) ]) }
-						                  grep { $pkgs->{$_}{selected} } keys %$pkgs });
+						                  grep { $pkgs->{$_}{selected} && !member($_, @nodes) } keys %$pkgs });
+                               push @nodes_with_deps, @nodes;
 			       $deps_msg->(N("Some packages can't be removed"),
 					   N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
 					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();

@@ -117,10 +117,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
-* Wed Feb 11 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-3mdk
+* Thu Feb 12 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-3mdk
 - some #7472-alike progressbar sizing fixes
 - menu: specify that gurpmi.addmedia handles application/x-urpmi-media
 - fix #7425: center-always or center-on-parent popup windows
+- fix #7675: rpmdrake-remove wrongly thought an unrelated package was
+  needed to remove another one
 
 * Wed Jan 21 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-2mdk
 - remove unneeded stuff from grpmi/po/*.po
