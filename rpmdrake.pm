@@ -364,7 +364,6 @@ sub compat_arch_for_updates($) {
 sub mirrors {
     my ($cachedir) = @_;
     my $distro_type = distro_type();
-    warn "distro_type=$distro_type\n";
     $cachedir = '/root';
     my $mirrorslist = "$cachedir/mirrorsfull.list";
     unlink $mirrorslist;
@@ -457,12 +456,10 @@ sub make_url_mirror {
     my ($mirror) = @_;
     if ($mirror =~ m!/(?:RPMS|media/main)\Z!) {
 	#- esp. for distro_type() =~ /cooker|community/
-	warn "m=$mirror/";
 	"$mirror/";
     } else {
 	my ($class, $release) = $mandrake_release =~ /(\S+)\s+release\s+(\S+)/;
 	$class !~ /linux/i and $release = lc($class) . "/$release";  #- handle subdirectory for corporate/clustering/etc
-	warn "m=$mirror/$release/main_updates/";
 	"$mirror/$release/main_updates/";
     }
 }
