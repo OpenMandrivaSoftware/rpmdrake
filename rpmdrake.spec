@@ -64,24 +64,7 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 %find_lang rpmdrake
 
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
-?package(%{name}): command="/usr/sbin/rpmdrake" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
-  title="Browse Available Software" longtitle="A graphical front end for browsing available packages for installation (no root password needed)"
-?package(%{name}): command="/usr/sbin/rpmdrake --root" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
-  title="Install Software" longtitle="A graphical front end for installing packages"
-?package(%{name}): command="/usr/sbin/rpmdrake-remove --root" needs="x11" section="Configuration/Packaging" icon="rpmdrake-remove.png" \
-  title="Remove Software" longtitle="A graphical front end for removing packages"
-?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.png" \
-  title="Mandrakelinux Update" longtitle="A graphical front end for software updates"
-?package(%{name}): command="/usr/sbin/edit-urpm-media" needs="x11" section="Configuration/Packaging" icon="edit-urpm-sources.png" \
-  title="Software Media Manager" longtitle="A graphical front end to add/remove/edit media for installing packages"
-?package(%{name}): command="/usr/sbin/gurpmi.addmedia" needs="gnome" section=".hidden" \
-  title="Medium installer" mimetypes="application/x-urpmi-media" \
-  longtitle="A graphical front end for adding media"
-?package(%{name}): command="/usr/sbin/gurpmi.addmedia" needs="kde" section=".hidden" InitialPreference="9" \
-  title="Medium installer" mimetypes="application/x-urpmi-media" \
-  longtitle="A graphical front end for adding media"
-EOF
+cp %{name}.menu $RPM_BUILD_ROOT%{_menudir}/%{name}
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
 for i in rpmdrake rpmdrake-remove mandrakeupdate edit-urpm-sources; do
   cp pixmaps/${i}16.png $RPM_BUILD_ROOT%{_miconsdir}/${i}.png
