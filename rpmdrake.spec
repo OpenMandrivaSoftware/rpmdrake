@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 15mdk
+%define release 16mdk
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,12 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri Aug 30 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-16mdk
+- when a small amount of .rpmnew, don't have a scrolledwindow; when a
+  very large amount, don't create a window higher than the screen
+- have the changelogs extracted from the hdlist header: quicker, and
+  good for distant sources (thx houpla)
+
 * Thu Aug 29 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-15mdk
 - fix program exiting when in "maximum informations" in rpmdrake-remove
 - fix english typo, "informations" with an "s" doesn't english
