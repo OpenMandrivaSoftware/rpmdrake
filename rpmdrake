@@ -606,9 +606,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 }
 
 sub rpmdrake_install {
-    my ($urpm, $installable) = get_installable_pkgs();
-
-    run_treeview_dialog($urpm, $installable) and perform_installation($urpm);
+    while (1) {
+	my ($urpm, $installable) = get_installable_pkgs();
+	run_treeview_dialog($urpm, $installable) or return;
+	perform_installation($urpm);
+    }
 }
 
 
@@ -639,19 +641,22 @@ sub perform_removal {
 }
 
 sub rpmdrake_remove {
-    my $installed = get_installed_pkgs();
-
-    run_treeview_dialog(new urpm, $installed) and perform_removal(new urpm, $installed);
+    while (1) {
+	my $installed = get_installed_pkgs();
+	run_treeview_dialog(new urpm, $installed) or return;
+	perform_removal(new urpm, $installed);
+    }
 }
 
 
 # -=-=-=---=-=-=---=-=-=-- mandrakeupdate -=-=-=---=-=-=---=-=-=-
 
 sub rpmdrake_mandrakeupdate {
-    my ($urpm, $installable_updates, $descriptions) = get_installable_pkgs(1);
-
-    run_treeview_dialog($urpm, $installable_updates, $descriptions)
-      and perform_installation($urpm);
+    while (1) {
+	my ($urpm, $installable_updates, $descriptions) = get_installable_pkgs(1);
+	run_treeview_dialog($urpm, $installable_updates, $descriptions) or return;
+	perform_installation($urpm);
+    }
 }
 
 
