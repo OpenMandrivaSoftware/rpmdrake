@@ -109,7 +109,7 @@ sub add_callback {
 	    $info->{name_entry}->select_region(0, -1);
 	    interactive_msg('rpmdrake', 
 _("There is already a medium by that name, do you
-really want to replace it?"), { yesno => 1 } ) or return 0;
+really want to replace it?"), yesno => 1) or return 0;
 	}
 	1;
     };
@@ -269,7 +269,7 @@ _("Welcome to the packages source editor!
 
 This tool will help you configure the packages sources you wish to use on
 your computer. They will then be available to install new software package
-or to perform updates.")), { yesno => 1 }) or myexit -1;
+or to perform updates.")), yesno => 1) or myexit -1;
     push @$already_splashed, basename($0);
 }
 
