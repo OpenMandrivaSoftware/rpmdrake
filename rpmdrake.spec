@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-36mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 9.1-0.12mdk grpmi >= 9.0 rpmtools >= 4.5
 Requires: perl-GTK2 > 0.0.cvs.2003.01.08.1
 BuildRequires: curl-devel rpm-devel gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -116,13 +116,14 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Wed Jan 22 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-4mdk
+* Thu Jan 23 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-4mdk
 - edit-urpm-sources:
   - fix wrong display of medium as "enabled", after adding a medium
     that has problems and is hence automatically disabled (#995)
   - fix crashing when managing to call Remove or Edit with nothing
     selected (#970)
-
+- add a dependency to a recent drakxtools to fix #1030
+  
 * Tue Jan 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-3mdk
 - rpmdrake:
   - fix "update sources" dialog which didn't update the asked mediums
