@@ -222,7 +222,7 @@ my %t2l = (
 	   'Asia/(Taipei|Beijing)' => [ qw(zn jp), @$us ],
 	   'Atlantic/Reykjavik' => [ qw(uk no se dk) ],
 	   'Australia/\w+' =>     [ qw(au jp ko tw), @$us ],
-	   'Brazil/\w+' =>       [ 'br', @$us ],
+	   'Brazil/\w+' =>        [ 'br', @$us ],
 	   'Canada/\w+' =>        [ 'ca', @$us ],
 	   'Europe/Amsterdam' =>  [ qw(nl be de at) ],
 	   'Europe/Athens' =>     [ qw(gr pl de nl at) ],
@@ -301,7 +301,6 @@ by Mandrake Linux Official Updates.")), return '';
     my $tree_model = Gtk2::TreeStore->new(Gtk2::GType->STRING);
     my $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
-#    $tree->set_row_height($tree->style->font->ascent + $tree->style->font->descent + 1); FIXME is that still needed?
     my $column = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0);
     $tree->append_column($column);
     $tree->set_headers_visible(0);
@@ -326,7 +325,7 @@ by Mandrake Linux Official Updates.")), return '';
     $tree_model->append_set($roots{$_->{land}} ||= $tree_model->append_set(undef, [ 0 => $_->{land} ]),
 			    [ 0 => $_->{url} ])->free foreach @mirrors;
 
-    $w->{window}->set_size_request(400, 300);
+    $w->{window}->set_size_request(500, 400);
     $w->{rwindow}->show_all;
 
     my $path = Gtk2::TreePath->new_first;
