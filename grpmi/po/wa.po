@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi\n"
-"POT-Creation-Date: 2002-09-05 12:01+0200\n"
+"POT-Creation-Date: 2003-01-17 13:19+0100\n"
 "PO-Revision-Date: 1999-08-17 16:56+0200\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
@@ -57,7 +57,7 @@ msgstr "Dji n' a savou m' raloyî\n"
 
 #: ../curl_download/curl_download.xs:147
 msgid "Ftp weird server reply\n"
-msgstr ""
+msgstr "Ftp: Response bizåre\n"
 
 #: ../curl_download/curl_download.xs:150
 msgid "Ftp access denied\n"
@@ -204,49 +204,50 @@ msgstr ""
 msgid "Unknown error code %d\n"
 msgstr "Côde d' aroke nén cnoxhou %d\n"
 
-#: ../grpmi.pl_.c:52
+#: ../grpmi.pl_.c:62 ../grpmi.pl_.c:116 ../grpmi.pl_.c:142
 msgid "Yes"
 msgstr "Oyi"
 
-#: ../grpmi.pl_.c:53
+#: ../grpmi.pl_.c:63 ../grpmi.pl_.c:116 ../grpmi.pl_.c:117 ../grpmi.pl_.c:142
+#: ../grpmi.pl_.c:143
 msgid "No"
 msgstr "Neni"
 
-#: ../grpmi.pl_.c:54
+#: ../grpmi.pl_.c:64
 msgid "Ok"
 msgstr "'l est bon"
 
-#: ../grpmi.pl_.c:63
+#: ../grpmi.pl_.c:71
 msgid "Error..."
 msgstr "Aroke..."
 
-#: ../grpmi.pl_.c:64
+#: ../grpmi.pl_.c:72
 msgid "You need to be root to install packages, sorry."
 msgstr "Vos dvoz esse root po-z astalaer des pacaedjes."
 
-#: ../grpmi.pl_.c:66
+#: ../grpmi.pl_.c:74
 msgid "RPM initialization error"
 msgstr "Åk n' a nén stî tot-z inicialijhant RPM"
 
-#: ../grpmi.pl_.c:67
+#: ../grpmi.pl_.c:75
 msgid "The initialization of config files of RPM was not possible, sorry."
 msgstr ""
 "L' inicialijhaedje des fitchîs d' apontiaedje di RPM n' s' a nén polou fé"
 
-#: ../grpmi.pl_.c:73
+#: ../grpmi.pl_.c:81
 msgid "Initializing..."
 msgstr "Inicialijaedje..."
 
-#: ../grpmi.pl_.c:93
+#: ../grpmi.pl_.c:104
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Aberwetant l' pacaedje «%s» (%s/%s)..."
 
-#: ../grpmi.pl_.c:99
+#: ../grpmi.pl_.c:109
 msgid "Error during download"
 msgstr "Åk n' anén stî tot-z aberwetant"
 
-#: ../grpmi.pl_.c:100
+#: ../grpmi.pl_.c:110
 #, c-format
 msgid ""
 "There was an error downloading package:\n"
@@ -263,16 +264,20 @@ msgstr ""
 "Aroke: %s\n"
 "Voloz vs continuwer (passer houte di ci pacaedje chal)?"
 
-#: ../grpmi.pl_.c:112
+#: ../grpmi.pl_.c:116 ../grpmi.pl_.c:118
+msgid "Retry download"
+msgstr "Rissayî d' aberweter"
+
+#: ../grpmi.pl_.c:134
 #, c-format
 msgid "Verifying signature of `%s'..."
 msgstr "Verifiaedje del sinateure di «%s»..."
 
-#: ../grpmi.pl_.c:114
+#: ../grpmi.pl_.c:136
 msgid "Signature verification error"
 msgstr "Åk n' a nén stî tot verifiant l' sinateure"
 
-#: ../grpmi.pl_.c:115
+#: ../grpmi.pl_.c:137
 #, c-format
 msgid ""
 "The signature of the package `%s' is not correct:\n"
@@ -285,11 +290,16 @@ msgstr ""
 "%s\n"
 "El voloz vs tot l' minme astaler (c' est foirt riskeus)?"
 
-#: ../grpmi.pl_.c:121
+#: ../grpmi.pl_.c:142 ../grpmi.pl_.c:144
+#, fuzzy
+msgid "Yes to all"
+msgstr "Tchoezi totafwait"
+
+#: ../grpmi.pl_.c:147
 msgid "File error"
 msgstr "Aroke avou l' fitchî"
 
-#: ../grpmi.pl_.c:122
+#: ../grpmi.pl_.c:148
 #, c-format
 msgid ""
 "The following file is not valid:\n"
@@ -304,15 +314,15 @@ msgstr ""
 "\n"
 "Voloz vs continuwer cwand minme (passer houte di ci pacaedje chal)?"
 
-#: ../grpmi.pl_.c:137
+#: ../grpmi.pl_.c:164
 msgid "Preparing packages for installation..."
 msgstr "Dj' apresteye les pacaedjes po l' astalaedje..."
 
-#: ../grpmi.pl_.c:145
+#: ../grpmi.pl_.c:172
 msgid "Conflicts detected"
 msgstr "I gn a des conflits"
 
-#: ../grpmi.pl_.c:146
+#: ../grpmi.pl_.c:173
 #, c-format
 msgid ""
 "Conflicts were detected:\n"
@@ -325,16 +335,16 @@ msgstr ""
 "\n"
 "L' astalaedje a fwait berwete."
 
-#: ../grpmi.pl_.c:155
+#: ../grpmi.pl_.c:182
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Dj' astale li pacaedje «%s» (%s/%s)..."
 
-#: ../grpmi.pl_.c:169
+#: ../grpmi.pl_.c:196
 msgid "Problems occurred during installation"
 msgstr "Åk n' a nén stî cwand dj' astaléve"
 
-#: ../grpmi.pl_.c:169
+#: ../grpmi.pl_.c:196
 #, c-format
 msgid ""
 "There was an error during packages installation:\n"
@@ -397,7 +407,7 @@ msgstr "Dji n' a savou drovi l' båze di dnêyes RPM po-z î scrire"
 
 #: ../rpm/grpmi_rpm.xs:240
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "Dji n' a savou enonder li transaccion"
 
 #: ../rpm/grpmi_rpm.xs:259
 #, c-format
@@ -735,9 +745,6 @@ msgstr "Åk n' a nén stî cwand dj' astaléve:\n"
 #~ msgstr ""
 #~ "Tchoezi\n"
 #~ "totafwait"
-
-#~ msgid "Select all"
-#~ msgstr "Tchoezi totafwait"
 
 #~ msgid ""
 #~ "Unselect\n"

@@ -6,18 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi 8.2\n"
-"POT-Creation-Date: 2002-09-05 12:01+0200\n"
-"PO-Revision-Date: 2002-01-25 21:04\n"
-"Last-Translator: Roger Kovacs <rkovacs@khujandcomptech.dyn.tj>\n"
-"Language-Team: Tajik\n"
+"POT-Creation-Date: 2003-01-17 13:19+0100\n"
+"PO-Revision-Date: 2003-01-15 16:25-0500\n"
+"Last-Translator: Dilshod A. Marupov <dma165@hotmail.com>\n"
+"Language-Team: Tajik <rkovacs@khujandcomptech.dyn.tj>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
+"X-Generator: KBabel 0.9.6\n"
 
 #: ../curl_download/curl_download.xs:86
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "Феҳристе, ки фаровир мондан лозим аст, бояд вуҷуд дошта бошад"
 
 #: ../curl_download/curl_download.xs:89 ../curl_download/curl_download.xs:206
 msgid "Out of memory\n"
@@ -25,7 +25,7 @@ msgstr "Норасогии ҳофиза\n"
 
 #: ../curl_download/curl_download.xs:102
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "Файли хосилкунӣ дар усули пайвастан кушода нашуд"
 
 #: ../curl_download/curl_download.xs:126
 msgid "Unsupported protocol\n"
@@ -204,49 +204,49 @@ msgstr "Фармони бади даъват\n"
 msgid "Unknown error code %d\n"
 msgstr "Рамзи хатогии номаълуми %d\n"
 
-#: ../grpmi.pl_.c:52
+#: ../grpmi.pl_.c:62 ../grpmi.pl_.c:116 ../grpmi.pl_.c:142
 msgid "Yes"
-msgstr ""
+msgstr "Ҳа"
 
-#: ../grpmi.pl_.c:53
+#: ../grpmi.pl_.c:63 ../grpmi.pl_.c:116 ../grpmi.pl_.c:117 ../grpmi.pl_.c:142
+#: ../grpmi.pl_.c:143
 msgid "No"
-msgstr ""
+msgstr "Не"
 
-#: ../grpmi.pl_.c:54
+#: ../grpmi.pl_.c:64
 msgid "Ok"
 msgstr "Ok"
 
-#: ../grpmi.pl_.c:63
+#: ../grpmi.pl_.c:71
 msgid "Error..."
 msgstr "Хатогӣ..."
 
-#: ../grpmi.pl_.c:64
+#: ../grpmi.pl_.c:72
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "Барои коргузории қуттиҳо Шумо бояд root бошед, узр."
 
-#: ../grpmi.pl_.c:66
+#: ../grpmi.pl_.c:74
 msgid "RPM initialization error"
-msgstr ""
+msgstr "Хатогии шиносоии RPM"
 
-#: ../grpmi.pl_.c:67
+#: ../grpmi.pl_.c:75
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "Шиносоии файлҳои танзимдарории RPM номумкин буд, узр."
 
-#: ../grpmi.pl_.c:73
-#, fuzzy
+#: ../grpmi.pl_.c:81
 msgid "Initializing..."
-msgstr "Коргузорӣ:"
+msgstr "Коргузорӣ..."
 
-#: ../grpmi.pl_.c:93
+#: ../grpmi.pl_.c:104
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Фаровиркунии қутии `%s' (%s/%s)..."
 
-#: ../grpmi.pl_.c:99
+#: ../grpmi.pl_.c:109
 msgid "Error during download"
-msgstr ""
+msgstr "Хатогӣ ҳангоми фаровир"
 
-#: ../grpmi.pl_.c:100
+#: ../grpmi.pl_.c:110
 #, c-format
 msgid ""
 "There was an error downloading package:\n"
@@ -256,17 +256,27 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"Хатогӣ рӯй дод ҳангоми фаровири қуттии:\n"
+"\n"
+"%s\n"
+"\n"
+"Хатогии: %s\n"
+"Шумо давом додан меоҳед (ин қуттиро рад карда)?"
 
-#: ../grpmi.pl_.c:112
+#: ../grpmi.pl_.c:116 ../grpmi.pl_.c:118
+msgid "Retry download"
+msgstr ""
+
+#: ../grpmi.pl_.c:134
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "Тасдиқкунии имзои `%s'..."
 
-#: ../grpmi.pl_.c:114
+#: ../grpmi.pl_.c:136
 msgid "Signature verification error"
-msgstr ""
+msgstr "Хатогии тасдиқкунии имзо"
 
-#: ../grpmi.pl_.c:115
+#: ../grpmi.pl_.c:137
 #, c-format
 msgid ""
 "The signature of the package `%s' is not correct:\n"
@@ -274,13 +284,20 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"Имзои қуттии `%s' нодуруст аст:\n"
+"\n"
+"%s\n"
+"Инро ба ҳар ҳол коргузоштан мехоҳед?"
 
-#: ../grpmi.pl_.c:121
-#, fuzzy
+#: ../grpmi.pl_.c:142 ../grpmi.pl_.c:144
+msgid "Yes to all"
+msgstr ""
+
+#: ../grpmi.pl_.c:147
 msgid "File error"
-msgstr "Хатои навишт\n"
+msgstr "Хатогии файл"
 
-#: ../grpmi.pl_.c:122
+#: ../grpmi.pl_.c:148
 #, c-format
 msgid ""
 "The following file is not valid:\n"
@@ -289,51 +306,60 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"Файли зерин ҳақиқӣ нест:\n"
+"\n"
+"%s\n"
+"\n"
+"Шумо ба ҳар ҳол давом додан меоҳед (ин қуттиро рад карда)?"
 
-#: ../grpmi.pl_.c:137
-#, fuzzy
+#: ../grpmi.pl_.c:164
 msgid "Preparing packages for installation..."
-msgstr "Тайёрӣ ба коргузорӣ"
+msgstr "Тайёркунии қуттиҳо барои коргузорӣ..."
 
-#: ../grpmi.pl_.c:145
+#: ../grpmi.pl_.c:172
 msgid "Conflicts detected"
-msgstr ""
+msgstr "Зиддиятҳо пайдо шуданд"
 
-#: ../grpmi.pl_.c:146
-#, fuzzy, c-format
+#: ../grpmi.pl_.c:173
+#, c-format
 msgid ""
 "Conflicts were detected:\n"
 "%s\n"
 "\n"
 "Install aborted."
-msgstr "Коргузорӣ канда шуд"
+msgstr ""
+"Зиддиятҳо пайдо шуданд:\n"
+"%s\n"
+"\n"
+"Коргузорӣ канда шуд"
 
-#: ../grpmi.pl_.c:155
+#: ../grpmi.pl_.c:182
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Коргузории қуттии `%s' (%s/%s)..."
 
-#: ../grpmi.pl_.c:169
+#: ../grpmi.pl_.c:196
 msgid "Problems occurred during installation"
 msgstr "Муаммоҳо ҳангоми коргузориш рӯй доданд"
 
-#: ../grpmi.pl_.c:169
-#, fuzzy, c-format
+#: ../grpmi.pl_.c:196
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Тайёрӣ ба коргузорӣ"
+msgstr ""
+"Хатогӣ ҳангоми коргузории қуттиҳо рӯй дод:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:69
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "File файлро хонда натавонист\n"
+msgstr "Файлҳои танзимдарории RPM хонда намешаванд"
 
 #: ../rpm/grpmi_rpm.xs:95
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Пайваст нашуд\n"
+msgstr "Файлро кушода нашуд\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 #, fuzzy
@@ -342,83 +368,78 @@ msgstr "Ҳалли соҳиб нашуд\n"
 
 #: ../rpm/grpmi_rpm.xs:102
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "Нусхаи RPM-и қуттӣ имзоҳоро дастгирӣ намекунад\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "Блоки имзо хонда нашуд (`rpmReadSignature' нагузашт)\n"
 
 #: ../rpm/grpmi_rpm.xs:110
 msgid "No signatures\n"
-msgstr ""
+msgstr "Имзоҳо нестанд\n"
 
 #: ../rpm/grpmi_rpm.xs:114
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "`makeTempFile' нагузашт!\n"
 
 #: ../rpm/grpmi_rpm.xs:121
 msgid "Error reading file\n"
-msgstr ""
+msgstr "Хатогии хондани файл\n"
 
 #: ../rpm/grpmi_rpm.xs:127
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "Хатогии навиштани файли муваққатӣ\n"
 
 #: ../rpm/grpmi_rpm.xs:152
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "Дар қуттӣ имзои GPG нест\n"
 
 #: ../rpm/grpmi_rpm.xs:234
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "RPM DB барои навиштан кушода нашуд (фавқкорванд не?)"
 
 #: ../rpm/grpmi_rpm.xs:236
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "RPM DB барои навиштан кушода нашуд"
 
 #: ../rpm/grpmi_rpm.xs:240
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "Муомила шурӯъ карда нашуд"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Қуттиро кушода намешавад"
+msgstr "Қуттии `%s' кушода намешавад\n"
 
 #: ../rpm/grpmi_rpm.xs:264
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Қуттӣ вайрон шудааст"
+msgstr "Қуттии `%s' вайрон шуд\n"
 
 #: ../rpm/grpmi_rpm.xs:267
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Қуттӣ коргузорӣ шуда наметавонад"
+msgstr "Қуттии `%s' коргузошта намешавад\n"
 
 #: ../rpm/grpmi_rpm.xs:278
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Хатогӣ ҳангоми тафтиши тобеиятҳо :("
+msgstr "Хатогӣ ҳангоми тафтиши тобеиятҳо"
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "conflicts with"
-msgstr "зиддиятҳо бо %s-%s-%s"
+msgstr "зиддиятҳо бо"
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "is needed by"
-msgstr "лозим шуд бо %s-%s-%s"
+msgstr "лозим шуд бо"
 
 #: ../rpm/grpmi_rpm.xs:317
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Хатогӣ ҳангоми тафтиши тобеиятҳо :("
+msgstr "Хатогӣ ҳангоми тафтиши тобеиятҳои 2"
 
 #: ../rpm/grpmi_rpm.xs:323
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Муаммоҳо ҳангоми коргузориш рӯй доданд"
+msgstr "Муаммоҳо ҳангоми коргузориш рӯй доданд:\n"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "Коргузорӣ/Афзоиши Инкишоф"
