@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 9mdk
+%define release 10mdk
 
 Name: %{name}
 Version: %{version}
@@ -60,23 +60,23 @@ cat rpmdrake.lang grpmi.lang
 
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
-?package(%{name}): command="/usr/sbin/rpmdrake" needs="x11" section="Configuration/Packaging" icon="rpmdrake.xpm"\
+?package(%{name}): command="/usr/sbin/rpmdrake" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png"\
 title="Install Software" longtitle="A graphical front end for installing packages"
-?package(%{name}): command="/usr/sbin/rpmdrake-remove" needs="x11" section="Configuration/Packaging" icon="rpmdrake.xpm"\
+?package(%{name}): command="/usr/sbin/rpmdrake-remove" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png"\
 title="Remove Software" longtitle="A graphical front end for removing packages"
-?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.xpm"\
+?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.png"\
 title="Mandrake Update" longtitle="A graphical front end for software updates"
-?package(%{name}): command="/usr/sbin/edit-urpm-sources.pl" needs="x11" section="Configuration/Packaging" icon="rpmdrake.xpm"\
+?package(%{name}): command="/usr/sbin/edit-urpm-sources.pl" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png"\
 title="Software Sources Manager" longtitle="A graphical front end to add/remove/edit sources for installing packages"
 EOF
 
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
-cp pixmaps/mandrakeupdate16.xpm $RPM_BUILD_ROOT%{_miconsdir}/mandrakeupdate.xpm
-cp pixmaps/mandrakeupdate32.xpm $RPM_BUILD_ROOT%{_iconsdir}/mandrakeupdate.xpm
-cp pixmaps/mandrakeupdate48.xpm $RPM_BUILD_ROOT%{_liconsdir}/mandrakeupdate.xpm
-cp pixmaps/rpmdrake16.xpm $RPM_BUILD_ROOT%{_miconsdir}/rpmdrake.xpm
-cp pixmaps/rpmdrake32.xpm $RPM_BUILD_ROOT%{_iconsdir}/rpmdrake.xpm
-cp pixmaps/rpmdrake48.xpm $RPM_BUILD_ROOT%{_liconsdir}/rpmdrake.xpm
+cp pixmaps/mandrakeupdate16.png $RPM_BUILD_ROOT%{_miconsdir}/mandrakeupdate.png
+cp pixmaps/mandrakeupdate32.png $RPM_BUILD_ROOT%{_iconsdir}/mandrakeupdate.png
+cp pixmaps/mandrakeupdate48.png $RPM_BUILD_ROOT%{_liconsdir}/mandrakeupdate.png
+cp pixmaps/rpmdrake16.png $RPM_BUILD_ROOT%{_miconsdir}/rpmdrake.png
+cp pixmaps/rpmdrake32.png $RPM_BUILD_ROOT%{_iconsdir}/rpmdrake.png
+cp pixmaps/rpmdrake48.png $RPM_BUILD_ROOT%{_liconsdir}/rpmdrake.png
 
 # bloody RPM..
 mkdir -p $RPM_BUILD_ROOT/var/lib/urpmi
@@ -100,9 +100,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/rpmdrake
 %{perl_vendorlib}/*.pm
 %{_menudir}/%{name}
-%{_iconsdir}/*.xpm
-%{_miconsdir}/*.xpm
-%{_liconsdir}/*.xpm
+%{_iconsdir}/*.png
+%{_miconsdir}/*.png
+%{_liconsdir}/*.png
 %ghost /var/lib/urpmi/compssUsers.flat
 
 %files -n grpmi -f grpmi.lang
@@ -113,6 +113,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Aug 27 2002 David BAUDENS <baudens@mandrakesoft.com> 2.0-10mdk
+- Update icons
+
 * Mon Aug 26 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-9mdk
 - grpmi: don't display successful end message when installing packages
   so that we have back the old behaviour and it's better for programs
