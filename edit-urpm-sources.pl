@@ -723,7 +723,7 @@ sub mainwindow {
 					     gtksignal_connect(Gtk2::Button->new(but(N("Proxy..."))), clicked => \&proxy_callback),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Parallel..."))), clicked => \&parallel_callback))),
 		    0, Gtk2::HSeparator->new,
-		    0, gtkpack(create_hbox(),
+		    0, gtkpack(create_hbox('edge'),
 			       gtksignal_connect(Gtk2::Button->new(but(N("Help"))), clicked => sub {
                                                            system("drakhelp --id software-management-sources &");
                                                            interactive_msg(N("Help launched in background"),
