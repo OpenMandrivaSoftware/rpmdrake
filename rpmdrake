@@ -556,10 +556,9 @@ sub run_treeview_dialog {
 
     my $is_locale_available = sub {
 	any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
-	db->traverse_tag('name', [ $_ ], sub { goto traversed });
-	return 0;
-      traversed:
-	return 1;
+	my $found;
+	db->traverse_tag('name', [ $_ ], sub { $found ||= 1 });
+	return $found;
     };
     my $callback_choices = sub {
 	my (undef, undef, undef, $choices) = @_;
