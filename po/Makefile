@@ -11,6 +11,9 @@ POFILES = $(shell ls *.po)
 MOFILES = $(POFILES:%.po=%.mo)
 LANGS = $(POFILES:%.po=%)
 
+# because of different charsets or encodings.. :-(
+IGNOREPOMS = sl.po vi.po
+
 PREFIX = $(RPM_BUILD_ROOT)/usr
 DATADIR = $(PREFIX)/share
 LOCALEDIR=$(DATADIR)/locale
@@ -18,7 +21,7 @@ LOCALEDIR=$(DATADIR)/locale
 all: $(PGOAL).pot $(MOFILES)
 
 %.mo: %.po
-	cat $< "$<"m >> "$<"f
+	@if [ -z "`echo $(IGNOREPOMS) | grep $<`" ]; then cat $< "$<"m >> "$<"f; else cp $< "$<"f; fi
 	msgfmt -o $@ "$<"f
 
 $(PL_CFILES): %_.c: %
