@@ -29,6 +29,7 @@ merge: rpmdrake.pot
 
 rpmdrake.pot: $(PL_CFILES)
 	xgettext -F -n --add-comments='-PO' --keyword=_ --language=C -o $@ $(PL_CFILES)
+	rm $(PL_CFILES)
 
 install:
 	for l in $(LANGS); do \

@@ -33,6 +33,7 @@ merge: grpmi.pot
 
 grpmi.pot: $(PL_CFILES) $(CFILES)
 	xgettext -F -n --add-comments='-PO' --keyword=_ --language=C -o $@ $(PL_CFILES) $(CFILES)
+	rm $(PL_CFILES)
 
 install:
 	for l in $(LANGS); do \
