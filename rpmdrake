@@ -546,7 +546,7 @@ sub run_treeview_dialog {
 
     my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
 
-    my ($options, $size_selected, $compssUsers, $info, $info_update, $tree, $tree_model, %elems);
+    my ($options, $size_selected, $compssUsers, $tree, $tree_model, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     {
@@ -562,7 +562,7 @@ sub run_treeview_dialog {
 	return 1;
     };
     my $callback_choices = sub {
-	my (undef, $db, $state, $choices) = @_;
+	my (undef, undef, undef, $choices) = @_;
 	foreach my $pkg (@$choices) {
 	    foreach ($pkg->requires_nosense) {
 		/locales-/ or next;
@@ -885,15 +885,16 @@ or you already installed all of them."));
 	mapn {
 	    member($_[0], @$mandrakeupdate_wanted_categories) and $_[1]->set_active(1);
 	    my $capture_value = $_[0];
-	    $_[1]->signal_connect(clicked => sub {
-				      if ($_[0]->get_active) {
-					  push @$mandrakeupdate_wanted_categories, $capture_value;
-				      } else {
-					  @$mandrakeupdate_wanted_categories = difference2($mandrakeupdate_wanted_categories,
-											   [ $capture_value ]);
-				      }
-				      $options->{rebuild_tree}->();
-				  });
+	    $_[1]->signal_connect(
+		clicked => sub {
+		    if ($_[0]->get_active) {
+			push @$mandrakeupdate_wanted_categories, $capture_value;
+		    } else {
+			@$mandrakeupdate_wanted_categories = difference2($mandrakeupdate_wanted_categories, [ $capture_value ]);
+		    }
+		    $options->{rebuild_tree}->();
+		},
+	    );
 	} \@toggle_names_ordered, \@modes_buttons;
     } else {
 	my %radios_infos = (
@@ -1018,7 +1019,7 @@ or you already installed all of them."));
 				  }
 			      });
     } \@descr_modes, \@menu_descr_modes;
-    $info = Gtk2::TextView->new;
+    my $info = Gtk2::TextView->new;
     $info->set_left_margin(2);
     $info->set_right_margin(15);  #- workaround when right elevator of scrolled window appears
 
