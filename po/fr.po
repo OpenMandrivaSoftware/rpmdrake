@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2003-06-13 21:08+0200\n"
-"PO-Revision-Date: 2003-05-30 13:37+0200\n"
+"POT-Creation-Date: 2003-06-18 19:02+0200\n"
+"PO-Revision-Date: 2003-06-18 19:07+0200\n"
 "Last-Translator: Christophe Combelles <ccomb@free.fr>\n"
 "Language-Team: french <cooker-i18n@linux-mandrake.com>\n"
 "MIME-Version: 1.0\n"
@@ -607,6 +607,22 @@ msgstr "Importance : "
 msgid "Unable to create medium."
 msgstr "Impossible de créer le médium."
 
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"The following packages have to be removed for others to be upgraded:\n"
+"\n"
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"Les paquetages suivants doivent être supprimés afin que les autres\n"
+"puissent être mis à jour :\n"
+"\n"
+"%s\n"
+"\n"
+"Voulez-vous continuer ?"
+
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid ""
@@ -840,6 +856,17 @@ msgstr ""
 msgid "Some packages can't be removed"
 msgstr "Des paquetages ne peuvent pas être supprimés"
 
+#: ../rpmdrake:1
+#, c-format
+msgid ""
+"Sorry, the following package(s) can't be selected:\n"
+"\n"
+"%s"
+msgstr ""
+"Désolé, le(s) paquetage(s) suivant(s) ne peuvent pas être sélectionnés :\n"
+"\n"
+"%s"
+
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Finland"
@@ -1032,24 +1059,6 @@ msgstr "Informations normales"
 #, c-format
 msgid "Removable device"
 msgstr "Périphérique amovible"
-
-#: ../rpmdrake:1
-#, fuzzy, c-format
-msgid ""
-"The following packages have to be removed for others to be upgraded:\n"
-"\n"
-"%s\n"
-"\n"
-"(waiting for urpmi subroutine for explanation)\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"Les paquetages suivants doivent être supprimés afin que les autres\n"
-"puissent être mis à jour :\n"
-"\n"
-"%s\n"
-"\n"
-"Voulez-vous continuer ?"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1253,7 +1262,7 @@ msgstr "Aucun paquetage trouvé pour l'installation."
 #: ../rpmdrake:1
 #, c-format
 msgid "Medium: "
-msgstr "Médium :"
+msgstr "Médium : "
 
 #: ../rpmdrake:1
 #, c-format
@@ -1264,25 +1273,6 @@ msgstr "Description : "
 #, c-format
 msgid "%s KB"
 msgstr "%s Ko"
-
-#: ../rpmdrake:1
-#, c-format
-msgid ""
-"Sorry, the following package(s) can't be selected:\n"
-"\n"
-"%s\n"
-"\n"
-"Reasons follow:\n"
-"\n"
-"%s"
-msgstr ""
-"Désolé, le(s) paquetage(s) suivant(s) ne peuvent pas être sélectionnés :\n"
-"\n"
-"%s\n"
-"\n"
-"Les raisons sont :\n"
-"\n"
-"%s"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1669,14 +1659,16 @@ msgid "System/Base"
 msgstr "Système/Base"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
 "%s\n"
 "\n"
 "You may want to update your media database."
 msgstr ""
-"L'installation a échoué, certains fichiers sont introuvables.\n"
+"L'installation a échoué, certains fichiers sont introuvables :\n"
+"%s\n"
+"\n"
 "Vous devriez probablement mettre à jour vos média."
 
 #: ../rpmdrake:1
