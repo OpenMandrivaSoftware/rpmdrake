@@ -351,6 +351,14 @@ sub distro_type {
 	: 'updates';
 }
 
+sub compat_arch_for_updates($) {
+    # FIXME: We prefer 64-bit packages to update on biarch platforms,
+    # since the system is populated with 64-bit packages anyway.
+    my ($arch) = @_;
+    return $arch =~ /x86_64|amd64/ if (arch() eq 'x86_64');
+    MDK::Common::System::compat_arch($arch);
+}
+
 sub mirrors {
     my ($cachedir) = @_;
     my $distro_type = distro_type();
@@ -362,7 +370,7 @@ sub mirrors {
     require timezone;
     my $tz = ${timezone::read()}{timezone};
     my @mirrors = map { my ($arch, $url) = m|\Q$distro_type\E([^:]*):(.+)|;
-			if ($arch && MDK::Common::System::compat_arch($arch)) {
+			if ($arch && compat_arch_for_updates($arch)) {
 	                    my ($land, $goodness);
 			    $url =~ m|\.\Q$_\E/| and $land = $_ foreach keys %u2l;
 			    $url =~ m|\W\Q$_\E/| and $land = $sites2countries{$_} foreach keys %sites2countries;
