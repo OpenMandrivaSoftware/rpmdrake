@@ -121,6 +121,8 @@ rm -rf $RPM_BUILD_ROOT
   the PO (#1233)
 - rpmdrake:
   - fix locking of CD after installation (#1311)
+- add download progress when updating distant sources (still needs
+  improvement in messages, work in progress with urpmi)
 - some code cleanup thx to titi & perl checker
 
 * Thu Feb 13 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-6mdk

@@ -647,7 +647,8 @@ or you already installed all of them."));
 			      $size_selected = 0;
 			      $options->{rebuild_tree}->();
 			  },
-			  update_sources => sub { update_sources($urpm, transient => $w->{rwindow}) and $action2fun{reload_pkg}->() });
+			  update_sources => sub { update_sources_interactive($urpm, transient => $w->{rwindow})
+						    and $action2fun{reload_pkg}->() });
 	$menu_treeview->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($text)), activate => sub { $action2fun{$action}->() }));
     }
     $tree->signal_connect(button_press_event => sub { $_[1]->button eq 3 or return 0;

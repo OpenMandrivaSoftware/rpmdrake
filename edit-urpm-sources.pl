@@ -37,7 +37,7 @@ sub add_medium_and_check {
     standalone::explanations("Adding medium @_");
     my $wait = wait_msg($msg);
     $urpm->add_medium(@_);
-    $urpm->update_media(%$options, noclean => 1);
+    update_sources($urpm, %$options, noclean => 1);
     remove_wait_msg($wait);
     my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
     $medium or interactive_msg('rpmdrake', N("Unable to create medium."));
@@ -210,7 +210,7 @@ sub edit_callback {
 }
 
 sub update_callback {
-    update_sources($urpm, transient => $mainw->{rwindow});
+    update_sources_interactive($urpm, transient => $mainw->{rwindow});
 }
 
 sub proxy_callback {

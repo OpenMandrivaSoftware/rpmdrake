@@ -152,8 +152,8 @@ sub fatal_msg {
 sub wait_msg {
     my ($msg, %options) = @_;
     my $mainw = ugtk2->new('rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
-    my $label = Gtk2::Label->new($msg);
-    gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label)));
+    my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::Label->new($msg);
+    gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label, if_(exists $options{widgets}, @{$options{widgets}}))));
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });
     $mainw->sync until $mainw->{displayed};
     gtkset_mousecursor_wait($mainw->{rwindow}->window);
@@ -337,7 +337,38 @@ by Mandrake Linux Official Updates.")), return '';
     $w->main && member($w->{retval}{sel}, map { $_->{url} } @mirrors) and $w->{retval}{sel};
 }
 
+sub show_urpm_progress {
+    my ($label, $pb, $mode, $file, $percent, $total, $eta, $speed) = @_;
+    my $filename if 0;
+    if ($mode eq 'start') {
+	($filename = $file) =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|; #- if needed...
+	$pb->set_fraction(0);
+	$label->set_label(N("Starting download of `%s'", $filename));
+    } elsif ($mode eq 'progress') {
+	if (defined $total && defined $eta) {
+	    $pb->set_fraction($percent/100);
+	    $label->set_label(N("Download of `%s', time to go:%s, speed:%s", $filename, $eta, $speed));
+	} else {
+	    $pb->set_fraction($percent/100);
+	    $label->set_label(N("Download of `%s', speed:%s", $filename, $percent, $speed));
+	}
+    } elsif ($mode eq 'end') {
+	$label->set_label(N("Please wait, updating media..."));
+	undef $filename;
+    }
+    Gtk2->update_ui;
+}
+
 sub update_sources {
+    my ($urpm, %options) = @_;
+    my $distant = any { /^ftp|http/ } map { if_($_->{modified}, $_->{url}) } @{$urpm->{media}};
+    my $w = wait_msg(my $label = Gtk2::Label->new(N("Please wait, updating media...")),
+		     if_($distant, widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 400, 0) ]));
+    $urpm->update_media(%options, if_($distant, callback => sub { show_urpm_progress($label, $pb, @_) }));
+    remove_wait_msg($w);
+}
+
+sub update_sources_interactive {
     my ($urpm, %opts) = @_;
     my $w = ugtk2->new(N("Update source(s)"), grab => 1, center => 1, %opts);
     my @buttons;
@@ -357,8 +388,7 @@ sub update_sources {
 	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
 	    $_->{modified} and delete $_->{ignore};
 	}
-	slow_func(N("Please wait, updating media..."),
-		  sub { $urpm->update_media(noclean => 1) });
+	update_sources($urpm, noclean => 1);
 	return 1;
     }
     return 0;
