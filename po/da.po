@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-03-05 20:46+0100\n"
+"POT-Creation-Date: 2003-04-17 16:13+0200\n"
 "PO-Revision-Date: 2003-04-13 22:35+0200\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -270,37 +270,10 @@ msgstr "Undersøger %s"
 msgid "Please wait, finding available packages..."
 msgstr "Vent venligst, finder tilgængelige pakker..."
 
-#: ../rpmdrake:1
+#: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
-msgid ""
-"There was an error while adding the update medium via urpmi.\n"
-"\n"
-"This may be due to a broken or temporary unavailable mirror, or when your\n"
-"Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-"Linux\n"
-"Official Updates.\n"
-"\n"
-"Do you want to try another mirror?"
-msgstr ""
-"Der opstod en fejl da opdateringsmedia skulle tilføjes.\n"
-"\n"
-"Dette kan ske på grund af et ødelagt eller temporært utilgængeligt spejl "
-"eller\n"
-"hvis din Mandrake Linux version (%s) endnu ikke/ikke længere understøttes af "
-"Mandrake Linux'\n"
-"officielle opdateringer.\n"
-"\n"
-"Vil du forsøge med et andet spejl?"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Error adding update medium"
-msgstr "Fejl ved tilføjelse af opdateringsmedia"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to initialize updates packages."
-msgstr "Vent venligst, kontakter spejl for at initiere opdateringspakker."
+msgid "Please wait, adding medium..."
+msgstr "Vent venligst, tilføjer medie..."
 
 #: ../rpmdrake:1
 #, c-format
@@ -323,19 +296,19 @@ msgstr "Hvordan du manuelt vælger dit spejl"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "There was an unrecoverable error while updating packages information."
+msgid ""
+"You already have at least one update source configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Sources Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart MandrakeUpdate."
 msgstr ""
-"En fejl som ikke kan reddes opstod under opdatering af pakkeinformation."
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Error updating medium"
-msgstr "Fejl ved opdatering af medie"
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Please wait, contacting mirror to update packages information."
-msgstr "Vent venligst, kontakter spejl for at opdatere pakkeinformation."
+msgid "Already existing update sources"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -349,6 +322,16 @@ msgstr ""
 "Kontrollér venligst at dit netværk er startet.\n"
 "\n"
 "Er det O.k. at fortsætte?"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Fatal error"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -538,6 +521,11 @@ msgstr "Beskrivelse: "
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Reason for update: "
+msgstr "Årsag til opdatering: "
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Summary: "
 msgstr "Resumé: "
 
@@ -565,11 +553,6 @@ msgstr "Version: "
 #, c-format
 msgid "Name: "
 msgstr "Navn: "
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Reason for update: "
-msgstr "Årsag til opdatering: "
 
 #: ../rpmdrake:1
 #, c-format
@@ -618,13 +601,23 @@ msgstr ""
 "\n"
 
 #: ../rpmdrake:1
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
 "\n"
+"%s\n"
+"\n"
+"Reasons follow:\n"
+"\n"
+"%s"
 msgstr ""
 "Desværre, følgende pakker kan ikke vælges:\n"
 "\n"
+
+#: ../rpmdrake:1
+#, c-format
+msgid "%s conflicts with %s"
+msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
@@ -687,8 +680,8 @@ msgstr "Information om pakker"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
-#, c-format
-msgid "More infos"
+#, fuzzy, c-format
+msgid "More info"
 msgstr "Mere info"
 
 #: ../rpmdrake:1
@@ -920,11 +913,6 @@ msgstr "Vent venligst, fjerner medie..."
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
-msgid "Please wait, adding medium..."
-msgstr "Vent venligst, tilføjer medie..."
-
-#: ../edit-urpm-sources.pl:1
-#, c-format
 msgid "Type of source:"
 msgstr "Kildetype:"
 
@@ -1002,12 +990,16 @@ msgstr "Lokale filer"
 msgid "Add a source"
 msgstr "Tilføj en kilde"
 
-#: ../edit-urpm-sources.pl:1
-#, c-format
-msgid "Unable to update medium; it will be automatically disabled."
+#: ../rpmdrake.pm:1
+#, fuzzy, c-format
+msgid ""
+"Unable to update medium; it will be automatically disabled.\n"
+"\n"
+"Errors:\n"
+"%s"
 msgstr "Kan ikke opdatere media; det vil automatisk være deaktiveret."
 
-#: ../edit-urpm-sources.pl:1
+#: ../rpmdrake.pm:1
 #, c-format
 msgid "Unable to create medium."
 msgstr "Kan ikke lave medie."
@@ -1291,6 +1283,44 @@ msgstr "Fjern programmel"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Administration af programmelkilder"
+
+#~ msgid ""
+#~ "There was an error while adding the update medium via urpmi.\n"
+#~ "\n"
+#~ "This may be due to a broken or temporary unavailable mirror, or when "
+#~ "your\n"
+#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
+#~ "Linux\n"
+#~ "Official Updates.\n"
+#~ "\n"
+#~ "Do you want to try another mirror?"
+#~ msgstr ""
+#~ "Der opstod en fejl da opdateringsmedia skulle tilføjes.\n"
+#~ "\n"
+#~ "Dette kan ske på grund af et ødelagt eller temporært utilgængeligt spejl "
+#~ "eller\n"
+#~ "hvis din Mandrake Linux version (%s) endnu ikke/ikke længere understøttes "
+#~ "af Mandrake Linux'\n"
+#~ "officielle opdateringer.\n"
+#~ "\n"
+#~ "Vil du forsøge med et andet spejl?"
+
+#~ msgid "Error adding update medium"
+#~ msgstr "Fejl ved tilføjelse af opdateringsmedia"
+
+#~ msgid "Please wait, contacting mirror to initialize updates packages."
+#~ msgstr "Vent venligst, kontakter spejl for at initiere opdateringspakker."
+
+#~ msgid ""
+#~ "There was an unrecoverable error while updating packages information."
+#~ msgstr ""
+#~ "En fejl som ikke kan reddes opstod under opdatering af pakkeinformation."
+
+#~ msgid "Error updating medium"
+#~ msgstr "Fejl ved opdatering af medie"
+
+#~ msgid "Please wait, contacting mirror to update packages information."
+#~ msgstr "Vent venligst, kontakter spejl for at opdatere pakkeinformation."
 
 #~ msgid "Everything already installed (is this supposed to happen at all?)."
 #~ msgstr "Alt er allerede installeret (bør dette ske overhovedet?)."
