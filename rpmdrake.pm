@@ -118,8 +118,9 @@ sub fatal_msg {
 }
 
 sub wait_msg {
-    my $mainw = ugtk2->new('rpmdrake', grab => 1);
-    my $label = Gtk2::Label->new($_[0]);
+    my ($msg, %options) = @_;
+    my $mainw = ugtk2->new('rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
+    my $label = Gtk2::Label->new($msg);
     gtkadd($mainw->{window}, gtkpack(gtkadd(create_vbox(), $label)));
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1 });
     $mainw->sync until $mainw->{displayed};

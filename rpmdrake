@@ -50,7 +50,9 @@ $0 =~ m|/MandrakeUpdate$|  and $MODE = 'update';
 $::isStandalone = 1;
 
 my $w;
-sub interactive_msg_ { interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
+sub interactive_msg_  { interactive_msg (@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
+sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
+sub wait_msg_         { wait_msg        (@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) };
 
 sub ctreefy { $_[0] =~ s,/,|,g; $_[0] }
 
@@ -254,8 +256,8 @@ sub run_treeview_dialog {
 	    }
 	}
 	my $callback = sub { interactive_msg_(N("More information on package..."), $options->{get_info}->($_[0]), scroll => 1) };
-	$choices->[interactive_list(N("Please choose"), N("One of the following packages is needed:"),
-				    [ map { my_fullname($_) } @$choices ], $callback, transient => $w->{rwindow})];
+	$choices->[interactive_list_(N("Please choose"), N("One of the following packages is needed:"),
+				     [ map { my_fullname($_) } @$choices ], $callback)];
     };
     my $choices_auto;
     my $callback_choices_auto = sub {
@@ -280,7 +282,7 @@ sub run_treeview_dialog {
 		   build_tree => sub {
 		       my ($add_node, $flat, $mode) = @_;
 		       my @elems;
-		       my $wait = wait_msg(N("Please wait, listing packages..."));
+		       my $wait = wait_msg_(N("Please wait, listing packages..."));
 		       $disable_treeselect_callback = 1;
 		       if ($mode eq 'mandrake_choices') {
 			   foreach my $pkg (keys %$pkgs) {
@@ -805,8 +807,7 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
 	    $section eq 'description' and $cur->{description} .= $_;
 	}
     }
-
-    my $wait = wait_msg(N("Please wait, finding available packages..."));
+    my $wait = wait_msg_(N("Please wait, finding available packages..."));
     my $urpm = new urpm;
     my %installable_pkgs;
 
@@ -984,7 +985,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 sub get_installed_pkgs {
     use URPM;
 
-    my $wait = wait_msg(N("Please wait, reading packages database..."));
+    my $wait = wait_msg_(N("Please wait, reading packages database..."));
     my @base = qw(basesystem);
     my (%base, %basepackages);
     my $db = db;
