@@ -1,0 +1,682 @@
+#!/usr/bin/perl
+#*****************************************************************************
+# 
+#  Copyright (c) 2002 Guillaume Cottenceau (gc at mandrakesoft dot com)
+# 
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License version 2, as
+#  published by the Free Software Foundation.
+# 
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+# 
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+# 
+#*****************************************************************************
+#
+# $Id$
+
+use lib qw(/usr/lib/libDrakX);
+
+use strict;
+use vars qw($MODE %options $XID $CCPID);
+
+use rpmdrake;
+
+
+"@ARGV" =~ /-h/ and do { print STDERR _("Usage: %s [OPTION]...
+  --noconfirmation       don't ask first confirmation question in MandrakeUpdate mode
+", basename($0)); exit 0; };
+
+$> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
+$::isEmbedded = ($::XID, $::CCPID) = "@ARGV" =~ /--embedded (\w+) (\w+)/;
+$MODE = 'install';
+$0 =~ '/rpmdrake-remove$' and $MODE = 'remove';
+$0 =~ '/MandrakeUpdate$'  and $MODE = 'update';
+
+/^-?-(\S+)$/ and $options{$1} = 1 foreach @ARGV;
+
+
+$::isStandalone = 1;
+Gtk->init;
+
+
+sub ctreefy { $_[0] =~ s,/,|,g; $_[0] }
+
+sub beautify_description {
+    my ($t, $tmp);
+    foreach (split "\n", $_[0]) {
+	s/^\s*//;
+        if (/^$/ || /^\s*(-|\*|\+|o)\s/) {
+            ($t || $tmp) and $t .= "$tmp\n";
+            $tmp = $_;
+        } else {
+            $tmp = ($tmp ? "$tmp " : ($t && "\n") . $tmp) . $_;
+        }
+    }
+    "$t$tmp\n";
+}
+
+sub myformatList {
+    my $r = formatList(40, @_);
+    $r =~ s/(.{50}\S*)\s/$1\n/g;
+    $r
+}
+
+sub split_fullname { $_[0] =~ /^(.*)-([^-]+-[^-]+)$/ }
+sub my_fullname { my ($name, $version, $release) = $_[0]->fullname; "$name-$version-$release" }
+
+sub parse_compssUsers_flat {
+    my ($urpm) = @_;
+    my (%compssUsers, $category);
+    my $compss = '/var/lib/urpmi/compssUsers.flat';
+    -r $compss or interactive_msg('rpmdrake',
+_("Could not find /var/lib/urpmi/compssUsers.flat,
+the installer should have generated it for me :-(.
+
+Disabling \"Mandrake choices\" classification.")), return;
+    foreach (cat_($compss)) {
+	s/#.*//;
+	/^\s*$/ and next;
+	if (/^\S.*/) {
+	    if (/^(.+?) \[icon=.+?\] \[path=(.+?)\]/) {
+		$category = "$2|$1";
+	    } else {
+		print STDERR "Malformed category in compssUsers.flat: <$_>\n";
+	    }
+	} elsif (/^\t(\d) (\S+)\s*$/) {
+	    $category or print STDERR "Entry without category <$_>\n";
+	    push @{$compssUsers{$2}}, $category . ($1 <= 3 ? '|Other' : '');
+	}
+    }
+    \%compssUsers;
+}
+
+sub pkg2medium {
+    my ($p, $urpm) = @_;
+    my $tmp;
+    each_index { $p->id <= $_ and $tmp ||= ${$urpm->{media}}[$::i] } map { $_->{end} } @{$urpm->{media}};
+    $tmp;
+}
+
+sub extract_header {
+    my ($pkg, $urpm) = @_;
+    my ($headersdir, $p, $medium) = ('/root/tmp/headers/', $pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
+    my $packer = new packdrake("$urpm->{statedir}/$medium->{hdlist}", quiet => 1);
+    $packer->extract_archive($headersdir, $p->header_filename);
+    $p->update_header($headersdir . $p->header_filename) or die('unable to open header file');
+    rm_rf($headersdir);
+    add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
+    $p->pack_header;
+}
+
+sub db { URPM::DB::open or die 'Couldn\'t open RPM DB' }
+
+sub run_treeview_dialog {
+    my ($urpm, $pkgs, $descriptions) = @_;
+
+    my ($size_selected, $compssUsers, $info, $info_update, $tree, $disable_treeselect_callback, %elems, %base);
+    my (undef, $size_free) = MDK::Common::System::df('/usr');
+
+    my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
+    my $callback_choices = sub {
+	my ($urpm, $db, $state, $choices) = @_;
+	$choices->[interactive_list(_("Please choose"), _("One of the following packages is needed:"), map { my_fullname($_) } @$choices)];
+    };
+    {
+	my @base = qw(basesystem);
+	my %basepackages;
+	my $db = db;
+	while (defined($_ = shift @base)) {
+	    exists $basepackages{$_} and next;
+	    $db->traverse_tag(/^\// ? 'path' : 'whatprovides', [ $_ ], sub {
+				  push @{$basepackages{$_}}, my_fullname($_[0]);
+				  push @base, $_[0]->requires_nosense;
+			      });
+	}
+	foreach (values %basepackages) {
+	    my $n = @$_;
+	    foreach (@$_) {
+		$base{$_} = \$n;
+	    }
+	}
+    }
+    my $check_basesystem = sub {
+	map { if_($base{$_} && ${$base{$_}}, $_) } @_;
+    };
+    my $closure_removal = sub {
+	$urpm->{state}{ask_remove} = {};
+	my $db = db;
+	foreach (@_) {
+	    $db->traverse_tag('name', [ (split_fullname($_))[0] ], sub {
+				  my_fullname($_[0]) eq $_ or return;
+				  $urpm->resolve_closure_ask_remove($db, $urpm->{state}, $_[0], undef);
+			      }) or die _("unknown package ") . "$_\n";
+	}
+	keys %{$urpm->{state}{ask_remove}};
+    };
+    my $options = {
+		   node_state => sub { $_[0] ? ($pkgs->{$_[0]}{selected} ? 'selected' : 'unselected')
+					     : 'XXX' },  #- checks $_[0] -> hack for partial tree displaying
+		   build_tree => sub {
+		       my ($add_node, $flat, $mode) = @_;
+		       my @elems;
+		       my $w = wait_msg(_("Please wait, listing packages..."));
+		       $disable_treeselect_callback = 1;
+		       if ($mode eq 'mandrake_choices') {
+			   foreach my $pkg (keys %$pkgs) {
+			       my ($name) = split_fullname($pkg);
+			       push @elems, [ $pkg, $_ ] foreach @{$compssUsers->{$name}};
+			   }
+		       } else {
+			   my @keys = keys %$pkgs;
+			   if ($MODE eq 'update') {
+			       @keys = grep { my ($name) = split_fullname($_);
+					      member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories) } @keys;
+			   }
+			   @elems = map { [ $_, !$flat && ctreefy($pkgs->{$_}{pkg}->group) ] } @keys;
+		       }
+		       my %sortmethods = (by_size => sub { sort { $pkgs->{$b->[0]}{pkg}->size <=> $pkgs->{$a->[0]}{pkg}->size } @_ },
+					  by_selection => sub { sort { $pkgs->{$b->[0]}{selected} <=> $pkgs->{$a->[0]}{selected}
+								       || uc($a->[0]) cmp uc($b->[0]) } @_ },
+					  flat => sub { sort { uc($a->[0]) cmp uc($b->[0]) } @_ });
+		       if ($flat) {
+			   $add_node->($_->[0], '') foreach $sortmethods{$mode || 'flat'}->(@elems);
+		       } else {
+			   if ($mode eq 'by_source') {
+			       $add_node->($_->[0], pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm)->{name}) foreach $sortmethods{flat}->(@elems);
+			   } elsif ($mode eq 'by_presence') {
+			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed ? _("Upgradable") : _("Addable"))
+				 foreach $sortmethods{flat}->(@elems);
+			   } else {
+			       #- special case, we don't populate all the tree at first (to speed things up)
+			       %elems = ();
+			       foreach my $root (sort { $a cmp $b } uniq(map { ($_->[1] =~ /([^\|]+)\|?.*/)[0] } @elems)) {
+				   $add_node->('', $root);
+				   @{$elems{$root}} = sort { $a->[1] cmp $b->[1] || uc($a->[0]) cmp uc($b->[0]) }
+				                      grep { $_->[1] =~ /^\Q$root|\E?/ } @elems;
+			       }
+			   }
+		       }
+		       $disable_treeselect_callback = 0;
+		       remove_wait_msg($w);
+		   },
+		   grep_unselected => sub { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ },
+		   toggle_nodes => sub {
+		       my ($set_state, @nodes) = @_;
+		       @nodes = grep { exists $pkgs->{$_} } @nodes;
+		       int(@nodes) or return;
+		       my $new_state = !$pkgs->{$nodes[0]}{selected};
+
+		       my @nodes_with_deps;
+		       my $deps_msg = sub {
+			   my ($title, $msg, $nodes, $nodes_with_deps) = @_;
+			   @$nodes_with_deps > @$nodes or return;
+			   interactive_msg($title, $msg . $formatlistpkg->(sort { $a cmp $b } difference2($nodes_with_deps, $nodes)));
+		       };
+		       if ($MODE eq 'remove') {
+			   if ($new_state) {
+			       slow_func($tree->window, sub { $closure_removal->(@nodes) });
+			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} } keys %{$urpm->{state}{ask_remove}};
+			       if (my @basesystem = $check_basesystem->(@nodes_with_deps)) {
+				   interactive_msg(_("This would break your system"),
+						   _("Sorry, removing these packages would break your system:\n\n").
+						   $formatlistpkg->(sort { $a cmp $b } @basesystem));
+				   @nodes_with_deps = ();
+			       } else {
+				   $deps_msg->(_("Some additional packages need to be removed"),
+					       _("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
+					       \@nodes, \@nodes_with_deps);
+			       }
+			   } else {
+			       slow_func($tree->window,
+					 sub { @nodes_with_deps = grep { intersection(\@nodes, [ $closure_removal->($_) ]) }
+						                  grep { $pkgs->{$_}{selected} } keys %$pkgs });
+			       $deps_msg->(_("Some packages can't be removed"),
+					   _("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
+					   \@nodes, \@nodes_with_deps);
+			   }
+		       } else {
+			   if ($new_state) {
+			       $urpm->{state}{selected} = {};
+			       slow_func($tree->window,
+					 sub { $urpm->resolve_requested(db, $urpm->{state}, { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
+									callback_choices => $callback_choices)});
+			       $urpm->deselect_unwanted_packages($urpm->{state}{selected});
+			       if (%{$urpm->{state}{ask_unselect} || {}}) {
+				   delete @{$urpm->{state}{selected}}{keys %{delete $urpm->{state}{ask_unselect}}};
+			       }
+			       @nodes_with_deps = map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{selected}};
+			       $deps_msg->(_("Additional packages needed"), 
+					   _("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
+					   \@nodes, \@nodes_with_deps);
+			       if (my @cant = difference2(\@nodes, \@nodes_with_deps)) {
+				   interactive_msg(_("Some packages can't be installed"),
+						   _("Sorry, the following package(s) can't be selected:\n\n") . $formatlistpkg->(@cant));
+				   foreach (@cant) {
+				       $pkgs->{$_}{pkg}->set_flag_requested(0);
+				       $pkgs->{$_}{pkg}->set_flag_required(0);
+				   }
+			       }
+			   } else {
+			       $urpm->{state}{unselected} = {};
+			       slow_func($tree->window,
+					 sub { $urpm->resolve_unrequested(db, $urpm->{state},
+									  { map { $pkgs->{$_}{pkg}->id => undef } @nodes }) });
+			       @nodes_with_deps = map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{unselected}};
+			       if (my @deps = difference2(\@nodes_with_deps, \@nodes)) {
+				   interactive_msg(_("Some packages need to be removed"),
+						   _("Because of their dependencies, the following package(s) must be\nunselected now:\n\n").
+						   $formatlistpkg->(@deps))
+			       }
+			   }
+		       }
+
+		       foreach (@nodes_with_deps) {
+			   exists $pkgs->{$_} or next;  #- some deps may exist on some packages which aren't listed because
+			                                #- not upgradable (older than what currently installed)
+			   $set_state->($_, $new_state ? 'selected' : 'unselected');
+			   $pkgs->{$_}{selected} = $new_state;
+			   $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
+		       }
+		   },
+		   get_status => sub { $MODE eq 'install' ? _("Total size: %d / %d MB", $size_selected/(1024*1024), $size_free/1024)
+					                  : _("Total size: %d MB", $size_selected/(1024*1024)) },
+		   get_info => sub { my ($key) = @_;
+				     my ($name, $version) = split_fullname($key);
+				     exists $pkgs->{$key}{description}
+				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
+				     if ($MODE eq 'update') {
+					 gtktext_insert($info_update, beautify_description($descriptions->{$name}{pre}));
+					 _("Name: %s\nVersion: %s\nSize: %s KB\nImportance: %s\n\nSummary: %s\n\n%s\n",
+					   $name, $version, int($pkgs->{$key}{pkg}->size/1024), $descriptions->{$name}{importance},
+					   $pkgs->{$key}{summary}, beautify_description($descriptions->{$name}{description}))
+				     } else {
+					 _("Name: %s\nVersion: %s\nSize: %s KB\n\nSummary: %s\n\n%s\n",
+					   $name, $version, int($pkgs->{$key}{pkg}->size/1024),
+					   $pkgs->{$key}{summary}, $pkgs->{$key}{description});
+				     }
+				 },
+		   check_interactive_to_toggle => sub { 1 },
+		   grep_allowed_to_toggle => sub { @_ },
+		   rebuild_tree => sub {},
+		  };
+
+    $::noBorder = 1;
+    my $w = my_gtk->new('rpmdrake');
+    $::noBorder = 0;
+    $tree = Gtk::CTree->new(3, 0);
+    $tree->set_selection_mode('browse');
+    $tree->set_column_auto_resize($_, 1) foreach 1..2;
+    $tree->set_column_width(0, 260);
+    $tree->signal_connect(tree_select_row => sub { 
+			      $disable_treeselect_callback and return;
+			      if (!$_[1]->row->is_leaf && !$_[1]->row->children) {
+				  my $row_name = ($_[0]->node_get_pixtext($_[1], 0))[0];
+				  slow_func($tree->window, sub { $options->{add_nodes}->(@{$elems{$row_name}}) });
+				  $tree->expand($_[1]);
+			      }
+			  });
+    my $m = new Gtk::Menu;
+    my @advanced_modes = ([ 'by_size', _("By size"), 1 ], [ 'by_selection', _("By selection"), 1 ]);
+    $MODE eq 'install' and push @advanced_modes, ([ 'by_source', _("By source"), 0 ], [ 'by_presence', _("By presence"), 0 ]);
+    foreach (@advanced_modes) {
+	my ($capt_mode, $capt_flat) = ($_->[0], $_->[2]);
+	$m->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($_->[1])),
+				     activate => sub {
+					 $options->{tree_mode} = $capt_mode;
+					 $options->{state}{flat} = $capt_flat;
+					 $options->{rebuild_tree}->();
+				     }));
+    }
+    $tree->signal_connect(button_press_event => sub {
+			      $_[1]->{button} eq 3 or return;
+			      $m->popup(undef, undef, $_[1]->{button}, $_[1]->{time});
+			  });
+
+    my @modes_buttons;
+    if ($MODE eq 'update') {
+	$options->{state}{flat} = 1;
+	my %toggle_infos = (security => _("Security updates"), bugfix => _("Bugfixes updates"), normal => _("Normal updates"));
+	my @toggle_names_ordered = qw(security bugfix normal);
+	@modes_buttons = map { new Gtk::CheckButton(but($toggle_infos{$_})) } @toggle_names_ordered;
+	mapn {
+	    member($_[0], @$mandrakeupdate_wanted_categories) and $_[1]->set_active(1);
+	    my $capture_value = $_[0];
+	    $_[1]->signal_connect(clicked => sub {
+				      $disable_treeselect_callback = 1;
+				      if ($_[0]->get_active) {
+					  push @$mandrakeupdate_wanted_categories, $capture_value;
+				      } else {
+					  @$mandrakeupdate_wanted_categories = difference2($mandrakeupdate_wanted_categories,
+											   [ $capture_value ]);
+				      }
+				      $options->{rebuild_tree}->();
+				      $disable_treeselect_callback = 0;
+				  });
+	} \@toggle_names_ordered, \@modes_buttons;
+    } else {
+	my %radios_infos = (mandrake_choices => { name => _("Mandrake choices"),           flat => 0 },
+			    by_group         => { name => _("All packages, by group"),     flat => 0 },
+			    flat             => { name => _("All packages, alphabetical"), flat => 1 });
+	$compssUsers = parse_compssUsers_flat($urpm);
+	my @radios_names_ordered = qw(mandrake_choices by_group flat);
+	$compssUsers or shift @radios_names_ordered;
+	@modes_buttons = gtkradio($radios_infos{mandrake_choices}{name}, map { $radios_infos{$_}{name} } @radios_names_ordered);
+	mapn {
+	    my $capture_value = $_[0];
+	    $_[1]->signal_connect(clicked => sub {
+				      if ($_[0]->get_active) {
+					  $disable_treeselect_callback = 1;
+					  $options->{state}{flat} = $radios_infos{$capture_value}{flat};
+					  $options->{tree_mode} = $capture_value;
+					  $options->{rebuild_tree}->();
+					  $disable_treeselect_callback = 0;
+				      }
+				  })
+	} \@radios_names_ordered, \@modes_buttons;
+	$options->{tree_mode} = $radios_names_ordered[0];
+    }
+
+    my $find_entry;
+    my $find_callback = sub {
+	my $entry = $find_entry->get_text or return;
+	$options->{state}{flat} ? $options->{delete_all}->() : $options->{delete_category}->(_("Search results"));
+	if (my @search_results = sort { uc($a) cmp uc($b) } grep { eval { $_ =~ /$entry/i } } keys %$pkgs) {
+	    $options->{add_nodes}->(map { [ $_, _("Search results") ] } @search_results);
+	    $tree->collapse_recursive(undef);
+	    $tree->expand($tree->node_nth($tree->rows-1));
+	}
+    };
+
+    my $validate = sub {
+	if ($MODE ne 'remove' && %{$urpm->{state}{ask_remove} || {}}) {
+	    interactive_msg(_("Some packages need to be removed"),
+_("The following packages have to be removed for others to be upgraded:
+
+%s
+
+Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), 1)
+	      or return 0;
+	}
+	1;
+    };
+
+    my $darea;
+    gtkadd($w->{window}, 
+	   gtkpack_(new Gtk::VBox(0, 3),
+		    0, gtkset_usize($darea = new Gtk::DrawingArea, 0, 40),
+		    1, gtkadd(gtkset_shadow_type(gtkset_border_width(new Gtk::Frame, 3), 'none'),
+			      gtkpack_(new Gtk::VBox(0, 3),
+				       0, gtkpack__(new Gtk::HBox(0, 10),
+						    new Gtk::Label(_("Find:")),
+						    gtksignal_connect($find_entry = new Gtk::Entry,
+								      key_press_event => sub { $_[1]->{keyval} == 0xff0d
+												 and $find_callback->() }),
+						    gtksignal_connect(new Gtk::Button(but(_("Search"))), clicked => \&$find_callback)),
+				       0, gtkpack__(new Gtk::HBox(0, 0), gtkpack(new Gtk::VBox(0, 0), @modes_buttons)),
+				       1, gtkpack(new Gtk::HBox(0, 0),
+						  createScrolledWindow($tree),
+						  $MODE eq 'update' ? gtkpack(new Gtk::VBox(0, 0),
+									      createScrolledWindow($info = new Gtk::Text),
+									      createScrolledWindow($info_update = new Gtk::Text))
+						                    : createScrolledWindow($info = new Gtk::Text)),
+				       0, gtkpack(new Gtk::HBox(1, 20),
+						  my $status = new Gtk::Label,
+						  gtkpack(new Gtk::HBox(1, 20),
+							  gtksignal_connect(new Gtk::Button(but($MODE eq 'remove' ? _("Remove")
+												                  : _("Install"))),
+									    clicked => sub { $w->{retval} = $validate->(); Gtk->main_quit }),
+							  gtksignal_connect(new Gtk::Button(but(_("Quit"))),
+									    clicked => sub { $w->{retval} = 0; Gtk->main_quit })))
+				       ))));
+    my ($pixmap_back) = gtkcreate_png('title-backpart');
+    $darea->signal_connect(expose_event => sub {
+		       my (undef, undef, $dx, $dy) = @{$darea->allocation};
+		       my $dbl_area = new Gtk::Gdk::Pixmap($darea->window, $dx, $dy);
+		       fill_tiled($darea, $dbl_area, $pixmap_back, 110, 55, $dx, $dy);
+		       my $style = $darea->style->copy();
+		       $style->font(Gtk::Gdk::Font->fontset_load(_("-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*")));
+		       my %t = (remove => _("Software Packages Removal"), update => _("Mandrake Update"),
+				install => _("Software Packages Installation"));
+		       $dbl_area->draw_string($style->font, $darea->style->white_gc,
+					      ($dx-$style->font->string_width($t{$MODE}))/2, 30, $t{$MODE});
+		       $darea->window->draw_pixmap($darea->style->white_gc, $dbl_area, 0, 0, 0, 0, $dx, $dy);
+		       0;
+		   });
+
+    $w->{window}->set_usize(660, 500);
+    $w->{rwindow}->show_all;
+    my $widgets = { w => $w, tree => $tree, info => $info, status => $status};
+
+    ask_browse_tree_info_given_widgets($options, $widgets);
+}
+
+
+# -=-=-=---=-=-=---=-=-=-- install packages -=-=-=---=-=-=---=-=-=-
+
+sub get_installable_pkgs {
+    my ($updates) = @_;
+    my $update_name = 'update_source';
+    my %update_descr;
+
+    if ($updates) {
+	my $urpm = new urpm;
+	$urpm->configure();
+	my ($statedir, $cachedir) = map { $urpm->{$_} } qw (statedir cachedir);
+	if (grep { $_->{name} eq $update_name } @{$urpm->{media}}) {
+	    undef $urpm;
+	    $options{noconfirmation} or interactive_msg('rpmdrake',
+_("I need to contact the mirror to get latest update packages.
+Please check that your network is currently running.
+
+Is it ok to continue?"), 1) or exit -1;
+	    my $w = wait_msg(_("Please wait, contacting mirror to update packages information."));
+	    system("/usr/sbin/urpmi.update $update_name") == 0
+	      or fatal_msg(_("Error updating medium"),
+			   _("There was an unrecoverable error while updating packages information."));
+	    remove_wait_msg($w);
+	} else {
+	    undef $urpm;
+	  mu_retry_another_mirror:
+	    my $m = choose_mirror;
+	    $m or exit -1;
+	    my ($r) = cat_('/etc/mandrake-release') =~ /release\s(\S+)/;
+	    my $w = wait_msg(_("Please wait, contacting mirror to initialize updates packages."));
+	    my $retval = system("/usr/sbin/urpmi.addmedia --update $update_name $m/$r/RPMS/ with ../base/hdlist.cz");
+	    remove_wait_msg($w);
+	    if ($retval != 0) {
+		interactive_msg(_("Error adding update medium"),
+_("There was an error while adding the update medium via urpmi.
+
+This may be due to a broken or temporary unavailable mirror, or when your
+Mandrake Linux version (%s) is not yet / no more supported by Mandrake Linux
+Official Updates.
+
+Do you want to try another mirror?", $r), 1) and goto mu_retry_another_mirror;
+		exit -1;
+	    }
+	}
+
+	my ($cur, $section);
+	foreach (cat_("$statedir/descriptions.update_source")) {
+	    /^%package (.+)/ and do {
+		$update_descr{$_} = $cur foreach @{$cur->{pkgs}};
+		$cur = {};
+		$cur->{pkgs} = [ split /\s/, $1 ];
+		$section = 'pkg';
+		next;
+	    };
+	    /^Update: (.+)/ && $section eq 'pkg' and $cur->{update} = $1;
+	    /^Importance: (.+)/ && $section eq 'pkg' and $cur->{importance} = $1;
+	    /^%pre/ and do { $section = 'pre'; next; };
+	    /^%description/ and do { $section = 'description'; next; };
+	    $section eq 'pre' and $cur->{pre} .= $_;
+	    $section eq 'description' and $cur->{description} .= $_;
+	}
+    }
+
+    my $w = wait_msg(_("Please wait, finding available packages..."));
+    my $urpm = new urpm;
+    my %installable_pkgs;
+
+    $urpm->configure;
+
+    my ($start, $end);
+    if ($updates) {
+	foreach (@{$urpm->{media}}) {
+	    $_->{name} eq $update_name and ($start, $end) = ($_->{start}, $_->{end});
+	}
+    }
+
+    $urpm->compute_installed_flags(db);
+
+    foreach (@{$urpm->{depslist}}) {
+	$_->flag_upgrade or next;
+	$updates and ($_->flag_installed && $_->id >= $start && $_->id <= $end or next);
+	$installable_pkgs{my_fullname($_)} = { selected => 0, pkg => $_ };
+    }
+
+    remove_wait_msg($w);
+    ($urpm, \%installable_pkgs, \%update_descr);
+}
+
+sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
+    my ($urpm) = @_;
+
+    standalone::explanations("Removing package $_") foreach keys %{$urpm->{state}{ask_remove}};
+
+    my %pkgs;
+    @pkgs{ map { $_->id } grep { $_->flag_selected } @{$urpm->{depslist}} } = undef;
+    my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
+    foreach my $l (@$list) {
+	standalone::explanations("Installing package $l->{$_}") foreach keys %$l;
+    }
+    if (!$local_sources && !$list) {
+	fatal_msg(_("Unable to get source packages."),
+		  _("Unable to get source packages, sorry."));
+    }
+    foreach (@$local_to_removes) {
+	unlink $_;
+    }
+
+    my %sources = $urpm->download_source_packages($local_sources, $list, '',
+						  sub { interactive_msg(_("Change medium"),
+									_("Please insert the medium named \"%s\" on device [%s]", @_));
+							1; });
+    my @rpms_install = grep { $_ !~ /\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
+    my @rpms_upgrade = grep { $_ !~ /\.src\.rpm$/ } values %sources;
+
+    if (@rpms_install || @rpms_upgrade) {
+	foreach (@rpms_install, @rpms_upgrade) {
+	    m|^/| && ! -e $_ or next;
+	    fatal_msg(_("Installation failed"),
+		      _("Installation failed, some files are missing.\nYou may want to update your sources database."));
+	    exit -1;
+	}
+	%{$urpm->{state}{ask_remove}} and slow_func(_("Please wait, removing packages to allow others to be upgraded..."),
+						    sub { system('rpm', '-e', '--nodeps', keys %{$urpm->{state}{ask_remove}}) });
+	system('grpmi', (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade);
+	if ($?) {
+	    fatal_msg(_("Installation failed"),
+		      _("There was a problem during installation."));
+	    exit(($? >> 8) + 32); #- forward grpmi error + 32
+	}
+    } else {
+	interactive_msg(_("Everything already installed."),
+			_("Everything already installed (is this supposed to happen at all?)."));
+    }
+}
+
+sub rpmdrake_install {
+    my ($urpm, $installable) = get_installable_pkgs();
+
+    run_treeview_dialog($urpm, $installable) and perform_installation($urpm);
+}
+
+
+# -=-=-=---=-=-=---=-=-=-- remove packages -=-=-=---=-=-=---=-=-=-
+
+sub get_installed_pkgs {
+    use URPM;
+
+    my $w = wait_msg(_("Please wait, reading packages database..."));
+    my %installed_pkgs;
+    db->traverse(sub {
+		     my ($pkg) = @_;
+		     #- I need to extract summary and description since they'll be lost when $pkg->pack_header
+		     $installed_pkgs{my_fullname($pkg)} = { selected => 0, pkg => $pkg, summary => $pkg->summary,
+							    description => beautify_description($pkg->description) };
+		     $pkg->pack_header;
+		 });
+    remove_wait_msg($w);
+    \%installed_pkgs;
+}
+
+sub perform_removal {
+    my ($urpm, $pkgs) = @_;
+    my @toremove = grep { $pkgs->{$_}{selected} } keys %$pkgs;
+    standalone::explanations("Removing package $_") foreach @toremove;
+    slow_func(_("Please wait, removing packages..."),
+	      sub { $urpm->install('/', \@toremove, {}, {}) });
+}
+
+sub rpmdrake_remove {
+    my $installed = get_installed_pkgs();
+
+    run_treeview_dialog(new urpm, $installed) and perform_removal(new urpm, $installed);
+}
+
+
+# -=-=-=---=-=-=---=-=-=-- mandrakeupdate -=-=-=---=-=-=---=-=-=-
+
+sub rpmdrake_mandrakeupdate {
+    my ($urpm, $installable_updates, $descriptions) = get_installable_pkgs(1);
+
+    run_treeview_dialog($urpm, $installable_updates, $descriptions)
+      and perform_installation($urpm);
+}
+
+
+# -=-=-=---=-=-=---=-=-=-- main -=-=-=---=-=-=---=-=-=-
+
+readconf;
+
+if (!member($MODE, @$already_splashed)) {
+    interactive_msg('rpmdrake',
+_("%s
+
+Is it ok to continue?",
+        $MODE eq 'remove' ?
+  _("Welcome to the software removal tool!
+
+This tool will help you choose which software you want to remove from
+your computer.")
+      : $MODE eq 'update' ?
+  _("Welcome to MandrakeUpdate!
+
+This tool will help you choose the updates you want to install on your
+computer.")
+      :
+  _("Welcome to the software installation tool!
+
+Your Mandrake Linux system comes with several thousands of software
+packages on CDROM or DVD. This tool will help you choose which software
+you want to install on your computer."))
+  , 1) or exit -1;
+	push @$already_splashed, $MODE;
+    }
+
+if ($MODE eq 'remove') {
+    rpmdrake_remove();
+} elsif ($MODE eq 'update') {
+    rpmdrake_mandrakeupdate();
+} else {
+    rpmdrake_install();
+}
+
+writeconf;
