@@ -163,7 +163,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    $urpm->select_media($i{name});
 	    $urpm->remove_selected_media;
 	}
-	add_medium_and_check($urpm, N("Please wait, adding medium..."),
+	add_medium_and_check($urpm,
 			     { probe_with => $probe },
 			     $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security');
 	return 1;
@@ -212,7 +212,7 @@ sub edit_callback {
 	standalone::explanations("Removing medium $name");
 	$urpm->select_media($name);
 	$urpm->remove_selected_media;
-	add_medium_and_check($urpm, N("Please wait, updating medium..."), {}, $name, $url, $with_hdlist, update => $update);
+	add_medium_and_check($urpm, {}, $name, $url, $with_hdlist, update => $update);
 	return 1;
     }
     return 0;

@@ -408,10 +408,24 @@ sub update_sources {
     remove_wait_msg($w);
 }
 
+sub update_sources_check {
+    my ($urpm, $options, @media) = @_;
+    my @error_msgs;
+    local $urpm->{fatal} = sub { push @error_msgs, $_[1] };
+    local $urpm->{error} = sub { push @error_msgs, $_[0] };
+    update_sources($urpm, %$options, noclean => 1);
+    if (any { member($_->{name}, @media) && $_->{modified} } @{$urpm->{media}}) {
+        interactive_msg('rpmdrake',
+                        N("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s",
+                          join("\n", @error_msgs)));
+    }
+}
+
 sub update_sources_interactive {
     my ($urpm, %opts) = @_;
     my $w = ugtk2->new(N("Update media"), grab => 1, center => 1, %opts);
     my @buttons;
+    my @media;
     gtkadd($w->{window},
 	   gtkpack__(Gtk2::VBox->new(0,5),
 		     Gtk2::Label->new(N("Select the media you wish to update:")),
@@ -420,7 +434,7 @@ sub update_sources_interactive {
 		     gtkpack(create_hbox(),
 			     gtksignal_connect(Gtk2::Button->new(N("Update")), clicked => sub {
 						   $w->{retval} = any { $_->get_active } @buttons;
-						   each_index { $_->get_active and $urpm->select_media($urpm->{media}[$::i]{name}) } @buttons;
+						   @media = map_index { if_($_->get_active, $urpm->{media}[$::i]{name}) } @buttons;
 						   Gtk2->main_quit;
 					       }),
 			     gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
@@ -428,26 +442,21 @@ sub update_sources_interactive {
 	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
 	    $_->{modified} and delete $_->{ignore};
 	}
-	update_sources($urpm, noclean => 1);
+        standalone::explanations("Updating media @media");
+        $urpm->select_media(@media);
+        update_sources_check($urpm, {}, @media);
 	return 1;
     }
     return 0;
 }
 
 sub add_medium_and_check {
-    my ($urpm, $msg, $options) = splice @_, 0, 3;
+    my ($urpm, $options) = splice @_, 0, 2;
     standalone::explanations("Adding medium @_");
-    my $wait = wait_msg($msg);
     $urpm->add_medium(@_);
-    my @error_msgs;
-    local $urpm->{fatal} = sub { push @error_msgs, $_[1] };
-    local $urpm->{error} = sub { push @error_msgs, $_[0] };
-    update_sources($urpm, %$options, noclean => 1);
-    remove_wait_msg($wait);
+    update_sources_check($urpm, $options, $_[0]);
     my ($medium) = grep { $_->{name} eq $_[0] } @{$urpm->{media}};
     $medium or interactive_msg('rpmdrake', N("Unable to create medium."));
-    $medium->{modified} and interactive_msg('rpmdrake',
-                                            N("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s",
-                                              join("\n", @error_msgs)));
     $urpm->write_config;
 }
+

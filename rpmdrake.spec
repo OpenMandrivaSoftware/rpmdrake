@@ -107,6 +107,8 @@ rm -rf $RPM_BUILD_ROOT
   - use --id
   - launch the good sub-chapter
   - add an help button to the Media Editor
+- edit-urpm-media: fix not reporting any error when updating of
+  media fail (#5212)
 
 * Tue Sep 02 2003 David Baudens <baudens@mandrakesoft.com> 2.1-33mdk
 - Update banners

@@ -930,7 +930,7 @@ launch the Software Media Manager, and then add a `Security
 updates' medium.
 
 Then, restart MandrakeUpdate.", $update_name)), myexit(-1);
-            add_medium_and_check($urpm, N("Please wait, adding medium..."), {},
+            add_medium_and_check($urpm, {},
                                  $update_name, make_url_mirror($m), '../base/hdlist.cz', update => 1);
 	    @update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
 	}
