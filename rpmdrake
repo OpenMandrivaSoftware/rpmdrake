@@ -1045,13 +1045,16 @@ Is it ok to continue?",
 		    )),
 		    0, gtkpack_(
 			Gtk2::HBox->new(0, 20),
-			0, gtksignal_connect(
-			    Gtk2::Button->new(but(N("Help"))),
-			    clicked => sub {
-				system("drakhelp --id software-management-$MODE &");
-				interactive_msg_(N("Help launched in background"),
-				    N("The help window has been started, it should appear shortly on your desktop."));
-			    },
+			if_(
+			    !$::isEmbedded,
+			    0, gtksignal_connect(
+				Gtk2::Button->new(but(N("Help"))),
+				clicked => sub {
+				    system("drakhelp --id software-management-$MODE &");
+				    interactive_msg_(N("Help launched in background"),
+					N("The help window has been started, it should appear shortly on your desktop."));
+				},
+			    ),
 			),
 			0, my $action_button = gtksignal_connect(
 			    Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove") : N("Install"))),
