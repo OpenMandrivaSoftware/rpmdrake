@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 9mdk
+%define release 10mdk
 
 Name: %{name}
 Version: %{version}
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Mar  3 2004 Pixel <pixel@mandrakesoft.com> 2.1.2-10mdk
+- fix support for "community" and "cooker" classes of mirrors for updates
+
 * Fri Feb 27 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-9mdk
 - support "community" and "cooker" classes of mirrors for updates
 
