@@ -94,6 +94,7 @@ N("You are launching this program as a normal user.
 You will not be able to perform modifications on the system,
 but you may still browse the existing database."), yesno => 1, text => { no => N("Cancel"), yes => N("Ok") }) or myexit(0));
 
+$don't_show_selections = 0;
 
 #- /usr/share/rpmlint/TagsCheck.py (duplicates are normal, so that we are not too far away from .py)
 my @valid_groups = (
@@ -517,11 +518,12 @@ or you already installed all of them."));
 		       @nodes = grep { exists $pkgs->{$_} } @nodes
 			   or return;
 		       return if @nodes == keys %$pkgs; #- avoid selecting every package
-		       return if @nodes > 2000; #- avoid selecting too many packages at once
+		       return if !$don't_show_selections && @nodes > 2000; #- avoid selecting too many packages at once
 		       my $new_state = !$pkgs->{$nodes[0]}{selected};
 
 		       my @nodes_with_deps;
 		       my $deps_msg = sub {
+			   return 1 if $don't_show_selections;
 			   my ($title, $msg, $nodes, $nodes_with_deps) = @_;
 			   my @deps = sort { $a cmp $b } difference2($nodes_with_deps, $nodes);
 			   @deps > 0 or return 1;
@@ -1010,6 +1012,10 @@ Is it ok to continue?",
 			gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback)
 		    ),
 		    1, $table,
+		    ($> ? () : (0, gtksignal_connect( #- don't show in browse mode
+			my $show_selections_button = Gtk2::CheckButton->new(N("Show automatically selected packages")),
+			clicked => sub { $don't_show_selections = !$_[0]->get_active },
+		    ))),
 		    0, gtkpack_(
 			Gtk2::HBox->new(0, 20),
 			0, gtksignal_connect(
@@ -1037,6 +1043,7 @@ Is it ok to continue?",
 	    ),
 	),
     );
+    $show_selections_button and $show_selections_button->set_active(!$don't_show_selections);
     $> and $action_button->set_sensitive(0);
     $find_entry->grab_focus;
 
