@@ -688,10 +688,9 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 									 resize1 => 1)
 		                     : create_scrolled_window($info),
 		   1, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
-    my $darea;
     gtkadd($w->{window}, 
 	   gtkpack_(Gtk2::VBox->new(0, 3),
-		    0, gtkset_size_request($darea = Gtk2::DrawingArea->new, -1, 57),
+             0, gtkset_size_request(my $darea = Gtk2::DrawingArea->new, -1, 57),
 		    1, gtkadd(gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
 			      gtkpack_(Gtk2::VBox->new(0, 3),
 				       0, gtkpack__(Gtk2::HBox->new(0, 10),
@@ -711,14 +710,13 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 							  gtksignal_connect(Gtk2::Button->new(but(N("Quit"))),
 									    clicked => sub { Gtk2->main_quit })))
 				       ))));
-    my $pixbuf_back = gtkcreate_pixbuf('title-tile');
     my $pixbuf_icon = gtkcreate_pixbuf('title-icon');
     $darea->modify_font(Gtk2::Pango::FontDescription->from_string('Sans Italic 24'));
     my %t = (remove => N("Software Packages Removal"), update => N("Mandrake Update"), install => N("Software Packages Installation"));
     my $layout = $darea->create_pango_layout($t{$MODE});
+    $darea->signal_connect(realize => sub { set_back_pixbuf($darea, gtkcreate_pixbuf('title-tile')) });
     $darea->signal_connect(expose_event => sub {
 		       my $dx = $darea->allocation->width;
-		       fill_tiled($darea, $pixbuf_back);
 		       $pixbuf_icon->render_to_drawable($darea->window, $darea->style->white_gc,
 							0, 0, $dx - $pixbuf_icon->get_width, 0, -1, -1, 'none', 0, 0);
 		       $darea->window->draw_layout($darea->style->white_gc, ($dx-($layout->get_pixel_size)[0])/2, 17, $layout);
