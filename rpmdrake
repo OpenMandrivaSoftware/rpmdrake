@@ -332,7 +332,6 @@ sub do_search($$$$$$$) {
 	my $path = $tree_model->get_path($last_iter);
 	$tree->expand_row($path, 0);
     	$tree->scroll_to_cell($path, undef, 1, 0.5, 0);
-	$path->free; $last_iter->free;
     } else {
 	$options->{add_nodes}->([ '', $results_none, { nochild => 1 } ]);
     }
@@ -622,11 +621,17 @@ or you already installed all of them."));
 		   rebuild_tree => sub {},
 		  };
 
-    my $tree_model = Gtk2::TreeStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
+    my $tree_model = Gtk2::TreeStore->new("Glib::String", "Glib::Boolean", "Glib::String");
     $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
     $tree->append_column(my $textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
-    $tree->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererPixbuf->new, 'pixbuf' => 1));
+    $tree->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef,
+#                                                                                    gtksignal_connect(
+                                                                                    Gtk2::CellRendererToggle->new,
+#                                                                                                     toggled => sub { print "\n\nTOTO\n\n" }
+#                                                                                   ),
+                                                                                    'activatable' => 1));
+
     $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 2));
     $tree->set_headers_visible(0);
     $tree->set_rules_hint(1);
@@ -765,19 +770,19 @@ or you already installed all of them."));
 						    and $action2fun{reload_pkg}->() });
 	$menu_treeview->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($text)), activate => sub { $action2fun{$action}->() }));
     }
-    $tree->signal_connect(button_press_event => sub { $_[1]->button == 3 or return 0;
-						      $menu_treeview->popup(undef, undef, undef, undef, $_[1]->button, $_[1]->time) });
+#    $tree->signal_connect(button_press_event => sub { $_[1]->button == 3 or return 0;
+#						      $menu_treeview->popup(undef, undef, undef, undef, $_[1]->button, $_[1]->time) });
 
     my @menu_descr_modes = ([ N("Normal information"), [] ], [ N("Maximum information"), [1] ]);
     my @descr_modes = gtkradio($menu_descr_modes[@$max_info_in_descr ? 1 : 0][0], map { $_->[0] } @menu_descr_modes);
     mapn {
 	my $val = $_[1][1];
-	$_[0]->signal_connect(clicked => sub {
-				  if ($_[0]->get_active) {
-				      $max_info_in_descr = $val;
-				      $options->{display_info}->();
-				  }
-			      });
+#	$_[0]->signal_connect(clicked => sub {
+#				  if ($_[0]->get_active) {
+#				      $max_info_in_descr = $val;
+#				      $options->{display_info}->();
+#				  }
+#			      });
     } \@descr_modes, \@menu_descr_modes;
     $info = Gtk2::TextView->new;
     $info->set_left_margin(2);
@@ -876,6 +881,7 @@ Is it ok to continue?", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{a
     $options->{widgets} = { w => $w, tree => $tree, tree_model => $tree_model, textcolumn => $textcolumn, pixcolumn => $pixcolumn,
 		            info => $info, status => $status };
 
+    use Data::Dumper; print Dumper($options);
     ask_browse_tree_info_given_widgets($options);
 }
 
