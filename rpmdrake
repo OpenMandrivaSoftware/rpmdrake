@@ -1455,10 +1455,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 			    gtkset_selectable(Gtk2::Label->new($pkg->[1]),1),
 			),
 			gtksignal_connect(
+			    #- TODO change those labels to something more sensible, e.g. "Upgrade information about this package"
 			    Gtk2::Button->new(N("More information on package...")),
 			    clicked => sub {
 				interactive_msg(
-				    N("More information on package...") . "[$pkg->[0]]",
+				    N("More information on package...") . "[$pkg->[0]]", #- FIXME don't concat
 				    (join '' => cat_($pkg->[0])),
 				    scroll => 1,
 				);
