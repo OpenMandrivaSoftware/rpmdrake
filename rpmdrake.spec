@@ -119,6 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Wed Mar 10 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-11mdk
+- follow std button order
 - MandrakeUpdate:
   o fix description and summary field
   o download small synthesis rather than big fat hdlist by default
