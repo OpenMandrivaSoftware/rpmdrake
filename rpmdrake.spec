@@ -119,6 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 * Wed Mar  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-11mdk
 - rpmdrake: when installation fails because some files are missing,
   display any encountered urpmi error
+- choose a mirror dialog: larger default size so that the
+  scrollbars don't appear
+- latest po's
 
 * Mon Mar  3 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-10mdk
 - grpmi: fix error reporting (of gpg, rpm, curl) broken in non english
