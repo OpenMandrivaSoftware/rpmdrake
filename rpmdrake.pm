@@ -19,6 +19,8 @@
 #
 # $Id$
 
+package rpmdrake;
+
 use lib qw(/usr/lib/libDrakX);
 use standalone;     #- warning, standalone must be loaded very first, for 'explanations'
 
@@ -28,11 +30,16 @@ use URPM;
 use URPM::Resolve;
 use packdrake;
 use strict;
-use vars qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $typical_width);
+use vars qw(@ISA @EXPORT $configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $typical_width);
 use log;
 use c;
 
 use curl_download;
+
+@ISA = qw(Exporter);
+@EXPORT = qw($configfile %config $mandrakeupdate_wanted_categories $already_splashed $max_info_in_descr $typical_width
+             N translate myexit readconf writeconf interactive_msg interactive_packtable interactive_list fatal_msg wait_msg remove_wait_msg but but_ slow_func mirrors choose_mirror show_urpm_progress update_sources update_sources_interactive add_medium_and_check);
+
 
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {

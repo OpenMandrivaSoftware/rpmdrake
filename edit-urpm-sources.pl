@@ -29,6 +29,11 @@ require_root_capability();
 
 use rpmdrake;
 
+eval { require ugtk2; ugtk2->import(qw(:all)) };
+if ($@) {
+    print "This program cannot be run in console mode.\n";
+    c::_exit(0);  #- skip ugtk2::END
+}
 $::isStandalone = 1;
 
 
