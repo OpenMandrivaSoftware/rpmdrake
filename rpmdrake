@@ -759,8 +759,9 @@ Do you want to try another mirror?", $r), yesno => 1) and goto mu_retry_another_
 sub dialog_rpmnew {
     my ($exitstatus, %p2r) = @_;
     my $sum_rpmnew = sum(map { int @{$p2r{$_}} } keys %p2r);
-    if ($exitstatus == 0 && $sum_rpmnew == 0) {
-	interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
+    if ($sum_rpmnew == 0) {
+	$exitstatus == 0
+	  and interactive_msg(_("Everything installed successfully"), _("All requested packages were installed successfully."));
 	return;
     }
     my $d = my_gtk->new(_("Installation finished"));
