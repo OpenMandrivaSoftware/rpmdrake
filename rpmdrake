@@ -792,6 +792,16 @@ Is it ok to continue?"), yesno => 1) or myexit(-1);
                 update_sources($urpm, noclean => 1);
 	    }
 	} else {
+            if (any { $_->{update} } @{$urpm->{media}}) {
+                interactive_msg_(N("Already existing update sources"),
+N("You already have at least one update source configured, but
+all of them are currently disabled. You should run the Software
+Sources Manager to enable at least one (check it in the Enabled?
+column).
+
+Then, restart MandrakeUpdate.", $update_name));
+                myexit(-1);
+            }
 	  mu_retry_another_mirror:
 	    my $m = choose_mirror();
 	    $m or interactive_msg_(N("How to choose manually your mirror"),

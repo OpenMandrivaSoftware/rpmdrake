@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 17mdk
+%define release 18mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Apr 17 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-18mdk
+- fix problem shown by #3768: correctly handle case when there
+  are already update source(s), but they are all disabled
+
 * Wed Apr 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-17mdk
 - fix drakhelp zombie process (thx titi)
 - More infos -> More info thx David Walser
