@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.4
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Aug 17 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.4-2mdk
+- Message updates
+- Fix a bug on display of fatal errors
+
 * Wed Aug 11 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.4-1mdk
 - rpmdrake uses localized dates in changelog
 - edit-urpm-sources.pl requires confirmation when removing media
