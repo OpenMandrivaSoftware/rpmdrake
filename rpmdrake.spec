@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 5mdk
+%define release 6mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,10 +16,11 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 3.9 perl-URPM >= 0.60 drakxtools >= 1.1.9-5mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common urpmi >= 3.9 perl-URPM >= 0.60 drakxtools >= 1.1.9-16mdk grpmi >= 9.0 rpmtools >= 4.5
 BuildRequires: curl-devel rpm-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
+URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
 Obsoletes: MandrakeUpdate
 
 %description
@@ -66,7 +67,7 @@ title="Remove Software" longtitle="A graphical front end for removing packages"
 ?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.xpm"\
 title="Mandrake Update" longtitle="A graphical front end for software updates"
 ?package(%{name}): command="/usr/sbin/edit-urpm-sources.pl" needs="x11" section="Configuration/Packaging" icon="rpmdrake.xpm"\
-title="Edit Software Sources" longtitle="A graphical front end to add/remove/edit sources for installing packages"
+title="Software Sources Manager" longtitle="A graphical front end to add/remove/edit sources for installing packages"
 EOF
 
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
@@ -112,6 +113,45 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Aug 22 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-6mdk
+- edit-urpm-sources: toggle the ignore flag only when the button
+  press was really done in an existing col/row
+- rpmdrake: definitively fix the compssUsers.flat missing problem
+  by having a "default" file for fallbacking on it when the DrakX
+  generated one is missing
+- grpmi: add an rcfile and the "noclearcache" option so that
+  /var/lib/urpmi/cache/rpms/ is not cleared after trying to install
+  the packages
+- rpmdrake: use the width of current font to set the maximum size
+  of the packages column, rather than pure hardcoding
+- rpmdrake.pm: since timezone::read doesn't give a hash anymore but
+  a hashref I need to reflect that in my code (pixel sux)
+- grpmi: don't forget to unlink the tmpfile even when the
+  signature is not correct
+- grpmi: use my_gtk::exit so that mouse cursor gets fixed when
+  exiting
+- rpmdrake: keep up the main window when installing/removing
+  packages, "it looks more professional"
+- rpmdrake: fix exiting program when an hdlist seems corrupted to
+  packdrake
+- rpmdrake: add "search in descriptions", have an optionmenu to
+  select the search type, have a progressbar and a stop button
+  because it can be take a long time
+- rpmdrake: have it possible to cancel a selection when user is not
+  happy of the dependencies of the selection
+- rpmdrake: use some hackery in my_gtk and in rpmdrake to really
+  have a [+] in front of parent categories even if they are not
+  really populated
+- MandrakeUpdate: when user cancels the initial choose of mirror,
+  explain that she can selects a manual mirror from the sources
+  manager
+- (fcrozat) provide .desktop files to have rpmdrake stuff in
+  Nautilus when rpmdrake package is installed
+- MandrakeUpdate: don't only use "update_source" as an update
+  source, but all the sources marked as update by urpmi (fixes
+  not taking into account the update source defined during
+  install, if any)
+
 * Mon Aug  5 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-5mdk
 - when searching in files, limit search results to listed
   packages or the program might crash
