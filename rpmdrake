@@ -535,6 +535,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 	}
 	$callback_action->($urpm, $pkgs);
 	($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+	$size_selected = 0;
 	$options->{rebuild_tree}->();
     };
 
