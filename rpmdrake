@@ -922,7 +922,11 @@ Is it ok to continue?", to_utf8($urpm->translate_why_removed($urpm->{state}, @{$
     $> and $action_button->set_sensitive(0);
     $find_entry->grab_focus;
 
-    $w->{window}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
+    if (!$::isEmbedded) {
+        $w->{window}->set_default_size($typical_width*2.7, 500);
+        $w->{window}->set_icon(gtkcreate_pixbuf("title-$MODE"));
+    }
+
     $w->{rwindow}->show_all;
     $options->{widgets} = { w => $w, tree => $tree, tree_model => $tree_model, textcolumn => $textcolumn, pixcolumn => $pixcolumn,
 		            info => $info, status => $status };
