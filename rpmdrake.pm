@@ -55,9 +55,9 @@ $ENV{HOME} ||= '/root';
 
 sub readconf {
     $configfile = "$ENV{HOME}/.rpmdrake";
-    %config = ( mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
-		already_splashed => { var => \$already_splashed, default => [] },
-		max_info_in_descr => { var => \$max_info_in_descr, default => [] },
+    %config = (mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
+	       already_splashed => { var => \$already_splashed, default => [] },
+	       max_info_in_descr => { var => \$max_info_in_descr, default => [] },
 	      );
     ${$config{$_}{var}} = $config{$_}{default} foreach keys %config;
     
