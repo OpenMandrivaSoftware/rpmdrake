@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-cs\n"
-"POT-Creation-Date: 2004-02-25 12:28+0100\n"
-"PO-Revision-Date: 2004-02-10 11:34+0100\n"
+"POT-Creation-Date: 2004-02-29 21:26+0100\n"
+"PO-Revision-Date: 2004-02-29 15:47+0100\n"
 "Last-Translator: Michal Bukovjan <bukm@centrum.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../edit-urpm-sources.pl:61
@@ -63,7 +64,7 @@ msgstr "Vyjímatelné zařízení"
 msgid "Path or mount point:"
 msgstr "Cesta nebo přípojný bod:"
 
-#: ../edit-urpm-sources.pl:66 ../rpmdrake:710
+#: ../edit-urpm-sources.pl:66 ../rpmdrake:715
 #, c-format
 msgid "Security updates"
 msgstr "Bezpečnostní aktualizace"
@@ -132,8 +133,8 @@ msgstr "Typ zdroje:"
 #: ../edit-urpm-sources.pl:355 ../edit-urpm-sources.pl:396
 #: ../edit-urpm-sources.pl:453 ../edit-urpm-sources.pl:517
 #: ../edit-urpm-sources.pl:554 ../edit-urpm-sources.pl:660 ../rpmdrake:91
-#: ../rpmdrake:514 ../rpmdrake:528 ../rpmdrake:532 ../rpmdrake:1097
-#: ../rpmdrake:1158 ../rpmdrake.pm:125 ../rpmdrake.pm:168 ../rpmdrake.pm:353
+#: ../rpmdrake:514 ../rpmdrake:528 ../rpmdrake:532 ../rpmdrake:1106
+#: ../rpmdrake:1167 ../rpmdrake.pm:125 ../rpmdrake.pm:168 ../rpmdrake.pm:356
 #, c-format
 msgid "Ok"
 msgstr "Ok"
@@ -142,8 +143,8 @@ msgstr "Ok"
 #: ../edit-urpm-sources.pl:211 ../edit-urpm-sources.pl:251
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:91
-#: ../rpmdrake:514 ../rpmdrake:1158 ../rpmdrake:1164 ../rpmdrake.pm:353
-#: ../rpmdrake.pm:458
+#: ../rpmdrake:514 ../rpmdrake:1167 ../rpmdrake:1173 ../rpmdrake.pm:356
+#: ../rpmdrake.pm:461
 #, c-format
 msgid "Cancel"
 msgstr "Zrušit"
@@ -264,7 +265,7 @@ msgid "Add"
 msgstr "Přidat"
 
 #: ../edit-urpm-sources.pl:386 ../edit-urpm-sources.pl:393
-#: ../edit-urpm-sources.pl:442 ../edit-urpm-sources.pl:643 ../rpmdrake:912
+#: ../edit-urpm-sources.pl:442 ../edit-urpm-sources.pl:643 ../rpmdrake:917
 #, c-format
 msgid "Remove"
 msgstr "Odstranit"
@@ -389,7 +390,7 @@ msgstr "Aktualizovat zdroj"
 msgid "Regenerate hdlist"
 msgstr "Přegenerovat hdlist"
 
-#: ../edit-urpm-sources.pl:607 ../rpmdrake.pm:421
+#: ../edit-urpm-sources.pl:607 ../rpmdrake.pm:424
 #, c-format
 msgid "Please wait, updating media..."
 msgstr "Prosím počkejte, aktualizuji zdroje..."
@@ -419,24 +420,24 @@ msgstr "Proxy..."
 msgid "Parallel..."
 msgstr "Paralelní..."
 
-#: ../edit-urpm-sources.pl:655 ../rpmdrake:904
+#: ../edit-urpm-sources.pl:655 ../rpmdrake:909
 #, c-format
 msgid "Help"
 msgstr "Nápověda"
 
-#: ../edit-urpm-sources.pl:657 ../rpmdrake:907
+#: ../edit-urpm-sources.pl:657 ../rpmdrake:912
 #, c-format
 msgid "Help launched in background"
 msgstr "Nápověda spuštěna v pozadí"
 
-#: ../edit-urpm-sources.pl:658 ../rpmdrake:908
+#: ../edit-urpm-sources.pl:658 ../rpmdrake:913
 #, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
 msgstr ""
 "Okno s nápovědou bylo spuštěno, po chvíli by se mělo objevit na vaší ploše."
 
-#: ../edit-urpm-sources.pl:669 ../gurpmi.addmedia:75 ../rpmdrake:1351
+#: ../edit-urpm-sources.pl:669 ../gurpmi.addmedia:75 ../rpmdrake:1360
 #, c-format
 msgid ""
 "%s\n"
@@ -470,6 +471,10 @@ msgid ""
 "manager on another desktop, or are you currently installing\n"
 "packages as well?)."
 msgstr ""
+"Databáze balíčků je zamčená. Zavřete prosím jiné aplikace,\n"
+"které s databází balíčků pracují. (Můžete mít otevřený správce\n"
+"zdrojů software na jiné ploše, nebo je možné, že právě také\n"
+"instalujete balíčky.)"
 
 #: ../gurpmi.addmedia:70
 #, c-format
@@ -1122,7 +1127,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:609 ../rpmdrake:861
+#: ../rpmdrake:609 ../rpmdrake:866
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Některé balíčky musí být odebrány"
@@ -1197,107 +1202,107 @@ msgstr "Důvod pro aktualizaci: "
 msgid "Description: "
 msgstr "Popis: "
 
-#: ../rpmdrake:710
+#: ../rpmdrake:715
 #, c-format
 msgid "Bugfixes updates"
 msgstr "Opravy chyb"
 
-#: ../rpmdrake:710
+#: ../rpmdrake:715
 #, c-format
 msgid "Normal updates"
 msgstr "Běžné aktualizace"
 
-#: ../rpmdrake:727
+#: ../rpmdrake:732
 #, c-format
 msgid "Mandrake choices"
 msgstr "Volby Mandrake"
 
-#: ../rpmdrake:728
+#: ../rpmdrake:733
 #, c-format
 msgid "All packages, alphabetical"
 msgstr "Všechny balíčky, abecedně"
 
-#: ../rpmdrake:734
+#: ../rpmdrake:739
 #, c-format
 msgid "All packages, by group"
 msgstr "Všechny balíčky, podle skupiny"
 
-#: ../rpmdrake:734
+#: ../rpmdrake:739
 #, c-format
 msgid "All packages, by size"
 msgstr "Všechny balíčky, podle velikosti"
 
-#: ../rpmdrake:735
+#: ../rpmdrake:740
 #, c-format
 msgid "All packages, by selection state"
 msgstr "Všechny balíčky, podle stavu výběru"
 
-#: ../rpmdrake:736
+#: ../rpmdrake:741
 #, c-format
 msgid "All packages, by medium repository"
 msgstr "Všechny balíčky, podle umístění zdroje"
 
-#: ../rpmdrake:736
+#: ../rpmdrake:741
 #, c-format
 msgid "All packages, by update availability"
 msgstr "Všechny balíčky, podle dostupnosti aktualizace"
 
-#: ../rpmdrake:737
+#: ../rpmdrake:742
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Pouze listy, tříděné podle data instalace"
 
-#: ../rpmdrake:788
+#: ../rpmdrake:793
 #, c-format
 msgid "in names"
 msgstr "v názvech"
 
-#: ../rpmdrake:788
+#: ../rpmdrake:793
 #, c-format
 msgid "in descriptions"
 msgstr "v popisech"
 
-#: ../rpmdrake:788
+#: ../rpmdrake:793
 #, c-format
 msgid "in file names"
 msgstr "v názvech souborů"
 
-#: ../rpmdrake:799
+#: ../rpmdrake:804
 #, c-format
 msgid "Reset the selection"
 msgstr "Nulovat výběr"
 
-#: ../rpmdrake:799
+#: ../rpmdrake:804
 #, c-format
 msgid "Reload the packages list"
 msgstr "Znovu načíst seznam balíčků"
 
-#: ../rpmdrake:800 ../rpmdrake.pm:443
+#: ../rpmdrake:805 ../rpmdrake.pm:446
 #, c-format
 msgid "Update media"
 msgstr "Aktualizovat zdroje"
 
-#: ../rpmdrake:825
+#: ../rpmdrake:830
 #, c-format
 msgid "Normal information"
 msgstr "Běžné informace"
 
-#: ../rpmdrake:825
+#: ../rpmdrake:830
 #, c-format
 msgid "Maximum information"
 msgstr "Všechny informace"
 
-#: ../rpmdrake:845
+#: ../rpmdrake:850
 #, c-format
 msgid "You need to select some packages first."
 msgstr "Musíte nejprve vybrat nějaké balíčky."
 
-#: ../rpmdrake:850
+#: ../rpmdrake:855
 #, c-format
 msgid "Too many packages are selected"
 msgstr "Je vybráno příliš mnoho balíčků"
 
-#: ../rpmdrake:851
+#: ../rpmdrake:856
 #, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
@@ -1314,7 +1319,7 @@ msgstr ""
 "\n"
 "Opravdu chcete nainstalovat všechny vybrané balíčky?"
 
-#: ../rpmdrake:862
+#: ../rpmdrake:867
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -1329,52 +1334,52 @@ msgstr ""
 "\n"
 "Mohu pokračovat?"
 
-#: ../rpmdrake:887
+#: ../rpmdrake:892
 #, c-format
 msgid "Software Packages Removal"
 msgstr "Odstranění balíčků software"
 
-#: ../rpmdrake:888
+#: ../rpmdrake:893
 #, c-format
 msgid "Mandrake Update"
 msgstr "Mandrake Update"
 
-#: ../rpmdrake:889
+#: ../rpmdrake:894
 #, c-format
 msgid "Software Packages Installation"
 msgstr "Instalace balíčků software"
 
-#: ../rpmdrake:896
+#: ../rpmdrake:901
 #, c-format
 msgid "Find:"
 msgstr "Najít:"
 
-#: ../rpmdrake:901
+#: ../rpmdrake:906
 #, c-format
 msgid "Search"
 msgstr "Hledat"
 
-#: ../rpmdrake:912
+#: ../rpmdrake:917
 #, c-format
 msgid "Install"
 msgstr "Instalovat"
 
-#: ../rpmdrake:914
+#: ../rpmdrake:919
 #, c-format
 msgid "Quit"
 msgstr "Konec"
 
-#: ../rpmdrake:941
+#: ../rpmdrake:946
 #, c-format
 msgid "Fatal error"
 msgstr "Fatální chyba"
 
-#: ../rpmdrake:942
+#: ../rpmdrake:947
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "Vyskytla se fatální chyba: %s."
 
-#: ../rpmdrake:950
+#: ../rpmdrake:955
 #, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
@@ -1387,12 +1392,12 @@ msgstr ""
 "\n"
 "Mohu pokračovat?"
 
-#: ../rpmdrake:959
+#: ../rpmdrake:964
 #, c-format
 msgid "Already existing update media"
 msgstr "Již existující zdroj pro aktualizaci"
 
-#: ../rpmdrake:960
+#: ../rpmdrake:965
 #, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -1408,12 +1413,12 @@ msgstr ""
 "\n"
 "Poté znovu spusťte MandrakeUpdate."
 
-#: ../rpmdrake:970
+#: ../rpmdrake:975
 #, c-format
 msgid "How to choose manually your mirror"
 msgstr "Jak ručně vybrat vaše zrcadlo"
 
-#: ../rpmdrake:971
+#: ../rpmdrake:976
 #, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -1428,62 +1433,62 @@ msgstr ""
 "\n"
 "Poté znovu spusťte aplikaci MandrakeUpdate."
 
-#: ../rpmdrake:999
+#: ../rpmdrake:1004
 #, c-format
 msgid "Please wait, finding available packages..."
 msgstr "Prosím počkejte, hledám dostupné balíčky..."
 
-#: ../rpmdrake:1042
+#: ../rpmdrake:1051
 #, c-format
 msgid "Inspecting %s"
 msgstr "Prohlížím %s"
 
-#: ../rpmdrake:1061
+#: ../rpmdrake:1070
 #, c-format
 msgid "changes:"
 msgstr "změny:"
 
-#: ../rpmdrake:1065
+#: ../rpmdrake:1074
 #, c-format
 msgid "Remove .%s"
 msgstr "Odebrat .%s"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1076
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Použít .%s jako hlavní soubor"
 
-#: ../rpmdrake:1069
+#: ../rpmdrake:1078
 #, c-format
 msgid "Do nothing"
 msgstr "Nedělat nic"
 
-#: ../rpmdrake:1081
+#: ../rpmdrake:1090
 #, c-format
 msgid "Installation finished"
 msgstr "Instalace dokončena"
 
-#: ../rpmdrake:1091
+#: ../rpmdrake:1100
 #, c-format
 msgid "Inspect..."
 msgstr "Prozkoumat..."
 
-#: ../rpmdrake:1117 ../rpmdrake:1242
+#: ../rpmdrake:1126 ../rpmdrake:1251
 #, c-format
 msgid "Everything installed successfully"
 msgstr "Všechno bylo úspěšně nainstalováno."
 
-#: ../rpmdrake:1118 ../rpmdrake:1243
+#: ../rpmdrake:1127 ../rpmdrake:1252
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Všechny požadované balíčky byly úspěšně nainstalovány."
 
-#: ../rpmdrake:1120 ../rpmdrake:1227
+#: ../rpmdrake:1129 ../rpmdrake:1236
 #, c-format
 msgid "Problem during installation"
 msgstr "Při instalaci nastaly problémy"
 
-#: ../rpmdrake:1121 ../rpmdrake:1228 ../rpmdrake:1257
+#: ../rpmdrake:1130 ../rpmdrake:1237 ../rpmdrake:1266
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -1494,17 +1499,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1142
+#: ../rpmdrake:1151
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Nelze získat balíčky se zdroji."
 
-#: ../rpmdrake:1143
+#: ../rpmdrake:1152
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Nelze získat zdrojové balíčky, promiňte. %s"
 
-#: ../rpmdrake:1144 ../rpmdrake:1200
+#: ../rpmdrake:1153 ../rpmdrake:1209
 #, c-format
 msgid ""
 "\n"
@@ -1517,37 +1522,37 @@ msgstr ""
 "Nahlášené chyby:\n"
 "%s"
 
-#: ../rpmdrake:1151
+#: ../rpmdrake:1160
 #, c-format
 msgid "Package installation..."
 msgstr "Instalace balíčku..."
 
-#: ../rpmdrake:1151
+#: ../rpmdrake:1160
 #, c-format
 msgid "Initializing..."
 msgstr "Inicializuji..."
 
-#: ../rpmdrake:1156
+#: ../rpmdrake:1165
 #, c-format
 msgid "Change medium"
 msgstr "Změnit zdroj"
 
-#: ../rpmdrake:1157
+#: ../rpmdrake:1166
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Vložte prosím médium nazvané \"%s\" do zařízení [%s]"
 
-#: ../rpmdrake:1162
+#: ../rpmdrake:1171
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Stahuji balíček '%s' (%s/%s)..."
 
-#: ../rpmdrake:1181
+#: ../rpmdrake:1190
 #, c-format
 msgid "Verifying packages signatures..."
 msgstr "Kontrolují se podpisy balíčků..."
 
-#: ../rpmdrake:1190
+#: ../rpmdrake:1199
 #, c-format
 msgid ""
 "The following packages have bad signatures:\n"
@@ -1562,12 +1567,12 @@ msgstr ""
 "\n"
 "Chcete pokračovat v instalaci?"
 
-#: ../rpmdrake:1197 ../rpmdrake:1256
+#: ../rpmdrake:1206 ../rpmdrake:1265
 #, c-format
 msgid "Installation failed"
 msgstr "Instalace selhala"
 
-#: ../rpmdrake:1198
+#: ../rpmdrake:1207
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -1580,17 +1585,17 @@ msgstr ""
 "\n"
 "Možná by se měla aktualizovat vaše databáze zdrojů."
 
-#: ../rpmdrake:1212
+#: ../rpmdrake:1221
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Připravuji instalaci balíčků..."
 
-#: ../rpmdrake:1215
+#: ../rpmdrake:1224
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Instaluji balíček '%s' (%s/%s)..."
 
-#: ../rpmdrake:1240
+#: ../rpmdrake:1249
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -1603,37 +1608,37 @@ msgstr ""
 "Některé soubory s nastavením byly vytvořeny s příponou `.rpmnew' nebo\n"
 "`.rpmsave'. Některé z nich můžete nyní prozkoumat a rozhodnout, co s nimi:"
 
-#: ../rpmdrake:1240
+#: ../rpmdrake:1249
 #, c-format
 msgid "everything was installed correctly"
 msgstr "vše bylo úspěšně nainstalováno"
 
-#: ../rpmdrake:1247
+#: ../rpmdrake:1256
 #, c-format
 msgid "No package found for installation."
 msgstr "K instalaci nebyly nalezeny žádné balíčky."
 
-#: ../rpmdrake:1248
+#: ../rpmdrake:1257
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Fatální chyba: nebyly nalezeny žádné balíčky k instalaci, promiňte."
 
-#: ../rpmdrake:1270
+#: ../rpmdrake:1279
 #, c-format
 msgid "Please wait, reading packages database..."
 msgstr "Prosím počkejte, načítám databázi balíčků..."
 
-#: ../rpmdrake:1317
+#: ../rpmdrake:1326
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Prosím počkejte, odebírám balíčky..."
 
-#: ../rpmdrake:1322
+#: ../rpmdrake:1331
 #, c-format
 msgid "Problem during removal"
 msgstr "Problém při odebírání"
 
-#: ../rpmdrake:1323
+#: ../rpmdrake:1332
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -1644,7 +1649,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1355
+#: ../rpmdrake:1364
 #, c-format
 msgid ""
 "Welcome to the software removal tool!\n"
@@ -1657,7 +1662,7 @@ msgstr ""
 "Tento nástroj vám pomůže vybrat, které balíčky chcete odstranit ze svého\n"
 "počítače."
 
-#: ../rpmdrake:1360
+#: ../rpmdrake:1369
 #, c-format
 msgid ""
 "Welcome to MandrakeUpdate!\n"
@@ -1670,7 +1675,7 @@ msgstr ""
 "Tento nástroj vám pomůže vybrat aktualizace, které chcete instalovat na\n"
 "vašem počítači."
 
-#: ../rpmdrake:1365
+#: ../rpmdrake:1374
 #, c-format
 msgid ""
 "Welcome to the software installation tool!\n"
@@ -1856,12 +1861,12 @@ msgid "Please wait, downloading mirrors addresses from MandrakeSoft website."
 msgstr ""
 "Prosím počkejte, stahuji adresy zrcadel ze stránek společnosti MandrakeSoft."
 
-#: ../rpmdrake.pm:315
+#: ../rpmdrake.pm:318
 #, c-format
 msgid "Error during download"
 msgstr "Chyba při stahování"
 
-#: ../rpmdrake.pm:316
+#: ../rpmdrake.pm:319
 #, c-format
 msgid ""
 "There was an error downloading the mirrors list:\n"
@@ -1876,12 +1881,12 @@ msgstr ""
 "Je možné, že síť nebo stránky společnosti MandrakeSoft nejsou k dispozici.\n"
 "Zkuste to prosím později."
 
-#: ../rpmdrake.pm:324
+#: ../rpmdrake.pm:327
 #, c-format
 msgid "No mirror"
 msgstr "Není zrcadlo"
 
-#: ../rpmdrake.pm:325
+#: ../rpmdrake.pm:328
 #, c-format
 msgid ""
 "I can't find any suitable mirror.\n"
@@ -1896,68 +1901,68 @@ msgstr ""
 "kdy architektura vašeho procesoru není podporovaná službou\n"
 "oficiálních aktualizací distribuce Mandrake Linux."
 
-#: ../rpmdrake.pm:342
+#: ../rpmdrake.pm:345
 #, c-format
 msgid "Please choose the desired mirror."
 msgstr "Vyberte prosím vhodné zrcadlo."
 
-#: ../rpmdrake.pm:383
+#: ../rpmdrake.pm:386
 #, c-format
 msgid "Copying file for medium `%s'..."
 msgstr "Kopíruje se soubor pro zdroj '%s'..."
 
-#: ../rpmdrake.pm:386
+#: ../rpmdrake.pm:389
 #, c-format
 msgid "Examining file of medium `%s'..."
 msgstr "Zkoumá se soubor zdroje '%s'..."
 
-#: ../rpmdrake.pm:389
+#: ../rpmdrake.pm:392
 #, c-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "Zkoumá se vzdálený soubor zdroje '%s'..."
 
-#: ../rpmdrake.pm:393
+#: ../rpmdrake.pm:396
 #, c-format
 msgid " done."
 msgstr " hotovo."
 
-#: ../rpmdrake.pm:397
+#: ../rpmdrake.pm:400
 #, c-format
 msgid " failed!"
 msgstr " selhalo!"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:401
+#: ../rpmdrake.pm:404
 #, c-format
 msgid "%s from medium %s"
 msgstr "%s ze zdroje %s"
 
-#: ../rpmdrake.pm:405
+#: ../rpmdrake.pm:408
 #, c-format
 msgid "Starting download of `%s'..."
 msgstr "Začíná se stahovat '%s'..."
 
-#: ../rpmdrake.pm:409
+#: ../rpmdrake.pm:412
 #, c-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr "Stahování '%s', zbývající čas: %s, rychlost: %s"
 
-#: ../rpmdrake.pm:412
+#: ../rpmdrake.pm:415
 #, c-format
 msgid "Download of `%s', speed:%s"
 msgstr "Stahování '%s', rychlost: %s"
 
-#: ../rpmdrake.pm:449
+#: ../rpmdrake.pm:452
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Vyberte zdroje, které si přejete aktualizovat:"
 
-#: ../rpmdrake.pm:453
+#: ../rpmdrake.pm:456
 #, c-format
 msgid "Update"
 msgstr "Aktualizovat"
 
-#: ../rpmdrake.pm:465
+#: ../rpmdrake.pm:468
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1970,7 +1975,7 @@ msgstr ""
 "Chyby:\n"
 "%s"
 
-#: ../rpmdrake.pm:482 ../rpmdrake.pm:487
+#: ../rpmdrake.pm:485 ../rpmdrake.pm:490
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -1981,17 +1986,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:498
+#: ../rpmdrake.pm:501
 #, c-format
 msgid "Unable to create medium."
 msgstr "Nelze vytvořit zdroj."
 
-#: ../rpmdrake.pm:503
+#: ../rpmdrake.pm:506
 #, c-format
 msgid "Failure when adding medium"
 msgstr "Selhání při pokusu o přidání zdroje"
 
-#: ../rpmdrake.pm:504
+#: ../rpmdrake.pm:507
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"
