@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 12mdk
+%define release 13mdk
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Aug 28 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-13mdk
+- rpmdrake: right-click on the descriptions of a package to get more
+  informations (source name, filelist, changelog when available)
+
 * Tue Aug 27 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-12mdk
 - rpmdrake
   - fix displaying of .rpmnew dialog when no .rpmnew files

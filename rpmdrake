@@ -33,7 +33,7 @@ $> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
 use lib qw(/usr/lib/libDrakX);
 
 use strict;
-use vars qw($MODE %options $typical_width);
+use vars qw($MODE %options $typical_width $max_info_in_descr);
 
 use rpmdrake;
 
@@ -116,6 +116,14 @@ sub extract_header {
 	$p->update_header($headersdir . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
 	rm_rf($headersdir);
 	add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
+	if (@$max_info_in_descr) {
+	    $pkg->{files} = [ $p->files ];
+	    my (undef, $list) = $urpm->get_source_packages({ $p->id => undef });
+	    if ($list) {
+		my $localfile = (values %{${$list}[0]})[0];
+		$localfile =~ m,^file:/(.*)|^removable:/(.*), && -r $1 and $pkg->{changelog} = `rpm -qp --changelog $1`;
+	    }
+	}
 	$p->pack_header;
     } else {
       header_non_available:
@@ -401,17 +409,21 @@ or you already installed all of them."));
 		   get_info => sub { my ($key) = @_;
 				     exists $pkgs->{$key} or return;  #- related to the partial tree displaying hackery ($key can be '')
 				     my ($name, $version) = split_fullname($key);
-				     exists $pkgs->{$key}{description}
+				     exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
+				     my $max_info = if_(@$max_info_in_descr, _("Source: %s\nFiles:\n%s\n\nChangelog:\n%s",
+									       pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name},
+									       join("\n", @{$pkgs->{$key}{files}}) || _("(Non available)"),
+									       $pkgs->{$key}{changelog} || _("(Non available)")));
 				     if ($MODE eq 'update') {
 					 gtktext_insert($info_update, beautify_description($descriptions->{$name}{pre}));
 					 _("Name: %s\nVersion: %s\nSize: %s KB\nImportance: %s\n\nSummary: %s\n\n%s\n",
 					   $name, $version, int($pkgs->{$key}{pkg}->size/1024), $descriptions->{$name}{importance},
-					   $pkgs->{$key}{summary}, beautify_description($descriptions->{$name}{description}))
+					   $pkgs->{$key}{summary}, beautify_description($descriptions->{$name}{description})) . $max_info
 				     } else {
 					 _("Name: %s\nVersion: %s\nSize: %s KB\n\nSummary: %s\n\n%s\n",
 					   $name, $version, int($pkgs->{$key}{pkg}->size/1024),
-					   $pkgs->{$key}{summary}, $pkgs->{$key}{description});
+					   $pkgs->{$key}{summary}, $pkgs->{$key}{description}) . $max_info
 				     }
 				 },
 		   check_interactive_to_toggle => sub { 1 },
@@ -519,6 +531,21 @@ or you already installed all of them."));
     my $search_types_optionmenu = new Gtk::OptionMenu;
     $search_types_optionmenu->set_menu($search_types_menu);
 
+    my $menu_descr = new Gtk::Menu;
+    my @menu_descr_modes = ([ 'normal', _("Normal informations"), [] ], [ 'max', _("Maximum informations"), [1] ]);
+    foreach (@menu_descr_modes) {
+	my ($mode, $text, $val) = @$_;
+	$menu_descr->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($text)),
+					      activate => sub {
+						  $max_info_in_descr = $val;
+						  $options->{display_info}->();
+					      }));
+    }
+    $info = new Gtk::Text;
+    $info->signal_connect(button_press_event => sub { $_[1]->{button} eq 3 or return 0;
+						      $menu_descr->popup(undef, undef, $_[1]->{button}, $_[1]->{time});
+						      return 1; });
+
     my $find_entry;
     my $find_callback = sub { do_search($find_entry, $tree, $options, $current_search_type, $urpm, $pkgs) };
 
@@ -556,9 +583,9 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 				       1, gtkpack(new Gtk::HBox(0, 0),
 						  createScrolledWindow($tree),
 						  $MODE eq 'update' ? gtkpack(new Gtk::VBox(0, 0),
-									      createScrolledWindow($info = new Gtk::Text),
+									      createScrolledWindow($info),
 									      createScrolledWindow($info_update = new Gtk::Text))
-						                    : createScrolledWindow($info = new Gtk::Text)),
+						                    : createScrolledWindow($info)),
 				       0, gtkpack(new Gtk::HBox(1, 20),
 						  my $status = new Gtk::Label,
 						  gtkpack(new Gtk::HBox(1, 20),
@@ -753,7 +780,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     @pkgs{ map { $_->id } grep { $_->flag_selected } @{$urpm->{depslist}} } = undef;
     my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
     foreach my $l (@$list) {
-	standalone::explanations("Installing package $l->{$_}") foreach sort keys %$l;
+	standalone::explanations("Installing package $_") foreach sort values %$l;
     }
     if (!$local_sources && !$list) {
 	fatal_msg(_("Unable to get source packages."),
