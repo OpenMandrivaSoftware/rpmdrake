@@ -882,7 +882,12 @@ Is it ok to continue?", to_utf8($urpm->translate_why_removed($urpm->{state}, @{$
 		   1, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
     gtkadd($w->{window}, 
 	   gtkpack_(Gtk2::VBox->new(0, 3),
-		    0, gtkset_size_request(my $darea = Gtk2::DrawingArea->new, -1, 76),
+                 0, Gtk2::Banner->new("title-$MODE",
+                                      { remove => N("Software Packages Removal"), 
+                                        update => N("Mandrake Update"), 
+                                        install => N("Software Packages Installation"),
+                                      }->{$MODE}
+                                     ),
 		    1, gtkadd(gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
 			      gtkpack_(Gtk2::VBox->new(0, 3),
 				       0, gtkpack__(Gtk2::HBox->new(0, 10),
@@ -909,19 +914,6 @@ Is it ok to continue?", to_utf8($urpm->translate_why_removed($urpm->{state}, @{$
 				       ))));
     $> and $action_button->set_sensitive(0);
     $find_entry->grab_focus;
-    my $pixbuf_icon = gtkcreate_pixbuf("title-$MODE");
-    $darea->modify_font(Gtk2::Pango::FontDescription->from_string('Sans Italic 24'));
-    my %t = (remove => N("Software Packages Removal"), update => N("Mandrake Update"), install => N("Software Packages Installation"));
-    my $layout = $darea->create_pango_layout($t{$MODE});
-    $darea->signal_connect(realize => sub { set_back_pixbuf($darea, gtkcreate_pixbuf('title-tile')) });
-    $darea->signal_connect(expose_event => sub {
-		       my (undef, undef, $dx, $dy) = $darea->allocation->values;
-		       $darea->window->draw_pixbuf($darea->style->white_gc, $pixbuf_icon,
-						   0, 0, $dx - $pixbuf_icon->get_width, 0, -1, -1, 'none', 0, 0);
-		       my ($lx, $ly) = $layout->get_pixel_size;
-		       $darea->window->draw_layout($darea->style->white_gc, ($dx-$lx)/2, ($dy-$ly)/2, $layout);
-		       0;
-		   });
 
     $w->{window}->set_default_size($typical_width*2.7, 500);
     $w->{rwindow}->show_all;
