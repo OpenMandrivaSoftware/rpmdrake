@@ -115,8 +115,7 @@ sub extract_header {
 	standalone::explanations("Extracting header of " . $p->header_filename . " from $hdlist");
 	my $packer = new packdrake($hdlist, quiet => 1);
 	$packer->extract_archive($headersdir, $p->header_filename);
-	$p->update_header($headersdir . $p->header_filename)
-	  or standalone::explanations("Warning, could not extract header!"), goto header_non_available;
+	$p->update_header($headersdir . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
 	rm_rf($headersdir);
 	add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
 	$p->pack_header;
