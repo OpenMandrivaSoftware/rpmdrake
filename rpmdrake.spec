@@ -52,8 +52,10 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
 ?package(%{name}): command="/usr/sbin/rpmdrake" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
+title="Browse Available Software" longtitle="A graphical front end for browsing available packages for installation"
+?package(%{name}): command="/usr/sbin/rpmdrake --root" needs="x11" section="Configuration/Packaging" icon="rpmdrake.png" \
 title="Install Software" longtitle="A graphical front end for installing packages"
-?package(%{name}): command="/usr/sbin/rpmdrake-remove" needs="x11" section="Configuration/Packaging" icon="rpmdrake-remove.png" \
+?package(%{name}): command="/usr/sbin/rpmdrake-remove --root" needs="x11" section="Configuration/Packaging" icon="rpmdrake-remove.png" \
 title="Remove Software" longtitle="A graphical front end for removing packages"
 ?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.png" \
 title="Mandrake Update" longtitle="A graphical front end for software updates"
@@ -100,6 +102,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Tue Aug  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
+- require root capability when run "Install Sofware" and add a new
+  menu entry reading "Browse Available Software"
 - s/Medias/Media/ in the program name of the menu entry
 
 * Mon Aug  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-30mdk
