@@ -172,6 +172,8 @@ my @valid_groups = (
                     N_("Books"), N_("Howtos"),
                     N_("Books"), N_("Literature"),
                     N_("Books"), N_("Other"),
+                    N_("Cluster"), N_("Message Passing"),
+                    N_("Cluster"), N_("Queueing Services"),
                     N_("Communications"),
                     N_("Databases"),
                     N_("Development"), N_("C"),
@@ -206,6 +208,7 @@ my @valid_groups = (
                     N_("Graphical desktop"), N_("WindowMaker"),
                     N_("Graphics"),
                     N_("Monitoring"),
+                    N_("Multimedia"),
                     N_("Networking"), N_("Chat"),
                     N_("Networking"), N_("File transfer"),
                     N_("Networking"), N_("IRC"),
@@ -216,6 +219,7 @@ my @valid_groups = (
                     N_("Networking"), N_("Remote access"),
                     N_("Networking"), N_("WWW"),
                     N_("Office"),
+                    N_("Public Keys"),
                     N_("Publishing"),
                     N_("Sciences"), N_("Astronomy"),
                     N_("Sciences"), N_("Biology"),
@@ -234,6 +238,8 @@ my @valid_groups = (
                     N_("System"), N_("Configuration"), N_("Other"),
                     N_("System"), N_("Configuration"), N_("Packaging"),
                     N_("System"), N_("Configuration"), N_("Printing"),
+                    N_("System"), N_("Deploiement"),
+                    N_("System"), N_("Deployment"),
                     N_("System"), N_("Fonts"), N_("Console"),
                     N_("System"), N_("Fonts"), N_("True type"),
                     N_("System"), N_("Fonts"), N_("Type1"),
@@ -1201,7 +1207,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		my @pkg_list = split /\s+/, $1;
 		exists $cur->{importance} && $cur->{importance} !~ /^(?:security|bugfix)\z/
 		    and $cur->{importance} = 'normal';
-		$descriptions{$_} = $cur foreach @{$cur->{pkgs} || []};
+		$update_descr{$_} = $cur foreach @{$cur->{pkgs} || []};
 		$cur = {};
 		$cur->{pkgs} = [ @pkg_list ];
 		$section = 'pkg';
