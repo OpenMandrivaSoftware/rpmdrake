@@ -39,6 +39,7 @@ use vars qw($MODE %options);
 use lib qw(/usr/lib/libDrakX);
 use common;
 use rpmdrake;
+use gurpm;
 
 require_root_capability();
 
@@ -131,7 +132,7 @@ sub extract_header {
 	    $p->update_header($headersdir . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
 	    rm_rf($headersdir);
 	    add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
-	    my $localtime2changelog = sub { scalar(localtime($_[0])) =~ /(.*) \S+ (\d{4})$/; "$1 $2" };
+	    my $localtime2changelog = sub { scalar(localtime($_[0])) =~ /(.*) \S+ (\d{4})$/ && "$1 $2" };
 	    @$max_info_in_descr and add2hash($pkg, {
 	        files => join("\n", $p->files) || N("(none)"),
 		changelog => $chg_prepro->(join("\n", mapn { "* ".$localtime2changelog->($_[2])." $_[0]\n\n$_[1]\n" }
@@ -935,93 +936,138 @@ sub dialog_rpmnew {
 sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($urpm) = @_;
 
-    my $grpmi = '/usr/sbin/grpmi';
-    -x $grpmi or fatal_msg(N("Program missing"),
-			   N("A required program is missing (grpmi). Check your installation.")), myexit(-1);
-
     my $fatal_msg;
     my @error_msgs;
-    local $urpm->{fatal} = sub { $fatal_msg = $_[1]; printf STDERR "%s\n", $_[1]; die };
-    local $urpm->{error} = sub { push @error_msgs, $_[0]; printf STDERR "%s\n", $_[0] };
+    local $urpm->{fatal} = sub { $fatal_msg = $_[1]; printf STDERR "Fatal: %s\n", $_[1]; goto fatal_error };
+    local $urpm->{error} = sub { push @error_msgs, $_[0]; printf STDERR "Error: %s\n", $_[0] };
 
-    eval {
-	standalone::explanations("Removing package $_") foreach keys %{$urpm->{state}{ask_remove}};
+    $w->{rwindow}->set_sensitive(0);
 
-	my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}}; 
-	my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
-	foreach my $l (@$list) {
-	    standalone::explanations("Installing package $_") foreach sort values %$l;
-	}
-	if (!$local_sources && (!$list || !@$list)) {
-	    interactive_msg_(N("Unable to get source packages."),
-			     N("Unable to get source packages, sorry. %s",
-			     @error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
-	    die "return 1\n";
-	}
-	foreach (@$local_to_removes) {
-	    unlink $_;
-	}
-
-	my %sources = $urpm->download_source_packages($local_sources, $list,
-						      ask_for_medium => sub {
-							  interactive_msg_(N("Change medium"),
-									   N("Please insert the medium named \"%s\" on device [%s]", @_),
-									   yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) });
-	my @rpms_install = grep { !/\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
-	my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
-
-	if (@rpms_install || @rpms_upgrade) {
-	    foreach (@rpms_install, @rpms_upgrade) {
-		m|^/| && ! -e $_ or next;
-		interactive_msg_(N("Installation failed"),
-				 N("Installation failed, some files are missing.\nYou may want to update your sources database.") .
-				 (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
-		die "return 1\n";
-	    }
-	    %{$urpm->{state}{ask_remove}} and slow_func(N("Please wait, removing packages to allow others to be upgraded..."),
-							sub { system('rpm', '-e', '--nodeps', keys %{$urpm->{state}{ask_remove}}) });
-	    if (my $pid = fork()) {
-		$w->{rwindow}->set_sensitive(0);
-		while (!waitpid($pid, c::WNOHANG())) {
-		    select(undef, undef, undef, 0.1);
-		    ugtk2::flush();
-		}
-		$w->{rwindow}->set_sensitive(1);
-	    } else {
-		exec($grpmi, if_($options{'no-verify-rpm'}, '--no-verify-rpm'), (map { ("-noupgrade", $_) } @rpms_install), @rpms_upgrade)
-		  or print(STDERR "   *** ERROR *** Could not exec $grpmi.\n"), c::_exit(-1);
-	    }
-	    my $exitstatus = $?;
-	    $urpm->try_umounting_removables;
-	    my %pkg2rpmnew;
-	    foreach my $u (@rpms_upgrade) {
-		$u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
-		  and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
-					  map { chomp_($_) } `rpm -ql $1` ];
-	    }
-	    dialog_rpmnew(N("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:", $exitstatus ? N("some packages failed to install\ncorrectly")
-			    : N("everything was installed correctly")),
-			  %pkg2rpmnew)
-	      && !$exitstatus and interactive_msg_(N("Everything installed successfully"),
-						   N("All requested packages were installed successfully."));
-	    die "return $exitstatus\n";
-	} else {
-	    $urpm->try_umounting_removables;
-	    interactive_msg_(N("No package found for installation."),
-			     N("Unrecoverable error: no package found for installation, sorry."));
-	}
-    };
-    if ($@) {
-	if ($@ =~ /^return (\S+)\n$/) {
-	    return $1;
-	} else {
-	    interactive_msg_(N("Problem during installation"),
-			     N("There was a problem during the installation:\n\n%s", $fatal_msg));
-	    return 1;
-	}
-    } else {
-	return 0;
+    standalone::explanations("Removing package $_") foreach keys %{$urpm->{state}{ask_remove}};
+    
+    my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}}; 
+    my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
+    my $distant_number;
+    foreach my $l (@$list) {
+        foreach (sort values %$l) {
+            standalone::explanations("Installing package $_");
+            /^file|removable/ or $distant_number++;
+        }
     }
+    if (!$local_sources && (!$list || !@$list)) {
+        interactive_msg_(N("Unable to get source packages."),
+                         N("Unable to get source packages, sorry. %s",
+                           @error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
+        goto return_with_error;
+    }
+    foreach (@$local_to_removes) {
+        unlink $_;
+    }
+
+    gurpm::init(N("Package installation..."), N("Initializing..."));
+    my $distant_progress;
+    my %sources = $urpm->download_source_packages($local_sources, $list, force_local => 1,
+                                                  ask_for_medium => sub {
+                                                      interactive_msg_(N("Change medium"),
+                                                                       N("Please insert the medium named \"%s\" on device [%s]", @_),
+                                                                       yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }) },
+                                                  callback => sub {
+                                                      my ($mode, $file, $percent) = @_;
+                                                      if ($mode eq 'start') {
+                                                          gurpm::label(N("Downloading package `%s' (%s/%s)...",
+                                                                         basename($file), ++$distant_progress, $distant_number));
+                                                      } elsif ($mode eq 'progress') {
+                                                          gurpm::progress($percent/100);
+                                                      } elsif ($mode eq 'end') {
+                                                          gurpm::progress(1);
+                                                      }
+                                                  });
+    my %sources_install = %{$urpm->extract_packages_to_install(\%sources) || {}};
+    my @rpms_install = grep { !/\.src\.rpm$/ } values %sources_install;
+    my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
+
+    if (!$options{'no-verify-rpm'}) {
+        gurpm::label(N("Verifying packages signatures..."));
+        my $total = @rpms_install + @rpms_upgrade;
+        my $progress;
+        my @invalid_sources;
+        foreach (@rpms_install, @rpms_upgrade) {
+            URPM::verify_rpm($_) =~ /NOT OK/ and push @invalid_sources, $_;
+            gurpm::progress(++$progress/$total);
+        }
+        if (@invalid_sources) {
+            interactive_msg('rpmdrake',
+                            N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
+                              join "\n", @invalid_sources)) or goto return_with_error;
+        }
+    }
+
+    if (@rpms_install || @rpms_upgrade) {
+        foreach (@rpms_install, @rpms_upgrade) {
+            m|^/| && ! -e $_ or next;
+            interactive_msg_(N("Installation failed"),
+                             N("Installation failed, some files are missing.\nYou may want to update your sources database.") .
+                             (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
+            goto return_with_error;
+        }
+        my $progress_nb;
+        my $total_nb = grep { m|^/| } @rpms_install, @rpms_upgrade;
+        my $something_installed;
+        my $callback_inst = sub {
+            my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
+            my $pkg = defined $id && $urpm->{depslist}[$id];
+            
+            if ($subtype eq 'start') {
+                if ($type eq 'trans') {
+                    gurpm::label(N("Preparing packages installation..."));
+                } else {
+                    $something_installed = 1;
+                    gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$progress_nb, $total_nb));
+                }
+            } elsif ($subtype eq 'progress') {
+                gurpm::progress($amount/$total);
+            }
+        };
+        my @errors = $urpm->install([ keys %{$urpm->{state}{ask_remove} || {}} ], \%sources_install, \%sources, translate_message => 1,
+                                    post_clean_cache => 1, callback_inst => $callback_inst, callback_trans => $callback_inst);
+        gurpm::end();
+        $urpm->try_umounting_removables;
+
+        if (@errors || @error_msgs) {
+            interactive_msg_(N("Problem during installation"),
+                             N("There was a problem during the installation:\n\n%s",
+                               join("\n", @errors, @error_msgs)));
+            $w->{rwindow}->set_sensitive(1);
+            return !$something_installed;
+        }
+
+        my %pkg2rpmnew;
+        foreach my $u (@rpms_upgrade) {
+            $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
+              and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
+                                      map { chomp_($_) } `rpm -ql $1` ];
+        }
+        dialog_rpmnew(N("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:", N("everything was installed correctly")),
+                      %pkg2rpmnew)
+          and interactive_msg_(N("Everything installed successfully"),
+                               N("All requested packages were installed successfully."));
+    } else {
+        gurpm::end();
+        $urpm->try_umounting_removables;
+        interactive_msg_(N("No package found for installation."),
+                         N("Unrecoverable error: no package found for installation, sorry."));
+    }
+
+    $w->{rwindow}->set_sensitive(1);
+    return 0;
+
+  fatal_error:
+    gurpm::end();
+    interactive_msg_(N("Installation failed"),
+                     N("There was a problem during the installation:\n\n%s", $fatal_msg));
+  return_with_error:
+    $w->{rwindow}->set_sensitive(1);
+    return 1;
 }
 
 

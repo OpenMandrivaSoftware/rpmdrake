@@ -38,7 +38,7 @@
 
 #include <libintl.h>
 #undef _
-#define _(arg) dgettext("grpmi", arg)
+#define _(arg) dgettext("rpmdrake", arg)
 
 char * my_asprintf(char *msg, ...)
 {

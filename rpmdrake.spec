@@ -16,9 +16,9 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3 perl-URPM >= 0.82-2mdk drakxtools >= 9.1-0.12mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.82-2mdk drakxtools >= 9.1-0.12mdk rpmtools >= 4.5
 Requires: perl-GTK2 > 0.0.cvs.2003.02.12.1-2mdk perl-Locale-gettext >= 1.01-7mdk
-BuildRequires: libcurl2-devel >= 7.10.3-2mdk rpm-devel gettext openssl-devel perl-devel
+BuildRequires: libcurl2-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
 URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
@@ -32,16 +32,6 @@ Mandrake Linux system; it has 3 different modes:
 - Mandrake Update (software packages updates).
 
 A fourth program manages the sources (add, remove, edit).
-
-%package -n grpmi
-Version: 9.1
-Summary: Mandrake Linux graphical frontend for packages installation
-Group: System/Configuration/Packaging
-Requires: libcurl2 >= 7.10.3-2mdk
-
-%description -n grpmi
-grpmi is a graphical frontend to show progression of download and
-installation of software packages.
 
 %prep
 rm -rf $RPM_BUILD_ROOT
@@ -57,7 +47,6 @@ mkdir -p $RPM_BUILD_ROOT/%{perl_vendorlib}
 install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 
 %find_lang rpmdrake
-%find_lang grpmi
 
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
@@ -107,16 +96,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_miconsdir}/*.png
 %{_liconsdir}/*.png
 %ghost /var/lib/urpmi/compssUsers.flat
-
-%files -n grpmi -f grpmi.lang
-%defattr(-, root, root)
-%doc COPYING AUTHORS
-%{_sbindir}/grpmi
 %{perl_vendorarch}/auto/*
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Thu Apr 24 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-19mdk
+* Mon May 12 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-19mdk
+- obsolete grpmi by gurpm.pm (from urpmi) sharing code between gurpmi
+  and rpmdrake
 - fix percent completed shown as "speed" in some situations, thx
   David Walser
 

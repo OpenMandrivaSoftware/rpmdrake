@@ -13,7 +13,7 @@
  #
  #*****************************************************************************
 
-DIRS = curl_download rpm po
+DIRS = curl_download
 
 PREFIX = /usr/local
 DATADIR = $(PREFIX)/share
@@ -30,11 +30,6 @@ install: $(ALL)
 	@for n in $(DIRS); do \
 		(cd $$n; $(MAKE) install) \
 	done
-	install -d $(SBINDIR)
-	install grpmi.pl $(SBINDIR)/grpmi
-	perl -pi -e 's|use strict.*||' $(SBINDIR)/grpmi
-	perl -pi -e 's|use vars.*||' $(SBINDIR)/grpmi
-	perl -pi -e 's|use diagnostics.*||' $(SBINDIR)/grpmi
 
 clean: 
 	@for n in $(DIRS); do \

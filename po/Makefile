@@ -3,6 +3,7 @@ PGOAL = rpmdrake
 
 # perl files to search translatable strings in
 PL_FILES = ../rpmdrake ../edit-urpm-sources.pl ../rpmdrake.pm
+CFILES = ../grpmi/curl_download/curl_download.xs
 
 POFILES = $(shell ls *.po)
 MOFILES = $(POFILES:%.po=%.mo)
@@ -29,11 +30,14 @@ merge: $(PGOAL).pot
 		./get_from_compssusers.pl "$$n" > "$$n"m; \
 	done
 
-$(PGOAL).pot: $(PL_FILES)
+$(PGOAL).pot: $(PL_FILES) $(CFILES)
 	INTLTOOL_EXTRACT=./intltool-extract ./intltool-update --gettext-package desktopstuff --pot
 	perl_checker -q --generate-pot rpmdrake_tmp.pot $(PL_FILES)
-	msgcat --use-first rpmdrake_tmp.pot desktopstuff.pot > $@
-	rm -f desktopstuff.pot rpmdrake_tmp.pot
+	xgettext -F -n --add-comments='-PO' \
+		--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
+		--language=C -o rpmdrake_tmp_c.pot $(CFILES)
+	msgcat --use-first rpmdrake_tmp.pot rpmdrake_tmp_c.pot desktopstuff.pot > $@
+	rm -f desktopstuff.pot rpmdrake_tmp.pot rpmdrake_tmp_c.pot
 
 install:
 	for l in $(LANGS); do \
