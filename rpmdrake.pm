@@ -279,7 +279,7 @@ my %sites2countries = ('proxad.net' => 'fr',
 
 sub mirrors {
     my ($cachedir, $class) = @_;
-    $cachedir = '/tmp';
+    $cachedir = '/root';
     my $mirrorslist = "$cachedir/mirrorsfull.list";
     unlink $mirrorslist;
     my $res = curl_download::download('http://www.linux-mandrake.com/mirrorsfull.list', $cachedir, sub {});
