@@ -70,6 +70,7 @@ our @EXPORT = qw(
     update_sources_interactive
     add_medium_and_check
     check_update_media_version
+    strip_first_underscore
 );
 our $typical_width;
 
@@ -772,5 +773,7 @@ sub open_help {
 	N("The help window has been started, it should appear shortly on your desktop."),
     );
 }
+
+sub strip_first_underscore { join '', map { s/_//; $_ } @_ }
 
 1;

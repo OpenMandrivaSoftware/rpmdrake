@@ -1057,6 +1057,7 @@ Is it ok to continue?",
 	install => N("Software Packages Installation"),
     );
     my $status = Gtk2::Label->new;
+    my $checkbox_show_autoselect;
     my ($menu, $factory) = create_factory_menu(
 	$::isEmbedded ? $::Plug : $w->{rwindow},
 	[ N("/_File"), undef, undef, undef, '<Branch>' ],
@@ -1089,10 +1090,17 @@ Is it ok to continue?",
 	}, undef, '<StockItem>', 'gtk-default' ],
 	[ N("/_File") . N("/_Quit"), undef, sub { Gtk2->main_quit }, undef, '<StockItem>', 'gtk-default' ],
 	[ N("/_View"), undef, undef, undef, '<Branch>' ],
-	[ N("/_Options"), undef, undef, undef, '<Branch>' ],
+	if_(!$>,
+	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
+	    [ N("/_Options") . N("/_Show automatically selected packages"), undef, sub {
+		$dont_show_selections = !$checkbox_show_autoselect->get_active;
+	    }, undef, '<CheckItem>' ],
+	),
 	[ N("/_Help"), undef, undef, undef, '<Branch>' ],
 	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help($MODE) }, undef, '<StockItem>', 'gtk-default' ],
     );
+    $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
+	and $checkbox_show_autoselect->set_active(!$dont_show_selections);
     gtkadd(
 	$w->{window}, 
 	gtkpack_(
@@ -1113,16 +1121,6 @@ Is it ok to continue?",
 			gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback)
 		    ),
 		    1, $table,
-		    ($> ? () : (
-			0, gtkpack_(
-			    Gtk2::HBox->new(0, 10),
-			    1, gtksignal_connect( #- don't show in browse mode
-				my $show_selections_button = Gtk2::CheckButton->new(N("Show automatically selected packages")),
-				clicked => sub { $dont_show_selections = !$_[0]->get_active },
-			    ),
-			    0, $status
-			),
-		    )),
 		    0, gtkpack_(
 			Gtk2::HBox->new(0, 20),
 			0, my $action_button = gtksignal_connect(
@@ -1134,7 +1132,6 @@ Is it ok to continue?",
 	    ),
 	),
     );
-    $show_selections_button and $show_selections_button->set_active(!$dont_show_selections);
     $action_button->set_sensitive(0) if $>;
     $find_entry->grab_focus;
 
