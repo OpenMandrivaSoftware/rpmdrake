@@ -433,10 +433,7 @@ sub group_modify {
     }
 
     $widgets{network}->signal_connect(clicked => sub {
-	my $s;
-	$in->ask_from_({ messages => N("Enter a network (eg: 192.168.1.0/28) or a IP"),
-			 focus_first => 1 },
-		       [ { val => \$s } ]) or return;
+	my $s = $in->ask_from_entry('', N("Enter a network (eg: 192.168.1.0/28) or a IP")) or return;
 	my $network = string_to_network($s);
 	if (0) {
 	    $in->ask_yesorno('', N("The network %s is public, not a local network (scanning over internet could be illegal)
