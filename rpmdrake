@@ -322,7 +322,7 @@ sub do_search($$$$$$$) {
 				if_(!$_->{ignore} && (!($MODE eq 'update') || $_->{update}) && -r $h, $h) } @{$urpm->{media}};
 	    my $total_size = sum(map { my $pack; eval { $pack = new packdrake($_, quiet => 1) } ? $pack->{toc_f_count} : 0 } @hdlists);
 	    my $searchstop;
-	    my $searchw = ugtk2->new('rpmdrake', grab => 1, transient => $w->{rwindow});
+	    my $searchw = ugtk2->new(N("Rpmdrake"), grab => 1, transient => $w->{rwindow});
 	    gtkadd($searchw->{window}, gtkpack__(Gtk2::VBox->new(0, 5),
 						 Gtk2::Label->new(N("Please wait, searching...")),
 						 my $searchprogress = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1),
@@ -951,7 +951,7 @@ sub get_installable_pkgs {
 	@update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 	if (@update_medias > 0) {
 	    if (!$opts->{skip_updating_mu}) {
-		$options{'no-confirmation'} or interactive_msg_('rpmdrake',
+		$options{'no-confirmation'} or interactive_msg_(N("Rpmdrake"),
 N("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
@@ -1195,7 +1195,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                                           gurpm::progress(++$progress/$total);
                                                                       }));
         if (@invalid_sources) {
-            interactive_msg_('rpmdrake',
+            interactive_msg_(N("Rpmdrake"),
                              N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
                                join "\n", sort @invalid_sources), yesno => 1, if_(@invalid_sources > 10, scroll => 1)) or goto return_with_error;
         }
@@ -1356,7 +1356,7 @@ if ($options{'merge-all-rpmnew'}) {
 readconf();
 
 if (!$> && !member($MODE, @$already_splashed)) {
-    interactive_msg('rpmdrake',
+    interactive_msg(N("Rpmdrake"),
 N("%s
 
 Is it ok to continue?",
