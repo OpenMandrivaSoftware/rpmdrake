@@ -242,7 +242,7 @@ sub run_treeview_dialog {
 	foreach (@_) {
 	    $db->traverse_tag('name', [ (split_fullname($_))[0] ], sub {
 				  my_fullname($_[0]) eq $_ or return;
-				  $urpm->resolve_closure_ask_remove($db, $urpm->{state}, $_[0], undef);
+				  $urpm->resolve_closure_ask_remove($db, $urpm->{state}, $_[0]);
 			      }) or die _("unknown package ") . "$_\n";
 	}
 	keys %{$urpm->{state}{ask_remove}};
