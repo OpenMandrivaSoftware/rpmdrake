@@ -176,6 +176,12 @@ really want to replace it?"), yesno => 1) or return 0;
 sub remove_callback {
     my $row = selrow();
     $row == -1 and return;
+    interactive_msg(
+	N("Source Removal"),
+	N("Are you sure you want to remove source \"%s\"?", to_utf8($urpm->{media}[$row]{name})),
+	yesno => 1,
+    ) or return;
+
     my $wait = wait_msg(N("Please wait, removing medium..."));
     my $name = $urpm->{media}[$row]{name};
     standalone::explanations("Removing medium $name");
