@@ -111,7 +111,7 @@ sub extract_header {
     if ($MODE eq 'remove') {
 	@$max_info_in_descr or return;
 	my $name = my_fullname($pkg->{pkg});
-	add2hash($pkg, { files => scalar(`rpm -ql $name`), changelog => scalar(`rpm -q --changelog $name`) });
+	add2hash($pkg, { files => scalar(`rpm -ql $name`) || _("(none)"), changelog => scalar(`rpm -q --changelog $name`) });
     } else {
 	my ($headersdir, $p, $medium) = ('/root/tmp/headers/', $pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
@@ -124,7 +124,7 @@ sub extract_header {
 	    rm_rf($headersdir);
 	    add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
 	    my $localtime2changelog = sub { scalar(localtime($_[0])) =~ /(.*) \S+ (\d{4})$/; "$1 $2" };
-	    @$max_info_in_descr and add2hash($pkg, { files => join("\n", $p->files),
+	    @$max_info_in_descr and add2hash($pkg, { files => join("\n", $p->files) || _("(none)"),
 						     changelog => join("\n", mapn { "* ".$localtime2changelog->($_[2])." $_[0]\n\n$_[1]\n" }
 							   [ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ]) });
 	    $p->pack_header;
