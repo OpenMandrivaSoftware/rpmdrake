@@ -542,7 +542,7 @@ sub format_pkg_info {
 	  $MODE eq 'update',
 	  [ N("Reason for update: "), $tag_tag ], [ rpm_description($descriptions->{$name}{pre}) . "\n" ],
       ),
-      [ N("Description: "), $tag_tag ], [ ($pkgs->{$key}{description} || $descriptions->{$name}{description} || 'no description') . "\n" ],
+      [ N("Description: "), $tag_tag ], [ ($pkgs->{$key}{description} || $descriptions->{$name}{description} || N("No description")) . "\n" ],
       @max_info,
     ];
 }
