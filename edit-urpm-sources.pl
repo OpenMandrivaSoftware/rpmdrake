@@ -136,6 +136,7 @@ really want to replace it?"), { yesno => 1 } ) or return 0;
 	                                           ? ($info->{login_entry}->get_text.':'.$info->{pass_entry}->get_text.'@')
 						   : '',
 					       $url;
+	$make_url{ftp} =~ s|^ftp://ftp://|ftp://|;
 	if (member($name, map { $_->{name} } @{$urpm->{media}})) {
 	    standalone::explanations("Removing medium $name");
 	    $urpm->select_media($name);
