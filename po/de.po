@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-de\n"
-"POT-Creation-Date: 2004-03-01 21:09+0100\n"
+"POT-Creation-Date: 2004-03-05 10:47+0100\n"
 "PO-Revision-Date: 2003-09-01 22:24+0200\n"
 "Last-Translator: Sebastian Deutscher <sebastian_deutscher@web.de>\n"
 "Language-Team: german <cooker-i18n@linux-mandrake.com>\n"
@@ -98,7 +98,7 @@ msgstr "Relativer Pfad zur Synthesis- oder hdlist: "
 #: ../edit-urpm-sources.pl:117
 #, c-format
 msgid "If left blank, synthesis/hdlist will be automatically probed"
-msgstr ""
+msgstr "Falls leer, wird synthesis/hdlist automatisch probiert"
 
 #: ../edit-urpm-sources.pl:125
 #, c-format
@@ -130,7 +130,7 @@ msgstr "Typ des Mediums:"
 #: ../edit-urpm-sources.pl:453 ../edit-urpm-sources.pl:517
 #: ../edit-urpm-sources.pl:554 ../edit-urpm-sources.pl:660 ../rpmdrake:91
 #: ../rpmdrake:514 ../rpmdrake:528 ../rpmdrake:532 ../rpmdrake:1106
-#: ../rpmdrake:1167 ../rpmdrake.pm:125 ../rpmdrake.pm:168 ../rpmdrake.pm:356
+#: ../rpmdrake:1167 ../rpmdrake.pm:125 ../rpmdrake.pm:168 ../rpmdrake.pm:361
 #, c-format
 msgid "Ok"
 msgstr "OK"
@@ -139,8 +139,8 @@ msgstr "OK"
 #: ../edit-urpm-sources.pl:211 ../edit-urpm-sources.pl:251
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:91
-#: ../rpmdrake:514 ../rpmdrake:1167 ../rpmdrake:1173 ../rpmdrake.pm:356
-#: ../rpmdrake.pm:461
+#: ../rpmdrake:514 ../rpmdrake:1167 ../rpmdrake:1173 ../rpmdrake.pm:361
+#: ../rpmdrake.pm:471
 #, c-format
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -224,9 +224,9 @@ msgid "Add a medium limit"
 msgstr "Mediumbeschränkung hinzufügen"
 
 #: ../edit-urpm-sources.pl:313
-#, c-format
+#, fuzzy, c-format
 msgid "Choose a medium for adding in the media limit:"
-msgstr ""
+msgstr "Bitte wählen Sie Medium zum Hinzufügen:"
 
 #: ../edit-urpm-sources.pl:347
 #, c-format
@@ -237,6 +237,8 @@ msgstr "Computer hinzufügen"
 #, c-format
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr ""
+"Bitte geben Sie den Hostnamen oder die IP Adresse des \n"
+"Hosts an, den Sie hinzufügen möchten:"
 
 #: ../edit-urpm-sources.pl:375
 #, c-format
@@ -318,7 +320,7 @@ msgstr "Hinzufügen ..."
 #: ../edit-urpm-sources.pl:461
 #, c-format
 msgid "Manage keys for digital signatures of packages"
-msgstr ""
+msgstr "Schlüssel für digitake Signaturen von Paketen verwalten"
 
 #: ../edit-urpm-sources.pl:465 ../edit-urpm-sources.pl:585
 #, c-format
@@ -334,6 +336,8 @@ msgstr "Schlüssel"
 #, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr ""
+"kein Name gefunden, der Schlüssel existiert im RPM\n"
+"Schlüssel-Ring nicht"
 
 #: ../edit-urpm-sources.pl:503
 #, c-format
@@ -356,6 +360,9 @@ msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
 "(name of the key: %s)"
 msgstr ""
+"Sind Sie sicher, dass Sie den Schlüssel %s vom Medium %s \n"
+"entfernen wollen?\n"
+"(Name des Schlüssels: %s)"
 
 #: ../edit-urpm-sources.pl:548
 #, c-format
@@ -387,7 +394,7 @@ msgstr "Medium aktualisieren"
 msgid "Regenerate hdlist"
 msgstr "Erzeuge hdlist neu"
 
-#: ../edit-urpm-sources.pl:607 ../rpmdrake.pm:424
+#: ../edit-urpm-sources.pl:607 ../rpmdrake.pm:434
 #, c-format
 msgid "Please wait, updating media..."
 msgstr "Aktualisiere Medium, bitte warten ..."
@@ -469,11 +476,14 @@ msgid ""
 "manager on another desktop, or are you currently installing\n"
 "packages as well?)."
 msgstr ""
+"Die Paketdatenbank ist gesperrt. Bitte schliessen Sie andere Anwendungen,die "
+"mit der Paketdatenbank arbeiten (haben Sie einen anderen Paket-Manager auf "
+"einem anderen Desktop laufen oder fügen Sie gerade Pakete hinzu?)"
 
 #: ../gurpmi.addmedia:70
 #, c-format
 msgid "Unable to add medium, wrong or missing arguments"
-msgstr ""
+msgstr "Konnte das Medium nicht hinzufügen, falsche oder fehlende Argumente"
 
 #: ../gurpmi.addmedia:78
 #, c-format
@@ -482,16 +492,19 @@ msgid ""
 "That means you will be able to add new software packages\n"
 "to your system from that new medium."
 msgstr ""
+"Sie sind dabei, ein neues Paket-Medium '%s' einzurichten,\n"
+"Das bedeutet, dass Sie in der Lage sind, neue Software-Pakete\n"
+"von diesem Medium auf Ihr System installieren können"
 
 #: ../gurpmi.addmedia:87
 #, c-format
 msgid "Successfully added medium `%s'."
-msgstr ""
+msgstr "Medium '%s' erfolgreich hinzugefügt"
 
 #: ../rpmdrake:88
 #, c-format
 msgid "Running in user mode"
-msgstr ""
+msgstr "Arbeite im Benutzer-Modus"
 
 #: ../rpmdrake:89
 #, c-format
@@ -560,7 +573,7 @@ msgstr "Typ 1"
 #: ../rpmdrake:104
 #, c-format
 msgid "X11 bitmap"
-msgstr ""
+msgstr "X11 bitmap"
 
 #: ../rpmdrake:105
 #, c-format
@@ -581,7 +594,7 @@ msgstr "Hardware"
 #: ../rpmdrake:107
 #, c-format
 msgid "Packaging"
-msgstr ""
+msgstr "Packen"
 
 #: ../rpmdrake:108 ../rpmdrake:152 ../rpmdrake:153 ../rpmdrake:154
 #: ../rpmdrake:155 ../rpmdrake:156 ../rpmdrake:157 ../rpmdrake:158
@@ -739,7 +752,7 @@ msgstr "Arkade"
 #: ../rpmdrake:137
 #, c-format
 msgid "Boards"
-msgstr ""
+msgstr "Brettspiele"
 
 #: ../rpmdrake:138
 #, c-format
@@ -779,7 +792,7 @@ msgstr "Kompression"
 #: ../rpmdrake:145
 #, c-format
 msgid "Cd burning"
-msgstr "Brennsoftware"
+msgstr "CD brennen"
 
 #: ../rpmdrake:146
 #, c-format
@@ -789,7 +802,7 @@ msgstr "Sicherung"
 #: ../rpmdrake:148
 #, c-format
 msgid "Monitoring"
-msgstr "Überwache"
+msgstr "Überwachung"
 
 #: ../rpmdrake:149
 #, c-format
@@ -905,7 +918,7 @@ msgstr "KDE"
 #: ../rpmdrake:171
 #, c-format
 msgid "Sawfish"
-msgstr ""
+msgstr "Sawfish"
 
 #: ../rpmdrake:172
 #, c-format
@@ -1037,7 +1050,7 @@ msgstr ""
 #: ../rpmdrake:475
 #, c-format
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:514 ../rpmdrake:517
@@ -1245,7 +1258,7 @@ msgstr "Alle Pakete nach Verfügbarkeit"
 #: ../rpmdrake:742
 #, c-format
 msgid "Leaves only, sorted by install date"
-msgstr ""
+msgstr "Verbleibende, sortiert nach Installationsdatum"
 
 #: ../rpmdrake:793
 #, c-format
@@ -1272,7 +1285,7 @@ msgstr "Auswahl zurücksetzen"
 msgid "Reload the packages list"
 msgstr "Paketliste neu laden"
 
-#: ../rpmdrake:805 ../rpmdrake.pm:446
+#: ../rpmdrake:805 ../rpmdrake.pm:456
 #, c-format
 msgid "Update media"
 msgstr "Medien aktualisieren"
@@ -1402,6 +1415,10 @@ msgid ""
 "\n"
 "Then, restart MandrakeUpdate."
 msgstr ""
+"Sie haben schon mindestens ein Update-Medium angegeben, aber imMoment sind "
+"alle diese Medien ausgeschaltet. Sie sollten den SoftwareMedien Manager "
+"ausführen und mindestens eines der Medien aktivieren(Schalten Sie es in der "
+"'Aktiviert' Spalte ein)"
 
 #: ../rpmdrake:975
 #, c-format
@@ -1828,12 +1845,12 @@ msgid "China"
 msgstr "China"
 
 #: ../rpmdrake.pm:241 ../rpmdrake.pm:242 ../rpmdrake.pm:243 ../rpmdrake.pm:244
-#: ../rpmdrake.pm:295
+#: ../rpmdrake.pm:303
 #, c-format
 msgid "United States"
 msgstr "Vereinigte Staaten"
 
-#: ../rpmdrake.pm:305
+#: ../rpmdrake.pm:313
 #, c-format
 msgid ""
 "I need to contact MandrakeSoft website to get the mirrors list.\n"
@@ -1846,17 +1863,17 @@ msgstr ""
 "\n"
 "Soll ich fortfahren?"
 
-#: ../rpmdrake.pm:309
+#: ../rpmdrake.pm:317
 #, c-format
 msgid "Please wait, downloading mirrors addresses from MandrakeSoft website."
 msgstr "Bitte warten: Besorgen der Serverliste vom MandrakeSoft-Server ..."
 
-#: ../rpmdrake.pm:318
+#: ../rpmdrake.pm:323
 #, c-format
 msgid "Error during download"
 msgstr "Fehler während des Besorgens"
 
-#: ../rpmdrake.pm:319
+#: ../rpmdrake.pm:324
 #, c-format
 msgid ""
 "There was an error downloading the mirrors list:\n"
@@ -1870,12 +1887,12 @@ msgstr ""
 "%s\n"
 "Bitte versuchen Sie es später erneut."
 
-#: ../rpmdrake.pm:327
+#: ../rpmdrake.pm:332
 #, c-format
 msgid "No mirror"
 msgstr "Kein Mirror"
 
-#: ../rpmdrake.pm:328
+#: ../rpmdrake.pm:333
 #, c-format
 msgid ""
 "I can't find any suitable mirror.\n"
@@ -1890,68 +1907,68 @@ msgstr ""
 "ist, dass es für Ihre Prozessorarchitektur keine regulären Mandrake\n"
 "Linux Aktualisierungen gibt."
 
-#: ../rpmdrake.pm:345
+#: ../rpmdrake.pm:350
 #, c-format
 msgid "Please choose the desired mirror."
 msgstr "Bitte wählen Sie Ihren bevorzugten Mirror."
 
-#: ../rpmdrake.pm:386
+#: ../rpmdrake.pm:396
 #, c-format
 msgid "Copying file for medium `%s'..."
 msgstr "Datei für Medium „%s“ kopieren ..."
 
-#: ../rpmdrake.pm:389
+#: ../rpmdrake.pm:399
 #, c-format
 msgid "Examining file of medium `%s'..."
 msgstr "Untersuche Datei des Mediums „%s“ ..."
 
-#: ../rpmdrake.pm:392
+#: ../rpmdrake.pm:402
 #, c-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "Untersuche Datei auf Medium „%s“ ..."
 
-#: ../rpmdrake.pm:396
+#: ../rpmdrake.pm:406
 #, c-format
 msgid " done."
 msgstr "Fertig."
 
-#: ../rpmdrake.pm:400
+#: ../rpmdrake.pm:410
 #, c-format
 msgid " failed!"
 msgstr "Gescheitert!"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:404
+#: ../rpmdrake.pm:414
 #, c-format
 msgid "%s from medium %s"
 msgstr "%s von Medium %s"
 
-#: ../rpmdrake.pm:408
+#: ../rpmdrake.pm:418
 #, c-format
 msgid "Starting download of `%s'..."
 msgstr "Starte das Besorgen von „%s“ ..."
 
-#: ../rpmdrake.pm:412
+#: ../rpmdrake.pm:422
 #, c-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr "Besorgen von „%s“, Dauer: %s, Geschwindigkeit: %s"
 
-#: ../rpmdrake.pm:415
+#: ../rpmdrake.pm:425
 #, c-format
 msgid "Download of `%s', speed:%s"
 msgstr "Besorgen von „%s“, Geschwindigkeit: %s"
 
-#: ../rpmdrake.pm:452
+#: ../rpmdrake.pm:462
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Bitte wählen Sie die zu aktualisierenden Medien:"
 
-#: ../rpmdrake.pm:456
+#: ../rpmdrake.pm:466
 #, c-format
 msgid "Update"
 msgstr "Update"
 
-#: ../rpmdrake.pm:468
+#: ../rpmdrake.pm:478
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1964,32 +1981,34 @@ msgstr ""
 "Fehler:\n"
 "%s"
 
-#: ../rpmdrake.pm:485 ../rpmdrake.pm:490
+#: ../rpmdrake.pm:495 ../rpmdrake.pm:500
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
 "\n"
 "%s"
 msgstr ""
+"Konnte das Medium nicht hinzufügen, Fehlerbericht:\n"
+"%s"
 
-#: ../rpmdrake.pm:501
+#: ../rpmdrake.pm:511
 #, c-format
 msgid "Unable to create medium."
 msgstr "Ich kann das Medium nicht anlegen."
 
-#: ../rpmdrake.pm:506
-#, fuzzy, c-format
+#: ../rpmdrake.pm:516
+#, c-format
 msgid "Failure when adding medium"
-msgstr "Füge Quelle hinzu, bitte warten ..."
+msgstr "Fehler beim Hinzufügen des Mediums"
 
-#: ../rpmdrake.pm:507
-#, fuzzy, c-format
+#: ../rpmdrake.pm:517
+#, c-format
 msgid ""
 "There was a problem adding medium:\n"
 "\n"
 "%s"
 msgstr ""
-"Während der Installation sind Fehler aufgetreten:\n"
+"Es gab ein Problem beim Hinufügen des Mediums:\n"
 "\n"
 "%s"
 
