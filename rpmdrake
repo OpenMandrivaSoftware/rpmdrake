@@ -313,8 +313,9 @@ or you already installed all of them."));
 		       my @nodes_with_deps;
 		       my $deps_msg = sub {
 			   my ($title, $msg, $nodes, $nodes_with_deps) = @_;
-			   @$nodes_with_deps > @$nodes or return 1;
-			   interactive_msg($title, $msg . $formatlistpkg->(sort { $a cmp $b } difference2($nodes_with_deps, $nodes)),
+			   my @deps = difference2($nodes_with_deps, $nodes);
+			   @deps > 0 or return 1;
+			   interactive_msg($title, $msg . $formatlistpkg->(sort { $a cmp $b } @deps),
 					   yesno => 1, text => { yes => _("Ok"), no => _("Cancel") });
 		       };
 		       if ($MODE eq 'remove') {
