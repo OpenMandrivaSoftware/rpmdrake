@@ -1167,7 +1167,7 @@ Is it ok to continue?",
     }
     $find_entry->grab_focus;
 
-    $w->{window}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
+    $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
 
     $w->{rwindow}->show_all;
     $options->{widgets} = { w => $w, tree => $tree, tree_model => $tree_model, textcolumn => $textcolumn, pixcolumn => $pixcolumn,
