@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
-"POT-Creation-Date: 2004-03-17 18:03+0100\n"
+"POT-Creation-Date: 2004-04-26 15:57+0200\n"
 "PO-Revision-Date: 2004-02-21 03:09+0100\n"
 "Last-Translator: Tibor Pittich <Tibor.Pittich@mandrake.org>\n"
 "Language-Team: Slovak <i18n@mandrake.sk>\n"
@@ -135,7 +135,7 @@ msgstr "Ok"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:93
 #: ../rpmdrake:516 ../rpmdrake:1170 ../rpmdrake:1176 ../rpmdrake.pm:363
-#: ../rpmdrake.pm:468
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Cancel"
 msgstr "Zrušiť"
@@ -1270,7 +1270,7 @@ msgstr "Zrušiť výber"
 msgid "Reload the packages list"
 msgstr "Znovu načítač zoznam balíčkov"
 
-#: ../rpmdrake:807 ../rpmdrake.pm:458
+#: ../rpmdrake:807 ../rpmdrake.pm:472
 #, c-format
 msgid "Update media"
 msgstr "Aktualizácia média"
@@ -1945,17 +1945,33 @@ msgstr "Získavanie '%s', čas do konca: %s, rýchlosť: %s"
 msgid "Download of `%s', speed:%s"
 msgstr "Získavanie '%s', rýchlosťou: %s"
 
-#: ../rpmdrake.pm:464
+#: ../rpmdrake.pm:442
+#, c-format
+msgid "Error retrieving packages"
+msgstr ""
+
+#: ../rpmdrake.pm:443
+#, c-format
+msgid ""
+"It's impossible to retrieve the list of new packages from the media\n"
+"`%s'. Either this update media is misconfigured, and in this case\n"
+"you should use the Software Media Manager to remove it and re-add it in "
+"order\n"
+"to reconfigure it, either it is currently unreachable and you should retry\n"
+"later."
+msgstr ""
+
+#: ../rpmdrake.pm:478
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Prosím zvoľte médium ktoré chcete aktualizovať:"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:483
 #, c-format
 msgid "Update"
 msgstr "Aktualizácia"
 
-#: ../rpmdrake.pm:481
+#: ../rpmdrake.pm:495
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1968,7 +1984,7 @@ msgstr ""
 "Chyba:\n"
 "%s"
 
-#: ../rpmdrake.pm:498 ../rpmdrake.pm:503
+#: ../rpmdrake.pm:512 ../rpmdrake.pm:517
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -1979,17 +1995,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:514
+#: ../rpmdrake.pm:528
 #, c-format
 msgid "Unable to create medium."
 msgstr "Nemôžem vytvoriť médium."
 
-#: ../rpmdrake.pm:519
+#: ../rpmdrake.pm:533
 #, c-format
 msgid "Failure when adding medium"
 msgstr "Chyba pri pridávaní média"
 
-#: ../rpmdrake.pm:520
+#: ../rpmdrake.pm:534
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-fa\n"
-"POT-Creation-Date: 2004-03-17 18:03+0100\n"
+"POT-Creation-Date: 2004-04-26 15:57+0200\n"
 "PO-Revision-Date: 2004-03-09 21:49+0330\n"
 "Last-Translator: abbas izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -135,7 +135,7 @@ msgstr "تأیید"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:93
 #: ../rpmdrake:516 ../rpmdrake:1170 ../rpmdrake:1176 ../rpmdrake.pm:363
-#: ../rpmdrake.pm:468
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Cancel"
 msgstr "لغو"
@@ -1271,7 +1271,7 @@ msgstr "بازنشاندن انتخاب"
 msgid "Reload the packages list"
 msgstr "بارگذاری مجدد لیست بسته‌ها"
 
-#: ../rpmdrake:807 ../rpmdrake.pm:458
+#: ../rpmdrake:807 ../rpmdrake.pm:472
 #, c-format
 msgid "Update media"
 msgstr "رسانه‌ی بروزسازی"
@@ -1945,17 +1945,33 @@ msgstr "بارگیری `%s'، زمان باقیمانده: %s، سرعت:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "بارگیری `%s'، سرعت:%s"
 
-#: ../rpmdrake.pm:464
+#: ../rpmdrake.pm:442
+#, c-format
+msgid "Error retrieving packages"
+msgstr ""
+
+#: ../rpmdrake.pm:443
+#, c-format
+msgid ""
+"It's impossible to retrieve the list of new packages from the media\n"
+"`%s'. Either this update media is misconfigured, and in this case\n"
+"you should use the Software Media Manager to remove it and re-add it in "
+"order\n"
+"to reconfigure it, either it is currently unreachable and you should retry\n"
+"later."
+msgstr ""
+
+#: ../rpmdrake.pm:478
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "انتخاب کردن رسانه‌ای که می‌خواهید بروزسازی کنید:"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:483
 #, c-format
 msgid "Update"
 msgstr "بروزسازی"
 
-#: ../rpmdrake.pm:481
+#: ../rpmdrake.pm:495
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1968,7 +1984,7 @@ msgstr ""
 "خطاها:\n"
 "%s"
 
-#: ../rpmdrake.pm:498 ../rpmdrake.pm:503
+#: ../rpmdrake.pm:512 ../rpmdrake.pm:517
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -1979,17 +1995,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:514
+#: ../rpmdrake.pm:528
 #, c-format
 msgid "Unable to create medium."
 msgstr "نمی‌توانم رسانه را ایجاد کنم."
 
-#: ../rpmdrake.pm:519
+#: ../rpmdrake.pm:533
 #, c-format
 msgid "Failure when adding medium"
 msgstr "ناموفق بودن هنگام اضافه کردن رسانه"
 
-#: ../rpmdrake.pm:520
+#: ../rpmdrake.pm:534
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"

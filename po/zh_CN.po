@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2004-03-17 18:03+0100\n"
+"POT-Creation-Date: 2004-04-26 15:57+0200\n"
 "PO-Revision-Date: 2004-02-21 14:48+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: Mandrake i18n Team <cooker-i18n@linux-mandrake.com>\n"
@@ -138,7 +138,7 @@ msgstr "确定"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:93
 #: ../rpmdrake:516 ../rpmdrake:1170 ../rpmdrake:1176 ../rpmdrake.pm:363
-#: ../rpmdrake.pm:468
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Cancel"
 msgstr "取消"
@@ -1265,7 +1265,7 @@ msgstr "重置选中内容"
 msgid "Reload the packages list"
 msgstr "重新装入软件包清单"
 
-#: ../rpmdrake:807 ../rpmdrake.pm:458
+#: ../rpmdrake:807 ../rpmdrake.pm:472
 #, c-format
 msgid "Update media"
 msgstr "更新介质"
@@ -1930,17 +1930,33 @@ msgstr "下载“%s”，剩余时间: %s，速度: %s"
 msgid "Download of `%s', speed:%s"
 msgstr "下载“%s”，速度: %s"
 
-#: ../rpmdrake.pm:464
+#: ../rpmdrake.pm:442
+#, c-format
+msgid "Error retrieving packages"
+msgstr ""
+
+#: ../rpmdrake.pm:443
+#, c-format
+msgid ""
+"It's impossible to retrieve the list of new packages from the media\n"
+"`%s'. Either this update media is misconfigured, and in this case\n"
+"you should use the Software Media Manager to remove it and re-add it in "
+"order\n"
+"to reconfigure it, either it is currently unreachable and you should retry\n"
+"later."
+msgstr ""
+
+#: ../rpmdrake.pm:478
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "选择您想要更新的介质:"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:483
 #, c-format
 msgid "Update"
 msgstr "更新"
 
-#: ../rpmdrake.pm:481
+#: ../rpmdrake.pm:495
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1953,7 +1969,7 @@ msgstr ""
 "错误如下:\n"
 "%s"
 
-#: ../rpmdrake.pm:498 ../rpmdrake.pm:503
+#: ../rpmdrake.pm:512 ../rpmdrake.pm:517
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -1964,17 +1980,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:514
+#: ../rpmdrake.pm:528
 #, c-format
 msgid "Unable to create medium."
 msgstr "无法创建介质。"
 
-#: ../rpmdrake.pm:519
+#: ../rpmdrake.pm:533
 #, c-format
 msgid "Failure when adding medium"
 msgstr "添加介质失败"
 
-#: ../rpmdrake.pm:520
+#: ../rpmdrake.pm:534
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"

@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-tg\n"
-"POT-Creation-Date: 2004-03-17 18:03+0100\n"
+"POT-Creation-Date: 2004-04-26 15:57+0200\n"
 "PO-Revision-Date: 2004-04-20 06:57+0500\n"
 "Last-Translator: Dilshod Marupov <kct_tj@yahoo.co.uk>\n"
 "Language-Team: Tajik <www.khujand.org>\n"
@@ -142,7 +142,7 @@ msgstr "Ok"
 #: ../edit-urpm-sources.pl:322 ../edit-urpm-sources.pl:356
 #: ../edit-urpm-sources.pl:403 ../edit-urpm-sources.pl:522 ../rpmdrake:93
 #: ../rpmdrake:516 ../rpmdrake:1170 ../rpmdrake:1176 ../rpmdrake.pm:363
-#: ../rpmdrake.pm:468
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Cancel"
 msgstr "Бекор кардан"
@@ -1285,7 +1285,7 @@ msgstr "Бознишондодани интихоб"
 msgid "Reload the packages list"
 msgstr "Бозборкунии рӯйхати қуттиҳо"
 
-#: ../rpmdrake:807 ../rpmdrake.pm:458
+#: ../rpmdrake:807 ../rpmdrake.pm:472
 #, c-format
 msgid "Update media"
 msgstr "Навкунии сарчашма(ҳо)"
@@ -1964,17 +1964,33 @@ msgstr "Фаровири `%s', вақт:%s, суръат:%s"
 msgid "Download of `%s', speed:%s"
 msgstr "Фаровири `%s', суръат:%s"
 
-#: ../rpmdrake.pm:464
+#: ../rpmdrake.pm:442
+#, fuzzy, c-format
+msgid "Error retrieving packages"
+msgstr "Хориҷи қуттиҳо"
+
+#: ../rpmdrake.pm:443
+#, c-format
+msgid ""
+"It's impossible to retrieve the list of new packages from the media\n"
+"`%s'. Either this update media is misconfigured, and in this case\n"
+"you should use the Software Media Manager to remove it and re-add it in "
+"order\n"
+"to reconfigure it, either it is currently unreachable and you should retry\n"
+"later."
+msgstr ""
+
+#: ../rpmdrake.pm:478
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Сарчашмаҳое, ки аз нав кардан мехоҳед, интихоб кунед:"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:483
 #, c-format
 msgid "Update"
 msgstr "Нав кардан"
 
-#: ../rpmdrake.pm:481
+#: ../rpmdrake.pm:495
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -1988,7 +2004,7 @@ msgstr ""
 "Хатогиҳо:\n"
 "%s"
 
-#: ../rpmdrake.pm:498 ../rpmdrake.pm:503
+#: ../rpmdrake.pm:512 ../rpmdrake.pm:517
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -1999,17 +2015,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:514
+#: ../rpmdrake.pm:528
 #, c-format
 msgid "Unable to create medium."
 msgstr "Тартиби сарчашма номумкин мебошад."
 
-#: ../rpmdrake.pm:519
+#: ../rpmdrake.pm:533
 #, c-format
 msgid "Failure when adding medium"
 msgstr "Нокомӣ ҳангоми иловакунии муҳит"
 
-#: ../rpmdrake.pm:520
+#: ../rpmdrake.pm:534
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -2474,9 +2490,6 @@ msgstr "Мудири Сарчашмаҳои Нармафзор"
 
 #~ msgid "building dependencies for packages removing"
 #~ msgstr "сохтани тобеиятҳо барои хориҷ кардани қуттиҳо"
-
-#~ msgid "Removing packages"
-#~ msgstr "Хориҷи қуттиҳо"
 
 #~ msgid ""
 #~ "Please Wait\n"
