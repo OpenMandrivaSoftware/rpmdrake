@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 11mdk
+%define release 12mdk
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,12 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Aug 27 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-12mdk
+- rpmdrake
+  - fix displaying of .rpmnew dialog when no .rpmnew files
+  - have a static list of files for which we ignore the .rpmnew's
+  - support .rpmsave files as well
+
 * Tue Aug 27 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-11mdk
 - edit-urpm-sources
   - when editing a removable medium, warn we need the medium in
