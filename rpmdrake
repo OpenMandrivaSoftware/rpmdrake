@@ -675,9 +675,9 @@ or you already installed all of them."));
     $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
 
-    $tree->append_column(my $textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
     $tree->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererPixbuf->new, 'pixbuf' => 1));
     $pixcolumn->{is_pix} = 1;
+    $tree->append_column(my $textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
 
     $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 2));
     $tree->set_headers_visible(0);
@@ -687,7 +687,6 @@ or you already installed all of them."));
     $typical_width > 500 and $typical_width = 500;  #- try to not being crazy with a too large value
     $typical_width < 150 and $typical_width = 150;
     $textcolumn->set_min_width($typical_width*0.7);
-    $textcolumn->set_max_width($typical_width);
 
     my $cursor_to_restore;
     $tree->signal_connect(expose_event => sub {
@@ -886,11 +885,18 @@ Is it ok to continue?", to_utf8($urpm->translate_why_removed($urpm->{state}, @{$
 		   0, 1, 0, 1, 'fill', 'fill', 0, 0);
     $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), Gtk2::Label->new, @descr_modes)),
 		   1, 2, 0, 1, 'fill', 'fill', 0, 0);
-    $table->attach(gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
-			  gtkset_size_request(create_scrolled_window($tree), $typical_width*1.25, -1)),
-		   0, 1, 1, 2, 'fill', 'fill', 0, 0);
-    $table->attach(create_scrolled_window($info),
-		   1, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
+
+    my $hpaned = Gtk2::HPaned->new();
+
+    my $tree_window = create_scrolled_window($tree);
+    $hpaned->pack1(gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
+			  gtkset_size_request($tree_window, $typical_width*1.25, -1)), 0, 0);
+
+    my $info_window = create_scrolled_window($info);
+    $hpaned->pack2($info_window, 1, 0);
+    
+    $table->attach($hpaned, 0, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
+
     my %mode2title = (remove => N("Software Packages Removal"), 
                       update => N("Mandrake Update"), 
                       install => N("Software Packages Installation"));
