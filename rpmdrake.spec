@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.5
-%define release 12mdk
+%define release 13mdk
 
 Name: %{name}
 Version: %{version}
@@ -125,6 +125,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Oct 05 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-13mdk
+- Language updates
+- Adaptation to the new update mirror architecture
+
 * Thu Sep 30 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-12mdk
 - Presentation and translation nits
 - Upgrade dependencies
