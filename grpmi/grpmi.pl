@@ -38,7 +38,7 @@ sub _ {
     my $s = shift @_; my $t = translate($s);
     sprintf $t, @_;
 }
-sub mexit { my_gtk::exit @_ }
+sub mexit { my_gtk::exit(undef, @_) }
 
 sub interactive_msg {
     my ($title, $contents, $yesno) = @_;
