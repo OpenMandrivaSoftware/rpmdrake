@@ -188,6 +188,10 @@ sub run_treeview_dialog {
 			   if ($MODE eq 'update') {
 			       @keys = grep { my ($name) = split_fullname($_);
 					      member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories) } @keys;
+			       int(@keys) or $add_node->('', _("(none)")), interactive_msg(_("No update"),
+_("The list of updates is void. This means that either there is
+no available update for the packages installed on your computer,
+or you already installed all of them."));
 			   }
 			   @elems = map { [ $_, !$flat && ctreefy($pkgs->{$_}{pkg}->group) ] } @keys;
 		       }
