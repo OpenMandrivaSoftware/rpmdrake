@@ -1377,15 +1377,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     
     my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}}; 
     my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
-    my $distant_number;
-    foreach my $l (@$list) {
-        foreach (sort values %$l) {
-            my $showable = $_;
-            $showable =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|;  #- hide password
-            standalone::explanations("Installing package $showable");
-            /^(?:file:|removable:|\/)/ or $distant_number++;
-        }
-    }
+    my $distant_number = scalar keys %pkgs;
     if (!$local_sources && (!$list || !@$list)) {
         interactive_msg_(N("Unable to get source packages."),
                          N("Unable to get source packages, sorry. %s",
