@@ -106,28 +106,34 @@ sub pkg2medium {
 
 sub extract_header {
     my ($pkg, $urpm) = @_;
-    my ($headersdir, $p, $medium) = ('/root/tmp/headers/', $pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
-    my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
-    if (-r $hdlist) {  #- packdrake segfaults when giving a missing file :(
-	standalone::explanations("Extracting header of " . $p->header_filename . " from $hdlist");
-	my $packer;
-	eval { $packer = new packdrake($hdlist, quiet => 1) } or log::l("Warning, hdlist seems corrupted :-("), goto header_non_available;
-	$packer->extract_archive($headersdir, $p->header_filename);
-	$p->update_header($headersdir . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
-	rm_rf($headersdir);
-	add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
-	if (@$max_info_in_descr) {
-	    $pkg->{files} = [ $p->files ];
-	    my (undef, $list) = $urpm->get_source_packages({ $p->id => undef });
-	    if ($list) {
-		my $localfile = (values %{${$list}[0]})[0];
-		$localfile =~ m,^file:/(.*)|^removable:/(.*), && -r $1 and $pkg->{changelog} = `rpm -qp --changelog $1`;
-	    }
-	}
-	$p->pack_header;
+    if ($MODE eq 'remove') {
+	@$max_info_in_descr or return;
+	my $name = my_fullname($pkg->{pkg});
+	add2hash($pkg, { files => scalar(`rpm -ql $name`), changelog => scalar(`rpm -q --changelog $name`) });
     } else {
-      header_non_available:
-	add2hash($pkg, { summary => _("(Non available)"), description => undef });
+	my ($headersdir, $p, $medium) = ('/root/tmp/headers/', $pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
+	my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
+	if (-r $hdlist) {  #- packdrake segfaults when giving a missing file :(
+	    standalone::explanations("Extracting header of " . $p->header_filename . " from $hdlist");
+	    my $packer;
+	    eval { $packer = new packdrake($hdlist, quiet => 1) } or log::l("Warning, hdlist seems corrupted :-("), goto header_non_available;
+	    $packer->extract_archive($headersdir, $p->header_filename);
+	    $p->update_header($headersdir . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
+	    rm_rf($headersdir);
+	    add2hash($pkg, { summary => $p->summary, description => beautify_description($p->description) });
+	    if (@$max_info_in_descr) {
+		$pkg->{files} = join("\n", $p->files);
+		my (undef, $list) = $urpm->get_source_packages({ $p->id => undef });
+		if ($list) {
+		    my $localfile = (values %{${$list}[0]})[0];
+		    $localfile =~ m,^file:/(.*)|^removable:/(.*), && -r $1 and $pkg->{changelog} = `rpm -qp --changelog $1`;
+		}
+	    }
+	    $p->pack_header;
+	} else {
+	  header_non_available:
+	    add2hash($pkg, { summary => _("(Non available)"), description => undef });
+	}
     }
 }
 
@@ -411,10 +417,10 @@ or you already installed all of them."));
 				     my ($name, $version) = split_fullname($key);
 				     exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
-				     my $max_info = if_(@$max_info_in_descr, _("Source: %s\nFiles:\n%s\n\nChangelog:\n%s",
-									       pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name},
-									       join("\n", @{$pkgs->{$key}{files}}) || _("(Non available)"),
-									       $pkgs->{$key}{changelog} || _("(Non available)")));
+				     my $max_info = if_(@$max_info_in_descr, _("%sFiles:\n%s\n\nChangelog:\n%s",
+					   $MODE eq 'remove' ? '' : _("Source: %s\n", pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name}),
+					   $pkgs->{$key}{files} || _("(Non available)"),
+					   $pkgs->{$key}{changelog} || _("(Non available)")));
 				     if ($MODE eq 'update') {
 					 gtktext_insert($info_update, beautify_description($descriptions->{$name}{pre}));
 					 _("Name: %s\nVersion: %s\nSize: %s KB\nImportance: %s\n\nSummary: %s\n\n%s\n",
