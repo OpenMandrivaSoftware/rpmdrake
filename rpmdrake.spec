@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.3
-%define release 10mdk
+%define release 11mdk
 
 Name: %{name}
 Version: %{version}
@@ -121,6 +121,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Jul 08 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-11mdk
+- After installation or upgrade of an rpm, display the contents of a file
+  README{,.install,.upgrade}.urpmi
+- Presentation nits
+
 * Wed Jul 07 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.3-10mdk
 - Rebuild and fix for new perl
 
