@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 35mdk
+%define release 36mdk
 
 Name: %{name}
 Version: %{version}
@@ -101,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Tue Dec 23 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-36mdk
+- provide drak* names as well
+
 * Fri Sep  5 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-35mdk
 - fix invalid-build-requires libcurl2-devel
 - fix garbled UTF8 in "summary" and "description" of pkgs when i18n'ed
