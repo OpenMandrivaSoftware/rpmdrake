@@ -128,6 +128,8 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Thu Aug 19 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-2mdk
 - Message updates
+- Don't ask for selections in browse mode (read-only)
+- Reenable selection of all packages
 
 * Wed Aug 18 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-1mdk
 - Add a checkbox "Show automatically selected packages" 
