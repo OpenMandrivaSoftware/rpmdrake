@@ -519,7 +519,7 @@ or you already installed all of them."));
 		       @nodes = grep { exists $pkgs->{$_} } @nodes
 			   or return;
 		       #- avoid selecting too many packages at once
-		       return if !$dont_show_selections && (@nodes == keys %$pkgs || @nodes > 2000);
+		       return if !$dont_show_selections && (($MODE ne 'update' && @nodes == keys %$pkgs) || @nodes > 2000);
 		       my $new_state = !$pkgs->{$nodes[0]}{selected};
 
 		       my @nodes_with_deps;
