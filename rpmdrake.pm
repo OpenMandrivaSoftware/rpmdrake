@@ -106,6 +106,7 @@ sub writeconf {
 sub interactive_msg {
     my ($title, $contents, %options) = @_;
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
+    $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     gtkadd($d->{window},
 	   gtkpack_(Gtk2::VBox->new(0,5),
 		    1, $options{scroll} ? gtkadd(gtkset_shadow_type(Gtk2::Frame->new, 'in'),
@@ -130,6 +131,7 @@ sub interactive_packtable {
     my ($title, $parent_window, $top_label, $lines, $action_buttons) = @_;
     
     my $w = ugtk2->new($title, grab => 1, transient => $parent_window);
+    $w->{rwindow}->set_position('center_on_parent');
     my $packtable = create_packtable({}, @$lines);
 
     gtkadd($w->{window},
@@ -149,6 +151,7 @@ sub interactive_packtable {
 sub interactive_list {
     my ($title, $contents, $list, $callback, %options) = @_;
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
+    $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my @radios = gtkradio('', @$list);
     my $vbradios = $callback ? create_packtable({},
 						mapn { my $n = $_[1];
@@ -178,10 +181,10 @@ sub fatal_msg {
 sub wait_msg {
     my ($msg, %options) = @_;
     my $mainw = ugtk2->new('rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
+    $mainw->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::Label->new($msg);
     gtkadd($mainw->{window}, gtkpack__(gtkadd(Gtk2::VBox->new(0, 5), $label, if_(exists $options{widgets}, @{$options{widgets}}))));
     $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });
-    $mainw->{rwindow}->set_position('center_always');
     $mainw->sync until $mainw->{displayed};
     gtkset_mousecursor_wait($mainw->{rwindow}->window);
     $mainw->flush;
@@ -297,6 +300,7 @@ sub mirrors {
 }
 
 sub choose_mirror {
+    my (%options) = @_;
     interactive_msg('', 
 N("I need to contact MandrakeSoft website to get the mirrors list.
 Please check that your network is currently running.
@@ -325,6 +329,7 @@ the case when the architecture of your processor is not supported
 by Mandrake Linux Official Updates.")), return '';
 
     my $w = ugtk2->new('rpmdrake', grab => 1);
+    $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $tree_model = Gtk2::TreeStore->new("Glib::String");
     my $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
@@ -434,8 +439,9 @@ sub update_sources_check {
 }
 
 sub update_sources_interactive {
-    my ($urpm, %opts) = @_;
-    my $w = ugtk2->new(N("Update media"), grab => 1, center => 1, %opts);
+    my ($urpm, %options) = @_;
+    my $w = ugtk2->new(N("Update media"), grab => 1, center => 1, %options);
+    $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my @buttons;
     my @media;
     gtkadd($w->{window},

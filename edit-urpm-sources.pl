@@ -78,7 +78,7 @@ sub add_callback {
 		     if_($info->{dirsel}, 0, gtksignal_connect(Gtk2::Button->new(but(N("Browse..."))),
 							       clicked => sub { $info->{url_entry}->set_text(ask_dir()) })),
 		     if_($info->{securitysel}, 0, gtksignal_connect(Gtk2::Button->new(but(N("Choose a mirror..."))),
-								    clicked => sub { my $m = choose_mirror();
+								    clicked => sub { my $m = choose_mirror(transient => $w->{rwindow});
 										     if ($m) {
 											 $info->{url_entry}->set_text(make_url_mirror($m));
 											 $info->{hdlist_entry}->set_text('../base/hdlist.cz');

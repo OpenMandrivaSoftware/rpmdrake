@@ -971,7 +971,7 @@ Then, restart MandrakeUpdate."));
                 myexit(-1);
             }
 	  mu_retry_another_mirror:
-	    my $m = choose_mirror();
+	    my $m = choose_mirror(if_(exists $w->{rwindow}, transient => $w->{rwindow}));
 	    $m or interactive_msg_(N("How to choose manually your mirror"),
 N("You may also choose your desired mirror manually: to do so,
 launch the Software Media Manager, and then add a `Security
