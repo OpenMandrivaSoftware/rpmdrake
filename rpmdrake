@@ -557,7 +557,7 @@ or you already installed all of them."));
 		    foreach my $root (sort { $a cmp $b } uniq(map { ($_->[1] =~ /([^\|]+)\|?/)[0] } @elems)) {
 			$add_node->('', $root);
 			@{$elems{$root}} = sort { $a->[1] cmp $b->[1] || uc($a->[0]) cmp uc($b->[0]) }
-			grep { $_->[1] =~ /^\Q$root|\E/ } @elems;
+			grep { $_->[1] =~ /^\Q$root\E\b/ } @elems;
 		    }
 		}
 	    }
