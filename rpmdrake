@@ -1129,10 +1129,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     }
 
     if (@rpms_install || @rpms_upgrade) {
-        foreach (@rpms_install, @rpms_upgrade) {
-            m|^/| && ! -e $_ or next;
+        if (my @missing = grep { m|^/| && ! -e $_ } @rpms_install, @rpms_upgrade) {
             interactive_msg_(N("Installation failed"),
-                             N("Installation failed, some files are missing.\nYou may want to update your media database.") .
+                             N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
+                               join "\n", map { "    $_" } @missing) .
                              (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
             goto return_with_error;
         }

@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 22mdk
+%define release 23mdk
 
 Name: %{name}
 Version: %{version}
@@ -99,6 +99,11 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri Jun  6 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-23mdk
+- rpmdrake: at install time, when some local files are impossible
+  to find, list which one (asked by Gerard Delafond <gerard at
+  delafond.org>)
+
 * Fri May 30 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-22mdk
 - fix media/medias by medium/media
 - edit-medias:
