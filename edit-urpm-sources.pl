@@ -82,6 +82,8 @@ sub add_callback {
 											 my ($r) = cat_('/etc/mandrake-release') =~ /release\s(\S+)/;
 											 $info->{url_entry}->set_text("$m/$r/RPMS/");
 											 $info->{hdlist_entry}->set_text('../base/hdlist.cz');
+                                                                                         $info->{hdlist_entry}->set_sensitive(1);
+                                                                                         $info->{hdlist_check}->set_active(1);
 										     }
 										 })));
 	};
