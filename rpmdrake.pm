@@ -47,6 +47,7 @@ our @EXPORT = qw(
     $typical_width
     N
     N_
+    distro_type
     translate
     to_utf8
     myexit

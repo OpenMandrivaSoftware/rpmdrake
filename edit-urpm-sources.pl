@@ -61,6 +61,13 @@ sub remove_row {
 }
 
 sub easy_add_callback {
+    #- cooker and community don't have update sources
+    my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
+	N("Choose media type"),
+	N("You can choose to add sources that correspond to your distribution"),
+	transient => $mainw->{rwindow},
+	yesno => 1, text => { yes => N("Distribution sources"), no => N("Official updates") },
+    ) : 1;
     my $m = choose_mirror(message =>
 N("This will attempt to install all official sources corresponding to your
 distribution (%s).
@@ -69,23 +76,36 @@ I need to contact the Mandrakesoft website to get the mirror list.
 Please check that your network is currently running.
 
 Is it ok to continue?", $rpmdrake::mandrake_release),
-	want_base_distro => 1,
+	want_base_distro => $want_base_distro,
     ) or return 0;
     my $wait = wait_msg(N("Please wait, adding media..."));
-    my $url = make_url_mirror_dist($m);
+    my $url = $want_base_distro ? make_url_mirror_dist($m) : make_url_mirror($m);
+    warn "$want_base_distro $m $url\n";
     my $medium_name;
-    if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
-	$medium_name = $2 . $1 . '-';
+    if ($want_base_distro) {
+	if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
+	    $medium_name = $2 . $1 . '-';
+	} else {
+	    $medium_name = 'distrib';
+	}
+	#- ensure a unique medium name
+	my $initial_number = 1 + max map { $_->{name} =~ /\(\Q$medium_name\E(\d+)\b/ ? $1 : 0 } @{$urpm->{media}};
+	add_medium_and_check(
+	    $urpm,
+	    { nolock => 1, distrib => 1 },
+	    $medium_name, $url, probe_with => 'synthesis', initial_number => $initial_number,
+	);
     } else {
-	$medium_name = 'distrib';
+	$medium_name = 'update_source';
+	#- ensure a unique medium name
+	my $nb_sources = max map { $_->{name} =~ /^\Q$medium_name\E(\d*)$/ ? ($1 || 1) : 0 } @{$urpm->{media}};
+	if ($nb_sources) { $medium_name .= $nb_sources + 1 }
+	add_medium_and_check(
+	    $urpm,
+	    { nolock => 1, probe_with => 1 },
+	    $medium_name, $url, '', update => 1,
+	);
     }
-    #- ensure a unique medium name
-    my $initial_number = 1 + max map { $_->{name} =~ /\(\Q$medium_name\E(\d+)\b/ ? $1 : 0 } @{$urpm->{media}};
-    add_medium_and_check(
-	$urpm,
-	{ nolock => 1, distrib => 1 },
-	$medium_name, $url, probe_with => 'synthesis', initial_number => $initial_number,
-    );
     remove_wait_msg($wait);
     return 1;
 }
@@ -256,7 +276,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    add_medium_and_check(
 		$urpm,
 		{ nolock => 1, distrib => 1 },
-		$i{name}, $make_url{$type}, $i{hdlist}, probe_with => 'synthesis',
+		$i{name}, $make_url{$type}, probe_with => 'synthesis',
 	    );
 	} else {
 	    if (member($i{name}, map { $_->{name} } @{$urpm->{media}})) {
