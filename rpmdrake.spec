@@ -120,6 +120,8 @@ rm -rf $RPM_BUILD_ROOT
   - verify all signatures at the end of all downloads
   - allow to say "yes to all" to the signatures questions
   - allow to retry downloads
+- rpmdrake:
+  - don't reset selection list when no package was installed/removed
 
 * Wed Jan  8 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-1mdk
 - gtk2 (possibly contains important breakages, use with care)

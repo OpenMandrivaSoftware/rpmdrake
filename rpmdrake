@@ -671,11 +671,12 @@ N("The following packages have to be removed for others to be upgraded:
 Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), yesno => 1)
 	      or return;
 	}
-	$callback_action->($urpm, $pkgs);
-	($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
-	$size_selected = 0;
-	(undef, $size_free) = MDK::Common::System::df('/usr');
-	$options->{rebuild_tree}->();
+	if (!$callback_action->($urpm, $pkgs)) {
+	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+	    $size_selected = 0;
+	    (undef, $size_free) = MDK::Common::System::df('/usr');
+	    $options->{rebuild_tree}->();
+	}
     };
 
     my $table = Gtk2::Table->new(0, 0, 0);
@@ -969,14 +970,23 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 			  %pkg2rpmnew)
 	      && !$exitstatus and interactive_msg_(N("Everything installed successfully"),
 						   N("All requested packages were installed successfully."));
+	    die "return $exitstatus\n";
 	} else {
 	    interactive_msg_(N("Everything already installed."),
 			     N("Everything already installed (is this supposed to happen at all?)."));
 	}
     };
-    $@ and interactive_msg_(N("Problem during installation"),
-			    N("There was a problem during the installation:\n\n%s", $fatal_msg));
-
+    if ($@) {
+	if ($@ =~ /^return (\S+)\n$/) {
+	    return $1;
+	} else {
+	    interactive_msg_(N("Problem during installation"),
+			     N("There was a problem during the installation:\n\n%s", $fatal_msg));
+	    return 1;
+	}
+    } else {
+	return 0;
+    }
 }
 
 
@@ -1028,8 +1038,13 @@ sub perform_removal {
     my @results;
     slow_func(N("Please wait, removing packages..."),
 	      sub { @results = $urpm->install(\@toremove, {}, {}, translate_message => 1) });
-    @results and interactive_msg_(N("Problem during removal"),
-				  N("There was a problem during the removal of packages:\n\n%s", join("\n",  @results)));
+    if (@results) {
+	interactive_msg_(N("Problem during removal"),
+			 N("There was a problem during the removal of packages:\n\n%s", join("\n",  @results)));
+	return 1;
+    } else {
+	return 0;
+    }
 }
 
 
