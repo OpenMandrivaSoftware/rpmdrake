@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.5
-%define release 10mdk
+%define release 11mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Sep 23 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-11mdk
+- The "Update media" button wasn't active when it should
+
 * Wed Sep 22 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-10mdk
 - fix parsing of scanssh output in park-rpmdrake (Pixel)
 
