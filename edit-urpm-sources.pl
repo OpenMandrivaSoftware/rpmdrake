@@ -948,7 +948,7 @@ sub mainwindow {
 	    Gtk2::VBox->new(0,5),
 	    1, gtkpack_(
 		Gtk2::HBox->new(0, 10),
-		1, $list_tv,
+		1, create_scrolled_window($list_tv),
 		0, gtkpack__(
 		    Gtk2::VBox->new(0, 5),
 		    gtksignal_connect(
@@ -991,6 +991,7 @@ sub mainwindow {
 	    )
 	)
     );
+    $mainw->{rwindow}->set_size_request(600, -1);
     $mainw->main;
 }
 
