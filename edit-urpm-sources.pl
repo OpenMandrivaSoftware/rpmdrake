@@ -370,6 +370,7 @@ sub edit_callback {
     my $row = selrow();
     $row == -1 and return;
     my $medium = $urpm->{media}[$row];
+    my $config = urpm::cfg::load_config($urpm->{config}, 1);
     my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1, transient => $mainw->{rwindow});
     my ($url_entry, $hdlist_entry, $url, $with_hdlist);
     gtkadd(
@@ -379,8 +380,8 @@ sub edit_callback {
 	    0, Gtk2::Label->new(N("Editing medium \"%s\":", $medium->{name})),
 	    0, create_packtable(
 		{},
-		[ N("URL:"), $url_entry = gtkentry($medium->{url}) ],
-		[ N("Relative path to synthesis/hdlist:"), $hdlist_entry = gtkentry($medium->{with_hdlist}) ],
+		[ N("URL:"), $url_entry = gtkentry($config->{$medium->{name}}{url}) ],
+		[ N("Relative path to synthesis/hdlist:"), $hdlist_entry = gtkentry($config->{$medium->{name}}{with_hdlist}) ],
 	    ),
 	    0, Gtk2::HSeparator->new,
 	    0, gtkpack(
