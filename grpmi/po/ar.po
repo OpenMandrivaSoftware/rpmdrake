@@ -15,7 +15,7 @@ msgstr ""
 
 #: ../curl_download/curl_download.xs:83
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "الدليل الذي ستوضع فيه الملفات المحملة يجب أن يكون موجوداً"
 
 #: ../curl_download/curl_download.xs:86 ../curl_download/curl_download.xs:201
 msgid "Out of memory\n"
@@ -23,7 +23,7 @@ msgstr "الذاكرة قد نفذت\n"
 
 #: ../curl_download/curl_download.xs:99
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "تعذر فتح ملف الإخراج في وضع الإسناد"
 
 #: ../curl_download/curl_download.xs:121
 msgid "Unsupported protocol\n"
@@ -204,11 +204,11 @@ msgstr "شفرة خطأ غير معلومة %d\n"
 
 #: ../grpmi.pl_.c:51
 msgid "Yes"
-msgstr ""
+msgstr "نعم"
 
 #: ../grpmi.pl_.c:52
 msgid "No"
-msgstr ""
+msgstr "لا"
 
 #: ../grpmi.pl_.c:53
 msgid "Ok"
@@ -220,29 +220,28 @@ msgstr "خطأ..."
 
 #: ../grpmi.pl_.c:63
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "آسف, يجب عليك أن تكون مستخدم جذر لتثبيت الحزم."
 
 #: ../grpmi.pl_.c:65
 msgid "RPM initialization error"
-msgstr ""
+msgstr "خطأ في بدء RPM"
 
 #: ../grpmi.pl_.c:66
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "لم يكن من الممكن بدء ملفات التهيئة الخاصة بـRPM, آسف."
 
 #: ../grpmi.pl_.c:69
-#, fuzzy
 msgid "Initializing..."
-msgstr "التثبيت:"
+msgstr "جاري البدء..."
 
 #: ../grpmi.pl_.c:90
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "جاري تنزيل الحزمة `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:97
 msgid "Error during download"
-msgstr ""
+msgstr "خطأ أثناء التنزيل"
 
 #: ../grpmi.pl_.c:98
 #, c-format
@@ -254,15 +253,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"كان هناك خطأ في تنزيل الحزمة:\n"
+"\n"
+"%s\n"
+"\n"
+"الخطأ: %s\n"
+"هل تريد المتاعبة (أي تخطي هذه الحزمة)؟"
 
 #: ../grpmi.pl_.c:110
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "جاري التأكد من توقيع `%s'..."
 
 #: ../grpmi.pl_.c:112
 msgid "Signature verification error"
-msgstr ""
+msgstr "خطأ في التأكد من التوقيع"
 
 #: ../grpmi.pl_.c:113
 #, c-format
@@ -272,11 +277,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"توقيع الحزمة `%s' غير صحيح:\n"
+"\n"
+"%s\n"
+"هل تريد تثبيتها على أية حال؟"
 
 #: ../grpmi.pl_.c:119
-#, fuzzy
 msgid "File error"
-msgstr "خطأ في الكتابة\n"
+msgstr "خطأ في الملف"
 
 #: ../grpmi.pl_.c:120
 #, c-format
@@ -287,15 +295,19 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"الملف الآتي غير صالح:\n"
+"\n"
+"%s\n"
+"\n"
+"هل تريد المتابعة على أية حال (أي تخطي هذه الحزمة)؟"
 
 #: ../grpmi.pl_.c:135
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "جاري التجهيز للتثبيت"
+msgstr "جاري تحضير الحزم للتثبيت..."
 
 #: ../grpmi.pl_.c:143
 msgid "Conflicts detected"
-msgstr ""
+msgstr "تم ايجاد تعارضات"
 
 #: ../grpmi.pl_.c:144
 #, c-format
@@ -305,118 +317,117 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"تم ايجاد تعارضات:\n"
+"%s\n"
+"\n"
+"هل تريد التثبيت اجبارياً على أية حال؟"
 
 #: ../grpmi.pl_.c:151
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "جاري تثبيت الحزمة `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:164
 msgid "Problems occurred during installation"
 msgstr "ظهرت مشاكل أثناء التثبيت"
 
 #: ../grpmi.pl_.c:164
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "جاري التجهيز للتثبيت"
+msgstr ""
+"كان هناك خطأ أثناء تثبيت الحزم:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:66
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "لم يمكن قراءة الملف\n"
+msgstr "تعذرت قراءة ملفات تهيئة RPM"
 
 #: ../rpm/grpmi_rpm.xs:92
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "لم يمكن الإتصال\n"
+msgstr "تعذر فتح الملف\n"
 
 #: ../rpm/grpmi_rpm.xs:96
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "لم يمكن الإتصال بالمستضيف\n"
+msgstr "تعذرت قراءة البايتات الأولية\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "اصدار RPM من الحزمة لا يدعم التوقيعات\n"
 
 #: ../rpm/grpmi_rpm.xs:104
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "تعذر قراءة التوقيع (فشل `rpmReadSignature')\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "No signatures\n"
-msgstr ""
+msgstr "لا توقيعات\n"
 
 #: ../rpm/grpmi_rpm.xs:111
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "فشل `maketempFile'!\n"
 
 #: ../rpm/grpmi_rpm.xs:118
 msgid "Error reading file\n"
-msgstr ""
+msgstr "خطأ أثناء قراءة الملف\n"
 
 #: ../rpm/grpmi_rpm.xs:124
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "خطأ في كتابة الملف المؤقت\n"
 
 #: ../rpm/grpmi_rpm.xs:147
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "لا يوجد توقيع GPG في الحزمة\n"
 
 #: ../rpm/grpmi_rpm.xs:229
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "تعذر فتح قاعدة بيانات RPM للكتابة (لست المستخدم الجذر؟)"
 
 #: ../rpm/grpmi_rpm.xs:231
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "تعذر فتح قاعدة بيانات RPM للكتابة "
 
 #: ../rpm/grpmi_rpm.xs:235
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "تعذر بدء التعامل"
 
 #: ../rpm/grpmi_rpm.xs:254
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "لم يمكن فتح الحزمة"
+msgstr "لم يمكن فتح الحزمة `%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "الحزمة فاسدة"
+msgstr "الحزمة `%s' فاسدة\n"
 
 #: ../rpm/grpmi_rpm.xs:262
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "لا يمكن تثبيت الحزمة"
+msgstr "لا يمكن تثبيت الحزمة `%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:273
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "مشكلة أثناء التأكد من الإعتماديات :("
+msgstr "خطأ أثناء التأكد من الإعتماديات"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "conflicts with"
-msgstr " يتعارض مع %s-%s-%s"
+msgstr "تتعارض مع"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "is needed by"
-msgstr " يُحتاج اليه من قِبل %s-%s-%s"
+msgstr "يُحتاج اليه من قِبل"
 
 #: ../rpm/grpmi_rpm.xs:312
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "مشكلة أثناء التأكد من الإعتماديات :("
+msgstr "خطأ أثناء التأكد من الإعتماديات 2"
 
 #: ../rpm/grpmi_rpm.xs:318
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "ظهرت مشاكل أثناء التثبيت"
+msgstr "ظهرت مشاكل أثناء التثبيت:\n"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "تقدم التثبيت/الترقية"
