@@ -414,7 +414,8 @@ sub run_treeview_dialog {
 	if ($entry =~ m|/|) {
 	    my $w = wait_msg(_("Please wait, searching in files..."));
 	    open SF, 'parsehdlist --fileswinfo --quiet ' .
-	             join(' ', map { if_(!$_->{ignore}, "$urpm->{statedir}/$_->{hdlist} ") } @{$urpm->{media}}) .
+	             join(' ', map { my $hdlist = "$urpm->{statedir}/$_->{hdlist}";
+				     if_(!$_->{ignore} && (-r $hdlist), "$hdlist ") } @{$urpm->{media}}) .
 		     ' |';
 	    my $pkg;
 	    while (<SF>) {
