@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 14mdk
+%define release 15mdk
 
 Name: %{name}
 Version: %{version}
@@ -116,6 +116,11 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri Apr  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-15mdk
+- rpmdrake: small UI change to follow #3610, e.g. in
+  "maximum information" mode, have the source and currently installed
+  version closer to the top
+
 * Wed Mar 26 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-14mdk
 - grpmi/curl_download: fixes for MandrakeClub:
   - don't verify peer's certificate (-k option of commandline curl)

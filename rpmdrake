@@ -485,12 +485,15 @@ or you already installed all of them."));
 				     my $tag_fix = { 'font' => 'monospace' };
 				     my @files = ([ N("Files:\n"), $tag_tag ], [ $pkgs->{$key}{files} || N("(Not available)"), $tag_fix ]);
 				     my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
-				     my @max_info = if_(@$max_info_in_descr,
-					      $MODE eq 'remove' ? ()
-						 : ([ N("Source: "), $tag_tag ], [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
-						    [ N("Currently installed version: "), $tag_tag ],
-						          [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]),
-					      $options{'changelog-first'} ? (@chglo, [ "\n" ], @files) : (@files, [ "\n\n" ], @chglo));
+				     my (@max1, @max2);
+                                     if (@$max_info_in_descr) {
+                                         @max1 = 
+                                           $MODE eq 'remove' ? ()
+                                             : ([ N("Source: "), $tag_tag ], [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
+                                                [ N("Currently installed version: "), $tag_tag ],
+                                                  [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]);
+                                         @max2 = $options{'changelog-first'} ? (@chglo, [ "\n" ], @files) : (@files, [ "\n\n" ], @chglo);
+                                     }
 				     $MODE eq 'update' and gtktext_insert($info_update,
 							      [ [ N("Reason for update: "), $tag_tag ],
 								[ beautify_description($descriptions->{$name}{pre}) ] ]);
@@ -499,9 +502,10 @@ or you already installed all of them."));
 				       [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024))."\n" ],
 				       if_($MODE eq 'update',
 					   [ N("Importance: "), $tag_tag ], [ "$descriptions->{$name}{importance}\n" ]),
+                                       @max1,
 				       [ "\n".N("Summary: "),   $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
 				       [ N("Description: "),    $tag_tag ], [ "$pkgs->{$key}{description}\n" ],
-				       @max_info ];
+				       @max2 ];
 				 },
 		   check_interactive_to_toggle => sub { 1 },
 		   grep_allowed_to_toggle => sub { @_ },
