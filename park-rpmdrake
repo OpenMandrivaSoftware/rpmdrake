@@ -63,7 +63,7 @@ sub host_to_string {
 sub scanssh_output_to_hosts {
     [ map { 
 	chomp; 
-	if (my ($ip, $_version) = /([.\d]+)/) {
+	if (my ($ip) = /([.\d]+)/) {
 	    raw_host_to_host($ip);
 	} else {
 	    ();
