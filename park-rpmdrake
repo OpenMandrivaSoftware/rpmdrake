@@ -542,6 +542,9 @@ sub group_chooser {
     $mainw->main;
 }
 
+my $icon = '/usr/share/mcc/themes/default/drakpark-mdk.png';
+$ugtk2::wm_icon = $icon if -f $icon;
+
 my $groups = read_parallel_config();
 my $in = interactive->vnew('su');
 #group_modify($in, $groups->[0], $groups);
