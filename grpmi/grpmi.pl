@@ -77,6 +77,7 @@ $mainw->{rwindow}->set_position('center');
 $mainw->sync;
 
 my $exitstatus = -1;
+my $forced_exitstatus;
 
 
 # -=-=-=---=-=-=---=-=-=-- download potential URL's, and verify signatures -=-=-=---=-=-=--
@@ -145,8 +146,10 @@ if (grep { /^[^-]/ } @ARGV) {
 _("Conflicts were detected:
 %s
 
-Do you want to force the install anyway?",
-					      join("\n", split(/\|/, $1))), 1) ? 0 : 1
+Install aborted.",
+					      join("\n", split(/\|/, $1))));
+			    $forced_exitstatus = -1;
+			    return 1;
 					},
 			'inst-start' => sub { $install_progress++;
 					      $label->set(_("Installing package `%s' (%s/%s)...", $1, $install_progress, $nb_installs));
@@ -178,4 +181,4 @@ if (!member('noclearcache', @grpmi_config)) {
 	/^\Q$cache_location/ and unlink;
     }
 }
-mexit $exitstatus;
+mexit($forced_exitstatus || $exitstatus);
