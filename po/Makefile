@@ -32,7 +32,7 @@ merge: $(PGOAL).pot
 $(PGOAL).pot: $(PL_FILES)
 	INTLTOOL_EXTRACT=./intltool-extract ./intltool-update --gettext-package desktopstuff --pot
 	perl_checker -q --generate-pot rpmdrake_tmp.pot $(PL_FILES)
-	msgcat rpmdrake_tmp.pot desktopstuff.pot > $@
+	msgcat --use-first rpmdrake_tmp.pot desktopstuff.pot > $@
 	rm -f desktopstuff.pot rpmdrake_tmp.pot
 
 install:
