@@ -34,10 +34,10 @@ install: $(ALL)
 	done
 	install -d $(SBINDIR)
 	install rpmdrake edit-urpm-sources.pl $(SBINDIR)
-	ln -s edit-urpm-sources.pl $(SBINDIR)/edit-urpm-medias
+	ln -sf edit-urpm-sources.pl $(SBINDIR)/edit-urpm-medias
 	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(SBINDIR)/*
-	ln -s -f rpmdrake $(SBINDIR)/rpmdrake-remove
-	ln -s -f rpmdrake $(SBINDIR)/MandrakeUpdate
+	ln -sf rpmdrake $(SBINDIR)/rpmdrake-remove
+	ln -sf rpmdrake $(SBINDIR)/MandrakeUpdate
 	install -d $(BINDIR)
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/rpmdrake
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/rpmdrake-remove
@@ -70,6 +70,7 @@ GIHOME = /home/gc/cvs/gi
 
 hack:
 	cp -f $(SOFTHOME)/rpmdrake/rpmdrake $(SOFTHOME)/rpmdrake/edit-urpm-sources.pl /usr/sbin
+	ln -sf edit-urpm-sources.pl /usr/sbin/edit-urpm-medias
 	cp -f $(SOFTHOME)/rpmdrake/rpmdrake.pm $(shell rpm --eval %perl_vendorlib)
 	cp -f $(GIHOME)/perl-install/ugtk2.pm /usr/lib/libDrakX
 	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' /usr/lib/libDrakX/*.pm /usr/sbin/{rpmdrake,edit-urpm-sources.pl}
