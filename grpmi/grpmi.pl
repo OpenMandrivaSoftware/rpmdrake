@@ -30,9 +30,12 @@ $::isStandalone = 1;
 
 @ARGV or die "usage: ", basename($0), " [--no-verify-rpm] <[-noupgrade] PACKAGE>...\n";
 
+c::bind_textdomain_codeset('grpmi', 'UTF8');
 sub translate {
     my ($s) = @_;
-    $s ? c::dgettext('grpmi', $s) : '';
+    my $r = $s ? c::dgettext('grpmi', $s) : '';
+    c::set_tagged_utf8($r);
+    $r;
 }
 sub sprintf_fixutf8 {
     my $need_upgrade;

@@ -41,9 +41,12 @@ if ($@) {
 }
 ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 
+c::bind_textdomain_codeset('rpmdrake', 'UTF8');
 sub translate {
     my ($s) = @_;
-    $s ? c::dgettext('rpmdrake', $s) : '';
+    my $r = $s ? c::dgettext('rpmdrake', $s) : '';
+    c::set_tagged_utf8($r);
+    $r;
 }
 sub sprintf_fixutf8 {
     my $need_upgrade;

@@ -123,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
   - fix crashing when managing to call Remove or Edit with nothing
     selected (#970)
 - add a dependency to a recent drakxtools to fix #1030
+- fix problems of characters display in non-latin1 locales
   
 * Tue Jan 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-3mdk
 - rpmdrake:
