@@ -318,7 +318,8 @@ or you already installed all of them."));
 			   if ($mode eq 'by_source') {
 			       $add_node->($_->[0], pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm)->{name}) foreach $sortmethods{flat}->(@elems);
 			   } elsif ($mode eq 'by_presence') {
-			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed ? N("Upgradable") : N("Addable"))
+			       $add_node->($_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed && !$pkgs->{$_->[0]}{pkg}->flag_skip
+                                                    ? N("Upgradable") : N("Addable"))
 				 foreach $sortmethods{flat}->(@elems);
 			   } else {
 			       #- special case, we don't populate all the tree at first (to speed things up)
@@ -415,10 +416,6 @@ or you already installed all of them."));
 					 sub { $urpm->resolve_requested(db(), $urpm->{state}, { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
 							   callback_choices => $callback_choices, no_flag_update => 1, keep_state => 1) });
 			       my $pkg_sel_after_selection = sub {
-				   $urpm->deselect_unwanted_packages($urpm->{state}{selected});
-				   if (%{$urpm->{state}{ask_unselect} || {}}) {
-				       delete @{$urpm->{state}{selected}}{keys %{delete $urpm->{state}{ask_unselect}}};
-				   }
 				   @nodes_with_deps = map { my_fullname($urpm->{depslist}[$_]) } keys %{$urpm->{state}{selected}};
 			       };
 			       $pkg_sel_after_selection->();
