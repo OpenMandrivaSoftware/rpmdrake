@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 14mdk
+%define release 15mdk
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,12 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Aug 29 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-15mdk
+- fix program exiting when in "maximum informations" in rpmdrake-remove
+- fix english typo, "informations" with an "s" doesn't english
+- when searching in "by selection" or "by update availability" modes,
+  instead of limiting search results, categorize search results
+
 * Thu Aug 29 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-14mdk
 - meuh, forgot to upload the change in drakxtools necessary for -13mdk
 
