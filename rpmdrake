@@ -179,7 +179,7 @@ sub do_search($$$$$$) {
 	$options->{add_nodes}->(map { [ $_, _("Search results") ] } sort { uc($a) cmp uc($b) } @search_results);
 	$tree->expand($tree->node_nth($tree->rows-1));
     } else {
-	$options->{add_nodes}->([ '', $results_none ]);
+	$options->{add_nodes}->([ '', $results_none, { nochild => 1 }]);
     }
 }
 
@@ -255,7 +255,7 @@ sub run_treeview_dialog {
 			       @keys = grep { my ($name) = split_fullname($_);
 					      member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories) } @keys;
 			       if (@keys == 0) {
-				   $add_node->('', _("(none)"));
+				   $add_node->('', _("(none)"), { nochild => 1 });
 				   my $explanation_only_once if 0;
 				   $explanation_only_once or interactive_msg(_("No update"),
 _("The list of updates is void. This means that either there is
