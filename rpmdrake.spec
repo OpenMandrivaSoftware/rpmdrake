@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.4
-%define release 1mdk
+%define release 2mdk
 
 Name: %{name}
 Version: %{version}
@@ -109,6 +109,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Dec 15 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-2mdk
+- Remove dependency on gurpmi
+- Only load packdrake when needed
+- Translation updates
+
 * Thu Dec 02 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.4-1mdk
 - Software media manager:
   - New option setting window, for the downloader and verify-rpm options.
