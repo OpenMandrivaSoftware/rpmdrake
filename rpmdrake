@@ -422,8 +422,8 @@ sub run_treeview_dialog {
 		/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/ and $pkg = "$1-$2-$3", next;
 		$pkg or next;
 		my (undef, $file) = split ':', $_;
-		if (eval { $file =~ /$entry/i }) {
-		    push @search_results, $pkg;
+		if (eval { $file =~ /$entry/ }) {
+		    exists $pkgs->{$pkg} and push @search_results, $pkg;
 		    $pkg = '';
 		}
 	    }
