@@ -125,6 +125,9 @@ rm -rf $RPM_BUILD_ROOT
 - add a dependency to a recent drakxtools to fix #1030
 - fix problems of characters display in non-latin1 locales
 - fix wait messages breakage when using perl-GTK2 >= 0.0.cvs.2003.01.27.1
+- a sources editor fix thx to titi
+- use the good program between console-helper and kdesu to become root,
+  thx to titi
 
 * Tue Jan 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-3mdk
 - rpmdrake:
