@@ -145,7 +145,7 @@ sub interactive_msg {
     gtkadd(
 	$d->{window},
 	gtkpack_(
-	    create_vbox(),
+	    Gtk2::VBox->new(0, 5),
 	    1,
 	    (
 		$options{scroll} ? gtkadd(
