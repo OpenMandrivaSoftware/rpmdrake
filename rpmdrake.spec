@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 19mdk
+%define release 20mdk
 
 Name: %{name}
 Version: %{version}
@@ -100,6 +100,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Fri May 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-20mdk
+- fix #3908 (garbage chars displayed as date in changelog entries in
+  removal mode)
+
 * Mon May 12 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-19mdk
 - obsolete grpmi by gurpm.pm (from urpmi) sharing code between gurpmi
   and rpmdrake

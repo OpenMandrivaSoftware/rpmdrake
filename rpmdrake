@@ -127,7 +127,7 @@ sub extract_header {
     if ($MODE eq 'remove') {
 	@$max_info_in_descr or return;
 	my $name = my_fullname($pkg->{pkg});
-	add2hash($pkg, { files => scalar(`rpm -ql $name`) || N("(none)"), changelog => $chg_prepro->(scalar(`rpm -q --changelog $name`)) });
+	add2hash($pkg, { files => scalar(`rpm -ql $name`) || N("(none)"), changelog => $chg_prepro->(scalar(`LC_ALL=C rpm -q --changelog $name`)) });
     } else {
 	my ($headersdir, $p, $medium) = ('/root/tmp/headers/', $pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
