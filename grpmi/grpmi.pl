@@ -84,7 +84,8 @@ my $cache_location = '/var/cache/urpmi/rpms';
 for (my $i=0; $i<@ARGV; $i++) {
     if ($ARGV[$i] =~ m,^http://|^https://|^ftp://,) {
 	$label->set(_("Downloading package `%s'...", basename($ARGV[$i]))); select(undef, undef, undef, 0.1); $mainw->flush;  #- hackish :-(
-	my $res = curl_download::download($ARGV[$i], $cache_location, $proxy, sub { $progressbar->update($_[1]/$_[0]); $mainw->flush });
+	my $res = curl_download::download($ARGV[$i], $cache_location, $proxy,
+					  sub { $_[0] and $progressbar->update($_[1]/$_[0]); $mainw->flush });
 	my $url = $ARGV[$i];
 	$ARGV[$i] = "$cache_location/" . basename($ARGV[$i]);
 	if ($res) {
