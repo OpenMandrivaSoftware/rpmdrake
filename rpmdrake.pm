@@ -353,13 +353,13 @@ sub show_urpm_progress {
     $file =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|; #- if needed...
     if ($mode eq 'copy') {
 	$pb->set_fraction(0);
-	$label->set_label(N("Copying file for source `%s'...", $file));
+	$label->set_label(N("Copying file for media `%s'...", $file));
     } elsif ($mode eq 'parse') {
 	$pb->set_fraction(0);
-	$label->set_label(N("Examining file of source `%s'...", $file));
+	$label->set_label(N("Examining file of media `%s'...", $file));
     } elsif ($mode eq 'retrieve') {
 	$pb->set_fraction(0);
-	$label->set_label(N("Examining distant file of source `%s'...", $file));
+	$label->set_label(N("Examining distant file of media `%s'...", $file));
     } elsif ($mode eq 'start') {
 	$pb->set_fraction(0);
 	$label->set_label(N("Starting download of `%s'...", $file));
@@ -391,11 +391,11 @@ sub update_sources {
 
 sub update_sources_interactive {
     my ($urpm, %opts) = @_;
-    my $w = ugtk2->new(N("Update source(s)"), grab => 1, center => 1, %opts);
+    my $w = ugtk2->new(N("Update media(s)"), grab => 1, center => 1, %opts);
     my @buttons;
     gtkadd($w->{window},
 	   gtkpack__(Gtk2::VBox->new(0,5),
-		     Gtk2::Label->new(N("Select the source(s) you wish to update:")),
+		     Gtk2::Label->new(N("Select the media(s) you wish to update:")),
 		     (@buttons = map { Gtk2::CheckButton->new($_->{name}) } @{$urpm->{media}}),
 		     Gtk2::HSeparator->new,
 		     gtkpack(create_hbox(),

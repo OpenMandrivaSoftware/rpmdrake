@@ -34,6 +34,7 @@ install: $(ALL)
 	done
 	install -d $(SBINDIR)
 	install rpmdrake edit-urpm-sources.pl $(SBINDIR)
+	ln -s edit-urpm-sources.pl $(SBINDIR)/edit-urpm-medias
 	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(SBINDIR)/*
 	ln -s -f rpmdrake $(SBINDIR)/rpmdrake-remove
 	ln -s -f rpmdrake $(SBINDIR)/MandrakeUpdate

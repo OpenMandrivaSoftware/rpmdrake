@@ -42,7 +42,7 @@ my $urpm;
 my ($mainw, $remove, $edit, $list_tv);
 
 sub add_callback {
-    my $w = ugtk2->new(N("Add a source"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Add a media"), grab => 1, center => 1, transient => $mainw->{rwindow});
     my %radios_infos = (local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
 			ftp => { name => N("FTP server"), url => N("URL:"), loginpass => 1 },
 			http => { name => N("HTTP server"), url => N("URL:") },
@@ -109,8 +109,8 @@ really want to replace it?"), yesno => 1) or return 0;
     my ($type, %i, %make_url);
     gtkadd($w->{window},
 	   gtkpack(Gtk2::VBox->new(0,5),
-		   Gtk2::Label->new(N("Adding a source:")),
-		   gtkpack__(Gtk2::HBox->new(0, 0), Gtk2::Label->new(but(N("Type of source:"))), @modes_buttons),
+		   Gtk2::Label->new(N("Adding a media:")),
+		   gtkpack__(Gtk2::HBox->new(0, 0), Gtk2::Label->new(but(N("Type of media:"))), @modes_buttons),
 		   $notebook,
 		   Gtk2::HSeparator->new,
 		   gtkpack(create_hbox(),
@@ -170,11 +170,11 @@ sub edit_callback {
     my $row = selrow();
     $row == -1 and return;
     my $medium = $urpm->{media}[$row];
-    my $w = ugtk2->new(N("Edit a source"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Edit a media"), grab => 1, center => 1, transient => $mainw->{rwindow});
     my ($url_entry, $hdlist_entry, $url, $with_hdlist);
     gtkadd($w->{window},
 	   gtkpack_(Gtk2::VBox->new(0,5),
-		    0, Gtk2::Label->new(N("Editing source \"%s\":", $medium->{name})),
+		    0, Gtk2::Label->new(N("Editing media \"%s\":", $medium->{name})),
 		    0, create_packtable({},
 					[ N("URL:"), $url_entry = gtkentry($medium->{url}) ],
 					[ N("Relative path to synthesis/hdlist:"), $hdlist_entry = gtkentry($medium->{with_hdlist}) ]),
@@ -244,7 +244,7 @@ sub proxy_callback {
 }
 
 sub mainwindow {
-    $mainw = ugtk2->new(N("Configure sources"), center => 1);
+    $mainw = ugtk2->new(N("Configure medias"), center => 1);
 
     my $list = Gtk2::ListStore->new(Gtk2::GType->BOOLEAN, Gtk2::GType->STRING);
     $list_tv = Gtk2::TreeView->new_with_model($list);
@@ -252,7 +252,7 @@ sub mainwindow {
     $list_tv->set_rules_hint(1);
 
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled?"), my $tr = Gtk2::CellRendererToggle->new, 'active' => 0));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Source"), Gtk2::CellRendererText->new, 'text' => 1));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Media"), Gtk2::CellRendererText->new, 'text' => 1));
 
     $tr->signal_connect(toggled => sub {
 			    my (undef, $path) = @_;
@@ -298,9 +298,9 @@ if (!member(basename($0), @$already_splashed)) {
 N("%s
 
 Is it ok to continue?",
-N("Welcome to the packages source editor!
+N("Welcome to the Software Medias Manager!
 
-This tool will help you configure the packages sources you wish to use on
+This tool will help you configure the packages medias you wish to use on
 your computer. They will then be available to install new software package
 or to perform updates.")), yesno => 1) or myexit -1;
     push @$already_splashed, basename($0);

@@ -57,8 +57,8 @@ title="Install Software" longtitle="A graphical front end for installing package
 title="Remove Software" longtitle="A graphical front end for removing packages"
 ?package(%{name}): command="/usr/sbin/MandrakeUpdate" needs="x11" section="Configuration/Packaging" icon="mandrakeupdate.png" \
 title="Mandrake Update" longtitle="A graphical front end for software updates"
-?package(%{name}): command="/usr/sbin/edit-urpm-sources.pl" needs="x11" section="Configuration/Packaging" icon="edit-urpm-sources.png" \
-title="Software Sources Manager" longtitle="A graphical front end to add/remove/edit sources for installing packages"
+?package(%{name}): command="/usr/sbin/edit-urpm-medias" needs="x11" section="Configuration/Packaging" icon="edit-urpm-sources.png" \
+title="Software Medias Manager" longtitle="A graphical front end to add/remove/edit medias for installing packages"
 EOF
 
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
@@ -86,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING AUTHORS
 %{_sbindir}/rpmdrake*
 %{_sbindir}/MandrakeUpdate
-%{_sbindir}/edit-urpm-sources.pl
+%{_sbindir}/edit-urpm-*
 %{_bindir}/*
 %{_datadir}/%{name}/compss*
 %{_datadir}/%{name}/desktop
@@ -109,6 +109,8 @@ rm -rf $RPM_BUILD_ROOT
   an error
 - fix #3908 (garbage chars displayed as date in changelog entries in
   removal mode)
+- substitute references to "sources" by now talking about "medias",
+  should be more understandable and more consistent with urpmi
 
 * Mon May 12 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-19mdk
 - obsolete grpmi by gurpm.pm (from urpmi) sharing code between gurpmi

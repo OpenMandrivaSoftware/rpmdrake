@@ -508,7 +508,7 @@ or you already installed all of them."));
 				     my @files = ([ N("Files:\n"), $tag_tag ], [ $pkgs->{$key}{files} || N("(Not available)"), $tag_fix ]);
 				     my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
 				     my @source_info = ($MODE eq 'remove' || !@$max_info_in_descr ? ()
-							: ([ N("Source: "), $tag_tag ],
+							: ([ N("Media: "), $tag_tag ],
 							   [ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
 							   [ N("Currently installed version: "), $tag_tag ],
 							   [ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]));
@@ -619,7 +619,7 @@ or you already installed all of them."));
 	my $radio_by;
 	my @advanced_modes = ([ 'by_group', N("by group"), 0 ], [ 'by_size', N("by size"), 1 ],
 			      [ 'by_selection', N("by selection state"), 1 ]);
-	$MODE eq 'install' and push @advanced_modes, ([ 'by_source', N("by source repository"), 0 ], [ 'by_presence', N("by update availability"), 0 ]);
+	$MODE eq 'install' and push @advanced_modes, ([ 'by_source', N("by media repository"), 0 ], [ 'by_presence', N("by update availability"), 0 ]);
 	foreach (@advanced_modes) {
 	    my ($capt_mode, $capt_flat) = ($_->[0], $_->[2]);
 	    $advanced_menu->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($_->[1])),
@@ -652,7 +652,7 @@ or you already installed all of them."));
 
     my $menu_treeview = Gtk2::Menu->new;
     my @menu_treeview_actions = ([ 'reset_selection', N("Reset the selection") ], [ 'reload_pkg', N("Reload the packages list") ]);
-    $MODE ne 'remove' and push @menu_treeview_actions, [ 'update_sources', N("Update source(s)") ];
+    $MODE ne 'remove' and push @menu_treeview_actions, [ 'update_sources', N("Update media(s)") ];
     foreach (@menu_treeview_actions) {
 	my ($action, $text) = @$_;
 	my %action2fun; %action2fun = (
@@ -813,10 +813,10 @@ Is it ok to continue?"), yesno => 1) or myexit(-1);
 	    }
 	} else {
             if (any { $_->{update} } @{$urpm->{media}}) {
-                interactive_msg_(N("Already existing update sources"),
-N("You already have at least one update source configured, but
+                interactive_msg_(N("Already existing update medias"),
+N("You already have at least one update media configured, but
 all of them are currently disabled. You should run the Software
-Sources Manager to enable at least one (check it in the Enabled?
+Medias Manager to enable at least one (check it in the Enabled?
 column).
 
 Then, restart MandrakeUpdate.", $update_name));
@@ -827,8 +827,8 @@ Then, restart MandrakeUpdate.", $update_name));
 	    my $m = choose_mirror();
 	    $m or interactive_msg_(N("How to choose manually your mirror"),
 N("You may also choose your desired mirror manually: to do so,
-launch the Software Sources Manager, and then add a `Security
-updates' source.
+launch the Software Medias Manager, and then add a `Security
+updates' media.
 
 Then, restart MandrakeUpdate.", $update_name)), myexit(-1);
 	    my ($r) = cat_('/etc/mandrake-release') =~ /release\s(\S+)/;
@@ -1020,7 +1020,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         foreach (@rpms_install, @rpms_upgrade) {
             m|^/| && ! -e $_ or next;
             interactive_msg_(N("Installation failed"),
-                             N("Installation failed, some files are missing.\nYou may want to update your sources database.") .
+                             N("Installation failed, some files are missing.\nYou may want to update your medias database.") .
                              (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
             goto return_with_error;
         }
