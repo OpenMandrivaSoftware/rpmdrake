@@ -24,7 +24,7 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
     "@ARGV" =~ /-h/ and do {
 	printf qq(Usage: %s [OPTION]...
-  --no-confirmation      don't ask first confirmation question in Mandrakeupdate mode
+  --no-confirmation      don't ask first confirmation question in update mode
   --no-verify-rpm        don't verify packages signatures
   --changelog-first      display changelog before filelist in the description window
   --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found
@@ -985,7 +985,7 @@ Is it ok to continue?",
 
     my %mode2title = (
 	remove => N("Software Packages Removal"), 
-	update => N("Mandrakeupdate"), 
+	update => N("Software Packages Update"), 
 	install => N("Software Packages Installation"),
     );
     gtkadd(
@@ -1083,7 +1083,7 @@ all of them are currently disabled. You should run the Software
 Media Manager to enable at least one (check it in the Enabled?
 column).
 
-Then, restart Mandrakeupdate."));
+Then, restart MandrakeUpdate."));
                 myexit(-1);
             }
 	  mu_retry_another_mirror:
@@ -1093,7 +1093,7 @@ N("You may also choose your desired mirror manually: to do so,
 launch the Software Media Manager, and then add a `Security
 updates' medium.
 
-Then, restart Mandrakeupdate.")), myexit(-1);
+Then, restart MandrakeUpdate.")), myexit(-1);
             add_medium_and_check($urpm, {},
                                  $update_name, make_url_mirror($m), '../base/synthesis.hdlist.cz', update => 1);
 	    @update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
@@ -1535,7 +1535,7 @@ Is it ok to continue?",
 This tool will help you choose which software you want to remove from
 your computer.")
       : $MODE eq 'update' ?
-  N("Welcome to Mandrakeupdate!
+  N("Welcome to MandrakeUpdate!
 
 This tool will help you choose the updates you want to install on your
 computer.")
