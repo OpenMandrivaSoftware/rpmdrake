@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 20mdk
+%define release 21mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: rpmdrake.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-31mdk grpmi >= 9.0 rpmtools >= 4.5
+Requires: perl-MDK-Common urpmi >= 4.0 perl-URPM >= 0.60 drakxtools >= 1.1.9-35mdk grpmi >= 9.0 rpmtools >= 4.5
 BuildRequires: curl-devel rpm-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
@@ -123,6 +123,17 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Sep  5 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-21mdk
+- add "search in files" in rpmdrake-remove
+- when grpmi detects conflicts, don't aask for force, but abort
+- when groups are partially selected, clicking on the group means
+  unselection, not selection (because some members of groups are
+  not selectable)
+- have an expert right-click menu on the left treeview, for:
+  - reset selection
+  - reload lists
+  - update sources
+
 * Wed Sep  4 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-20mdk
 - maximum information also provides info about currently installed
   package(s)

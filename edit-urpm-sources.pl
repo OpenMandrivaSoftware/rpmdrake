@@ -190,24 +190,7 @@ sub edit_callback {
 }
 
 sub update_callback {
-    my $w = my_gtk->new(_("Update source(s)"));
-    gtkadd($w->{window},
-	   gtkpack__(new Gtk::VBox(0,5),
-		     new Gtk::Label(_("Select the source(s) you wish to update:")),
-		     (my @buttons = map { new Gtk::CheckButton($_->{name}) } @{$urpm->{media}}),
-		     new Gtk::HSeparator,
-		     gtkpack(create_hbox(),
-			     gtksignal_connect(new Gtk::Button(_("Update")), clicked => sub { $w->{retval} = 1; Gtk->main_quit }),
-			     gtksignal_connect(new Gtk::Button(_("Cancel")), clicked => sub { $w->{retval} = 0; Gtk->main_quit }))));
-    $w->{rwindow}->set_position('center');
-    if ($w->main && grep { $_->get_active } @buttons) {
-	each_index { $_->get_active and $urpm->select_media($urpm->{media}[$::i]{name}) } @buttons;
-	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
-	    $_->{modified} and delete $_->{ignore};
-	}
-	slow_func(_("Please wait, updating media..."),
-		  sub { $urpm->update_media(noclean => 1) });
-    }
+    update_sources($urpm);
 }
 
 sub proxy_callback {

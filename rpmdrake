@@ -225,7 +225,7 @@ sub run_treeview_dialog {
 
     my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
     my $is_locale_available = sub {
-	grep { $urpm->{depslist}[$_[0]]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
+	grep { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
 	my $found;
 	db->traverse_tag('name', [ $_ ], sub { $found ||= 1 });
 	return $found;
@@ -558,6 +558,31 @@ or you already installed all of them."));
     my $search_types_optionmenu = new Gtk::OptionMenu;
     $search_types_optionmenu->set_menu($search_types_menu);
 
+    my $menu_treeview = new Gtk::Menu;
+    my @menu_treeview_actions = ([ 'reset_selection', _("Reset the selection") ], [ 'reload_pkg', _("Reload the packages list") ],
+				 [ 'update_sources', _("Update source(s)") ]);
+    foreach (@menu_treeview_actions) {
+	my ($action, $text) = @$_;
+	my %action2fun; %action2fun = (
+		          reset_selection => sub {
+			      $urpm->{state}{unselected} = {};
+			      $urpm->resolve_unrequested(db, $urpm->{state},
+							 { map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}->id => undef) } keys %$pkgs });
+			      $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
+			      $size_selected = 0;
+			      $options->{rebuild_tree}->();
+			  },
+		          reload_pkg => sub {
+			      ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+			      $size_selected = 0;
+			      $options->{rebuild_tree}->();
+			  },
+			  update_sources => sub { update_sources($urpm) and $action2fun{reload_pkg}->() });
+	$menu_treeview->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($text)), activate => sub { $action2fun{$action}->() }));
+    }
+    $tree->signal_connect(button_press_event => sub { $_[1]->{button} eq 3 or return 0;
+						      $menu_treeview->popup(undef, undef, $_[1]->{button}, $_[1]->{time}); });
+
     my $menu_descr = new Gtk::Menu;
     my @menu_descr_modes = ([ 'normal', _("Normal information"), [] ], [ 'max', _("Maximum information"), [1] ]);
     foreach (@menu_descr_modes) {
@@ -570,8 +595,7 @@ or you already installed all of them."));
     }
     $info = new Gtk::Text;
     $info->signal_connect(button_press_event => sub { $_[1]->{button} eq 3 or return 0;
-						      $menu_descr->popup(undef, undef, $_[1]->{button}, $_[1]->{time});
-						      return 1; });
+						      $menu_descr->popup(undef, undef, $_[1]->{button}, $_[1]->{time}); });
 
     my $find_entry;
     my $find_callback = sub { do_search($find_entry, $tree, $options, $current_search_type, $urpm, $pkgs) };
