@@ -1026,6 +1026,10 @@ Then, restart MandrakeUpdate.")), myexit(-1);
         }
 	$installable_pkgs{my_fullname($pkg)} = { selected => $selected, pkg => $pkg };
     }
+    if ($options{'pkg-sel'} || $options{'pkg-nosel'}) {
+        push @{$options{'pkg-nosel'}}, @{$options{'pkg-sel'}};
+        delete $options{'pkg-sel'};
+    }
 
     remove_wait_msg($wait);
     ($urpm, \%installable_pkgs, \%update_descr);
