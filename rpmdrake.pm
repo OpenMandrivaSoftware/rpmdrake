@@ -617,6 +617,10 @@ sub update_sources_interactive {
 		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
 		),
 		gtksignal_connect(
+		    Gtk2::Button->new(N("Select all")),
+		    clicked => sub { $_->set_active(1) foreach @buttons },
+		),
+		gtksignal_connect(
 		    Gtk2::Button->new(N("Update")),
 		    clicked => sub {
 			$w->{retval} = any { $_->get_active } @buttons;
@@ -630,7 +634,7 @@ sub update_sources_interactive {
 	)
     );
     if ($w->main) {
-	#- force ignored media to be returned alive (forked from urpmi.updatemedia...)
+	#- force ignored media to be returned alive (forked from urpmi.update...)
 	foreach (@{$urpm->{media}}) {
 	    $_->{modified} and delete $_->{ignore};
 	}
