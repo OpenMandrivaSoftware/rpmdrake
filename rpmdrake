@@ -1242,6 +1242,8 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		and do { $cur->{update} = $1; next };
 	    /^Importance: +(.+)/ && $section eq 'pkg'
 		and do { $cur->{importance} = $1; next };
+	    /^(ID|URL): +(.+)/ && $section eq 'pkg'
+		and do { $cur->{$1} = $2; next };
 	    $section =~ /^(pre|description)\z/ and $cur->{$1} .= $_;
 	}
     }
