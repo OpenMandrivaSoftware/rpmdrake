@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.8
+%define version 2.9
 %define release 1mdk
 
 Name: %{name}
@@ -111,6 +111,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Mar 07 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.9-1mdk
+- Don't install edit-urpm-media as a copy of edit-urpm-sources.pl anymore
+- rpmdrake: restore Quit button, add ctrl-Q as shortcut (Titi)
+- add a vertical scrollbar in the software media manager
+
 * Wed Feb 23 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.8-1mdk
 - Don't hardcode mirror list url, use /etc/urpmi/mirror.config like
   urpmi.addmedia does
