@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.2
-%define release 6mdk
+%define release 7mdk
 
 Name: %{name}
 Version: %{version}
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Feb 23 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-7mdk
+- rpmdrake: don't hide progress window during install (#8146)
+
 * Fri Feb 20 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-6mdk
 - edit-urpm-media: fix broken media reordering (program crashed)
 - rpmdrake: hide password in logs (#6260)

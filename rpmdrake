@@ -1135,7 +1135,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         unlink $_;
     }
 
-    gurpm::init(N("Package installation..."), N("Initializing..."));
+    gurpm::init(N("Package installation..."), N("Initializing..."), transient => $w->{rwindow});
     my $distant_progress;
     my $canceled;
     my %sources = $urpm->download_source_packages($local_sources, $list, force_local => 1,
