@@ -1,17 +1,15 @@
 # MandrakeUpdate messages for zh_CN locale
 # Copyright (C) 2000 Free Software Foundation, Inc.
+# Danny Zeng <danny@zeng.com.cn>, 2000, 2002
+# Jesse Kuang <kjx@mandrakesoft.com>, 2001
 #
-# Jesse Kuang <kjx@mandrakesoft.com>
-#
-# Last translator
-# Danny Zeng <danny@zeng.com.cn>, 2000
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi\n"
 "POT-Creation-Date: 2002-08-22 18:03+0200\n"
-"PO-Revision-Date: 2001-08-21 12:19+0800\n"
-"Last-Translator: Jesse Kuang <kjx@mandrakesoft.com>\n"
+"PO-Revision-Date: 2002-08-23 11:08+0800\n"
+"Last-Translator: Danny Zeng <danny@zeng.com.cn>\n"
 "Language-Team: Simplified Chinese <future-cjk@mandrakesoft.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=gb2312\n"
@@ -19,7 +17,7 @@ msgstr ""
 
 #: ../curl_download/curl_download.xs:86
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "用来保存下载文件的目录必须存在"
 
 #: ../curl_download/curl_download.xs:89 ../curl_download/curl_download.xs:204
 msgid "Out of memory\n"
@@ -27,7 +25,7 @@ msgstr "内存用完\n"
 
 #: ../curl_download/curl_download.xs:102
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "无法以追加模式打开输出文件"
 
 #: ../curl_download/curl_download.xs:124
 msgid "Unsupported protocol\n"
@@ -208,11 +206,11 @@ msgstr "未知错误码 %d\n"
 
 #: ../grpmi.pl_.c:52
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #: ../grpmi.pl_.c:53
 msgid "No"
-msgstr ""
+msgstr "否"
 
 #: ../grpmi.pl_.c:54
 msgid "Ok"
@@ -224,29 +222,28 @@ msgstr "错误..."
 
 #: ../grpmi.pl_.c:64
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "对不起，您必须是 root 才可以安装软件包."
 
 #: ../grpmi.pl_.c:66
 msgid "RPM initialization error"
-msgstr ""
+msgstr "RPM 初始化错误"
 
 #: ../grpmi.pl_.c:67
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "对不起, 无法初始化 RPM  的配置文件."
 
 #: ../grpmi.pl_.c:73
-#, fuzzy
 msgid "Initializing..."
-msgstr "正在安装:"
+msgstr "正在初始化..."
 
 #: ../grpmi.pl_.c:94
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "下载软件包 `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:101
 msgid "Error during download"
-msgstr ""
+msgstr "下载中出错"
 
 #: ../grpmi.pl_.c:102
 #, c-format
@@ -258,15 +255,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"下载软件包时出错:\n"
+"\n"
+"%s\n"
+"\n"
+"错误: %s\n"
+"您想继续吗 (跳过这个软件包)?"
 
 #: ../grpmi.pl_.c:114
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "验证 `%s' 的签署..."
 
 #: ../grpmi.pl_.c:116
 msgid "Signature verification error"
-msgstr ""
+msgstr "签署验证错误"
 
 #: ../grpmi.pl_.c:117
 #, c-format
@@ -276,11 +279,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"软件包`%s' 的签署不正确:\n"
+"\n"
+"%s\n"
+"您坚持要安装它吗?"
 
 #: ../grpmi.pl_.c:123
-#, fuzzy
 msgid "File error"
-msgstr "写错误\n"
+msgstr "文件错误"
 
 #: ../grpmi.pl_.c:124
 #, c-format
@@ -291,15 +297,19 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"下列文件不正确:\n"
+"\n"
+"%s\n"
+"\n"
+"您坚持要继续吗 (跳过这些文件)?"
 
 #: ../grpmi.pl_.c:139
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "正在准备安装"
+msgstr "正在准备安装..."
 
 #: ../grpmi.pl_.c:147
 msgid "Conflicts detected"
-msgstr ""
+msgstr "发现冲突"
 
 #: ../grpmi.pl_.c:148
 #, c-format
@@ -309,126 +319,125 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"发现存在冲突:\n"
+"%s\n"
+"\n"
+"您还想强制安装吗?"
 
 #: ../grpmi.pl_.c:155
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "正在安装软件包 `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:169
 msgid "Problems occurred during installation"
 msgstr "在安装过程中发生问题"
 
 #: ../grpmi.pl_.c:169
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "正在准备安装"
+msgstr ""
+"安装下列软件包时发生错误:\n"
+"\n"
+"%s"
 
 #: ../grpmi.pl_.c:177
 msgid "All requested packages were installed successfully."
-msgstr ""
+msgstr "所有要求的软件包都已成功安装."
 
 #: ../grpmi.pl_.c:177
 msgid "Everything installed successfully"
-msgstr ""
+msgstr "所有东西已成功安装"
 
 #: ../rpm/grpmi_rpm.xs:69
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "无法读取文件\n"
+msgstr "无法读取RPM 配置文件"
 
 #: ../rpm/grpmi_rpm.xs:95
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Couldn't connect - 无法连接\n"
+msgstr "无法打开文件\n"
 
 #: ../rpm/grpmi_rpm.xs:99
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "Couldn't resolve host - 无法解析主机\n"
+msgstr "无法\n"
 
 #: ../rpm/grpmi_rpm.xs:102
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "软件包的 RPM 版本不支持签署\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "无法读取签署块(`rpmReadSignature' 失败)\n"
 
 #: ../rpm/grpmi_rpm.xs:110
 msgid "No signatures\n"
-msgstr ""
+msgstr "没有签署\n"
 
 #: ../rpm/grpmi_rpm.xs:114
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "`makeTempFile' 失败!\n"
 
 #: ../rpm/grpmi_rpm.xs:121
 msgid "Error reading file\n"
-msgstr ""
+msgstr "读取文件出错\n"
 
 #: ../rpm/grpmi_rpm.xs:127
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "写入临时文件出错\n"
 
 #: ../rpm/grpmi_rpm.xs:152
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "软件包中没有 GPG 签署\n"
 
 #: ../rpm/grpmi_rpm.xs:234
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "无法打开 RPM 数据库进行写入 (不是root?)"
 
 #: ../rpm/grpmi_rpm.xs:236
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "无法打开 RPM 数据库进行写入"
 
 #: ../rpm/grpmi_rpm.xs:240
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "无法开始处理"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "不能打开软件包"
+msgstr "不能打开软件包 `%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:264
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "软件包坏了"
+msgstr "软件包 `%s' 坏了\n"
 
 #: ../rpm/grpmi_rpm.xs:267
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "无法安装软件包"
+msgstr "无法安装软件包 `%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:278
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "检查依赖关系时发生错误 :("
+msgstr "检查依赖关系时发生错误"
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "conflicts with"
-msgstr " 与 %s-%s-%s 冲突"
+msgstr "与它冲突的有"
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "is needed by"
-msgstr " 是 %s-%s-%s 需要的"
+msgstr "需要它的有"
 
 #: ../rpm/grpmi_rpm.xs:317
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "检查依赖关系时发生错误 :("
+msgstr "检查依赖关系 2 时出错"
 
 #: ../rpm/grpmi_rpm.xs:323
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "在安装过程中发生问题"
+msgstr "在安装过程中发生问题:\n"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "安装/升级进展"
