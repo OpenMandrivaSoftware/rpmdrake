@@ -877,7 +877,7 @@ sub mainwindow {
 		    gtksignal_connect(Gtk2::Button->new(but(N("Manage keys..."))), clicked => \&keys_callback),
 		    gtksignal_connect(Gtk2::Button->new(but(N("Proxy..."))), clicked => \&proxy_callback),
 		    gtksignal_connect(Gtk2::Button->new(but(N("Parallel..."))), clicked => \&parallel_callback),
-		    gtksignal_connect(Gtk2::Button->new(but(N("Advanced..."))), clicked => \&options_callback),
+		    gtksignal_connect(Gtk2::Button->new(but(N("Global options..."))), clicked => \&options_callback),
 		)
 	    ),
 	    0, Gtk2::HSeparator->new,
