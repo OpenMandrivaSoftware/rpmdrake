@@ -405,7 +405,7 @@ _("The following packages have to be removed for others to be upgraded:
 
 %s
 
-Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), 1)
+Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state}{ask_remove}})), { yesno => 1 })
 	      or return 0;
 	}
 	1;
@@ -479,7 +479,7 @@ sub get_installable_pkgs {
 _("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
-Is it ok to continue?"), 1) or myexit -1;
+Is it ok to continue?"), { yesno => 1 }) or myexit -1;
 	    my $w = wait_msg(_("Please wait, contacting mirror to update packages information."));
 	    system("/usr/sbin/urpmi.update $update_name") == 0
 	      or fatal_msg(_("Error updating medium"),
@@ -502,7 +502,7 @@ This may be due to a broken or temporary unavailable mirror, or when your
 Mandrake Linux version (%s) is not yet / no more supported by Mandrake Linux
 Official Updates.
 
-Do you want to try another mirror?", $r), 1) and goto mu_retry_another_mirror;
+Do you want to try another mirror?", $r), { yesno => 1 }) and goto mu_retry_another_mirror;
 		myexit -1;
 	    }
 	}
@@ -571,8 +571,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my %sources = $urpm->download_source_packages($local_sources, $list, '',
 						  sub { interactive_msg(_("Change medium"),
-									_("Please insert the medium named \"%s\" on device [%s]", @_));
-							1; });
+									_("Please insert the medium named \"%s\" on device [%s]", @_),
+									{ yesno => 1, text => { yes => _("Ok"), no => _("Cancel") } }) });
     my @rpms_install = grep { $_ !~ /\.src\.rpm$/ } values %{$urpm->extract_packages_to_install(\%sources) || {}};
     my @rpms_upgrade = grep { $_ !~ /\.src\.rpm$/ } values %sources;
 
@@ -672,7 +672,7 @@ computer.")
 Your Mandrake Linux system comes with several thousands of software
 packages on CDROM or DVD. This tool will help you choose which software
 you want to install on your computer."))
-  , 1) or myexit -1;
+  , { yesno => 1 }) or myexit -1;
 	push @$already_splashed, $MODE;
     }
 

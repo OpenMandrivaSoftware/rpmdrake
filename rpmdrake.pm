@@ -61,14 +61,16 @@ sub writeconf {
 }
 
 sub interactive_msg {
-    my ($title, $contents, $yesno) = @_;
+    my ($title, $contents, $options) = @_;
     my $d = my_gtk->new($title);
     gtkadd($d->{window},
 	   gtkpack_(new Gtk::VBox(0,5),
 		    1, new Gtk::Label($contents),
 		    0, gtkpack(create_hbox(),
-			       $yesno ? (gtksignal_connect(new Gtk::Button(_("Yes")), clicked => sub { $d->{retval} = 1; Gtk->main_quit }),
-					 gtksignal_connect(new Gtk::Button(_("No")), clicked => sub { $d->{retval} = 0; Gtk->main_quit }))
+			       $options->{yesno} ? (gtksignal_connect(new Gtk::Button($options->{text}{yes} || _("Yes")),
+								      clicked => sub { $d->{retval} = 1; Gtk->main_quit }),
+						    gtksignal_connect(new Gtk::Button($options->{test}{no} || _("No")), clicked =>
+								      sub { $d->{retval} = 0; Gtk->main_quit }))
 			       : gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit })
 			      )));
     $d->main;
@@ -215,7 +217,7 @@ sub choose_mirror {
 _("I need to contact MandrakeSoft website to get the mirrors list.
 Please check that your network is currently running.
 
-Is it ok to continue?"), 1) or return '';
+Is it ok to continue?"), { yesno => 1 }) or return '';
     my $wait = wait_msg(_("Please wait, downloading mirrors addresses from MandrakeSoft website."));
     my @mirrors;
     eval { @mirrors = mirrors('/var/cache/urpmi', 'updates') };
