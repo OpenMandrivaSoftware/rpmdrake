@@ -20,27 +20,26 @@
 #
 # $Id$
 
-
 use strict;
-use lib qw(/usr/lib/libDrakX);
-use common;
 
-BEGIN {  #- we want to run this code standalone.pm can output its sucking help
-    "@ARGV" =~ /-h/ and do {
-        printf "usage: gurpmi.addmedia [options] <name> <url> [with <relative_path>]
+BEGIN {
+    @ARGV == 0 || "@ARGV" =~ /-h/ and do {
+        print "usage: gurpmi.addmedia [options] <name> <url> [with <relative_path>]
 where <url> is one of
-       file://<path>
-       ftp://<login>:<password>@<host>/<path> with <relative filename of hdlist>
-       ftp://<host>/<path> with <relative filename of hdlist>
-       http://<host>/<path> with <relative filename of hdlist>
-       removable://<path>
-
+  file://<path>
+  ftp://<login>:<password>@<host>/<path> with <relative filename of hdlist>
+  ftp://<host>/<path> with <relative filename of hdlist>
+  http://<host>/<path> with <relative filename of hdlist>
+  removable://<path>
 and [options] are from
-  --update       - create an update medium.
-";    
+  --update       create an update medium.
+";
         exit(0);
     };
 }
+
+use lib qw(/usr/lib/libDrakX);
+use common;
 
 require_root_capability();
 
@@ -55,12 +54,12 @@ $::isStandalone = 1;
 
 my $fromfile;
 if (@ARGV == 1 && $ARGV[0] =~ /\.urpmi-media$/) {
-    @ARGV = split /\n/, cat_($ARGV[0]);
+    @ARGV = map { s/^\s*//; s/\s*$//; $_ } split /\n/, cat_($ARGV[0]);
     $fromfile = 1;
 }
 
 my $update = 0;
-if ($ARGV[0] =~ /-?-update/) {
+if ($ARGV[0] =~ /^-?-update/) {
     $update = 1;
     unshift @ARGV;
 }
