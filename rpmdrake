@@ -360,7 +360,7 @@ or you already installed all of them."));
 			   $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
 		       }
 		   },
-		   get_status => sub { $MODE eq 'install' ? _("Selected: %d MB / Available: %d MB",
+		   get_status => sub { $MODE eq 'install' ? _("Selected: %d MB / Free disk space: %d MB",
 							      $size_selected/(1024*1024), $size_free/1024)
 					                  : _("Selected size: %d MB", $size_selected/(1024*1024)) },
 		   get_info => sub { my ($key) = @_;
