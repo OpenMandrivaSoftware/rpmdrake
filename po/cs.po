@@ -12,13 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-cs\n"
 "POT-Creation-Date: 2004-02-05 17:30+0100\n"
-"PO-Revision-Date: 2004-01-26 20:58GMT\n"
+"PO-Revision-Date: 2004-02-10 11:34+0100\n"
 "Last-Translator: Michal Bukovjan <bukm@centrum.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.3\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../edit-urpm-sources.pl:61
 #, c-format
@@ -463,7 +465,7 @@ msgstr ""
 #: ../gurpmi.addmedia:70
 #, c-format
 msgid "Unable to add medium, wrong or missing arguments"
-msgstr ""
+msgstr "Nelze přidat zdroj, chybné nebo chybějící parametry"
 
 #: ../gurpmi.addmedia:78
 #, c-format
@@ -472,11 +474,14 @@ msgid ""
 "That means you will be able to add new software packages\n"
 "to your system from that new medium."
 msgstr ""
+"Chystáte se přidat nový zdroj s balíčky, %s.\n"
+"To znamená, že budete moci do vašeho systému instalovat nové\n"
+"balíčky se software z tohoto zdroje."
 
 #: ../gurpmi.addmedia:87
 #, c-format
 msgid "Successfully added medium `%s'."
-msgstr ""
+msgstr "Zdroj `%s' byl úspěšně přidán."
 
 #: ../rpmdrake:85
 #, c-format
@@ -1963,6 +1968,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Nelze přidat zdroj, byly nahlášeny chyby:\n"
+"\n"
+"%s"
 
 #: ../rpmdrake.pm:492
 #, c-format
@@ -1970,18 +1978,18 @@ msgid "Unable to create medium."
 msgstr "Nelze vytvořit zdroj."
 
 #: ../rpmdrake.pm:497
-#, fuzzy, c-format
+#, c-format
 msgid "Failure when adding medium"
-msgstr "Prosím počkejte, přidávám zdroj..."
+msgstr "Selhání při pokusu o přidání zdroje"
 
 #: ../rpmdrake.pm:498
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was a problem adding medium:\n"
 "\n"
 "%s"
 msgstr ""
-"Při instalaci balíčků došlo k chybě:\n"
+"Při pokusu o přidání zdroje nastaly problémy:\n"
 "\n"
 "%s"
 
@@ -2254,241 +2262,3 @@ msgstr "Odebrat software"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "Správce zdrojů software"
-
-#~ msgid "Please wait, updating medium..."
-#~ msgstr "Prosím počkejte, aktualizuji zdroj..."
-
-#, fuzzy
-#~ msgid "no name found"
-#~ msgstr "Nenalezena funkce\n"
-
-#, fuzzy
-#~ msgid "Server"
-#~ msgstr "FTP server"
-
-#, fuzzy
-#~ msgid "%s conflicts with %s"
-#~ msgstr "je v konfliktu s"
-
-#, fuzzy
-#~ msgid "unknown package "
-#~ msgstr "Nelze otevřít balíček `%s'\n"
-
-#, fuzzy
-#~ msgid "Update source"
-#~ msgstr "Aktualizovat zdroj(e)"
-
-#, fuzzy
-#~ msgid "Examining distant file of media `%s'..."
-#~ msgstr "Zkoumá se vzdálený soubor zdroje `%s'..."
-
-#~ msgid "Save and quit"
-#~ msgstr "Uložit a ukončit"
-
-#~ msgid "by size"
-#~ msgstr "podle velikosti"
-
-#~ msgid "Source: "
-#~ msgstr "Zdroj: "
-
-#~ msgid "Source"
-#~ msgstr "Zdroj"
-
-#~ msgid ""
-#~ "some packages failed to install\n"
-#~ "correctly"
-#~ msgstr ""
-#~ "některé balíčky se nenainstalovaly\n"
-#~ "správně"
-
-#~ msgid "Please wait, removing packages to allow others to be upgraded..."
-#~ msgstr ""
-#~ "Prosím počkejte, odebírám balíčky, aby mohly být jiné aktualizovány..."
-
-#~ msgid "A required program is missing (grpmi). Check your installation."
-#~ msgstr "Chybí nezbytný program (grpmi). Zkontrolujte vaši instalaci."
-
-#~ msgid "Program missing"
-#~ msgstr "Chybějící program"
-
-#~ msgid ""
-#~ "There was an error while adding the update medium via urpmi.\n"
-#~ "\n"
-#~ "This may be due to a broken or temporary unavailable mirror, or when "
-#~ "your\n"
-#~ "Mandrake Linux version (%s) is not yet / no more supported by Mandrake "
-#~ "Linux\n"
-#~ "Official Updates.\n"
-#~ "\n"
-#~ "Do you want to try another mirror?"
-#~ msgstr ""
-#~ "Při přidávání aktualizačního zdroje pomocí programu urpmi došlo k chybě.\n"
-#~ "\n"
-#~ "Chyba mohla nastat díky poškozenému nebo nedostupnému zrcadlu, nebo\n"
-#~ "tím, že verze vaší distribuce Mandrake Linux (%s) zatím / už není "
-#~ "podporována\n"
-#~ "Oficiálními aktualizacemi.\n"
-#~ "\n"
-#~ "Chcete zkusit jiné zrcadlo?"
-
-#~ msgid "Please wait, contacting mirror to initialize updates packages."
-#~ msgstr ""
-#~ "Prosím počkejte, kontaktuji zrcadlo a inicializuji aktualizace balíčků."
-
-#, fuzzy
-#~ msgid ""
-#~ "There was an unrecoverable error while updating packages information."
-#~ msgstr ""
-#~ "Při instalaci balíčků došlo k chybě:\n"
-#~ "\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Error updating medium"
-#~ msgstr "Chyba při čtení souboru\n"
-
-#~ msgid "Please wait, contacting mirror to update packages information."
-#~ msgstr ""
-#~ "Prosím počkejte, kontaktuji zrcadlo a stahuji poslední informace o "
-#~ "aktualizacích."
-
-#~ msgid "Everything already installed (is this supposed to happen at all?)."
-#~ msgstr "Vše je již nainstalováno. (Může tento stav vůbec nastat?)"
-
-#, fuzzy
-#~ msgid "Everything already installed."
-#~ msgstr "Všechno bylo úspěšně nainstalováno."
-
-#~ msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
-#~ msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-2,*-r-*"
-
-#~ msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
-#~ msgstr "-misc-fixed-medium-r-normal-*-12-*-*-*-c-*-iso8859-2"
-
-#~ msgid "Couldn't read RPM config files"
-#~ msgstr "Nelze číst soubory s nastavením RPM"
-
-#~ msgid "Couldn't open file\n"
-#~ msgstr "Nelze otevřít soubor\n"
-
-#~ msgid "Could not read lead bytes\n"
-#~ msgstr "Nelze načíst úvodní bajty\n"
-
-#~ msgid "RPM version of package doesn't support signatures\n"
-#~ msgstr "Verze RPM balíčku nepodporuje signatury\n"
-
-#~ msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-#~ msgstr "Nelze načíst blok se signaturou (selhalo `rpmReadSignature')\n"
-
-#~ msgid "No signatures\n"
-#~ msgstr "Žádné signatury\n"
-
-#~ msgid "`makeTempFile' failed!\n"
-#~ msgstr "selhalo `makeTempFile'!\n"
-
-#~ msgid "Error writing temp file\n"
-#~ msgstr "Chyba při zápisu dočasného souboru\n"
-
-#~ msgid "No GPG signature in package\n"
-#~ msgstr "V balíčku není přítomna žádná signatura GPG\n"
-
-#~ msgid "Couldn't open RPM DB for writing (not superuser?)"
-#~ msgstr "Nelze otevřít databázi RPM pro zápis (nejste superuživatel?)"
-
-#~ msgid "Couldn't open RPM DB for writing"
-#~ msgstr "Nelze otevřít databázi RPM pro zápis"
-
-#~ msgid "Couldn't start transaction"
-#~ msgstr "Nelze zahájit transakci"
-
-#~ msgid "Package `%s' is corrupted\n"
-#~ msgstr "Balíček `%s' je poškozen\n"
-
-#~ msgid "Error while checking dependencies"
-#~ msgstr "Nastala chyba při kontrole závislostí"
-
-#~ msgid "is needed by"
-#~ msgstr "je vyžadován"
-
-#~ msgid "Error while checking dependencies 2"
-#~ msgstr "Nastala chyba při kontrole závislostí 2"
-
-#~ msgid "Problems occurred during installation:\n"
-#~ msgstr "Při instalaci se objevily problémy:\n"
-
-#~ msgid ""
-#~ "Cleanup question: there was an error during installation, do you want to\n"
-#~ "remove the %d downloaded package(s)?\n"
-#~ "(they are located in %s)"
-#~ msgstr ""
-#~ "Dotaz k úklidu: při instalaci nastala chyba, chcete odstranit\n"
-#~ "%d stažených balíčků?\n"
-#~ "(jsou umístěny v %s)"
-
-#~ msgid "Cleanup"
-#~ msgstr "Úklid"
-
-#~ msgid ""
-#~ "Conflicts were detected:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Install aborted."
-#~ msgstr ""
-#~ "Byly nalezeny konflikty:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Instalace přerušena"
-
-#~ msgid ""
-#~ "The following file is not valid:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Do you want to continue anyway (skipping this package)?"
-#~ msgstr ""
-#~ "Následující soubor není platný:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Chcete přesto pokračovat (a přeskočit tento balíček)?"
-
-#~ msgid "Yes to all"
-#~ msgstr "Ano všem"
-
-#~ msgid ""
-#~ "The signature of the package `%s' is not correct:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Do you want to install it anyway?"
-#~ msgstr ""
-#~ "Signatura balíčku `%s' není v pořádku:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Chcete balíček i přesto instalovat?"
-
-#~ msgid "Signature verification error"
-#~ msgstr "Chyba při kontrole signatury"
-
-#~ msgid "Retry download"
-#~ msgstr "Zkusit stáhnout znovu"
-
-#~ msgid ""
-#~ "There was an error downloading package:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Error: %s\n"
-#~ "Do you want to continue (skipping this package)?"
-#~ msgstr ""
-#~ "Při stahování balíčku došlo k chybě:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Chyba: %s\n"
-#~ "Chcete pokračovat (a přeskočit tento balíček)?"
-
-#~ msgid "The initialization of config files of RPM was not possible, sorry."
-#~ msgstr "Promiňte, ale nebyla možná inicializace souborů s nastavením RPM."
-
-#~ msgid "RPM initialization error"
-#~ msgstr "Chyba při inicializaci RPM"
