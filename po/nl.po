@@ -1,13 +1,13 @@
 # Translation file of RPMDrake.
 # Copyright (C) 2000-2001 Mandrakesoft
 # Tom Laermans <tom.laermans@powersource.cx>, 2000-2001.
-# Reinout van Schouwen <reinout@cs.vu.nl>, 2001
+# Reinout van Schouwen <reinout@cs.vu.nl>, 2001-2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.4\n"
 "POT-Creation-Date: 2002-12-05 19:52+0100\n"
-"PO-Revision-Date: 2002-08-30 13:26+0100\n"
+"PO-Revision-Date: 2003-02-21 20:04+0100\n"
 "Last-Translator: Reinout van Schouwen <reinout@cs.vu.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgid ""
 "This tool will help you choose the updates you want to install on your\n"
 "computer."
 msgstr ""
-"Welkom bij Mandrake Vernieuwingen!\n"
+"Welkom bij Mandrake Vernieuwen!\n"
 "\n"
 "Dit hulpprogramma helpt u bij het kiezen van de vernieuwingen dit u op\n"
 "uw computer wilt installeren."
@@ -67,20 +67,20 @@ msgstr ""
 "computer wilt verwijderen."
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
 "\n"
 "%s"
 msgstr ""
-"Er is een probleem opgetreden tijdens de installatie:\n"
+"Er is een probleem opgetreden tijdens het verwijderen van pakketten:\n"
 "\n"
 "%s"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid "Problem during removal"
-msgstr "Er is een probleem opgetreden bij het installeren"
+msgstr "Probleem bij het verwijderen"
 
 #: ../rpmdrake:1
 #, c-format
@@ -243,9 +243,9 @@ msgid "Remove .%s"
 msgstr ".%s verwijderen"
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid "changes:"
-msgstr "Veranderingen opslaan"
+msgstr "veranderingen:"
 
 #: ../rpmdrake:1
 #, c-format
@@ -305,7 +305,7 @@ msgstr ""
 "u het Software-Bronnenbeheer en voegt u een `Beveiligingsvernieuwingen'-\n"
 "bron toe.\n"
 "\n"
-"Daarna herstart u Mandrake Vernieuwingen."
+"Daarna herstart u Mandrake Vernieuwen."
 
 #: ../rpmdrake:1
 #, c-format
@@ -352,7 +352,7 @@ msgstr "Softwarepakketten installeren"
 #: ../rpmdrake:1 data/mandrakeupdate.desktop.in.h:1
 #, c-format
 msgid "Mandrake Update"
-msgstr "Mandrake Vernieuwingen"
+msgstr "Mandrake Vernieuwen"
 
 #: ../rpmdrake:1
 #, c-format
@@ -370,10 +370,14 @@ msgid "Install"
 msgstr "Installeren"
 
 #  Removable media
+#
+#  I don't know why it says 'removable media' here, but translating
+#  it in the sense of taking out the media is definately wrong!
+#  -Reinout
 #: ../rpmdrake:1 ../edit-urpm-sources.pl:1
 #, c-format
 msgid "Remove"
-msgstr "Verwisselen"
+msgstr "Verwijderen"
 
 #: ../rpmdrake:1
 #, c-format
@@ -650,6 +654,9 @@ msgid ""
 "Removing these packages would break your system, sorry:\n"
 "\n"
 msgstr ""
+"Sorry, maar het verwijderen van deze pakketten zou uw systeem\n"
+"beschadigen:\n"
+"\n"
 
 #: ../rpmdrake:1
 #, c-format
@@ -673,15 +680,15 @@ msgid "More information on package..."
 msgstr "Meer informatie over pakket..."
 
 #: ../rpmdrake:1
-#, fuzzy, c-format
+#, c-format
 msgid "Information on packages"
-msgstr "Meer informatie over pakket..."
+msgstr "Informatie over pakketten..."
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../rpmdrake:1
 #, c-format
 msgid "More infos"
-msgstr ""
+msgstr "Meer info"
 
 #: ../rpmdrake:1
 #, c-format
@@ -838,7 +845,7 @@ msgstr "Wachtwoord:"
 #: ../edit-urpm-sources.pl:1
 #, c-format
 msgid "User:"
-msgstr "Gebruiker"
+msgstr "Gebruiker:"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -995,9 +1002,9 @@ msgid "Local files"
 msgstr "Lokale bestanden"
 
 #: ../edit-urpm-sources.pl:1
-#, fuzzy, c-format
+#, c-format
 msgid "Add a source"
-msgstr "Bezig met toevoegen van bron:"
+msgstr "Bron toevoegen"
 
 #: ../edit-urpm-sources.pl:1
 #, c-format
@@ -1028,27 +1035,27 @@ msgstr "Even geduld, bezig met verversen van media..."
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Download of `%s', speed:%s"
-msgstr ""
+msgstr "Downloaden van `%s', snelheid:%s"
 
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Download of `%s', time to go:%s, speed:%s"
-msgstr ""
+msgstr "Downloaden van `%s', tijd over:%s, snelheid:%s"
 
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Local file `%s' already up to date"
-msgstr ""
+msgstr "Lokaal bestand `%s' al up-to-date"
 
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Starting download of `%s'..."
-msgstr ""
+msgstr "Downloadproces van `%s' starten..."
 
 #: ../rpmdrake.pm:1
 #, c-format
 msgid "Copying local file `%s'..."
-msgstr ""
+msgstr "Kopiëren van lokaal bestand `%s'..."
 
 #: ../rpmdrake.pm:1
 #, c-format
