@@ -69,8 +69,8 @@ sub interactive_msg {
 		    0, gtkpack(create_hbox(),
 			       $options->{yesno} ? (gtksignal_connect(new Gtk::Button($options->{text}{yes} || _("Yes")),
 								      clicked => sub { $d->{retval} = 1; Gtk->main_quit }),
-						    gtksignal_connect(new Gtk::Button($options->{test}{no} || _("No")), clicked =>
-								      sub { $d->{retval} = 0; Gtk->main_quit }))
+						    gtksignal_connect(new Gtk::Button($options->{text}{no} || _("No")),
+								      clicked => sub { $d->{retval} = 0; Gtk->main_quit }))
 			       : gtksignal_connect(new Gtk::Button(_("Ok")), clicked => sub { Gtk->main_quit })
 			      )));
     $d->main;
