@@ -220,11 +220,11 @@ sub proxy_callback {
     my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry, $proxypasswordentry);
     gtkadd($w->{window},
 	   gtkpack__(Gtk2::VBox->new(0, 5),
-		     Gtk2::Label->new(N("If you need a proxy, enter the hostname and an optional port (syntax: <proxyhost[:port]>):")),
+		     gtkset_justify(Gtk2::Label->new(N("If you need a proxy, enter the hostname and an optional port (syntax: <proxyhost[:port]>):")), 'center'),
 		     gtkpack_(Gtk2::HBox->new(0, 10),
 			      0, gtkset_active($proxybutton = Gtk2::CheckButton->new(N("Proxy hostname:")), to_bool($proxy)),
 			      1, gtkset_sensitive($proxyentry = gtkentry($proxy), to_bool($proxy))),
-		     Gtk2::Label->new(N("You may specify a user/password for the proxy authentication:")),
+		     gtkset_justify(Gtk2::Label->new(N("You may specify a user/password for the proxy authentication:")), 'center'),
 		     gtkpack_(Gtk2::HBox->new(0, 10),
 			      0, gtkset_active($proxyuserbutton = Gtk2::CheckButton->new(N("User:")), to_bool($proxy_user)),
 			      1, gtkset_sensitive($proxyuserentry = gtkentry($user), to_bool($proxy_user)),
