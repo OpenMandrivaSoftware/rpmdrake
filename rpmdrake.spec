@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 19mdk
+%define release 20mdk
 
 Name: %{name}
 Version: %{version}
@@ -60,14 +60,10 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 builddir=`pwd`; rm -f $builddir/title.lang
 pushd $RPM_BUILD_ROOT/%{_prefix}/share/rpmdrake/icons/title
 for po in *; do
-		pushd $po
-		for file in *.png; do
-				echo "%lang($po) %{_prefix}/share/rpmdrake/icons/title/$po/$file" >> $builddir/title.lang
-		done
-		popd
+		echo "%lang($po) %{_prefix}/share/rpmdrake/icons/title/$po" >> $builddir/title.lang
 done
 popd
-#cat title.lang >> rpmdrake.lang
+cat title.lang >> rpmdrake.lang
 
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cat > $RPM_BUILD_ROOT%{_menudir}/%{name} << EOF
@@ -109,9 +105,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/MandrakeUpdate
 %{_sbindir}/edit-urpm-sources.pl
 %{_bindir}/*
-%{_datadir}/rpmdrake/compss*
-%{_datadir}/rpmdrake/desktop
-%{_datadir}/rpmdrake/icons/*.png
+%{_datadir}/%{name}/compss*
+%{_datadir}/%{name}/desktop
+%{_datadir}/%{name}/icons/*.png
 %{perl_vendorlib}/*.pm
 %{_menudir}/%{name}
 %{_iconsdir}/*.png
@@ -127,6 +123,13 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Wed Sep  4 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-20mdk
+- maximum information also provides info about currently installed
+  package(s)
+- add option "--no-verify-rpm" to not verify packages signatures
+- have an icon in the top banner, and also have nice looking pre
+  rendered (png) i18n's titles for iso8859-15? compatible po's
+
 * Tue Sep  3 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-19mdk
 - fix should not report "everything installed successfully" when not
 - colorize the .rpmnew/.rpmsave diff
