@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.1.5
-%define release 13mdk
+%define version 2.2
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
@@ -108,6 +108,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Nov 09 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.2-1mdk
+- Make the changelog-first option configurable in ~/.rpmdrake (cf bug 11888)
+- Less unnecessary package tree rebuilding
+- Can search packages whose names contain a '+'
+- Allow branding via an OEM file
+
 * Tue Oct 05 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-13mdk
 - Language updates
 - Adaptation to the new update mirror architecture
