@@ -937,7 +937,7 @@ sub mainwindow {
 	    $urpm->update_media(noclean => 1, nolock => 1);
 	}
 	$list->clear;
-	$list->append_set([ 0 => !$_->{ignore}, 1 => $_->{name} ]) foreach @{$urpm->{media}};
+	$list->append_set([ 0 => !$_->{ignore}, 1 => $_->{name} ]) foreach grep { ! $_->{external} } @{$urpm->{media}};
         $reorder_ok = 1;
     };
     $reread_media->();
