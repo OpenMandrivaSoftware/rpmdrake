@@ -6,17 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi 8.1\n"
-"POT-Creation-Date: 2002-08-06 13:59+0200\n"
-"PO-Revision-Date: 1999-08-17 16:56+0200\n"
+"POT-Creation-Date: 2002-08-12 01:43+0200\n"
+"PO-Revision-Date: 2002-08-18 14:49+0300\n"
 "Last-Translator: Riho Kurg <rx@linux.ee>\n"
-"Language-Team: Estonian\n"
+"Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.6\n"
 
 #: ../curl_download/curl_download.xs:83
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "Kataloog, kuhu salvestatakse, peab olema varem loodud"
 
 #: ../curl_download/curl_download.xs:86 ../curl_download/curl_download.xs:201
 msgid "Out of memory\n"
@@ -24,7 +25,7 @@ msgstr "Mälu ületäitumine\n"
 
 #: ../curl_download/curl_download.xs:99
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "Ei suuda avada väljundfaili lisamiseks"
 
 #: ../curl_download/curl_download.xs:121
 msgid "Unsupported protocol\n"
@@ -205,11 +206,11 @@ msgstr "Tundmatu veakood %d\n"
 
 #: ../grpmi.pl_.c:51
 msgid "Yes"
-msgstr ""
+msgstr "Jah"
 
 #: ../grpmi.pl_.c:52
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 #: ../grpmi.pl_.c:53
 msgid "Ok"
@@ -221,29 +222,28 @@ msgstr "Viga..."
 
 #: ../grpmi.pl_.c:63
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "Pakettide installimiseks pead olema juurkasutaja."
 
 #: ../grpmi.pl_.c:65
 msgid "RPM initialization error"
-msgstr ""
+msgstr "Viga RPM initsialiseerimisel"
 
 #: ../grpmi.pl_.c:66
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "RPM seadistuste initsialiseerimine ei ole võimalik, vabandan."
 
 #: ../grpmi.pl_.c:69
-#, fuzzy
 msgid "Initializing..."
-msgstr "Paigaldan:"
+msgstr "Initsialiseerin.."
 
 #: ../grpmi.pl_.c:90
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Laadin võrgust paketti '%s' (%s/%s).."
 
 #: ../grpmi.pl_.c:97
 msgid "Error during download"
-msgstr ""
+msgstr "Viga allalaadimisel"
 
 #: ../grpmi.pl_.c:98
 #, c-format
@@ -255,15 +255,20 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"Paketi %s\n"
+"allalaadimisel tekkis järgmine viga: \n"
+"%s\n"
+"\n"
+"Kas soovite jätkata (jättes selle paketi vahele)?"
 
 #: ../grpmi.pl_.c:110
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "Kontrollin signatuuri paketil '%s'"
 
 #: ../grpmi.pl_.c:112
 msgid "Signature verification error"
-msgstr ""
+msgstr "Viga signatuuri kontrollimisel"
 
 #: ../grpmi.pl_.c:113
 #, c-format
@@ -273,11 +278,13 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"Paketi '%s' signatuur on vigane: \n"
+"%s\n"
+"Kas soovite seda tõesti installida?"
 
 #: ../grpmi.pl_.c:119
-#, fuzzy
 msgid "File error"
-msgstr "Viga kirjutamisel\n"
+msgstr "Faili viga"
 
 #: ../grpmi.pl_.c:120
 #, c-format
@@ -288,15 +295,19 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"Järgnev fail on installiks sobimatu:\n"
+"\n"
+"%s\n"
+"\n"
+"Kas soovite jätkata (jättes selle paketi vahele)?"
 
 #: ../grpmi.pl_.c:135
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "Paigaldamiseks valmistumine"
+msgstr "Paigaldamiseks valmistumine.."
 
 #: ../grpmi.pl_.c:143
 msgid "Conflicts detected"
-msgstr ""
+msgstr "Leiti konfliktid"
 
 #: ../grpmi.pl_.c:144
 #, c-format
@@ -306,118 +317,117 @@ msgid ""
 "\n"
 "Do you want to force the install anyway?"
 msgstr ""
+"Leiti konfliktid:\n"
+"%s\n"
+"\n"
+"Kas soovite sellest hoolimata installida?"
 
 #: ../grpmi.pl_.c:151
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Installin paketti '%s' (%s/%s).."
 
 #: ../grpmi.pl_.c:164
 msgid "Problems occurred during installation"
 msgstr "Paigaldusel tekkinud probleemid"
 
 #: ../grpmi.pl_.c:164
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Paigaldamiseks valmistumine"
+msgstr ""
+"Installimisel juhtus järgmine viga:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:66
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "Ei saa lugeda\n"
+msgstr "Ei saa lugeda RPM konfiguratsiooni"
 
 #: ../rpm/grpmi_rpm.xs:92
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Ei saa ühenduda\n"
+msgstr "Ei saa faili avada\n"
 
 #: ../rpm/grpmi_rpm.xs:96
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "Ei leia masinanime\n"
+msgstr "Ei saa algusbaite lugeda\n"
 
 #: ../rpm/grpmi_rpm.xs:99
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "Selle paketi RPM versioon ei toeta signatuure\n"
 
 #: ../rpm/grpmi_rpm.xs:104
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "Ei saa signatuuri lugeda ('rpmReadSignature' ebaõnnestus)\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "No signatures\n"
-msgstr ""
+msgstr "Signatuur(id) puudu\n"
 
 #: ../rpm/grpmi_rpm.xs:111
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "'makeTempFile' ebaõnnestus!\n"
 
 #: ../rpm/grpmi_rpm.xs:118
 msgid "Error reading file\n"
-msgstr ""
+msgstr "Viga faili lugemisel\n"
 
 #: ../rpm/grpmi_rpm.xs:124
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "Viga ajutise faili kirjutamisel\n"
 
 #: ../rpm/grpmi_rpm.xs:147
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "GPG signatuur puudub\n"
 
 #: ../rpm/grpmi_rpm.xs:229
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "Ei saa RPM andmebaasi kirjutamiseks avada (Te ei ole juurkasutaja?)"
 
 #: ../rpm/grpmi_rpm.xs:231
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "Ei saa RPM andmebaasi kirjutamiseks avada"
 
 #: ../rpm/grpmi_rpm.xs:235
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "Ei saa transaktsiooni alustada"
 
 #: ../rpm/grpmi_rpm.xs:254
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Ei saa paketti avada"
+msgstr "Ei saa paketti '%s' avada\n"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Pakett on viga saanud"
+msgstr "Pakett '%s' on rikutud\n"
 
 #: ../rpm/grpmi_rpm.xs:262
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Paketti ei saa paigaldada"
+msgstr "Paketti '%s' ei saa installida\n"
 
 #: ../rpm/grpmi_rpm.xs:273
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Viga sõltuvuste kontrollil :("
+msgstr "Viga sõltuvuste kontrollil"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "conflicts with"
-msgstr " vastuolu paketiga %s-%s-%s"
+msgstr "vastuolu paketiga"
 
 #: ../rpm/grpmi_rpm.xs:294
-#, fuzzy
 msgid "is needed by"
-msgstr " on vajalik paketile %s-%s-%s"
+msgstr "on vajalik paketile"
 
 #: ../rpm/grpmi_rpm.xs:312
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Viga sõltuvuste kontrollil :("
+msgstr "Viga sõltuvuste teisel kontrollil "
 
 #: ../rpm/grpmi_rpm.xs:318
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Paigaldusel tekkinud probleemid"
+msgstr "Paigaldusel tekkinud probleemid:\n"
 
 #~ msgid "Installing/Upgrading Progress"
 #~ msgstr "Paigaldamise/Uuendamise edenemine"
