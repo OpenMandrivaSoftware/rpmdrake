@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sv\n"
-"POT-Creation-Date: 2002-09-02 18:54+0200\n"
+"POT-Creation-Date: 2002-09-02 21:22+0200\n"
 "PO-Revision-Date: 2002-08-31 18:08+0000\n"
 "Last-Translator: Mattias Newzella <newzella@linux.nu>\n"
 "Language-Team: svenska <sv@li.org>\n"
@@ -108,15 +108,15 @@ msgstr "Typ av källa:"
 
 #: ../edit-urpm-sources.pl_.c:124 ../edit-urpm-sources.pl_.c:183
 #: ../edit-urpm-sources.pl_.c:232 ../rpmdrake.pm_.c:78 ../rpmdrake.pm_.c:98
-#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319 ../rpmdrake_.c:778
-#: ../rpmdrake_.c:804
+#: ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319 ../rpmdrake_.c:789
+#: ../rpmdrake_.c:815
 msgid "Ok"
 msgstr "OK"
 
 #: ../edit-urpm-sources.pl_.c:127 ../edit-urpm-sources.pl_.c:175
 #: ../edit-urpm-sources.pl_.c:183 ../edit-urpm-sources.pl_.c:202
 #: ../edit-urpm-sources.pl_.c:233 ../rpmdrake.pm_.c:270 ../rpmdrake_.c:319
-#: ../rpmdrake_.c:804
+#: ../rpmdrake_.c:815
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -203,7 +203,7 @@ msgstr "Aktiverad?"
 msgid "Source"
 msgstr "Källa"
 
-#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:599
+#: ../edit-urpm-sources.pl_.c:279 ../rpmdrake_.c:610
 msgid "Remove"
 msgstr "Ta bort"
 
@@ -227,11 +227,11 @@ msgstr "Proxy..."
 msgid "Save and quit"
 msgstr "Spara och avsluta"
 
-#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:602
+#: ../edit-urpm-sources.pl_.c:290 ../rpmdrake_.c:613
 msgid "Quit"
 msgstr "Avsluta"
 
-#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:903
+#: ../edit-urpm-sources.pl_.c:300 ../rpmdrake_.c:914
 #, c-format
 msgid ""
 "%s\n"
@@ -565,7 +565,7 @@ msgstr ""
 "Tyvärr, följande paket kan inte väljas:\n"
 "\n"
 
-#: ../rpmdrake_.c:390 ../rpmdrake_.c:561
+#: ../rpmdrake_.c:390 ../rpmdrake_.c:572
 msgid "Some packages need to be removed"
 msgstr "Vissa paket måste tas bort"
 
@@ -700,6 +700,21 @@ msgid "Normal information"
 msgstr "Normal information"
 
 #: ../rpmdrake_.c:562
+#, fuzzy
+msgid "Too many packages are selected"
+msgstr "Vissa paket kan inte installeras"
+
+#: ../rpmdrake_.c:563
+msgid ""
+"Warning: it seems that you are attempting to add so much\n"
+"packages that your filesystem may run out of free diskspace,\n"
+"during or after package installation ; this is particularly\n"
+"dangerous and should be considered with care.\n"
+"\n"
+"Do you really want to install all the selected packages?"
+msgstr ""
+
+#: ../rpmdrake_.c:573
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -714,35 +729,35 @@ msgstr ""
 "\n"
 "Är det OK att fortsätta?"
 
-#: ../rpmdrake_.c:583
+#: ../rpmdrake_.c:594
 msgid "Find:"
 msgstr "Hitta:"
 
-#: ../rpmdrake_.c:588
+#: ../rpmdrake_.c:599
 msgid "Search"
 msgstr "Sök"
 
-#: ../rpmdrake_.c:600
+#: ../rpmdrake_.c:611
 msgid "Install"
 msgstr "Installera"
 
-#: ../rpmdrake_.c:611
+#: ../rpmdrake_.c:622
 msgid "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 msgstr "-adobe-times-bold-r-normal--25-*-100-100-p-*-iso8859-*,*-r-*"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:623
 msgid "Mandrake Update"
 msgstr "Uppdatera Mandrake"
 
-#: ../rpmdrake_.c:612
+#: ../rpmdrake_.c:623
 msgid "Software Packages Removal"
 msgstr "Paketborttag"
 
-#: ../rpmdrake_.c:613
+#: ../rpmdrake_.c:624
 msgid "Software Packages Installation"
 msgstr "Paketinstallation"
 
-#: ../rpmdrake_.c:645
+#: ../rpmdrake_.c:656
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -754,24 +769,24 @@ msgstr ""
 "\n"
 "Är det OK att fortsätta?"
 
-#: ../rpmdrake_.c:649
+#: ../rpmdrake_.c:660
 msgid "Please wait, contacting mirror to update packages information."
 msgstr "Vänta, kontaktar spegel för att uppdatera paketinformation."
 
-#: ../rpmdrake_.c:651
+#: ../rpmdrake_.c:662
 msgid "Error updating medium"
 msgstr "Fel vid uppdatering av media"
 
-#: ../rpmdrake_.c:652
+#: ../rpmdrake_.c:663
 msgid "There was an unrecoverable error while updating packages information."
 msgstr ""
 "Ett fel som ej kan återställas uppstod under uppdatering av paketinformation."
 
-#: ../rpmdrake_.c:658
+#: ../rpmdrake_.c:669
 msgid "How to choose manually your mirror"
 msgstr "Hur du manuellt väljer en spegel"
 
-#: ../rpmdrake_.c:659
+#: ../rpmdrake_.c:670
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Sources Manager, and then add a `Security\n"
@@ -785,15 +800,15 @@ msgstr ""
 "\n"
 "Starta sedan om MandrakeUpdate."
 
-#: ../rpmdrake_.c:665
+#: ../rpmdrake_.c:676
 msgid "Please wait, contacting mirror to initialize updates packages."
 msgstr "Vänta, kontaktar spegel för att initiera uppdateringspaket."
 
-#: ../rpmdrake_.c:669
+#: ../rpmdrake_.c:680
 msgid "Error adding update medium"
 msgstr "Fel vid tillägg av uppdateringsmedia"
 
-#: ../rpmdrake_.c:670
+#: ../rpmdrake_.c:681
 #, c-format
 msgid ""
 "There was an error while adding the update medium via urpmi.\n"
@@ -815,50 +830,50 @@ msgstr ""
 "\n"
 "Vill du försöka med en annan spegel?"
 
-#: ../rpmdrake_.c:699
+#: ../rpmdrake_.c:710
 msgid "Please wait, finding available packages..."
 msgstr "Vänta, hittar tillgängliga paket..."
 
-#: ../rpmdrake_.c:722
+#: ../rpmdrake_.c:733
 msgid "All requested packages were installed successfully."
 msgstr "Alla begärda paket installerades utan problem."
 
-#: ../rpmdrake_.c:722
+#: ../rpmdrake_.c:733
 msgid "Everything installed successfully"
 msgstr "Allt installerades utan problem"
 
-#: ../rpmdrake_.c:725
+#: ../rpmdrake_.c:736
 msgid "Installation finished"
 msgstr "Installation slutförd"
 
-#: ../rpmdrake_.c:728
+#: ../rpmdrake_.c:739
 #, c-format
 msgid "Inspecting %s"
 msgstr "Undersöker %s"
 
-#: ../rpmdrake_.c:744
+#: ../rpmdrake_.c:755
 #, c-format
 msgid "Remove .%s"
 msgstr "Ta bort .%s"
 
-#: ../rpmdrake_.c:746
+#: ../rpmdrake_.c:757
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Använd .%s som huvudfil"
 
-#: ../rpmdrake_.c:748
+#: ../rpmdrake_.c:759
 msgid "Do nothing"
 msgstr "Gör ingenting"
 
-#: ../rpmdrake_.c:751
+#: ../rpmdrake_.c:762
 msgid "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 msgstr "-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"
 
-#: ../rpmdrake_.c:760
+#: ../rpmdrake_.c:771
 msgid "Inspect..."
 msgstr "Undersök..."
 
-#: ../rpmdrake_.c:773
+#: ../rpmdrake_.c:784
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -871,7 +886,7 @@ msgstr ""
 "Några konfigurationsfiler skapades som \".rpmnew\" eller \".rpmsave\",\n"
 "du kan nu undersöka några för att vidta åtgärder:"
 
-#: ../rpmdrake_.c:774
+#: ../rpmdrake_.c:785
 msgid ""
 "some packages failed to install\n"
 "correctly"
@@ -879,32 +894,32 @@ msgstr ""
 "vissa paket kan inte installeras\n"
 "korrekt"
 
-#: ../rpmdrake_.c:775
+#: ../rpmdrake_.c:786
 msgid "everything was installed correctly"
 msgstr "allt installerades utan problem"
 
-#: ../rpmdrake_.c:794
+#: ../rpmdrake_.c:805
 msgid "Unable to get source packages."
 msgstr "Kunde inte hämta källpaket."
 
-#: ../rpmdrake_.c:795
+#: ../rpmdrake_.c:806
 msgid "Unable to get source packages, sorry."
 msgstr "Tyvärr, kunde inte hämta källpaket."
 
-#: ../rpmdrake_.c:802
+#: ../rpmdrake_.c:813
 msgid "Change medium"
 msgstr "Byt media"
 
-#: ../rpmdrake_.c:803
+#: ../rpmdrake_.c:814
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Lägg i media med namn \"%s\" i enhet [%s]"
 
-#: ../rpmdrake_.c:811
+#: ../rpmdrake_.c:822
 msgid "Installation failed"
 msgstr "Installationen misslyckades"
 
-#: ../rpmdrake_.c:812
+#: ../rpmdrake_.c:823
 msgid ""
 "Installation failed, some files are missing.\n"
 "You may want to update your sources database."
@@ -912,35 +927,35 @@ msgstr ""
 "Installationen misslyckades, vissa filer saknas.\n"
 "Du kanske ska uppdatera din källdatabas."
 
-#: ../rpmdrake_.c:815
+#: ../rpmdrake_.c:826
 msgid "Please wait, removing packages to allow others to be upgraded..."
 msgstr "Vänta , tar bort paket för att andra ska kunna uppdateras..."
 
-#: ../rpmdrake_.c:824
+#: ../rpmdrake_.c:835
 msgid "Program missing"
 msgstr "Program saknas"
 
-#: ../rpmdrake_.c:825
+#: ../rpmdrake_.c:836
 msgid "A required program is missing (grpmi). Check your installation."
 msgstr "Ett program (grpmi) som krävs saknas. Kontrollera installationen."
 
-#: ../rpmdrake_.c:843
+#: ../rpmdrake_.c:854
 msgid "Everything already installed."
 msgstr "Allt är redan installerat."
 
-#: ../rpmdrake_.c:844
+#: ../rpmdrake_.c:855
 msgid "Everything already installed (is this supposed to happen at all?)."
 msgstr "Allt är redan installerat (ska detta hända över huvud taget?)."
 
-#: ../rpmdrake_.c:854
+#: ../rpmdrake_.c:865
 msgid "Please wait, reading packages database..."
 msgstr "Vänta, läser paketdatabas..."
 
-#: ../rpmdrake_.c:892
+#: ../rpmdrake_.c:903
 msgid "Please wait, removing packages..."
 msgstr "Vänta, tar bort paket..."
 
-#: ../rpmdrake_.c:907
+#: ../rpmdrake_.c:918
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -952,7 +967,7 @@ msgstr ""
 "Det här verktyget hjälper dig att välja vilka program du vill ta bort från\n"
 "datorn."
 
-#: ../rpmdrake_.c:912
+#: ../rpmdrake_.c:923
 msgid ""
 "Welcome to MandrakeUpdate!\n"
 "\n"
@@ -964,7 +979,7 @@ msgstr ""
 "Det här verktyget hjälper dig att välja uppdateringarna du vill\n"
 "installera på datorn."
 
-#: ../rpmdrake_.c:917
+#: ../rpmdrake_.c:928
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"

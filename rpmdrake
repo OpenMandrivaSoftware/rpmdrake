@@ -557,6 +557,17 @@ or you already installed all of them."));
 
     my $do_action = sub {
 	int(grep { $pkgs->{$_}{selected} } keys %$pkgs) or return;
+	my $size_added = sum(map { if_($_->flag_selected && !$_->flag_installed, $_->size) } @{$urpm->{depslist}});
+	if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*(1024)) {
+	    interactive_msg(_("Too many packages are selected"),
+_("Warning: it seems that you are attempting to add so much
+packages that your filesystem may run out of free diskspace,
+during or after package installation ; this is particularly
+dangerous and should be considered with care.
+
+Do you really want to install all the selected packages?"), yesno => 1)
+	      or return;
+	}
 	if ($MODE ne 'remove' && %{$urpm->{state}{ask_remove} || {}}) {
 	    interactive_msg(_("Some packages need to be removed"),
 _("The following packages have to be removed for others to be upgraded:

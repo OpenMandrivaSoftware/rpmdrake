@@ -122,6 +122,7 @@ rm -rf $RPM_BUILD_ROOT
     can't be selected, it didn't correctly display the
     dependencies
   - add symlinks in /usr/bin so that user has the binaries in his path
+  - add a warning message when it seems the user will install too much
 
 * Fri Aug 30 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-17mdk
 - rpmdrake:
