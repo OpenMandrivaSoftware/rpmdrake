@@ -118,7 +118,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
-* Wed Mar 17 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-12mdk
+* Mon Mar 22 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.1.2-12mdk
+- fix unsane big progressbar for embedded wait messages
 - rpmdrake:
   o set xwindow icon
   o fix icon in banner (use same icon as in mcc)
