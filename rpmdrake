@@ -480,7 +480,8 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 						  gtkpack(new Gtk::HBox(1, 20),
 							  gtksignal_connect(new Gtk::Button(but($MODE eq 'remove' ? _("Remove")
 												                  : _("Install"))),
-									    clicked => sub { $w->{retval} = $validate->(); Gtk->main_quit }),
+									    clicked => sub { $validate->()
+											       and $w->{retval} = 1, Gtk->main_quit }),
 							  gtksignal_connect(new Gtk::Button(but(_("Quit"))),
 									    clicked => sub { $w->{retval} = 0; Gtk->main_quit })))
 				       ))));
