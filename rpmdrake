@@ -1324,25 +1324,35 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     gurpm::init(N("Package installation..."), N("Initializing..."), transient => $w->{rwindow});
     my $distant_progress;
     my $canceled;
-    my %sources = $urpm->download_source_packages($local_sources, $list, force_local => 1,
-                                                  ask_for_medium => sub {
-                                                      interactive_msg_(N("Change medium"),
-                                                                       N("Please insert the medium named \"%s\" on device [%s]", @_),
-                                                                       yesno => 1, text => { no => N("Cancel"), yes => N("Ok"),  }) },
-                                                  callback => sub {
-                                                      my ($mode, $file, $percent) = @_;
-                                                      if ($mode eq 'start') {
-                                                          gurpm::label(N("Downloading package `%s' (%s/%s)...",
-                                                                         basename($file), ++$distant_progress, $distant_number));
-                                                          gurpm::validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
-                                                      } elsif ($mode eq 'progress') {
-                                                          gurpm::progress($percent/100);
-                                                      } elsif ($mode eq 'end') {
-                                                          gurpm::progress(1);
-                                                          gurpm::invalidate_cancel();
-                                                      }
-                                                      $canceled and return 'canceled';
-                                                  });
+    my %sources = $urpm->download_source_packages(
+	$local_sources,
+	$list,
+	force_local => 1,
+	ask_for_medium => sub {
+	    interactive_msg_(
+		N("Change medium"),
+		N("Please insert the medium named \"%s\" on device [%s]", @_),
+		yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
+	    );
+	},
+	callback => sub {
+	    my ($mode, $file, $percent) = @_;
+	    if ($mode eq 'start') {
+		gurpm::label(N("Downloading package `%s' (%s/%s)...",
+			basename($file), ++$distant_progress, $distant_number));
+		gurpm::validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
+	    } elsif ($mode eq 'progress') {
+		gurpm::progress($percent/100);
+	    } elsif ($mode eq 'end') {
+		gurpm::progress(1);
+		gurpm::invalidate_cancel();
+	    }
+	    $canceled and return 'canceled';
+	},
+	limit_rate => $urpm->{options}{'limit-rate'},
+	compress => $urpm->{options}{compress},
+	resume => $urpm->{options}{resume},
+    );
     $canceled and goto return_with_error;
     gurpm::invalidate_cancel_forever();
 
