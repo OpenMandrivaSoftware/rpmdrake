@@ -64,6 +64,7 @@ our @EXPORT = qw(
     mirrors
     choose_mirror
     make_url_mirror
+    make_url_mirror_dist
     show_urpm_progress
     update_sources
     update_sources_interactive
@@ -512,6 +513,12 @@ sub make_url_mirror {
 	$class !~ /linux/i and $release = lc($class) . "/$release";  #- handle subdirectory for corporate/clustering/etc
 	"$mirror/$release/main_updates/";
     }
+}
+
+sub make_url_mirror_dist {
+    my ($mirror) = @_;
+    $mirror =~ s!/(?:RPMS|media/main)\Z!/!;
+    $mirror;
 }
 
 sub show_urpm_progress {
