@@ -1,10 +1,8 @@
 # the domain name for gettext
 PGOAL = grpmi
 
-# perl files to search translatable strings in
-PL_FILES = ../grpmi.pl
 # C-like files to search translatable strings in
-CFILES = ../curl_download/curl_download.xs ../rpm/grpmi_rpm.xs
+CFILES = ../curl_download/curl_download.xs
 
 POFILES = $(shell ls *.po)
 MOFILES = $(POFILES:%.po=%.mo)
@@ -26,7 +24,7 @@ merge: $(PGOAL).pot
 		mv -f "$$n"t "$$n"; \
 	done
 
-$(PGOAL).pot: $(PL_FILES) $(CFILES)
+$(PGOAL).pot: $(CFILES)
 	perl_checker -q --generate-pot grpmi_tmp.pot $(PL_FILES)
 	xgettext -F -n --add-comments='-PO' \
 	--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
