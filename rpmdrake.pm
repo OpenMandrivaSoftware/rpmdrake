@@ -128,6 +128,7 @@ sub slow_func($&) {
 
 my %u2l = (
 	   at => _("Austria"),
+	   au => _("Australia"),
 	   be => _("Belgium"),
 	   br => _("Brazil"),
 	   ca => _("Canada"),
@@ -189,7 +190,8 @@ my %t2l = (
 	   'Europe/Stockholm' =>  [ qw(se no dk fi at) ],
 	   'Europe/Vienna' =>     [ qw(at de cz it) ],
 	  );
-my %sites2countries = ('proxad.net' => 'fr');
+my %sites2countries = ('proxad.net' => 'fr',
+		       'planetmirror.com' => 'au');
 
 sub mirrors {
     my ($cachedir, $class) = @_;
