@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1.5
-%define release 11mdk
+%define release 12mdk
 
 Name: %{name}
 Version: %{version}
@@ -16,20 +16,19 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrakelinux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk
-Requires: urpmi >= 4.5-11mdk gurpmi >= 4.5-11mdk
-Requires: perl-URPM >= 0.98-1mdk
-Requires: drakxtools > 10-21mdk
+Requires: perl-MDK-Common >= 1.1.18-1mdk
+Requires: urpmi >= 4.5-28mdk gurpmi >= 4.5-28mdk
+Requires: perl-URPM >= 1.03-1mdk
+Requires: drakxtools >= 10.1-11mdk
 Requires: rpmtools >= 4.5
-Requires: perl-Gtk2 >= 1.023-3mdk
+Requires: perl-Gtk2 >= 1.054-1mdk
 Requires: perl-Locale-gettext >= 1.01-7mdk
-BuildRequires: curl-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
+BuildRequires: curl-devel >= 7.12.1-1mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
 URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
 Obsoletes: MandrakeUpdate
 Provides: MandrakeUpdate
-Conflicts: perl-URPM < 0.84
 Conflicts: drakconf < 10-0.8mdk
 
 %description
@@ -126,6 +125,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Sep 30 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-12mdk
+- Presentation and translation nits
+- Upgrade dependencies
+
 * Thu Sep 23 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-11mdk
 - The "Update media" button wasn't active when it should
 
