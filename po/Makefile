@@ -3,10 +3,7 @@ PGOAL = rpmdrake
 
 # perl files to search translatable strings in
 PL_FILES = ../rpmdrake ../edit-urpm-sources.pl ../rpmdrake.pm
-# C-like files to search translatable strings in
-#CFILES = 
 
-PL_CFILES = $(PL_FILES:%=%_.c)
 POFILES = $(shell ls *.po)
 MOFILES = $(POFILES:%.po=%.mo)
 LANGS = $(POFILES:%.po=%)
@@ -24,9 +21,6 @@ all: $(PGOAL).pot $(MOFILES)
 	@if [ -z "`echo $(IGNOREPOMS) | grep $<`" ]; then cat $< "$<"m >> "$<"f; else cp $< "$<"f; fi
 	msgfmt -o $@ "$<"f
 
-$(PL_CFILES): %_.c: %
-	../grpmi/po/fake_c.pl $< > $@
-
 merge: $(PGOAL).pot
 	@for n in $(POFILES); do \
 		echo "Merging $$n"; \
@@ -35,12 +29,10 @@ merge: $(PGOAL).pot
 		./get_from_compssusers.pl "$$n" > "$$n"m; \
 	done
 
-$(PGOAL).pot: $(PL_CFILES) $(CFILES)
-	INTLTOOL_EXTRACT=./intltool-extract ./intltool-update --gettext-package rpmdrake --pot
-	xgettext -j -F -n --add-comments='-PO' \
-	--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
-	--language=C -o $@ $(PL_CFILES) $(CFILES)
-	@rm -rf $(PL_CFILES)
+$(PGOAL).pot: $(PL_FILES)
+	INTLTOOL_EXTRACT=./intltool-extract ./intltool-update --gettext-package desktopstuff --pot
+	perl_checker -q --generate-pot rpmdrake_tmp.pot $(PL_FILES)
+	msgcat rpmdrake_tmp.pot desktopstuff.pot > $@
 
 install:
 	for l in $(LANGS); do \
@@ -49,5 +41,5 @@ install:
 	done
 
 clean:
-	@rm -rf *.mo *.pof $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot
+	@rm -rf *.mo *.pof $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot desktopstuff.pot rpmdrake_tmp.pot
 

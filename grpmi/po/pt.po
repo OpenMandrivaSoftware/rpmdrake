@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi-pt\n"
-"POT-Creation-Date: 2003-02-13 16:02+0100\n"
+"POT-Creation-Date: 2003-02-21 00:37+0100\n"
 "PO-Revision-Date: 2003-02-14 08:31+0100\n"
 "Last-Translator: Fernando Ribeiro <fa.ribeiro(at)gmx.net>\n"
 "Language-Team: Portugal\n"
@@ -207,172 +207,6 @@ msgstr "Ordem de chamada incorrecta\n"
 msgid "Unknown error code %d\n"
 msgstr "Código de erro desconhecido %d\n"
 
-#: ../grpmi.pl_.c:65 ../grpmi.pl_.c:119 ../grpmi.pl_.c:145
-msgid "Yes"
-msgstr "Sim"
-
-#: ../grpmi.pl_.c:66 ../grpmi.pl_.c:119 ../grpmi.pl_.c:120 ../grpmi.pl_.c:145
-#: ../grpmi.pl_.c:146
-msgid "No"
-msgstr "Não"
-
-#: ../grpmi.pl_.c:67
-msgid "Ok"
-msgstr "Ok"
-
-#: ../grpmi.pl_.c:74
-msgid "Error..."
-msgstr "Erro..."
-
-#: ../grpmi.pl_.c:75
-msgid "You need to be root to install packages, sorry."
-msgstr "Necessita ser root para instalar pacotes, lamento."
-
-#: ../grpmi.pl_.c:77
-msgid "RPM initialization error"
-msgstr "Erro de inicialização RPM"
-
-#: ../grpmi.pl_.c:78
-msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
-"A inicialização dos ficheiros de configuração de RPM não foi possível, "
-"lamento."
-
-#: ../grpmi.pl_.c:84
-msgid "Initializing..."
-msgstr "A inicializar..."
-
-#: ../grpmi.pl_.c:107
-#, c-format
-msgid "Downloading package `%s' (%s/%s)..."
-msgstr "A descarregar o pacote '%s' (%s/%s)..."
-
-#: ../grpmi.pl_.c:112
-msgid "Error during download"
-msgstr "Erro ao descarregar"
-
-#: ../grpmi.pl_.c:113
-#, c-format
-msgid ""
-"There was an error downloading package:\n"
-"\n"
-"%s\n"
-"\n"
-"Error: %s\n"
-"Do you want to continue (skipping this package)?"
-msgstr ""
-"Houve um erro ao descarregar o pacote:\n"
-"\n"
-"%s\n"
-"\n"
-"Erro: %s\n"
-"Deseja continuar (ignorando este pacote)?"
-
-#: ../grpmi.pl_.c:119 ../grpmi.pl_.c:121
-msgid "Retry download"
-msgstr "Tentar outra vez o descarregamento"
-
-#: ../grpmi.pl_.c:137
-#, c-format
-msgid "Verifying signature of `%s'..."
-msgstr "A verificar a assinatura de '%s'..."
-
-#: ../grpmi.pl_.c:139
-msgid "Signature verification error"
-msgstr "Erro ao verificar a assinatura"
-
-#: ../grpmi.pl_.c:140
-#, c-format
-msgid ""
-"The signature of the package `%s' is not correct:\n"
-"\n"
-"%s\n"
-"Do you want to install it anyway?"
-msgstr ""
-"A assinatura do pacote '%s' não é correcta:\n"
-"\n"
-"%s\n"
-"Deseja instalá-lo na mesma?"
-
-#: ../grpmi.pl_.c:145 ../grpmi.pl_.c:147
-msgid "Yes to all"
-msgstr "Sim para tudo"
-
-#: ../grpmi.pl_.c:150
-msgid "File error"
-msgstr "Erro de ficheiro"
-
-#: ../grpmi.pl_.c:151
-#, c-format
-msgid ""
-"The following file is not valid:\n"
-"\n"
-"%s\n"
-"\n"
-"Do you want to continue anyway (skipping this package)?"
-msgstr ""
-"O ficheiro seguinte não é válido:\n"
-"\n"
-"%s\n"
-"\n"
-"Deseja continuar (ignorando este pacote)?"
-
-#: ../grpmi.pl_.c:167
-msgid "Preparing packages for installation..."
-msgstr "A preparar o pacotes para a instalação..."
-
-#: ../grpmi.pl_.c:175
-msgid "Conflicts detected"
-msgstr "Detectados conflitos"
-
-#: ../grpmi.pl_.c:176
-#, c-format
-msgid ""
-"Conflicts were detected:\n"
-"%s\n"
-"\n"
-"Install aborted."
-msgstr ""
-"Foram detectados conflitos: \n"
-"%s\n"
-"\n"
-"Instalação interrompida."
-
-#: ../grpmi.pl_.c:185
-#, c-format
-msgid "Installing package `%s' (%s/%s)..."
-msgstr "A instalar o pacote '%s' (%s/%s)..."
-
-#: ../grpmi.pl_.c:199
-msgid "Problems occurred during installation"
-msgstr "Ocorreram problemas durante a instalação"
-
-#: ../grpmi.pl_.c:199
-#, c-format
-msgid ""
-"There was an error during packages installation:\n"
-"\n"
-"%s"
-msgstr ""
-"Ocorreu um erro durante a instalação dos pacotes:\n"
-"\n"
-"%s"
-
-#: ../grpmi.pl_.c:210
-msgid "Cleanup"
-msgstr "Limpar"
-
-#: ../grpmi.pl_.c:211
-#, c-format
-msgid ""
-"Cleanup question: there was an error during installation, do you want to\n"
-"remove the %d downloaded package(s)?\n"
-"(they are located in %s)"
-msgstr ""
-"Limpar: correu um erro durante a instalação, deseja remover os\n"
-"%d pacote(s) descarregado(s)?\n"
-"(encontram-se em %s)"
-
 #: ../rpm/grpmi_rpm.xs:69
 msgid "Couldn't read RPM config files"
 msgstr "Impossível ler os ficheiros de configuração do RPM"
@@ -459,6 +293,188 @@ msgstr "Erro ao verificar as dependências 2"
 #: ../rpm/grpmi_rpm.xs:323
 msgid "Problems occurred during installation:\n"
 msgstr "Problemas encontrados durante a instalação:\n"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"Cleanup question: there was an error during installation, do you want to\n"
+"remove the %d downloaded package(s)?\n"
+"(they are located in %s)"
+msgstr ""
+"Limpar: correu um erro durante a instalação, deseja remover os\n"
+"%d pacote(s) descarregado(s)?\n"
+"(encontram-se em %s)"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Cleanup"
+msgstr "Limpar"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"There was an error during packages installation:\n"
+"\n"
+"%s"
+msgstr ""
+"Ocorreu um erro durante a instalação dos pacotes:\n"
+"\n"
+"%s"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Problems occurred during installation"
+msgstr "Ocorreram problemas durante a instalação"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Installing package `%s' (%s/%s)..."
+msgstr "A instalar o pacote '%s' (%s/%s)..."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"Conflicts were detected:\n"
+"%s\n"
+"\n"
+"Install aborted."
+msgstr ""
+"Foram detectados conflitos: \n"
+"%s\n"
+"\n"
+"Instalação interrompida."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Conflicts detected"
+msgstr "Detectados conflitos"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Preparing packages for installation..."
+msgstr "A preparar o pacotes para a instalação..."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"The following file is not valid:\n"
+"\n"
+"%s\n"
+"\n"
+"Do you want to continue anyway (skipping this package)?"
+msgstr ""
+"O ficheiro seguinte não é válido:\n"
+"\n"
+"%s\n"
+"\n"
+"Deseja continuar (ignorando este pacote)?"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "File error"
+msgstr "Erro de ficheiro"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Yes to all"
+msgstr "Sim para tudo"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "No"
+msgstr "Não"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Yes"
+msgstr "Sim"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"The signature of the package `%s' is not correct:\n"
+"\n"
+"%s\n"
+"Do you want to install it anyway?"
+msgstr ""
+"A assinatura do pacote '%s' não é correcta:\n"
+"\n"
+"%s\n"
+"Deseja instalá-lo na mesma?"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Signature verification error"
+msgstr "Erro ao verificar a assinatura"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Verifying signature of `%s'..."
+msgstr "A verificar a assinatura de '%s'..."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Retry download"
+msgstr "Tentar outra vez o descarregamento"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"There was an error downloading package:\n"
+"\n"
+"%s\n"
+"\n"
+"Error: %s\n"
+"Do you want to continue (skipping this package)?"
+msgstr ""
+"Houve um erro ao descarregar o pacote:\n"
+"\n"
+"%s\n"
+"\n"
+"Erro: %s\n"
+"Deseja continuar (ignorando este pacote)?"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Error during download"
+msgstr "Erro ao descarregar"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Downloading package `%s' (%s/%s)..."
+msgstr "A descarregar o pacote '%s' (%s/%s)..."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Initializing..."
+msgstr "A inicializar..."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "The initialization of config files of RPM was not possible, sorry."
+msgstr ""
+"A inicialização dos ficheiros de configuração de RPM não foi possível, "
+"lamento."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "RPM initialization error"
+msgstr "Erro de inicialização RPM"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "You need to be root to install packages, sorry."
+msgstr "Necessita ser root para instalar pacotes, lamento."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Error..."
+msgstr "Erro..."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Ok"
+msgstr "Ok"
 
 #~ msgid "All requested packages were installed successfully."
 #~ msgstr "Todos os pacotes pedidos foram instalados com sucesso."

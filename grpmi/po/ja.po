@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: grpmi\n"
-"POT-Creation-Date: 2003-02-13 16:02+0100\n"
+"POT-Creation-Date: 2003-02-21 00:37+0100\n"
 "PO-Revision-Date: 2000-09-13 21:10+0200\n"
 "Last-Translator: YAMAGATA Hiroo <hiyori13@alum.mit.edu>\n"
 "Language-Team: JAPANESE <ja@li.org>\n"
@@ -203,168 +203,6 @@ msgstr "コールの順序が不正\n"
 msgid "Unknown error code %d\n"
 msgstr "未知のエラーコード %d\n"
 
-#: ../grpmi.pl_.c:65 ../grpmi.pl_.c:119 ../grpmi.pl_.c:145
-msgid "Yes"
-msgstr "はい"
-
-#: ../grpmi.pl_.c:66 ../grpmi.pl_.c:119 ../grpmi.pl_.c:120 ../grpmi.pl_.c:145
-#: ../grpmi.pl_.c:146
-msgid "No"
-msgstr "いいえ"
-
-#: ../grpmi.pl_.c:67
-msgid "Ok"
-msgstr "Ok"
-
-#: ../grpmi.pl_.c:74
-msgid "Error..."
-msgstr "エラー..."
-
-#: ../grpmi.pl_.c:75
-msgid "You need to be root to install packages, sorry."
-msgstr "パッケージインストールにはroot権限が必要です"
-
-#: ../grpmi.pl_.c:77
-msgid "RPM initialization error"
-msgstr "RPM初期化エラー"
-
-#: ../grpmi.pl_.c:78
-msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr "RPM設定ファイルの初期化ができません、ごめんなさい"
-
-#: ../grpmi.pl_.c:84
-msgid "Initializing..."
-msgstr "初期化中："
-
-#: ../grpmi.pl_.c:107
-#, c-format
-msgid "Downloading package `%s' (%s/%s)..."
-msgstr "以下のパッケージダウンロード中 `%s' (%s/%s)..."
-
-#: ../grpmi.pl_.c:112
-msgid "Error during download"
-msgstr "ダウンロード中にエラー"
-
-#: ../grpmi.pl_.c:113
-#, c-format
-msgid ""
-"There was an error downloading package:\n"
-"\n"
-"%s\n"
-"\n"
-"Error: %s\n"
-"Do you want to continue (skipping this package)?"
-msgstr ""
-"以下のパッケージダウンロード中にエラー:\n"
-"\n"
-"%s\n"
-"\n"
-"エラー: %s\n"
-"このパッケージをとばして続けますか?"
-
-#: ../grpmi.pl_.c:119 ../grpmi.pl_.c:121
-msgid "Retry download"
-msgstr ""
-
-#: ../grpmi.pl_.c:137
-#, c-format
-msgid "Verifying signature of `%s'..."
-msgstr "%s の署名確認中..."
-
-#: ../grpmi.pl_.c:139
-msgid "Signature verification error"
-msgstr "署名確認エラー"
-
-#: ../grpmi.pl_.c:140
-#, c-format
-msgid ""
-"The signature of the package `%s' is not correct:\n"
-"\n"
-"%s\n"
-"Do you want to install it anyway?"
-msgstr ""
-"パッケージ `%s' の署名が不正です:\n"
-"\n"
-"%s\n"
-"それでもインストールしますか?"
-
-#: ../grpmi.pl_.c:145 ../grpmi.pl_.c:147
-#, fuzzy
-msgid "Yes to all"
-msgstr "すべて選ぶ"
-
-#: ../grpmi.pl_.c:150
-msgid "File error"
-msgstr "ファイルエラー"
-
-#: ../grpmi.pl_.c:151
-#, c-format
-msgid ""
-"The following file is not valid:\n"
-"\n"
-"%s\n"
-"\n"
-"Do you want to continue anyway (skipping this package)?"
-msgstr ""
-"以下のファイルが無効です:\n"
-"\n"
-"%s\n"
-"\n"
-"このパッケージをとばしてとにかく続けますか?"
-
-#: ../grpmi.pl_.c:167
-msgid "Preparing packages for installation..."
-msgstr "インストール用にパッケージ準備中"
-
-#: ../grpmi.pl_.c:175
-msgid "Conflicts detected"
-msgstr "衝突が見つかりました"
-
-#: ../grpmi.pl_.c:176
-#, c-format
-msgid ""
-"Conflicts were detected:\n"
-"%s\n"
-"\n"
-"Install aborted."
-msgstr ""
-"衝突が見つかりました:\n"
-"%s\n"
-"\n"
-"インストール中断"
-
-#: ../grpmi.pl_.c:185
-#, c-format
-msgid "Installing package `%s' (%s/%s)..."
-msgstr "パッケージ `%s' (%s/%s)インストール中"
-
-#: ../grpmi.pl_.c:199
-msgid "Problems occurred during installation"
-msgstr "インストール中に問題が起こりました"
-
-#: ../grpmi.pl_.c:199
-#, c-format
-msgid ""
-"There was an error during packages installation:\n"
-"\n"
-"%s"
-msgstr ""
-"パッケージインストール中にエラー:\n"
-"\n"
-"%s"
-
-#: ../grpmi.pl_.c:210
-msgid "Cleanup"
-msgstr ""
-
-#: ../grpmi.pl_.c:211
-#, c-format
-msgid ""
-"Cleanup question: there was an error during installation, do you want to\n"
-"remove the %d downloaded package(s)?\n"
-"(they are located in %s)"
-msgstr ""
-
 #: ../rpm/grpmi_rpm.xs:69
 msgid "Couldn't read RPM config files"
 msgstr "RPM設定ファイルを読めません"
@@ -451,6 +289,183 @@ msgstr "依存関係のチェック 2 でエラーがでました :("
 #: ../rpm/grpmi_rpm.xs:323
 msgid "Problems occurred during installation:\n"
 msgstr "インストール中に問題が起こりました:\n"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"Cleanup question: there was an error during installation, do you want to\n"
+"remove the %d downloaded package(s)?\n"
+"(they are located in %s)"
+msgstr ""
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Cleanup"
+msgstr ""
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"There was an error during packages installation:\n"
+"\n"
+"%s"
+msgstr ""
+"パッケージインストール中にエラー:\n"
+"\n"
+"%s"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Problems occurred during installation"
+msgstr "インストール中に問題が起こりました"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Installing package `%s' (%s/%s)..."
+msgstr "パッケージ `%s' (%s/%s)インストール中"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"Conflicts were detected:\n"
+"%s\n"
+"\n"
+"Install aborted."
+msgstr ""
+"衝突が見つかりました:\n"
+"%s\n"
+"\n"
+"インストール中断"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Conflicts detected"
+msgstr "衝突が見つかりました"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Preparing packages for installation..."
+msgstr "インストール用にパッケージ準備中"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"The following file is not valid:\n"
+"\n"
+"%s\n"
+"\n"
+"Do you want to continue anyway (skipping this package)?"
+msgstr ""
+"以下のファイルが無効です:\n"
+"\n"
+"%s\n"
+"\n"
+"このパッケージをとばしてとにかく続けますか?"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "File error"
+msgstr "ファイルエラー"
+
+#: ../grpmi.pl:1
+#, fuzzy, c-format
+msgid "Yes to all"
+msgstr "すべて選ぶ"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "No"
+msgstr "いいえ"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Yes"
+msgstr "はい"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"The signature of the package `%s' is not correct:\n"
+"\n"
+"%s\n"
+"Do you want to install it anyway?"
+msgstr ""
+"パッケージ `%s' の署名が不正です:\n"
+"\n"
+"%s\n"
+"それでもインストールしますか?"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Signature verification error"
+msgstr "署名確認エラー"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Verifying signature of `%s'..."
+msgstr "%s の署名確認中..."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Retry download"
+msgstr ""
+
+#: ../grpmi.pl:1
+#, c-format
+msgid ""
+"There was an error downloading package:\n"
+"\n"
+"%s\n"
+"\n"
+"Error: %s\n"
+"Do you want to continue (skipping this package)?"
+msgstr ""
+"以下のパッケージダウンロード中にエラー:\n"
+"\n"
+"%s\n"
+"\n"
+"エラー: %s\n"
+"このパッケージをとばして続けますか?"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Error during download"
+msgstr "ダウンロード中にエラー"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Downloading package `%s' (%s/%s)..."
+msgstr "以下のパッケージダウンロード中 `%s' (%s/%s)..."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Initializing..."
+msgstr "初期化中："
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "The initialization of config files of RPM was not possible, sorry."
+msgstr "RPM設定ファイルの初期化ができません、ごめんなさい"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "RPM initialization error"
+msgstr "RPM初期化エラー"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "You need to be root to install packages, sorry."
+msgstr "パッケージインストールにはroot権限が必要です"
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Error..."
+msgstr "エラー..."
+
+#: ../grpmi.pl:1
+#, c-format
+msgid "Ok"
+msgstr "Ok"
 
 #~ msgid "http not found\n"
 #~ msgstr "http がみつかりません\n"

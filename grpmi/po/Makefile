@@ -6,7 +6,6 @@ PL_FILES = ../grpmi.pl
 # C-like files to search translatable strings in
 CFILES = ../curl_download/curl_download.xs ../rpm/grpmi_rpm.xs
 
-PL_CFILES = $(PL_FILES:%=%_.c)
 POFILES = $(shell ls *.po)
 MOFILES = $(POFILES:%.po=%.mo)
 LANGS = $(POFILES:%.po=%)
@@ -20,9 +19,6 @@ all: $(PGOAL).pot $(MOFILES)
 %.mo: %.po
 	msgfmt -o $@ $<
 
-$(PL_CFILES): %_.c: %
-	./fake_c.pl $< > $@
-
 merge: $(PGOAL).pot
 	@for n in $(POFILES); do \
 		echo "Merging $$n"; \
@@ -30,11 +26,12 @@ merge: $(PGOAL).pot
 		mv -f "$$n"t "$$n"; \
 	done
 
-$(PGOAL).pot: $(PL_CFILES) $(CFILES)
+$(PGOAL).pot: $(PL_FILES) $(CFILES)
+	perl_checker -q --generate-pot grpmi_tmp.pot $(PL_FILES)
 	xgettext -F -n --add-comments='-PO' \
 	--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
-	--language=C -o $@ $(PL_CFILES) $(CFILES)
-	@rm -rf $(PL_CFILES)
+	--language=C -o grpmi_tmp_c.pot $(CFILES)
+	msgcat grpmi_tmp_c.pot grpmi_tmp.pot > $@
 
 install:
 	for l in $(LANGS); do \
@@ -43,5 +40,5 @@ install:
 	done
 
 clean:
-	@rm -rf *.mo $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot
+	@rm -rf *.mo $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot grpmi_tmp_c.pot grpmi_tmp.pot
 
