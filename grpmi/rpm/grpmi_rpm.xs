@@ -29,6 +29,8 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <stdarg.h>
+#include <langinfo.h>
+#include <iconv.h>
 
 #include "EXTERN.h"
 #include "perl.h"
@@ -71,6 +73,30 @@ char * init_rcstuff_(void)
 	return "";
 }
 
+
+/* bad bad bad.. duplicated code from gi/perl-install/c/stuff.xs */
+char* std_to_utf8(char* s)
+{
+  iconv_t cd = iconv_open("UTF-8", nl_langinfo(CODESET));
+  char* retval = s;
+  if (cd != (iconv_t) (-1)) {
+      size_t s_len = strlen(retval);
+      /* the maximum expansion when converting happens when converting
+	 tscii to utf-8; each tscii char can become up to 4 unicode chars
+	 and each one of those unicode chars can be 3 bytes long */
+      char *buf = alloca(4 * 3 * s_len);
+      {
+	  char *ptr = buf;
+	  size_t ptr_len = 4 * 3 * s_len;
+	  if ((iconv(cd, &s, &s_len, &ptr, &ptr_len)) != (size_t) (-1)) {
+	      *ptr = 0;
+	      retval = buf;
+	  }
+      }
+      iconv_close(cd);
+  }
+  return strdup(retval);
+}
 
 /* these are in rpmlib but not in rpmlib.h */
 int readLead(FD_t fd, struct rpmlead *lead);
@@ -144,7 +170,7 @@ char * verify_sig_(char * file)
 		i = rpmVerifySignature(tmpfile, tag, ptr, count, result);
 		if (i != RPMSIG_OK) {
 			unlink(tmpfile);
-			return strdup(result);
+			return std_to_utf8(result);
 		}
 	}
 	unlink(tmpfile);
