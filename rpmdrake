@@ -842,6 +842,7 @@ or you already installed all of them."));
 
 	my $radio_by;
 	$options->{tree_submode} ||= $advanced_modes[0][0];
+	$options->{tree_subflat} ||= $advanced_modes[0][2];
 	each_index {
 	    if ($_ eq 'by') {
 		$radio_by = $modes_buttons[$::i];
@@ -862,6 +863,8 @@ or you already installed all of them."));
 		    $t->get_model->set($iter, 0, $m->[1]);
 		}
 		$t->set_active($active);
+		$options->{tree_submode} = $advanced_modes[$active][0];
+		$options->{tree_subflat} = $advanced_modes[$active][2];
 		$t->signal_connect(
 		    changed => sub {
 			my $act = $t->get_active;
