@@ -116,7 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
-* Mon Feb 17 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-7mdk
+* Fri Feb 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-7mdk
+- fix bug that prevented from having all the translations in
+  the PO (#1233)
 - rpmdrake:
   - fix locking of CD after installation (#1311)
 
