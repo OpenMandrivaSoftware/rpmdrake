@@ -23,6 +23,9 @@ all: $(MOFILES)
 	./clean_po.pl "$<"f > "$<"g
 	msgfmt -o $@ "$<"g
 
+%.pom: %.po
+	./get_from_compssusers.pl "$<" > $@
+
 merge: $(PGOAL).pot
 	@for n in $(POFILES); do \
 		echo "Merging $$n"; \
