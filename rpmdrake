@@ -249,9 +249,9 @@ sub extract_header {
 	#- preprocess changelog for faster TextView insert reaction
 	[ map { [ "$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ]
     };
+    my $name = my_fullname($pkg->{pkg});
     if ($MODE eq 'remove') {
 	@$max_info_in_descr or return;
-	my $name = my_fullname($pkg->{pkg});
 	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(`rpm -ql $name`)) || N("(none)") ],
                          changelog => $chg_prepro->(scalar(`LC_ALL=C rpm -q --changelog $name`)) });
     } else {
@@ -274,8 +274,21 @@ sub extract_header {
 						[ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ])) });
 	    $p->pack_header;
 	} else {
-	  header_non_available:
-	    add2hash($pkg, { summary => N("(Not available)"), description => undef });
+         my $synth = "$urpm->{statedir}/synthesis.$medium->{hdlist}";
+         if (-r $synth) {
+             require run_program;
+             my $found;
+             foreach (run_program::get_stdout("zcat $synth")) {
+                 if (!$found && /^\@info\@(.*)/) {
+                     $found = 1 if $1 =~ $name;
+                 } elsif ($found && /^\@summary\@(.*)/) {
+                     add2hash($pkg, { summary => $1, description => undef });
+                 }
+             }
+         } else {
+           header_non_available:
+             add2hash($pkg, { summary => N("(Not available)"), description => undef });
+         }
 	}
     }
 }
