@@ -84,6 +84,7 @@ c::bind_textdomain_codeset('rpmdrake', 'UTF8');
 our $mandrake_release = cat_(
     -e '/etc/mandrakelinux-release' ? '/etc/mandrakelinux-release' : '/etc/mandrake-release'
 ) || '';
+chomp $mandrake_release;
 (our $mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
 our $branded = -f '/etc/sysconfig/oem'
     and our %distrib = MDK::Common::System::distrib();
@@ -379,14 +380,14 @@ sub compat_arch_for_updates($) {
 
 sub mirrors {
     my ($cachedir) = @_;
-    my $distro_type = distro_type();
-    $cachedir = '/root';
+    $cachedir ||= '/root';
     my $mirrorslist = "$cachedir/mirrorsfull.list";
     unlink $mirrorslist;
     my $res = curl_download::download('http://www.mandrakelinux.com/mirrorsfull.list', $cachedir, sub {});
     $res and die $res;
     require timezone;
     my $tz = ${timezone::read()}{timezone};
+    my $distro_type = distro_type();
     my @mirrors = map { my ($arch, $url) = m|\Q$distro_type\E([^:]*):(.+)|;
 			if ($arch && compat_arch_for_updates($arch)) {
 	                    my ($land, $goodness);
@@ -408,6 +409,7 @@ sub mirrors {
 sub choose_mirror {
     my (%options) = @_;
     interactive_msg('',
+	$options{message} ? $options{message} :
 $branded
 ? N("I need to access internet to get the mirror list.
 Please check that your network is currently running.
@@ -458,25 +460,33 @@ by Mandrakelinux Official Updates.")
     my $tree_model = Gtk2::TreeStore->new("Glib::String");
     my $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
-    my $column = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0);
-    $tree->append_column($column);
+    $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, text => 0));
     $tree->set_headers_visible(0);
 
-    gtkadd($w->{window}, 
-	   gtkpack_(Gtk2::VBox->new(0,5),
-		    0, N("Please choose the desired mirror."),
-		    1, create_scrolled_window($tree),
-		    0, gtkpack(create_hbox('edge'),
-			       map {
-				   my $retv = $_->[1];
-				   gtksignal_connect(Gtk2::Button->new(but($_->[0])), clicked => sub {
-						 if ($retv) {
-						     my ($model, $iter) = $tree->get_selection->get_selected;
-						     $model and $w->{retval} = { sel => $model->get($iter, 0) };
-						 }
-						 Gtk2->main_quit })
-			       } [ N("Cancel"), 0 ], [ N("Ok"), 1 ]),
-		   ));
+    gtkadd(
+	$w->{window}, 
+	gtkpack_(
+	    Gtk2::VBox->new(0,5),
+	    0, N("Please choose the desired mirror."),
+	    1, create_scrolled_window($tree),
+	    0, gtkpack(
+		create_hbox('edge'),
+		map {
+		    my $retv = $_->[1];
+		    gtksignal_connect(
+			Gtk2::Button->new(but($_->[0])),
+			clicked => sub {
+			    if ($retv) {
+				my ($model, $iter) = $tree->get_selection->get_selected;
+				$model and $w->{retval} = { sel => $model->get($iter, 0) };
+			    }
+			    Gtk2->main_quit;
+			},
+		    )
+		} [ N("Cancel"), 0 ], [ N("Ok"), 1 ]
+	    ),
+	)
+    );
     my %roots;
     $tree_model->append_set($roots{$_->{land}} ||= $tree_model->append_set(undef, [ 0 => $_->{land} ]),
 			    [ 0 => $_->{url} ]) foreach @mirrors;
@@ -489,7 +499,7 @@ by Mandrakelinux Official Updates.")
     $path->down;
     $tree->get_selection->select_path($path);
 
-    $w->main && member($w->{retval}{sel}, map { $_->{url} } @mirrors) and $w->{retval}{sel};
+    $w->main && member($w->{retval}{sel}, map { $_->{url} } @mirrors) ? $w->{retval}{sel} : '';
 }
 
 sub make_url_mirror {
