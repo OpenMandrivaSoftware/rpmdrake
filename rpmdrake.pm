@@ -435,7 +435,21 @@ sub update_sources {
     my ($urpm, %options) = @_;
     my $w = wait_msg(my $label = Gtk2::Label->new(N("Please wait, updating media...")),
 		     widgets => [ my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1) ]);
-    $urpm->update_media(%options, callback => sub { show_urpm_progress($label, $pb, @_) });
+    $urpm->update_media(%options,
+	callback => sub {
+	    my ($type, $media) = @_;
+	    if ($type eq 'failed') {
+		fatal_msg(N("Error retrieving packages"),
+N("It's impossible to retrieve the list of new packages from the media
+`%s'. Either this update media is misconfigured, and in this case
+you should use the Software Media Manager to remove it and re-add it in order
+to reconfigure it, either it is currently unreachable and you should retry
+later.",
+    $media));
+	    } else {
+		show_urpm_progress($label, $pb, @_);
+	    }
+	});
     remove_wait_msg($w);
 }
 
