@@ -966,7 +966,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    foreach (@rpms_install, @rpms_upgrade) {
 		m|^/| && ! -e $_ or next;
 		interactive_msg_(N("Installation failed"),
-				 N("Installation failed, some files are missing.\nYou may want to update your sources database."));
+				 N("Installation failed, some files are missing.\nYou may want to update your sources database.").
+				 (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
 		die "return 1\n";
 	    }
 	    %{$urpm->{state}{ask_remove}} and slow_func(N("Please wait, removing packages to allow others to be upgraded..."),
