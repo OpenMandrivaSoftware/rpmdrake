@@ -1045,6 +1045,17 @@ Is it ok to continue?",
 			    clicked => sub { $do_action->() },
 			),
 			0, gtksignal_connect(
+			    Gtk2::Button->new(but_(N("Update media"))),
+			    clicked => sub {
+				update_sources_interactive($urpm, transient => $w->{rwindow})
+				    and do {
+					($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+					$size_selected = 0;
+					$options->{rebuild_tree}->();
+				    };
+			    }
+			),
+			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Quit"))),
 			    clicked => sub { Gtk2->main_quit },
 			)
