@@ -538,7 +538,7 @@ or you already installed all of them."));
     $search_types_optionmenu->set_menu($search_types_menu);
 
     my $menu_descr = new Gtk::Menu;
-    my @menu_descr_modes = ([ 'normal', _("Normal informations"), [] ], [ 'max', _("Maximum informations"), [1] ]);
+    my @menu_descr_modes = ([ 'normal', _("Normal information"), [] ], [ 'max', _("Maximum information"), [1] ]);
     foreach (@menu_descr_modes) {
 	my ($mode, $text, $val) = @$_;
 	$menu_descr->append(gtksignal_connect(gtkshow(new_with_label Gtk::MenuItem($text)),
