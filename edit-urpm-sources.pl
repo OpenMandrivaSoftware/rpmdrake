@@ -83,7 +83,7 @@ sub add_callback {
 								    clicked => sub { my $m = choose_mirror(transient => $w->{rwindow});
 										     if ($m) {
 											 $info->{url_entry}->set_text(make_url_mirror($m));
-											 $info->{hdlist_entry}->set_text('../base/synthesis.hdlist.cz');
+											 $info->{hdlist_entry}->set_text('media_info/synthesis.hdlist.cz');
                                                                                          $info->{hdlist_entry}->set_sensitive(1);
                                                                                          $info->{hdlist_check}->set_active(1);
 										     }
