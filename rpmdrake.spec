@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.1.4
-%define release 2mdk
+%define version 2.1.5
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
@@ -126,6 +126,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Aug 18 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.5-1mdk
+- Add a checkbox "Show automatically selected packages" 
+
 * Tue Aug 17 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.1.4-2mdk
 - Message updates
 - Fix a bug on display of fatal errors
