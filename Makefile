@@ -44,3 +44,13 @@ clean:
 	@for n in $(DIRS); do \
 		(cd $$n; make clean) \
 	done
+
+tar:
+	mkdir -p t/rpmdrake; \
+	cd t/rpmdrake; \
+	cp -a ../../* .; \
+	find -name "CVS" | xargs rm -rf; \
+	cd ..; \
+	tar jcvf ../rpmdrake.tar.bz2 rpmdrake; \
+	cd ..; \
+	rm -rf t
