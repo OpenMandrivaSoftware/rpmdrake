@@ -135,30 +135,40 @@ really want to replace it?"), yesno => 1) or return 0;
     };
 
     my ($type, $probe, %i, %make_url);
-    gtkadd($w->{window},
-	   gtkpack(Gtk2::VBox->new(0,5),
-		   Gtk2::Label->new(N("Adding a medium:")),
-		   gtkpack__(Gtk2::HBox->new(0, 0), Gtk2::Label->new(but(N("Type of medium:"))), @modes_buttons),
-		   $notebook,
-		   Gtk2::HSeparator->new,
-		   gtkpack(create_hbox(),
-			   gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub {
-						 if ($checkok->()) {
-	$w->{retval} = { nb => $notebook->get_current_page };
-	$type = $radios_names_ordered[$w->{retval}{nb}];
-	my $info = $radios_infos{$type};
-	%i = (name => $info->{name_entry}->get_text, url => $info->{url_entry}->get_text, hdlist => $info->{hdlist_entry}->get_text);
-	%make_url = (local => "file:/$i{url}", http => $i{url}, security => $i{url}, removable => "removable:/$i{url}");
-	$i{url} =~ s|^ftp://||;
-	$make_url{ftp} = sprintf "ftp://%s%s", $info->{login_check}->get_active
-	                                           ? ($info->{login_entry}->get_text.':'.$info->{pass_entry}->get_text.'@')
-						   : '',
-					       $i{url};
-        $probe = $info->{hdlist_check}->get_active == 0 || $i{hdlist} eq '';
-	Gtk2->main_quit;
-    }
-					     }),
-			   gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))));
+    gtkadd(
+	$w->{window},
+	gtkpack(
+	    Gtk2::VBox->new(0,5),
+	    Gtk2::Label->new(N("Adding a medium:")),
+	    gtkpack__(Gtk2::HBox->new(0, 0), Gtk2::Label->new(but(N("Type of medium:"))), @modes_buttons),
+	    $notebook,
+	    Gtk2::HSeparator->new,
+	    gtkpack(
+		create_hbox(),
+		gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Ok")), clicked => sub {
+			if ($checkok->()) {
+			    $w->{retval} = { nb => $notebook->get_current_page };
+			    $type = $radios_names_ordered[$w->{retval}{nb}];
+			    my $info = $radios_infos{$type};
+			    %i = (name => $info->{name_entry}->get_text, url => $info->{url_entry}->get_text, hdlist => $info->{hdlist_entry}->get_text);
+			    %make_url = (local => "file:/$i{url}", http => $i{url}, security => $i{url}, removable => "removable:/$i{url}");
+			    $i{url} =~ s|^ftp://||;
+			    $make_url{ftp} = sprintf "ftp://%s%s",
+				$info->{login_check}->get_active
+				    ? ($info->{login_entry}->get_text.':'.$info->{pass_entry}->get_text.'@')
+				    : '',
+				$i{url};
+			    $probe = $info->{hdlist_check}->get_active == 0 || $i{hdlist} eq '';
+			    Gtk2->main_quit;
+			}
+		    },
+		),
+	    ),
+	),
+    );
+
     if ($w->main) {
 	if (member($i{name}, map { $_->{name} } @{$urpm->{media}})) {
 	    standalone::explanations("Removing medium $i{name}");
@@ -211,16 +221,16 @@ sub edit_callback {
 	    0, gtkpack(
 		create_hbox(),
 		gtksignal_connect(
+		    Gtk2::Button->new(N("Cancel")),
+		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
+		),
+		gtksignal_connect(
 		    Gtk2::Button->new(N("Save changes")),
 		    clicked => sub {
 			$w->{retval} = 1;
 			($url, $with_hdlist) = ($url_entry->get_text, $hdlist_entry->get_text);
 			Gtk2->main_quit;
 		    },
-		),
-		gtksignal_connect(
-		    Gtk2::Button->new(N("Cancel")),
-		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
 		),
 		gtksignal_connect(
 		    Gtk2::Button->new(N("Proxy...")),
