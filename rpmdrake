@@ -1068,6 +1068,7 @@ Is it ok to continue?",
 				    };
 			    }
 			),
+			1, Gtk2::Label->new(''),
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Quit"))),
 			    clicked => sub { Gtk2->main_quit },
