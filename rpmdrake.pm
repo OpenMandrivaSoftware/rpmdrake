@@ -277,8 +277,16 @@ my %t2l = (
 my %sites2countries = ('proxad.net' => 'fr',
 		       'planetmirror.com' => 'au');
 
+
+sub distro_type {
+    cat_('/etc/mandrake-release') =~ /community/i ? 'community'
+      : cat_('/etc/mandrake-release') =~ /cooker/i ? 'cooker'
+	: 'updates';
+}
+
 sub mirrors {
-    my ($cachedir, $class) = @_;
+    my ($cachedir) = @_;
+    my $distro_type = distro_type();
     $cachedir = '/root';
     my $mirrorslist = "$cachedir/mirrorsfull.list";
     unlink $mirrorslist;
@@ -286,7 +294,7 @@ sub mirrors {
     $res and die $res;
     require timezone;
     my $tz = ${timezone::read()}{timezone};
-    my @mirrors = map { my ($arch, $url) = m|\Q$class\E([^:]*):(.+)|;
+    my @mirrors = map { my ($arch, $url) = m|\Q$distro_type\E([^:]*):(.+)|;
 			if ($arch && MDK::Common::System::compat_arch($arch)) {
 	                    my ($land, $goodness);
 			    $url =~ m|\.\Q$_\E/| and $land = $_ foreach keys %u2l;
@@ -308,10 +316,7 @@ Please check that your network is currently running.
 Is it ok to continue?"), yesno => 1) or return '';
     my $wait = wait_msg(N("Please wait, downloading mirrors addresses from MandrakeSoft website."));
     my @mirrors;
-    my $class = cat_('/etc/mandrake-release') =~ /community/i ? 'community'
-              : cat_('/etc/mandrake-release') =~ /cooker/i ? 'cooker'
-              : 'updates';
-    eval { @mirrors = mirrors('/var/cache/urpmi', $class) };
+    eval { @mirrors = mirrors('/var/cache/urpmi') };
     remove_wait_msg($wait);
     if ($@) {
 	my $msg = $@;  #- seems that value is bitten before being printed by next func..
@@ -372,9 +377,14 @@ by Mandrake Linux Official Updates.")), return '';
 
 sub make_url_mirror {
     my ($mirror) = @_;
-    my ($class, $release) = cat_('/etc/mandrake-release') =~ /(\S+)\s+release\s+(\S+)/;
-    $class !~ /linux/i and $release = lc($class) . "/$release";  #- handle subdirectory for corporate/clustering/etc
-    return "$mirror/$release/RPMS/";
+    if ($mirror =~ m!/RPMS$!) {
+	#- esp. for distro_type() =~ /cooker|community/
+	"$mirror/";
+    } else {
+	my ($class, $release) = cat_('/etc/mandrake-release') =~ /(\S+)\s+release\s+(\S+)/;
+	$class !~ /linux/i and $release = lc($class) . "/$release";  #- handle subdirectory for corporate/clustering/etc
+	"$mirror/$release/RPMS/";
+    }
 }
 
 sub show_urpm_progress {
