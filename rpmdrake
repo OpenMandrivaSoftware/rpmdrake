@@ -33,7 +33,7 @@ $> and (exec {'consolehelper'} $0, @ARGV or die "consolehelper missing");
 use lib qw(/usr/lib/libDrakX);
 
 use strict;
-use vars qw($MODE %options $typical_width $max_info_in_descr);
+use vars qw($MODE %options $typical_width $max_info_in_descr $fake_modality);
 
 use rpmdrake;
 
@@ -417,20 +417,22 @@ or you already installed all of them."));
 				     my ($name, $version) = split_fullname($key);
 				     exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 				       or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
-				     my $max_info = if_(@$max_info_in_descr, _("%sFiles:\n%s\n\nChangelog:\n%s",
-					   $MODE eq 'remove' ? '' : _("Source: %s\n", pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name}),
-					   $pkgs->{$key}{files} || _("(Not available)"),
-					   $pkgs->{$key}{changelog} || _("(Not available)")));
-				     if ($MODE eq 'update') {
-					 gtktext_insert($info_update, beautify_description($descriptions->{$name}{pre}));
-					 _("Name: %s\nVersion: %s\nSize: %s KB\nImportance: %s\n\nSummary: %s\n\n%s\n",
-					   $name, $version, int($pkgs->{$key}{pkg}->size/1024), $descriptions->{$name}{importance},
-					   $pkgs->{$key}{summary}, beautify_description($descriptions->{$name}{description})) . $max_info
-				     } else {
-					 _("Name: %s\nVersion: %s\nSize: %s KB\n\nSummary: %s\n\n%s\n",
-					   $name, $version, int($pkgs->{$key}{pkg}->size/1024),
-					   $pkgs->{$key}{summary}, $pkgs->{$key}{description}) . $max_info
-				     }
+				     my @max_info = if_(@$max_info_in_descr,
+							$MODE eq 'remove' ? ()
+							    : [ "\n", _("Source: "), pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ],
+							[ "\n",   _("Files:\n"), $pkgs->{$key}{files} || _("(Not available)") ],
+							[ "\n\n", _("Changelog:\n"), $pkgs->{$key}{changelog} || _("(Not available)") ]);
+				     my $col = my_gtk::gtkcolor(32*256, 68*256, 157*256);
+				     $MODE eq 'update' and gtktext_insert($info_update,
+							      [ [ undef, $col, undef, _("Reason for update: ") ],
+								[ undef, undef, undef, beautify_description($descriptions->{$name}{pre}) ] ]);
+				     my @fields = ([ '',     _("Name: "), $name ],
+						   [ "\n",   _("Version: "), $version ],
+						   [ "\n",   _("Size: "), _("%s KB", int($pkgs->{$key}{pkg}->size/1024)) ],
+						   if_($MODE eq 'update', [ "\n", _("Importance: "), $descriptions->{$name}{importance} ]),
+						   [ "\n\n", _("Summary: "), $pkgs->{$key}{summary} ],
+						   [ "\n\n", _("Description: "), $pkgs->{$key}{description} ]);
+				     [ map { [ undef, $col, undef, $_->[0].$_->[1] ], [ undef, undef, undef, $_->[2] ] } @fields, @max_info ];
 				 },
 		   check_interactive_to_toggle => sub { 1 },
 		   grep_allowed_to_toggle => sub { @_ },
@@ -556,6 +558,8 @@ or you already installed all of them."));
     my $find_callback = sub { do_search($find_entry, $tree, $options, $current_search_type, $urpm, $pkgs) };
 
     my $do_action = sub {
+	$fake_modality and return;
+	$fake_modality = 1;
 	int(grep { $pkgs->{$_}{selected} } keys %$pkgs) or return;
 	my $size_added = sum(map { if_($_->flag_selected && !$_->flag_installed, $_->size) } @{$urpm->{depslist}});
 	if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*(1024)) {
@@ -582,6 +586,7 @@ Is it ok to continue?", $formatlistpkg->(sort { $a cmp $b } keys %{$urpm->{state
 	$size_selected = 0;
 	(undef, $size_free) = MDK::Common::System::df('/usr');
 	$options->{rebuild_tree}->();
+	$fake_modality = 0;
     };
 
     my $darea;
@@ -776,8 +781,16 @@ sub dialog_rpmnew {
 						       clicked => sub { Gtk->main_quit }),
 				    )));
 	my $fixedfont = Gtk::Gdk::Font->fontset_load(_("-misc-fixed-medium-r-normal--12-*-*-100--*-*-*-*-*,*"));
-	my %contents = (file => scalar(cat_($file)), rpmnew => scalar(cat_($rpmnew)), diff => join('', `diff -u $file $rpmnew`));
+	my %contents = (file => scalar(cat_($file)), rpmnew => scalar(cat_($rpmnew)));
 	$texts{$_}->insert($fixedfont, undef, undef, $contents{$_}) foreach keys %contents;
+	foreach my $line (`diff -u $file $rpmnew`) {
+	    my %c = (red => my_gtk::gtkcolor(0xFFFF, 655, 655), green => my_gtk::gtkcolor(0x0, 0x9898,0x0),
+		     cyan => my_gtk::gtkcolor(0x0, 0x9898, 0x9898), blue => my_gtk::gtkcolor(655, 655, 0xFFFF));
+	    my @regexps = ([ '^(--- )|(\+\+\+ )', $c{blue} ], [ '^@@ ', $c{cyan} ], [ '^-', $c{red} ], [ '^\+', $c{green} ]);
+	    my $color;
+	    $line =~ /$_->[0]/ and $color ||= $_->[1] foreach @regexps;
+	    $texts{diff}->insert($fixedfont, $color, undef, $line);
+	}
 	$d->main;
     };
     my $packtable = create_packtable({},
