@@ -664,6 +664,11 @@ or you already installed all of them."));
 		   rebuild_tree => sub {},
 		  };
 
+    if (my @initial_selection = grep { $pkgs->{$_}{selected} } keys %$pkgs) {
+        $options->{initial_selection} = \@initial_selection;
+        $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
+    }
+
     $tree_model = Gtk2::TreeStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
     $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');

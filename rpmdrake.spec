@@ -16,7 +16,7 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
-Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.4.1 gurpmi >= 4.4.1 perl-URPM >= 0.90-7mdk drakxtools > 10-0.16mdk rpmtools >= 4.5
+Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.4.1 gurpmi >= 4.4.1 perl-URPM >= 0.90-7mdk drakxtools > 10-11mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-6mdk perl-Locale-gettext >= 1.01-7mdk
 BuildRequires: curl-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -118,7 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
-* Tue Feb 24 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-8mdk
+* Thu Feb 26 2004 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1.2-8mdk
 - MandrakeUpdate: add --media, --pkg-sel and --pkg-nosel commandline
   switches, to be invoked by MandrakeOnline
 
