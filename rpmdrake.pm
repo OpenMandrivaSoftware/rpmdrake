@@ -360,7 +360,7 @@ by Mandrake Linux Official Updates.")), return '';
 						     $model and $w->{retval} = { sel => $model->get($iter, 0) };
 						 }
 						 Gtk2->main_quit })
-			       } ([ N("Cancel"), 0 ], [ N("Ok"), 1 ]  )),
+			       } [ N("Cancel"), 0 ], [ N("Ok"), 1 ]),
 		   ));
     my %roots;
     $tree_model->append_set($roots{$_->{land}} ||= $tree_model->append_set(undef, [ 0 => $_->{land} ]),
@@ -456,7 +456,7 @@ later.",
 sub update_sources_check {
     my ($urpm, $options, $error_msg, @media) = @_;
     my @error_msgs;
-    local $urpm->{fatal} = sub { push @error_msgs, to_utf8($_[1]); goto fatal_error; };
+    local $urpm->{fatal} = sub { push @error_msgs, to_utf8($_[1]); goto fatal_error };
     local $urpm->{error} = sub { push @error_msgs, to_utf8($_[0]) };
     update_sources($urpm, %$options, noclean => 1);
   fatal_error:
@@ -473,26 +473,48 @@ sub update_sources_interactive {
     $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my @buttons;
     my @media;
-    gtkadd($w->{window},
-	   gtkpack__(Gtk2::VBox->new(0,5),
-		     Gtk2::Label->new(N("Select the media you wish to update:")),
-		     (@buttons = map { Gtk2::CheckButton->new($_->{name}) } @{$urpm->{media}}),
-		     Gtk2::HSeparator->new,
-		     gtkpack(create_hbox(),
-			     gtksignal_connect(Gtk2::Button->new(N("Cancel")), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }),
-			     gtksignal_connect(Gtk2::Button->new(N("Update")), clicked => sub {
-						   $w->{retval} = any { $_->get_active } @buttons;
-						   @media = map_index { if_($_->get_active, $urpm->{media}[$::i]{name}) } @buttons;
-						   Gtk2->main_quit;
-					       }),
-                      )));
+    gtkadd(
+	$w->{window},
+	gtkpack__(
+	    Gtk2::VBox->new(0,5),
+	    Gtk2::Label->new(N("Select the media you wish to update:")),
+	    (
+		@buttons = map {
+		    Gtk2::CheckButton->new($_->{name})
+		} grep {
+		    ! $_->{ignore}
+		} @{$urpm->{media}}
+	    ),
+	    Gtk2::HSeparator->new,
+	    gtkpack(
+		create_hbox(),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Cancel")),
+		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
+		),
+		gtksignal_connect(
+		    Gtk2::Button->new(N("Update")),
+		    clicked => sub {
+			$w->{retval} = any { $_->get_active } @buttons;
+			@media = map_index { if_($_->get_active, $urpm->{media}[$::i]{name}) } @buttons;
+			Gtk2->main_quit;
+		    },
+		),
+	    )
+	)
+    );
     if ($w->main) {
 	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
 	    $_->{modified} and delete $_->{ignore};
 	}
         standalone::explanations("Updating media @media");
         $urpm->select_media(@media);
-        update_sources_check($urpm, {}, N_("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s"), @media);
+        update_sources_check(
+	    $urpm,
+	    {},
+	    N_("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s"),
+	    @media,
+	);
 	return 1;
     }
     return 0;

@@ -646,7 +646,12 @@ sub mainwindow {
 										clicked => sub { edit_callback() and $reread_media->() }),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Add..."))), 
 							       clicked => sub { add_callback() and $reread_media->(); }),
-					     gtksignal_connect(Gtk2::Button->new(but(N("Update..."))), clicked => \&update_callback),
+					     gtksignal_connect(
+						 Gtk2::Button->new(but(N("Update..."))),
+						 clicked => sub {
+						     update_callback() and $reread_media->();
+						 },
+					     ),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Manage keys..."))), clicked => \&keys_callback),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Proxy..."))), clicked => \&proxy_callback),
 					     gtksignal_connect(Gtk2::Button->new(but(N("Parallel..."))), clicked => \&parallel_callback))),
