@@ -150,6 +150,7 @@ really want to replace it?"), yesno => 1) or return 0;
 
 sub selrow {
     my ($model, $iter) = $list_tv->get_selection->get_selected;
+    $model && $iter or return -1;
     my $path = $model->get_path($iter);
     my $row = $path->to_string;
     $path->free;
@@ -158,8 +159,10 @@ sub selrow {
 }
 
 sub remove_callback {
+    my $row = selrow();
+    $row == -1 and return;
     my $wait = wait_msg(N("Please wait, removing medium..."));
-    my $name = $urpm->{media}[selrow()]{name};
+    my $name = $urpm->{media}[$row]{name};
     standalone::explanations("Removing medium $name");
     $urpm->select_media($name);
     $urpm->remove_selected_media;
@@ -168,7 +171,9 @@ sub remove_callback {
 }
 
 sub edit_callback {
-    my $medium = $urpm->{media}[selrow()];
+    my $row = selrow();
+    $row == -1 and return;
+    my $medium = $urpm->{media}[$row];
     my $w = ugtk2->new(N("Edit a source"), grab => 1, center => 1, transient => $mainw->{rwindow});
     my ($url_entry, $hdlist_entry, $url, $with_hdlist);
     gtkadd($w->{window},

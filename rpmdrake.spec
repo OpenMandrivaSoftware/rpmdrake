@@ -120,6 +120,8 @@ rm -rf $RPM_BUILD_ROOT
 - edit-urpm-sources:
   - fix wrong display of medium as "enabled", after adding a medium
     that has problems and is hence automatically disabled (#995)
+  - fix crashing when managing to call Remove or Edit with nothing
+    selected (#970)
 
 * Tue Jan 21 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-3mdk
 - rpmdrake:
