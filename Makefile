@@ -41,7 +41,7 @@ install: $(ALL)
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/rpmdrake
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/rpmdrake-remove
 	ln -sf $(RELATIVE_SBIN)/MandrakeUpdate $(BINDIR)/MandrakeUpdate
-	ln -sf $(RELATIVE_SBIN)/edit-urpm-sources.pl $(BINDIR)/rpmdrake-sources
+	ln -sf $(RELATIVE_SBIN)/edit-urpm-sources.pl $(BINDIR)/edit-urpm-sources.pl
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
 	@for i in icons/title/*; do \
