@@ -1010,9 +1010,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
             gurpm::progress(++$progress/$total);
         }
         if (@invalid_sources) {
-            interactive_msg('rpmdrake',
-                            N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
-                              join "\n", @invalid_sources)) or goto return_with_error;
+            interactive_msg_('rpmdrake',
+                             N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
+                               join "\n", @invalid_sources), yesno => 1) or goto return_with_error;
         }
     }
 
@@ -1080,6 +1080,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     interactive_msg_(N("Installation failed"),
                      N("There was a problem during the installation:\n\n%s", $fatal_msg));
   return_with_error:
+    gurpm::end();
     $w->{rwindow}->set_sensitive(1);
     return 1;
 }

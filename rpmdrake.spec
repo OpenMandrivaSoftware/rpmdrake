@@ -103,6 +103,10 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Fri May 16 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-20mdk
 - perl-URPM API change: gives architecture in ask_remove
+- fix "packages have bad signature dialog": really display a yes/no
+  question! :)
+- fix not removing gurpm dialog when exiting package installation with
+  an error
 - fix #3908 (garbage chars displayed as date in changelog entries in
   removal mode)
 
