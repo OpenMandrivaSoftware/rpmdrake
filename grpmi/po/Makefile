@@ -31,7 +31,8 @@ $(PGOAL).pot: $(PL_FILES) $(CFILES)
 	xgettext -F -n --add-comments='-PO' \
 	--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
 	--language=C -o grpmi_tmp_c.pot $(CFILES)
-	msgcat grpmi_tmp_c.pot grpmi_tmp.pot > $@
+	msgcat --use-first grpmi_tmp_c.pot grpmi_tmp.pot > $@
+	rm -f grpmi_tmp_c.pot grpmi_tmp.pot
 
 install:
 	for l in $(LANGS); do \
