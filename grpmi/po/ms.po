@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: grpmi 8.2\n"
 "POT-Creation-Date: 2002-09-05 12:01+0200\n"
-"PO-Revision-Date: 2002-03-05 17:13+0800\n"
+"PO-Revision-Date: 2002-12-13 08:33+0800\n"
 "Last-Translator: Yuzz <yuzz@emasonline.com>\n"
 "Language-Team: Malaysia <yuzz@emasonline.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../curl_download/curl_download.xs:86
 msgid "Directory where to put download must be existing"
-msgstr ""
+msgstr "Direktori utk muatturun mesti wujud"
 
 #: ../curl_download/curl_download.xs:89 ../curl_download/curl_download.xs:206
 msgid "Out of memory\n"
@@ -24,7 +24,7 @@ msgstr "Kehabisan memori\n"
 
 #: ../curl_download/curl_download.xs:102
 msgid "Could not open output file in append mode"
-msgstr ""
+msgstr "Tidak boleh buka fail output dalam mode lanjutan"
 
 #: ../curl_download/curl_download.xs:126
 msgid "Unsupported protocol\n"
@@ -205,11 +205,11 @@ msgstr "Kod ralat tak dikenal %d\n"
 
 #: ../grpmi.pl_.c:52
 msgid "Yes"
-msgstr ""
+msgstr "Ya"
 
 #: ../grpmi.pl_.c:53
 msgid "No"
-msgstr ""
+msgstr "Tidak"
 
 #: ../grpmi.pl_.c:54
 msgid "Ok"
@@ -221,29 +221,28 @@ msgstr "Ralat..."
 
 #: ../grpmi.pl_.c:64
 msgid "You need to be root to install packages, sorry."
-msgstr ""
+msgstr "Maaf, anda perlu jadi root untuk instal pakej-pakej."
 
 #: ../grpmi.pl_.c:66
 msgid "RPM initialization error"
-msgstr ""
+msgstr "Ralat penyediaan RPM"
 
 #: ../grpmi.pl_.c:67
 msgid "The initialization of config files of RPM was not possible, sorry."
-msgstr ""
+msgstr "Maaf, penyediaan fail config RPM tidak mungkin berlaku."
 
 #: ../grpmi.pl_.c:73
-#, fuzzy
 msgid "Initializing..."
-msgstr "Install:"
+msgstr "Persediaan..."
 
 #: ../grpmi.pl_.c:93
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Muatturun pakej `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:99
 msgid "Error during download"
-msgstr ""
+msgstr "Ralat semasa muatturun"
 
 #: ../grpmi.pl_.c:100
 #, c-format
@@ -255,15 +254,21 @@ msgid ""
 "Error: %s\n"
 "Do you want to continue (skipping this package)?"
 msgstr ""
+"Terdapat ralat semasa muatturun pakej:\n"
+"\n"
+"%s\n"
+"\n"
+"Ralat: %s\n"
+"Ingin teruskan (langkaui pakej ini)?"
 
 #: ../grpmi.pl_.c:112
 #, c-format
 msgid "Verifying signature of `%s'..."
-msgstr ""
+msgstr "Mengenalpasti tandatangan `%s'..."
 
 #: ../grpmi.pl_.c:114
 msgid "Signature verification error"
-msgstr ""
+msgstr "Ralat pengenalpastian tandatangan"
 
 #: ../grpmi.pl_.c:115
 #, c-format
@@ -273,11 +278,14 @@ msgid ""
 "%s\n"
 "Do you want to install it anyway?"
 msgstr ""
+"Tandatangan pakej `%s' tidak betul:\n"
+"\n"
+"%s\n"
+"Adakah anda ingin teruskan?"
 
 #: ../grpmi.pl_.c:121
-#, fuzzy
 msgid "File error"
-msgstr "Ralat semasa menulis\n"
+msgstr "Ralat fail"
 
 #: ../grpmi.pl_.c:122
 #, c-format
@@ -288,185 +296,136 @@ msgid ""
 "\n"
 "Do you want to continue anyway (skipping this package)?"
 msgstr ""
+"Fail yang berikut adalah tidak sah:\n"
+"\n"
+"%s\n"
+"\n"
+"Adakah anda ingin teruskan (langkui pakej ini)?"
 
 #: ../grpmi.pl_.c:137
-#, fuzzy
 msgid "Preparing packages for installation..."
-msgstr "Bersedia untuk instal"
+msgstr "Menyediakan pakej untuk instal..."
 
 #: ../grpmi.pl_.c:145
 msgid "Conflicts detected"
-msgstr ""
+msgstr "Konflik dikesan"
 
 #: ../grpmi.pl_.c:146
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Conflicts were detected:\n"
 "%s\n"
 "\n"
 "Install aborted."
-msgstr "Instalasi terputus"
+msgstr ""
+"Konflik dikesan:\n"
+"%s\n"
+"\n"
+"Install terputus."
 
 #: ../grpmi.pl_.c:155
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr ""
+msgstr "Install pakej `%s' (%s/%s)..."
 
 #: ../grpmi.pl_.c:169
 msgid "Problems occurred during installation"
 msgstr "Ada masalah semasa instalasi"
 
 #: ../grpmi.pl_.c:169
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error during packages installation:\n"
 "\n"
 "%s"
-msgstr "Bersedia untuk instal"
+msgstr ""
+"Terdapat ralat semasa instalasi pakej:\n"
+"\n"
+"%s"
 
 #: ../rpm/grpmi_rpm.xs:69
-#, fuzzy
 msgid "Couldn't read RPM config files"
-msgstr "Fail tidak dapat dibaca\n"
+msgstr "Fail config RPM tidak dapat dibaca"
 
 #: ../rpm/grpmi_rpm.xs:95
-#, fuzzy
 msgid "Couldn't open file\n"
-msgstr "Tidak dapat berhubung\n"
+msgstr "Tidak dapat membuka fail\n"
 
 #: ../rpm/grpmi_rpm.xs:99
-#, fuzzy
 msgid "Could not read lead bytes\n"
-msgstr "Tidak dapat menterjemah hos\n"
+msgstr "Tidak dapat membaca bait-bait yang utama\n"
 
 #: ../rpm/grpmi_rpm.xs:102
 msgid "RPM version of package doesn't support signatures\n"
-msgstr ""
+msgstr "Versi RPM pakej tidak menyokong tandatangan\n"
 
 #: ../rpm/grpmi_rpm.xs:107
 msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-msgstr ""
+msgstr "Tidak dapat membaca blok tandatangan (`rpmReadSignature' gagal)\n"
 
 #: ../rpm/grpmi_rpm.xs:110
 msgid "No signatures\n"
-msgstr ""
+msgstr "Tiada tandatangan\n"
 
 #: ../rpm/grpmi_rpm.xs:114
 msgid "`makeTempFile' failed!\n"
-msgstr ""
+msgstr "`makeTempFile' gagal!\n"
 
 #: ../rpm/grpmi_rpm.xs:121
 msgid "Error reading file\n"
-msgstr ""
+msgstr "Ralat membaca fail\n"
 
 #: ../rpm/grpmi_rpm.xs:127
 msgid "Error writing temp file\n"
-msgstr ""
+msgstr "Ralat semasa menulis fail temp\n"
 
 #: ../rpm/grpmi_rpm.xs:152
 msgid "No GPG signature in package\n"
-msgstr ""
+msgstr "Tiada tandatangan GPG dalam pakej\n"
 
 #: ../rpm/grpmi_rpm.xs:234
 msgid "Couldn't open RPM DB for writing (not superuser?)"
-msgstr ""
+msgstr "Tidak dapat membuka RPM DB utk menulis (bukan superuser?)"
 
 #: ../rpm/grpmi_rpm.xs:236
 msgid "Couldn't open RPM DB for writing"
-msgstr ""
+msgstr "Tidak dapat membuka RPM DB utk menulis"
 
 #: ../rpm/grpmi_rpm.xs:240
 msgid "Couldn't start transaction"
-msgstr ""
+msgstr "TIdak dapat memulakan transaksi"
 
 #: ../rpm/grpmi_rpm.xs:259
-#, fuzzy, c-format
+#, c-format
 msgid "Can't open package `%s'\n"
-msgstr "Tidak boleh buka pakej"
+msgstr "Tidak boleh membuka pakej `%s'\n"
 
 #: ../rpm/grpmi_rpm.xs:264
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' is corrupted\n"
-msgstr "Pakej telah rosak"
+msgstr "Pakej `%s'  telah rosak\n"
 
 #: ../rpm/grpmi_rpm.xs:267
-#, fuzzy, c-format
+#, c-format
 msgid "Package `%s' can't be installed\n"
-msgstr "Pakej tidak boleh diinstall"
+msgstr "Pakej `%s' tidak boleh diinstal\n"
 
 #: ../rpm/grpmi_rpm.xs:278
-#, fuzzy
 msgid "Error while checking dependencies"
-msgstr "Ralat semasa periksa dependensi *-("
+msgstr "Ralat semasa periksa kesandaran"
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "conflicts with"
-msgstr " konflik dengan %s-%s-%s"
+msgstr "konflik dengan"
 
 #: ../rpm/grpmi_rpm.xs:299
-#, fuzzy
 msgid "is needed by"
-msgstr " diperlukan oleh %s-%s-%s"
+msgstr "diperlukan oleh"
 
 #: ../rpm/grpmi_rpm.xs:317
-#, fuzzy
 msgid "Error while checking dependencies 2"
-msgstr "Ralat semasa periksa dependensi *-("
+msgstr "Ralat semasa periksa kesandaran 2"
 
 #: ../rpm/grpmi_rpm.xs:323
-#, fuzzy
 msgid "Problems occurred during installation:\n"
-msgstr "Ada masalah semasa instalasi"
-
-#~ msgid "Installing/Upgrading Progress"
-#~ msgstr "Progres instal/upgrade"
-
-#~ msgid "Fetching:"
-#~ msgstr "Mendapatkan:"
-
-#~ msgid "Cancel"
-#~ msgstr "Batal"
-
-#~ msgid "An error occured while fetching file"
-#~ msgstr "Ada ralat semasa load fail"
-
-#~ msgid "Skip"
-#~ msgstr "Lewatkan"
-
-#~ msgid "Can't check the GPG signature"
-#~ msgstr "Tidak boleh periksan sain GPG"
-
-#~ msgid ""
-#~ "The package %s has a wrong signature or\n"
-#~ "GnuPG isn't correctly installed"
-#~ msgstr ""
-#~ "Pakej %s memiliki tandatangan yang salah atau\n"
-#~ "GnuPG belum diinstall dengan betul"
-
-#~ msgid "The package %s is not signed"
-#~ msgstr "Pakej %s belum ditandatangani"
-
-#~ msgid "Install all"
-#~ msgstr "Install semua"
-
-#~ msgid "Install"
-#~ msgstr "Install"
-
-#~ msgid "Don't install"
-#~ msgstr "Jangan Install"
-
-#~ msgid "Quit"
-#~ msgstr "Keluar"
-
-#~ msgid "Signature problem"
-#~ msgstr "Masalah Tandatangan"
-
-#~ msgid "Force"
-#~ msgstr "Paksa"
-
-#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
-#~ msgstr "penggunaan: grpmi <[-noupgrade] rpms>\n"
-
-#~ msgid "grpmi error: you must be superuser!\n"
-#~ msgstr "grpmi ralat: Anda harus jadi root dulu\n"
+msgstr "Ada masalah semasa instalasi:\n"
