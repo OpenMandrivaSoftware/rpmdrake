@@ -193,7 +193,7 @@ sub run_treeview_dialog {
 
     my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
 
-    my ($size_selected, $compssUsers, $info, $info_update, $tree, $disable_treeselect_callback, %elems, %base);
+    my ($size_selected, $compssUsers, $info, $info_update, $tree, $disable_treeselect_callback, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     my $formatlistpkg = sub { myformatList(sort { uc($a) cmp uc($b) } @_) };
@@ -218,27 +218,6 @@ sub run_treeview_dialog {
 	my ($urpm, $db, $state, $choices) = @_;
 	member(my_fullname($_), @$choices_auto) and return $_ foreach @$choices;
 	return $choices->[0];  #- theoretically unreachable, but at least try to fallback on something usable
-    };
-    {
-	my @base = qw(basesystem);
-	my %basepackages;
-	my $db = db;
-	while (defined($_ = shift @base)) {
-	    exists $basepackages{$_} and next;
-	    $db->traverse_tag(/^\// ? 'path' : 'whatprovides', [ $_ ], sub {
-				  push @{$basepackages{$_}}, my_fullname($_[0]);
-				  push @base, $_[0]->requires_nosense;
-			      });
-	}
-	foreach (values %basepackages) {
-	    my $n = @$_;
-	    foreach (@$_) {
-		$base{$_} = \$n;
-	    }
-	}
-    }
-    my $check_basesystem = sub {
-	map { if_($base{$_} && ${$base{$_}}, $_) } @_;
     };
     my $closure_removal = sub {
 	$urpm->{state}{ask_remove} = {};
@@ -325,16 +304,9 @@ or you already installed all of them."));
 			   if ($new_state) {
 			       slow_func($tree->window, sub { $closure_removal->(@nodes) });
 			       @nodes_with_deps = grep { !$pkgs->{$_}{selected} } keys %{$urpm->{state}{ask_remove}};
-			       if (my @basesystem = $check_basesystem->(@nodes_with_deps)) {
-				   interactive_msg(_("This would break your system"),
-						   _("Sorry, removing these packages would break your system:\n\n").
-						   $formatlistpkg->(sort { $a cmp $b } @basesystem));
-				   @nodes_with_deps = ();
-			       } else {
-				   $deps_msg->(_("Some additional packages need to be removed"),
-					       _("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
-					       \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
-			       }
+			       $deps_msg->(_("Some additional packages need to be removed"),
+					   _("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
+					   \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
 			   } else {
 			       slow_func($tree->window,
 					 sub { @nodes_with_deps = grep { intersection(\@nodes, [ $closure_removal->($_) ]) }
@@ -762,12 +734,30 @@ sub get_installed_pkgs {
     use URPM;
 
     my $w = wait_msg(_("Please wait, reading packages database..."));
+    my @base = qw(basesystem);
+    my (%base, %basepackages);
+    my $db = db;
+    while (defined($_ = shift @base)) {
+	exists $basepackages{$_} and next;
+	$db->traverse_tag(/^\// ? 'path' : 'whatprovides', [ $_ ], sub {
+			      push @{$basepackages{$_}}, my_fullname($_[0]);
+			      push @base, $_[0]->requires_nosense;
+			  });
+    }
+    foreach (values %basepackages) {
+	my $n = @$_;
+	foreach (@$_) {
+	    $base{$_} = \$n;
+	}
+    }
     my %installed_pkgs;
     db->traverse(sub {
 		     my ($pkg) = @_;
-		     #- I need to extract summary and description since they'll be lost when $pkg->pack_header
-		     $installed_pkgs{my_fullname($pkg)} = { selected => 0, pkg => $pkg, summary => $pkg->summary,
-							    description => beautify_description($pkg->description) };
+		     my $fullname = my_fullname($pkg);
+		     $base{$fullname} && ${$base{$fullname}}
+		       #- I need to extract summary and description since they'll be lost when $pkg->pack_header
+		       or $installed_pkgs{$fullname} = { selected => 0, pkg => $pkg, summary => $pkg->summary,
+							 description => beautify_description($pkg->description) };
 		     $pkg->pack_header;
 		 });
     remove_wait_msg($w);
