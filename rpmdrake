@@ -978,43 +978,6 @@ or you already installed all of them."));
 	);
     }
 
-    my $menu_treeview = Gtk2::Menu->new;
-    my @menu_treeview_actions = (
-	[ 'reset_selection', N("Reset the selection") ],
-	[ 'reload_pkg', N("Reload the packages list") ],
-    );
-    $MODE ne 'remove' && $> == 0
-	and push @menu_treeview_actions, [ 'update_sources', N("Update media") ];
-    foreach (@menu_treeview_actions) {
-	my ($action, $text) = @$_;
-	my %action2fun;
-	%action2fun = (
-	    reset_selection => sub {
-		if ($MODE ne 'remove') {
-		    $urpm->disable_selected(
-			db(), $urpm->{state},
-			map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs
-		    );
-		}
-		$pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
-		$size_selected = 0;
-		$options->{rebuild_tree}->();
-	    },
-	    reload_pkg => sub {
-		($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
-		$size_selected = 0;
-		$options->{rebuild_tree}->();
-	    },
-	    update_sources => sub {
-		update_sources_interactive($urpm, transient => $w->{rwindow})
-		    and $action2fun{reload_pkg}->();
-	    }
-	);
-	$menu_treeview->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($text)), activate => sub { $action2fun{$action}->() }));
-    }
-    $tree->signal_connect(button_press_event => sub { $_[1]->button == 3 or return 0;
-						      $menu_treeview->popup(undef, undef, undef, undef, $_[1]->button, $_[1]->time) });
-
     my @menu_descr_modes = ([ N("Normal information"), [] ], [ N("Maximum information"), [1] ]);
     my @descr_modes = gtkradio($menu_descr_modes[@$max_info_in_descr ? 1 : 0][0], map { $_->[0] } @menu_descr_modes);
     mapn {
@@ -1092,10 +1055,47 @@ Is it ok to continue?",
 	install => N("Software Packages Installation"),
     );
     my $status = Gtk2::Label->new;
+    my ($menu, $factory) = create_factory_menu(
+	$::isEmbedded ? $::Plug : $w->{rwindow},
+	[ N("/_File"), undef, undef, undef, '<Branch>' ],
+	if_(
+	    $MODE ne 'remove' && ! $>,
+	    [ N("/_File") . N("/_Update media"), undef, sub {
+		update_sources_interactive($urpm, transient => $w->{rwindow})
+		    and do {
+			($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+			$size_selected = 0;
+			$options->{rebuild_tree}->();
+		    };
+	    }, undef, '<StockItem>', 'gtk-default' ]
+	),
+	[ N("/_File") . N("/_Reset the selection"), undef, sub {
+	    if ($MODE ne 'remove') {
+		$urpm->disable_selected(
+		    db(), $urpm->{state},
+		    map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs,
+		);
+	    }
+	    $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
+	    $size_selected = 0;
+	    $options->{rebuild_tree}->();
+	}, undef, '<StockItem>', 'gtk-default' ],
+	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
+	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+	    $size_selected = 0;
+	    $options->{rebuild_tree}->();
+	}, undef, '<StockItem>', 'gtk-default' ],
+	[ N("/_File") . N("/_Quit"), undef, sub { Gtk2->main_quit }, undef, '<StockItem>', 'gtk-quit' ],
+	[ N("/_View"), undef, undef, undef, '<Branch>' ],
+	[ N("/_Options"), undef, undef, undef, '<Branch>' ],
+	[ N("/_Help"), undef, undef, undef, '<Branch>' ],
+	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help($MODE) }, undef, '<StockItem>', 'gtk-help' ],
+    );
     gtkadd(
 	$w->{window}, 
 	gtkpack_(
 	    Gtk2::VBox->new(0, 3),
+	    0, $menu,
 	    0, Gtk2::Banner->new("title-$MODE", $mode2title{$MODE}),
 	    1, gtkadd(
 		gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
@@ -1123,48 +1123,17 @@ Is it ok to continue?",
 		    )),
 		    0, gtkpack_(
 			Gtk2::HBox->new(0, 20),
-			if_(
-			    !$::isEmbedded,
-			    0, gtksignal_connect(
-				Gtk2::Button->new(but(N("Help"))),
-				clicked => sub {
-				    system("drakhelp --id software-management-$MODE &");
-				    interactive_msg_(N("Help launched in background"),
-					N("The help window has been started, it should appear shortly on your desktop."));
-				},
-			    ),
-			),
 			0, my $action_button = gtksignal_connect(
 			    Gtk2::Button->new(but_($MODE eq 'remove' ? N("Remove") : N("Install"))),
 			    clicked => sub { $do_action->() },
 			),
-			0, my $update_button = gtksignal_connect(
-			    Gtk2::Button->new(but_(N("Update media"))),
-			    clicked => sub {
-				update_sources_interactive($urpm, transient => $w->{rwindow})
-				    and do {
-					($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
-					$size_selected = 0;
-					$options->{rebuild_tree}->();
-				    };
-			    }
-			),
-			1, Gtk2::Label->new(''),
-			0, gtksignal_connect(
-			    Gtk2::Button->new(but_(N("Quit"))),
-			    clicked => sub { Gtk2->main_quit },
-			)
 		    ),
 		),
 	    ),
 	),
     );
     $show_selections_button and $show_selections_button->set_active(!$dont_show_selections);
-    $update_button->set_sensitive($MODE ne 'remove');
-    if ($>) {
-        $action_button->set_sensitive(0);
-        $update_button->set_sensitive(0);
-    }
+    $action_button->set_sensitive(0) if $>;
     $find_entry->grab_focus;
 
     $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
@@ -1175,7 +1144,6 @@ Is it ok to continue?",
 
     ask_browse_tree_info_given_widgets($options);
 }
-
 
 # -=-=-=---=-=-=---=-=-=-- install packages -=-=-=---=-=-=---=-=-=-
 
