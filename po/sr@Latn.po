@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
-"POT-Creation-Date: 2003-04-17 16:13+0200\n"
+"POT-Creation-Date: 2003-05-13 13:06+0200\n"
 "PO-Revision-Date: 2003-02-28 22:12+0100\n"
 "Last-Translator: Toma Jankovic_<tomaja@net.yu>\n"
 "Language-Team: Serbian <i18n@mandrake.co.yu>\n"
@@ -107,8 +107,8 @@ msgstr ""
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Problem during installation"
-msgstr "Problem za vreme instaliranja"
+msgid "Installation failed"
+msgstr "Instalacija neuspela"
 
 #: ../rpmdrake:1
 #, c-format
@@ -151,17 +151,18 @@ msgstr "svi paketi su dobro instalirani"
 
 #: ../rpmdrake:1
 #, c-format
-msgid ""
-"some packages failed to install\n"
-"correctly"
-msgstr ""
-"neki paketi se nisu ispravno\n"
-"instalirati"
+msgid "Problem during installation"
+msgstr "Problem za vreme instaliranja"
 
 #: ../rpmdrake:1
 #, c-format
-msgid "Please wait, removing packages to allow others to be upgraded..."
-msgstr "Molim Vas saèekajte, uklanjam pakete da bih omoguæio drugih paketa..."
+msgid "Installing package `%s' (%s/%s)..."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Preparing packages installation..."
+msgstr "Instalacija paketa"
 
 #: ../rpmdrake:1
 #, c-format
@@ -186,9 +187,29 @@ msgstr ""
 "Mo¾da bi trebalo da a¾urirate bazu paketa."
 
 #: ../rpmdrake:1
+#, fuzzy, c-format
+msgid ""
+"The following packages have bad signatures:\n"
+"\n"
+"%s\n"
+"\n"
+"Do you want to continue installation?"
+msgstr ""
+"SledeKji paketi treba da budu uklonjeni da bi se drugi instalirali:\n"
+"\n"
+"%s\n"
+"\n"
+"da li je U redu da nastavim?"
+
+#: ../rpmdrake:1
 #, c-format
-msgid "Installation failed"
-msgstr "Instalacija neuspela"
+msgid "Verifying packages signatures..."
+msgstr ""
+
+#: ../rpmdrake:1
+#, c-format
+msgid "Downloading package `%s' (%s/%s)..."
+msgstr ""
 
 #: ../rpmdrake:1 ../edit-urpm-sources.pl:1 ../rpmdrake.pm:1
 #, c-format
@@ -212,6 +233,16 @@ msgstr "Promeni medijum"
 
 #: ../rpmdrake:1
 #, c-format
+msgid "Initializing..."
+msgstr ""
+
+#: ../rpmdrake:1
+#, fuzzy, c-format
+msgid "Package installation..."
+msgstr "Instalacija paketa"
+
+#: ../rpmdrake:1
+#, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Ne mogu da dobavim izvorne pakete, ¾ao mi je. %s"
 
@@ -219,16 +250,6 @@ msgstr "Ne mogu da dobavim izvorne pakete, ¾ao mi je. %s"
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Ne mogu da dobavim izvorne pakete."
-
-#: ../rpmdrake:1
-#, c-format
-msgid "A required program is missing (grpmi). Check your installation."
-msgstr "Nedostaje potrebni program (grpmi). Proverite svoju instalaciju."
-
-#: ../rpmdrake:1
-#, c-format
-msgid "Program missing"
-msgstr "Program nedostaje"
 
 #: ../rpmdrake:1
 #, c-format
@@ -1280,6 +1301,265 @@ msgstr "Ne"
 msgid "Yes"
 msgstr "Da"
 
+#: ../grpmi/curl_download/curl_download.xs:86
+msgid "Download directory does not exist"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:89
+#: ../grpmi/curl_download/curl_download.xs:213
+msgid "Out of memory\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:102
+msgid "Could not open output file in append mode"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:133
+msgid "Unsupported protocol\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:136
+msgid "Failed init\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:139
+msgid "Bad URL format\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:142
+msgid "Bad user format in URL\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:145
+msgid "Couldn't resolve proxy\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:148
+msgid "Couldn't resolve host\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:151
+msgid "Couldn't connect\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:154
+msgid "FTP unexpected server reply\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:157
+msgid "FTP access denied\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:160
+msgid "FTP user password incorrect\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:163
+msgid "FTP unexpected PASS reply\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:166
+msgid "FTP unexpected USER reply\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:169
+msgid "FTP unexpected PASV reply\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:172
+msgid "FTP unexpected 227 format\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:175
+msgid "FTP can't get host\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:178
+msgid "FTP can't reconnect\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:181
+msgid "FTP couldn't set binary\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:184
+msgid "Partial file\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:187
+msgid "FTP couldn't RETR file\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:190
+msgid "FTP write error\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:195
+msgid "FTP quote error\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:198
+msgid "HTTP not found\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:201
+msgid "Write error\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:204
+msgid "User name illegally specified\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:207
+msgid "FTP couldn't STOR file\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:210
+msgid "Read error\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:216
+msgid "Time out\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:219
+msgid "FTP couldn't set ASCII\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:222
+msgid "FTP PORT failed\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:225
+msgid "FTP couldn't use REST\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:228
+msgid "FTP couldn't get size\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:231
+msgid "HTTP range error\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:234
+msgid "HTTP POST error\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:237
+msgid "SSL connect error\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:240
+msgid "FTP bad download resume\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:243
+msgid "File couldn't read file\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:246
+msgid "LDAP cannot bind\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:249
+msgid "LDAP search failed\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:252
+msgid "Library not found\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:255
+msgid "Function not found\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:258
+msgid "Aborted by callback\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:261
+msgid "Bad function argument\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:264
+msgid "Bad calling order\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:267
+#, fuzzy
+msgid "HTTP Interface operation failed\n"
+msgstr "Instalacija neuspela"
+
+#: ../grpmi/curl_download/curl_download.xs:270
+msgid "my_getpass() returns fail\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:273
+msgid "catch endless re-direct loops\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:276
+msgid "User specified an unknown option\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:279
+msgid "Malformed telnet option\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:282
+msgid "removed after 7.7.3\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:285
+msgid "peer's certificate wasn't ok\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:288
+msgid "when this is a specific error\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:291
+msgid "SSL crypto engine not found\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:294
+msgid "can not set SSL crypto engine as default\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:297
+msgid "failed sending network data\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:300
+msgid "failure in receiving network data\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:303
+msgid "share is in use\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:306
+msgid "problem with the local certificate\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:309
+msgid "couldn't use specified cipher\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:312
+msgid "problem with the CA cert (path?)\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:315
+msgid "Unrecognized transfer encoding\n"
+msgstr ""
+
+#: ../grpmi/curl_download/curl_download.xs:320
+#, c-format
+msgid "Unknown error code %d\n"
+msgstr ""
+
 #: data/rpmdrake.desktop.in.h:1
 msgid "Install Software"
 msgstr "Instaliraj softver"
@@ -1291,6 +1571,23 @@ msgstr "Ukloni softver"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Sources Manager"
 msgstr "Menad¾er Softverskog Koda"
+
+#~ msgid ""
+#~ "some packages failed to install\n"
+#~ "correctly"
+#~ msgstr ""
+#~ "neki paketi se nisu ispravno\n"
+#~ "instalirati"
+
+#~ msgid "Please wait, removing packages to allow others to be upgraded..."
+#~ msgstr ""
+#~ "Molim Vas saèekajte, uklanjam pakete da bih omoguæio drugih paketa..."
+
+#~ msgid "A required program is missing (grpmi). Check your installation."
+#~ msgstr "Nedostaje potrebni program (grpmi). Proverite svoju instalaciju."
+
+#~ msgid "Program missing"
+#~ msgstr "Program nedostaje"
 
 #~ msgid ""
 #~ "There was an error while adding the update medium via urpmi.\n"
