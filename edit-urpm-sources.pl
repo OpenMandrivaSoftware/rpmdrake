@@ -164,7 +164,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    $urpm->remove_selected_media;
 	}
 	add_medium_and_check($urpm,
-			     { probe_with => $probe },
+			     { probe_with => $probe, nolock => 1 },
 			     $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security');
 	return 1;
     }
@@ -179,7 +179,7 @@ sub remove_callback {
     standalone::explanations("Removing medium $name");
     $urpm->select_media($name);
     $urpm->remove_selected_media;
-    $urpm->update_media(noclean => 1);
+    $urpm->update_media(noclean => 1, nolock => 1);
     remove_wait_msg($wait);
 }
 
@@ -212,14 +212,14 @@ sub edit_callback {
 	standalone::explanations("Removing medium $name");
 	$urpm->select_media($name);
 	$urpm->remove_selected_media;
-	add_medium_and_check($urpm, {}, $name, $url, $with_hdlist, update => $update);
+	add_medium_and_check($urpm, { nolock => 1 }, $name, $url, $with_hdlist, update => $update);
 	return 1;
     }
     return 0;
 }
 
 sub update_callback {
-    update_sources_interactive($urpm, transient => $mainw->{rwindow});
+    update_sources_interactive($urpm, transient => $mainw->{rwindow}, nolock => 1);
 }
 
 sub proxy_callback {
@@ -605,11 +605,11 @@ sub mainwindow {
 	my %action2fun; %action2fun = (
 			  update_source => sub {
                               slow_func(N("Please wait, updating media..."),
-                                        sub { $urpm->update_media(noclean => 1) });
+                                        sub { $urpm->update_media(noclean => 1, nolock => 1) });
                           },
 			  generate_hdlist => sub {
                               slow_func(N("Please wait, generating hdlist..."),
-                                        sub { $urpm->update_media(noclean => 1, force => 1) });
+                                        sub { $urpm->update_media(noclean => 1, force => 1, nolock => 1) });
                           });
 	$menu->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($text)),
                                         activate => sub {
@@ -675,6 +675,19 @@ This tool will help you configure the packages media you wish to use on
 your computer. They will then be available to install new software package
 or to perform updates.")), yesno => 1) or myexit -1;
     push @$already_splashed, basename($0);
+}
+
+{
+    $urpm = urpm->new;
+    local $urpm->{fatal} = sub {
+        interactive_msg('rpmdrake',
+N("Packages database is locked. Please close other applications
+working with packages database (do you have another media
+manager on another desktop, or are you currently installing
+packages as well?)."));
+        myexit -1;
+    };
+    $urpm->exlock_urpmi_db;
 }
 
 mainwindow();
