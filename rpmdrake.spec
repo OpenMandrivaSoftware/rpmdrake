@@ -102,7 +102,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Mon Aug 18 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-32mdk
-- edit-urpm-media: handle modality in parallel and key editors
+- edit-urpm-media:
+  - handle modality in parallel and key editors
+  - fix #4914 (program crashes when trying to add a medium)
 
 * Wed Aug 13 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-31mdk
 - require root capability when run "Install Sofware" and add a new

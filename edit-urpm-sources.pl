@@ -133,7 +133,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	1;
     };
 
-    my ($type, %i, %make_url);
+    my ($type, $probe, %i, %make_url);
     gtkadd($w->{window},
 	   gtkpack(Gtk2::VBox->new(0,5),
 		   Gtk2::Label->new(N("Adding a medium:")),
@@ -153,6 +153,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	                                           ? ($info->{login_entry}->get_text.':'.$info->{pass_entry}->get_text.'@')
 						   : '',
 					       $i{url};
+        $probe = $info->{hdlist_check}->get_active == 0 || $i{hdlist} eq '';
 	Gtk2->main_quit;
     }
 					     }),
@@ -164,7 +165,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    $urpm->remove_selected_media;
 	}
 	add_medium_and_check($urpm, N("Please wait, adding medium..."),
-			     { probe_with => !$info->{hdlist_check}->get_active || $i{hdlist} eq '' },
+			     { probe_with => $probe },
 			     $i{name}, $make_url{$type}, $i{hdlist}, update => $type eq 'security');
 	return 1;
     }
