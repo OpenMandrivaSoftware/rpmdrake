@@ -24,18 +24,20 @@
 use strict;
 use lib qw(/usr/lib/libDrakX);
 use common;
-
-require_root_capability();
-
 use rpmdrake;
 use URPM::Signature;
 
-eval { require ugtk2; ugtk2->import(qw(:all)) };
-if ($@) {
-    print "This program cannot be run in console mode.\n";
-    c::_exit(0);  #- skip ugtk2::END
+BEGIN {
+    eval { require ugtk2; ugtk2->import(qw(:all)) };
+    if ($@) {
+	print "This program cannot be run in console mode.\n";
+	c::_exit(0);  #- skip ugtk2::END
+    }
 }
+
 $::isStandalone = 1;
+
+require_root_capability();
 
 my $urpm;
 my ($mainw, $remove, $edit, $list_tv);
