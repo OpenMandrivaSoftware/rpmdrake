@@ -501,12 +501,12 @@ or you already installed all of them."));
 		   partialsel_unsel => sub {
 		       my ($unsel, $sel) = @_;
 		       @$sel = grep { exists $pkgs->{$_} } @$sel;
-		       @$unsel < @$sel;
+		       @$unsel <= @$sel;
 		   },
 		   toggle_nodes => sub {
 		       my ($set_state, @nodes) = @_;
-		       @nodes = grep { exists $pkgs->{$_} } @nodes;
-		       int(@nodes) or return;
+		       @nodes = grep { exists $pkgs->{$_} } @nodes
+			   or return;
 		       my $new_state = !$pkgs->{$nodes[0]}{selected};
 
 		       my @nodes_with_deps;
