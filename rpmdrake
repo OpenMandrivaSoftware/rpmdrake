@@ -411,7 +411,7 @@ sub run_treeview_dialog {
 	$options->{state}{flat} and $options->{delete_all}->();
 	$tree->collapse_recursive(undef);
 	my @search_results;
-	if ($entry =~ m|/|) {
+	if ($MODE ne 'remove' && $entry =~ m|/|) {
 	    my $w = wait_msg(_("Please wait, searching in files..."));
 	    open SF, 'parsehdlist --fileswinfo --quiet ' .
 	             join(' ', map { my $hdlist = "$urpm->{statedir}/$_->{hdlist}";
