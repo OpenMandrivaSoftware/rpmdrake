@@ -562,15 +562,17 @@ or you already installed all of them."));
     $search_types_optionmenu->set_menu($search_types_menu);
 
     my $menu_treeview = new Gtk::Menu;
-    my @menu_treeview_actions = ([ 'reset_selection', _("Reset the selection") ], [ 'reload_pkg', _("Reload the packages list") ],
-				 [ 'update_sources', _("Update source(s)") ]);
+    my @menu_treeview_actions = ([ 'reset_selection', _("Reset the selection") ], [ 'reload_pkg', _("Reload the packages list") ]);
+    $MODE ne 'remove' and push @menu_treeview_actions, [ 'update_sources', _("Update source(s)") ];
     foreach (@menu_treeview_actions) {
 	my ($action, $text) = @$_;
 	my %action2fun; %action2fun = (
 		          reset_selection => sub {
-			      $urpm->{state}{unselected} = {};
-			      $urpm->resolve_unrequested(db, $urpm->{state},
-							 { map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}->id => undef) } keys %$pkgs });
+			      if ($MODE ne 'remove') {
+				  $urpm->{state}{unselected} = {};
+				  $urpm->resolve_unrequested(db, $urpm->{state},
+						   { map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}->id => undef) } keys %$pkgs });
+			      }
 			      $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
 			      $size_selected = 0;
 			      $options->{rebuild_tree}->();
