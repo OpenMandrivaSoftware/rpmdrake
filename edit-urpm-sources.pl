@@ -187,6 +187,27 @@ sub edit_callback {
     return 0;
 }
 
+sub update_callback {
+    my $w = my_gtk->new(_("Update source(s)"));
+    gtkadd($w->{window},
+	   gtkpack__(new Gtk::VBox(0,5),
+		     new Gtk::Label(_("Select the source(s) you wish to update:")),
+		     (my @buttons = map { new Gtk::CheckButton($_->{name}) } @{$urpm->{media}}),
+		     new Gtk::HSeparator,
+		     gtkpack(create_hbox(),
+			     gtksignal_connect(new Gtk::Button(_("Update")), clicked => sub { $w->{retval} = 1; Gtk->main_quit }),
+			     gtksignal_connect(new Gtk::Button(_("Cancel")), clicked => sub { $w->{retval} = 0; Gtk->main_quit }))));
+    $w->{rwindow}->set_position('center');
+    if ($w->main) {
+	each_index { $_->get_active and $urpm->select_media($urpm->{media}[$::i]{name}) } @buttons;
+	foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive (forked from urpmi.updatemedia...)
+	    $_->{modified} and delete $_->{ignore};
+	}
+	slow_func(_("Please wait, updating media..."),
+		  sub { $urpm->update_media(noclean => 1) });
+    }
+}
+
 sub mainwindow {
     my %pixmaps = (selected => [ gtkcreate_png('selected') ], unselected => [ gtkcreate_png('unselected') ]);
     my $mainw = my_gtk->new(_("Configure sources"));
@@ -218,12 +239,13 @@ sub mainwindow {
 		    1, gtkpack_(new Gtk::HBox(0, 10),
 				1, $clist,
 				0, gtkpack__(new Gtk::VBox(0, 5),
-					     gtksignal_connect(new Gtk::Button(but(_("Add"))), 
-							       clicked => sub { add_callback and $reread_media->(); }),
 					     gtkset_sensitive(gtksignal_connect($remove = new Gtk::Button(but(_("Remove"))),
 										clicked => sub { remove_callback; $reread_media->(); }), 0),
 					     gtkset_sensitive(gtksignal_connect($edit = new Gtk::Button(but(_("Edit"))),
-										clicked => sub { edit_callback and $reread_media->() }), 0))),
+										clicked => sub { edit_callback and $reread_media->() }), 0),
+					     gtksignal_connect(new Gtk::Button(but(_("Add..."))), 
+							       clicked => sub { add_callback and $reread_media->(); }),
+					     gtksignal_connect(new Gtk::Button(but(_("Update..."))), clicked => \&update_callback))),
 		    0, new Gtk::HSeparator,
 		    0, gtkpack(create_hbox(),
 			       gtksignal_connect(new Gtk::Button(_("Save and quit")), clicked => sub { $mainw->{retval} = 1; Gtk->main_quit }),
