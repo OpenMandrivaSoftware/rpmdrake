@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.1
-%define release 34mdk
+%define release 35mdk
 
 Name: %{name}
 Version: %{version}
@@ -18,7 +18,7 @@ Source0: %name-%version.tar.bz2
 Summary: Mandrake Linux graphical front end for choosing packages for installion/removal
 Requires: perl-MDK-Common >= 1.0.4-13mdk urpmi >= 4.3-15mdk gurpmi >= 4.3-9mdk perl-URPM >= 0.90-7mdk drakxtools > 9.2-5mdk rpmtools >= 4.5
 Requires: perl-Gtk2 >= 0.90-6mdk perl-Locale-gettext >= 1.01-7mdk
-BuildRequires: libcurl2-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
+BuildRequires: curl-devel >= 7.10.3-2mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
 URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
@@ -101,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Thu Sep  4 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-35mdk
+- fix invalid-build-requires libcurl2-devel
+
 * Tue Sep  2 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 2.1-34mdk
 - s/9.1/9.2/ (#5201)
 - help:
