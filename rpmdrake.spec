@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.0
-%define release 4mdk
+%define release 5mdk
 
 Name: %{name}
 Version: %{version}
@@ -112,6 +112,23 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 
 %changelog
+* Mon Aug  5 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-5mdk
+- when searching in files, limit search results to listed
+  packages or the program might crash
+- when searching in files, do it case sensitive
+- in MandrakeUpdate mode, display a nice explanation message when
+  the list of updates is void, and also put "(none)" in the list
+  instead of seeing nothing and wondering if something is broken
+  or not
+- don't quit when validation was not ok (e.g. when user doesn't
+  like the "these packages need to be removed for others to be
+  upgraded", don't quit)
+- handle case when use entered ftp location with a leading ftp://
+- edit-urpm-sources: don't strictly require that all the fields be
+  filled since urpmi can make guesses or build the hdlist itself;
+  in removable and local modes, give the probe_with_hdlist option
+  when the hdlist field is void
+
 * Mon Aug  5 2002 Guillaume Cottenceau <gc@mandrakesoft.com> 2.0-4mdk
 - grpmi: provide information about the number of current download and
   number of overall downloads, same with installation of packages
