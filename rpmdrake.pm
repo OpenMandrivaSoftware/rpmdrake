@@ -391,7 +391,7 @@ sub mirrors {
 			if ($arch && compat_arch_for_updates($arch)) {
 	                    my ($land, $goodness);
 			    foreach (keys %u2l) {
-				if ($url =~ m|\.\Q$_\E/|) {
+				if ($url =~ m|//[^/]+\.\Q$_\E/|) {
 				    $land = $_;
 				    last;
 				}
