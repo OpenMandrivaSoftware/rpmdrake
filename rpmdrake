@@ -515,6 +515,7 @@ or you already installed all of them."));
 		       @nodes = grep { exists $pkgs->{$_} } @nodes
 			   or return;
 		       return if @nodes == keys %$pkgs; #- avoid selecting every package
+		       return if @nodes > 2000; #- avoid selecting too many packages at once
 		       my $new_state = !$pkgs->{$nodes[0]}{selected};
 
 		       my @nodes_with_deps;
