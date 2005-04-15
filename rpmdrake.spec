@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.10
-%define release 4mdk
+%define version 2.11
+%define release 1mdk
 
 Name: %{name}
 Version: %{version}
@@ -112,6 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Apr 15 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.11-1mdk
+- Rename MandrakeUpdate to MandrivaUpdate
+
 * Wed Mar 30 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.10-4mdk
 - po updates
 - make gurpmi.addmedia more robust (bug #15028)
