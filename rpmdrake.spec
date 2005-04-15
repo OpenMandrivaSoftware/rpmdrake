@@ -15,7 +15,7 @@ Version: %{version}
 Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
-Summary: Mandrakelinux graphical front end for choosing packages for installion/removal
+Summary: Mandriva Linux graphical front end for choosing packages for installion/removal
 Requires: perl-MDK-Common >= 1.1.18-2mdk
 Requires: urpmi >= 4.6.19
 Requires: perl-URPM >= 1.09
@@ -29,17 +29,17 @@ Requires: perl-Compress-Zlib >= 1.33
 BuildRequires: curl-devel >= 7.12.1-1mdk gettext openssl-devel perl-devel
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Group: System/Configuration/Packaging
-URL: http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
+URL: http://cvs.mandriva.com/cgi-bin/cvsweb.cgi/soft/rpmdrake/
 Obsoletes: MandrakeUpdate
 Provides: MandrakeUpdate
 Conflicts: drakconf < 10.1-4mdk
 
 %description
 rpmdrake is a simple graphical frontend to manage software packages on a
-Mandrakelinux system; it has 3 different modes:
+Mandriva Linux system; it has 3 different modes:
 - software packages installation;
 - software packages removal;
-- MandrakeUpdate (software packages updates).
+- MandrivaUpdate (software packages updates).
 
 A fourth program manages the media (add, remove, edit).
 
@@ -92,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %doc COPYING AUTHORS README
 %{_sbindir}/rpmdrake*
-%{_sbindir}/MandrakeUpdate
+%{_sbindir}/MandrivaUpdate
 %{_sbindir}/edit-urpm-*
 %{_sbindir}/drakrpm-edit-media
 %{_sbindir}/gurpmi.addmedia

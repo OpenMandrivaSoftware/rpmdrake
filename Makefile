@@ -40,18 +40,18 @@ install: $(ALL)
 	install rpmdrake park-rpmdrake edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
 	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(SBINDIR)/*
 	ln -sf rpmdrake $(SBINDIR)/rpmdrake-remove
-	ln -sf rpmdrake $(SBINDIR)/MandrakeUpdate
+	ln -sf rpmdrake $(SBINDIR)/MandrivaUpdate
 	install -d $(BINDIR)
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/rpmdrake
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/rpmdrake-remove
-	ln -sf $(RELATIVE_SBIN)/MandrakeUpdate $(BINDIR)/MandrakeUpdate
+	ln -sf $(RELATIVE_SBIN)/MandrivaUpdate $(BINDIR)/MandrivaUpdate
 	ln -sf $(RELATIVE_SBIN)/edit-urpm-sources.pl $(BINDIR)/edit-urpm-sources.pl
 	ln -sf edit-urpm-sources.pl $(SBINDIR)/drakrpm-edit-media
 	ln -sf $(RELATIVE_SBIN)/drakrpm-edit-media $(BINDIR)/drakrpm-edit-media
 	ln -sf $(RELATIVE_SBIN)/gurpmi.addmedia $(BINDIR)/gurpmi.addmedia
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/drakrpm
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/drakrpm-remove
-	ln -sf $(RELATIVE_SBIN)/MandrakeUpdate $(BINDIR)/drakrpm-update
+	ln -sf $(RELATIVE_SBIN)/MandrivaUpdate $(BINDIR)/drakrpm-update
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
 	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
