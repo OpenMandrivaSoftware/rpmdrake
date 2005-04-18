@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-eo\n"
-"POT-Creation-Date: 2005-03-02 10:52+0100\n"
+"POT-Creation-Date: 2005-04-18 11:38+0200\n"
 "PO-Revision-Date: 2003-08-21 11:57+0000\n"
 "Last-Translator: Vilhelmo Lutermano <vlutermano@free.fr>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -174,8 +174,8 @@ msgstr "Speco de datenportilo:"
 #: ../edit-urpm-sources.pl:389 ../edit-urpm-sources.pl:414
 #: ../edit-urpm-sources.pl:476 ../edit-urpm-sources.pl:557
 #: ../edit-urpm-sources.pl:597 ../edit-urpm-sources.pl:655
-#: ../edit-urpm-sources.pl:794 ../rpmdrake:164 ../rpmdrake:699
-#: ../rpmdrake:1502 ../rpmdrake:1510 ../rpmdrake.pm:504 ../rpmdrake.pm:594
+#: ../edit-urpm-sources.pl:794 ../rpmdrake:165 ../rpmdrake:697
+#: ../rpmdrake:1501 ../rpmdrake:1509 ../rpmdrake.pm:504 ../rpmdrake.pm:594
 #: ../rpmdrake.pm:663
 #, c-format
 msgid "Cancel"
@@ -186,8 +186,8 @@ msgstr "Forigu"
 #: ../edit-urpm-sources.pl:554 ../edit-urpm-sources.pl:596
 #: ../edit-urpm-sources.pl:648 ../edit-urpm-sources.pl:720
 #: ../edit-urpm-sources.pl:787 ../edit-urpm-sources.pl:840
-#: ../edit-urpm-sources.pl:990 ../rpmdrake:164 ../rpmdrake:699 ../rpmdrake:716
-#: ../rpmdrake:721 ../rpmdrake:1444 ../rpmdrake:1502 ../rpmdrake:1647
+#: ../edit-urpm-sources.pl:990 ../rpmdrake:165 ../rpmdrake:697 ../rpmdrake:714
+#: ../rpmdrake:719 ../rpmdrake:1442 ../rpmdrake:1501 ../rpmdrake:1644
 #: ../rpmdrake.pm:192 ../rpmdrake.pm:249 ../rpmdrake.pm:504
 #, c-format
 msgid "Ok"
@@ -360,7 +360,7 @@ msgid "Add"
 msgstr "Aldonu"
 
 #: ../edit-urpm-sources.pl:635 ../edit-urpm-sources.pl:642
-#: ../edit-urpm-sources.pl:700 ../edit-urpm-sources.pl:955 ../rpmdrake:1179
+#: ../edit-urpm-sources.pl:700 ../edit-urpm-sources.pl:955 ../rpmdrake:1177
 #, c-format
 msgid "Remove"
 msgstr "Malinstalu"
@@ -395,8 +395,8 @@ msgstr "Portil-limo"
 msgid "Command"
 msgstr "Komando"
 
-#: ../edit-urpm-sources.pl:684 ../rpmdrake:363 ../rpmdrake:380 ../rpmdrake:511
-#: ../rpmdrake:627
+#: ../edit-urpm-sources.pl:684 ../rpmdrake:364 ../rpmdrake:381 ../rpmdrake:512
+#: ../rpmdrake:625
 #, c-format
 msgid "(none)"
 msgstr "(nenio)"
@@ -523,7 +523,7 @@ msgstr ""
 msgid "Help"
 msgstr "Helpo"
 
-#: ../edit-urpm-sources.pl:1002 ../gurpmi.addmedia:75 ../rpmdrake:1758
+#: ../edit-urpm-sources.pl:1002 ../gurpmi.addmedia:74 ../rpmdrake:1755
 #, c-format
 msgid ""
 "%s\n"
@@ -559,12 +559,12 @@ msgid ""
 "packages as well?)."
 msgstr ""
 
-#: ../gurpmi.addmedia:70
+#: ../gurpmi.addmedia:69
 #, c-format
 msgid "Unable to add medium, wrong or missing arguments"
 msgstr ""
 
-#: ../gurpmi.addmedia:78
+#: ../gurpmi.addmedia:77
 #, c-format
 msgid ""
 "You are about to add a new packages medium, `%s'.\n"
@@ -572,22 +572,88 @@ msgid ""
 "to your system from that new medium."
 msgstr ""
 
-#: ../gurpmi.addmedia:87
+#: ../gurpmi.addmedia:86
 #, c-format
 msgid "Successfully added medium `%s'."
 msgstr ""
 
-#: ../rpmdrake:28
+#: ../rpmdrake:31
 #, c-format
 msgid "Usage: %s [OPTION]..."
 msgstr "Uzado: %s [OPCIOJ]..."
 
-#: ../rpmdrake:161
+#: ../rpmdrake:32
+#, c-format
+msgid ""
+"  --changelog-first      display changelog before filelist in the "
+"description window"
+msgstr ""
+
+#: ../rpmdrake:33
+#, c-format
+msgid "  --media=medium1,..     limit to given media"
+msgstr ""
+
+#: ../rpmdrake:34
+#, c-format
+msgid ""
+"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgstr ""
+
+#: ../rpmdrake:35
+#, c-format
+msgid "  --mode=MODE            set mode (install (default), remove, update)"
+msgstr ""
+
+#: ../rpmdrake:36
+#, c-format
+msgid ""
+"  --no-confirmation      don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../rpmdrake:37
+#, c-format
+msgid "  --no-media-update      don't update media at startup"
+msgstr ""
+
+#: ../rpmdrake:38
+#, c-format
+msgid "  --no-verify-rpm        don't verify packages signatures"
+msgstr ""
+
+#: ../rpmdrake:39
+#, c-format
+msgid ""
+"  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
+"\" machine to show needed deps"
+msgstr ""
+
+#: ../rpmdrake:40
+#, c-format
+msgid "  --pkg-nosel=pkg1,..    show only these packages"
+msgstr ""
+
+#: ../rpmdrake:41
+#, c-format
+msgid "  --pkg-sel=pkg1,..      preselect these packages"
+msgstr ""
+
+#: ../rpmdrake:42
+#, c-format
+msgid "  --root                 force to run as root"
+msgstr ""
+
+#: ../rpmdrake:43
+#, c-format
+msgid "  --search=pkg           run search for \"pkg\""
+msgstr ""
+
+#: ../rpmdrake:162
 #, c-format
 msgid "Running in user mode"
 msgstr "Rulanta en uzul-modo"
 
-#: ../rpmdrake:162
+#: ../rpmdrake:163
 #, c-format
 msgid ""
 "You are launching this program as a normal user.\n"
@@ -598,632 +664,628 @@ msgstr ""
 "Vi ne povos fari modifojn en la sistemo,\n"
 "sed vi povos daŭre trarigardi la ekzistantan datenbazon."
 
-#: ../rpmdrake:171
+#: ../rpmdrake:172
 #, c-format
 msgid "Accessibility"
 msgstr "Alirebleco"
 
-#: ../rpmdrake:172 ../rpmdrake:173 ../rpmdrake:174 ../rpmdrake:175
+#: ../rpmdrake:173 ../rpmdrake:174 ../rpmdrake:175 ../rpmdrake:176
 #, c-format
 msgid "Archiving"
 msgstr "Arkivado"
 
-#: ../rpmdrake:172
+#: ../rpmdrake:173
 #, c-format
 msgid "Backup"
 msgstr "Savkopio"
 
-#: ../rpmdrake:173
+#: ../rpmdrake:174
 #, c-format
 msgid "Cd burning"
 msgstr "KD-skribado"
 
-#: ../rpmdrake:174
+#: ../rpmdrake:175
 #, c-format
 msgid "Compression"
 msgstr "Kompaktado"
 
-#: ../rpmdrake:175 ../rpmdrake:180 ../rpmdrake:192 ../rpmdrake:203
-#: ../rpmdrake:212 ../rpmdrake:224 ../rpmdrake:236 ../rpmdrake:244
-#: ../rpmdrake:332
+#: ../rpmdrake:176 ../rpmdrake:181 ../rpmdrake:193 ../rpmdrake:204
+#: ../rpmdrake:213 ../rpmdrake:225 ../rpmdrake:237 ../rpmdrake:245
+#: ../rpmdrake:333
 #, c-format
 msgid "Other"
 msgstr "Alia"
 
-#: ../rpmdrake:176 ../rpmdrake:177 ../rpmdrake:178 ../rpmdrake:179
-#: ../rpmdrake:180
+#: ../rpmdrake:177 ../rpmdrake:178 ../rpmdrake:179 ../rpmdrake:180
+#: ../rpmdrake:181
 #, c-format
 msgid "Books"
 msgstr "Libroj"
 
-#: ../rpmdrake:176
+#: ../rpmdrake:177
 #, c-format
 msgid "Computer books"
 msgstr "Komputilaj libroj"
 
-#: ../rpmdrake:177
+#: ../rpmdrake:178
 #, c-format
 msgid "Faqs"
 msgstr "Respondaro"
 
-#: ../rpmdrake:178
+#: ../rpmdrake:179
 #, c-format
 msgid "Howtos"
 msgstr "Kielfari (Howtos)"
 
-#: ../rpmdrake:179
+#: ../rpmdrake:180
 #, c-format
 msgid "Literature"
 msgstr "Literaturo"
 
-#: ../rpmdrake:181 ../rpmdrake:182
+#: ../rpmdrake:182 ../rpmdrake:183
 #, c-format
 msgid "Cluster"
 msgstr ""
 
-#: ../rpmdrake:181
+#: ../rpmdrake:182
 #, c-format
 msgid "Message Passing"
 msgstr ""
 
-#: ../rpmdrake:182
+#: ../rpmdrake:183
 #, c-format
 msgid "Queueing Services"
 msgstr ""
 
-#: ../rpmdrake:183
+#: ../rpmdrake:184
 #, c-format
 msgid "Communications"
 msgstr "Komunikaĵoj"
 
-#: ../rpmdrake:184 ../rpmdrake:187
+#: ../rpmdrake:185 ../rpmdrake:188
 #, c-format
 msgid "Databases"
 msgstr "Datenbazoj"
 
-#: ../rpmdrake:185 ../rpmdrake:186 ../rpmdrake:187 ../rpmdrake:188
-#: ../rpmdrake:189 ../rpmdrake:190 ../rpmdrake:191 ../rpmdrake:192
-#: ../rpmdrake:193 ../rpmdrake:194
+#: ../rpmdrake:186 ../rpmdrake:187 ../rpmdrake:188 ../rpmdrake:189
+#: ../rpmdrake:190 ../rpmdrake:191 ../rpmdrake:192 ../rpmdrake:193
+#: ../rpmdrake:194 ../rpmdrake:195
 #, c-format
 msgid "Development"
 msgstr "Programado"
 
-#: ../rpmdrake:185
+#: ../rpmdrake:186
 #, c-format
 msgid "C"
 msgstr "C"
 
-#: ../rpmdrake:186
+#: ../rpmdrake:187
 #, c-format
 msgid "C++"
 msgstr "C++"
 
-#: ../rpmdrake:188
+#: ../rpmdrake:189
 #, c-format
 msgid "GNOME and GTK+"
 msgstr "GNOME kaj GTK+"
 
-#: ../rpmdrake:189
+#: ../rpmdrake:190
 #, c-format
 msgid "Java"
 msgstr "Java"
 
-#: ../rpmdrake:190
+#: ../rpmdrake:191
 #, c-format
 msgid "KDE and Qt"
 msgstr "KDE kaj Qt"
 
-#: ../rpmdrake:191
+#: ../rpmdrake:192
 #, c-format
 msgid "Kernel"
 msgstr "Kerno"
 
-#: ../rpmdrake:193
+#: ../rpmdrake:194
 #, c-format
 msgid "Perl"
 msgstr "Perl"
 
-#: ../rpmdrake:194
+#: ../rpmdrake:195
 #, c-format
 msgid "Python"
 msgstr "Python"
 
-#: ../rpmdrake:195
+#: ../rpmdrake:196
 #, c-format
 msgid "Editors"
 msgstr "Redaktiloj"
 
-#: ../rpmdrake:196
+#: ../rpmdrake:197
 #, fuzzy, c-format
 msgid "Education"
 msgstr "Komunikaĵoj"
 
-#: ../rpmdrake:197
+#: ../rpmdrake:198
 #, c-format
 msgid "Emulators"
 msgstr "Imitiloj"
 
-#: ../rpmdrake:198
+#: ../rpmdrake:199
 #, c-format
 msgid "File tools"
 msgstr "Dosieriloj"
 
-#: ../rpmdrake:199 ../rpmdrake:200 ../rpmdrake:201 ../rpmdrake:202
-#: ../rpmdrake:203 ../rpmdrake:204 ../rpmdrake:205 ../rpmdrake:206
+#: ../rpmdrake:200 ../rpmdrake:201 ../rpmdrake:202 ../rpmdrake:203
+#: ../rpmdrake:204 ../rpmdrake:205 ../rpmdrake:206 ../rpmdrake:207
 #, c-format
 msgid "Games"
 msgstr "Ludoj"
 
-#: ../rpmdrake:199
+#: ../rpmdrake:200
 #, c-format
 msgid "Adventure"
 msgstr "Aventuro"
 
-#: ../rpmdrake:200
+#: ../rpmdrake:201
 #, c-format
 msgid "Arcade"
 msgstr "Arcade"
 
-#: ../rpmdrake:201
+#: ../rpmdrake:202
 #, c-format
 msgid "Boards"
 msgstr "Kartoj"
 
-#: ../rpmdrake:202
+#: ../rpmdrake:203
 #, c-format
 msgid "Cards"
 msgstr "Kartoj"
 
-#: ../rpmdrake:204
+#: ../rpmdrake:205
 #, c-format
 msgid "Puzzles"
 msgstr "Puzloj"
 
-#: ../rpmdrake:205
+#: ../rpmdrake:206
 #, c-format
 msgid "Sports"
 msgstr "Sporto"
 
-#: ../rpmdrake:206
+#: ../rpmdrake:207
 #, c-format
 msgid "Strategy"
 msgstr "Strategio"
 
-#: ../rpmdrake:207 ../rpmdrake:208 ../rpmdrake:209 ../rpmdrake:210
-#: ../rpmdrake:211 ../rpmdrake:212 ../rpmdrake:213 ../rpmdrake:214
+#: ../rpmdrake:208 ../rpmdrake:209 ../rpmdrake:210 ../rpmdrake:211
+#: ../rpmdrake:212 ../rpmdrake:213 ../rpmdrake:214 ../rpmdrake:215
 #, c-format
 msgid "Graphical desktop"
 msgstr "Grafika labortabulo"
 
-#: ../rpmdrake:207
+#: ../rpmdrake:208
 #, c-format
 msgid "Enlightenment"
 msgstr "Enlightenment"
 
-#: ../rpmdrake:208
+#: ../rpmdrake:209
 #, c-format
 msgid "FVWM based"
 msgstr "Bazita sur FVMW"
 
-#: ../rpmdrake:209
+#: ../rpmdrake:210
 #, c-format
 msgid "GNOME"
 msgstr "GNOME"
 
-#: ../rpmdrake:210
+#: ../rpmdrake:211
 #, c-format
 msgid "Icewm"
 msgstr "Icewm"
 
-#: ../rpmdrake:211
+#: ../rpmdrake:212
 #, c-format
 msgid "KDE"
 msgstr "KDE"
 
-#: ../rpmdrake:213
+#: ../rpmdrake:214
 #, c-format
 msgid "Sawfish"
 msgstr "Sawfish"
 
-#: ../rpmdrake:214
+#: ../rpmdrake:215
 #, c-format
 msgid "WindowMaker"
 msgstr "WindowMaker"
 
-#: ../rpmdrake:215
+#: ../rpmdrake:216
 #, c-format
 msgid "Graphics"
 msgstr "Grafikoj"
 
-#: ../rpmdrake:216
+#: ../rpmdrake:217
 #, c-format
 msgid "Monitoring"
 msgstr "Monitorado"
 
-#: ../rpmdrake:217
+#: ../rpmdrake:218
 #, c-format
 msgid "Multimedia"
 msgstr "Sono kaj filmo"
 
-#: ../rpmdrake:218 ../rpmdrake:219 ../rpmdrake:220 ../rpmdrake:221
-#: ../rpmdrake:222 ../rpmdrake:223 ../rpmdrake:224 ../rpmdrake:225
-#: ../rpmdrake:226 ../rpmdrake:243
+#: ../rpmdrake:219 ../rpmdrake:220 ../rpmdrake:221 ../rpmdrake:222
+#: ../rpmdrake:223 ../rpmdrake:224 ../rpmdrake:225 ../rpmdrake:226
+#: ../rpmdrake:227 ../rpmdrake:244
 #, c-format
 msgid "Networking"
 msgstr "Retumado"
 
-#: ../rpmdrake:218
+#: ../rpmdrake:219
 #, c-format
 msgid "Chat"
 msgstr "Babilo"
 
-#: ../rpmdrake:219
+#: ../rpmdrake:220
 #, c-format
 msgid "File transfer"
 msgstr "Dosiertransigo"
 
-#: ../rpmdrake:220
+#: ../rpmdrake:221
 #, c-format
 msgid "IRC"
 msgstr "IRC"
 
-#: ../rpmdrake:221
+#: ../rpmdrake:222
 #, c-format
 msgid "Instant messaging"
 msgstr "Instant messaging"
 
-#: ../rpmdrake:222
+#: ../rpmdrake:223
 #, c-format
 msgid "Mail"
 msgstr "Poŝto"
 
-#: ../rpmdrake:223
+#: ../rpmdrake:224
 #, c-format
 msgid "News"
 msgstr "Novaĵoj"
 
-#: ../rpmdrake:225
+#: ../rpmdrake:226
 #, c-format
 msgid "Remote access"
 msgstr "Defora atingo"
 
-#: ../rpmdrake:226
+#: ../rpmdrake:227
 #, c-format
 msgid "WWW"
 msgstr "TTT"
 
-#: ../rpmdrake:227
+#: ../rpmdrake:228
 #, c-format
 msgid "Office"
 msgstr "Oficejo"
 
-#: ../rpmdrake:228
+#: ../rpmdrake:229
 #, c-format
 msgid "Public Keys"
 msgstr ""
 
-#: ../rpmdrake:229
+#: ../rpmdrake:230
 #, c-format
 msgid "Publishing"
 msgstr "Publikado"
 
-#: ../rpmdrake:230 ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233
-#: ../rpmdrake:234 ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237
+#: ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233 ../rpmdrake:234
+#: ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237 ../rpmdrake:238
 #, c-format
 msgid "Sciences"
 msgstr "Sciencoj"
 
-#: ../rpmdrake:230
+#: ../rpmdrake:231
 #, c-format
 msgid "Astronomy"
 msgstr "Astronomio"
 
-#: ../rpmdrake:231
+#: ../rpmdrake:232
 #, c-format
 msgid "Biology"
 msgstr "Biologio"
 
-#: ../rpmdrake:232
+#: ../rpmdrake:233
 #, c-format
 msgid "Chemistry"
 msgstr "Kemio"
 
-#: ../rpmdrake:233
+#: ../rpmdrake:234
 #, c-format
 msgid "Computer science"
 msgstr "Komputilscienco"
 
-#: ../rpmdrake:234
+#: ../rpmdrake:235
 #, c-format
 msgid "Geosciences"
 msgstr "Geosciencoj"
 
-#: ../rpmdrake:235
+#: ../rpmdrake:236
 #, c-format
 msgid "Mathematics"
 msgstr "Matematiko"
 
-#: ../rpmdrake:237
+#: ../rpmdrake:238
 #, c-format
 msgid "Physics"
 msgstr "Fiziko"
 
-#: ../rpmdrake:238
+#: ../rpmdrake:239
 #, c-format
 msgid "Shells"
 msgstr "Ŝeloj"
 
-#: ../rpmdrake:239
+#: ../rpmdrake:240
 #, c-format
 msgid "Sound"
 msgstr "Sono"
 
-#: ../rpmdrake:240 ../rpmdrake:241 ../rpmdrake:242 ../rpmdrake:243
-#: ../rpmdrake:244 ../rpmdrake:245 ../rpmdrake:246 ../rpmdrake:247
-#: ../rpmdrake:248 ../rpmdrake:249 ../rpmdrake:250 ../rpmdrake:251
-#: ../rpmdrake:252 ../rpmdrake:253 ../rpmdrake:254 ../rpmdrake:255
-#: ../rpmdrake:256 ../rpmdrake:257
+#: ../rpmdrake:241 ../rpmdrake:242 ../rpmdrake:243 ../rpmdrake:244
+#: ../rpmdrake:245 ../rpmdrake:246 ../rpmdrake:247 ../rpmdrake:248
+#: ../rpmdrake:249 ../rpmdrake:250 ../rpmdrake:251 ../rpmdrake:252
+#: ../rpmdrake:253 ../rpmdrake:254 ../rpmdrake:255 ../rpmdrake:256
+#: ../rpmdrake:257 ../rpmdrake:258
 #, c-format
 msgid "System"
 msgstr "Sistemo"
 
-#: ../rpmdrake:240
+#: ../rpmdrake:241
 #, c-format
 msgid "Base"
 msgstr "Bazo"
 
-#: ../rpmdrake:241 ../rpmdrake:242 ../rpmdrake:243 ../rpmdrake:244
-#: ../rpmdrake:245 ../rpmdrake:246
+#: ../rpmdrake:242 ../rpmdrake:243 ../rpmdrake:244 ../rpmdrake:245
+#: ../rpmdrake:246 ../rpmdrake:247
 #, c-format
 msgid "Configuration"
 msgstr "Konfigurado"
 
-#: ../rpmdrake:241
+#: ../rpmdrake:242
 #, c-format
 msgid "Boot and Init"
 msgstr "Starto kaj inico"
 
-#: ../rpmdrake:242
+#: ../rpmdrake:243
 #, c-format
 msgid "Hardware"
 msgstr "Aparataro"
 
-#: ../rpmdrake:245
+#: ../rpmdrake:246
 #, c-format
 msgid "Packaging"
 msgstr "Pakante"
 
-#: ../rpmdrake:246
+#: ../rpmdrake:247
 #, c-format
 msgid "Printing"
 msgstr "Presante"
 
-#: ../rpmdrake:247
+#: ../rpmdrake:248
 #, fuzzy, c-format
 msgid "Deploiement"
 msgstr "Programado"
 
-#: ../rpmdrake:248
+#: ../rpmdrake:249
 #, fuzzy, c-format
 msgid "Deployment"
 msgstr "Programado"
 
-#: ../rpmdrake:249 ../rpmdrake:250 ../rpmdrake:251 ../rpmdrake:252
+#: ../rpmdrake:250 ../rpmdrake:251 ../rpmdrake:252 ../rpmdrake:253
 #, c-format
 msgid "Fonts"
 msgstr "Tiparoj"
 
-#: ../rpmdrake:249
+#: ../rpmdrake:250
 #, c-format
 msgid "Console"
 msgstr "Konsolo"
 
-#: ../rpmdrake:250
+#: ../rpmdrake:251
 #, c-format
 msgid "True type"
 msgstr "TTF-tiparo"
 
-#: ../rpmdrake:251
+#: ../rpmdrake:252
 #, c-format
 msgid "Type1"
 msgstr "Speco1"
 
-#: ../rpmdrake:252
+#: ../rpmdrake:253
 #, c-format
 msgid "X11 bitmap"
 msgstr "X11-bitmapo"
 
-#: ../rpmdrake:253
+#: ../rpmdrake:254
 #, c-format
 msgid "Internationalization"
 msgstr "Internaciigo"
 
-#: ../rpmdrake:254
+#: ../rpmdrake:255
 #, c-format
 msgid "Kernel and hardware"
 msgstr "Kerno kaj aparataro"
 
-#: ../rpmdrake:255
+#: ../rpmdrake:256
 #, c-format
 msgid "Libraries"
 msgstr "Libraroj"
 
-#: ../rpmdrake:256
+#: ../rpmdrake:257
 #, c-format
 msgid "Servers"
 msgstr "Serviloj"
 
-#: ../rpmdrake:257
+#: ../rpmdrake:258
 #, c-format
 msgid "XFree86"
 msgstr "XFree86"
 
-#: ../rpmdrake:258
+#: ../rpmdrake:259
 #, c-format
 msgid "Terminals"
 msgstr "Terminaloj"
 
-#: ../rpmdrake:259
+#: ../rpmdrake:260
 #, c-format
 msgid "Text tools"
 msgstr "Tekstiloj"
 
-#: ../rpmdrake:260
+#: ../rpmdrake:261
 #, c-format
 msgid "Toys"
 msgstr "Ludiloj"
 
-#: ../rpmdrake:261
+#: ../rpmdrake:262
 #, c-format
 msgid "Video"
 msgstr "Vidbendo"
 
-#: ../rpmdrake:386 ../rpmdrake:528 ../rpmdrake:530
+#: ../rpmdrake:387 ../rpmdrake:529 ../rpmdrake:531
 #, c-format
 msgid "(Not available)"
 msgstr "(Neatingebla)"
 
-#: ../rpmdrake:415 ../rpmdrake:492
+#: ../rpmdrake:416 ../rpmdrake:493
 #, c-format
 msgid "Search results"
 msgstr "Serĉrezultoj"
 
-#: ../rpmdrake:415
+#: ../rpmdrake:416
 #, c-format
 msgid "Search results (none)"
 msgstr "Serĉrezultoj (neniu)"
 
-#: ../rpmdrake:426 ../rpmdrake:450
+#: ../rpmdrake:427 ../rpmdrake:451
 #, c-format
 msgid "Please wait, searching..."
 msgstr "Bonvole atendu dum mi serĉas..."
 
-#: ../rpmdrake:445 ../rpmdrake:1233 ../rpmdrake:1543 ../rpmdrake:1757
-#, fuzzy, c-format
+#: ../rpmdrake:446 ../rpmdrake:572 ../rpmdrake:1231 ../rpmdrake:1542
+#: ../rpmdrake:1754
+#, c-format
 msgid "Rpmdrake"
-msgstr "rpmdrake"
+msgstr "Rpmdrake"
 
-#: ../rpmdrake:455
+#: ../rpmdrake:456
 #, c-format
 msgid "Stop"
 msgstr "Haltu"
 
-#: ../rpmdrake:493 ../rpmdrake:662
+#: ../rpmdrake:494 ../rpmdrake:660
 #, c-format
 msgid "Upgradable"
 msgstr "Ĝisdatigebla"
 
-#: ../rpmdrake:493 ../rpmdrake:662
+#: ../rpmdrake:494 ../rpmdrake:660
 #, c-format
 msgid "Addable"
 msgstr "Aldonebla"
 
-#: ../rpmdrake:495
+#: ../rpmdrake:496
 #, c-format
 msgid "Selected"
 msgstr "Elektita(j)"
 
-#: ../rpmdrake:495
+#: ../rpmdrake:496
 #, c-format
 msgid "Not selected"
 msgstr "Ne elektita"
 
-#: ../rpmdrake:525
+#: ../rpmdrake:526
 #, c-format
 msgid "Files:\n"
 msgstr "Dosieroj:\n"
 
-#: ../rpmdrake:530
+#: ../rpmdrake:531
 #, c-format
 msgid "Changelog:\n"
 msgstr "Changelog:\n"
 
-#: ../rpmdrake:535
+#: ../rpmdrake:536
 #, c-format
 msgid "Medium: "
 msgstr "Portilo: "
 
-#: ../rpmdrake:537
+#: ../rpmdrake:538
 #, c-format
 msgid "Currently installed version: "
 msgstr "Nun instalita versio: "
 
-#: ../rpmdrake:545
+#: ../rpmdrake:546
 #, c-format
 msgid "Name: "
 msgstr "Nomo: "
 
-#: ../rpmdrake:546
+#: ../rpmdrake:547
 #, c-format
 msgid "Version: "
 msgstr "Versio: "
 
-#: ../rpmdrake:547
+#: ../rpmdrake:548
 #, c-format
 msgid "Size: "
 msgstr "Grandeco: "
 
-#: ../rpmdrake:547
+#: ../rpmdrake:548
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake:550
+#: ../rpmdrake:551
 #, c-format
 msgid "Importance: "
 msgstr "Graveco: "
 
-#: ../rpmdrake:553
+#: ../rpmdrake:554
 #, c-format
 msgid "Summary: "
 msgstr "Resumo: "
 
-#: ../rpmdrake:556
+#: ../rpmdrake:557
 #, c-format
 msgid "Reason for update: "
 msgstr "Kialo por ĝisdatigi: "
 
-#: ../rpmdrake:558
+#: ../rpmdrake:559
 #, c-format
 msgid "Description: "
 msgstr "Priskribo: "
 
-#: ../rpmdrake:558
+#: ../rpmdrake:559
 #, fuzzy, c-format
 msgid "No description"
 msgstr "en priskriboj"
 
-#: ../rpmdrake:573
-#, fuzzy, c-format
-msgid "Rpmdrake %s"
-msgstr "rpmdrake"
-
-#: ../rpmdrake:590 ../rpmdrake:712 ../rpmdrake:714 ../rpmdrake:1637
+#: ../rpmdrake:588 ../rpmdrake:710 ../rpmdrake:712 ../rpmdrake:1634
 #, c-format
 msgid "More information on package..."
 msgstr "Kromaj informoj pri pakaĵo..."
 
-#: ../rpmdrake:591
+#: ../rpmdrake:589
 #, c-format
 msgid "Please choose"
 msgstr "Bonvole elektu"
 
-#: ../rpmdrake:591
+#: ../rpmdrake:589
 #, c-format
 msgid "One of the following packages is needed:"
 msgstr "Necesas unu el la sekvaj pakaĵoj:"
 
-#: ../rpmdrake:612
+#: ../rpmdrake:610
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Bonvole atendu, mi listigas pakaĵojn..."
 
-#: ../rpmdrake:629
+#: ../rpmdrake:627
 #, c-format
 msgid "No update"
 msgstr "Neniu ĝisdatigo"
 
-#: ../rpmdrake:630
+#: ../rpmdrake:628
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -1234,28 +1296,28 @@ msgstr ""
 "akirebla ĝisdatigo por la pakaĵoj instalitaj en via komputilo,\n"
 "aŭ vi jam instalis ilin ĉiujn."
 
-#: ../rpmdrake:653
+#: ../rpmdrake:651
 #, c-format
 msgid "All"
 msgstr "Ĉiuj"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../rpmdrake:699 ../rpmdrake:704
+#: ../rpmdrake:697 ../rpmdrake:702
 #, c-format
 msgid "More info"
 msgstr "Pli da informo"
 
-#: ../rpmdrake:707 ../rpmdrake:1626
+#: ../rpmdrake:705 ../rpmdrake:1623
 #, c-format
 msgid "Information on packages"
 msgstr "Informo pri pakaĵoj"
 
-#: ../rpmdrake:729
+#: ../rpmdrake:727
 #, c-format
 msgid "Some additional packages need to be removed"
 msgstr "Kelkaj kromaj pakaĵoj devas esti forigitaj"
 
-#: ../rpmdrake:730
+#: ../rpmdrake:728
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -1266,12 +1328,12 @@ msgstr ""
 "pakaĵo(j) estu malinstalotaj:\n"
 "\n"
 
-#: ../rpmdrake:736 ../rpmdrake:745
+#: ../rpmdrake:734 ../rpmdrake:743
 #, c-format
 msgid "Some packages can't be removed"
 msgstr "Kelkaj pakaĵoj ne malinstaleblas"
 
-#: ../rpmdrake:737
+#: ../rpmdrake:735
 #, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
@@ -1280,7 +1342,7 @@ msgstr ""
 "Malinstalo de tiuj pakaĵoj kolapsigus vian sistemon, bedaŭrinde:\n"
 "\n"
 
-#: ../rpmdrake:746 ../rpmdrake:808
+#: ../rpmdrake:744 ../rpmdrake:806
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
@@ -1291,12 +1353,12 @@ msgstr ""
 "nun malelektataj:\n"
 "\n"
 
-#: ../rpmdrake:775
+#: ../rpmdrake:773
 #, c-format
 msgid "Additional packages needed"
 msgstr "Necesas kromaj pakaĵoj"
 
-#: ../rpmdrake:776
+#: ../rpmdrake:774
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
@@ -1307,17 +1369,17 @@ msgstr ""
 "esti instalitaj:\n"
 "\n"
 
-#: ../rpmdrake:791
+#: ../rpmdrake:789
 #, c-format
 msgid "%s (belongs to the skip list)"
 msgstr ""
 
-#: ../rpmdrake:793
+#: ../rpmdrake:791
 #, c-format
 msgid "Some packages can't be installed"
 msgstr "Kelkaj pakaĵoj ne instaleblas"
 
-#: ../rpmdrake:794
+#: ../rpmdrake:792
 #, c-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
@@ -1328,122 +1390,122 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:807 ../rpmdrake:1073
+#: ../rpmdrake:805 ../rpmdrake:1071
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Kelkaj pakaĵoj devas esti malinstalotaj"
 
-#: ../rpmdrake:832
+#: ../rpmdrake:830
 #, c-format
 msgid "Selected: %d MB / Free disk space: %d MB"
 msgstr "Elektita: %d MB / Libera diskospaco: %d MB"
 
-#: ../rpmdrake:833
+#: ../rpmdrake:831
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "Elektita grandeco: %d MB"
 
-#: ../rpmdrake:839
+#: ../rpmdrake:837
 #, c-format
 msgid "Description not available for this package\n"
 msgstr ""
 
-#: ../rpmdrake:906
+#: ../rpmdrake:904
 #, c-format
 msgid "Security updates"
 msgstr "Sekurecaj ĝisdatigoj"
 
-#: ../rpmdrake:906
+#: ../rpmdrake:904
 #, c-format
 msgid "Bugfixes updates"
 msgstr "Cimo-riparaj ĝisdatigoj"
 
-#: ../rpmdrake:906
+#: ../rpmdrake:904
 #, c-format
 msgid "Normal updates"
 msgstr "Normalaj ĝisdatigoj"
 
-#: ../rpmdrake:926
+#: ../rpmdrake:924
 #, c-format
 msgid "%s choices"
 msgstr ""
 
-#: ../rpmdrake:926
+#: ../rpmdrake:924
 #, c-format
 msgid "Mandrakelinux choices"
 msgstr "Mandrak-elektoj"
 
-#: ../rpmdrake:929
+#: ../rpmdrake:927
 #, c-format
 msgid "All packages, alphabetical"
 msgstr "Ĉiuj pakaĵoj, laŭ alfabeto"
 
-#: ../rpmdrake:937
+#: ../rpmdrake:935
 #, c-format
 msgid "All packages, by group"
 msgstr "Ĉiuj pakaĵoj, laŭgrupe"
 
-#: ../rpmdrake:938
+#: ../rpmdrake:936
 #, c-format
 msgid "All packages, by size"
 msgstr "Ĉiuj pakaĵoj, laŭ grandeco"
 
-#: ../rpmdrake:939
+#: ../rpmdrake:937
 #, c-format
 msgid "All packages, by selection state"
 msgstr "Ĉiuj pakaĵoj, laŭ stato de elekto"
 
-#: ../rpmdrake:943
+#: ../rpmdrake:941
 #, c-format
 msgid "All packages, by medium repository"
 msgstr "Ĉiuj pakaĵoj, laŭ portil-deponejo"
 
-#: ../rpmdrake:944
+#: ../rpmdrake:942
 #, c-format
 msgid "All packages, by update availability"
 msgstr "Ĉiuj pakaĵoj, laŭ ebleco de ĝisdatigo"
 
-#: ../rpmdrake:948
+#: ../rpmdrake:946
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Nur forlasas, vicigita de instalo-dato"
 
-#: ../rpmdrake:1022
+#: ../rpmdrake:1020
 #, c-format
 msgid "in names"
 msgstr "en nomoj"
 
-#: ../rpmdrake:1024
+#: ../rpmdrake:1022
 #, c-format
 msgid "in descriptions"
 msgstr "en priskriboj"
 
-#: ../rpmdrake:1026
+#: ../rpmdrake:1024
 #, fuzzy, c-format
 msgid "in file names"
 msgstr "en dosieroj"
 
-#: ../rpmdrake:1035
+#: ../rpmdrake:1033
 #, c-format
 msgid "Normal information"
 msgstr "Normalaj informoj"
 
-#: ../rpmdrake:1035
+#: ../rpmdrake:1033
 #, c-format
 msgid "Maximum information"
 msgstr "Maksimuma informo"
 
-#: ../rpmdrake:1055
+#: ../rpmdrake:1053
 #, c-format
 msgid "You need to select some packages first."
 msgstr "Vi devas unue elekti kelkajn pakaĵojn."
 
-#: ../rpmdrake:1060
+#: ../rpmdrake:1058
 #, c-format
 msgid "Too many packages are selected"
 msgstr "Tro multaj pakaĵoj elektitaj"
 
-#: ../rpmdrake:1061
+#: ../rpmdrake:1059
 #, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
@@ -1460,7 +1522,7 @@ msgstr ""
 "\n"
 "Ĉu vi vere deziras instali ĉiujn elektitajn pakaĵojn?"
 
-#: ../rpmdrake:1074
+#: ../rpmdrake:1072
 #, c-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -1475,93 +1537,98 @@ msgstr ""
 "\n"
 "Ĉu vi deziras daŭrigi?"
 
-#: ../rpmdrake:1107
+#: ../rpmdrake:1105
 #, c-format
 msgid "Software Packages Removal"
 msgstr "Malinstalilo por program-pakaĵoj"
 
-#: ../rpmdrake:1108
+#: ../rpmdrake:1106
 #, fuzzy, c-format
 msgid "Software Packages Update"
 msgstr "Malinstalilo por program-pakaĵoj"
 
-#: ../rpmdrake:1109
+#: ../rpmdrake:1107
 #, c-format
 msgid "Software Packages Installation"
 msgstr "Instalado de program-pakaĵoj..."
 
-#: ../rpmdrake:1115 ../rpmdrake:1118 ../rpmdrake:1127 ../rpmdrake:1138
-#: ../rpmdrake:1143
+#: ../rpmdrake:1113 ../rpmdrake:1116 ../rpmdrake:1125 ../rpmdrake:1136
+#: ../rpmdrake:1141
 #, c-format
 msgid "/_File"
 msgstr "/_Dosiero"
 
-#: ../rpmdrake:1118
+#: ../rpmdrake:1116
 #, fuzzy, c-format
 msgid "/_Update media"
 msgstr "Ĝisdatigu datenportilon"
 
-#: ../rpmdrake:1127
+#: ../rpmdrake:1125
 #, fuzzy, c-format
 msgid "/_Reset the selection"
 msgstr "Reŝargu la elekton"
 
-#: ../rpmdrake:1138
-#, fuzzy, c-format
+#: ../rpmdrake:1136
+#, c-format
 msgid "/Reload the _packages list"
-msgstr "Reŝargu la liston de pakaĵoj"
+msgstr "/Reŝargu la liston de _pakaĵoj"
 
-#: ../rpmdrake:1143
+#: ../rpmdrake:1141
 #, c-format
 msgid "/_Quit"
 msgstr "/_Finu"
 
-#: ../rpmdrake:1146 ../rpmdrake:1147 ../rpmdrake:1154
+#: ../rpmdrake:1141
+#, c-format
+msgid "<control>Q"
+msgstr ""
+
+#: ../rpmdrake:1144 ../rpmdrake:1145 ../rpmdrake:1152
 #, c-format
 msgid "/_Options"
 msgstr "/_Opcioj"
 
-#: ../rpmdrake:1147 ../rpmdrake:1154
-#, fuzzy, c-format
+#: ../rpmdrake:1145 ../rpmdrake:1152
+#, c-format
 msgid "/_Show automatically selected packages"
-msgstr "Montru aŭtomate elektitajn pakaĵojn"
+msgstr "/_Montru aŭtomate elektitajn pakaĵojn"
 
-#: ../rpmdrake:1151 ../rpmdrake:1152
+#: ../rpmdrake:1149 ../rpmdrake:1150
 #, c-format
 msgid "/_Help"
 msgstr "/_Helpo"
 
-#: ../rpmdrake:1168
+#: ../rpmdrake:1166
 #, c-format
 msgid "Find:"
 msgstr "Trovu:"
 
-#: ../rpmdrake:1173
+#: ../rpmdrake:1171
 #, c-format
 msgid "Search"
 msgstr "Serĉu"
 
-#: ../rpmdrake:1179
+#: ../rpmdrake:1177
 #, c-format
 msgid "Install"
 msgstr "Instalu"
 
-#: ../rpmdrake:1184
+#: ../rpmdrake:1182
 #, c-format
 msgid "Quit"
 msgstr "Forlasu"
 
-#: ../rpmdrake:1225
+#: ../rpmdrake:1223
 #, c-format
 msgid "Fatal error"
 msgstr "Fatala eraro"
 
-#: ../rpmdrake:1226
+#: ../rpmdrake:1224
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "Okazis fatala eraro: %s."
 
-#: ../rpmdrake:1234
+#: ../rpmdrake:1232
 #, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
@@ -1574,12 +1641,12 @@ msgstr ""
 "\n"
 "Ĉu mi nun daŭrigu?"
 
-#: ../rpmdrake:1243
+#: ../rpmdrake:1241
 #, c-format
 msgid "Already existing update media"
 msgstr "Jam ekzistas ĝisdatiga portilo"
 
-#: ../rpmdrake:1244
+#: ../rpmdrake:1242
 #, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -1597,12 +1664,12 @@ msgstr ""
 "\n"
 "Poste, restartigu Mandrak-Ĝisdatigilon (%s)."
 
-#: ../rpmdrake:1254
+#: ../rpmdrake:1252
 #, c-format
 msgid "How to choose manually your mirror"
 msgstr "Kiel mane elekti vian spegulon"
 
-#: ../rpmdrake:1255
+#: ../rpmdrake:1253
 #, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -1617,62 +1684,62 @@ msgstr ""
 "\n"
 "Poste, restartigu MandrakĜisdatigo-n (%s)."
 
-#: ../rpmdrake:1288
+#: ../rpmdrake:1286
 #, c-format
 msgid "Please wait, finding available packages..."
 msgstr "Bonvole atendu, mi serĉas haveblajn pakaĵojn..."
 
-#: ../rpmdrake:1366
+#: ../rpmdrake:1364
 #, c-format
 msgid "Inspecting %s"
 msgstr "Inspektante %s"
 
-#: ../rpmdrake:1389
+#: ../rpmdrake:1387
 #, c-format
 msgid "changes:"
 msgstr "ŝanĝo:"
 
-#: ../rpmdrake:1397
+#: ../rpmdrake:1395
 #, c-format
 msgid "Remove .%s"
 msgstr "Malinstalu .%s"
 
-#: ../rpmdrake:1401
+#: ../rpmdrake:1399
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Uzu %s kiel ĉefan dosieron"
 
-#: ../rpmdrake:1405
+#: ../rpmdrake:1403
 #, c-format
 msgid "Do nothing"
 msgstr "Faru nenion"
 
-#: ../rpmdrake:1421
+#: ../rpmdrake:1419
 #, c-format
 msgid "Installation finished"
 msgstr "Instalo finita"
 
-#: ../rpmdrake:1436
+#: ../rpmdrake:1434
 #, c-format
 msgid "Inspect..."
 msgstr "Inspektado..."
 
-#: ../rpmdrake:1465 ../rpmdrake:1622
+#: ../rpmdrake:1464 ../rpmdrake:1619
 #, c-format
 msgid "Everything installed successfully"
 msgstr "Ĉio sukcese instalita"
 
-#: ../rpmdrake:1466 ../rpmdrake:1623
+#: ../rpmdrake:1465 ../rpmdrake:1620
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Ĉiuj deziritaj pakaĵoj estas sukcese instalitaj."
 
-#: ../rpmdrake:1468 ../rpmdrake:1607
+#: ../rpmdrake:1467 ../rpmdrake:1604
 #, c-format
 msgid "Problem during installation"
 msgstr "Problemo okazis dum instalado"
 
-#: ../rpmdrake:1469 ../rpmdrake:1608 ../rpmdrake:1663
+#: ../rpmdrake:1468 ../rpmdrake:1605 ../rpmdrake:1660
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -1683,17 +1750,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1482
+#: ../rpmdrake:1481
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Mi ne povas akiri fontpakaĵojn."
 
-#: ../rpmdrake:1483
+#: ../rpmdrake:1482
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Mi ne povas akiri fontpakaĵojn, bedaŭre. %s"
 
-#: ../rpmdrake:1484 ../rpmdrake:1555
+#: ../rpmdrake:1483 ../rpmdrake:1554
 #, c-format
 msgid ""
 "\n"
@@ -1706,37 +1773,37 @@ msgstr ""
 "Eraro(j) raportita(j):\n"
 "%s"
 
-#: ../rpmdrake:1491
+#: ../rpmdrake:1490
 #, c-format
 msgid "Package installation..."
 msgstr "Instalado de pakaĵoj..."
 
-#: ../rpmdrake:1491
+#: ../rpmdrake:1490
 #, c-format
 msgid "Initializing..."
 msgstr "Inicanta..."
 
-#: ../rpmdrake:1500
+#: ../rpmdrake:1499
 #, c-format
 msgid "Change medium"
 msgstr "Ŝanĝu portilon"
 
-#: ../rpmdrake:1501
+#: ../rpmdrake:1500
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Bonvolu enmeti la portilon nomitan\"%s\" en la legilon [%s]"
 
-#: ../rpmdrake:1508
+#: ../rpmdrake:1507
 #, c-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Deŝutante pakaĵon '%s' (%s/%s)..."
 
-#: ../rpmdrake:1531
+#: ../rpmdrake:1530
 #, c-format
 msgid "Verifying package signatures..."
 msgstr "Kontrolante signaturojn de pakaĵoj..."
 
-#: ../rpmdrake:1544
+#: ../rpmdrake:1543
 #, c-format
 msgid ""
 "The following packages have bad signatures:\n"
@@ -1751,12 +1818,12 @@ msgstr ""
 "\n"
 "Ĉu vi deziras tamen daŭrigi la instaladon?"
 
-#: ../rpmdrake:1552 ../rpmdrake:1662
+#: ../rpmdrake:1551 ../rpmdrake:1659
 #, c-format
 msgid "Installation failed"
 msgstr "Instalado malsukcesis"
 
-#: ../rpmdrake:1553
+#: ../rpmdrake:1552
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -1768,22 +1835,22 @@ msgstr ""
 "%s\n"
 "Eble ĝisdatigu vian portil-datenbazon."
 
-#: ../rpmdrake:1566
+#: ../rpmdrake:1565
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Preparas instaldon de pakaĵoj..."
 
-#: ../rpmdrake:1569
+#: ../rpmdrake:1568
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Instalante pakaĵon `%s' (%s/%s)..."
 
-#: ../rpmdrake:1585
+#: ../rpmdrake:1584
 #, c-format
 msgid "unable to access rpm file [%s]"
 msgstr "ne povis atingi rpm-an dosieron [%s]"
 
-#: ../rpmdrake:1620
+#: ../rpmdrake:1617
 #, c-format
 msgid ""
 "The installation is finished; %s.\n"
@@ -1796,47 +1863,47 @@ msgstr ""
 "Kelkaj konfigur-dosieroj kreiĝis kiel 'rpmnew' aŭ 'rpmsave',\n"
 "vi povas nun enrigardi kelkajn por ekagi:"
 
-#: ../rpmdrake:1620
+#: ../rpmdrake:1617
 #, c-format
 msgid "everything was installed correctly"
 msgstr "ĉio estis ĝuste instalita"
 
-#: ../rpmdrake:1628
+#: ../rpmdrake:1625
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr ""
 
-#: ../rpmdrake:1640
-#, fuzzy, c-format
+#: ../rpmdrake:1637
+#, c-format
 msgid "More information on package... [%s]"
-msgstr "Kromaj informoj pri pakaĵo..."
+msgstr "Kromaj informoj pri pakaĵo... [%s]"
 
-#: ../rpmdrake:1653
+#: ../rpmdrake:1650
 #, c-format
 msgid "No package found for installation."
 msgstr "Neniu pakaĵo trovita por instalado."
 
-#: ../rpmdrake:1654
+#: ../rpmdrake:1651
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Neriparebla eraro: nenia pakaĵo por instalo trovita, bedaŭre."
 
-#: ../rpmdrake:1676
+#: ../rpmdrake:1673
 #, c-format
 msgid "Please wait, reading packages database..."
 msgstr "Bonvole atendu, mi legas la datenbazon de pakaĵoj..."
 
-#: ../rpmdrake:1723
+#: ../rpmdrake:1720
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Bonvole atendu, mi malinstalas pakaĵojn..."
 
-#: ../rpmdrake:1728
+#: ../rpmdrake:1725
 #, c-format
 msgid "Problem during removal"
 msgstr "Problemo okazis dum malinstalado"
 
-#: ../rpmdrake:1729
+#: ../rpmdrake:1726
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -1847,7 +1914,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1762
+#: ../rpmdrake:1759
 #, c-format
 msgid ""
 "Welcome to the software removal tool!\n"
@@ -1860,7 +1927,7 @@ msgstr ""
 "Tiu ĉi ilo helpos vin elekti kiun programon vi deziras malinstali de\n"
 "via komputilo."
 
-#: ../rpmdrake:1767
+#: ../rpmdrake:1764
 #, c-format
 msgid ""
 "Welcome to %s!\n"
@@ -1873,12 +1940,12 @@ msgstr ""
 "Tiu ĉi ilo helpos vin elekti la ĝisdatigojn kiujn vi deziras instali en\n"
 "vian komputilon."
 
-#: ../rpmdrake:1772
+#: ../rpmdrake:1769
 #, c-format
 msgid "Welcome to the software installation tool!"
 msgstr ""
 
-#: ../rpmdrake:1773
+#: ../rpmdrake:1770
 #, c-format
 msgid ""
 "Welcome to the software installation tool!\n"
@@ -2096,10 +2163,9 @@ msgstr ""
 "Ĉu mi nun daŭrigu?"
 
 #: ../rpmdrake.pm:443
-#, fuzzy, c-format
+#, c-format
 msgid "Please wait, downloading mirror addresses."
-msgstr ""
-"Bonvole atendu, mi deŝutas speguladresojn de la retpaĝo de Mandrakesoft."
+msgstr "Bonvole atendu, mi deŝutas speguladresojn."
 
 #: ../rpmdrake.pm:444
 #, c-format
@@ -2114,7 +2180,7 @@ msgid "Error during download"
 msgstr "Eraro dum deŝutado"
 
 #: ../rpmdrake.pm:452
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
 "\n"
@@ -2125,7 +2191,7 @@ msgstr ""
 "Okazis eraro dum deŝutado de la spegullisto:\n"
 "\n"
 "%s\n"
-"La reto, aŭ la retpaĝo de Mandrakesoft, eble ne atingeblas.\n"
+"La reto, aŭ la retpaĝo, eble ne atingeblas.\n"
 "Bonvolu reprovi poste."
 
 #: ../rpmdrake.pm:457
@@ -2246,11 +2312,9 @@ msgid "Select the media you wish to update:"
 msgstr "Bonvole elektu la datenportilon kiun vi deziras ĝisdatigi:"
 
 #: ../rpmdrake.pm:667
-#, fuzzy, c-format
+#, c-format
 msgid "Select all"
-msgstr ""
-"Elektu\n"
-"ĉiujn"
+msgstr "Elektu ĉiujn"
 
 #: ../rpmdrake.pm:671
 #, c-format
@@ -2596,6 +2660,10 @@ msgstr "Malinstalu programo(j)n"
 #, fuzzy
 msgid "Software Media Manager"
 msgstr "Programfont-mastrumilo"
+
+#, fuzzy
+#~ msgid "Rpmdrake %s"
+#~ msgstr "rpmdrake"
 
 #~ msgid "Choose a mirror..."
 #~ msgstr "Elektu spegulon..."
