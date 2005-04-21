@@ -421,6 +421,9 @@ sub mirrors {
 	    { url => $url, land => $u2l{$land} || N("United States"), goodness => $goodness + rand() };
 	} else { () }
     } cat_($mirrorslist);
+    unless (-x '/usr/bin/rsync') {
+	@mirrors = grep { $_->{url} !~ /^rsync:/ } @mirrors;
+    }
     unlink $mirrorslist;
     return sort { $b->{goodness} <=> $a->{goodness} } @mirrors;
 }
