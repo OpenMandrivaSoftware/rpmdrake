@@ -385,7 +385,7 @@ sub distro_type {
     my ($want_base_distro) = @_;
     return 'cooker'   if $mandrake_release =~ /cooker/i;
     return 'official' if $want_base_distro && $mandrake_release =~ /official/i;
-    return 'updates'  if $mandrake_release !~ /community/i;
+    return 'updates'  if $mandrake_release !~ /community|limited/i;
     (my $v) = split / /, cat_('/etc/version');
     return $v =~ /\.0$/ ? 'community' : 'updates';
 }
@@ -523,7 +523,6 @@ by Mandrakelinux Official Updates.")
 sub make_url_mirror {
     my ($mirror) = @_;
     if ($mirror =~ m!/(?:RPMS|media/main)/?\Z!) {
-	#- esp. for distro_type() =~ /cooker|community/
 	"$mirror/";
     } else {
 	my ($class, $release) = $mandrake_release =~ /(\S+)\s+release\s+(\S+)/;
