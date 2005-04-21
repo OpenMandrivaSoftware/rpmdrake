@@ -384,8 +384,8 @@ my %sites2countries = (
 sub distro_type {
     my ($want_base_distro) = @_;
     return 'cooker'   if $mandrake_release =~ /cooker/i;
-    return 'official' if $want_base_distro && $mandrake_release =~ /official/i;
-    return 'updates'  if $mandrake_release !~ /community|limited/i;
+    return 'official' if $want_base_distro && $mandrake_release =~ /official|limited/i;
+    return 'updates'  if $mandrake_release !~ /community/i;
     (my $v) = split / /, cat_('/etc/version');
     return $v =~ /\.0$/ ? 'community' : 'updates';
 }
