@@ -24,6 +24,7 @@ package rpmdrake;
 use lib qw(/usr/lib/libDrakX);
 use standalone;     #- warning, standalone must be loaded very first, for 'explanations'
 use urpm::download ();
+use urpm::prompt;
 
 use MDK::Common;
 use MDK::Common::System;
@@ -92,6 +93,37 @@ chomp $mandrake_release;
 our $branded = -f '/etc/sysconfig/oem'
     and our %distrib = MDK::Common::System::distrib();
 our $myname_update = $rpmdrake::branded ? N("Software Update") : N("Mandrakelinux Update");
+
+@rpmdrake::prompt::ISA = 'urpm::prompt';
+
+sub rpmdrake::prompt::prompt {
+    my ($self) = @_;
+    my @answers;
+    my $d = ugtk2->new("", grab => 1, transient => 1);
+    $d->{rwindow}->set_position('center_on_parent');
+    gtkadd(
+	$d->{window},
+	gtkpack(
+	    Gtk2::VBox->new(0, 5),
+	    Gtk2::WrappedLabel->new($self->{title}),
+	    (map { gtkpack(
+		Gtk2::HBox->new(0, 5),
+		Gtk2::Label->new($self->{prompts}[$_]),
+		$answers[$i] = gtkentry(),
+	    ) } 0 .. $#{$self->{prompts}}),
+	    gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }),
+	),
+    );
+    $d->main;
+    map { $_->get_text } @answers;
+}
+
+$urpm::download::PROMPT_PROXY = new rpmdrake::prompt(
+    N("Please enter your credentials for accessing proxy\n"),
+    [ N("User name:"), N("Password:") ],
+    undef,
+    [ 0, 1 ],
+);
 
 sub translate {
     my ($s) = @_;
@@ -655,7 +687,7 @@ sub update_sources_interactive {
 	    Gtk2::Label->new(N("Select the media you wish to update:")),
 	    (
 		@buttons = map {
-		    Gtk2::CheckButton->new_with_label($_->{name})
+		    Gtk2::CheckButton->new_with_label($_->{name});
 		} grep { ! $_->{ignore} } @{$urpm->{media}}
 	    ),
 	    Gtk2::HSeparator->new,
