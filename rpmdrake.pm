@@ -109,7 +109,7 @@ sub rpmdrake::prompt::prompt {
 	    (map { gtkpack(
 		Gtk2::HBox->new(0, 5),
 		Gtk2::Label->new($self->{prompts}[$_]),
-		$answers[$i] = gtkentry(),
+		$answers[$_] = gtkentry(),
 	    ) } 0 .. $#{$self->{prompts}}),
 	    gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }),
 	),
