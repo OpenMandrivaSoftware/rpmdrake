@@ -15,7 +15,7 @@ Version: %{version}
 Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
-Summary: Mandriva Linux graphical front end for choosing packages for installation/removal
+Summary: Mandriva Linux graphical front end for sofware installation/removal
 Requires: perl-MDK-Common >= 1.1.18-2mdk
 Requires: urpmi >= 4.7.1
 Requires: perl-URPM >= 1.09
