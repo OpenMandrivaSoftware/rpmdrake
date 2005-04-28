@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.11
+%define version 2.12
 %define release 1mdk
 
 Name: %{name}
@@ -15,9 +15,9 @@ Version: %{version}
 Release: %{release}
 License: GPL
 Source0: %name-%version.tar.bz2
-Summary: Mandriva Linux graphical front end for choosing packages for installion/removal
+Summary: Mandriva Linux graphical front end for choosing packages for installation/removal
 Requires: perl-MDK-Common >= 1.1.18-2mdk
-Requires: urpmi >= 4.6.19
+Requires: urpmi >= 4.7.1
 Requires: perl-URPM >= 1.09
 Requires: drakxtools >= 10.2-0.22mdk
 Requires: rpmtools >= 5.0.5
@@ -112,6 +112,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Apr 28 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.12-1mdk
+- Prompt for proxy credentials if configured so
+- Require newest urpmi
+- Don't display rsync mirrors if rsync isn't installed
+- Recognize the "Limited" distro brand
+- Handle virtual media correctly
+
 * Fri Apr 15 2005 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 2.11-1mdk
 - Rename MandrakeUpdate to MandrivaUpdate
 
