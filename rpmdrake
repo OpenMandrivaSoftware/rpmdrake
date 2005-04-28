@@ -365,7 +365,8 @@ sub extract_header {
                          changelog => $chg_prepro->(to_utf8(scalar(`rpm -q --changelog $name`))) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
-	my $hdlist =  "$urpm->{statedir}/$medium->{hdlist}";
+	my $hdlist = $medium->{virtual} ? "$medium->{url}/$medium->{with_hdlist}" : "$urpm->{statedir}/$medium->{hdlist}";
+	$hdlist =~ s/^file:\/+//;
 	if (-r $hdlist) {
 	    standalone::explanations("Extracting header of " . $p->header_filename . " from $hdlist");
 	    my $packer;
@@ -434,8 +435,11 @@ sub do_search($$$$$$$) {
 		);
 	    }
 	} else {
-	    my @hdlists = map { my $h = "$urpm->{statedir}/$_->{hdlist}";
-				if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h) } @{$urpm->{media}};
+	    my @hdlists = map {
+		my $h = $_->{virtual} ? "$_->{url}/$_->{with_hdlist}" : "$urpm->{statedir}/$_->{hdlist}";
+		$h =~ s/^file:\/+//;
+		if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h);
+	    } @{$urpm->{media}};
 	    my $total_size = sum(
 		map {
 		    my $pack;
