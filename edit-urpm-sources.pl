@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #*****************************************************************************
 # 
-#  Copyright (c) 2002 Guillaume Cottenceau (gc at mandrakesoft dot com)
+#  Copyright (c) 2002 Guillaume Cottenceau (gc at mandriva dot com)
 # 
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License version 2, as
@@ -64,7 +64,7 @@ sub easy_add_callback {
     #- cooker and community don't have update sources
     my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
-N("This step enables you to add sources from a Mandrakelinux web or FTP mirror.
+N("This step enables you to add sources from a Mandriva Linux web or FTP mirror.
 
 There are two kinds of official mirrors. You can choose to add sources that
 contain the complete set of packages of your distribution (usually a superset
@@ -78,7 +78,7 @@ to do this in two steps.)"),
 N("This will attempt to install all official sources corresponding to your
 distribution (%s).
 
-I need to contact the Mandrakesoft website to get the mirror list.
+I need to contact the Mandriva website to get the mirror list.
 Please check that your network is currently running.
 
 Is it ok to continue?", $rpmdrake::mandrake_release),
@@ -734,7 +734,7 @@ sub keys_callback {
 
     my $keys_list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
     my $keys_list = Gtk2::TreeView->new_with_model($keys_list_ls);
-    $keys_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Keys"), Gtk2::CellRendererText->new, 'text' => 0));
+    $keys_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("_:cryptographic keys\nKeys"), Gtk2::CellRendererText->new, 'text' => 0));
     $keys_list->get_selection->set_mode('browse');
 
     my ($current_medium, $current_medium_nb, @keys);

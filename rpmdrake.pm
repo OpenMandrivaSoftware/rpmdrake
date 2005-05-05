@@ -1,6 +1,6 @@
 #*****************************************************************************
 # 
-#  Copyright (c) 2002 Guillaume Cottenceau (gc at mandrakesoft dot com)
+#  Copyright (c) 2002 Guillaume Cottenceau (gc at mandriva dot com)
 # 
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License version 2, as
@@ -92,7 +92,7 @@ chomp $mandrake_release;
 (our $mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
 our $branded = -f '/etc/sysconfig/oem'
     and our %distrib = MDK::Common::System::distrib();
-our $myname_update = $rpmdrake::branded ? N("Software Update") : N("Mandrakelinux Update");
+our $myname_update = $rpmdrake::branded ? N("Software Update") : N("Mandriva Linux Update");
 
 @rpmdrake::prompt::ISA = 'urpm::prompt';
 
@@ -469,14 +469,14 @@ $branded
 Please check that your network is currently running.
 
 Is it ok to continue?")
-: N("I need to contact the Mandrakesoft website to get the mirror list.
+: N("I need to contact the Mandriva website to get the mirror list.
 Please check that your network is currently running.
 
 Is it ok to continue?"), yesno => 1) or return '';
     my $wait = wait_msg(
 	$branded
 	? N("Please wait, downloading mirror addresses.")
-	: N("Please wait, downloading mirror addresses from the Mandrakesoft website.")
+	: N("Please wait, downloading mirror addresses from the Mandriva website.")
     );
     my @mirrors = eval { mirrors('/var/cache/urpmi', $options{want_base_distro}) };
     remove_wait_msg($wait);
@@ -492,7 +492,7 @@ Please try again later.", $msg)
 : N("There was an error downloading the mirror list:
 
 %s
-The network, or the Mandrakesoft website, may be unavailable.
+The network, or the Mandriva website, may be unavailable.
 Please try again later.", $msg)
 	);
 	return '';
@@ -505,7 +505,7 @@ $branded
 
 There can be many reasons for this problem; the most frequent is
 the case when the architecture of your processor is not supported
-by Mandrakelinux Official Updates.")
+by Mandriva Linux Official Updates.")
     ), return '';
 
     my $w = ugtk2->new('rpmdrake', grab => 1);
@@ -791,7 +791,7 @@ sub check_update_media_version {
 		? N("Your medium `%s', used for updates, does not match the version of %s you're running (%s).
 It will be disabled.",
 		    $_->{name}, $distrib{system}, $distrib{product})
-		: N("Your medium `%s', used for updates, does not match the version of Mandrakelinux you're running (%s).
+		: N("Your medium `%s', used for updates, does not match the version of Mandriva Linux you're running (%s).
 It will be disabled.",
 		    $_->{name}, $mdk_version)
 	    );
