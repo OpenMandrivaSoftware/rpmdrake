@@ -549,6 +549,7 @@ sub format_pkg_info {
     );
     [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
       [ N("Version: "), $tag_tag ], [ "$version\n" ],
+      [ N("Architecture: "), $tag_tag ], [ $pkgs->{$key}{pkg}->arch . "\n" ],
       [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024)) . "\n" ],
       if_(
 	  $MODE eq 'update',
