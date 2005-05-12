@@ -1299,8 +1299,17 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
     check_update_media_version($urpm, @update_medias);
 
-    $urpm->compute_installed_flags(db());
+    my $requested = {};
+    $urpm->request_packages_to_upgrade(
+	db(),
+	{}, #- $state,
+	$requested,
+	requested => undef,
+	start => 0,
+	end   => $#{$urpm->{depslist}},
+    );
 
+    $urpm->{depslist}[$_]->set_flag_installed for keys %$requested; #- pretend it's installed
     foreach my $pkg (@{$urpm->{depslist}}) {
 	$pkg->flag_upgrade or next;
         my $selected = 0;
