@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.12
-%define release 1mdk
+%define version 2.13
+%define release %mkrel 1
 
 Name: %{name}
 Version: %{version}
@@ -18,7 +18,7 @@ Source0: %name-%version.tar.bz2
 Summary: Mandriva Linux graphical front end for sofware installation/removal
 Requires: perl-MDK-Common >= 1.1.18-2mdk
 Requires: urpmi >= 4.7.1
-Requires: perl-URPM >= 1.09
+Requires: perl-URPM >= 1.20
 Requires: drakxtools >= 10.2-0.22mdk
 Requires: rpmtools >= 5.0.5
 Requires: packdrake >= 5.0.5
@@ -90,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f rpmdrake.lang
 %defattr(-, root, root)
-%doc COPYING AUTHORS README
+%doc COPYING AUTHORS README ChangeLog
 %{_sbindir}/rpmdrake*
 %{_sbindir}/MandrivaUpdate
 %{_sbindir}/edit-urpm-*
@@ -103,7 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*.png
 %{_miconsdir}/*.png
 %{_liconsdir}/*.png
-%ghost /var/lib/urpmi/compssUsers.flat
+%ghost %{_var}/lib/urpmi/compssUsers.flat
 %{perl_vendorarch}/auto/*
 %{perl_vendorarch}/*.pm
 
@@ -112,6 +112,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu May 12 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.13-1mdk
+- Rework the algorithm to compute upgrades to be more similar to urpmi
+- Display architecture in information panel
+
 * Thu Apr 28 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.12-1mdk
 - Prompt for proxy credentials if configured so
 - Require newest urpmi
