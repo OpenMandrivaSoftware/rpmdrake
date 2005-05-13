@@ -1221,7 +1221,7 @@ sub get_installable_pkgs {
     my %update_descr;
     my @update_medias;
 
-    if ($updates && !$options{'no-media-update'}) {
+    if ($updates) {
         my $urpm = urpm->new;
         $urpm->configure;
         $urpm->{fatal} = sub {
@@ -1231,38 +1231,42 @@ sub get_installable_pkgs {
         };
 	my $statedir = $urpm->{statedir};
 	@update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
-	if (@update_medias > 0) {
-	    if (!$opts->{skip_updating_mu}) {
-		$options{'no-confirmation'} or interactive_msg_(N("Rpmdrake"),
+	unless ($options{'no-media-update'}) {
+	    if (@update_medias > 0) {
+		if (!$opts->{skip_updating_mu}) {
+		    $options{'no-confirmation'} or interactive_msg_(N("Rpmdrake"),
 N("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
 Is it ok to continue?"), yesno => 1) or myexit(-1);
-                $urpm->select_media(map { $_->{name} } @update_medias);
-                update_sources($urpm, noclean => 1);
-	    }
-	} else {
-            if (any { $_->{update} } @{$urpm->{media}}) {
-                interactive_msg_(N("Already existing update media"),
+		    $urpm->select_media(map { $_->{name} } @update_medias);
+		    update_sources($urpm, noclean => 1);
+		}
+	    } else {
+		if (any { $_->{update} } @{$urpm->{media}}) {
+		    interactive_msg_(N("Already existing update media"),
 N("You already have at least one update medium configured, but
 all of them are currently disabled. You should run the Software
 Media Manager to enable at least one (check it in the Enabled?
 column).
 
 Then, restart %s.", $rpmdrake::myname_update));
-                myexit(-1);
-            }
-	  mu_retry_another_mirror:
-	    my $m = choose_mirror(if_(exists $w->{rwindow}, transient => $w->{rwindow}));
-	    $m or interactive_msg_(N("How to choose manually your mirror"),
+		    myexit(-1);
+		}
+	      mu_retry_another_mirror:
+		my $m = choose_mirror(if_(exists $w->{rwindow}, transient => $w->{rwindow}));
+		$m or interactive_msg_(N("How to choose manually your mirror"),
 N("You may also choose your desired mirror manually: to do so,
 launch the Software Media Manager, and then add a `Security
 updates' medium.
 
 Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
-            add_medium_and_check($urpm, {},
-                                 $update_name, make_url_mirror($m), 'media_info/synthesis.hdlist.cz', update => 1);
-	    @update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
+		add_medium_and_check(
+		    $urpm, {},
+		    $update_name, make_url_mirror($m), 'media_info/synthesis.hdlist.cz', update => 1,
+		);
+		@update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
+	    }
 	}
 
 	my ($cur, $section);
