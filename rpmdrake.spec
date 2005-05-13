@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.13
+%define version 2.14
 %define release %mkrel 1
 
 Name: %{name}
@@ -112,6 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri May 13 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.14-1mdk
+- Fix rpmdrake in non-update modes
+
 * Thu May 12 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.13-1mdk
 - Rework the algorithm to compute upgrades to be more similar to urpmi
 - Display architecture in information panel
