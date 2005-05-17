@@ -182,7 +182,7 @@ sub writeconf {
 sub interactive_msg {
     my ($title, $contents, %options) = @_;
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
-    $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
+    $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     $contents = formatAlaTeX($contents) unless $options{scroll}; #- because we'll use a WrappedLabel
     gtkadd(
 	$d->{window},
@@ -297,8 +297,9 @@ sub fatal_msg {
 
 sub wait_msg {
     my ($msg, %options) = @_;
-    my $mainw = ugtk2->new('rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
-    $mainw->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
+    gtkflush();
+    my $mainw = ugtk2->new('Rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
+    $mainw->{real_window}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::WrappedLabel->new($msg);
     gtkadd(
 	$mainw->{window},
@@ -509,7 +510,7 @@ by Mandriva Linux Official Updates.")
     ), return '';
 
     my $w = ugtk2->new('rpmdrake', grab => 1);
-    $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always') if !$::isEmbedded;
+    $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $tree_model = Gtk2::TreeStore->new("Glib::String");
     my $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');

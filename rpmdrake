@@ -575,6 +575,7 @@ sub run_treeview_dialog {
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $w = ugtk2->new(N("Rpmdrake"));
+    $::main_window = $w->{real_window};
 
     my $is_locale_available = sub {
 	any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
@@ -612,6 +613,7 @@ sub run_treeview_dialog {
 	build_tree => sub {
 	    my ($add_node, $flat, $mode) = @_;
 	    my @elems;
+	    gtkflush();
 	    my $wait = wait_msg_(N("Please wait, listing packages..."));
 	    if ($mode eq 'mandrake_choices') {
 		foreach my $pkg (keys %$pkgs) {
@@ -1114,7 +1116,7 @@ Is it ok to continue?",
     my $status = Gtk2::Label->new;
     my $checkbox_show_autoselect;
     my ($menu, $factory) = create_factory_menu(
-	$::isEmbedded ? $::Plug : $w->{rwindow},
+	$w->{real_window},
 	[ N("/_File"), undef, undef, undef, '<Branch>' ],
 	if_(
 	    $MODE ne 'remove' && ! $>,
