@@ -855,7 +855,7 @@ sub keys_callback {
 sub mainwindow {
     $mainw = ugtk2->new(N("Configure media"), center => 1);
 
-    my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::String");
+    my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('browse');
     $list_tv->set_rules_hint(1);
@@ -864,13 +864,13 @@ sub mainwindow {
     my $reorder_ok = 1;
     $list->signal_connect(
 	row_deleted => sub {
-	    my ($model) = @_;
 	    $reorder_ok or return;
+	    my ($model) = @_;
 	    my @media;
 	    $model->foreach(
 		sub {
 		    my (undef, undef, $iter) = @_;
-		    my $name = $model->get($iter, 1);
+		    my $name = $model->get($iter, 2);
 		    push @media, find { $_->{name} eq $name } @{$urpm->{media}};
 		    0;
 		}, undef);
@@ -879,7 +879,8 @@ sub mainwindow {
     );
 
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled?"), my $tr = Gtk2::CellRendererToggle->new, 'active' => 0));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 1));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates?"), my $cu = Gtk2::CellRendererToggle->new, 'active' => 1));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 2));
 
     $tr->signal_connect(
 	toggled => sub {
@@ -890,6 +891,15 @@ sub mainwindow {
 	},
     );
 
+    $cu->signal_connect(
+	toggled => sub {
+	    my (undef, $path) = @_;
+	    my $iter = $list->get_iter_from_string($path);
+	    $urpm->{media}[$path]{update} = !$urpm->{media}[$path]{update} || undef;
+	    $list->set($iter, 1, ! !$urpm->{media}[$path]{update});
+	},
+    );
+
     my $menu = Gtk2::Menu->new;
     my @menu_actions = ([ 'update_source', N("Update medium") ], [ 'generate_hdlist', N("Regenerate hdlist") ]);
     foreach (@menu_actions) {
@@ -897,7 +907,7 @@ sub mainwindow {
         my $row;
         my $select_media = sub {
             $urpm->select_media($urpm->{media}[$row]{name});
-            foreach (@{$urpm->{media}}) {  #- force ignored media to be returned alive
+            foreach (@{$urpm->{media}}) { #- force ignored media to be returned alive
                 $_->{modified} and delete $_->{ignore};
             }
         };
@@ -945,7 +955,7 @@ sub mainwindow {
 	    $urpm->update_media(noclean => 1, nolock => 1);
 	}
 	$list->clear;
-	$list->append_set([ 0 => !$_->{ignore}, 1 => $_->{name} ]) foreach grep { ! $_->{external} } @{$urpm->{media}};
+	$list->append_set(0 => !$_->{ignore}, 1 => ! !$_->{update}, 2 => $_->{name}) foreach grep { ! $_->{external} } @{$urpm->{media}};
         $reorder_ok = 1;
     };
     $reread_media->();
