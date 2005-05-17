@@ -199,7 +199,14 @@ sub add_callback {
 			    },
 			)
 		    ) ];
-		}->()
+		}->(),
+		sub {
+		    [ gtkpack_(
+			Gtk2::HBox->new(0, 0),
+			1, Gtk2::Label->new,
+			0, ($info->{update_check} = Gtk2::CheckButton->new(N("Search this media for updates"))),
+		    ) ];
+		}->(),
 	    )
 	);
 	$book->show;
@@ -241,6 +248,7 @@ really want to replace it?"), yesno => 1) or return 0;
 				url => $info->{url_entry}->get_text,
 				hdlist => $info->{hdlist_entry}->get_text,
 				distrib => $info->{distrib_check} ? $info->{distrib_check}->get_active : 0,
+				update => $info->{update_check}->get_active ? 1 : undef,
 			    );
 			    %make_url = (local => "file:/$i{url}", http => $i{url}, removable => "removable:/$i{url}");
 			    $i{url} =~ s|^ftp://||;
@@ -263,7 +271,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    add_medium_and_check(
 		$urpm,
 		{ nolock => 1, distrib => 1 },
-		$i{name}, $make_url{$type}, probe_with => 'synthesis',
+		$i{name}, $make_url{$type}, probe_with => 'synthesis', update => $i{update},
 	    );
 	} else {
 	    if (member($i{name}, map { $_->{name} } @{$urpm->{media}})) {
@@ -274,7 +282,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    add_medium_and_check(
 		$urpm,
 		{ probe_with => $probe, nolock => 1 },
-		$i{name}, $make_url{$type}, $i{hdlist},
+		$i{name}, $make_url{$type}, $i{hdlist}, update => $i{update},
 	    );
 	}
 	return 1;
