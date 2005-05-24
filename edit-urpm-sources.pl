@@ -370,6 +370,7 @@ sub remove_callback {
 
     my $wait = wait_msg_(N("Please wait, removing medium..."));
     urpm::media::remove_media($urpm, [ $urpm->{media}[$row] ]);
+    urpm::media::write_urpmi_cfg($urpm);
     remove_wait_msg($wait);
     return 1
 }
