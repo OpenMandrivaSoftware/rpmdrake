@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.10
+%define version 3.11
 %define release %mkrel 1
 
 Name: %{name}
@@ -135,6 +135,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Sep 26 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.11-1mdv2007.0
+- fix icon state on unselecting (#26126)
+- in "all updates" mode, list again packages without an importance
+  field (aka those coming from non update media) (#25267)
+
 * Tue Sep 19 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.10-1mdv2007.0
 - new icons
 - fix unselecting an update
