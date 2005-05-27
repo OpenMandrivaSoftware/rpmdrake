@@ -614,7 +614,7 @@ sub run_treeview_dialog {
 	    my ($add_node, $flat, $mode) = @_;
 	    my @elems;
 	    gtkflush();
-	    my $wait = wait_msg_(N("Please wait, listing packages..."));
+	    my $wait; $wait = wait_msg_(N("Please wait, listing packages...")) if $MODE ne 'update';
 	    if ($mode eq 'mandrake_choices') {
 		foreach my $pkg (keys %$pkgs) {
 		    my ($name) = split_fullname($pkg);
@@ -676,7 +676,7 @@ or you already installed all of them."));
 		    }
 		}
 	    }
-	    remove_wait_msg($wait);
+	    remove_wait_msg($wait) if defined $wait;
 	},
 	grep_unselected => sub { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ },
 	partialsel_unsel => sub {
