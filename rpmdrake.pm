@@ -297,6 +297,7 @@ sub fatal_msg {
 }
 
 sub getbanner () {
+    $::MODE or return undef;
     Gtk2::Banner->new("title-$::MODE", {
 	remove  => N("Software Packages Removal"),
 	update  => N("Software Packages Update"),
@@ -310,11 +311,12 @@ sub wait_msg {
     my $mainw = ugtk2->new('Rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $mainw->{real_window}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::WrappedLabel->new($msg);
+    my $banner = $options{banner} ? getbanner : undef;
     gtkadd(
 	$mainw->{window},
 	gtkpack__(
 	    gtkset_border_width(Gtk2::VBox->new(0, 5), 6),
-	    if_($options{banner}, getbanner),
+	    if_($banner, $banner),
 	    $label,
 	    if_(exists $options{widgets}, @{$options{widgets}}),
 	)
