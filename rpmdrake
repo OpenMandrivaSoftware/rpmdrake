@@ -155,17 +155,10 @@ package main;
 my $w;
 my $changelog_first;
 
-sub getbanner {
-    Gtk2::Banner->new("title-$MODE", {
-	remove  => N("Software Packages Removal"),
-	update  => N("Software Packages Update"),
-	install => N("Software Packages Installation"),
-    }->{$MODE}),
-}
-
 sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
+sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &wait_msg_ }
 
 $> and (interactive_msg_(N("Running in user mode"),
 N("You are launching this program as a normal user.
@@ -1166,7 +1159,7 @@ Is it ok to continue?",
 	gtkpack_(
 	    Gtk2::VBox->new(0, 3),
 	    0, $menu,
-	    0, getbanner(),
+	    0, getbanner,
 	    1, gtkadd(
 		gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
 		gtkpack_(
@@ -1297,7 +1290,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	    $section =~ /^(pre|description)\z/ and $cur->{$1} .= $_;
 	}
     }
-    my $wait = wait_msg_(N("Please wait, finding available packages..."));
+    my $wait = wait_msg_with_banner(N("Please wait, finding available packages..."));
     my $urpm = urpm->new;
     $urpm->{state} = {};
     my %installable_pkgs;
@@ -1693,7 +1686,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 sub get_installed_pkgs {
     use URPM;
 
-    my $wait = wait_msg_(N("Please wait, reading packages database..."));
+    my $wait = wait_msg_with_banner(N("Please wait, reading packages database..."));
     my @base = qw(basesystem);
     my (%base, %basepackages);
     my $db = db();

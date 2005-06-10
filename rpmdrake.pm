@@ -59,6 +59,7 @@ our @EXPORT = qw(
     interactive_packtable
     interactive_list
     fatal_msg
+    getbanner
     wait_msg
     remove_wait_msg
     but
@@ -295,6 +296,14 @@ sub fatal_msg {
     myexit -1;
 }
 
+sub getbanner () {
+    Gtk2::Banner->new("title-$::MODE", {
+	remove  => N("Software Packages Removal"),
+	update  => N("Software Packages Update"),
+	install => N("Software Packages Installation"),
+    }->{$::MODE});
+}
+
 sub wait_msg {
     my ($msg, %options) = @_;
     gtkflush();
@@ -305,6 +314,7 @@ sub wait_msg {
 	$mainw->{window},
 	gtkpack__(
 	    gtkset_border_width(Gtk2::VBox->new(0, 5), 6),
+	    if_($options{banner}, getbanner),
 	    $label,
 	    if_(exists $options{widgets}, @{$options{widgets}}),
 	)
