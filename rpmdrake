@@ -1709,17 +1709,19 @@ sub get_installed_pkgs {
     }
     my %installed_pkgs;
     $db->traverse(sub {
-		      my ($pkg) = @_;
-		      my $fullname = my_fullname($pkg);
-		      if (!$base{$fullname} || ${$base{$fullname}} != 1) {
-			  #- I need to extract summary and description since they'll be lost when $pkg->pack_header
-			  $installed_pkgs{$fullname} = { selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
-                                                         summary => rpm_summary($pkg->summary),
-							 description => rpm_description($pkg->description) };
-			  $base{$fullname} and $installed_pkgs{$fullname}{base} = \${$base{$fullname}};
-		      }
-		      $pkg->pack_header;
-		  });
+	    my ($pkg) = @_;
+	    my $fullname = my_fullname($pkg);
+	    if (!$base{$fullname} || ${$base{$fullname}} != 1) {
+		#- I need to extract summary and description since they'll be lost when $pkg->pack_header
+		$installed_pkgs{$fullname} = {
+		    selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
+		    summary => rpm_summary($pkg->summary),
+		    description => rpm_description($pkg->description),
+		} unless $installed_pkgs{$fullname} && $installed_pkgs{$fullname}{description};
+		$base{$fullname} and $installed_pkgs{$fullname}{base} = \${$base{$fullname}};
+	    }
+	    $pkg->pack_header;
+	});
     remove_wait_msg($wait);
     my $urpm = urpm->new;
     my $group;
