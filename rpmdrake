@@ -159,6 +159,7 @@ sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &wait_msg_ }
+sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg_ }
 
 $> and (interactive_msg_(N("Running in user mode"),
 N("You are launching this program as a normal user.
@@ -1232,13 +1233,13 @@ sub get_installable_pkgs {
 	unless ($options{'no-media-update'}) {
 	    if (@update_medias > 0) {
 		if (!$opts->{skip_updating_mu}) {
-		    $options{'no-confirmation'} or interactive_msg_(N("Rpmdrake"),
+		    $options{'no-confirmation'} or interactive_msg_with_banner(N("Rpmdrake"),
 N("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
 Is it ok to continue?"), yesno => 1) or myexit(-1);
 		    $urpm->select_media(map { $_->{name} } @update_medias);
-		    update_sources($urpm, noclean => 1);
+		    update_sources($urpm, noclean => 1, banner => $::isEmbedded);
 		}
 	    } else {
 		if (any { $_->{update} } @{$urpm->{media}}) {

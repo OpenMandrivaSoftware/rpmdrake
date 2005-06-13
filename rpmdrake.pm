@@ -180,15 +180,26 @@ sub writeconf {
     output $configfile, map { "$_ " . join(' ', @${$config{$_}{var}}) . "\n" } keys %config;
 }
 
+sub getbanner () {
+    $::MODE or return undef;
+    Gtk2::Banner->new("title-$::MODE", {
+	remove  => N("Software Packages Removal"),
+	update  => N("Software Packages Update"),
+	install => N("Software Packages Installation"),
+    }->{$::MODE});
+}
+
 sub interactive_msg {
     my ($title, $contents, %options) = @_;
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     $contents = formatAlaTeX($contents) unless $options{scroll}; #- because we'll use a WrappedLabel
+    my $banner = $options{banner} ? getbanner : undef;
     gtkadd(
 	$d->{window},
 	gtkpack_(
 	    Gtk2::VBox->new(0, 5),
+	    if_($banner, 0, $banner),
 	    1,
 	    (
 		$options{scroll} ? gtkadd(
@@ -294,15 +305,6 @@ sub interactive_list {
 sub fatal_msg {
     interactive_msg @_;
     myexit -1;
-}
-
-sub getbanner () {
-    $::MODE or return undef;
-    Gtk2::Banner->new("title-$::MODE", {
-	remove  => N("Software Packages Removal"),
-	update  => N("Software Packages Update"),
-	install => N("Software Packages Installation"),
-    }->{$::MODE});
 }
 
 sub wait_msg {
@@ -633,6 +635,7 @@ sub update_sources {
     my $w; my $label; $w = wait_msg(
 	$label = Gtk2::Label->new(N("Please wait, updating media...")),
 	no_wait_cursor => 1,
+	banner => $options{banner},
 	widgets => [
 	    (my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1)),
 	    gtkpack(
