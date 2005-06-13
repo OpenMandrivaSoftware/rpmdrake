@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.15
+%define version 2.16
 %define release %mkrel 1
 
 Name: %{name}
@@ -112,6 +112,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Jun 13 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.16-1mdk
+- Keep descriptions even when alternate synthesis media
+- Always display banners in MCC
+
 * Wed May 18 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.15-1mdk
 - Software media manager: add a column to mark media as update sources,
   and add an "update" checkbox to mark added media as "updates".
