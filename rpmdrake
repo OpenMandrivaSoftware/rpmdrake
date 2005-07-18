@@ -154,11 +154,12 @@ package main;
 
 my $w;
 my $changelog_first;
+my $treeview_dialog_run = 0;
 
 sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
-sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &wait_msg_ }
+sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded && !$treeview_dialog_run; &wait_msg_ }
 sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg_ }
 
 $> and (interactive_msg_(N("Running in user mode"),
@@ -1209,6 +1210,7 @@ Is it ok to continue?",
     };
     $options->{init_callback} = $find_callback if $options{search};
 
+    $treeview_dialog_run = 1;
     ask_browse_tree_info_given_widgets($options);
 }
 
