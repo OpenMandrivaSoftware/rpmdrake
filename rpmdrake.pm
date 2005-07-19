@@ -39,6 +39,7 @@ use c;
 use curl_download;
 
 our @ISA = qw(Exporter);
+our $VERSION = '2.16';
 our @EXPORT = qw(
     $changelog_first_config
     $mandrakeupdate_wanted_categories
