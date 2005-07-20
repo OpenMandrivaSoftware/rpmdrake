@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.16
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: %{name}
 Version: %{version}
@@ -112,6 +112,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Jul 19 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.16-2mdk
+- Message updates
+- Fix display bug 16676
+
 * Mon Jun 13 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.16-1mdk
 - Keep descriptions even when alternate synthesis media
 - Always display banners in MCC
