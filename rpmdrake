@@ -91,6 +91,7 @@ if ($@) {
 $MODE eq 'update' || $options{root} and require_root_capability();
 $ugtk2::wm_icon = "title-$MODE";
 $::isStandalone = 1;
+$::noborderWhenEmbedded = 1;
 
 package gurpm;
 
