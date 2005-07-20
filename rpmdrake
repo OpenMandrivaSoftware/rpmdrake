@@ -1105,10 +1105,7 @@ Is it ok to continue?",
 		   1, 2, 0, 1, 'fill', 'fill', 0, 0);
 
     my $hpaned = Gtk2::HPaned->new;
-    $hpaned->pack1(gtkadd(
-	    gtkset_shadow_type(Gtk2::Frame->new, 'in'),
-	    gtkset_size_request(create_scrolled_window($tree), $typical_width*1.25, -1)
-	), 0, 0);
+    $hpaned->pack1(gtkset_size_request(create_scrolled_window($tree), $typical_width*1.25, -1) , 0, 0);
     $hpaned->pack2(create_scrolled_window($info), 1, 0);
     $table->attach($hpaned, 0, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
 
