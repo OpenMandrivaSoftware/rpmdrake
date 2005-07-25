@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.17
+%define version 2.18
 %define release %mkrel 1
 
 Name: %{name}
@@ -112,6 +112,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Jul 25 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.18-1mdk
+- Make long error windows scrollable
+- Translations / strings nits
+- Use i18n functions from drakxtools
+
 * Wed Jul 20 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.17-1mdk
 - Fix more display bugs
 
