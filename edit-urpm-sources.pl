@@ -709,7 +709,7 @@ sub parallel_callback {
 			clicked => sub { remove_parallel(selrow($list), $conf); $reread->() },
 		    ),
 		    gtksignal_connect(
-			$edit = Gtk2::Button->new(but(N("Edit"))),
+			$edit = Gtk2::Button->new(but(N("Edit..."))),
 			clicked => sub {
 			    my $row = selrow($list);
 			    $row != -1 and edit_parallel($row, $conf);
@@ -974,7 +974,7 @@ sub mainwindow {
 			clicked => sub { remove_callback(); $reread_media->() },
 		    ),
 		    gtksignal_connect(
-			$edit = Gtk2::Button->new(but(N("Edit"))),
+			$edit = Gtk2::Button->new(but(N("Edit..."))),
 			clicked => sub {
 			    my $name = edit_callback(); defined $name and $reread_media->($name);
 			}
