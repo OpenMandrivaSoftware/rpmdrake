@@ -799,8 +799,11 @@ or you already installed all of them."));
 			    ? to_utf8(join "\n", $urpm->translate_why_unselected($urpm->{state}, $unsel))
 			    : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
 			} @cant;
-			interactive_msg_(N("Some packages can't be installed"),
-			    N("Sorry, the following package(s) can't be selected:\n\n%s", join("\n", @reasons)));
+			interactive_msg_(
+			    N("Some packages can't be installed"),
+			    N("Sorry, the following package(s) can't be selected:\n\n%s", join("\n", @reasons)),
+			    scroll => 1,
+			);
 			foreach (@cant) {
 			    $pkgs->{$_}{pkg}->set_flag_requested(0);
 			    $pkgs->{$_}{pkg}->set_flag_required(0);
@@ -1087,6 +1090,7 @@ N("The following packages have to be removed for others to be upgraded:
 
 Is it ok to continue?",
 		    to_utf8($r)),
+		scroll => 1,
 		yesno => 1) or return;
 	    }
 	}
@@ -1479,11 +1483,16 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         my $pkgs = join(' ', map { if_($_->flag_requested, my_fullname($_)) } @{$urpm->{depslist}});
         system("urpmi -v --X --parallel $group $pkgs");
         if ($? == 0) {
-            interactive_msg_(N("Everything installed successfully"),
-                             N("All requested packages were installed successfully."));
+            interactive_msg_(
+		N("Everything installed successfully"),
+		N("All requested packages were installed successfully."),
+	    );
         } else {
-            interactive_msg_(N("Problem during installation"),
-                             N("There was a problem during the installation:\n\n%s", join("\n", @error_msgs)));
+            interactive_msg_(
+		N("Problem during installation"),
+		N("There was a problem during the installation:\n\n%s", join("\n", @error_msgs)),
+		scroll => 1,
+	    );
         }
         db('force_sync');
         $w->{rwindow}->set_sensitive(1);
@@ -1496,9 +1505,12 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
     my $distant_number = scalar keys %pkgs;
     if (!$local_sources && (!$list || !@$list)) {
-        interactive_msg_(N("Unable to get source packages."),
-                         N("Unable to get source packages, sorry. %s",
-                           @error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
+        interactive_msg_(
+	    N("Unable to get source packages."),
+	    N("Unable to get source packages, sorry. %s",
+		@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
+	    scroll => 1,
+	);
         goto return_with_error;
     }
     foreach (@$local_to_removes) {
@@ -1566,10 +1578,13 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     if (@rpms_install || @rpms_upgrade) {
         if (my @missing = grep { m|^/| && ! -e $_ } @rpms_install, @rpms_upgrade) {
-            interactive_msg_(N("Installation failed"),
-                             N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
-                               join "\n", map { "    $_" } @missing) .
-                             (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''));
+            interactive_msg_(
+		N("Installation failed"),
+		N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
+		    join "\n", map { "    $_" } @missing) .
+		    (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
+		if_(@error_msgs > 1, scroll => 1),
+	    );
             goto return_with_error;
         }
         my $progress_nb;
@@ -1619,9 +1634,12 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         $urpm->try_umounting_removables;
 
         if (@errors || @error_msgs) {
-            interactive_msg_(N("Problem during installation"),
-                             N("There was a problem during the installation:\n\n%s",
-                               join("\n", @errors, @error_msgs)));
+            interactive_msg_(
+		N("Problem during installation"),
+		N("There was a problem during the installation:\n\n%s",
+		    join("\n", @errors, @error_msgs)),
+		if_(@errors + @error_msgs > 1, scroll => 1),
+	    );
             $w->{rwindow}->set_sensitive(1);
             return !$something_installed;
         }
@@ -1742,8 +1760,11 @@ sub perform_removal {
                                                     $urpm->install(\@toremove, {}, {}, translate_message => 1);
                     db('force_sync') });
     if (@results) {
-	interactive_msg_(N("Problem during removal"),
-			 N("There was a problem during the removal of packages:\n\n%s", join("\n",  @results)));
+	interactive_msg_(
+	    N("Problem during removal"),
+	    N("There was a problem during the removal of packages:\n\n%s", join("\n",  @results)),
+	    if_(@results > 1, scroll => 1),
+	);
 	return 1;
     } else {
 	return 0;
