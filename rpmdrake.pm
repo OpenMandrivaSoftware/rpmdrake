@@ -35,6 +35,7 @@ use URPM::Resolve;
 use strict;
 use log;
 use c;
+use common;
 
 use curl_download;
 
@@ -48,10 +49,7 @@ our @EXPORT = qw(
     $tree_mode
     $tree_flat
     $typical_width
-    N
-    N_
     distro_type
-    translate
     to_utf8
     myexit
     readconf
@@ -77,6 +75,7 @@ our @EXPORT = qw(
     strip_first_underscore
 );
 our $typical_width;
+unshift @::textdomains, 'rpmdrake', 'urpmi';
 
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
@@ -127,27 +126,6 @@ $urpm::download::PROMPT_PROXY = new rpmdrake::prompt(
     [ 0, 1 ],
 );
 
-sub translate {
-    my ($s) = @_;
-    my $r = '';
-    if ($s) {
-        $r = c::dgettext('rpmdrake', $s);
-        $r eq $s and $r = Locale::gettext::iconv(c::dgettext('urpmi', $s), undef, "UTF-8");
-        c::set_tagged_utf8($r);
-    }
-    $r;
-}
-sub sprintf_fixutf8 {
-    my $need_upgrade;
-    $need_upgrade |= to_bool(c::is_tagged_utf8($_)) + 1 foreach @_;
-    if ($need_upgrade == 3) { c::upgrade_utf8($_) foreach @_ }
-    sprintf shift, @_;
-}
-sub N {
-    my $s = shift @_; my $t = translate($s);
-    sprintf_fixutf8 $t, @_;
-}
-sub N_ { $_[0] }
 sub to_utf8 {
     foreach (@_) {
         $_ = Locale::gettext::iconv($_, undef, "UTF-8");
