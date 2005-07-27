@@ -1320,7 +1320,6 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 
     my %pkg_sel   = map { $_ => 1 } @{$options{'pkg-sel'}   || []};
     my %pkg_nosel = map { $_ => 1 } @{$options{'pkg-nosel'} || []};
-    use Data::Dumper;warn Dumper \%pkg_sel;
     foreach my $pkg (@{$urpm->{depslist}}) {
 	$pkg->flag_upgrade or next;
         my $selected = 0;
