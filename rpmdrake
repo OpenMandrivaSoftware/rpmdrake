@@ -69,7 +69,7 @@ foreach (@ARGV) {
     if ($val =~ /=/) {
         my ($name, $values) = split /=/, $val;
         my @values = split /,/, $values;
-        $options{$name} = \@values;
+        $options{$name} = \@values if @values;
     } else {
         $options{$val} = 1;
     }
