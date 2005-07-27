@@ -1318,6 +1318,9 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     );
     $urpm->{depslist}[$_]->set_flag_installed foreach keys %$requested; #- pretend it's installed
 
+    my %pkg_sel   = map { $_ => 1 } @{$options{'pkg-sel'}   || []};
+    my %pkg_nosel = map { $_ => 1 } @{$options{'pkg-nosel'} || []};
+    use Data::Dumper;warn Dumper \%pkg_sel;
     foreach my $pkg (@{$urpm->{depslist}}) {
 	$pkg->flag_upgrade or next;
         my $selected = 0;
@@ -1325,10 +1328,9 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
             $pkg->flag_installed or next;
             any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next;
             if ($options{'pkg-sel'} || $options{'pkg-nosel'}) {
-		if ($#{$options{'pkg-sel'}} != -1 || $#{$options{'pkg-nosel'}} != -1) {
-		    member(urpm_name($pkg), @{$options{'pkg-sel'}}, @{$options{'pkg-nosel'}}) or next;
-		    member(urpm_name($pkg), @{$options{'pkg-sel'}}) and $selected = 1;
-		}
+		my $n = urpm_name($pkg);
+		$pkg_sel{$n} || $pkg_nosel{$n} or next;
+		$pkg_sel{$n} and $selected = 1;
 	    }
 	}
 	$installable_pkgs{my_fullname($pkg)} = { selected => $selected, pkg => $pkg };
