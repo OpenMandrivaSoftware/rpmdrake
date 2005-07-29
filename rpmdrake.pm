@@ -65,6 +65,9 @@ our @EXPORT = qw(
     but
     but_
     slow_func
+    slow_func_statusbar
+    statusbar_msg
+    statusbar_msg_remove
     choose_mirror
     make_url_mirror
     make_url_mirror_dist
@@ -319,7 +322,7 @@ sub remove_wait_msg {
 sub but { "    $_[0]    " }
 sub but_ { "        $_[0]        " }
 
-sub slow_func($&) {
+sub slow_func ($&) {
     my ($param, $func) = @_;
     if (ref($param) =~ /^Gtk/) {
 	gtkset_mousecursor_wait($param);
@@ -333,6 +336,39 @@ sub slow_func($&) {
     }
 }
 
+sub statusbar_msg {
+    unless ($::statusbar) { #- fallback if no status bar
+	if (defined &::wait_msg_) { goto &::wait_msg_ } else { goto &wait_msg }
+    }
+    my ($msg) = @_;
+    #- always use the same context description for now
+    my $cx = $::statusbar->get_context_id("foo");
+    #- returns a msg_id to be passed optionnally to statusbar_msg_remove
+    $::statusbar->push($cx, $msg);
+}
+
+sub statusbar_msg_remove {
+    my ($msg_id) = @_;
+    if (!$::statusbar || ref $msg_id) { #- fallback if no status bar
+	goto &remove_wait_msg;
+    }
+    my $cx = $::statusbar->get_context_id("foo");
+    if (defined $msg_id) {
+	$::statusbar->remove($cx, $msg_id);
+    } else {
+	$::statusbar->pop($cx);
+    }
+}
+
+sub slow_func_statusbar ($$&) {
+    my ($msg, $w, $func) = @_;
+    gtkset_mousecursor_wait($w->window);
+    my $msg_id = statusbar_msg($msg);
+    gtkflush();
+    $func->();
+    statusbar_msg_remove($msg_id);
+    gtkset_mousecursor_normal($w->window);
+}
 
 my %u2l = (
 	   at => N("Austria"),

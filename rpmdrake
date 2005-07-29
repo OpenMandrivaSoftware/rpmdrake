@@ -156,11 +156,12 @@ package main;
 my $w;
 my $changelog_first;
 my $treeview_dialog_run = 0;
+our $statusbar;
 
 sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
-sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded && !$treeview_dialog_run; &wait_msg_ }
+sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded && !$treeview_dialog_run; &statusbar_msg }
 sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg_ }
 
 $> and (interactive_msg_(N("Running in user mode"),
@@ -428,8 +429,9 @@ sub do_search($$$$$$$) {
 	    if ($current_search_type eq 'descriptions') {
 		@search_results = grep { ($pkgs->{$_}{summary} . $pkgs->{$_}{description}) =~ $entry_rx } keys %$pkgs;
 	    } else {
-		slow_func(
+		slow_func_statusbar(
 		    N("Please wait, searching..."),
+		    $w->{rwindow},
 		    sub {
 			db->traverse(sub {
 			    push @search_results, map { if_(($_ =~ $entry_rx), my_fullname($_[0])) } $_[0]->files;
@@ -617,8 +619,8 @@ sub run_treeview_dialog {
 	build_tree => sub {
 	    my ($add_node, $flat, $mode) = @_;
 	    my @elems;
+	    my $wait; $wait = statusbar_msg(N("Please wait, listing packages...")) if $MODE ne 'update';
 	    gtkflush();
-	    my $wait; $wait = wait_msg_(N("Please wait, listing packages...")) if $MODE ne 'update';
 	    if ($mode eq 'mandrake_choices') {
 		foreach my $pkg (keys %$pkgs) {
 		    my ($name) = split_fullname($pkg);
@@ -680,7 +682,7 @@ or you already installed all of them."));
 		    }
 		}
 	    }
-	    remove_wait_msg($wait) if defined $wait;
+	    statusbar_msg_remove($wait) if defined $wait;
 	},
 	grep_unselected => sub { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ },
 	partialsel_unsel => sub {
@@ -1193,6 +1195,7 @@ Is it ok to continue?",
 		    ),
 		),
 	    ),
+	    0, $statusbar = Gtk2::Statusbar->new,
 	),
     );
     $action_button->set_sensitive(0) if $>;
@@ -1297,6 +1300,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	}
     }
     my $wait = wait_msg_with_banner(N("Please wait, finding available packages..."));
+    gtkflush();
     my $urpm = urpm->new;
     $urpm->{state} = {};
     my %installable_pkgs;
@@ -1339,7 +1343,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
         delete $options{'pkg-sel'};
     }
 
-    remove_wait_msg($wait);
+    statusbar_msg_remove($wait);
     ($urpm, \%installable_pkgs, \%update_descr);
 }
 
@@ -1474,6 +1478,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $fatal_msg;
     my @error_msgs;
     my @Readmes;
+    my $statusbar_msg_id;
     local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = to_utf8($_[1]); goto fatal_error };
     local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, to_utf8($_[0]) };
 
@@ -1484,8 +1489,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         my $pkgs = join(' ', map { if_($_->flag_requested, my_fullname($_)) } @{$urpm->{depslist}});
         system("urpmi -v --X --parallel $group $pkgs");
         if ($? == 0) {
-            interactive_msg_(
-		N("Everything installed successfully"),
+            $statusbar_msg_id = statusbar_msg(
+		#N("Everything installed successfully"),
 		N("All requested packages were installed successfully."),
 	    );
         } else {
@@ -1653,7 +1658,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
         dialog_rpmnew(N("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:", N("everything was installed correctly")),
                       %pkg2rpmnew)
-          and interactive_msg_(N("Everything installed successfully"),
+          and $statusbar_msg_id = statusbar_msg(#N("Everything installed successfully"),
                                N("All requested packages were installed successfully."));
 	if (@Readmes) { #- display the README*.urpmi files
 	    interactive_packtable(
@@ -1689,6 +1694,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     }
 
     $w->{rwindow}->set_sensitive(1);
+    statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
     return 0;
 
   fatal_error:
@@ -1708,6 +1714,7 @@ sub get_installed_pkgs {
     use URPM;
 
     my $wait = wait_msg_with_banner(N("Please wait, reading packages database..."));
+    gtkflush();
     my @base = qw(basesystem);
     my (%base, %basepackages);
     my $db = db();
@@ -1742,7 +1749,7 @@ sub get_installed_pkgs {
 	    }
 	    $pkg->pack_header;
 	});
-    remove_wait_msg($wait);
+    statusbar_msg_remove($wait);
     my $urpm = urpm->new;
     my $group;
     if ($options{parallel} && (($group) = @{$options{parallel}})) {
@@ -1756,10 +1763,16 @@ sub perform_removal {
     my @toremove = map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
     standalone::explanations("Removing package $_") foreach sort @toremove;
     my @results;
-    slow_func(N("Please wait, removing packages..."),
-	      sub { @results = $options{parallel} ? $urpm->parallel_remove(\@toremove, translate_message => 1) :
-                                                    $urpm->install(\@toremove, {}, {}, translate_message => 1);
-                    db('force_sync') });
+    slow_func_statusbar(
+	N("Please wait, removing packages..."),
+	$w->{rwindow},
+	sub {
+	    @results = $options{parallel}
+		? $urpm->parallel_remove(\@toremove, translate_message => 1)
+		: $urpm->install(\@toremove, {}, {}, translate_message => 1);
+	    db('force_sync');
+	},
+    );
     if (@results) {
 	interactive_msg_(
 	    N("Problem during removal"),
