@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.18
+%define version 2.19
 %define release %mkrel 1
 
 Name: %{name}
@@ -112,6 +112,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Jul 29 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.19-1mdk
+- Add a status bar, remove lots of popup messages
+- Fix --pkg-sel= option
+- Message updates
+
 * Mon Jul 25 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.18-1mdk
 - Make long error windows scrollable
 - Translations / strings nits
