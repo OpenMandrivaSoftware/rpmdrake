@@ -69,7 +69,7 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cp %{name}.menu $RPM_BUILD_ROOT%{_menudir}/%{name}
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
-for i in rpmdrake rpmdrake-remove mandrakeupdate edit-urpm-sources; do
+for i in rpmdrake rpmdrake-remove mandrivaupdate edit-urpm-sources; do
   cp pixmaps/${i}16.png $RPM_BUILD_ROOT%{_miconsdir}/${i}.png
   cp pixmaps/${i}32.png $RPM_BUILD_ROOT%{_iconsdir}/${i}.png
   cp pixmaps/${i}48.png $RPM_BUILD_ROOT%{_liconsdir}/${i}.png
