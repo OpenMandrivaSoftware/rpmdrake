@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.19
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: %{name}
 Version: %{version}
@@ -112,6 +112,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Aug 18 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.19-2mdk
+- Message updates
+- Rename files named mandrake*
+- Display sensible wait cursor
+
 * Fri Jul 29 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.19-1mdk
 - Add a status bar, remove lots of popup messages
 - Fix --pkg-sel= option
