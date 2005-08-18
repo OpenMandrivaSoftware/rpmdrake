@@ -343,6 +343,7 @@ sub statusbar_msg {
     my ($msg) = @_;
     #- always use the same context description for now
     my $cx = $::statusbar->get_context_id("foo");
+    $::w and $::w->{rwindow} and gtkset_mousecursor_wait($::w->{rwindow}->window);
     #- returns a msg_id to be passed optionnally to statusbar_msg_remove
     $::statusbar->push($cx, $msg);
 }
@@ -358,6 +359,7 @@ sub statusbar_msg_remove {
     } else {
 	$::statusbar->pop($cx);
     }
+    $::w and $::w->{rwindow} and gtkset_mousecursor_normal($::w->{rwindow}->window);
 }
 
 sub slow_func_statusbar ($$&) {
