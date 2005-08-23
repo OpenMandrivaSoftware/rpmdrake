@@ -1566,13 +1566,13 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         gurpm::label(N("Verifying package signatures..."));
         my $total = @rpms_install + @rpms_upgrade;
         my $progress;
-	my @invalid_sources = to_utf8($urpm->check_sources_signatures(
+	my @invalid_sources = $urpm->check_sources_signatures(
 	    \%sources_install, \%sources,
 	    translate => 1, basename => 1,
 	    callback => sub {
 		gurpm::progress(++$progress/$total);
 	    },
-	));
+	);
         if (@invalid_sources) {
             interactive_msg_(
 		N("Rpmdrake"),
