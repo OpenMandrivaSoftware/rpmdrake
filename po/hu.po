@@ -1,9 +1,7 @@
-# translation of hu.po to Hungarian
 # translation of rpmdrake-hu.po to Hungarian
 #
 # Latest versions of po files are at http://www.mandrivalinux.com/l10n/hu.php3
 #
-# Hungarian translation of %s
 # Copyright (C) 1999-2001 Mandriva
 # KOVACS Emese Alexandra <emese@goliat.eik.bme.hu>, 1999-2001.
 # Arpad Biro <biro_arpad@yahoo.com>, 2000,2003, 2004, 2005.
@@ -13,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-hu\n"
 "POT-Creation-Date: 2005-07-29 14:11+0200\n"
-"PO-Revision-Date: 2005-02-01 22:52+0100\n"
+"PO-Revision-Date: 2005-08-25 14:58+0200\n"
 "Last-Translator: Arpad Biro <biro_arpad@yahoo.com>\n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
@@ -142,8 +140,7 @@ msgstr "Jelszó:"
 #: ../edit-urpm-sources.pl:175 ../edit-urpm-sources.pl:391
 #, c-format
 msgid "Relative path to synthesis/hdlist:"
-msgstr ""
-"A kiterjesztett függőséglista illetve a fejléclista relatív elérési útja:"
+msgstr "A kiterjesztett függőséglista illetve a fejléclista relatív elérési útja:"
 
 #: ../edit-urpm-sources.pl:177
 #, c-format
@@ -163,9 +160,9 @@ msgid "Create media for a whole distribution"
 msgstr "Adatforrás létrehozása teljes disztribúcióhoz"
 
 #: ../edit-urpm-sources.pl:207
-#, fuzzy, c-format
+#, c-format
 msgid "Search this media for updates"
-msgstr "Válassza ki, mely adatforrás(oka)t kívánja frissíteni:"
+msgstr "Frissítések keresése ezen adatforrásban"
 
 #: ../edit-urpm-sources.pl:218
 #, c-format
@@ -280,10 +277,8 @@ msgstr "A folytatáshoz be kell helyeznie az adathordozót"
 
 #: ../edit-urpm-sources.pl:421
 #, c-format
-msgid ""
-"In order to save the changes, you need to insert the medium in the drive."
-msgstr ""
-"A módosítások mentéséhez be kell helyeznie az adathordozót a meghajtóba."
+msgid "In order to save the changes, you need to insert the medium in the drive."
+msgstr "A módosítások mentéséhez be kell helyeznie az adathordozót a meghajtóba."
 
 #: ../edit-urpm-sources.pl:443
 #, c-format
@@ -446,7 +441,7 @@ msgstr "Adatforrás"
 msgid ""
 "_:cryptographic keys\n"
 "Keys"
-msgstr ""
+msgstr "Kulcsok"
 
 #: ../edit-urpm-sources.pl:764
 #, c-format
@@ -498,9 +493,9 @@ msgid "Enabled?"
 msgstr "Engedélyezve?"
 
 #: ../edit-urpm-sources.pl:882
-#, fuzzy, c-format
+#, c-format
 msgid "Updates?"
-msgstr "Frissítés"
+msgstr "Frissítések?"
 
 #: ../edit-urpm-sources.pl:904
 #, c-format
@@ -594,8 +589,7 @@ msgstr ""
 #: ../gurpmi.addmedia:69
 #, c-format
 msgid "Unable to add medium, wrong or missing arguments"
-msgstr ""
-"Nem sikerült felvenni az adatforrást - helytelen vagy hiányzó argumentumok"
+msgstr "Nem sikerült felvenni az adatforrást - helytelen vagy hiányzó argumentumok"
 
 #: ../gurpmi.addmedia:77
 #, c-format
@@ -624,38 +618,43 @@ msgid ""
 "  --changelog-first      display changelog before filelist in the "
 "description window"
 msgstr ""
+"  --changelog-first      a változáslista a fájllista előtt jelenjen meg a\n"
+"                         leírás-ablakban"
 
 #: ../rpmdrake:33
 #, c-format
 msgid "  --media=medium1,..     limit to given media"
-msgstr ""
+msgstr "  --media=adatf1,...     korlátozás a megadott adatforrásra"
 
 #: ../rpmdrake:34
 #, c-format
-msgid ""
-"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgid "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
+"  --merge-all-rpmnew     a megtalált .rpmnew/.rpmsave fájlok felvételének\n"
+"                         felajánlása"
 
 #: ../rpmdrake:35
 #, c-format
 msgid "  --mode=MODE            set mode (install (default), remove, update)"
 msgstr ""
+"  --mode=MODE            üzemmód beállítása (install (telepítés - ez az\n"
+"                         alapértelmezett), remove (eltávolítás), update\n"
+"                         (frissítés))"
 
 #: ../rpmdrake:36
 #, c-format
-msgid ""
-"  --no-confirmation      don't ask first confirmation question in update mode"
-msgstr ""
+msgid "  --no-confirmation      don't ask first confirmation question in update mode"
+msgstr "  --no-confirmation      frissítési üzemmódban ne legyen megerősítéskérés"
 
 #: ../rpmdrake:37
-#, fuzzy, c-format
+#, c-format
 msgid "  --no-media-update      don't update media at startup"
-msgstr "  --update       - csak frissítési adatforrás legyen frissítve\n"
+msgstr "  --no-media-update      adatforrás ne legyen frissítve indításkor"
 
 #: ../rpmdrake:38
-#, fuzzy, c-format
+#, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
-msgstr "  --name         - csak a csomagnevek megjelenítése\n"
+msgstr "  --no-verify-rpm        csomagaláírások ellenőrzésének elhagyása"
 
 #: ../rpmdrake:39
 #, c-format
@@ -663,28 +662,28 @@ msgid ""
 "  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
 "\" machine to show needed deps"
 msgstr ""
+"  --parallel=csop,gép    párhuzamos módban a megadott csoport és gép\n"
+"                         használata a szükséges függőségek megjelenítéséhez"
 
 #: ../rpmdrake:40
 #, c-format
 msgid "  --pkg-nosel=pkg1,..    show only these packages"
-msgstr ""
+msgstr "  --pkg-nosel=csom1,...  csak a megadott csomagok megjelenítése"
 
 #: ../rpmdrake:41
 #, c-format
 msgid "  --pkg-sel=pkg1,..      preselect these packages"
-msgstr ""
+msgstr "  --pkg-sel=csomag1,...  a megadott csomagok előzetes kijelölése"
 
 #: ../rpmdrake:42
-#, fuzzy, c-format
+#, c-format
 msgid "  --root                 force to run as root"
-msgstr ""
-"\n"
-"                      DrakBackup szolgáltatás - jelentés\n"
+msgstr "  --root                 rendszergazdaként (root) való futtatás"
 
 #: ../rpmdrake:43
 #, c-format
 msgid "  --search=pkg           run search for \"pkg\""
-msgstr ""
+msgstr "  --search=csomag        keresés indítása a megadott csomagra"
 
 #: ../rpmdrake:166
 #, c-format
@@ -1270,7 +1269,7 @@ msgstr "Verzió: "
 #: ../rpmdrake:556
 #, c-format
 msgid "Architecture: "
-msgstr ""
+msgstr "Architektúra: "
 
 #: ../rpmdrake:557
 #, c-format
@@ -2005,14 +2004,14 @@ msgid "Mandriva Linux Update"
 msgstr "Mandriva Linux-frissítés"
 
 #: ../rpmdrake.pm:124
-#, fuzzy, c-format
+#, c-format
 msgid "Please enter your credentials for accessing proxy\n"
-msgstr "Adja meg az email-címét "
+msgstr "Adja meg az adatait a proxy eléréséhez\n"
 
 #: ../rpmdrake.pm:125
-#, fuzzy, c-format
+#, c-format
 msgid "User name:"
-msgstr "Felhasználó:"
+msgstr "Felhasználónév:"
 
 #: ../rpmdrake.pm:166
 #, c-format
@@ -2458,10 +2457,8 @@ msgstr "A segítség elindítva a háttérben"
 
 #: ../rpmdrake.pm:810
 #, c-format
-msgid ""
-"The help window has been started, it should appear shortly on your desktop."
-msgstr ""
-"A segítség el lett indítva, hamarosan meg kell jelennie a munkaasztalon."
+msgid "The help window has been started, it should appear shortly on your desktop."
+msgstr "A segítség el lett indítva, hamarosan meg kell jelennie a munkaasztalon."
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2733,318 +2730,3 @@ msgstr "Szoftvereltávolítás"
 msgid "Software Media Manager"
 msgstr "Szoftverforrás-kezelő"
 
-#~ msgid "Keys"
-#~ msgstr "Kulcsok"
-
-#~ msgid "Rpmdrake %s"
-#~ msgstr "Rpmdrake %s"
-
-#~ msgid "/_View"
-#~ msgstr "/_Nézet"
-
-#~ msgid "<no description>"
-#~ msgstr "<nincs leírás>"
-
-#~ msgid "Choose a mirror..."
-#~ msgstr "Válasszon ki egy tükröt..."
-
-#~ msgid "Reset the selection"
-#~ msgstr "A kijelölés visszaállítása"
-
-#~ msgid "Reload the packages list"
-#~ msgstr "A csomaglista újraolvasása"
-
-#~ msgid "Mandrake Update"
-#~ msgstr "Mandrake-frissítés"
-
-#~ msgid "Please wait, updating medium..."
-#~ msgstr "Az adatforrás frissítése folyamatban..."
-
-#~ msgid "Save and quit"
-#~ msgstr "Mentés és kilépés"
-
-#~ msgid "by size"
-#~ msgstr "méret szerint"
-
-#~ msgid ""
-#~ "some packages failed to install\n"
-#~ "correctly"
-#~ msgstr ""
-#~ "bizonyos csomagokat nem sikerült\n"
-#~ "telepíteni"
-
-#~ msgid "Please wait, removing packages to allow others to be upgraded..."
-#~ msgstr ""
-#~ "Csomagok eltávolítása annak érdekében, hogy más csomagokat frissíteni "
-#~ "lehessen..."
-
-#~ msgid "A required program is missing (grpmi). Check your installation."
-#~ msgstr ""
-#~ "Egy szükséges program (grpmi) nem található. Ellenőrizze a telepítést."
-
-#~ msgid "Program missing"
-#~ msgstr "Egy program nem található"
-
-#~ msgid ""
-#~ "There was an error while adding the update medium via urpmi.\n"
-#~ "\n"
-#~ "This may be due to a broken or temporary unavailable mirror, or when "
-#~ "your\n"
-#~ "Mandriva Linux version (%s) is not yet / no more supported by Mandrake "
-#~ "Linux\n"
-#~ "Official Updates.\n"
-#~ "\n"
-#~ "Do you want to try another mirror?"
-#~ msgstr ""
-#~ "Hiba történt a frissítési adatforrásnak az Urpmi programmal való\n"
-#~ "felvétele közben.\n"
-#~ "\n"
-#~ "Ezt okozhatja például egy hibásan működő vagy elérhetetlen\n"
-#~ "tükörkiszolgáló, vagy esetleg az, hogy az Ön által használt\n"
-#~ "Mandriva Linux-verzióhoz (%s) még / már nincsen hivatalos\n"
-#~ "frissítés.\n"
-#~ "\n"
-#~ "Próbálkozik egy másik tükörkiszolgálóval?"
-
-#~ msgid "Please wait, contacting mirror to initialize updates packages."
-#~ msgstr ""
-#~ "Kapcsolódás a tükörkiszolgálóhoz; a frissítőcsomagok inicializálása..."
-
-#~ msgid "Please wait, contacting mirror to update packages information."
-#~ msgstr "Kapcsolódás a tükörkiszolgálóhoz; csomaginformációk lekérdezése..."
-
-#~ msgid "Everything already installed (is this supposed to happen at all?)."
-#~ msgstr "Már minden telepítve van (esetleg hiba történt?)."
-
-#~ msgid "Local file `%s' already up to date"
-#~ msgstr "A(z) \"%s\" helyi fájl a legújabb verziót tartalmazza"
-
-#~ msgid ""
-#~ "%sFiles:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Changelog:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "%sFájlok:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Változások jegyzéke:\n"
-#~ "%s"
-
-#~ msgid "Source: %s\n"
-#~ msgstr "Forrás: %s\n"
-
-#~ msgid ""
-#~ "Name: %s\n"
-#~ "Version: %s\n"
-#~ "Size: %s KB\n"
-#~ "Importance: %s\n"
-#~ "\n"
-#~ "Summary: %s\n"
-#~ "\n"
-#~ "%s\n"
-#~ msgstr ""
-#~ "Név: %s\n"
-#~ "Verzió: %s\n"
-#~ "Méret: %s KByte\n"
-#~ "Fontosság: %s\n"
-#~ "\n"
-#~ "Összefoglaló: %s\n"
-#~ "\n"
-#~ "%s\n"
-
-#~ msgid ""
-#~ "Name: %s\n"
-#~ "Version: %s\n"
-#~ "Size: %s KB\n"
-#~ "\n"
-#~ "Summary: %s\n"
-#~ "\n"
-#~ "%s\n"
-#~ msgstr ""
-#~ "Név: %s\n"
-#~ "Verzió: %s\n"
-#~ "Méret: %s KByte\n"
-#~ "\n"
-#~ "Összefoglaló: %s\n"
-#~ "\n"
-#~ "%s\n"
-
-#~ msgid "Software Management"
-#~ msgstr "Szoftverkezelés"
-
-#~ msgid "This would break your system"
-#~ msgstr "Ez rendszerproblémákhoz vezetne"
-
-#~ msgid ""
-#~ "Could not find /var/lib/urpmi/compssUsers.flat,\n"
-#~ "the installer should have generated it for me :-(.\n"
-#~ "\n"
-#~ "Disabling \"Mandrake choices\" classification."
-#~ msgstr ""
-#~ "/var/lib/urpmi/compssUsers.flat nevű fájl nem található.\n"
-#~ "Ezt a fájlt a telepítő készíti el.\n"
-#~ "\n"
-#~ "A \"Mandrake-válogatás\" kategorizálás nem lesz választható."
-
-#~ msgid "Installing/Upgrading Progress"
-#~ msgstr "Telepítési/frissítési folyamat"
-
-#~ msgid "Fetching:"
-#~ msgstr "Lekérdezés:"
-
-#~ msgid "An error occured while fetching file"
-#~ msgstr "Hiba történt a fájl letöltése közben"
-
-#~ msgid "Skip"
-#~ msgstr "Kihagyás"
-
-#~ msgid "Can't check the GPG signature"
-#~ msgstr "A GPG aláírás nem ellenőrizhető"
-
-#~ msgid ""
-#~ "The package %s has a wrong signature or\n"
-#~ "GnuPG isn't correctly installed"
-#~ msgstr ""
-#~ "A(z) %s csomag aláírása hibás vagy\n"
-#~ "a GnuPG nincs megfelelően telepítve"
-
-#~ msgid "Don't install"
-#~ msgstr "Nincs telepítés"
-
-#~ msgid "Signature problem"
-#~ msgstr "Probléma az aláírással"
-
-#~ msgid "Force"
-#~ msgstr "Akkor is"
-
-#~ msgid "usage: grpmi <[-noupgrade] rpms>\n"
-#~ msgstr "használat: grpmi <[-noupgrade] rpm-ek>\n"
-
-#~ msgid "grpmi error: you must be superuser!\n"
-#~ msgstr "grpmi hiba: rendszergazdai jogosultság szükséges!\n"
-
-#~ msgid "Couldn't read RPM config files"
-#~ msgstr "Az RPM beállítási fájljainak beolvasása nem sikerült"
-
-#~ msgid "Couldn't open file\n"
-#~ msgstr "A fájl nem nyitható meg\n"
-
-#~ msgid "Could not read lead bytes\n"
-#~ msgstr "A kezdőbájtok beolvasása nem sikerült\n"
-
-#~ msgid "RPM version of package doesn't support signatures\n"
-#~ msgstr "A csomag RPM-verziója nem támogatja aláírás használatát\n"
-
-#~ msgid "Could not read signature block (`rpmReadSignature' failed)\n"
-#~ msgstr "Az aláírásblokk nem olvasható (\"rpmReadSignature\" sikertelen)\n"
-
-#~ msgid "No signatures\n"
-#~ msgstr "Nincs aláírás\n"
-
-#~ msgid "`makeTempFile' failed!\n"
-#~ msgstr "A \"makeTempFile\" hívás sikertelen.\n"
-
-#~ msgid "Error writing temp file\n"
-#~ msgstr "Hiba az átmeneti fájl írásakor\n"
-
-#~ msgid "No GPG signature in package\n"
-#~ msgstr "A csomag nem tartalmaz GPG aláírást\n"
-
-#~ msgid "Couldn't open RPM DB for writing (not superuser?)"
-#~ msgstr ""
-#~ "Az RPM-adatbázis nem nyitható meg írásra (esetleg nem rendszergazda?)"
-
-#~ msgid "Couldn't open RPM DB for writing"
-#~ msgstr "Az RPM-adatbázis nem nyitható meg írásra"
-
-#~ msgid "Couldn't start transaction"
-#~ msgstr "A tranzakció indítása sikertelen"
-
-#~ msgid "Error while checking dependencies"
-#~ msgstr "Hiba történt a függőségek ellenőrzése közben"
-
-#~ msgid "Problems occurred during installation:\n"
-#~ msgstr "Problémák adódtak a telepítés során:\n"
-
-#~ msgid ""
-#~ "Cleanup question: there was an error during installation, do you want to\n"
-#~ "remove the %d downloaded package(s)?\n"
-#~ "(they are located in %s)"
-#~ msgstr ""
-#~ "Takarítási kérdés: hiba történt a telepítés közben; szeretné "
-#~ "eltávolítani\n"
-#~ "a(z) %d letöltött csomagot?\n"
-#~ "(a csomagok helye: %s)"
-
-#~ msgid "Cleanup"
-#~ msgstr "Takarítás"
-
-#~ msgid ""
-#~ "Conflicts were detected:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Install aborted."
-#~ msgstr ""
-#~ "A program ütközéseket talált:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Telepítés megszakítva."
-
-#~ msgid ""
-#~ "The following file is not valid:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Do you want to continue anyway (skipping this package)?"
-#~ msgstr ""
-#~ "A következő fájl hibás:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Kívánja folytatni ennek ellenére (ezen csomag kihagyásával)?"
-
-#~ msgid "Yes to all"
-#~ msgstr "'Igen' minden kérdésre"
-
-#~ msgid ""
-#~ "The signature of the package `%s' is not correct:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Do you want to install it anyway?"
-#~ msgstr ""
-#~ "A(z) \"%s\" csomag aláírása nem megfelelő:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Ennek ellenére szeretné telepíteni azt?"
-
-#~ msgid "Signature verification error"
-#~ msgstr "Aláírásellenőrzési hiba"
-
-#~ msgid "Retry download"
-#~ msgstr "Letöltés megkísérlése ismét"
-
-#~ msgid ""
-#~ "There was an error downloading package:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Error: %s\n"
-#~ "Do you want to continue (skipping this package)?"
-#~ msgstr ""
-#~ "Hiba történt a következő csomag letöltése közben:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Hiba: %s\n"
-#~ "Kívánja folytatni (ezen csomag kihagyásával)?"
-
-#~ msgid "The initialization of config files of RPM was not possible, sorry."
-#~ msgstr "Nem sikerült inicializálni az RPM beállítási fájljait."
-
-#~ msgid "RPM initialization error"
-#~ msgstr "RPM-inicializálási hiba"
-
-#~ msgid "The package %s is not signed"
-#~ msgstr "A(z) %s csomag nincs aláírva"
