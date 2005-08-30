@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.19
-%define release %mkrel 2
+%define version 2.20
+%define release %mkrel 1
 
 Name: %{name}
 Version: %{version}
@@ -112,6 +112,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Aug 25 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.20-1mdk
+- Message updates
+- Avoid some forms of utf8 double-encoding
+
 * Thu Aug 18 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.19-2mdk
 - Message updates
 - Rename files named mandrake*

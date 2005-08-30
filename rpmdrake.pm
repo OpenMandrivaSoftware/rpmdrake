@@ -41,7 +41,7 @@ use common;
 use curl_download;
 
 our @ISA = qw(Exporter);
-our $VERSION = '2.19';
+our $VERSION = '2.20';
 our @EXPORT = qw(
     $changelog_first_config
     $mandrakeupdate_wanted_categories
