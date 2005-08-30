@@ -51,7 +51,7 @@ install: $(ALL)
 	ln -sf $(RELATIVE_SBIN)/gurpmi.addmedia $(BINDIR)/gurpmi.addmedia
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/drakrpm
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/drakrpm-remove
-	ln -sf $(RELATIVE_SBIN)/MandrivaUpdate $(BINDIR)/drakrpm-update
+	ln -sf $(RELATIVE_SBIN)/MandrivaUpdate $(RELATIVE_SBIN)/drakrpm-update
 	ln -sf $(RELATIVE_SBIN)/drakrpm-update $(BINDIR)/drakrpm-update
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
