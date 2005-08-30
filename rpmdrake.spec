@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.20
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Aug 30 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.20-2mdk
+- Message updates
+- Install drakrpm-update in /usr/bin also
+
 * Thu Aug 25 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.20-1mdk
 - Message updates
 - Avoid some forms of utf8 double-encoding
