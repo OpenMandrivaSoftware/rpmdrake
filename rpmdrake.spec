@@ -95,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/MandrivaUpdate
 %{_sbindir}/edit-urpm-*
 %{_sbindir}/drakrpm-edit-media
+%{_sbindir}/drakrpm-update
 %{_sbindir}/gurpmi.addmedia
 %{_bindir}/*
 %{_datadir}/%{name}
