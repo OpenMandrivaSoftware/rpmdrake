@@ -399,6 +399,7 @@ my %u2l = (
 	   pt => N("Portugal"),
 	   ru => N("Russia"),
 	   se => N("Sweden"),
+	   sg => N("Singapore"),
 	   sk => N("Slovakia"),
 	   tw => N("Taiwan"),
 	   uk => N("United Kingdom"),
@@ -415,7 +416,8 @@ my %t2l = (
 	   'Asia/Tokyo' =>        [ qw(jp ko tw), @$us ],
 	   'Asia/Seoul' =>        [ qw(ko jp tw), @$us ],
 	   'Asia/Taipei' =>       [ qw(tw jp), @$us ],
-	   'Asia/(Shanghai|Beijing)' => [ qw(cn tw), @$us ],
+	   'Asia/(Shanghai|Beijing)' => [ qw(cn tw sg), @$us ],
+	   'Asia/Singapore' =>    [ qw(cn sg), @$us ],
 	   'Atlantic/Reykjavik' => [ qw(uk no se fi dk), @$us, qw(nl de fr at cz it) ],
 	   'Australia/\w+' =>     [ qw(au jp ko tw), @$us ],
 	   'Brazil/\w+' =>        [ 'br', @$us ],
@@ -443,6 +445,7 @@ my %t2l = (
 my %sites2countries = (
   'proxad.net' => 'fr',
   'planetmirror.com' => 'au',
+  'averse.net' => 'sg',
 );
 
 #- returns the keyword describing the type of the distribution.
