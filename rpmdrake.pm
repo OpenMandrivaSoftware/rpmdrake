@@ -73,6 +73,7 @@ our @EXPORT = qw(
     make_url_mirror_dist
     show_urpm_progress
     update_sources
+    update_sources_check
     update_sources_interactive
     add_medium_and_check
     check_update_media_version

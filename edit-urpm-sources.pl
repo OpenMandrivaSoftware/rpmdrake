@@ -897,11 +897,7 @@ sub mainwindow {
 		interactive_msg('rpmdrake',
 		    N("This medium needs to be updated to be usable. Update it now ?"),
 		    yesno => 1,
-		) and do {
-		    my $wait = wait_msg(N("Please wait, updating medium \"%s\"...", $urpm->{media}[$path]{name}));
-		    $reread_media->($urpm->{media}[$path]{name});
-		    remove_wait_msg($wait);
-		}
+		) and $reread_media->($urpm->{media}[$path]{name});
 	    }
 	},
     );
@@ -967,7 +963,12 @@ sub mainwindow {
 		delete $_->{ignore};
 	    }
 	    $urpm->select_media($name);
-	    $urpm->update_media(noclean => 1, nolock => 1);
+	    update_sources_check(
+		$urpm,
+		{ nolock => 1 },
+		N_("Unable to update medium, errors reported:\n\n%s"),
+		$name,
+	    );
 	}
 	$list->clear;
 	$list->append_set(0 => !$_->{ignore}, 1 => ! !$_->{update}, 2 => $_->{name}) foreach grep { ! $_->{external} } @{$urpm->{media}};
