@@ -911,47 +911,6 @@ sub mainwindow {
 	},
     );
 
-    my $menu = Gtk2::Menu->new;
-    my @menu_actions = ([ 'update_source', N("Update medium") ], [ 'generate_hdlist', N("Regenerate hdlist") ]);
-    foreach (@menu_actions) {
-	my ($action, $text) = @$_;
-        my $row;
-        my $select_media = sub {
-            $urpm->select_media($urpm->{media}[$row]{name});
-            foreach (@{$urpm->{media}}) { #- force ignored media to be returned alive
-                $_->{modified} and delete $_->{ignore};
-            }
-        };
-	my %action2fun; %action2fun = (
-	    update_source => sub {
-		slow_func(N("Please wait, updating media..."),
-		    sub { $urpm->update_media(noclean => 1, nolock => 1) });
-	    },
-	    generate_hdlist => sub {
-		slow_func(N("Please wait, generating hdlist..."),
-		    sub { $urpm->update_media(noclean => 1, force => 1, nolock => 1) });
-	    },
-	);
-	$menu->append(
-	    gtksignal_connect(
-		gtkshow(Gtk2::MenuItem->new_with_label($text)),
-		activate => sub {
-		    $row = selrow();
-		    $row == -1 and return;
-		    $select_media->();
-		    $action2fun{$action}->();
-		},
-	    )
-	);
-    }
-    $list_tv->signal_connect(
-	button_press_event => sub {
-	    $_[1]->button == 3 or return 0;
-	    $menu->popup(undef, undef, undef, undef, $_[1]->button, $_[1]->time);
-	    1;
-	}
-    );
-
     $reread_media = sub {
 	my ($name) = @_;
         $reorder_ok = 0;
