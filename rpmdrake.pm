@@ -718,7 +718,11 @@ sub update_sources_interactive {
     my $w = ugtk2->new(N("Update media"), grab => 1, center => 1, %options);
     $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my @buttons;
-    my @media;
+    my @media = grep { ! $_->{ignore} } @{$urpm->{media}};
+    unless (@media) {
+        interactive_msg('rpmdrake', N("No active medium found. You must enable some media to be able to update them."));
+	return 0;
+    }
     gtkadd(
 	$w->{window},
 	gtkpack__(
@@ -727,7 +731,7 @@ sub update_sources_interactive {
 	    (
 		@buttons = map {
 		    Gtk2::CheckButton->new_with_label($_->{name});
-		} grep { ! $_->{ignore} } @{$urpm->{media}}
+		} @media
 	    ),
 	    Gtk2::HSeparator->new,
 	    gtkpack(
