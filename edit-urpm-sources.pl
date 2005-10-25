@@ -898,7 +898,7 @@ sub mainwindow {
 		    N("This medium needs to be updated to be usable. Update it now ?"),
 		    yesno => 1,
 		) and do {
-		    my $wait = wait_msg(N("Please wait, updating medium..."));
+		    my $wait = wait_msg(N("Please wait, updating medium \"%s\"...", $urpm->{media}[$path]{name}));
 		    $reread_media->($urpm->{media}[$path]{name});
 		    remove_wait_msg($wait);
 		}
