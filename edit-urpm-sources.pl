@@ -882,12 +882,27 @@ sub mainwindow {
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates?"), my $cu = Gtk2::CellRendererToggle->new, 'active' => 1));
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 2));
 
+    my $reread_media; #- closure defined later
     $tr->signal_connect(
 	toggled => sub {
 	    my (undef, $path) = @_;
 	    my $iter = $list->get_iter_from_string($path);
 	    $urpm->{media}[$path]{ignore} = !$urpm->{media}[$path]{ignore} || undef;
 	    $list->set($iter, 0, !$urpm->{media}[$path]{ignore});
+	    $urpm->write_config;
+	    my $ignored = $urpm->{media}[$path]{ignore};
+	    $reread_media->();
+	    if (!$ignored && $urpm->{media}[$path]{ignore}) {
+		#- Enabling this media failed, force update
+		interactive_msg('rpmdrake',
+		    N("This medium needs to be updated to be usable. Update it now ?"),
+		    yesno => 1,
+		) and do {
+		    my $wait = wait_msg(N("Please wait, updating medium..."));
+		    $reread_media->($urpm->{media}[$path]{name});
+		    remove_wait_msg($wait);
+		}
+	    }
 	},
     );
 
@@ -941,7 +956,7 @@ sub mainwindow {
 	}
     );
 
-    my $reread_media = sub {
+    $reread_media = sub {
 	my ($name) = @_;
         $reorder_ok = 0;
 	$urpm = urpm->new;
