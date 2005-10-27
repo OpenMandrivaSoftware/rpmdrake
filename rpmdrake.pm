@@ -34,6 +34,7 @@ use URPM;
 use URPM::Resolve;
 use strict;
 use c;
+use POSIX qw(_exit);
 use common;
 
 use curl_download;
@@ -83,7 +84,7 @@ unshift @::textdomains, 'rpmdrake', 'urpmi';
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
     print "This program cannot be run in console mode.\n";
-    c::_exit(0);  #- skip ugtk2::END
+    _exit(0);  #- skip ugtk2::END
 }
 ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 

@@ -26,13 +26,14 @@ use lib qw(/usr/lib/libDrakX);
 use common;
 use rpmdrake;
 use URPM::Signature;
+use POSIX qw(_exit);
 use MDK::Common qw(max);
 
 BEGIN {
     eval { require ugtk2; ugtk2->import(qw(:all)) };
     if ($@) {
 	print "This program cannot be run in console mode.\n";
-	c::_exit(0);  #- skip ugtk2::END
+	_exit(0);  #- skip ugtk2::END
     }
 }
 
