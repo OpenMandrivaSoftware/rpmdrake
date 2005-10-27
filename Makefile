@@ -1,18 +1,3 @@
- #******************************************************************************
- #
- # Guillaume Cottenceau (gc@mandrakesoft.com)
- #
- # Copyright 2002 MandrakeSoft
- #
- # This software may be freely redistributed under the terms of the GNU
- # public license.
- #
- # You should have received a copy of the GNU General Public License
- # along with this program; if not, write to the Free Software
- # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- #
- #*****************************************************************************
-
 VERSION = $(shell awk '/define version/ { print $$3 }' $(NAME).spec)
 NAME = rpmdrake
 
@@ -23,7 +8,7 @@ DATADIR = $(PREFIX)/share
 BINDIR = $(PREFIX)/bin
 SBINDIR = $(PREFIX)/sbin
 RELATIVE_SBIN = ../sbin
-RPM=$(HOME)/rpm
+RPM=$(shell rpm --eval %_topdir)
 
 all: dirs
 
@@ -71,24 +56,6 @@ tar:
 	tar jcvf ../rpmdrake-$(VERSION).tar.bz2 rpmdrake-$(VERSION); \
 	cd ..; \
 	rm -rf t
-
-clust:
-	scp ../rpmdrake-$(VERSION).tar.bz2 bi:rpm/SOURCES/rpmdrake-$(VERSION).tar.bz2
-	rm -f scp ../rpmdrake-$(VERSION).tar.bz2
-	scp rpmdrake.spec bi:rpm/SPECS
-
-SOFTHOME = /home/gc/cvs/soft
-GIHOME = /home/gc/cvs/gi
-
-hack:
-	cp -f $(SOFTHOME)/rpmdrake/rpmdrake $(SOFTHOME)/rpmdrake/edit-urpm-sources.pl $(SOFTHOME)/rpmdrake/gurpmi.addmedia /usr/sbin
-	ln -sf edit-urpm-sources.pl /usr/sbin/edit-urpm-media
-	cp -f $(SOFTHOME)/rpmdrake/rpmdrake.pm $(shell rpm --eval %perl_vendorlib)
-	cp -f $(GIHOME)/perl-install/ugtk2.pm /usr/lib/libDrakX
-	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||' /usr/lib/libDrakX/*.pm /usr/sbin/{rpmdrake,edit-urpm-sources.pl}
-
-
-
 
 dis: clean
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
