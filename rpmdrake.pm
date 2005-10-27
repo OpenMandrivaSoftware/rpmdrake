@@ -23,7 +23,6 @@
 package rpmdrake;
 
 use lib qw(/usr/lib/libDrakX);
-use standalone;     #- warning, standalone must be loaded very first, for 'explanations'
 use urpm::download ();
 use urpm::prompt;
 
@@ -762,7 +761,6 @@ sub update_sources_interactive {
 	foreach (@{$urpm->{media}}) {
 	    $_->{modified} and delete $_->{ignore};
 	}
-        standalone::explanations("Updating media @media");
         $urpm->select_media(@media);
         update_sources_check(
 	    $urpm,
@@ -783,10 +781,8 @@ sub add_medium_and_check {
     local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = to_utf8($_[1]); goto fatal_error };
     local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, to_utf8($_[0]) };
     if ($options->{distrib}) {
-	standalone::explanations("Adding distrib media @_");
 	@newnames = $urpm->add_distrib_media(@_);
     } else {
-	standalone::explanations("Adding medium @_");
 	$urpm->add_medium(@_);
     }
     if (@error_msgs) {

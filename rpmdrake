@@ -373,7 +373,6 @@ sub extract_header {
 	my $hdlist = $medium->{virtual} ? "$medium->{url}/$medium->{with_hdlist}" : "$urpm->{statedir}/$medium->{hdlist}";
 	$hdlist =~ s/^file:\/+//;
 	if (-r $hdlist) {
-	    standalone::explanations("Extracting header of " . $p->header_filename . " from $hdlist");
 	    my $packer;
 	    eval { require packdrake; $packer = new packdrake($hdlist, quiet => 1) }
 		or log::l("Warning, hdlist seems corrupted :-("), goto header_non_available;
@@ -1505,8 +1504,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         return 0;
     }
 
-    standalone::explanations("Removing package $_") foreach sort @{$urpm->{ask_remove}};
-
     my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}};
     my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
     my $distant_number = scalar keys %pkgs;
@@ -1761,7 +1758,6 @@ sub get_installed_pkgs {
 sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
-    standalone::explanations("Removing package $_") foreach sort @toremove;
     my @results;
     slow_func_statusbar(
 	N("Please wait, removing packages..."),

@@ -275,7 +275,6 @@ really want to replace it?"), yesno => 1) or return 0;
 	    );
 	} else {
 	    if (member($i{name}, map { $_->{name} } @{$urpm->{media}})) {
-		standalone::explanations("Removing medium $i{name}");
 		$urpm->select_media($i{name});
 		$urpm->remove_selected_media;
 	    }
@@ -342,7 +341,6 @@ sub remove_callback {
 
     my $wait = wait_msg(N("Please wait, removing medium..."));
     my $name = $urpm->{media}[$row]{name};
-    standalone::explanations("Removing medium $name");
     $urpm->select_media($name);
     $urpm->remove_selected_media;
     $urpm->update_media(noclean => 1, nolock => 1);
@@ -422,7 +420,6 @@ sub edit_callback {
 		yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }
 	    ) or return 0
 	);
-	standalone::explanations("Removing medium $name");
 	my $saved_proxy = urpm::download::get_proxy($name);
 	undef $saved_proxy if !defined $saved_proxy->{http_proxy} && !defined $saved_proxy->{ftp_proxy};
 	$urpm->select_media($name);
