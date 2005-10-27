@@ -375,11 +375,17 @@ sub extract_header {
 	if (-r $hdlist) {
 	    my $packer;
 	    eval { require packdrake; $packer = new packdrake($hdlist, quiet => 1) }
-		or log::l("Warning, hdlist seems corrupted :-("), goto header_non_available;
+		or do {
+		    warn "Warning, hdlist seems corrupted\n";
+		    goto header_non_available;
+		};
             my $headersdir = chomp_(`mktemp -d /tmp/rpmdrake.XXXXXX`);
             -d $headersdir or die "Could not create temporary directory";
 	    $packer->extract_archive($headersdir, $p->header_filename);
-	    $p->update_header("$headersdir/" . $p->header_filename) or log::l("Warning, could not extract header!"), goto header_non_available;
+	    $p->update_header("$headersdir/" . $p->header_filename) or do {
+		warn "Warning, could not extract header!";
+		goto header_non_available;
+	    };
 	    rm_rf($headersdir);
 	    add2hash($pkg, { summary => rpm_summary($p->summary), description => rpm_description($p->description) });
 	    @$max_info_in_descr and add2hash($pkg, {

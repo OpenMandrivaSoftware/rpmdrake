@@ -33,7 +33,6 @@ use urpm::cfg;
 use URPM;
 use URPM::Resolve;
 use strict;
-use log;
 use c;
 use common;
 
