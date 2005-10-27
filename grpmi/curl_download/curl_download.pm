@@ -1,13 +1,12 @@
 package curl_download;
 
 use strict;
-use MDK::Common;
 use urpm::download;
 
 require DynaLoader;
 
 our @ISA = qw(DynaLoader);
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 
 bootstrap curl_download $VERSION;
 
