@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.20
-%define release %mkrel 3
+%define version 2.21
+%define release %mkrel 1
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Oct 31 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.21-1mdk
+- Fix sort under some locales (bugs #18617 and #19356)
+- Ask the user if one should update unignored invalid media
+- Remove context menu in the software media manager
+- Make some popups prettier in the software media manager
+- Fix busy loop in gtk display (bug #15985)
+- Misc. cleanups
+- Message updates
+
 * Mon Sep 12 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.20-3mdk
 - Avoid double encoding for bad signature message
 - Message updates
