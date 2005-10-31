@@ -161,7 +161,6 @@ our $statusbar;
 
 sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
-sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded && !$treeview_dialog_run; &statusbar_msg }
 sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg_ }
 
@@ -279,6 +278,7 @@ sub ctreefy {
 
 sub rpm_summary {
     my ($summary) = @_;
+    # TODO get rid of c::
     c::set_tagged_utf8($summary);
     $summary;
 }
@@ -375,6 +375,7 @@ sub extract_header {
 	$hdlist =~ s/^file:\/+//;
 	if (-r $hdlist) {
 	    my $packer;
+	    # TODO use more modern API
 	    eval { require packdrake; $packer = new packdrake($hdlist, quiet => 1) }
 		or do {
 		    warn "Warning, hdlist seems corrupted\n";
