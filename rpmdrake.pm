@@ -306,8 +306,7 @@ sub wait_msg {
 	    if_(exists $options{widgets}, @{$options{widgets}}),
 	)
     );
-    $label->signal_connect(expose_event => sub { $mainw->{displayed} = 1; 0 });
-    $mainw->sync until $mainw->{displayed};
+    $mainw->sync;
     gtkset_mousecursor_wait($mainw->{rwindow}->window) unless $options{no_wait_cursor};
     $mainw->flush;
     $mainw;
