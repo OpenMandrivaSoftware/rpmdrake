@@ -161,6 +161,7 @@ our $statusbar;
 
 sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
+sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
 sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded && !$treeview_dialog_run; &statusbar_msg }
 sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg_ }
 
@@ -278,14 +279,13 @@ sub ctreefy {
 
 sub rpm_summary {
     my ($summary) = @_;
-    # TODO get rid of c::
-    c::set_tagged_utf8($summary);
+    utf8::decode($summary);
     $summary;
 }
 
 sub rpm_description {
     my ($description) = @_;
-    c::set_tagged_utf8($description);
+    utf8::decode($description);
     my ($t, $tmp);
     foreach (split "\n", $description) {
 	s/^\s*//;
