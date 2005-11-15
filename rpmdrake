@@ -1485,7 +1485,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $fatal_msg;
     my @error_msgs;
-    my @Readmes;
+    my %Readmes;
     my $statusbar_msg_id;
     local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = to_utf8($_[1]); goto fatal_error };
     local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, to_utf8($_[0]) };
@@ -1638,7 +1638,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		my $pkg = $urpm->{depslist}[$pkgid];
 		my $fullname = $pkg->fullname;
 		my $trtype = (any { /$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
-		push @Readmes, map { [ $_, $fullname ] } grep { /\bREADME(\.$trtype)?\.urpmi$/ } $pkg->files;
+		for ($pkg->files) { /\bREADME(\.$trtype)?\.urpmi$/ and $Readmes{$_} = $fullname }
 		close $fh;
 	    },
 	);
@@ -1662,33 +1662,35 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
               and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
                                       map { chomp_($_) } `rpm -ql $1` ];
         }
-        dialog_rpmnew(N("The installation is finished; %s.\n\nSome configuration files were created as `.rpmnew' or `.rpmsave',\nyou may now inspect some in order to take actions:", N("everything was installed correctly")),
-                      %pkg2rpmnew)
-          and $statusbar_msg_id = statusbar_msg(#N("Everything installed successfully"),
-                               N("All requested packages were installed successfully."));
-	if (@Readmes) { #- display the README*.urpmi files
+	dialog_rpmnew(N("The installation is finished; everything was installed correctly.
+
+Some configuration files were created as `.rpmnew' or `.rpmsave',
+you may now inspect some in order to take actions:"),
+	    %pkg2rpmnew)
+	    and $statusbar_msg_id = statusbar_msg(N("All requested packages were installed successfully."));
+	if (keys %Readmes) { #- display the README*.urpmi files
 	    interactive_packtable(
 		N("Information on packages"),
 		$w->{rwindow},
 		N("These packages come with upgrade information"),
 		[ map {
-		    my $pkg = $_;
+		    my $fullname = $_;
 		    [ gtkpack__(
 			    Gtk2::HBox->new(0, 0),
-			    gtkset_selectable(Gtk2::Label->new($pkg->[1]),1),
+			    gtkset_selectable(Gtk2::Label->new($Readmes{$fullname}),1),
 			),
 			gtksignal_connect(
 			    #- TODO change those labels to something more sensible, e.g. "Upgrade information about this package"
 			    Gtk2::Button->new(N("More information on package...")),
 			    clicked => sub {
 				interactive_msg(
-				    N("More information on package... [%s]", $pkg->[0]),
-				    (join '' => cat_($pkg->[0])),
+				    N("More information on package... [%s]", $fullname),
+				    (join '' => cat_($fullname)),
 				    scroll => 1,
 				);
 			    },
 			),
-		    ] } @Readmes ],
+		    ] } keys %Readmes ],
 		[ gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }) ]
 	    );
 	}
