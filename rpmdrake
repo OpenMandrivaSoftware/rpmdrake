@@ -26,6 +26,7 @@ use MDK::Common 'any';
 use lib qw(/usr/lib/libDrakX);
 use common;
 use POSIX qw(_exit);
+use URPM;
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
@@ -1719,8 +1720,6 @@ you may now inspect some in order to take actions:"),
 # -=-=-=---=-=-=---=-=-=-- remove packages -=-=-=---=-=-=---=-=-=-
 
 sub get_installed_pkgs {
-    use URPM;
-
     my $wait = wait_msg_with_banner(N("Please wait, reading packages database..."));
     gtkflush();
     my @base = qw(basesystem);
