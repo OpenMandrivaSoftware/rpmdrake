@@ -50,6 +50,13 @@ N("  --search=pkg           run search for \"pkg\""),
     };
 }
 
+BEGIN { #- for mcc
+    if ("@ARGV" =~ /--embedded (\w+)/) {
+	$::XID = $1;
+	$::isEmbedded = 1;
+    }
+}
+
 use rpmdrake;
 
 #- This is needed because text printed by Gtk2 will always be encoded
