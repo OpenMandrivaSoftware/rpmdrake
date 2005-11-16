@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.21
+%define version 2.22
 %define release %mkrel 1
 
 Name: %{name}
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Nov 16 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.22-1mdk
+- Restore embedding in MCC
+- Display README.urpmi only once
+
 * Mon Oct 31 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.21-1mdk
 - Fix sort under some locales (bugs #18617 and #19356)
 - Ask the user if one should update unignored invalid media
