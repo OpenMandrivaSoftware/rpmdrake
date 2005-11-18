@@ -1729,7 +1729,9 @@ you may now inspect some in order to take actions:"),
 sub get_installed_pkgs {
     my $wait = wait_msg_with_banner(N("Please wait, reading packages database..."));
     gtkflush();
-    my @base = qw(basesystem);
+    my $urpm = urpm->new;
+    $urpm->read_config;
+    my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
     my (%base, %basepackages);
     my $db = db();
     my $sig_handler = sub { undef $db; exit 3 };
@@ -1763,7 +1765,6 @@ sub get_installed_pkgs {
 	    $pkg->pack_header;
 	});
     statusbar_msg_remove($wait);
-    my $urpm = urpm->new;
     my $group;
     if ($options{parallel} && (($group) = @{$options{parallel}})) {
         $urpm->configure(parallel => $group);
