@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.22
+%define version 2.23
 %define release %mkrel 1
 
 Name: %{name}
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Nov 18 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.23-1mdk
+- Display locks before basesystem packages in rpmdrake-remove
+- Honor the "prohibit-remove" option
+
 * Wed Nov 16 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.22-1mdk
 - Restore embedding in MCC
 - Display README.urpmi only once
