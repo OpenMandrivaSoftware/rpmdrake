@@ -1760,8 +1760,10 @@ sub get_installed_pkgs {
 		summary => rpm_summary($pkg->summary),
 		description => rpm_description($pkg->description),
 	    } unless $installed_pkgs{$fullname} && $installed_pkgs{$fullname}{description};
-	    $base{$fullname} and $installed_pkgs{$fullname}{base} = \${$base{$fullname}};
-	    if ($base{$fullname} && ${$base{$fullname}} == 1) { $pkg->set_flag_base(1) }
+	    if ($base{$fullname}) {
+		$installed_pkgs{$fullname}{base} = \${$base{$fullname}};
+		if (${$base{$fullname}} == 1) { $pkg->set_flag_base(1) }
+	    }
 	    $pkg->pack_header;
 	});
     statusbar_msg_remove($wait);
