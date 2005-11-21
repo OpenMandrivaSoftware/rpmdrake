@@ -30,6 +30,13 @@ use URPM::Signature;
 use POSIX qw(_exit);
 use MDK::Common qw(max);
 
+BEGIN { #- for mcc
+    if ("@ARGV" =~ /--embedded (\w+)/) {
+	$::XID = $1;
+	$::isEmbedded = 1;
+    }
+}
+
 BEGIN {
     eval { require ugtk2; ugtk2->import(qw(:all)) };
     if ($@) {
