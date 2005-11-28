@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 2.23
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Nov 28 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.23-2mdk
+- Message updates
+- Restore embedding of Software Media Manager in MCC
+
 * Fri Nov 18 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.23-1mdk
 - Display locks before basesystem packages in rpmdrake-remove
 - Honor the "prohibit-remove" option
