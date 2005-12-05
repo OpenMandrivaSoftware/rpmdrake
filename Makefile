@@ -23,7 +23,6 @@ install: $(ALL)
 	done
 	install -d $(SBINDIR)
 	install rpmdrake park-rpmdrake edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
-	perl -pi -e 's|use strict.*||;s|use vars.*||;s|use diagnostics.*||;s|#-.*||' $(SBINDIR)/*
 	ln -sf rpmdrake $(SBINDIR)/rpmdrake-remove
 	ln -sf rpmdrake $(SBINDIR)/MandrivaUpdate
 	install -d $(BINDIR)
