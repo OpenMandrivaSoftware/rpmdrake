@@ -129,10 +129,11 @@ sub add_callback {
     my %radios_infos = (
 	local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
 	ftp => { name => N("FTP server"), url => N("URL:"), loginpass => 1 },
+	rsync => { name => N("RSYNC server"), url => N("URL:") },
 	http => { name => N("HTTP server"), url => N("URL:") },
 	removable => { name => N("Removable device"), url => N("Path or mount point:"), dirsel => 1 },
     );
-    my @radios_names_ordered = qw(local ftp http removable);
+    my @radios_names_ordered = qw(local ftp rsync http removable);
     my @modes_buttons = gtkradio($radios_infos{local}{name}, map { $radios_infos{$_}{name} } @radios_names_ordered);
     my $notebook = Gtk2::Notebook->new;
     $notebook->set_show_tabs(0); $notebook->set_show_border(0);
@@ -259,7 +260,12 @@ really want to replace it?"), yesno => 1) or return 0;
 				distrib => $info->{distrib_check} ? $info->{distrib_check}->get_active : 0,
 				update => $info->{update_check}->get_active ? 1 : undef,
 			    );
-			    %make_url = (local => "file:/$i{url}", http => $i{url}, removable => "removable:/$i{url}");
+			    %make_url = (
+				local => "file:/$i{url}",
+				http => $i{url},
+				rsync => $i{url},
+				removable => "removable:/$i{url}",
+			    );
 			    $i{url} =~ s|^ftp://||;
 			    $make_url{ftp} = sprintf "ftp://%s%s",
 				$info->{login_check}->get_active
