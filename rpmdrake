@@ -1330,14 +1330,16 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 
     $urpm->compute_installed_flags(db()) unless $updates;
     my $requested = {};
+    my $state = {};
     $urpm->request_packages_to_upgrade(
 	db(),
-	{}, #- $state,
+	$state,
 	$requested,
 	start => 0,
 	end   => $#{$urpm->{depslist}},
     );
     $urpm->{depslist}[$_]->set_flag_installed foreach keys %$requested; #- pretend it's installed
+    $urpm->{rpmdrake_state} = $state; #- Don't forget it
 
     my %pkg_sel   = map { $_ => 1 } @{$options{'pkg-sel'}   || []};
     my %pkg_nosel = map { $_ => 1 } @{$options{'pkg-nosel'} || []};
@@ -1573,7 +1575,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     $canceled and goto return_with_error;
     gurpm::invalidate_cancel_forever();
 
-    my %sources_install = %{$urpm->extract_packages_to_install(\%sources) || {}};
+    my %sources_install = %{$urpm->extract_packages_to_install(\%sources, $urpm->{rpmdrake_state}) || {}};
     my @rpms_install = grep { !/\.src\.rpm$/ } values %sources_install;
     my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
 
