@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.23
-%define release %mkrel 2
+%define version 2.24
+%define release %mkrel 1
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Thu Dec 08 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.24-1mdk
+- Support rsync sources (Javier Martínez)
+- Require urpmi 4.8.4 for fixes
+
 * Mon Nov 28 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.23-2mdk
 - Message updates
 - Restore embedding of Software Media Manager in MCC
