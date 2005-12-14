@@ -1648,7 +1648,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		return if $MODE ne 'install' && $MODE ne 'update';
 		my $pkg = $urpm->{depslist}[$pkgid];
 		my $fullname = $pkg->fullname;
-		my $trtype = (any { /$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
+		my $trtype = (any { /\Q$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
 		for ($pkg->files) { /\bREADME(\.$trtype)?\.urpmi$/ and $Readmes{$_} = $fullname }
 		close $fh;
 	    },
