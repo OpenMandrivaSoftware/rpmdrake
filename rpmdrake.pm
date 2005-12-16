@@ -89,7 +89,7 @@ if ($@) {
 }
 ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 
-c::bind_textdomain_codeset('rpmdrake', 'UTF8');
+Locale::gettext::bind_textdomain_codeset('rpmdrake', 'UTF8');
 
 our $mandrake_release = cat_(
     -e '/etc/mandrakelinux-release' ? '/etc/mandrakelinux-release' : '/etc/release'
