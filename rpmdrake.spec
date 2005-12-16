@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.24
+%define version 2.25
 %define release %mkrel 1
 
 Name: %{name}
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Dec 16 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.25-1mdk
+- Fix another bug with rpm names containing regex metacharacters
+- Use Locale::gettext (Pixel)
+
 * Thu Dec 08 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.24-1mdk
 - Support rsync sources (Javier Martínez)
 - Require urpmi 4.8.4 for fixes
