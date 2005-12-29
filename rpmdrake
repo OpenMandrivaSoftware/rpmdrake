@@ -1192,10 +1192,21 @@ Is it ok to continue?",
 			Gtk2::HBox->new(0, 10),
 			Gtk2::Label->new(N("Find:")),
 			$search_types_optionmenu,
-			gtksignal_connect($find_entry = Gtk2::Entry->new,
-			    key_press_event => sub { $_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
-				    and $find_callback->() }),
-			gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback)
+			gtksignal_connect(
+			    $find_entry = Gtk2::Entry->new,
+			    key_press_event => sub {
+				$_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
+				    and $find_callback->();
+			    },
+			),
+			gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback),
+			gtksignal_connect(
+			    Gtk2::Button->new(but(N("Clear"))),
+			    clicked => sub {
+				$find_entry->set_text("");
+				$options->{rebuild_tree}->();
+			    },
+			),
 		    ),
 		    1, $table,
 		    0, gtkpack_(
