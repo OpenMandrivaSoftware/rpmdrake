@@ -933,6 +933,7 @@ or you already installed all of them."));
     );
 
     my @modes_buttons;
+    my $reset_search;
     if ($MODE eq 'update') {
 	$options->{state}{flat} = 0;
 	my %toggle_infos = (security => N("Security updates"), bugfix => N("Bugfixes updates"), normal => N("Normal updates"));
@@ -948,6 +949,7 @@ or you already installed all of them."));
 		    } else {
 			@$mandrakeupdate_wanted_categories = difference2($mandrakeupdate_wanted_categories, [ $capture_value ]);
 		    }
+		    $reset_search->();
 		    $options->{rebuild_tree}->();
 		},
 	    );
@@ -999,6 +1001,7 @@ or you already installed all of them."));
 			: ($capture_mode,            $radios_infos{$capture_mode}{flat});
 		    $tree_mode->[0] = $options->{tree_mode};
 		    $tree_flat->[0] = $options->{state}{flat};
+		    $reset_search->();
 		    $options->{rebuild_tree}->();
 		}
 	    });
@@ -1080,7 +1083,15 @@ or you already installed all of them."));
     $info->set_right_margin(15);  #- workaround when right elevator of scrolled window appears
 
     my $find_entry;
-    my $find_callback = sub { do_search($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) };
+    my $clear_button;
+    my $find_callback = sub {
+	$clear_button and $clear_button->set_sensitive(1);
+	do_search($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs);
+    };
+    $reset_search = sub {
+	$clear_button and $clear_button->set_sensitive(0);
+	$find_entry and $find_entry->set_text("");
+    };
 
     my $do_action = sub {
 	if (!int(grep { $pkgs->{$_}{selected} } keys %$pkgs)) {
@@ -1115,6 +1126,7 @@ Is it ok to continue?",
 	}
 	if (!$callback_action->($urpm, $pkgs)) {
 	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+	    $reset_search->();
 	    $size_selected = 0;
 	    (undef, $size_free) = MDK::Common::System::df('/usr');
 	    $options->{rebuild_tree}->();
@@ -1144,6 +1156,7 @@ Is it ok to continue?",
 		update_sources_interactive($urpm, transient => $w->{rwindow})
 		    and do {
 			($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+			$reset_search->();
 			$size_selected = 0;
 			$options->{rebuild_tree}->();
 		    };
@@ -1157,11 +1170,13 @@ Is it ok to continue?",
 		);
 	    }
 	    $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
+	    $reset_search->();
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
 	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+	    $reset_search->();
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
@@ -1201,11 +1216,8 @@ Is it ok to continue?",
 			),
 			gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback),
 			gtksignal_connect(
-			    Gtk2::Button->new(but(N("Clear"))),
-			    clicked => sub {
-				$find_entry->set_text("");
-				$options->{rebuild_tree}->();
-			    },
+			    $clear_button = Gtk2::Button->new(but(N("Clear"))),
+			    clicked => sub { $reset_search->(); $options->{rebuild_tree}->() },
 			),
 		    ),
 		    1, $table,
@@ -1227,6 +1239,7 @@ Is it ok to continue?",
 	),
     );
     $action_button->set_sensitive(0) if $>;
+    $clear_button->set_sensitive(0);
     $find_entry->grab_focus;
 
     $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
