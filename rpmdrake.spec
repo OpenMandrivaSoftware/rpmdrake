@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.25
+%define version 2.26
 %define release %mkrel 1
 
 Name: %{name}
@@ -19,7 +19,7 @@ Summary: Mandriva Linux graphical front end for sofware installation/removal
 Requires: perl-MDK-Common >= 1.1.18-2mdk
 Requires: urpmi >= 4.8.4
 Requires: perl-URPM >= 1.20
-Requires: drakxtools >= 10.2-0.22mdk
+Requires: drakxtools >= 10.4.5
 Requires: rpmtools >= 5.0.5
 Requires: packdrake >= 5.0.5
 Requires: perl-Gtk2 >= 1.054-1mdk
@@ -113,6 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Jan 02 2006 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.26-1mdk
+- Add a button to clear the search text field and to redraw the package tree
+- Bump requires on drakxtools (for Locale::gettext)
+
 * Fri Dec 16 2005 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.25-1mdk
 - Fix another bug with rpm names containing regex metacharacters
 - Use Locale::gettext (Pixel)
