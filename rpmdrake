@@ -1570,7 +1570,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my %sources = $urpm->download_source_packages(
 	$local_sources,
 	$list,
-	force_local => 1,
+	force_local => 1, # removed in urpmi 4.8.7
 	ask_for_medium => sub {
 	    interactive_msg_(
 		N("Change medium"),
