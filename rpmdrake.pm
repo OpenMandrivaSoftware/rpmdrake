@@ -448,15 +448,24 @@ my %sites2countries = (
   'averse.net' => 'sg',
 );
 
+#- get distrib release number (2006.0, etc)
+sub etc_version {
+    (my $v) = split / /, cat_('/etc/version');
+    return $v;
+}
+
 #- returns the keyword describing the type of the distribution.
 #- the parameter indicates whether we want base or update sources
 sub distro_type {
     my ($want_base_distro) = @_;
-    return 'cooker'   if $mandrake_release =~ /cooker/i;
-    return 'official' if $want_base_distro && $mandrake_release =~ /official|limited/i;
-    return 'updates'  if $mandrake_release !~ /community/i;
-    (my $v) = split / /, cat_('/etc/version');
-    return $v =~ /\.0$/ ? 'community' : 'updates';
+    return 'cooker' if $mandrake_release =~ /cooker/i;
+    #- we can't use updates for community while official is not out (release ends in ".0")
+    if ($want_base_distro || ($mandrake_release =~ /community/i && etc_version() =~ /\.0$/)) {
+	return 'official' if $mandrake_release =~ /official|limited/i;
+	return 'community' if $mandrake_release =~ /community/i;
+	#- unknown: fallback to updates
+    }
+    return 'updates';
 }
 
 sub compat_arch_for_updates($) {
