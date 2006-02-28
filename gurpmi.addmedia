@@ -62,7 +62,7 @@ if (@ARGV == 1 && $ARGV[0] =~ /\.urpmi-media$/) {
 my $update = 0;
 if ($ARGV[0] =~ /^-?-update/) {
     $update = 1;
-    unshift @ARGV;
+    shift @ARGV;
 }
 my ($name, $url, $with, $with_hdlist) = @ARGV;
 if ($url !~ m,^(file://|ftp://|http://|removable://), || $with && !$with_hdlist) {
