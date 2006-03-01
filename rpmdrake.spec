@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.26
+%define version 2.27
 %define release %mkrel 1
 
 Name: %{name}
@@ -113,6 +113,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Mar 01 2006 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.27-1mdk
+- Add Development/PHP to the rpm group list
+- A couple of gurpmi.addmedia bug fixes by Thierry Vignaud
+- Fix for mirror and version-guessing heuristic
+- Clean cache after downloads
+- Update config file when not run as root
+
 * Mon Jan 02 2006 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.26-1mdk
 - Add a button to clear the search text field and to redraw the package tree
 - Bump requires on drakxtools (for Locale::gettext)
