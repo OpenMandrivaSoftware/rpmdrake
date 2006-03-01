@@ -161,6 +161,7 @@ sub readconf {
 }
 
 sub writeconf {
+    unlink $configfile;
     output $configfile, map { "$_ " . join(' ', @${$config{$_}{var}}) . "\n" } keys %config;
 }
 
