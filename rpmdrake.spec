@@ -60,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 make OPTIMIZE="$RPM_OPT_FLAGS -Wall" PREFIX=%{_prefix} INSTALLDIRS=vendor
 
 %install
-make install PREFIX=$RPM_BUILD_ROOT/%{_prefix} BINDIR=$RPM_BUILD_ROOT/%{_bindir} SBINDIR=$RPM_BUILD_ROOT/%{_sbindir}
+make install PREFIX=%buildroot/%{_prefix} BINDIR=%buildroot/%{_bindir} SBINDIR=%buildroot/%{_sbindir} DESTDIR=%buildroot
 mkdir -p $RPM_BUILD_ROOT/%{perl_vendorlib}
 install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 
