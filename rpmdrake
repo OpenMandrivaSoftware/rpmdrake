@@ -1550,7 +1550,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     }
 
     my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}};
-    my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(\%pkgs);
+    my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(
+	\%pkgs,
+	clean_all => 1,
+    );
     my $distant_number = scalar keys %pkgs;
     if (!$local_sources && (!$list || !@$list)) {
         interactive_msg_(
