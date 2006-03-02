@@ -29,19 +29,21 @@ all: $(MOFILES)
 merge: $(PGOAL).pot
 	@for n in $(POFILES); do \
 		echo "Merging $$n"; \
-		msgmerge "$$n" $< > "$$n"t; \
+		msgmerge --width=79 "$$n" $< > "$$n"t; \
 		mv -f "$$n"t "$$n"; \
 		./get_from_compssusers.pl "$$n" > "$$n"m; \
 	done
 
 $(PGOAL).pot: $(PL_FILES) $(CFILES)
 	INTLTOOL_EXTRACT=./intltool-extract ./intltool-update --gettext-package desktopstuff --pot
-	perl_checker -q --generate-pot rpmdrake_tmp.pot $(PL_FILES)
+	xgettext -F -n --add-comments \
+	  --keyword=N_ --keyword=N \
+	  --language=Perl -o $(PGOAL)_tmp.pot $(PL_FILES)
 	xgettext -F -n --add-comments='-PO' \
 		--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
-		--language=C -o rpmdrake_tmp_c.pot $(CFILES)
-	msgcat --use-first rpmdrake_tmp.pot rpmdrake_tmp_c.pot desktopstuff.pot > $@
-	rm -f desktopstuff.pot rpmdrake_tmp.pot rpmdrake_tmp_c.pot
+		--language=C -o $(PGOAL)_tmp_c.pot $(CFILES)
+	msgcat --use-first $(PGOAL)_tmp.pot $(PGOAL)_tmp_c.pot desktopstuff.pot > $@
+	rm -f desktopstuff.pot $(PGOAL)_tmp.pot $(PGOAL)_tmp_c.pot
 
 install:
 	for l in $(LANGS); do \
@@ -50,5 +52,5 @@ install:
 	done
 
 clean:
-	@rm -rf *.mo *.pof *.pog $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot desktopstuff.pot rpmdrake_tmp.pot
+	@rm -rf *.mo *.pof *.pog $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot desktopstuff.pot $(PGOAL)_tmp.pot
 
