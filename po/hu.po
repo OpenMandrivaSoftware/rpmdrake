@@ -4,20 +4,20 @@
 #
 # Copyright (C) 1999-2001 Mandriva
 # KOVACS Emese Alexandra <emese@goliat.eik.bme.hu>, 1999-2001.
-# Arpad Biro <biro_arpad@yahoo.com>, 2000,2003, 2004, 2005.
+# Arpad Biro <biro_arpad@yahoo.com>, 2000,2003, 2004, 2005, 2006.
 # Tamas Szanto <tszanto@mol.hu>, 2001.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: rpmdrake-hu\n"
+"Project-Id-Version: hu\n"
 "POT-Creation-Date: 2006-01-26 13:16+0100\n"
-"PO-Revision-Date: 2005-08-25 14:58+0200\n"
-"Last-Translator: Arpad Biro <biro_arpad@yahoo.com>\n"
+"PO-Revision-Date: 2006-03-05 15:04+0100\n"
+"Last-Translator: Arpad Biro\n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9\n"
+"X-Generator: KBabel 1.10.2\n"
 
 #: ../edit-urpm-sources.pl:75
 #, c-format
@@ -108,9 +108,9 @@ msgid "URL:"
 msgstr "URL:"
 
 #: ../edit-urpm-sources.pl:132
-#, fuzzy, c-format
+#, c-format
 msgid "RSYNC server"
-msgstr "FTP-kiszolgáló"
+msgstr "RSYNC-kiszolgáló"
 
 #: ../edit-urpm-sources.pl:133
 #, c-format
@@ -145,8 +145,7 @@ msgstr "Jelszó:"
 #: ../edit-urpm-sources.pl:185 ../edit-urpm-sources.pl:404
 #, c-format
 msgid "Relative path to synthesis/hdlist:"
-msgstr ""
-"A kiterjesztett függőséglista illetve a fejléclista relatív elérési útja:"
+msgstr "A kiterjesztett függőséglista illetve a fejléclista relatív elérési útja:"
 
 #: ../edit-urpm-sources.pl:187
 #, c-format
@@ -282,10 +281,8 @@ msgstr "A folytatáshoz be kell helyeznie az adathordozót"
 
 #: ../edit-urpm-sources.pl:434
 #, c-format
-msgid ""
-"In order to save the changes, you need to insert the medium in the drive."
-msgstr ""
-"A módosítások mentéséhez be kell helyeznie az adathordozót a meghajtóba."
+msgid "In order to save the changes, you need to insert the medium in the drive."
+msgstr "A módosítások mentéséhez be kell helyeznie az adathordozót a meghajtóba."
 
 #: ../edit-urpm-sources.pl:455
 #, c-format
@@ -508,15 +505,17 @@ msgstr "Frissítések?"
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
+"Ezt az adatforrást frissíteni kell ahhoz, hogy használható legyen. Kívánja "
+"frissíteni most?"
 
 #: ../edit-urpm-sources.pl:940
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
 "\n"
 "%s"
 msgstr ""
-"Nem sikerült felvenni az adatforrást a következő hibák miatt:\n"
+"Nem sikerült frissíteni az adatforrást a következő hibák miatt:\n"
 "\n"
 "%s"
 
@@ -592,8 +591,7 @@ msgstr ""
 #: ../gurpmi.addmedia:70
 #, c-format
 msgid "Unable to add medium, wrong or missing arguments"
-msgstr ""
-"Nem sikerült felvenni az adatforrást - helytelen vagy hiányzó argumentumok"
+msgstr "Nem sikerült felvenni az adatforrást - helytelen vagy hiányzó argumentumok"
 
 #: ../gurpmi.addmedia:78
 #, c-format
@@ -632,8 +630,7 @@ msgstr "  --media=adatf1,...     korlátozás a megadott adatforrásra"
 
 #: ../rpmdrake:38
 #, c-format
-msgid ""
-"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgid "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
 "  --merge-all-rpmnew     a megtalált .rpmnew/.rpmsave fájlok felvételének\n"
 "                         felajánlása"
@@ -648,10 +645,8 @@ msgstr ""
 
 #: ../rpmdrake:40
 #, c-format
-msgid ""
-"  --no-confirmation      don't ask first confirmation question in update mode"
-msgstr ""
-"  --no-confirmation      frissítési üzemmódban ne legyen megerősítéskérés"
+msgid "  --no-confirmation      don't ask first confirmation question in update mode"
+msgstr "  --no-confirmation      frissítési üzemmódban ne legyen megerősítéskérés"
 
 #: ../rpmdrake:41
 #, c-format
@@ -1891,14 +1886,14 @@ msgid "unable to access rpm file [%s]"
 msgstr "\"%s\" RPM-csomagfájl nem elérhető"
 
 #: ../rpmdrake:1700
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
 "\n"
 "Some configuration files were created as `.rpmnew' or `.rpmsave',\n"
 "you may now inspect some in order to take actions:"
 msgstr ""
-"A telepítés befejeződött; %s.\n"
+"A telepítés befejeződött; a szükséges csomagok telepítve lettek.\n"
 "\n"
 "Létre lett hozva néhány beállítási fájl \".rpmnew\" vagy \".rpmsave\"\n"
 "néven; ha kívánja, tekintse meg a tartalmukat."
@@ -2382,9 +2377,10 @@ msgstr "Adatforrások frissítése"
 
 #: ../rpmdrake.pm:722
 #, c-format
-msgid ""
-"No active medium found. You must enable some media to be able to update them."
+msgid "No active medium found. You must enable some media to be able to update them."
 msgstr ""
+"Nem található aktív adatforrás. Egy adatforrást engedélyeznie kell ahhoz, "
+"hogy frissíthesse azt."
 
 #: ../rpmdrake.pm:729
 #, c-format
@@ -2475,10 +2471,8 @@ msgstr "A segítség elindítva a háttérben"
 
 #: ../rpmdrake.pm:853
 #, c-format
-msgid ""
-"The help window has been started, it should appear shortly on your desktop."
-msgstr ""
-"A segítség el lett indítva, hamarosan meg kell jelennie a munkaasztalon."
+msgid "The help window has been started, it should appear shortly on your desktop."
+msgstr "A segítség el lett indítva, hamarosan meg kell jelennie a munkaasztalon."
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -2750,17 +2744,3 @@ msgstr "Szoftvereltávolítás"
 msgid "Software Media Manager"
 msgstr "Szoftverforrás-kezelő"
 
-#~ msgid "everything was installed correctly"
-#~ msgstr "megfelelően telepítve lett minden"
-
-#~ msgid "Update medium"
-#~ msgstr "Adatforrás frissítése"
-
-#~ msgid "Regenerate hdlist"
-#~ msgstr "Fejléclista frissítése"
-
-#~ msgid "Please wait, generating hdlist..."
-#~ msgstr "Fejléclista előállítása..."
-
-#~ msgid "Everything installed successfully"
-#~ msgstr "Sikeresen telepítve lett minden"
