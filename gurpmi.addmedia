@@ -73,27 +73,60 @@ if ($ARGV[0] =~ /^-?-update/) {
     $update = 1;
     shift @ARGV;
 }
-my ($name, $url, $with, $with_hdlist) = @ARGV;
-if ($url !~ m,^(file://|ftp://|http://|removable://), || $with && !$with_hdlist) {
-    interactive_msg('gurpmi.addmedia',
-                    N("Unable to add medium, wrong or missing arguments"));
-    myexit(-1);
+
+my @addmedia_args;
+my @names;
+
+while (@ARGV) {
+    my ($name, $url, $with, $with_hdlist) = @ARGV;
+    $with eq 'with' or ($with, $with_hdlist) = (undef, undef);
+    if ($url !~ m,^(file://|ftp://|http://|removable://), || $with && !$with_hdlist) {
+	interactive_msg('gurpmi.addmedia',
+			N("Unable to add medium, wrong or missing arguments"));
+	myexit(-1);
+    }
+    push @addmedia_args, [ $name, $url, $with, $with_hdlist ];
+    push @names, $name;
+    shift @ARGV for 1 .. ($with ? 4 : 2);
 }
 
-$fromfile and do { interactive_msg('gurpmi.addmedia',
+$fromfile and do {
+    interactive_msg('gurpmi.addmedia',
 N("%s
 
 Is it ok to continue?",
-N("You are about to add a new packages medium, `%s'.
+@names > 1
+? N("You are about to add new packages media, %s.
 That means you will be able to add new software packages
-to your system from that new medium.", $name)),
-                              yesno => 1) or myexit(-1) };
+to your system from these new media.", join ", ", @names)
+: N("You are about to add a new packages medium, `%s'.
+That means you will be able to add new software packages
+to your system from that new medium.", $names[0])
+),
+    yesno => 1) or myexit(-1);
+};
 
 my $urpm = urpm->new;
 $urpm->read_config; 
-if (add_medium_and_check($urpm, { probe_with => !$with }, $name, $url, $with_hdlist, update => $update)) {
-    interactive_msg('gurpmi.addmedia',
-                    N("Successfully added medium `%s'.", $name)) if !$silent_success;
+my $success = 1;
+for (@addmedia_args) {
+    #- NB: that short circuits
+    $success = $success && add_medium_and_check(
+	$urpm,
+	{ probe_with => !$_->[2] },
+	$_->[0],
+	$_->[1],
+	$_->[3],
+	update => $update,
+    );
+}
+if ($success) {
+    interactive_msg(
+	'gurpmi.addmedia',
+	@names > 1
+	    ? N("Successfully added media %s.", join ", ", @names)
+	    : N("Successfully added medium `%s'.", $names[0])
+    ) if !$silent_success;
     myexit(0);
 } else {
     myexit(-1);
