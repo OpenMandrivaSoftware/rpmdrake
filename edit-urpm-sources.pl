@@ -80,7 +80,7 @@ contain the complete set of packages of your distribution (usually a superset
 of what comes on the standard installation CDs), or sources that provide the
 official updates for your distribution. (You can add both, but you'll have
 to do this in two steps.)"),
-	transient => $mainw->{rwindow},
+	 transient => $mainw->{real_window},
 	yesno => 1, text => { yes => N("Distribution sources"), no => N("Official updates") },
     ) : 1;
     my $m = choose_mirror(message =>
@@ -125,7 +125,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
 }
 
 sub add_callback {
-    my $w = ugtk2->new(N("Add a medium"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Add a medium"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my %radios_infos = (
 	local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
 	ftp => { name => N("FTP server"), url => N("URL:"), loginpass => 1 },
@@ -305,7 +305,7 @@ really want to replace it?"), yesno => 1) or return 0;
 }
 
 sub options_callback {
-    my $w = ugtk2->new(N("Global options for package installation"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Global options for package installation"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my @verif_radio_infos = (
 	{ name => N("always"), value => 1 },
 	{ name => N("never"),  value => 0 },
@@ -351,7 +351,7 @@ sub remove_callback {
 	N("Source Removal"),
 	N("Are you sure you want to remove source \"%s\"?", to_utf8($urpm->{media}[$row]{name})),
 	yesno => 1,
-	transient => $mainw->{rwindow},
+	 transient => $mainw->{real_window},
     ) or return;
 
     my $wait = wait_msg(N("Please wait, removing medium..."));
@@ -391,7 +391,7 @@ sub edit_callback {
     $row == -1 and return;
     my $medium = $urpm->{media}[$row];
     my $config = urpm::cfg::load_config($urpm->{config}, 1);
-    my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my ($url_entry, $hdlist_entry, $url, $with_hdlist);
     gtkadd(
 	$w->{window},
@@ -446,13 +446,13 @@ sub edit_callback {
 }
 
 sub update_callback {
-    update_sources_interactive($urpm, transient => $mainw->{rwindow}, nolock => 1);
+    update_sources_interactive($urpm,  transient => $mainw->{real_window}, nolock => 1);
 }
 
 sub proxy_callback {
     my ($medium) = @_;
     my $medium_name = $medium ? $medium->{name} : '';
-    my $w = ugtk2->new(N("Configure proxies"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Configure proxies"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my ($proxy, $proxy_user) = curl_download::readproxy($medium_name);
     my ($user, $pass) = $proxy_user =~ /^([^:]*):(.*)$/;
     my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry, $proxypasswordentry);
@@ -542,7 +542,7 @@ sub remove_parallel {
 sub edit_parallel {
     my ($num, $conf) = @_;
     my $edited = $num == -1 ? {} : $conf->[$num];
-    my $w = ugtk2->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my $name_entry;
 
     my $medias_ls = Gtk2::ListStore->new("Glib::String");
@@ -553,7 +553,7 @@ sub edit_parallel {
     $medias_ls->append_set([ 0 => $_ ]) foreach @{$edited->{medias}};
 
     my $add_media = sub {
-        my $w = ugtk2->new(N("Add a medium limit"), grab => 1);
+        my $w = ugtk2->new(N("Add a medium limit"), grab => 1,  transient => $mainw->{real_window});
         my $medias_list_ls = Gtk2::ListStore->new("Glib::String");
         my $medias_list = Gtk2::TreeView->new_with_model($medias_list_ls);
         $medias_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
@@ -602,7 +602,7 @@ sub edit_parallel {
     elsif ($edited->{protocol} eq 'ka-run') { push @$hosts_list, $1 while $edited->{command} =~ /-m (\S+)/g }
     $hosts_ls->append_set([ 0 => $_ ]) foreach @$hosts_list;
     my $add_host = sub {
-        my $w = ugtk2->new(N("Add a host"), grab => 1);
+        my $w = ugtk2->new(N("Add a host"), grab => 1,  transient => $mainw->{real_window});
         my ($entry, $value);
 	gtkadd(
 	    $w->{window},
@@ -687,7 +687,7 @@ sub edit_parallel {
 }
 
 sub parallel_callback {
-    my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my $list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String", "Glib::String", "Glib::String");
     my $list = Gtk2::TreeView->new_with_model($list_ls);
     each_index { $list->append_column(Gtk2::TreeViewColumn->new_with_attributes($_, Gtk2::CellRendererText->new, 'text' => $::i)) } N("Group"), N("Protocol"), N("Media limit");
@@ -745,7 +745,7 @@ sub parallel_callback {
 }
 
 sub keys_callback {
-    my $w = ugtk2->new(N("Manage keys for digital signatures of packages"), grab => 1, center => 1, transient => $mainw->{rwindow});
+    my $w = ugtk2->new(N("Manage keys for digital signatures of packages"), grab => 1, center => 1,  transient => $mainw->{real_window});
 
     my $media_list_ls = Gtk2::ListStore->new("Glib::String");
     my $media_list = Gtk2::TreeView->new_with_model($media_list_ls);
@@ -786,7 +786,7 @@ sub keys_callback {
     });
 
     my $add_key = sub {
-        my $w_add = ugtk2->new(N("Add a key"), grab => 1, transient => $w->{rwindow});
+        my $w_add = ugtk2->new(N("Add a key"), grab => 1,  transient => $w->{real_window});
         my $available_keyz_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
         my $available_keyz = Gtk2::TreeView->new_with_model($available_keyz_ls);
         $available_keyz->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
@@ -829,7 +829,7 @@ sub keys_callback {
 	interactive_msg(N("Remove a key"),
                         N("Are you sure you want to remove the key %s from medium %s?\n(name of the key: %s)",
                           $key, $current_medium, $key_name->($key)),
-                        yesno => 1, transient => $w->{rwindow}) or return;
+                        yesno => 1,  transient => $w->{real_window}) or return;
         $urpm->{media}[$current_medium_nb]{'key-ids'} = join(',', difference2(\@{$keys[$current_medium_nb]}, [ $key ]));
         $write->();
     };
@@ -866,6 +866,7 @@ sub keys_callback {
 
 sub mainwindow {
     $mainw = ugtk2->new(N("Configure media"), center => 1);
+    $::main_window = $mainw->{rwindow};
 
     my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
