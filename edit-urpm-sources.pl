@@ -92,6 +92,7 @@ Please check that your network is currently running.
 
 Is it ok to continue?", $rpmdrake::mandrake_release),
 	want_base_distro => $want_base_distro,
+     transient => $mainw->{real_window},
     ) or return 0;
     my $wait = wait_msg(N("Please wait, adding media..."));
     my $url = $want_base_distro ? make_url_mirror_dist($m) : make_url_mirror($m);
