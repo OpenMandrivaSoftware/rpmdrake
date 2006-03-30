@@ -509,8 +509,7 @@ sub mirrors {
 
 sub choose_mirror {
     my (%options) = @_;
-    interactive_msg(N("Mirroir choice"),
-	$options{message} ? $options{message} :
+    my $message = $options{message} ? $options{message} :
 $branded
 ? N("I need to access internet to get the mirror list.
 Please check that your network is currently running.
@@ -519,7 +518,9 @@ Is it ok to continue?")
 : N("I need to contact the Mandriva website to get the mirror list.
 Please check that your network is currently running.
 
-Is it ok to continue?"), yesno => 1) or return '';
+Is it ok to continue?");
+    delete $options{message};
+    interactive_msg(N("Mirroir choice"), $message, yesno => 1, %options) or return '';
     my $wait = wait_msg(
 	$branded
 	? N("Please wait, downloading mirror addresses.")
@@ -530,7 +531,7 @@ Is it ok to continue?"), yesno => 1) or return '';
     if ($@) {
 	my $msg = $@;  #- seems that value is bitten before being printed by next func..
 	interactive_msg(N("Error during download"),
-$branded
+($branded
 ? N("There was an error downloading the mirror list:
 
 %s
@@ -540,19 +541,20 @@ Please try again later.", $msg)
 
 %s
 The network, or the Mandriva website, may be unavailable.
-Please try again later.", $msg)
+Please try again later.", $msg)), %options
+
 	);
 	return '';
     }
 
     !@mirrors and interactive_msg(N("No mirror"),
-$branded
+($branded
 ? N("I can't find any suitable mirror.")
 : N("I can't find any suitable mirror.
 
 There can be many reasons for this problem; the most frequent is
 the case when the architecture of your processor is not supported
-by Mandriva Linux Official Updates.")
+by Mandriva Linux Official Updates.")), %options
     ), return '';
 
     my $w = ugtk2->new('rpmdrake', grab => 1);
