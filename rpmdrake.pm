@@ -509,7 +509,7 @@ sub mirrors {
 
 sub choose_mirror {
     my (%options) = @_;
-    interactive_msg('',
+    interactive_msg(N("Mirroir choice"),
 	$options{message} ? $options{message} :
 $branded
 ? N("I need to access internet to get the mirror list.
