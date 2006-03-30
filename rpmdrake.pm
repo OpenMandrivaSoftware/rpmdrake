@@ -520,7 +520,7 @@ Please check that your network is currently running.
 
 Is it ok to continue?");
     delete $options{message};
-    interactive_msg(N("Mirroir choice"), $message, yesno => 1, %options) or return '';
+    interactive_msg(N("Mirror choice"), $message, yesno => 1, %options) or return '';
     my $wait = wait_msg(
 	$branded
 	? N("Please wait, downloading mirror addresses.")
