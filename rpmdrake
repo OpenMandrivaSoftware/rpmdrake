@@ -617,9 +617,11 @@ sub run_treeview_dialog {
 	    }
 	}
 	my $callback = sub { interactive_msg_(N("More information on package..."), $options->{get_info}->($_[0]), scroll => 1) };
-	$choices->[interactive_list_(N("Please choose"), N("One of the following packages is needed:"),
-				     [ map { my_fullname($_) } @$choices ], $callback)];
+	my @choices = interactive_list_(N("Please choose"), N("One of the following packages is needed:"),
+                                     [ map { my_fullname($_) } @$choices ], $callback);
+     $choices->[@choices];
     };
+
     my $closure_removal = sub {
         my @to_remove;
         $urpm->{state} = {};
