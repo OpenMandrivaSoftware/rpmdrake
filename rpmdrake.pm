@@ -274,7 +274,10 @@ sub interactive_list {
 	    Gtk2::Label->new($contents),
 	    int(@$list) > 8 ? gtkset_size_request(create_scrolled_window($vbradios), 250, 320) : $vbradios,
 	    gtkpack__(
-		create_hbox(), gtksignal_connect(
+		create_hbox(),
+          gtksignal_connect(
+		    Gtk2::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit }),
+          gtksignal_connect(
 		    Gtk2::Button->new(N("Ok")), clicked => sub {
 			each_index { $_->get_active and $choice = $::i } @radios;
 			Gtk2->main_quit;
