@@ -131,7 +131,7 @@ sub progress {
     $mainw->flush;
 }
 
-sub end {
+sub end() {
     $mainw and $mainw->destroy;
     $mainw = undef;
     $cancel = undef;  #- in case we'll do another one later
@@ -152,11 +152,11 @@ sub validate_cancel {
     $cancel->show;
 }
 
-sub invalidate_cancel {
+sub invalidate_cancel() {
     $cancel and $cancel->set_sensitive(0);
 }
 
-sub invalidate_cancel_forever {
+sub invalidate_cancel_forever() {
     $hbox_cancel or return;
     $hbox_cancel->destroy;
     $mainw->shrink_topwindow;
@@ -328,7 +328,7 @@ sub urpm_name {
     "$name-$version-$release.$arch";
 }
 
-sub parse_compssUsers_flat {
+sub parse_compssUsers_flat() {
     my (%compssUsers, $category);
     my $compss = '/var/lib/urpmi/compssUsers.flat';
     -r $compss or $compss = '/usr/share/rpmdrake/compssUsers.flat.default';
@@ -383,7 +383,7 @@ sub extract_header {
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist = $medium->{virtual} ? "$medium->{url}/$medium->{with_hdlist}" : "$urpm->{statedir}/$medium->{hdlist}";
-	$hdlist =~ s/^file:\/+//;
+	$hdlist =~ s!^file:/+!!;
 	if (-r $hdlist) {
 	    my $packer;
 	    # TODO use more modern API
@@ -452,7 +452,7 @@ sub do_search($$$$$$$) {
 		    $w->{rwindow},
 		    sub {
 			db->traverse(sub {
-			    push @search_results, map { if_(($_ =~ $entry_rx), my_fullname($_[0])) } $_[0]->files;
+			    push @search_results, map { if_($_ =~ $entry_rx, my_fullname($_[0])) } $_[0]->files;
 			});
 			@search_results = grep { exists $pkgs->{$_} } uniq(@search_results);
 		    },
@@ -461,7 +461,7 @@ sub do_search($$$$$$$) {
 	} else {
 	    my @hdlists = map {
 		my $h = $_->{virtual} ? "$_->{url}/$_->{with_hdlist}" : "$urpm->{statedir}/$_->{hdlist}";
-		$h =~ s/^file:\/+//;
+		$h =~ s!^file:/+!!;
 		if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h);
 	    } @{$urpm->{media}};
 	    my $total_size = sum(
@@ -490,6 +490,7 @@ sub do_search($$$$$$$) {
 	    $searchw->sync;
 	    open my $sf, 'parsehdlist --fileswinfo --description --summary ' . join(' ', map { "'$_'" } @hdlists) . ' |';
 	    my ($pkg, $progresscount);
+	    local $_;
 	    while (<$sf>) {
 		$searchstop and last;
 		if (/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/) {
@@ -713,7 +714,7 @@ or you already installed all of them."));
 	    @nodes = grep { exists $pkgs->{$_} } @nodes
 		or return;
 	    #- avoid selecting too many packages at once
-	    return if !$dont_show_selections && (($MODE ne 'update' && @nodes == keys %$pkgs) || @nodes > 2000);
+	    return if !$dont_show_selections && ($MODE ne 'update' && @nodes == keys %$pkgs || @nodes > 2000);
 	    my $new_state = !$pkgs->{$nodes[0]}{selected};
 
 	    my @nodes_with_deps;
@@ -1199,7 +1200,7 @@ Is it ok to continue?",
 	gtkpack_(
 	    Gtk2::VBox->new(0, 3),
 	    0, $menu,
-	    0, getbanner,
+	    0, getbanner(),
 	    1, gtkadd(
 		gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
 		gtkpack_(
@@ -1663,7 +1664,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    translate_message => 1,
 	    post_clean_cache => 1,
 	    callback_open => sub {
-		my ($data, $type, $id) = @_;
+		my ($_data, $_type, $id) = @_;
 		my $f = $sources_install{$id} || $sources{$id};
 		open $fh, $f or $urpm->{error}(N("unable to access rpm file [%s]", $f));
 		return fileno $fh;
@@ -1677,7 +1678,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		my $pkg = $urpm->{depslist}[$pkgid];
 		my $fullname = $pkg->fullname;
 		my $trtype = (any { /\Q$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
-		for ($pkg->files) { /\bREADME(\.$trtype)?\.urpmi$/ and $Readmes{$_} = $fullname }
+		foreach ($pkg->files) { /\bREADME(\.$trtype)?\.urpmi$/ and $Readmes{$_} = $fullname }
 		close $fh;
 	    },
 	);
@@ -1757,7 +1758,7 @@ you may now inspect some in order to take actions:"),
 
 # -=-=-=---=-=-=---=-=-=-- remove packages -=-=-=---=-=-=---=-=-=-
 
-sub get_installed_pkgs {
+sub get_installed_pkgs() {
     my $wait = wait_msg_with_banner(N("Please wait, reading packages database..."));
     gtkflush();
     my $urpm = urpm->new;
@@ -1790,7 +1791,7 @@ sub get_installed_pkgs {
 		selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
 		summary => rpm_summary($pkg->summary),
 		description => rpm_description($pkg->description),
-	    } unless $installed_pkgs{$fullname} && $installed_pkgs{$fullname}{description};
+	    } if !($installed_pkgs{$fullname} && $installed_pkgs{$fullname}{description});
 	    if ($base{$fullname}) {
 		$installed_pkgs{$fullname}{base} = \${$base{$fullname}};
 		if (${$base{$fullname}} == 1) { $pkg->set_flag_base(1) }

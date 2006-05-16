@@ -153,19 +153,19 @@ our %config = (
     changelog_first_config => { var => \our $changelog_first_config, default => [ 0 ] },
 );
 
-sub readconf {
+sub readconf() {
     ${$config{$_}{var}} = $config{$_}{default} foreach keys %config;
     foreach my $l (cat_($configfile)) {
 	$l =~ /^\Q$_\E (.*)/ and ${$config{$_}{var}} = [ split ' ', $1 ] foreach keys %config;
     }
 }
 
-sub writeconf {
+sub writeconf() {
     unlink $configfile;
     output $configfile, map { "$_ " . join(' ', @${$config{$_}{var}}) . "\n" } keys %config;
 }
 
-sub getbanner () {
+sub getbanner() {
     $::MODE or return undef;
     Gtk2::Banner->new("title-$::MODE", {
 	remove  => N("Software Packages Removal"),
@@ -179,7 +179,7 @@ sub interactive_msg {
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     $contents = formatAlaTeX($contents) unless $options{scroll}; #- because we'll use a WrappedLabel
-    my $banner = $options{banner} ? getbanner : undef;
+    my $banner = $options{banner} ? getbanner() : undef;
     gtkadd(
 	$d->{window},
 	gtkpack_(
@@ -298,7 +298,7 @@ sub wait_msg {
     my $mainw = ugtk2->new('Rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $mainw->{real_window}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::WrappedLabel->new($msg);
-    my $banner = $options{banner} ? getbanner : undef;
+    my $banner = $options{banner} ? getbanner() : undef;
     gtkadd(
 	$mainw->{window},
 	gtkpack__(
@@ -450,7 +450,7 @@ my %sites2countries = (
 );
 
 #- get distrib release number (2006.0, etc)
-sub etc_version {
+sub etc_version() {
     (my $v) = split / /, cat_('/etc/version');
     return $v;
 }
@@ -461,7 +461,7 @@ sub distro_type {
     my ($want_base_distro) = @_;
     return 'cooker' if $mandrake_release =~ /cooker/i;
     #- we can't use updates for community while official is not out (release ends in ".0")
-    if ($want_base_distro || ($mandrake_release =~ /community/i && etc_version() =~ /\.0$/)) {
+    if ($want_base_distro || $mandrake_release =~ /community/i && etc_version() =~ /\.0$/) {
 	return 'official' if $mandrake_release =~ /official|limited/i;
 	return 'community' if $mandrake_release =~ /community/i;
 	#- unknown: fallback to updates
@@ -671,7 +671,7 @@ sub update_sources {
 	no_wait_cursor => 1,
 	banner => $options{banner},
 	widgets => [
-	    (my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1)),
+	    my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1),
 	    gtkpack(
 		create_hbox(),
 		gtksignal_connect(
@@ -850,7 +850,7 @@ It will be disabled.",
 		    $_->{name}, $mdk_version)
 	    );
 	    $_->{ignore} = 1;
-	    $urpm->write_config if -w $urpm->{config};
+	    $urpm->write_config() if -w $urpm->{config};
 	    return 0;
 	}
     }
