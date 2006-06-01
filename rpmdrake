@@ -1193,6 +1193,7 @@ Is it ok to continue?",
 	    }, undef, '<CheckItem>' ],
 	),
 	[ N("/_Help"), undef, undef, undef, '<Branch>' ],
+     [ N("/_Help") . N("/_Report Bug"), undef, sub { run_program::raw({ detach => 1 }, 'drakbug', '--report', 'rpmdrake') }, undef, '<Item>' ],
 	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help($MODE) }, undef, '<Item>' ],
     );
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
