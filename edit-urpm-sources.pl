@@ -872,6 +872,19 @@ sub mainwindow {
     my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('browse');
+    my ($up_button, $dw_button);
+    $list_tv->get_selection->signal_connect(changed => sub {
+        my ($model, $iter) = $_[0]->get_selected;
+        return if !$iter;
+        my $curr_path = $model->get_path($iter);
+        my $first_path = $model->get_path($model->get_iter_first);
+        $up_button->set_sensitive($first_path && $first_path->compare($curr_path));
+
+        $curr_path->next;
+        my $next_item = $model->get_iter($curr_path);
+        $dw_button->set_sensitive($next_item); # && !$model->get($next_item, 0)
+    });
+
     $list_tv->set_rules_hint(1);
     $list_tv->set_reorderable(1);
 
@@ -986,8 +999,8 @@ sub mainwindow {
 		    gtksignal_connect(Gtk2::Button->new(but(N("Global options..."))), clicked => \&options_callback),
 		    gtkpack(
 			Gtk2::HBox->new(0, 0),
-			gtksignal_connect(gtkadd(Gtk2::Button->new, Gtk2::Arrow->new("up", "none")), clicked => \&upwards_callback),
-			gtksignal_connect(gtkadd(Gtk2::Button->new, Gtk2::Arrow->new("down", "none")), clicked => \&downwards_callback),
+			gtksignal_connect(gtkadd($up_button = Gtk2::Button->new, Gtk2::Arrow->new("up", "none")), clicked => \&upwards_callback),
+			gtksignal_connect(gtkadd($dw_button = Gtk2::Button->new, Gtk2::Arrow->new("down", "none")), clicked => \&downwards_callback),
 		    ),
 		)
 	    ),
