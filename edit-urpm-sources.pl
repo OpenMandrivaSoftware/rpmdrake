@@ -135,12 +135,12 @@ sub add_callback {
 	removable => { name => N("Removable device"), url => N("Path or mount point:"), dirsel => 1 },
     );
     my @radios_names_ordered = qw(local ftp rsync http removable);
-    my @modes_buttons = gtkradio($radios_infos{local}{name}, map { $radios_infos{$_}{name} } @radios_names_ordered);
+    my @modes = map { $radios_infos{$_}{name} } @radios_names_ordered;
     my $notebook = Gtk2::Notebook->new;
     $notebook->set_show_tabs(0); $notebook->set_show_border(0);
-    my $count_nbs;
-    mapn {
-	my $info = $radios_infos{$_[0]};
+    my ($count_nbs, %pages);
+    map {
+	my $info = $radios_infos{$_};
 	my $url_entry = sub {
 	    gtkpack_(
 		Gtk2::HBox->new(0, 0),
@@ -176,8 +176,7 @@ sub add_callback {
 		);
 	    } ([ 'login', N("Login:"), 1 ], [ 'pass', N("Password:"), 0 ]);
 	};
-	my $nb = $count_nbs++;
-	gtksignal_connect($_[1], 'clicked' => sub { $_[0]->get_active and $notebook->set_current_page($nb) });
+	$pages{$info->{name}} = $count_nbs++;
 	my $with_hdlist_checkbut_entry;
 	$with_hdlist_checkbut_entry = $checkbut_entry->(
 	    'hdlist', N("Relative path to synthesis/hdlist:"), 1,
@@ -210,7 +209,7 @@ sub add_callback {
 		}->(),
 	    ))
 	);
-    } \@radios_names_ordered, \@modes_buttons;
+    } @radios_names_ordered;
 
     my $checkok = sub {
 	my $info = $radios_infos{$radios_names_ordered[$notebook->get_current_page]};
@@ -225,13 +224,17 @@ really want to replace it?"), yesno => 1) or return 0;
 	1;
     };
 
-    my ($type, $probe, %i, %make_url);
+    my ($type, $probe, %i, %make_url, $type_box);
     gtkadd(
 	$w->{window},
 	gtkpack(
 	    Gtk2::VBox->new(0,5),
 	    Gtk2::Label->new(N("Adding a medium:")),
-	    gtkpack__(Gtk2::HBox->new(0, 0), Gtk2::Label->new(but(N("Type of medium:"))), @modes_buttons),
+	    gtkpack__(Gtk2::HBox->new(0, 0),
+                      Gtk2::Label->new(but(N("Type of medium:"))),
+                      $type_box = gtksignal_connect(Gtk2::ComboBox->new_with_strings(\@modes, $radios_infos{local}{name}),
+                      changed => sub { $notebook->set_current_page($pages{$_[0]->get_text}) })
+                     ),
 	    $notebook,
 	    Gtk2::HSeparator->new,
 	    gtkpack(
@@ -241,7 +244,7 @@ really want to replace it?"), yesno => 1) or return 0;
 		    Gtk2::Button->new(N("Ok")), clicked => sub {
 			if ($checkok->()) {
 			    $w->{retval} = { nb => $notebook->get_current_page };
-			    $type = $radios_names_ordered[$w->{retval}{nb}];
+			    ($type) = grep { $radios_infos{$_}{name} eq $type_box->get_text } keys %radios_infos;
 			    my $info = $radios_infos{$type};
 			    %i = (
 				name => $info->{name_entry}->get_text,
