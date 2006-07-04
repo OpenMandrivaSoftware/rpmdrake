@@ -288,10 +288,6 @@ if (0) {
     );
 }
 
-#- to highlight information
-my $tag_tag = { 'foreground' => 'royalblue3', 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD };
-my $tag_fix = { 'font' => 'monospace' };
-
 sub ctreefy {
     join('|', map { translate($_) } split m|/|, $_[0]);
 }
@@ -556,47 +552,54 @@ sub remove_arch {
 
 sub formatlistpkg { myformatList(sort { uc($a) cmp uc($b) } @_) }
 
+sub format_header {
+    my ($str) = @_;
+    '<big>' . $str . '</big>';
+}
+
+sub format_field {
+    my ($str) = @_;
+    '<b>' . $str . '</b>';
+}
+
 sub format_pkg_info {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name, $version) = split_fullname($key);
     my @files = (
-	[ N("Files:\n"), $tag_tag ],
+	format_field(N("Files:\n")),
 	exists $pkgs->{$key}{files}
-	    ? [ join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}), $tag_fix ]
-	    : [ N("(Not available)") ],
+	    ? '<tt>' . join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}) . '</tt>' #- to highlight information
+	    : N("(Not available)"),
     );
-    my @chglo = ([ N("Changelog:\n"), $tag_tag ], @{$pkgs->{$key}{changelog} || [[ N("(Not available)") ]]});
+    my @chglo = (format_field(N("Changelog:\n")), ($pkgs->{$key}{changelog} ? @{$pkgs->{$key}{changelog}} : N("(Not available)")));
     my @source_info = (
 	$MODE eq 'remove' || !@$max_info_in_descr
 	    ? ()
 	    : (
-		[ N("Medium: "), $tag_tag ],
-		[ pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} ], [ "\n" ],
-		[ N("Currently installed version: "), $tag_tag ],
-		[ find_installed_version($pkgs->{$key}{pkg}) ], [ "\n" ]
+		format_field(N("Medium: ")) . pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name},
+		format_field(N("Currently installed version: ")) . find_installed_version($pkgs->{$key}{pkg}),
 	    )
     );
-    my @max_info = if_(
-	@$max_info_in_descr,
-	$changelog_first ? (@chglo, [ "\n" ], @files) : (@files, [ "\n\n" ], @chglo),
-    );
-    [ [ N("Name: "),    $tag_tag ], [ "$name\n" ],
-      [ N("Version: "), $tag_tag ], [ "$version\n" ],
-      [ N("Architecture: "), $tag_tag ], [ $pkgs->{$key}{pkg}->arch . "\n" ],
-      [ N("Size: "),    $tag_tag ], [ N("%s KB", int($pkgs->{$key}{pkg}->size/1024)) . "\n" ],
+    my @max_info = ($changelog_first ? (@chglo, @files) : (@files, '', @chglo)) if @$max_info_in_descr;
+    ugtk2::markup_to_TextView_format(join("\n", format_field(N("Name: ")) . $name,
+      format_field(N("Version: ")) . $version,
+      format_field(N("Architecture: ")) . $pkgs->{$key}{pkg}->arch,
+      format_field(N("Size: ")) . N("%s KB", int($pkgs->{$key}{pkg}->size/1024)),
       if_(
 	  $MODE eq 'update',
-	  [ N("Importance: "), $tag_tag ], [ "$descriptions->{$name}{importance}\n" ]
+	  format_field(N("Importance: ")) . $descriptions->{$name}{importance}
       ),
       @source_info,
-      [ "\n" . N("Summary: "), $tag_tag ], [ "$pkgs->{$key}{summary}\n\n" ],
+      '', # extra empty line
+      format_field(N("Summary: ")) . $pkgs->{$key}{summary},
+      '', # extra empty line
       if_(
 	  $MODE eq 'update',
-	  [ N("Reason for update: "), $tag_tag ], [ rpm_description($descriptions->{$name}{pre}) . "\n" ],
+	  format_field(N("Reason for update: ")) . rpm_description($descriptions->{$name}{pre}),
       ),
-      [ N("Description: "), $tag_tag ], [ ($pkgs->{$key}{description} || $descriptions->{$name}{description} || N("No description")) . "\n" ],
+      format_field(N("Description: ")), ($pkgs->{$key}{description} || $descriptions->{$name}{description} || N("No description")),
       @max_info,
-    ];
+    ));
 }
 
 sub run_treeview_dialog {
