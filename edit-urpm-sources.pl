@@ -3,7 +3,7 @@
 # 
 #  Copyright (c) 2002 Guillaume Cottenceau
 #  Copyright (c) 2002-2006 Thierry Vignaud <tvignaud@mandriva.com>
-#  Copyright (c) 2003-2005 Mandriva Linux
+#  Copyright (c) 2002-2006 Mandriva Linux
 # 
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License version 2, as
