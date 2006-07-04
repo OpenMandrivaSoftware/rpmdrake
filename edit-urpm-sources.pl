@@ -137,6 +137,7 @@ sub add_callback {
     );
     my @radios_names_ordered = qw(local ftp rsync http removable);
     my @modes = map { $radios_infos{$_}{name} } @radios_names_ordered;
+    # TODO: replace NoteBook by sensitive widgets and Label->set()
     my $notebook = Gtk2::Notebook->new;
     $notebook->set_show_tabs(0); $notebook->set_show_border(0);
     my ($count_nbs, %pages);
