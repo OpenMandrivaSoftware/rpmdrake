@@ -1,6 +1,7 @@
 #*****************************************************************************
 # 
 #  Copyright (c) 2002 Guillaume Cottenceau
+#  Copyright (c) 2002-2006 Thierry Vignaud <tvignaud@mandriva.com>
 #  Copyright (c) 2003, 2004, 2005 MandrakeSoft SA
 #  Copyright (c) 2005 Mandriva SA
 # 
