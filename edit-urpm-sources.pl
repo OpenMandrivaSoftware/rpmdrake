@@ -139,6 +139,8 @@ sub add_callback {
     my $notebook = Gtk2::Notebook->new;
     $notebook->set_show_tabs(0); $notebook->set_show_border(0);
     my ($count_nbs, %pages);
+    my $size_group = Gtk2::SizeGroup->new('horizontal');
+    my ($cb1, $cb2);
     map {
 	my $info = $radios_infos{$_};
 	my $url_entry = sub {
@@ -157,7 +159,7 @@ sub add_callback {
         my $tips = Gtk2::Tooltips->new;
         my $checkbut_entry = sub {
             my ($name, $label, $visibility, $callback, $tip) = @_;
-            [ gtksignal_connect(
+            my $w = [ gtksignal_connect(
 		    $info->{$name . '_check'} = gtkset_tip($tips, Gtk2::CheckButton->new($label), $tip),
 		    clicked => sub {
 			$info->{$name . '_entry'}->set_sensitive($_[0]->get_active);
@@ -165,6 +167,8 @@ sub add_callback {
 		    },
 	    ),
 	    gtkset_visibility(gtkset_sensitive($info->{$name . '_entry'} = gtkentry(), 0), $visibility) ];
+	    $size_group->add_widget($info->{$name . '_check'});
+	    $w;
         };
 	my $loginpass_entries = sub {
 	    map {
@@ -194,7 +198,7 @@ sub add_callback {
 		if_($info->{loginpass}, $loginpass_entries->()),
 		sub {
 		    [ gtksignal_connect(
-			    $info->{distrib_check} = Gtk2::CheckButton->new(N("Create media for a whole distribution")),
+			    $info->{distrib_check} = $cb1 = Gtk2::CheckButton->new(N("Create media for a whole distribution")),
 			    clicked => sub {
 				if ($_[0]->get_active) {
 				    $info->{hdlist_entry}->set_sensitive(0);
@@ -205,11 +209,12 @@ sub add_callback {
 		    ];
 		}->(),
 		sub {
-		    [ $info->{update_check} = Gtk2::CheckButton->new(N("Search this media for updates")) ];
+		    [ $info->{update_check} = $cb2 = Gtk2::CheckButton->new(N("Search this media for updates")) ];
 		}->(),
 	    ))
 	);
     } @radios_names_ordered;
+    $size_group->add_widget($_) foreach $cb1, $cb2;
 
     my $checkok = sub {
 	my $info = $radios_infos{$radios_names_ordered[$notebook->get_current_page]};
