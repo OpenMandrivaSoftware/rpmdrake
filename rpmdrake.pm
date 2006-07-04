@@ -862,7 +862,8 @@ It will be disabled.",
 
 sub open_help {
     my ($mode) = @_;
-    system("drakhelp --id software-management-$mode &");
+    use run_program;
+    run_program::raw({ detach => 1 }, 'drakhelp', '--id', "software-management-$mode");
     interactive_msg(
 	N("Help launched in background"),
 	N("The help window has been started, it should appear shortly on your desktop."),
