@@ -487,7 +487,7 @@ sub mirrors {
     unlink $mirrorslist;
     urpm::cfg::mirrors_cfg();
     my $res = curl_download::download($urpm::cfg::mirrors, $cachedir, sub {});
-    $res and die $res;
+    $res and do { c::set_tagged_utf8($res); die $res };
     require timezone;
     my $tz = ${timezone::read()}{timezone};
     my $distro_type = distro_type($want_base_distro);
