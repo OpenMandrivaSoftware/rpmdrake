@@ -157,16 +157,12 @@ sub add_callback {
         my $tips = Gtk2::Tooltips->new;
         my $checkbut_entry = sub {
             my ($name, $label, $visibility, $callback, $tip) = @_;
-            [ gtkpack_(
-		Gtk2::HBox->new(0, 0),
-		1, Gtk2::Label->new,
-		0, gtksignal_connect(
+            [ gtksignal_connect(
 		    $info->{$name . '_check'} = gtkset_tip($tips, Gtk2::CheckButton->new($label), $tip),
 		    clicked => sub {
 			$info->{$name . '_entry'}->set_sensitive($_[0]->get_active);
 			$callback and $callback->(@_);
 		    },
-		)
 	    ),
 	    gtkset_visibility(gtkset_sensitive($info->{$name . '_entry'} = gtkentry(), 0), $visibility) ];
         };
@@ -182,25 +178,23 @@ sub add_callback {
 	};
 	my $nb = $count_nbs++;
 	gtksignal_connect($_[1], 'clicked' => sub { $_[0]->get_active and $notebook->set_current_page($nb) });
-	my $with_hdlist_checkbut_entry = $checkbut_entry->(
+	my $with_hdlist_checkbut_entry;
+	$with_hdlist_checkbut_entry = $checkbut_entry->(
 	    'hdlist', N("Relative path to synthesis/hdlist:"), 1,
 	    sub { $info->{distrib_check} and $_[0]->get_active and $info->{distrib_check}->set_active(0) },
 	    N("If left blank, synthesis/hdlist will be automatically probed"),
 	);
 	$notebook->append_page(
-	    my $book = create_packtable(
-		{},
-		[ gtkset_alignment(Gtk2::Label->new(N("Name:")), 1, 0.5),
+	    gtkshow(create_packtable(
+		{ xpadding => , ypadding => 0 },
+		[ gtkset_alignment(Gtk2::Label->new(N("Name:")), 0, 0.5),
 		    $info->{name_entry} = gtkentry('') ],
-		[ gtkset_alignment(Gtk2::Label->new($info->{url}), 1, 0.5),
+		[ gtkset_alignment(Gtk2::Label->new($info->{url}), 0, 0.5),
 		    $url_entry->() ],
 		$with_hdlist_checkbut_entry,
 		if_($info->{loginpass}, $loginpass_entries->()),
 		sub {
-		    [ gtkpack_(
-			Gtk2::HBox->new(0, 0),
-			1, Gtk2::Label->new,
-			0, gtksignal_connect(
+		    [ gtksignal_connect(
 			    $info->{distrib_check} = Gtk2::CheckButton->new(N("Create media for a whole distribution")),
 			    clicked => sub {
 				if ($_[0]->get_active) {
@@ -209,18 +203,13 @@ sub add_callback {
 				}
 			    },
 			)
-		    ) ];
+		    ];
 		}->(),
 		sub {
-		    [ gtkpack_(
-			Gtk2::HBox->new(0, 0),
-			1, Gtk2::Label->new,
-			0, ($info->{update_check} = Gtk2::CheckButton->new(N("Search this media for updates"))),
-		    ) ];
+		    [ $info->{update_check} = Gtk2::CheckButton->new(N("Search this media for updates")) ];
 		}->(),
-	    )
+	    ))
 	);
-	$book->show;
     } \@radios_names_ordered, \@modes_buttons;
 
     my $checkok = sub {
