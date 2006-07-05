@@ -830,7 +830,7 @@ or you already installed all of them."));
 			    my $cant = $_;
 			    my $unsel = find { remove_arch($_) eq $cant } @ask_unselect;
 			    $unsel
-			    ? to_utf8(join "\n", $urpm->translate_why_unselected($urpm->{state}, $unsel))
+			    ? join("\n", $urpm->translate_why_unselected($urpm->{state}, $unsel))
 			    : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
 			} @cant;
 			interactive_msg_(
@@ -1134,7 +1134,7 @@ N("The following packages have to be removed for others to be upgraded:
 %s
 
 Is it ok to continue?",
-		    to_utf8($r)),
+		    $r),
 		scroll => 1,
 		yesno => 1) or return;
 	    }
@@ -1536,8 +1536,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my @error_msgs;
     my %Readmes;
     my $statusbar_msg_id;
-    local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = to_utf8($_[1]); goto fatal_error };
-    local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, to_utf8($_[0]) };
+    local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = $_[1]; goto fatal_error };
+    local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, $_[0] };
 
     $w->{rwindow}->set_sensitive(0);
 
@@ -1635,7 +1635,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
             interactive_msg_(
 		N("Rpmdrake"),
 		N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
-		to_utf8(join "\n", sort @invalid_sources)), yesno => 1, if_(@invalid_sources > 10, scroll => 1),
+		join("\n", sort @invalid_sources)), yesno => 1, if_(@invalid_sources > 10, scroll => 1),
 	    ) or goto return_with_error;
         }
     }
