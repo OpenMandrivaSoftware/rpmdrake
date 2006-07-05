@@ -795,7 +795,7 @@ sub add_medium_and_check {
     my $fatal_msg;
     my @error_msgs;
     local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = to_utf8($_[1]); goto fatal_error };
-    local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, to_utf8($_[0]) };
+    local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, $_[0] };
     if ($options->{distrib}) {
 	@newnames = $urpm->add_distrib_media(@_);
     } else {
