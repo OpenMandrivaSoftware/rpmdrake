@@ -620,9 +620,33 @@ sub format_pkg_info {
 }
 
 sub run_treeview_dialog {
-    my ($pkgs_provider, $callback_action) = @_;
+    my ($callback_action) = @_;
 
-    my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
+    my ($urpm, $pkgs, $descriptions);
+    my $pkgs_provider = sub {
+        my ($options, $mode) = @_;
+        my $h = &get_pkgs($urpm, $options); # was given (1, @_) for updates
+        ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
+        my %sort_methods = (
+            all => sub { $pkgs = map { ${$h->{$_}} } qw(installed installable updates) },
+            installed => sub { $pkgs = $h->{installed} },
+            non_installed => sub { $pkgs = $h->{installable} },
+            #mandrake_choices => sub { $pkgs =  },
+            all_updates => sub { $pkgs = $h->{updates} },
+            #security => sub { $pkgs =  },
+            #normal => sub { $pkgs =  }
+        );
+        foreach my $importance (qw(bugfix security normal)) {
+            $sort_methods{$importance} = sub {
+                $sort_methods{all_updates}->();
+                $pkgs = { grep { $descriptions->{$_}->{importance} eq $importance } keys %$pkgs };
+            };
+        };
+        $sort_methods{mandrake_choices} = $sort_methods{non_installed};
+        $sort_methods{$mode}->();
+    };
+
+    $pkgs_provider->({}, 'mandrake_choices'); # default mode
 
     my ($options, $size_selected, $compssUsers, $tree, $tree_model, $detail_tree, $detail_tree_model, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
@@ -1006,7 +1030,7 @@ or you already installed all of them."));
                                  changed => sub {
                                      my $val = $_[0]->get_text;
                                      my %h = reverse %modes;
-                                     if (my @cat = $wanted_categories{$h{$val}}) {
+                                     if (0 or my @cat = $wanted_categories{$h{$val}}) {
                                          @$mandrakeupdate_wanted_categories = @cat;
                                          $reset_search->();
                                          $options->{rebuild_tree}->();
@@ -1019,6 +1043,7 @@ or you already installed all of them."));
                                          $tree_mode->[0] = $options->{tree_mode};
                                          $tree_flat->[0] = $options->{state}{flat};
                                          $reset_search->();
+                                         $pkgs_provider->({}, $h{$val});
                                          $options->{rebuild_tree}->();
                                      }
                                  }
@@ -1111,7 +1136,7 @@ Is it ok to continue?",
 	    }
 	}
 	if (!$callback_action->($urpm, $pkgs)) {
-	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+	    $pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode});
 	    $reset_search->();
 	    $size_selected = 0;
 	    (undef, $size_free) = MDK::Common::System::df('/usr');
@@ -1144,7 +1169,7 @@ Is it ok to continue?",
 	    [ N("/_File") . N("/_Update media"), undef, sub {
 		update_sources_interactive($urpm, transient => $w->{rwindow})
 		    and do {
-			($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+			$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode});
 			$reset_search->();
 			$size_selected = 0;
 			$options->{rebuild_tree}->();
@@ -1164,7 +1189,7 @@ Is it ok to continue?",
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
-	    ($urpm, $pkgs, $descriptions) = $pkgs_provider->({ skip_updating_mu => 1 });
+	    $pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode});
 	    $reset_search->();
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
@@ -1275,22 +1300,30 @@ Is it ok to continue?",
 
 # -=-=-=---=-=-=---=-=-=-- install packages -=-=-=---=-=-=---=-=-=-
 
-sub get_installable_pkgs {
-    my ($updates, $opts) = @_;
+sub get_installed_pkgs() {
+}
+
+sub get_pkgs {
+    my ($urpm, $opts) = @_;
     my $update_name = 'update_source';
     my %update_descr;
     my @update_medias;
 
-    if ($updates) {
-        my $urpm = urpm->new;
-        $urpm->configure;
+    if (!$urpm) {
+        $urpm ||= urpm->new;
+        my $media = ref $options{media} ? join(',', @{$options{media}}) : '';
+        $urpm->configure(media => $media);
+    }
+    my $statedir = $urpm->{statedir};
+    @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
+
+
+    if (0) { # TODO/FIXME: renew me (w/o exit on fatal error)
         $urpm->{fatal} = sub {
             interactive_msg(N("Fatal error"),
                             N("A fatal error occurred: %s.", $_[1]));
             myexit(-1);
         };
-	my $statedir = $urpm->{statedir};
-	@update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 	unless ($options{'no-media-update'}) {
 	    if (@update_medias > 0) {
 		if (!$opts->{skip_updating_mu}) {
@@ -1328,6 +1361,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		@update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
 	    }
 	}
+    }
 
 	my ($cur, $section);
 	#- parse the description file
@@ -1351,8 +1385,9 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		and do { $cur->{$1} = $2; next };
 	    $section =~ /^(pre|description)\z/ and $cur->{$1} .= $_;
 	}
-    }
-    my $wait = wait_msg_with_banner(N("Please wait, finding available packages..."));
+
+    my $_unused = N("Please wait, finding available packages...");
+    my $wait = wait_msg_with_banner(N("Please wait, reading packages database..."));
     if (!$::statusbar) {
 	$wait->{real_window}->show_all;
 	$wait->{real_window}->realize;
@@ -1360,17 +1395,65 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	$wait->{real_window}->queue_draw;
     }
     gtkflush();
-    my $urpm = urpm->new;
+
+    # find out installed packages:
+
+    #$urpm = urpm->new;
+    #$urpm->read_config;
+    my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
+    my (%base, %basepackages);
+    my $db = db();
+    my $sig_handler = sub { undef $db; exit 3 };
+    local $SIG{INT} = $sig_handler;
+    local $SIG{QUIT} = $sig_handler;
+    while (defined(local $_ = shift @base)) {
+	exists $basepackages{$_} and next;
+	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
+			      push @{$basepackages{$_}}, my_fullname($_[0]);
+			      push @base, $_[0]->requires_nosense;
+			  });
+    }
+    foreach (values %basepackages) {
+	my $n = @$_; #- count number of times it's provided
+	foreach (@$_) {
+	    $base{$_} = \$n;
+	}
+    }
+    my %installed_pkgs;
+    $db->traverse(sub {
+	    my ($pkg) = @_;
+	    my $fullname = my_fullname($pkg);
+	    #- Extract summary and description since they'll be lost when the header is packed
+	    $installed_pkgs{$fullname} = {
+		selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
+		summary => rpm_summary($pkg->summary),
+		description => rpm_description($pkg->description),
+	    } if !($installed_pkgs{$fullname} && $installed_pkgs{$fullname}{description});
+	    if ($base{$fullname}) {
+		my $name = $base{$fullname};
+		$installed_pkgs{$fullname}{base} = \$name;
+		if (${$base{$fullname}} == 1) { $pkg->set_flag_base(1) }
+	    }
+	    $pkg->pack_header;
+	});
+    my $group;
+    if ($options{parallel} && (($group) = @{$options{parallel}})) {
+        $urpm->configure(parallel => $group);
+    }
+
+
+    # find out availlable packages:
+
+    #$urpm = urpm->new;
     $urpm->{state} = {};
     my %installable_pkgs;
+    my %updates;
 
-    my $media = ref $options{media} ? join(',', @{$options{media}}) : '';
-    $urpm->configure(media => $media);
 
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
     check_update_media_version($urpm, @update_medias);
 
-    $urpm->compute_installed_flags(db()) unless $updates;
+    $urpm->compute_installed_flags(db()); # TODO/FIXME: not for updates
     my $requested = {};
     my $state = {};
     $urpm->request_packages_to_upgrade(
@@ -1385,10 +1468,12 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 
     my %pkg_sel   = map { $_ => 1 } @{$options{'pkg-sel'}   || []};
     my %pkg_nosel = map { $_ => 1 } @{$options{'pkg-nosel'} || []};
+    my @updates_media_names = map { $_->{name} } @update_medias;
     foreach my $pkg (@{$urpm->{depslist}}) {
 	$pkg->flag_upgrade or next;
         my $selected = 0;
-	if ($updates) {
+
+	if (member(pkg2medium($pkg, $urpm)->{name}, @updates_media_names)) { # TODO/FIXME: for updates
             $pkg->flag_installed or next;
             any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next;
             if ($options{'pkg-sel'} || $options{'pkg-nosel'}) {
@@ -1396,8 +1481,10 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		$pkg_sel{$n} || $pkg_nosel{$n} or next;
 		$pkg_sel{$n} and $selected = 1;
 	    }
-	}
+	$updates{my_fullname($pkg)} = { selected => $selected, pkg => $pkg };
+	} else {
 	$installable_pkgs{my_fullname($pkg)} = { selected => $selected, pkg => $pkg };
+     }
     }
     if ($options{'pkg-sel'} && $options{'pkg-nosel'}) {
         push @{$options{'pkg-nosel'}}, @{$options{'pkg-sel'}};
@@ -1405,7 +1492,13 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     }
 
     statusbar_msg_remove($wait);
-    ($urpm, \%installable_pkgs, \%update_descr);
+
+    +{ urpm => $urpm,
+       installed => \%installed_pkgs,
+       installable => \%installable_pkgs,
+       updates => \%updates,
+       update_descr => \%update_descr,
+   };
 }
 
 # /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
@@ -1774,55 +1867,6 @@ you may now inspect some in order to take actions:"),
 
 # -=-=-=---=-=-=---=-=-=-- remove packages -=-=-=---=-=-=---=-=-=-
 
-sub get_installed_pkgs() {
-    my $wait = wait_msg_with_banner(N("Please wait, reading packages database..."));
-    gtkflush();
-    my $urpm = urpm->new;
-    $urpm->read_config;
-    my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
-    my (%base, %basepackages);
-    my $db = db();
-    my $sig_handler = sub { undef $db; exit 3 };
-    local $SIG{INT} = $sig_handler;
-    local $SIG{QUIT} = $sig_handler;
-    while (defined(local $_ = shift @base)) {
-	exists $basepackages{$_} and next;
-	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
-			      push @{$basepackages{$_}}, my_fullname($_[0]);
-			      push @base, $_[0]->requires_nosense;
-			  });
-    }
-    foreach (values %basepackages) {
-	my $n = @$_; #- count number of times it's provided
-	foreach (@$_) {
-	    $base{$_} = \$n;
-	}
-    }
-    my %installed_pkgs;
-    $db->traverse(sub {
-	    my ($pkg) = @_;
-	    my $fullname = my_fullname($pkg);
-	    #- Extract summary and description since they'll be lost when the header is packed
-	    $installed_pkgs{$fullname} = {
-		selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
-		summary => rpm_summary($pkg->summary),
-		description => rpm_description($pkg->description),
-	    } if !($installed_pkgs{$fullname} && $installed_pkgs{$fullname}{description});
-	    if ($base{$fullname}) {
-		my $name = $base{$fullname};
-		$installed_pkgs{$fullname}{base} = \$name;
-		if (${$base{$fullname}} == 1) { $pkg->set_flag_base(1) }
-	    }
-	    $pkg->pack_header;
-	});
-    statusbar_msg_remove($wait);
-    my $group;
-    if ($options{parallel} && (($group) = @{$options{parallel}})) {
-        $urpm->configure(parallel => $group);
-    }
-    ($urpm, \%installed_pkgs);
-}
-
 sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
@@ -1896,11 +1940,9 @@ you want to install on your computer.")))
     }
 
 if ($MODE eq 'remove') {
-    run_treeview_dialog(sub { get_installed_pkgs() }, \&perform_removal);
-} elsif ($MODE eq 'update') {
-    run_treeview_dialog(sub { get_installable_pkgs(1, @_) }, \&perform_installation);
+    run_treeview_dialog(\&perform_removal);
 } else {
-    run_treeview_dialog(sub { get_installable_pkgs() }, \&perform_installation);
+    run_treeview_dialog(\&perform_installation);
 }
 
 writeconf();
