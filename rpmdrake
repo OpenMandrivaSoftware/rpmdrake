@@ -1793,7 +1793,8 @@ sub get_installed_pkgs() {
 		description => rpm_description($pkg->description),
 	    } if !($installed_pkgs{$fullname} && $installed_pkgs{$fullname}{description});
 	    if ($base{$fullname}) {
-		$installed_pkgs{$fullname}{base} = \${$base{$fullname}};
+		my $name = $base{$fullname};
+		$installed_pkgs{$fullname}{base} = \$name;
 		if (${$base{$fullname}} == 1) { $pkg->set_flag_base(1) }
 	    }
 	    $pkg->pack_header;
