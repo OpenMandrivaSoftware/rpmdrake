@@ -980,8 +980,8 @@ or you already installed all of them."));
 	    # availability, then we need to expand on the fly. (by update availability,
 	    # selecting all packages will be too slow and expose too much choice conflicts)
 	    my $child = $tree_model->iter_children($iter);
-	    if ($options->{tree_mode} ne 'by_presence' && $tree_model->get($child, 0) eq '') {
-		$tree_model->remove($child);
+	    if (1 || $options->{tree_mode} ne 'by_presence' && $tree_model->get($child, 0) eq '') {
+		#$tree_model->remove($child);
 		slow_func(
 		    $tree->window,
 		    sub { $options->{add_nodes}->(@{$elems{$tree_model->get($iter, 0)}}) }
