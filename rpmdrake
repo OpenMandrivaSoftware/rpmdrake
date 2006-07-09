@@ -624,7 +624,7 @@ sub run_treeview_dialog {
 
     my ($urpm, $pkgs, $descriptions) = $pkgs_provider->();
 
-    my ($options, $size_selected, $compssUsers, $tree, $tree_model, %elems);
+    my ($options, $size_selected, $compssUsers, $tree, $tree_model, $detail_tree, $detail_tree_model, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $w = ugtk2->new(N("Rpmdrake"));
@@ -926,6 +926,15 @@ or you already installed all of them."));
     $tree->set_headers_visible(0);
     $tree->set_rules_hint(1);
 
+    $detail_tree_model = Gtk2::TreeStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
+    $detail_tree = Gtk2::TreeView->new_with_model($detail_tree_model);
+    $detail_tree->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererPixbuf->new, 'pixbuf' => 1));
+    $detail_tree->append_column(my $main_textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+    $detail_tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 2));
+    #$detail_tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 2));
+    $detail_tree->set_headers_visible(0);
+    $detail_tree->set_rules_hint(1);
+
     ($typical_width) = string_size($tree, translate("Graphical Environment") . "xmms-more-vis-plugins");
     $typical_width > 500 and $typical_width = 500;  #- try to not being crazy with a too large value
     $typical_width < 150 and $typical_width = 150;
@@ -933,13 +942,13 @@ or you already installed all of them."));
     #$textcolumn->set_min_width($typical_width*0.7);
 
     my $cursor_to_restore;
-    $tree->signal_connect(
+    $_->signal_connect(
 	expose_event => sub {
 	    $cursor_to_restore or return;
 	    gtkset_mousecursor_normal($tree->window);
 	    undef $cursor_to_restore;
 	},
-    );
+    ) foreach $tree, $detail_tree;
     $tree->signal_connect(
 	row_expanded => sub {
 	    my ($tree, $iter, $path) = @_;
@@ -964,6 +973,8 @@ or you already installed all of them."));
 	},
     );
 
+    $options->{state}{splited} = 1;
+    #$options->{state}{flat} = 1;
     $compssUsers = parse_compssUsers_flat();
     my %modes = (all => N("All"), installed => N("Installed"), non_installed => N("Non installed"),
                  mandrake_choices => $rpmdrake::branded ? N("%s choices", $rpmdrake::distrib{system}) : N("Mandriva Linux choices"),
@@ -1116,8 +1127,11 @@ Is it ok to continue?",
 		   1, 2, 0, 1, 'fill', 'fill', 0, 0);
 
     my $hpaned = Gtk2::HPaned->new;
-    $hpaned->pack1(gtkset_size_request(create_scrolled_window($tree), $typical_width*1.25, -1) , 0, 0);
-    $hpaned->pack2(create_scrolled_window($info), 1, 0);
+    my $vpaned = Gtk2::VPaned->new;
+    $vpaned->pack1(create_scrolled_window($detail_tree), 1, 0);
+    $vpaned->pack2(create_scrolled_window($info), 1, 0);
+    $hpaned->pack1(gtkset_size_request(create_scrolled_window($tree), $typical_width*0.9, -1) , 0, 0);
+    $hpaned->pack2($vpaned, 1, 0);
     $table->attach($hpaned, 0, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
 
     my $status = Gtk2::Label->new;
@@ -1248,6 +1262,8 @@ Is it ok to continue?",
 	w => $w,
 	tree => $tree,
 	tree_model => $tree_model,
+	detail_tree_model => $detail_tree_model,
+	detail_tree => $detail_tree,
 	info => $info,
 	status => $status,
     };
