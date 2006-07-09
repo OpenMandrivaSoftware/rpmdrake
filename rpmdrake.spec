@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 2.27
+%define version 3.0
 %define release %mkrel 1
 
 Name: %{name}
@@ -113,6 +113,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Jul  3 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.0-1mdv2007.0
+- make some windows transcient
+- fix garbaged error messages while accessing mirrors
+- edit-urpm-sources:
+  o improve layout by using nicer alignment (#17716)
+  o improve layout by using a combo box (#17733)
+  o let's be more user-friendly by showing one cannot move an item
+    when it's the first or the last one
+  o prevent some Gtk+ critic warnings
+- rpmdrake (WIP):
+  o unify all interfaces (#21877)
+  o add a "report bug" menu entry (since mcc's menu is hidden)
+  o enable one to cancel selecting packages
+  o fix encoding of urpmi error
+
 * Wed Mar 01 2006 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.27-1mdk
 - Add Development/PHP to the rpm group list
 - A couple of gurpmi.addmedia bug fixes by Thierry Vignaud
