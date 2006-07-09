@@ -29,6 +29,7 @@ use lib qw(/usr/lib/libDrakX);
 use common;
 use POSIX qw(_exit);
 use URPM;
+use utf8;
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
