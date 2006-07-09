@@ -900,7 +900,7 @@ or you already installed all of them."));
 	    exists $pkgs->{$key} or return [ [ N("Description not available for this package\n") ] ];
 	    exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
 		or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
-	    format_pkg_info($pkgs, $key, $urpm, $descriptions);
+	    format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions);
 	},
 	check_interactive_to_toggle => sub { 1 },
 	grep_allowed_to_toggle => sub { @_ },
