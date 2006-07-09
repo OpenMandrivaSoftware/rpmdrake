@@ -562,6 +562,21 @@ sub format_field {
     '<b>' . $str . '</b>';
 }
 
+sub format_pkg_simplifiedinfo {
+    my ($pkgs, $key, $urpm, $descriptions) = @_;
+    my ($name, $version) = split_fullname($key);
+    $name =~ s/^(.)/\U\1\E/;
+    ugtk2::markup_to_TextView_format(join("\n", format_header($name . ' - ' . $pkgs->{$key}{summary}),
+      if_(
+	  $MODE eq 'update',
+	  format_field(N("Importance: ")) . $descriptions->{$name}{importance},
+	  format_field(N("Reason for update: ")) . rpm_description($descriptions->{$name}{pre}),
+      ),
+      '', # extra empty line
+      ($pkgs->{$key}{description} || $descriptions->{$name}{description} || '<i>' . N("No description") . '</i>'),
+    ));
+}
+
 sub format_pkg_info {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name, $version) = split_fullname($key);
