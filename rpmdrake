@@ -1337,6 +1337,12 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	}
     }
     my $wait = wait_msg_with_banner(N("Please wait, finding available packages..."));
+    if (!$::statusbar) {
+	$wait->{real_window}->show_all;
+	$wait->{real_window}->realize;
+	gtkflush();
+	$wait->{real_window}->queue_draw;
+    }
     gtkflush();
     my $urpm = urpm->new;
     $urpm->{state} = {};
