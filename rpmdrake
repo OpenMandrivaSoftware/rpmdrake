@@ -962,117 +962,60 @@ or you already installed all of them."));
 	},
     );
 
-    my @modes_buttons;
+    $compssUsers = parse_compssUsers_flat();
+    my %modes = (all => N("All"), installed => N("Installed"), non_installed => N("Non installed"),
+                 mandrake_choices => $rpmdrake::branded ? N("%s choices", $rpmdrake::distrib{system}) : N("Mandriva Linux choices"),
+                 if_(0, # let's keep the translated strings (to be resurected as sorting the treeview):
+                     N("All packages, alphabetical"),
+                     by_presence => N("All packages, by update availability"),
+                     by_size => N("All packages, by size"),
+                     by_selection => N("All packages, by selection state"),
+                     by_leaves => N("Leaves only, sorted by install date"),
+                     by_group => N("All packages, by group"),
+                 ),
+                 all_updates => N("All updates"), security => N("Security updates"), bugfix => N("Bugfixes updates"), normal => N("Normal updates")
+             );
+    my %default_mode = (install => 'all', # we want the new GUI by default instead of "non_installed"
+                        remove => 'installed',
+                        update => 'all_updates',
+                    );
+    my %wanted_categories = (
+        all_updates => [ qw(security bugfix normal) ],
+        security => [ 'security' ],
+        bugfix => [ 'bugfix' ],
+        normal => [ 'normal' ],
+    );
     my $reset_search;
-    if ($MODE eq 'update') {
-	$options->{state}{flat} = 0;
-	my %toggle_infos = (security => N("Security updates"), bugfix => N("Bugfixes updates"), normal => N("Normal updates"));
-	my @toggle_names_ordered = qw(security bugfix normal);
-	@modes_buttons = map { Gtk2::CheckButton->new(but($toggle_infos{$_})) } @toggle_names_ordered;
-	mapn {
-	    member($_[0], @$mandrakeupdate_wanted_categories) and $_[1]->set_active(1);
-	    my $capture_value = $_[0];
-	    $_[1]->signal_connect(
-		clicked => sub {
-		    if ($_[0]->get_active) {
-			push @$mandrakeupdate_wanted_categories, $capture_value;
-		    } else {
-			@$mandrakeupdate_wanted_categories = difference2($mandrakeupdate_wanted_categories, [ $capture_value ]);
-		    }
-		    $reset_search->();
-		    $options->{rebuild_tree}->();
-		},
-	    );
-	} \@toggle_names_ordered, \@modes_buttons;
-    } else {
-	my %radios_infos = (
-	    mandrake_choices => {
-		name => $rpmdrake::branded ? N("%s choices", $rpmdrake::distrib{system}) : N("Mandriva Linux choices"),
-		flat => 0,
-	    },
-	    flat             => { name => N("All packages, alphabetical"), flat => 1 },
-	    by               => { name => '',                              flat => 0 },
-	);
-	my @radios_names_ordered = qw(mandrake_choices flat by);
-	$compssUsers = parse_compssUsers_flat()
-	    or shift @radios_names_ordered;
+    my $cbox = gtksignal_connect(Gtk2::ComboBox->new_with_strings([ @modes{ 'all', if_($compssUsers, 'mandrake_choices'),
+                                                                              qw(installed non_installed all_updates security bugfix normal)
+                                                                          } ],
+                                                                  $modes{$default_mode{$MODE} || 'all'}),
+                                 changed => sub {
+                                     my $val = $_[0]->get_text;
+                                     my %h = reverse %modes;
+                                     if (my @cat = $wanted_categories{$h{$val}}) {
+                                         @$mandrakeupdate_wanted_categories = @cat;
+                                         $reset_search->();
+                                         $options->{rebuild_tree}->();
+                                     }
+                                     $options->{state}{flat} = 0; # was 1 only for the "All packages, alphabetical", "All packages, by size", "All packages, by selection state", and "Leaves only, sorted by install date"
 
-	my @advanced_modes = (
-	    [ 'by_group', N("All packages, by group"), 0 ],
-	    [ 'by_size', N("All packages, by size"), 1 ],
-	    [ 'by_selection', N("All packages, by selection state"), 1 ],
-	);
-	if ($MODE eq 'install') {
-	    push @advanced_modes, (
-		[ 'by_source', N("All packages, by medium repository"), 0 ],
-		[ 'by_presence', N("All packages, by update availability"), 0 ],
-	    );
-	}
-	elsif ($MODE eq 'remove') {
-	    push @advanced_modes, [ 'by_leaves', N("Leaves only, sorted by install date"), 1 ];
-	}
-
-	my $default_radio = $options->{tree_mode} = 'mandrake_choices';
-        if (member($tree_mode->[0], keys %radios_infos, map { $_->[0] } @advanced_modes)) {
-            $default_radio = $options->{tree_mode} = $tree_mode->[0];
-            $options->{state}{flat} = $tree_flat->[0];
-            $default_radio =~ s/^by.*/by/;
-        }
-
-	@modes_buttons = gtkradio($radios_infos{$default_radio}{name}, map { $radios_infos{$_}{name} } @radios_names_ordered);
-
-	mapn {
-	    my $capture_mode = $_[0];
-            $capture_mode eq $tree_mode->[0] and $_[1]->set_active(1);
-	    $_[1]->signal_connect(clicked => sub {
-		if ($options->{tree_mode} ne $capture_mode && $_[0]->get_active) {
-		    ($options->{tree_mode}, $options->{state}{flat}) = $capture_mode eq 'by'
-			? ($options->{tree_submode}, $options->{tree_subflat})
-			: ($capture_mode,            $radios_infos{$capture_mode}{flat});
-		    $tree_mode->[0] = $options->{tree_mode};
-		    $tree_flat->[0] = $options->{state}{flat};
-		    $reset_search->();
-		    $options->{rebuild_tree}->();
-		}
-	    });
-	} \@radios_names_ordered, \@modes_buttons;
+                                     if ($options->{tree_mode} ne $val) {
+                                         ($options->{tree_mode}) = $val =~ /^by/ ?
+                                           $options->{tree_submode} : $val;
+                                         $tree_mode->[0] = $options->{tree_mode};
+                                         $tree_flat->[0] = $options->{state}{flat};
+                                         $reset_search->();
+                                         $options->{rebuild_tree}->();
+                                     }
+                                 }
+                             );
+    my $default_radio = $options->{tree_mode} = $MODE eq 'update' ? 'all_updates' :  $options->{tree_mode} || $default_mode{$MODE} || 'mandrake_choices';
+    $cbox->set_text($modes{$default_radio});
 
 	my $radio_by;
-	$options->{tree_submode} ||= $advanced_modes[0][0];
-	$options->{tree_subflat} ||= $advanced_modes[0][2];
-	each_index {
-	    if ($_ eq 'by') {
-		$radio_by = $modes_buttons[$::i];
-		$modes_buttons[$::i] = gtkpack(
-		    Gtk2::HBox->new(0, 0),
-		    $modes_buttons[$::i],
-		    my $t = Gtk2::ComboBox->new
-		);
-		$t->set_model(Gtk2::ListStore->new('Glib::String'));
-		my $search_types_renderer = Gtk2::CellRendererText->new;
-		$t->pack_start($search_types_renderer, Glib::FALSE());
-		$t->set_attributes($search_types_renderer, text => 0);
-		my $iter = $t->get_model->iter_nth_child(undef, 0);
-		my $n = 0; my $active = 0;
-		foreach my $m (@advanced_modes) {
-		    $m->[0] eq $tree_mode->[0] and $active = $n;
-		    $iter = $t->get_model->insert($n++);
-		    $t->get_model->set($iter, 0, $m->[1]);
-		}
-		$t->set_active($active);
-		$options->{tree_submode} = $advanced_modes[$active][0];
-		$options->{tree_subflat} = $advanced_modes[$active][2];
-		$t->signal_connect(
-		    changed => sub {
-			my $act = $t->get_active;
-			$options->{tree_submode} = $advanced_modes[$act][0];
-			$options->{tree_subflat} = $advanced_modes[$act][2];
-			$radio_by->activate;
-		    },
-		);
-	    }
-	} @radios_names_ordered;
-    }
+	$options->{tree_submode} ||= $default_radio;
+	$options->{tree_subflat} ||= $options->{state}{flat};
 
     my @search_types = qw(normal descriptions files);
     my $current_search_type = $search_types[0];
@@ -1165,9 +1108,9 @@ Is it ok to continue?",
     };
 
     my $table = Gtk2::Table->new(0, 0, 0);
-    $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), @modes_buttons)),
+    $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), $cbox)),
 		   0, 1, 0, 1, 'fill', 'fill', 0, 0);
-    $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), Gtk2::Label->new, @descr_modes)),
+    $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), @descr_modes),
 		   1, 2, 0, 1, 'fill', 'fill', 0, 0);
 
     my $hpaned = Gtk2::HPaned->new;
