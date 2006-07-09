@@ -1078,17 +1078,6 @@ or you already installed all of them."));
 	);
     }
 
-    my @menu_descr_modes = ([ N("Normal information"), [] ], [ N("Maximum information"), [1] ]);
-    my @descr_modes = gtkradio($menu_descr_modes[@$max_info_in_descr ? 1 : 0][0], map { $_->[0] } @menu_descr_modes);
-    mapn {
-	my $val = $_[1][1];
-	$_[0]->signal_connect(clicked => sub {
-				  if ($_[0]->get_active) {
-				      $max_info_in_descr = $val;
-				      $options->{display_info}->();
-				  }
-			      });
-    } \@descr_modes, \@menu_descr_modes;
     my $info = Gtk2::TextView->new;
     $info->set_left_margin(2);
     $info->set_right_margin(15);  #- workaround when right elevator of scrolled window appears
@@ -1148,8 +1137,6 @@ Is it ok to continue?",
     my $table = Gtk2::Table->new(0, 0, 0);
     $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), $cbox)),
 		   0, 1, 0, 1, 'fill', 'fill', 0, 0);
-    $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), @descr_modes),
-		   1, 2, 0, 1, 'fill', 'fill', 0, 0);
 
     my $hpaned = Gtk2::HPaned->new;
     my $vpaned = Gtk2::VPaned->new;
