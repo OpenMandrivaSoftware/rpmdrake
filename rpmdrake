@@ -1134,17 +1134,12 @@ Is it ok to continue?",
 	}
     };
 
-    my $table = Gtk2::Table->new(0, 0, 0);
-    $table->attach(gtkpack__(Gtk2::HBox->new(0, 0), gtkpack(Gtk2::VBox->new(0, 0), $cbox)),
-		   0, 1, 0, 1, 'fill', 'fill', 0, 0);
-
     my $hpaned = Gtk2::HPaned->new;
     my $vpaned = Gtk2::VPaned->new;
     $vpaned->pack1(create_scrolled_window($detail_tree), 1, 0);
     $vpaned->pack2(create_scrolled_window($info), 1, 0);
     $hpaned->pack1(gtkset_size_request(create_scrolled_window($tree), $typical_width*0.9, -1) , 0, 0);
     $hpaned->pack2($vpaned, 1, 0);
-    $table->attach($hpaned, 0, 2, 1, 2, ['expand', 'fill'], ['expand', 'fill'], 0, 0);
 
     my $status = Gtk2::Label->new;
     my $checkbox_show_autoselect;
@@ -1229,6 +1224,7 @@ Is it ok to continue?",
 		    Gtk2::VBox->new(0, 3),
 		    0, gtkpack__(
 			Gtk2::HBox->new(0, 10),
+			$cbox,
 			Gtk2::Label->new(N("Find:")),
 			$search_types_optionmenu,
 			gtksignal_connect(
@@ -1244,7 +1240,7 @@ Is it ok to continue?",
 			    clicked => sub { $reset_search->(); $options->{rebuild_tree}->() },
 			),
 		    ),
-		    1, $table,
+		    1, $hpaned,
 		    0, gtkpack_(
 			Gtk2::HBox->new(0, 20),
 			0, my $action_button = gtksignal_connect(
