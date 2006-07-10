@@ -18,7 +18,7 @@ Source0: %name-%version.tar.bz2
 Summary: Mandriva Linux graphical front end for sofware installation/removal
 Requires: perl-MDK-Common >= 1.1.18-2mdk
 Requires: urpmi >= 4.8.4
-Requires: perl-URPM >= 1.20
+Requires: perl-URPM >= 1.40
 Requires: drakxtools >= 10.4.36-1
 Requires: rpmtools >= 5.0.5
 Requires: packdrake >= 5.0.5
@@ -127,6 +127,9 @@ rm -rf $RPM_BUILD_ROOT
   o add a "report bug" menu entry (since mcc's menu is hidden)
   o enable one to cancel selecting packages
   o fix encoding of urpmi error
+
+* Fri Mar 17 2006 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.27-2mdk
+- Rebuild, require new perl-URPM
 
 * Wed Mar 01 2006 Rafael Garcia-Suarez <rgarciasuarez@mandriva.com> 2.27-1mdk
 - Add Development/PHP to the rpm group list
