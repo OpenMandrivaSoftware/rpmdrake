@@ -8,7 +8,7 @@
 
 %define name rpmdrake
 %define version 3.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Jul 10 2006 Olivier Blin <oblin@mandriva.com> 3.0-2mdv2007.0
+- add 2.27-2mdk changes that weren't in CVS
+
 * Mon Jul  3 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.0-1mdv2007.0
 - make some windows transcient
 - fix garbaged error messages while accessing mirrors
