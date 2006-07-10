@@ -1,3 +1,295 @@
+2006-07-10 11:40  Olivier Blin <oblin at mandriva.com>
+
+	* rpmdrake.spec: 3.0-2mdv2007.0
+
+2006-07-10 11:38  Olivier Blin <oblin at mandriva.com>
+
+	* rpmdrake.spec: add missing changelog entry
+
+2006-07-09 07:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.spec: rpmdrake-3.0-1
+
+2006-07-09 07:47  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.spec: bump require on drakxtools
+
+2006-07-09 07:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: temporary leave empty branches in the tree so that we
+	  can consult again an already viewed category
+
+2006-07-09 07:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: further simplify the GUI
+
+2006-07-09 07:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: kill remaining radio buttons
+
+2006-07-09 07:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: unify db readers
+
+2006-07-09 07:45  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: use another treeview for displaying the packages
+
+2006-07-09 07:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: help emacs' cperl-mode
+
+2006-07-09 07:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: help the splash dialog to actually display its label
+
+2006-07-09 07:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) rename Install/Remove button as
+	  Apply
+
+2006-07-09 07:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: use the standalone module (for both logs and the
+	  license text in the about dialog)
+
+2006-07-09 07:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: use utf8 module because of the artist name in the about
+	  dialog
+
+2006-07-09 07:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: add an about dialog
+
+2006-07-09 07:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: - use a ComboBox instead of radio buttons *plus* a
+	  ComboBox for modes, thus   simplifying both the GUI and the code
+	  - add some more modes
+
+2006-07-09 07:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: use simplified formating by default
+
+2006-07-09 07:40  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (format_pkg_simplifiedinfo) create it for nicer default
+	  presentation
+
+2006-07-09 03:43  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/br.po: update
+
+2006-07-05 18:36  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake, rpmdrake.pm: urpmi's error messages are already in
+	  UTF-8
+
+2006-07-05 18:24  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (add_medium_and_check) error messages are already in
+	  UTF-8 at this stage
+
+2006-07-05 17:15  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/br.po: typo fix
+
+2006-07-04 14:35  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* edit-urpm-sources.pl: (add_callback) add a reminder
+
+2006-07-04 14:09  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (format_pkg_info) switch to HTML like GtkLabel's Pango
+	  language
+
+2006-07-04 14:09  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: import mygtk2->gtknew
+
+2006-07-04 14:09  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* edit-urpm-sources.pl, rpmdrake, rpmdrake.pm: bump copyright years
+
+2006-07-04 14:08  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* gurpmi.addmedia: add Mandriva as copyright holder
+
+2006-07-04 14:08  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/br.po: update
+
+2006-07-04 14:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* AUTHORS, edit-urpm-sources.pl, gurpmi.addmedia, rpmdrake,
+	  rpmdrake.pm: add myself as maintener
+
+2006-07-04 14:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (open_help) use run_program instead of forking a
+	  shell
+
+2006-07-04 14:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (mirrors) fix garbaged error messages
+
+2006-07-04 14:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* edit-urpm-sources.pl: nicer alignment
+
+2006-07-04 14:06  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* edit-urpm-sources.pl: (add_callback) further improve layout by
+	  using a combo box (#17733)
+
+2006-07-04 14:06  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* edit-urpm-sources.pl: (add_callback) simplify and fix layout
+	  (#17716)
+
+2006-07-04 14:05  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* edit-urpm-sources.pl: (mainwindow) let's be more user-friendly by
+	  showing one cannot move an item when it's the first or the last
+	  one (thus preventing emitting Gtk+ critic warnings)
+
+2006-07-04 14:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: kill unused arguments
+
+2006-06-01 18:02  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: add a "report bug" menu entry (we missed since mcc's
+	  menu is hidden b/c we provide our own menu)
+
+2006-05-16 14:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: handle the fact that interactive_list() can return
+	  nothing
+
+2006-05-16 14:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (interactive_list) enable one to cancel selecting
+	  packages if he believes it ended in selecting way too much
+	  packages
+
+2006-05-16 13:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* .perl_checker: sort
+
+2006-05-16 13:47  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* .perl_checker: blacklist a few more modules
+
+2006-05-16 13:38  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake, rpmdrake.pm: some perl_checker cleanups
+
+2006-05-16 13:04  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: fix help message which was not displaying the program
+	  name
+
+2006-04-28 19:37  Pablo Saratxaga <pablo at mandriva.com>
+
+	* po/gl.po: updated po file
+
+2006-04-12 21:03  mmodem
+
+	* po/pt.po: [no log message]
+
+2006-04-03 12:28  Pjetur G. Hjaltason <pjetur at pjetur.net>
+
+	* po/is.po: Better translations
+
+2006-04-01 18:25  Thomas Backlund <tmb at mandrake.org>
+
+	* po/sv.po:  updated translations, was 3 fuzzy, 2 untranslated.
+
+2006-03-30 09:35  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
+
+	* rpmdrake.pm: Fix typo
+
+2006-03-30 03:37  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* edit-urpm-sources.pl: (easy_add_callback) make one more dialog
+	  transient to the main window
+
+2006-03-30 03:36  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (choose_mirror) do pass options to interactive_msg
+	  so that trensient hint and the like do not get droped
+
+2006-03-30 03:28  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* edit-urpm-sources.pl: center a few uncentered sub dialogs and
+	  actually make all of them transient to the main window
+
+2006-03-30 02:39  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (choose_mirror) no empty title
+
+2006-03-15 17:58  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/br.po: typo fixes
+
+2006-03-15 15:59  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/fr.po: typo fix
+
+2006-03-15 12:25  Pablo Saratxaga <pablo at mandriva.com>
+
+	* po/el.po: updated po file
+
+2006-03-13 18:50  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/ga.po: update
+
+2006-03-10 18:36  Pablo Saratxaga <pablo at mandriva.com>
+
+	* po/: cy.po, hy.pom, ka.pom, ku.pom: updated po files
+
+2006-03-07 18:23  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
+
+	* gurpmi.addmedia: Let gurpmi.addmedia be able to add several media
+	  at once
+
+2006-03-06 06:25  Shiva Huang <blueshiva at giga.net.tw>
+
+	* po/zh_TW.po: updated po file
+
+2006-03-05 15:11  Arpad Biro <biro_arpad at yahoo.com>
+
+	* po/hu.po: [no log message]
+
+2006-03-05 14:46  Marek Laane <bald at starman.ee>
+
+	* po/et.po:
+	  Updated Estonian translations.
+
+2006-03-03 17:16  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
+
+	* gurpmi.addmedia: Add option --silent-success to automatically add
+	  media (Thierry Vignaud)
+
+2006-03-02 11:47  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
+
+	* po/: br.po, da.po, hy.pom, it.po, ka.pom, ku.pom, ms.pom, pt.pom,
+	  zh_TW.pom: Merge po files
+
+2006-03-02 11:47  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
+
+	* po/Makefile: Get rid of perl_checker
+
+2006-03-01 17:24  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
+
+	* rpmdrake.spec: Installation buglet
+
+2006-03-01 16:36  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
+
+	* ChangeLog, rpmdrake.pm, rpmdrake.spec: 2.27
+
 2006-03-01 16:02  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
 
 	* rpmdrake.pm: Update config file when not run as root
