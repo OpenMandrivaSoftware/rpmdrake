@@ -46,6 +46,7 @@ BEGIN {
     }
 }
 
+$ugtk2::wm_icon = "title-install";
 $::isStandalone = 1;
 
 require_root_capability();
