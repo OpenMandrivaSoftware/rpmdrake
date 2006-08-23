@@ -7,8 +7,8 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.0
-%define release %mkrel 2
+%define version 3.1
+%define release %mkrel 1
 
 Name: %{name}
 Version: %{version}
@@ -113,6 +113,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Aug 23 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.1-1mdv2007.0
+- make GUI working
+- many GUI improvements
+- somewhat faster startup (more to come...)
+
 * Mon Jul 10 2006 Olivier Blin <oblin@mandriva.com> 3.0-2mdv2007.0
 - add 2.27-2mdk changes that weren't in CVS
 
