@@ -978,7 +978,6 @@ or you already installed all of them."));
     $tree->append_column(my $textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::MDV::CellRendererPixWithLabel->new, 'pixbuf' => 2, label => 0));
     $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 1));
     $tree->set_headers_visible(0);
-    $tree->set_rules_hint(1);
 
     $detail_tree_model = Gtk2::TreeStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
     $detail_tree = Gtk2::TreeView->new_with_model($detail_tree_model);
