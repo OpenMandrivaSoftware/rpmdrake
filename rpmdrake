@@ -1007,7 +1007,7 @@ or you already installed all of them."));
         while ($parent = $model->iter_parent($parent)) {
             $group = join('|', $model->get($parent, 0), $group);
         }
-        $options->{add_nodes}->(@{$elems{$group}});
+        slow_func($tree->window, sub { $options->{add_nodes}->(@{$elems{$group}}) });
     });
 
     $options->{state}{splited} = 1;
