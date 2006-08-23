@@ -648,7 +648,7 @@ sub run_treeview_dialog {
         $filter_methods{$mode}->();
     };
 
-    $pkgs_provider->({}, 'mandrake_choices'); # default mode
+    $pkgs_provider->({}, 'all'); # default mode
 
     my ($options, $size_selected, $compssUsers, $tree, $tree_model, $detail_tree, $detail_tree_model, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
