@@ -702,6 +702,10 @@ sub run_treeview_dialog {
         @to_remove;
     };
     $options = {
+	is_a_package => sub {
+         my ($pkg) = @_;
+         return exists $pkgs->{$pkg};
+     },
 	get_icon => sub {
          my ($group, $parent) = @_;
          my $pixbuf;
