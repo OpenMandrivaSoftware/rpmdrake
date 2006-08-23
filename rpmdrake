@@ -1440,7 +1440,6 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
     check_update_media_version($urpm, @update_medias);
 
-    $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
     my $requested = {};
     my $state = {};
     $urpm->request_packages_to_upgrade(
@@ -1450,6 +1449,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	start => 0,
 	end   => $#{$urpm->{depslist}},
     );
+    $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
     $urpm->{depslist}[$_]->set_flag_installed foreach keys %$requested; #- pretend it's installed
     $urpm->{rpmdrake_state} = $state; #- Don't forget it
 
@@ -1479,6 +1479,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     }
 
     statusbar_msg_remove($wait);
+    $_->{pkg}->set_flag_installed foreach values %installed_pkgs;
 
     +{ urpm => $urpm,
        installed => \%installed_pkgs,
