@@ -1001,6 +1001,10 @@ or you already installed all of them."));
     ) foreach $tree, $detail_tree;
     $tree->get_selection->signal_connect(changed => sub {
         my ($model, $iter) = $_[0]->get_selected;
+        my $current_group if 0;
+        my $new_group = $model->get($iter, 0);
+        return if $current_group eq $new_group;
+        $current_group = $new_group;
         $model && $iter or return;
         my $group = $model->get($iter, 0);
         my $parent = $iter;
