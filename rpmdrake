@@ -942,6 +942,7 @@ or you already installed all of them."));
     }
 
     $tree_model = Gtk2::TreeStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
+    $tree_model->set_sort_column_id(0, 'ascending');
     $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
 
