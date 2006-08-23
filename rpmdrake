@@ -559,12 +559,12 @@ sub formatlistpkg { myformatList(sort { uc($a) cmp uc($b) } @_) }
 
 sub format_header {
     my ($str) = @_;
-    '<big>' . Glib::Markup::escape_text($str) . '</big>';
+    '<big>' . escape_text_for_TextView_markup_format($str) . '</big>';
 }
 
 sub format_field {
     my ($str) = @_;
-    '<b>' . Glib::Markup::escape_text($str) . '</b>';
+    '<b>' . escape_text_for_TextView_markup_format($str) . '</b>';
 }
 
 sub format_pkg_simplifiedinfo {
@@ -573,11 +573,11 @@ sub format_pkg_simplifiedinfo {
     ugtk2::markup_to_TextView_format(join("\n", format_header($name . ' - ' . $pkgs->{$key}{summary}),
       if_(
 	  $MODE eq 'update',
-	  format_field(N("Importance: ")) . Glib::Markup::escape_text($descriptions->{$name}{importance}),
-	  format_field(N("Reason for update: ")) . Glib::Markup::escape_text(rpm_description($descriptions->{$name}{pre})),
+	  format_field(N("Importance: ")) . escape_text_for_TextView_markup_format($descriptions->{$name}{importance}),
+	  format_field(N("Reason for update: ")) . escape_text_for_TextView_markup_format(rpm_description($descriptions->{$name}{pre})),
       ),
       '', # extra empty line
-      (Glib::Markup::escape_text($pkgs->{$key}{description} || $descriptions->{$name}{description}) || '<i>' . N("No description") . '</i>'),
+      (escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $descriptions->{$name}{description}) || '<i>' . N("No description") . '</i>'),
     ));
 }
 
