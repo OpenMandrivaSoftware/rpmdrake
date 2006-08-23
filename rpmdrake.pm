@@ -302,7 +302,7 @@ sub fatal_msg {
 sub wait_msg {
     my ($msg, %options) = @_;
     gtkflush();
-    my $mainw = ugtk2->new('Rpmdrake', grab => 1, if_(exists $options{transient}, transient => $options{transient}));
+    my $mainw = ugtk2->new(N("Please wait"), grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $mainw->{real_window}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::WrappedLabel->new($msg);
     my $banner = $options{banner} ? getbanner() : undef;
@@ -564,7 +564,7 @@ the case when the architecture of your processor is not supported
 by Mandriva Linux Official Updates.")), %options
     ), return '';
 
-    my $w = ugtk2->new('rpmdrake', grab => 1);
+    my $w = ugtk2->new(N("Mirror choice"), grab => 1);
     $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $tree_model = Gtk2::TreeStore->new("Glib::String");
     my $tree = Gtk2::TreeView->new_with_model($tree_model);
@@ -725,7 +725,7 @@ sub update_sources_check {
     update_sources($urpm, %$options, noclean => 1, medialist => \@media);
   fatal_error:
     if (@error_msgs) {
-        interactive_msg('rpmdrake', sprintf(translate($error_msg), join("\n", @error_msgs)), scroll => 1);
+        interactive_msg(N("Error"), sprintf(translate($error_msg), join("\n", @error_msgs)), scroll => 1);
         return 0;
     }
     return 1;
@@ -738,7 +738,7 @@ sub update_sources_interactive {
     my @buttons;
     my @media = grep { ! $_->{ignore} } @{$urpm->{media}};
     unless (@media) {
-        interactive_msg('rpmdrake', N("No active medium found. You must enable some media to be able to update them."));
+        interactive_msg(N("Warning"), N("No active medium found. You must enable some media to be able to update them."));
 	return 0;
     }
     gtkadd(
@@ -806,7 +806,7 @@ sub add_medium_and_check {
     }
     if (@error_msgs) {
         interactive_msg(
-	    'rpmdrake',
+	    N("Error"),
 	    N("Unable to add medium, errors reported:\n\n%s",
 	    join("\n", @error_msgs)),
 	    scroll => 1,
@@ -830,7 +830,7 @@ sub add_medium_and_check {
     if (any { exists $newnames{$_->{name}} } @{$urpm->{media}}) {
         return 1;
     } else {
-        interactive_msg('rpmdrake', N("Unable to create medium."));
+        interactive_msg(N("Error"), N("Unable to create medium."));
         return 0;
     }
 
@@ -847,7 +847,7 @@ sub check_update_media_version {
     foreach (@_) {
 	if ($_->{name} =~ /(\d+\.\d+).*\bftp\du\b/ && $1 ne $mdk_version) {
 	    interactive_msg(
-		'rpmdrake',
+		N("Warning"),
 		$branded
 		? N("Your medium `%s', used for updates, does not match the version of %s you're running (%s).
 It will be disabled.",
