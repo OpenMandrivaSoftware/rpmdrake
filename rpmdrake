@@ -959,8 +959,6 @@ or you already installed all of them."));
     $detail_tree->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererPixbuf->new, 'pixbuf' => 1));
     $detail_tree->append_column(my $main_textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
     $detail_tree_model->set_sort_column_id(0, 'ascending');
-    $detail_tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 2));
-    #$detail_tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 2));
     $detail_tree->set_headers_visible(0);
     $detail_tree->set_rules_hint(1);
 
