@@ -840,7 +840,7 @@ or you already installed all of them."));
 		    return $results eq N("Ok");
 		}
 	    };
-	    if ($MODE eq 'remove') {
+	    if ($old_state eq 'installed') {  # remove pacckages
 		if ($new_state) {
 		    my @remove;
 		    slow_func($tree->window, sub { @remove = $closure_removal->(@nodes) });
