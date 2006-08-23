@@ -168,11 +168,14 @@ sub writeconf() {
 
 sub getbanner() {
     $::MODE or return undef;
-    Gtk2::Banner->new("title-$::MODE", {
+    if (0) {
+	+{
 	remove  => N("Software Packages Removal"),
 	update  => N("Software Packages Update"),
 	install => N("Software Packages Installation"),
-    }->{$::MODE});
+	};
+    }
+    Gtk2::Banner->new('title-update', N("Software Management"));;
 }
 
 sub interactive_msg {
