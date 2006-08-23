@@ -556,12 +556,12 @@ sub formatlistpkg { myformatList(sort { uc($a) cmp uc($b) } @_) }
 
 sub format_header {
     my ($str) = @_;
-    '<big>' . $str . '</big>';
+    '<big>' . Glib::Markup::escape_text($str) . '</big>';
 }
 
 sub format_field {
     my ($str) = @_;
-    '<b>' . $str . '</b>';
+    '<b>' . Glib::Markup::escape_text($str) . '</b>';
 }
 
 sub format_pkg_simplifiedinfo {
