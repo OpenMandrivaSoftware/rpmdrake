@@ -1267,6 +1267,16 @@ Is it ok to continue?",
     $clear_button->set_sensitive(0);
     $find_entry->grab_focus;
 
+    gtktext_insert($info, [ 
+        [ $info->render_icon('gtk-dialog-info', 'GTK_ICON_SIZE_DIALOG', undef) ],
+        @{ ugtk2::markup_to_TextView_format(
+            formatAlaTeX(join("\n\n\n", format_header(N("Quick Introduction")),
+                              N("You can browse the packages through the categories tree on the left."),
+                              N("You can view information about a packages by clicking on it on the right list."),
+                              N("To install, update or remove an application, just click on its \"checkbox\"."))))
+      }
+    ]);
+
     $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
     $find_entry->set_text($options{search}[0]) if $options{search};
 
