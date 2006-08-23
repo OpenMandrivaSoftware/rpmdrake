@@ -68,7 +68,7 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cp %{name}.menu $RPM_BUILD_ROOT%{_menudir}/%{name}
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-net_applet.desktop << EOF
+cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-rpmdrake.desktop << EOF
 [Desktop Entry]
 Name=Install, Remove & Update Software
 Comment=A graphical front end for installing, removing and updating packages
