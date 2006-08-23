@@ -956,7 +956,6 @@ or you already installed all of them."));
 	},
 	get_info => sub {
 	    my ($key) = @_;
-	    return if $key eq ''; #- related to the partial tree displaying hackery
 	    #- the package information hasn't been loaded. Instead of rescanning the media, just give up.
 	    exists $pkgs->{$key} or return [ [ N("Description not available for this package\n") ] ];
 	    exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
