@@ -988,29 +988,6 @@ or you already installed all of them."));
         }
         $options->{add_nodes}->(@{$elems{$group}});
     });
-    $tree->signal_connect(
-	row_expanded => sub {
-	    my ($tree, $iter, $path) = @_;
-	    #- hackish: if first child has '' as name, and if we're not listing by update
-	    # availability, then we need to expand on the fly. (by update availability,
-	    # selecting all packages will be too slow and expose too much choice conflicts)
-	    my $child = $tree_model->iter_children($iter);
-	    if (1 || $options->{tree_mode} ne 'by_presence' && $tree_model->get($child, 0) eq '') {
-		#$tree_model->remove($child);
-		slow_func(
-		    $tree->window,
-		    sub { $options->{add_nodes}->(@{$elems{$tree_model->get($iter, 0)}}) }
-		);
-	    } else {
-		if ($tree_model->iter_n_children($iter) > 500) {
-		    #- populating large groups is slow
-		    $cursor_to_restore = 1;
-		    gtkset_mousecursor_wait($tree->window);
-		}
-	    }
-	    $tree->expand_row($path, 0);
-	},
-    );
 
     $options->{state}{splited} = 1;
     #$options->{state}{flat} = 1;
