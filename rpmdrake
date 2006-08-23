@@ -749,12 +749,14 @@ or you already installed all of them."));
 			? N("Upgradable") : N("Addable")
 		    ) foreach $sortmethods{flat}->(@elems);
 		} else {
-		    #- special case, we don't populate all the tree at first (to speed things up)
+		    #- we populate all the groups tree at first
 		    %elems = ();
-		    foreach my $root (sort { $a cmp $b } uniq(map { (split /\|/, $_->[1])[0] } @elems)) {
-			$add_node->('', $root);
-			@{$elems{$root}} = sort { $a->[1] cmp $b->[1] || uc($a->[0]) cmp uc($b->[0]) }
-			grep { $_->[1] =~ /^\Q$root\E\b/ } @elems;
+		    # better loop on packages, create groups tree and push packages in the proper place:
+		    foreach my $pkg (@elems) {
+                  my $grp = $pkg->[1];
+                  $options->{add_parent}->($grp);
+                  $elems{$grp} ||= [ ];
+                  push @{$elems{$grp}}, $pkg;
 		    }
 		}
 	    }
