@@ -714,7 +714,13 @@ sub run_treeview_dialog {
          $pixbuf ||= gtkcreate_pixbuf('applications_section');
      },
 	node_state => sub {
-	    $_[0] ? ($pkgs->{$_[0]}{selected} ? 'selected' : $pkgs->{$_[0]}{pkg}->flag_base ? '/usr/share/rpmdrake/icons/base.png' : 'unselected') : 'XXX';
+         my $pkg = $pkgs->{$_[0]};
+         my $urpm_obj = $pkg->{pkg};
+	    $_[0] ? $pkg->{selected} ?
+                    ($urpm_obj->flag_installed ? 'to_remove' : 'to_install')
+                      : ($urpm_obj->flag_installed ? 
+                           ($urpm_obj->flag_upgrade ? 'to_update' : 'installed')
+                             : ($urpm_obj->flag_base ? '/usr/share/rpmdrake/icons/base.png' : 'uninstalled')): 'XXX';
 	},  #- checks $_[0] -> hack for partial tree displaying
 	build_tree => sub {
 	    my ($add_node, $flat, $mode) = @_;
