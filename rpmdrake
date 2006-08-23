@@ -643,7 +643,7 @@ sub run_treeview_dialog {
         my $h = &get_pkgs($urpm, $options); # was given (1, @_) for updates
         ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
         my %filter_methods = (
-            all => sub { $pkgs = map { ${$h->{$_}} } qw(installed installable updates) },
+            all => sub { $pkgs = { map { %{$h->{$_}} } qw(installed installable updates) } },
             installed => sub { $pkgs = $h->{installed} },
             non_installed => sub { $pkgs = $h->{installable} },
             #mandrake_choices => sub { $pkgs =  },
