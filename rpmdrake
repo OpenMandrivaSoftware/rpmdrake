@@ -672,7 +672,7 @@ sub run_treeview_dialog {
 	$choices = [ sort { $a->name cmp $b->name } @$choices ];
 	my @choices = interactive_list_(N("Please choose"), N("One of the following packages is needed:"),
                                      [ map { my_fullname($_) } @$choices ], $callback);
-     $choices->[@choices];
+     $choices->[$choices[0]];
     };
 
     my $closure_removal = sub {
