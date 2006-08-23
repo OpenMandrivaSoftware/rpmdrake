@@ -68,6 +68,17 @@ install -m 644 rpmdrake.pm $RPM_BUILD_ROOT/%{perl_vendorlib}
 
 mkdir -p $RPM_BUILD_ROOT%{_menudir}
 cp %{name}.menu $RPM_BUILD_ROOT%{_menudir}/%{name}
+cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-net_applet.desktop << EOF
+[Desktop Entry]
+Name=Install, Remove & Update Software
+Comment=A graphical front end for installing, removing and updating packages
+Exec=/usr/sbin/rpmdrake
+Icon=/usr/share/icons/rpmdrake.png
+Type=Application
+Categories=GTK;X-MandrivaLinux-System-Configuration-Packaging;Settings;PackageManager;
+EOF
+
+
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
 for i in rpmdrake rpmdrake-remove mandrivaupdate edit-urpm-sources; do
   cp pixmaps/${i}16.png $RPM_BUILD_ROOT%{_miconsdir}/${i}.png
