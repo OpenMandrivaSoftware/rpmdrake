@@ -799,7 +799,7 @@ or you already installed all of them."));
 	    @$unsel < @$sel;
 	},
 	toggle_nodes => sub {
-	    my ($set_state, @nodes) = @_;
+	    my ($set_state, $old_state, @nodes) = @_;
 	    @nodes = grep { exists $pkgs->{$_} } @nodes
 		or return;
 	    #- avoid selecting too many packages at once
