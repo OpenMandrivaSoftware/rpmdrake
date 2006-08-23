@@ -577,7 +577,7 @@ sub format_pkg_simplifiedinfo {
 	  format_field(N("Reason for update: ")) . rpm_description($descriptions->{$name}{pre}),
       ),
       '', # extra empty line
-      ($pkgs->{$key}{description} || $descriptions->{$name}{description} || '<i>' . N("No description") . '</i>'),
+      (Glib::Markup::escape_text($pkgs->{$key}{description} || $descriptions->{$name}{description}) || '<i>' . N("No description") . '</i>'),
     ));
 }
 
