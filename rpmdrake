@@ -703,9 +703,10 @@ sub run_treeview_dialog {
     };
     $options = {
 	get_icon => sub {
-         my ($group) = @_;
+         my ($group, $parent) = @_;
          my $pixbuf;
          eval { $pixbuf = gtkcreate_pixbuf($group_icons{$group}) };
+         eval { $pixbuf ||= gtkcreate_pixbuf($group_icons{$parent}) } if $parent;
          $pixbuf ||= gtkcreate_pixbuf('applications_section');
      },
 	node_state => sub {
