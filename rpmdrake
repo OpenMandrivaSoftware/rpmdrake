@@ -630,7 +630,7 @@ sub run_treeview_dialog {
         my ($options, $mode) = @_;
         my $h = &get_pkgs($urpm, $options); # was given (1, @_) for updates
         ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
-        my %sort_methods = (
+        my %filter_methods = (
             all => sub { $pkgs = map { ${$h->{$_}} } qw(installed installable updates) },
             installed => sub { $pkgs = $h->{installed} },
             non_installed => sub { $pkgs = $h->{installable} },
@@ -640,13 +640,13 @@ sub run_treeview_dialog {
             #normal => sub { $pkgs =  }
         );
         foreach my $importance (qw(bugfix security normal)) {
-            $sort_methods{$importance} = sub {
-                $sort_methods{all_updates}->();
+            $filter_methods{$importance} = sub {
+                $filter_methods{all_updates}->();
                 $pkgs = { grep { $descriptions->{$_}->{importance} eq $importance } keys %$pkgs };
             };
         };
-        $sort_methods{mandrake_choices} = $sort_methods{non_installed};
-        $sort_methods{$mode}->();
+        $filter_methods{mandrake_choices} = $filter_methods{non_installed};
+        $filter_methods{$mode}->();
     };
 
     $pkgs_provider->({}, 'mandrake_choices'); # default mode
