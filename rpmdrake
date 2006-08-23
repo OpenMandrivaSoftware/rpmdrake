@@ -978,6 +978,16 @@ or you already installed all of them."));
 	    undef $cursor_to_restore;
 	},
     ) foreach $tree, $detail_tree;
+    $tree->get_selection->signal_connect(changed => sub {
+        my ($model, $iter) = $_[0]->get_selected;
+        $model && $iter or return;
+        my $group = $model->get($iter, 0);
+        my $parent = $iter;
+        while ($parent = $model->iter_parent($parent)) {
+            $group = join('|', $model->get($parent, 0), $group);
+        }
+        $options->{add_nodes}->(@{$elems{$group}});
+    });
     $tree->signal_connect(
 	row_expanded => sub {
 	    my ($tree, $iter, $path) = @_;
