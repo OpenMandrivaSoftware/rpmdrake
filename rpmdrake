@@ -943,7 +943,7 @@ or you already installed all of them."));
 		#- not upgradable (older than what currently installed)
 		exists $pkgs->{$_} or next;
 		$pkgs->{$_}{pkg} or $new_state = 0; #- can't be removed
-		$set_state->($_, $new_state ? 'selected' : 'unselected');
+		$set_state->($_, $new_state ? ($old_state eq 'installed' ? 'to_remove' : 'to_install') : 'uninstalled', $detail_tree_model);
 		$pkgs->{$_}{selected} = $new_state;
 		$pkgs->{$_}{pkg}
 		    and $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
