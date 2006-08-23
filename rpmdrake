@@ -439,6 +439,8 @@ sub open_db {
     }
 }
 
+my $db = open_db();
+
 sub do_search($$$$$$$) {
     my ($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) = @_;
     my $entry = quotemeta $find_entry->get_text or return;
@@ -457,7 +459,7 @@ sub do_search($$$$$$$) {
 		    N("Please wait, searching..."),
 		    $w->{rwindow},
 		    sub {
-			db->traverse(sub {
+			$db->traverse(sub {
 			    push @search_results, map { if_($_ =~ $entry_rx, my_fullname($_[0])) } $_[0]->files;
 			});
 			@search_results = grep { exists $pkgs->{$_} } uniq(@search_results);
@@ -543,7 +545,7 @@ sub do_search($$$$$$$) {
 sub find_installed_version {
     my ($p) = @_;
     my @version;
-    db->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version . '-' . $_[0]->release });
+    $db->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version . '-' . $_[0]->release });
     @version ? join(',', sort @version) : N("(none)");
 }
 
@@ -657,7 +659,7 @@ sub run_treeview_dialog {
     my $is_locale_available = sub {
 	any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
 	my $found;
-	db->traverse_tag('name', [ $_ ], sub { $found ||= 1 });
+	$db->traverse_tag('name', [ $_ ], sub { $found ||= 1 });
 	return $found;
     };
     my $callback_choices = sub {
@@ -679,7 +681,7 @@ sub run_treeview_dialog {
         my @to_remove;
         $urpm->{state} = {};
 	foreach (@_) {
-            $urpm->resolve_rejected(db(), $urpm->{state}, $pkgs->{$_}{pkg}, removed => 1);
+            $urpm->resolve_rejected($db, $urpm->{state}, $pkgs->{$_}{pkg}, removed => 1);
             foreach (keys %{$urpm->{state}{rejected}}) {
                 $urpm->{state}{rejected}{$_}{removed} && !$urpm->{state}{rejected}{$_}{obsoleted} and push @to_remove, remove_arch($_);
             }
@@ -850,7 +852,7 @@ or you already installed all of them."));
 			$tree->window,
 			sub {
 			    @requested = $urpm->resolve_requested(
-				db(), $urpm->{state},
+				$db, $urpm->{state},
 				{ map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
 				callback_choices => $callback_choices,
 			    );
@@ -862,7 +864,7 @@ or you already installed all of them."));
 			    \@nodes, \@nodes_with_deps))
 		    {
 			@nodes_with_deps = ();
-			$urpm->disable_selected(db(), $urpm->{state}, @requested);
+			$urpm->disable_selected($db, $urpm->{state}, @requested);
 			goto packages_selection_ok;
 		    }
 
@@ -889,7 +891,7 @@ or you already installed all of them."));
 		} else {
 		    my @unrequested;
 		    slow_func($tree->window,
-			sub { @unrequested = $urpm->disable_selected(db(), $urpm->{state},
+			sub { @unrequested = $urpm->disable_selected($db, $urpm->{state},
 				map { $pkgs->{$_}{pkg} } @nodes) });
 		    @nodes_with_deps = map { my_fullname($_) } @unrequested;
 		    if (!$deps_msg->(N("Some packages need to be removed"),
@@ -897,7 +899,7 @@ or you already installed all of them."));
 			    \@nodes, \@nodes_with_deps))
 		    {
 			@nodes_with_deps = ();
-			$urpm->resolve_requested(db(), $urpm->{state}, { map { $_->id => 1 } @unrequested });
+			$urpm->resolve_requested($db, $urpm->{state}, { map { $_->id => 1 } @unrequested });
 			goto packages_unselection_ok;
 		    }
 		    packages_unselection_ok:
@@ -1162,7 +1164,7 @@ Is it ok to continue?",
 	[ N("/_File") . N("/_Reset the selection"), undef, sub {
 	    if ($MODE ne 'remove') {
 		$urpm->disable_selected(
-		    db(), $urpm->{state},
+		    $db, $urpm->{state},
 		    map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs,
 		);
 	    }
@@ -1400,7 +1402,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     #$urpm->read_config;
     my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
     my (%base, %basepackages);
-    my $db = db();
+    my $db = $db;
     my $sig_handler = sub { undef $db; exit 3 };
     local $SIG{INT} = $sig_handler;
     local $SIG{QUIT} = $sig_handler;
@@ -1451,11 +1453,11 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
     check_update_media_version($urpm, @update_medias);
 
-    $urpm->compute_installed_flags(db()); # TODO/FIXME: not for updates
+    $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
     my $requested = {};
     my $state = {};
     $urpm->request_packages_to_upgrade(
-	db(),
+	$db,
 	$state,
 	$requested,
 	start => 0,
@@ -1652,7 +1654,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		scroll => 1,
 	    );
         }
-        db('force_sync');
+        open_db('force_sync');
         $w->{rwindow}->set_sensitive(1);
         return 0;
     }
@@ -1876,7 +1878,7 @@ sub perform_removal {
 	    @results = $options{parallel}
 		? $urpm->parallel_remove(\@toremove, translate_message => 1)
 		: $urpm->install(\@toremove, {}, {}, translate_message => 1);
-	    db('force_sync');
+	    open_db('force_sync');
 	},
     );
     if (@results) {
