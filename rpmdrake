@@ -1243,11 +1243,15 @@ Is it ok to continue?",
 		    1, $hpaned,
 		    0, gtkpack_(
 			Gtk2::HBox->new(0, 20),
+			0, gtksignal_connect(
+			    Gtk2::Button->new(but_(N("Help"))),
+			    clicked => sub { rpmdrake::open_help($MODE) },
+			),
+			1, $status,
 			0, my $action_button = gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Apply"))),
 			    clicked => sub { $do_action->() },
 			),
-			1, $status,
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Quit"))),
 			    clicked => sub { Gtk2->main_quit },
