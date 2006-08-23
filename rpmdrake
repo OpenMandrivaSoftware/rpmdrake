@@ -1757,7 +1757,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     }
 
-    if (@rpms_install || @rpms_upgrade) {
+    if (@rpms_install || @rpms_upgrade || @{$urpm->{ask_remove}}) {
         if (my @missing = grep { m|^/| && ! -e $_ } @rpms_install, @rpms_upgrade) {
             interactive_msg_(
 		N("Installation failed"),
