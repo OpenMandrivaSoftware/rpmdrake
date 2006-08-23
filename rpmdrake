@@ -419,7 +419,7 @@ sub extract_header {
     }
 }
 
-sub db {
+sub open_db {
     my ($force) = @_;
     my $host;
     if ($options{parallel} && ((undef, $host) = @{$options{parallel}})) {
