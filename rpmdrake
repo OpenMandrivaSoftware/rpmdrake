@@ -636,7 +636,7 @@ sub format_pkg_info {
 
 sub run_treeview_dialog {
     my ($callback_action) = @_;
-
+    add_icon_path('/usr/share/icons/');
     my ($urpm, $pkgs, $descriptions);
     my $pkgs_provider = sub {
         my ($options, $mode) = @_;
