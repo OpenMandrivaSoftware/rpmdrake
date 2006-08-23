@@ -570,7 +570,6 @@ sub format_field {
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name, $version) = split_fullname($key);
-    $name =~ s/^(.)/\U\1\E/;
     ugtk2::markup_to_TextView_format(join("\n", format_header($name . ' - ' . $pkgs->{$key}{summary}),
       if_(
 	  $MODE eq 'update',
