@@ -422,6 +422,7 @@ sub extract_header {
 sub open_db {
     my ($force) = @_;
     my $host;
+    log::explanations("opening the RPM database");
     if ($options{parallel} && ((undef, $host) = @{$options{parallel}})) {
         my $done if 0;
         my $dblocation = "/var/cache/urpmi/distantdb/$host";
