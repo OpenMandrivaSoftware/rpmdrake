@@ -635,7 +635,6 @@ sub format_pkg_info {
 
 sub run_treeview_dialog {
     my ($callback_action) = @_;
-    add_icon_path('/usr/share/icons/');
     my ($urpm, $pkgs, $descriptions);
     my $pkgs_provider = sub {
         my ($options, $mode) = @_;
@@ -708,9 +707,11 @@ sub run_treeview_dialog {
 	get_icon => sub {
          my ($group, $parent) = @_;
          my $pixbuf;
-         eval { $pixbuf = gtkcreate_pixbuf($group_icons{$group}) };
-         eval { $pixbuf ||= gtkcreate_pixbuf($group_icons{$parent}) } if $parent;
-         $pixbuf ||= gtkcreate_pixbuf('applications_section');
+         my $path = $group =~ /\|/ ? '/usr/share/icons/mini/' : '/usr/share/icons/';
+         my $create_pixbuf = sub { gtkcreate_pixbuf(join('', $path, $_[0], '.png')) };
+         eval { $pixbuf = $create_pixbuf->($group_icons{$group}) };
+         eval { $pixbuf ||= $create_pixbuf->($group_icons{$parent}) } if $parent;
+         $pixbuf ||= $create_pixbuf->('applications_section');
      },
 	node_state => sub {
          my $pkg = $pkgs->{$_[0]};
