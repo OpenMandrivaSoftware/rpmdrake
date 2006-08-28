@@ -1203,6 +1203,9 @@ Is it ok to continue?",
 	#[ N("/_View"), undef, undef, undef, '<Branch>' ],
 	if_(!$>,
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
+	    [ N("/_Options") . N("/_Media Manager"), undef, sub {
+               run_program::raw({ detach => 1 }, 'edit-urpm-sources.pl');
+           }, undef, '<Item>' ],
 	    [ N("/_Options") . N("/_Show automatically selected packages"), undef, sub {
 		$dont_show_selections = !$checkbox_show_autoselect->get_active;
 	    }, undef, '<CheckItem>' ],
