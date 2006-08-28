@@ -1195,7 +1195,7 @@ Is it ok to continue?",
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
-	    $pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode});
+	    slow_func($::main_window->window, sub { $pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode}) });
 	    $reset_search->();
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
