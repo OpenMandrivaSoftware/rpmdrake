@@ -76,5 +76,5 @@ rpm: srpm
 
 .PHONY: ChangeLog
 ChangeLog:
-	cvs2cl -W 400 -I Changelog --accum -U ../../soft/common/username
+	svn2cl --accum --authors ../../soft/common/username.xml
 	rm -f *.bak
