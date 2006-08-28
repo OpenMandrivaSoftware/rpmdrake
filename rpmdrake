@@ -1066,7 +1066,7 @@ or you already installed all of them."));
                                          $tree_mode->[0] = $options->{tree_mode};
                                          $tree_flat->[0] = $options->{state}{flat};
                                          $reset_search->();
-                                         $pkgs_provider->({}, $h{$val});
+                                         slow_func($::main_window->window, sub { $pkgs_provider->({}, $h{$val}) });
                                          $options->{rebuild_tree}->();
                                      }
                                  }
