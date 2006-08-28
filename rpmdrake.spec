@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.1
+%define version 3.1.1
 %define release %mkrel 1
 
 Name: %{name}
@@ -126,6 +126,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Aug 28 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.1.1-1mdv2007.0
+- add a "Media Manager" entry
+- display a busy cursor when:
+  o selecting "Reload the packages list"
+  o switching mode
+- do not embed wait message on startup
+- fix some crashes
+- group tree:
+  o no more pijama style
+  o use smaller icons for subgroups
+
 * Wed Aug 23 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.1-1mdv2007.0
 - make GUI working
 - many GUI improvements
