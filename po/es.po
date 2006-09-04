@@ -1,7 +1,5 @@
 # traducción de rpmdrake-es.po to Español
 # translation of rpmdrake-es.po to Spanish
-# translation of rpmdrake-es.po to Español
-# translation of es.po to Español
 #
 # Latest versions of po files are at http://www.mandrivalinux.com/l10n/es.php3
 #
@@ -9,7 +7,7 @@
 # Copyright (C) 1999,2003, 2004, 2005 Free Software Foundation, Inc.
 # Copyright (C) 1999 Mandriva
 # Nelson Benítez <gnel AT cenobioracing DOT com> 2004.
-# Pablo Saratxaga <pablo@mandrakesoft.com>, 1999-2000,2005.
+# Pablo Saratxaga <pablo@mandrakesoft.com>, 1999-2000,2005,2006.
 # Fabian Mandelbaum <fabman@mandrakesoft.com>, 2000-2001,2003, 2004.
 # Juan Manuel García Molina <juanma_gm@wanadoo.es>, 2000-2002.
 # Fabian Mandelbaum <fmandelbaum@hotmail.com>, 2003, 2004.
@@ -112,9 +110,8 @@ msgid "URL:"
 msgstr "URL:"
 
 #: ../edit-urpm-sources.pl:135
-#, fuzzy
 msgid "RSYNC server"
-msgstr "Servidor FTP"
+msgstr "Servidor RSYNC"
 
 #: ../edit-urpm-sources.pl:136
 msgid "HTTP server"
@@ -446,15 +443,16 @@ msgstr "¿Actualizaciones?"
 #: ../edit-urpm-sources.pl:925
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
+"Este soporte necesita actualizarse para que sea usable. ¿Actualizarlo ahora?"
 
 #: ../edit-urpm-sources.pl:955
-#, fuzzy, perl-format
+#, perl-format
 msgid ""
 "Unable to update medium, errors reported:\n"
 "\n"
 "%s"
 msgstr ""
-"No se puede añadir soporte, errores reportados:\n"
+"No se puede actualizar el soporte, errores reportados:\n"
 "\n"
 "%s"
 
@@ -524,13 +522,13 @@ msgid "Unable to add medium, wrong or missing arguments"
 msgstr "No se puede añadir un soporte, faltan argumentos o son erróneos"
 
 #: ../gurpmi.addmedia:101
-#, fuzzy, perl-format
+#, perl-format
 msgid ""
 "You are about to add new packages media, %s.\n"
 "That means you will be able to add new software packages\n"
 "to your system from these new media."
 msgstr ""
-"Está a punto de añadir un soporte de paquetes nuevo, `%s'.\n"
+"Está a punto de añadir un soporte de paquetes nuevo, %s.\n"
 "Esto significa que podrá añadir paquetes de software nuevos\n"
 "a su sistema desde dicho soporte nuevo."
 
@@ -546,9 +544,9 @@ msgstr ""
 "a su sistema desde dicho soporte nuevo."
 
 #: ../gurpmi.addmedia:129
-#, fuzzy, perl-format
+#, perl-format
 msgid "Successfully added media %s."
-msgstr "Soporte `%s' añadido satisfactoriamente."
+msgstr "Soporte %s añadido satisfactoriamente."
 
 #: ../gurpmi.addmedia:130
 #, perl-format
@@ -740,7 +738,7 @@ msgstr "Perl"
 
 #: ../rpmdrake:224
 msgid "PHP"
-msgstr ""
+msgstr "PHP"
 
 #: ../rpmdrake:225
 msgid "Python"
@@ -838,7 +836,7 @@ msgstr "WindowMaker"
 #. -PO: This is a package/product name. Only translate it if needed:
 #: ../rpmdrake:260
 msgid "Xfce"
-msgstr ""
+msgstr "Xfce"
 
 #: ../rpmdrake:249
 msgid "Graphics"
@@ -1030,7 +1028,7 @@ msgstr "Servidores"
 #. -PO: This is a package/product name. Only translate it if needed:
 #: ../rpmdrake:311
 msgid "X11"
-msgstr ""
+msgstr "X11"
 
 #: ../rpmdrake:298
 msgid "Terminals"
@@ -1274,14 +1272,12 @@ msgid "Description not available for this package\n"
 msgstr "Descripción no disponible para este paquete\n"
 
 #: ../rpmdrake:1027
-#, fuzzy
 msgid "Installed"
-msgstr "Instalar"
+msgstr "Instalado"
 
 #: ../rpmdrake:1027
-#, fuzzy
 msgid "Non installed"
-msgstr "Instalar"
+msgstr "No instalado"
 
 #: ../rpmdrake:1028
 #, perl-format
@@ -1318,9 +1314,8 @@ msgid "All packages, by group"
 msgstr "Todos los paquetes, por grupo"
 
 #: ../rpmdrake:1037
-#, fuzzy
 msgid "All updates"
-msgstr "Actualizaciones normales"
+msgstr "Todas las actualizaciones"
 
 #: ../rpmdrake:1037
 msgid "Bugfixes updates"
@@ -1416,9 +1411,8 @@ msgid "/_Options"
 msgstr "/_Opciones"
 
 #: ../rpmdrake:1207
-#, fuzzy
 msgid "/_Media Manager"
-msgstr "Administrador de soportes de software"
+msgstr "/Administrador de _soportes"
 
 #: ../rpmdrake:1210 ../rpmdrake:1240
 msgid "/_Show automatically selected packages"
@@ -1438,9 +1432,8 @@ msgstr "/_Acerca..."
 
 #. nicer formatting
 #: ../rpmdrake:1220
-#, fuzzy
 msgid "About Rpmdrake"
-msgstr "Rpmdrake"
+msgstr "Acerca de Rpmdrake"
 
 #: ../rpmdrake:1222
 #, perl-format
@@ -1450,6 +1443,7 @@ msgstr "Copyright © %s por Mandriva"
 #: ../rpmdrake:1224
 msgid "Rpmdrake is Mandriva Linux package management tool."
 msgstr ""
+"Rpmdrake es la herramienta de administración de paquetes de Mandriva Linux."
 
 #: ../rpmdrake:1226
 msgid "Mandriva Linux"
@@ -1484,22 +1478,27 @@ msgstr "Salir"
 
 #: ../rpmdrake:1299
 msgid "Quick Introduction"
-msgstr ""
+msgstr "Introducción rápida"
 
 #: ../rpmdrake:1300
 msgid "You can browse the packages through the categories tree on the left."
 msgstr ""
+"Puede navegar entre los paquetes por el árbol de categorías a la izquierda."
 
 #: ../rpmdrake:1301
 msgid ""
 "You can view information about a packages by clicking on it on the right "
 "list."
 msgstr ""
+"Puede ver la información de cada paquete haciendo clic sobre él en la lista "
+"a la derecha."
 
 #: ../rpmdrake:1302
 msgid ""
 "To install, update or remove an application, just click on its \"checkbox\"."
 msgstr ""
+"Para instalar, actualizar o quitar una aplicación, sólo tiene que hacer "
+"marcar si casilla."
 
 #: ../rpmdrake:1345
 msgid "Fatal error"
@@ -1725,14 +1724,13 @@ msgid "unable to access rpm file [%s]"
 msgstr "no se puede acceder al archivo rpm [%s]"
 
 #: ../rpmdrake:1837
-#, fuzzy
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
 "\n"
 "Some configuration files were created as `.rpmnew' or `.rpmsave',\n"
 "you may now inspect some in order to take actions:"
 msgstr ""
-"Finalizó la instalación; %s.\n"
+"Finalizó la instalación; todo ha sido instalado correctamente.\n"
 "\n"
 "Algunos archivos de configuración se crearon como `.rpmnew' o `.rpmsave',\n"
 "ahora puede inspeccionar algunos para poder tomar acción:"
@@ -2014,9 +2012,8 @@ msgstr ""
 "¿Desea continuar?"
 
 #: ../rpmdrake.pm:532 ../rpmdrake.pm:569
-#, fuzzy
 msgid "Mirror choice"
-msgstr "Selecciones de %s"
+msgstr "Selección del sitio de réplica"
 
 #: ../rpmdrake.pm:535
 msgid "Please wait, downloading mirror addresses."
@@ -2167,6 +2164,8 @@ msgstr "Actualizar soportes"
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
 msgstr ""
+"No se encontró ningún soporte de instalación activo. Debe activar alguno "
+"para para poder actualizarlos."
 
 #: ../rpmdrake.pm:750
 msgid "Select the media you wish to update:"

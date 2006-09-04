@@ -7,8 +7,10 @@ our @exceptions = qw(Development Configuration Mail);
 
 my $po = $ARGV[0];
 my $drakxfile = "../../../gi/perl-install/install/share/po/$po";
+my $libdrakxfile = "../../../gi/perl-install/share/po/$po";
 
 -e $drakxfile or exit 0;
+-e $libdrakxfile or exit 0;
 
 my ($enc_rpmdrake) = cat_($po) =~ /Content-Type: .*; charset=(.*)\\n/i;
 my ($enc_drakx)    = cat_($drakxfile) =~ /Content-Type: .*; charset=(.*)\\n/;
@@ -16,7 +18,8 @@ uc($enc_rpmdrake) ne uc($enc_drakx) and die "Encodings differ for $po! rpmdrake'
 
 our $current;
 our $entry;
-foreach my $line (cat_($drakxfile)) {
+foreach my $line (cat_($drakxfile, $libdrakxfile)) {
+#foreach my $line (cat_($drakxfile)) {
     $line =~ m|^\Q#: share/compssUsers.pl:| || ($line =~ m|^msgid "([^"]+)"| && member($1, @miss)) and do {
 	$current = 'inside';
         $entry = "# DO NOT BOTHER TO MODIFY HERE, BUT IN DRAKX PO\n";
@@ -28,4 +31,4 @@ foreach my $line (cat_($drakxfile)) {
 	$current = 'outside';
         print $entry;
     };
-}
+};
