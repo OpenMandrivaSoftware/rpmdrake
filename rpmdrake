@@ -783,7 +783,7 @@ or you already installed all of them."));
 	    if ($flat) {
 		$add_node->($_->[0], '') foreach $sortmethods{$mode || 'flat'}->(@elems);
 	    } else {
-		if ($MODE eq 'update') {
+		if (0 && $MODE eq 'update') {
 		    $add_node->($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
 		    $tree->expand_row($tree_model->get_path($tree_model->get_iter_first), 0);
 		} elsif ($mode eq 'by_source') {
