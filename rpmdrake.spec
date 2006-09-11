@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.1.1
+%define version 3.2
 %define release %mkrel 1
 
 Name: %{name}
@@ -135,6 +135,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Sep 11 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.2-1mdv2007.0
+- add a menu entry for superuser mode (#25302)
+- rpmdrake: 
+  o display changelog & file list using expanders
+  o fix corrupted images after the CVS to SVN switch due to missing
+    -kb (#24790)
+  o fix crash (#24870)
+  o fix dialog title when removing packages (#25046)
+  o fix "preparing" message when there's no package to install
+    (#25272)
+  o misc other fixes
+- edit-urpm-sources.pl: HIG
+- MandrivaUpdate: fix dying upon startup (#23686)
+
 * Mon Aug 28 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.1.1-1mdv2007.0
 - add a "Media Manager" entry
 - display a busy cursor when:
