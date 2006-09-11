@@ -1795,7 +1795,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
             my $pkg = defined $id && $urpm->{depslist}[$id];
             if ($subtype eq 'start') {
                 if ($type eq 'trans') {
-                    gurpm::label(N("Preparing packages installation..."));
+                    gurpm::label(@rpms_install ? N("Preparing packages installation...") : N("Preparing..."));
                 } else {
                     $something_installed = 1;
                     gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$progress_nb, $total_nb));
