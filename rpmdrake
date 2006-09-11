@@ -1052,6 +1052,8 @@ or you already installed all of them."));
                  ),
                  all_updates => N("All updates"), security => N("Security updates"), bugfix => N("Bugfixes updates"), normal => N("Normal updates")
              );
+    my %rmodes = reverse %modes;
+
     my %default_mode = (install => 'all', # we want the new GUI by default instead of "non_installed"
                         remove => 'installed',
                         update => 'all_updates',
@@ -1069,8 +1071,7 @@ or you already installed all of them."));
                                                                   $modes{$default_mode{$MODE} || 'all'}),
                                  changed => sub {
                                      my $val = $_[0]->get_text;
-                                     my %h = reverse %modes;
-                                     if (0 or my @cat = $wanted_categories{$h{$val}}) {
+                                     if (0 or my @cat = $wanted_categories{$rmodes{$val}}) {
                                          @$mandrakeupdate_wanted_categories = @cat;
                                          $reset_search->();
                                          $options->{rebuild_tree}->();
@@ -1083,7 +1084,7 @@ or you already installed all of them."));
                                          $tree_mode->[0] = $options->{tree_mode};
                                          $tree_flat->[0] = $options->{state}{flat};
                                          $reset_search->();
-                                         slow_func($::main_window->window, sub { $pkgs_provider->({}, $h{$val}) });
+                                         slow_func($::main_window->window, sub { $pkgs_provider->({}, $rmodes{$val}) });
                                          $options->{rebuild_tree}->();
                                      }
                                  }
@@ -1165,7 +1166,7 @@ Is it ok to continue?",
 	    }
 	}
 	if (!$callback_action->($urpm, $pkgs)) {
-	    $pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode});
+	    $pkgs_provider->({ skip_updating_mu => 1 }, $rmodes{$options->{tree_mode}});
 	    $reset_search->();
 	    $size_selected = 0;
 	    (undef, $size_free) = MDK::Common::System::df('/usr');
@@ -1191,7 +1192,7 @@ Is it ok to continue?",
 	    [ N("/_File") . N("/_Update media"), undef, sub {
 		update_sources_interactive($urpm, transient => $w->{rwindow})
 		    and do {
-			$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode});
+			$pkgs_provider->({ skip_updating_mu => 1 }, $rmodes{$options->{tree_mode}});
 			$reset_search->();
 			$size_selected = 0;
 			$options->{rebuild_tree}->();
@@ -1211,7 +1212,7 @@ Is it ok to continue?",
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
-	    slow_func($::main_window->window, sub { $pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode}) });
+	    slow_func($::main_window->window, sub { $rmodes{$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode})}});
 	    $reset_search->();
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
