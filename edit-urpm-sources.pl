@@ -39,9 +39,12 @@ BEGIN { #- for mcc
 }
 
 BEGIN {
-    eval { require ugtk2; ugtk2->import(qw(:all)) };
+    eval {
+        require ugtk2; ugtk2->import(qw(:all));
+        require mygtk2; mygtk2->import(qw(gtknew))
+    };
     if ($@) {
-	print "This program cannot be run in console mode.\n";
+	print "This program cannot be run in console mode ($@_).\n";
 	_exit(0);  #- skip ugtk2::END
     }
 }
@@ -237,7 +240,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	$w->{window},
 	gtkpack(
 	    Gtk2::VBox->new(0,5),
-	    Gtk2::Label->new(N("Adding a medium:")),
+	    gtknew('Title2', label => N("Adding a medium:")),
 	    gtkpack__(Gtk2::HBox->new(0, 0),
                       Gtk2::Label->new(but(N("Type of medium:"))),
                       $type_box = gtksignal_connect(Gtk2::ComboBox->new_with_strings(\@modes, $radios_infos{local}{name}),
@@ -398,11 +401,11 @@ sub edit_callback {
 	$w->{window},
 	gtkpack_(
 	    Gtk2::VBox->new(0,5),
-	    0, Gtk2::Label->new(N("Editing medium \"%s\":", $medium->{name})),
+	    0, gtknew('Title2', label => N("Editing medium \"%s\":", $medium->{name})),
 	    0, create_packtable(
 		{},
-		[ N("URL:"), $url_entry = gtkentry($config->{$medium->{name}}{url}) ],
-		[ N("Relative path to synthesis/hdlist:"), $hdlist_entry = gtkentry($config->{$medium->{name}}{with_hdlist}) ],
+		[ gtknew('Label_Left', text => N("URL:")), $url_entry = gtkentry($config->{$medium->{name}}{url}) ],
+		[ gtknew('Label_Left', text => N("Relative path to synthesis/hdlist:")), $hdlist_entry = gtkentry($config->{$medium->{name}}{with_hdlist}) ],
 	    ),
 	    0, Gtk2::HSeparator->new,
 	    0, gtkpack(
@@ -457,28 +460,32 @@ sub proxy_callback {
     my ($proxy, $proxy_user) = curl_download::readproxy($medium_name);
     my ($user, $pass) = $proxy_user =~ /^([^:]*):(.*)$/;
     my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry, $proxypasswordentry);
+    my $sg = Gtk2::SizeGroup->new('horizontal');
     gtkadd(
 	$w->{window},
 	gtkpack__(
 	    Gtk2::VBox->new(0, 5),
-	    gtkset_justify(Gtk2::Label->new(
+	    gtknew('Title2', label =>
 		$medium_name
 		    ? N("Proxy settings for media \"%s\"", $medium_name)
 		    : N("Global proxy settings")
-	    ), 'center'),
-	    gtkset_justify(Gtk2::Label->new(N("If you need a proxy, enter the hostname and an optional port (syntax: <proxyhost[:port]>):")), 'center'),
-	    gtkpack_(
-		Gtk2::HBox->new(0, 10),
-		0, gtkset_active($proxybutton = Gtk2::CheckButton->new(N("Proxy hostname:")), to_bool($proxy)),
-		1, gtkset_sensitive($proxyentry = gtkentry($proxy), to_bool($proxy)),
 	    ),
-	    gtkset_justify(Gtk2::Label->new(N("You may specify a user/password for the proxy authentication:")), 'center'),
+	    gtknew('Label_Left', text => N("If you need a proxy, enter the hostname and an optional port (syntax: <proxyhost[:port]>):")),
 	    gtkpack_(
 		Gtk2::HBox->new(0, 10),
-		0, gtkset_active($proxyuserbutton = Gtk2::CheckButton->new(N("User:")), to_bool($proxy_user)),
-		1, gtkset_sensitive($proxyuserentry = gtkentry($user), to_bool($proxy_user)),
-		0, Gtk2::Label->new(N("Password:")),
-		1, gtkset_visibility(gtkset_sensitive($proxypasswordentry = gtkentry($pass), to_bool($proxy_user)), 0),
+		1, gtkset_active($proxybutton = Gtk2::CheckButton->new(N("Proxy hostname:")), to_bool($proxy)),
+		0, gtkadd_widget($sg, gtkset_sensitive($proxyentry = gtkentry($proxy), to_bool($proxy))),
+	    ),
+         gtkset_active($proxyuserbutton = Gtk2::CheckButton->new(N("You may specify a user/password for the proxy authentication:")), to_bool($proxy_user)),
+	    gtkpack_(
+		my $hb_user = gtkset_sensitive(Gtk2::HBox->new(0, 10), to_bool($proxy_user)),
+		1, gtknew('Label_Left', text => N("User:")),
+		0, gtkadd_widget($sg, $proxyuserentry = gtkentry($user)),
+      ),
+	    gtkpack_(
+		my $hb_pswd = gtkset_sensitive(Gtk2::HBox->new(0, 10), to_bool($proxy_user)),
+		1, gtknew('Label_Left', text => N("Password:")),
+		0, gtkadd_widget($sg, gtkset_visibility($proxypasswordentry = gtkentry($pass), 0)),
 	    ),
 	    Gtk2::HSeparator->new,
 	    gtkpack(
@@ -500,16 +507,17 @@ sub proxy_callback {
 	    )
 	)
     );
+    $sg->add_widget($_) foreach ($proxyentry, $proxyuserentry, $proxypasswordentry);
     $proxybutton->signal_connect(
 	clicked => sub {
 	    $proxyentry->set_sensitive($_[0]->get_active);
 	    $_[0]->get_active and return;
 	    $proxyuserbutton->set_active(0);
-	    $proxyuserentry->set_sensitive(0);
-	    $proxypasswordentry->set_sensitive(0);
+	    $hb_user->set_sensitive(0);
+	    $hb_pswd->set_sensitive(0);
 	}
     );
-    $proxyuserbutton->signal_connect(clicked => sub { $proxyuserentry->set_sensitive($_[0]->get_active);
+    $proxyuserbutton->signal_connect(clicked => sub { $_->set_sensitive($_[0]->get_active) foreach $hb_user, $hb_pswd;
     $proxypasswordentry->set_sensitive($_[0]->get_active) });
 
     $w->main and curl_download::writeproxy($proxy, $proxy_user, $medium_name);
