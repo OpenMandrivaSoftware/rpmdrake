@@ -71,7 +71,7 @@ cp %{name}.menu $RPM_BUILD_ROOT%{_menudir}/%{name}
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-rpmdrake.desktop << EOF
 [Desktop Entry]
-Name=Install, Remove & Update Software
+Name=Browse Available Software
 Comment=A graphical front end for installing, removing and updating packages
 Exec=/usr/sbin/rpmdrake
 Icon=/usr/share/icons/rpmdrake.png
@@ -79,6 +79,15 @@ Type=Application
 Categories=GTK;X-MandrivaLinux-System-Configuration-Packaging;Settings;PackageManager;
 EOF
 
+cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-rpmdrake-root.desktop << EOF
+[Desktop Entry]
+Name=Install, Remove & Update Software
+Comment=A graphical front end for installing, removing and updating packages
+Exec=/usr/bin/drakconf --start-with="Install Software"
+Icon=/usr/share/icons/rpmdrake.png
+Type=Application
+Categories=GTK;X-MandrivaLinux-System-Configuration-Packaging;Settings;PackageManager;
+EOF
 
 mkdir -p $RPM_BUILD_ROOT{%{_miconsdir},%{_liconsdir}}
 for i in rpmdrake rpmdrake-remove mandrivaupdate edit-urpm-sources; do
@@ -113,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{perl_vendorlib}/*.pm
 %{_menudir}/%{name}
-%{_datadir}/applications/mandriva-rpmdrake.desktop
+%{_datadir}/applications/mandriva-*.desktop
 %{_iconsdir}/*.png
 %{_miconsdir}/*.png
 %{_liconsdir}/*.png
