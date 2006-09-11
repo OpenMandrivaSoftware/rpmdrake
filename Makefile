@@ -74,7 +74,12 @@ srpm: dis ../$(NAME)-$(VERSION).tar.bz2 $(RPM)
 rpm: srpm
 	rpm -bb --clean --rmsource $(NAME).spec
 
-.PHONY: ChangeLog
+.PHONY: ChangeLog log changelog
+
+log: ChangeLog
+
+changelog: ChangeLog
+
 ChangeLog:
 	svn2cl --accum --authors ../../soft/common/username.xml
 	rm -f *.bak
