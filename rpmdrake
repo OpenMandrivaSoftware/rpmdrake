@@ -1356,12 +1356,12 @@ sub get_pkgs {
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 
 
-    if (0) { # TODO/FIXME: renew me (w/o exit on fatal error)
         $urpm->{fatal} = sub {
             interactive_msg(N("Fatal error"),
                             N("A fatal error occurred: %s.", $_[1]));
-            myexit(-1);
+            myexit(-1) if 0; #FIXME
         };
+    if (0) { # TODO/FIXME: renew me (w/o exit on fatal error)
 	unless ($options{'no-media-update'}) {
 	    if (@update_medias > 0) {
 		if (!$opts->{skip_updating_mu}) {
