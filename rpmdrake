@@ -411,7 +411,6 @@ sub extract_header {
     };
     my $name = my_fullname($pkg->{pkg});
     if ($MODE eq 'remove') {
-	@$max_info_in_descr or return;
 	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(`rpm -ql $name`)) || N("(none)") ],
                          changelog => $chg_prepro->(to_utf8(scalar(`rpm -q --changelog $name`))) });
     } else {
@@ -435,7 +434,7 @@ sub extract_header {
 	    };
 	    rm_rf($headersdir);
 	    add2hash($pkg, { summary => rpm_summary($p->summary), description => rpm_description($p->description) });
-	    @$max_info_in_descr and add2hash($pkg, {
+	    add2hash($pkg, {
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
 		changelog => $chg_prepro->(join("\n", mapn { "* " . localtime2changelog($_[2]) . " $_[0]\n\n$_[1]\n" }
 						[ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ])) });
