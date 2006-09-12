@@ -260,7 +260,7 @@ my %group_icons = (
 	join('|', N("Graphical desktop"),
           #-PO: This is a package/product name. Only translate it if needed:
           N("Xfce")) => '',
-	join('|', N("Graphics")) => 'graphics_section',
+	N("Graphics") => 'graphics_section',
 	N("Monitoring") => 'monitoring_section',
 	N("Multimedia") => 'multimedia_section',
 	join('|', N("Multimedia"), N("Video")) => 'video_section',
@@ -617,7 +617,7 @@ sub format_pkg_simplifiedinfo {
     $exp->set_use_markup(1);
     push @$s, [ "\n\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp2 = Gtk2::Expander->new(format_field(N("Changelog:\n")))),
-                       gtktext_insert(Gtk2::TextView->new, $pkgs->{$key}{changelog} ? $pkgs->{$key}{changelog} : N("(Not available)"))
+                       gtktext_insert(Gtk2::TextView->new, $pkgs->{$key}{changelog} || N("(Not available)"))
                    ) ];
     $exp2->set_use_markup(1);
     $s;
@@ -684,9 +684,9 @@ sub run_treeview_dialog {
         foreach my $importance (qw(bugfix security normal)) {
             $filter_methods{$importance} = sub {
                 $filter_methods{all_updates}->();
-                $pkgs = { grep { $descriptions->{$_}->{importance} eq $importance } keys %$pkgs };
+                $pkgs = { grep { $descriptions->{$_}{importance} eq $importance } keys %$pkgs };
             };
-        };
+        }
         $filter_methods{mandrake_choices} = $filter_methods{non_installed};
         $filter_methods{$mode}->();
     };
@@ -752,7 +752,7 @@ sub run_treeview_dialog {
                     ($urpm_obj->flag_installed ? 'to_remove' : 'to_install')
                       : ($urpm_obj->flag_installed ? 
                            ($urpm_obj->flag_upgrade ? 'to_update' : 'installed')
-                             : ($urpm_obj->flag_base ? '/usr/share/rpmdrake/icons/base.png' : 'uninstalled')): 'XXX';
+                             : ($urpm_obj->flag_base ? '/usr/share/rpmdrake/icons/base.png' : 'uninstalled')) : 'XXX';
 	},  #- checks $_[0] -> hack for partial tree displaying
 	build_tree => sub {
 	    my ($add_node, $flat, $mode) = @_;
@@ -817,7 +817,7 @@ or you already installed all of them."));
 		    foreach my $pkg (@elems) {
                   my $grp = $pkg->[1];
                   $options->{add_parent}->($grp);
-                  $elems{$grp} ||= [ ];
+                  $elems{$grp} ||= [];
                   push @{$elems{$grp}}, $pkg;
 		    }
 		}
@@ -1227,7 +1227,7 @@ Is it ok to continue?",
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
-	    slow_func($::main_window->window, sub { $rmodes{$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode})}});
+	    slow_func($::main_window->window, sub { $rmodes{$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode})} });
 	    $reset_search->();
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
