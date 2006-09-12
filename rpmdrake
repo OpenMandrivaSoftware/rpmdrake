@@ -990,7 +990,7 @@ or you already installed all of them."));
 	    my ($key) = @_;
 	    #- the package information hasn't been loaded. Instead of rescanning the media, just give up.
 	    exists $pkgs->{$key} or return [ [ N("Description not available for this package\n") ] ];
-	    exists $pkgs->{$key}{description} && (!@$max_info_in_descr || exists $pkgs->{$key}{files})
+	    exists $pkgs->{$key}{description} && exists $pkgs->{$key}{files}
 		or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
 	    format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions);
 	},
