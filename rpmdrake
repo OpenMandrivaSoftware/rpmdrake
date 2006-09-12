@@ -878,7 +878,7 @@ or you already installed all of them."));
 		    slow_func($tree->window, sub { @remove = $closure_removal->(@nodes) });
 		    @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } @remove;
 		    $deps_msg->(N("Some additional packages need to be removed"),
-			N("Because of their dependencies, the following package(s) also need to be\nremoved:\n\n"),
+			formatAlaTeX(N("Because of their dependencies, the following package(s) also need to be\nremoved:")) . "\n\n",
 			\@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
 		    my @impossible_to_remove;
 		    foreach (grep { exists $pkgs->{$_}{base} } @remove) {
