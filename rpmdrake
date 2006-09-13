@@ -1022,7 +1022,7 @@ or you already installed all of them."));
     $detail_tree->set_rules_hint(1);
 
     ($typical_width) = string_size($tree, translate("Graphical Environment") . "xmms-more-vis-plugins");
-    $typical_width > 500 and $typical_width = 500;  #- try to not being crazy with a too large value
+    $typical_width > 600 and $typical_width = 600;  #- try to not being crazy with a too large value
     $typical_width < 150 and $typical_width = 150;
     #- XXX : work around bug in gtk2 that clobbers display (see bugzilla #16575)
     #$textcolumn->set_min_width($typical_width*0.7);
