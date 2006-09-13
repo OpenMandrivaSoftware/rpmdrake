@@ -1164,21 +1164,6 @@ dangerous and should be considered with care.
 Do you really want to install all the selected packages?"), yesno => 1)
 	      or return;
 	}
-	if ($MODE ne 'remove') {
-            @{$urpm->{ask_remove}} = sort $urpm->removed_packages($urpm->{state});
-            if (@{$urpm->{ask_remove}}) {
-		my $r = join "\n", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{ask_remove}});
-		interactive_msg_(N("Some packages need to be removed"),
-N("The following packages have to be removed for others to be upgraded:
-
-%s
-
-Is it ok to continue?",
-		    $r),
-		scroll => 1,
-		yesno => 1) or return;
-	    }
-	}
 	if (!$callback_action->($urpm, $pkgs)) {
 	    $pkgs_provider->({ skip_updating_mu => 1 }, $rmodes{$options->{tree_mode}});
 	    $reset_search->();
@@ -1731,6 +1716,24 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     foreach (@$local_to_removes) {
         unlink $_;
     }
+
+    # FIXME: $_ is trashed:
+    my @pkgs = map { my $c = $_->fullname; $c } sort(grep { $_->flag_selected } @{$urpm->{depslist}});#{ $a->name cmp $b->name } @{$urpm->{depslist}}[keys %{$state->{selected}}];
+    @{$urpm->{ask_remove}} = sort $urpm->removed_packages($urpm->{state});
+    my $r = join "\n", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{ask_remove}});
+    my $to_install = N("To satisfy dependencies, the following %d packages are going to be installed:\n", int(@pkgs)) .
+      formatlistpkg(map { s!.*/!!; $_ } @pkgs);
+    interactive_msg_(N("Some packages need to be removed"),
+                     ($r ? N("The following packages have to be removed for others to be upgraded:
+
+%s
+
+Is it ok to continue?", $r . "\n\n" . $to_install) : $to_install),
+                     scroll => 1,
+                     yesno => 1) or do {
+                         $w->{rwindow}->set_sensitive(1);
+                         return;
+                     };
 
     gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $w->{real_window});
     my $distant_progress;
