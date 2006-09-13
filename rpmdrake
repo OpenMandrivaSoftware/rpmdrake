@@ -1731,7 +1731,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
 %s
 
-Is it ok to continue?", $r . "\n\n" . $to_install) : $to_install),
+Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install))) : $to_install),
                      scroll => 1,
                      yesno => 1) or do {
                          $w->{rwindow}->set_sensitive(1);
