@@ -607,7 +607,7 @@ sub format_pkg_simplifiedinfo {
       (escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $descriptions->{$name}{description}) || '<i>' . N("No description") . '</i>'),
     ));
     push @$s, [ "\n\n" ];
-    push @$s, [ gtkadd(gtkshow(my $exp = Gtk2::Expander->new(format_field(N("Files:\n")))),
+    push @$s, [ gtkadd(gtkshow(my $exp = Gtk2::Expander->new(format_field(N("Files:")))),
                        exists $pkgs->{$key}{files}
                          ? gtktext_insert(Gtk2::TextView->new,
                                           ugtk2::markup_to_TextView_format('<tt>' . join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}) . '</tt>') #- to highlight information
@@ -616,7 +616,7 @@ sub format_pkg_simplifiedinfo {
                    ) ];
     $exp->set_use_markup(1);
     push @$s, [ "\n\n" ];
-    push @$s, [ gtkadd(gtkshow(my $exp2 = Gtk2::Expander->new(format_field(N("Changelog:\n")))),
+    push @$s, [ gtkadd(gtkshow(my $exp2 = Gtk2::Expander->new(format_field(N("Changelog:")))),
                        gtktext_insert(Gtk2::TextView->new, $pkgs->{$key}{changelog} || N("(Not available)"))
                    ) ];
     $exp2->set_use_markup(1);
