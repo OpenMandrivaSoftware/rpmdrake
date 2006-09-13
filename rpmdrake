@@ -1723,8 +1723,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my @to_remove = uniq(@{$urpm->{ask_remove}}, map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs);
     my $r = join "\n", $urpm->translate_why_removed($urpm->{state}, @to_remove);
 
-    my $to_install = N("To satisfy dependencies, the following %d packages are going to be installed:\n", int(@pkgs)) .
-      formatlistpkg(map { s!.*/!!; $_ } @pkgs);
+    my $install_count = int(@pkgs);
+    my $to_install = $install_count ? N("To satisfy dependencies, the following %d packages are going to be installed:\n", $install_count) .
+      formatlistpkg(map { s!.*/!!; $_ } @pkgs) : '';
     interactive_msg_(N("Some packages need to be removed"),
                      ($r ? N("The following packages have to be removed for others to be upgraded:
 
