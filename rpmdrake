@@ -484,7 +484,7 @@ sub do_search($$$$$$$) {
 	    } else {
 		slow_func_statusbar(
 		    N("Please wait, searching..."),
-		    $w->{rwindow},
+		    $w->{real_window},
 		    sub {
 			$db->traverse(sub {
 			    push @search_results, map { if_($_ =~ $entry_rx, my_fullname($_[0])) } $_[0]->files;
@@ -506,7 +506,7 @@ sub do_search($$$$$$$) {
 		} @hdlists
 	    );
 	    my $searchstop;
-	    my $searchw = ugtk2->new(N("Software Management"), grab => 1, transient => $w->{rwindow});
+	    my $searchw = ugtk2->new(N("Software Management"), grab => 1, transient => $w->{real_window});
 	    gtkadd(
 		$searchw->{window},
 		gtkpack__(
@@ -855,7 +855,7 @@ or you already installed all of them."));
 		{
 		    interactive_packtable(
 			N("Information on packages"),
-			$w->{rwindow},
+			$w->{real_window},
 			undef,
 			[ map { my $pkg = $_;
 			    [ gtkpack__(Gtk2::HBox->new(0,0), gtkset_selectable(Gtk2::Label->new($pkg),1)),
@@ -1204,7 +1204,7 @@ Is it ok to continue?",
 	if_(
 	    $MODE ne 'remove' && ! $>,
 	    [ N("/_File") . N("/_Update media"), undef, sub {
-		update_sources_interactive($urpm, transient => $w->{rwindow})
+		update_sources_interactive($urpm, transient => $w->{real_window})
 		    and do {
 			$pkgs_provider->({ skip_updating_mu => 1 }, $rmodes{$options->{tree_mode}});
 			$reset_search->();
@@ -1400,7 +1400,7 @@ Then, restart %s.", $rpmdrake::myname_update));
 		    myexit(-1);
 		}
 	      mu_retry_another_mirror:
-		my $m = choose_mirror(if_(exists $w->{rwindow}, transient => $w->{rwindow}));
+		my $m = choose_mirror(if_(exists $w->{real_window}, transient => $w->{real_window}));
 		$m or interactive_msg_(N("How to choose manually your mirror"),
 N("You may also choose your desired mirror manually: to do so,
 launch the Software Media Manager, and then add a `Security
@@ -1596,7 +1596,7 @@ sub dialog_rpmnew {
 	$rpmfile eq 'rpmsave' and $rpmnew = $rpmsave;
 	my @diff = `/usr/bin/diff -u '$file' '$rpmnew'`;
 	return if !@diff;
-	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $w->{rwindow});
+	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $w->{real_window});
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my %texts;
 	gtkadd(
@@ -1652,7 +1652,7 @@ sub dialog_rpmnew {
 
     interactive_packtable(
 	N("Installation finished"),
-	$w->{rwindow},
+	$w->{real_window},
 	$msg,
 	[ map { my $pkg = $_;
 	    map {
@@ -1732,7 +1732,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         unlink $_;
     }
 
-    gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $w->{rwindow});
+    gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $w->{real_window});
     my $distant_progress;
     my $canceled;
     my %sources = $urpm->download_source_packages(
@@ -1874,7 +1874,7 @@ you may now inspect some in order to take actions:"),
 	if (keys %Readmes) { #- display the README*.urpmi files
 	    interactive_packtable(
 		N("Information on packages"),
-		$w->{rwindow},
+		$w->{real_window},
 		N("These packages come with upgrade information"),
 		[ map {
 		    my $fullname = $_;
@@ -1927,7 +1927,7 @@ sub perform_removal {
     my @results;
     slow_func_statusbar(
 	N("Please wait, removing packages..."),
-	$w->{rwindow},
+	$w->{real_window},
 	sub {
 	    @results = $options{parallel}
 		? $urpm->parallel_remove(\@toremove, translate_message => 1)
