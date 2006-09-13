@@ -1666,7 +1666,7 @@ sub dialog_rpmnew {
 }
 
 sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
-    my ($urpm) = @_;
+    my ($urpm, $pkgs) = @_;
 
     my $fatal_msg;
     my @error_msgs;
@@ -1720,7 +1720,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     # FIXME: $_ is trashed:
     my @pkgs = map { my $c = $_->fullname; $c } sort(grep { $_->flag_selected } @{$urpm->{depslist}});#{ $a->name cmp $b->name } @{$urpm->{depslist}}[keys %{$state->{selected}}];
     @{$urpm->{ask_remove}} = sort $urpm->removed_packages($urpm->{state});
-    my $r = join "\n", $urpm->translate_why_removed($urpm->{state}, @{$urpm->{ask_remove}});
+    my @to_remove = uniq(@{$urpm->{ask_remove}}, map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs);
+    my $r = join "\n", $urpm->translate_why_removed($urpm->{state}, @to_remove);
+
     my $to_install = N("To satisfy dependencies, the following %d packages are going to be installed:\n", int(@pkgs)) .
       formatlistpkg(map { s!.*/!!; $_ } @pkgs);
     interactive_msg_(N("Some packages need to be removed"),
@@ -1794,7 +1796,7 @@ Is it ok to continue?", $r . "\n\n" . $to_install) : $to_install),
         }
     }
 
-    if (@rpms_install || @rpms_upgrade || @{$urpm->{ask_remove}}) {
+    if (@rpms_install || @rpms_upgrade || @to_remove) {
         if (my @missing = grep { m|^/| && ! -e $_ } @rpms_install, @rpms_upgrade) {
             interactive_msg_(
 		N("Installation failed"),
@@ -1824,7 +1826,7 @@ Is it ok to continue?", $r . "\n\n" . $to_install) : $to_install),
         };
 	my $fh;
         my @errors = $urpm->install(
-	    $urpm->{ask_remove},
+	    \@to_remove,
 	    \%sources_install,
 	    \%sources,
 	    translate_message => 1,
