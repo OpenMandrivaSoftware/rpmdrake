@@ -1372,7 +1372,7 @@ sub get_pkgs {
 
 
         $urpm->{fatal} = sub {
-            interactive_msg(N("Fatal error"),
+            interactive_msg_(N("Fatal error"),
                             N("A fatal error occurred: %s.", $_[1]));
             myexit(-1) if 0; #FIXME
         };
@@ -1886,7 +1886,7 @@ you may now inspect some in order to take actions:"),
 			    #- TODO change those labels to something more sensible, e.g. "Upgrade information about this package"
 			    Gtk2::Button->new(N("More information on package...")),
 			    clicked => sub {
-				interactive_msg(
+				interactive_msg_(
 				    N("More information on package... [%s]", $fullname),
 				    (join '' => cat_($fullname)),
 				    scroll => 1,
@@ -1968,7 +1968,7 @@ $changelog_first = $changelog_first_config->[0];
 $changelog_first = 1 if $options{'changelog-first'};
 
 if (!$> && !member($MODE, @$already_splashed)) {
-    interactive_msg(N("Welcome"),
+    interactive_msg_(N("Welcome"),
 N("%s
 
 Is it ok to continue?",
