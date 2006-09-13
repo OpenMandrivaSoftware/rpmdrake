@@ -179,9 +179,9 @@ my $changelog_first;
 my $treeview_dialog_run = 0;
 our $statusbar;
 
-sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
-sub interactive_list_ { interactive_list(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
-sub wait_msg_         {         wait_msg(@_, if_(exists $w->{rwindow}, transient => $w->{rwindow})) }
+sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{real_window}, transient => $w->{real_window})) }
+sub interactive_list_ { interactive_list(@_, if_(exists $w->{real_window}, transient => $w->{real_window})) }
+sub wait_msg_         {         wait_msg(@_, if_(exists $w->{real_window}, transient => $w->{real_window})) }
 sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded && !$treeview_dialog_run; &statusbar_msg }
 sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg_ }
 
