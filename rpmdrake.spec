@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.2
+%define version 3.3
 %define release %mkrel 1
 
 Name: %{name}
@@ -135,6 +135,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Wed Sep 13 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.3-1mdv2007.0
+- ask confirmation for packages to be installed too (#25451, #25548)
+- better formating: one package per line (#16079)
+- fix dialogs not centered on parent window
+- fix extracting info for installed packages
+- fix uninstalling several packages (#25027)
+- prevent some not good looking horizontal scrollbars
+
 * Mon Sep 11 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.2-1mdv2007.0
 - add a menu entry for superuser mode (#25302)
 - rpmdrake: 
