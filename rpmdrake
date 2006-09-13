@@ -861,7 +861,7 @@ or you already installed all of them."));
 			    [ gtkpack__(Gtk2::HBox->new(0,0), gtkset_selectable(Gtk2::Label->new($pkg),1)),
 			    gtksignal_connect(Gtk2::Button->new(N("More information on package...")),
 				clicked => sub {
-				    interactive_msg(N("More information on package..."), $options->{get_info}->($pkg), scroll => 1);
+				    interactive_msg_(N("More information on package..."), $options->{get_info}->($pkg), scroll => 1);
 				}) ] } @deps ],
 			[ gtksignal_connect(Gtk2::Button->new(N("Ok")),
 			    clicked => sub { Gtk2->main_quit }) ]
