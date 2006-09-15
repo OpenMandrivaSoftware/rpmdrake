@@ -1425,7 +1425,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	}
 
     my $_unused = N("Please wait, finding available packages...");
-    my $wait = wait_msg(N("Please wait, reading packages database..."));
+    my $wait = wait_msg_(N("Please wait, reading packages database..."));
     if (!$::statusbar) {
 	$wait->{real_window}->show_all;
 	$wait->{real_window}->realize;
