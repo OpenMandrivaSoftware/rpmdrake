@@ -100,10 +100,12 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
      transient => $mainw->{real_window},
     ) or return 0;
     my $m = $mirror->{url};
+    my $is_update = $mirror->{type} eq 'updates';
+    $m .= '/media/main/updates' if $is_update;
     my $wait = wait_msg_(N("Please wait, adding media..."));
     my $url = $want_base_distro ? make_url_mirror_dist($m) : make_url_mirror($m);
     my $medium_name;
-    if ($want_base_distro) {
+    if ($want_base_distro && !$is_update) {
 	if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
 	    $medium_name = $2 . $1 . '-';
 	} else {
