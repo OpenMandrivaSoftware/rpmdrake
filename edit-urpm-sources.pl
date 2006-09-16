@@ -88,7 +88,7 @@ to do this in two steps.)"),
 	 transient => $mainw->{real_window},
 	yesno => 1, text => { yes => N("Distribution sources"), no => N("Official updates") },
     ) : 1;
-    my $m = choose_mirror(message =>
+    my ($mirror) = choose_mirror(message =>
 N("This will attempt to install all official sources corresponding to your
 distribution (%s).
 
@@ -99,6 +99,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
 	want_base_distro => $want_base_distro,
      transient => $mainw->{real_window},
     ) or return 0;
+    my $m = $mirror->{url};
     my $wait = wait_msg_(N("Please wait, adding media..."));
     my $url = $want_base_distro ? make_url_mirror_dist($m) : make_url_mirror($m);
     my $medium_name;
