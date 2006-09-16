@@ -383,41 +383,41 @@ sub slow_func_statusbar ($$&) {
 }
 
 my %u2l = (
-	   at => N("Austria"),
-	   au => N("Australia"),
-	   be => N("Belgium"),
-	   br => N("Brazil"),
-	   ca => N("Canada"),
-	   ch => N("Switzerland"),
-	   cr => N("Costa Rica"),
-	   cz => N("Czech Republic"),
-	   de => N("Germany"),
-	   dk => N("Danmark"),
-	   el => N("Greece"),
-	   es => N("Spain"),
-	   fi => N("Finland"),
-	   fr => N("France"),
-	   gr => N("Greece"),
-	   hu => N("Hungary"),
-	   il => N("Israel"),
-	   it => N("Italy"),
-	   jp => N("Japan"),
-	   ko => N("Korea"),
-	   nl => N("Netherlands"),
-	   no => N("Norway"),
-	   pl => N("Poland"),
-	   pt => N("Portugal"),
-	   ru => N("Russia"),
-	   se => N("Sweden"),
-	   sg => N("Singapore"),
-	   sk => N("Slovakia"),
-	   tw => N("Taiwan"),
-	   uk => N("United Kingdom"),
-	   cn => N("China"),
-	   com => N("United States"),
-	   org => N("United States"),
-	   net => N("United States"),
-	   edu => N("United States"),
+	   at => N_("Austria"),
+	   au => N_("Australia"),
+	   be => N_("Belgium"),
+	   br => N_("Brazil"),
+	   ca => N_("Canada"),
+	   ch => N_("Switzerland"),
+	   cr => N_("Costa Rica"),
+	   cz => N_("Czech Republic"),
+	   de => N_("Germany"),
+	   dk => N_("Danmark"),
+	   el => N_("Greece"),
+	   es => N_("Spain"),
+	   fi => N_("Finland"),
+	   fr => N_("France"),
+	   gr => N_("Greece"),
+	   hu => N_("Hungary"),
+	   il => N_("Israel"),
+	   it => N_("Italy"),
+	   jp => N_("Japan"),
+	   ko => N_("Korea"),
+	   nl => N_("Netherlands"),
+	   no => N_("Norway"),
+	   pl => N_("Poland"),
+	   pt => N_("Portugal"),
+	   ru => N_("Russia"),
+	   se => N_("Sweden"),
+	   sg => N_("Singapore"),
+	   sk => N_("Slovakia"),
+	   tw => N_("Taiwan"),
+	   uk => N_("United Kingdom"),
+	   cn => N_("China"),
+	   com => N_("United States"),
+	   org => N_("United States"),
+	   net => N_("United States"),
+	   edu => N_("United States"),
 	  );
 my $us = [ qw(com org net edu) ];
 my %t2l = (
@@ -452,11 +452,6 @@ my %t2l = (
 	   'Europe/Stockholm' =>  [ qw(se no dk fi nl de at cz fr it) ],
 	   'Europe/Vienna' =>     [ qw(at de cz it fr nl se) ],
 	  );
-my %sites2countries = (
-  'proxad.net' => 'fr',
-  'planetmirror.com' => 'au',
-  'averse.net' => 'sg',
-);
 
 #- get distrib release number (2006.0, etc)
 sub etc_version() {
@@ -489,30 +484,29 @@ sub compat_arch_for_updates($) {
 sub mirrors {
     my ($cachedir, $want_base_distro) = @_;
     $cachedir ||= '/root';
-    my $mirrorslist = "$cachedir/mirrorsfull.list";
-    unlink $mirrorslist;
-    urpm::cfg::mirrors_cfg();
-    my $res = curl_download::download($urpm::cfg::mirrors, $cachedir, sub {});
-    $res and do { c::set_tagged_utf8($res); die $res };
+    use mirror;
+    mirror::register_downloader(sub {
+                                    my ($url) = @_;
+                                    my $file = $url;
+                                    $file =~ s!.*/!$cachedir/!;
+                                    unlink $file; # prevent "partial file" errors
+                                    before_leaving(sub { unlink $file });
+                                    my $res = curl_download::download($url, $cachedir, sub {});
+                                    $res and do { c::set_tagged_utf8($res); die $res };
+                                    return cat_($file);
+                                });
+    my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')), 'all') };
     require timezone;
     my $tz = ${timezone::read()}{timezone};
-    my $distro_type = distro_type($want_base_distro);
-    my @mirrors = map {
-	my ($arch, $url) = m|\Q$distro_type\E([^:]*):(.+)|;
-	if ($arch && compat_arch_for_updates($arch)) {
+    foreach my $mirror (@mirrors) {
 	    my ($land, $goodness);
-	    foreach (keys %u2l) {
-		if ($url =~ m|//[^/]+\.\Q$_\E/|) { $land = $_; last }
-	    }
-	    $url =~ m|\W\Q$_\E/| and $land = $sites2countries{$_} foreach keys %sites2countries;
-	    each_index { $_ eq $land and $goodness ||= 100-$::i } (map { if_($tz =~ /^$_$/, @{$t2l{$_}}) } keys %t2l), @$us;
-	    { url => $url, land => $u2l{$land} || N("United States"), goodness => $goodness + rand() };
-	} else { () }
-    } cat_($mirrorslist);
+	    each_index { $_ = $u2l{$_} || $_; $_ eq $mirror->{country} and $goodness ||= 100-$::i } (map { if_($tz =~ /^$_$/, @{$t2l{$_}}) } keys %t2l), @$us;
+         $mirror->{goodness} = $goodness + rand();
+         $mirror->{country} = translate($mirror->{country});
+    }
     unless (-x '/usr/bin/rsync') {
 	@mirrors = grep { $_->{url} !~ /^rsync:/ } @mirrors;
     }
-    unlink $mirrorslist;
     return sort { $b->{goodness} <=> $a->{goodness} } @mirrors;
 }
 
@@ -601,7 +595,7 @@ by Mandriva Linux Official Updates.")), %options
 	)
     );
     my %roots;
-    $tree_model->append_set($roots{$_->{land}} ||= $tree_model->append_set(undef, [ 0 => $_->{land} ]),
+    $tree_model->append_set($roots{$_->{country}} ||= $tree_model->append_set(undef, [ 0 => $_->{country} ]),
 			    [ 0 => $_->{url} ]) foreach @mirrors;
 
     $w->{window}->set_size_request(500, 400);
