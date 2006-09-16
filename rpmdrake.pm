@@ -175,7 +175,7 @@ sub getbanner() {
 	install => N("Software Packages Installation"),
 	};
     }
-    Gtk2::Banner->new('title-update', N("Software Management"));;
+    Gtk2::Banner->new('title-update', N("Software Management"));
 }
 
 sub interactive_msg {
@@ -812,7 +812,7 @@ sub add_medium_and_check {
         interactive_msg(
 	    N("Error"),
 	    N("Unable to add medium, errors reported:\n\n%s",
-	    join("\n", @error_msgs)) . "\n\n" .N("Medium: ") . "$_[0] ($_[1])",
+	    join("\n", @error_msgs)) . "\n\n" . N("Medium: ") . "$_[0] ($_[1])",
 	    scroll => 1,
 	);
         return 0;
@@ -861,7 +861,7 @@ It will be disabled.",
 		    $_->{name}, $mdk_version)
 	    );
 	    $_->{ignore} = 1;
-	    $urpm->write_config() if -w $urpm->{config};
+	    $urpm->write_config if -w $urpm->{config};
 	    return 0;
 	}
     }
