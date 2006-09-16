@@ -606,7 +606,7 @@ by Mandriva Linux Official Updates.")), %options
     $path->down;
     $tree->get_selection->select_path($path);
 
-    $w->main && member($w->{retval}{sel}, map { $_->{url} } @mirrors) ? $w->{retval}{sel} : '';
+    $w->main && return grep { $w->{retval}{sel} eq $_->{url} } @mirrors;
 }
 
 sub make_url_mirror {
