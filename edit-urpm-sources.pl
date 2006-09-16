@@ -117,6 +117,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
 	    $urpm,
 	    { nolock => 1, distrib => 1 },
 	    $medium_name, $url, probe_with => 'synthesis', initial_number => $initial_number,
+	    usedistrib => 1,
 	);
     } else {
 	$medium_name = 'update_source';
