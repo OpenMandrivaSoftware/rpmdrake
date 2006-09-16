@@ -1726,7 +1726,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $install_count = int(@pkgs);
     my $to_install = $install_count ? N("To satisfy dependencies, the following %d packages are going to be installed:\n%s\n", $install_count,
       formatlistpkg(map { s!.*/!!; $_ } @pkgs)) : '';
-    interactive_msg_(N("Some packages need to be removed"),
+    interactive_msg_(($to_install ? N("Confirmation") : N("Some packages need to be removed")),
                      ($r ? N("The following packages have to be removed for others to be upgraded:
 
 %s
