@@ -80,7 +80,7 @@ our @EXPORT = qw(
     check_update_media_version
     strip_first_underscore
 );
-our $typical_width;
+our $typical_width = 280;
 unshift @::textdomains, 'rpmdrake', 'urpmi';
 
 eval { require ugtk2; ugtk2->import(qw(:all)) };
