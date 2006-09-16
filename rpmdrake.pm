@@ -810,7 +810,7 @@ sub add_medium_and_check {
         interactive_msg(
 	    N("Error"),
 	    N("Unable to add medium, errors reported:\n\n%s",
-	    join("\n", @error_msgs)),
+	    join("\n", @error_msgs)) . "\n\n" .N("Medium: ") . "$_[0] ($_[1])",
 	    scroll => 1,
 	);
         return 0;
