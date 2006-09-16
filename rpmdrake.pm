@@ -529,11 +529,13 @@ Please check that your network is currently running.
 
 Is it ok to continue?");
     delete $options{message};
+    my @transient_options = exists $options{transient} ? (transient => $options{transient}) : ();
     interactive_msg(N("Mirror choice"), $message, yesno => 1, %options) or return '';
     my $wait = wait_msg(
-	$branded
+	($branded
 	? N("Please wait, downloading mirror addresses.")
-	: N("Please wait, downloading mirror addresses from the Mandriva website.")
+	: N("Please wait, downloading mirror addresses from the Mandriva website.")),
+     @transient_options
     );
     my @mirrors = eval { mirrors('/var/cache/urpmi', $options{want_base_distro}) };
     remove_wait_msg($wait);
@@ -566,7 +568,7 @@ the case when the architecture of your processor is not supported
 by Mandriva Linux Official Updates.")), %options
     ), return '';
 
-    my $w = ugtk2->new(N("Mirror choice"), grab => 1);
+    my $w = ugtk2->new(N("Mirror choice"), grab => 1, @transient_options);
     $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $tree_model = Gtk2::TreeStore->new("Glib::String");
     my $tree = Gtk2::TreeView->new_with_model($tree_model);
