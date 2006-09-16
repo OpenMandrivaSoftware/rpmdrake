@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.3
+%define version 3.4
 %define release %mkrel 1
 
 Name: %{name}
@@ -135,6 +135,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Sat Sep 16 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.4-1mdv2007.0
+- center "Please wait, reading packages database..." dialog on main
+  window
+- edit-urpm-sources:
+  o center some dialogs on main window
+  o don't display oversmall error dialogs
+  o use new mirror API (#25400)
+- fix crash on "Reload the _packages list" in "File" menu (#25652)
+- fix double "About About rpmdrake" (#25667)
+
 * Wed Sep 13 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.3-1mdv2007.0
 - ask confirmation for packages to be installed too (#25451, #25548)
 - better formating: one package per line (#16079)
