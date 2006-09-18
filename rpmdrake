@@ -96,6 +96,12 @@ unless ($MODE) {
     $0 =~ m|update$|i and $MODE = 'update';
 }
 
+my $default_list_mode;
+$default_list_mode = 'all' if $MODE eq 'install';
+if ($MODE eq 'remove') {
+    $default_list_mode = 'installed';
+}
+
 eval { 
     require mygtk2;
     require ugtk2;
@@ -727,7 +733,7 @@ sub run_treeview_dialog {
         $switch_pkg_list_mode->($mode);
     };
 
-    $pkgs_provider->({}, 'all'); # default mode
+    $pkgs_provider->({}, $default_list_mode); # default mode
 
     my ($options, $size_selected, $compssUsers, $tree, $tree_model, $detail_tree, $detail_tree_model, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
