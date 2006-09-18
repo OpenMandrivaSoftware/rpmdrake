@@ -406,7 +406,7 @@ sub run_rpm {
     foreach (qw(LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION LC_ALL)) {
         local $ENV{$_} = $ENV{$_} . '.UTF-8' if !/UTF-8/;
     }
-    `@_`
+    map { to_utf8($_) } `@_`
 }
 
 
@@ -418,8 +418,8 @@ sub extract_header {
     };
     my $name = my_fullname($pkg->{pkg});
     if ($pkg->{pkg}->flag_installed) {
-	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(run_rpm("rpm -ql $name"))) || N("(none)") ],
-                         changelog => $chg_prepro->(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
+	add2hash($pkg, { files => [ split /\n/, chomp_(run_rpm(scalar("rpm -ql $name"))) || N("(none)") ],
+                         changelog => $chg_prepro->(run_rpm(scalar("rpm -q --changelog $name"))) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist = $medium->{virtual} ? "$medium->{url}/$medium->{with_hdlist}" : "$urpm->{statedir}/$medium->{hdlist}";
