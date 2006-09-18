@@ -1235,7 +1235,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
     my $hpaned = Gtk2::HPaned->new;
     my $vpaned = Gtk2::VPaned->new;
     $vpaned->pack1(create_scrolled_window($detail_tree), 1, 0);
-    $vpaned->pack2(create_scrolled_window($info, [ 'never', 'automatic' ]), 1, 0);
+    $vpaned->pack2(create_scrolled_window($info), 1, 0);
     $hpaned->pack1(gtkset_size_request(create_scrolled_window($tree), $typical_width*0.9, -1) , 0, 0);
     $hpaned->pack2($vpaned, 1, 0);
 
