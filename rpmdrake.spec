@@ -150,7 +150,7 @@ rm -rf $RPM_BUILD_ROOT
 - fix lost selection on mode switch (#25248)
 - fix displaying update data for updates
 - fix encoding when querying rpm (#25670, #25716)
-- fix listing noy all updates (aka only security, bugfixes or normal updates)
+- fix listing not all updates (aka only security, bugfixes or normal updates)
 - fix title (#25666)
 - fix unselecting packages to remove (#25653)
 - make "files" and "changelog" embedded widgets be properly sized (#25533)
