@@ -1741,7 +1741,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install))) : $to_i
                      scroll => 1,
                      yesno => 1) or do {
                          $w->{rwindow}->set_sensitive(1);
-                         return;
+                         return 'canceled';
                      };
 
     gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $w->{real_window});
