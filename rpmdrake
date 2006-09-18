@@ -790,6 +790,9 @@ sub run_treeview_dialog {
 	},  #- checks $_[0] -> hack for partial tree displaying
 	build_tree => sub {
 	    my ($add_node, $flat, $mode) = @_;
+	    my $old_mode if 0;
+	    return if $old_mode eq $mode;
+	    $old_mode = $mode;
 	    my @elems;
 	    my $wait; $wait = statusbar_msg(N("Please wait, listing packages...")) if $MODE ne 'update';
 	    gtkflush();
