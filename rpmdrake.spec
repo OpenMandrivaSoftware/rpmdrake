@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.6
+%define version 3.7
 %define release %mkrel 1
 
 Name: %{name}
@@ -135,6 +135,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Sep 18 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.7-1mdv2007.0
+- edit-urpm-sources: fix canceling "Add"
+- rpmdrake:
+  o fix crash when searching after clicking "Clear" button (#25926)
+  o fix only listing first line of changelog/files list (#25925)
+
 * Mon Sep 18 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.6-1mdv2007.0
 - display a link on security advisory
 - fix looping on resizing (side effect of #25533's fix)
