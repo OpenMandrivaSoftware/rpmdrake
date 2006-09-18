@@ -612,9 +612,13 @@ package Gtk2::Mdv::TextView;
 sub new {
     my ($_class, $icon, $text, $o_options) = @_;
     my $w = Gtk2::TextView->new;
+    my $time if 0;
+    require Time::HiRes;
     $w->signal_connect(size_request => sub {
         my ($w, $requisition) = @_;
         return if !ref($w->{anchors});
+        return if Time::HiRes::clock_gettime() - $time < 0.200;
+        $time = Time::HiRes::clock_gettime();
         foreach my $anchor (@{$w->{anchors}}) {
             $_->set_size_request($requisition->width-30, -1) foreach $anchor->get_widgets;
         }
