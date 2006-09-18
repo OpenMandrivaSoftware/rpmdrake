@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.4
+%define version 3.5
 %define release %mkrel 1
 
 Name: %{name}
@@ -135,6 +135,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Sun Sep 17 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.5-1mdv2007.0
+- do not needlessly reread urpmi database when canceling
+  (un)installation (#25673)
+- do not reload the urpmi db when switching list mode
+- further speedup mode switching (50% less time)
+- fix bogus portuguese tranlation of a menu item
+- fix lost selection on mode switch (#25248)
+- fix displaying update data for updates
+- fix encoding when querying rpm (#25670, #25716)
+- fix listing noy all updates (aka only security, bugfixes or normal updates)
+- fix title (#25666)
+- fix unselecting packages to remove (#25653)
+- make "files" and "changelog" embedded widgets be properly sized (#25533)
+- scroll textview to its top when selecting a new package
+- when launched in remove mode, default to this mode (#25551)
+
 * Sat Sep 16 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.4-1mdv2007.0
 - center "Please wait, reading packages database..." dialog on main
   window
