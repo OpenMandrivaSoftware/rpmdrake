@@ -614,7 +614,7 @@ sub new {
     my $w = Gtk2::TextView->new;
     my $time if 0;
     require Time::HiRes;
-    $w->signal_connect(size_request => sub {
+    $w->signal_connect(size_allocate => sub {
         my ($w, $requisition) = @_;
         return if !ref($w->{anchors});
         return if Time::HiRes::clock_gettime() - $time < 0.200;
