@@ -666,12 +666,18 @@ sub format_pkg_info {
 sub run_treeview_dialog {
     my ($callback_action) = @_;
     my ($urpm, $pkgs, $descriptions);
+    my %filter_methods;
+    my $switch_pkg_list_mode = sub {
+        my ($mode) = @_;
+        return if !$mode;
+        $filter_methods{$mode}->();
+    };
     my $pkgs_provider = sub {
         my ($options, $mode) = @_;
         return if !$mode;
         my $h = &get_pkgs($urpm, $options); # was given (1, @_) for updates
         ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
-        my %filter_methods = (
+        %filter_methods = (
             all => sub { $pkgs = { map { %{$h->{$_}} } qw(installed installable updates) } },
             installed => sub { $pkgs = $h->{installed} },
             non_installed => sub { $pkgs = $h->{installable} },
@@ -687,7 +693,7 @@ sub run_treeview_dialog {
             };
         }
         $filter_methods{mandrake_choices} = $filter_methods{non_installed};
-        $filter_methods{$mode}->();
+        $switch_pkg_list_mode->($mode);
     };
 
     $pkgs_provider->({}, 'all'); # default mode
@@ -1098,7 +1104,7 @@ or you already installed all of them."));
                                          $tree_mode->[0] = $options->{tree_mode};
                                          $tree_flat->[0] = $options->{state}{flat};
                                          $reset_search->();
-                                         slow_func($::main_window->window, sub { $pkgs_provider->({}, $rmodes{$val}) });
+                                         slow_func($::main_window->window, sub { $switch_pkg_list_mode->($rmodes{$val}) });
                                          $options->{rebuild_tree}->();
                                      }
                                  }
