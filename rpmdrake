@@ -593,6 +593,26 @@ sub format_field {
     '<b>' . escape_text_for_TextView_markup_format($str) . '</b>';
 }
 
+package Gtk2::Mdv::TextView;
+
+sub new {
+    my ($_class, $icon, $text, $o_options) = @_;
+    my $w = Gtk2::TextView->new;
+    $w->signal_connect(size_request => sub {
+        my ($w, $requisition) = @_;
+        return if !ref($w->{anchors});
+        foreach my $anchor (@{$w->{anchors}}) {
+            $_->set_size_request($requisition->width-30, -1) foreach $anchor->get_widgets;
+        }
+        1;
+    });
+    $w;
+}
+
+1;
+
+package main;
+
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name, $version) = split_fullname($key);
@@ -1139,7 +1159,7 @@ or you already installed all of them."));
 	);
     }
 
-    my $info = Gtk2::TextView->new;
+    my $info = Gtk2::Mdv::TextView->new;
     $info->set_left_margin(2);
     $info->set_right_margin(15);  #- workaround when right elevator of scrolled window appears
 
