@@ -1114,12 +1114,15 @@ or you already installed all of them."));
         normal => [ 'normal' ],
     );
     my $reset_search;
+    my $old_value;
     my $cbox = gtksignal_connect(Gtk2::ComboBox->new_with_strings([ @modes{ 'all', if_($compssUsers, 'mandrake_choices'),
                                                                               qw(installed non_installed all_updates security bugfix normal)
                                                                           } ],
                                                                   $modes{$default_mode{$MODE} || 'all'}),
                                  changed => sub {
                                      my $val = $_[0]->get_text;
+                                     return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
+                                     $old_value = $val;
                                      if (0 or my @cat = $wanted_categories{$rmodes{$val}}) {
                                          @$mandrakeupdate_wanted_categories = @cat;
                                          $reset_search->();
