@@ -625,7 +625,9 @@ sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name, $version) = split_fullname($key);
     my $update_descr = $descriptions->{$name}{pre};
-    my $s = ugtk2::markup_to_TextView_format(join("\n", format_header($name . ' - ' . $pkgs->{$key}{summary}),
+    my $s = ugtk2::markup_to_TextView_format(join("\n", format_header($name . ' - ' . $pkgs->{$key}{summary}) .
+      # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
+                                                      "\x{200b} \x{feff}" . (' ' x 120),
       if_($update_descr, # is it an update?
 	  format_field(N("Importance: ")) . escape_text_for_TextView_markup_format($descriptions->{$name}{importance}),
 	  format_field(N("Reason for update: ")) . escape_text_for_TextView_markup_format(rpm_description($descriptions->{$name}{pre})),
