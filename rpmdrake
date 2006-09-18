@@ -425,8 +425,8 @@ sub extract_header {
     };
     my $name = my_fullname($pkg->{pkg});
     if ($pkg->{pkg}->flag_installed) {
-	add2hash($pkg, { files => [ split /\n/, chomp_(run_rpm(scalar("rpm -ql $name"))) || N("(none)") ],
-                         changelog => $chg_prepro->(run_rpm(scalar("rpm -q --changelog $name"))) });
+	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(run_rpm("rpm -ql $name"))) || N("(none)") ],
+                         changelog => $chg_prepro->(scalar(run_rpm("rpm -q --changelog $name"))) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist = $medium->{virtual} ? "$medium->{url}/$medium->{with_hdlist}" : "$urpm->{statedir}/$medium->{hdlist}";
