@@ -99,6 +99,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
 	want_base_distro => $want_base_distro,
      transient => $mainw->{real_window},
     ) or return 0;
+    ref $mirror or return;
     my $m = $mirror->{url};
     my $is_update = $mirror->{type} eq 'updates';
     $m .= '/media/main/updates' if $is_update;
