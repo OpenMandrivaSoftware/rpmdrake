@@ -791,6 +791,7 @@ sub run_treeview_dialog {
 	build_tree => sub {
 	    my ($add_node, $flat, $mode) = @_;
 	    my $old_mode if 0;
+	    $mode = $options->{rmodes}{$mode} || $mode;
 	    return if $old_mode eq $mode;
 	    $old_mode = $mode;
 	    my @elems;
@@ -1105,6 +1106,7 @@ or you already installed all of them."));
                  all_updates => N("All updates"), security => N("Security updates"), bugfix => N("Bugfixes updates"), normal => N("Normal updates")
              );
     my %rmodes = reverse %modes;
+    $options->{rmodes} = \%rmodes;
 
     my %default_mode = (install => 'all', # we want the new GUI by default instead of "non_installed"
                         remove => 'installed',
