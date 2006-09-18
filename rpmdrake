@@ -1347,7 +1347,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 			gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback),
 			gtksignal_connect(
 			    $clear_button = Gtk2::Button->new(but(N("Clear"))),
-			    clicked => sub { $reset_search->(); $options->{rebuild_tree}->() },
+			    clicked => sub { $reset_search->() },
 			),
 		    ),
 		    1, $hpaned,
