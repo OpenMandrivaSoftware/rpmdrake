@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.5
+%define version 3.6
 %define release %mkrel 1
 
 Name: %{name}
@@ -135,6 +135,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Mon Sep 18 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.6-1mdv2007.0
+- display a link on security advisory
+- fix looping on resizing (side effect of #25533's fix)
+- prevent dummy "unable to remove package" error dialog (#25680)
+- really reload the package list after installing some packages (#25910)
+
 * Sun Sep 17 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.5-1mdv2007.0
 - do not needlessly reread urpmi database when canceling
   (un)installation (#25673)
