@@ -402,6 +402,14 @@ sub pkg2medium {
 #- encodings; but if a user has a so broken setup we can't do much anyway
 sub localtime2changelog { to_utf8(strftime("%c", localtime($_[0]))) }
 
+sub run_rpm {
+    foreach (qw(LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION LC_ALL)) {
+        local $ENV{$_} = $ENV{$_} . '.UTF-8' if !/UTF-8/;
+    }
+    `@_`
+}
+
+
 sub extract_header {
     my ($pkg, $urpm) = @_;
     my $chg_prepro = sub {
@@ -410,8 +418,8 @@ sub extract_header {
     };
     my $name = my_fullname($pkg->{pkg});
     if ($pkg->{pkg}->flag_installed) {
-	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(`rpm -ql $name`)) || N("(none)") ],
-                         changelog => $chg_prepro->(to_utf8(scalar(`rpm -q --changelog $name`))) });
+	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(run_rpm("rpm -ql $name"))) || N("(none)") ],
+                         changelog => $chg_prepro->(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist = $medium->{virtual} ? "$medium->{url}/$medium->{with_hdlist}" : "$urpm->{statedir}/$medium->{hdlist}";
@@ -814,7 +822,7 @@ or you already installed all of them."));
 			|| uc($a->[0]) cmp uc($b->[0]) } @_ },
 		by_leaves => sub {
 		    my $pkgs_times = 'rpm -q --qf "%{name}-%{version}-%{release} %{installtime}\n" `urpmi_rpm-find-leaves`';
-		    sort { $b->[1] <=> $a->[1] } grep { exists $pkgs->{$_->[0]} } map { [ split ] } `$pkgs_times`;
+		    sort { $b->[1] <=> $a->[1] } grep { exists $pkgs->{$_->[0]} } map { [ split ] } run_rpm($pkgs_times);
 		},
 		flat => sub { no locale; sort { uc($a->[0]) cmp uc($b->[0]) } @_ },
 		by_medium => sub { sort { $a->[2] <=> $b->[2] || uc($a->[0]) cmp uc($b->[0]) } @_ },
@@ -1894,7 +1902,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install))) : $to_i
         foreach my $u (@rpms_upgrade) {
             $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
               and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
-                                      map { chomp_($_) } `rpm -ql $1` ];
+                                      map { chomp_($_) } run_rpm("rpm -ql $1") ];
         }
 	dialog_rpmnew(N("The installation is finished; everything was installed correctly.
 
