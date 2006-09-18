@@ -627,12 +627,11 @@ sub format_pkg_simplifiedinfo {
     ));
     push @$s, [ "\n\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp = Gtk2::Expander->new(format_field(N("Files:")))),
-                       exists $pkgs->{$key}{files}
-                         ? gtktext_insert(Gtk2::TextView->new,
+                       gtktext_insert(Gtk2::TextView->new,
+                                      exists $pkgs->{$key}{files} ?
                                           ugtk2::markup_to_TextView_format('<tt>' . join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}) . '</tt>') #- to highlight information
-                                        )
                            : N("(Not available)"),
-                   ) ];
+                   )) ];
     $exp->set_use_markup(1);
     push @$s, [ "\n\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp2 = Gtk2::Expander->new(format_field(N("Changelog:")))),
