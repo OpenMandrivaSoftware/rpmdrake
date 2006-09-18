@@ -642,10 +642,18 @@ sub format_pkg_simplifiedinfo {
 	  format_field(N("Importance: ")) . escape_text_for_TextView_markup_format($descriptions->{$name}{importance}),
 	  format_field(N("Reason for update: ")) . escape_text_for_TextView_markup_format(rpm_description($descriptions->{$name}{pre})),
       ),
-      '', # extra empty line
-      (escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $descriptions->{$name}{description}) || '<i>' . N("No description") . '</i>'),
-    ));
-    push @$s, [ "\n\n" ];
+      '')); # extra empty line
+    if ($update_descr) {
+        push @$s, [ my $link = gtkshow(Gtk2::LinkButton->new($descriptions->{$name}{URL}, N("Security advisory"))) ];
+        $link->set_uri_hook(sub {
+            my (undef, $url) = @_;
+            run_program::raw({ detach => 1 }, 'www-browser', $url);
+        });
+      }
+
+    push @$s, @{ ugtk2::markup_to_TextView_format(join("\n",
+      (escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $descriptions->{$name}{description}) || '<i>' . N("No description") . '</i>')
+    )) };
     push @$s, [ gtkadd(gtkshow(my $exp = Gtk2::Expander->new(format_field(N("Files:")))),
                        gtktext_insert(Gtk2::TextView->new,
                                       exists $pkgs->{$key}{files} ?
