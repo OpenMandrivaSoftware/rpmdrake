@@ -773,6 +773,7 @@ sub run_treeview_dialog {
 	}
         @to_remove;
     };
+    my $force_rebuild;
     $options = {
 	is_a_package => sub {
          my ($pkg) = @_;
@@ -800,8 +801,9 @@ sub run_treeview_dialog {
 	    my ($add_node, $flat, $mode) = @_;
 	    my $old_mode if 0;
 	    $mode = $options->{rmodes}{$mode} || $mode;
-	    return if $old_mode eq $mode;
+	    return if $old_mode eq $mode && !$force_rebuild;
 	    $old_mode = $mode;
+	    undef $force_rebuild;
 	    my @elems;
 	    my $wait; $wait = statusbar_msg(N("Please wait, listing packages...")) if $MODE ne 'update';
 	    gtkflush();
@@ -1216,6 +1218,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	      or return;
 	}
 	if (!$callback_action->($urpm, $pkgs)) {
+	    $force_rebuild = 1;
 	    $pkgs_provider->({ skip_updating_mu => 1 }, $rmodes{$options->{tree_mode}});
 	    $reset_search->();
 	    $size_selected = 0;
