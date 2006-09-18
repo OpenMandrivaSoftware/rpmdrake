@@ -718,7 +718,9 @@ sub run_treeview_dialog {
         foreach my $importance (qw(bugfix security normal)) {
             $filter_methods{$importance} = sub {
                 $filter_methods{all_updates}->();
-                $pkgs = { grep { $descriptions->{$_}{importance} eq $importance } keys %$pkgs };
+                $pkgs = { map { $_ => $pkgs->{$_} } grep { 
+                    my ($name, $version) = split_fullname($_);
+                    $descriptions->{$name}{importance} eq $importance } keys %$pkgs };
             };
         }
         $filter_methods{mandrake_choices} = $filter_methods{non_installed};
