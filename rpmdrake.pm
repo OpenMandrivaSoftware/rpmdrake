@@ -232,6 +232,7 @@ sub interactive_msg {
 	)
     );
     $d->main;
+    return $d->{retval};
 }
 
 sub interactive_packtable {
