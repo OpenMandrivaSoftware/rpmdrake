@@ -612,13 +612,8 @@ by Mandriva Linux Official Updates.")), %options
 
 sub make_url_mirror {
     my ($mirror) = @_;
-    if ($mirror =~ m!/(?:RPMS|media/main)/?\Z!) {
-	"$mirror/";
-    } else {
-	my ($class, $release) = $mandrake_release =~ /(\S+)\s+release\s+(\S+)/;
-	$class !~ /linux/i and $release = lc($class) . "/$release";  #- handle subdirectory for corporate/clustering/etc
-	"$mirror/$release/main_updates/";
-    }
+    # because updates media do not provide media.cfg yet
+    $mirror . '/media/main/updates'
 }
 
 sub make_url_mirror_dist {

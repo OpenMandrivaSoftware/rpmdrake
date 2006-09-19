@@ -102,7 +102,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
     ref $mirror or return;
     my $m = $mirror->{url};
     my $is_update = $mirror->{type} eq 'updates';
-    $m .= '/media/main/updates' if $is_update; # because updates media do not provide media.cfg yet
+    $m = make_url_mirror($m) if $is_update; # because updates media do not provide media.cfg yet
     my $wait = wait_msg_(N("Please wait, adding media..."));
     my $url = $m;
     my $medium_name;
