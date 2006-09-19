@@ -1278,7 +1278,10 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
-	    slow_func($::main_window->window, sub { $rmodes{$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode})} });
+	    slow_func($::main_window->window, sub {
+                       $force_rebuild = 1;
+                       $rmodes{$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode})};
+                   });
 	    $reset_search->();
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
