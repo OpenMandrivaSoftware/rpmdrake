@@ -104,7 +104,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
     my $is_update = $mirror->{type} eq 'updates';
     $m .= '/media/main/updates' if $is_update;
     my $wait = wait_msg_(N("Please wait, adding media..."));
-    my $url = $want_base_distro ? make_url_mirror_dist($m) : make_url_mirror($m);
+    my $url = $m;
     my $medium_name;
     if ($want_base_distro && !$is_update) {
 	if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
