@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.9
+%define version 3.10
 %define release %mkrel 1
 
 Name: %{name}
@@ -135,6 +135,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Sep 19 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.10-1mdv2007.0
+- new icons
+- fix unselecting an update
+- fix displayed status for selected updates (#25964)
+- merge-all-rpmnew option:
+  o center main window
+  o display a wait message
+  o do not silently do nothing when there's no changes but show it to
+    the user and enable him to delete bogus .rpmnew files (#22744)
+  o fix it (#24930)
+  o increase default width
+
 * Tue Sep 19 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.9-1mdv2007.0
 - rpmdrake:
   o fix crash
