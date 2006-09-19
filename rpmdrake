@@ -1160,7 +1160,7 @@ or you already installed all of them."));
 
                                      if ($options->{tree_mode} ne $val) {
                                          ($options->{tree_mode}) = $val =~ /^by/ ?
-                                           $options->{tree_submode} : $val;
+                                           $options->{tree_submode} : $rmodes{$val};
                                          $tree_mode->[0] = $options->{tree_mode};
                                          $tree_flat->[0] = $options->{state}{flat};
                                          $reset_search->();
@@ -1232,7 +1232,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	}
 	if (!$callback_action->($urpm, $pkgs)) {
 	    $force_rebuild = 1;
-	    $pkgs_provider->({ skip_updating_mu => 1 }, $rmodes{$options->{tree_mode}});
+	    $pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode});
 	    $reset_search->();
 	    $size_selected = 0;
 	    (undef, $size_free) = MDK::Common::System::df('/usr');
@@ -1258,7 +1258,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	    [ N("/_File") . N("/_Update media"), undef, sub {
 		update_sources_interactive($urpm, transient => $w->{real_window})
 		    and do {
-			$pkgs_provider->({ skip_updating_mu => 1 }, $rmodes{$options->{tree_mode}});
+			$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode});
 			$reset_search->();
 			$size_selected = 0;
 			$options->{rebuild_tree}->();
@@ -1278,7 +1278,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
-	    slow_func($::main_window->window, sub { $rmodes{$pkgs_provider->({ skip_updating_mu => 1 }, $rmodes{$options->{tree_mode}})} });
+	    slow_func($::main_window->window, sub { $rmodes{$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode})} });
 	    $reset_search->();
 	    $size_selected = 0;
 	    $options->{rebuild_tree}->();
