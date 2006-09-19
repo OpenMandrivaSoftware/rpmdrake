@@ -101,7 +101,7 @@ $default_list_mode = 'all' if $MODE eq 'install';
 if ($MODE eq 'remove') {
     $default_list_mode = 'installed';
 } elsif ($MODE eq 'update') {
-    $default_list_mode = 'all_updates';
+    $default_list_mode = 'security';
 }
 
 eval { 
@@ -716,10 +716,11 @@ sub format_pkg_info {
 sub run_treeview_dialog {
     my ($callback_action) = @_;
     my ($urpm, $pkgs, $descriptions);
-    my %filter_methods;
+    my (%filter_methods, $force_displaying_group);
     my $switch_pkg_list_mode = sub {
         my ($mode) = @_;
         return if !$mode;
+        $force_displaying_group = 1;
         $filter_methods{$mode}->();
     };
     my $pkgs_provider = sub {
@@ -1038,7 +1039,8 @@ or you already installed all of them."));
 		#- not upgradable (older than what currently installed)
 		exists $pkgs->{$_} or next;
 		$pkgs->{$_}{pkg} or $new_state = 0; #- can't be removed
-		$set_state->($_, $new_state ? ($old_state eq 'installed' ? 'to_remove' : 'to_install') : member($old_state, qw(to_remove installed)) ? 'installed' : 'uninstalled', $detail_tree_model);
+		$set_state->($_, $new_state ? ($old_state eq 'installed' ? 'to_remove' : 'to_install') : member($old_state, qw(to_remove installed)) ? 'installed' : $pkgs->{$_}{pkg}->flag_upgrade ? 'to_update' : 'uninstalled', $detail_tree_model);
+
 		$pkgs->{$_}{selected} = $new_state;
 		$pkgs->{$_}{pkg}
 		    and $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
@@ -1104,7 +1106,8 @@ or you already installed all of them."));
         return if !$iter;
         my $current_group if 0;
         my $new_group = $model->get($iter, 0);
-        return if $current_group eq $new_group;
+        return if $current_group eq $new_group && !$force_displaying_group;
+        undef $force_displaying_group;
         $current_group = $new_group;
         $model && $iter or return;
         my $group = $model->get($iter, 0);
@@ -1135,7 +1138,7 @@ or you already installed all of them."));
 
     my %default_mode = (install => 'all', # we want the new GUI by default instead of "non_installed"
                         remove => 'installed',
-                        update => 'all_updates',
+                        update => 'security',
                     );
     my %wanted_categories = (
         all_updates => [ qw(security bugfix normal) ],
@@ -1153,8 +1156,11 @@ or you already installed all of them."));
                                      my $val = $_[0]->get_text;
                                      return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
                                      $old_value = $val;
-                                     if (0 or my @cat = $wanted_categories{$rmodes{$val}}) {
-                                         @$mandrakeupdate_wanted_categories = @cat;
+                                     $default_list_mode = $val;
+                                     if ($wanted_categories{$rmodes{$val}} and my @cat = @{$wanted_categories{$rmodes{$val}}}) {
+                                         @{$mandrakeupdate_wanted_categories} = @cat;
+                                     }
+                                     if (0) {
                                          $reset_search->();
                                          $options->{rebuild_tree}->();
                                      }
@@ -1171,7 +1177,7 @@ or you already installed all of them."));
                                      }
                                  }
                              );
-    my $default_radio = $options->{tree_mode} = $MODE eq 'update' ? 'all_updates' :  $options->{tree_mode} || $default_mode{$MODE} || 'mandrake_choices';
+    my $default_radio = $options->{tree_mode} = $default_list_mode;
     $cbox->set_text($modes{$default_radio});
 
 	my $radio_by;
@@ -1653,7 +1659,7 @@ sub dialog_rpmnew {
 	-r $rpmnew && -r $rpmsave && (stat $rpmsave)[9] > (stat $rpmnew)[9] and $rpmfile = 'rpmsave';
 	$rpmfile eq 'rpmsave' and $rpmnew = $rpmsave;
 	my @diff = `/usr/bin/diff -u '$file' '$rpmnew'`;
-	return if !@diff;
+	@diff = N("(none)") if !@diff;
 	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $w->{real_window});
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my %texts;
@@ -2032,13 +2038,15 @@ sub perform_removal {
 
 if ($options{'merge-all-rpmnew'}) {
     my %pkg2rpmnew;
+    my $wait = wait_msg_(N("Please wait, searching..."));
     print "Searching .rpmnew and .rpmsave files...\n";
-    db->traverse(sub {
+    $db->traverse(sub {
 		     my $n = my_fullname($_[0]);
 		     $pkg2rpmnew{$n} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") } map { chomp_($_) } $_[0]->files ];
 		 });
     print "done.\n";
-    $typical_width = 280;
+    undef $wait;
+    $typical_width = 330;
     dialog_rpmnew('', %pkg2rpmnew) and print "Nothing to do.\n";
     myexit(0);
 }
