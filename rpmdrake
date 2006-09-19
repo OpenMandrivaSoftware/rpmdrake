@@ -1433,7 +1433,7 @@ sub get_pkgs {
                             N("A fatal error occurred: %s.", $_[1]));
             myexit(-1) if 0; #FIXME
         };
-    if (0) { # TODO/FIXME: renew me (w/o exit on fatal error)
+    if (member($default_list_mode, qw(all_updates security bugfix normal))) {
 	unless ($options{'no-media-update'}) {
 	    if (@update_medias > 0) {
 		if (!$opts->{skip_updating_mu}) {
@@ -1457,7 +1457,7 @@ Then, restart %s.", $rpmdrake::myname_update));
 		    myexit(-1);
 		}
 	      mu_retry_another_mirror:
-		my $mirror = choose_mirror(if_(exists $w->{real_window}, transient => $w->{real_window}));
+		my ($mirror) = choose_mirror(if_(exists $w->{real_window}, transient => $w->{real_window}));
 		my $m = ref($mirror) ? $mirror->{url} : '';
 		$m or interactive_msg_(N("How to choose manually your mirror"),
 N("You may also choose your desired mirror manually: to do so,
