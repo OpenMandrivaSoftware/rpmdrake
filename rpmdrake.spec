@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.7
+%define version 3.9
 %define release %mkrel 1
 
 Name: %{name}
@@ -19,7 +19,7 @@ Summary: Mandriva Linux graphical front end for sofware installation/removal
 Requires: perl-MDK-Common >= 1.1.18-2mdk
 Requires: urpmi >= 4.8.4
 Requires: perl-URPM >= 1.40
-Requires: drakxtools >= 10.4.74-1mdv2007.0
+Requires: drakxtools >= 10.4.77-1mdv2007.0
 Requires: rpmtools >= 5.0.5
 Requires: packdrake >= 5.0.5
 Requires: perl-Gtk2 >= 1.054-1mdk
@@ -135,6 +135,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Tue Sep 19 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.9-1mdv2007.0
+- rpmdrake:
+  o fix crash
+  o force displaying of group on mode switching (#25955)
+
+* Tue Sep 19 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.8-1mdv2007.0
+- for official releases, use new mirror API to ask for only update or
+  distrib media
+- keep internal state untranslated (#25774)
+- prevent blank screen after reloading db from menu
+- MandrivaUpdate:
+  o fix crash
+  o fix listing updates
+  o offer to add an update media in on startup if needed (#25708)
+
 * Mon Sep 18 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.7-1mdv2007.0
 - edit-urpm-sources: fix canceling "Add"
 - rpmdrake:
