@@ -415,7 +415,7 @@ sub run_rpm {
         local $ENV{$_} = $ENV{$_} . '.UTF-8' if !/UTF-8/;
     }
     my @l = map { to_utf8($_) } `@_`;
-    wantarray() ? do { print "ARRAY\n" ; @l } : do { print "SCALAR\n"; join('', @l) };
+    wantarray() ? @l : join('', @l);
 }
 
 
