@@ -733,13 +733,16 @@ sub run_treeview_dialog {
             installed => sub { $pkgs = $h->{installed} },
             non_installed => sub { $pkgs = $h->{installable} },
             #mandrake_choices => sub { $pkgs =  },
-            all_updates => sub { $pkgs = $h->{updates} },
+            all_updates => sub {
+                my %pkgs = grep { my $p = $h->{installable}{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } keys %{$h->{installable}};
+                $pkgs = { map { $_ => $h->{installable}{$_} } keys %pkgs },
+            },
             #security => sub { $pkgs =  },
             #normal => sub { $pkgs =  }
         );
         foreach my $importance (qw(bugfix security normal)) {
             $filter_methods{$importance} = sub {
-                $filter_methods{all_updates}->();
+                $pkgs = $h->{updates};
                 $pkgs = { map { $_ => $pkgs->{$_} } grep { 
                     my ($name, $version) = split_fullname($_);
                     $descriptions->{$name}{importance} eq $importance } keys %$pkgs };
