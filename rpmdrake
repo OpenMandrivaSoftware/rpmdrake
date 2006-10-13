@@ -1428,8 +1428,18 @@ sub get_pkgs {
     my %update_descr;
     my @update_medias;
 
+    my $error_happened;
+    my $fatal_handler = sub {
+        $error_happened = 1;
+        interactive_msg_(N("Fatal error"),
+                         N("A fatal error occurred: %s.", $_[1]));
+        myexit(-1) if 0; #FIXME
+    };
+
+
     if (!$urpm) {
         $urpm ||= urpm->new;
+        $urpm->{fatal} = $fatal_handler;
         my $media = ref $options{media} ? join(',', @{$options{media}}) : '';
         $urpm->configure(media => $media);
     }
@@ -1437,11 +1447,7 @@ sub get_pkgs {
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 
 
-        $urpm->{fatal} = sub {
-            interactive_msg_(N("Fatal error"),
-                            N("A fatal error occurred: %s.", $_[1]));
-            myexit(-1) if 0; #FIXME
-        };
+        $urpm->{fatal} = $fatal_handler;
     if (member($default_list_mode, qw(all_updates security bugfix normal))) {
 	unless ($options{'no-media-update'}) {
 	    if (@update_medias > 0) {
