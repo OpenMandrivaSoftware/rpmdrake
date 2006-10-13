@@ -1268,6 +1268,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	    [ N("/_File") . N("/_Update media"), undef, sub {
 		update_sources_interactive($urpm, transient => $w->{real_window})
 		    and do {
+			$force_rebuild = 1;
 			$pkgs_provider->({ skip_updating_mu => 1 }, $options->{tree_mode});
 			$reset_search->();
 			$size_selected = 0;
