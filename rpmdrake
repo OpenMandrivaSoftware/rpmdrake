@@ -1442,6 +1442,10 @@ sub get_pkgs {
         $urpm->{fatal} = $fatal_handler;
         my $media = ref $options{media} ? join(',', @{$options{media}}) : '';
         $urpm->configure(media => $media);
+        if ($error_happened) {
+            touch('/etc/urpmi/urpmi.cfg');
+            exec('edit-urpm-sources.pl');
+        }
     }
     my $statedir = $urpm->{statedir};
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
