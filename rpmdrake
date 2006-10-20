@@ -833,7 +833,7 @@ sub run_treeview_dialog {
 		}
 	    } else {
 		my @keys = keys %$pkgs;
-		if ($MODE eq 'update') {
+		if (member($mode, qw(all_updates security bugfix normal))) {
 		    @keys = grep {
 			my ($name) = split_fullname($_);
 			member($descriptions->{$name}{importance}, @$mandrakeupdate_wanted_categories)
