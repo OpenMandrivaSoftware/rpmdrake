@@ -1603,8 +1603,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	$pkg->flag_upgrade or next;
         my $selected = 0;
 
-	if (member(pkg2medium($pkg, $urpm)->{name}, @updates_media_names)) { # TODO/FIXME: for updates
-            $pkg->flag_installed or next;
+	if (member(pkg2medium($pkg, $urpm)->{name}, @updates_media_names) && $pkg->flag_installed) { # TODO/FIXME: for updates
             any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next;
             if ($options{'pkg-sel'} || $options{'pkg-nosel'}) {
 		my $n = urpm_name($pkg);
