@@ -7,7 +7,7 @@
 ##################################################################
 
 %define name rpmdrake
-%define version 3.11
+%define version 3.12
 %define release %mkrel 1
 
 Name: %{name}
@@ -135,6 +135,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/park-rpmdrake
 
 %changelog
+* Fri Oct 13 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.12-1mdv2007.1
+- enable to see all updates too when not started as MandrivaUpdate
+- fix empty list after updating media from "File" menu (#26290)
+- if /etc/urpmi/urpmi.cfg doesn't exists, prevent urpmi to kill
+  rpmdrake, create an empty config file and run edit-urpm-sources
+  instead (#26533)
+- show non installed updates in "non installed" list too (#26656)
+
 * Tue Sep 26 2006 Thierry Vignaud <tvignaud@mandriva.com> 3.11-1mdv2007.0
 - fix icon state on unselecting (#26126)
 - in "all updates" mode, list again packages without an importance
