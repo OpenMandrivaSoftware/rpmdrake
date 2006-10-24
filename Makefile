@@ -51,7 +51,7 @@ tar:
 	cd ../t; \
 	cp -a ../rpmdrake .; \
 	mv rpmdrake rpmdrake-$(VERSION); \
-	find -name "CVS" | xargs rm -rf; \
+	find -name ".svn" | xargs rm -rf; \
 	tar jcvf ../rpmdrake-$(VERSION).tar.bz2 rpmdrake-$(VERSION); \
 	cd ..; \
 	rm -rf t
@@ -60,7 +60,7 @@ dis: clean
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
 	mkdir -p $(NAME)-$(VERSION)
 	find . -not -name "$(NAME)-$(VERSION)"|cpio -pd $(NAME)-$(VERSION)/
-	find $(NAME)-$(VERSION) -type d -name CVS -o -name .cvsignore |xargs rm -rf
+	find $(NAME)-$(VERSION) -type d -name .svn -o -name .cvsignore |xargs rm -rf
 	tar cf ../$(NAME)-$(VERSION).tar $(NAME)-$(VERSION)
 	bzip2 -9f ../$(NAME)-$(VERSION).tar
 	rm -rf $(NAME)-$(VERSION)
