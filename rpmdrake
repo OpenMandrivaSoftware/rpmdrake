@@ -477,7 +477,10 @@ sub extract_header {
              $retries++;
              -d $headersdir or warn qq(Could not create temporary directory "$headersdir");
          }
-         -d $headersdir or die qq(Could not create temporary directory "$headersdir");
+         -d $headersdir or  do {
+             warn "Warning, could not extract header!";
+             goto header_non_available;
+	    };
 	    $packer->extract_archive($headersdir, $p->header_filename);
 	    $p->update_header("$headersdir/" . $p->header_filename) or do {
 		warn "Warning, could not extract header!";
