@@ -1225,6 +1225,11 @@ or you already installed all of them."));
     };
 
     my $do_action = sub {
+        require urpm::sys;
+        if (!urpm::sys::check_fs_writable()) {
+            $urpm->{fatal}(1, N("Error: %s appears to be mounted read-only.", $urpm::sys::mountpoint));
+            return;
+        }
 	if (!int(grep { $pkgs->{$_}{selected} } keys %$pkgs)) {
 	    interactive_msg_(N("You need to select some packages first."), N("You need to select some packages first."));
             return;
