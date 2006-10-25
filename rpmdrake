@@ -1952,7 +1952,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install))) : $to_i
             if ($subtype eq 'start') {
                 if ($type eq 'trans') {
                     gurpm::label(@rpms_install ? N("Preparing packages installation...") : N("Preparing..."));
-                } else {
+                } elsif (defined $pkg) {
                     $something_installed = 1;
                     gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$progress_nb, $total_nb));
                 }
