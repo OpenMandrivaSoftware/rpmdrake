@@ -212,7 +212,7 @@ sub allow_ssh_on_hosts {
     my ($in, $hosts) = @_;
 
     if (! -e public_key()) {
-	my $_w = $in->wait_message('', N("Generating SSH authentication keys"));
+	my $_w = $in->wait_message(N("Please wait"), N("Generating SSH authentication keys"));
 	generate_keygen(private_key());
     }
     eval {
@@ -288,7 +288,7 @@ sub networks_to_scanned_hosts {
     my ($networks) = @_;
     my $nb_hosts = networks_to_nb_hosts($networks);
 
-    my $w = ugtk2->new('drakpark');
+    my $w = ugtk2->new(N("Please wait"));
     $w->{real_window}->set_transient_for($::main_window);
     ugtk2::set_main_window_size($w);
     my $progress = Gtk2::ProgressBar->new;
@@ -427,16 +427,16 @@ sub group_modify {
 		$tree->expand_row($tree_model->get_path($iter), 0);
 	    } else {
 		$widgets{scan}->set_sensitive(0);
-		$in->ask_warn('', ($network ? N("You can't scan an IP address.") : '') . N("Select a network"));
+		$in->ask_warn(N("Warning"), ($network ? N("You can't scan an IP address.") : '') . N("Select a network"));
 	    }
 	});
     }
 
     $widgets{network}->signal_connect(clicked => sub {
-	my $s = $in->ask_from_entry('', N("Enter a network (eg: 192.168.1.0/28) or a IP")) or return;
+	my $s = $in->ask_from_entry(N("Information"), N("Enter a network (eg: 192.168.1.0/28) or a IP")) or return;
 	my $network = string_to_network($s);
 	if (0) {
-	    $in->ask_yesorno('', N("The network %s is public, not a local network (scanning over internet could be illegal)
+	    $in->ask_yesorno(N("Warning"), N("The network %s is public, not a local network (scanning over internet could be illegal)
 Do you really want to use this network?"));
 	}
 	push @{$group->{networks}}, $network;
