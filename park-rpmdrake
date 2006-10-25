@@ -289,6 +289,7 @@ sub networks_to_scanned_hosts {
     my $nb_hosts = networks_to_nb_hosts($networks);
 
     my $w = ugtk2->new('drakpark');
+    $w->{real_window}->set_transient_for($::main_window);
     ugtk2::set_main_window_size($w);
     my $progress = Gtk2::ProgressBar->new;
 
@@ -443,6 +444,8 @@ Do you really want to use this network?"));
     });
 
     my $mainw = ugtk2->new(N("Urpmi Parallel Group chooser"));
+    $mainw->{real_window}->set_transient_for($::main_window);
+    local $::main_window = $mainw->{real_window};
     ugtk2::set_main_window_size($mainw);
     gtkadd($mainw->{window},
 	   gtkpack_(Gtk2::VBox->new,
@@ -534,6 +537,7 @@ sub group_chooser {
     interactive::gtk::add_modify_remove_sensitive(\@buttons, $list_for_interactive);
 
     my $mainw = ugtk2->new(N("Urpmi Parallel Group chooser"));
+    $::main_window = $mainw->{real_window};
     gtkadd($mainw->{window},
 	   gtkpack_(Gtk2::VBox->new,
 		    1, create_scrolled_window($treelist),
