@@ -1978,7 +1978,6 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install))) : $to_i
 	    callback_close => sub {
 		my ($urpm, undef, $pkgid) = @_;
 		return unless defined $pkgid;
-		return if $MODE ne 'install' && $MODE ne 'update';
 		my $pkg = $urpm->{depslist}[$pkgid];
 		my $fullname = $pkg->fullname;
 		my $trtype = (any { /\Q$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
