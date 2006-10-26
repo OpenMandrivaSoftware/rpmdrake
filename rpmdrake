@@ -1307,7 +1307,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	$w->{real_window},
 	[ N("/_File"), undef, undef, undef, '<Branch>' ],
 	if_(
-	    $MODE ne 'remove' && ! $>,
+	    ! $>,
 	    [ N("/_File") . N("/_Update media"), undef, sub {
 		update_sources_interactive($urpm, transient => $w->{real_window})
 		    and do {
