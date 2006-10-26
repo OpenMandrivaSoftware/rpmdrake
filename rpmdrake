@@ -1334,8 +1334,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	    $reset_search->();
 	    $size_selected = 0;
 	    $force_displaying_group = 1;
-	    $force_rebuild = 1;
-	    $options->{rebuild_tree}->();
+	    $options->{widgets}->{detail_tree_model}->clear;
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
 	    slow_func($::main_window->window, sub {
