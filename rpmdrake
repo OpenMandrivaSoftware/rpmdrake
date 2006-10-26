@@ -1079,8 +1079,12 @@ or you already installed all of them."));
 		#- some deps may exist on some packages which aren't listed because
 		#- not upgradable (older than what currently installed)
 		exists $pkgs->{$_} or next;
-		$pkgs->{$_}{pkg} or $new_state = 0; #- can't be removed
-		$pkgs->{$_}{selected} = $new_state;
+          if (!$pkgs->{$_}{pkg}) { #- can't be removed  # FIXME; what about next packages in the loop?
+              $pkgs->{$_}{selected} = 0;
+              log::explanations("can't be removed: $_");
+          } else {
+              $pkgs->{$_}{selected} = $new_state;
+          }
 		$set_state->($_, $options->{node_state}($_), $detail_tree_model);
 		$pkgs->{$_}{pkg}
 		    and $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
