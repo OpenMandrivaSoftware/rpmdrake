@@ -1333,6 +1333,8 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	    $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
 	    $reset_search->();
 	    $size_selected = 0;
+	    $force_displaying_group = 1;
+	    $force_rebuild = 1;
 	    $options->{rebuild_tree}->();
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
