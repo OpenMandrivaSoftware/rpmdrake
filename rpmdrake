@@ -456,7 +456,7 @@ sub extract_header {
 	[ map { [ "$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
     };
     my $name = my_fullname($pkg->{pkg});
-    if ($pkg->{pkg}->flag_installed) {
+    if ($pkg->{pkg}->flag_installed && !$pkg->{pkg}->flag_upgrade) {
 	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(run_rpm("rpm -ql $name"))) || N("(none)") ],
                          changelog => $chg_prepro->(scalar(run_rpm("rpm -q --changelog $name"))) });
     } else {
