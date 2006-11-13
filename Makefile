@@ -59,7 +59,7 @@ tar:
 dis: clean
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
 	mkdir -p $(NAME)-$(VERSION)
-	find . -not -name "$(NAME)-$(VERSION)"|cpio -pd $(NAME)-$(VERSION)/
+	find . -not -name "$(NAME)-$(VERSION)"|cpio -pld $(NAME)-$(VERSION)/
 	find $(NAME)-$(VERSION) -type d -name .svn -o -name .cvsignore |xargs rm -rf
 	tar cf ../$(NAME)-$(VERSION).tar $(NAME)-$(VERSION)
 	bzip2 -9f ../$(NAME)-$(VERSION).tar
