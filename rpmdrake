@@ -76,6 +76,8 @@ if ($collation_locale) {
   $collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8");
 }
 
+*urpm::msg::translate = \&common::translate;
+
 our %options;
 foreach (@ARGV) {
     /^-?-(\S+)$/ or next;
@@ -1923,7 +1925,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
         gurpm::label(N("Verifying package signatures..."));
         my $total = @rpms_install + @rpms_upgrade;
         my $progress;
-	my @invalid_sources = map { c::set_tagged_utf8($_); $_ } $urpm->check_sources_signatures(
+	my @invalid_sources = $urpm->check_sources_signatures(
 	    \%sources_install, \%sources,
 	    translate => 1, basename => 1,
 	    callback => sub {
@@ -1955,7 +1957,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
         my $something_installed;
         my $callback_inst = sub {
             my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
-            my $pkg = defined $id && $urpm->{depslist}[$id];
+            my $pkg = defined $id ? $urpm->{depslist}[$id] : undef;
             if ($subtype eq 'start') {
                 if ($type eq 'trans') {
                     gurpm::label(@rpms_install ? N("Preparing packages installation...") : N("Preparing..."));
