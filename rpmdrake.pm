@@ -27,6 +27,7 @@ package rpmdrake;
 use lib qw(/usr/lib/libDrakX);
 use urpm::download ();
 use urpm::prompt;
+use urpm::media;
 
 use MDK::Common;
 use MDK::Common::System;
@@ -688,7 +689,7 @@ sub update_sources {
     my @media; @media = @{$options{medialist}} if ref $options{medialist};
     my $outerfatal = $urpm->{fatal};
     local $urpm->{fatal} = sub { $w->destroy; $outerfatal->(@_) };
-    $urpm->update_media(
+    urpm::media::update_media($urpm,
 	%options,
 	callback => sub {
 	    $cancel and goto cancel_update;
@@ -774,7 +775,7 @@ sub update_sources_interactive {
 	foreach (@{$urpm->{media}}) {
 	    $_->{modified} and delete $_->{ignore};
 	}
-        $urpm->select_media(@media);
+        urpm::media::select_media($urpm, @media);
         update_sources_check(
 	    $urpm,
 	    {},
@@ -794,9 +795,9 @@ sub add_medium_and_check {
     local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = $_[1]; goto fatal_error };
     local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, $_[0] };
     if ($options->{distrib}) {
-	@newnames = $urpm->add_distrib_media(@_);
+	@newnames = urpm::media::add_distrib_media($urpm, @_);
     } else {
-	$urpm->add_medium(@_);
+	urpm::media::add_medium($urpm, @_);
     }
     if (@error_msgs) {
         interactive_msg(
