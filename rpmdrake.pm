@@ -107,7 +107,7 @@ our $myname_update = $rpmdrake::branded ? N("Software Update") : N("Mandriva Lin
 sub rpmdrake::prompt::prompt {
     my ($self) = @_;
     my @answers;
-    my $d = ugtk2->new("", grab => 1, transient => 1);
+    my $d = ugtk2->new("", grab => 1, if_($::main_window, transient => $::main_window));
     $d->{rwindow}->set_position('center_on_parent');
     gtkadd(
 	$d->{window},
