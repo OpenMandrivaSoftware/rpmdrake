@@ -42,6 +42,7 @@ and [options] are from
 }
 
 use lib qw(/usr/lib/libDrakX);
+use urpm;
 use common;
 
 require_root_capability();
@@ -109,7 +110,7 @@ to your system from that new medium.", $names[0])
 };
 
 my $urpm = urpm->new;
-$urpm->read_config; 
+urpm::media::read_config($urpm);
 my $success = 1;
 for (@addmedia_args) {
     #- NB: that short circuits
