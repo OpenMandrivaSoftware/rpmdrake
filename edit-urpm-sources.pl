@@ -30,6 +30,9 @@ use rpmdrake;
 use URPM::Signature;
 use POSIX qw(_exit);
 use MDK::Common qw(max);
+use urpm::media;
+use urpm::download;
+use urpm::lock;
 
 BEGIN { #- for mcc
     if ("@ARGV" =~ /--embedded (\w+)/) {
@@ -202,7 +205,7 @@ sub add_callback {
 	);
 	$notebook->append_page(
 	    gtkshow(create_packtable(
-		{ xpadding => , ypadding => 0 },
+		{ xpadding => 0, ypadding => 0 },
 		[ gtkset_alignment(Gtk2::Label->new(N("Name:")), 0, 0.5),
 		    $info->{name_entry} = gtkentry('') ],
 		[ gtkset_alignment(Gtk2::Label->new($info->{url}), 0, 0.5),
@@ -301,8 +304,8 @@ really want to replace it?"), yesno => 1) or return 0;
 	    );
 	} else {
 	    if (member($i{name}, map { $_->{name} } @{$urpm->{media}})) {
-		$urpm->select_media($i{name});
-		$urpm->remove_selected_media;
+		urpm::media::select_media($urpm, $i{name});
+		urpm::media::remove_selected_media($urpm);
 	    }
 	    add_medium_and_check(
 		$urpm,
@@ -322,7 +325,7 @@ sub options_callback {
 	{ name => N("never"),  value => 0 },
     );
     my @verif_radio = gtkradio($verif_radio_infos[$urpm->{options}{'verify-rpm'} ? 0 : 1]{name}, map { $_->{name} } @verif_radio_infos);
-    my @avail_downloaders = grep { -f "/usr/bin/$_" } qw(curl wget);
+    my @avail_downloaders = urpm::download::available_ftp_http_downloaders();
     my @downl_radio = gtkradio($urpm->{options}{downloader} || $avail_downloaders[0], @avail_downloaders);
     gtkadd(
 	$w->{window},
@@ -343,9 +346,9 @@ sub options_callback {
 			    $downl_radio[$i]->get_active
 				and $urpm->{global_config}{downloader} = $avail_downloaders[$i];
 			}
-			$urpm->write_config;
+			urpm::media::write_config($urpm);
 			$urpm = urpm->new;
-			$urpm->read_config;
+			urpm::media::read_config($urpm);
 			Gtk2->main_quit;
 		    },
 		),
@@ -366,10 +369,7 @@ sub remove_callback {
     ) or return;
 
     my $wait = wait_msg_(N("Please wait, removing medium..."));
-    my $name = $urpm->{media}[$row]{name};
-    $urpm->select_media($name);
-    $urpm->remove_selected_media;
-    $urpm->update_media(noclean => 1, nolock => 1);
+    urpm::media::remove_media($urpm, [ $urpm->{media}[$row] ]);
     remove_wait_msg($wait);
 }
 
@@ -381,7 +381,7 @@ sub renum_media ($$$) {
     my $i = 1;
     $_->{priority} = $i++ foreach @{$urpm->{media}};
     $model->swap(@iters);
-    $urpm->write_config; $urpm = urpm->new; $urpm->read_config;
+    urpm::media::write_config($urpm); $urpm = urpm->new; urpm::media::read_config($urpm);
 }
 
 sub upwards_callback {
@@ -448,8 +448,8 @@ sub edit_callback {
 	);
 	my $saved_proxy = urpm::download::get_proxy($name);
 	undef $saved_proxy if !defined $saved_proxy->{http_proxy} && !defined $saved_proxy->{ftp_proxy};
-	$urpm->select_media($name);
-	$urpm->remove_selected_media;
+	urpm::media::select_media($urpm, $name);
+	urpm::media::remove_selected_media($urpm);
 	add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, $with_hdlist, update => $update);
 	return $name;
     }
@@ -780,9 +780,9 @@ sub keys_callback {
         @keys = map { [ split /[,\s]+/, $_->{'key-ids'} ] } @{$urpm->{media}};
     };
     my $write = sub {
-        $urpm->write_config;
+        urpm::media::write_config($urpm);
         $urpm = urpm->new;
-        $urpm->read_config;
+        urpm::media::read_config($urpm);
         $read_conf->();
         $media_list->get_selection->signal_emit('changed');
     };
@@ -913,7 +913,7 @@ sub mainwindow {
 		sub {
 		    my (undef, undef, $iter) = @_;
 		    my $name = $model->get($iter, 2);
-		    push @media, find { $_->{name} eq $name } @{$urpm->{media}};
+		    push @media, urpm::media::name2medium($urpm, $name);
 		    0;
 		}, undef);
 	    @{$urpm->{media}} = @media;
@@ -931,7 +931,7 @@ sub mainwindow {
 	    my $iter = $list->get_iter_from_string($path);
 	    $urpm->{media}[$path]{ignore} = !$urpm->{media}[$path]{ignore} || undef;
 	    $list->set($iter, 0, !$urpm->{media}[$path]{ignore});
-	    $urpm->write_config;
+	    urpm::media::write_config($urpm);
 	    my $ignored = $urpm->{media}[$path]{ignore};
 	    $reread_media->();
 	    if (!$ignored && $urpm->{media}[$path]{ignore}) {
@@ -957,13 +957,13 @@ sub mainwindow {
 	my ($name) = @_;
         $reorder_ok = 0;
 	$urpm = urpm->new;
-	$urpm->read_config;
+	urpm::media::read_config($urpm);
 	if (defined $name) {
 	    #- this media must be reconstructed since editing it failed
-	    foreach (grep { $_->{name} eq $name } @{$urpm->{media}}) {
-		delete $_->{ignore};
+	    if (my $medium = urpm::media::name2medium($urpm, $name)) {
+		delete $medium->{ignore};
 	    }
-	    $urpm->select_media($name);
+	    urpm::media::select_media($urpm, $name);
 	    update_sources_check(
 		$urpm,
 		{ nolock => 1 },
@@ -1048,6 +1048,7 @@ or to perform updates.")), yesno => 1) or myexit -1;
     push @$already_splashed, basename($0);
 }
 
+my $_lock;
 {
     $urpm = urpm->new;
     local $urpm->{fatal} = sub {
@@ -1058,11 +1059,12 @@ manager on another desktop, or are you currently installing
 packages as well?)."));
         myexit -1;
     };
-    $urpm->exlock_urpmi_db;
+    # lock urpmi DB
+    $_lock = urpm::lock::urpmi_db($urpm, 'exclusive');
 }
 
 mainwindow();
-$urpm->write_config;
+urpm::media::write_config($urpm);
 
 writeconf();
 
