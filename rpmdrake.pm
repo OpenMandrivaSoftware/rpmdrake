@@ -813,10 +813,10 @@ sub add_medium_and_check {
     }
 
     if (update_sources_check($urpm, $options, N_("Unable to add medium, errors reported:\n\n%s"), @newnames)) {
-        $urpm->write_config;
+        urpm::media::write_config($urpm);
 	$options->{proxy} and urpm::download::dump_proxy_config();
     } else {
-	$urpm->read_config;
+	urpm::media::read_config($urpm);
         return 0;
     }
 
@@ -851,7 +851,7 @@ It will be disabled.",
 		    $_->{name}, $mdk_version)
 	    );
 	    $_->{ignore} = 1;
-	    $urpm->write_config if -w $urpm->{config};
+	    urpm::media::write_config($urpm) if -w $urpm->{config};
 	    return 0;
 	}
     }
