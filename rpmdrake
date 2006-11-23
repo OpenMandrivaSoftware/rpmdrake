@@ -62,6 +62,10 @@ BEGIN { #- for mcc
 }
 
 use rpmdrake;
+use urpm::install;
+use urpm::signature;
+use urpm::get_pkgs;
+use urpm::select;
 
 #- This is needed because text printed by Gtk2 will always be encoded
 #- in UTF-8; we first check if LC_ALL is defined, because if it is,
@@ -189,9 +193,9 @@ my $changelog_first;
 my $treeview_dialog_run = 0;
 our $statusbar;
 
-sub interactive_msg_  {  interactive_msg(@_, if_(exists $w->{real_window}, transient => $w->{real_window})) }
-sub interactive_list_ { interactive_list(@_, if_(exists $w->{real_window}, transient => $w->{real_window})) }
-sub wait_msg_         {         wait_msg(@_, if_(exists $w->{real_window}, transient => $w->{real_window})) }
+sub interactive_msg_  {  interactive_msg(@_, if_($::main_window, transient => $::main_window)) }
+sub interactive_list_ { interactive_list(@_, if_($::main_window, transient => $::main_window)) }
+sub wait_msg_         {         wait_msg(@_, if_($::main_window, transient => $::main_window)) }
 sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded && !$treeview_dialog_run; &statusbar_msg }
 sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg_ }
 
@@ -775,7 +779,10 @@ sub run_treeview_dialog {
             #mandrake_choices => sub { $pkgs =  },
             all_updates => sub {
                 my %pkgs = grep { my $p = $h->{installable}{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } keys %{$h->{installable}};
-                $pkgs = { map { $_ => $h->{installable}{$_} } keys %pkgs },
+                $pkgs = {
+                    (map { $_ => $pkgs->{$_} } keys %{$h->{updates}}),
+                    (map { $_ => $h->{installable}{$_} } keys %pkgs)
+                };
             },
             #security => sub { $pkgs =  },
             #normal => sub { $pkgs =  }
@@ -1040,12 +1047,12 @@ or you already installed all of them."));
 		    }
 
 		    if (my @cant = sort(difference2(\@nodes, \@nodes_with_deps))) {
-			my @ask_unselect = $urpm->unselected_packages($urpm->{state});
+			my @ask_unselect = urpm::select::unselected_packages($urpm, $urpm->{state});
 			my @reasons = map {
 			    my $cant = $_;
 			    my $unsel = find { remove_arch($_) eq $cant } @ask_unselect;
 			    $unsel
-			    ? join("\n", $urpm->translate_why_unselected($urpm->{state}, $unsel))
+			    ? join("\n", urpm::select::translate_why_unselected($urpm, $urpm->{state}, $unsel))
 			    : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
 			} @cant;
 			interactive_msg_(
@@ -1491,7 +1498,7 @@ sub get_pkgs {
         $urpm ||= urpm->new;
         $urpm->{fatal} = $fatal_handler;
         my $media = ref $options{media} ? join(',', @{$options{media}}) : '';
-        $urpm->configure(media => $media);
+        urpm::media::configure($urpm, media => $media);
         if ($error_happened) {
             touch('/etc/urpmi/urpmi.cfg');
             exec('edit-urpm-sources.pl');
@@ -1618,7 +1625,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	});
     my $group;
     if ($options{parallel} && (($group) = @{$options{parallel}})) {
-        $urpm->configure(parallel => $group);
+        urpm::media::configure($urpm, parallel => $group);
     }
 
 
@@ -1840,7 +1847,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     }
 
     my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}};
-    my ($local_sources, $list, $local_to_removes) = $urpm->get_source_packages(
+    my ($local_sources, $list, $local_to_removes) = urpm::get_pkgs::selected2list($urpm, 
 	\%pkgs,
 	clean_all => 1,
     );
@@ -1860,10 +1867,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     # FIXME: $_ is trashed:
     my @pkgs = map { my $c = $_->fullname; $c } sort(grep { $_->flag_selected } @{$urpm->{depslist}});#{ $a->name cmp $b->name } @{$urpm->{depslist}}[keys %{$state->{selected}}];
-    @{$urpm->{ask_remove}} = sort $urpm->removed_packages($urpm->{state});
+    @{$urpm->{ask_remove}} = sort urpm::select::removed_packages($urpm, $urpm->{state});
     my @to_remove = grep { $_ } map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
 
-    my $r = join "\n", $urpm->translate_why_removed($urpm->{state}, @to_remove);
+    my $r = join "\n", urpm::select::translate_why_removed($urpm, $urpm->{state}, @to_remove);
 
     my $install_count = int(@pkgs);
     my $to_install = $install_count ? N("To satisfy dependencies, the following %d packages are going to be installed:\n%s\n", $install_count,
@@ -1910,9 +1917,6 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
 	    }
 	    $canceled and return 'canceled';
 	},
-	limit_rate => $urpm->{options}{'limit-rate'},
-	compress => $urpm->{options}{compress},
-	resume => $urpm->{options}{resume},
     );
     $canceled and goto return_with_error;
     gurpm::invalidate_cancel_forever();
@@ -1925,7 +1929,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
         gurpm::label(N("Verifying package signatures..."));
         my $total = @rpms_install + @rpms_upgrade;
         my $progress;
-	my @invalid_sources = $urpm->check_sources_signatures(
+	my @invalid_sources = urpm::signature::check($urpm,
 	    \%sources_install, \%sources,
 	    translate => 1, basename => 1,
 	    callback => sub {
@@ -1933,6 +1937,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
 	    },
 	);
         if (@invalid_sources) {
+            local $::main_window = $gurpm::mainw->{real_window};
             interactive_msg_(
 		N("Warning"),
 		N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
@@ -1970,11 +1975,10 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
             }
         };
 	my $fh;
-        my @errors = $urpm->install(
+        my @errors = urpm::install::install($urpm,
 	    \@to_remove,
 	    \%sources_install,
 	    \%sources,
-	    translate_message => 1,
 	    post_clean_cache => 1,
 	    callback_open => sub {
 		my ($_data, $_type, $id) = @_;
@@ -1995,7 +1999,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
 	    },
 	);
         gurpm::end();
-        $urpm->try_umounting_removables;
+	urpm::removable::try_umounting_removables($urpm);
 
         if (@errors || @error_msgs) {
             interactive_msg_(
@@ -2048,7 +2052,7 @@ you may now inspect some in order to take actions:"),
 	}
     } else {
         gurpm::end();
-        $urpm->try_umounting_removables;
+	urpm::removable::try_umounting_removables($urpm);
         interactive_msg_(N("Error"),
                          N("Unrecoverable error: no package found for installation, sorry."));
     }
@@ -2079,8 +2083,8 @@ sub perform_removal {
 	$w->{real_window},
 	sub {
 	    @results = $options{parallel}
-		? $urpm->parallel_remove(\@toremove, translate_message => 1)
-		: $urpm->install(\@toremove, {}, {}, translate_message => 1);
+		? urpm::parallel::remove($urpm, \@toremove)
+		: urpm::install::install($urpm,\@toremove, {}, {});
 	    open_db('force_sync');
 	},
     );
