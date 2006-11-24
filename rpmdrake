@@ -1979,7 +1979,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
 	    \@to_remove,
 	    \%sources_install,
 	    \%sources,
-	    post_clean_cache => 1,
+	    post_clean_cache => $urpm->{options}{'post-clean'},
 	    callback_open => sub {
 		my ($_data, $_type, $id) = @_;
 		my $f = $sources_install{$id} || $sources{$id};
