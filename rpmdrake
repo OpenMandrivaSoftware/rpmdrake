@@ -473,7 +473,7 @@ sub extract_header {
 	    my $packer;
          require MDV::Packdrakeng; 
          eval { $packer = MDV::Packdrakeng->open (archive => $hdlist, quit => 1) } or do {
-		    warn "Warning, hdlist seems corrupted\n";
+		    warn "Warning, hdlist seems corrupted ($@)\n";
 		    goto header_non_available;
 		};
             my ($headersdir, $retries);
