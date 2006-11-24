@@ -978,7 +978,8 @@ or you already installed all of them."));
 		} else {
 		    return $results eq N("Ok");
 		}
-	    };
+	    }; # deps_msg
+
 	    if (member($old_state, qw(to_remove installed))) {  # remove pacckages
 		if ($new_state) {
 		    my @remove;
