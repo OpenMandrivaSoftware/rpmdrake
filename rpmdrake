@@ -953,7 +953,7 @@ or you already installed all of them."));
 		@deps > 0 or return 1;
 		deps_msg_again:
 		my $results = interactive_msg_(
-		    $title, $msg . formatlistpkg(@deps),
+		    $title, $msg . urpm::select::translate_why_removed($urpm, $urpm->{state}, @deps),
 		    yesno => [ N("Cancel"), N("More info"), N("Ok") ],
 		    scroll => 1,
 		);
