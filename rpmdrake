@@ -471,9 +471,8 @@ sub extract_header {
 	$hdlist =~ s!^file:/+!!;
 	if (-r $hdlist) {
 	    my $packer;
-	    # TODO use more modern API
-	    eval { require packdrake; $packer = new packdrake($hdlist, quiet => 1) }
-		or do {
+         require MDV::Packdrakeng; 
+         eval { $packer = MDV::Packdrakeng->open (archive => $hdlist, quit => 1) } or do {
 		    warn "Warning, hdlist seems corrupted\n";
 		    goto header_non_available;
 		};
@@ -487,7 +486,7 @@ sub extract_header {
              warn "Warning, could not extract header!";
              goto header_non_available;
 	    };
-	    $packer->extract_archive($headersdir, $p->header_filename);
+	    $packer->extract($headersdir, $p->header_filename);
 	    $p->update_header("$headersdir/" . $p->header_filename) or do {
 		warn "Warning, could not extract header!";
 		goto header_non_available;
