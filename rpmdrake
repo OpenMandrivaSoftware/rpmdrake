@@ -1946,6 +1946,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
         }
     }
 
+    my $something_installed;
     if (@rpms_install || @rpms_upgrade || @to_remove) {
         if (my @missing = grep { m|^/| && ! -e $_ } @rpms_install, @rpms_upgrade) {
             interactive_msg_(
@@ -1959,7 +1960,6 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
         }
         my $progress_nb;
         my $total_nb = scalar grep { m|^/| } @rpms_install, @rpms_upgrade;
-        my $something_installed;
         my $callback_inst = sub {
             my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
             my $pkg = defined $id ? $urpm->{depslist}[$id] : undef;
@@ -2059,7 +2059,7 @@ you may now inspect some in order to take actions:"),
 
     $w->{rwindow}->set_sensitive(1);
     statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
-    return 0;
+    return !$something_installed;
 
   fatal_error:
     gurpm::end();
