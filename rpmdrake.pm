@@ -240,6 +240,7 @@ sub interactive_packtable {
     my ($title, $parent_window, $top_label, $lines, $action_buttons) = @_;
     
     my $w = ugtk2->new($title, grab => 1, transient => $parent_window);
+    local $::main_window = $w->{real_window};
     $w->{rwindow}->set_position($parent_window ? 'center_on_parent' : 'center');
     my $packtable = create_packtable({}, @$lines);
 
