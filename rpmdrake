@@ -829,15 +829,8 @@ sub run_treeview_dialog {
     };
 
     my $closure_removal = sub {
-        my @to_remove;
         $urpm->{state} = {};
-	foreach (@_) {
-            $urpm->resolve_rejected($db, $urpm->{state}, $pkgs->{$_}{pkg}, removed => 1);
-            foreach (keys %{$urpm->{state}{rejected}}) {
-                $urpm->{state}{rejected}{$_}{removed} && !$urpm->{state}{rejected}{$_}{obsoleted} and push @to_remove, remove_arch($_);
-            }
-	}
-        @to_remove;
+        urpm::select::find_packages_to_remove($urpm, $urpm->{state}, \@_);
     };
     my $force_rebuild;
     $options = {
