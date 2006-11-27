@@ -1668,6 +1668,9 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		my $n = urpm_name($pkg);
 		$pkg_sel{$n} || $pkg_nosel{$n} or next;
 		$pkg_sel{$n} and $selected = 1;
+	    } else {
+             # selecting updates by default:
+             $selected = 1;
 	    }
 	$updates{my_fullname($pkg)} = { selected => $selected, pkg => $pkg };
 	} else {
