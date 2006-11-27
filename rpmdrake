@@ -781,7 +781,7 @@ sub run_treeview_dialog {
             all_updates => sub {
                 my %pkgs = grep { my $p = $h->{installable}{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } keys %{$h->{installable}};
                 $pkgs = {
-                    (map { $_ => $pkgs->{$_} } keys %{$h->{updates}}),
+                    (map { $_ => $h->{updates}->{$_} } keys %{$h->{updates}}),
                     (map { $_ => $h->{installable}{$_} } keys %pkgs)
                 };
             },
