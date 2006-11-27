@@ -832,7 +832,7 @@ sub run_treeview_dialog {
 
     my $closure_removal = sub {
         $urpm->{state} = {};
-        map { s/\.[^.]*$// } # urpm::select::find_packages_to_remove add spurious arch at end
+        map { s/\.[^.]*$//; $_ } # urpm::select::find_packages_to_remove add spurious arch at end
           urpm::select::find_packages_to_remove($urpm, $urpm->{state}, \@_);
     };
     my $force_rebuild;
