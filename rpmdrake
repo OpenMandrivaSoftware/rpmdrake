@@ -1436,6 +1436,12 @@ Do you really want to install all the selected packages?"), yesno => 1)
 			    clicked => sub { rpmdrake::open_help($MODE) },
 			),
 			1, $status,
+			0, my $select_button = gtksignal_connect(
+			    Gtk2::Button->new(but_(N("Select all"))),
+			    clicked => sub {
+                       $options->{toggle_all}->(1);
+                   },
+			),
 			0, my $action_button = gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Apply"))),
 			    clicked => sub { $do_action->() },
