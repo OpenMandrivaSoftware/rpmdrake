@@ -62,6 +62,7 @@ BEGIN { #- for mcc
 }
 
 use rpmdrake;
+use urpm::lock;
 use urpm::install;
 use urpm::signature;
 use urpm::get_pkgs;
@@ -1840,6 +1841,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         return 0;
     }
 
+    my $_lock = urpm::lock::urpmi_db($urpm, 'exclusive');
     my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}};
     my ($local_sources, $list, $local_to_removes) = urpm::get_pkgs::selected2list($urpm, 
 	\%pkgs,
