@@ -1489,6 +1489,7 @@ sub get_pkgs {
     };
 
 
+    my $_lock = urpm::lock::urpmi_db($urpm);
     if (!$urpm) {
         $urpm ||= urpm->new;
         $urpm->{fatal} = $fatal_handler;
