@@ -30,6 +30,7 @@ use common;
 use POSIX qw(_exit);
 use URPM;
 use utf8;
+BEGIN { $::no_global_argv_parsing = 1 };
 use standalone;
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
