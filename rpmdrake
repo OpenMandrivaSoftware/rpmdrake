@@ -2063,7 +2063,7 @@ you may now inspect some in order to take actions:"),
 
     $w->{rwindow}->set_sensitive(1);
     statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
-    return !$something_installed;
+    return !($something_installed || scalar(@to_remove));
 
   fatal_error:
     gurpm::end();
