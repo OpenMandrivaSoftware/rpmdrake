@@ -371,6 +371,7 @@ sub remove_callback {
     my $wait = wait_msg_(N("Please wait, removing medium..."));
     urpm::media::remove_media($urpm, [ $urpm->{media}[$row] ]);
     remove_wait_msg($wait);
+    return 1
 }
 
 sub renum_media ($$$) {
@@ -988,7 +989,7 @@ sub mainwindow {
 		    Gtk2::VBox->new(0, 5),
 		    gtksignal_connect(
 			$remove = Gtk2::Button->new(but(N("Remove"))),
-			clicked => sub { remove_callback(); $reread_media->() },
+			clicked => sub { remove_callback() and $reread_media->() },
 		    ),
 		    gtksignal_connect(
 			$edit = Gtk2::Button->new(but(N("Edit..."))),
