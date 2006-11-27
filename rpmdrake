@@ -762,7 +762,7 @@ sub format_pkg_info {
 sub run_treeview_dialog {
     my ($callback_action) = @_;
     my ($urpm, $pkgs, $descriptions);
-    my (%filter_methods, $force_displaying_group);
+    my (%filter_methods, $force_displaying_group, @initial_selection, $initial_selection_done);
     my $switch_pkg_list_mode = sub {
         my ($mode) = @_;
         return if !$mode;
@@ -789,6 +789,11 @@ sub run_treeview_dialog {
             #security => sub { $pkgs =  },
             #normal => sub { $pkgs =  }
         );
+        if (!$initial_selection_done) {
+            $filter_methods{all}->();
+            @initial_selection = grep { $pkgs->{$_}{selected} } keys %$pkgs;
+            $initial_selection_done = 1;
+        }
         foreach my $importance (qw(bugfix security normal)) {
             $filter_methods{$importance} = sub {
                 $pkgs = $h->{updates};
@@ -1119,7 +1124,7 @@ or you already installed all of them."));
 	rebuild_tree => sub {},
     };
 
-    if (my @initial_selection = grep { $pkgs->{$_}{selected} } keys %$pkgs) {
+    if (@initial_selection) {
         $options->{initial_selection} = \@initial_selection;
         $pkgs->{$_}{selected} = 0 foreach @initial_selection;
     }
