@@ -1106,7 +1106,12 @@ or you already installed all of them."));
 	    exists $pkgs->{$key} or return [ [ N("Description not available for this package\n") ] ];
 	    exists $pkgs->{$key}{description} && exists $pkgs->{$key}{files}
 		or slow_func($tree->window, sub { extract_header($pkgs->{$key}, $urpm) });
-	    format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions);
+	    my $s;
+         eval { $s = format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions) };
+         if (my $err = $@) {
+             $s = N("A fatal error occurred: %s.", $err);
+         }
+         $s;
 	},
 	check_interactive_to_toggle => sub { 1 },
 	grep_allowed_to_toggle => sub { @_ },
