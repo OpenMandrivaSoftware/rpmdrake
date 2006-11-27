@@ -1048,7 +1048,7 @@ or to perform updates.")), yesno => 1) or myexit -1;
     push @$already_splashed, basename($0);
 }
 
-my $_lock;
+my $lock;
 {
     $urpm = urpm->new;
     local $urpm->{fatal} = sub {
@@ -1060,7 +1060,7 @@ packages as well?)."));
         myexit -1;
     };
     # lock urpmi DB
-    $_lock = urpm::lock::urpmi_db($urpm, 'exclusive');
+    $lock = urpm::lock::urpmi_db($urpm, 'exclusive');
 }
 
 mainwindow();
