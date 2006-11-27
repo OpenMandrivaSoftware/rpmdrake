@@ -1429,13 +1429,14 @@ Do you really want to install all the selected packages?"), yesno => 1)
 			),
 		    ),
 		    1, $hpaned,
+		    0, $status,
 		    0, gtkpack_(
 			Gtk2::HBox->new(0, 20),
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Help"))),
 			    clicked => sub { rpmdrake::open_help($MODE) },
 			),
-			1, $status,
+               1, Gtk2::Label->new,
 			0, my $select_button = gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Select all"))),
 			    clicked => sub {
