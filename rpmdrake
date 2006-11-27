@@ -701,6 +701,7 @@ sub format_pkg_simplifiedinfo {
     push @$s, @{ ugtk2::markup_to_TextView_format(join("\n",
       (escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $descriptions->{$name}{description}) || '<i>' . N("No description") . '</i>')
     )) };
+    push @$s, [ "\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp = Gtk2::Expander->new(format_field(N("Files:")))),
                        gtktext_insert(Gtk2::TextView->new,
                                       exists $pkgs->{$key}{files} ?
