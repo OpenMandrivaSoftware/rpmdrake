@@ -1339,7 +1339,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	    $reset_search->();
 	    $size_selected = 0;
 	    $force_displaying_group = 1;
-	    $options->{widgets}->{detail_tree_model}->clear;
+	    $tree->get_selection->signal_emit('changed');
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
 	    slow_func($::main_window->window, sub {
