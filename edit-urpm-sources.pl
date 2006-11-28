@@ -405,7 +405,7 @@ sub edit_callback {
     my $config = urpm::cfg::load_config_raw($urpm->{config}, 1);
     my ($verbatim_medium) = grep { $medium->{name} eq $_->{name} } @$config;
     my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1,  transient => $mainw->{real_window});
-    my ($url_entry, $hdlist_entry, $url, $with_hdlist);
+    my ($url_entry, $hdlist_entry, $downloader_entry, $url, $with_hdlist, $downloader);
     gtkadd(
 	$w->{window},
 	gtkpack_(
@@ -415,6 +415,7 @@ sub edit_callback {
 		{},
 		[ gtknew('Label_Left', text => N("URL:")), $url_entry = gtkentry($verbatim_medium->{url}) ],
 		[ gtknew('Label_Left', text => N("Relative path to synthesis/hdlist:")), $hdlist_entry = gtkentry($verbatim_medium->{with_hdlist}) ],
+		[ gtknew('Label_Left', text => N("Downloader:")), $downloader_entry = gtkentry($verbatim_medium->{downloader}) ],
 	    ),
 	    0, Gtk2::HSeparator->new,
 	    0, gtkpack(
@@ -428,6 +429,7 @@ sub edit_callback {
 		    clicked => sub {
 			$w->{retval} = 1;
 			($url, $with_hdlist) = ($url_entry->get_text, $hdlist_entry->get_text);
+			$downloader = $downloader_entry->get_text;
 			Gtk2->main_quit;
 		    },
 		),
@@ -452,7 +454,7 @@ sub edit_callback {
 	undef $saved_proxy if !defined $saved_proxy->{http_proxy} && !defined $saved_proxy->{ftp_proxy};
 	urpm::media::select_media($urpm, $name);
 	urpm::media::remove_selected_media($urpm);
-	add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, $with_hdlist, update => $update);
+	add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, $with_hdlist, update => $update, if_($downloader, downloader => $downloader));
 	return $name;
     }
     return undef;
