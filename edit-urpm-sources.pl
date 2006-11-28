@@ -1021,8 +1021,8 @@ sub mainwindow {
 		    gtksignal_connect(Gtk2::Button->new(but(N("Global options..."))), clicked => \&options_callback),
 		    gtkpack(
 			gtknew('HBox'),
-			gtksignal_connect(gtkadd($up_button = gtknew('Button', mnemonic => 0), Gtk2::Arrow->new("up", "none")), clicked => \&upwards_callback),
-			gtksignal_connect(gtkadd($dw_button = gtknew('Button', mnemonic => 0), Gtk2::Arrow->new("down", "none")), clicked => \&downwards_callback),
+			gtksignal_connect($up_button = gtknew('Button', child => Gtk2::Arrow->new("up", "none")), clicked => \&upwards_callback),
+			gtksignal_connect($dw_button = gtknew('Button', child => Gtk2::Arrow->new("down", "none")), clicked => \&downwards_callback),
 		    ),
 		)
 	    ),
