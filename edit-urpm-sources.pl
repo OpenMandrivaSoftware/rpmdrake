@@ -415,7 +415,9 @@ sub edit_callback {
 		{},
 		[ gtknew('Label_Left', text => N("URL:")), $url_entry = gtkentry($verbatim_medium->{url}) ],
 		[ gtknew('Label_Left', text => N("Relative path to synthesis/hdlist:")), $hdlist_entry = gtkentry($verbatim_medium->{with_hdlist}) ],
-		[ gtknew('Label_Left', text => N("Downloader:")), $downloader_entry = gtkentry($verbatim_medium->{downloader}) ],
+		[ gtknew('Label_Left', text => N("Downloader:")),
+            my $download_combo = Gtk2::ComboBox->new_with_strings([ urpm::download::available_ftp_http_downloaders() ],
+                                                                  $verbatim_medium->{downloader} || '') ],
 	    ),
 	    0, Gtk2::HSeparator->new,
 	    0, gtkpack(
@@ -440,6 +442,7 @@ sub edit_callback {
 	    )
 	)
     );
+    $downloader_entry = $download_combo->entry;
     $w->{rwindow}->set_size_request(600, -1);
     if ($w->main) {
 	my ($name, $update) = map { $medium->{$_} } qw(name update);
