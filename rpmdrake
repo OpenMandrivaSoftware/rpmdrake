@@ -1965,6 +1965,8 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
         }
     }
 
+    before_leaving { warn "DONE\n"; urpm::removable::try_umounting_removables($urpm) };
+
     my $something_installed;
     if (@rpms_install || @rpms_upgrade || @to_remove) {
         if (my @missing = grep { m|^/| && ! -e $_ } @rpms_install, @rpms_upgrade) {
@@ -2018,7 +2020,6 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
 	    },
 	);
         gurpm::end();
-	urpm::removable::try_umounting_removables($urpm);
 
         if (@errors || @error_msgs) {
             interactive_msg_(
@@ -2071,7 +2072,6 @@ you may now inspect some in order to take actions:"),
 	}
     } else {
         gurpm::end();
-	urpm::removable::try_umounting_removables($urpm);
         interactive_msg_(N("Error"),
                          N("Unrecoverable error: no package found for installation, sorry."));
     }
