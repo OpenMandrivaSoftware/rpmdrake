@@ -807,8 +807,6 @@ sub run_treeview_dialog {
         $switch_pkg_list_mode->($mode);
     };
 
-    $pkgs_provider->({}, $default_list_mode); # default mode
-
     my ($options, $size_selected, $compssUsers, $tree, $tree_model, $detail_list, $detail_list_model, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
@@ -1478,6 +1476,9 @@ Do you really want to install all the selected packages?"), yesno => 1)
     $find_entry->set_text($options{search}[0]) if $options{search};
 
     $w->{rwindow}->show_all;
+
+    $pkgs_provider->({}, $default_list_mode); # default mode
+
     $options->{widgets} = {
 	w => $w,
 	tree => $tree,
