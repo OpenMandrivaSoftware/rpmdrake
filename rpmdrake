@@ -133,15 +133,16 @@ $::noborderWhenEmbedded = 1;
 package gurpm;
 
 ugtk2->import(':all');
+mygtk2->import(qw(gtknew));
 
 our ($mainw, $label, $progressbar, $vbox, $cancel, $hbox_cancel);
 
 sub init {
     my ($title, $initializing, %options) = @_;
     $mainw = ugtk2->new($title, %options);
-    $label = Gtk2::Label->new($initializing);
-    $progressbar = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1);
-    gtkadd($mainw->{window}, gtkpack__($vbox = gtkset_border_width(Gtk2::VBox->new(0, 5),6), $label, $progressbar));
+    $label = gtknew('Label', text => $initializing);
+    $progressbar = gtknew('ProgressBar', width => 300);
+    gtkadd($mainw->{window}, $vbox = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [ $label, $progressbar]));
     $mainw->{rwindow}->set_position('center-on-parent');
     $mainw->sync;
 }
@@ -169,8 +170,8 @@ sub validate_cancel {
         gtkpack__(
 	    $vbox,
 	    $hbox_cancel = gtkpack__(
-		create_hbox(),
-		$cancel = gtksignal_connect(Gtk2::Button->new($cancel_msg), clicked => \&$cancel_cb),
+		gtknew('HButtonBox'),
+		$cancel = gtknew('Button', text => $cancel_msg, clicked => \&$cancel_cb),
 	    ),
 	);
     }
@@ -572,11 +573,11 @@ sub do_search($$$$$$$) {
 	    gtkadd(
 		$searchw->{window},
 		gtkpack__(
-		    Gtk2::VBox->new(0, 5),
-		    Gtk2::Label->new(N("Please wait, searching...")),
-		    my $searchprogress = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1),
+		    gtknew('VBox', spacing => 5),
+		    gtknew('Label', text => N("Please wait, searching...")),
+		    my $searchprogress = gtknew('ProgressBar', width => 300),
 		    gtkpack__(
-			gtkset_layout(Gtk2::HButtonBox->new, 'spread'),
+			gtknew('HButtonBox', layout => 'spread'),
 			gtksignal_connect(
 			    Gtk2::Button->new(but(N("Stop"))),
 			    clicked => sub { $searchstop = 1 },
@@ -659,7 +660,7 @@ package Gtk2::Mdv::TextView;
 
 sub new {
     my ($_class, $icon, $text, $o_options) = @_;
-    my $w = Gtk2::TextView->new;
+    my $w = mygtk2::gtknew('TextView');
     my $time if 0;
     require Time::HiRes;
     $w->signal_connect(size_allocate => sub {
@@ -704,7 +705,7 @@ sub format_pkg_simplifiedinfo {
     )) };
     push @$s, [ "\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp = Gtk2::Expander->new(format_field(N("Files:")))),
-                       gtktext_insert(Gtk2::TextView->new,
+                       gtknew('TextView', text => 
                                       exists $pkgs->{$key}{files} ?
                                           ugtk2::markup_to_TextView_format('<tt>' . join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}) . '</tt>') #- to highlight information
                            : N("(Not available)"),
@@ -712,7 +713,7 @@ sub format_pkg_simplifiedinfo {
     $exp->set_use_markup(1);
     push @$s, [ "\n\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp2 = Gtk2::Expander->new(format_field(N("Changelog:")))),
-                       gtktext_insert(Gtk2::TextView->new, $pkgs->{$key}{changelog} || N("(Not available)"))
+                       gtknew('TextView', text => $pkgs->{$key}{changelog} || N("(Not available)"))
                    ) ];
     $exp2->set_use_markup(1);
     $s;
@@ -849,7 +850,7 @@ sub run_treeview_dialog {
          my ($group, $parent) = @_;
          my $pixbuf;
          my $path = $group =~ /\|/ ? '/usr/share/icons/mini/' : '/usr/share/icons/';
-         my $create_pixbuf = sub { gtkcreate_pixbuf(join('', $path, $_[0], '.png')) };
+         my $create_pixbuf = sub { gtknew('Pixbuf', file => join('', $path, $_[0], '.png')) };
          eval { $pixbuf = $create_pixbuf->($group_icons{$group}) };
          eval { $pixbuf ||= $create_pixbuf->($group_icons{$parent}) } if $parent;
          $pixbuf ||= $create_pixbuf->('applications_section');
@@ -973,12 +974,12 @@ or you already installed all of them."));
 			$w->{real_window},
 			undef,
 			[ map { my $pkg = $_;
-			    [ gtkpack__(Gtk2::HBox->new(0,0), gtkset_selectable(Gtk2::Label->new($pkg),1)),
-			    gtksignal_connect(Gtk2::Button->new(N("More information on package...")),
+			    [ gtknew('HBox', children_tight => [ gtkset_selectable(gtknew('Label', text => $pkg),1)]),
+			    gtknew('Button', text => N("More information on package..."), 
 				clicked => sub {
 				    interactive_msg_(N("More information on package..."), $options->{get_info}->($pkg), scroll => 1);
 				}) ] } @deps ],
-			[ gtksignal_connect(Gtk2::Button->new(N("Ok")),
+			[ gtknew('Button', text => N("Ok"), 
 			    clicked => sub { Gtk2->main_quit }) ]
 		    );
 		    goto deps_msg_again;
@@ -1313,14 +1314,16 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	}
     };
 
-    my $hpaned = Gtk2::HPaned->new;
-    my $vpaned = Gtk2::VPaned->new;
-    $vpaned->pack1(create_scrolled_window($detail_list), 1, 0);
-    $vpaned->pack2(create_scrolled_window($info), 1, 0);
-    $hpaned->pack1(gtkset_size_request(create_scrolled_window($tree), $typical_width*0.9, -1) , 0, 0);
-    $hpaned->pack2($vpaned, 1, 0);
+    my $hpaned = gtknew('HPaned',
+                        child1 => gtknew('ScrolledWindow', child => $tree, width => $typical_width*0.9) , resize1 => 0, shrink1 => 0,
+                        resize2 => 1, shrink2 => 0,
+                        child2 => gtknew('VPaned',
+                                         child1 => gtknew('ScrolledWindow', child => $detail_list), resize1 => 1, shrink1 => 0,
+                                         child2 => gtknew('ScrolledWindow', child => $info), resize2 => 1, shrink2 => 0
+                                     )
+                    );
 
-    my $status = Gtk2::Label->new;
+    my $status = gtknew('Label');
     my $checkbox_show_autoselect;
     my ($menu, $factory) = create_factory_menu(
 	$w->{real_window},
@@ -1402,20 +1405,20 @@ Do you really want to install all the selected packages?"), yesno => 1)
     gtkadd(
 	$w->{window},
 	gtkpack_(
-	    Gtk2::VBox->new(0, 3),
+	    gtknew('VBox', spacing => 3),
 	    0, $menu,
 	    0, getbanner(),
 	    1, gtkadd(
-		gtkset_shadow_type(gtkset_border_width(Gtk2::Frame->new, 3), 'none'),
+		gtknew('Frame', border_width => 3, shadow_type => 'none'),
 		gtkpack_(
-		    Gtk2::VBox->new(0, 3),
+		    gtknew('VBox', spacing => 3),
 		    0, gtkpack__(
-			Gtk2::HBox->new(0, 10),
+			gtknew('HBox', spacing => 10),
 			$cbox,
-			Gtk2::Label->new(N("Find:")),
+			gtknew('Label', text => N("Find:")),
 			$search_types_optionmenu,
 			gtksignal_connect(
-			    $find_entry = Gtk2::Entry->new,
+			    $find_entry = gtknew('Entry'),
 			    key_press_event => sub {
 				$_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
 				    and $find_callback->();
@@ -1430,12 +1433,12 @@ Do you really want to install all the selected packages?"), yesno => 1)
 		    1, $hpaned,
 		    0, $status,
 		    0, gtkpack_(
-			Gtk2::HBox->new(0, 20),
+			gtknew('HBox', spacing => 20),
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Help"))),
 			    clicked => sub { rpmdrake::open_help($MODE) },
 			),
-               1, Gtk2::Label->new,
+               1, gtknew('Label'),
 			0, my $select_button = gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Select all"))),
 			    clicked => sub {
@@ -1752,40 +1755,40 @@ sub dialog_rpmnew {
 	gtkadd(
 	    $d->{window},
 	    gtkpack_(
-		Gtk2::VBox->new(0, 5),
+		gtknew('VBox', spacing => 5),
 		1, create_vpaned(
 		    create_vpaned(
 			gtkpack_(
-			    Gtk2::VBox->new(0, 0),
-			    0, gtkset_markup(Gtk2::Label->new, qq(<span font_desc="monospace">$file:</span>)),
-			    1, create_scrolled_window($texts{file} = Gtk2::TextView->new),
+			    gtknew('VBox'),
+			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$file:</span>)),
+			    1, gtknew('ScrolledWindow', child => $texts{file} = gtknew('TextView')),
 			),
 			gtkpack_(
-			    Gtk2::VBox->new(0, 0),
-			    0, gtkset_markup(Gtk2::Label->new, qq(<span font_desc="monospace">$rpmnew:</span>)),
-			    1, create_scrolled_window($texts{rpmnew} = Gtk2::TextView->new),
+			    gtknew('VBox'),
+			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$rpmnew:</span>)),
+			    1, gtknew('ScrolledWindow', child => $texts{rpmnew} = gtknew('TextView')),
 			),
 			resize1 => 1,
 		    ),
 		    gtkpack_(
-			Gtk2::VBox->new(0, 0),
-			0, Gtk2::Label->new(N("changes:")),
-			1, create_scrolled_window($texts{diff} = Gtk2::TextView->new),
+			gtknew('VBox'),
+			0, gtknew('Label', text => N("changes:")),
+			1, gtknew('ScrolledWindow', child => $texts{diff} = gtknew('TextView')),
 		    ),
 		    resize1 => 1,
 		),
 		0, gtkpack__(
-		    create_hbox(),
+		    gtknew('HButtonBox'),
 		    gtksignal_connect(
-			Gtk2::Button->new(N("Remove .%s", $rpmfile)),
+			gtknew('Button', text => N("Remove .%s", $rpmfile)),
 			clicked => sub { $save_wsize->(); unlink $rpmnew; Gtk2->main_quit },
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(N("Use .%s as main file", $rpmfile)),
+			gtknew('Button', text => N("Use .%s as main file", $rpmfile)),
 			clicked => sub { $save_wsize->(); renamef($rpmnew, $file); Gtk2->main_quit },
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(N("Do nothing")),
+			gtknew('Button', text => N("Do nothing")),
 			clicked => sub { $save_wsize->(); Gtk2->main_quit },
 		    ),
 		)
@@ -1809,14 +1812,14 @@ sub dialog_rpmnew {
 		my $f = $_;
 		my $b;
 		[ gtkpack__(
-		    Gtk2::HBox->new(0, 0),
+		    gtknew('HBox'),
 		    gtkset_markup(
-			gtkset_selectable(Gtk2::Label->new, 1),
+			gtkset_selectable(gtknew('Label'), 1),
 			qq($pkg:<span font_desc="monospace">$f</span>),
 		    )
 		),
 		gtksignal_connect(
-		    $b = Gtk2::Button->new(N("Inspect...")),
+		    $b = gtknew('Button', text => N("Inspect...")),
 		    clicked => sub {
 			$inspect->($f);
 			-r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0);
@@ -1824,7 +1827,7 @@ sub dialog_rpmnew {
 		) ];
 	    } @{$p2r{$pkg}};
 	} keys %p2r ],
-	[ gtksignal_connect(Gtk2::Button->new(N("Ok")),
+	[ gtknew('Button', text => N("Ok"), 
 	    clicked => sub { Gtk2->main_quit }) ]
     );
     return 0;
@@ -2051,12 +2054,12 @@ you may now inspect some in order to take actions:"),
 		[ map {
 		    my $fullname = $_;
 		    [ gtkpack__(
-			    Gtk2::HBox->new(0, 0),
-			    gtkset_selectable(Gtk2::Label->new($Readmes{$fullname}),1),
+			    gtknew('HBox'),
+			    gtkset_selectable(gtknew('Label', text => $Readmes{$fullname}),1),
 			),
 			gtksignal_connect(
 			    #- TODO change those labels to something more sensible, e.g. "Upgrade information about this package"
-			    Gtk2::Button->new(N("More information on package...")),
+			    gtknew('Button', text => N("More information on package...")),
 			    clicked => sub {
 				interactive_msg_(
 				    N("More information on package... [%s]", $fullname),
@@ -2066,7 +2069,7 @@ you may now inspect some in order to take actions:"),
 			    },
 			),
 		    ] } keys %Readmes ],
-		[ gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }) ]
+		[ gtknew('Button', text => N("Ok"), clicked => sub { Gtk2->main_quit }) ]
 	    );
 	}
     } else {
