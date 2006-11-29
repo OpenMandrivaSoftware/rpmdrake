@@ -721,7 +721,7 @@ sub update_sources_check {
     update_sources($urpm, %$options, noclean => 1, medialist => \@media);
   fatal_error:
     if (@error_msgs) {
-        interactive_msg(N("Error"), sprintf(translate($error_msg), join("\n", @error_msgs)), scroll => 1);
+        interactive_msg(N("Error"), sprintf(translate($error_msg), join("\n", map { formatAlaTeX($_) } @error_msgs)), scroll => 1);
         return 0;
     }
     return 1;
@@ -804,7 +804,7 @@ sub add_medium_and_check {
         interactive_msg(
 	    N("Error"),
 	    N("Unable to add medium, errors reported:\n\n%s",
-	    join("\n", @error_msgs)) . "\n\n" . N("Medium: ") . "$_[0] ($_[1])",
+	    join("\n", map { formatAlaTeX($_) } @error_msgs)) . "\n\n" . N("Medium: ") . "$_[0] ($_[1])",
 	    scroll => 1,
 	);
         return 0;
