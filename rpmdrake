@@ -1102,7 +1102,7 @@ or you already installed all of them."));
 	    }
 	}, #- toggle_nodes
 	get_status => sub {
-	    $MODE eq 'install'
+	    member($default_list_mode, qw(all non_installed))
 		? N("Selected: %s / Free disk space: %s", formatXiB($size_selected), formatXiB($size_free*1024))
 		: N("Selected size: %d MB", $size_selected/(1024*1024));
 	},
