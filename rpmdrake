@@ -1967,7 +1967,7 @@ Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_
         }
     }
 
-    before_leaving { warn "DONE\n"; urpm::removable::try_umounting_removables($urpm) };
+    before_leaving { urpm::removable::try_umounting_removables($urpm) };
 
     my $something_installed;
     if (@rpms_install || @rpms_upgrade || @to_remove) {
