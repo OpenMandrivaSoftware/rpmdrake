@@ -1439,6 +1439,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 			0, my $select_button = gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Select all"))),
 			    clicked => sub {
+                       return if !ref($options->{toggle_all});
                        $options->{toggle_all}->(1);
                    },
 			),
