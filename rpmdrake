@@ -808,7 +808,7 @@ sub run_treeview_dialog {
 
     $pkgs_provider->({}, $default_list_mode); # default mode
 
-    my ($options, $size_selected, $compssUsers, $tree, $tree_model, $detail_tree, $detail_tree_model, %elems);
+    my ($options, $size_selected, $compssUsers, $tree, $tree_model, $detail_list, $detail_list_model, %elems);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $w = ugtk2->new(N("Software Management"));
@@ -1096,7 +1096,7 @@ or you already installed all of them."));
           } else {
               $pkgs->{$_}{selected} = $new_state;
           }
-		$set_state->($_, $options->{node_state}($_), $detail_tree_model);
+		$set_state->($_, $options->{node_state}($_), $detail_list_model);
 		$pkgs->{$_}{pkg}
 		    and $size_selected += $pkgs->{$_}{pkg}->size * ($new_state ? 1 : -1);
 	    }
@@ -1138,14 +1138,14 @@ or you already installed all of them."));
     $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 1));
     $tree->set_headers_visible(0);
 
-    $detail_tree_model = Gtk2::ListStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
-    $detail_tree = Gtk2::TreeView->new_with_model($detail_tree_model);
-    $detail_tree->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererPixbuf->new, 'pixbuf' => 1));
+    $detail_list_model = Gtk2::ListStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
+    $detail_list = Gtk2::TreeView->new_with_model($detail_list_model);
+    $detail_list->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererPixbuf->new, 'pixbuf' => 1));
     $pixcolumn->{is_pix} = 1;
-    $detail_tree->append_column(my $main_textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
-    $detail_tree_model->set_sort_column_id(0, 'ascending');
-    $detail_tree->set_headers_visible(0);
-    $detail_tree->set_rules_hint(1);
+    $detail_list->append_column(my $main_textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+    $detail_list_model->set_sort_column_id(0, 'ascending');
+    $detail_list->set_headers_visible(0);
+    $detail_list->set_rules_hint(1);
 
     ($typical_width) = string_size($tree, translate("Graphical Environment") . "xmms-more-vis-plugins");
     $typical_width > 600 and $typical_width = 600;  #- try to not being crazy with a too large value
@@ -1160,7 +1160,7 @@ or you already installed all of them."));
 	    gtkset_mousecursor_normal($tree->window);
 	    undef $cursor_to_restore;
 	},
-    ) foreach $tree, $detail_tree;
+    ) foreach $tree, $detail_list;
     $tree->get_selection->signal_connect(changed => sub {
         my ($model, $iter) = $_[0]->get_selected;
         return if !$iter;
@@ -1316,7 +1316,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 
     my $hpaned = Gtk2::HPaned->new;
     my $vpaned = Gtk2::VPaned->new;
-    $vpaned->pack1(create_scrolled_window($detail_tree), 1, 0);
+    $vpaned->pack1(create_scrolled_window($detail_list), 1, 0);
     $vpaned->pack2(create_scrolled_window($info), 1, 0);
     $hpaned->pack1(gtkset_size_request(create_scrolled_window($tree), $typical_width*0.9, -1) , 0, 0);
     $hpaned->pack2($vpaned, 1, 0);
@@ -1479,8 +1479,8 @@ Do you really want to install all the selected packages?"), yesno => 1)
 	w => $w,
 	tree => $tree,
 	tree_model => $tree_model,
-	detail_tree_model => $detail_tree_model,
-	detail_tree => $detail_tree,
+	detail_list_model => $detail_list_model,
+	detail_list => $detail_list,
 	info => $info,
 	status => $status,
     };
