@@ -463,7 +463,7 @@ sub extract_header {
 	#- preprocess changelog for faster TextView insert reaction
 	[ map { [ "$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
     };
-    my $name = my_fullname($pkg->{pkg});
+    my $name = urpm_name($pkg->{pkg});
     if ($pkg->{pkg}->flag_installed && !$pkg->{pkg}->flag_upgrade) {
 	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(run_rpm("rpm -ql $name"))) || N("(none)") ],
                          changelog => $chg_prepro->(scalar(run_rpm("rpm -q --changelog $name"))) });
@@ -549,7 +549,7 @@ sub do_search($$$$$$$) {
 		    $w->{real_window},
 		    sub {
 			$db->traverse(sub {
-			    push @search_results, map { if_($_ =~ $entry_rx, my_fullname($_[0])) } $_[0]->files;
+			    push @search_results, map { if_($_ =~ $entry_rx, urpm_name($_[0])) } $_[0]->files;
 			});
 			@search_results = grep { exists $pkgs->{$_} } uniq(@search_results);
 		    },
@@ -831,7 +831,7 @@ sub run_treeview_dialog {
 	my $callback = sub { interactive_msg_(N("More information on package..."), $options->{get_info}->($_[0]), scroll => 1) };
 	$choices = [ sort { $a->name cmp $b->name } @$choices ];
 	my @choices = interactive_list_(N("Please choose"), N("One of the following packages is needed:"),
-                                     [ map { my_fullname($_) } @$choices ], $callback);
+                                     [ map { urpm_name($_) } @$choices ], $callback);
      $choices->[$choices[0]];
     };
 
@@ -1038,7 +1038,7 @@ or you already installed all of them."));
 			    );
 			},
 		    );
-		    @nodes_with_deps = map { my_fullname($_) } @requested;
+		    @nodes_with_deps = map { urpm_name($_) } @requested;
 		    if (!$deps_msg->(N("Additional packages needed"),
 			    N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
 			    \@nodes, \@nodes_with_deps))
@@ -1073,7 +1073,7 @@ or you already installed all of them."));
 		    slow_func($tree->window,
 			sub { @unrequested = $urpm->disable_selected($db, $urpm->{state},
 				map { $pkgs->{$_}{pkg} } @nodes) });
-		    @nodes_with_deps = map { my_fullname($_) } @unrequested;
+		    @nodes_with_deps = map { urpm_name($_) } @unrequested;
 		    if (!$deps_msg->(N("Some packages need to be removed"),
 			    N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
 			    \@nodes, \@nodes_with_deps))
@@ -1611,7 +1611,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     while (defined(local $_ = shift @base)) {
 	exists $basepackages{$_} and next;
 	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
-			      push @{$basepackages{$_}}, my_fullname($_[0]);
+			      push @{$basepackages{$_}}, urpm_name($_[0]);
 			      push @base, $_[0]->requires_nosense;
 			  });
     }
@@ -1624,7 +1624,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     my %installed_pkgs;
     $db->traverse(sub {
 	    my ($pkg) = @_;
-	    my $fullname = my_fullname($pkg);
+	    my $fullname = urpm_name($pkg);
 	    #- Extract summary and description since they'll be lost when the header is packed
 	    $installed_pkgs{$fullname} = {
 		selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
@@ -1684,9 +1684,9 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
              # selecting updates by default:
              $selected = 1;
 	    }
-	$updates{my_fullname($pkg)} = { selected => $selected, pkg => $pkg };
+	$updates{urpm_name($pkg)} = { selected => $selected, pkg => $pkg };
 	} else {
-	$installable_pkgs{my_fullname($pkg)} = { selected => $selected, pkg => $pkg };
+	$installable_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg };
      }
     }
     if ($options{'pkg-sel'} && $options{'pkg-nosel'}) {
@@ -1844,7 +1844,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $group;
     if ($options{parallel} && (($group) = @{$options{parallel}})) {
-        my $pkgs = join(' ', map { if_($_->flag_requested, my_fullname($_)) } @{$urpm->{depslist}});
+        my $pkgs = join(' ', map { if_($_->flag_requested, urpm_name($_)) } @{$urpm->{depslist}});
         system("urpmi -v --X --parallel $group $pkgs");
         if ($? == 0) {
             $statusbar_msg_id = statusbar_msg(
