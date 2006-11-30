@@ -1123,11 +1123,6 @@ or you already installed all of them."));
 	rebuild_tree => sub {},
     };
 
-    if (@initial_selection) {
-        $options->{initial_selection} = \@initial_selection;
-        $pkgs->{$_}{selected} = 0 foreach @initial_selection;
-    }
-
     $tree_model = Gtk2::TreeStore->new("Glib::String", "Glib::String", "Gtk2::Gdk::Pixbuf");
     $tree_model->set_sort_column_id(0, 'ascending');
     $tree = Gtk2::TreeView->new_with_model($tree_model);
@@ -1479,6 +1474,10 @@ Do you really want to install all the selected packages?"), yesno => 1)
     $w->{rwindow}->show_all;
 
     $pkgs_provider->({}, $default_list_mode); # default mode
+    if (@initial_selection) {
+        $options->{initial_selection} = \@initial_selection;
+        $pkgs->{$_}{selected} = 0 foreach @initial_selection;
+    }
 
     $options->{widgets} = {
 	w => $w,
