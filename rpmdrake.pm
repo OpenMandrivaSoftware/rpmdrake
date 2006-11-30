@@ -672,6 +672,7 @@ sub update_sources {
     my $w; my $label; $w = wait_msg(
 	$label = Gtk2::Label->new(N("Please wait, updating media...")),
 	no_wait_cursor => 1,
+	if_($::main_window, transient => $::main_window),
 	banner => $options{banner},
 	widgets => [
 	    my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1),
