@@ -23,7 +23,7 @@ all: $(MOFILES)
 	./clean_po.pl "$<"f > "$<"g
 	msgfmt -o $@ "$<"g
 
-%.pom: %.po
+%.pom: %.po .
 	./get_from_compssusers.pl "$<" > $@
 
 merge: $(PGOAL).pot
