@@ -2055,8 +2055,7 @@ you may now inspect some in order to take actions:"),
 			    gtkset_selectable(gtknew('Label', text => $Readmes{$fullname}),1),
 			),
 			gtksignal_connect(
-			    #- TODO change those labels to something more sensible, e.g. "Upgrade information about this package"
-			    gtknew('Button', text => N("More information on package...")),
+			    gtknew('Button', text => N("Upgrade information about this package")),
 			    clicked => sub {
 				interactive_msg_(
 				    N("More information on package... [%s]", $fullname),
