@@ -2059,7 +2059,7 @@ you may now inspect some in order to take actions:"),
 			    clicked => sub {
 				interactive_msg_(
 				    N("More information on package... [%s]", $fullname),
-				    (join '' => cat_($fullname)),
+				    (join '' => formatAlaTeX(scalar cat_($fullname))),
 				    scroll => 1,
 				);
 			    },
