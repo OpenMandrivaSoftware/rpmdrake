@@ -29,7 +29,7 @@ all: $(MOFILES)
 merge: $(PGOAL).pot
 	@for n in $(POFILES); do \
 		echo "Merging $$n"; \
-		msgmerge --width=79 "$$n" $< > "$$n"t; \
+		msgmerge "$$n" $< > "$$n"t; \
 		mv -f "$$n"t "$$n"; \
 		./get_from_compssusers.pl "$$n" > "$$n"m; \
 	done
