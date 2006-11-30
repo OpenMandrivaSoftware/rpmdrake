@@ -1206,7 +1206,7 @@ or you already installed all of them."));
                                      my $val = $_[0]->get_text;
                                      return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
                                      $old_value = $val;
-                                     $default_list_mode = $val;
+                                     $default_list_mode = $rmodes{$val};
                                      if ($wanted_categories{$rmodes{$val}} and my @cat = @{$wanted_categories{$rmodes{$val}}}) {
                                          @{$mandrakeupdate_wanted_categories} = @cat;
                                      }
