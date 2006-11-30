@@ -391,10 +391,6 @@ sub rpm_description {
     "$t$tmp\n";
 }
 
-sub myformatList {
-    my $nb = 40;
-    join("\n", @_ <= $nb ? @_ : (@_[0..$nb-1], '...'));
-}
 
 sub split_fullname { $_[0] =~ /^(.*)-([^-]+-[^-]+)$/ }
 sub my_fullname {
@@ -644,7 +640,7 @@ sub remove_arch {
     $_[0] =~ /(.*)\.[^\.]+$/ ? $1 : $_[0];
 }
 
-sub formatlistpkg { myformatList(sort { uc($a) cmp uc($b) } @_) }
+sub formatlistpkg { join("\n", sort { uc($a) cmp uc($b) } @_) }
 
 sub format_header {
     my ($str) = @_;
