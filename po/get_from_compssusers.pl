@@ -35,7 +35,7 @@ our $current;
 our $entry;
 foreach my $line (cat_($drakxfile, $libdrakxfile)) {
 #foreach my $line (cat_($drakxfile)) {
-    $line =~ m|^\Q#: share/compssUsers.pl:| || ($line =~ m|^msgid "([^"]+)"| && member($1, @miss)) and do {
+    $line =~ m|^\Q#: share/compssUsers.pl:| || $line =~ m|^msgid "([^"]+)"| && member($1, @miss) and do {
 	$current = 'inside';
         $entry = "# DO NOT BOTHER TO MODIFY HERE, BUT IN DRAKX PO\n";
         $line =~ m|^#:| or $entry .= "#: share/compssUsers.pl:999\n";
@@ -46,4 +46,4 @@ foreach my $line (cat_($drakxfile, $libdrakxfile)) {
 	$current = 'outside';
         print $entry;
     };
-};
+}
