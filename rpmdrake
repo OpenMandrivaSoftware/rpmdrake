@@ -471,7 +471,7 @@ sub extract_header {
 	if (-r $hdlist) {
 	    my $packer;
          require MDV::Packdrakeng; 
-         eval { $packer = MDV::Packdrakeng->open (archive => $hdlist, quit => 1) } or do {
+         eval { $packer = MDV::Packdrakeng->open (archive => $hdlist, quiet => 1) } or do {
 		    warn "Warning, hdlist seems corrupted ($@)\n";
 		    goto header_non_available;
 		};
@@ -561,7 +561,7 @@ sub do_search($$$$$$$) {
 	    my $total_size = sum(
 		map {
 		    my $pack;
-		    eval { require MDV::Packdrakeng; $pack = MDV::Packdrakeng->open (archive => $_, quit => 1) } ? $pack->{toc_f_count} : 0;
+		    eval { require MDV::Packdrakeng; $pack = MDV::Packdrakeng->open (archive => $_, quiet => 1) } ? $pack->{toc_f_count} : 0;
 		} @hdlists
 	    );
 	    my $searchstop;
