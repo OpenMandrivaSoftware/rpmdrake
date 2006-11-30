@@ -587,8 +587,8 @@ sub do_search($$$$$$$) {
 	    local $_;
 	    while (<$sf>) {
 		$searchstop and last;
-		if (/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)>/) {
-		    $pkg = "$1-$2-$3";
+		if (/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)> ARCH<([^>]+)>/) {
+		    $pkg = "$1-$2-$3.$4";
 		    $progresscount++; $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
 		    $searchw->flush;
 		    next;
