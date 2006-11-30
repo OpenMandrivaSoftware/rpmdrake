@@ -2058,7 +2058,7 @@ you may now inspect some in order to take actions:"),
 			    gtknew('Button', text => N("Upgrade information about this package")),
 			    clicked => sub {
 				interactive_msg_(
-				    N("More information on package... [%s]", $fullname),
+				    N("Upgrade information about package %s", $fullname),
 				    (join '' => formatAlaTeX(scalar cat_($fullname))),
 				    scroll => 1,
 				);
