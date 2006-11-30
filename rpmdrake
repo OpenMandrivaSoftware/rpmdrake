@@ -767,6 +767,7 @@ sub run_treeview_dialog {
     my $switch_pkg_list_mode = sub {
         my ($mode) = @_;
         return if !$mode;
+        return if !$filter_methods{$mode};
         $force_displaying_group = 1;
         $filter_methods{$mode}->();
     };
