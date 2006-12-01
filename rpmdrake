@@ -30,7 +30,7 @@ use common;
 use POSIX qw(_exit);
 use URPM;
 use utf8;
-BEGIN { $::no_global_argv_parsing = 1 };
+BEGIN { $::no_global_argv_parsing = 1 }
 use standalone;
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
@@ -122,7 +122,7 @@ eval {
 };
 if ($@) {
     print "This program cannot be run in console mode.\n";
-    _exit(0);  #- skip ugtk2::END
+    POSIX::_exit(0);  #- skip ugtk2::END
 }
 
 $MODE eq 'update' || $options{root} and require_root_capability();
@@ -142,7 +142,7 @@ sub init {
     $mainw = ugtk2->new($title, %options);
     $label = gtknew('Label', text => $initializing);
     $progressbar = gtknew('ProgressBar', width => 300);
-    gtkadd($mainw->{window}, $vbox = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [ $label, $progressbar]));
+    gtkadd($mainw->{window}, $vbox = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [ $label, $progressbar ]));
     $mainw->{rwindow}->set_position('center-on-parent');
     $mainw->sync;
 }
@@ -471,7 +471,7 @@ sub extract_header {
 	if (-r $hdlist) {
 	    my $packer;
          require MDV::Packdrakeng; 
-         eval { $packer = MDV::Packdrakeng->open (archive => $hdlist, quiet => 1) } or do {
+         eval { $packer = MDV::Packdrakeng->open(archive => $hdlist, quiet => 1) } or do {
 		    warn "Warning, hdlist seems corrupted ($@)\n";
 		    goto header_non_available;
 		};
@@ -505,13 +505,13 @@ sub extract_header {
 }
 
 sub open_db {
-    my ($force) = @_;
+    my ($o_force) = @_;
     my $host;
     log::explanations("opening the RPM database");
     if ($options{parallel} && ((undef, $host) = @{$options{parallel}})) {
         my $done if 0;
         my $dblocation = "/var/cache/urpmi/distantdb/$host";
-        if (!$done || $force) {
+        if (!$done || $o_force) {
             print "syncing db from $host to $dblocation...";
             mkdir_p "$dblocation/var/lib/rpm";
             system "rsync -Sauz -e ssh $host:/var/lib/rpm/ $dblocation/var/lib/rpm";
@@ -561,7 +561,7 @@ sub do_search($$$$$$$) {
 	    my $total_size = sum(
 		map {
 		    my $pack;
-		    eval { require MDV::Packdrakeng; $pack = MDV::Packdrakeng->open (archive => $_, quiet => 1) } ? $pack->{toc_f_count} : 0;
+		    eval { require MDV::Packdrakeng; $pack = MDV::Packdrakeng->open(archive => $_, quiet => 1) } ? $pack->{toc_f_count} : 0;
 		} @hdlists
 	    );
 	    my $searchstop;
@@ -650,7 +650,7 @@ sub format_field {
 package Gtk2::Mdv::TextView;
 
 sub new {
-    my ($_class, $icon, $text, $o_options) = @_;
+    my ($_class) = @_;
     my $w = mygtk2::gtknew('TextView');
     my $time if 0;
     require Time::HiRes;
@@ -672,12 +672,12 @@ sub new {
 package main;
 
 sub format_pkg_simplifiedinfo {
-    my ($pkgs, $key, $urpm, $descriptions) = @_;
-    my ($name, $version) = split_fullname($key);
+    my ($pkgs, $key, $_urpm, $descriptions) = @_;
+    my ($name, $_version) = split_fullname($key);
     my $update_descr = $pkgs->{$key}{pkg}->flag_upgrade && $descriptions->{$name}{pre};
     my $s = ugtk2::markup_to_TextView_format(join("\n", format_header($name . ' - ' . $pkgs->{$key}{summary}) .
       # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
-                                                      "\x{200b} \x{feff}" . (' ' x 120),
+                                                      "\x{200b} \x{feff}" . ' ' x 120,
       if_($update_descr, # is it an update?
 	  format_field(N("Importance: ")) . escape_text_for_TextView_markup_format($descriptions->{$name}{importance}),
 	  format_field(N("Reason for update: ")) . escape_text_for_TextView_markup_format(rpm_description($descriptions->{$name}{pre})),
@@ -729,7 +729,7 @@ sub format_pkg_info {
 		format_field(N("Currently installed version: ")) . find_installed_version($pkgs->{$key}{pkg}),
 	    )
     );
-    my @max_info = ($changelog_first ? (@chglo, @files) : (@files, '', @chglo)) if @$max_info_in_descr;
+    my @max_info = @$max_info_in_descr && $changelog_first ? (@chglo, @files) : (@files, '', @chglo);
     ugtk2::markup_to_TextView_format(join("\n", format_field(N("Name: ")) . $name,
       format_field(N("Version: ")) . $version,
       format_field(N("Architecture: ")) . $pkgs->{$key}{pkg}->arch,
@@ -775,7 +775,7 @@ sub run_treeview_dialog {
             all_updates => sub {
                 my %pkgs = grep { my $p = $h->{installable}{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } keys %{$h->{installable}};
                 $pkgs = {
-                    (map { $_ => $h->{updates}->{$_} } keys %{$h->{updates}}),
+                    (map { $_ => $h->{updates}{$_} } keys %{$h->{updates}}),
                     (map { $_ => $h->{installable}{$_} } keys %pkgs)
                 };
             },
@@ -791,7 +791,7 @@ sub run_treeview_dialog {
             $filter_methods{$importance} = sub {
                 $pkgs = $h->{updates};
                 $pkgs = { map { $_ => $pkgs->{$_} } grep { 
-                    my ($name, $version) = split_fullname($_);
+                    my ($name, $_version) = split_fullname($_);
                     $descriptions->{$name}{importance} eq $importance } keys %$pkgs };
             };
         }
@@ -808,6 +808,7 @@ sub run_treeview_dialog {
     my $is_locale_available = sub {
 	any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
 	my $found;
+     print "\n\nBUG: $_\"$_\"\n";
 	$db->traverse_tag('name', [ $_ ], sub { $found ||= 1 });
 	return $found;
     };
@@ -849,7 +850,7 @@ sub run_treeview_dialog {
          my $pkg = $pkgs->{$_[0]};
          my $urpm_obj = $pkg->{pkg};
 	    $_[0] ? $pkg->{selected} ?
-                    ($urpm_obj->flag_installed ? ($urpm_obj->flag_upgrade ? 'to_install': 'to_remove') : 'to_install')
+                    ($urpm_obj->flag_installed ? ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove') : 'to_install')
                       : ($urpm_obj->flag_installed ? 
                            ($urpm_obj->flag_upgrade ? 'to_update' : 'installed')
                              : ($urpm_obj->flag_base ? '/usr/share/rpmdrake/icons/base.png' : 'uninstalled')) : 'XXX';
@@ -964,7 +965,7 @@ or you already installed all of them."));
 			$w->{real_window},
 			undef,
 			[ map { my $pkg = $_;
-			    [ gtknew('HBox', children_tight => [ gtkset_selectable(gtknew('Label', text => $pkg),1)]),
+			    [ gtknew('HBox', children_tight => [ gtkset_selectable(gtknew('Label', text => $pkg), 1) ]),
 			    gtknew('Button', text => N("More information on package..."), 
 				clicked => sub {
 				    interactive_msg_(N("More information on package..."), $options->{get_info}->($pkg), scroll => 1);
@@ -1119,7 +1120,7 @@ or you already installed all of them."));
     $tree = Gtk2::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
 
-    $tree->append_column(my $textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::MDV::CellRendererPixWithLabel->new, 'pixbuf' => 2, label => 0));
+    $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::MDV::CellRendererPixWithLabel->new, 'pixbuf' => 2, label => 0));
     $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 1));
     $tree->set_headers_visible(0);
 
@@ -1127,7 +1128,7 @@ or you already installed all of them."));
     $detail_list = Gtk2::TreeView->new_with_model($detail_list_model);
     $detail_list->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererPixbuf->new, 'pixbuf' => 1));
     $pixcolumn->{is_pix} = 1;
-    $detail_list->append_column(my $main_textcolumn = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+    $detail_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
     $detail_list_model->set_sort_column_id(0, 'ascending');
     $detail_list->set_headers_visible(0);
     $detail_list->set_rules_hint(1);
@@ -1202,8 +1203,8 @@ or you already installed all of them."));
                                      return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
                                      $old_value = $val;
                                      $default_list_mode = $rmodes{$val};
-                                     if ($wanted_categories{$rmodes{$val}} and my @cat = @{$wanted_categories{$rmodes{$val}}}) {
-                                         @{$mandrakeupdate_wanted_categories} = @cat;
+                                     if (my @cat = $wanted_categories{$rmodes{$val}} && @{$wanted_categories{$rmodes{$val}}}) {
+                                         @$mandrakeupdate_wanted_categories = @cat;
                                      }
                                      if (0) {
                                          $reset_search->();
@@ -1235,7 +1236,7 @@ or you already installed all of them."));
     {
 	$search_types_optionmenu->set_model(Gtk2::ListStore->new('Glib::String'));
 	my $search_types_renderer = Gtk2::CellRendererText->new;
-	$search_types_optionmenu->pack_start($search_types_renderer, Glib::FALSE());
+	$search_types_optionmenu->pack_start($search_types_renderer, 0);
 	$search_types_optionmenu->set_attributes($search_types_renderer, text => 0);
 	my $iter = $search_types_optionmenu->get_model->iter_nth_child(undef, 0);
 	$iter = $search_types_optionmenu->get_model->insert(0);
@@ -1424,7 +1425,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
 			    clicked => sub { rpmdrake::open_help($MODE) },
 			),
                1, gtknew('Label'),
-			0, my $select_button = gtksignal_connect(
+			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Select all"))),
 			    clicked => sub {
                        return if !ref($options->{toggle_all});
@@ -2096,7 +2097,7 @@ sub perform_removal {
 	sub {
 	    @results = $options{parallel}
 		? urpm::parallel::remove($urpm, \@toremove)
-		: urpm::install::install($urpm,\@toremove, {}, {});
+		: urpm::install::install($urpm, \@toremove, {}, {});
 	    open_db('force_sync');
 	},
     );

@@ -39,6 +39,7 @@ use strict;
 use c;
 use POSIX qw(_exit);
 use common;
+use Locale::gettext;
 
 use curl_download;
 
@@ -87,7 +88,7 @@ unshift @::textdomains, 'rpmdrake', 'urpmi';
 eval { require ugtk2; ugtk2->import(qw(:all)) };
 if ($@) {
     print "This program cannot be run in console mode.\n";
-    _exit(0);  #- skip ugtk2::END
+    POSIX::_exit(0);  #- skip ugtk2::END
 }
 ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 
@@ -502,7 +503,7 @@ sub mirrors {
     require timezone;
     my $tz = ${timezone::read()}{timezone};
     foreach my $mirror (@mirrors) {
-	    my ($land, $goodness);
+	    my $goodness;
 	    each_index { $_ = $u2l{$_} || $_; $_ eq $mirror->{country} and $goodness ||= 100-$::i } (map { if_($tz =~ /^$_$/, @{$t2l{$_}}) } keys %t2l), @$us;
          $mirror->{goodness} = $goodness + rand();
          $mirror->{country} = translate($mirror->{country});
@@ -615,7 +616,7 @@ by Mandriva Linux Official Updates.")), %options
 sub make_url_mirror {
     my ($mirror) = @_;
     # because updates media do not provide media.cfg yet
-    $mirror . '/media/main/updates'
+    $mirror . '/media/main/updates';
 }
 
 sub make_url_mirror_dist {

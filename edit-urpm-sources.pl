@@ -44,11 +44,11 @@ BEGIN { #- for mcc
 BEGIN {
     eval {
         require ugtk2; ugtk2->import(qw(:all));
-        require mygtk2; mygtk2->import(qw(gtknew gtkset))
+        require mygtk2; mygtk2->import(qw(gtknew gtkset));
     };
     if ($@) {
 	print "This program cannot be run in console mode ($@_).\n";
-	_exit(0);  #- skip ugtk2::END
+	POSIX::_exit(0);  #- skip ugtk2::END
     }
 }
 
@@ -60,7 +60,7 @@ require_root_capability();
 *urpm::msg::translate = \&common::translate;
 
 my $urpm;
-my ($mainw, $remove, $edit, $list_tv);
+my ($mainw, $list_tv);
 
 sub selrow {
     my ($o_list_tv) = @_;
@@ -79,7 +79,7 @@ sub remove_row {
     $model->remove($iter);
 }
 
-sub easy_add_callback {
+sub easy_add_callback() {
     #- cooker and community don't have update sources
     my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg_(
 	N("Choose media type"),
@@ -140,7 +140,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
     return 1;
 }
 
-sub add_callback {
+sub add_callback() {
     my $w = ugtk2->new(N("Add a medium"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my %radios_infos = (
 	local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
@@ -157,7 +157,7 @@ sub add_callback {
     my ($count_nbs, %pages);
     my $size_group = Gtk2::SizeGroup->new('horizontal');
     my ($cb1, $cb2);
-    map {
+    foreach (@radios_names_ordered) {
 	my $info = $radios_infos{$_};
 	my $url_entry = sub {
 	    gtkpack_(
@@ -172,7 +172,6 @@ sub add_callback {
 		),
 	    );
 	};
-        my $tips = Gtk2::Tooltips->new;
         my $checkbut_entry = sub {
             my ($name, $label, $visibility, $callback, $tip) = @_;
             my $w = [ gtksignal_connect(
@@ -229,7 +228,7 @@ sub add_callback {
 		}->(),
 	    ))
 	);
-    } @radios_names_ordered;
+    }
     $size_group->add_widget($_) foreach $cb1, $cb2;
 
     my $checkok = sub {
@@ -318,7 +317,7 @@ really want to replace it?"), yesno => 1) or return 0;
     return 0;
 }
 
-sub options_callback {
+sub options_callback() {
     my $w = ugtk2->new(N("Global options for package installation"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my @verif_radio_infos = (
 	{ name => N("always"), value => 1 },
@@ -331,8 +330,8 @@ sub options_callback {
 	$w->{window},
 	gtkpack(
 	    gtknew('VBox', spacing => 5),
-	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Verify RPMs to be installed:")), @verif_radio]),
-	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Download program to use:")), @downl_radio]),
+	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Verify RPMs to be installed:")), @verif_radio ]),
+	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Download program to use:")), @downl_radio ]),
 	    gtkpack(
 		gtknew('HButtonBox'),
 		gtknew('Button', text => N("Cancel"), clicked => sub { Gtk2->main_quit }),
@@ -358,7 +357,7 @@ sub options_callback {
     $w->main;
 }
 
-sub remove_callback {
+sub remove_callback() {
     my $row = selrow();
     $row == -1 and return;
     interactive_msg_(
@@ -372,7 +371,7 @@ sub remove_callback {
     urpm::media::remove_media($urpm, [ $urpm->{media}[$row] ]);
     urpm::media::write_urpmi_cfg($urpm);
     remove_wait_msg($wait);
-    return 1
+    return 1;
 }
 
 sub renum_media ($$$) {
@@ -380,25 +379,24 @@ sub renum_media ($$$) {
     my @rows = map { $model->get_path($_)->to_string } @iters;
     my @media = map { $urpm->{media}[$_] } @rows;
     $urpm->{media}[$rows[$_]] = $media[1 - $_] foreach 0, 1;
-    my $i = 1;
     $model->swap(@iters);
     urpm::media::write_config($urpm); $urpm = urpm->new; urpm::media::read_config($urpm);
 }
 
-sub upwards_callback {
+sub upwards_callback() {
     my ($model, $iter) = $list_tv->get_selection->get_selected; $model && $iter or return;
     my $prev = $model->get_iter_from_string($model->get_path($iter)->to_string - 1);
     defined $prev and renum_media($model, $iter, $prev);
 }
 
-sub downwards_callback {
+sub downwards_callback() {
     my ($model, $iter) = $list_tv->get_selection->get_selected; $model && $iter or return;
     my $next = $model->iter_next($iter);
     defined $next and renum_media($model, $iter, $next);
 }
 
 #- returns the name of the media for which edition failed, or undef on success
-sub edit_callback {
+sub edit_callback() {
     my $row = selrow();
     $row == -1 and return;
     my $medium = $urpm->{media}[$row];
@@ -463,7 +461,7 @@ sub edit_callback {
     return undef;
 }
 
-sub update_callback {
+sub update_callback() {
     update_sources_interactive($urpm,  transient => $mainw->{real_window}, nolock => 1);
 }
 
@@ -521,7 +519,7 @@ sub proxy_callback {
 	    )
 	)
     );
-    $sg->add_widget($_) foreach ($proxyentry, $proxyuserentry, $proxypasswordentry);
+    $sg->add_widget($_) foreach $proxyentry, $proxyuserentry, $proxypasswordentry;
     $proxybutton->signal_connect(
 	clicked => sub {
 	    $proxyentry->set_sensitive($_[0]->get_active);
@@ -537,7 +535,7 @@ sub proxy_callback {
     $w->main and curl_download::writeproxy($proxy, $proxy_user, $medium_name);
 }
 
-sub parallel_read_sysconf {
+sub parallel_read_sysconf() {
     my @conf;
     foreach (cat_('/etc/urpmi/parallel.cfg')) {
         my ($name, $protocol, $command) = /([^:]+):([^:]+):(.*)/ or print STDERR "Warning, unrecognized line in /etc/urpmi/parallel.cfg:\n$_";
@@ -668,21 +666,21 @@ sub edit_parallel {
 		{},
 		[ N("Group name:"), $name_entry = gtkentry($edited->{name}) ],
 		[ N("Protocol:"), gtknew('HBox', children_tight => [
-		    @protocols = gtkradio($edited->{protocol}, @protocols_names)]) ],
+		    @protocols = gtkradio($edited->{protocol}, @protocols_names) ]) ],
 		[ N("Media limit:"),
 		gtknew('HBox', spacing => 5, children => [
 		    1, gtknew('Frame', shadow_type => 'in', child => 
 			gtknew('ScrolledWindow', h_policy => 'never', child => $medias)),
 		    0, gtknew('VBox', children_tight => [
 			gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_media->() }),
-			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_media->() })])]) ],
+			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_media->() }) ]) ]) ],
 		[ N("Hosts:"),
 		gtknew('HBox', spacing => 5, children => [
 		    1, gtknew('Frame', shadow_type => 'in', child => 
 			gtknew('ScrolledWindow', h_policy => 'never', child => $hosts)),
 		    0, gtknew('VBox', children_tight => [
 			gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_host->() }),
-			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_host->() })])]) ]
+			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_host->() }) ]) ]) ]
 	    ),
 	    0, gtknew('HSeparator'),
 	    0, gtkpack(
@@ -709,7 +707,7 @@ sub edit_parallel {
     return 0;
 }
 
-sub parallel_callback {
+sub parallel_callback() {
     my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my $list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String", "Glib::String", "Glib::String");
     my $list = Gtk2::TreeView->new_with_model($list_ls);
@@ -740,11 +738,11 @@ sub parallel_callback {
 		0, gtkpack__(
 		    gtknew('VBox', spacing => 5),
 		    gtksignal_connect(
-			$remove = Gtk2::Button->new(but(N("Remove"))),
+			Gtk2::Button->new(but(N("Remove"))),
 			clicked => sub { remove_parallel(selrow($list), $conf); $reread->() },
 		    ),
 		    gtksignal_connect(
-			$edit = Gtk2::Button->new(but(N("Edit..."))),
+			Gtk2::Button->new(but(N("Edit..."))),
 			clicked => sub {
 			    my $row = selrow($list);
 			    $row != -1 and edit_parallel($row, $conf);
@@ -767,7 +765,7 @@ sub parallel_callback {
     $w->main;
 }
 
-sub keys_callback {
+sub keys_callback() {
     my $w = ugtk2->new(N("Manage keys for digital signatures of packages"), grab => 1, center => 1,  transient => $mainw->{real_window});
 
     my $media_list_ls = Gtk2::ListStore->new("Glib::String");
@@ -868,11 +866,11 @@ sub keys_callback {
 		0, gtkpack__(
 		    gtknew('VBox', spacing => 5),
 		    gtksignal_connect(
-			$remove = Gtk2::Button->new(but(N("Add a key..."))),
+			Gtk2::Button->new(but(N("Add a key..."))),
 			clicked => \&$add_key,
 		    ),
 		    gtksignal_connect(
-			$remove = Gtk2::Button->new(but(N("Remove key"))),
+			Gtk2::Button->new(but(N("Remove key"))),
 			clicked => \&$remove_key,
 		    )
 		)
@@ -887,7 +885,7 @@ sub keys_callback {
     $w->main;
 }
 
-sub mainwindow {
+sub mainwindow() {
     $mainw = ugtk2->new(N("Configure media"), center => 1);
     $::main_window = $mainw->{real_window};
 
@@ -994,11 +992,11 @@ sub mainwindow {
 		0, gtkpack__(
 		    gtknew('VBox', spacing => 5),
 		    gtksignal_connect(
-			$remove = Gtk2::Button->new(but(N("Remove"))),
+			Gtk2::Button->new(but(N("Remove"))),
 			clicked => sub { remove_callback() and $reread_media->() },
 		    ),
 		    gtksignal_connect(
-			$edit = Gtk2::Button->new(but(N("Edit..."))),
+			Gtk2::Button->new(but(N("Edit..."))),
 			clicked => sub {
 			    my $name = edit_callback(); defined $name and $reread_media->($name);
 			}
@@ -1074,5 +1072,7 @@ mainwindow();
 urpm::media::write_config($urpm);
 
 writeconf();
+
+undef $lock;
 
 myexit 0;
