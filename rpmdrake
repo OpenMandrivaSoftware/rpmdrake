@@ -635,11 +635,6 @@ sub find_installed_version {
     @version ? join(',', sort @version) : N("(none)");
 }
 
-#- remove architecture
-sub remove_arch {
-    $_[0] =~ /(.*)\.[^\.]+$/ ? $1 : $_[0];
-}
-
 sub formatlistpkg { join("\n", sort { uc($a) cmp uc($b) } @_) }
 
 sub format_header {
