@@ -1047,7 +1047,7 @@ or you already installed all of them."));
 			my @ask_unselect = urpm::select::unselected_packages($urpm, $urpm->{state});
 			my @reasons = map {
 			    my $cant = $_;
-			    my $unsel = find { remove_arch($_) eq $cant } @ask_unselect;
+			    my $unsel = find { $_ eq $cant } @ask_unselect;
 			    $unsel
 			    ? join("\n", urpm::select::translate_why_unselected($urpm, $urpm->{state}, $unsel))
 			    : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
