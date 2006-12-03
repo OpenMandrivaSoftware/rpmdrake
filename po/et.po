@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-13 18:39+0200\n"
-"PO-Revision-Date: 2006-10-25 16:59+0200\n"
+"POT-Creation-Date: 2006-11-30 14:17+0100\n"
+"PO-Revision-Date: 2006-12-04 00:58+0200\n"
 "Last-Translator: Marek Laane <bald@starman.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3\n"
 
-#: ../edit-urpm-sources.pl:80
+#: ../edit-urpm-sources.pl:85
 msgid "Choose media type"
 msgstr "Andmekandja tüübi valimine"
 
-#: ../edit-urpm-sources.pl:81
+#: ../edit-urpm-sources.pl:86
 msgid ""
 "This step enables you to add sources from a Mandriva Linux web or FTP "
 "mirror.\n"
@@ -44,15 +44,15 @@ msgstr ""
 "kui ka allikaid, mis pakuvad Teie distributsioonile ametlikke uuendusi.\n"
 "(Teil on võimalik lisada ka mõlemad, kuid seda tuleb teha eraldi sammudena.)"
 
-#: ../edit-urpm-sources.pl:89
+#: ../edit-urpm-sources.pl:94
 msgid "Distribution sources"
 msgstr "Distributsiooniallikad"
 
-#: ../edit-urpm-sources.pl:89
+#: ../edit-urpm-sources.pl:94
 msgid "Official updates"
 msgstr "Ametlikud uuendused"
 
-#: ../edit-urpm-sources.pl:92
+#: ../edit-urpm-sources.pl:97
 #, perl-format
 msgid ""
 "This will attempt to install all official sources corresponding to your\n"
@@ -71,84 +71,85 @@ msgstr ""
 "\n"
 "Kas jätkata?"
 
-#: ../edit-urpm-sources.pl:102
+#. because updates media do not provide media.cfg yet
+#: ../edit-urpm-sources.pl:111
 msgid "Please wait, adding media..."
 msgstr "Palun oodake, lisatakse andmekandja..."
 
-#: ../edit-urpm-sources.pl:134
+#: ../edit-urpm-sources.pl:144
 msgid "Add a medium"
 msgstr "Allika lisamine"
 
-#: ../edit-urpm-sources.pl:136
+#: ../edit-urpm-sources.pl:146
 msgid "Local files"
 msgstr "Kohalikud failid"
 
-#: ../edit-urpm-sources.pl:136
+#: ../edit-urpm-sources.pl:146
 msgid "Path:"
 msgstr "Otsingutee:"
 
-#: ../edit-urpm-sources.pl:137
+#: ../edit-urpm-sources.pl:147
 msgid "FTP server"
 msgstr "FTP-server"
 
-#: ../edit-urpm-sources.pl:137 ../edit-urpm-sources.pl:138
-#: ../edit-urpm-sources.pl:139 ../edit-urpm-sources.pl:407
+#: ../edit-urpm-sources.pl:147 ../edit-urpm-sources.pl:148
+#: ../edit-urpm-sources.pl:149 ../edit-urpm-sources.pl:416
 msgid "URL:"
 msgstr "URL:"
 
-#: ../edit-urpm-sources.pl:138
+#: ../edit-urpm-sources.pl:148
 msgid "RSYNC server"
 msgstr "RSYNC-server"
 
-#: ../edit-urpm-sources.pl:139
+#: ../edit-urpm-sources.pl:149
 msgid "HTTP server"
 msgstr "HTTP-server"
 
-#: ../edit-urpm-sources.pl:140
+#: ../edit-urpm-sources.pl:150
 msgid "Path or mount point:"
 msgstr "Otsingutee või haakepunkt:"
 
-#: ../edit-urpm-sources.pl:140
+#: ../edit-urpm-sources.pl:150
 msgid "Removable device"
 msgstr "Eemaldatav seade"
 
-#: ../edit-urpm-sources.pl:159
+#: ../edit-urpm-sources.pl:169
 msgid "Browse..."
 msgstr "Sirvi..."
 
-#: ../edit-urpm-sources.pl:187
+#: ../edit-urpm-sources.pl:197
 msgid "Login:"
 msgstr "Kasutajatunnus:"
 
-#: ../edit-urpm-sources.pl:187 ../edit-urpm-sources.pl:487 ../rpmdrake.pm:130
+#: ../edit-urpm-sources.pl:197 ../edit-urpm-sources.pl:501 ../rpmdrake.pm:131
 msgid "Password:"
 msgstr "Parool:"
 
-#: ../edit-urpm-sources.pl:192 ../edit-urpm-sources.pl:408
+#: ../edit-urpm-sources.pl:202 ../edit-urpm-sources.pl:417
 msgid "Relative path to synthesis/hdlist:"
 msgstr "Suhteline tee sünteesi/hdlist faili juurde:"
 
-#: ../edit-urpm-sources.pl:194
+#: ../edit-urpm-sources.pl:204
 msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "Tühjaksjätmisel püütakse automaatselt kasutada sünteesi/hdlisti"
 
-#: ../edit-urpm-sources.pl:199
+#: ../edit-urpm-sources.pl:209
 msgid "Name:"
 msgstr "Nimi:"
 
-#: ../edit-urpm-sources.pl:207
+#: ../edit-urpm-sources.pl:217
 msgid "Create media for a whole distribution"
 msgstr "Andmekandja loomine kogu distributsioonile"
 
-#: ../edit-urpm-sources.pl:218
+#: ../edit-urpm-sources.pl:228
 msgid "Search this media for updates"
 msgstr "Uuenduste otsimine sellelt andmekandjalt"
 
-#: ../edit-urpm-sources.pl:228
+#: ../edit-urpm-sources.pl:238
 msgid "You need to fill up at least the two first entries."
 msgstr "Täitke vähemalt 2 esimest välja."
 
-#: ../edit-urpm-sources.pl:232
+#: ../edit-urpm-sources.pl:242
 msgid ""
 "There is already a medium by that name, do you\n"
 "really want to replace it?"
@@ -156,109 +157,113 @@ msgstr ""
 "Sellise nimega andmekandja on juba olemas,\n"
 "kas soovite tõesti selle asendada?"
 
-#: ../edit-urpm-sources.pl:243
+#: ../edit-urpm-sources.pl:253
 msgid "Adding a medium:"
 msgstr "Allika lisamine:"
 
-#: ../edit-urpm-sources.pl:245
+#: ../edit-urpm-sources.pl:255
 msgid "Type of medium:"
 msgstr "Andmekandja tüüp:"
 
-#: ../edit-urpm-sources.pl:253 ../edit-urpm-sources.pl:328
-#: ../edit-urpm-sources.pl:414 ../edit-urpm-sources.pl:439
-#: ../edit-urpm-sources.pl:504 ../edit-urpm-sources.pl:586
-#: ../edit-urpm-sources.pl:626 ../edit-urpm-sources.pl:684
-#: ../edit-urpm-sources.pl:823 ../rpmdrake:191 ../rpmdrake:849
-#: ../rpmdrake:1752 ../rpmdrake:1760 ../rpmdrake.pm:284 ../rpmdrake.pm:597
-#: ../rpmdrake.pm:687 ../rpmdrake.pm:760
+#: ../edit-urpm-sources.pl:263 ../edit-urpm-sources.pl:338
+#: ../edit-urpm-sources.pl:426 ../edit-urpm-sources.pl:453
+#: ../edit-urpm-sources.pl:518 ../edit-urpm-sources.pl:600
+#: ../edit-urpm-sources.pl:640 ../edit-urpm-sources.pl:698
+#: ../edit-urpm-sources.pl:837 ../rpmdrake:208 ../rpmdrake:960
+#: ../rpmdrake:1921 ../rpmdrake:1929 ../rpmdrake.pm:287 ../rpmdrake.pm:596
+#: ../rpmdrake.pm:681 ../rpmdrake.pm:754
 msgid "Cancel"
 msgstr "Loobu"
 
-#: ../edit-urpm-sources.pl:255 ../edit-urpm-sources.pl:330
-#: ../edit-urpm-sources.pl:439 ../edit-urpm-sources.pl:494
-#: ../edit-urpm-sources.pl:583 ../edit-urpm-sources.pl:625
-#: ../edit-urpm-sources.pl:677 ../edit-urpm-sources.pl:749
-#: ../edit-urpm-sources.pl:816 ../edit-urpm-sources.pl:869
-#: ../edit-urpm-sources.pl:1018 ../rpmdrake:191 ../rpmdrake:849
-#: ../rpmdrake:866 ../rpmdrake:871 ../rpmdrake:1662 ../rpmdrake:1752
-#: ../rpmdrake:1903 ../rpmdrake.pm:121 ../rpmdrake.pm:226 ../rpmdrake.pm:286
-#: ../rpmdrake.pm:597
+#: ../edit-urpm-sources.pl:265 ../edit-urpm-sources.pl:340
+#: ../edit-urpm-sources.pl:453 ../edit-urpm-sources.pl:508
+#: ../edit-urpm-sources.pl:597 ../edit-urpm-sources.pl:639
+#: ../edit-urpm-sources.pl:691 ../edit-urpm-sources.pl:763
+#: ../edit-urpm-sources.pl:830 ../edit-urpm-sources.pl:883
+#: ../edit-urpm-sources.pl:1032 ../rpmdrake:208 ../rpmdrake:960
+#: ../rpmdrake:977 ../rpmdrake:982 ../rpmdrake:1827 ../rpmdrake:1921
+#: ../rpmdrake:2068 ../rpmdrake.pm:122 ../rpmdrake.pm:227 ../rpmdrake.pm:289
+#: ../rpmdrake.pm:596
 msgid "Ok"
 msgstr "Olgu"
 
-#: ../edit-urpm-sources.pl:312
+#: ../edit-urpm-sources.pl:322
 msgid "Global options for package installation"
 msgstr "Paigaldamise globaalsed valikud"
 
-#: ../edit-urpm-sources.pl:314
+#: ../edit-urpm-sources.pl:324
 msgid "always"
 msgstr "alati"
 
-#: ../edit-urpm-sources.pl:315
+#: ../edit-urpm-sources.pl:325
 msgid "never"
 msgstr "mitte kunagi"
 
-#: ../edit-urpm-sources.pl:324
+#: ../edit-urpm-sources.pl:334
 msgid "Verify RPMs to be installed:"
 msgstr "Paigaldatavate RPM-pakettide kontroll:"
 
-#: ../edit-urpm-sources.pl:325
+#: ../edit-urpm-sources.pl:335
 msgid "Download program to use:"
 msgstr "Kasutatav allalaadimisprogramm:"
 
-#: ../edit-urpm-sources.pl:355
+#: ../edit-urpm-sources.pl:365
 msgid "Source Removal"
 msgstr "Allika eemaldamine"
 
-#: ../edit-urpm-sources.pl:356
+#: ../edit-urpm-sources.pl:366
 #, perl-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Kas tõesti eemaldada allikas \"%s\"?"
 
-#: ../edit-urpm-sources.pl:361
+#: ../edit-urpm-sources.pl:371
 msgid "Please wait, removing medium..."
 msgstr "Palun oodake, eemaldan andmekandja..."
 
-#: ../edit-urpm-sources.pl:398
+#: ../edit-urpm-sources.pl:407
 msgid "Edit a medium"
 msgstr "Allika muutmine"
 
-#: ../edit-urpm-sources.pl:404
+#: ../edit-urpm-sources.pl:413
 #, perl-format
 msgid "Editing medium \"%s\":"
 msgstr "Allika \"%s\" muutmine:"
 
 #: ../edit-urpm-sources.pl:418
+msgid "Downloader:"
+msgstr "Allalaadija:"
+
+#: ../edit-urpm-sources.pl:430
 msgid "Save changes"
 msgstr "Salvesta muutused"
 
-#: ../edit-urpm-sources.pl:426 ../edit-urpm-sources.pl:1005
+#: ../edit-urpm-sources.pl:439 ../edit-urpm-sources.pl:1019
 msgid "Proxy..."
 msgstr "Puhverserver..."
 
-#: ../edit-urpm-sources.pl:437
+#: ../edit-urpm-sources.pl:451
 msgid "You need to insert the medium to continue"
 msgstr "Jätkamiseks tuleb sisestada andmekandja"
 
-#: ../edit-urpm-sources.pl:438
+#: ../edit-urpm-sources.pl:452
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr "Muutuste salvestamiseks tuleb andmekandja seadmesse sisestada."
 
-#: ../edit-urpm-sources.pl:459
+#: ../edit-urpm-sources.pl:473
 msgid "Configure proxies"
 msgstr "Puhverserveri seadistamine"
 
-#: ../edit-urpm-sources.pl:470
+#: ../edit-urpm-sources.pl:484
 #, perl-format
 msgid "Proxy settings for media \"%s\""
 msgstr "Andmekandja \"%s\" puhverserveri seadistused"
 
-#: ../edit-urpm-sources.pl:471
+#: ../edit-urpm-sources.pl:485
 msgid "Global proxy settings"
 msgstr "Globaalsed puhverserveri seadistused"
 
-#: ../edit-urpm-sources.pl:473
+#: ../edit-urpm-sources.pl:487
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
 "<proxyhost[:port]>):"
@@ -266,138 +271,138 @@ msgstr ""
 "Kui vajate puhverserverit, sisestage masina nimi ja võimalusel port "
 "(süntaks: <puhverserver[:port]>):"
 
-#: ../edit-urpm-sources.pl:476
+#: ../edit-urpm-sources.pl:490
 msgid "Proxy hostname:"
 msgstr "Puhverserveri masinanimi:"
 
-#: ../edit-urpm-sources.pl:479
+#: ../edit-urpm-sources.pl:493
 msgid "You may specify a user/password for the proxy authentication:"
 msgstr ""
 "Puhverserveri autentimiseks oleks tulus määrata kasutajanimi ja parool:"
 
-#: ../edit-urpm-sources.pl:482
+#: ../edit-urpm-sources.pl:496
 msgid "User:"
 msgstr "Kasutajanimi:"
 
-#: ../edit-urpm-sources.pl:554
+#: ../edit-urpm-sources.pl:568
 msgid "Add a parallel group"
 msgstr "Paralleelgrupi lisamine"
 
-#: ../edit-urpm-sources.pl:554
+#: ../edit-urpm-sources.pl:568
 msgid "Edit a parallel group"
 msgstr "Paralleelgrupi muutmine"
 
-#: ../edit-urpm-sources.pl:565
+#: ../edit-urpm-sources.pl:579
 msgid "Add a medium limit"
 msgstr "Andmekandja limiidi lisamine"
 
-#: ../edit-urpm-sources.pl:577
+#: ../edit-urpm-sources.pl:591
 msgid "Choose a medium for adding in the media limit:"
 msgstr "Valige andmekandja andmekandjate limiiti lisamiseks:"
 
-#: ../edit-urpm-sources.pl:614
+#: ../edit-urpm-sources.pl:628
 msgid "Add a host"
 msgstr "Serveri lisamine"
 
-#: ../edit-urpm-sources.pl:620
+#: ../edit-urpm-sources.pl:634
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr "Kirjutage lisatava serveri masinanimi või IP-aadress:"
 
-#: ../edit-urpm-sources.pl:651
+#: ../edit-urpm-sources.pl:665
 #, perl-format
 msgid "Editing parallel group \"%s\":"
 msgstr "Paralleelgrupi \"%s\" muutmine:"
 
-#: ../edit-urpm-sources.pl:655
+#: ../edit-urpm-sources.pl:669
 msgid "Group name:"
 msgstr "Grupi nimi:"
 
-#: ../edit-urpm-sources.pl:656
+#: ../edit-urpm-sources.pl:670
 msgid "Protocol:"
 msgstr "Protokoll:"
 
-#: ../edit-urpm-sources.pl:658
+#: ../edit-urpm-sources.pl:672
 msgid "Media limit:"
 msgstr "Andmekandja limiit:"
 
-#: ../edit-urpm-sources.pl:663 ../edit-urpm-sources.pl:670
+#: ../edit-urpm-sources.pl:677 ../edit-urpm-sources.pl:684
 msgid "Add"
 msgstr "Lisa"
 
-#: ../edit-urpm-sources.pl:664 ../edit-urpm-sources.pl:671
-#: ../edit-urpm-sources.pl:729 ../edit-urpm-sources.pl:983
+#: ../edit-urpm-sources.pl:678 ../edit-urpm-sources.pl:685
+#: ../edit-urpm-sources.pl:743 ../edit-urpm-sources.pl:997
 msgid "Remove"
 msgstr "Eemalda"
 
-#: ../edit-urpm-sources.pl:665
+#: ../edit-urpm-sources.pl:679
 msgid "Hosts:"
 msgstr "Serverid:"
 
-#: ../edit-urpm-sources.pl:699
+#: ../edit-urpm-sources.pl:713
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr "Paralleel-uprmi seadistamine (urpmi jagatud käivitamine)"
 
-#: ../edit-urpm-sources.pl:702
+#: ../edit-urpm-sources.pl:716
 msgid "Group"
 msgstr "Grupp"
 
-#: ../edit-urpm-sources.pl:702
+#: ../edit-urpm-sources.pl:716
 msgid "Media limit"
 msgstr "Andmekandjate limiit"
 
-#: ../edit-urpm-sources.pl:702
+#: ../edit-urpm-sources.pl:716
 msgid "Protocol"
 msgstr "Protokoll"
 
-#: ../edit-urpm-sources.pl:703
+#: ../edit-urpm-sources.pl:717
 msgid "Command"
 msgstr "Käsk"
 
-#: ../edit-urpm-sources.pl:713 ../rpmdrake:413 ../rpmdrake:437 ../rpmdrake:576
-#: ../rpmdrake:775
+#: ../edit-urpm-sources.pl:727 ../rpmdrake:465 ../rpmdrake:496 ../rpmdrake:635
+#: ../rpmdrake:886 ../rpmdrake:1748
 msgid "(none)"
 msgstr "(puudub)"
 
-#: ../edit-urpm-sources.pl:733 ../edit-urpm-sources.pl:987
+#: ../edit-urpm-sources.pl:747 ../edit-urpm-sources.pl:1001
 msgid "Edit..."
 msgstr "Muuda..."
 
-#: ../edit-urpm-sources.pl:741 ../edit-urpm-sources.pl:993
+#: ../edit-urpm-sources.pl:755 ../edit-urpm-sources.pl:1007
 msgid "Add..."
 msgstr "Lisa..."
 
-#: ../edit-urpm-sources.pl:757
+#: ../edit-urpm-sources.pl:771
 msgid "Manage keys for digital signatures of packages"
 msgstr "Pakettide digitaalsignatuuride võtmete haldamine"
 
-#: ../edit-urpm-sources.pl:761 ../edit-urpm-sources.pl:918
+#: ../edit-urpm-sources.pl:775 ../edit-urpm-sources.pl:932
 msgid "Medium"
 msgstr "Andmekandja"
 
-#: ../edit-urpm-sources.pl:766
+#: ../edit-urpm-sources.pl:780
 msgid ""
 "_:cryptographic keys\n"
 "Keys"
 msgstr "Võtmed"
 
-#: ../edit-urpm-sources.pl:785
+#: ../edit-urpm-sources.pl:799
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr "nime ei leitud, võtit ei ole rpm-i võtmerõngas!"
 
-#: ../edit-urpm-sources.pl:798
+#: ../edit-urpm-sources.pl:812
 msgid "Add a key"
 msgstr "Võtme lisamine"
 
-#: ../edit-urpm-sources.pl:810
+#: ../edit-urpm-sources.pl:824
 #, perl-format
 msgid "Choose a key for adding to the medium %s"
 msgstr "Võtme valimine andmekandjale %s lisamiseks"
 
-#: ../edit-urpm-sources.pl:838
+#: ../edit-urpm-sources.pl:852
 msgid "Remove a key"
 msgstr "Võtme eemaldamine"
 
-#: ../edit-urpm-sources.pl:839
+#: ../edit-urpm-sources.pl:853
 #, perl-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
@@ -406,31 +411,31 @@ msgstr ""
 "Kas tõesti eemaldada võti %s andmekandjalt %s?\n"
 "(võtme nimi: %s)"
 
-#: ../edit-urpm-sources.pl:857
+#: ../edit-urpm-sources.pl:871
 msgid "Add a key..."
 msgstr "Lisa võti..."
 
-#: ../edit-urpm-sources.pl:861
+#: ../edit-urpm-sources.pl:875
 msgid "Remove key"
 msgstr "Eemalda võti"
 
-#: ../edit-urpm-sources.pl:877
+#: ../edit-urpm-sources.pl:891
 msgid "Configure media"
 msgstr "Allikate seadistamine"
 
-#: ../edit-urpm-sources.pl:916
+#: ../edit-urpm-sources.pl:930
 msgid "Enabled?"
 msgstr "Kas lubada?"
 
-#: ../edit-urpm-sources.pl:917
+#: ../edit-urpm-sources.pl:931
 msgid "Updates?"
 msgstr "Uuendused?"
 
-#: ../edit-urpm-sources.pl:933
+#: ../edit-urpm-sources.pl:947
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr "Seda andmekandjat tuleb kasutamiseks uuendada. Kas teha seda kohe?"
 
-#: ../edit-urpm-sources.pl:963
+#: ../edit-urpm-sources.pl:977
 #, perl-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -441,31 +446,31 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../edit-urpm-sources.pl:997
+#: ../edit-urpm-sources.pl:1011
 msgid "Add custom..."
 msgstr "Lisa omaloodud..."
 
-#: ../edit-urpm-sources.pl:1001
+#: ../edit-urpm-sources.pl:1015
 msgid "Update..."
 msgstr "Uuenda..."
 
-#: ../edit-urpm-sources.pl:1004
+#: ../edit-urpm-sources.pl:1018
 msgid "Manage keys..."
 msgstr "Võtmete haldamine"
 
-#: ../edit-urpm-sources.pl:1006
+#: ../edit-urpm-sources.pl:1020
 msgid "Parallel..."
 msgstr "Paralleel..."
 
-#: ../edit-urpm-sources.pl:1007
+#: ../edit-urpm-sources.pl:1021
 msgid "Global options..."
 msgstr "Globaalsed valikud..."
 
-#: ../edit-urpm-sources.pl:1017 ../rpmdrake:1290
+#: ../edit-urpm-sources.pl:1031 ../rpmdrake:1428
 msgid "Help"
 msgstr "Abi"
 
-#: ../edit-urpm-sources.pl:1030 ../gurpmi.addmedia:97 ../rpmdrake:1978
+#: ../edit-urpm-sources.pl:1047 ../gurpmi.addmedia:98 ../rpmdrake:2144
 #, perl-format
 msgid ""
 "%s\n"
@@ -476,7 +481,7 @@ msgstr ""
 "\n"
 "Kas jätkata?"
 
-#: ../edit-urpm-sources.pl:1033
+#: ../edit-urpm-sources.pl:1050
 msgid ""
 "Welcome to the Software Media Manager!\n"
 "\n"
@@ -490,7 +495,7 @@ msgstr ""
 "kasutada oma süsteemi uuendamisel. Kui olete allikad määranud, saate\n"
 "nende abil paigaldada uusi tarkvarapakette või uuendada vanu."
 
-#: ../edit-urpm-sources.pl:1045
+#: ../edit-urpm-sources.pl:1063
 msgid ""
 "Packages database is locked. Please close other applications\n"
 "working with packages database (do you have another media\n"
@@ -502,11 +507,11 @@ msgstr ""
 "andmekandjatega tegelev rakendus mõnel muul töölaual või\n"
 "paigaldate parajasti mingeid tarkvarapakette?)"
 
-#: ../gurpmi.addmedia:87
+#: ../gurpmi.addmedia:88
 msgid "Unable to add medium, wrong or missing arguments"
 msgstr "Andmekandja lisamine ebaõnnestus, argumendid olid vigased või puudu"
 
-#: ../gurpmi.addmedia:101
+#: ../gurpmi.addmedia:102
 #, perl-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -517,7 +522,7 @@ msgstr ""
 "See tähendab, et eduka lisamise korral saate hakata\n"
 "süsteemi uut tarkvara paigaldama."
 
-#: ../gurpmi.addmedia:104
+#: ../gurpmi.addmedia:105
 #, perl-format
 msgid ""
 "You are about to add a new packages medium, `%s'.\n"
@@ -528,22 +533,22 @@ msgstr ""
 "See tähendab, et eduka lisamise korral saate hakata\n"
 "süsteemi uut tarkvara paigaldama."
 
-#: ../gurpmi.addmedia:129
+#: ../gurpmi.addmedia:130
 #, perl-format
 msgid "Successfully added media %s."
 msgstr "Andmekandja %s edukalt lisatud."
 
-#: ../gurpmi.addmedia:130
+#: ../gurpmi.addmedia:131
 #, perl-format
 msgid "Successfully added medium `%s'."
 msgstr "Andmekandja %s edukalt lisatud."
 
-#: ../rpmdrake:38
+#: ../rpmdrake:39
 #, perl-format
 msgid "Usage: %s [OPTION]..."
 msgstr "Kasutamine: %s [VÕTI]..."
 
-#: ../rpmdrake:39
+#: ../rpmdrake:40
 msgid ""
 "  --changelog-first      display changelog before filelist in the "
 "description window"
@@ -551,38 +556,38 @@ msgstr ""
 "  --changelog-first      muutuste logi näidatakse kirjeldusaknas enne "
 "failide nimekirja"
 
-#: ../rpmdrake:40
+#: ../rpmdrake:41
 msgid "  --media=medium1,..     limit to given media"
 msgstr "  --media=medium1,..     piirdumine määratud andmekandjaga"
 
-#: ../rpmdrake:41
+#: ../rpmdrake:42
 msgid ""
 "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
 "  --merge-all-rpmnew     kõigi leitud .rpmnew/.rpmsave-failide ühendamine"
 
-#: ../rpmdrake:42
+#: ../rpmdrake:43
 msgid "  --mode=MODE            set mode (install (default), remove, update)"
 msgstr ""
 "  --mode=MODE            režiimi määramine (paigaldamine (vaikimisi), "
 "eemaldamine, uuendamine)"
 
-#: ../rpmdrake:43
+#: ../rpmdrake:44
 msgid ""
 "  --no-confirmation      don't ask first confirmation question in update mode"
 msgstr ""
 "  --no-confirmation      uuendamisrežiimis ei esitata esimest "
 "kinnituseküsimust"
 
-#: ../rpmdrake:44
+#: ../rpmdrake:45
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      käivitamisel ei uuendata andmekandjat"
 
-#: ../rpmdrake:45
+#: ../rpmdrake:46
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        pakettide signatuure ei kontrollita"
 
-#: ../rpmdrake:46
+#: ../rpmdrake:47
 msgid ""
 "  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
 "\" machine to show needed deps"
@@ -590,27 +595,27 @@ msgstr ""
 "  --parallel=alias,host  töö paralleelrežiimis, kasutades gruppi \"alias\", "
 "kasutades masinat \"host\" vajalike sõltuvuste näitamiseks"
 
-#: ../rpmdrake:47
+#: ../rpmdrake:48
 msgid "  --pkg-nosel=pkg1,..    show only these packages"
 msgstr "  --pkg-nosel=pkg1,..    näidatakse ainult määratud pakette"
 
-#: ../rpmdrake:48
+#: ../rpmdrake:49
 msgid "  --pkg-sel=pkg1,..      preselect these packages"
 msgstr "  --pkg-sel=pkg1,..      määratud pakettide eelvalimine"
 
-#: ../rpmdrake:49
+#: ../rpmdrake:50
 msgid "  --root                 force to run as root"
 msgstr "  --root                 sunnitakse töötama administraatori õigustes"
 
-#: ../rpmdrake:50
+#: ../rpmdrake:51
 msgid "  --search=pkg           run search for \"pkg\""
 msgstr "  --search=pkg           otsitakse paketti \"pkg\""
 
-#: ../rpmdrake:188
+#: ../rpmdrake:205
 msgid "Running in user mode"
 msgstr "Töötamine kasutaja õigustega"
 
-#: ../rpmdrake:189
+#: ../rpmdrake:206
 msgid ""
 "You are launching this program as a normal user.\n"
 "You will not be able to perform modifications on the system,\n"
@@ -620,545 +625,635 @@ msgstr ""
 "Te ei saa nii küll süsteemis mingeid muutusi ette võtta,\n"
 "kuid võite siiski sirvida olemasolevat andmebaasi."
 
-#: ../rpmdrake:197
+#: ../rpmdrake:214
 msgid "Accessibility"
 msgstr "Hõlbustus"
 
-#: ../rpmdrake:198 ../rpmdrake:199 ../rpmdrake:200 ../rpmdrake:201
-#: ../rpmdrake:202
+#: ../rpmdrake:215 ../rpmdrake:216 ../rpmdrake:217 ../rpmdrake:218
+#: ../rpmdrake:219
 msgid "Archiving"
 msgstr "Arhiveerimine"
 
-#: ../rpmdrake:199
+#: ../rpmdrake:216
 msgid "Backup"
 msgstr "Varundamine"
 
-#: ../rpmdrake:200
+#: ../rpmdrake:217
 msgid "Cd burning"
 msgstr "CD-de kirjutamine"
 
-#: ../rpmdrake:201
+#: ../rpmdrake:218
 msgid "Compression"
 msgstr "Tihendamine"
 
-#: ../rpmdrake:202 ../rpmdrake:208 ../rpmdrake:222 ../rpmdrake:235
-#: ../rpmdrake:253 ../rpmdrake:274 ../rpmdrake:287 ../rpmdrake:297
-#: ../rpmdrake:383
+#: ../rpmdrake:219 ../rpmdrake:225 ../rpmdrake:239 ../rpmdrake:252
+#: ../rpmdrake:270 ../rpmdrake:291 ../rpmdrake:304 ../rpmdrake:314
+#: ../rpmdrake:426
 msgid "Other"
 msgstr "Muu"
 
-#: ../rpmdrake:203 ../rpmdrake:204 ../rpmdrake:205 ../rpmdrake:206
-#: ../rpmdrake:207 ../rpmdrake:208
+#: ../rpmdrake:220 ../rpmdrake:221 ../rpmdrake:222 ../rpmdrake:223
+#: ../rpmdrake:224 ../rpmdrake:225
 msgid "Books"
 msgstr "Raamatud"
 
-#: ../rpmdrake:204
+#: ../rpmdrake:221
 msgid "Computer books"
 msgstr "Arvutiraamatud"
 
-#: ../rpmdrake:205
+#: ../rpmdrake:222
 msgid "Faqs"
 msgstr "KKK"
 
-#: ../rpmdrake:206
+#: ../rpmdrake:223
 msgid "Howtos"
 msgstr "HOWTO"
 
-#: ../rpmdrake:207
+#: ../rpmdrake:224
 msgid "Literature"
 msgstr "Kirjandus"
 
-#: ../rpmdrake:209 ../rpmdrake:210 ../rpmdrake:211
+#: ../rpmdrake:226 ../rpmdrake:227 ../rpmdrake:228
 msgid "Cluster"
 msgstr "Klaster"
 
-#: ../rpmdrake:210
+#: ../rpmdrake:227
 msgid "Message Passing"
 msgstr "Teateedastus"
 
-#: ../rpmdrake:211
+#: ../rpmdrake:228
 msgid "Queueing Services"
 msgstr "Järjekorrateenused"
 
-#: ../rpmdrake:212
+#: ../rpmdrake:229
 msgid "Communications"
 msgstr "Kommunikatsioon"
 
-#: ../rpmdrake:213 ../rpmdrake:217
+#: ../rpmdrake:230 ../rpmdrake:234
 msgid "Databases"
 msgstr "Andmebaasid"
 
-#: ../rpmdrake:214 ../rpmdrake:215 ../rpmdrake:216 ../rpmdrake:217
-#: ../rpmdrake:218 ../rpmdrake:219 ../rpmdrake:220 ../rpmdrake:221
-#: ../rpmdrake:222 ../rpmdrake:223 ../rpmdrake:224 ../rpmdrake:225
+#: ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233 ../rpmdrake:234
+#: ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237 ../rpmdrake:238
+#: ../rpmdrake:239 ../rpmdrake:240 ../rpmdrake:241 ../rpmdrake:242
+#: ../rpmdrake:353 ../rpmdrake:354 ../rpmdrake:355
 msgid "Development"
 msgstr "Arendus"
 
-#: ../rpmdrake:215
+#: ../rpmdrake:232
 msgid "C"
 msgstr "C"
 
-#: ../rpmdrake:216
+#: ../rpmdrake:233
 msgid "C++"
 msgstr "C++"
 
-#: ../rpmdrake:218
+#: ../rpmdrake:235
 msgid "GNOME and GTK+"
 msgstr "GNOME ja GTK+"
 
-#: ../rpmdrake:219
+#: ../rpmdrake:236
 msgid "Java"
 msgstr "Java"
 
-#: ../rpmdrake:220
+#: ../rpmdrake:237
 msgid "KDE and Qt"
 msgstr "KDE ja Qt"
 
-#: ../rpmdrake:221
+#: ../rpmdrake:238
 msgid "Kernel"
 msgstr "Kernel"
 
-#: ../rpmdrake:223
+#: ../rpmdrake:240
 msgid "Perl"
 msgstr "Perl"
 
-#: ../rpmdrake:224
+#: ../rpmdrake:241
 msgid "PHP"
 msgstr "PHP"
 
-#: ../rpmdrake:225
+#: ../rpmdrake:242
 msgid "Python"
 msgstr "Python"
 
-#: ../rpmdrake:226
+#: ../rpmdrake:243
 msgid "Editors"
 msgstr "Redaktorid"
 
-#: ../rpmdrake:227
+#: ../rpmdrake:244
 msgid "Education"
 msgstr "Haridus"
 
-#: ../rpmdrake:228
+#: ../rpmdrake:245
 msgid "Emulators"
 msgstr "Emulaatorid"
 
-#: ../rpmdrake:229
+#: ../rpmdrake:246
 msgid "File tools"
 msgstr "Failitööriistad"
 
-#: ../rpmdrake:230 ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233
-#: ../rpmdrake:234 ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237
-#: ../rpmdrake:238
+#: ../rpmdrake:247 ../rpmdrake:248 ../rpmdrake:249 ../rpmdrake:250
+#: ../rpmdrake:251 ../rpmdrake:252 ../rpmdrake:253 ../rpmdrake:254
+#: ../rpmdrake:255
 msgid "Games"
 msgstr "Mängud"
 
-#: ../rpmdrake:231
+#: ../rpmdrake:248
 msgid "Adventure"
 msgstr "Seiklusmängud"
 
-#: ../rpmdrake:232
+#: ../rpmdrake:249
 msgid "Arcade"
 msgstr "Võitlusmängud"
 
-#: ../rpmdrake:233
+#: ../rpmdrake:250
 msgid "Boards"
 msgstr "Lauamängud"
 
-#: ../rpmdrake:234
+#: ../rpmdrake:251
 msgid "Cards"
 msgstr "Kaardimängud"
 
-#: ../rpmdrake:236
+#: ../rpmdrake:253
 msgid "Puzzles"
 msgstr "Pusled"
 
-#: ../rpmdrake:237
+#: ../rpmdrake:254
 msgid "Sports"
 msgstr "Sport"
 
-#: ../rpmdrake:238
+#: ../rpmdrake:255
 msgid "Strategy"
 msgstr "Strateegia"
 
-#: ../rpmdrake:239 ../rpmdrake:240 ../rpmdrake:243 ../rpmdrake:244
-#: ../rpmdrake:247 ../rpmdrake:250 ../rpmdrake:253 ../rpmdrake:254
-#: ../rpmdrake:257 ../rpmdrake:260
+#: ../rpmdrake:256 ../rpmdrake:257 ../rpmdrake:260 ../rpmdrake:261
+#: ../rpmdrake:264 ../rpmdrake:267 ../rpmdrake:270 ../rpmdrake:271
+#: ../rpmdrake:274 ../rpmdrake:277
 msgid "Graphical desktop"
 msgstr "Graafiline töölaud"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:242
+#: ../rpmdrake:259
 msgid "Enlightenment"
 msgstr "Enlightenment"
 
-#: ../rpmdrake:243
+#: ../rpmdrake:260
 msgid "FVWM based"
 msgstr "FVWM"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:246
+#: ../rpmdrake:263
 msgid "GNOME"
 msgstr "GNOME"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:249
+#: ../rpmdrake:266
 msgid "Icewm"
 msgstr "IceWM"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:252
+#: ../rpmdrake:269
 msgid "KDE"
 msgstr "KDE"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:256
+#: ../rpmdrake:273
 msgid "Sawfish"
 msgstr "Sawfish"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:259
+#: ../rpmdrake:276
 msgid "WindowMaker"
 msgstr "WindowMaker"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:262
+#: ../rpmdrake:279
 msgid "Xfce"
 msgstr "Xfce"
 
-#: ../rpmdrake:263
+#: ../rpmdrake:280
 msgid "Graphics"
 msgstr "Graafika"
 
-#: ../rpmdrake:264
+#: ../rpmdrake:281
 msgid "Monitoring"
 msgstr "Monitooring"
 
-#: ../rpmdrake:265 ../rpmdrake:266
+#: ../rpmdrake:282 ../rpmdrake:283
 msgid "Multimedia"
 msgstr "Multimeedia"
 
-#: ../rpmdrake:266 ../rpmdrake:317
+#: ../rpmdrake:283 ../rpmdrake:334
 msgid "Video"
 msgstr "Video"
 
-#: ../rpmdrake:267 ../rpmdrake:268 ../rpmdrake:269 ../rpmdrake:270
-#: ../rpmdrake:271 ../rpmdrake:272 ../rpmdrake:273 ../rpmdrake:274
-#: ../rpmdrake:275 ../rpmdrake:276 ../rpmdrake:296
+#: ../rpmdrake:284 ../rpmdrake:285 ../rpmdrake:286 ../rpmdrake:287
+#: ../rpmdrake:288 ../rpmdrake:289 ../rpmdrake:290 ../rpmdrake:291
+#: ../rpmdrake:292 ../rpmdrake:293 ../rpmdrake:313
 msgid "Networking"
 msgstr "Võrk"
 
-#: ../rpmdrake:268
+#: ../rpmdrake:285
 msgid "Chat"
 msgstr "Chat"
 
-#: ../rpmdrake:269
+#: ../rpmdrake:286
 msgid "File transfer"
 msgstr "Failiedastus"
 
-#: ../rpmdrake:270
+#: ../rpmdrake:287
 msgid "IRC"
 msgstr "IRC"
 
-#: ../rpmdrake:271
+#: ../rpmdrake:288
 msgid "Instant messaging"
 msgstr "Kiirsuhtlus"
 
-#: ../rpmdrake:272
+#: ../rpmdrake:289 ../rpmdrake:360
 msgid "Mail"
 msgstr "E-post"
 
-#: ../rpmdrake:273
+#: ../rpmdrake:290
 msgid "News"
 msgstr "Uudised"
 
-#: ../rpmdrake:275
+#: ../rpmdrake:292
 msgid "Remote access"
 msgstr "Kaugligipääs"
 
-#: ../rpmdrake:276
+#: ../rpmdrake:293
 msgid "WWW"
 msgstr "WWW"
 
-#: ../rpmdrake:277
+#: ../rpmdrake:294
 msgid "Office"
 msgstr "Kontoritöö"
 
-#: ../rpmdrake:278
+#: ../rpmdrake:295
 msgid "Public Keys"
 msgstr "Avalikud võtmed"
 
-#: ../rpmdrake:279
+#: ../rpmdrake:296
 msgid "Publishing"
 msgstr "Publitseerimine"
 
-#: ../rpmdrake:280 ../rpmdrake:281 ../rpmdrake:282 ../rpmdrake:283
-#: ../rpmdrake:284 ../rpmdrake:285 ../rpmdrake:286 ../rpmdrake:287
-#: ../rpmdrake:288
+#: ../rpmdrake:297 ../rpmdrake:298 ../rpmdrake:299 ../rpmdrake:300
+#: ../rpmdrake:301 ../rpmdrake:302 ../rpmdrake:303 ../rpmdrake:304
+#: ../rpmdrake:305
 msgid "Sciences"
 msgstr "Teadus"
 
-#: ../rpmdrake:281
+#: ../rpmdrake:298
 msgid "Astronomy"
 msgstr "Astronoomia"
 
-#: ../rpmdrake:282
+#: ../rpmdrake:299
 msgid "Biology"
 msgstr "Bioloogia"
 
-#: ../rpmdrake:283
+#: ../rpmdrake:300
 msgid "Chemistry"
 msgstr "Keemia"
 
-#: ../rpmdrake:284
+#: ../rpmdrake:301
 msgid "Computer science"
 msgstr "Arvutiteadus"
 
-#: ../rpmdrake:285
+#: ../rpmdrake:302
 msgid "Geosciences"
 msgstr "Geograafia"
 
-#: ../rpmdrake:286
+#: ../rpmdrake:303
 msgid "Mathematics"
 msgstr "Matemaatika"
 
-#: ../rpmdrake:288
+#: ../rpmdrake:305
 msgid "Physics"
 msgstr "Füüsika"
 
-#: ../rpmdrake:289
+#: ../rpmdrake:306
 msgid "Shells"
 msgstr "Shellid"
 
-#: ../rpmdrake:290
+#: ../rpmdrake:307
 msgid "Sound"
 msgstr "Heli"
 
-#: ../rpmdrake:291 ../rpmdrake:292 ../rpmdrake:293 ../rpmdrake:294
-#: ../rpmdrake:295 ../rpmdrake:296 ../rpmdrake:297 ../rpmdrake:298
-#: ../rpmdrake:299 ../rpmdrake:300 ../rpmdrake:301 ../rpmdrake:302
-#: ../rpmdrake:303 ../rpmdrake:304 ../rpmdrake:305 ../rpmdrake:306
-#: ../rpmdrake:307 ../rpmdrake:308 ../rpmdrake:309 ../rpmdrake:310
-#: ../rpmdrake:311
+#: ../rpmdrake:308 ../rpmdrake:309 ../rpmdrake:310 ../rpmdrake:311
+#: ../rpmdrake:312 ../rpmdrake:313 ../rpmdrake:314 ../rpmdrake:315
+#: ../rpmdrake:316 ../rpmdrake:317 ../rpmdrake:318 ../rpmdrake:319
+#: ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322 ../rpmdrake:323
+#: ../rpmdrake:324 ../rpmdrake:325 ../rpmdrake:326 ../rpmdrake:327
+#: ../rpmdrake:328
 msgid "System"
 msgstr "Süsteem"
 
-#: ../rpmdrake:292
+#: ../rpmdrake:309
 msgid "Base"
 msgstr "Baas"
 
-#: ../rpmdrake:293 ../rpmdrake:294 ../rpmdrake:295 ../rpmdrake:296
-#: ../rpmdrake:297 ../rpmdrake:298 ../rpmdrake:299
+#: ../rpmdrake:310 ../rpmdrake:311 ../rpmdrake:312 ../rpmdrake:313
+#: ../rpmdrake:314 ../rpmdrake:315 ../rpmdrake:316 ../rpmdrake:338
 msgid "Configuration"
 msgstr "Seadistamine"
 
-#: ../rpmdrake:294
+#: ../rpmdrake:311
 msgid "Boot and Init"
 msgstr "Algkäivitus"
 
-#: ../rpmdrake:295
+#: ../rpmdrake:312
 msgid "Hardware"
 msgstr "Riistvara"
 
-#: ../rpmdrake:298
+#: ../rpmdrake:315
 msgid "Packaging"
 msgstr "Paketindus"
 
-#: ../rpmdrake:299
+#: ../rpmdrake:316
 msgid "Printing"
 msgstr "Trükkimine"
 
-#: ../rpmdrake:300
+#: ../rpmdrake:317
 msgid "Deploiement"
 msgstr "Jaosvõrk"
 
-#: ../rpmdrake:301
+#: ../rpmdrake:318
 msgid "Deployment"
 msgstr "Jaosvõrk"
 
-#: ../rpmdrake:302 ../rpmdrake:303 ../rpmdrake:304 ../rpmdrake:305
-#: ../rpmdrake:306
+#: ../rpmdrake:319 ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322
+#: ../rpmdrake:323
 msgid "Fonts"
 msgstr "Fondid"
 
-#: ../rpmdrake:303
+#: ../rpmdrake:320
 msgid "Console"
 msgstr "Konsool"
 
-#: ../rpmdrake:304
+#: ../rpmdrake:321
 msgid "True type"
 msgstr "True Type"
 
-#: ../rpmdrake:305
+#: ../rpmdrake:322
 msgid "Type1"
 msgstr "Type1"
 
-#: ../rpmdrake:306
+#: ../rpmdrake:323
 msgid "X11 bitmap"
 msgstr "X11"
 
-#: ../rpmdrake:307
+#: ../rpmdrake:324
 msgid "Internationalization"
 msgstr "Internatsionaliseerimine"
 
-#: ../rpmdrake:308
+#: ../rpmdrake:325
 msgid "Kernel and hardware"
 msgstr "Kernel ja riistvara"
 
-#: ../rpmdrake:309
+#: ../rpmdrake:326
 msgid "Libraries"
 msgstr "Teegid"
 
-#: ../rpmdrake:310
+#: ../rpmdrake:327
 msgid "Servers"
 msgstr "Serverid"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:313
+#: ../rpmdrake:330
 msgid "X11"
 msgstr "X11"
 
-#: ../rpmdrake:314
+#: ../rpmdrake:331
 msgid "Terminals"
 msgstr "Terminalid"
 
-#: ../rpmdrake:315
+#: ../rpmdrake:332
 msgid "Text tools"
 msgstr "Tekstitööriistad"
 
-#: ../rpmdrake:316
+#: ../rpmdrake:333
 msgid "Toys"
 msgstr "Mänguasjad"
 
+#. for Mandriva Choice:
+#: ../rpmdrake:337 ../rpmdrake:338 ../rpmdrake:339 ../rpmdrake:340
+#: ../rpmdrake:341 ../rpmdrake:342 ../rpmdrake:343 ../rpmdrake:344
+#: ../rpmdrake:345 ../rpmdrake:346
+msgid "Workstation"
+msgstr "Tööjaam"
+
+#: ../rpmdrake:339
+msgid "Console Tools"
+msgstr "Konsoolitööriistad"
+
+#: ../rpmdrake:340 ../rpmdrake:355
+msgid "Documentation"
+msgstr "Dokumentatsioon"
+
+#: ../rpmdrake:341
+msgid "Game station"
+msgstr "Mänguarvuti"
+
+#: ../rpmdrake:342
+msgid "Internet station"
+msgstr "Internetiarvuti"
+
+#: ../rpmdrake:343
+msgid "Multimedia station"
+msgstr "Multimeediaarvuti"
+
+#: ../rpmdrake:344
+msgid "Network Computer (client)"
+msgstr "Võrguarvuti (klient)"
+
+#: ../rpmdrake:345
+msgid "Office Workstation"
+msgstr "Kontoriarvuti"
+
+#: ../rpmdrake:346
+msgid "Scientific Workstation"
+msgstr "Teadusarvuti"
+
+#: ../rpmdrake:347 ../rpmdrake:349 ../rpmdrake:350 ../rpmdrake:351
+#: ../rpmdrake:352
+msgid "Graphical Environment"
+msgstr "Graafiline keskkond"
+
+#: ../rpmdrake:349
+msgid "GNOME Workstation"
+msgstr "GNOME tööjaam"
+
+#: ../rpmdrake:350
+msgid "IceWm Desktop"
+msgstr "IceWM töölaud"
+
+#: ../rpmdrake:351
+msgid "KDE Workstation"
+msgstr "KDE tööjaam"
+
+#: ../rpmdrake:352
+msgid "Other Graphical Desktops"
+msgstr "Teised graafilised töölauad"
+
+#: ../rpmdrake:356 ../rpmdrake:357 ../rpmdrake:358 ../rpmdrake:359
+#: ../rpmdrake:360 ../rpmdrake:361 ../rpmdrake:362 ../rpmdrake:363
+msgid "Server"
+msgstr "Server"
+
+#: ../rpmdrake:357
+msgid "DNS/NIS"
+msgstr "DNS/NIS"
+
+#: ../rpmdrake:358
+msgid "Database"
+msgstr "Andmebaas"
+
+#: ../rpmdrake:359
+msgid "Firewall/Router"
+msgstr "Tulemüür/ruuter"
+
+#: ../rpmdrake:361
+msgid "Mail/Groupware/News"
+msgstr "E-post/grupitöö/uudised"
+
+#: ../rpmdrake:362
+msgid "Network Computer server"
+msgstr "Võrguarvuti (server)"
+
+#: ../rpmdrake:363
+msgid "Web/FTP"
+msgstr "Veeb/FTP"
+
 #. - to highlight information
-#: ../rpmdrake:443 ../rpmdrake:614 ../rpmdrake:619 ../rpmdrake:633
-#: ../rpmdrake:635
+#: ../rpmdrake:502 ../rpmdrake:707 ../rpmdrake:712 ../rpmdrake:726
+#: ../rpmdrake:728
 msgid "(Not available)"
 msgstr "(kättesaamatu)"
 
-#: ../rpmdrake:475
+#: ../rpmdrake:534
 msgid "Search results"
 msgstr "Otsingu tulemused"
 
-#: ../rpmdrake:475
+#: ../rpmdrake:534
 msgid "Search results (none)"
 msgstr "Otsingu tulemus (ei leitud)"
 
-#: ../rpmdrake:486
+#: ../rpmdrake:545 ../rpmdrake:2125
 msgid "Please wait, searching..."
 msgstr "Palun oodake, otsitakse..."
 
-#: ../rpmdrake:558 ../rpmdrake:810
+#: ../rpmdrake:617 ../rpmdrake:921
 msgid "Addable"
 msgstr "Lisatavad"
 
-#: ../rpmdrake:558 ../rpmdrake:810
+#: ../rpmdrake:617 ../rpmdrake:921
 msgid "Upgradable"
 msgstr "Uuendatavad"
 
-#: ../rpmdrake:560
+#: ../rpmdrake:619
 msgid "Not selected"
 msgstr "Valimata"
 
-#: ../rpmdrake:560
+#: ../rpmdrake:619
 msgid "Selected"
 msgstr "Valitud"
 
-#: ../rpmdrake:602 ../rpmdrake:651
+#. is it an update?
+#: ../rpmdrake:687 ../rpmdrake:744
 msgid "Importance: "
 msgstr "Tähtsus: "
 
-#: ../rpmdrake:603 ../rpmdrake:659
+#: ../rpmdrake:688 ../rpmdrake:752
 msgid "Reason for update: "
 msgstr "Uuendamise põhjus: "
 
-#: ../rpmdrake:647
+#: ../rpmdrake:692
 msgid "Security advisory"
 msgstr "Turvanõuanne"
 
-#: ../rpmdrake:655 ../rpmdrake:708
+#: ../rpmdrake:700 ../rpmdrake:754
 msgid "No description"
 msgstr "Kirjeldus puudub"
 
-#: ../rpmdrake:609
+#: ../rpmdrake:703
 msgid "Files:"
 msgstr "Failid:"
 
-#: ../rpmdrake:618
+#: ../rpmdrake:711
 msgid "Changelog:"
 msgstr "Muutuste logi:"
 
-#: ../rpmdrake:630
+#: ../rpmdrake:723
 msgid "Files:\n"
 msgstr "Failid:\n"
 
-#: ../rpmdrake:635
+#: ../rpmdrake:728
 msgid "Changelog:\n"
 msgstr "Muutuste logi:\n"
 
-#: ../rpmdrake:640
+#: ../rpmdrake:733 ../rpmdrake.pm:807
 msgid "Medium: "
 msgstr "Andmekandja: "
 
-#: ../rpmdrake:641
+#: ../rpmdrake:734
 msgid "Currently installed version: "
 msgstr "Praegu paigaldatud versioon: "
 
-#: ../rpmdrake:645
+#: ../rpmdrake:738
 msgid "Name: "
 msgstr "Nimi: "
 
-#: ../rpmdrake:646
+#: ../rpmdrake:739
 msgid "Version: "
 msgstr "Versioon: "
 
-#: ../rpmdrake:647
+#: ../rpmdrake:740
 msgid "Architecture: "
 msgstr "Arhitektuur: "
 
-#: ../rpmdrake:648
+#: ../rpmdrake:741
 #, perl-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake:648
+#: ../rpmdrake:741
 msgid "Size: "
 msgstr "Suurus: "
 
 #. extra empty line
-#: ../rpmdrake:655
+#: ../rpmdrake:748
 msgid "Summary: "
 msgstr "Kokkuvõte: "
 
-#: ../rpmdrake:661
+#: ../rpmdrake:754
 msgid "Description: "
 msgstr "Kirjeldus: "
 
-#: ../rpmdrake:698 ../rpmdrake.pm:178
+#: ../rpmdrake:810 ../rpmdrake.pm:179
 msgid "Software Management"
 msgstr "Tarkvarahaldur"
 
-#. - TODO change those labels to something more sensible, e.g. "Upgrade information about this package"
-#: ../rpmdrake:715 ../rpmdrake:862 ../rpmdrake:864 ../rpmdrake:1893
+#: ../rpmdrake:827 ../rpmdrake:973 ../rpmdrake:975
 msgid "More information on package..."
 msgstr "Rohkem infot paketi kohta..."
 
-#: ../rpmdrake:717
+#: ../rpmdrake:829
 msgid "One of the following packages is needed:"
 msgstr "Vajalik on üks järgmistest pakettidest:"
 
-#: ../rpmdrake:717
+#: ../rpmdrake:829
 msgid "Please choose"
 msgstr "Palun valige"
 
-#: ../rpmdrake:759
+#: ../rpmdrake:870
 msgid "Please wait, listing packages..."
 msgstr "Palun oodake, koostatakse nimekirja..."
 
-#: ../rpmdrake:777
+#: ../rpmdrake:888
 msgid "No update"
 msgstr "Uuendusi ei ole"
 
-#: ../rpmdrake:778
+#: ../rpmdrake:889
 msgid ""
 "The list of updates is empty. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -1168,34 +1263,34 @@ msgstr ""
 "paigaldatud pakettidele ei ole parajasti mingeid uuendusi või\n"
 "Te olete need juba kõik paigaldanud."
 
-#: ../rpmdrake:801 ../rpmdrake:1057
+#: ../rpmdrake:912 ../rpmdrake:1174
 msgid "All"
 msgstr "Kõik"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../rpmdrake:849 ../rpmdrake:854
+#: ../rpmdrake:960 ../rpmdrake:965
 msgid "More info"
 msgstr "Rohkem infot"
 
-#: ../rpmdrake:857 ../rpmdrake:1882
+#: ../rpmdrake:968
 msgid "Information on packages"
 msgstr "Info pakettide kohta"
 
-#: ../rpmdrake:879
+#: ../rpmdrake:991
 msgid "Some additional packages need to be removed"
 msgstr "Et kõik töötaks, on vaja lisaks eemaldada mõned paketid"
 
-#: ../rpmdrake:880
+#: ../rpmdrake:992
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
 msgstr "Kõigi sõltuvuste rahuldamiseks eemaldatakse ka järgmised paketid:"
 
-#: ../rpmdrake:886 ../rpmdrake:895
+#: ../rpmdrake:998 ../rpmdrake:1007
 msgid "Some packages can't be removed"
 msgstr "Mõnda paketti ei saa eemaldada"
 
-#: ../rpmdrake:887
+#: ../rpmdrake:999
 msgid ""
 "Removing these packages would break your system, sorry:\n"
 "\n"
@@ -1203,7 +1298,7 @@ msgstr ""
 "Vabandust, nende pakettide eemaldamine võib halvata Teie süsteemi:\n"
 "\n"
 
-#: ../rpmdrake:896 ../rpmdrake:961
+#: ../rpmdrake:1008 ../rpmdrake:1073
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -1212,11 +1307,11 @@ msgstr ""
 "Sõltuvuste tõttu ei saa järgmisi pakette valida:\n"
 "\n"
 
-#: ../rpmdrake:925
+#: ../rpmdrake:1037
 msgid "Additional packages needed"
 msgstr "Vajalikud lisapaketid"
 
-#: ../rpmdrake:926
+#: ../rpmdrake:1038
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -1225,16 +1320,16 @@ msgstr ""
 "Sõltuvuste rahuldamiseks tuleb paigaldada ka järgmised paketid:\n"
 "\n"
 
-#: ../rpmdrake:941
+#: ../rpmdrake:1053
 #, perl-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (kuulub vahelejäetavate hulka)"
 
-#: ../rpmdrake:944
+#: ../rpmdrake:1056
 msgid "Some packages can't be installed"
 msgstr "Mõnda paketti ei saa paigaldada"
 
-#: ../rpmdrake:945
+#: ../rpmdrake:1057
 #, perl-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
@@ -1245,109 +1340,114 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:960 ../rpmdrake:1729
+#: ../rpmdrake:1072 ../rpmdrake:1896
 msgid "Some packages need to be removed"
 msgstr "Mõned paketid tuleb eemaldada"
 
-#: ../rpmdrake:985
+#: ../rpmdrake:1101
 #, perl-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Valitud: %s / Vaba kettaruumi %s"
 
-#: ../rpmdrake:986
+#: ../rpmdrake:1102
 #, perl-format
 msgid "Selected size: %d MB"
 msgstr "Valitud pakettide maht: %d MB"
 
 #. - the package information hasn't been loaded. Instead of rescanning the media, just give up.
-#: ../rpmdrake:991
+#: ../rpmdrake:1107
 msgid "Description not available for this package\n"
 msgstr "Sellel paketil pole kirjeldust\n"
 
-#: ../rpmdrake:1057
+#: ../rpmdrake:1113 ../rpmdrake:1506
+#, perl-format
+msgid "A fatal error occurred: %s."
+msgstr "Tekkis saatuslik viga: %s."
+
+#: ../rpmdrake:1174
 msgid "Installed"
 msgstr "Paigaldatud"
 
-#: ../rpmdrake:1057
+#: ../rpmdrake:1174
 msgid "Non installed"
 msgstr "Paigaldamata"
 
-#: ../rpmdrake:1058
+#: ../rpmdrake:1175
 #, perl-format
 msgid "%s choices"
 msgstr "%s valikud"
 
-#: ../rpmdrake:1058
+#: ../rpmdrake:1175
 msgid "Mandriva Linux choices"
 msgstr "Mandriva Linuxi valikud"
 
 #. let's keep the translated strings (to be resurected as sorting the treeview):
-#: ../rpmdrake:1060
+#: ../rpmdrake:1177
 msgid "All packages, alphabetical"
 msgstr "Kõik paketid tähestikuliselt"
 
-#: ../rpmdrake:1061
+#: ../rpmdrake:1178
 msgid "All packages, by update availability"
 msgstr "Kõik paketid uuendamisstaatuse järgi"
 
-#: ../rpmdrake:1062
+#: ../rpmdrake:1179
 msgid "All packages, by size"
 msgstr "Kõik paketid suuruse järgi"
 
-#: ../rpmdrake:1063
+#: ../rpmdrake:1180
 msgid "All packages, by selection state"
 msgstr "Kõik paketid valikustaatuse järgi"
 
-#: ../rpmdrake:1064
+#: ../rpmdrake:1181
 msgid "Leaves only, sorted by install date"
 msgstr "Ainult sõltuvusteta paketid paigaldusaja järgi"
 
-#: ../rpmdrake:1065
+#: ../rpmdrake:1182
 msgid "All packages, by group"
 msgstr "Kõik paketid grupi järgi"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "All updates"
 msgstr "Kõik uuendused"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "Bugfixes updates"
 msgstr "Veaparandused"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "Normal updates"
 msgstr "Tavalised uuendused"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "Security updates"
 msgstr "Turvaparandused"
 
-#: ../rpmdrake:1123
+#: ../rpmdrake:1247
 msgid "in names"
 msgstr "nimedes"
 
-#: ../rpmdrake:1125
+#: ../rpmdrake:1249
 msgid "in descriptions"
 msgstr "kirjeldustes"
 
-#: ../rpmdrake:1127
+#: ../rpmdrake:1251
 msgid "in file names"
 msgstr "failinimedes"
 
-#: ../rpmdrake:1230
+#: ../rpmdrake:1278
 #, perl-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr "Viga: %s paistab olevat haagitud ainult loetavana."
 
-#: ../rpmdrake:1153
+#: ../rpmdrake:1282
 msgid "You need to select some packages first."
 msgstr "Kõigepealt tuleb mõned paketid valida."
 
-#: ../rpmdrake:1158
+#: ../rpmdrake:1287
 msgid "Too many packages are selected"
 msgstr "Valitud on liiga palju pakette"
 
-#: ../rpmdrake:1159
+#: ../rpmdrake:1288
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -1363,131 +1463,130 @@ msgstr ""
 "\n"
 "Kas soovite tõesti paigaldada kõik valitud paketid?"
 
-#: ../rpmdrake:1188 ../rpmdrake:1191 ../rpmdrake:1201 ../rpmdrake:1213
-#: ../rpmdrake:1219
+#: ../rpmdrake:1320 ../rpmdrake:1323 ../rpmdrake:1334 ../rpmdrake:1347
+#: ../rpmdrake:1356
 msgid "/_File"
 msgstr "/_Fail"
 
-#: ../rpmdrake:1191
+#: ../rpmdrake:1323
 msgid "/_Update media"
 msgstr "/_Uuenda allikaid"
 
-#: ../rpmdrake:1201
+#: ../rpmdrake:1334
 msgid "/_Reset the selection"
 msgstr "/_Lähtesta valik"
 
-#: ../rpmdrake:1213
+#: ../rpmdrake:1347
 msgid "/Reload the _packages list"
 msgstr "/Laadi _pakettide nimekiri uuesti"
 
-#: ../rpmdrake:1219
+#: ../rpmdrake:1356
 msgid "/_Quit"
 msgstr "/_Välju"
 
-#: ../rpmdrake:1219
+#: ../rpmdrake:1356
 msgid "<control>Q"
 msgstr "<control>Q"
 
-#: ../rpmdrake:1222 ../rpmdrake:1223 ../rpmdrake:1226 ../rpmdrake:1256
+#: ../rpmdrake:1359 ../rpmdrake:1360 ../rpmdrake:1363 ../rpmdrake:1393
 msgid "/_Options"
 msgstr "/_Seadistused"
 
-#: ../rpmdrake:1223
+#: ../rpmdrake:1360
 msgid "/_Media Manager"
 msgstr "/And_mekandjate haldur"
 
-#: ../rpmdrake:1226 ../rpmdrake:1256
+#: ../rpmdrake:1363 ../rpmdrake:1393
 msgid "/_Show automatically selected packages"
 msgstr "/A_utomaatselt valitud pakettide näitamine"
 
-#: ../rpmdrake:1230 ../rpmdrake:1231 ../rpmdrake:1232 ../rpmdrake:1233
+#: ../rpmdrake:1367 ../rpmdrake:1368 ../rpmdrake:1369 ../rpmdrake:1370
 msgid "/_Help"
 msgstr "/_Abi"
 
-#: ../rpmdrake:1231
+#: ../rpmdrake:1368
 msgid "/_Report Bug"
 msgstr "/Saada vea_raport"
 
-#: ../rpmdrake:1233
+#: ../rpmdrake:1370
 msgid "/_About..."
 msgstr "/_Info..."
 
 #. nicer formatting
-#: ../rpmdrake:1236
-msgid "About Rpmdrake"
-msgstr "Rpmdrake'i info"
+#: ../rpmdrake:1373
+msgid "Rpmdrake"
+msgstr "Rpmdrake"
 
-#: ../rpmdrake:1238
+#: ../rpmdrake:1375
 #, perl-format
 msgid "Copyright (C) %s by Mandriva"
 msgstr "Autoriõigus (C) %s: Mandriva"
 
-#: ../rpmdrake:1240
+#: ../rpmdrake:1377
 msgid "Rpmdrake is Mandriva Linux package management tool."
 msgstr "Rpmdrake on Mandriva Linuxi tarkvarahaldur."
 
-#: ../rpmdrake:1242
+#: ../rpmdrake:1379
 msgid "Mandriva Linux"
 msgstr "Mandriva Linux"
 
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:1247
+#: ../rpmdrake:1384
 msgid "_: Translator(s) name(s) & email(s)\n"
 msgstr "Marek Laane <bald@starman.ee>\n"
 
-#: ../rpmdrake:1271
+#: ../rpmdrake:1408
 msgid "Find:"
 msgstr "Otsimine:"
 
-#: ../rpmdrake:1280
+#: ../rpmdrake:1417
 msgid "Search"
 msgstr "Otsi"
 
-#: ../rpmdrake:1282
+#: ../rpmdrake:1419
 msgid "Clear"
 msgstr "Puhasta"
 
-#: ../rpmdrake:1295
+#: ../rpmdrake:1433 ../rpmdrake.pm:758
+msgid "Select all"
+msgstr "Vali kõik"
+
+#: ../rpmdrake:1440
 msgid "Apply"
 msgstr "Rakenda"
 
-#: ../rpmdrake:1299
+#: ../rpmdrake:1444
 msgid "Quit"
 msgstr "Välju"
 
-#: ../rpmdrake:1315
+#: ../rpmdrake:1460
 msgid "Quick Introduction"
 msgstr "Kiire sissejuhatus"
 
-#: ../rpmdrake:1316
+#: ../rpmdrake:1461
 msgid "You can browse the packages through the categories tree on the left."
 msgstr "Tarkvarapakette saab sirvida vasakul kategooriapuus."
 
-#: ../rpmdrake:1317
+#: ../rpmdrake:1462
 msgid ""
 "You can view information about a package by clicking on it on the right list."
 msgstr "Tarkvarapakettide infot näeb neile klõpsates parempoolses nimekirjas."
 
-#: ../rpmdrake:1318
+#: ../rpmdrake:1463
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
 "Tarkvarapaketi paigaldamiseks, uuendamiseks või eemaldamiseks märkige "
 "lihtsalt kastike."
 
-#: ../rpmdrake:1360
+#: ../rpmdrake:1505
 msgid "Fatal error"
 msgstr "Saatuslik viga"
 
-#: ../rpmdrake:1361
-#, perl-format
-msgid "A fatal error occurred: %s."
-msgstr "Tekkis saatuslik viga: %s."
-
-#: ../rpmdrake:1368
+#: ../rpmdrake:1531 ../rpmdrake:1896
 msgid "Confirmation"
 msgstr "Kinnitus"
 
-#: ../rpmdrake:1369
+#: ../rpmdrake:1532
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -1499,11 +1598,11 @@ msgstr ""
 "\n"
 "Kas jätkata?"
 
-#: ../rpmdrake:1378
+#: ../rpmdrake:1541
 msgid "Already existing update media"
 msgstr "Olemasolevad uuenduste allikad"
 
-#: ../rpmdrake:1379
+#: ../rpmdrake:1542
 #, perl-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -1520,11 +1619,11 @@ msgstr ""
 "\n"
 "Seejärel käivitage %s uuesti."
 
-#: ../rpmdrake:1389
+#: ../rpmdrake:1553
 msgid "How to choose manually your mirror"
 msgstr "Kuidas valida peegel käsitsi"
 
-#: ../rpmdrake:1390
+#: ../rpmdrake:1554
 #, perl-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -1539,55 +1638,55 @@ msgstr ""
 "\n"
 "Seejärel taaskäivitage %s."
 
-#: ../rpmdrake:1427
+#: ../rpmdrake:1591
 msgid "Please wait, finding available packages..."
 msgstr "Palun oodake, otsitakse kättesaadavaid pakette..."
 
-#: ../rpmdrake:1428
+#: ../rpmdrake:1592
 msgid "Please wait, reading packages database..."
 msgstr "Palun oodake, loetakse pakettide andmebaasi..."
 
-#: ../rpmdrake:1584
+#: ../rpmdrake:1749
 #, perl-format
 msgid "Inspecting %s"
 msgstr "%s uurimine"
 
-#: ../rpmdrake:1607
+#: ../rpmdrake:1772
 msgid "changes:"
 msgstr "muutused:"
 
-#: ../rpmdrake:1615
+#: ../rpmdrake:1780
 #, perl-format
 msgid "Remove .%s"
 msgstr "Eemalda .%s"
 
-#: ../rpmdrake:1619
+#: ../rpmdrake:1784
 #, perl-format
 msgid "Use .%s as main file"
 msgstr "Kasuta .%s põhifailina"
 
-#: ../rpmdrake:1623
+#: ../rpmdrake:1788
 msgid "Do nothing"
 msgstr "Ära tee midagi"
 
-#: ../rpmdrake:1639
+#: ../rpmdrake:1804
 msgid "Installation finished"
 msgstr "Paigaldus lõpetatud"
 
-#: ../rpmdrake:1654
+#: ../rpmdrake:1819
 msgid "Inspect..."
 msgstr "Uuri..."
 
 #. N("Everything installed successfully"),
-#: ../rpmdrake:1687 ../rpmdrake:1879
+#: ../rpmdrake:1852 ../rpmdrake:2045
 msgid "All requested packages were installed successfully."
 msgstr "Kõik soovitud paketid said edukalt paigaldatud."
 
-#: ../rpmdrake:1691 ../rpmdrake:1859
+#: ../rpmdrake:1856 ../rpmdrake:2025
 msgid "Problem during installation"
 msgstr "Paigaldusel tekkis probleem"
 
-#: ../rpmdrake:1692 ../rpmdrake:1860 ../rpmdrake:1920
+#: ../rpmdrake:1857 ../rpmdrake:2026 ../rpmdrake:2084
 #, perl-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -1598,16 +1697,16 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1709
+#: ../rpmdrake:1876
 msgid "Unable to get source packages."
 msgstr "Pakette ei õnnestunud tõmmata."
 
-#: ../rpmdrake:1710
+#: ../rpmdrake:1877
 #, perl-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Vabandust, pakette ei õnnestunud kätte saada. %s"
 
-#: ../rpmdrake:1711 ../rpmdrake:1806
+#: ../rpmdrake:1878 ../rpmdrake:1976
 #, perl-format
 msgid ""
 "\n"
@@ -1620,7 +1719,7 @@ msgstr ""
 "Anti teada vigadest:\n"
 "%s"
 
-#: ../rpmdrake:1727
+#: ../rpmdrake:1894
 #, perl-format
 msgid ""
 "To satisfy dependencies, the following %d packages are going to be "
@@ -1630,7 +1729,12 @@ msgstr ""
 "Sõltuvuste lahendamiseks paigaldatakse järgmised %d paketti:\n"
 "%s\n"
 
-#: ../rpmdrake:1730
+#: ../rpmdrake:1898
+#, perl-format
+msgid "Remove %d packages?"
+msgstr "Kas eemaldada %d paketti?"
+
+#: ../rpmdrake:1899
 #, perl-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -1645,41 +1749,41 @@ msgstr ""
 "\n"
 "Kas jätkata?"
 
-#: ../rpmdrake:1741
+#: ../rpmdrake:1910
 msgid "Initializing..."
 msgstr "Initsialiseerimine..."
 
-#: ../rpmdrake:1741
+#: ../rpmdrake:1910
 msgid "Package installation..."
 msgstr "Paigaldamine..."
 
-#: ../rpmdrake:1741 ../rpmdrake.pm:307
+#: ../rpmdrake:1910 ../rpmdrake.pm:310
 msgid "Please wait"
 msgstr "Palun oodake"
 
-#: ../rpmdrake:1750
+#: ../rpmdrake:1919
 msgid "Change medium"
 msgstr "Muuda andmekandjat"
 
-#: ../rpmdrake:1751
+#: ../rpmdrake:1920
 #, perl-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Palun sisestage andmekandja \"%s\" seadmesse [%s]"
 
-#: ../rpmdrake:1758
+#: ../rpmdrake:1927
 #, perl-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Tõmban võrgust paketti '%s' (%s/%s)..."
 
-#: ../rpmdrake:1781
+#: ../rpmdrake:1947
 msgid "Verifying package signatures..."
 msgstr "Signatuuride kontrollimine..."
 
-#: ../rpmdrake:1793 ../rpmdrake.pm:743 ../rpmdrake.pm:852
+#: ../rpmdrake:1960 ../rpmdrake.pm:737 ../rpmdrake.pm:846
 msgid "Warning"
 msgstr "Hoiatus"
 
-#: ../rpmdrake:1794
+#: ../rpmdrake:1961
 #, perl-format
 msgid ""
 "The following packages have bad signatures:\n"
@@ -1694,11 +1798,11 @@ msgstr ""
 "\n"
 "Kas jätkata?"
 
-#: ../rpmdrake:1803 ../rpmdrake:1919
+#: ../rpmdrake:1973 ../rpmdrake:2083
 msgid "Installation failed"
 msgstr "Paigaldamine ebaõnnestus"
 
-#: ../rpmdrake:1804
+#: ../rpmdrake:1974
 #, perl-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -1711,25 +1815,25 @@ msgstr ""
 "\n"
 "Võib-olla tasuks uuendada allikate andmebaasi."
 
-#: ../rpmdrake:1819
+#: ../rpmdrake:1988
 msgid "Preparing packages installation..."
 msgstr "Paigaldamiseks valmistumine..."
 
-#: ../rpmdrake:1819
+#: ../rpmdrake:1988
 msgid "Preparing..."
 msgstr "Valmistumine..."
 
-#: ../rpmdrake:1822
+#: ../rpmdrake:1991
 #, perl-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Paketi '%s' paigaldamine (%s/%s)..."
 
-#: ../rpmdrake:1838
+#: ../rpmdrake:2006
 #, perl-format
 msgid "unable to access rpm file [%s]"
 msgstr "ligipääs rpm-failile [%s] ebaõnnestus"
 
-#: ../rpmdrake:1874
+#: ../rpmdrake:2040
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
 "\n"
@@ -1741,32 +1845,40 @@ msgstr ""
 "Mõned seadistusfailid loodi kui '.rpmnew' või '.rpmsave'.\n"
 "Te võiksite neid nüüd uurida, et võtta ette järgmisi samme:"
 
-#: ../rpmdrake:1884
+#: ../rpmdrake:2048
+msgid "Upgrade information"
+msgstr "Uuendusinfo"
+
+#: ../rpmdrake:2050
 msgid "These packages come with upgrade information"
 msgstr "Neil pakettidel on uuendusinfo"
 
-#: ../rpmdrake:1896
-#, perl-format
-msgid "More information on package... [%s]"
-msgstr "Rohkem infot paketi kohta... [%s]"
+#: ../rpmdrake:2058
+msgid "Upgrade information about this package"
+msgstr "Paketi uuendusinfo"
 
-#: ../rpmdrake:1909 ../rpmdrake.pm:730 ../rpmdrake.pm:811 ../rpmdrake.pm:835
+#: ../rpmdrake:2061
+#, perl-format
+msgid "Upgrade information about package %s"
+msgstr "Paketi %s uuendusinfo"
+
+#: ../rpmdrake:2073 ../rpmdrake.pm:724 ../rpmdrake.pm:805 ../rpmdrake.pm:829
 msgid "Error"
 msgstr "Viga"
 
-#: ../rpmdrake:1910
+#: ../rpmdrake:2074
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Parandamatu viga: kahjuks ei leitud paigaldamiseks ühtegi paketti."
 
-#: ../rpmdrake:1935
+#: ../rpmdrake:2099
 msgid "Please wait, removing packages..."
 msgstr "Palun oodake, eemaldatakse pakette..."
 
-#: ../rpmdrake:1946
+#: ../rpmdrake:2110
 msgid "Problem during removal"
 msgstr "Probleem eemaldamisel"
 
-#: ../rpmdrake:1947
+#: ../rpmdrake:2111
 #, perl-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -1777,11 +1889,11 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1977
+#: ../rpmdrake:2143
 msgid "Welcome"
 msgstr "Tere tulemast"
 
-#: ../rpmdrake:1982
+#: ../rpmdrake:2148
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -1792,7 +1904,7 @@ msgstr ""
 "\n"
 "Selle tööriista abil saate valida eemaldatava tarkvara."
 
-#: ../rpmdrake:1987
+#: ../rpmdrake:2153
 #, perl-format
 msgid ""
 "Welcome to %s!\n"
@@ -1804,11 +1916,11 @@ msgstr ""
 "\n"
 "Selle tööriista abil saate oma Mandriva Linuxit uuendada."
 
-#: ../rpmdrake:1992
+#: ../rpmdrake:2158
 msgid "Welcome to the software installation tool!"
 msgstr "Tere tulemast kasutama tarkvara paigaldamise abivahendit!"
 
-#: ../rpmdrake:1993
+#: ../rpmdrake:2159
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1821,172 +1933,171 @@ msgstr ""
 "Mandriva Linuxi CD või DVD sisaldab tuhandeid tarkvarapakette.\n"
 "Selle tööriista abil saate valida, millised soovite oma arvutile paigaldada."
 
-#: ../rpmdrake.pm:102
+#: ../rpmdrake.pm:103
 msgid "Mandriva Linux Update"
 msgstr "Mandriva Linuxi uuendused"
 
-#: ../rpmdrake.pm:102
+#: ../rpmdrake.pm:103
 msgid "Software Update"
 msgstr "Tarkvara uuendamine"
 
-#: ../rpmdrake.pm:129
+#: ../rpmdrake.pm:130
 msgid "Please enter your credentials for accessing proxy\n"
 msgstr "Palun sisestage oma andmed puhverserveri kasutamiseks\n"
 
-#: ../rpmdrake.pm:130
+#: ../rpmdrake.pm:131
 msgid "User name:"
 msgstr "Kasutajanimi:"
 
-#: ../rpmdrake.pm:173
+#: ../rpmdrake.pm:174
 msgid "Software Packages Removal"
 msgstr "Tarkvara eemaldamine"
 
-#: ../rpmdrake.pm:174
+#: ../rpmdrake.pm:175
 msgid "Software Packages Update"
 msgstr "Tarkvara uuendamine"
 
-#: ../rpmdrake.pm:175
+#: ../rpmdrake.pm:176
 msgid "Software Packages Installation"
 msgstr "Tarkvara paigaldamine"
 
-#: ../rpmdrake.pm:217
+#: ../rpmdrake.pm:218
 msgid "No"
 msgstr "Ei"
 
-#: ../rpmdrake.pm:221
+#: ../rpmdrake.pm:222
 msgid "Yes"
 msgstr "Jah"
 
-#: ../rpmdrake.pm:269
+#: ../rpmdrake.pm:272
 msgid "Info..."
 msgstr "Info..."
 
-#: ../rpmdrake.pm:386
+#: ../rpmdrake.pm:389
 msgid "Austria"
 msgstr "Austria"
 
-#: ../rpmdrake.pm:387
+#: ../rpmdrake.pm:390
 msgid "Australia"
 msgstr "Austraalia"
 
-#: ../rpmdrake.pm:388
+#: ../rpmdrake.pm:391
 msgid "Belgium"
 msgstr "Belgia"
 
-#: ../rpmdrake.pm:389
+#: ../rpmdrake.pm:392
 msgid "Brazil"
 msgstr "Brasiilia"
 
-#: ../rpmdrake.pm:390
+#: ../rpmdrake.pm:393
 msgid "Canada"
 msgstr "Kanada"
 
-#: ../rpmdrake.pm:391
+#: ../rpmdrake.pm:394
 msgid "Switzerland"
 msgstr "Šveits"
 
-#: ../rpmdrake.pm:392
+#: ../rpmdrake.pm:395
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: ../rpmdrake.pm:393
+#: ../rpmdrake.pm:396
 msgid "Czech Republic"
 msgstr "Tšehhi Vabariik"
 
-#: ../rpmdrake.pm:394
+#: ../rpmdrake.pm:397
 msgid "Germany"
 msgstr "Saksamaa"
 
-#: ../rpmdrake.pm:395
+#: ../rpmdrake.pm:398
 msgid "Danmark"
 msgstr "Taani"
 
-#: ../rpmdrake.pm:396 ../rpmdrake.pm:400
+#: ../rpmdrake.pm:399 ../rpmdrake.pm:403
 msgid "Greece"
 msgstr "Kreeka"
 
-#: ../rpmdrake.pm:397
+#: ../rpmdrake.pm:400
 msgid "Spain"
 msgstr "Hispaania"
 
-#: ../rpmdrake.pm:398
+#: ../rpmdrake.pm:401
 msgid "Finland"
 msgstr "Soome"
 
-#: ../rpmdrake.pm:399
+#: ../rpmdrake.pm:402
 msgid "France"
 msgstr "Prantsusmaa"
 
-#: ../rpmdrake.pm:401
+#: ../rpmdrake.pm:404
 msgid "Hungary"
 msgstr "Ungari"
 
-#: ../rpmdrake.pm:402
+#: ../rpmdrake.pm:405
 msgid "Israel"
 msgstr "Iisrael"
 
-#: ../rpmdrake.pm:403
+#: ../rpmdrake.pm:406
 msgid "Italy"
 msgstr "Itaalia"
 
-#: ../rpmdrake.pm:404
+#: ../rpmdrake.pm:407
 msgid "Japan"
 msgstr "Jaapan"
 
-#: ../rpmdrake.pm:405
+#: ../rpmdrake.pm:408
 msgid "Korea"
 msgstr "Korea"
 
-#: ../rpmdrake.pm:406
+#: ../rpmdrake.pm:409
 msgid "Netherlands"
 msgstr "Holland"
 
-#: ../rpmdrake.pm:407
+#: ../rpmdrake.pm:410
 msgid "Norway"
 msgstr "Norra"
 
-#: ../rpmdrake.pm:408
+#: ../rpmdrake.pm:411
 msgid "Poland"
 msgstr "Poola"
 
-#: ../rpmdrake.pm:409
+#: ../rpmdrake.pm:412
 msgid "Portugal"
 msgstr "Portugal"
 
-#: ../rpmdrake.pm:410
+#: ../rpmdrake.pm:413
 msgid "Russia"
 msgstr "Venemaa"
 
-#: ../rpmdrake.pm:411
+#: ../rpmdrake.pm:414
 msgid "Sweden"
 msgstr "Rootsi"
 
-#: ../rpmdrake.pm:412
+#: ../rpmdrake.pm:415
 msgid "Singapore"
 msgstr "Singapur"
 
-#: ../rpmdrake.pm:413
+#: ../rpmdrake.pm:416
 msgid "Slovakia"
 msgstr "Slovakkia"
 
-#: ../rpmdrake.pm:414
+#: ../rpmdrake.pm:417
 msgid "Taiwan"
 msgstr "Taiwan"
 
-#: ../rpmdrake.pm:415
+#: ../rpmdrake.pm:418
 msgid "United Kingdom"
 msgstr "Suurbritannia"
 
-#: ../rpmdrake.pm:416
+#: ../rpmdrake.pm:419
 msgid "China"
 msgstr "Hiina"
 
-#: ../rpmdrake.pm:417 ../rpmdrake.pm:418 ../rpmdrake.pm:419 ../rpmdrake.pm:420
-#: ../rpmdrake.pm:509
+#: ../rpmdrake.pm:420 ../rpmdrake.pm:421 ../rpmdrake.pm:422 ../rpmdrake.pm:423
 msgid "United States"
 msgstr "USA"
 
-#: ../rpmdrake.pm:523
+#: ../rpmdrake.pm:520
 msgid ""
 "I need to access internet to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -1998,7 +2109,7 @@ msgstr ""
 "\n"
 "Kas jätkata?"
 
-#: ../rpmdrake.pm:527
+#: ../rpmdrake.pm:524
 msgid ""
 "I need to contact the Mandriva website to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -2010,24 +2121,24 @@ msgstr ""
 "\n"
 "Kas jätkata?"
 
-#: ../rpmdrake.pm:532 ../rpmdrake.pm:569
+#: ../rpmdrake.pm:530 ../rpmdrake.pm:568
 msgid "Mirror choice"
 msgstr "Peegli valik"
 
-#: ../rpmdrake.pm:535
+#: ../rpmdrake.pm:533
 msgid "Please wait, downloading mirror addresses."
 msgstr "Palun oodake, laetakse peeglite aadresse."
 
-#: ../rpmdrake.pm:536
+#: ../rpmdrake.pm:534
 msgid "Please wait, downloading mirror addresses from the Mandriva website."
 msgstr "Palun oodake, laetakse peeglite aadresse Mandriva veebisaidilt."
 
 #. - seems that value is bitten before being printed by next func..
-#: ../rpmdrake.pm:542
+#: ../rpmdrake.pm:541
 msgid "Error during download"
 msgstr "Viga allalaadimisel"
 
-#: ../rpmdrake.pm:544
+#: ../rpmdrake.pm:543
 #, perl-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2042,7 +2153,7 @@ msgstr ""
 "Võrk või veebilehekülg ei pruugi olla kättesaadav.\n"
 "Palun proovige varsti uuesti."
 
-#: ../rpmdrake.pm:549
+#: ../rpmdrake.pm:548
 #, perl-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2057,15 +2168,15 @@ msgstr ""
 "Võrk või Mandriva veebilehekülg ei pruugi olla kättesaadav.\n"
 "Palun proovige varsti uuesti."
 
-#: ../rpmdrake.pm:559
+#: ../rpmdrake.pm:558
 msgid "No mirror"
 msgstr "Peeglit ei leitud"
 
-#: ../rpmdrake.pm:561
+#: ../rpmdrake.pm:560
 msgid "I can't find any suitable mirror."
 msgstr "Ühtki kõlblikku peeglit ei leitud."
 
-#: ../rpmdrake.pm:562
+#: ../rpmdrake.pm:561
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
@@ -2078,63 +2189,63 @@ msgstr ""
 "Sellel võib olla mitu põhjust. Kõige tavalisem on see, et Mandriva Linuxi\n"
 "ametlikud uuendused ei toeta Teie protsessori arhitektuuri."
 
-#: ../rpmdrake.pm:581
+#: ../rpmdrake.pm:580
 msgid "Please choose the desired mirror."
 msgstr "Palun valige peegel."
 
-#: ../rpmdrake.pm:639
+#: ../rpmdrake.pm:633
 #, perl-format
 msgid "Copying file for medium `%s'..."
 msgstr "Faili kopeerimine allika `%s' jaoks..."
 
-#: ../rpmdrake.pm:642
+#: ../rpmdrake.pm:636
 #, perl-format
 msgid "Examining file of medium `%s'..."
 msgstr "Allikafaili `%s' uurimine..."
 
-#: ../rpmdrake.pm:645
+#: ../rpmdrake.pm:639
 #, perl-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "Allikafaili `%s' uurimine..."
 
-#: ../rpmdrake.pm:649
+#: ../rpmdrake.pm:643
 msgid " done."
 msgstr " tehtud."
 
-#: ../rpmdrake.pm:653
+#: ../rpmdrake.pm:647
 msgid " failed!"
 msgstr " ebaõnnestus!"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:657
+#: ../rpmdrake.pm:651
 #, perl-format
 msgid "%s from medium %s"
 msgstr "%s andmekandjalt %s"
 
-#: ../rpmdrake.pm:661
+#: ../rpmdrake.pm:655
 #, perl-format
 msgid "Starting download of `%s'..."
 msgstr "'%s' allalaadimise alustamine..."
 
-#: ../rpmdrake.pm:665
+#: ../rpmdrake.pm:659
 #, perl-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr "`%s' allalaadimine, aega jäänud:%s, kiirus:%s"
 
-#: ../rpmdrake.pm:668
+#: ../rpmdrake.pm:662
 #, perl-format
 msgid "Download of `%s', speed:%s"
 msgstr "`%s' allalaadimine, kiirus:%s"
 
-#: ../rpmdrake.pm:679
+#: ../rpmdrake.pm:673
 msgid "Please wait, updating media..."
 msgstr "Palun oodake, uuendatakse andmekandjat..."
 
-#: ../rpmdrake.pm:706
+#: ../rpmdrake.pm:700
 msgid "Error retrieving packages"
 msgstr "Viga pakettide hankimisel"
 
-#: ../rpmdrake.pm:707
+#: ../rpmdrake.pm:701
 #, perl-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
@@ -2151,29 +2262,25 @@ msgstr ""
 "lihtsalt ajutiselt kättesaamatu, millisel juhul võiks hiljem\n"
 "uuesti proovida nimekirja hankida."
 
-#: ../rpmdrake.pm:738
+#: ../rpmdrake.pm:732
 msgid "Update media"
 msgstr "Allikate uuendamine"
 
-#: ../rpmdrake.pm:743
+#: ../rpmdrake.pm:737
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
 msgstr ""
 "Aktiivset andmekandjat ei leitud. Uuendamiseks tuleb andmekandja aktiveerida."
 
-#: ../rpmdrake.pm:750
+#: ../rpmdrake.pm:744
 msgid "Select the media you wish to update:"
 msgstr "Valige allikad, mida soovite uuendada:"
 
-#: ../rpmdrake.pm:764
-msgid "Select all"
-msgstr "Vali kõik"
-
-#: ../rpmdrake.pm:768
+#: ../rpmdrake.pm:762
 msgid "Update"
 msgstr "Uuenda"
 
-#: ../rpmdrake.pm:789
+#: ../rpmdrake.pm:783
 #, perl-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -2186,7 +2293,7 @@ msgstr ""
 "Vead:\n"
 "%s"
 
-#: ../rpmdrake.pm:812 ../rpmdrake.pm:823
+#: ../rpmdrake.pm:806 ../rpmdrake.pm:817
 #, perl-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -2197,15 +2304,15 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:835
+#: ../rpmdrake.pm:829
 msgid "Unable to create medium."
 msgstr "Andmekandja loomine ebaõnnestus."
 
-#: ../rpmdrake.pm:840
+#: ../rpmdrake.pm:834
 msgid "Failure when adding medium"
 msgstr "Viga andmekandja lisamisel"
 
-#: ../rpmdrake.pm:841
+#: ../rpmdrake.pm:835
 #, perl-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -2216,7 +2323,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:854
+#: ../rpmdrake.pm:848
 #, perl-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
@@ -2227,7 +2334,7 @@ msgstr ""
 "versiooniga (%s).\n"
 "Seepärast seda ei kasutata."
 
-#: ../rpmdrake.pm:857
+#: ../rpmdrake.pm:851
 #, perl-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of Mandriva "
@@ -2238,11 +2345,11 @@ msgstr ""
 "Mandriva Linuxi versiooniga (%s).\n"
 "Seepärast seda ei kasutata."
 
-#: ../rpmdrake.pm:874
+#: ../rpmdrake.pm:868
 msgid "Help launched in background"
 msgstr "Abi käivitati taustal"
 
-#: ../rpmdrake.pm:875
+#: ../rpmdrake.pm:869
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
 msgstr "Abiaken on käivitatud, see peaks kohe ilmuma töölaual nähtavale."
