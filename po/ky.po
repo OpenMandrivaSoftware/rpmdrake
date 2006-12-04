@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ky\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-13 18:39+0200\n"
+"POT-Creation-Date: 2006-12-04 09:56+0100\n"
 "PO-Revision-Date: 2005-07-15 12:33+0000\n"
 "Last-Translator: Timur Jamakeev <ztimur@mail..ru>\n"
 "Language-Team: Kyrgyz\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: ../edit-urpm-sources.pl:80
+#: ../edit-urpm-sources.pl:85
 msgid "Choose media type"
 msgstr "Тандаңыз булактын тибин"
 
-#: ../edit-urpm-sources.pl:81
+#: ../edit-urpm-sources.pl:86
 msgid ""
 "This step enables you to add sources from a Mandriva Linux web or FTP "
 "mirror.\n"
@@ -46,15 +46,15 @@ msgstr ""
 "Сиздин дистрибутивиңизди камтыган расмий жаңылоо (сиз кошо аласыз\n"
 " жана эки типтеги булакты, бирок эки этапта.)"
 
-#: ../edit-urpm-sources.pl:89
+#: ../edit-urpm-sources.pl:94
 msgid "Distribution sources"
 msgstr "Дистрибутивдин булактары"
 
-#: ../edit-urpm-sources.pl:89
+#: ../edit-urpm-sources.pl:94
 msgid "Official updates"
 msgstr "Расмий жаңылоо"
 
-#: ../edit-urpm-sources.pl:92
+#: ../edit-urpm-sources.pl:97
 #, perl-format
 msgid ""
 "This will attempt to install all official sources corresponding to your\n"
@@ -73,85 +73,86 @@ msgstr ""
 "\n"
 "Улантууга даярсызбы?"
 
-#: ../edit-urpm-sources.pl:102
+#. because updates media do not provide media.cfg yet
+#: ../edit-urpm-sources.pl:111
 msgid "Please wait, adding media..."
 msgstr "Күтө туруңуз, булак кошулууда..."
 
-#: ../edit-urpm-sources.pl:134
+#: ../edit-urpm-sources.pl:144
 msgid "Add a medium"
 msgstr "Булак кошуу"
 
-#: ../edit-urpm-sources.pl:136
+#: ../edit-urpm-sources.pl:146
 msgid "Local files"
 msgstr "Локалдык файлдар"
 
-#: ../edit-urpm-sources.pl:136
+#: ../edit-urpm-sources.pl:146
 msgid "Path:"
 msgstr "Жол:"
 
-#: ../edit-urpm-sources.pl:137
+#: ../edit-urpm-sources.pl:147
 msgid "FTP server"
 msgstr "FTP сервер"
 
-#: ../edit-urpm-sources.pl:137 ../edit-urpm-sources.pl:138
-#: ../edit-urpm-sources.pl:139 ../edit-urpm-sources.pl:407
+#: ../edit-urpm-sources.pl:147 ../edit-urpm-sources.pl:148
+#: ../edit-urpm-sources.pl:149 ../edit-urpm-sources.pl:416
 msgid "URL:"
 msgstr "URL:"
 
-#: ../edit-urpm-sources.pl:138
+#: ../edit-urpm-sources.pl:148
 #, fuzzy
 msgid "RSYNC server"
 msgstr "FTP сервер"
 
-#: ../edit-urpm-sources.pl:139
+#: ../edit-urpm-sources.pl:149
 msgid "HTTP server"
 msgstr "HTTP сервер"
 
-#: ../edit-urpm-sources.pl:140
+#: ../edit-urpm-sources.pl:150
 msgid "Path or mount point:"
 msgstr "Жол же биригүү чекити:"
 
-#: ../edit-urpm-sources.pl:140
+#: ../edit-urpm-sources.pl:150
 msgid "Removable device"
 msgstr "Чыкчу түзүлүш"
 
-#: ../edit-urpm-sources.pl:159
+#: ../edit-urpm-sources.pl:169
 msgid "Browse..."
 msgstr "Карап көрүү..."
 
-#: ../edit-urpm-sources.pl:187
+#: ../edit-urpm-sources.pl:197
 msgid "Login:"
 msgstr "Логин:"
 
-#: ../edit-urpm-sources.pl:187 ../edit-urpm-sources.pl:487 ../rpmdrake.pm:130
+#: ../edit-urpm-sources.pl:197 ../edit-urpm-sources.pl:501 ../rpmdrake.pm:131
 msgid "Password:"
 msgstr "Пароль:"
 
-#: ../edit-urpm-sources.pl:192 ../edit-urpm-sources.pl:408
+#: ../edit-urpm-sources.pl:202 ../edit-urpm-sources.pl:417
 msgid "Relative path to synthesis/hdlist:"
 msgstr "synthesis/hdlist'ке салыштырма жол:"
 
-#: ../edit-urpm-sources.pl:194
+#: ../edit-urpm-sources.pl:204
 msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "Эгер бош калтырылса, synthesis/hdlist автоматтык түрдө изделет"
 
-#: ../edit-urpm-sources.pl:199
+#: ../edit-urpm-sources.pl:209
 msgid "Name:"
 msgstr "Аты:"
 
-#: ../edit-urpm-sources.pl:207
+#: ../edit-urpm-sources.pl:217
 msgid "Create media for a whole distribution"
 msgstr "Баардык дистрибутивке булакты түзүү"
 
-#: ../edit-urpm-sources.pl:218
+#: ../edit-urpm-sources.pl:228
 msgid "Search this media for updates"
 msgstr "Жаңылоо үчүн булак издөө"
 
-#: ../edit-urpm-sources.pl:228
+#: ../edit-urpm-sources.pl:238
 msgid "You need to fill up at least the two first entries."
 msgstr "Сиз жок дегенде бирнчи эки пунктуу толтурууңуз керек."
 
-#: ../edit-urpm-sources.pl:232
+#: ../edit-urpm-sources.pl:242
 msgid ""
 "There is already a medium by that name, do you\n"
 "really want to replace it?"
@@ -159,109 +160,113 @@ msgstr ""
 "Бул аттуу булак алдагачан бар, анын\n"
 "ордуна муну колдонгуңуз келеби?"
 
-#: ../edit-urpm-sources.pl:243
+#: ../edit-urpm-sources.pl:253
 msgid "Adding a medium:"
 msgstr "Булак кошулууда:"
 
-#: ../edit-urpm-sources.pl:245
+#: ../edit-urpm-sources.pl:255
 msgid "Type of medium:"
 msgstr "Булак тиби:"
 
-#: ../edit-urpm-sources.pl:253 ../edit-urpm-sources.pl:328
-#: ../edit-urpm-sources.pl:414 ../edit-urpm-sources.pl:439
-#: ../edit-urpm-sources.pl:504 ../edit-urpm-sources.pl:586
-#: ../edit-urpm-sources.pl:626 ../edit-urpm-sources.pl:684
-#: ../edit-urpm-sources.pl:823 ../rpmdrake:191 ../rpmdrake:849
-#: ../rpmdrake:1752 ../rpmdrake:1760 ../rpmdrake.pm:284 ../rpmdrake.pm:597
-#: ../rpmdrake.pm:687 ../rpmdrake.pm:760
+#: ../edit-urpm-sources.pl:263 ../edit-urpm-sources.pl:338
+#: ../edit-urpm-sources.pl:426 ../edit-urpm-sources.pl:453
+#: ../edit-urpm-sources.pl:518 ../edit-urpm-sources.pl:600
+#: ../edit-urpm-sources.pl:640 ../edit-urpm-sources.pl:698
+#: ../edit-urpm-sources.pl:837 ../rpmdrake:208 ../rpmdrake:960
+#: ../rpmdrake:1921 ../rpmdrake:1929 ../rpmdrake.pm:287 ../rpmdrake.pm:596
+#: ../rpmdrake.pm:681 ../rpmdrake.pm:754
 msgid "Cancel"
 msgstr "Калтыруу"
 
-#: ../edit-urpm-sources.pl:255 ../edit-urpm-sources.pl:330
-#: ../edit-urpm-sources.pl:439 ../edit-urpm-sources.pl:494
-#: ../edit-urpm-sources.pl:583 ../edit-urpm-sources.pl:625
-#: ../edit-urpm-sources.pl:677 ../edit-urpm-sources.pl:749
-#: ../edit-urpm-sources.pl:816 ../edit-urpm-sources.pl:869
-#: ../edit-urpm-sources.pl:1018 ../rpmdrake:191 ../rpmdrake:849
-#: ../rpmdrake:866 ../rpmdrake:871 ../rpmdrake:1662 ../rpmdrake:1752
-#: ../rpmdrake:1903 ../rpmdrake.pm:121 ../rpmdrake.pm:226 ../rpmdrake.pm:286
-#: ../rpmdrake.pm:597
+#: ../edit-urpm-sources.pl:265 ../edit-urpm-sources.pl:340
+#: ../edit-urpm-sources.pl:453 ../edit-urpm-sources.pl:508
+#: ../edit-urpm-sources.pl:597 ../edit-urpm-sources.pl:639
+#: ../edit-urpm-sources.pl:691 ../edit-urpm-sources.pl:763
+#: ../edit-urpm-sources.pl:830 ../edit-urpm-sources.pl:883
+#: ../edit-urpm-sources.pl:1032 ../rpmdrake:208 ../rpmdrake:960
+#: ../rpmdrake:977 ../rpmdrake:982 ../rpmdrake:1827 ../rpmdrake:1921
+#: ../rpmdrake:2068 ../rpmdrake.pm:122 ../rpmdrake.pm:227 ../rpmdrake.pm:289
+#: ../rpmdrake.pm:596
 msgid "Ok"
 msgstr "Ok"
 
-#: ../edit-urpm-sources.pl:312
+#: ../edit-urpm-sources.pl:322
 msgid "Global options for package installation"
 msgstr "Пакеттерди орнотуу үчүн глобалдык параметрлер "
 
-#: ../edit-urpm-sources.pl:314
+#: ../edit-urpm-sources.pl:324
 msgid "always"
 msgstr "Ар дайым"
 
-#: ../edit-urpm-sources.pl:315
+#: ../edit-urpm-sources.pl:325
 msgid "never"
 msgstr "эч качан"
 
-#: ../edit-urpm-sources.pl:324
+#: ../edit-urpm-sources.pl:334
 msgid "Verify RPMs to be installed:"
 msgstr "Орнотуулучу RPMди текшерүү:"
 
-#: ../edit-urpm-sources.pl:325
+#: ../edit-urpm-sources.pl:335
 msgid "Download program to use:"
 msgstr "колдонуу үчүн программаны көчүрүү:"
 
-#: ../edit-urpm-sources.pl:355
+#: ../edit-urpm-sources.pl:365
 msgid "Source Removal"
 msgstr "Баштапкы кодду жоготуу"
 
-#: ../edit-urpm-sources.pl:356
+#: ../edit-urpm-sources.pl:366
 #, perl-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Сиз \"%s\" баштапкы кодун жоготууну каалайсызбы?"
 
-#: ../edit-urpm-sources.pl:361
+#: ../edit-urpm-sources.pl:371
 msgid "Please wait, removing medium..."
 msgstr "Күтө туруңуз, булак алынып салынууда..."
 
-#: ../edit-urpm-sources.pl:398
+#: ../edit-urpm-sources.pl:407
 msgid "Edit a medium"
 msgstr "Булакты оңдоо"
 
-#: ../edit-urpm-sources.pl:404
+#: ../edit-urpm-sources.pl:413
 #, perl-format
 msgid "Editing medium \"%s\":"
 msgstr "\"%s\" булагы оңдолууда:"
 
 #: ../edit-urpm-sources.pl:418
+msgid "Downloader:"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:430
 msgid "Save changes"
 msgstr "Өзгөрүүлөрдү сактоо"
 
-#: ../edit-urpm-sources.pl:426 ../edit-urpm-sources.pl:1005
+#: ../edit-urpm-sources.pl:439 ../edit-urpm-sources.pl:1019
 msgid "Proxy..."
 msgstr "Прокси..."
 
-#: ../edit-urpm-sources.pl:437
+#: ../edit-urpm-sources.pl:451
 msgid "You need to insert the medium to continue"
 msgstr "Улантуу үчүн, булакты ордуна орнотуңуз"
 
-#: ../edit-urpm-sources.pl:438
+#: ../edit-urpm-sources.pl:452
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr "Өзгөрүүлөрдү сактоо үчүн, түзүлүшкө сактагычты салууңуз керек."
 
-#: ../edit-urpm-sources.pl:459
+#: ../edit-urpm-sources.pl:473
 msgid "Configure proxies"
 msgstr "Проксилерди конфигурациялоо"
 
-#: ../edit-urpm-sources.pl:470
+#: ../edit-urpm-sources.pl:484
 #, perl-format
 msgid "Proxy settings for media \"%s\""
 msgstr "\"%s\" булагы үчүн прокси параметрлери"
 
-#: ../edit-urpm-sources.pl:471
+#: ../edit-urpm-sources.pl:485
 msgid "Global proxy settings"
 msgstr "Глобалдык прокси параметрлери"
 
-#: ../edit-urpm-sources.pl:473
+#: ../edit-urpm-sources.pl:487
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
 "<proxyhost[:port]>):"
@@ -269,114 +274,114 @@ msgstr ""
 "Сизге прокси талап кылынса, хост атын, керек болсо портун киргизиңиз "
 "(синтаксиси: <прокси_хосту[:порт]>):"
 
-#: ../edit-urpm-sources.pl:476
+#: ../edit-urpm-sources.pl:490
 msgid "Proxy hostname:"
 msgstr "Прокси хост аты:"
 
-#: ../edit-urpm-sources.pl:479
+#: ../edit-urpm-sources.pl:493
 msgid "You may specify a user/password for the proxy authentication:"
 msgstr "Прокси аутентификациясы үчүн сиз колдонуучу/пароль бере аласыз:"
 
-#: ../edit-urpm-sources.pl:482
+#: ../edit-urpm-sources.pl:496
 msgid "User:"
 msgstr "Колдонуучу:"
 
-#: ../edit-urpm-sources.pl:554
+#: ../edit-urpm-sources.pl:568
 msgid "Add a parallel group"
 msgstr "Параллелдик группа кошуу"
 
-#: ../edit-urpm-sources.pl:554
+#: ../edit-urpm-sources.pl:568
 msgid "Edit a parallel group"
 msgstr "Паралледик группаны оңдоо"
 
-#: ../edit-urpm-sources.pl:565
+#: ../edit-urpm-sources.pl:579
 msgid "Add a medium limit"
 msgstr "Булактын пределин кошуу"
 
-#: ../edit-urpm-sources.pl:577
+#: ../edit-urpm-sources.pl:591
 msgid "Choose a medium for adding in the media limit:"
 msgstr "Пределин кошуу үчүн булакты тандаңыз:"
 
-#: ../edit-urpm-sources.pl:614
+#: ../edit-urpm-sources.pl:628
 msgid "Add a host"
 msgstr "Хост кошуу"
 
-#: ../edit-urpm-sources.pl:620
+#: ../edit-urpm-sources.pl:634
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr "Кошуучу хост атын же IP-дарегин киргизиңиз:"
 
-#: ../edit-urpm-sources.pl:651
+#: ../edit-urpm-sources.pl:665
 #, perl-format
 msgid "Editing parallel group \"%s\":"
 msgstr "\"%s\" параллелдик группасын оңдоо:"
 
-#: ../edit-urpm-sources.pl:655
+#: ../edit-urpm-sources.pl:669
 msgid "Group name:"
 msgstr "Группа аты:"
 
-#: ../edit-urpm-sources.pl:656
+#: ../edit-urpm-sources.pl:670
 msgid "Protocol:"
 msgstr "Протокол:"
 
-#: ../edit-urpm-sources.pl:658
+#: ../edit-urpm-sources.pl:672
 msgid "Media limit:"
 msgstr "Булактын предели:"
 
-#: ../edit-urpm-sources.pl:663 ../edit-urpm-sources.pl:670
+#: ../edit-urpm-sources.pl:677 ../edit-urpm-sources.pl:684
 msgid "Add"
 msgstr "Кошуу"
 
-#: ../edit-urpm-sources.pl:664 ../edit-urpm-sources.pl:671
-#: ../edit-urpm-sources.pl:729 ../edit-urpm-sources.pl:983
+#: ../edit-urpm-sources.pl:678 ../edit-urpm-sources.pl:685
+#: ../edit-urpm-sources.pl:743 ../edit-urpm-sources.pl:997
 msgid "Remove"
 msgstr "Алып салуу"
 
-#: ../edit-urpm-sources.pl:665
+#: ../edit-urpm-sources.pl:679
 msgid "Hosts:"
 msgstr "Хосттор:"
 
-#: ../edit-urpm-sources.pl:699
+#: ../edit-urpm-sources.pl:713
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr "Параллелдик urpmi конфигурациялоо (urpmi бөлүштүрүлгөн аткарылуусу)"
 
-#: ../edit-urpm-sources.pl:702
+#: ../edit-urpm-sources.pl:716
 msgid "Group"
 msgstr "Группа"
 
-#: ../edit-urpm-sources.pl:702
+#: ../edit-urpm-sources.pl:716
 msgid "Media limit"
 msgstr "Булак предели"
 
-#: ../edit-urpm-sources.pl:702
+#: ../edit-urpm-sources.pl:716
 msgid "Protocol"
 msgstr "Протокол"
 
-#: ../edit-urpm-sources.pl:703
+#: ../edit-urpm-sources.pl:717
 msgid "Command"
 msgstr "Команда"
 
-#: ../edit-urpm-sources.pl:713 ../rpmdrake:413 ../rpmdrake:437 ../rpmdrake:576
-#: ../rpmdrake:775
+#: ../edit-urpm-sources.pl:727 ../rpmdrake:465 ../rpmdrake:496 ../rpmdrake:635
+#: ../rpmdrake:886 ../rpmdrake:1748
 msgid "(none)"
 msgstr "(эч нерсе)"
 
-#: ../edit-urpm-sources.pl:733 ../edit-urpm-sources.pl:987
+#: ../edit-urpm-sources.pl:747 ../edit-urpm-sources.pl:1001
 msgid "Edit..."
 msgstr "Оңдоо"
 
-#: ../edit-urpm-sources.pl:741 ../edit-urpm-sources.pl:993
+#: ../edit-urpm-sources.pl:755 ../edit-urpm-sources.pl:1007
 msgid "Add..."
 msgstr "Кошуу..."
 
-#: ../edit-urpm-sources.pl:757
+#: ../edit-urpm-sources.pl:771
 msgid "Manage keys for digital signatures of packages"
 msgstr "Пакеттердин цифралык сигнатуралар ачкычтарын башкаруу"
 
-#: ../edit-urpm-sources.pl:761 ../edit-urpm-sources.pl:918
+#: ../edit-urpm-sources.pl:775 ../edit-urpm-sources.pl:932
 msgid "Medium"
 msgstr "Булак"
 
-#: ../edit-urpm-sources.pl:766
+#: ../edit-urpm-sources.pl:780
 msgid ""
 "_:cryptographic keys\n"
 "Keys"
@@ -384,24 +389,28 @@ msgstr ""
 "_:шифрленген ачкычтар\n"
 "Ачкычтар"
 
-#: ../edit-urpm-sources.pl:785
+#: ../edit-urpm-sources.pl:799
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr "аты табылбады, rpm keyring'де ачкыч жок!"
 
-#: ../edit-urpm-sources.pl:798
+#: ../edit-urpm-sources.pl:812
 msgid "Add a key"
 msgstr "Ачкыч кошуу"
 
-#: ../edit-urpm-sources.pl:810
+#: ../edit-urpm-sources.pl:824
 #, perl-format
 msgid "Choose a key for adding to the medium %s"
 msgstr "%s булагына кошуу үчүн ачкыч тандоо"
 
-#: ../edit-urpm-sources.pl:838
+#: ../edit-urpm-sources.pl:833
+msgid "Close"
+msgstr "Жабуу"
+
+#: ../edit-urpm-sources.pl:855
 msgid "Remove a key"
 msgstr "Ачкычты алып салуу"
 
-#: ../edit-urpm-sources.pl:839
+#: ../edit-urpm-sources.pl:853
 #, perl-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
@@ -410,31 +419,31 @@ msgstr ""
 "Сиз %s ачкычын %s булагынан алып салууну каалайсызбы?\n"
 "(ачкыч аты: %s)"
 
-#: ../edit-urpm-sources.pl:857
+#: ../edit-urpm-sources.pl:871
 msgid "Add a key..."
 msgstr "Ачкыч кошуу..."
 
-#: ../edit-urpm-sources.pl:861
+#: ../edit-urpm-sources.pl:875
 msgid "Remove key"
 msgstr "Ачкыч алып салуу"
 
-#: ../edit-urpm-sources.pl:877
+#: ../edit-urpm-sources.pl:891
 msgid "Configure media"
 msgstr "Булакты конфигурациялоо"
 
-#: ../edit-urpm-sources.pl:916
+#: ../edit-urpm-sources.pl:930
 msgid "Enabled?"
 msgstr "Иштетилгенби?"
 
-#: ../edit-urpm-sources.pl:917
+#: ../edit-urpm-sources.pl:931
 msgid "Updates?"
 msgstr "Жаңылоо керекби?"
 
-#: ../edit-urpm-sources.pl:933
+#: ../edit-urpm-sources.pl:947
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:963
+#: ../edit-urpm-sources.pl:977
 #, fuzzy, perl-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -445,31 +454,31 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../edit-urpm-sources.pl:997
+#: ../edit-urpm-sources.pl:1011
 msgid "Add custom..."
 msgstr "Тандап кошуу..."
 
-#: ../edit-urpm-sources.pl:1001
+#: ../edit-urpm-sources.pl:1015
 msgid "Update..."
 msgstr "Жаңылоо..."
 
-#: ../edit-urpm-sources.pl:1004
+#: ../edit-urpm-sources.pl:1018
 msgid "Manage keys..."
 msgstr "Ачкычтарды башкаруу..."
 
-#: ../edit-urpm-sources.pl:1006
+#: ../edit-urpm-sources.pl:1020
 msgid "Parallel..."
 msgstr "Параллель..."
 
-#: ../edit-urpm-sources.pl:1007
+#: ../edit-urpm-sources.pl:1021
 msgid "Global options..."
 msgstr "Глобалдык параметрлери"
 
-#: ../edit-urpm-sources.pl:1017 ../rpmdrake:1290
+#: ../edit-urpm-sources.pl:1031 ../rpmdrake:1428
 msgid "Help"
 msgstr "Жардам"
 
-#: ../edit-urpm-sources.pl:1030 ../gurpmi.addmedia:97 ../rpmdrake:1978
+#: ../edit-urpm-sources.pl:1047 ../gurpmi.addmedia:98 ../rpmdrake:2144
 #, perl-format
 msgid ""
 "%s\n"
@@ -480,7 +489,7 @@ msgstr ""
 "\n"
 "Улантууга даярсызбы?"
 
-#: ../edit-urpm-sources.pl:1033
+#: ../edit-urpm-sources.pl:1050
 msgid ""
 "Welcome to the Software Media Manager!\n"
 "\n"
@@ -495,7 +504,7 @@ msgstr ""
 "программалардын пакеттерин орнотууга же жаңылоону ишке\n"
 "ашырууга даяр болот."
 
-#: ../edit-urpm-sources.pl:1045
+#: ../edit-urpm-sources.pl:1063
 msgid ""
 "Packages database is locked. Please close other applications\n"
 "working with packages database (do you have another media\n"
@@ -508,11 +517,11 @@ msgstr ""
 "же учурда башка иш столунда пакеттерди орнотуп жаткан\n"
 "жоксузбу?)."
 
-#: ../gurpmi.addmedia:87
+#: ../gurpmi.addmedia:88
 msgid "Unable to add medium, wrong or missing arguments"
 msgstr "Булакты кошууга болбоду, аргументтер натуура же унутулган"
 
-#: ../gurpmi.addmedia:101
+#: ../gurpmi.addmedia:102
 #, fuzzy, perl-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -523,7 +532,7 @@ msgstr ""
 "системаңызга жаңы программалык жабдуу пакеттерин\n"
 "кошуу үчүн, бул булакты колдоно аларыңызды түшүндүрөт."
 
-#: ../gurpmi.addmedia:104
+#: ../gurpmi.addmedia:105
 #, perl-format
 msgid ""
 "You are about to add a new packages medium, `%s'.\n"
@@ -534,22 +543,22 @@ msgstr ""
 "системаңызга жаңы программалык жабдуу пакеттерин\n"
 "кошуу үчүн, бул булакты колдоно аларыңызды түшүндүрөт."
 
-#: ../gurpmi.addmedia:129
+#: ../gurpmi.addmedia:130
 #, fuzzy, perl-format
 msgid "Successfully added media %s."
 msgstr "`%s' булагы ийгиликтүү кошулду."
 
-#: ../gurpmi.addmedia:130
+#: ../gurpmi.addmedia:131
 #, perl-format
 msgid "Successfully added medium `%s'."
 msgstr "`%s' булагы ийгиликтүү кошулду."
 
-#: ../rpmdrake:38
+#: ../rpmdrake:39
 #, perl-format
 msgid "Usage: %s [OPTION]..."
 msgstr "Колдонулушу: %s [ПАРАМЕТРЛЕР]..."
 
-#: ../rpmdrake:39
+#: ../rpmdrake:40
 msgid ""
 "  --changelog-first      display changelog before filelist in the "
 "description window"
@@ -557,37 +566,37 @@ msgstr ""
 "  --биринчи-каттоо өзгөрүүдө       алдын ала терезеден катталуунун "
 "өзгөртүүсүн көрсөткүлө"
 
-#: ../rpmdrake:40
+#: ../rpmdrake:41
 msgid "  --media=medium1,..     limit to given media"
 msgstr "  --media=чөйрө1,..     предел данным СМИ"
 
-#: ../rpmdrake:41
+#: ../rpmdrake:42
 msgid ""
 "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
 "  --merge-all-rpmnew     кошууну сунуш кылат баардык .rpmnew/.rpmsav "
 "табылган файлдарга"
 
-#: ../rpmdrake:42
+#: ../rpmdrake:43
 msgid "  --mode=MODE            set mode (install (default), remove, update)"
 msgstr ""
 "  --mode=MODE            ыкма көптүгү (орнотуу (алдын ала), жоготуу, жаңылоо)"
 
-#: ../rpmdrake:43
+#: ../rpmdrake:44
 msgid ""
 "  --no-confirmation      don't ask first confirmation question in update mode"
 msgstr ""
 "  --no-confirmation      жаңылоо ыкмасында биринчи тактоо суроосун сурабайт"
 
-#: ../rpmdrake:44
+#: ../rpmdrake:45
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update     башталышта булакты жаңылабоо"
 
-#: ../rpmdrake:45
+#: ../rpmdrake:46
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm       пакет сигнатурасын текшербөө"
 
-#: ../rpmdrake:46
+#: ../rpmdrake:47
 msgid ""
 "  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
 "\" machine to show needed deps"
@@ -595,27 +604,27 @@ msgstr ""
 "  -- parallel=alias, параллель ыкмасында жайгашкан ээси, \"жалган ат "
 "\"группа колдонот, \"ээси \" керектүү көз карандылыктарды көрсөтүүчү машина"
 
-#: ../rpmdrake:47
+#: ../rpmdrake:48
 msgid "  --pkg-nosel=pkg1,..    show only these packages"
 msgstr "  --pkg-nosel=pkg1,..    ,бул пакеттерди гана көрсөтөт"
 
-#: ../rpmdrake:48
+#: ../rpmdrake:49
 msgid "  --pkg-sel=pkg1,..      preselect these packages"
 msgstr "  --pkg-sel=pkg1,..      алдын ала пакеттерди тандоо"
 
-#: ../rpmdrake:49
+#: ../rpmdrake:50
 msgid "  --root                 force to run as root"
 msgstr "  --root                 root катары иштетүү"
 
-#: ../rpmdrake:50
+#: ../rpmdrake:51
 msgid "  --search=pkg           run search for \"pkg\""
 msgstr "  --search=pkg           \"pkg\"үчүн издөө иштетилет"
 
-#: ../rpmdrake:188
+#: ../rpmdrake:205
 msgid "Running in user mode"
 msgstr "Колдонуучу режиминде иштетилүүдө"
 
-#: ../rpmdrake:189
+#: ../rpmdrake:206
 msgid ""
 "You are launching this program as a normal user.\n"
 "You will not be able to perform modifications on the system,\n"
@@ -625,548 +634,647 @@ msgstr ""
 "иштетүүдөсүз. Сиз системаны өзгөртө албайсыз,\n"
 "бирок бар берилиштер базасын көрө аласыз."
 
-#: ../rpmdrake:197
+#: ../rpmdrake:214
 msgid "Accessibility"
 msgstr "Ыңгайлуулуктар"
 
-#: ../rpmdrake:198 ../rpmdrake:199 ../rpmdrake:200 ../rpmdrake:201
-#: ../rpmdrake:202
+#: ../rpmdrake:215 ../rpmdrake:216 ../rpmdrake:217 ../rpmdrake:218
+#: ../rpmdrake:219
 msgid "Archiving"
 msgstr "Архивдөө"
 
 # used in the stats page table
-#: ../rpmdrake:199
+#: ../rpmdrake:216
 msgid "Backup"
 msgstr "Резервдөө"
 
-#: ../rpmdrake:200
+#: ../rpmdrake:217
 msgid "Cd burning"
 msgstr "CD жазуу"
 
-#: ../rpmdrake:201
+#: ../rpmdrake:218
 msgid "Compression"
 msgstr "Кысуу"
 
-#: ../rpmdrake:202 ../rpmdrake:208 ../rpmdrake:222 ../rpmdrake:235
-#: ../rpmdrake:253 ../rpmdrake:274 ../rpmdrake:287 ../rpmdrake:297
-#: ../rpmdrake:383
+#: ../rpmdrake:219 ../rpmdrake:225 ../rpmdrake:239 ../rpmdrake:252
+#: ../rpmdrake:270 ../rpmdrake:291 ../rpmdrake:304 ../rpmdrake:314
+#: ../rpmdrake:426
 msgid "Other"
 msgstr "Башка"
 
-#: ../rpmdrake:203 ../rpmdrake:204 ../rpmdrake:205 ../rpmdrake:206
-#: ../rpmdrake:207 ../rpmdrake:208
+#: ../rpmdrake:220 ../rpmdrake:221 ../rpmdrake:222 ../rpmdrake:223
+#: ../rpmdrake:224 ../rpmdrake:225
 msgid "Books"
 msgstr "Китептер"
 
-#: ../rpmdrake:204
+#: ../rpmdrake:221
 msgid "Computer books"
 msgstr "Компьютердик китептер"
 
-#: ../rpmdrake:205
+#: ../rpmdrake:222
 msgid "Faqs"
 msgstr "Көп берилчү суроолор"
 
-#: ../rpmdrake:206
+#: ../rpmdrake:223
 msgid "Howtos"
 msgstr "HOWTO"
 
-#: ../rpmdrake:207
+#: ../rpmdrake:224
 msgid "Literature"
 msgstr "Адабият"
 
-#: ../rpmdrake:209 ../rpmdrake:210 ../rpmdrake:211
+#: ../rpmdrake:226 ../rpmdrake:227 ../rpmdrake:228
 msgid "Cluster"
 msgstr "Кластер"
 
-#: ../rpmdrake:210
+#: ../rpmdrake:227
 msgid "Message Passing"
 msgstr "Кабарларды жөнөтүү"
 
-#: ../rpmdrake:211
+#: ../rpmdrake:228
 msgid "Queueing Services"
 msgstr "Сервистерди түзүү"
 
-#: ../rpmdrake:212
+#: ../rpmdrake:229
 msgid "Communications"
 msgstr "Коммуникация"
 
-#: ../rpmdrake:213 ../rpmdrake:217
+#: ../rpmdrake:230 ../rpmdrake:234
 msgid "Databases"
 msgstr "Берилишер базасы"
 
-#: ../rpmdrake:214 ../rpmdrake:215 ../rpmdrake:216 ../rpmdrake:217
-#: ../rpmdrake:218 ../rpmdrake:219 ../rpmdrake:220 ../rpmdrake:221
-#: ../rpmdrake:222 ../rpmdrake:223 ../rpmdrake:224 ../rpmdrake:225
+#: ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233 ../rpmdrake:234
+#: ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237 ../rpmdrake:238
+#: ../rpmdrake:239 ../rpmdrake:240 ../rpmdrake:241 ../rpmdrake:242
+#: ../rpmdrake:353 ../rpmdrake:354 ../rpmdrake:355
 msgid "Development"
 msgstr "Өндүрмө"
 
-#: ../rpmdrake:215
+#: ../rpmdrake:232
 msgid "C"
 msgstr "C"
 
-#: ../rpmdrake:216
+#: ../rpmdrake:233
 msgid "C++"
 msgstr "C++"
 
-#: ../rpmdrake:218
+#: ../rpmdrake:235
 msgid "GNOME and GTK+"
 msgstr "GNOME жана GTK+"
 
-#: ../rpmdrake:219
+#: ../rpmdrake:236
 msgid "Java"
 msgstr "Java"
 
-#: ../rpmdrake:220
+#: ../rpmdrake:237
 msgid "KDE and Qt"
 msgstr "KDE жана Qt"
 
-#: ../rpmdrake:221
+#: ../rpmdrake:238
 msgid "Kernel"
 msgstr "Ядро"
 
-#: ../rpmdrake:223
+#: ../rpmdrake:240
 msgid "Perl"
 msgstr "Perl"
 
-#: ../rpmdrake:224
+#: ../rpmdrake:241
 msgid "PHP"
 msgstr ""
 
-#: ../rpmdrake:225
+#: ../rpmdrake:242
 msgid "Python"
 msgstr "Python"
 
-#: ../rpmdrake:226
+#: ../rpmdrake:243
 msgid "Editors"
 msgstr "Терүү тиркемелдери"
 
-#: ../rpmdrake:227
+#: ../rpmdrake:244
 msgid "Education"
 msgstr "Билим берүү"
 
-#: ../rpmdrake:228
+#: ../rpmdrake:245
 msgid "Emulators"
 msgstr "Эмуляторлор"
 
-#: ../rpmdrake:229
+#: ../rpmdrake:246
 msgid "File tools"
 msgstr "Файл куралдары"
 
-#: ../rpmdrake:230 ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233
-#: ../rpmdrake:234 ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237
-#: ../rpmdrake:238
+#: ../rpmdrake:247 ../rpmdrake:248 ../rpmdrake:249 ../rpmdrake:250
+#: ../rpmdrake:251 ../rpmdrake:252 ../rpmdrake:253 ../rpmdrake:254
+#: ../rpmdrake:255
 msgid "Games"
 msgstr "Оюндар"
 
-#: ../rpmdrake:231
+#: ../rpmdrake:248
 msgid "Adventure"
 msgstr "Жорук оюндары"
 
-#: ../rpmdrake:232
+#: ../rpmdrake:249
 msgid "Arcade"
 msgstr "Аркада оюндары"
 
-#: ../rpmdrake:233
+#: ../rpmdrake:250
 msgid "Boards"
 msgstr "Стол оюндары"
 
-#: ../rpmdrake:234
+#: ../rpmdrake:251
 msgid "Cards"
 msgstr "Карта оюндары"
 
-#: ../rpmdrake:236
+#: ../rpmdrake:253
 msgid "Puzzles"
 msgstr "Баш катырма оюндары"
 
-#: ../rpmdrake:237
+#: ../rpmdrake:254
 msgid "Sports"
 msgstr "Спорт оюндары"
 
-#: ../rpmdrake:238
+#: ../rpmdrake:255
 msgid "Strategy"
 msgstr "Стратегия оюндары"
 
-#: ../rpmdrake:239 ../rpmdrake:240 ../rpmdrake:243 ../rpmdrake:244
-#: ../rpmdrake:247 ../rpmdrake:250 ../rpmdrake:253 ../rpmdrake:254
-#: ../rpmdrake:257 ../rpmdrake:260
+#: ../rpmdrake:256 ../rpmdrake:257 ../rpmdrake:260 ../rpmdrake:261
+#: ../rpmdrake:264 ../rpmdrake:267 ../rpmdrake:270 ../rpmdrake:271
+#: ../rpmdrake:274 ../rpmdrake:277
 msgid "Graphical desktop"
 msgstr "Графикалык иш столу"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:242
+#: ../rpmdrake:259
 msgid "Enlightenment"
 msgstr "Enlightenment"
 
-#: ../rpmdrake:243
+#: ../rpmdrake:260
 msgid "FVWM based"
 msgstr "FVWM негизинде"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:246
+#: ../rpmdrake:263
 msgid "GNOME"
 msgstr "GNOME"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:249
+#: ../rpmdrake:266
 msgid "Icewm"
 msgstr "Icewm"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:252
+#: ../rpmdrake:269
 msgid "KDE"
 msgstr "KDE"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:256
+#: ../rpmdrake:273
 msgid "Sawfish"
 msgstr "Sawfish"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:259
+#: ../rpmdrake:276
 msgid "WindowMaker"
 msgstr "WindowMaker"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:262
+#: ../rpmdrake:279
 msgid "Xfce"
 msgstr ""
 
-#: ../rpmdrake:263
+#: ../rpmdrake:280
 msgid "Graphics"
 msgstr "Графика"
 
-#: ../rpmdrake:264
+#: ../rpmdrake:281
 msgid "Monitoring"
 msgstr "Мониторинг"
 
-#: ../rpmdrake:265 ../rpmdrake:266
+#: ../rpmdrake:282 ../rpmdrake:283
 msgid "Multimedia"
 msgstr "Мультимедиа"
 
-#: ../rpmdrake:266 ../rpmdrake:317
+#: ../rpmdrake:283 ../rpmdrake:334
 msgid "Video"
 msgstr "Видео"
 
-#: ../rpmdrake:267 ../rpmdrake:268 ../rpmdrake:269 ../rpmdrake:270
-#: ../rpmdrake:271 ../rpmdrake:272 ../rpmdrake:273 ../rpmdrake:274
-#: ../rpmdrake:275 ../rpmdrake:276 ../rpmdrake:296
+#: ../rpmdrake:284 ../rpmdrake:285 ../rpmdrake:286 ../rpmdrake:287
+#: ../rpmdrake:288 ../rpmdrake:289 ../rpmdrake:290 ../rpmdrake:291
+#: ../rpmdrake:292 ../rpmdrake:293 ../rpmdrake:313
 msgid "Networking"
 msgstr "Тармактар"
 
-#: ../rpmdrake:268
+#: ../rpmdrake:285
 msgid "Chat"
 msgstr "Чат"
 
-#: ../rpmdrake:269
+#: ../rpmdrake:286
 msgid "File transfer"
 msgstr "Файл жөнөтүү"
 
-#: ../rpmdrake:270
+#: ../rpmdrake:287
 msgid "IRC"
 msgstr "IRC"
 
-#: ../rpmdrake:271
+#: ../rpmdrake:288
 msgid "Instant messaging"
 msgstr "Тез кабарлар менен алмашуу"
 
-#: ../rpmdrake:272
+#: ../rpmdrake:289 ../rpmdrake:360
 msgid "Mail"
 msgstr "Почта"
 
-#: ../rpmdrake:273
+#: ../rpmdrake:290
 msgid "News"
 msgstr "Жаңылыктар"
 
-#: ../rpmdrake:275
+#: ../rpmdrake:292
 msgid "Remote access"
 msgstr "Алыстан кирүү"
 
-#: ../rpmdrake:276
+#: ../rpmdrake:293
 msgid "WWW"
 msgstr "WWW"
 
-#: ../rpmdrake:277
+#: ../rpmdrake:294
 msgid "Office"
 msgstr "Офис"
 
-#: ../rpmdrake:278
+#: ../rpmdrake:295
 msgid "Public Keys"
 msgstr "Публикалык ачкычтар"
 
-#: ../rpmdrake:279
+#: ../rpmdrake:296
 msgid "Publishing"
 msgstr "Басмакана"
 
-#: ../rpmdrake:280 ../rpmdrake:281 ../rpmdrake:282 ../rpmdrake:283
-#: ../rpmdrake:284 ../rpmdrake:285 ../rpmdrake:286 ../rpmdrake:287
-#: ../rpmdrake:288
+#: ../rpmdrake:297 ../rpmdrake:298 ../rpmdrake:299 ../rpmdrake:300
+#: ../rpmdrake:301 ../rpmdrake:302 ../rpmdrake:303 ../rpmdrake:304
+#: ../rpmdrake:305
 msgid "Sciences"
 msgstr "Илим"
 
-#: ../rpmdrake:281
+#: ../rpmdrake:298
 msgid "Astronomy"
 msgstr "Астрономия"
 
-#: ../rpmdrake:282
+#: ../rpmdrake:299
 msgid "Biology"
 msgstr "Биология"
 
-#: ../rpmdrake:283
+#: ../rpmdrake:300
 msgid "Chemistry"
 msgstr "Химия"
 
-#: ../rpmdrake:284
+#: ../rpmdrake:301
 msgid "Computer science"
 msgstr "Компьютер илими"
 
-#: ../rpmdrake:285
+#: ../rpmdrake:302
 msgid "Geosciences"
 msgstr "География"
 
-#: ../rpmdrake:286
+#: ../rpmdrake:303
 msgid "Mathematics"
 msgstr "Математика"
 
-#: ../rpmdrake:288
+#: ../rpmdrake:305
 msgid "Physics"
 msgstr "Физика"
 
-#: ../rpmdrake:289
+#: ../rpmdrake:306
 msgid "Shells"
 msgstr "Шел-чөйрөлөрү"
 
-#: ../rpmdrake:290
+#: ../rpmdrake:307
 msgid "Sound"
 msgstr "Добуш"
 
-#: ../rpmdrake:291 ../rpmdrake:292 ../rpmdrake:293 ../rpmdrake:294
-#: ../rpmdrake:295 ../rpmdrake:296 ../rpmdrake:297 ../rpmdrake:298
-#: ../rpmdrake:299 ../rpmdrake:300 ../rpmdrake:301 ../rpmdrake:302
-#: ../rpmdrake:303 ../rpmdrake:304 ../rpmdrake:305 ../rpmdrake:306
-#: ../rpmdrake:307 ../rpmdrake:308 ../rpmdrake:309 ../rpmdrake:310
-#: ../rpmdrake:311
+#: ../rpmdrake:308 ../rpmdrake:309 ../rpmdrake:310 ../rpmdrake:311
+#: ../rpmdrake:312 ../rpmdrake:313 ../rpmdrake:314 ../rpmdrake:315
+#: ../rpmdrake:316 ../rpmdrake:317 ../rpmdrake:318 ../rpmdrake:319
+#: ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322 ../rpmdrake:323
+#: ../rpmdrake:324 ../rpmdrake:325 ../rpmdrake:326 ../rpmdrake:327
+#: ../rpmdrake:328
 msgid "System"
 msgstr "Система"
 
-#: ../rpmdrake:292
+#: ../rpmdrake:309
 msgid "Base"
 msgstr "Стандарттык"
 
-#: ../rpmdrake:293 ../rpmdrake:294 ../rpmdrake:295 ../rpmdrake:296
-#: ../rpmdrake:297 ../rpmdrake:298 ../rpmdrake:299
+#: ../rpmdrake:310 ../rpmdrake:311 ../rpmdrake:312 ../rpmdrake:313
+#: ../rpmdrake:314 ../rpmdrake:315 ../rpmdrake:316 ../rpmdrake:338
 msgid "Configuration"
 msgstr "Конфигурациялоо"
 
-#: ../rpmdrake:294
+#: ../rpmdrake:311
 msgid "Boot and Init"
 msgstr "Баштапкы жүктөө жана инициализациялоо"
 
-#: ../rpmdrake:295
+#: ../rpmdrake:312
 msgid "Hardware"
 msgstr "Техникалык жабдуу"
 
-#: ../rpmdrake:298
+#: ../rpmdrake:315
 msgid "Packaging"
 msgstr "Пакеттер"
 
-#: ../rpmdrake:299
+#: ../rpmdrake:316
 msgid "Printing"
 msgstr "Басуу системасы"
 
-#: ../rpmdrake:300
+#: ../rpmdrake:317
 msgid "Deploiement"
 msgstr "Орнотуу"
 
-#: ../rpmdrake:301
+#: ../rpmdrake:318
 msgid "Deployment"
 msgstr "Орнотуу"
 
-#: ../rpmdrake:302 ../rpmdrake:303 ../rpmdrake:304 ../rpmdrake:305
-#: ../rpmdrake:306
+#: ../rpmdrake:319 ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322
+#: ../rpmdrake:323
 msgid "Fonts"
 msgstr "Шрифтер"
 
-#: ../rpmdrake:303
+#: ../rpmdrake:320
 msgid "Console"
 msgstr "Консоль"
 
-#: ../rpmdrake:304
+#: ../rpmdrake:321
 msgid "True type"
 msgstr "True type"
 
-#: ../rpmdrake:305
+#: ../rpmdrake:322
 msgid "Type1"
 msgstr "Type1"
 
-#: ../rpmdrake:306
+#: ../rpmdrake:323
 msgid "X11 bitmap"
 msgstr "X11 bitmap"
 
-#: ../rpmdrake:307
+#: ../rpmdrake:324
 msgid "Internationalization"
 msgstr "Интернационалдаштыруу"
 
-#: ../rpmdrake:308
+#: ../rpmdrake:325
 msgid "Kernel and hardware"
 msgstr "Ядро жана техникалык жабдуу"
 
-#: ../rpmdrake:309
+#: ../rpmdrake:326
 msgid "Libraries"
 msgstr "Библиотекалар"
 
-#: ../rpmdrake:310
+#: ../rpmdrake:327
 msgid "Servers"
 msgstr "Серверлер"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:313
+#: ../rpmdrake:330
 msgid "X11"
 msgstr ""
 
-#: ../rpmdrake:314
+#: ../rpmdrake:331
 msgid "Terminals"
 msgstr "Терминалдар"
 
-#: ../rpmdrake:315
+#: ../rpmdrake:332
 msgid "Text tools"
 msgstr "Тексттик куралдар"
 
-#: ../rpmdrake:316
+#: ../rpmdrake:333
 msgid "Toys"
 msgstr "Оюнчуктар"
 
+#. for Mandriva Choice:
+#: ../rpmdrake:337 ../rpmdrake:338 ../rpmdrake:339 ../rpmdrake:340
+#: ../rpmdrake:341 ../rpmdrake:342 ../rpmdrake:343 ../rpmdrake:344
+#: ../rpmdrake:345 ../rpmdrake:346
+#, fuzzy
+msgid "Workstation"
+msgstr "Конфигурациялоо"
+
+#: ../rpmdrake:339
+#, fuzzy
+msgid "Console Tools"
+msgstr "Консоль"
+
+#: ../rpmdrake:340 ../rpmdrake:355
+msgid "Documentation"
+msgstr ""
+
+#: ../rpmdrake:341
+msgid "Game station"
+msgstr ""
+
+#: ../rpmdrake:342
+#, fuzzy
+msgid "Internet station"
+msgstr "Интернационалдаштыруу"
+
+#: ../rpmdrake:343
+#, fuzzy
+msgid "Multimedia station"
+msgstr "Мультимедиа"
+
+#: ../rpmdrake:344
+#, fuzzy
+msgid "Network Computer (client)"
+msgstr "Компьютер илими"
+
+#: ../rpmdrake:345
+msgid "Office Workstation"
+msgstr ""
+
+#: ../rpmdrake:346
+msgid "Scientific Workstation"
+msgstr ""
+
+#: ../rpmdrake:347 ../rpmdrake:349 ../rpmdrake:350 ../rpmdrake:351
+#: ../rpmdrake:352
+#, fuzzy
+msgid "Graphical Environment"
+msgstr "Графикалык иш столу"
+
+#: ../rpmdrake:349
+msgid "GNOME Workstation"
+msgstr ""
+
+#: ../rpmdrake:350
+msgid "IceWm Desktop"
+msgstr ""
+
+#: ../rpmdrake:351
+msgid "KDE Workstation"
+msgstr ""
+
+#: ../rpmdrake:352
+#, fuzzy
+msgid "Other Graphical Desktops"
+msgstr "Графикалык иш столу"
+
+#: ../rpmdrake:356 ../rpmdrake:357 ../rpmdrake:358 ../rpmdrake:359
+#: ../rpmdrake:360 ../rpmdrake:361 ../rpmdrake:362 ../rpmdrake:363
+msgid "Server"
+msgstr "Сервер"
+
+#: ../rpmdrake:357
+msgid "DNS/NIS"
+msgstr ""
+
+#: ../rpmdrake:358
+#, fuzzy
+msgid "Database"
+msgstr "Берилишер базасы"
+
+#: ../rpmdrake:359
+msgid "Firewall/Router"
+msgstr ""
+
+#: ../rpmdrake:361
+msgid "Mail/Groupware/News"
+msgstr ""
+
+#: ../rpmdrake:362
+#, fuzzy
+msgid "Network Computer server"
+msgstr "Компьютер илими"
+
+#: ../rpmdrake:363
+msgid "Web/FTP"
+msgstr ""
+
 #. - to highlight information
-#: ../rpmdrake:443 ../rpmdrake:614 ../rpmdrake:619 ../rpmdrake:633
-#: ../rpmdrake:635
+#: ../rpmdrake:502 ../rpmdrake:707 ../rpmdrake:712 ../rpmdrake:726
+#: ../rpmdrake:728
 msgid "(Not available)"
 msgstr "(Мүмкүн эмес)"
 
-#: ../rpmdrake:475
+#: ../rpmdrake:534
 msgid "Search results"
 msgstr "Издөө жыйынтыктары"
 
-#: ../rpmdrake:475
+#: ../rpmdrake:534
 msgid "Search results (none)"
 msgstr "Издөө жыйынтыктары (жок)"
 
-#: ../rpmdrake:486
+#: ../rpmdrake:545 ../rpmdrake:2125
 msgid "Please wait, searching..."
 msgstr "Күтө туруңуз, изделүүдө..."
 
-#: ../rpmdrake:558 ../rpmdrake:810
+#: ../rpmdrake:617 ../rpmdrake:921
 msgid "Addable"
 msgstr "Кошсо болот"
 
-#: ../rpmdrake:558 ../rpmdrake:810
+#: ../rpmdrake:617 ../rpmdrake:921
 msgid "Upgradable"
 msgstr "Жаңыртса болот"
 
-#: ../rpmdrake:560
+#: ../rpmdrake:619
 msgid "Not selected"
 msgstr "Тандалган эмес"
 
-#: ../rpmdrake:560
+#: ../rpmdrake:619
 msgid "Selected"
 msgstr "Тандалган"
 
-#: ../rpmdrake:602 ../rpmdrake:651
+#. is it an update?
+#: ../rpmdrake:687 ../rpmdrake:744
 msgid "Importance: "
 msgstr "Маанилүүлүгү:"
 
-#: ../rpmdrake:603 ../rpmdrake:659
+#: ../rpmdrake:688 ../rpmdrake:752
 msgid "Reason for update: "
 msgstr "Жаңылоо себеби: "
 
-#: ../rpmdrake:647
+#: ../rpmdrake:692
 #, fuzzy
 msgid "Security advisory"
 msgstr "Коопсуздук боюнча жаңылоо"
 
-#: ../rpmdrake:655 ../rpmdrake:708
+#: ../rpmdrake:700 ../rpmdrake:754
 msgid "No description"
 msgstr "Баяндалбады"
 
-#: ../rpmdrake:609
+#: ../rpmdrake:703
 msgid "Files:"
 msgstr "Файлдар:"
 
-#: ../rpmdrake:618
+#: ../rpmdrake:711
 msgid "Changelog:"
 msgstr "Changelog:"
 
-#: ../rpmdrake:630
+#: ../rpmdrake:723
 msgid "Files:\n"
 msgstr "Файлдар:\n"
 
-#: ../rpmdrake:635
+#: ../rpmdrake:728
 msgid "Changelog:\n"
 msgstr "Changelog:\n"
 
-#: ../rpmdrake:640
+#: ../rpmdrake:733 ../rpmdrake.pm:807
 msgid "Medium: "
 msgstr "Булак:"
 
-#: ../rpmdrake:641
+#: ../rpmdrake:734
 msgid "Currently installed version: "
 msgstr "Учурдагы орнотулган версиясы: "
 
-#: ../rpmdrake:645
+#: ../rpmdrake:738
 msgid "Name: "
 msgstr "Аты: "
 
-#: ../rpmdrake:646
+#: ../rpmdrake:739
 msgid "Version: "
 msgstr "Версиясы: "
 
-#: ../rpmdrake:647
+#: ../rpmdrake:740
 msgid "Architecture: "
 msgstr "Архитектурасы:"
 
-#: ../rpmdrake:648
+#: ../rpmdrake:741
 #, perl-format
 msgid "%s KB"
 msgstr "%s Кб"
 
-#: ../rpmdrake:648
+#: ../rpmdrake:741
 msgid "Size: "
 msgstr "Көлөмү: "
 
 #. extra empty line
-#: ../rpmdrake:655
+#: ../rpmdrake:748
 msgid "Summary: "
 msgstr "Жыйынтыгы:"
 
-#: ../rpmdrake:661
+#: ../rpmdrake:754
 msgid "Description: "
 msgstr "Баяны: "
 
-#: ../rpmdrake:698 ../rpmdrake.pm:178
+#: ../rpmdrake:810 ../rpmdrake.pm:179
 #, fuzzy
 msgid "Software Management"
 msgstr "Программалар Булагынын Менеджери"
 
-#. - TODO change those labels to something more sensible, e.g. "Upgrade information about this package"
-#: ../rpmdrake:715 ../rpmdrake:862 ../rpmdrake:864 ../rpmdrake:1893
+#: ../rpmdrake:827 ../rpmdrake:973 ../rpmdrake:975
 msgid "More information on package..."
 msgstr "Пакет жөнүндө кошумча маалымат..."
 
-#: ../rpmdrake:717
+#: ../rpmdrake:829
 msgid "One of the following packages is needed:"
 msgstr "Төмөнкү пакеттердин бири талап кылынат:"
 
-#: ../rpmdrake:717
+#: ../rpmdrake:829
 msgid "Please choose"
 msgstr "Тандаңыз"
 
-#: ../rpmdrake:759
+#: ../rpmdrake:870
 msgid "Please wait, listing packages..."
 msgstr "Күтө туруңуз, пакеттердин тизмеси түзүлүүдө..."
 
-#: ../rpmdrake:777
+#: ../rpmdrake:888
 msgid "No update"
 msgstr "Жаңылоосу жок"
 
-#: ../rpmdrake:778
+#: ../rpmdrake:889
 msgid ""
 "The list of updates is empty. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -1176,24 +1284,24 @@ msgstr ""
 "орнотулган пакеттер үчүн жаңылоо жокутугун, же алар\n"
 "алдагачан орнотулгандыгын түшүндүрөт."
 
-#: ../rpmdrake:801 ../rpmdrake:1057
+#: ../rpmdrake:912 ../rpmdrake:1174
 msgid "All"
 msgstr "Бардыгы"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../rpmdrake:849 ../rpmdrake:854
+#: ../rpmdrake:960 ../rpmdrake:965
 msgid "More info"
 msgstr "Кошумча маалымат"
 
-#: ../rpmdrake:857 ../rpmdrake:1882
+#: ../rpmdrake:968
 msgid "Information on packages"
 msgstr "Пакеттер жөнүндөгү маалымат"
 
-#: ../rpmdrake:879
+#: ../rpmdrake:991
 msgid "Some additional packages need to be removed"
 msgstr "Кээ бир пакеттерди алып салуу талап кылынат"
 
-#: ../rpmdrake:880
+#: ../rpmdrake:992
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
@@ -1201,11 +1309,11 @@ msgstr ""
 "Өз ара көз каранды болгондуктан, төмөнкү пакеттер да алынып салынуусу талап "
 "кылынат:"
 
-#: ../rpmdrake:886 ../rpmdrake:895
+#: ../rpmdrake:998 ../rpmdrake:1007
 msgid "Some packages can't be removed"
 msgstr "Кээ бир пакеттерди алып салууга болбойт"
 
-#: ../rpmdrake:887
+#: ../rpmdrake:999
 msgid ""
 "Removing these packages would break your system, sorry:\n"
 "\n"
@@ -1214,7 +1322,7 @@ msgstr ""
 "бузулуусуна алып келиши мүмкүн:\n"
 "\n"
 
-#: ../rpmdrake:896 ../rpmdrake:961
+#: ../rpmdrake:1008 ../rpmdrake:1073
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -1224,11 +1332,11 @@ msgstr ""
 "учурда тандалбашы керек:\n"
 "\n"
 
-#: ../rpmdrake:925
+#: ../rpmdrake:1037
 msgid "Additional packages needed"
 msgstr "Кошумча пакеттер талап кылынат"
 
-#: ../rpmdrake:926
+#: ../rpmdrake:1038
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -1238,16 +1346,16 @@ msgstr ""
 "пакетти(терди) орнотуу талап кылынат:\n"
 "\n"
 
-#: ../rpmdrake:941
+#: ../rpmdrake:1053
 #, perl-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (өткөрүү тизмесине таандык)"
 
-#: ../rpmdrake:944
+#: ../rpmdrake:1056
 msgid "Some packages can't be installed"
 msgstr "Кээ бир пакеттерди орнотуу мүмкүн эмес"
 
-#: ../rpmdrake:945
+#: ../rpmdrake:1057
 #, perl-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
@@ -1258,112 +1366,117 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:960 ../rpmdrake:1729
+#: ../rpmdrake:1072 ../rpmdrake:1896
 msgid "Some packages need to be removed"
 msgstr "Кээ бир пакеттер алынып салынуусу талап кылынат"
 
-#: ../rpmdrake:985
+#: ../rpmdrake:1101
 #, perl-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Тандалганы: %s / Бош диск көлөмү: %s"
 
-#: ../rpmdrake:986
+#: ../rpmdrake:1102
 #, perl-format
 msgid "Selected size: %d MB"
 msgstr "Тандалган көлөмү: %d Мб"
 
 #. - the package information hasn't been loaded. Instead of rescanning the media, just give up.
-#: ../rpmdrake:991
+#: ../rpmdrake:1107
 msgid "Description not available for this package\n"
 msgstr "Бул пакет үчүн баян жок\n"
 
-#: ../rpmdrake:1057
+#: ../rpmdrake:1113 ../rpmdrake:1506
+#, perl-format
+msgid "A fatal error occurred: %s."
+msgstr "Фаталдык ката пайда болду: %s."
+
+#: ../rpmdrake:1174
 #, fuzzy
 msgid "Installed"
 msgstr "Орнотуу"
 
-#: ../rpmdrake:1057
+#: ../rpmdrake:1174
 #, fuzzy
 msgid "Non installed"
 msgstr "Орнотуу"
 
-#: ../rpmdrake:1058
+#: ../rpmdrake:1175
 #, perl-format
 msgid "%s choices"
 msgstr "%s тандоолор"
 
-#: ../rpmdrake:1058
+#: ../rpmdrake:1175
 msgid "Mandriva Linux choices"
 msgstr "Mandriva Linux тандоо"
 
 #. let's keep the translated strings (to be resurected as sorting the treeview):
-#: ../rpmdrake:1060
+#: ../rpmdrake:1177
 msgid "All packages, alphabetical"
 msgstr "Бардык пакеттер алфавит боюнча"
 
-#: ../rpmdrake:1061
+#: ../rpmdrake:1178
 msgid "All packages, by update availability"
 msgstr "Бардык пакеттер жаңылануу мүмкүнчүлүгү боюнча"
 
-#: ../rpmdrake:1062
+#: ../rpmdrake:1179
 msgid "All packages, by size"
 msgstr "Бардык пакеттер көлөмү боюнча"
 
-#: ../rpmdrake:1063
+#: ../rpmdrake:1180
 msgid "All packages, by selection state"
 msgstr "Бардык пакеттер, тандоо абалы боюнча"
 
-#: ../rpmdrake:1064
+#: ../rpmdrake:1181
 msgid "Leaves only, sorted by install date"
 msgstr "Орнотуу датасы боюнча сорттолгон, калган пакеттер гана"
 
-#: ../rpmdrake:1065
+#: ../rpmdrake:1182
 msgid "All packages, by group"
 msgstr "Бардык пакеттер группалар боюнча"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 #, fuzzy
 msgid "All updates"
 msgstr "Нормалдык жаңылоо"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "Bugfixes updates"
 msgstr "Баг-фикстерди жаңылоо"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "Normal updates"
 msgstr "Нормалдык жаңылоо"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "Security updates"
 msgstr "Коопсуздук боюнча жаңылоо"
 
-#: ../rpmdrake:1123
+#: ../rpmdrake:1247
 msgid "in names"
 msgstr "аттарында"
 
-#: ../rpmdrake:1125
+#: ../rpmdrake:1249
 msgid "in descriptions"
 msgstr "баяндарында"
 
-#: ../rpmdrake:1127
+#: ../rpmdrake:1251
 msgid "in file names"
 msgstr "файл аттарында"
 
-#: ../rpmdrake:1230
+#: ../rpmdrake:1278
 #, perl-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr "Ката:мүмкүн %s окуу үчүн гана колдонулган."
 
-#: ../rpmdrake:1153
+#: ../rpmdrake:1282
 msgid "You need to select some packages first."
 msgstr "Адегенде, кээ бир пакеттерди тандооңуз керек."
 
-#: ../rpmdrake:1158
+#: ../rpmdrake:1287
 msgid "Too many packages are selected"
 msgstr "Өтө эле көп пакет тандалды"
 
-#: ../rpmdrake:1159
+#: ../rpmdrake:1288
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -1380,133 +1493,143 @@ msgstr ""
 "\n"
 "Сиз чын эле тандалган пакеттерди орнотууну каалайсызбы?"
 
-#: ../rpmdrake:1188 ../rpmdrake:1191 ../rpmdrake:1201 ../rpmdrake:1213
-#: ../rpmdrake:1219
+#: ../rpmdrake:1320 ../rpmdrake:1323 ../rpmdrake:1334 ../rpmdrake:1347
+#: ../rpmdrake:1356
 msgid "/_File"
 msgstr "/_Файл"
 
-#: ../rpmdrake:1191
+#: ../rpmdrake:1323
 msgid "/_Update media"
 msgstr "/_Булакты жаңылоо"
 
-#: ../rpmdrake:1201
+#: ../rpmdrake:1334
 msgid "/_Reset the selection"
 msgstr "/_Тандоону алып таштоо"
 
-#: ../rpmdrake:1213
+#: ../rpmdrake:1347
 msgid "/Reload the _packages list"
 msgstr "/_Пакеттер тизмесин кайра жүктөө"
 
-#: ../rpmdrake:1219
+#: ../rpmdrake:1356
 msgid "/_Quit"
 msgstr "/_Чыгуу"
 
-#: ../rpmdrake:1219
+#: ../rpmdrake:1356
 msgid "<control>Q"
 msgstr "<control>Q"
 
-#: ../rpmdrake:1222 ../rpmdrake:1223 ../rpmdrake:1226 ../rpmdrake:1256
+#: ../rpmdrake:1359 ../rpmdrake:1360 ../rpmdrake:1363 ../rpmdrake:1393
 msgid "/_Options"
 msgstr "/О_пциялар"
 
-#: ../rpmdrake:1223
+#: ../rpmdrake:1360
 #, fuzzy
 msgid "/_Media Manager"
 msgstr "Программалар Булагынын Менеджери"
 
-#: ../rpmdrake:1226 ../rpmdrake:1256
+#: ../rpmdrake:1363 ../rpmdrake:1393
 msgid "/_Show automatically selected packages"
 msgstr "/_Автоматтык түрдө тандалган пакеттерди көрсөтүү"
 
-#: ../rpmdrake:1230 ../rpmdrake:1231 ../rpmdrake:1232 ../rpmdrake:1233
+#: ../rpmdrake:1367 ../rpmdrake:1368 ../rpmdrake:1369 ../rpmdrake:1370
 msgid "/_Help"
 msgstr "/_Жардам"
 
-#: ../rpmdrake:1231
+#: ../rpmdrake:1368
 msgid "/_Report Bug"
 msgstr "/_Баг жөнүндө отчет"
 
-#: ../rpmdrake:1233
+#: ../rpmdrake:1370
 msgid "/_About..."
 msgstr "/_Программа жөнүндө..."
 
 #. nicer formatting
-#: ../rpmdrake:1236
+#: ../rpmdrake:1373
 #, fuzzy
-msgid "About Rpmdrake"
+msgid "Rpmdrake"
 msgstr "Rpmdrake"
 
-#: ../rpmdrake:1238
+#: ../rpmdrake:1375
 #, perl-format
 msgid "Copyright (C) %s by Mandriva"
 msgstr ""
 
-#: ../rpmdrake:1240
+#: ../rpmdrake:1377
 msgid "Rpmdrake is Mandriva Linux package management tool."
 msgstr ""
 
-#: ../rpmdrake:1242
-#, fuzzy
+#: ../rpmdrake:1379
 msgid "Mandriva Linux"
-msgstr "Mandriva Online"
+msgstr "Mandriva Linux"
 
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:1247
+#: ../rpmdrake:1384
 msgid "_: Translator(s) name(s) & email(s)\n"
 msgstr "Тимур Жамакеев <ztimur@mail..ru>\n"
 
-#: ../rpmdrake:1271
+#: ../rpmdrake:1408
 msgid "Find:"
 msgstr "Табуу:"
 
-#: ../rpmdrake:1280
+#: ../rpmdrake:1417
 msgid "Search"
 msgstr "Издөө"
 
-#: ../rpmdrake:1282
+#: ../rpmdrake:1419
 msgid "Clear"
 msgstr "Тазалоо"
 
-#: ../rpmdrake:1295
+#: ../rpmdrake:1433 ../rpmdrake.pm:758
+msgid "Select all"
+msgstr "Баарын тандоо"
+
+#: ../rpmdrake:1440
 msgid "Apply"
 msgstr "Колдонуу"
 
-#: ../rpmdrake:1299
+#: ../rpmdrake:1444
 msgid "Quit"
 msgstr "Чыгуу"
 
-#: ../rpmdrake:1315
+#: ../rpmdrake:1460
 msgid "Quick Introduction"
 msgstr ""
 
-#: ../rpmdrake:1316
+#: ../rpmdrake:1461
 msgid "You can browse the packages through the categories tree on the left."
 msgstr ""
 
-#: ../rpmdrake:1317
+#: ../rpmdrake:1462
 msgid ""
 "You can view information about a package by clicking on it on the right list."
 msgstr ""
 
-#: ../rpmdrake:1318
+#: ../rpmdrake:1463
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
 
-#: ../rpmdrake:1360
+#: ../rpmdrake:1505
 msgid "Fatal error"
 msgstr "Фаталдык ката"
 
-#: ../rpmdrake:1361
-#, perl-format
-msgid "A fatal error occurred: %s."
-msgstr "Фаталдык ката пайда болду: %s."
+#: ../rpmdrake:1507 ../rpmdrake:1932
+msgid "Initializing..."
+msgstr "Инциализациялоо..."
 
-#: ../rpmdrake:1368
+#: ../rpmdrake:1507 ../rpmdrake:1932
+msgid "Package installation..."
+msgstr "Пакет орнотулууда..."
+
+#: ../rpmdrake:1507 ../rpmdrake:1932 ../rpmdrake.pm:311
+msgid "Please wait"
+msgstr "Күтө туруңуз"
+
+#: ../rpmdrake:1530 ../rpmdrake:1918
 #, fuzzy
 msgid "Confirmation"
 msgstr "Конфигурациялоо"
 
-#: ../rpmdrake:1369
+#: ../rpmdrake:1532
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -1518,11 +1641,11 @@ msgstr ""
 "жаткандыгын тактаңыз.\n"
 "Улантууга даярсызбы?"
 
-#: ../rpmdrake:1378
+#: ../rpmdrake:1541
 msgid "Already existing update media"
 msgstr "Алдагачан бар жаңылоо булагы"
 
-#: ../rpmdrake:1379
+#: ../rpmdrake:1542
 #, perl-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -1539,11 +1662,11 @@ msgstr ""
 "мамычасынан текшериңиз)\n"
 "Андан соң, %s кайра иштетиңиз."
 
-#: ../rpmdrake:1389
+#: ../rpmdrake:1553
 msgid "How to choose manually your mirror"
 msgstr "Өз алдынча күзгүнү кантип тандоо керек"
 
-#: ../rpmdrake:1390
+#: ../rpmdrake:1554
 #, perl-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -1558,55 +1681,66 @@ msgstr ""
 "\n"
 "Андан соң, %s кайра иштетиңиз."
 
-#: ../rpmdrake:1427
+#: ../rpmdrake:1567
+#, fuzzy
+msgid "Reading updates description"
+msgstr "баяндарында"
+
+#: ../rpmdrake:1593 ../rpmdrake:1670
 msgid "Please wait, finding available packages..."
 msgstr "Күтө туруңуз, мүмкүн болгон пакеттер изделүүдө..."
 
-#: ../rpmdrake:1428
-msgid "Please wait, reading packages database..."
-msgstr "Күтө туруңуз, пакеттердин берилиштер базасы окулуп жатат..."
+#: ../rpmdrake:1601
+#, fuzzy
+msgid "Please wait, listing base packages..."
+msgstr "Күтө туруңуз, пакеттердин тизмеси түзүлүүдө..."
 
-#: ../rpmdrake:1584
+#: ../rpmdrake:1637
+#, fuzzy
+msgid "Please wait, finding installed packages..."
+msgstr "Күтө туруңуз, мүмкүн болгон пакеттер изделүүдө..."
+
+#: ../rpmdrake:1771
 #, perl-format
 msgid "Inspecting %s"
 msgstr "%s изилденүүдө"
 
-#: ../rpmdrake:1607
+#: ../rpmdrake:1772
 msgid "changes:"
 msgstr "өзгөрүүлөр:"
 
-#: ../rpmdrake:1615
+#: ../rpmdrake:1780
 #, perl-format
 msgid "Remove .%s"
 msgstr "Алып салуу: %s"
 
-#: ../rpmdrake:1619
+#: ../rpmdrake:1784
 #, perl-format
 msgid "Use .%s as main file"
 msgstr "Колдонуу .%s негизги файл катары"
 
-#: ../rpmdrake:1623
+#: ../rpmdrake:1788
 msgid "Do nothing"
 msgstr "Эч нерсе кылбоо"
 
-#: ../rpmdrake:1639
+#: ../rpmdrake:1804
 msgid "Installation finished"
 msgstr "Орнотуу аяктады"
 
-#: ../rpmdrake:1654
+#: ../rpmdrake:1819
 msgid "Inspect..."
 msgstr "Изилдөө..."
 
 #. N("Everything installed successfully"),
-#: ../rpmdrake:1687 ../rpmdrake:1879
+#: ../rpmdrake:1852 ../rpmdrake:2045
 msgid "All requested packages were installed successfully."
 msgstr "Бардык талап кылынган пакеттер ийгиликтүү орнотулду."
 
-#: ../rpmdrake:1691 ../rpmdrake:1859
+#: ../rpmdrake:1856 ../rpmdrake:2025
 msgid "Problem during installation"
 msgstr "Орнотуу учурундагы проблема"
 
-#: ../rpmdrake:1692 ../rpmdrake:1860 ../rpmdrake:1920
+#: ../rpmdrake:1857 ../rpmdrake:2026 ../rpmdrake:2084
 #, perl-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -1617,16 +1751,16 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1709
+#: ../rpmdrake:1876
 msgid "Unable to get source packages."
 msgstr "Баштапкы пакеттерди алууга болбоду."
 
-#: ../rpmdrake:1710
+#: ../rpmdrake:1877
 #, perl-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Тилекке каршы баштапкы пакеттерди алууга болбоду. %s"
 
-#: ../rpmdrake:1711 ../rpmdrake:1806
+#: ../rpmdrake:1878 ../rpmdrake:1976
 #, perl-format
 msgid ""
 "\n"
@@ -1639,7 +1773,7 @@ msgstr ""
 "Ката(лар) жөнүндө билдирилди:\n"
 "%s"
 
-#: ../rpmdrake:1727
+#: ../rpmdrake:1894
 #, perl-format
 msgid ""
 "To satisfy dependencies, the following %d packages are going to be "
@@ -1649,7 +1783,12 @@ msgstr ""
 "Көз карандылыктарды канаатандыруу үчүн, төмөнкү %d пакет орнотулат:\n"
 "%s\n"
 
-#: ../rpmdrake:1730
+#: ../rpmdrake:1898
+#, fuzzy, perl-format
+msgid "Remove %d packages?"
+msgstr "Ачкычты алып салуу"
+
+#: ../rpmdrake:1899
 #, perl-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -1665,41 +1804,29 @@ msgstr ""
 "\n"
 "Улантууга даярсызбы? "
 
-#: ../rpmdrake:1741
-msgid "Initializing..."
-msgstr "Инциализациялоо..."
-
-#: ../rpmdrake:1741
-msgid "Package installation..."
-msgstr "Пакет орнотулууда..."
-
-#: ../rpmdrake:1741 ../rpmdrake.pm:307
-msgid "Please wait"
-msgstr "Күтө туруңуз"
-
-#: ../rpmdrake:1750
+#: ../rpmdrake:1941
 msgid "Change medium"
 msgstr "Булакты өзгөртүү"
 
-#: ../rpmdrake:1751
+#: ../rpmdrake:1920
 #, perl-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Аты \"%s\" булагын [%s] түзүлүшүнө салыңыз"
 
-#: ../rpmdrake:1758
+#: ../rpmdrake:1927
 #, perl-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Пакет жүктөлүүдө `%s' (%s/%s)..."
 
-#: ../rpmdrake:1781
+#: ../rpmdrake:1947
 msgid "Verifying package signatures..."
 msgstr "Пакеттердин сигнатуралары текшерилүүдө..."
 
-#: ../rpmdrake:1793 ../rpmdrake.pm:743 ../rpmdrake.pm:852
+#: ../rpmdrake:1960 ../rpmdrake.pm:737 ../rpmdrake.pm:846
 msgid "Warning"
 msgstr "Эскертүү"
 
-#: ../rpmdrake:1794
+#: ../rpmdrake:1961
 #, perl-format
 msgid ""
 "The following packages have bad signatures:\n"
@@ -1714,11 +1841,11 @@ msgstr ""
 "\n"
 "Орнотууну улантууну каалайсызбы?"
 
-#: ../rpmdrake:1803 ../rpmdrake:1919
+#: ../rpmdrake:1973 ../rpmdrake:2083
 msgid "Installation failed"
 msgstr "Орнотуу ийгиликсиз аяктады"
 
-#: ../rpmdrake:1804
+#: ../rpmdrake:1974
 #, perl-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -1731,25 +1858,25 @@ msgstr ""
 "\n"
 "Мүмкүн сизге булактарыңыздын берилиштер базасын жаңылооңуз керек."
 
-#: ../rpmdrake:1819
+#: ../rpmdrake:1988
 msgid "Preparing packages installation..."
 msgstr "Пакеттерди орнотуу үчүн даярдануу..."
 
-#: ../rpmdrake:1819
+#: ../rpmdrake:1988
 msgid "Preparing..."
 msgstr "Даярдоо ..."
 
-#: ../rpmdrake:1822
+#: ../rpmdrake:1991
 #, perl-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Пакет орнотулууда `%s' (%s/%s)..."
 
-#: ../rpmdrake:1838
+#: ../rpmdrake:2006
 #, perl-format
 msgid "unable to access rpm file [%s]"
 msgstr "[%s] rpm файлына жетүүгө болбоду"
 
-#: ../rpmdrake:1874
+#: ../rpmdrake:2040
 #, fuzzy
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
@@ -1762,32 +1889,42 @@ msgstr ""
 "Кээ бир конфигурациялык файлдар `.rpmnew' же `.rpmsave'\n"
 "катары түзүлдү, эми сиз иш аткаруу үчүн кээ бирин караңыз :"
 
-#: ../rpmdrake:1884
+#: ../rpmdrake:2048
+#, fuzzy
+msgid "Upgrade information"
+msgstr "Стандарттык маалымат"
+
+#: ../rpmdrake:2050
 msgid "These packages come with upgrade information"
 msgstr "Бул пакеттер жаңылоо информациясы менен кошо келет"
 
-#: ../rpmdrake:1896
-#, perl-format
-msgid "More information on package... [%s]"
+#: ../rpmdrake:2058
+#, fuzzy
+msgid "Upgrade information about this package"
+msgstr "Пакет жөнүндө кошумча маалымат..."
+
+#: ../rpmdrake:2061
+#, fuzzy, perl-format
+msgid "Upgrade information about package %s"
 msgstr "Пакет жөнүндө кошумча маалымат... [%s]"
 
-#: ../rpmdrake:1909 ../rpmdrake.pm:730 ../rpmdrake.pm:811 ../rpmdrake.pm:835
+#: ../rpmdrake:2073 ../rpmdrake.pm:724 ../rpmdrake.pm:805 ../rpmdrake.pm:829
 msgid "Error"
 msgstr "Жаңылыштык"
 
-#: ../rpmdrake:1910
+#: ../rpmdrake:2074
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Оңдолбос ката: тилекке каршы, орнотууга пакет табылбады."
 
-#: ../rpmdrake:1935
+#: ../rpmdrake:2099
 msgid "Please wait, removing packages..."
 msgstr "Күтө туруңуз, пакеттер алынып салынууда..."
 
-#: ../rpmdrake:1946
+#: ../rpmdrake:2110
 msgid "Problem during removal"
 msgstr "Алып салуу учурундагы проблема"
 
-#: ../rpmdrake:1947
+#: ../rpmdrake:2111
 #, perl-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -1798,11 +1935,11 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1977
+#: ../rpmdrake:2143
 msgid "Welcome"
 msgstr "Кош келиңиз"
 
-#: ../rpmdrake:1982
+#: ../rpmdrake:2148
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -1814,7 +1951,7 @@ msgstr ""
 "Бул курал компьютериңизден сиз тандаган программаны\n"
 "алып салууга жардам берет."
 
-#: ../rpmdrake:1987
+#: ../rpmdrake:2153
 #, perl-format
 msgid ""
 "Welcome to %s!\n"
@@ -1827,11 +1964,11 @@ msgstr ""
 "Бул курал компьютериңизге сиз тандаган программанын\n"
 "жаңылоосун орнотууга жардам берет."
 
-#: ../rpmdrake:1992
+#: ../rpmdrake:2158
 msgid "Welcome to the software installation tool!"
 msgstr "Программалык жабдуунун жүктөө куралына кош келиңиз!"
 
-#: ../rpmdrake:1993
+#: ../rpmdrake:2159
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1845,174 +1982,173 @@ msgstr ""
 "миң программалык пакеттер менен кошо келет. Бул курал компьютериңизге\n"
 "сиз тандаган программаларды орнотууга жардам берет."
 
-#: ../rpmdrake.pm:102
+#: ../rpmdrake.pm:103
 msgid "Mandriva Linux Update"
 msgstr "Mandriva Linux жаңылоосу"
 
-#: ../rpmdrake.pm:102
+#: ../rpmdrake.pm:103
 msgid "Software Update"
 msgstr "Программа камсыздоолорду жаңылоо"
 
-#: ../rpmdrake.pm:129
+#: ../rpmdrake.pm:130
 msgid "Please enter your credentials for accessing proxy\n"
 msgstr "proxy ге кирүү үчүн өтүнүч\n"
 
-#: ../rpmdrake.pm:130
+#: ../rpmdrake.pm:131
 msgid "User name:"
 msgstr "Колдонуучунун ысымы:"
 
-#: ../rpmdrake.pm:173
+#: ../rpmdrake.pm:174
 msgid "Software Packages Removal"
 msgstr "Программа пакеттерин жоготуу"
 
-#: ../rpmdrake.pm:174
+#: ../rpmdrake.pm:175
 msgid "Software Packages Update"
 msgstr "Программа пакеттерин жаңылоо"
 
-#: ../rpmdrake.pm:175
+#: ../rpmdrake.pm:176
 msgid "Software Packages Installation"
 msgstr "Программа пакеттерин орнотуу"
 
-#: ../rpmdrake.pm:217
+#: ../rpmdrake.pm:218
 msgid "No"
 msgstr "Жок"
 
-#: ../rpmdrake.pm:221
+#: ../rpmdrake.pm:222
 msgid "Yes"
 msgstr "Ооба"
 
-#: ../rpmdrake.pm:269
+#: ../rpmdrake.pm:272
 msgid "Info..."
 msgstr "Маалымат..."
 
-#: ../rpmdrake.pm:386
+#: ../rpmdrake.pm:389
 msgid "Austria"
 msgstr "Австрия"
 
-#: ../rpmdrake.pm:387
+#: ../rpmdrake.pm:390
 msgid "Australia"
 msgstr "Австралия"
 
-#: ../rpmdrake.pm:388
+#: ../rpmdrake.pm:391
 msgid "Belgium"
 msgstr "Бельгия"
 
-#: ../rpmdrake.pm:389
+#: ../rpmdrake.pm:392
 msgid "Brazil"
 msgstr "Бразилия"
 
-#: ../rpmdrake.pm:390
+#: ../rpmdrake.pm:393
 msgid "Canada"
 msgstr "Канада"
 
-#: ../rpmdrake.pm:391
+#: ../rpmdrake.pm:394
 msgid "Switzerland"
 msgstr "Швецария"
 
-#: ../rpmdrake.pm:392
+#: ../rpmdrake.pm:395
 msgid "Costa Rica"
 msgstr "Коста-Рика"
 
-#: ../rpmdrake.pm:393
+#: ../rpmdrake.pm:396
 msgid "Czech Republic"
 msgstr "Чех Республикасы"
 
-#: ../rpmdrake.pm:394
+#: ../rpmdrake.pm:397
 msgid "Germany"
 msgstr "Германия"
 
-#: ../rpmdrake.pm:395
+#: ../rpmdrake.pm:398
 msgid "Danmark"
 msgstr "Дания"
 
-#: ../rpmdrake.pm:396 ../rpmdrake.pm:400
+#: ../rpmdrake.pm:399 ../rpmdrake.pm:403
 msgid "Greece"
 msgstr "Греция"
 
-#: ../rpmdrake.pm:397
+#: ../rpmdrake.pm:400
 msgid "Spain"
 msgstr "Испания"
 
-#: ../rpmdrake.pm:398
+#: ../rpmdrake.pm:401
 msgid "Finland"
 msgstr "Финляндия"
 
-#: ../rpmdrake.pm:399
+#: ../rpmdrake.pm:402
 msgid "France"
 msgstr "Франция"
 
-#: ../rpmdrake.pm:401
+#: ../rpmdrake.pm:404
 msgid "Hungary"
 msgstr "Венгрия"
 
-#: ../rpmdrake.pm:402
+#: ../rpmdrake.pm:405
 msgid "Israel"
 msgstr "Израиль"
 
-#: ../rpmdrake.pm:403
+#: ../rpmdrake.pm:406
 msgid "Italy"
 msgstr "Италия"
 
 # used in the stats page table
-#: ../rpmdrake.pm:404
+#: ../rpmdrake.pm:407
 msgid "Japan"
 msgstr "Япония"
 
-#: ../rpmdrake.pm:405
+#: ../rpmdrake.pm:408
 msgid "Korea"
 msgstr "Корея"
 
-#: ../rpmdrake.pm:406
+#: ../rpmdrake.pm:409
 msgid "Netherlands"
 msgstr "Нидерланды"
 
-#: ../rpmdrake.pm:407
+#: ../rpmdrake.pm:410
 msgid "Norway"
 msgstr "Норвегия"
 
-#: ../rpmdrake.pm:408
+#: ../rpmdrake.pm:411
 msgid "Poland"
 msgstr "Польша"
 
-#: ../rpmdrake.pm:409
+#: ../rpmdrake.pm:412
 msgid "Portugal"
 msgstr "Португалия"
 
 # used in the stats page table
-#: ../rpmdrake.pm:410
+#: ../rpmdrake.pm:413
 msgid "Russia"
 msgstr "Россия"
 
-#: ../rpmdrake.pm:411
+#: ../rpmdrake.pm:414
 msgid "Sweden"
 msgstr "Швеция"
 
-#: ../rpmdrake.pm:412
+#: ../rpmdrake.pm:415
 msgid "Singapore"
 msgstr "Сингапур"
 
-#: ../rpmdrake.pm:413
+#: ../rpmdrake.pm:416
 msgid "Slovakia"
 msgstr "Словакия"
 
-#: ../rpmdrake.pm:414
+#: ../rpmdrake.pm:417
 msgid "Taiwan"
 msgstr "Тайвань"
 
-#: ../rpmdrake.pm:415
+#: ../rpmdrake.pm:418
 msgid "United Kingdom"
 msgstr "Улуу Британия"
 
-#: ../rpmdrake.pm:416
+#: ../rpmdrake.pm:419
 msgid "China"
 msgstr "Кытай"
 
-#: ../rpmdrake.pm:417 ../rpmdrake.pm:418 ../rpmdrake.pm:419 ../rpmdrake.pm:420
-#: ../rpmdrake.pm:509
+#: ../rpmdrake.pm:420 ../rpmdrake.pm:421 ../rpmdrake.pm:422 ../rpmdrake.pm:423
 msgid "United States"
 msgstr "Кошмо Штаттары"
 
-#: ../rpmdrake.pm:523
+#: ../rpmdrake.pm:520
 msgid ""
 "I need to access internet to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -2024,7 +2160,7 @@ msgstr ""
 "\n"
 "Улантууга даярсызбы?"
 
-#: ../rpmdrake.pm:527
+#: ../rpmdrake.pm:524
 msgid ""
 "I need to contact the Mandriva website to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -2037,25 +2173,25 @@ msgstr ""
 "\n"
 "Улантууга даярсызбы?"
 
-#: ../rpmdrake.pm:532 ../rpmdrake.pm:569
+#: ../rpmdrake.pm:530 ../rpmdrake.pm:568
 #, fuzzy
 msgid "Mirror choice"
 msgstr "%s тандоолор"
 
-#: ../rpmdrake.pm:535
+#: ../rpmdrake.pm:533
 msgid "Please wait, downloading mirror addresses."
 msgstr "Күтө туруңуз, күзгүлөр даректери жүктөлүүдө."
 
-#: ../rpmdrake.pm:536
+#: ../rpmdrake.pm:534
 msgid "Please wait, downloading mirror addresses from the Mandriva website."
 msgstr "Күтө туруңуз, Mandriva веб-сайтынан күзгүлөр тизмеси жүктөлүүдө."
 
 #. - seems that value is bitten before being printed by next func..
-#: ../rpmdrake.pm:542
+#: ../rpmdrake.pm:541
 msgid "Error during download"
 msgstr "Жүктөө учурундагы ката"
 
-#: ../rpmdrake.pm:544
+#: ../rpmdrake.pm:543
 #, perl-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2070,7 +2206,7 @@ msgstr ""
 "Тармак же веб-сайтка кирүү мүмкүн эмес.\n"
 "Кийинчерээк кайрадан аракет кылып көрүңүз."
 
-#: ../rpmdrake.pm:549
+#: ../rpmdrake.pm:548
 #, perl-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2085,15 +2221,15 @@ msgstr ""
 "Тармак же Mandriva веб-сайты мүмкүн эмес.\n"
 "Кийинчерээк кайрадан аракет кылып көрүңүз."
 
-#: ../rpmdrake.pm:559
+#: ../rpmdrake.pm:558
 msgid "No mirror"
 msgstr "Күзгү жок"
 
-#: ../rpmdrake.pm:561
+#: ../rpmdrake.pm:560
 msgid "I can't find any suitable mirror."
 msgstr "Ылайык күзгүнү таба албадым."
 
-#: ../rpmdrake.pm:562
+#: ../rpmdrake.pm:561
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
@@ -2107,64 +2243,64 @@ msgstr ""
 "негизинен бул сиздин процессордун архитектурасын\n"
 "Mandriva Linux Официалдык Жаңылоолору колдобойт."
 
-#: ../rpmdrake.pm:581
+#: ../rpmdrake.pm:580
 msgid "Please choose the desired mirror."
 msgstr "Өтүнүч, каалаган күзгүнү тандаңыз."
 
-#: ../rpmdrake.pm:639
+#: ../rpmdrake.pm:633
 #, perl-format
 msgid "Copying file for medium `%s'..."
 msgstr "`%s' булагы үчүн файл көчүрүлүүдө..."
 
-#: ../rpmdrake.pm:642
+#: ../rpmdrake.pm:636
 #, perl-format
 msgid "Examining file of medium `%s'..."
 msgstr "`%s' булагынын файлы изилденүүдө..."
 
-#: ../rpmdrake.pm:645
+#: ../rpmdrake.pm:639
 #, perl-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "`%s' булагынын алыскы файлы изилденүүдө..."
 
-#: ../rpmdrake.pm:649
+#: ../rpmdrake.pm:643
 msgid " done."
 msgstr " аткарылды."
 
 # used in the stats page table
-#: ../rpmdrake.pm:653
+#: ../rpmdrake.pm:647
 msgid " failed!"
 msgstr " ишке ашпады!"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:657
+#: ../rpmdrake.pm:651
 #, perl-format
 msgid "%s from medium %s"
 msgstr "%s %s булагынан"
 
-#: ../rpmdrake.pm:661
+#: ../rpmdrake.pm:655
 #, perl-format
 msgid "Starting download of `%s'..."
 msgstr "`%s' жүктөө башталды ..."
 
-#: ../rpmdrake.pm:665
+#: ../rpmdrake.pm:659
 #, perl-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr "`%s' жүктөлүүсү, калган убакыт:%s, ылдамдык:%s"
 
-#: ../rpmdrake.pm:668
+#: ../rpmdrake.pm:662
 #, perl-format
 msgid "Download of `%s', speed:%s"
 msgstr "`%s' жүктөлүүсү, ылдамдык:%s"
 
-#: ../rpmdrake.pm:679
+#: ../rpmdrake.pm:673
 msgid "Please wait, updating media..."
 msgstr "Күтө туруңуз, булак жаңыланууда..."
 
-#: ../rpmdrake.pm:706
+#: ../rpmdrake.pm:700
 msgid "Error retrieving packages"
 msgstr "Пакеттерди алуу учурундагы ката"
 
-#: ../rpmdrake.pm:707
+#: ../rpmdrake.pm:701
 #, perl-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
@@ -2181,28 +2317,24 @@ msgstr ""
 "булакка учурда жетүүгө мүмкүн эмес кийинчерээк кайрадан\n"
 "аракет кылып көрүңүз."
 
-#: ../rpmdrake.pm:738
+#: ../rpmdrake.pm:732
 msgid "Update media"
 msgstr "Булакты жаңылоо"
 
-#: ../rpmdrake.pm:743
+#: ../rpmdrake.pm:737
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
 msgstr ""
 
-#: ../rpmdrake.pm:750
+#: ../rpmdrake.pm:744
 msgid "Select the media you wish to update:"
 msgstr "Жаңылоо үчүн булак тандаңыз:"
 
-#: ../rpmdrake.pm:764
-msgid "Select all"
-msgstr "Баарын тандоо"
-
-#: ../rpmdrake.pm:768
+#: ../rpmdrake.pm:762
 msgid "Update"
 msgstr "Жаңылоо"
 
-#: ../rpmdrake.pm:789
+#: ../rpmdrake.pm:783
 #, perl-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -2215,7 +2347,7 @@ msgstr ""
 "Каталар:\n"
 "%s"
 
-#: ../rpmdrake.pm:812 ../rpmdrake.pm:823
+#: ../rpmdrake.pm:806 ../rpmdrake.pm:817
 #, perl-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -2226,15 +2358,15 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:835
+#: ../rpmdrake.pm:829
 msgid "Unable to create medium."
 msgstr "Булакты түзүүгө мүмкүн эмес."
 
-#: ../rpmdrake.pm:840
+#: ../rpmdrake.pm:834
 msgid "Failure when adding medium"
 msgstr "Булакты кошуу ийгиликсиздиги"
 
-#: ../rpmdrake.pm:841
+#: ../rpmdrake.pm:835
 #, perl-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -2245,7 +2377,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:854
+#: ../rpmdrake.pm:848
 #, perl-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
@@ -2256,7 +2388,7 @@ msgstr ""
 "версиясына туура келбейт (%s).\n"
 "Ал колдонулуудан алынып салынат."
 
-#: ../rpmdrake.pm:857
+#: ../rpmdrake.pm:851
 #, perl-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of Mandriva "
@@ -2267,11 +2399,11 @@ msgstr ""
 "Mandriva Linux (%s) версиясына туура келбейт.\n"
 "Ал колдонулуудан алынып салынат."
 
-#: ../rpmdrake.pm:874
+#: ../rpmdrake.pm:868
 msgid "Help launched in background"
 msgstr "Жардам фондук режимде иштетилген"
 
-#: ../rpmdrake.pm:875
+#: ../rpmdrake.pm:869
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
 msgstr ""
@@ -2547,6 +2679,9 @@ msgstr "Программаны алып салуу"
 msgid "Software Media Manager"
 msgstr "Программалар Булагынын Менеджери"
 
+#~ msgid "Please wait, reading packages database..."
+#~ msgstr "Күтө туруңуз, пакеттердин берилиштер базасы окулуп жатат..."
+
 #~ msgid "XFree86"
 #~ msgstr "XFree86"
 
@@ -2558,9 +2693,6 @@ msgstr "Программалар Булагынын Менеджери"
 
 #~ msgid "All packages, by medium repository"
 #~ msgstr "Бардык пакеттер сакталуу булактары боюнча"
-
-#~ msgid "Normal information"
-#~ msgstr "Стандарттык маалымат"
 
 #~ msgid "Maximum information"
 #~ msgstr "Максималдык маалымат"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-13 18:39+0200\n"
+"POT-Creation-Date: 2006-12-04 09:56+0100\n"
 "PO-Revision-Date: 2005-09-07 17:34+0100\n"
 "Last-Translator: Tibor Pittich <Tibor.Pittich@mandriva.org>\n"
 "Language-Team: Slovak <i18n@mandrake.sk>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: ../edit-urpm-sources.pl:80
+#: ../edit-urpm-sources.pl:85
 msgid "Choose media type"
 msgstr "Vyberte typ média"
 
-#: ../edit-urpm-sources.pl:81
+#: ../edit-urpm-sources.pl:86
 msgid ""
 "This step enables you to add sources from a Mandriva Linux web or FTP "
 "mirror.\n"
@@ -44,15 +44,15 @@ msgstr ""
 "oficiálne aktualizácie pre vašu distribúciu. Zvoliť môžete obidve možnosti\n"
 "budete však musieť vykonať dva kroky."
 
-#: ../edit-urpm-sources.pl:89
+#: ../edit-urpm-sources.pl:94
 msgid "Distribution sources"
 msgstr "Distribučné zdroje"
 
-#: ../edit-urpm-sources.pl:89
+#: ../edit-urpm-sources.pl:94
 msgid "Official updates"
 msgstr "Oficiálne aktualizácie"
 
-#: ../edit-urpm-sources.pl:92
+#: ../edit-urpm-sources.pl:97
 #, perl-format
 msgid ""
 "This will attempt to install all official sources corresponding to your\n"
@@ -72,85 +72,86 @@ msgstr ""
 "\n"
 "Je možné pokračovať?"
 
-#: ../edit-urpm-sources.pl:102
+#. because updates media do not provide media.cfg yet
+#: ../edit-urpm-sources.pl:111
 msgid "Please wait, adding media..."
 msgstr "Prosím čakajte, pridávajú sa médiá..."
 
-#: ../edit-urpm-sources.pl:134
+#: ../edit-urpm-sources.pl:144
 msgid "Add a medium"
 msgstr "Pridať zdroj"
 
-#: ../edit-urpm-sources.pl:136
+#: ../edit-urpm-sources.pl:146
 msgid "Local files"
 msgstr "Lokálne súbory"
 
-#: ../edit-urpm-sources.pl:136
+#: ../edit-urpm-sources.pl:146
 msgid "Path:"
 msgstr "Cesta:"
 
-#: ../edit-urpm-sources.pl:137
+#: ../edit-urpm-sources.pl:147
 msgid "FTP server"
 msgstr "FTP server"
 
-#: ../edit-urpm-sources.pl:137 ../edit-urpm-sources.pl:138
-#: ../edit-urpm-sources.pl:139 ../edit-urpm-sources.pl:407
+#: ../edit-urpm-sources.pl:147 ../edit-urpm-sources.pl:148
+#: ../edit-urpm-sources.pl:149 ../edit-urpm-sources.pl:416
 msgid "URL:"
 msgstr "URL:"
 
-#: ../edit-urpm-sources.pl:138
+#: ../edit-urpm-sources.pl:148
 #, fuzzy
 msgid "RSYNC server"
 msgstr "FTP server"
 
-#: ../edit-urpm-sources.pl:139
+#: ../edit-urpm-sources.pl:149
 msgid "HTTP server"
 msgstr "HTTP server"
 
-#: ../edit-urpm-sources.pl:140
+#: ../edit-urpm-sources.pl:150
 msgid "Path or mount point:"
 msgstr "Cesta alebo bod pripojenia:"
 
-#: ../edit-urpm-sources.pl:140
+#: ../edit-urpm-sources.pl:150
 msgid "Removable device"
 msgstr "Vymeniteľné zariadenie"
 
-#: ../edit-urpm-sources.pl:159
+#: ../edit-urpm-sources.pl:169
 msgid "Browse..."
 msgstr "Prechádzať..."
 
-#: ../edit-urpm-sources.pl:187
+#: ../edit-urpm-sources.pl:197
 msgid "Login:"
 msgstr "Login:"
 
-#: ../edit-urpm-sources.pl:187 ../edit-urpm-sources.pl:487 ../rpmdrake.pm:130
+#: ../edit-urpm-sources.pl:197 ../edit-urpm-sources.pl:501 ../rpmdrake.pm:131
 msgid "Password:"
 msgstr "Heslo:"
 
-#: ../edit-urpm-sources.pl:192 ../edit-urpm-sources.pl:408
+#: ../edit-urpm-sources.pl:202 ../edit-urpm-sources.pl:417
 msgid "Relative path to synthesis/hdlist:"
 msgstr "Relatívna cesta k synthesis/hdlist:"
 
-#: ../edit-urpm-sources.pl:194
+#: ../edit-urpm-sources.pl:204
 msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "Ak ponecháte nevyplnené, synthesis/hdlist budú automaticky nájdené"
 
-#: ../edit-urpm-sources.pl:199
+#: ../edit-urpm-sources.pl:209
 msgid "Name:"
 msgstr "Meno:"
 
-#: ../edit-urpm-sources.pl:207
+#: ../edit-urpm-sources.pl:217
 msgid "Create media for a whole distribution"
 msgstr "Vytvoriť zdroj pre celú distribúciu"
 
-#: ../edit-urpm-sources.pl:218
+#: ../edit-urpm-sources.pl:228
 msgid "Search this media for updates"
 msgstr "Prehľadať toto médium na aktualizácie"
 
-#: ../edit-urpm-sources.pl:228
+#: ../edit-urpm-sources.pl:238
 msgid "You need to fill up at least the two first entries."
 msgstr "Je potrebné vyplniť najmenej prvé dve položky."
 
-#: ../edit-urpm-sources.pl:232
+#: ../edit-urpm-sources.pl:242
 msgid ""
 "There is already a medium by that name, do you\n"
 "really want to replace it?"
@@ -158,109 +159,113 @@ msgstr ""
 "Už existuje zdroj s takýmto menom, chcete ho\n"
 "skutočne prepísať?"
 
-#: ../edit-urpm-sources.pl:243
+#: ../edit-urpm-sources.pl:253
 msgid "Adding a medium:"
 msgstr "Pridanie zdroja:"
 
-#: ../edit-urpm-sources.pl:245
+#: ../edit-urpm-sources.pl:255
 msgid "Type of medium:"
 msgstr "Typ média:"
 
-#: ../edit-urpm-sources.pl:253 ../edit-urpm-sources.pl:328
-#: ../edit-urpm-sources.pl:414 ../edit-urpm-sources.pl:439
-#: ../edit-urpm-sources.pl:504 ../edit-urpm-sources.pl:586
-#: ../edit-urpm-sources.pl:626 ../edit-urpm-sources.pl:684
-#: ../edit-urpm-sources.pl:823 ../rpmdrake:191 ../rpmdrake:849
-#: ../rpmdrake:1752 ../rpmdrake:1760 ../rpmdrake.pm:284 ../rpmdrake.pm:597
-#: ../rpmdrake.pm:687 ../rpmdrake.pm:760
+#: ../edit-urpm-sources.pl:263 ../edit-urpm-sources.pl:338
+#: ../edit-urpm-sources.pl:426 ../edit-urpm-sources.pl:453
+#: ../edit-urpm-sources.pl:518 ../edit-urpm-sources.pl:600
+#: ../edit-urpm-sources.pl:640 ../edit-urpm-sources.pl:698
+#: ../edit-urpm-sources.pl:837 ../rpmdrake:208 ../rpmdrake:960
+#: ../rpmdrake:1921 ../rpmdrake:1929 ../rpmdrake.pm:287 ../rpmdrake.pm:596
+#: ../rpmdrake.pm:681 ../rpmdrake.pm:754
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: ../edit-urpm-sources.pl:255 ../edit-urpm-sources.pl:330
-#: ../edit-urpm-sources.pl:439 ../edit-urpm-sources.pl:494
-#: ../edit-urpm-sources.pl:583 ../edit-urpm-sources.pl:625
-#: ../edit-urpm-sources.pl:677 ../edit-urpm-sources.pl:749
-#: ../edit-urpm-sources.pl:816 ../edit-urpm-sources.pl:869
-#: ../edit-urpm-sources.pl:1018 ../rpmdrake:191 ../rpmdrake:849
-#: ../rpmdrake:866 ../rpmdrake:871 ../rpmdrake:1662 ../rpmdrake:1752
-#: ../rpmdrake:1903 ../rpmdrake.pm:121 ../rpmdrake.pm:226 ../rpmdrake.pm:286
-#: ../rpmdrake.pm:597
+#: ../edit-urpm-sources.pl:265 ../edit-urpm-sources.pl:340
+#: ../edit-urpm-sources.pl:453 ../edit-urpm-sources.pl:508
+#: ../edit-urpm-sources.pl:597 ../edit-urpm-sources.pl:639
+#: ../edit-urpm-sources.pl:691 ../edit-urpm-sources.pl:763
+#: ../edit-urpm-sources.pl:830 ../edit-urpm-sources.pl:883
+#: ../edit-urpm-sources.pl:1032 ../rpmdrake:208 ../rpmdrake:960
+#: ../rpmdrake:977 ../rpmdrake:982 ../rpmdrake:1827 ../rpmdrake:1921
+#: ../rpmdrake:2068 ../rpmdrake.pm:122 ../rpmdrake.pm:227 ../rpmdrake.pm:289
+#: ../rpmdrake.pm:596
 msgid "Ok"
 msgstr "Ok"
 
-#: ../edit-urpm-sources.pl:312
+#: ../edit-urpm-sources.pl:322
 msgid "Global options for package installation"
 msgstr "Celkové možnosti inštalácie balíkov"
 
-#: ../edit-urpm-sources.pl:314
+#: ../edit-urpm-sources.pl:324
 msgid "always"
 msgstr "vždy"
 
-#: ../edit-urpm-sources.pl:315
+#: ../edit-urpm-sources.pl:325
 msgid "never"
 msgstr "Nikdy"
 
-#: ../edit-urpm-sources.pl:324
+#: ../edit-urpm-sources.pl:334
 msgid "Verify RPMs to be installed:"
 msgstr "Kontrola balíkov, ktoré budú nainštalované:"
 
-#: ../edit-urpm-sources.pl:325
+#: ../edit-urpm-sources.pl:335
 msgid "Download program to use:"
 msgstr "Sťahovanie programu pre použitie:"
 
-#: ../edit-urpm-sources.pl:355
+#: ../edit-urpm-sources.pl:365
 msgid "Source Removal"
 msgstr "Odstránenie zdroja"
 
-#: ../edit-urpm-sources.pl:356
+#: ../edit-urpm-sources.pl:366
 #, perl-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Ste si istý, že chcete odstrániť zdroj  \"%s\"?"
 
-#: ../edit-urpm-sources.pl:361
+#: ../edit-urpm-sources.pl:371
 msgid "Please wait, removing medium..."
 msgstr "Prosím čakajte, odstraňuje sa zdroj..."
 
-#: ../edit-urpm-sources.pl:398
+#: ../edit-urpm-sources.pl:407
 msgid "Edit a medium"
 msgstr "Zmeniť zdroj"
 
-#: ../edit-urpm-sources.pl:404
+#: ../edit-urpm-sources.pl:413
 #, perl-format
 msgid "Editing medium \"%s\":"
 msgstr "Zmena média \"%s\":"
 
 #: ../edit-urpm-sources.pl:418
+msgid "Downloader:"
+msgstr ""
+
+#: ../edit-urpm-sources.pl:430
 msgid "Save changes"
 msgstr "Uložiť zmeny"
 
-#: ../edit-urpm-sources.pl:426 ../edit-urpm-sources.pl:1005
+#: ../edit-urpm-sources.pl:439 ../edit-urpm-sources.pl:1019
 msgid "Proxy..."
 msgstr "Proxy..."
 
-#: ../edit-urpm-sources.pl:437
+#: ../edit-urpm-sources.pl:451
 msgid "You need to insert the medium to continue"
 msgstr "Vložte médium ak chcete pokračovať"
 
-#: ../edit-urpm-sources.pl:438
+#: ../edit-urpm-sources.pl:452
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr "Pre uloženie zmien je potrebné aby ste vložili médium do mechaniky."
 
-#: ../edit-urpm-sources.pl:459
+#: ../edit-urpm-sources.pl:473
 msgid "Configure proxies"
 msgstr "Nastaviť proxy"
 
-#: ../edit-urpm-sources.pl:470
+#: ../edit-urpm-sources.pl:484
 #, perl-format
 msgid "Proxy settings for media \"%s\""
 msgstr "Nastavenie proxy pre zdroj  \"%s\""
 
-#: ../edit-urpm-sources.pl:471
+#: ../edit-urpm-sources.pl:485
 msgid "Global proxy settings"
 msgstr "Globálne nastavenie proxy"
 
-#: ../edit-urpm-sources.pl:473
+#: ../edit-urpm-sources.pl:487
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
 "<proxyhost[:port]>):"
@@ -268,137 +273,141 @@ msgstr ""
 "Ak potrebujete proxy, zadajte meno hostiteľa a voliteľne aj port (syntax: "
 "<adresaproxy[:port]>):"
 
-#: ../edit-urpm-sources.pl:476
+#: ../edit-urpm-sources.pl:490
 msgid "Proxy hostname:"
 msgstr "Hostiteľ proxy:"
 
-#: ../edit-urpm-sources.pl:479
+#: ../edit-urpm-sources.pl:493
 msgid "You may specify a user/password for the proxy authentication:"
 msgstr "Môžete zadať užívateľské meno/heslo pre proxy autentifikáciu:"
 
-#: ../edit-urpm-sources.pl:482
+#: ../edit-urpm-sources.pl:496
 msgid "User:"
 msgstr "Používateľ:"
 
-#: ../edit-urpm-sources.pl:554
+#: ../edit-urpm-sources.pl:568
 msgid "Add a parallel group"
 msgstr "Pridať paralelnú skupinu"
 
-#: ../edit-urpm-sources.pl:554
+#: ../edit-urpm-sources.pl:568
 msgid "Edit a parallel group"
 msgstr "Zmeniť paralelnú skupinu"
 
-#: ../edit-urpm-sources.pl:565
+#: ../edit-urpm-sources.pl:579
 msgid "Add a medium limit"
 msgstr "Pridať limit média"
 
-#: ../edit-urpm-sources.pl:577
+#: ../edit-urpm-sources.pl:591
 msgid "Choose a medium for adding in the media limit:"
 msgstr "Vyberte si zdroj pre pridanie k obmedzeným zdrojom:"
 
-#: ../edit-urpm-sources.pl:614
+#: ../edit-urpm-sources.pl:628
 msgid "Add a host"
 msgstr "Pridať hostiteľa"
 
-#: ../edit-urpm-sources.pl:620
+#: ../edit-urpm-sources.pl:634
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr "Zadajte meno alebo IP adresu zdroja ktorý chcete pridať:"
 
-#: ../edit-urpm-sources.pl:651
+#: ../edit-urpm-sources.pl:665
 #, perl-format
 msgid "Editing parallel group \"%s\":"
 msgstr "Úprava paralelnej skupiny \"%s\":"
 
-#: ../edit-urpm-sources.pl:655
+#: ../edit-urpm-sources.pl:669
 msgid "Group name:"
 msgstr "Meno skupiny:"
 
-#: ../edit-urpm-sources.pl:656
+#: ../edit-urpm-sources.pl:670
 msgid "Protocol:"
 msgstr "Protokol:"
 
-#: ../edit-urpm-sources.pl:658
+#: ../edit-urpm-sources.pl:672
 msgid "Media limit:"
 msgstr "Limit zdroja:"
 
-#: ../edit-urpm-sources.pl:663 ../edit-urpm-sources.pl:670
+#: ../edit-urpm-sources.pl:677 ../edit-urpm-sources.pl:684
 msgid "Add"
 msgstr "Pridať"
 
-#: ../edit-urpm-sources.pl:664 ../edit-urpm-sources.pl:671
-#: ../edit-urpm-sources.pl:729 ../edit-urpm-sources.pl:983
+#: ../edit-urpm-sources.pl:678 ../edit-urpm-sources.pl:685
+#: ../edit-urpm-sources.pl:743 ../edit-urpm-sources.pl:997
 msgid "Remove"
 msgstr "Odstrániť"
 
-#: ../edit-urpm-sources.pl:665
+#: ../edit-urpm-sources.pl:679
 msgid "Hosts:"
 msgstr "Hostitelia:"
 
-#: ../edit-urpm-sources.pl:699
+#: ../edit-urpm-sources.pl:713
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr "Konfigurácia paralelného urpmi (distribuované spúšťanie urpmi)"
 
-#: ../edit-urpm-sources.pl:702
+#: ../edit-urpm-sources.pl:716
 msgid "Group"
 msgstr "Skupina"
 
-#: ../edit-urpm-sources.pl:702
+#: ../edit-urpm-sources.pl:716
 msgid "Media limit"
 msgstr "Limit zdroja"
 
-#: ../edit-urpm-sources.pl:702
+#: ../edit-urpm-sources.pl:716
 msgid "Protocol"
 msgstr "Protokol"
 
-#: ../edit-urpm-sources.pl:703
+#: ../edit-urpm-sources.pl:717
 msgid "Command"
 msgstr "Príkaz"
 
-#: ../edit-urpm-sources.pl:713 ../rpmdrake:413 ../rpmdrake:437 ../rpmdrake:576
-#: ../rpmdrake:775
+#: ../edit-urpm-sources.pl:727 ../rpmdrake:465 ../rpmdrake:496 ../rpmdrake:635
+#: ../rpmdrake:886 ../rpmdrake:1748
 msgid "(none)"
 msgstr "(žiadna)"
 
-#: ../edit-urpm-sources.pl:733 ../edit-urpm-sources.pl:987
+#: ../edit-urpm-sources.pl:747 ../edit-urpm-sources.pl:1001
 msgid "Edit..."
 msgstr "Zmeň"
 
-#: ../edit-urpm-sources.pl:741 ../edit-urpm-sources.pl:993
+#: ../edit-urpm-sources.pl:755 ../edit-urpm-sources.pl:1007
 msgid "Add..."
 msgstr "Pridať..."
 
-#: ../edit-urpm-sources.pl:757
+#: ../edit-urpm-sources.pl:771
 msgid "Manage keys for digital signatures of packages"
 msgstr "Správa kľúčov pre elektronické podpisy balíkov"
 
-#: ../edit-urpm-sources.pl:761 ../edit-urpm-sources.pl:918
+#: ../edit-urpm-sources.pl:775 ../edit-urpm-sources.pl:932
 msgid "Medium"
 msgstr "Stredná"
 
-#: ../edit-urpm-sources.pl:766
+#: ../edit-urpm-sources.pl:780
 msgid ""
 "_:cryptographic keys\n"
 "Keys"
 msgstr "Kľúče"
 
-#: ../edit-urpm-sources.pl:785
+#: ../edit-urpm-sources.pl:799
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr "žiadne meno nebol nájdené, kľúč neexistuje na rpm zväzku kľúčov!"
 
-#: ../edit-urpm-sources.pl:798
+#: ../edit-urpm-sources.pl:812
 msgid "Add a key"
 msgstr "Pridať kľúč"
 
-#: ../edit-urpm-sources.pl:810
+#: ../edit-urpm-sources.pl:824
 #, perl-format
 msgid "Choose a key for adding to the medium %s"
 msgstr "Vyberte si kľúč na pridanie k zdroju %s"
 
-#: ../edit-urpm-sources.pl:838
+#: ../edit-urpm-sources.pl:833
+msgid "Close"
+msgstr "Zatvoriť"
+
+#: ../edit-urpm-sources.pl:855
 msgid "Remove a key"
 msgstr "Odstrániť kľúč"
 
-#: ../edit-urpm-sources.pl:839
+#: ../edit-urpm-sources.pl:853
 #, perl-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
@@ -407,31 +416,31 @@ msgstr ""
 "Ste si istí, že chcete odstrániť kľúč %s zo zdroja %s?\n"
 "(meno kľúča: %s)"
 
-#: ../edit-urpm-sources.pl:857
+#: ../edit-urpm-sources.pl:871
 msgid "Add a key..."
 msgstr "Pridať kľúč..."
 
-#: ../edit-urpm-sources.pl:861
+#: ../edit-urpm-sources.pl:875
 msgid "Remove key"
 msgstr "Odstrániť kľúč"
 
-#: ../edit-urpm-sources.pl:877
+#: ../edit-urpm-sources.pl:891
 msgid "Configure media"
 msgstr "Nastaviť média"
 
-#: ../edit-urpm-sources.pl:916
+#: ../edit-urpm-sources.pl:930
 msgid "Enabled?"
 msgstr "Povolené?"
 
-#: ../edit-urpm-sources.pl:917
+#: ../edit-urpm-sources.pl:931
 msgid "Updates?"
 msgstr "Aktualizácie?"
 
-#: ../edit-urpm-sources.pl:933
+#: ../edit-urpm-sources.pl:947
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:963
+#: ../edit-urpm-sources.pl:977
 #, fuzzy, perl-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -442,31 +451,31 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../edit-urpm-sources.pl:997
+#: ../edit-urpm-sources.pl:1011
 msgid "Add custom..."
 msgstr "Pridať vlastný..."
 
-#: ../edit-urpm-sources.pl:1001
+#: ../edit-urpm-sources.pl:1015
 msgid "Update..."
 msgstr "Aktualizácia..."
 
-#: ../edit-urpm-sources.pl:1004
+#: ../edit-urpm-sources.pl:1018
 msgid "Manage keys..."
 msgstr "Správa kľúčov..."
 
-#: ../edit-urpm-sources.pl:1006
+#: ../edit-urpm-sources.pl:1020
 msgid "Parallel..."
 msgstr "Paralelné..."
 
-#: ../edit-urpm-sources.pl:1007
+#: ../edit-urpm-sources.pl:1021
 msgid "Global options..."
 msgstr "Globálne nastavenia.."
 
-#: ../edit-urpm-sources.pl:1017 ../rpmdrake:1290
+#: ../edit-urpm-sources.pl:1031 ../rpmdrake:1428
 msgid "Help"
 msgstr "Pomoc"
 
-#: ../edit-urpm-sources.pl:1030 ../gurpmi.addmedia:97 ../rpmdrake:1978
+#: ../edit-urpm-sources.pl:1047 ../gurpmi.addmedia:98 ../rpmdrake:2144
 #, perl-format
 msgid ""
 "%s\n"
@@ -477,7 +486,7 @@ msgstr ""
 "\n"
 "Je možné pokračovať?"
 
-#: ../edit-urpm-sources.pl:1033
+#: ../edit-urpm-sources.pl:1050
 msgid ""
 "Welcome to the Software Media Manager!\n"
 "\n"
@@ -491,7 +500,7 @@ msgstr ""
 "použiť pre váš systém. Tieto balíky budú dostupné pri inštalácii nových\n"
 "balíkov alebo pri vykonávaní aktualizácií."
 
-#: ../edit-urpm-sources.pl:1045
+#: ../edit-urpm-sources.pl:1063
 msgid ""
 "Packages database is locked. Please close other applications\n"
 "working with packages database (do you have another media\n"
@@ -502,11 +511,11 @@ msgstr ""
 "pracujú s databázou balíkov (napríklad iný správca balíkov na\n"
 "inej ploche, alebo sa práve inštalujú iné balíky?)."
 
-#: ../gurpmi.addmedia:87
+#: ../gurpmi.addmedia:88
 msgid "Unable to add medium, wrong or missing arguments"
 msgstr "Nie je možné pridať zdroj, chybné alebo chýbajúce argumenty"
 
-#: ../gurpmi.addmedia:101
+#: ../gurpmi.addmedia:102
 #, fuzzy, perl-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -517,7 +526,7 @@ msgstr ""
 "Znamená to, že bude možné pridávať nové softvérové balíky\n"
 "do vášho systému z tohto nového média."
 
-#: ../gurpmi.addmedia:104
+#: ../gurpmi.addmedia:105
 #, perl-format
 msgid ""
 "You are about to add a new packages medium, `%s'.\n"
@@ -528,22 +537,22 @@ msgstr ""
 "Znamená to, že bude možné pridávať nové softvérové balíky\n"
 "do vášho systému z tohto nového média."
 
-#: ../gurpmi.addmedia:129
+#: ../gurpmi.addmedia:130
 #, fuzzy, perl-format
 msgid "Successfully added media %s."
 msgstr "Úspešne pridaný zdroj `%s'."
 
-#: ../gurpmi.addmedia:130
+#: ../gurpmi.addmedia:131
 #, perl-format
 msgid "Successfully added medium `%s'."
 msgstr "Úspešne pridaný zdroj `%s'."
 
-#: ../rpmdrake:38
+#: ../rpmdrake:39
 #, perl-format
 msgid "Usage: %s [OPTION]..."
 msgstr "Použitie: %s [VOĽBA]..."
 
-#: ../rpmdrake:39
+#: ../rpmdrake:40
 msgid ""
 "  --changelog-first      display changelog before filelist in the "
 "description window"
@@ -551,38 +560,38 @@ msgstr ""
 "  --changelog-first      zobraziť zoznam zmien pred výpisom súborov v okne s "
 "popisom"
 
-#: ../rpmdrake:40
+#: ../rpmdrake:41
 msgid "  --media=medium1,..     limit to given media"
 msgstr "  --media=medium1,..     obmedziť na vybrané médiá"
 
-#: ../rpmdrake:41
+#: ../rpmdrake:42
 msgid ""
 "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
 "  --merge-all-rpmnew     navrhnúť spojenie všetky nájdených súborov .rpmnew/."
 "rpmsave"
 
-#: ../rpmdrake:42
+#: ../rpmdrake:43
 msgid "  --mode=MODE            set mode (install (default), remove, update)"
 msgstr ""
 "  --mode=MODE            nastavenie režimu (inštalácia (predvolené), "
 "odstránenie, aktualizácia)"
 
-#: ../rpmdrake:43
+#: ../rpmdrake:44
 msgid ""
 "  --no-confirmation      don't ask first confirmation question in update mode"
 msgstr ""
 "  --no-confirmation      nepýtať sa na potvrdenie v režimu aktualizácie"
 
-#: ../rpmdrake:44
+#: ../rpmdrake:45
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      neaktualizovať toto médium pri spustení"
 
-#: ../rpmdrake:45
+#: ../rpmdrake:46
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        nekontrolovať podpisy balíkov"
 
-#: ../rpmdrake:46
+#: ../rpmdrake:47
 msgid ""
 "  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
 "\" machine to show needed deps"
@@ -590,27 +599,27 @@ msgstr ""
 "  --parallel=alias,host  paralelný režim, použitie \"alias\" pre skupinu, "
 "použitie \"host\" pre meno hostiteľa na zobrazenie vyžadovaných závislostí"
 
-#: ../rpmdrake:47
+#: ../rpmdrake:48
 msgid "  --pkg-nosel=pkg1,..    show only these packages"
 msgstr "  --pkg-nosel=pkg1,..    zobraziť iba tieto balíky"
 
-#: ../rpmdrake:48
+#: ../rpmdrake:49
 msgid "  --pkg-sel=pkg1,..      preselect these packages"
 msgstr "  --pkg-sel=pkg1,..      predvýber týchto balíkov"
 
-#: ../rpmdrake:49
+#: ../rpmdrake:50
 msgid "  --root                 force to run as root"
 msgstr "  --root                 vnútiť bez pod používateľom root"
 
-#: ../rpmdrake:50
+#: ../rpmdrake:51
 msgid "  --search=pkg           run search for \"pkg\""
 msgstr "  --search=pkg           spustiť vyhľadávanie pre \"pkg\""
 
-#: ../rpmdrake:188
+#: ../rpmdrake:205
 msgid "Running in user mode"
 msgstr "Beh v používateľskom režime"
 
-#: ../rpmdrake:189
+#: ../rpmdrake:206
 msgid ""
 "You are launching this program as a normal user.\n"
 "You will not be able to perform modifications on the system,\n"
@@ -620,547 +629,646 @@ msgstr ""
 "Nebude vám umožnené vykonať systémové modifikácie,\n"
 "ale budete môcť prehliadať existujúcu databázu."
 
-#: ../rpmdrake:197
+#: ../rpmdrake:214
 msgid "Accessibility"
 msgstr "Dostupnosť"
 
-#: ../rpmdrake:198 ../rpmdrake:199 ../rpmdrake:200 ../rpmdrake:201
-#: ../rpmdrake:202
+#: ../rpmdrake:215 ../rpmdrake:216 ../rpmdrake:217 ../rpmdrake:218
+#: ../rpmdrake:219
 msgid "Archiving"
 msgstr "Archivovanie"
 
-#: ../rpmdrake:199
+#: ../rpmdrake:216
 msgid "Backup"
 msgstr "Záloha"
 
-#: ../rpmdrake:200
+#: ../rpmdrake:217
 msgid "Cd burning"
 msgstr "Napaľovanie CD"
 
-#: ../rpmdrake:201
+#: ../rpmdrake:218
 msgid "Compression"
 msgstr "Kompresia"
 
-#: ../rpmdrake:202 ../rpmdrake:208 ../rpmdrake:222 ../rpmdrake:235
-#: ../rpmdrake:253 ../rpmdrake:274 ../rpmdrake:287 ../rpmdrake:297
-#: ../rpmdrake:383
+#: ../rpmdrake:219 ../rpmdrake:225 ../rpmdrake:239 ../rpmdrake:252
+#: ../rpmdrake:270 ../rpmdrake:291 ../rpmdrake:304 ../rpmdrake:314
+#: ../rpmdrake:426
 msgid "Other"
 msgstr "Iné"
 
-#: ../rpmdrake:203 ../rpmdrake:204 ../rpmdrake:205 ../rpmdrake:206
-#: ../rpmdrake:207 ../rpmdrake:208
+#: ../rpmdrake:220 ../rpmdrake:221 ../rpmdrake:222 ../rpmdrake:223
+#: ../rpmdrake:224 ../rpmdrake:225
 msgid "Books"
 msgstr "Knihy"
 
-#: ../rpmdrake:204
+#: ../rpmdrake:221
 msgid "Computer books"
 msgstr "Počítačove knihy"
 
-#: ../rpmdrake:205
+#: ../rpmdrake:222
 msgid "Faqs"
 msgstr "Často kladené otázky"
 
-#: ../rpmdrake:206
+#: ../rpmdrake:223
 msgid "Howtos"
 msgstr "Ako na to"
 
-#: ../rpmdrake:207
+#: ../rpmdrake:224
 msgid "Literature"
 msgstr "Literatúra"
 
-#: ../rpmdrake:209 ../rpmdrake:210 ../rpmdrake:211
+#: ../rpmdrake:226 ../rpmdrake:227 ../rpmdrake:228
 msgid "Cluster"
 msgstr "Klaster"
 
-#: ../rpmdrake:210
+#: ../rpmdrake:227
 msgid "Message Passing"
 msgstr "Triedenie správy"
 
-#: ../rpmdrake:211
+#: ../rpmdrake:228
 msgid "Queueing Services"
 msgstr "Opytovanie služieb"
 
-#: ../rpmdrake:212
+#: ../rpmdrake:229
 msgid "Communications"
 msgstr "Komunikácia"
 
-#: ../rpmdrake:213 ../rpmdrake:217
+#: ../rpmdrake:230 ../rpmdrake:234
 msgid "Databases"
 msgstr "Databázy"
 
-#: ../rpmdrake:214 ../rpmdrake:215 ../rpmdrake:216 ../rpmdrake:217
-#: ../rpmdrake:218 ../rpmdrake:219 ../rpmdrake:220 ../rpmdrake:221
-#: ../rpmdrake:222 ../rpmdrake:223 ../rpmdrake:224 ../rpmdrake:225
+#: ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233 ../rpmdrake:234
+#: ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237 ../rpmdrake:238
+#: ../rpmdrake:239 ../rpmdrake:240 ../rpmdrake:241 ../rpmdrake:242
+#: ../rpmdrake:353 ../rpmdrake:354 ../rpmdrake:355
 msgid "Development"
 msgstr "Vývoj"
 
-#: ../rpmdrake:215
+#: ../rpmdrake:232
 msgid "C"
 msgstr "C"
 
-#: ../rpmdrake:216
+#: ../rpmdrake:233
 msgid "C++"
 msgstr "C++"
 
-#: ../rpmdrake:218
+#: ../rpmdrake:235
 msgid "GNOME and GTK+"
 msgstr "GNOME a GTK+"
 
-#: ../rpmdrake:219
+#: ../rpmdrake:236
 msgid "Java"
 msgstr "Java"
 
-#: ../rpmdrake:220
+#: ../rpmdrake:237
 msgid "KDE and Qt"
 msgstr "KDE a Qt"
 
-#: ../rpmdrake:221
+#: ../rpmdrake:238
 msgid "Kernel"
 msgstr "Kernel"
 
-#: ../rpmdrake:223
+#: ../rpmdrake:240
 msgid "Perl"
 msgstr "Perl"
 
-#: ../rpmdrake:224
+#: ../rpmdrake:241
 msgid "PHP"
 msgstr ""
 
-#: ../rpmdrake:225
+#: ../rpmdrake:242
 msgid "Python"
 msgstr "Python"
 
-#: ../rpmdrake:226
+#: ../rpmdrake:243
 msgid "Editors"
 msgstr "Editory"
 
-#: ../rpmdrake:227
+#: ../rpmdrake:244
 msgid "Education"
 msgstr "Výučba"
 
-#: ../rpmdrake:228
+#: ../rpmdrake:245
 msgid "Emulators"
 msgstr "Emulátory"
 
-#: ../rpmdrake:229
+#: ../rpmdrake:246
 msgid "File tools"
 msgstr "Súborove nástroje"
 
-#: ../rpmdrake:230 ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233
-#: ../rpmdrake:234 ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237
-#: ../rpmdrake:238
+#: ../rpmdrake:247 ../rpmdrake:248 ../rpmdrake:249 ../rpmdrake:250
+#: ../rpmdrake:251 ../rpmdrake:252 ../rpmdrake:253 ../rpmdrake:254
+#: ../rpmdrake:255
 msgid "Games"
 msgstr "Hry"
 
-#: ../rpmdrake:231
+#: ../rpmdrake:248
 msgid "Adventure"
 msgstr "Dobrodružné"
 
-#: ../rpmdrake:232
+#: ../rpmdrake:249
 msgid "Arcade"
 msgstr "Arkády"
 
-#: ../rpmdrake:233
+#: ../rpmdrake:250
 msgid "Boards"
 msgstr "Nástenky"
 
-#: ../rpmdrake:234
+#: ../rpmdrake:251
 msgid "Cards"
 msgstr "Karty"
 
-#: ../rpmdrake:236
+#: ../rpmdrake:253
 msgid "Puzzles"
 msgstr "Puzzle"
 
-#: ../rpmdrake:237
+#: ../rpmdrake:254
 msgid "Sports"
 msgstr "Šport"
 
-#: ../rpmdrake:238
+#: ../rpmdrake:255
 msgid "Strategy"
 msgstr "Stratégie"
 
-#: ../rpmdrake:239 ../rpmdrake:240 ../rpmdrake:243 ../rpmdrake:244
-#: ../rpmdrake:247 ../rpmdrake:250 ../rpmdrake:253 ../rpmdrake:254
-#: ../rpmdrake:257 ../rpmdrake:260
+#: ../rpmdrake:256 ../rpmdrake:257 ../rpmdrake:260 ../rpmdrake:261
+#: ../rpmdrake:264 ../rpmdrake:267 ../rpmdrake:270 ../rpmdrake:271
+#: ../rpmdrake:274 ../rpmdrake:277
 msgid "Graphical desktop"
 msgstr "Grafická pracovná plocha"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:242
+#: ../rpmdrake:259
 msgid "Enlightenment"
 msgstr "Enlightenment"
 
-#: ../rpmdrake:243
+#: ../rpmdrake:260
 msgid "FVWM based"
 msgstr "založené na FVWM"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:246
+#: ../rpmdrake:263
 msgid "GNOME"
 msgstr "GNOME"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:249
+#: ../rpmdrake:266
 msgid "Icewm"
 msgstr "Icewm"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:252
+#: ../rpmdrake:269
 msgid "KDE"
 msgstr "KDE"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:256
+#: ../rpmdrake:273
 msgid "Sawfish"
 msgstr "Sawfish"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:259
+#: ../rpmdrake:276
 msgid "WindowMaker"
 msgstr "WindowMaker"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:262
+#: ../rpmdrake:279
 msgid "Xfce"
 msgstr ""
 
-#: ../rpmdrake:263
+#: ../rpmdrake:280
 msgid "Graphics"
 msgstr "Grafika"
 
-#: ../rpmdrake:264
+#: ../rpmdrake:281
 msgid "Monitoring"
 msgstr "Monitorovanie"
 
-#: ../rpmdrake:265 ../rpmdrake:266
+#: ../rpmdrake:282 ../rpmdrake:283
 msgid "Multimedia"
 msgstr "Multimédiá"
 
-#: ../rpmdrake:266 ../rpmdrake:317
+#: ../rpmdrake:283 ../rpmdrake:334
 msgid "Video"
 msgstr "Video"
 
-#: ../rpmdrake:267 ../rpmdrake:268 ../rpmdrake:269 ../rpmdrake:270
-#: ../rpmdrake:271 ../rpmdrake:272 ../rpmdrake:273 ../rpmdrake:274
-#: ../rpmdrake:275 ../rpmdrake:276 ../rpmdrake:296
+#: ../rpmdrake:284 ../rpmdrake:285 ../rpmdrake:286 ../rpmdrake:287
+#: ../rpmdrake:288 ../rpmdrake:289 ../rpmdrake:290 ../rpmdrake:291
+#: ../rpmdrake:292 ../rpmdrake:293 ../rpmdrake:313
 msgid "Networking"
 msgstr "Sieť"
 
-#: ../rpmdrake:268
+#: ../rpmdrake:285
 msgid "Chat"
 msgstr "Chat"
 
-#: ../rpmdrake:269
+#: ../rpmdrake:286
 msgid "File transfer"
 msgstr "Prenos súborov"
 
-#: ../rpmdrake:270
+#: ../rpmdrake:287
 msgid "IRC"
 msgstr "IRC"
 
-#: ../rpmdrake:271
+#: ../rpmdrake:288
 msgid "Instant messaging"
 msgstr "Instant messaging"
 
-#: ../rpmdrake:272
+#: ../rpmdrake:289 ../rpmdrake:360
 msgid "Mail"
 msgstr "Pošta"
 
-#: ../rpmdrake:273
+#: ../rpmdrake:290
 msgid "News"
 msgstr "Správy"
 
-#: ../rpmdrake:275
+#: ../rpmdrake:292
 msgid "Remote access"
 msgstr "Vzdialený prístup"
 
-#: ../rpmdrake:276
+#: ../rpmdrake:293
 msgid "WWW"
 msgstr "WWW"
 
-#: ../rpmdrake:277
+#: ../rpmdrake:294
 msgid "Office"
 msgstr "Kancelária"
 
-#: ../rpmdrake:278
+#: ../rpmdrake:295
 msgid "Public Keys"
 msgstr "Verejné kľúče"
 
-#: ../rpmdrake:279
+#: ../rpmdrake:296
 msgid "Publishing"
 msgstr "Publikovanie"
 
-#: ../rpmdrake:280 ../rpmdrake:281 ../rpmdrake:282 ../rpmdrake:283
-#: ../rpmdrake:284 ../rpmdrake:285 ../rpmdrake:286 ../rpmdrake:287
-#: ../rpmdrake:288
+#: ../rpmdrake:297 ../rpmdrake:298 ../rpmdrake:299 ../rpmdrake:300
+#: ../rpmdrake:301 ../rpmdrake:302 ../rpmdrake:303 ../rpmdrake:304
+#: ../rpmdrake:305
 msgid "Sciences"
 msgstr "Veda"
 
-#: ../rpmdrake:281
+#: ../rpmdrake:298
 msgid "Astronomy"
 msgstr "Astronómia"
 
-#: ../rpmdrake:282
+#: ../rpmdrake:299
 msgid "Biology"
 msgstr "Biológia"
 
-#: ../rpmdrake:283
+#: ../rpmdrake:300
 msgid "Chemistry"
 msgstr "Chémia"
 
-#: ../rpmdrake:284
+#: ../rpmdrake:301
 msgid "Computer science"
 msgstr "Počítačové vedy"
 
-#: ../rpmdrake:285
+#: ../rpmdrake:302
 msgid "Geosciences"
 msgstr "Geológia"
 
-#: ../rpmdrake:286
+#: ../rpmdrake:303
 msgid "Mathematics"
 msgstr "Matematika"
 
-#: ../rpmdrake:288
+#: ../rpmdrake:305
 msgid "Physics"
 msgstr "Fyzika"
 
-#: ../rpmdrake:289
+#: ../rpmdrake:306
 msgid "Shells"
 msgstr "Shelly"
 
-#: ../rpmdrake:290
+#: ../rpmdrake:307
 msgid "Sound"
 msgstr "Zvuk"
 
-#: ../rpmdrake:291 ../rpmdrake:292 ../rpmdrake:293 ../rpmdrake:294
-#: ../rpmdrake:295 ../rpmdrake:296 ../rpmdrake:297 ../rpmdrake:298
-#: ../rpmdrake:299 ../rpmdrake:300 ../rpmdrake:301 ../rpmdrake:302
-#: ../rpmdrake:303 ../rpmdrake:304 ../rpmdrake:305 ../rpmdrake:306
-#: ../rpmdrake:307 ../rpmdrake:308 ../rpmdrake:309 ../rpmdrake:310
-#: ../rpmdrake:311
+#: ../rpmdrake:308 ../rpmdrake:309 ../rpmdrake:310 ../rpmdrake:311
+#: ../rpmdrake:312 ../rpmdrake:313 ../rpmdrake:314 ../rpmdrake:315
+#: ../rpmdrake:316 ../rpmdrake:317 ../rpmdrake:318 ../rpmdrake:319
+#: ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322 ../rpmdrake:323
+#: ../rpmdrake:324 ../rpmdrake:325 ../rpmdrake:326 ../rpmdrake:327
+#: ../rpmdrake:328
 msgid "System"
 msgstr "Systém"
 
-#: ../rpmdrake:292
+#: ../rpmdrake:309
 msgid "Base"
 msgstr "Základ"
 
-#: ../rpmdrake:293 ../rpmdrake:294 ../rpmdrake:295 ../rpmdrake:296
-#: ../rpmdrake:297 ../rpmdrake:298 ../rpmdrake:299
+#: ../rpmdrake:310 ../rpmdrake:311 ../rpmdrake:312 ../rpmdrake:313
+#: ../rpmdrake:314 ../rpmdrake:315 ../rpmdrake:316 ../rpmdrake:338
 msgid "Configuration"
 msgstr "Konfigurácia"
 
-#: ../rpmdrake:294
+#: ../rpmdrake:311
 msgid "Boot and Init"
 msgstr "Štart s inicializácia"
 
-#: ../rpmdrake:295
+#: ../rpmdrake:312
 msgid "Hardware"
 msgstr "Hardware"
 
-#: ../rpmdrake:298
+#: ../rpmdrake:315
 msgid "Packaging"
 msgstr "Balíkovanie"
 
-#: ../rpmdrake:299
+#: ../rpmdrake:316
 msgid "Printing"
 msgstr "Tlač"
 
-#: ../rpmdrake:300
+#: ../rpmdrake:317
 msgid "Deploiement"
 msgstr "Vývoj"
 
-#: ../rpmdrake:301
+#: ../rpmdrake:318
 msgid "Deployment"
 msgstr "Vývoj"
 
-#: ../rpmdrake:302 ../rpmdrake:303 ../rpmdrake:304 ../rpmdrake:305
-#: ../rpmdrake:306
+#: ../rpmdrake:319 ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322
+#: ../rpmdrake:323
 msgid "Fonts"
 msgstr "Písma"
 
-#: ../rpmdrake:303
+#: ../rpmdrake:320
 msgid "Console"
 msgstr "Konzola"
 
-#: ../rpmdrake:304
+#: ../rpmdrake:321
 msgid "True type"
 msgstr "True type"
 
-#: ../rpmdrake:305
+#: ../rpmdrake:322
 msgid "Type1"
 msgstr "Type1"
 
-#: ../rpmdrake:306
+#: ../rpmdrake:323
 msgid "X11 bitmap"
 msgstr "X11 bitmapa"
 
-#: ../rpmdrake:307
+#: ../rpmdrake:324
 msgid "Internationalization"
 msgstr "Internacionalizácia"
 
-#: ../rpmdrake:308
+#: ../rpmdrake:325
 msgid "Kernel and hardware"
 msgstr "Kernel a hardware"
 
-#: ../rpmdrake:309
+#: ../rpmdrake:326
 msgid "Libraries"
 msgstr "Knižnice"
 
-#: ../rpmdrake:310
+#: ../rpmdrake:327
 msgid "Servers"
 msgstr "Servre"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:313
+#: ../rpmdrake:330
 msgid "X11"
 msgstr ""
 
-#: ../rpmdrake:314
+#: ../rpmdrake:331
 msgid "Terminals"
 msgstr "Terminály"
 
-#: ../rpmdrake:315
+#: ../rpmdrake:332
 msgid "Text tools"
 msgstr "Textove nástroje"
 
-#: ../rpmdrake:316
+#: ../rpmdrake:333
 msgid "Toys"
 msgstr "Hračky"
 
+#. for Mandriva Choice:
+#: ../rpmdrake:337 ../rpmdrake:338 ../rpmdrake:339 ../rpmdrake:340
+#: ../rpmdrake:341 ../rpmdrake:342 ../rpmdrake:343 ../rpmdrake:344
+#: ../rpmdrake:345 ../rpmdrake:346
+#, fuzzy
+msgid "Workstation"
+msgstr "Konfigurácia LAN"
+
+#: ../rpmdrake:339
+#, fuzzy
+msgid "Console Tools"
+msgstr "Konzola"
+
+#: ../rpmdrake:340 ../rpmdrake:355
+msgid "Documentation"
+msgstr ""
+
+#: ../rpmdrake:341
+msgid "Game station"
+msgstr ""
+
+#: ../rpmdrake:342
+#, fuzzy
+msgid "Internet station"
+msgstr "Internacionalizácia"
+
+#: ../rpmdrake:343
+#, fuzzy
+msgid "Multimedia station"
+msgstr "Multimédiá"
+
+#: ../rpmdrake:344
+#, fuzzy
+msgid "Network Computer (client)"
+msgstr "Počítačové vedy"
+
+#: ../rpmdrake:345
+msgid "Office Workstation"
+msgstr ""
+
+#: ../rpmdrake:346
+msgid "Scientific Workstation"
+msgstr ""
+
+#: ../rpmdrake:347 ../rpmdrake:349 ../rpmdrake:350 ../rpmdrake:351
+#: ../rpmdrake:352
+#, fuzzy
+msgid "Graphical Environment"
+msgstr "Grafická pracovná plocha"
+
+#: ../rpmdrake:349
+msgid "GNOME Workstation"
+msgstr ""
+
+#: ../rpmdrake:350
+msgid "IceWm Desktop"
+msgstr ""
+
+#: ../rpmdrake:351
+msgid "KDE Workstation"
+msgstr ""
+
+#: ../rpmdrake:352
+#, fuzzy
+msgid "Other Graphical Desktops"
+msgstr "Grafická pracovná plocha"
+
+#: ../rpmdrake:356 ../rpmdrake:357 ../rpmdrake:358 ../rpmdrake:359
+#: ../rpmdrake:360 ../rpmdrake:361 ../rpmdrake:362 ../rpmdrake:363
+msgid "Server"
+msgstr "Server"
+
+#: ../rpmdrake:357
+msgid "DNS/NIS"
+msgstr ""
+
+#: ../rpmdrake:358
+#, fuzzy
+msgid "Database"
+msgstr "Databázy"
+
+#: ../rpmdrake:359
+msgid "Firewall/Router"
+msgstr ""
+
+#: ../rpmdrake:361
+msgid "Mail/Groupware/News"
+msgstr ""
+
+#: ../rpmdrake:362
+#, fuzzy
+msgid "Network Computer server"
+msgstr "Počítačové vedy"
+
+#: ../rpmdrake:363
+msgid "Web/FTP"
+msgstr ""
+
 #. - to highlight information
-#: ../rpmdrake:443 ../rpmdrake:614 ../rpmdrake:619 ../rpmdrake:633
-#: ../rpmdrake:635
+#: ../rpmdrake:502 ../rpmdrake:707 ../rpmdrake:712 ../rpmdrake:726
+#: ../rpmdrake:728
 msgid "(Not available)"
 msgstr "(Nedostupné)"
 
-#: ../rpmdrake:475
+#: ../rpmdrake:534
 msgid "Search results"
 msgstr "Výsledky vyhľadávania"
 
-#: ../rpmdrake:475
+#: ../rpmdrake:534
 msgid "Search results (none)"
 msgstr "Výsledky vyhľadávania (žiadne)"
 
-#: ../rpmdrake:486
+#: ../rpmdrake:545 ../rpmdrake:2125
 msgid "Please wait, searching..."
 msgstr "Prosím čakajte, vyhľadávam..."
 
-#: ../rpmdrake:558 ../rpmdrake:810
+#: ../rpmdrake:617 ../rpmdrake:921
 msgid "Addable"
 msgstr "Pridateľné"
 
-#: ../rpmdrake:558 ../rpmdrake:810
+#: ../rpmdrake:617 ../rpmdrake:921
 msgid "Upgradable"
 msgstr "Aktualizovateľné"
 
-#: ../rpmdrake:560
+#: ../rpmdrake:619
 msgid "Not selected"
 msgstr "Neoznačené"
 
-#: ../rpmdrake:560
+#: ../rpmdrake:619
 msgid "Selected"
 msgstr "Vybrané"
 
-#: ../rpmdrake:602 ../rpmdrake:651
+#. is it an update?
+#: ../rpmdrake:687 ../rpmdrake:744
 msgid "Importance: "
 msgstr "Dôležitosť: "
 
-#: ../rpmdrake:603 ../rpmdrake:659
+#: ../rpmdrake:688 ../rpmdrake:752
 msgid "Reason for update: "
 msgstr "Dôvod pre aktualizáciu:"
 
-#: ../rpmdrake:647
+#: ../rpmdrake:692
 #, fuzzy
 msgid "Security advisory"
 msgstr "Bezpečnostné aktualizácie"
 
-#: ../rpmdrake:655 ../rpmdrake:708
+#: ../rpmdrake:700 ../rpmdrake:754
 msgid "No description"
 msgstr "Bez popisu"
 
-#: ../rpmdrake:609
+#: ../rpmdrake:703
 msgid "Files:"
 msgstr "Súbory:"
 
-#: ../rpmdrake:618
+#: ../rpmdrake:711
 msgid "Changelog:"
 msgstr "Záznam zmien:"
 
-#: ../rpmdrake:630
+#: ../rpmdrake:723
 msgid "Files:\n"
 msgstr "Súbory:\n"
 
-#: ../rpmdrake:635
+#: ../rpmdrake:728
 msgid "Changelog:\n"
 msgstr "Záznam zmien:\n"
 
-#: ../rpmdrake:640
+#: ../rpmdrake:733 ../rpmdrake.pm:807
 msgid "Medium: "
 msgstr "Zdroj:"
 
-#: ../rpmdrake:641
+#: ../rpmdrake:734
 msgid "Currently installed version: "
 msgstr "Aktuálne nainštalovaná verzia:"
 
-#: ../rpmdrake:645
+#: ../rpmdrake:738
 msgid "Name: "
 msgstr "Názov: "
 
-#: ../rpmdrake:646
+#: ../rpmdrake:739
 msgid "Version: "
 msgstr "Verzia: "
 
-#: ../rpmdrake:647
+#: ../rpmdrake:740
 msgid "Architecture: "
 msgstr "Architektúra:"
 
-#: ../rpmdrake:648
+#: ../rpmdrake:741
 #, perl-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake:648
+#: ../rpmdrake:741
 msgid "Size: "
 msgstr "Veľkosť: "
 
 #. extra empty line
-#: ../rpmdrake:655
+#: ../rpmdrake:748
 msgid "Summary: "
 msgstr "Stručný obsah: "
 
-#: ../rpmdrake:661
+#: ../rpmdrake:754
 msgid "Description: "
 msgstr "Popis:"
 
-#: ../rpmdrake:698 ../rpmdrake.pm:178
+#: ../rpmdrake:810 ../rpmdrake.pm:179
 #, fuzzy
 msgid "Software Management"
 msgstr "Manažér zdrojov softvéru"
 
-#. - TODO change those labels to something more sensible, e.g. "Upgrade information about this package"
-#: ../rpmdrake:715 ../rpmdrake:862 ../rpmdrake:864 ../rpmdrake:1893
+#: ../rpmdrake:827 ../rpmdrake:973 ../rpmdrake:975
 msgid "More information on package..."
 msgstr "Viac informácii o balíku..."
 
-#: ../rpmdrake:717
+#: ../rpmdrake:829
 msgid "One of the following packages is needed:"
 msgstr "Jeden z nasledujúcich balíkov je potrebný:"
 
-#: ../rpmdrake:717
+#: ../rpmdrake:829
 msgid "Please choose"
 msgstr "Prosím zvoľte"
 
-#: ../rpmdrake:759
+#: ../rpmdrake:870
 msgid "Please wait, listing packages..."
 msgstr "Prosím čakajte, vypisujú sa balíky..."
 
-#: ../rpmdrake:777
+#: ../rpmdrake:888
 msgid "No update"
 msgstr "Žiadna aktualizácia"
 
-#: ../rpmdrake:778
+#: ../rpmdrake:889
 msgid ""
 "The list of updates is empty. This means that either there is\n"
 "no available update for the packages installed on your computer,\n"
@@ -1170,34 +1278,34 @@ msgstr ""
 "dostupné žiadne aktualizácie pre balíky nainštalované vo vašom\n"
 "systéme alebo už máte všetky nainštalované."
 
-#: ../rpmdrake:801 ../rpmdrake:1057
+#: ../rpmdrake:912 ../rpmdrake:1174
 msgid "All"
 msgstr "Všetko"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../rpmdrake:849 ../rpmdrake:854
+#: ../rpmdrake:960 ../rpmdrake:965
 msgid "More info"
 msgstr "Viac informácií"
 
-#: ../rpmdrake:857 ../rpmdrake:1882
+#: ../rpmdrake:968
 msgid "Information on packages"
 msgstr "Informácie o balíkoch"
 
-#: ../rpmdrake:879
+#: ../rpmdrake:991
 msgid "Some additional packages need to be removed"
 msgstr "Je potrebné odstrániť niektoré balíky"
 
-#: ../rpmdrake:880
+#: ../rpmdrake:992
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
 msgstr "Kvôli závislostiam budú nasledovné balíky odstránené:"
 
-#: ../rpmdrake:886 ../rpmdrake:895
+#: ../rpmdrake:998 ../rpmdrake:1007
 msgid "Some packages can't be removed"
 msgstr "Niektoré balíky nie je možné odstrániť"
 
-#: ../rpmdrake:887
+#: ../rpmdrake:999
 msgid ""
 "Removing these packages would break your system, sorry:\n"
 "\n"
@@ -1205,7 +1313,7 @@ msgstr ""
 "Odstránenie týchto balíkov naruší váš systém, prepáčte:\n"
 "\n"
 
-#: ../rpmdrake:896 ../rpmdrake:961
+#: ../rpmdrake:1008 ../rpmdrake:1073
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
@@ -1214,11 +1322,11 @@ msgstr ""
 "Kvôli závislostiam musia byť nasledujúce balíky teraz odznačené:\n"
 "\n"
 
-#: ../rpmdrake:925
+#: ../rpmdrake:1037
 msgid "Additional packages needed"
 msgstr "Sú potrebné ďalšie balíky"
 
-#: ../rpmdrake:926
+#: ../rpmdrake:1038
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
@@ -1227,16 +1335,16 @@ msgstr ""
 "Pre vyriešenie závislosti, sú potrebné nainštalovať tieto balíky:\n"
 "\n"
 
-#: ../rpmdrake:941
+#: ../rpmdrake:1053
 #, perl-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (patrí na zoznam preskočných)"
 
-#: ../rpmdrake:944
+#: ../rpmdrake:1056
 msgid "Some packages can't be installed"
 msgstr "Niektoré balíky nebolo možné nainštalovať"
 
-#: ../rpmdrake:945
+#: ../rpmdrake:1057
 #, perl-format
 msgid ""
 "Sorry, the following package(s) can't be selected:\n"
@@ -1247,112 +1355,117 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:960 ../rpmdrake:1729
+#: ../rpmdrake:1072 ../rpmdrake:1896
 msgid "Some packages need to be removed"
 msgstr "Je potrebné odstrániť niektoré balíky"
 
-#: ../rpmdrake:985
+#: ../rpmdrake:1101
 #, perl-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Vybrané: %s / Dostupné: %s"
 
-#: ../rpmdrake:986
+#: ../rpmdrake:1102
 #, perl-format
 msgid "Selected size: %d MB"
 msgstr "Vybraná veľkosť: %d Mb"
 
 #. - the package information hasn't been loaded. Instead of rescanning the media, just give up.
-#: ../rpmdrake:991
+#: ../rpmdrake:1107
 msgid "Description not available for this package\n"
 msgstr "Popis pre tento balík nie je dostupný\n"
 
-#: ../rpmdrake:1057
+#: ../rpmdrake:1113 ../rpmdrake:1506
+#, perl-format
+msgid "A fatal error occurred: %s."
+msgstr "Nastala fatálna chyba: %s"
+
+#: ../rpmdrake:1174
 #, fuzzy
 msgid "Installed"
 msgstr "Inštaluj"
 
-#: ../rpmdrake:1057
+#: ../rpmdrake:1174
 #, fuzzy
 msgid "Non installed"
 msgstr "Inštaluj"
 
-#: ../rpmdrake:1058
+#: ../rpmdrake:1175
 #, perl-format
 msgid "%s choices"
 msgstr "%s voľby"
 
-#: ../rpmdrake:1058
+#: ../rpmdrake:1175
 msgid "Mandriva Linux choices"
 msgstr "Voľby Mandriva Linux"
 
 #. let's keep the translated strings (to be resurected as sorting the treeview):
-#: ../rpmdrake:1060
+#: ../rpmdrake:1177
 msgid "All packages, alphabetical"
 msgstr "Všetky balíky, zoradené abecedne"
 
-#: ../rpmdrake:1061
+#: ../rpmdrake:1178
 msgid "All packages, by update availability"
 msgstr "Všetky balíky, podľa dostupnosti aktualizácie"
 
-#: ../rpmdrake:1062
+#: ../rpmdrake:1179
 msgid "All packages, by size"
 msgstr "Všetky balíky, podľa veľkosti"
 
-#: ../rpmdrake:1063
+#: ../rpmdrake:1180
 msgid "All packages, by selection state"
 msgstr "Všetky balíky podľa stavu výberu"
 
-#: ../rpmdrake:1064
+#: ../rpmdrake:1181
 msgid "Leaves only, sorted by install date"
 msgstr "Iba ponechať, zoradiť podľa dátumu inštalácie"
 
-#: ../rpmdrake:1065
+#: ../rpmdrake:1182
 msgid "All packages, by group"
 msgstr "Všetky balíky, podľa skupiny"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 #, fuzzy
 msgid "All updates"
 msgstr "Normálne aktualizácie"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "Bugfixes updates"
 msgstr "Aktualizácie opravujúce chyby"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "Normal updates"
 msgstr "Normálne aktualizácie"
 
-#: ../rpmdrake:1067
+#: ../rpmdrake:1184
 msgid "Security updates"
 msgstr "Bezpečnostné aktualizácie"
 
-#: ../rpmdrake:1123
+#: ../rpmdrake:1247
 msgid "in names"
 msgstr "v menách"
 
-#: ../rpmdrake:1125
+#: ../rpmdrake:1249
 msgid "in descriptions"
 msgstr "v popisoch"
 
-#: ../rpmdrake:1127
+#: ../rpmdrake:1251
 msgid "in file names"
 msgstr "v menách súborov"
 
-#: ../rpmdrake:1230
+#: ../rpmdrake:1278
 #, perl-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr "Chyba: %s sa zdá byť pripojený iba pre čítanie."
 
-#: ../rpmdrake:1153
+#: ../rpmdrake:1282
 msgid "You need to select some packages first."
 msgstr "Je potrebné najprv vybrať niektoré balíky."
 
-#: ../rpmdrake:1158
+#: ../rpmdrake:1287
 msgid "Too many packages are selected"
 msgstr "Vybrali ste príliš veľa balíkov"
 
-#: ../rpmdrake:1159
+#: ../rpmdrake:1288
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -1368,133 +1481,143 @@ msgstr ""
 "\n"
 "Skutočne si želáte nainštalovať všetky zvolené balíky?"
 
-#: ../rpmdrake:1188 ../rpmdrake:1191 ../rpmdrake:1201 ../rpmdrake:1213
-#: ../rpmdrake:1219
+#: ../rpmdrake:1320 ../rpmdrake:1323 ../rpmdrake:1334 ../rpmdrake:1347
+#: ../rpmdrake:1356
 msgid "/_File"
 msgstr "/_Súbor"
 
-#: ../rpmdrake:1191
+#: ../rpmdrake:1323
 msgid "/_Update media"
 msgstr "/_Akutalizácia média"
 
-#: ../rpmdrake:1201
+#: ../rpmdrake:1334
 msgid "/_Reset the selection"
 msgstr "/_Resetovať výber"
 
-#: ../rpmdrake:1213
+#: ../rpmdrake:1347
 msgid "/Reload the _packages list"
 msgstr "/Obnova zoznamu balíkov"
 
-#: ../rpmdrake:1219
+#: ../rpmdrake:1356
 msgid "/_Quit"
 msgstr "/_Koniec"
 
-#: ../rpmdrake:1219
+#: ../rpmdrake:1356
 msgid "<control>Q"
 msgstr "<control>Q"
 
-#: ../rpmdrake:1222 ../rpmdrake:1223 ../rpmdrake:1226 ../rpmdrake:1256
+#: ../rpmdrake:1359 ../rpmdrake:1360 ../rpmdrake:1363 ../rpmdrake:1393
 msgid "/_Options"
 msgstr "/_Nastavenia"
 
-#: ../rpmdrake:1223
+#: ../rpmdrake:1360
 #, fuzzy
 msgid "/_Media Manager"
 msgstr "Manažér zdrojov softvéru"
 
-#: ../rpmdrake:1226 ../rpmdrake:1256
+#: ../rpmdrake:1363 ../rpmdrake:1393
 msgid "/_Show automatically selected packages"
 msgstr "/_Zobraziť automaticky zvolené balíky"
 
-#: ../rpmdrake:1230 ../rpmdrake:1231 ../rpmdrake:1232 ../rpmdrake:1233
+#: ../rpmdrake:1367 ../rpmdrake:1368 ../rpmdrake:1369 ../rpmdrake:1370
 msgid "/_Help"
 msgstr "/_Pomoc"
 
-#: ../rpmdrake:1231
+#: ../rpmdrake:1368
 msgid "/_Report Bug"
 msgstr "/_Ohlásiť chybu"
 
-#: ../rpmdrake:1233
+#: ../rpmdrake:1370
 msgid "/_About..."
 msgstr "/_O aplikácii..."
 
 #. nicer formatting
-#: ../rpmdrake:1236
+#: ../rpmdrake:1373
 #, fuzzy
-msgid "About Rpmdrake"
-msgstr "Rpmdrake"
+msgid "Rpmdrake"
+msgstr "Rpmdrake %s"
 
-#: ../rpmdrake:1238
+#: ../rpmdrake:1375
 #, perl-format
 msgid "Copyright (C) %s by Mandriva"
 msgstr ""
 
-#: ../rpmdrake:1240
+#: ../rpmdrake:1377
 msgid "Rpmdrake is Mandriva Linux package management tool."
 msgstr ""
 
-#: ../rpmdrake:1242
-#, fuzzy
+#: ../rpmdrake:1379
 msgid "Mandriva Linux"
-msgstr "Mandriva Online"
+msgstr "Mandriva Linux"
 
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:1247
+#: ../rpmdrake:1384
 msgid "_: Translator(s) name(s) & email(s)\n"
 msgstr "Tibor Pittich <Tibor.Pittich@mandriva.org>\n"
 
-#: ../rpmdrake:1271
+#: ../rpmdrake:1408
 msgid "Find:"
 msgstr "Hľadať:"
 
-#: ../rpmdrake:1280
+#: ../rpmdrake:1417
 msgid "Search"
 msgstr "Hľadať"
 
-#: ../rpmdrake:1282
+#: ../rpmdrake:1419
 msgid "Clear"
 msgstr "Vyprázdniť"
 
-#: ../rpmdrake:1295
+#: ../rpmdrake:1433 ../rpmdrake.pm:758
+msgid "Select all"
+msgstr "Vybrať všetky"
+
+#: ../rpmdrake:1440
 msgid "Apply"
 msgstr "Použiť"
 
-#: ../rpmdrake:1299
+#: ../rpmdrake:1444
 msgid "Quit"
 msgstr "Koniec"
 
-#: ../rpmdrake:1315
+#: ../rpmdrake:1460
 msgid "Quick Introduction"
 msgstr ""
 
-#: ../rpmdrake:1316
+#: ../rpmdrake:1461
 msgid "You can browse the packages through the categories tree on the left."
 msgstr ""
 
-#: ../rpmdrake:1317
+#: ../rpmdrake:1462
 msgid ""
 "You can view information about a package by clicking on it on the right list."
 msgstr ""
 
-#: ../rpmdrake:1318
+#: ../rpmdrake:1463
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
 
-#: ../rpmdrake:1360
+#: ../rpmdrake:1505
 msgid "Fatal error"
 msgstr "Fatálna chyba"
 
-#: ../rpmdrake:1361
-#, perl-format
-msgid "A fatal error occurred: %s."
-msgstr "Nastala fatálna chyba: %s"
+#: ../rpmdrake:1507 ../rpmdrake:1932
+msgid "Initializing..."
+msgstr "Inicializácia..."
 
-#: ../rpmdrake:1368
+#: ../rpmdrake:1507 ../rpmdrake:1932
+msgid "Package installation..."
+msgstr "Inštalácia balíkov..."
+
+#: ../rpmdrake:1507 ../rpmdrake:1932 ../rpmdrake.pm:311
+msgid "Please wait"
+msgstr "Prosím čakajte"
+
+#: ../rpmdrake:1530 ../rpmdrake:1918
 #, fuzzy
 msgid "Confirmation"
 msgstr "Konfigurácia LAN"
 
-#: ../rpmdrake:1369
+#: ../rpmdrake:1532
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -1506,11 +1629,11 @@ msgstr ""
 "\n"
 "Je možné pokračovať?"
 
-#: ../rpmdrake:1378
+#: ../rpmdrake:1541
 msgid "Already existing update media"
 msgstr "Už existuje zdroj s aktualizáciami"
 
-#: ../rpmdrake:1379
+#: ../rpmdrake:1542
 #, perl-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -1526,11 +1649,11 @@ msgstr ""
 "\n"
 "Potom reštartujte %s."
 
-#: ../rpmdrake:1389
+#: ../rpmdrake:1553
 msgid "How to choose manually your mirror"
 msgstr "Ako si zvoliť zrkadlo manuálne"
 
-#: ../rpmdrake:1390
+#: ../rpmdrake:1554
 #, perl-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -1545,55 +1668,66 @@ msgstr ""
 "\n"
 "Potom je potrebné reštartovať %s."
 
-#: ../rpmdrake:1427
+#: ../rpmdrake:1567
+#, fuzzy
+msgid "Reading updates description"
+msgstr "v popisoch"
+
+#: ../rpmdrake:1593 ../rpmdrake:1670
 msgid "Please wait, finding available packages..."
 msgstr "Prosím čakajte, hľadajú sa dostupné balíky..."
 
-#: ../rpmdrake:1428
-msgid "Please wait, reading packages database..."
-msgstr "Prosím čakajte, načítava sa databáza balíkov..."
+#: ../rpmdrake:1601
+#, fuzzy
+msgid "Please wait, listing base packages..."
+msgstr "Prosím čakajte, vypisujú sa balíky..."
 
-#: ../rpmdrake:1584
+#: ../rpmdrake:1637
+#, fuzzy
+msgid "Please wait, finding installed packages..."
+msgstr "Prosím čakajte, hľadajú sa dostupné balíky..."
+
+#: ../rpmdrake:1771
 #, perl-format
 msgid "Inspecting %s"
 msgstr "Preveruje sa %s"
 
-#: ../rpmdrake:1607
+#: ../rpmdrake:1772
 msgid "changes:"
 msgstr "zmeny:"
 
-#: ../rpmdrake:1615
+#: ../rpmdrake:1780
 #, perl-format
 msgid "Remove .%s"
 msgstr "Odstrániť .%s"
 
-#: ../rpmdrake:1619
+#: ../rpmdrake:1784
 #, perl-format
 msgid "Use .%s as main file"
 msgstr "Použite .%s ako hlavný súbor"
 
-#: ../rpmdrake:1623
+#: ../rpmdrake:1788
 msgid "Do nothing"
 msgstr "Neurobiť nič"
 
-#: ../rpmdrake:1639
+#: ../rpmdrake:1804
 msgid "Installation finished"
 msgstr "Inštalácia ukončená"
 
-#: ../rpmdrake:1654
+#: ../rpmdrake:1819
 msgid "Inspect..."
 msgstr "Preveriť.."
 
 #. N("Everything installed successfully"),
-#: ../rpmdrake:1687 ../rpmdrake:1879
+#: ../rpmdrake:1852 ../rpmdrake:2045
 msgid "All requested packages were installed successfully."
 msgstr "Všetky požadované balíky boli úspešne nainštalované."
 
-#: ../rpmdrake:1691 ../rpmdrake:1859
+#: ../rpmdrake:1856 ../rpmdrake:2025
 msgid "Problem during installation"
 msgstr "Problém počas inštalácie"
 
-#: ../rpmdrake:1692 ../rpmdrake:1860 ../rpmdrake:1920
+#: ../rpmdrake:1857 ../rpmdrake:2026 ../rpmdrake:2084
 #, perl-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -1604,16 +1738,16 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1709
+#: ../rpmdrake:1876
 msgid "Unable to get source packages."
 msgstr "Nie je možné prebrať zdrojové balíky."
 
-#: ../rpmdrake:1710
+#: ../rpmdrake:1877
 #, perl-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Nie je možné získať zdrojové balíky. %s"
 
-#: ../rpmdrake:1711 ../rpmdrake:1806
+#: ../rpmdrake:1878 ../rpmdrake:1976
 #, perl-format
 msgid ""
 "\n"
@@ -1626,7 +1760,7 @@ msgstr ""
 "Ohlásená chyba:\n"
 "%s"
 
-#: ../rpmdrake:1727
+#: ../rpmdrake:1894
 #, perl-format
 msgid ""
 "To satisfy dependencies, the following %d packages are going to be "
@@ -1636,7 +1770,12 @@ msgstr ""
 "Z dôvodu zachovaniu závislostí, balíky %d by mali byť nainštalované:\n"
 "%s\n"
 
-#: ../rpmdrake:1730
+#: ../rpmdrake:1898
+#, fuzzy, perl-format
+msgid "Remove %d packages?"
+msgstr "Odstrániť kľúč"
+
+#: ../rpmdrake:1899
 #, perl-format
 msgid ""
 "The following packages have to be removed for others to be upgraded:\n"
@@ -1651,41 +1790,29 @@ msgstr ""
 "\n"
 "Je možné pokračovať?"
 
-#: ../rpmdrake:1741
-msgid "Initializing..."
-msgstr "Inicializácia..."
-
-#: ../rpmdrake:1741
-msgid "Package installation..."
-msgstr "Inštalácia balíkov..."
-
-#: ../rpmdrake:1741 ../rpmdrake.pm:307
-msgid "Please wait"
-msgstr "Prosím čakajte"
-
-#: ../rpmdrake:1750
+#: ../rpmdrake:1941
 msgid "Change medium"
 msgstr "Vymeniť médium"
 
-#: ../rpmdrake:1751
+#: ../rpmdrake:1920
 #, perl-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Prosím vložte médium s názvom \"%s\" do zariadenia [%s]"
 
-#: ../rpmdrake:1758
+#: ../rpmdrake:1927
 #, perl-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Získavanie balíka `%s' (%s/%s)..."
 
-#: ../rpmdrake:1781
+#: ../rpmdrake:1947
 msgid "Verifying package signatures..."
 msgstr "Overovanie podpisov balíkov..."
 
-#: ../rpmdrake:1793 ../rpmdrake.pm:743 ../rpmdrake.pm:852
+#: ../rpmdrake:1960 ../rpmdrake.pm:737 ../rpmdrake.pm:846
 msgid "Warning"
 msgstr "Varovanie"
 
-#: ../rpmdrake:1794
+#: ../rpmdrake:1961
 #, perl-format
 msgid ""
 "The following packages have bad signatures:\n"
@@ -1700,11 +1827,11 @@ msgstr ""
 "\n"
 "Chcete pokračovať v inštalácii?"
 
-#: ../rpmdrake:1803 ../rpmdrake:1919
+#: ../rpmdrake:1973 ../rpmdrake:2083
 msgid "Installation failed"
 msgstr "Inštalácia neúspešná"
 
-#: ../rpmdrake:1804
+#: ../rpmdrake:1974
 #, perl-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -1717,25 +1844,25 @@ msgstr ""
 "\n"
 "Možno bude potrebné aktualizovať databázu zdrojov."
 
-#: ../rpmdrake:1819
+#: ../rpmdrake:1988
 msgid "Preparing packages installation..."
 msgstr "Príprava balíkov na inštaláciu..."
 
-#: ../rpmdrake:1819
+#: ../rpmdrake:1988
 msgid "Preparing..."
 msgstr "Príprava..."
 
-#: ../rpmdrake:1822
+#: ../rpmdrake:1991
 #, perl-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Inštalácia balíka `%s' (%s/%s)..."
 
-#: ../rpmdrake:1838
+#: ../rpmdrake:2006
 #, perl-format
 msgid "unable to access rpm file [%s]"
 msgstr "nie je možné pristúpiť k súboru rpm [%s]"
 
-#: ../rpmdrake:1874
+#: ../rpmdrake:2040
 #, fuzzy
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
@@ -1748,32 +1875,42 @@ msgstr ""
 "Niektoré konfiguračné súbory boli vytvorené ako `.rpmnew' alebo `.rpmsave',\n"
 "mali by ste ich prezrieš:"
 
-#: ../rpmdrake:1884
+#: ../rpmdrake:2048
+#, fuzzy
+msgid "Upgrade information"
+msgstr "Normálne informácie"
+
+#: ../rpmdrake:2050
 msgid "These packages come with upgrade information"
 msgstr "Tieto balíky obsahujú informáciu o aktualizácii"
 
-#: ../rpmdrake:1896
-#, perl-format
-msgid "More information on package... [%s]"
+#: ../rpmdrake:2058
+#, fuzzy
+msgid "Upgrade information about this package"
+msgstr "Viac informácii o balíku..."
+
+#: ../rpmdrake:2061
+#, fuzzy, perl-format
+msgid "Upgrade information about package %s"
 msgstr "Viac informácii o balíku... [%s]"
 
-#: ../rpmdrake:1909 ../rpmdrake.pm:730 ../rpmdrake.pm:811 ../rpmdrake.pm:835
+#: ../rpmdrake:2073 ../rpmdrake.pm:724 ../rpmdrake.pm:805 ../rpmdrake.pm:829
 msgid "Error"
 msgstr "Chyba"
 
-#: ../rpmdrake:1910
+#: ../rpmdrake:2074
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Neobnoviteľná chyba: neboli nájdené žiadne balíky pre inštaláciu."
 
-#: ../rpmdrake:1935
+#: ../rpmdrake:2099
 msgid "Please wait, removing packages..."
 msgstr "Prosím čakajte, odstraňujú sa balíky..."
 
-#: ../rpmdrake:1946
+#: ../rpmdrake:2110
 msgid "Problem during removal"
 msgstr "Problém počas odstraňovania"
 
-#: ../rpmdrake:1947
+#: ../rpmdrake:2111
 #, perl-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -1784,11 +1921,11 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:1977
+#: ../rpmdrake:2143
 msgid "Welcome"
 msgstr "Vitajte"
 
-#: ../rpmdrake:1982
+#: ../rpmdrake:2148
 msgid ""
 "Welcome to the software removal tool!\n"
 "\n"
@@ -1800,7 +1937,7 @@ msgstr ""
 "Tento nástroj vám pomôže si zvoliť softvér ktorý chcete odstrániť\n"
 "z vášho počítača."
 
-#: ../rpmdrake:1987
+#: ../rpmdrake:2153
 #, perl-format
 msgid ""
 "Welcome to %s!\n"
@@ -1814,11 +1951,11 @@ msgstr ""
 "vášho\n"
 "počítača."
 
-#: ../rpmdrake:1992
+#: ../rpmdrake:2158
 msgid "Welcome to the software installation tool!"
 msgstr "Vitajte v nástroji pre inštaláciu softvéru!"
 
-#: ../rpmdrake:1993
+#: ../rpmdrake:2159
 msgid ""
 "Welcome to the software installation tool!\n"
 "\n"
@@ -1833,172 +1970,171 @@ msgstr ""
 "inštalácii\n"
 "softvéru na váš počítač."
 
-#: ../rpmdrake.pm:102
+#: ../rpmdrake.pm:103
 msgid "Mandriva Linux Update"
 msgstr "Mandriva Linux Update"
 
-#: ../rpmdrake.pm:102
+#: ../rpmdrake.pm:103
 msgid "Software Update"
 msgstr "Obnova softvéru"
 
-#: ../rpmdrake.pm:129
+#: ../rpmdrake.pm:130
 msgid "Please enter your credentials for accessing proxy\n"
 msgstr "Zadajte vaše autorizačné údaje pre prístup k proxy\n"
 
-#: ../rpmdrake.pm:130
+#: ../rpmdrake.pm:131
 msgid "User name:"
 msgstr "Používateľské meno:"
 
-#: ../rpmdrake.pm:173
+#: ../rpmdrake.pm:174
 msgid "Software Packages Removal"
 msgstr "Odstránenie softvérových balíkov"
 
-#: ../rpmdrake.pm:174
+#: ../rpmdrake.pm:175
 msgid "Software Packages Update"
 msgstr "Obnovenie softvérových balíkov"
 
-#: ../rpmdrake.pm:175
+#: ../rpmdrake.pm:176
 msgid "Software Packages Installation"
 msgstr "Príprava balíkov na inštaláciu"
 
-#: ../rpmdrake.pm:217
+#: ../rpmdrake.pm:218
 msgid "No"
 msgstr "Nie"
 
-#: ../rpmdrake.pm:221
+#: ../rpmdrake.pm:222
 msgid "Yes"
 msgstr "Ano"
 
-#: ../rpmdrake.pm:269
+#: ../rpmdrake.pm:272
 msgid "Info..."
 msgstr "Info..."
 
-#: ../rpmdrake.pm:386
+#: ../rpmdrake.pm:389
 msgid "Austria"
 msgstr "Rakúsko"
 
-#: ../rpmdrake.pm:387
+#: ../rpmdrake.pm:390
 msgid "Australia"
 msgstr "Austrália"
 
-#: ../rpmdrake.pm:388
+#: ../rpmdrake.pm:391
 msgid "Belgium"
 msgstr "Belgicko"
 
-#: ../rpmdrake.pm:389
+#: ../rpmdrake.pm:392
 msgid "Brazil"
 msgstr "Brazília"
 
-#: ../rpmdrake.pm:390
+#: ../rpmdrake.pm:393
 msgid "Canada"
 msgstr "Kanada"
 
-#: ../rpmdrake.pm:391
+#: ../rpmdrake.pm:394
 msgid "Switzerland"
 msgstr "Švajčiarsko"
 
-#: ../rpmdrake.pm:392
+#: ../rpmdrake.pm:395
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: ../rpmdrake.pm:393
+#: ../rpmdrake.pm:396
 msgid "Czech Republic"
 msgstr "Česká Republika"
 
-#: ../rpmdrake.pm:394
+#: ../rpmdrake.pm:397
 msgid "Germany"
 msgstr "Nemecko"
 
-#: ../rpmdrake.pm:395
+#: ../rpmdrake.pm:398
 msgid "Danmark"
 msgstr "Dánsko"
 
-#: ../rpmdrake.pm:396 ../rpmdrake.pm:400
+#: ../rpmdrake.pm:399 ../rpmdrake.pm:403
 msgid "Greece"
 msgstr "Grécko"
 
-#: ../rpmdrake.pm:397
+#: ../rpmdrake.pm:400
 msgid "Spain"
 msgstr "Španielsko"
 
-#: ../rpmdrake.pm:398
+#: ../rpmdrake.pm:401
 msgid "Finland"
 msgstr "Fínsko"
 
-#: ../rpmdrake.pm:399
+#: ../rpmdrake.pm:402
 msgid "France"
 msgstr "Francúzsko"
 
-#: ../rpmdrake.pm:401
+#: ../rpmdrake.pm:404
 msgid "Hungary"
 msgstr "Maďarsko"
 
-#: ../rpmdrake.pm:402
+#: ../rpmdrake.pm:405
 msgid "Israel"
 msgstr "Izrael"
 
-#: ../rpmdrake.pm:403
+#: ../rpmdrake.pm:406
 msgid "Italy"
 msgstr "Taliansko"
 
-#: ../rpmdrake.pm:404
+#: ../rpmdrake.pm:407
 msgid "Japan"
 msgstr "Japonsko"
 
-#: ../rpmdrake.pm:405
+#: ../rpmdrake.pm:408
 msgid "Korea"
 msgstr "Korea"
 
-#: ../rpmdrake.pm:406
+#: ../rpmdrake.pm:409
 msgid "Netherlands"
 msgstr "Holandsko"
 
-#: ../rpmdrake.pm:407
+#: ../rpmdrake.pm:410
 msgid "Norway"
 msgstr "Nórsko"
 
-#: ../rpmdrake.pm:408
+#: ../rpmdrake.pm:411
 msgid "Poland"
 msgstr "Poľsko"
 
-#: ../rpmdrake.pm:409
+#: ../rpmdrake.pm:412
 msgid "Portugal"
 msgstr "Portugalsko"
 
-#: ../rpmdrake.pm:410
+#: ../rpmdrake.pm:413
 msgid "Russia"
 msgstr "Rusko"
 
-#: ../rpmdrake.pm:411
+#: ../rpmdrake.pm:414
 msgid "Sweden"
 msgstr "Švédsko"
 
-#: ../rpmdrake.pm:412
+#: ../rpmdrake.pm:415
 msgid "Singapore"
 msgstr "Singapur"
 
-#: ../rpmdrake.pm:413
+#: ../rpmdrake.pm:416
 msgid "Slovakia"
 msgstr "Slovenská Republika"
 
-#: ../rpmdrake.pm:414
+#: ../rpmdrake.pm:417
 msgid "Taiwan"
 msgstr "Taiwan"
 
-#: ../rpmdrake.pm:415
+#: ../rpmdrake.pm:418
 msgid "United Kingdom"
 msgstr "Veľká Británia"
 
-#: ../rpmdrake.pm:416
+#: ../rpmdrake.pm:419
 msgid "China"
 msgstr "Čína"
 
-#: ../rpmdrake.pm:417 ../rpmdrake.pm:418 ../rpmdrake.pm:419 ../rpmdrake.pm:420
-#: ../rpmdrake.pm:509
+#: ../rpmdrake.pm:420 ../rpmdrake.pm:421 ../rpmdrake.pm:422 ../rpmdrake.pm:423
 msgid "United States"
 msgstr "Spojené Štáty"
 
-#: ../rpmdrake.pm:523
+#: ../rpmdrake.pm:520
 msgid ""
 "I need to access internet to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -2010,7 +2146,7 @@ msgstr ""
 "\n"
 "Je možné pokračovať?"
 
-#: ../rpmdrake.pm:527
+#: ../rpmdrake.pm:524
 msgid ""
 "I need to contact the Mandriva website to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -2022,25 +2158,25 @@ msgstr ""
 "\n"
 "Je možné pokračovať?"
 
-#: ../rpmdrake.pm:532 ../rpmdrake.pm:569
+#: ../rpmdrake.pm:530 ../rpmdrake.pm:568
 #, fuzzy
 msgid "Mirror choice"
 msgstr "%s voľby"
 
-#: ../rpmdrake.pm:535
+#: ../rpmdrake.pm:533
 msgid "Please wait, downloading mirror addresses."
 msgstr "Prosím čakajte, sťahujem adresy zrkadlových serverov."
 
-#: ../rpmdrake.pm:536
+#: ../rpmdrake.pm:534
 msgid "Please wait, downloading mirror addresses from the Mandriva website."
 msgstr "Prosím čakajte, sťahujem adresy mirorov z web stránky Mandriva."
 
 #. - seems that value is bitten before being printed by next func..
-#: ../rpmdrake.pm:542
+#: ../rpmdrake.pm:541
 msgid "Error during download"
 msgstr "Chyba počas sťahovania"
 
-#: ../rpmdrake.pm:544
+#: ../rpmdrake.pm:543
 #, perl-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2055,7 +2191,7 @@ msgstr ""
 "Sieť, alebo stránka sú nedostupné.\n"
 "Prosím, skúste neskôr."
 
-#: ../rpmdrake.pm:549
+#: ../rpmdrake.pm:548
 #, perl-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2070,15 +2206,15 @@ msgstr ""
 "Sieť, alebo websajt Mandriva sú zrejme nedostupné.\n"
 "Prosím, skúste neskôr"
 
-#: ../rpmdrake.pm:559
+#: ../rpmdrake.pm:558
 msgid "No mirror"
 msgstr "Žiaden miror"
 
-#: ../rpmdrake.pm:561
+#: ../rpmdrake.pm:560
 msgid "I can't find any suitable mirror."
 msgstr "Nebolo možné nájsť zodpovedajúce zrkadlo."
 
-#: ../rpmdrake.pm:562
+#: ../rpmdrake.pm:561
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
@@ -2092,63 +2228,63 @@ msgstr ""
 "že architektúra vášho procesora nie je podpororovaná oficiálnymi\n"
 "aktualizáciami Mandriva Linux."
 
-#: ../rpmdrake.pm:581
+#: ../rpmdrake.pm:580
 msgid "Please choose the desired mirror."
 msgstr "Prosím zvoľte si jeden z mirorov."
 
-#: ../rpmdrake.pm:639
+#: ../rpmdrake.pm:633
 #, perl-format
 msgid "Copying file for medium `%s'..."
 msgstr "Kopíruje sa súbor pre médium `%s'..."
 
-#: ../rpmdrake.pm:642
+#: ../rpmdrake.pm:636
 #, perl-format
 msgid "Examining file of medium `%s'..."
 msgstr "Preverujú sa súbory zo zdroja '%s'..."
 
-#: ../rpmdrake.pm:645
+#: ../rpmdrake.pm:639
 #, perl-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "Preverujú sa vzdialené súbory pre zdroj '%s'..."
 
-#: ../rpmdrake.pm:649
+#: ../rpmdrake.pm:643
 msgid " done."
 msgstr " hotovo."
 
-#: ../rpmdrake.pm:653
+#: ../rpmdrake.pm:647
 msgid " failed!"
 msgstr " chyba!"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:657
+#: ../rpmdrake.pm:651
 #, perl-format
 msgid "%s from medium %s"
 msgstr "%s z média %s"
 
-#: ../rpmdrake.pm:661
+#: ../rpmdrake.pm:655
 #, perl-format
 msgid "Starting download of `%s'..."
 msgstr "Spustenie získavania `%s'..."
 
-#: ../rpmdrake.pm:665
+#: ../rpmdrake.pm:659
 #, perl-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr "Získavanie '%s', čas do konca: %s, rýchlosť: %s"
 
-#: ../rpmdrake.pm:668
+#: ../rpmdrake.pm:662
 #, perl-format
 msgid "Download of `%s', speed:%s"
 msgstr "Získavanie '%s', rýchlosťou: %s"
 
-#: ../rpmdrake.pm:679
+#: ../rpmdrake.pm:673
 msgid "Please wait, updating media..."
 msgstr "Prosím čakajte, aktualizujem média..."
 
-#: ../rpmdrake.pm:706
+#: ../rpmdrake.pm:700
 msgid "Error retrieving packages"
 msgstr "Chyba pri získavaní balíkov"
 
-#: ../rpmdrake.pm:707
+#: ../rpmdrake.pm:701
 #, perl-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
@@ -2165,28 +2301,24 @@ msgstr ""
 "pokračovať\n"
 " neskôr"
 
-#: ../rpmdrake.pm:738
+#: ../rpmdrake.pm:732
 msgid "Update media"
 msgstr "Aktualizácia zdroja"
 
-#: ../rpmdrake.pm:743
+#: ../rpmdrake.pm:737
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
 msgstr ""
 
-#: ../rpmdrake.pm:750
+#: ../rpmdrake.pm:744
 msgid "Select the media you wish to update:"
 msgstr "Prosím zvoľte zdroj, ktorý chcete aktualizovať:"
 
-#: ../rpmdrake.pm:764
-msgid "Select all"
-msgstr "Vybrať všetky"
-
-#: ../rpmdrake.pm:768
+#: ../rpmdrake.pm:762
 msgid "Update"
 msgstr "Aktualizácia"
 
-#: ../rpmdrake.pm:789
+#: ../rpmdrake.pm:783
 #, perl-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -2199,7 +2331,7 @@ msgstr ""
 "Chyba:\n"
 "%s"
 
-#: ../rpmdrake.pm:812 ../rpmdrake.pm:823
+#: ../rpmdrake.pm:806 ../rpmdrake.pm:817
 #, perl-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -2210,15 +2342,15 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:835
+#: ../rpmdrake.pm:829
 msgid "Unable to create medium."
 msgstr "Nemôžem vytvoriť zdroj."
 
-#: ../rpmdrake.pm:840
+#: ../rpmdrake.pm:834
 msgid "Failure when adding medium"
 msgstr "Chyba pri pridávaní zdroja"
 
-#: ../rpmdrake.pm:841
+#: ../rpmdrake.pm:835
 #, perl-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -2229,7 +2361,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:854
+#: ../rpmdrake.pm:848
 #, perl-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
@@ -2240,7 +2372,7 @@ msgstr ""
 "ktorú používate (%s).\n"
 "Bude vypnutý."
 
-#: ../rpmdrake.pm:857
+#: ../rpmdrake.pm:851
 #, perl-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of Mandriva "
@@ -2251,11 +2383,11 @@ msgstr ""
 "verziu Mandriva Linuxu ($15%s).\n"
 "Preto bude vypnuté."
 
-#: ../rpmdrake.pm:874
+#: ../rpmdrake.pm:868
 msgid "Help launched in background"
 msgstr "Pomoc spustená na pozadí"
 
-#: ../rpmdrake.pm:875
+#: ../rpmdrake.pm:869
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
 msgstr ""
@@ -2532,6 +2664,13 @@ msgstr "Odstrániť softvér"
 msgid "Software Media Manager"
 msgstr "Manažér zdrojov softvéru"
 
+#~ msgid "Please wait, reading packages database..."
+#~ msgstr "Prosím čakajte, načítava sa databáza balíkov..."
+
+#, fuzzy
+#~ msgid "About Rpmdrake"
+#~ msgstr "Rpmdrake"
+
 #~ msgid "XFree86"
 #~ msgstr "XFree86"
 
@@ -2543,9 +2682,6 @@ msgstr "Manažér zdrojov softvéru"
 
 #~ msgid "All packages, by medium repository"
 #~ msgstr "Všetky balíky podľa zdroja"
-
-#~ msgid "Normal information"
-#~ msgstr "Normálne informácie"
 
 #~ msgid "Maximum information"
 #~ msgstr "Maximálne informácie"
@@ -2567,9 +2703,6 @@ msgstr "Manažér zdrojov softvéru"
 
 #~ msgid "Keys"
 #~ msgstr "Kľúče"
-
-#~ msgid "Rpmdrake %s"
-#~ msgstr "Rpmdrake %s"
 
 #~ msgid "/_View"
 #~ msgstr "/_Zobraziť"
