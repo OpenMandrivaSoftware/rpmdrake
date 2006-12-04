@@ -1504,6 +1504,8 @@ sub get_pkgs {
         myexit(-1) if 0; #FIXME
     };
 
+    gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $w->{real_window});
+    my $_guard = before_leaving { gurpm::end() };
 
     if (!$urpm) {
         $urpm ||= urpm->new;
@@ -1562,6 +1564,8 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	}
     }
 
+    gurpm::label(N("Reading updates description"));
+    gurpm::progress(0.05);
 	my ($cur, $section);
 	#- parse the description file
     foreach my $medium (@update_medias) {
@@ -1587,28 +1591,39 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     }
 
     my $_unused = N("Please wait, finding available packages...");
-    my $wait = wait_msg_(N("Please wait, reading packages database..."));
-    if (!$::statusbar) {
-	$wait->{real_window}->show_all;
-	$wait->{real_window}->realize;
-	gtkflush();
-	$wait->{real_window}->queue_draw;
-    }
-    gtkflush();
 
     # find out installed packages:
 
     #$urpm = urpm->new;
     #$urpm->read_config;
+    my $level = 0.05;
+    my $total = @{$urpm->{depslist}};
+    gurpm::label(N("Please wait, listing base packages..."));
+    gurpm::progress($level);
+
+    my ($count, $prev_stage, $new_stage, $limit);
+    
+    my $reset_update = sub { undef $prev_stage; $count = 0; $limit = $_[0] };
+    my $update = sub {
+        $count++;
+        $new_stage = $level+($limit-$level)*$count/$total;
+        if ($prev_stage + 0.01 < $new_stage) {
+            $prev_stage = $new_stage;
+            gurpm::progress($new_stage);
+        }
+    };
+
     my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
     my (%base, %basepackages);
     my $db = $db;
     my $sig_handler = sub { undef $db; exit 3 };
     local $SIG{INT} = $sig_handler;
     local $SIG{QUIT} = $sig_handler;
+    $reset_update->(0.33);
     while (defined(local $_ = shift @base)) {
 	exists $basepackages{$_} and next;
 	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
+			      $update->();
 			      push @{$basepackages{$_}}, urpm_name($_[0]);
 			      push @base, $_[0]->requires_nosense;
 			  });
@@ -1619,9 +1634,13 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	    $base{$_} = \$n;
 	}
     }
+    gurpm::label(N("Please wait, finding installed packages..."));
+    gurpm::progress($level = 0.33);
+    $reset_update->(0.66);
     my %installed_pkgs;
     $db->traverse(sub {
 	    my ($pkg) = @_;
+	    $update->();
 	    my $fullname = urpm_name($pkg);
 	    #- Extract summary and description since they'll be lost when the header is packed
 	    $installed_pkgs{$fullname} = {
@@ -1648,6 +1667,8 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     my %installable_pkgs;
     my %updates;
 
+    gurpm::label(N("Please wait, finding available packages..."));
+    gurpm::progress($level = 0.66);
 
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
     check_update_media_version($urpm, @update_medias);
@@ -1664,11 +1685,14 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
     $urpm->{depslist}[$_]->set_flag_installed foreach keys %$requested; #- pretend it's installed
     $urpm->{rpmdrake_state} = $state; #- Don't forget it
+    gurpm::progress($level = 0.7);
 
     my %pkg_sel   = map { $_ => 1 } @{$options{'pkg-sel'}   || []};
     my %pkg_nosel = map { $_ => 1 } @{$options{'pkg-nosel'} || []};
     my @updates_media_names = map { $_->{name} } @update_medias;
+    $reset_update->(1);
     foreach my $pkg (@{$urpm->{depslist}}) {
+        $update->();
 	$pkg->flag_upgrade or next;
         my $selected = 0;
 
@@ -1692,7 +1716,6 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
         delete $options{'pkg-sel'};
     }
 
-    statusbar_msg_remove($wait);
     $_->{pkg}->set_flag_installed foreach values %installed_pkgs;
 
     +{ urpm => $urpm,
