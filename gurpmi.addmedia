@@ -90,7 +90,7 @@ while (@ARGV) {
     }
     push @addmedia_args, [ $name, $url, $with, $with_hdlist ];
     push @names, $name;
-    shift @ARGV for 1 .. ($with ? 4 : 2);
+    shift @ARGV foreach 1 .. ($with ? 4 : 2);
 }
 
 $fromfile and do {
@@ -112,7 +112,7 @@ to your system from that new medium.", $names[0])
 my $urpm = urpm->new;
 urpm::media::read_config($urpm);
 my $success = 1;
-for (@addmedia_args) {
+foreach (@addmedia_args) {
     #- NB: that short circuits
     $success = $success && add_medium_and_check(
 	$urpm,
