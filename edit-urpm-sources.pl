@@ -767,13 +767,14 @@ sub parallel_callback() {
 
 sub keys_callback() {
     my $w = ugtk2->new(N("Manage keys for digital signatures of packages"), grab => 1, center => 1,  transient => $mainw->{real_window});
+    $w->{real_window}->set_size_request(600, 300);
 
     my $media_list_ls = Gtk2::ListStore->new("Glib::String");
     my $media_list = Gtk2::TreeView->new_with_model($media_list_ls);
     $media_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 0));
     $media_list->get_selection->set_mode('browse');
 
-    my $key_col_size = 300;
+    my $key_col_size = 200;
     my $keys_list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
     my $keys_list = Gtk2::TreeView->new_with_model($keys_list_ls);
     $keys_list->append_column(my $col = Gtk2::TreeViewColumn->new_with_attributes(N("_:cryptographic keys\nKeys"), my $renderer = Gtk2::CellRendererText->new, 'text' => 0));
@@ -866,8 +867,8 @@ sub keys_callback() {
 	    gtknew('VBox', spacing => 5),
 	    1, gtkpack_(
 		gtknew('HBox', spacing => 10),
-		1, $media_list,
-		1, $keys_list,
+		1, create_scrolled_window($media_list),
+		1, create_scrolled_window($keys_list),
 		0, gtkpack__(
 		    gtknew('VBox', spacing => 5),
 		    gtksignal_connect(
