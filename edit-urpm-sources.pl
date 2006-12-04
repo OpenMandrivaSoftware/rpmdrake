@@ -830,7 +830,7 @@ sub keys_callback() {
 		gtkpack(
 		    gtknew('HButtonBox'),
 		    gtksignal_connect(
-			gtknew('Button', text => N("Ok")),
+			gtknew('Button', text => N("Close")),
 			clicked => sub {
 			    my ($model, $iter) = $available_keyz->get_selection->get_selected;
 			    $model && $iter and $key = $model->get($iter, 1);
