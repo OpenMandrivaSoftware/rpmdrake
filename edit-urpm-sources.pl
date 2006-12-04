@@ -773,9 +773,14 @@ sub keys_callback() {
     $media_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 0));
     $media_list->get_selection->set_mode('browse');
 
+    my $key_col_size = 300;
     my $keys_list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
     my $keys_list = Gtk2::TreeView->new_with_model($keys_list_ls);
-    $keys_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("_:cryptographic keys\nKeys"), Gtk2::CellRendererText->new, 'text' => 0));
+    $keys_list->append_column(my $col = Gtk2::TreeViewColumn->new_with_attributes(N("_:cryptographic keys\nKeys"), my $renderer = Gtk2::CellRendererText->new, 'text' => 0));
+    $col->set_sizing('fixed');
+    $col->set_fixed_width($key_col_size);
+    $renderer->set_property('width' => 1);
+    $renderer->set_property('wrap-width', $key_col_size);
     $keys_list->get_selection->set_mode('browse');
 
     my ($current_medium, $current_medium_nb, @keys);
