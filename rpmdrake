@@ -466,7 +466,7 @@ sub extract_header {
                          changelog => $chg_prepro->(scalar(run_rpm("rpm -q --changelog $name"))) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
-	my $hdlist = $medium->{virtual} ? "$medium->{url}/$medium->{with_hdlist}" : "$urpm->{statedir}/$medium->{hdlist}";
+	my $hdlist = urpm::media::any_hdlist($medium);
 	$hdlist =~ s!^file:/+!!;
 	if (-r $hdlist) {
 	    my $packer;
@@ -554,7 +554,7 @@ sub do_search($$$$$$$) {
 	    }
 	} else {
 	    my @hdlists = map {
-		my $h = $_->{virtual} ? "$_->{url}/$_->{with_hdlist}" : "$urpm->{statedir}/$_->{hdlist}";
+		my $h = urpm::media::any_hdlist($_);
 		$h =~ s!^file:/+!!;
 		if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h);
 	    } @{$urpm->{media}};
