@@ -379,7 +379,6 @@ sub renum_media ($$$) {
     my @media = map { $urpm->{media}[$_] } @rows;
     $urpm->{media}[$rows[$_]] = $media[1 - $_] foreach 0, 1;
     my $i = 1;
-    $_->{priority} = $i++ foreach @{$urpm->{media}};
     $model->swap(@iters);
     urpm::media::write_config($urpm); $urpm = urpm->new; urpm::media::read_config($urpm);
 }
@@ -401,7 +400,8 @@ sub edit_callback {
     my $row = selrow();
     $row == -1 and return;
     my $medium = $urpm->{media}[$row];
-    my $config = urpm::cfg::load_config($urpm->{config}, 1);
+    my $config = urpm::cfg::load_config_raw($urpm->{config}, 1);
+    my ($verbatim_medium) = grep { $medium->{name} eq $_->{name} } @$config;
     my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1,  transient => $mainw->{real_window});
     my ($url_entry, $hdlist_entry, $url, $with_hdlist);
     gtkadd(
@@ -411,8 +411,8 @@ sub edit_callback {
 	    0, gtknew('Title2', label => N("Editing medium \"%s\":", $medium->{name})),
 	    0, create_packtable(
 		{},
-		[ gtknew('Label_Left', text => N("URL:")), $url_entry = gtkentry($config->{$medium->{name}}{url}) ],
-		[ gtknew('Label_Left', text => N("Relative path to synthesis/hdlist:")), $hdlist_entry = gtkentry($config->{$medium->{name}}{with_hdlist}) ],
+		[ gtknew('Label_Left', text => N("URL:")), $url_entry = gtkentry($verbatim_medium->{url}) ],
+		[ gtknew('Label_Left', text => N("Relative path to synthesis/hdlist:")), $hdlist_entry = gtkentry($verbatim_medium->{with_hdlist}) ],
 	    ),
 	    0, Gtk2::HSeparator->new,
 	    0, gtkpack(
