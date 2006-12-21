@@ -822,7 +822,7 @@ sub run_treeview_dialog {
 	}
 	my $callback = sub { interactive_msg_(N("More information on package..."), $options->{get_info}->($_[0]), scroll => 1) };
 	$choices = [ sort { $a->name cmp $b->name } @$choices ];
-	my @choices = interactive_list_(N("Please choose"), N("One of the following packages is needed:"),
+	my @choices = interactive_list_(N("Please choose"), P("The following package is needed:", "One of the following packages is needed:", scalar(@$choices)),
                                      [ map { urpm_name($_) } @$choices ], $callback);
      $choices->[$choices[0]];
     };
@@ -1048,9 +1048,10 @@ or you already installed all of them."));
 			    ? join("\n", urpm::select::translate_why_unselected($urpm, $urpm->{state}, $unsel))
 			    : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
 			} @cant;
+			my $count = @reasons;
 			interactive_msg_(
-			    N("Some packages can't be installed"),
-			    N("Sorry, the following package(s) can't be selected:\n\n%s", join("\n", @reasons)),
+			    P("One package cannot be installed", "Some packages can't be installed", $count),
+			    P("Sorry, the following package cannot be selected:\n\n%s", "Sorry, the following packages can't be selected:\n\n%s", $count, join("\n", @reasons)),
 			    scroll => 1,
 			);
 			foreach (@cant) {
@@ -1915,16 +1916,16 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $r = join "\n", urpm::select::translate_why_removed($urpm, $urpm->{state}, @to_remove);
 
     my $install_count = int(@pkgs);
-    my $to_install = $install_count ? N("To satisfy dependencies, the following %d packages are going to be installed:\n%s\n", $install_count,
+    my $to_install = $install_count ? 
+      #-PO: in singular form, we use %2\$
+      P("To satisfy dependencies, the following package is going to be installed:\n%2\$s\n", "To satisfy dependencies, the following %d packages are going to be installed:\n%s\n", $install_count, $install_count,
       formatlistpkg(map { s!.*/!!; $_ } @pkgs)) : '';
+    my $remove_count =  scalar(@to_remove);
     interactive_msg_(($to_install ? N("Confirmation") : N("Some packages need to be removed")),
                      ($r ? 
-                        (!$to_install ? join("\n\n", N("Remove %d packages?", scalar(@to_remove)), $r) :
- N("The following packages have to be removed for others to be upgraded:
-
-%s
-
-Is it ok to continue?", join("\n\n", $r, if_($to_install, $to_install)))) : $to_install),
+                        (!$to_install ? join("\n\n", P("Remove one package?", "Remove %d packages?", $remove_count, $remove_count), $r) :
+ P("The following package has to be removed for others to be upgraded:", "The following packages have to be removed for others to be upgraded:", $remove_count) . join("\n\n", $r, if_($to_install, $to_install)) . N("Is it ok to continue?"))
+                          : $to_install),
                      scroll => 1,
                      yesno => 1) or do {
                          $w->{rwindow}->set_sensitive(1);
