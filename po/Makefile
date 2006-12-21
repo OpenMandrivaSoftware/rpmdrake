@@ -36,9 +36,7 @@ merge: $(PGOAL).pot
 
 $(PGOAL).pot: $(PL_FILES) $(CFILES)
 	INTLTOOL_EXTRACT=./intltool-extract ./intltool-update --gettext-package desktopstuff --pot
-	xgettext -F -n --add-comments \
-	  --keyword=N_ --keyword=N --from-code=utf-8 \
-	  --language=Perl -o $(PGOAL)_tmp.pot $(PL_FILES)
+	perl_checker -q --generate-pot $(PGOAL)_tmp.pot $(PL_FILES)
 	xgettext -F -n --add-comments='-PO' \
 		--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
 		--language=C -o $(PGOAL)_tmp_c.pot $(CFILES)
