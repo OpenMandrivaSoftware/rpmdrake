@@ -81,7 +81,7 @@ sub remove_row {
 
 sub easy_add_callback() {
     #- cooker and community don't have update sources
-    my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg_(
+    my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
 N("This step enables you to add sources from a Mandriva Linux web or FTP mirror.
 
@@ -108,7 +108,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
     my $m = $mirror->{url};
     my $is_update = $mirror->{type} eq 'updates';
     $m = make_url_mirror($m) if $is_update; # because updates media do not provide media.cfg yet
-    my $wait = wait_msg_(N("Please wait, adding media..."));
+    my $wait = wait_msg(N("Please wait, adding media..."));
     my $url = $m;
     my $medium_name;
     if ($want_base_distro && !$is_update) {
@@ -142,6 +142,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
 
 sub add_callback() {
     my $w = ugtk2->new(N("Add a medium"), grab => 1, center => 1,  transient => $::main_window);
+    my $prev_main_window = $::main_window;
     local $::main_window = $w->{real_window};
     my %radios_infos = (
 	local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
@@ -235,10 +236,10 @@ sub add_callback() {
     my $checkok = sub {
 	my $info = $radios_infos{$radios_names_ordered[$notebook->get_current_page]};
 	my ($name, $url) = map { $info->{$_ . '_entry'}->get_text } qw(name url);
-	$name eq '' || $url eq '' and interactive_msg_('rpmdrake', N("You need to fill up at least the two first entries.")), return 0;
+	$name eq '' || $url eq '' and interactive_msg('rpmdrake', N("You need to fill up at least the two first entries.")), return 0;
 	if (member($name, map { $_->{name} } @{$urpm->{media}})) {
 	    $info->{name_entry}->select_region(0, -1);
-	    interactive_msg_('rpmdrake',
+	    interactive_msg('rpmdrake',
 N("There is already a medium by that name, do you
 really want to replace it?"), yesno => 1) or return 0;
 	}
@@ -297,6 +298,7 @@ really want to replace it?"), yesno => 1) or return 0;
     );
 
     if ($w->main) {
+	$::main_window = $prev_main_window;
 	if ($i{distrib}) {
 	    add_medium_and_check(
 		$urpm,
@@ -363,14 +365,14 @@ sub options_callback() {
 sub remove_callback() {
     my $row = selrow();
     $row == -1 and return;
-    interactive_msg_(
+    interactive_msg(
 	N("Source Removal"),
 	N("Are you sure you want to remove source \"%s\"?", to_utf8($urpm->{media}[$row]{name})),
 	yesno => 1,
 	 transient => $::main_window,
     ) or return;
 
-    my $wait = wait_msg_(N("Please wait, removing medium..."));
+    my $wait = wait_msg(N("Please wait, removing medium..."));
     urpm::media::remove_media($urpm, [ $urpm->{media}[$row] ]);
     urpm::media::write_urpmi_cfg($urpm);
     remove_wait_msg($wait);
@@ -449,7 +451,7 @@ sub edit_callback() {
     if ($w->main) {
 	my ($name, $update) = map { $medium->{$_} } qw(name update);
 	$url =~ m|^removable://| and (
-	    interactive_msg_(
+	    interactive_msg(
 		N("You need to insert the medium to continue"),
 		N("In order to save the changes, you need to insert the medium in the drive."),
 		yesno => 1, text => { yes => N("Ok"), no => N("Cancel") }
@@ -864,7 +866,7 @@ sub keys_callback() {
         my ($model, $iter) = $keys_list->get_selection->get_selected;
         $model && $iter or return;
         my $key = $model->get($iter, 1);
-	interactive_msg_(N("Remove a key"),
+	interactive_msg(N("Remove a key"),
                         N("Are you sure you want to remove the key %s from medium %s?\n(name of the key: %s)",
                           $key, $current_medium, $key_name->($key)),
                         yesno => 1,  transient => $w->{real_window}) or return;
@@ -958,7 +960,7 @@ sub mainwindow() {
 	    $reread_media->();
 	    if (!$ignored && $urpm->{media}[$path]{ignore}) {
 		#- Enabling this media failed, force update
-		interactive_msg_('rpmdrake',
+		interactive_msg('rpmdrake',
 		    N("This medium needs to be updated to be usable. Update it now ?"),
 		    yesno => 1,
 		) and $reread_media->($urpm->{media}[$path]{name});
@@ -1052,13 +1054,11 @@ sub mainwindow() {
     $mainw->main;
 }
 
-sub interactive_msg_  {  interactive_msg(@_, if_(defined $::main_window, transient => $::main_window)) }
-sub wait_msg_         {         wait_msg(@_, if_(defined $::main_window, transient => $::main_window)) }
 
 readconf();
 
 if (!member(basename($0), @$already_splashed)) {
-    interactive_msg_('rpmdrake',
+    interactive_msg('rpmdrake',
 N("%s
 
 Is it ok to continue?",
@@ -1074,7 +1074,7 @@ my $lock;
 {
     $urpm = urpm->new;
     local $urpm->{fatal} = sub {
-        interactive_msg_('rpmdrake',
+        interactive_msg('rpmdrake',
 N("Packages database is locked. Please close other applications
 working with packages database (do you have another media
 manager on another desktop, or are you currently installing

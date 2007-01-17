@@ -196,13 +196,11 @@ my $changelog_first;
 my $treeview_dialog_run = 0;
 our $statusbar;
 
-sub interactive_msg_  {  interactive_msg(@_, if_($::main_window, transient => $::main_window)) }
 sub interactive_list_ { interactive_list(@_, if_($::main_window, transient => $::main_window)) }
-sub wait_msg_         {         wait_msg(@_, if_($::main_window, transient => $::main_window)) }
 sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded && !$treeview_dialog_run; &statusbar_msg }
-sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg_ }
+sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg }
 
-$> and (interactive_msg_(N("Running in user mode"),
+$> and (interactive_msg(N("Running in user mode"),
 N("You are launching this program as a normal user.
 You will not be able to perform modifications on the system,
 but you may still browse the existing database."), yesno => 1, text => { no => N("Cancel"), yes => N("Ok") }) or myexit(0));
@@ -820,7 +818,7 @@ sub run_treeview_dialog {
 		$is_locale_available->($_) and return $pkg;
 	    }
 	}
-	my $callback = sub { interactive_msg_(N("More information on package..."), $options->{get_info}->($_[0]), scroll => 1) };
+	my $callback = sub { interactive_msg(N("More information on package..."), $options->{get_info}->($_[0]), scroll => 1) };
 	$choices = [ sort { $a->name cmp $b->name } @$choices ];
 	my @choices = interactive_list_(N("Please choose"), P("The following package is needed:", "One of the following packages is needed:", scalar(@$choices)),
                                      [ map { urpm_name($_) } @$choices ], $callback);
@@ -881,7 +879,7 @@ sub run_treeview_dialog {
 		    if (@keys == 0) {
 			$add_node->('', N("(none)"), { nochild => 1 });
 			my $explanation_only_once if 0;
-			$explanation_only_once or interactive_msg_(N("No update"),
+			$explanation_only_once or interactive_msg(N("No update"),
 N("The list of updates is empty. This means that either there is
 no available update for the packages installed on your computer,
 or you already installed all of them."));
@@ -951,7 +949,7 @@ or you already installed all of them."));
 		my @deps = sort { $a cmp $b } difference2($nodes_with_deps, $nodes);
 		@deps > 0 or return 1;
 		deps_msg_again:
-		my $results = interactive_msg_(
+		my $results = interactive_msg(
 		    $title, $msg . urpm::select::translate_why_removed($urpm, $urpm->{state}, @deps),
 		    yesno => [ N("Cancel"), N("More info"), N("Ok") ],
 		    scroll => 1,
@@ -968,7 +966,7 @@ or you already installed all of them."));
 			    [ gtknew('HBox', children_tight => [ gtkset_selectable(gtknew('Label', text => $pkg), 1) ]),
 			    gtknew('Button', text => N("More information on package..."), 
 				clicked => sub {
-				    interactive_msg_(N("More information on package..."), $options->{get_info}->($pkg), scroll => 1);
+				    interactive_msg(N("More information on package..."), $options->{get_info}->($pkg), scroll => 1);
 				}) ] } @deps ],
 			[ gtknew('Button', text => N("Ok"), 
 			    clicked => sub { Gtk2->main_quit }) ]
@@ -991,7 +989,7 @@ or you already installed all of them."));
 		    foreach (grep { exists $pkgs->{$_}{base} } @remove) {
 			${$pkgs->{$_}{base}} == 1 ? push @impossible_to_remove, $_ : ${$pkgs->{$_}{base}}--;
 		    }
-		    @impossible_to_remove and interactive_msg_(N("Some packages can't be removed"),
+		    @impossible_to_remove and interactive_msg(N("Some packages can't be removed"),
 			N("Removing these packages would break your system, sorry:\n\n") .
 			formatlistpkg(@impossible_to_remove));
 		    @nodes_with_deps = difference2(\@nodes_with_deps, \@impossible_to_remove);
@@ -1049,7 +1047,7 @@ or you already installed all of them."));
 			    : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
 			} @cant;
 			my $count = @reasons;
-			interactive_msg_(
+			interactive_msg(
 			    P("One package cannot be installed", "Some packages can't be installed", $count),
 			    P("Sorry, the following package cannot be selected:\n\n%s", "Sorry, the following packages can't be selected:\n\n%s", $count, join("\n", @reasons)),
 			    scroll => 1,
@@ -1276,12 +1274,12 @@ or you already installed all of them."));
             return;
         }
 	if (!int(grep { $pkgs->{$_}{selected} } keys %$pkgs)) {
-	    interactive_msg_(N("You need to select some packages first."), N("You need to select some packages first."));
+	    interactive_msg(N("You need to select some packages first."), N("You need to select some packages first."));
             return;
         }
 	my $size_added = sum(map { if_($_->flag_selected && !$_->flag_installed, $_->size) } @{$urpm->{depslist}});
 	if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*1024) {
-	    interactive_msg_(N("Too many packages are selected"),
+	    interactive_msg(N("Too many packages are selected"),
 N("Warning: it seems that you are attempting to add so much
 packages that your filesystem may run out of free diskspace,
 during or after package installation ; this is particularly
@@ -1502,7 +1500,7 @@ sub get_pkgs {
     my $error_happened;
     my $fatal_handler = sub {
         $error_happened = 1;
-        interactive_msg_(N("Fatal error"),
+        interactive_msg(N("Fatal error"),
                          N("A fatal error occurred: %s.", $_[1]));
         myexit(-1) if 0; #FIXME
     };
@@ -1540,7 +1538,7 @@ Is it ok to continue?"), yesno => 1) or myexit(-1);
 		}
 	    } else {
 		if (any { $_->{update} } @{$urpm->{media}}) {
-		    interactive_msg_(N("Already existing update media"),
+		    interactive_msg(N("Already existing update media"),
 N("You already have at least one update medium configured, but
 all of them are currently disabled. You should run the Software
 Media Manager to enable at least one (check it in the Enabled?
@@ -1552,7 +1550,7 @@ Then, restart %s.", $rpmdrake::myname_update));
 	      mu_retry_another_mirror:
 		my ($mirror) = choose_mirror(if_(exists $w->{real_window}, transient => $w->{real_window}));
 		my $m = ref($mirror) ? $mirror->{url} : '';
-		$m or interactive_msg_(N("How to choose manually your mirror"),
+		$m or interactive_msg(N("How to choose manually your mirror"),
 N("You may also choose your desired mirror manually: to do so,
 launch the Software Media Manager, and then add a `Security
 updates' medium.
@@ -1877,7 +1875,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		N("All requested packages were installed successfully."),
 	    );
         } else {
-            interactive_msg_(
+            interactive_msg(
 		N("Problem during installation"),
 		N("There was a problem during the installation:\n\n%s", join("\n", @error_msgs)),
 		scroll => 1,
@@ -1897,7 +1895,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     );
     my $distant_number = scalar keys %pkgs;
     if (!$local_sources && (!$list || !@$list)) {
-        interactive_msg_(
+        interactive_msg(
 	    N("Unable to get source packages."),
 	    N("Unable to get source packages, sorry. %s",
 		@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
@@ -1921,7 +1919,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
       P("To satisfy dependencies, the following package is going to be installed:\n%2\$s\n", "To satisfy dependencies, the following %d packages are going to be installed:\n%s\n", $install_count, $install_count,
       formatlistpkg(map { s!.*/!!; $_ } @pkgs)) : '';
     my $remove_count =  scalar(@to_remove);
-    interactive_msg_(($to_install ? N("Confirmation") : N("Some packages need to be removed")),
+    interactive_msg(($to_install ? N("Confirmation") : N("Some packages need to be removed")),
                      ($r ? 
                         (!$to_install ? join("\n\n", P("Remove one package?", "Remove %d packages?", $remove_count, $remove_count), $r) :
  P("The following package has to be removed for others to be upgraded:", "The following packages have to be removed for others to be upgraded:", $remove_count) . join("\n\n", $r, if_($to_install, $to_install)) . N("Is it ok to continue?"))
@@ -1940,7 +1938,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	$list,
 	force_local => 1, # removed in urpmi 4.8.7
 	ask_for_medium => sub {
-	    interactive_msg_(
+	    interactive_msg(
 		N("Change medium"),
 		N("Please insert the medium named \"%s\" on device [%s]", $_[0], $_[1]),
 		yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
@@ -1981,7 +1979,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	);
         if (@invalid_sources) {
             local $::main_window = $gurpm::mainw->{real_window};
-            interactive_msg_(
+            interactive_msg(
 		N("Warning"),
 		N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
 		join("\n", sort @invalid_sources)), yesno => 1, if_(@invalid_sources > 10, scroll => 1),
@@ -1994,7 +1992,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $something_installed;
     if (@rpms_install || @rpms_upgrade || @to_remove) {
         if (my @missing = grep { m|^/| && ! -e $_ } @rpms_install, @rpms_upgrade) {
-            interactive_msg_(
+            interactive_msg(
 		N("Installation failed"),
 		N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
 		    join "\n", map { "    $_" } @missing) .
@@ -2046,7 +2044,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         gurpm::end();
 
         if (@errors || @error_msgs) {
-            interactive_msg_(
+            interactive_msg(
 		N("Problem during installation"),
 		N("There was a problem during the installation:\n\n%s",
 		    join("\n", @errors, @error_msgs)),
@@ -2082,7 +2080,7 @@ you may now inspect some in order to take actions:"),
 			gtksignal_connect(
 			    gtknew('Button', text => N("Upgrade information about this package")),
 			    clicked => sub {
-				interactive_msg_(
+				interactive_msg(
 				    N("Upgrade information about package %s", $Readmes{$fullname}),
 				    (join '' => formatAlaTeX(scalar cat_($fullname))),
 				    scroll => 1,
@@ -2095,7 +2093,7 @@ you may now inspect some in order to take actions:"),
 	}
     } else {
         gurpm::end();
-        interactive_msg_(N("Error"),
+        interactive_msg(N("Error"),
                          N("Unrecoverable error: no package found for installation, sorry."));
     }
 
@@ -2105,7 +2103,7 @@ you may now inspect some in order to take actions:"),
 
   fatal_error:
     gurpm::end();
-    interactive_msg_(N("Installation failed"),
+    interactive_msg(N("Installation failed"),
                      N("There was a problem during the installation:\n\n%s", $fatal_msg));
   return_with_error:
     gurpm::end();
@@ -2131,7 +2129,7 @@ sub perform_removal {
 	},
     );
     if (@results) {
-	interactive_msg_(
+	interactive_msg(
 	    N("Problem during removal"),
 	    N("There was a problem during the removal of packages:\n\n%s", join("\n",  @results)),
 	    if_(@results > 1, scroll => 1),
@@ -2147,7 +2145,7 @@ sub perform_removal {
 
 if ($options{'merge-all-rpmnew'}) {
     my %pkg2rpmnew;
-    my $wait = wait_msg_(N("Please wait, searching..."));
+    my $wait = wait_msg(N("Please wait, searching..."));
     print "Searching .rpmnew and .rpmsave files...\n";
     $db->traverse(sub {
 		     my $n = my_fullname($_[0]);
@@ -2165,7 +2163,7 @@ $changelog_first = $changelog_first_config->[0];
 $changelog_first = 1 if $options{'changelog-first'};
 
 if (!$> && !member($MODE, @$already_splashed)) {
-    interactive_msg_(N("Welcome"),
+    interactive_msg(N("Welcome"),
 N("%s
 
 Is it ok to continue?",
