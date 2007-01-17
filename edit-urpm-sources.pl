@@ -142,6 +142,7 @@ Is it ok to continue?", $rpmdrake::mandrake_release),
 
 sub add_callback() {
     my $w = ugtk2->new(N("Add a medium"), grab => 1, center => 1,  transient => $::main_window);
+    local $::main_window = $w->{real_window};
     my %radios_infos = (
 	local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
 	ftp => { name => N("FTP server"), url => N("URL:"), loginpass => 1 },
@@ -320,6 +321,7 @@ really want to replace it?"), yesno => 1) or return 0;
 
 sub options_callback() {
     my $w = ugtk2->new(N("Global options for package installation"), grab => 1, center => 1,  transient => $::main_window);
+    local $::main_window = $w->{real_window};
     my @verif_radio_infos = (
 	{ name => N("always"), value => 1 },
 	{ name => N("never"),  value => 0 },
@@ -404,6 +406,7 @@ sub edit_callback() {
     my $config = urpm::cfg::load_config_raw($urpm->{config}, 1);
     my ($verbatim_medium) = grep { $medium->{name} eq $_->{name} } @$config;
     my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1,  transient => $::main_window);
+    local $::main_window = $w->{real_window};
     my ($url_entry, $hdlist_entry, $downloader_entry, $url, $with_hdlist, $downloader);
     gtkadd(
 	$w->{window},
@@ -470,6 +473,7 @@ sub proxy_callback {
     my ($medium) = @_;
     my $medium_name = $medium ? $medium->{name} : '';
     my $w = ugtk2->new(N("Configure proxies"), grab => 1, center => 1,  transient => $::main_window);
+    local $::main_window = $w->{real_window};
     my ($proxy, $proxy_user) = curl_download::readproxy($medium_name);
     my ($user, $pass) = $proxy_user =~ /^([^:]*):(.*)$/;
     my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry, $proxypasswordentry);
@@ -565,6 +569,7 @@ sub edit_parallel {
     my ($num, $conf) = @_;
     my $edited = $num == -1 ? {} : $conf->[$num];
     my $w = ugtk2->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"), grab => 1, center => 1,  transient => $::main_window);
+    local $::main_window = $w->{real_window};
     my $name_entry;
 
     my $medias_ls = Gtk2::ListStore->new("Glib::String");
@@ -576,6 +581,7 @@ sub edit_parallel {
 
     my $add_media = sub {
         my $w = ugtk2->new(N("Add a medium limit"), grab => 1,  transient => $mainw->{real_window});
+        local $::main_window = $w->{real_window};
         my $medias_list_ls = Gtk2::ListStore->new("Glib::String");
         my $medias_list = Gtk2::TreeView->new_with_model($medias_list_ls);
         $medias_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
@@ -625,6 +631,7 @@ sub edit_parallel {
     $hosts_ls->append_set([ 0 => $_ ]) foreach @$hosts_list;
     my $add_host = sub {
         my $w = ugtk2->new(N("Add a host"), grab => 1,  transient => $mainw->{real_window});
+        local $::main_window = $w->{real_window};
         my ($entry, $value);
 	gtkadd(
 	    $w->{window},
@@ -710,6 +717,7 @@ sub edit_parallel {
 
 sub parallel_callback() {
     my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"), grab => 1, center => 1,  transient => $mainw->{real_window});
+    local $::main_window = $w->{real_window};
     my $list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String", "Glib::String", "Glib::String");
     my $list = Gtk2::TreeView->new_with_model($list_ls);
     each_index { $list->append_column(Gtk2::TreeViewColumn->new_with_attributes($_, Gtk2::CellRendererText->new, 'text' => $::i)) } N("Group"), N("Protocol"), N("Media limit");
@@ -768,6 +776,7 @@ sub parallel_callback() {
 
 sub keys_callback() {
     my $w = ugtk2->new(N("Manage keys for digital signatures of packages"), grab => 1, center => 1,  transient => $mainw->{real_window});
+    local $::main_window = $w->{real_window};
     $w->{real_window}->set_size_request(600, 300);
 
     my $media_list_ls = Gtk2::ListStore->new("Glib::String");
@@ -815,6 +824,7 @@ sub keys_callback() {
 
     my $add_key = sub {
         my $w_add = ugtk2->new(N("Add a key"), grab => 1,  transient => $w->{real_window});
+        local $::main_window = $w->{real_window};
         my $available_keyz_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
         my $available_keyz = Gtk2::TreeView->new_with_model($available_keyz_ls);
         $available_keyz->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
