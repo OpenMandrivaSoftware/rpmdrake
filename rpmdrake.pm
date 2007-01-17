@@ -182,6 +182,7 @@ sub getbanner() {
 
 sub interactive_msg {
     my ($title, $contents, %options) = @_;
+    $options{transient} ||= $::main_window if $::main_window;
     local $::isEmbedded;
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
@@ -307,6 +308,7 @@ sub fatal_msg {
 sub wait_msg {
     my ($msg, %options) = @_;
     gtkflush();
+    $options{transient} ||= $::main_window if $::main_window;
     local $::isEmbedded;
     my $mainw = ugtk2->new(N("Please wait"), grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $mainw->{real_window}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
