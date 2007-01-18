@@ -152,7 +152,6 @@ sub add_callback() {
 	removable => { name => N("Removable device"), url => N("Path or mount point:"), dirsel => 1 },
     );
     my @radios_names_ordered = qw(local ftp rsync http removable);
-    my @modes = map { $radios_infos{$_}{name} } @radios_names_ordered;
     # TODO: replace NoteBook by sensitive widgets and Label->set()
     my $notebook = gtknew('Notebook');
     $notebook->set_show_tabs(0); $notebook->set_show_border(0);
@@ -246,7 +245,8 @@ really want to replace it?"), yesno => 1) or return 0;
 	1;
     };
 
-    my ($type, $probe, %i, %make_url, $type_box);
+    my $type = 'local';
+    my ($probe, %i, %make_url);
     gtkadd(
 	$w->{window},
 	gtkpack(
@@ -254,8 +254,10 @@ really want to replace it?"), yesno => 1) or return 0;
 	    gtknew('Title2', label => N("Adding a medium:")),
 	    gtknew('HBox', children_tight => [
                       Gtk2::Label->new(but(N("Type of medium:"))),
-                      $type_box = gtksignal_connect(gtknew('ComboBox', text => $radios_infos{local}{name}, list => \@modes),
-                      changed => sub { $notebook->set_current_page($pages{$_[0]->get_text}) })
+                      gtknew('ComboBox', text_ref => \$type, 
+                             list => \@radios_names_ordered,
+                             format => sub { $radios_infos{$_[0]}{name} },
+                             changed => sub { $notebook->set_current_page($pages{$_[0]->get_text}) })
                      ]),
 	    $notebook,
 	    gtknew('HSeparator'),
@@ -266,9 +268,7 @@ really want to replace it?"), yesno => 1) or return 0;
 		    gtknew('Button', text => N("Ok")), clicked => sub {
 			if ($checkok->()) {
 			    $w->{retval} = { nb => $notebook->get_current_page };
-			    ($type) = grep { $radios_infos{$_}{name} eq $type_box->get_text } keys %radios_infos;
 			    my $info = $radios_infos{$type};
-                   print "w=($info->{name_entry},	url => $info->{url_entry}, hdlist => $info->{hdlist_entry}, distrib => $info->{distrib_check}, update => $info->{update_check})\n";
 			    %i = (
 				name => $info->{name_entry}->get_text,
 				url => $info->{url_entry}->get_text,
