@@ -82,8 +82,6 @@ if ($collation_locale) {
   $collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8");
 }
 
-*urpm::msg::translate = \&common::translate;
-
 our %options;
 foreach (@ARGV) {
     /^-?-(\S+)$/ or next;
