@@ -110,18 +110,10 @@ if ($MODE eq 'remove') {
     $default_list_mode = 'all_updates';
 }
 
-eval { 
-    require mygtk2;
-    require ugtk2;
-    ugtk2->import(qw(:all));
-    mygtk2->import(qw(gtknew)); #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
-    require Gtk2::Pango;
-    require Gtk2::Gdk::Keysyms;
-};
-if ($@) {
-    print "This program cannot be run in console mode.\n";
-    POSIX::_exit(0);  #- skip ugtk2::END
-}
+use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
+use ugtk2 qw(:all);
+use Gtk2::Pango;
+use Gtk2::Gdk::Keysyms;
 
 $MODE eq 'update' || $options{root} and require_root_capability();
 $ugtk2::wm_icon = "title-$MODE";
