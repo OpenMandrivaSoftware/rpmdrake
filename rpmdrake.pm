@@ -143,13 +143,14 @@ sub myexit { ugtk2::exit(undef, @_) }
 $ENV{HOME} ||= '/root';
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
+our ($changelog_first_config, $tree_flat, $tree_mode, $max_info_in_descr, $already_splashed, $mandrakeupdate_wanted_categories);
 our %config = (
-    mandrakeupdate_wanted_categories => { var => \our $mandrakeupdate_wanted_categories, default => [ qw(security) ] },
-    already_splashed => { var => \our $already_splashed, default => [] },
-    max_info_in_descr => { var => \our $max_info_in_descr, default => [] },
-    tree_mode => { var => \our $tree_mode, default => [ qw(mandrake_choices) ] },
-    tree_flat => { var => \our $tree_flat, default => [ 0 ] },
-    changelog_first_config => { var => \our $changelog_first_config, default => [ 0 ] },
+    mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
+    already_splashed => { var => \$already_splashed, default => [] },
+    max_info_in_descr => { var => \$max_info_in_descr, default => [] },
+    tree_mode => { var => \$tree_mode, default => [ qw(mandrake_choices) ] },
+    tree_flat => { var => \$tree_flat, default => [ 0 ] },
+    changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },
 );
 
 sub readconf() {
