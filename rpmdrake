@@ -232,8 +232,6 @@ sub run_treeview_dialog {
     ($typical_width) = string_size($tree, translate("Graphical Environment") . "xmms-more-vis-plugins");
     $typical_width > 600 and $typical_width = 600;  #- try to not being crazy with a too large value
     $typical_width < 150 and $typical_width = 150;
-    #- XXX : work around bug in gtk2 that clobbers display (see bugzilla #16575)
-    #$textcolumn->set_min_width($typical_width*0.7);
 
     my $cursor_to_restore;
     $_->signal_connect(
