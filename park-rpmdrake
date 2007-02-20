@@ -150,7 +150,7 @@ sub populated_networks_to_raw_hosts {
     @{$group->{networks}} = grep { 
 	my @l = grep { $_->{selected} } $_->{mask_class} ? @{$_->{hosts}} : $_;
 	push @hosts, @l;
-	$_->{mask_class} && @l
+	$_->{mask_class} && @l;
     } @{$group->{networks}};
 
     $group->{raw_hosts} = [ map { host_to_raw_host($_) } @hosts ];
@@ -394,7 +394,7 @@ sub group_modify {
 		my $s = $tree_model->get($_[0], 1);
 		my $host = find { $s eq $_->{ip} } @{$network->{hosts}};
 		$host->{selected} = $tree_model->get($_[0], 0);
-	    })
+	    });
 	});
     };
 
