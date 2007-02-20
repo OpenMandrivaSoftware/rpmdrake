@@ -39,7 +39,7 @@ use Rpmdrake::pkg;
 use Rpmdrake::icon;
 use Gtk2::Gdk::Keysyms;
 
-our @EXPORT = qw(ask_browse_tree_info_given_widgets_for_rpmdrake build_tree callback_choices closure_removal do_action get_info is_locale_available pkgs_provider reset_search switch_pkg_list_mode
+our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices closure_removal do_action get_info is_locale_available pkgs_provider reset_search switch_pkg_list_mode
             $clear_button $dont_show_selections $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
 
 our $dont_show_selections = $> ? 1 : 0;
@@ -139,7 +139,7 @@ sub node_state {
                : ($urpm_obj->flag_base ? '/usr/share/rpmdrake/icons/base.png' : 'uninstalled')) : 'XXX';
 }
 
-# ask_browse_tree_info_given_widgets will run gtk+ loop. its main parameter "common" is a hash containing:
+# ask_browse_tree_given_widgets will run gtk+ loop. its main parameter "common" is a hash containing:
 # - a "widgets" subhash which holds:
 #   o a "w" reference on a ugtk2 object
 #   o "tree" & "info" references a TreeView
@@ -152,7 +152,7 @@ sub node_state {
 #   o "flat": is the tree flat or not
 # - "tree_mode": mode of the tree ("mandrake_choices", "by_group", ...) (mainly used by rpmdrake)
           
-sub ask_browse_tree_info_given_widgets_for_rpmdrake {
+sub ask_browse_tree_given_widgets_for_rpmdrake {
     my ($common) = @_;
     my $w = $common->{widgets};
 
