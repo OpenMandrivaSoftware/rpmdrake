@@ -607,7 +607,7 @@ sub toggle_nodes {
 }
 
 sub do_action {
-    my ($options, $callback_action, $info) = @_;
+    my ($options, $callback_action, $o_info) = @_;
     require urpm::sys;
     if (!urpm::sys::check_fs_writable()) {
         $urpm->{fatal}(1, N("Error: %s appears to be mounted read-only.", $urpm::sys::mountpoint));
@@ -635,7 +635,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
         $size_selected = 0;
         (undef, $size_free) = MDK::Common::System::df('/usr');
         $options->{rebuild_tree}->();
-        gtktext_insert($info, '');
+        gtktext_insert($o_info, '') if $o_info;
     }
 }
 
