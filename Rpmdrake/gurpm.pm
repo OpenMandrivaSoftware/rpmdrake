@@ -34,6 +34,7 @@ our ($mainw, $label, $progressbar, $vbox, $cancel, $hbox_cancel);
 sub init {
     my ($title, $initializing, %options) = @_;
     $mainw = ugtk2->new($title, %options);
+    $::main_window = $mainw->{real_window};
     $label = gtknew('Label', text => $initializing);
     $progressbar = gtknew('ProgressBar', width => 300);
     gtkadd($mainw->{window}, $vbox = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [ $label, $progressbar ]));
