@@ -50,5 +50,5 @@ install:
 	done
 
 clean:
-	@rm -rf *.mo *.pof *.pog $(POFILES:%=%t) $(PL_CFILES) $(PGOAL).pot desktopstuff.pot $(PGOAL)_tmp.pot
+	@rm -rf *.mo *.pof *.pog $(POFILES:%=%t) $(PL_CFILES) desktopstuff.pot $(PGOAL)_tmp.pot
 
