@@ -337,7 +337,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		$installed_pkgs{$fullname}{base} = \$name;
 		$pkg->set_flag_base(1) if $$name == 1;
 	    }
-	    $pkg->pack_header;
+	    $pkg->pack_header; # needed in order to call methods on objects outside ->traverse
 	});
     my $group;
     if ($::options{parallel} && (($group) = @{$::options{parallel}})) {
