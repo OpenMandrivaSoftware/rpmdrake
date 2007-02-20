@@ -67,6 +67,7 @@ use urpm::lock;
 use urpm::install;
 use Rpmdrake::gurpm;
 use Rpmdrake::rpmnew;
+use Rpmdrake::formatting;
 use urpm::signature;
 use urpm::get_pkgs;
 use urpm::select;
@@ -298,41 +299,6 @@ sub ctreefy {
     join('|', map { translate($_) } split m|/|, $_[0]);
 }
 
-sub rpm_summary {
-    my ($summary) = @_;
-    utf8::decode($summary);
-    $summary;
-}
-
-sub rpm_description {
-    my ($description) = @_;
-    utf8::decode($description);
-    my ($t, $tmp);
-    foreach (split "\n", $description) {
-	s/^\s*//;
-        if (/^$/ || /^\s*(-|\*|\+|o)\s/) {
-            $t || $tmp and $t .= "$tmp\n";
-            $tmp = $_;
-        } else {
-            $tmp = ($tmp ? "$tmp " : ($t && "\n") . $tmp) . $_;
-        }
-    }
-    "$t$tmp\n";
-}
-
-
-sub split_fullname { $_[0] =~ /^(.*)-([^-]+-[^-]+)$/ }
-sub my_fullname {
-    return '?-?-?' unless ref $_[0];
-    my ($name, $version, $release) = $_[0]->fullname;
-    "$name-$version-$release";
-}
-sub urpm_name {
-    return '?-?-?.?' unless ref $_[0];
-    my ($name, $version, $release, $arch) = $_[0]->fullname;
-    "$name-$version-$release.$arch";
-}
-
 sub parse_compssUsers_flat() {
     my (%compssUsers, $category);
     my $compss = '/var/lib/urpmi/compssUsers.flat';
@@ -357,22 +323,6 @@ sub parse_compssUsers_flat() {
     }
     \%compssUsers;
 }
-
-sub pkg2medium {
-    my ($p, $urpm) = @_;
-    foreach (@{$urpm->{media}}) {
-	!$_->{ignore} && $p->id <= $_->{end} and return $_;
-    }
-    undef;
-}
-
-#- strftime returns a string in the locale charset encoding;
-#- but gtk2 requires UTF-8, so we use to_utf8() to ensure the
-#- output of localtime2changelog() is always in UTF-8
-#- as to_utf8() uses LC_CTYPE for locale encoding and strftime() uses LC_TIME,
-#- it doesn't work if those two variables have values with different
-#- encodings; but if a user has a so broken setup we can't do much anyway
-sub localtime2changelog { to_utf8(strftime("%c", localtime($_[0]))) }
 
 sub run_rpm {
     foreach (qw(LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION LC_ALL)) {
