@@ -192,16 +192,15 @@ sub get_pkgs {
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::w->{real_window});
     my $_guard = before_leaving { Rpmdrake::gurpm::end() };
 
-    if (!$urpm) {
-        $urpm ||= urpm->new;
-        $urpm->{fatal} = $fatal_handler;
-        my $media = ref $::options{media} ? join(',', @{$::options{media}}) : '';
-        urpm::media::configure($urpm, media => $media);
-        if ($error_happened) {
-            touch('/etc/urpmi/urpmi.cfg');
-            exec('edit-urpm-sources.pl');
-        }
+    $urpm = urpm->new;
+    $urpm->{fatal} = $fatal_handler;
+    my $media = ref $::options{media} ? join(',', @{$::options{media}}) : '';
+    urpm::media::configure($urpm, media => $media);
+    if ($error_happened) {
+        touch('/etc/urpmi/urpmi.cfg');
+        exec('edit-urpm-sources.pl');
     }
+
     my $_lock = urpm::lock::urpmi_db($urpm);
     my $statedir = $urpm->{statedir};
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
