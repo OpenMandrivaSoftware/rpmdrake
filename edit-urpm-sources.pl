@@ -41,16 +41,8 @@ BEGIN { #- for mcc
     }
 }
 
-BEGIN {
-    eval {
-        require ugtk2; ugtk2->import(qw(:all));
-        require mygtk2; mygtk2->import(qw(gtknew gtkset));
-    };
-    if ($@) {
-	print "This program cannot be run in console mode ($@_).\n";
-	POSIX::_exit(0);  #- skip ugtk2::END
-    }
-}
+use mygtk2 qw(gtknew gtkset);
+use ugtk2 qw(:all);
 
 $ugtk2::wm_icon = "title-install";
 $::isStandalone = 1;
