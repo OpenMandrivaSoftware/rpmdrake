@@ -492,7 +492,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::w->{real_window});
     my $distant_progress;
     my $canceled;
-    my %sources = $urpm->download_source_packages(
+    my %sources = urpm::download_source_packages(
+	$urpm,
 	$local_sources,
 	$list,
 	force_local => 1, # removed in urpmi 4.8.7
@@ -521,7 +522,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     $canceled and goto return_with_error;
     Rpmdrake::gurpm::invalidate_cancel_forever();
 
-    my %sources_install = %{$urpm->extract_packages_to_install(\%sources, $urpm->{rpmdrake_state}) || {}};
+    my %sources_install = %{urpm::extract_packages_to_install($urpm, \%sources, $urpm->{rpmdrake_state}) || {}};
     my @rpms_install = grep { !/\.src\.rpm$/ } values %sources_install;
     my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
 

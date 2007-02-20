@@ -88,7 +88,7 @@ sub pkg2medium {
 #- as to_utf8() uses LC_CTYPE for locale encoding and strftime() uses LC_TIME,
 #- it doesn't work if those two variables have values with different
 #- encodings; but if a user has a so broken setup we can't do much anyway
-sub localtime2changelog { to_utf8(strftime("%c", localtime($_[0]))) }
+sub localtime2changelog { to_utf8(POSIX::strftime("%c", localtime($_[0]))) }
 
 sub format_header {
     my ($str) = @_;
