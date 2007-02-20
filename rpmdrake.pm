@@ -85,11 +85,7 @@ our @EXPORT = qw(
 our $typical_width = 280;
 unshift @::textdomains, 'rpmdrake', 'urpmi';
 
-eval { require ugtk2; ugtk2->import(qw(:all)) };
-if ($@) {
-    print "This program cannot be run in console mode.\n";
-    POSIX::_exit(0);  #- skip ugtk2::END
-}
+use ugtk2 qw(:all);
 ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 
 Locale::gettext::bind_textdomain_codeset('rpmdrake', 'UTF8');
