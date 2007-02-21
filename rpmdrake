@@ -48,8 +48,6 @@ our $w;
 my $treeview_dialog_run = 0;
 our $statusbar;
 
-sub wait_msg_with_banner { push @_, banner => 1 if $::isEmbedded && !$treeview_dialog_run; &statusbar_msg }
-
 warn_about_user_mode();
 
 my $db = open_db();
