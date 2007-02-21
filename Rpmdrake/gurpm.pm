@@ -31,9 +31,12 @@ use ugtk2 qw(:all);
 
 our ($mainw, $label, $progressbar, $vbox, $cancel, $hbox_cancel);
 
+my $previous_main_window;
+
 sub init {
     my ($title, $initializing, %options) = @_;
     $mainw = ugtk2->new($title, %options);
+    $previous_main_window = $::main_window;
     $::main_window = $mainw->{real_window};
     $label = gtknew('Label', text => $initializing);
     $progressbar = gtknew('ProgressBar', width => 300);
@@ -57,6 +60,7 @@ sub end() {
     $mainw and $mainw->destroy;
     $mainw = undef;
     $cancel = undef;  #- in case we'll do another one later
+    $::main_window = $previous_main_window;
 }
 
 sub validate_cancel {
