@@ -174,6 +174,7 @@ sub formatlistpkg { join("\n", sort { uc($a) cmp uc($b) } @_) }
 # -=-=-=---=-=-=---=-=-=-- install packages -=-=-=---=-=-=---=-=-=-
 
 
+our $probe_only_for_updates;
 sub get_pkgs {
     my ($urpm, $opts) = @_;
     my $update_name = 'update_source';
@@ -322,6 +323,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     Rpmdrake::gurpm::progress($level = 0.33);
     $reset_update->(0.66);
     my %installed_pkgs;
+    if (!$probe_only_for_updates) {
     $db->traverse(sub {
 	    my ($pkg) = @_;
 	    $update->();
@@ -341,6 +343,8 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     my $group;
     if ($::options{parallel} && (($group) = @{$::options{parallel}})) {
         urpm::media::configure($urpm, parallel => $group);
+    }
+
     }
 
     # find out availlable packages:
@@ -365,8 +369,10 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	start => 0,
 	end   => $#{$urpm->{depslist}},
     );
-    $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
-    $urpm->{depslist}[$_]->set_flag_installed foreach keys %$requested; #- pretend it's installed
+    if (!$probe_only_for_updates) {
+        $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
+        $urpm->{depslist}[$_]->set_flag_installed foreach keys %$requested; #- pretend it's installed
+    }
     $urpm->{rpmdrake_state} = $state; #- Don't forget it
     Rpmdrake::gurpm::progress($level = 0.7);
 
