@@ -207,7 +207,7 @@ sub add_parent {
 #   o "info" is a TextView
 #   o "tree_model" is the associated model of "tree"
 #   o "status" references a Label
-# - some methods: get_info, node_state, build_tree, grep_allowed_to_toggle, partialsel_unsel, grep_unselected, rebuild_tree, toggle_nodes, get_status
+# - some methods: get_info, node_state, build_tree, partialsel_unsel, grep_unselected, rebuild_tree, toggle_nodes, get_status
 # - "tree_submode": the default mode (by group, mandriva choice), ...
 # - "state": a hash of misc flags: => { flat => '0' },
 #   o "flat": is the tree flat or not
@@ -330,7 +330,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     my $children = sub { map { $w->{detail_list_model}->get($_, 0) } gtktreeview_children($w->{detail_list_model}, $_[0]) };
     $common->{toggle_all} = sub {
         my ($_val) = @_;
-		my @l = $common->{grep_allowed_to_toggle}($children->()) or return;
+		my @l = $children->() or return;
 
 		my @unsel = $common->{grep_unselected}(@l);
 		my @p = @unsel ?
