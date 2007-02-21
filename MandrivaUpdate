@@ -1,1 +1,149 @@
-rpmdrake
+#!/usr/bin/perl
+#*****************************************************************************
+#
+#  Copyright (c) 2002 Guillaume Cottenceau
+#  Copyright (c) 2002-2007 Thierry Vignaud <tvignaud@mandriva.com>
+#  Copyright (c) 2003, 2004, 2005 MandrakeSoft SA
+#  Copyright (c) 2005-2007 Mandriva SA
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License version 2, as
+#  published by the Free Software Foundation.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+#
+#*****************************************************************************
+#
+# $Id$
+
+use strict;
+use MDK::Common::Func 'any';
+use lib qw(/usr/lib/libDrakX);
+use common;
+use standalone;
+
+use Rpmdrake::init;
+use rpmdrake;
+use Rpmdrake::gui;
+use Rpmdrake::formatting;
+use Rpmdrake::pkg;
+
+use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
+use ugtk2 qw(:all);
+use Gtk2::Gdk::Keysyms;
+use Gtk2::SimpleList;
+
+$ugtk2::wm_icon = "title-$MODE";
+
+our $w;
+my $treeview_dialog_run = 0;
+our $statusbar;
+
+warn_about_user_mode();
+
+open_db();
+
+sub run_treeview_dialog {
+    my ($callback_action) = @_;
+
+    my ($size_selected, %elems);
+    my (undef, $size_free) = MDK::Common::System::df('/usr');
+
+    $w = ugtk2->new(N("Software Update"));
+    $::main_window = $w->{real_window};
+
+    ($typical_width) = string_size($w->{real_window}, translate("Graphical Environment") . "xmms-more-vis-plugins");
+    $typical_width > 600 and $typical_width = 600;  #- try to not being crazy with a too large value
+    $typical_width < 150 and $typical_width = 150;
+
+    gtkadd(
+	$w->{window},
+	gtkpack_(
+	    gtknew('VBox', spacing => 3),
+	    0, getbanner(),
+              0, gtknew('Title2', label => N("Here is the list of software packages updates")),
+              1, gtkadd(
+                  gtknew('Frame', border_width => 3, shadow_type => 'in'),
+gtknew('ScrolledWindow', width => $typical_width*0.9,
+                        child => my $list = Gtk2::SimpleList->new(
+                            " " . " " . " "    => 'bool', #N("Selected")
+                            " " . "" . " "        => 'markup', #N("Name")
+                        ),
+                    ),
+	    ),
+              0, gtknew('Label', font => '2'),
+              0, Gtk2::HSeparator->new,
+              0, gtknew('Label', font => '2'),
+		    0, gtkpack_(
+			gtknew('HBox', spacing => 20),
+			0, gtksignal_connect(
+			    Gtk2::Button->new(but_(N("Help"))),
+			    clicked => sub { rpmdrake::open_help($MODE) },
+			),
+			0, gtksignal_connect(
+			    Gtk2::Button->new(but_(N("Select all"))),
+			    clicked => sub {
+                       return if !ref($::options->{toggle_all});
+                       $::options->{toggle_all}->(1);
+                   },
+			),
+               1, gtknew('Label'),
+			0, my $action_button = gtksignal_connect(
+			    Gtk2::Button->new(but_(N("Apply"))),
+			    clicked => sub { do_action({ tree_mode => 'all_updates' }, $callback_action) },
+			),
+			0, gtksignal_connect(
+			    Gtk2::Button->new(but_(N("Quit"))),
+			    clicked => sub { Gtk2->main_quit },
+			),
+		    ),
+	    #0, $statusbar = Gtk2::Statusbar->new,
+	),
+    );
+    $statusbar = Gtk2::Statusbar->new;
+
+    $list->set_rules_hint(1);
+    $list->set_headers_visible(0);
+
+    $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
+
+    $w->{rwindow}->show_all;
+    $w->{rwindow}->set_sensitive(0);
+
+    pkgs_provider({}, $default_list_mode); # default mode
+
+    # select packages to update:
+    my @requested = $urpm->resolve_requested($db, $urpm->{state},
+                        { map { $pkgs->{$_}{pkg}->id => 1 } keys %$pkgs },
+                        callback_choices => \&callback_choices,
+                    );
+
+    @{$list->{data}} = map {
+        [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", rpm_summary($pkgs->{$_}{pkg}->summary)) ]
+    } sort keys %$pkgs;
+    $action_button->set_sensitive(0) if $>;
+
+    $w->{rwindow}->set_sensitive(1);
+
+    $treeview_dialog_run = 1;
+    $w->main;
+}
+
+
+# -=-=-=---=-=-=---=-=-=-- main -=-=-=---=-=-=---=-=-=-
+
+readconf();
+
+init();
+run_treeview_dialog(\&perform_installation);
+
+writeconf();
+
+myexit(0);
