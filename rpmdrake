@@ -27,20 +27,16 @@ use strict;
 use MDK::Common::Func 'any';
 use lib qw(/usr/lib/libDrakX);
 use common;
-use POSIX qw(_exit);
-use URPM;
 use utf8;
 use standalone;
 
 use Rpmdrake::init;
 use rpmdrake;
-use Rpmdrake::icon;
 use Rpmdrake::gui;
 use Rpmdrake::rpmnew;
 use Rpmdrake::formatting;
 use Rpmdrake::pkg;
 use urpm::media;
-use urpm::select;
 
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
