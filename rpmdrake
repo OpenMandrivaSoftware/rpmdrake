@@ -50,7 +50,7 @@ our $statusbar;
 
 warn_about_user_mode();
 
-my $db = open_db();
+open_db();
 
 sub do_search($$$$$$$) {
     my ($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) = @_;
