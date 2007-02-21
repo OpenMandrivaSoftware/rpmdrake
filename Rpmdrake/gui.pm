@@ -207,7 +207,7 @@ sub add_parent {
 #   o "info" is a TextView
 #   o "tree_model" is the associated model of "tree"
 #   o "status" references a Label
-# - some methods: get_info, node_state, build_tree, grep_allowed_to_toggle, partialsel_unsel, grep_unselected, rebuild_tree, toggle_nodes, check_interactive_to_toggle, get_status
+# - some methods: get_info, node_state, build_tree, grep_allowed_to_toggle, partialsel_unsel, grep_unselected, rebuild_tree, toggle_nodes, get_status
 # - "tree_submode": the default mode (by group, mandriva choice), ...
 # - "state": a hash of misc flags: => { flat => '0' },
 #   o "flat": is the tree flat or not
@@ -343,7 +343,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     my $fast_toggle = sub {
         my ($iter) = @_;
         gtkset_mousecursor_wait($w->{w}{rwindow}->window);
-        $common->{check_interactive_to_toggle}($iter) and toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, 2), $w->{detail_list_model}->get($iter, 0));
+        toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, 2), $w->{detail_list_model}->get($iter, 0));
 	    &$update_size;
 	    gtkset_mousecursor_normal($w->{w}{rwindow}->window);
     };

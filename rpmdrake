@@ -200,7 +200,6 @@ sub run_treeview_dialog {
 		? N("Selected: %s / Free disk space: %s", formatXiB($size_selected), formatXiB($size_free*1024))
 		: N("Selected size: %d MB", $size_selected/(1024*1024));
 	},
-	check_interactive_to_toggle => sub { 1 },
 	grep_allowed_to_toggle => sub { @_ },
 	rebuild_tree => sub {},
     };
