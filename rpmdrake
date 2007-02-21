@@ -557,11 +557,7 @@ readconf();
 
 init();
 
-if ($MODE eq 'remove') {
-    run_treeview_dialog(\&perform_removal);
-} else {
-    run_treeview_dialog(\&perform_installation);
-}
+run_treeview_dialog(\&perform_installation);
 
 writeconf();
 
