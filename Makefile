@@ -1,4 +1,4 @@
-VERSION = $(shell awk '/define version/ { print $$3 }' $(NAME).spec)
+VERSION = 3.25
 NAME = rpmdrake
 
 DIRS = grpmi po data
@@ -63,15 +63,6 @@ dis: clean
 	tar cf ../$(NAME)-$(VERSION).tar $(NAME)-$(VERSION)
 	bzip2 -9f ../$(NAME)-$(VERSION).tar
 	rm -rf $(NAME)-$(VERSION)
-
-srpm: dis ../$(NAME)-$(VERSION).tar.bz2 $(RPM)
-	cp -f ../$(NAME)-$(VERSION).tar.bz2 $(RPM)/SOURCES
-	cp -f $(NAME).spec $(RPM)/SPECS/
-	rm -f ../$(NAME)-$(VERSION).tar.bz2
-	rpm -bs $(NAME).spec
-
-rpm: srpm
-	rpm -bb --clean --rmsource $(NAME).spec
 
 .PHONY: ChangeLog log changelog
 
