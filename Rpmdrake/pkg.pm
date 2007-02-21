@@ -290,6 +290,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     
     my $reset_update = sub { undef $prev_stage; $count = 0; $limit = $_[0] };
     my $update = sub {
+        return if !$total; # don't die if there's no source
         $count++;
         $new_stage = $level+($limit-$level)*$count/$total;
         if ($prev_stage + 0.01 < $new_stage) {
@@ -685,7 +686,7 @@ sub perform_removal {
     my @results;
     slow_func_statusbar(
 	N("Please wait, removing packages..."),
-	$::main_window->{real_window},
+	$::main_window,
 	sub {
 	    @results = $::options{parallel}
 		? urpm::parallel::remove($urpm, \@toremove)
