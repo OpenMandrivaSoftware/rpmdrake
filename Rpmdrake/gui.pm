@@ -370,7 +370,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     $w->{w}->main;
 }
 
-my ($clear_button, $find_entry);
+our ($clear_button, $find_entry);
 
 sub reset_search() {
     $clear_button and $clear_button->set_sensitive(0);
