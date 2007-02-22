@@ -893,10 +893,10 @@ sub mainwindow() {
     my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('browse');
-    my ($up_button, $dw_button, $remove_button);
+    my ($up_button, $dw_button, $remove_button, $edit_button);
     $list_tv->get_selection->signal_connect(changed => sub {
         my ($model, $iter) = $_[0]->get_selected;
-        $remove_button and $remove_button->set_sensitive(defined $iter);
+        $_ and $_->set_sensitive(defined $iter) foreach $remove_button, $edit_button;
         return if !$iter;
         my $curr_path = $model->get_path($iter);
         my $first_path = $model->get_path($model->get_iter_first);
@@ -927,8 +927,8 @@ sub mainwindow() {
 	},
     );
 
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled?"), my $tr = Gtk2::CellRendererToggle->new, 'active' => 0));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates?"), my $cu = Gtk2::CellRendererToggle->new, 'active' => 1));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled"), my $tr = Gtk2::CellRendererToggle->new, 'active' => 0));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates"), my $cu = Gtk2::CellRendererToggle->new, 'active' => 1));
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 2));
 
     my $reread_media; #- closure defined later
@@ -998,7 +998,7 @@ sub mainwindow() {
 			clicked => sub { remove_callback() and $reread_media->() },
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Edit..."))),
+			$edit_button = Gtk2::Button->new(but(N("Edit..."))),
 			clicked => sub {
 			    my $name = edit_callback(); defined $name and $reread_media->($name);
 			}
