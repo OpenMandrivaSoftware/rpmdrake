@@ -97,7 +97,7 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
 			),
                1, gtknew('Label'),
 			0, my $action_button = gtksignal_connect(
-			    Gtk2::Button->new(but_(N("Apply"))),
+			    Gtk2::Button->new(but_(N("Update"))),
 			    clicked => sub { do_action({ tree_mode => 'all_updates' }, $callback_action) },
 			),
 			0, gtksignal_connect(
