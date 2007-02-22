@@ -29,7 +29,7 @@ use common;
 use rpmdrake;
 use URPM::Signature;
 use POSIX qw(_exit);
-use MDK::Common qw(max);
+use MDK::Common::Math qw(max);
 use urpm::media;
 use urpm::download;
 use urpm::lock;
