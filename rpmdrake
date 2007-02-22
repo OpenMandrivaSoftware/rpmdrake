@@ -400,7 +400,8 @@ sub run_treeview_dialog {
 	if_(!$>,
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
 	    [ N("/_Options") . N("/_Media Manager"), undef, sub {
-               run_program::raw({ detach => 1 }, 'edit-urpm-sources.pl');
+               require Rpmdrake::edit_urpm_sources;
+               Rpmdrake::edit_urpm_sources::run();
            }, undef, '<Item>' ],
 	    [ N("/_Options") . N("/_Show automatically selected packages"), undef, sub {
 		$dont_show_selections = !$checkbox_show_autoselect->get_active;
