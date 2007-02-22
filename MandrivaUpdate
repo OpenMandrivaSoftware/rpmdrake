@@ -27,9 +27,9 @@ use strict;
 use MDK::Common::Func 'any';
 use lib qw(/usr/lib/libDrakX);
 use common;
-use standalone;
 
 use Rpmdrake::init;
+use standalone;  #- standalone must be loaded very first, for 'explanations', but after rpmdrake::init
 use rpmdrake;
 use Rpmdrake::gui;
 use Rpmdrake::formatting;
