@@ -100,7 +100,7 @@ chomp $mandrake_release;
 our $branded;
 $branded = -f '/etc/sysconfig/oem'
     and our %distrib = MDK::Common::System::distrib();
-our $myname_update = $rpmdrake::branded ? N("Software Update") : N("Mandriva Linux Update");
+our $myname_update = $branded ? N("Software Update") : N("Mandriva Linux Update");
 
 @rpmdrake::prompt::ISA = 'urpm::prompt';
 
