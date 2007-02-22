@@ -97,7 +97,8 @@ our $mandrake_release = cat_(
 ) || '';
 chomp $mandrake_release;
 (our $mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
-our $branded = -f '/etc/sysconfig/oem'
+our $branded;
+$branded = -f '/etc/sysconfig/oem'
     and our %distrib = MDK::Common::System::distrib();
 our $myname_update = $rpmdrake::branded ? N("Software Update") : N("Mandriva Linux Update");
 
