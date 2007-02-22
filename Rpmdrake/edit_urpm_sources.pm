@@ -887,7 +887,7 @@ sub keys_callback() {
 }
 
 sub mainwindow() {
-    $mainw = ugtk2->new(N("Configure media"), center => 1);
+    $mainw = ugtk2->new(N("Configure media"), center => 1, transient => $::main_window, modal => 1);
     $::main_window = $mainw->{real_window};
 
     my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
