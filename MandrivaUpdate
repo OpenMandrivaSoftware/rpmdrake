@@ -128,7 +128,7 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
                     );
 
     @{$list->{data}} = map {
-        [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", rpm_summary($pkgs->{$_}{pkg}->summary)) ]
+        [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", translate(rpm_summary($pkgs->{$_}{pkg}->summary))) ]
     } sort keys %$pkgs;
     $action_button->set_sensitive(0) if $>;
 
