@@ -893,9 +893,10 @@ sub mainwindow() {
     my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('browse');
-    my ($up_button, $dw_button);
+    my ($up_button, $dw_button, $remove_button);
     $list_tv->get_selection->signal_connect(changed => sub {
         my ($model, $iter) = $_[0]->get_selected;
+        $remove_button and $remove_button->set_sensitive(defined $iter);
         return if !$iter;
         my $curr_path = $model->get_path($iter);
         my $first_path = $model->get_path($model->get_iter_first);
@@ -993,7 +994,7 @@ sub mainwindow() {
 		0, gtkpack__(
 		    gtknew('VBox', spacing => 5),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Remove"))),
+			$remove_button = Gtk2::Button->new(but(N("Remove"))),
 			clicked => sub { remove_callback() and $reread_media->() },
 		    ),
 		    gtksignal_connect(
