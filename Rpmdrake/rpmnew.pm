@@ -27,11 +27,14 @@ use strict;
 use lib qw(/usr/lib/libDrakX);
 use common;
 use rpmdrake;
+use Rpmdrake::init;
+use Rpmdrake::pkg;
+use Rpmdrake::formatting;
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(dialog_rpmnew);
+our @EXPORT = qw(do_merge_if_needed);
 
 # /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
 my %ignores_rpmnew = map { $_ => 1 } qw(
@@ -157,6 +160,24 @@ sub dialog_rpmnew {
 	    clicked => sub { Gtk2->main_quit }) ]
     );
     return 0;
+}
+
+
+sub do_merge_if_needed() {
+    if ($options{'merge-all-rpmnew'}) {
+        my %pkg2rpmnew;
+        my $wait = wait_msg(N("Please wait, searching..."));
+        print "Searching .rpmnew and .rpmsave files...\n";
+        $Rpmdrake::pkg::db->traverse(sub {
+                          my $n = my_fullname($_[0]);
+                          $pkg2rpmnew{$n} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") } map { chomp_($_) } $_[0]->files ];
+                      });
+        print "done.\n";
+        undef $wait;
+        $typical_width = 330;
+        dialog_rpmnew('', %pkg2rpmnew) and print "Nothing to do.\n";
+        myexit(0);
+    }
 }
 
 1;

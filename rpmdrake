@@ -540,20 +540,7 @@ sub run_treeview_dialog {
 
 # -=-=-=---=-=-=---=-=-=-- main -=-=-=---=-=-=---=-=-=-
 
-if ($options{'merge-all-rpmnew'}) {
-    my %pkg2rpmnew;
-    my $wait = wait_msg(N("Please wait, searching..."));
-    print "Searching .rpmnew and .rpmsave files...\n";
-    $db->traverse(sub {
-		     my $n = my_fullname($_[0]);
-		     $pkg2rpmnew{$n} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") } map { chomp_($_) } $_[0]->files ];
-		 });
-    print "done.\n";
-    undef $wait;
-    $typical_width = 330;
-    dialog_rpmnew('', %pkg2rpmnew) and print "Nothing to do.\n";
-    myexit(0);
-}
+do_merge_if_needed();
 
 readconf();
 
