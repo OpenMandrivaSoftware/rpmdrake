@@ -32,6 +32,7 @@ use Rpmdrake::init;
 use standalone;  #- standalone must be loaded very first, for 'explanations', but after rpmdrake::init
 use rpmdrake;
 use Rpmdrake::gui;
+use Rpmdrake::rpmnew;
 use Rpmdrake::formatting;
 use Rpmdrake::pkg;
 
@@ -139,6 +140,8 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
 
 
 # -=-=-=---=-=-=---=-=-=-- main -=-=-=---=-=-=---=-=-=-
+
+do_merge_if_needed();
 
 readconf();
 
