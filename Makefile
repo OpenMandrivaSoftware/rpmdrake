@@ -1,4 +1,4 @@
-VERSION = 3.25
+VERSION = 3.28
 NAME = rpmdrake
 
 DIRS = grpmi po data
@@ -9,6 +9,8 @@ BINDIR = $(PREFIX)/bin
 SBINDIR = $(PREFIX)/sbin
 RELATIVE_SBIN = ../sbin
 RPM=$(shell rpm --eval %_topdir)
+PERL_VENDORLIB=$(DESTDIR)/$(shell perl -V:installvendorlib   | perl -pi -e "s/.*=//; s/[;']//g")
+PERL_VENDORARCH=$(DESTDIR)/$(shell perl -V:installvendorarch | perl -pi -e "s/.*=//; s/[;']//g")
 
 all: dirs
 
@@ -22,9 +24,8 @@ install: $(ALL)
 		(cd $$n; $(MAKE) install) \
 	done
 	install -d $(SBINDIR)
-	install rpmdrake park-rpmdrake edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
+	install rpmdrake park-rpmdrake MandrivaUpdate edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
 	ln -sf rpmdrake $(SBINDIR)/rpmdrake-remove
-	ln -sf rpmdrake $(SBINDIR)/MandrivaUpdate
 	install -d $(BINDIR)
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/rpmdrake
 	ln -sf $(RELATIVE_SBIN)/rpmdrake-remove $(BINDIR)/rpmdrake-remove
@@ -40,6 +41,9 @@ install: $(ALL)
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
 	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
+	mkdir -p $(PERL_VENDORLIB)/Rpmdrake
+	install -m 644 rpmdrake.pm $(PERL_VENDORLIB)
+	install -m 644 Rpmdrake/*.pm $(PERL_VENDORLIB)/Rpmdrake
 
 clean:
 	@for n in $(DIRS); do \
