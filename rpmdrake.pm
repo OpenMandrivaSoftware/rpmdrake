@@ -96,10 +96,10 @@ our $mandrake_release = cat_(
     -e '/etc/mandrakelinux-release' ? '/etc/mandrakelinux-release' : '/etc/release'
 ) || '';
 chomp $mandrake_release;
-(our $mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
-our $branded;
+our ($mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
+our ($branded, %distrib);
 $branded = -f '/etc/sysconfig/oem'
-    and our %distrib = MDK::Common::System::distrib();
+    and %distrib = MDK::Common::System::distrib();
 our $myname_update = $branded ? N("Software Update") : N("Mandriva Linux Update");
 
 @rpmdrake::prompt::ISA = 'urpm::prompt';
