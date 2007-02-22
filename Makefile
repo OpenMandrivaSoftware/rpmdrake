@@ -63,7 +63,7 @@ tar:
 dis: clean
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
 	svn export -q . $(NAME)-$(VERSION)
-	find $(NAME)-$(VERSION) -type d -name .svn -o -name .cvsignore |xargs rm -rf
+	find $(NAME)-$(VERSION) -name .cvsignore |xargs rm -rf
 	tar cf ../$(NAME)-$(VERSION).tar $(NAME)-$(VERSION)
 	bzip2 -9f ../$(NAME)-$(VERSION).tar
 	rm -rf $(NAME)-$(VERSION)
