@@ -49,8 +49,6 @@ $::isStandalone = 1;
 
 require_root_capability();
 
-*urpm::msg::translate = \&common::translate;
-
 my $urpm;
 my ($mainw, $list_tv);
 
