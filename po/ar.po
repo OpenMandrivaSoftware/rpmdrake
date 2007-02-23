@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-21 17:11+0100\n"
+"POT-Creation-Date: 2007-02-23 15:31+0100\n"
 "PO-Revision-Date: 2005-02-24 23:28+0300\n"
 "Last-Translator: Ossama M. Khayat <okhayat@yahoo.com>\n"
 "Language-Team: Arabic <support@arabeyes.org>\n"
@@ -16,14 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : "
+"3\n"
 
-#: ../edit-urpm-sources.pl:85
+#: ../Rpmdrake/edit_urpm_sources.pm:67
 #, c-format
 msgid "Choose media type"
 msgstr "اختيار نوع الوسط"
 
-#: ../edit-urpm-sources.pl:86
+#: ../Rpmdrake/edit_urpm_sources.pm:68
 #, c-format
 msgid ""
 "This step enables you to add sources from a Mandriva Linux web or FTP "
@@ -45,17 +46,17 @@ msgstr ""
 "التحديثات الرسميّة لتوزيعتك. (يمكنك إضافة كلتاها، ولكن سيتوجب عليك\n"
 "عمل ذلك بخطوتين)."
 
-#: ../edit-urpm-sources.pl:94
+#: ../Rpmdrake/edit_urpm_sources.pm:76
 #, c-format
 msgid "Distribution sources"
 msgstr "مصادر التوزيعة"
 
-#: ../edit-urpm-sources.pl:94
+#: ../Rpmdrake/edit_urpm_sources.pm:76
 #, c-format
 msgid "Official updates"
 msgstr "تحديثات رسميّة"
 
-#: ../edit-urpm-sources.pl:97
+#: ../Rpmdrake/edit_urpm_sources.pm:79
 #, c-format
 msgid ""
 "This will attempt to install all official sources corresponding to your\n"
@@ -74,234 +75,236 @@ msgstr ""
 "\n"
 "هل من الممكن المتابعة؟"
 
-#: ../edit-urpm-sources.pl:111
+#: ../Rpmdrake/edit_urpm_sources.pm:93
 #, c-format
 msgid "Please wait, adding media..."
 msgstr "انتظر من فضلك، جاري إضافة الوسائط..."
 
-#: ../edit-urpm-sources.pl:144
+#: ../Rpmdrake/edit_urpm_sources.pm:126
 #, c-format
 msgid "Add a medium"
 msgstr "أضف وسيط"
 
-#: ../edit-urpm-sources.pl:146
+#: ../Rpmdrake/edit_urpm_sources.pm:130
 #, c-format
 msgid "Local files"
 msgstr "ملفات محلية"
 
-#: ../edit-urpm-sources.pl:146
+#: ../Rpmdrake/edit_urpm_sources.pm:130
 #, c-format
 msgid "Path:"
 msgstr "المسار:"
 
-#: ../edit-urpm-sources.pl:147
+#: ../Rpmdrake/edit_urpm_sources.pm:131
 #, c-format
 msgid "FTP server"
 msgstr "خادم FTP"
 
-#: ../edit-urpm-sources.pl:147 ../edit-urpm-sources.pl:148
-#: ../edit-urpm-sources.pl:149 ../edit-urpm-sources.pl:414
+#: ../Rpmdrake/edit_urpm_sources.pm:131 ../Rpmdrake/edit_urpm_sources.pm:132
+#: ../Rpmdrake/edit_urpm_sources.pm:133 ../Rpmdrake/edit_urpm_sources.pm:402
 #, c-format
 msgid "URL:"
 msgstr "العنوان:"
 
-#: ../edit-urpm-sources.pl:148
+#: ../Rpmdrake/edit_urpm_sources.pm:132
 #, fuzzy, c-format
 msgid "RSYNC server"
 msgstr "خادم FTP"
 
-#: ../edit-urpm-sources.pl:149
+#: ../Rpmdrake/edit_urpm_sources.pm:133
 #, c-format
 msgid "HTTP server"
 msgstr "خادم HTTP"
 
-#: ../edit-urpm-sources.pl:150
+#: ../Rpmdrake/edit_urpm_sources.pm:134
 #, c-format
 msgid "Removable device"
 msgstr "الأجهزة القابلة للإزالة"
 
-#: ../edit-urpm-sources.pl:150
+#: ../Rpmdrake/edit_urpm_sources.pm:134
 #, c-format
 msgid "Path or mount point:"
 msgstr "المسار أو نقطة التحميل:"
 
-#: ../edit-urpm-sources.pl:169
+#: ../Rpmdrake/edit_urpm_sources.pm:152
 #, c-format
 msgid "Browse..."
 msgstr "استعرض..."
 
-#: ../edit-urpm-sources.pl:196
+#: ../Rpmdrake/edit_urpm_sources.pm:179
 #, c-format
 msgid "Login:"
 msgstr "اسم الدخول:"
 
-#: ../edit-urpm-sources.pl:196 ../edit-urpm-sources.pl:499 ../rpmdrake.pm:132
+#: ../Rpmdrake/edit_urpm_sources.pm:179 ../Rpmdrake/edit_urpm_sources.pm:488
+#: ../rpmdrake.pm:131
 #, c-format
 msgid "Password:"
 msgstr "كلمة المرور:"
 
-#: ../edit-urpm-sources.pl:201 ../edit-urpm-sources.pl:415
+#: ../Rpmdrake/edit_urpm_sources.pm:184 ../Rpmdrake/edit_urpm_sources.pm:403
 #, c-format
 msgid "Relative path to synthesis/hdlist:"
 msgstr "المسار الى ملف التخليق أو hdlist:"
 
-#: ../edit-urpm-sources.pl:203
+#: ../Rpmdrake/edit_urpm_sources.pm:186
 #, c-format
 msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "اذا تم تركه فارغاً سيتم البحث عن synthesis/hdlist تلقائياً"
 
-#: ../edit-urpm-sources.pl:208
+#: ../Rpmdrake/edit_urpm_sources.pm:191
 #, c-format
 msgid "Name:"
 msgstr "الإسم:"
 
-#: ../edit-urpm-sources.pl:216
+#: ../Rpmdrake/edit_urpm_sources.pm:199
 #, c-format
 msgid "Create media for a whole distribution"
 msgstr "إنشاء وسط لتوزيعة كاملة"
 
-#: ../edit-urpm-sources.pl:227
+#: ../Rpmdrake/edit_urpm_sources.pm:210
 #, fuzzy, c-format
 msgid "Search this media for updates"
 msgstr "اختر الوسائط التي تريد تحديثها:"
 
-#: ../edit-urpm-sources.pl:237
+#: ../Rpmdrake/edit_urpm_sources.pm:220
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "يجب عليك ملء الحقلين الأولين على الأقل."
 
-#: ../edit-urpm-sources.pl:241
+#: ../Rpmdrake/edit_urpm_sources.pm:224
 #, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
 "really want to replace it?"
 msgstr "هناك وسيط بهذا الإسم مسبقاً، هل تريد استبداله فعلاً؟"
 
-#: ../edit-urpm-sources.pl:252
+#: ../Rpmdrake/edit_urpm_sources.pm:236
 #, c-format
 msgid "Adding a medium:"
 msgstr "جاري اضافة وسيط"
 
-#: ../edit-urpm-sources.pl:254
+#: ../Rpmdrake/edit_urpm_sources.pm:238
 #, c-format
 msgid "Type of medium:"
 msgstr "نوع الوسط:"
 
-#: ../edit-urpm-sources.pl:262 ../edit-urpm-sources.pl:337
-#: ../edit-urpm-sources.pl:424 ../edit-urpm-sources.pl:451
-#: ../edit-urpm-sources.pl:516 ../edit-urpm-sources.pl:598
-#: ../edit-urpm-sources.pl:638 ../edit-urpm-sources.pl:696
-#: ../edit-urpm-sources.pl:841 ../rpmdrake:208 ../rpmdrake:956
-#: ../rpmdrake:1946 ../rpmdrake:1954 ../rpmdrake.pm:288 ../rpmdrake.pm:597
-#: ../rpmdrake.pm:683 ../rpmdrake.pm:756
+#: ../Rpmdrake/edit_urpm_sources.pm:248 ../Rpmdrake/edit_urpm_sources.pm:324
+#: ../Rpmdrake/edit_urpm_sources.pm:412 ../Rpmdrake/edit_urpm_sources.pm:439
+#: ../Rpmdrake/edit_urpm_sources.pm:505 ../Rpmdrake/edit_urpm_sources.pm:589
+#: ../Rpmdrake/edit_urpm_sources.pm:630 ../Rpmdrake/edit_urpm_sources.pm:688
+#: ../Rpmdrake/edit_urpm_sources.pm:836 ../Rpmdrake/gui.pm:478
+#: ../Rpmdrake/init.pm:119 ../Rpmdrake/pkg.pm:511 ../Rpmdrake/pkg.pm:519
+#: ../rpmdrake.pm:289 ../rpmdrake.pm:602 ../rpmdrake.pm:687 ../rpmdrake.pm:760
 #, c-format
 msgid "Cancel"
 msgstr "الغاء"
 
-#: ../edit-urpm-sources.pl:264 ../edit-urpm-sources.pl:339
-#: ../edit-urpm-sources.pl:451 ../edit-urpm-sources.pl:506
-#: ../edit-urpm-sources.pl:595 ../edit-urpm-sources.pl:637
-#: ../edit-urpm-sources.pl:689 ../edit-urpm-sources.pl:761
-#: ../edit-urpm-sources.pl:887 ../edit-urpm-sources.pl:1036 ../rpmdrake:208
-#: ../rpmdrake:956 ../rpmdrake:973 ../rpmdrake:978 ../rpmdrake:1852
-#: ../rpmdrake:1946 ../rpmdrake:2093 ../rpmdrake.pm:123 ../rpmdrake.pm:228
-#: ../rpmdrake.pm:290 ../rpmdrake.pm:597
+#: ../Rpmdrake/edit_urpm_sources.pm:250 ../Rpmdrake/edit_urpm_sources.pm:326
+#: ../Rpmdrake/edit_urpm_sources.pm:439 ../Rpmdrake/edit_urpm_sources.pm:495
+#: ../Rpmdrake/edit_urpm_sources.pm:586 ../Rpmdrake/edit_urpm_sources.pm:629
+#: ../Rpmdrake/edit_urpm_sources.pm:681 ../Rpmdrake/edit_urpm_sources.pm:754
+#: ../Rpmdrake/edit_urpm_sources.pm:882 ../Rpmdrake/edit_urpm_sources.pm:1032
+#: ../Rpmdrake/gui.pm:478 ../Rpmdrake/gui.pm:494 ../Rpmdrake/gui.pm:499
+#: ../Rpmdrake/init.pm:119 ../Rpmdrake/pkg.pm:511 ../Rpmdrake/pkg.pm:658
+#: ../Rpmdrake/rpmnew.pm:159 ../rpmdrake.pm:122 ../rpmdrake.pm:229
+#: ../rpmdrake.pm:291 ../rpmdrake.pm:602
 #, c-format
 msgid "Ok"
 msgstr "موافق"
 
-#: ../edit-urpm-sources.pl:321
+#: ../Rpmdrake/edit_urpm_sources.pm:307
 #, c-format
 msgid "Global options for package installation"
 msgstr "الخيارات العامّة لتثبيت الحزم"
 
-#: ../edit-urpm-sources.pl:323
+#: ../Rpmdrake/edit_urpm_sources.pm:310
 #, c-format
 msgid "always"
 msgstr "دائماً"
 
-#: ../edit-urpm-sources.pl:324
+#: ../Rpmdrake/edit_urpm_sources.pm:311
 #, c-format
 msgid "never"
 msgstr "بتاتاً"
 
-#: ../edit-urpm-sources.pl:333
+#: ../Rpmdrake/edit_urpm_sources.pm:320
 #, c-format
 msgid "Verify RPMs to be installed:"
 msgstr "التحقق من الحزم المطلوب تثبيتها:"
 
-#: ../edit-urpm-sources.pl:334
+#: ../Rpmdrake/edit_urpm_sources.pm:321
 #, c-format
 msgid "Download program to use:"
 msgstr "برنامج التنزيل المطلوب استخدامه:"
 
-#: ../edit-urpm-sources.pl:364
+#: ../Rpmdrake/edit_urpm_sources.pm:351
 #, c-format
 msgid "Source Removal"
 msgstr "إزالة المصدر"
 
-#: ../edit-urpm-sources.pl:365
+#: ../Rpmdrake/edit_urpm_sources.pm:352
 #, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "هل أنت متأكد أنك تريد إزالة المصدر \"%s\"؟"
 
-#: ../edit-urpm-sources.pl:370
+#: ../Rpmdrake/edit_urpm_sources.pm:357
 #, c-format
 msgid "Please wait, removing medium..."
 msgstr "انتظر من فضلك، جاري اضافة الوسيط...."
 
-#: ../edit-urpm-sources.pl:405
+#: ../Rpmdrake/edit_urpm_sources.pm:392
 #, c-format
 msgid "Edit a medium"
 msgstr "تحرير وسيط"
 
-#: ../edit-urpm-sources.pl:411
+#: ../Rpmdrake/edit_urpm_sources.pm:399
 #, c-format
 msgid "Editing medium \"%s\":"
 msgstr "جاري تحرير الوسيط \"%s\":"
 
-#: ../edit-urpm-sources.pl:416
+#: ../Rpmdrake/edit_urpm_sources.pm:404
 #, c-format
 msgid "Downloader:"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:428
+#: ../Rpmdrake/edit_urpm_sources.pm:416
 #, c-format
 msgid "Save changes"
 msgstr "احفظ التغييرات"
 
-#: ../edit-urpm-sources.pl:437 ../edit-urpm-sources.pl:1023
+#: ../Rpmdrake/edit_urpm_sources.pm:425 ../Rpmdrake/edit_urpm_sources.pm:1019
 #, c-format
 msgid "Proxy..."
 msgstr "اعدادات البروكسي..."
 
-#: ../edit-urpm-sources.pl:449
+#: ../Rpmdrake/edit_urpm_sources.pm:437
 #, c-format
 msgid "You need to insert the medium to continue"
 msgstr "تحتاج الى ادخال الوسيط للمتابعة"
 
-#: ../edit-urpm-sources.pl:450
+#: ../Rpmdrake/edit_urpm_sources.pm:438
 #, c-format
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr "لكي يتم حفظ التغييرات، تحتاج الى ادخال الوسيط في السواقة."
 
-#: ../edit-urpm-sources.pl:471
+#: ../Rpmdrake/edit_urpm_sources.pm:459
 #, c-format
 msgid "Configure proxies"
 msgstr "تهيئة البروكسي"
 
-#: ../edit-urpm-sources.pl:482
+#: ../Rpmdrake/edit_urpm_sources.pm:471
 #, c-format
 msgid "Proxy settings for media \"%s\""
 msgstr "إعدادات البروكسي للوسيط \"%s\""
 
-#: ../edit-urpm-sources.pl:483
+#: ../Rpmdrake/edit_urpm_sources.pm:472
 #, c-format
 msgid "Global proxy settings"
 msgstr "إعدادات البروكسي الشّاملة"
 
-#: ../edit-urpm-sources.pl:485
+#: ../Rpmdrake/edit_urpm_sources.pm:474
 #, c-format
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
@@ -310,171 +313,172 @@ msgstr ""
 "اذا كنت تحتاج الى بروكسي، أدخل اسم المستضيف و المنفذ (على الشكل التالي: <اسم "
 "المستضيف[:المنفذ[>):"
 
-#: ../edit-urpm-sources.pl:488
+#: ../Rpmdrake/edit_urpm_sources.pm:477
 #, c-format
 msgid "Proxy hostname:"
 msgstr "اسم مستضيف البروكسي"
 
-#: ../edit-urpm-sources.pl:491
+#: ../Rpmdrake/edit_urpm_sources.pm:480
 #, c-format
 msgid "You may specify a user/password for the proxy authentication:"
 msgstr "يجب عليك تحديد امس مستخدم/كلمة مرور للمصادقة في البروكسي:"
 
-#: ../edit-urpm-sources.pl:494
+#: ../Rpmdrake/edit_urpm_sources.pm:483
 #, c-format
 msgid "User:"
 msgstr "اسم المستخدم:"
 
-#: ../edit-urpm-sources.pl:566
+#: ../Rpmdrake/edit_urpm_sources.pm:555
 #, c-format
 msgid "Add a parallel group"
 msgstr "أضف مجموعة موازية"
 
-#: ../edit-urpm-sources.pl:566
+#: ../Rpmdrake/edit_urpm_sources.pm:555
 #, c-format
 msgid "Edit a parallel group"
 msgstr "حرر مجموعة متوازية"
 
-#: ../edit-urpm-sources.pl:577
+#: ../Rpmdrake/edit_urpm_sources.pm:567
 #, c-format
 msgid "Add a medium limit"
 msgstr "أضف حدود المصدر"
 
-#: ../edit-urpm-sources.pl:589
+#: ../Rpmdrake/edit_urpm_sources.pm:580
 #, c-format
 msgid "Choose a medium for adding in the media limit:"
 msgstr "اختر وسيط لإضافة حد الوسيط:"
 
-#: ../edit-urpm-sources.pl:626
+#: ../Rpmdrake/edit_urpm_sources.pm:617
 #, c-format
 msgid "Add a host"
 msgstr "أضف مستضيف"
 
-#: ../edit-urpm-sources.pl:632
+#: ../Rpmdrake/edit_urpm_sources.pm:624
 #, c-format
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr "أدخل اسم المستضيف أو عنوان IP الخاص بالمستضيف المطلوب اضافته:"
 
-#: ../edit-urpm-sources.pl:663
+#: ../Rpmdrake/edit_urpm_sources.pm:655
 #, c-format
 msgid "Editing parallel group \"%s\":"
 msgstr "جاري تحرير المجموعة الموازية \"%s\":"
 
-#: ../edit-urpm-sources.pl:667
+#: ../Rpmdrake/edit_urpm_sources.pm:659
 #, c-format
 msgid "Group name:"
 msgstr "اسم المجموعة:"
 
-#: ../edit-urpm-sources.pl:668
+#: ../Rpmdrake/edit_urpm_sources.pm:660
 #, c-format
 msgid "Protocol:"
 msgstr "البروتوكول:"
 
-#: ../edit-urpm-sources.pl:670
+#: ../Rpmdrake/edit_urpm_sources.pm:662
 #, c-format
 msgid "Media limit:"
 msgstr "حد الوسيط:"
 
-#: ../edit-urpm-sources.pl:675 ../edit-urpm-sources.pl:682
+#: ../Rpmdrake/edit_urpm_sources.pm:667 ../Rpmdrake/edit_urpm_sources.pm:674
 #, c-format
 msgid "Add"
 msgstr "أضف"
 
-#: ../edit-urpm-sources.pl:676 ../edit-urpm-sources.pl:683
-#: ../edit-urpm-sources.pl:741 ../edit-urpm-sources.pl:1001
+#: ../Rpmdrake/edit_urpm_sources.pm:668 ../Rpmdrake/edit_urpm_sources.pm:675
+#: ../Rpmdrake/edit_urpm_sources.pm:734 ../Rpmdrake/edit_urpm_sources.pm:997
 #, c-format
 msgid "Remove"
 msgstr "احذف"
 
-#: ../edit-urpm-sources.pl:677
+#: ../Rpmdrake/edit_urpm_sources.pm:669
 #, c-format
 msgid "Hosts:"
 msgstr "المستضيفات:"
 
-#: ../edit-urpm-sources.pl:711
+#: ../Rpmdrake/edit_urpm_sources.pm:703
 #, c-format
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr "قم بتهيئة urpmi المتوازي (تنفيذ موزع لـ urpmi)"
 
-#: ../edit-urpm-sources.pl:714
+#: ../Rpmdrake/edit_urpm_sources.pm:707
 #, c-format
 msgid "Group"
 msgstr "المجموعة"
 
-#: ../edit-urpm-sources.pl:714
+#: ../Rpmdrake/edit_urpm_sources.pm:707
 #, c-format
 msgid "Protocol"
 msgstr "البروتوكول"
 
-#: ../edit-urpm-sources.pl:714
+#: ../Rpmdrake/edit_urpm_sources.pm:707
 #, c-format
 msgid "Media limit"
 msgstr "حد الوسائط"
 
-#: ../edit-urpm-sources.pl:715
+#: ../Rpmdrake/edit_urpm_sources.pm:708
 #, c-format
 msgid "Command"
 msgstr "الأمر"
 
-#: ../edit-urpm-sources.pl:725 ../rpmdrake:465 ../rpmdrake:496 ../rpmdrake:635
-#: ../rpmdrake:882 ../rpmdrake:1773
+#: ../Rpmdrake/edit_urpm_sources.pm:718 ../Rpmdrake/gui.pm:680
+#: ../Rpmdrake/pkg.pm:98 ../Rpmdrake/pkg.pm:129 ../Rpmdrake/pkg.pm:168
+#: ../Rpmdrake/rpmnew.pm:80
 #, c-format
 msgid "(none)"
 msgstr "(لا شئ)"
 
-#: ../edit-urpm-sources.pl:745 ../edit-urpm-sources.pl:1005
+#: ../Rpmdrake/edit_urpm_sources.pm:738 ../Rpmdrake/edit_urpm_sources.pm:1001
 #, c-format
 msgid "Edit..."
 msgstr "حرّر"
 
-#: ../edit-urpm-sources.pl:753 ../edit-urpm-sources.pl:1011
+#: ../Rpmdrake/edit_urpm_sources.pm:746 ../Rpmdrake/edit_urpm_sources.pm:1007
 #, c-format
 msgid "Add..."
 msgstr "أضف..."
 
-#: ../edit-urpm-sources.pl:769
+#: ../Rpmdrake/edit_urpm_sources.pm:762
 #, c-format
 msgid "Manage keys for digital signatures of packages"
 msgstr "قم بإدارة المفاتيح للتواقيع الرقمية الخاصة بالحزم"
 
-#: ../edit-urpm-sources.pl:774 ../edit-urpm-sources.pl:936
+#: ../Rpmdrake/edit_urpm_sources.pm:768 ../Rpmdrake/edit_urpm_sources.pm:932
 #, c-format
 msgid "Medium"
 msgstr "الوسيط"
 
-#: ../edit-urpm-sources.pl:780
+#: ../Rpmdrake/edit_urpm_sources.pm:774
 #, c-format
 msgid ""
 "_:cryptographic keys\n"
 "Keys"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:803
+#: ../Rpmdrake/edit_urpm_sources.pm:797
 #, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr "تعذر ايجاد اسم، المفتاح لا يوجد في تشفير rpm!"
 
-#: ../edit-urpm-sources.pl:816
+#: ../Rpmdrake/edit_urpm_sources.pm:810
 #, c-format
 msgid "Add a key"
 msgstr "أضف مفتاح"
 
-#: ../edit-urpm-sources.pl:828
+#: ../Rpmdrake/edit_urpm_sources.pm:823
 #, c-format
 msgid "Choose a key for adding to the medium %s"
 msgstr "اختر مفتاح لإضافته الى الوسيط %s"
 
-#: ../edit-urpm-sources.pl:834
+#: ../Rpmdrake/edit_urpm_sources.pm:829
 #, c-format
 msgid "Close"
 msgstr "إغلاق"
 
-#: ../edit-urpm-sources.pl:856
+#: ../Rpmdrake/edit_urpm_sources.pm:851
 #, c-format
 msgid "Remove a key"
 msgstr "احذف مفتاح"
 
-#: ../edit-urpm-sources.pl:857
+#: ../Rpmdrake/edit_urpm_sources.pm:852
 #, c-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
@@ -483,37 +487,37 @@ msgstr ""
 "هل أنت متأكد أنك تريد حذف المفتاح %s للوسيط %s?\n"
 "(اسم المفتاح: %s)"
 
-#: ../edit-urpm-sources.pl:875
+#: ../Rpmdrake/edit_urpm_sources.pm:870
 #, c-format
 msgid "Add a key..."
 msgstr "أضف مفتاح..."
 
-#: ../edit-urpm-sources.pl:879
+#: ../Rpmdrake/edit_urpm_sources.pm:874
 #, c-format
 msgid "Remove key"
 msgstr "احذف المفتاح"
 
-#: ../edit-urpm-sources.pl:895
+#: ../Rpmdrake/edit_urpm_sources.pm:890
 #, c-format
 msgid "Configure media"
 msgstr "تهيئة الوسائط"
 
-#: ../edit-urpm-sources.pl:934
+#: ../Rpmdrake/edit_urpm_sources.pm:930
 #, c-format
-msgid "Enabled?"
+msgid "Enabled"
 msgstr "متاح؟"
 
-#: ../edit-urpm-sources.pl:935
+#: ../Rpmdrake/edit_urpm_sources.pm:931
 #, fuzzy, c-format
-msgid "Updates?"
+msgid "Updates"
 msgstr "حدّث"
 
-#: ../edit-urpm-sources.pl:951
+#: ../Rpmdrake/edit_urpm_sources.pm:947
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:981
+#: ../Rpmdrake/edit_urpm_sources.pm:977
 #, fuzzy, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -524,37 +528,38 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../edit-urpm-sources.pl:1015
+#: ../Rpmdrake/edit_urpm_sources.pm:1011
 #, c-format
 msgid "Add custom..."
 msgstr "إضافة مُخصص..."
 
-#: ../edit-urpm-sources.pl:1019
+#: ../Rpmdrake/edit_urpm_sources.pm:1015
 #, c-format
 msgid "Update..."
 msgstr "حدّث..."
 
-#: ../edit-urpm-sources.pl:1022
+#: ../Rpmdrake/edit_urpm_sources.pm:1018
 #, c-format
 msgid "Manage keys..."
 msgstr "قم بإدارة المفاتيح..."
 
-#: ../edit-urpm-sources.pl:1024
+#: ../Rpmdrake/edit_urpm_sources.pm:1020
 #, c-format
 msgid "Parallel..."
 msgstr "موازية..."
 
-#: ../edit-urpm-sources.pl:1025
+#: ../Rpmdrake/edit_urpm_sources.pm:1021
 #, c-format
 msgid "Global options..."
 msgstr "الخيارات العامّة..."
 
-#: ../edit-urpm-sources.pl:1035 ../rpmdrake:1425
+#: ../Rpmdrake/edit_urpm_sources.pm:1031 ../rpmdrake:472
 #, c-format
 msgid "Help"
 msgstr "مساعدة"
 
-#: ../edit-urpm-sources.pl:1051 ../gurpmi.addmedia:98 ../rpmdrake:2169
+#: ../Rpmdrake/edit_urpm_sources.pm:1044 ../Rpmdrake/init.pm:125
+#: ../gurpmi.addmedia:93
 #, c-format
 msgid ""
 "%s\n"
@@ -565,7 +570,7 @@ msgstr ""
 "\n"
 "هل من الممكن المتابعة؟"
 
-#: ../edit-urpm-sources.pl:1054
+#: ../Rpmdrake/edit_urpm_sources.pm:1047
 #, c-format
 msgid ""
 "Welcome to the Software Media Manager!\n"
@@ -580,7 +585,7 @@ msgstr ""
 "حاسوبك. عندها ستكون هذه المصادر موجودة لتثبيت حزم برمجية جديدة\n"
 "أو لعمل التحديثات."
 
-#: ../edit-urpm-sources.pl:1067
+#: ../Rpmdrake/edit_urpm_sources.pm:1063
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -592,956 +597,146 @@ msgstr ""
 "المستعملة لقاعدة بيانات الحزم (هل لديك مديروسائط آخر على سطح مكتب آخر، أو هل "
 "أنت تثبّت حزما حاليا كذلك ؟)."
 
-#: ../gurpmi.addmedia:88
-#, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "تعذّرت إضافة الوسيط، وسائط خاطئة أو ناقصة"
-
-#: ../gurpmi.addmedia:102
-#, fuzzy, c-format
-msgid ""
-"You are about to add new packages media, %s.\n"
-"That means you will be able to add new software packages\n"
-"to your system from these new media."
-msgstr ""
-"أنت بصدد إضافة وسيط رزمات جديد، `%s'.\n"
-"هذا يعني أنّه سيكون باستطاعتك إضافة رزمات برامج جديدة\n"
-"إلى نظامك من هذا الوسيط الجديد."
-
-#: ../gurpmi.addmedia:105
-#, c-format
-msgid ""
-"You are about to add a new packages medium, `%s'.\n"
-"That means you will be able to add new software packages\n"
-"to your system from that new medium."
-msgstr ""
-"أنت بصدد إضافة وسيط رزمات جديد، `%s'.\n"
-"هذا يعني أنّه سيكون باستطاعتك إضافة رزمات برامج جديدة\n"
-"إلى نظامك من هذا الوسيط الجديد."
-
-#: ../gurpmi.addmedia:130
-#, fuzzy, c-format
-msgid "Successfully added media %s."
-msgstr "تمّت إضافة الوسيط `%s' بنجاح."
-
-#: ../gurpmi.addmedia:131
-#, c-format
-msgid "Successfully added medium `%s'."
-msgstr "تمّت إضافة الوسيط `%s' بنجاح."
-
-#: ../rpmdrake:39
-#, c-format
-msgid "Usage: %s [OPTION]..."
-msgstr "الاستخدام: %s [خيارات]..."
-
-#: ../rpmdrake:40
-#, c-format
-msgid ""
-"  --changelog-first      display changelog before filelist in the "
-"description window"
-msgstr ""
-
-#: ../rpmdrake:41
-#, c-format
-msgid "  --media=medium1,..     limit to given media"
-msgstr ""
-
-#: ../rpmdrake:42
-#, c-format
-msgid ""
-"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
-msgstr ""
-
-#: ../rpmdrake:43
-#, c-format
-msgid "  --mode=MODE            set mode (install (default), remove, update)"
-msgstr ""
-
-#: ../rpmdrake:44
-#, c-format
-msgid ""
-"  --no-confirmation      don't ask first confirmation question in update mode"
-msgstr ""
-
-#: ../rpmdrake:45
-#, fuzzy, c-format
-msgid "  --no-media-update      don't update media at startup"
-msgstr "  --update       - حدّث فقط وسائط التّحديث.\n"
-
-#: ../rpmdrake:46
-#, fuzzy, c-format
-msgid "  --no-verify-rpm        don't verify packages signatures"
-msgstr "  --name         - إطبع أسماء الحزم فقط.\n"
-
-#: ../rpmdrake:47
-#, c-format
-msgid ""
-"  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
-"\" machine to show needed deps"
-msgstr ""
-
-#: ../rpmdrake:48
-#, c-format
-msgid "  --pkg-nosel=pkg1,..    show only these packages"
-msgstr ""
-
-#: ../rpmdrake:49
-#, c-format
-msgid "  --pkg-sel=pkg1,..      preselect these packages"
-msgstr ""
-
-#: ../rpmdrake:50
-#, fuzzy, c-format
-msgid "  --root                 force to run as root"
-msgstr ""
-"\n"
-"                      تقرير خدمة DrakBackup\n"
-
-#: ../rpmdrake:51
-#, c-format
-msgid "  --search=pkg           run search for \"pkg\""
-msgstr ""
-
-#: ../rpmdrake:205
-#, c-format
-msgid "Running in user mode"
-msgstr "جاري التشغيل في وضع المستخدم"
-
-#: ../rpmdrake:206
-#, c-format
-msgid ""
-"You are launching this program as a normal user.\n"
-"You will not be able to perform modifications on the system,\n"
-"but you may still browse the existing database."
-msgstr ""
-"أنت تقوم بتشغيل هذا البرنامج كمستخدم عادي.\n"
-"لن يكون باستطاعتك القيام بتعديلات على النظام،\n"
-"لكن لا يزال بإمكانك استعراض قاعدة البيانات الموجودة."
-
-#: ../rpmdrake:214
-#, c-format
-msgid "Accessibility"
-msgstr "تسهيلات المعاقين"
-
-#: ../rpmdrake:215 ../rpmdrake:216 ../rpmdrake:217 ../rpmdrake:218
-#: ../rpmdrake:219
-#, c-format
-msgid "Archiving"
-msgstr "أرشفة"
-
-#: ../rpmdrake:216
-#, c-format
-msgid "Backup"
-msgstr "النسخ الاحتياطي"
-
-#: ../rpmdrake:217
-#, c-format
-msgid "Cd burning"
-msgstr "نسخ الأقراص"
-
-#: ../rpmdrake:218
-#, c-format
-msgid "Compression"
-msgstr "الضغط"
-
-#: ../rpmdrake:219 ../rpmdrake:225 ../rpmdrake:239 ../rpmdrake:252
-#: ../rpmdrake:270 ../rpmdrake:291 ../rpmdrake:304 ../rpmdrake:314
-#: ../rpmdrake:426
-#, c-format
-msgid "Other"
-msgstr "أخرى"
-
-#: ../rpmdrake:220 ../rpmdrake:221 ../rpmdrake:222 ../rpmdrake:223
-#: ../rpmdrake:224 ../rpmdrake:225
-#, c-format
-msgid "Books"
-msgstr "كتب"
-
-#: ../rpmdrake:221
-#, c-format
-msgid "Computer books"
-msgstr "كتب الكمبيوتر"
-
-#: ../rpmdrake:222
-#, c-format
-msgid "Faqs"
-msgstr "أسئلة متكررة"
-
-#: ../rpmdrake:223
-#, c-format
-msgid "Howtos"
-msgstr "مذكرات (كيف أعمل)"
-
-#: ../rpmdrake:224
-#, c-format
-msgid "Literature"
-msgstr "أدب"
-
-#: ../rpmdrake:226 ../rpmdrake:227 ../rpmdrake:228
-#, c-format
-msgid "Cluster"
-msgstr "عنقود"
-
-#: ../rpmdrake:227
-#, c-format
-msgid "Message Passing"
-msgstr "تمرير الرّسائل"
-
-#: ../rpmdrake:228
-#, c-format
-msgid "Queueing Services"
-msgstr "خدمات الاصطفاف"
-
-#: ../rpmdrake:229
-#, c-format
-msgid "Communications"
-msgstr "اتصالات"
-
-#: ../rpmdrake:230 ../rpmdrake:234
-#, c-format
-msgid "Databases"
-msgstr "قواعد البيانات"
-
-#: ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233 ../rpmdrake:234
-#: ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237 ../rpmdrake:238
-#: ../rpmdrake:239 ../rpmdrake:240 ../rpmdrake:241 ../rpmdrake:242
-#: ../rpmdrake:353 ../rpmdrake:354 ../rpmdrake:355
-#, c-format
-msgid "Development"
-msgstr "التطوير"
-
-#: ../rpmdrake:232
-#, c-format
-msgid "C"
-msgstr "C"
-
-#: ../rpmdrake:233
-#, c-format
-msgid "C++"
-msgstr "C++"
-
-#: ../rpmdrake:235
-#, c-format
-msgid "GNOME and GTK+"
-msgstr "GNOME و GTK+"
-
-#: ../rpmdrake:236
-#, c-format
-msgid "Java"
-msgstr "جافا"
-
-#: ../rpmdrake:237
-#, c-format
-msgid "KDE and Qt"
-msgstr "KDE و Qt"
-
-#: ../rpmdrake:238
-#, c-format
-msgid "Kernel"
-msgstr "النواة"
-
-#: ../rpmdrake:240
-#, c-format
-msgid "Perl"
-msgstr "بيرل"
-
-#: ../rpmdrake:241
-#, c-format
-msgid "PHP"
-msgstr ""
-
-#: ../rpmdrake:242
-#, c-format
-msgid "Python"
-msgstr "بايثون"
-
-#: ../rpmdrake:243
-#, c-format
-msgid "Editors"
-msgstr "محررات النصوص"
-
-#: ../rpmdrake:244
-#, c-format
-msgid "Education"
-msgstr "تعليم"
-
-#: ../rpmdrake:245
-#, c-format
-msgid "Emulators"
-msgstr "المحاكيات"
-
-#: ../rpmdrake:246
-#, c-format
-msgid "File tools"
-msgstr "أدوات الملفات"
-
-#: ../rpmdrake:247 ../rpmdrake:248 ../rpmdrake:249 ../rpmdrake:250
-#: ../rpmdrake:251 ../rpmdrake:252 ../rpmdrake:253 ../rpmdrake:254
-#: ../rpmdrake:255
-#, c-format
-msgid "Games"
-msgstr "ألعاب"
-
-#: ../rpmdrake:248
-#, c-format
-msgid "Adventure"
-msgstr "مغامرات"
-
-#: ../rpmdrake:249
-#, c-format
-msgid "Arcade"
-msgstr "ألعاب الأركيد"
-
-#: ../rpmdrake:250
-#, c-format
-msgid "Boards"
-msgstr "ألعاب لوحات"
-
-#: ../rpmdrake:251
-#, c-format
-msgid "Cards"
-msgstr "ألعاب ورقية"
-
-#: ../rpmdrake:253
-#, c-format
-msgid "Puzzles"
-msgstr "ألغاز"
-
-#: ../rpmdrake:254
-#, c-format
-msgid "Sports"
-msgstr "رياضة"
-
-#: ../rpmdrake:255
-#, c-format
-msgid "Strategy"
-msgstr "استراتيجية"
-
-#: ../rpmdrake:256 ../rpmdrake:257 ../rpmdrake:260 ../rpmdrake:261
-#: ../rpmdrake:264 ../rpmdrake:267 ../rpmdrake:270 ../rpmdrake:271
-#: ../rpmdrake:274 ../rpmdrake:277
-#, c-format
-msgid "Graphical desktop"
-msgstr "سطح المكتب الرسومي"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:259
-#, c-format
-msgid "Enlightenment"
-msgstr "Enlightenment"
-
-#: ../rpmdrake:260
-#, c-format
-msgid "FVWM based"
-msgstr "مبنية على FVWM"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:263
-#, c-format
-msgid "GNOME"
-msgstr "GNOME"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:266
-#, c-format
-msgid "Icewm"
-msgstr "Icewm"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:269
-#, c-format
-msgid "KDE"
-msgstr "كيدي"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:273
-#, c-format
-msgid "Sawfish"
-msgstr "Sawfish"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:276
-#, c-format
-msgid "WindowMaker"
-msgstr "WindowMaker"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:279
-#, c-format
-msgid "Xfce"
-msgstr ""
-
-#: ../rpmdrake:280
-#, c-format
-msgid "Graphics"
-msgstr "الرسوم"
-
-#: ../rpmdrake:281
-#, c-format
-msgid "Monitoring"
-msgstr "مراقبة النظام"
-
-#: ../rpmdrake:282 ../rpmdrake:283
-#, c-format
-msgid "Multimedia"
-msgstr "الوسائط المتعدّدة"
-
-#: ../rpmdrake:283 ../rpmdrake:334
-#, c-format
-msgid "Video"
-msgstr "فيديو"
-
-#: ../rpmdrake:284 ../rpmdrake:285 ../rpmdrake:286 ../rpmdrake:287
-#: ../rpmdrake:288 ../rpmdrake:289 ../rpmdrake:290 ../rpmdrake:291
-#: ../rpmdrake:292 ../rpmdrake:293 ../rpmdrake:313
-#, c-format
-msgid "Networking"
-msgstr "الشبكات"
-
-#: ../rpmdrake:285
-#, c-format
-msgid "Chat"
-msgstr "محادثة"
-
-#: ../rpmdrake:286
-#, c-format
-msgid "File transfer"
-msgstr "نقل الملفات"
-
-#: ../rpmdrake:287
-#, c-format
-msgid "IRC"
-msgstr "IRC"
-
-#: ../rpmdrake:288
-#, c-format
-msgid "Instant messaging"
-msgstr "المراسلة الفورية"
-
-#: ../rpmdrake:289 ../rpmdrake:360
-#, c-format
-msgid "Mail"
-msgstr "بريد"
-
-#: ../rpmdrake:290
-#, c-format
-msgid "News"
-msgstr "برامج الأخبار"
-
-#: ../rpmdrake:292
-#, c-format
-msgid "Remote access"
-msgstr "الوصول البعيد"
-
-#: ../rpmdrake:293
-#, c-format
-msgid "WWW"
-msgstr "الويب"
-
-#: ../rpmdrake:294
-#, c-format
-msgid "Office"
-msgstr "برامج المكتب"
-
-#: ../rpmdrake:295
-#, c-format
-msgid "Public Keys"
-msgstr "المفاتيح العامّة"
-
-#: ../rpmdrake:296
-#, c-format
-msgid "Publishing"
-msgstr "النشر"
-
-#: ../rpmdrake:297 ../rpmdrake:298 ../rpmdrake:299 ../rpmdrake:300
-#: ../rpmdrake:301 ../rpmdrake:302 ../rpmdrake:303 ../rpmdrake:304
-#: ../rpmdrake:305
-#, c-format
-msgid "Sciences"
-msgstr "علوم"
-
-#: ../rpmdrake:298
-#, c-format
-msgid "Astronomy"
-msgstr "علم الفلك"
-
-#: ../rpmdrake:299
-#, c-format
-msgid "Biology"
-msgstr "أحياء"
-
-#: ../rpmdrake:300
-#, c-format
-msgid "Chemistry"
-msgstr "كيمياء"
-
-#: ../rpmdrake:301
-#, c-format
-msgid "Computer science"
-msgstr "علوم الحاسب"
-
-#: ../rpmdrake:302
-#, c-format
-msgid "Geosciences"
-msgstr "علوم الأرض"
-
-#: ../rpmdrake:303
-#, c-format
-msgid "Mathematics"
-msgstr "رياضيات"
-
-#: ../rpmdrake:305
-#, c-format
-msgid "Physics"
-msgstr "فيزياء"
-
-#: ../rpmdrake:306
-#, c-format
-msgid "Shells"
-msgstr "برامج سطر الأوامر"
-
-#: ../rpmdrake:307
-#, c-format
-msgid "Sound"
-msgstr "الصوت"
-
-#: ../rpmdrake:308 ../rpmdrake:309 ../rpmdrake:310 ../rpmdrake:311
-#: ../rpmdrake:312 ../rpmdrake:313 ../rpmdrake:314 ../rpmdrake:315
-#: ../rpmdrake:316 ../rpmdrake:317 ../rpmdrake:318 ../rpmdrake:319
-#: ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322 ../rpmdrake:323
-#: ../rpmdrake:324 ../rpmdrake:325 ../rpmdrake:326 ../rpmdrake:327
-#: ../rpmdrake:328
-#, c-format
-msgid "System"
-msgstr "النظام"
-
-#: ../rpmdrake:309
-#, c-format
-msgid "Base"
-msgstr "الحزم الأساسية"
-
-#: ../rpmdrake:310 ../rpmdrake:311 ../rpmdrake:312 ../rpmdrake:313
-#: ../rpmdrake:314 ../rpmdrake:315 ../rpmdrake:316 ../rpmdrake:338
-#, c-format
-msgid "Configuration"
-msgstr "التهيئة"
-
-#: ../rpmdrake:311
-#, c-format
-msgid "Boot and Init"
-msgstr "الإقلاع و بدء التشغيل"
-
-#: ../rpmdrake:312
-#, c-format
-msgid "Hardware"
-msgstr "العتاد"
-
-#: ../rpmdrake:315
-#, c-format
-msgid "Packaging"
-msgstr "التحزيم"
-
-#: ../rpmdrake:316
-#, c-format
-msgid "Printing"
-msgstr "الطباعة"
-
-#: ../rpmdrake:317
-#, c-format
-msgid "Deploiement"
-msgstr "الانتشار"
-
-#: ../rpmdrake:318
-#, c-format
-msgid "Deployment"
-msgstr "الانتشار"
-
-#: ../rpmdrake:319 ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322
-#: ../rpmdrake:323
-#, c-format
-msgid "Fonts"
-msgstr "الخطوط"
-
-#: ../rpmdrake:320
-#, c-format
-msgid "Console"
-msgstr "سطر الأوامر"
-
-#: ../rpmdrake:321
-#, c-format
-msgid "True type"
-msgstr "True Type"
-
-#: ../rpmdrake:322
-#, c-format
-msgid "Type1"
-msgstr "Type1"
-
-#: ../rpmdrake:323
-#, c-format
-msgid "X11 bitmap"
-msgstr "X11 bitmap"
-
-#: ../rpmdrake:324
-#, c-format
-msgid "Internationalization"
-msgstr "التدويل"
-
-#: ../rpmdrake:325
-#, c-format
-msgid "Kernel and hardware"
-msgstr "النواة و العتاد"
-
-#: ../rpmdrake:326
-#, c-format
-msgid "Libraries"
-msgstr "المكتبات"
-
-#: ../rpmdrake:327
-#, c-format
-msgid "Servers"
-msgstr "الخادمات"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:330
-#, c-format
-msgid "X11"
-msgstr ""
-
-#: ../rpmdrake:331
-#, c-format
-msgid "Terminals"
-msgstr "محاكيات الطرفيات"
-
-#: ../rpmdrake:332
-#, c-format
-msgid "Text tools"
-msgstr "أدوات النصوص"
-
-#: ../rpmdrake:333
-#, c-format
-msgid "Toys"
-msgstr "ألعاب طفولية"
-
-#: ../rpmdrake:337 ../rpmdrake:338 ../rpmdrake:339 ../rpmdrake:340
-#: ../rpmdrake:341 ../rpmdrake:342 ../rpmdrake:343 ../rpmdrake:344
-#: ../rpmdrake:345 ../rpmdrake:346
-#, c-format
-msgid "Workstation"
-msgstr "محطة عمل"
-
-#: ../rpmdrake:339
-#, c-format
-msgid "Console Tools"
-msgstr "أدوات الطرفيّات"
-
-#: ../rpmdrake:340 ../rpmdrake:355
-#, c-format
-msgid "Documentation"
-msgstr "التّوثيق"
-
-#: ../rpmdrake:341
-#, c-format
-msgid "Game station"
-msgstr "محطّة ألعاب"
-
-#: ../rpmdrake:342
-#, c-format
-msgid "Internet station"
-msgstr "محطّة إنترنت"
-
-#: ../rpmdrake:343
-#, c-format
-msgid "Multimedia station"
-msgstr "محطة وسائط متعدّدة"
-
-#: ../rpmdrake:344
-#, c-format
-msgid "Network Computer (client)"
-msgstr "جهاز شبكة (عميل)"
-
-#: ../rpmdrake:345
-#, c-format
-msgid "Office Workstation"
-msgstr "محطّة عمل مكتبية"
-
-#: ../rpmdrake:346
-#, c-format
-msgid "Scientific Workstation"
-msgstr ""
-
-#: ../rpmdrake:347 ../rpmdrake:349 ../rpmdrake:350 ../rpmdrake:351
-#: ../rpmdrake:352
-#, c-format
-msgid "Graphical Environment"
-msgstr "بيئات رسومية"
-
-#: ../rpmdrake:349
-#, c-format
-msgid "GNOME Workstation"
-msgstr "محطّة عمل جينوم"
-
-#: ../rpmdrake:350
-#, fuzzy, c-format
-msgid "IceWm Desktop"
-msgstr "Plucker Desktop"
-
-#: ../rpmdrake:351
-#, c-format
-msgid "KDE Workstation"
-msgstr "محطّة عمل كيدي"
-
-#: ../rpmdrake:352
-#, c-format
-msgid "Other Graphical Desktops"
-msgstr "أسطح مكتب رسومية أخرى"
-
-#: ../rpmdrake:356 ../rpmdrake:357 ../rpmdrake:358 ../rpmdrake:359
-#: ../rpmdrake:360 ../rpmdrake:361 ../rpmdrake:362 ../rpmdrake:363
-#, c-format
-msgid "Server"
-msgstr "خادم"
-
-#: ../rpmdrake:357
-#, c-format
-msgid "DNS/NIS"
-msgstr "DNS/NIS"
-
-#: ../rpmdrake:358
-#, c-format
-msgid "Database"
-msgstr "قواعد البيانات"
-
-#: ../rpmdrake:359
-#, c-format
-msgid "Firewall/Router"
-msgstr "جدار ناري/موجِّه"
-
-#: ../rpmdrake:361
-#, c-format
-msgid "Mail/Groupware/News"
-msgstr ""
-
-#: ../rpmdrake:362
-#, c-format
-msgid "Network Computer server"
-msgstr "خادم شبكات"
-
-#: ../rpmdrake:363
-#, c-format
-msgid "Web/FTP"
-msgstr "وب/FTP"
-
-#: ../rpmdrake:502 ../rpmdrake:703 ../rpmdrake:708 ../rpmdrake:722
-#: ../rpmdrake:724
-#, c-format
-msgid "(Not available)"
-msgstr "(غير موجود)"
-
-#: ../rpmdrake:534 ../rpmdrake:616
-#, c-format
-msgid "Search results"
-msgstr "نتائج البحث"
-
-#: ../rpmdrake:534
-#, c-format
-msgid "Search results (none)"
-msgstr "نتائج البحث (لا شئ)"
-
-#: ../rpmdrake:545 ../rpmdrake:573 ../rpmdrake:2150
-#, c-format
-msgid "Please wait, searching..."
-msgstr "انتظر من فضلك، جاري البحث..."
-
-#: ../rpmdrake:568 ../rpmdrake:806 ../rpmdrake.pm:180
-#, fuzzy, c-format
-msgid "Software Management"
-msgstr "مدير وسائط البرمجيات"
-
-#: ../rpmdrake:578
-#, c-format
-msgid "Stop"
-msgstr "قف"
-
-#: ../rpmdrake:617 ../rpmdrake:917
-#, c-format
-msgid "Upgradable"
-msgstr "قابلة للترقية"
-
-#: ../rpmdrake:617 ../rpmdrake:917
-#, c-format
-msgid "Addable"
-msgstr "قابلة للإضافة"
-
-#: ../rpmdrake:619
-#, c-format
-msgid "Selected"
-msgstr "مختار"
-
-#: ../rpmdrake:619
-#, c-format
-msgid "Not selected"
-msgstr "غير مختارة"
-
-#: ../rpmdrake:683 ../rpmdrake:740
+#: ../Rpmdrake/gui.pm:59 ../Rpmdrake/gui.pm:116
 #, c-format
 msgid "Importance: "
 msgstr "الأهمية: "
 
-#: ../rpmdrake:684 ../rpmdrake:748
+#: ../Rpmdrake/gui.pm:60 ../Rpmdrake/gui.pm:124
 #, c-format
 msgid "Reason for update: "
 msgstr "سبب التحديث:"
 
-#: ../rpmdrake:688
+#: ../Rpmdrake/gui.pm:64
 #, fuzzy, c-format
 msgid "Security advisory"
 msgstr "تحديثات أمنية"
 
-#: ../rpmdrake:696 ../rpmdrake:750
+#: ../Rpmdrake/gui.pm:72 ../Rpmdrake/gui.pm:126
 #, c-format
 msgid "No description"
 msgstr "لا وصف"
 
-#: ../rpmdrake:699
+#: ../Rpmdrake/gui.pm:75
 #, c-format
 msgid "Files:"
 msgstr "الملفات:"
 
-#: ../rpmdrake:707
+#: ../Rpmdrake/gui.pm:79 ../Rpmdrake/gui.pm:84 ../Rpmdrake/gui.pm:98
+#: ../Rpmdrake/gui.pm:100 ../Rpmdrake/pkg.pm:135
+#, c-format
+msgid "(Not available)"
+msgstr "(غير موجود)"
+
+#: ../Rpmdrake/gui.pm:83
 #, c-format
 msgid "Changelog:"
 msgstr "سجل التغييرات:"
 
-#: ../rpmdrake:719
+#: ../Rpmdrake/gui.pm:95
 #, c-format
 msgid "Files:\n"
 msgstr "الملفات:\n"
 
-#: ../rpmdrake:724
+#: ../Rpmdrake/gui.pm:100
 #, c-format
 msgid "Changelog:\n"
 msgstr "سجل التغييرات:\n"
 
-#: ../rpmdrake:729 ../rpmdrake.pm:809
+#: ../Rpmdrake/gui.pm:105 ../rpmdrake.pm:813
 #, c-format
 msgid "Medium: "
 msgstr "الوسيط: "
 
-#: ../rpmdrake:730
+#: ../Rpmdrake/gui.pm:106
 #, c-format
 msgid "Currently installed version: "
 msgstr "الإصدار المثبت حالياً: "
 
-#: ../rpmdrake:734
+#: ../Rpmdrake/gui.pm:110
 #, c-format
 msgid "Name: "
 msgstr "الإسم: "
 
-#: ../rpmdrake:735
+#: ../Rpmdrake/gui.pm:111
 #, c-format
 msgid "Version: "
 msgstr "الإصدار: "
 
-#: ../rpmdrake:736
+#: ../Rpmdrake/gui.pm:112
 #, c-format
 msgid "Architecture: "
 msgstr ""
 
-#: ../rpmdrake:737
+#: ../Rpmdrake/gui.pm:113
 #, c-format
 msgid "Size: "
 msgstr "الحجم: "
 
-#: ../rpmdrake:737
+#: ../Rpmdrake/gui.pm:113
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../rpmdrake:744
+#: ../Rpmdrake/gui.pm:120
 #, c-format
 msgid "Summary: "
 msgstr "نبذة: "
 
-#: ../rpmdrake:750
+#: ../Rpmdrake/gui.pm:126
 #, c-format
 msgid "Description: "
 msgstr "وصف:"
 
-#: ../rpmdrake:823 ../rpmdrake:969 ../rpmdrake:971
+#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:490 ../Rpmdrake/gui.pm:492
 #, c-format
 msgid "More information on package..."
 msgstr "معلومات أكثر حول الحزمة..."
 
-#: ../rpmdrake:825
+#: ../Rpmdrake/gui.pm:455
 #, c-format
 msgid "Please choose"
 msgstr "فضلاً اختر"
 
-#: ../rpmdrake:825
+#: ../Rpmdrake/gui.pm:456
 #, fuzzy, c-format
 msgid "The following package is needed:"
-msgid_plural "One of the following packages is needed:"
-msgstr[0] "أحد هذه الحزم مطلوب:"
-msgstr[1] "أحد هذه الحزم مطلوب:"
-msgstr[2] "أحد هذه الحزم مطلوب:"
-msgstr[3] "أحد هذه الحزم مطلوب:"
+msgstr "أحد هذه الحزم مطلوب:"
 
-#: ../rpmdrake:866
+#: ../Rpmdrake/gui.pm:456
 #, c-format
-msgid "Please wait, listing packages..."
-msgstr "انتظر من فضلك، جاري سرد الحزم..."
-
-#: ../rpmdrake:884
-#, c-format
-msgid "No update"
-msgstr "لا تحديث"
-
-#: ../rpmdrake:885
-#, c-format
-msgid ""
-"The list of updates is empty. This means that either there is\n"
-"no available update for the packages installed on your computer,\n"
-"or you already installed all of them."
-msgstr ""
-"قائمة التحديث فارغة. هذا إما يعني أنه\n"
-"لا توجد تحديثات للحزم الموجودة على جهازك،\n"
-"أو أنك قمت بتثبيت كل التحديثات مسبقا."
-
-#: ../rpmdrake:908 ../rpmdrake:1171
-#, c-format
-msgid "All"
-msgstr "الكلّ"
+msgid "One of the following packages is needed:"
+msgstr "أحد الحزم التالية يُحتاج اليه:"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../rpmdrake:956 ../rpmdrake:961
+#: ../Rpmdrake/gui.pm:478 ../Rpmdrake/gui.pm:483
 #, c-format
 msgid "More info"
 msgstr "مزيد من المعلومات"
 
-#: ../rpmdrake:964
+#: ../Rpmdrake/gui.pm:485
 #, c-format
 msgid "Information on packages"
 msgstr "معلومات حول الحزم"
 
-#: ../rpmdrake:987
+#: ../Rpmdrake/gui.pm:508
 #, c-format
 msgid "Some additional packages need to be removed"
 msgstr "هذه الحزم الاضافية يجب أن تحذف"
 
-#: ../rpmdrake:988
+#: ../Rpmdrake/gui.pm:509
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
 msgstr "نظرا للاعتمادات، فإن الحزمة/الحزم التالية يجب أن تحذف:"
 
-#: ../rpmdrake:994 ../rpmdrake:1003
+#: ../Rpmdrake/gui.pm:515 ../Rpmdrake/gui.pm:524
 #, c-format
 msgid "Some packages can't be removed"
 msgstr "بعض الحزم لا يمكن حذفها"
 
-#: ../rpmdrake:995
+#: ../Rpmdrake/gui.pm:516
 #, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
@@ -1550,7 +745,7 @@ msgstr ""
 "ازالة هذه الحزم قد تكسر نظامك، عذراً:\n"
 "\n"
 
-#: ../rpmdrake:1004 ../rpmdrake:1070
+#: ../Rpmdrake/gui.pm:525 ../Rpmdrake/gui.pm:592
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
@@ -1561,12 +756,12 @@ msgstr ""
 "الرجوع عن اختيارها الآن:\n"
 "\n"
 
-#: ../rpmdrake:1033
+#: ../Rpmdrake/gui.pm:554
 #, c-format
 msgid "Additional packages needed"
 msgstr "هناك حزم اضافية مطلوبة"
 
-#: ../rpmdrake:1034
+#: ../Rpmdrake/gui.pm:555
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
@@ -1577,173 +772,64 @@ msgstr ""
 "التالية:\n"
 "\n"
 
-#: ../rpmdrake:1049
+#: ../Rpmdrake/gui.pm:569
 #, c-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (تنتمي إلى القائمة الواجب تخطّيها)"
 
-#: ../rpmdrake:1053
+#: ../Rpmdrake/gui.pm:573
 #, fuzzy, c-format
 msgid "One package cannot be installed"
-msgid_plural "Some packages can't be installed"
-msgstr[0] "لا يمكن تثبيت بعض الحزم"
-msgstr[1] "لا يمكن تثبيت بعض الحزم"
-msgstr[2] "لا يمكن تثبيت بعض الحزم"
-msgstr[3] "لا يمكن تثبيت بعض الحزم"
+msgstr "لا يمكن تثبيت بعض الحزم"
 
-#: ../rpmdrake:1054
+#: ../Rpmdrake/gui.pm:573
+#, c-format
+msgid "Some packages can't be installed"
+msgstr "لا يمكن تثبيت بعض الحزم"
+
+#: ../Rpmdrake/gui.pm:575
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following package cannot be selected:\n"
 "\n"
 "%s"
-msgid_plural ""
-"Sorry, the following packages can't be selected:\n"
-"\n"
-"%s"
-msgstr[0] ""
-"عفواً، لا يمكن اختيار الحزمة/الحزم التالية:\n"
-"\n"
-"%s"
-msgstr[1] ""
-"عفواً، لا يمكن اختيار الحزمة/الحزم التالية:\n"
-"\n"
-"%s"
-msgstr[2] ""
-"عفواً، لا يمكن اختيار الحزمة/الحزم التالية:\n"
-"\n"
-"%s"
-msgstr[3] ""
+msgstr ""
 "عفواً، لا يمكن اختيار الحزمة/الحزم التالية:\n"
 "\n"
 "%s"
 
-#: ../rpmdrake:1069 ../rpmdrake:1924
+#: ../Rpmdrake/gui.pm:576
+#, fuzzy, c-format
+msgid ""
+"Sorry, the following packages can't be selected:\n"
+"\n"
+"%s"
+msgstr ""
+"عفواً، لا يمكن اختيار الحزمة/الحزم التالية:\n"
+"\n"
+"%s"
+
+#: ../Rpmdrake/gui.pm:591 ../Rpmdrake/pkg.pm:486
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "بعض الحزم يجب ازالتها"
 
-#: ../rpmdrake:1098
-#, c-format
-msgid "Selected: %s / Free disk space: %s"
-msgstr "تم اختيار: %s / المساحة المتوفرة في القرص: %s"
-
-#: ../rpmdrake:1099
-#, c-format
-msgid "Selected size: %d MB"
-msgstr "الحجم المختار: %d ميغابايت"
-
-#: ../rpmdrake:1104
-#, c-format
-msgid "Description not available for this package\n"
-msgstr "الوصف غير متوفّر لهذه الحزمة\n"
-
-#: ../rpmdrake:1110 ../rpmdrake:1506
-#, c-format
-msgid "A fatal error occurred: %s."
-msgstr "ظهر خطأ قاتل: %s"
-
-#: ../rpmdrake:1171
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "تثبيت"
-
-#: ../rpmdrake:1171
-#, fuzzy, c-format
-msgid "Non installed"
-msgstr "تثبيت"
-
-#: ../rpmdrake:1172
-#, c-format
-msgid "%s choices"
-msgstr "%s اختيارات"
-
-#: ../rpmdrake:1172
-#, c-format
-msgid "Mandriva Linux choices"
-msgstr "خيارات ماندريبا لينكس"
-
-#: ../rpmdrake:1174
-#, c-format
-msgid "All packages, alphabetical"
-msgstr "كل الحزم، أبجدياً"
-
-#: ../rpmdrake:1175
-#, c-format
-msgid "All packages, by update availability"
-msgstr "كل الحزم، بتوافر التحديث"
-
-#: ../rpmdrake:1176
-#, c-format
-msgid "All packages, by size"
-msgstr "كل الحزم، بالحجم"
-
-#: ../rpmdrake:1177
-#, c-format
-msgid "All packages, by selection state"
-msgstr "كل الحزم، بحالة الإختيار"
-
-#: ../rpmdrake:1178
-#, c-format
-msgid "Leaves only, sorted by install date"
-msgstr "المتروكات فقط، مرتبة حسب تاريخ التثبيت"
-
-#: ../rpmdrake:1179
-#, c-format
-msgid "All packages, by group"
-msgstr "كل الحزم، بالمجموعة"
-
-#: ../rpmdrake:1181
-#, fuzzy, c-format
-msgid "All updates"
-msgstr "تحديثات عادية"
-
-#: ../rpmdrake:1181
-#, c-format
-msgid "Security updates"
-msgstr "تحديثات أمنية"
-
-#: ../rpmdrake:1181
-#, c-format
-msgid "Bugfixes updates"
-msgstr "تحديثات ازالة العيوب"
-
-#: ../rpmdrake:1181
-#, c-format
-msgid "Normal updates"
-msgstr "تحديثات عادية"
-
-#: ../rpmdrake:1244
-#, c-format
-msgid "in names"
-msgstr "في الأسماء"
-
-#: ../rpmdrake:1246
-#, c-format
-msgid "in descriptions"
-msgstr "في الوصف"
-
-#: ../rpmdrake:1248
-#, c-format
-msgid "in file names"
-msgstr "في أسماء الملفات"
-
-#: ../rpmdrake:1275
+#: ../Rpmdrake/gui.pm:622
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr "خطأ: يبدو أن %s مركّب بوضع القراءة فقط."
 
-#: ../rpmdrake:1279
+#: ../Rpmdrake/gui.pm:626
 #, c-format
 msgid "You need to select some packages first."
 msgstr "عليك اختيار بعض الحزم أولاً."
 
-#: ../rpmdrake:1284
+#: ../Rpmdrake/gui.pm:631
 #, c-format
 msgid "Too many packages are selected"
 msgstr "تم اختيار حزم كثيرة"
 
-#: ../rpmdrake:1285
+#: ../Rpmdrake/gui.pm:632
 #, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
@@ -1760,539 +846,768 @@ msgstr ""
 "\n"
 "هل تريد فعلا تثبيت الحزم؟"
 
-#: ../rpmdrake:1317 ../rpmdrake:1320 ../rpmdrake:1331 ../rpmdrake:1344
-#: ../rpmdrake:1353
+#: ../Rpmdrake/gui.pm:664
 #, c-format
-msgid "/_File"
-msgstr "/_ملف"
-
-#: ../rpmdrake:1320
-#, c-format
-msgid "/_Update media"
-msgstr "/_تحديث الوسط"
-
-#: ../rpmdrake:1331
-#, c-format
-msgid "/_Reset the selection"
-msgstr "/_إعادة تعيين الاختيار"
-
-#: ../rpmdrake:1344
-#, c-format
-msgid "/Reload the _packages list"
-msgstr "/إعادة تحميل _لائحة الحزم"
-
-#: ../rpmdrake:1353
-#, c-format
-msgid "/_Quit"
-msgstr "/_خروج"
-
-#: ../rpmdrake:1353
-#, c-format
-msgid "<control>Q"
-msgstr "<control>خ"
-
-#: ../rpmdrake:1356 ../rpmdrake:1357 ../rpmdrake:1360 ../rpmdrake:1390
-#, c-format
-msgid "/_Options"
-msgstr "/_خيارات"
-
-#: ../rpmdrake:1357
-#, fuzzy, c-format
-msgid "/_Media Manager"
-msgstr "مدير وسائط البرمجيات"
-
-#: ../rpmdrake:1360 ../rpmdrake:1390
-#, c-format
-msgid "/_Show automatically selected packages"
-msgstr "/إظ_هار الحزم المُحدّدة آلياً"
-
-#: ../rpmdrake:1364 ../rpmdrake:1365 ../rpmdrake:1366 ../rpmdrake:1367
-#, c-format
-msgid "/_Help"
-msgstr "/مسا_عدة"
-
-#: ../rpmdrake:1365
-#, c-format
-msgid "/_Report Bug"
-msgstr "/_تقرير خطأ"
-
-#: ../rpmdrake:1367
-#, c-format
-msgid "/_About..."
-msgstr "/_حول..."
-
-#: ../rpmdrake:1370
-#, fuzzy, c-format
-msgid "Rpmdrake"
-msgstr "معالج حزم ماندريبا (Rpmdrake) %s"
-
-#: ../rpmdrake:1372
-#, c-format
-msgid "Copyright (C) %s by Mandriva"
-msgstr ""
-
-#: ../rpmdrake:1374
-#, c-format
-msgid "Rpmdrake is Mandriva Linux package management tool."
-msgstr ""
-
-#: ../rpmdrake:1376
-#, fuzzy, c-format
-msgid "Mandriva Linux"
-msgstr "Mandriva Online"
-
-#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:1381
-#, c-format
-msgid "_: Translator(s) name(s) & email(s)\n"
-msgstr "Arabeyes <support@arabeyes.org>\n"
-
-#: ../rpmdrake:1405
-#, c-format
-msgid "Find:"
-msgstr "ابحث عن:"
-
-#: ../rpmdrake:1414
-#, c-format
-msgid "Search"
-msgstr "ابحث"
-
-#: ../rpmdrake:1416
-#, c-format
-msgid "Clear"
-msgstr "إمحي"
-
-#: ../rpmdrake:1430 ../rpmdrake.pm:760
-#, c-format
-msgid "Select all"
-msgstr "تحديد الكل"
-
-#: ../rpmdrake:1437
-#, c-format
-msgid "Apply"
-msgstr "تطبيق"
-
-#: ../rpmdrake:1441
-#, c-format
-msgid "Quit"
-msgstr "خروج"
-
-#: ../rpmdrake:1457
-#, c-format
-msgid "Quick Introduction"
-msgstr ""
-
-#: ../rpmdrake:1458
-#, c-format
-msgid "You can browse the packages through the categories tree on the left."
-msgstr ""
-
-#: ../rpmdrake:1459
-#, c-format
-msgid ""
-"You can view information about a package by clicking on it on the right list."
-msgstr ""
-
-#: ../rpmdrake:1460
-#, c-format
-msgid "To install, update or remove a package, just click on its \"checkbox\"."
-msgstr ""
-
-#: ../rpmdrake:1505
-#, c-format
-msgid "Fatal error"
-msgstr "خطأ قاتل"
-
-#: ../rpmdrake:1510 ../rpmdrake:1935 ../rpmdrake.pm:311
-#, c-format
-msgid "Please wait"
-msgstr "الرجاء الانتظار"
-
-#: ../rpmdrake:1510 ../rpmdrake:1935
-#, c-format
-msgid "Package installation..."
-msgstr "تثبيت الحزم..."
-
-#: ../rpmdrake:1510 ../rpmdrake:1935
-#, c-format
-msgid "Initializing..."
-msgstr "جاري البدء..."
-
-#: ../rpmdrake:1533 ../rpmdrake:1924
-#, fuzzy, c-format
-msgid "Confirmation"
-msgstr "التهيئة"
-
-#: ../rpmdrake:1534
-#, c-format
-msgid ""
-"I need to contact the mirror to get latest update packages.\n"
-"Please check that your network is currently running.\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"أحتاج للإتصال بالمرآة للحصول على أخر حزم التحديثات.\n"
-"فضلاً تأكد من أن الشبكة الخاصة بك تعمل حالياً.\n"
-"\n"
-"هل من الممكن المتابعة؟"
-
-#: ../rpmdrake:1543
-#, c-format
-msgid "Already existing update media"
-msgstr "وسيط تحديث موجود مسبقاً"
-
-#: ../rpmdrake:1544
-#, c-format
-msgid ""
-"You already have at least one update medium configured, but\n"
-"all of them are currently disabled. You should run the Software\n"
-"Media Manager to enable at least one (check it in the Enabled?\n"
-"column).\n"
-"\n"
-"Then, restart %s."
-msgstr ""
-"لديك على الأقل وسيط تحديث واحد تمت تهيئته، لكن\n"
-"جميعهم معطلون حالياً. يجب عليك تشغيل مدير وسائط\n"
-"البرامج لتمكين واحد على الأقل (قم بالتأشير عليها في عامود التمكين؟).\n"
-"ثم قم بإعادة تشغيل أداة %s."
-
-#: ../rpmdrake:1555
-#, c-format
-msgid "How to choose manually your mirror"
-msgstr "كيفية اختيار المرآة يدوياً"
-
-#: ../rpmdrake:1556
-#, c-format
-msgid ""
-"You may also choose your desired mirror manually: to do so,\n"
-"launch the Software Media Manager, and then add a `Security\n"
-"updates' medium.\n"
-"\n"
-"Then, restart %s."
-msgstr ""
-"يمكنك أيضا اختيار المرآة المطلوبة يدويا: لعمل ذلك،\n"
-"قم بتشغيل مدير وسائط البرامج، ثم أضف وسيط 'تحديثات\n"
-"أمنية'.\n"
-"\n"
-"ثم أعد تشغيل أداة %s."
-
-#: ../rpmdrake:1570
-#, fuzzy, c-format
-msgid "Reading updates description"
-msgstr "في الوصف"
-
-#: ../rpmdrake:1596 ../rpmdrake:1673
-#, c-format
-msgid "Please wait, finding available packages..."
-msgstr "اتنظر من فضلك، جاري ايجاد الحزم المتوفرة..."
-
-#: ../rpmdrake:1604
-#, fuzzy, c-format
-msgid "Please wait, listing base packages..."
+msgid "Please wait, listing packages..."
 msgstr "انتظر من فضلك، جاري سرد الحزم..."
 
-#: ../rpmdrake:1640
-#, fuzzy, c-format
-msgid "Please wait, finding installed packages..."
-msgstr "اتنظر من فضلك، جاري ايجاد الحزم المتوفرة..."
-
-#: ../rpmdrake:1774
+#: ../Rpmdrake/gui.pm:682
 #, c-format
-msgid "Inspecting %s"
-msgstr "جاري التحقق من %s"
+msgid "No update"
+msgstr "لا تحديث"
 
-#: ../rpmdrake:1797
-#, c-format
-msgid "changes:"
-msgstr "التغييرات:"
-
-#: ../rpmdrake:1805
-#, c-format
-msgid "Remove .%s"
-msgstr "احذف .%s"
-
-#: ../rpmdrake:1809
-#, c-format
-msgid "Use .%s as main file"
-msgstr "استخدم .%s كملف رئيسي"
-
-#: ../rpmdrake:1813
-#, c-format
-msgid "Do nothing"
-msgstr "لا تفعل شيئاً"
-
-#: ../rpmdrake:1829
-#, c-format
-msgid "Installation finished"
-msgstr "انتهى التثبيت"
-
-#: ../rpmdrake:1844
-#, c-format
-msgid "Inspect..."
-msgstr "تحقَّق..."
-
-#: ../rpmdrake:1877 ../rpmdrake:2070
-#, c-format
-msgid "All requested packages were installed successfully."
-msgstr "تم تثبيت كل الحزم المطلوبة بنجاح."
-
-#: ../rpmdrake:1881 ../rpmdrake:2050
-#, c-format
-msgid "Problem during installation"
-msgstr "مشكلة أثناء التثبيت"
-
-#: ../rpmdrake:1882 ../rpmdrake:2051 ../rpmdrake:2109
+#: ../Rpmdrake/gui.pm:683
 #, c-format
 msgid ""
-"There was a problem during the installation:\n"
-"\n"
-"%s"
+"The list of updates is empty. This means that either there is\n"
+"no available update for the packages installed on your computer,\n"
+"or you already installed all of them."
 msgstr ""
-"كان هناك خطأ أثناء التثبيت:\n"
-"\n"
-"%s"
+"قائمة التحديث فارغة. هذا إما يعني أنه\n"
+"لا توجد تحديثات للحزم الموجودة على جهازك،\n"
+"أو أنك قمت بتثبيت كل التحديثات مسبقا."
 
-#: ../rpmdrake:1901
+#: ../Rpmdrake/gui.pm:706 ../rpmdrake:256
 #, c-format
-msgid "Unable to get source packages."
-msgstr "تعذر الحصول على الحزم المصدرية"
+msgid "All"
+msgstr "الكلّ"
 
-#: ../rpmdrake:1902
+#: ../Rpmdrake/gui.pm:715 ../rpmdrake:142
 #, c-format
-msgid "Unable to get source packages, sorry. %s"
-msgstr "تعذر الحصول على الحزم المصدرية، عفواً %s"
+msgid "Upgradable"
+msgstr "قابلة للترقية"
 
-#: ../rpmdrake:1903 ../rpmdrake:2001
+#: ../Rpmdrake/gui.pm:715 ../rpmdrake:142
+#, c-format
+msgid "Addable"
+msgstr "قابلة للإضافة"
+
+#: ../Rpmdrake/gui.pm:735
+#, c-format
+msgid "Description not available for this package\n"
+msgstr "الوصف غير متوفّر لهذه الحزمة\n"
+
+#: ../Rpmdrake/gui.pm:741 ../Rpmdrake/pkg.pm:189
+#, c-format
+msgid "A fatal error occurred: %s."
+msgstr "ظهر خطأ قاتل: %s"
+
+#: ../Rpmdrake/icon.pm:35
+#, c-format
+msgid "Accessibility"
+msgstr "تسهيلات المعاقين"
+
+#: ../Rpmdrake/icon.pm:36 ../Rpmdrake/icon.pm:37 ../Rpmdrake/icon.pm:38
+#: ../Rpmdrake/icon.pm:39 ../Rpmdrake/icon.pm:40
+#, c-format
+msgid "Archiving"
+msgstr "أرشفة"
+
+#: ../Rpmdrake/icon.pm:37
+#, c-format
+msgid "Backup"
+msgstr "النسخ الاحتياطي"
+
+#: ../Rpmdrake/icon.pm:38
+#, c-format
+msgid "Cd burning"
+msgstr "نسخ الأقراص"
+
+#: ../Rpmdrake/icon.pm:39
+#, c-format
+msgid "Compression"
+msgstr "الضغط"
+
+#: ../Rpmdrake/icon.pm:40 ../Rpmdrake/icon.pm:46 ../Rpmdrake/icon.pm:60
+#: ../Rpmdrake/icon.pm:73 ../Rpmdrake/icon.pm:91 ../Rpmdrake/icon.pm:112
+#: ../Rpmdrake/icon.pm:125 ../Rpmdrake/icon.pm:135 ../Rpmdrake/pkg.pm:75
+#, c-format
+msgid "Other"
+msgstr "أخرى"
+
+#: ../Rpmdrake/icon.pm:41 ../Rpmdrake/icon.pm:42 ../Rpmdrake/icon.pm:43
+#: ../Rpmdrake/icon.pm:44 ../Rpmdrake/icon.pm:45 ../Rpmdrake/icon.pm:46
+#, c-format
+msgid "Books"
+msgstr "كتب"
+
+#: ../Rpmdrake/icon.pm:42
+#, c-format
+msgid "Computer books"
+msgstr "كتب الكمبيوتر"
+
+#: ../Rpmdrake/icon.pm:43
+#, c-format
+msgid "Faqs"
+msgstr "أسئلة متكررة"
+
+#: ../Rpmdrake/icon.pm:44
+#, c-format
+msgid "Howtos"
+msgstr "مذكرات (كيف أعمل)"
+
+#: ../Rpmdrake/icon.pm:45
+#, c-format
+msgid "Literature"
+msgstr "أدب"
+
+#: ../Rpmdrake/icon.pm:47 ../Rpmdrake/icon.pm:48 ../Rpmdrake/icon.pm:49
+#, c-format
+msgid "Cluster"
+msgstr "عنقود"
+
+#: ../Rpmdrake/icon.pm:48
+#, c-format
+msgid "Message Passing"
+msgstr "تمرير الرّسائل"
+
+#: ../Rpmdrake/icon.pm:49
+#, c-format
+msgid "Queueing Services"
+msgstr "خدمات الاصطفاف"
+
+#: ../Rpmdrake/icon.pm:50
+#, c-format
+msgid "Communications"
+msgstr "اتصالات"
+
+#: ../Rpmdrake/icon.pm:51 ../Rpmdrake/icon.pm:55
+#, c-format
+msgid "Databases"
+msgstr "قواعد البيانات"
+
+#: ../Rpmdrake/icon.pm:52 ../Rpmdrake/icon.pm:53 ../Rpmdrake/icon.pm:54
+#: ../Rpmdrake/icon.pm:55 ../Rpmdrake/icon.pm:56 ../Rpmdrake/icon.pm:57
+#: ../Rpmdrake/icon.pm:58 ../Rpmdrake/icon.pm:59 ../Rpmdrake/icon.pm:60
+#: ../Rpmdrake/icon.pm:61 ../Rpmdrake/icon.pm:62 ../Rpmdrake/icon.pm:63
+#: ../Rpmdrake/icon.pm:174 ../Rpmdrake/icon.pm:175 ../Rpmdrake/icon.pm:176
+#, c-format
+msgid "Development"
+msgstr "التطوير"
+
+#: ../Rpmdrake/icon.pm:53
+#, c-format
+msgid "C"
+msgstr "C"
+
+#: ../Rpmdrake/icon.pm:54
+#, c-format
+msgid "C++"
+msgstr "C++"
+
+#: ../Rpmdrake/icon.pm:56
+#, c-format
+msgid "GNOME and GTK+"
+msgstr "GNOME و GTK+"
+
+#: ../Rpmdrake/icon.pm:57
+#, c-format
+msgid "Java"
+msgstr "جافا"
+
+#: ../Rpmdrake/icon.pm:58
+#, c-format
+msgid "KDE and Qt"
+msgstr "KDE و Qt"
+
+#: ../Rpmdrake/icon.pm:59
+#, c-format
+msgid "Kernel"
+msgstr "النواة"
+
+#: ../Rpmdrake/icon.pm:61
+#, c-format
+msgid "Perl"
+msgstr "بيرل"
+
+#: ../Rpmdrake/icon.pm:62
+#, c-format
+msgid "PHP"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:63
+#, c-format
+msgid "Python"
+msgstr "بايثون"
+
+#: ../Rpmdrake/icon.pm:64
+#, c-format
+msgid "Editors"
+msgstr "محررات النصوص"
+
+#: ../Rpmdrake/icon.pm:65
+#, c-format
+msgid "Education"
+msgstr "تعليم"
+
+#: ../Rpmdrake/icon.pm:66
+#, c-format
+msgid "Emulators"
+msgstr "المحاكيات"
+
+#: ../Rpmdrake/icon.pm:67
+#, c-format
+msgid "File tools"
+msgstr "أدوات الملفات"
+
+#: ../Rpmdrake/icon.pm:68 ../Rpmdrake/icon.pm:69 ../Rpmdrake/icon.pm:70
+#: ../Rpmdrake/icon.pm:71 ../Rpmdrake/icon.pm:72 ../Rpmdrake/icon.pm:73
+#: ../Rpmdrake/icon.pm:74 ../Rpmdrake/icon.pm:75 ../Rpmdrake/icon.pm:76
+#, c-format
+msgid "Games"
+msgstr "ألعاب"
+
+#: ../Rpmdrake/icon.pm:69
+#, c-format
+msgid "Adventure"
+msgstr "مغامرات"
+
+#: ../Rpmdrake/icon.pm:70
+#, c-format
+msgid "Arcade"
+msgstr "ألعاب الأركيد"
+
+#: ../Rpmdrake/icon.pm:71
+#, c-format
+msgid "Boards"
+msgstr "ألعاب لوحات"
+
+#: ../Rpmdrake/icon.pm:72
+#, c-format
+msgid "Cards"
+msgstr "ألعاب ورقية"
+
+#: ../Rpmdrake/icon.pm:74
+#, c-format
+msgid "Puzzles"
+msgstr "ألغاز"
+
+#: ../Rpmdrake/icon.pm:75
+#, c-format
+msgid "Sports"
+msgstr "رياضة"
+
+#: ../Rpmdrake/icon.pm:76
+#, c-format
+msgid "Strategy"
+msgstr "استراتيجية"
+
+#: ../Rpmdrake/icon.pm:77 ../Rpmdrake/icon.pm:78 ../Rpmdrake/icon.pm:81
+#: ../Rpmdrake/icon.pm:82 ../Rpmdrake/icon.pm:85 ../Rpmdrake/icon.pm:88
+#: ../Rpmdrake/icon.pm:91 ../Rpmdrake/icon.pm:92 ../Rpmdrake/icon.pm:95
+#: ../Rpmdrake/icon.pm:98
+#, c-format
+msgid "Graphical desktop"
+msgstr "سطح المكتب الرسومي"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:80
+#, c-format
+msgid "Enlightenment"
+msgstr "Enlightenment"
+
+#: ../Rpmdrake/icon.pm:81
+#, c-format
+msgid "FVWM based"
+msgstr "مبنية على FVWM"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:84
+#, c-format
+msgid "GNOME"
+msgstr "GNOME"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:87
+#, c-format
+msgid "Icewm"
+msgstr "Icewm"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:90
+#, c-format
+msgid "KDE"
+msgstr "كيدي"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:94
+#, c-format
+msgid "Sawfish"
+msgstr "Sawfish"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:97
+#, c-format
+msgid "WindowMaker"
+msgstr "WindowMaker"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:100
+#, c-format
+msgid "Xfce"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:101
+#, c-format
+msgid "Graphics"
+msgstr "الرسوم"
+
+#: ../Rpmdrake/icon.pm:102
+#, c-format
+msgid "Monitoring"
+msgstr "مراقبة النظام"
+
+#: ../Rpmdrake/icon.pm:103 ../Rpmdrake/icon.pm:104
+#, c-format
+msgid "Multimedia"
+msgstr "الوسائط المتعدّدة"
+
+#: ../Rpmdrake/icon.pm:104 ../Rpmdrake/icon.pm:155
+#, c-format
+msgid "Video"
+msgstr "فيديو"
+
+#: ../Rpmdrake/icon.pm:105 ../Rpmdrake/icon.pm:106 ../Rpmdrake/icon.pm:107
+#: ../Rpmdrake/icon.pm:108 ../Rpmdrake/icon.pm:109 ../Rpmdrake/icon.pm:110
+#: ../Rpmdrake/icon.pm:111 ../Rpmdrake/icon.pm:112 ../Rpmdrake/icon.pm:113
+#: ../Rpmdrake/icon.pm:114 ../Rpmdrake/icon.pm:134
+#, c-format
+msgid "Networking"
+msgstr "الشبكات"
+
+#: ../Rpmdrake/icon.pm:106
+#, c-format
+msgid "Chat"
+msgstr "محادثة"
+
+#: ../Rpmdrake/icon.pm:107
+#, c-format
+msgid "File transfer"
+msgstr "نقل الملفات"
+
+#: ../Rpmdrake/icon.pm:108
+#, c-format
+msgid "IRC"
+msgstr "IRC"
+
+#: ../Rpmdrake/icon.pm:109
+#, c-format
+msgid "Instant messaging"
+msgstr "المراسلة الفورية"
+
+#: ../Rpmdrake/icon.pm:110 ../Rpmdrake/icon.pm:181
+#, c-format
+msgid "Mail"
+msgstr "بريد"
+
+#: ../Rpmdrake/icon.pm:111
+#, c-format
+msgid "News"
+msgstr "برامج الأخبار"
+
+#: ../Rpmdrake/icon.pm:113
+#, c-format
+msgid "Remote access"
+msgstr "الوصول البعيد"
+
+#: ../Rpmdrake/icon.pm:114
+#, c-format
+msgid "WWW"
+msgstr "الويب"
+
+#: ../Rpmdrake/icon.pm:115
+#, c-format
+msgid "Office"
+msgstr "برامج المكتب"
+
+#: ../Rpmdrake/icon.pm:116
+#, c-format
+msgid "Public Keys"
+msgstr "المفاتيح العامّة"
+
+#: ../Rpmdrake/icon.pm:117
+#, c-format
+msgid "Publishing"
+msgstr "النشر"
+
+#: ../Rpmdrake/icon.pm:118 ../Rpmdrake/icon.pm:119 ../Rpmdrake/icon.pm:120
+#: ../Rpmdrake/icon.pm:121 ../Rpmdrake/icon.pm:122 ../Rpmdrake/icon.pm:123
+#: ../Rpmdrake/icon.pm:124 ../Rpmdrake/icon.pm:125 ../Rpmdrake/icon.pm:126
+#, c-format
+msgid "Sciences"
+msgstr "علوم"
+
+#: ../Rpmdrake/icon.pm:119
+#, c-format
+msgid "Astronomy"
+msgstr "علم الفلك"
+
+#: ../Rpmdrake/icon.pm:120
+#, c-format
+msgid "Biology"
+msgstr "أحياء"
+
+#: ../Rpmdrake/icon.pm:121
+#, c-format
+msgid "Chemistry"
+msgstr "كيمياء"
+
+#: ../Rpmdrake/icon.pm:122
+#, c-format
+msgid "Computer science"
+msgstr "علوم الحاسب"
+
+#: ../Rpmdrake/icon.pm:123
+#, c-format
+msgid "Geosciences"
+msgstr "علوم الأرض"
+
+#: ../Rpmdrake/icon.pm:124
+#, c-format
+msgid "Mathematics"
+msgstr "رياضيات"
+
+#: ../Rpmdrake/icon.pm:126
+#, c-format
+msgid "Physics"
+msgstr "فيزياء"
+
+#: ../Rpmdrake/icon.pm:127
+#, c-format
+msgid "Shells"
+msgstr "برامج سطر الأوامر"
+
+#: ../Rpmdrake/icon.pm:128
+#, c-format
+msgid "Sound"
+msgstr "الصوت"
+
+#: ../Rpmdrake/icon.pm:129 ../Rpmdrake/icon.pm:130 ../Rpmdrake/icon.pm:131
+#: ../Rpmdrake/icon.pm:132 ../Rpmdrake/icon.pm:133 ../Rpmdrake/icon.pm:134
+#: ../Rpmdrake/icon.pm:135 ../Rpmdrake/icon.pm:136 ../Rpmdrake/icon.pm:137
+#: ../Rpmdrake/icon.pm:138 ../Rpmdrake/icon.pm:139 ../Rpmdrake/icon.pm:140
+#: ../Rpmdrake/icon.pm:141 ../Rpmdrake/icon.pm:142 ../Rpmdrake/icon.pm:143
+#: ../Rpmdrake/icon.pm:144 ../Rpmdrake/icon.pm:145 ../Rpmdrake/icon.pm:146
+#: ../Rpmdrake/icon.pm:147 ../Rpmdrake/icon.pm:148 ../Rpmdrake/icon.pm:149
+#, c-format
+msgid "System"
+msgstr "النظام"
+
+#: ../Rpmdrake/icon.pm:130
+#, c-format
+msgid "Base"
+msgstr "الحزم الأساسية"
+
+#: ../Rpmdrake/icon.pm:131 ../Rpmdrake/icon.pm:132 ../Rpmdrake/icon.pm:133
+#: ../Rpmdrake/icon.pm:134 ../Rpmdrake/icon.pm:135 ../Rpmdrake/icon.pm:136
+#: ../Rpmdrake/icon.pm:137 ../Rpmdrake/icon.pm:159
+#, c-format
+msgid "Configuration"
+msgstr "التهيئة"
+
+#: ../Rpmdrake/icon.pm:132
+#, c-format
+msgid "Boot and Init"
+msgstr "الإقلاع و بدء التشغيل"
+
+#: ../Rpmdrake/icon.pm:133
+#, c-format
+msgid "Hardware"
+msgstr "العتاد"
+
+#: ../Rpmdrake/icon.pm:136
+#, c-format
+msgid "Packaging"
+msgstr "التحزيم"
+
+#: ../Rpmdrake/icon.pm:137
+#, c-format
+msgid "Printing"
+msgstr "الطباعة"
+
+#: ../Rpmdrake/icon.pm:138
+#, c-format
+msgid "Deploiement"
+msgstr "الانتشار"
+
+#: ../Rpmdrake/icon.pm:139
+#, c-format
+msgid "Deployment"
+msgstr "الانتشار"
+
+#: ../Rpmdrake/icon.pm:140 ../Rpmdrake/icon.pm:141 ../Rpmdrake/icon.pm:142
+#: ../Rpmdrake/icon.pm:143 ../Rpmdrake/icon.pm:144
+#, c-format
+msgid "Fonts"
+msgstr "الخطوط"
+
+#: ../Rpmdrake/icon.pm:141
+#, c-format
+msgid "Console"
+msgstr "سطر الأوامر"
+
+#: ../Rpmdrake/icon.pm:142
+#, c-format
+msgid "True type"
+msgstr "True Type"
+
+#: ../Rpmdrake/icon.pm:143
+#, c-format
+msgid "Type1"
+msgstr "Type1"
+
+#: ../Rpmdrake/icon.pm:144
+#, c-format
+msgid "X11 bitmap"
+msgstr "X11 bitmap"
+
+#: ../Rpmdrake/icon.pm:145
+#, c-format
+msgid "Internationalization"
+msgstr "التدويل"
+
+#: ../Rpmdrake/icon.pm:146
+#, c-format
+msgid "Kernel and hardware"
+msgstr "النواة و العتاد"
+
+#: ../Rpmdrake/icon.pm:147
+#, c-format
+msgid "Libraries"
+msgstr "المكتبات"
+
+#: ../Rpmdrake/icon.pm:148
+#, c-format
+msgid "Servers"
+msgstr "الخادمات"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:151
+#, c-format
+msgid "X11"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:152
+#, c-format
+msgid "Terminals"
+msgstr "محاكيات الطرفيات"
+
+#: ../Rpmdrake/icon.pm:153
+#, c-format
+msgid "Text tools"
+msgstr "أدوات النصوص"
+
+#: ../Rpmdrake/icon.pm:154
+#, c-format
+msgid "Toys"
+msgstr "ألعاب طفولية"
+
+#: ../Rpmdrake/icon.pm:158 ../Rpmdrake/icon.pm:159 ../Rpmdrake/icon.pm:160
+#: ../Rpmdrake/icon.pm:161 ../Rpmdrake/icon.pm:162 ../Rpmdrake/icon.pm:163
+#: ../Rpmdrake/icon.pm:164 ../Rpmdrake/icon.pm:165 ../Rpmdrake/icon.pm:166
+#: ../Rpmdrake/icon.pm:167
+#, c-format
+msgid "Workstation"
+msgstr "محطة عمل"
+
+#: ../Rpmdrake/icon.pm:160
+#, c-format
+msgid "Console Tools"
+msgstr "أدوات الطرفيّات"
+
+#: ../Rpmdrake/icon.pm:161 ../Rpmdrake/icon.pm:176
+#, c-format
+msgid "Documentation"
+msgstr "التّوثيق"
+
+#: ../Rpmdrake/icon.pm:162
+#, c-format
+msgid "Game station"
+msgstr "محطّة ألعاب"
+
+#: ../Rpmdrake/icon.pm:163
+#, c-format
+msgid "Internet station"
+msgstr "محطّة إنترنت"
+
+#: ../Rpmdrake/icon.pm:164
+#, c-format
+msgid "Multimedia station"
+msgstr "محطة وسائط متعدّدة"
+
+#: ../Rpmdrake/icon.pm:165
+#, c-format
+msgid "Network Computer (client)"
+msgstr "جهاز شبكة (عميل)"
+
+#: ../Rpmdrake/icon.pm:166
+#, c-format
+msgid "Office Workstation"
+msgstr "محطّة عمل مكتبية"
+
+#: ../Rpmdrake/icon.pm:167
+#, c-format
+msgid "Scientific Workstation"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:168 ../Rpmdrake/icon.pm:170 ../Rpmdrake/icon.pm:171
+#: ../Rpmdrake/icon.pm:172 ../Rpmdrake/icon.pm:173
+#, c-format
+msgid "Graphical Environment"
+msgstr "بيئات رسومية"
+
+#: ../Rpmdrake/icon.pm:170
+#, c-format
+msgid "GNOME Workstation"
+msgstr "محطّة عمل جينوم"
+
+#: ../Rpmdrake/icon.pm:171
+#, fuzzy, c-format
+msgid "IceWm Desktop"
+msgstr "Plucker Desktop"
+
+#: ../Rpmdrake/icon.pm:172
+#, c-format
+msgid "KDE Workstation"
+msgstr "محطّة عمل كيدي"
+
+#: ../Rpmdrake/icon.pm:173
+#, c-format
+msgid "Other Graphical Desktops"
+msgstr "أسطح مكتب رسومية أخرى"
+
+#: ../Rpmdrake/icon.pm:177 ../Rpmdrake/icon.pm:178 ../Rpmdrake/icon.pm:179
+#: ../Rpmdrake/icon.pm:180 ../Rpmdrake/icon.pm:181 ../Rpmdrake/icon.pm:182
+#: ../Rpmdrake/icon.pm:183 ../Rpmdrake/icon.pm:184
+#, c-format
+msgid "Server"
+msgstr "خادم"
+
+#: ../Rpmdrake/icon.pm:178
+#, c-format
+msgid "DNS/NIS"
+msgstr "DNS/NIS"
+
+#: ../Rpmdrake/icon.pm:179
+#, c-format
+msgid "Database"
+msgstr "قواعد البيانات"
+
+#: ../Rpmdrake/icon.pm:180
+#, c-format
+msgid "Firewall/Router"
+msgstr "جدار ناري/موجِّه"
+
+#: ../Rpmdrake/icon.pm:182
+#, c-format
+msgid "Mail/Groupware/News"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:183
+#, c-format
+msgid "Network Computer server"
+msgstr "خادم شبكات"
+
+#: ../Rpmdrake/icon.pm:184
+#, c-format
+msgid "Web/FTP"
+msgstr "وب/FTP"
+
+#: ../Rpmdrake/init.pm:40
+#, c-format
+msgid "Usage: %s [OPTION]..."
+msgstr "الاستخدام: %s [خيارات]..."
+
+#: ../Rpmdrake/init.pm:41
 #, c-format
 msgid ""
-"\n"
-"\n"
-"Error(s) reported:\n"
-"%s"
+"  --changelog-first      display changelog before filelist in the "
+"description window"
 msgstr ""
-"\n"
-"\n"
-"الأخطاء المقررة:\n"
-"%s"
 
-#. -PO: in singular form, we use %2\$
-#: ../rpmdrake:1921
-#, fuzzy, c-format
-msgid ""
-"To satisfy dependencies, the following package is going to be installed:\n"
-"%2$s\n"
-msgid_plural ""
-"To satisfy dependencies, the following %d packages are going to be "
-"installed:\n"
-"%s\n"
-msgstr[0] ""
-"لإرضاء المُعتمدات، سيتم تثبيت الحزم %d التّالية:\n"
-"%s\n"
-msgstr[1] ""
-"لإرضاء المُعتمدات، سيتم تثبيت الحزم %d التّالية:\n"
-"%s\n"
-msgstr[2] ""
-"لإرضاء المُعتمدات، سيتم تثبيت الحزم %d التّالية:\n"
-"%s\n"
-msgstr[3] ""
-"لإرضاء المُعتمدات، سيتم تثبيت الحزم %d التّالية:\n"
-"%s\n"
-
-#: ../rpmdrake:1926
-#, fuzzy, c-format
-msgid "Remove one package?"
-msgid_plural "Remove %d packages?"
-msgstr[0] "احذف مفتاح"
-msgstr[1] "احذف مفتاح"
-msgstr[2] "احذف مفتاح"
-msgstr[3] "احذف مفتاح"
-
-#: ../rpmdrake:1927
-#, fuzzy, c-format
-msgid "The following package has to be removed for others to be upgraded:"
-msgid_plural ""
-"The following packages have to be removed for others to be upgraded:"
-msgstr[0] ""
-"يجب ازالة الحزم التالية لكي تتم ترقية الحزم الأخرى:\n"
-"\n"
-"%s\n"
-"\n"
-"هل من الممكن المتابعة؟"
-msgstr[1] ""
-"يجب ازالة الحزم التالية لكي تتم ترقية الحزم الأخرى:\n"
-"\n"
-"%s\n"
-"\n"
-"هل من الممكن المتابعة؟"
-msgstr[2] ""
-"يجب ازالة الحزم التالية لكي تتم ترقية الحزم الأخرى:\n"
-"\n"
-"%s\n"
-"\n"
-"هل من الممكن المتابعة؟"
-msgstr[3] ""
-"يجب ازالة الحزم التالية لكي تتم ترقية الحزم الأخرى:\n"
-"\n"
-"%s\n"
-"\n"
-"هل من الممكن المتابعة؟"
-
-#: ../rpmdrake:1927
-#, fuzzy, c-format
-msgid "Is it ok to continue?"
+#: ../Rpmdrake/init.pm:42
+#, c-format
+msgid "  --media=medium1,..     limit to given media"
 msgstr ""
-"%s\n"
-"\n"
-"هل من الممكن المتابعة؟"
 
-#: ../rpmdrake:1944
-#, c-format
-msgid "Change medium"
-msgstr "غير الوسيط"
-
-#: ../rpmdrake:1945
-#, c-format
-msgid "Please insert the medium named \"%s\" on device [%s]"
-msgstr "فضلاً أدخل الوسيط المسمى \"%s\" الى الجهاز [%s]"
-
-#: ../rpmdrake:1952
-#, c-format
-msgid "Downloading package `%s' (%s/%s)..."
-msgstr "جاري تنزيل الحزمة `%s' (%s/%s)..."
-
-#: ../rpmdrake:1972
-#, c-format
-msgid "Verifying package signatures..."
-msgstr "جاري التأكد من توقيعات الحزم..."
-
-#: ../rpmdrake:1985 ../rpmdrake.pm:739 ../rpmdrake.pm:848
-#, c-format
-msgid "Warning"
-msgstr "تحذير"
-
-#: ../rpmdrake:1986
+#: ../Rpmdrake/init.pm:43
 #, c-format
 msgid ""
-"The following packages have bad signatures:\n"
-"\n"
-"%s\n"
-"\n"
-"Do you want to continue installation?"
+"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
-"الحزم التالية لها توقيعات سيئة:\n"
-"\n"
-"%s\n"
-"\n"
-"هل تريد متابعة التثبيت؟"
 
-#: ../rpmdrake:1998 ../rpmdrake:2108
+#: ../Rpmdrake/init.pm:44
 #, c-format
-msgid "Installation failed"
-msgstr "فشل التثبيت"
+msgid "  --mode=MODE            set mode (install (default), remove, update)"
+msgstr ""
 
-#: ../rpmdrake:1999
+#: ../Rpmdrake/init.pm:45
 #, c-format
 msgid ""
-"Installation failed, some files are missing:\n"
-"%s\n"
-"\n"
-"You may want to update your media database."
+"  --no-confirmation      don't ask first confirmation question in update mode"
 msgstr ""
-"فشل التثبيت، بعض الملفات مفقودة.\n"
-"%s\n"
-"\n"
-"ربما تحتاج الى تحديث فاعدة بيانات الوسائط ."
 
-#: ../rpmdrake:2013
-#, c-format
-msgid "Preparing packages installation..."
-msgstr "جاري تحضير الحزم للتثبيت..."
-
-#: ../rpmdrake:2013
-#, c-format
-msgid "Preparing..."
-msgstr "جاري التحضير..."
-
-#: ../rpmdrake:2016
-#, c-format
-msgid "Installing package `%s' (%s/%s)..."
-msgstr "جاري تثبيت الحزمة `%s' (%s/%s)..."
-
-#: ../rpmdrake:2031
-#, c-format
-msgid "unable to access rpm file [%s]"
-msgstr "لم أتمكّن من التّوصّل لإلى ملفّ rpm [%s]"
-
-#: ../rpmdrake:2065
+#: ../Rpmdrake/init.pm:46
 #, fuzzy, c-format
-msgid ""
-"The installation is finished; everything was installed correctly.\n"
-"\n"
-"Some configuration files were created as `.rpmnew' or `.rpmsave',\n"
-"you may now inspect some in order to take actions:"
-msgstr ""
-"انتهى التثبيت; %s.\n"
-"\n"
-"تم انشاء بعض ملفات التهيئة مثل `.rpmnew' أو `.rpmsave'،\n"
-"يمكنك الآن التحقق من بعضها لكي تقوم بالمطلوب منها:"
+msgid "  --no-media-update      don't update media at startup"
+msgstr "  --update       - حدّث فقط وسائط التّحديث.\n"
 
-#: ../rpmdrake:2073
+#: ../Rpmdrake/init.pm:47
 #, fuzzy, c-format
-msgid "Upgrade information"
-msgstr "معلومات عادية"
+msgid "  --no-verify-rpm        don't verify packages signatures"
+msgstr "  --name         - إطبع أسماء الحزم فقط.\n"
 
-#: ../rpmdrake:2075
-#, c-format
-msgid "These packages come with upgrade information"
-msgstr "تأتي هذه الحزم مع معلومات التّحديث"
-
-#: ../rpmdrake:2083
-#, fuzzy, c-format
-msgid "Upgrade information about this package"
-msgstr "معلومات أكثر حول الحزمة..."
-
-#: ../rpmdrake:2086
-#, fuzzy, c-format
-msgid "Upgrade information about package %s"
-msgstr "معلومات أكثر حول الحزمة... [%s]"
-
-#: ../rpmdrake:2098 ../rpmdrake.pm:726 ../rpmdrake.pm:807 ../rpmdrake.pm:831
-#, c-format
-msgid "Error"
-msgstr "خطأ"
-
-#: ../rpmdrake:2099
-#, c-format
-msgid "Unrecoverable error: no package found for installation, sorry."
-msgstr "خطأ غير قابل للتصحيح: تعذر ايجاد حزمة للتثبيت، عفواً."
-
-#: ../rpmdrake:2124
-#, c-format
-msgid "Please wait, removing packages..."
-msgstr "انتظر من فضلك، جاري ازالة الحزم..."
-
-#: ../rpmdrake:2135
-#, c-format
-msgid "Problem during removal"
-msgstr "ظهرت مشاكل أثناء الحذف"
-
-#: ../rpmdrake:2136
+#: ../Rpmdrake/init.pm:48
 #, c-format
 msgid ""
-"There was a problem during the removal of packages:\n"
-"\n"
-"%s"
+"  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
+"\" machine to show needed deps"
 msgstr ""
-"كان هناك خطأ أثناء حذف الحزم:\n"
-"\n"
-"%s"
 
-#: ../rpmdrake:2168
+#: ../Rpmdrake/init.pm:49
+#, c-format
+msgid "  --pkg-nosel=pkg1,..    show only these packages"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:50
+#, c-format
+msgid "  --pkg-sel=pkg1,..      preselect these packages"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:51
+#, fuzzy, c-format
+msgid "  --root                 force to run as root"
+msgstr ""
+"\n"
+"                      تقرير خدمة DrakBackup\n"
+
+#: ../Rpmdrake/init.pm:52
+#, c-format
+msgid "  --search=pkg           run search for \"pkg\""
+msgstr ""
+
+#: ../Rpmdrake/init.pm:116
+#, c-format
+msgid "Running in user mode"
+msgstr "جاري التشغيل في وضع المستخدم"
+
+#: ../Rpmdrake/init.pm:117
+#, c-format
+msgid ""
+"You are launching this program as a normal user.\n"
+"You will not be able to perform modifications on the system,\n"
+"but you may still browse the existing database."
+msgstr ""
+"أنت تقوم بتشغيل هذا البرنامج كمستخدم عادي.\n"
+"لن يكون باستطاعتك القيام بتعديلات على النظام،\n"
+"لكن لا يزال بإمكانك استعراض قاعدة البيانات الموجودة."
+
+#: ../Rpmdrake/init.pm:124
 #, c-format
 msgid "Welcome"
 msgstr "أهلاً بكم"
 
-#: ../rpmdrake:2173
+#: ../Rpmdrake/init.pm:129
 #, c-format
 msgid ""
 "Welcome to the software removal tool!\n"
@@ -2305,7 +1620,7 @@ msgstr ""
 "هذه الأداة ستسمح لك باختيار البرامج التي تريد ازالتها\n"
 "من جهازك."
 
-#: ../rpmdrake:2178
+#: ../Rpmdrake/init.pm:134
 #, c-format
 msgid ""
 "Welcome to %s!\n"
@@ -2318,12 +1633,12 @@ msgstr ""
 "هذه الأداة ستساعدك في اختيار التحديثات التي تريد تثبيتها على\n"
 "جهازك."
 
-#: ../rpmdrake:2183
+#: ../Rpmdrake/init.pm:139
 #, c-format
 msgid "Welcome to the software installation tool!"
 msgstr "أهلاً إلى أداة تثبيت البرامج!"
 
-#: ../rpmdrake:2184
+#: ../Rpmdrake/init.pm:140
 #, c-format
 msgid ""
 "Welcome to the software installation tool!\n"
@@ -2338,22 +1653,700 @@ msgstr ""
 "برامجية على أقراص CDROM أو DVD. ستساعدك هذه الأداة في اختيار البرامج\n"
 "اّلتي تريد تثبيتها على حاسوبك."
 
-#: ../rpmdrake.pm:104
+#: ../Rpmdrake/pkg.pm:188
+#, c-format
+msgid "Fatal error"
+msgstr "خطأ قاتل"
+
+#: ../Rpmdrake/pkg.pm:193 ../Rpmdrake/pkg.pm:499 ../rpmdrake.pm:316
+#, c-format
+msgid "Please wait"
+msgstr "الرجاء الانتظار"
+
+#: ../Rpmdrake/pkg.pm:193 ../Rpmdrake/pkg.pm:499
+#, c-format
+msgid "Package installation..."
+msgstr "تثبيت الحزم..."
+
+#: ../Rpmdrake/pkg.pm:193 ../Rpmdrake/pkg.pm:499
+#, c-format
+msgid "Initializing..."
+msgstr "جاري البدء..."
+
+#: ../Rpmdrake/pkg.pm:215 ../Rpmdrake/pkg.pm:486
+#, fuzzy, c-format
+msgid "Confirmation"
+msgstr "التهيئة"
+
+#: ../Rpmdrake/pkg.pm:216
+#, c-format
+msgid ""
+"I need to contact the mirror to get latest update packages.\n"
+"Please check that your network is currently running.\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"أحتاج للإتصال بالمرآة للحصول على أخر حزم التحديثات.\n"
+"فضلاً تأكد من أن الشبكة الخاصة بك تعمل حالياً.\n"
+"\n"
+"هل من الممكن المتابعة؟"
+
+#: ../Rpmdrake/pkg.pm:225
+#, c-format
+msgid "Already existing update media"
+msgstr "وسيط تحديث موجود مسبقاً"
+
+#: ../Rpmdrake/pkg.pm:226
+#, c-format
+msgid ""
+"You already have at least one update medium configured, but\n"
+"all of them are currently disabled. You should run the Software\n"
+"Media Manager to enable at least one (check it in the Enabled?\n"
+"column).\n"
+"\n"
+"Then, restart %s."
+msgstr ""
+"لديك على الأقل وسيط تحديث واحد تمت تهيئته، لكن\n"
+"جميعهم معطلون حالياً. يجب عليك تشغيل مدير وسائط\n"
+"البرامج لتمكين واحد على الأقل (قم بالتأشير عليها في عامود التمكين؟).\n"
+"ثم قم بإعادة تشغيل أداة %s."
+
+#: ../Rpmdrake/pkg.pm:237
+#, c-format
+msgid "How to choose manually your mirror"
+msgstr "كيفية اختيار المرآة يدوياً"
+
+#: ../Rpmdrake/pkg.pm:238
+#, c-format
+msgid ""
+"You may also choose your desired mirror manually: to do so,\n"
+"launch the Software Media Manager, and then add a `Security\n"
+"updates' medium.\n"
+"\n"
+"Then, restart %s."
+msgstr ""
+"يمكنك أيضا اختيار المرآة المطلوبة يدويا: لعمل ذلك،\n"
+"قم بتشغيل مدير وسائط البرامج، ثم أضف وسيط 'تحديثات\n"
+"أمنية'.\n"
+"\n"
+"ثم أعد تشغيل أداة %s."
+
+#: ../Rpmdrake/pkg.pm:252
+#, fuzzy, c-format
+msgid "Reading updates description"
+msgstr "في الوصف"
+
+#: ../Rpmdrake/pkg.pm:278 ../Rpmdrake/pkg.pm:358
+#, c-format
+msgid "Please wait, finding available packages..."
+msgstr "اتنظر من فضلك، جاري ايجاد الحزم المتوفرة..."
+
+#: ../Rpmdrake/pkg.pm:286
+#, fuzzy, c-format
+msgid "Please wait, listing base packages..."
+msgstr "انتظر من فضلك، جاري سرد الحزم..."
+
+#: ../Rpmdrake/pkg.pm:323
+#, fuzzy, c-format
+msgid "Please wait, finding installed packages..."
+msgstr "اتنظر من فضلك، جاري ايجاد الحزم المتوفرة..."
+
+#: ../Rpmdrake/pkg.pm:440 ../Rpmdrake/pkg.pm:635
+#, c-format
+msgid "All requested packages were installed successfully."
+msgstr "تم تثبيت كل الحزم المطلوبة بنجاح."
+
+#: ../Rpmdrake/pkg.pm:444 ../Rpmdrake/pkg.pm:615
+#, c-format
+msgid "Problem during installation"
+msgstr "مشكلة أثناء التثبيت"
+
+#: ../Rpmdrake/pkg.pm:445 ../Rpmdrake/pkg.pm:616 ../Rpmdrake/pkg.pm:674
+#, c-format
+msgid ""
+"There was a problem during the installation:\n"
+"\n"
+"%s"
+msgstr ""
+"كان هناك خطأ أثناء التثبيت:\n"
+"\n"
+"%s"
+
+#: ../Rpmdrake/pkg.pm:464
+#, c-format
+msgid "Unable to get source packages."
+msgstr "تعذر الحصول على الحزم المصدرية"
+
+#: ../Rpmdrake/pkg.pm:465
+#, c-format
+msgid "Unable to get source packages, sorry. %s"
+msgstr "تعذر الحصول على الحزم المصدرية، عفواً %s"
+
+#: ../Rpmdrake/pkg.pm:466 ../Rpmdrake/pkg.pm:566
+#, c-format
+msgid ""
+"\n"
+"\n"
+"Error(s) reported:\n"
+"%s"
+msgstr ""
+"\n"
+"\n"
+"الأخطاء المقررة:\n"
+"%s"
+
+#: ../Rpmdrake/pkg.pm:483
+#, fuzzy, c-format
+msgid ""
+"To satisfy dependencies, the following package is going to be installed:"
+msgid_plural ""
+"To satisfy dependencies, the following %d packages are going to be installed:"
+msgstr[0] ""
+"لإرضاء المُعتمدات، سيتم تثبيت الحزم %d التّالية:\n"
+"%s\n"
+msgstr[1] ""
+"لإرضاء المُعتمدات، سيتم تثبيت الحزم %d التّالية:\n"
+"%s\n"
+msgstr[2] ""
+"لإرضاء المُعتمدات، سيتم تثبيت الحزم %d التّالية:\n"
+"%s\n"
+msgstr[3] ""
+"لإرضاء المُعتمدات، سيتم تثبيت الحزم %d التّالية:\n"
+"%s\n"
+
+#: ../Rpmdrake/pkg.pm:488
+#, fuzzy, c-format
+msgid "Remove one package?"
+msgid_plural "Remove %d packages?"
+msgstr[0] "احذف مفتاح"
+msgstr[1] "احذف مفتاح"
+msgstr[2] "احذف مفتاح"
+msgstr[3] "احذف مفتاح"
+
+#: ../Rpmdrake/pkg.pm:490
+#, fuzzy, c-format
+msgid "The following package has to be removed for others to be upgraded:"
+msgstr ""
+"يجب ازالة الحزم التالية لكي تتم ترقية الحزم الأخرى:\n"
+"\n"
+"%s\n"
+"\n"
+"هل من الممكن المتابعة؟"
+
+#: ../Rpmdrake/pkg.pm:491
+#, fuzzy, c-format
+msgid "The following packages have to be removed for others to be upgraded:"
+msgstr ""
+"يجب حذف الحزم التالية لترقية الحزم الأخرى:\n"
+"%s"
+
+#: ../Rpmdrake/pkg.pm:491
+#, fuzzy, c-format
+msgid "Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"هل من الممكن المتابعة؟"
+
+#: ../Rpmdrake/pkg.pm:509
+#, c-format
+msgid "Change medium"
+msgstr "غير الوسيط"
+
+#: ../Rpmdrake/pkg.pm:510
+#, c-format
+msgid "Please insert the medium named \"%s\" on device [%s]"
+msgstr "فضلاً أدخل الوسيط المسمى \"%s\" الى الجهاز [%s]"
+
+#: ../Rpmdrake/pkg.pm:517
+#, c-format
+msgid "Downloading package `%s' (%s/%s)..."
+msgstr "جاري تنزيل الحزمة `%s' (%s/%s)..."
+
+#: ../Rpmdrake/pkg.pm:537
+#, c-format
+msgid "Verifying package signatures..."
+msgstr "جاري التأكد من توقيعات الحزم..."
+
+#: ../Rpmdrake/pkg.pm:550 ../rpmdrake.pm:743 ../rpmdrake.pm:852
+#, c-format
+msgid "Warning"
+msgstr "تحذير"
+
+#: ../Rpmdrake/pkg.pm:551
+#, c-format
+msgid ""
+"The following packages have bad signatures:\n"
+"\n"
+"%s\n"
+"\n"
+"Do you want to continue installation?"
+msgstr ""
+"الحزم التالية لها توقيعات سيئة:\n"
+"\n"
+"%s\n"
+"\n"
+"هل تريد متابعة التثبيت؟"
+
+#: ../Rpmdrake/pkg.pm:563 ../Rpmdrake/pkg.pm:673
+#, c-format
+msgid "Installation failed"
+msgstr "فشل التثبيت"
+
+#: ../Rpmdrake/pkg.pm:564
+#, c-format
+msgid ""
+"Installation failed, some files are missing:\n"
+"%s\n"
+"\n"
+"You may want to update your media database."
+msgstr ""
+"فشل التثبيت، بعض الملفات مفقودة.\n"
+"%s\n"
+"\n"
+"ربما تحتاج الى تحديث فاعدة بيانات الوسائط ."
+
+#: ../Rpmdrake/pkg.pm:578
+#, c-format
+msgid "Preparing packages installation..."
+msgstr "جاري تحضير الحزم للتثبيت..."
+
+#: ../Rpmdrake/pkg.pm:578
+#, c-format
+msgid "Preparing..."
+msgstr "جاري التحضير..."
+
+#: ../Rpmdrake/pkg.pm:581
+#, c-format
+msgid "Installing package `%s' (%s/%s)..."
+msgstr "جاري تثبيت الحزمة `%s' (%s/%s)..."
+
+#: ../Rpmdrake/pkg.pm:596
+#, c-format
+msgid "unable to access rpm file [%s]"
+msgstr "لم أتمكّن من التّوصّل لإلى ملفّ rpm [%s]"
+
+#: ../Rpmdrake/pkg.pm:630
+#, c-format
+msgid ""
+"The installation is finished; everything was installed correctly.\n"
+"\n"
+"Some configuration files were created as `.rpmnew' or `.rpmsave',\n"
+"you may now inspect some in order to take actions:"
+msgstr ""
+"انتهى التثبيت; تم تثبيت كل شئ بشكل صحيح.\n"
+"\n"
+"تم انشاء بعض ملفات التهيئة مثل `.rpmnew' أو `.rpmsave'،\n"
+"يمكنك الآن التحقق من بعضها لكي تقوم بالمطلوب منها:"
+
+#: ../Rpmdrake/pkg.pm:638
+#, fuzzy, c-format
+msgid "Upgrade information"
+msgstr "معلومات عادية"
+
+#: ../Rpmdrake/pkg.pm:640
+#, c-format
+msgid "These packages come with upgrade information"
+msgstr "تأتي هذه الحزم مع معلومات التّحديث"
+
+#: ../Rpmdrake/pkg.pm:648
+#, fuzzy, c-format
+msgid "Upgrade information about this package"
+msgstr "معلومات أكثر حول الحزمة..."
+
+#: ../Rpmdrake/pkg.pm:651
+#, fuzzy, c-format
+msgid "Upgrade information about package %s"
+msgstr "معلومات أكثر حول الحزمة... [%s]"
+
+#: ../Rpmdrake/pkg.pm:663 ../rpmdrake.pm:730 ../rpmdrake.pm:811
+#: ../rpmdrake.pm:835
+#, c-format
+msgid "Error"
+msgstr "خطأ"
+
+#: ../Rpmdrake/pkg.pm:664
+#, c-format
+msgid "Unrecoverable error: no package found for installation, sorry."
+msgstr "خطأ غير قابل للتصحيح: تعذر ايجاد حزمة للتثبيت، عفواً."
+
+#: ../Rpmdrake/pkg.pm:689
+#, c-format
+msgid "Please wait, removing packages..."
+msgstr "انتظر من فضلك، جاري ازالة الحزم..."
+
+#: ../Rpmdrake/pkg.pm:700
+#, c-format
+msgid "Problem during removal"
+msgstr "ظهرت مشاكل أثناء الحذف"
+
+#: ../Rpmdrake/pkg.pm:701
+#, c-format
+msgid ""
+"There was a problem during the removal of packages:\n"
+"\n"
+"%s"
+msgstr ""
+"كان هناك خطأ أثناء حذف الحزم:\n"
+"\n"
+"%s"
+
+#: ../Rpmdrake/rpmnew.pm:81
+#, c-format
+msgid "Inspecting %s"
+msgstr "جاري التحقق من %s"
+
+#: ../Rpmdrake/rpmnew.pm:104
+#, c-format
+msgid "Changes:"
+msgstr "التغييرات:"
+
+#: ../Rpmdrake/rpmnew.pm:112
+#, c-format
+msgid "Remove .%s"
+msgstr "احذف .%s"
+
+#: ../Rpmdrake/rpmnew.pm:116
+#, c-format
+msgid "Use .%s as main file"
+msgstr "استخدم .%s كملف رئيسي"
+
+#: ../Rpmdrake/rpmnew.pm:120
+#, c-format
+msgid "Do nothing"
+msgstr "لا تفعل شيئاً"
+
+#: ../Rpmdrake/rpmnew.pm:136
+#, c-format
+msgid "Installation finished"
+msgstr "انتهى التثبيت"
+
+#: ../Rpmdrake/rpmnew.pm:151
+#, c-format
+msgid "Inspect..."
+msgstr "تحقَّق..."
+
+#: ../Rpmdrake/rpmnew.pm:169 ../rpmdrake:70 ../rpmdrake:98
+#, c-format
+msgid "Please wait, searching..."
+msgstr "انتظر من فضلك، جاري البحث..."
+
+#: ../gurpmi.addmedia:83
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr "تعذّرت إضافة الوسيط، وسائط خاطئة أو ناقصة"
+
+#: ../gurpmi.addmedia:97
+#, fuzzy, c-format
+msgid ""
+"You are about to add new packages media, %s.\n"
+"That means you will be able to add new software packages\n"
+"to your system from these new media."
+msgstr ""
+"أنت بصدد إضافة وسيط رزمات جديد، `%s'.\n"
+"هذا يعني أنّه سيكون باستطاعتك إضافة رزمات برامج جديدة\n"
+"إلى نظامك من هذا الوسيط الجديد."
+
+#: ../gurpmi.addmedia:100
+#, c-format
+msgid ""
+"You are about to add a new packages medium, `%s'.\n"
+"That means you will be able to add new software packages\n"
+"to your system from that new medium."
+msgstr ""
+"أنت بصدد إضافة وسيط رزمات جديد، `%s'.\n"
+"هذا يعني أنّه سيكون باستطاعتك إضافة رزمات برامج جديدة\n"
+"إلى نظامك من هذا الوسيط الجديد."
+
+#: ../gurpmi.addmedia:125
+#, fuzzy, c-format
+msgid "Successfully added media %s."
+msgstr "تمّت إضافة الوسيط `%s' بنجاح."
+
+#: ../gurpmi.addmedia:126
+#, c-format
+msgid "Successfully added medium `%s'."
+msgstr "تمّت إضافة الوسيط `%s' بنجاح."
+
+#: ../rpmdrake:59 ../rpmdrake:141
+#, c-format
+msgid "Search results"
+msgstr "نتائج البحث"
+
+#: ../rpmdrake:59
+#, c-format
+msgid "Search results (none)"
+msgstr "نتائج البحث (لا شئ)"
+
+#: ../rpmdrake:93 ../rpmdrake:187 ../rpmdrake.pm:180
+#, fuzzy, c-format
+msgid "Software Management"
+msgstr "مدير وسائط البرمجيات"
+
+#: ../rpmdrake:103
+#, c-format
+msgid "Stop"
+msgstr "قف"
+
+#: ../rpmdrake:144
+#, c-format
+msgid "Selected"
+msgstr "مختار"
+
+#: ../rpmdrake:144
+#, c-format
+msgid "Not selected"
+msgstr "غير مختارة"
+
+#: ../rpmdrake:200
+#, c-format
+msgid "Selected: %s / Free disk space: %s"
+msgstr "تم اختيار: %s / المساحة المتوفرة في القرص: %s"
+
+#: ../rpmdrake:201
+#, c-format
+msgid "Selected size: %d MB"
+msgstr "الحجم المختار: %d ميغابايت"
+
+#: ../rpmdrake:256
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "تثبيت"
+
+#: ../rpmdrake:256
+#, fuzzy, c-format
+msgid "Non installed"
+msgstr "تثبيت"
+
+#: ../rpmdrake:257
+#, c-format
+msgid "%s choices"
+msgstr "%s اختيارات"
+
+#: ../rpmdrake:257
+#, c-format
+msgid "Mandriva Linux choices"
+msgstr "خيارات ماندريبا لينكس"
+
+#: ../rpmdrake:259
+#, c-format
+msgid "All packages, alphabetical"
+msgstr "كل الحزم، أبجدياً"
+
+#: ../rpmdrake:260
+#, c-format
+msgid "All packages, by update availability"
+msgstr "كل الحزم، بتوافر التحديث"
+
+#: ../rpmdrake:261
+#, c-format
+msgid "All packages, by size"
+msgstr "كل الحزم، بالحجم"
+
+#: ../rpmdrake:262
+#, c-format
+msgid "All packages, by selection state"
+msgstr "كل الحزم، بحالة الإختيار"
+
+#: ../rpmdrake:263
+#, c-format
+msgid "Leaves only, sorted by install date"
+msgstr "المتروكات فقط، مرتبة حسب تاريخ التثبيت"
+
+#: ../rpmdrake:264
+#, c-format
+msgid "All packages, by group"
+msgstr "كل الحزم، بالمجموعة"
+
+#: ../rpmdrake:266
+#, fuzzy, c-format
+msgid "All updates"
+msgstr "تحديثات عادية"
+
+#: ../rpmdrake:266
+#, c-format
+msgid "Security updates"
+msgstr "تحديثات أمنية"
+
+#: ../rpmdrake:266
+#, c-format
+msgid "Bugfixes updates"
+msgstr "تحديثات ازالة العيوب"
+
+#: ../rpmdrake:266
+#, c-format
+msgid "Normal updates"
+msgstr "تحديثات عادية"
+
+#: ../rpmdrake:327
+#, c-format
+msgid "in names"
+msgstr "في الأسماء"
+
+#: ../rpmdrake:329
+#, c-format
+msgid "in descriptions"
+msgstr "في الوصف"
+
+#: ../rpmdrake:331
+#, c-format
+msgid "in file names"
+msgstr "في أسماء الملفات"
+
+#: ../rpmdrake:362 ../rpmdrake:365 ../rpmdrake:376 ../rpmdrake:389
+#: ../rpmdrake:398
+#, c-format
+msgid "/_File"
+msgstr "/_ملف"
+
+#: ../rpmdrake:365
+#, c-format
+msgid "/_Update media"
+msgstr "/_تحديث الوسط"
+
+#: ../rpmdrake:376
+#, c-format
+msgid "/_Reset the selection"
+msgstr "/_إعادة تعيين الاختيار"
+
+#: ../rpmdrake:389
+#, c-format
+msgid "/Reload the _packages list"
+msgstr "/إعادة تحميل _لائحة الحزم"
+
+#: ../rpmdrake:398
+#, c-format
+msgid "/_Quit"
+msgstr "/_خروج"
+
+#: ../rpmdrake:398
+#, c-format
+msgid "<control>Q"
+msgstr "<control>خ"
+
+#: ../rpmdrake:401 ../rpmdrake:402 ../rpmdrake:407 ../rpmdrake:437
+#, c-format
+msgid "/_Options"
+msgstr "/_خيارات"
+
+#: ../rpmdrake:402
+#, fuzzy, c-format
+msgid "/_Media Manager"
+msgstr "مدير وسائط البرمجيات"
+
+#: ../rpmdrake:407 ../rpmdrake:437
+#, c-format
+msgid "/_Show automatically selected packages"
+msgstr "/إظ_هار الحزم المُحدّدة آلياً"
+
+#: ../rpmdrake:411 ../rpmdrake:412 ../rpmdrake:413 ../rpmdrake:414
+#, c-format
+msgid "/_Help"
+msgstr "/مسا_عدة"
+
+#: ../rpmdrake:412
+#, c-format
+msgid "/_Report Bug"
+msgstr "/_تقرير خطأ"
+
+#: ../rpmdrake:414
+#, c-format
+msgid "/_About..."
+msgstr "/_حول..."
+
+#: ../rpmdrake:417
+#, fuzzy, c-format
+msgid "Rpmdrake"
+msgstr "معالج حزم ماندريبا (Rpmdrake) %s"
+
+#: ../rpmdrake:419
+#, c-format
+msgid "Copyright (C) %s by Mandriva"
+msgstr ""
+
+#: ../rpmdrake:421
+#, c-format
+msgid "Rpmdrake is Mandriva Linux package management tool."
+msgstr ""
+
+#: ../rpmdrake:423
+#, fuzzy, c-format
+msgid "Mandriva Linux"
+msgstr "Mandriva Online"
+
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#: ../rpmdrake:428
+#, c-format
+msgid "_: Translator(s) name(s) & email(s)\n"
+msgstr "Arabeyes <support@arabeyes.org>\n"
+
+#: ../rpmdrake:452
+#, c-format
+msgid "Find:"
+msgstr "ابحث عن:"
+
+#: ../rpmdrake:461
+#, c-format
+msgid "Search"
+msgstr "ابحث"
+
+#: ../rpmdrake:463
+#, c-format
+msgid "Clear"
+msgstr "إمحي"
+
+#: ../rpmdrake:477 ../rpmdrake.pm:764
+#, c-format
+msgid "Select all"
+msgstr "تحديد الكل"
+
+#: ../rpmdrake:484
+#, c-format
+msgid "Apply"
+msgstr "تطبيق"
+
+#: ../rpmdrake:488
+#, c-format
+msgid "Quit"
+msgstr "خروج"
+
+#: ../rpmdrake:504
+#, c-format
+msgid "Quick Introduction"
+msgstr ""
+
+#: ../rpmdrake:505
+#, c-format
+msgid "You can browse the packages through the categories tree on the left."
+msgstr ""
+
+#: ../rpmdrake:506
+#, c-format
+msgid ""
+"You can view information about a package by clicking on it on the right list."
+msgstr ""
+
+#: ../rpmdrake:507
+#, c-format
+msgid "To install, update or remove a package, just click on its \"checkbox\"."
+msgstr ""
+
+#: ../rpmdrake.pm:103
 #, c-format
 msgid "Software Update"
 msgstr "تحديث البرامج"
 
-#: ../rpmdrake.pm:104
+#: ../rpmdrake.pm:103
 #, c-format
 msgid "Mandriva Linux Update"
 msgstr "تحديث ماندريبا لينكس"
 
-#: ../rpmdrake.pm:131
+#: ../rpmdrake.pm:130
 #, fuzzy, c-format
 msgid "Please enter your credentials for accessing proxy\n"
 msgstr "الرجاء إدخال عنوان بريدك الألكتروني أدناه "
 
-#: ../rpmdrake.pm:132
+#: ../rpmdrake.pm:131
 #, fuzzy, c-format
 msgid "User name:"
 msgstr "إسم المستخدم:"
@@ -2363,7 +2356,7 @@ msgstr "إسم المستخدم:"
 msgid "Software Packages Removal"
 msgstr "حذف حزم البرامج"
 
-#: ../rpmdrake.pm:176
+#: ../rpmdrake.pm:176 ../rpmdrake.pm:180
 #, c-format
 msgid "Software Packages Update"
 msgstr "تحديث حزم البرامج"
@@ -2373,177 +2366,177 @@ msgstr "تحديث حزم البرامج"
 msgid "Software Packages Installation"
 msgstr "تثبيت الحزم البرمجية"
 
-#: ../rpmdrake.pm:219
+#: ../rpmdrake.pm:220
 #, c-format
 msgid "No"
 msgstr "لا"
 
-#: ../rpmdrake.pm:223
+#: ../rpmdrake.pm:224
 #, c-format
 msgid "Yes"
 msgstr "نعم"
 
-#: ../rpmdrake.pm:273
+#: ../rpmdrake.pm:274
 #, c-format
 msgid "Info..."
 msgstr "معلومات..."
 
-#: ../rpmdrake.pm:390
+#: ../rpmdrake.pm:395
 #, c-format
 msgid "Austria"
 msgstr "النمسا"
 
-#: ../rpmdrake.pm:391
+#: ../rpmdrake.pm:396
 #, c-format
 msgid "Australia"
 msgstr "أوستراليا"
 
-#: ../rpmdrake.pm:392
+#: ../rpmdrake.pm:397
 #, c-format
 msgid "Belgium"
 msgstr "بلجيكا"
 
-#: ../rpmdrake.pm:393
+#: ../rpmdrake.pm:398
 #, c-format
 msgid "Brazil"
 msgstr "البرازيل"
 
-#: ../rpmdrake.pm:394
+#: ../rpmdrake.pm:399
 #, c-format
 msgid "Canada"
 msgstr "كندا"
 
-#: ../rpmdrake.pm:395
+#: ../rpmdrake.pm:400
 #, c-format
 msgid "Switzerland"
 msgstr "السويسرية"
 
-#: ../rpmdrake.pm:396
+#: ../rpmdrake.pm:401
 #, c-format
 msgid "Costa Rica"
 msgstr "كوستاريكا"
 
-#: ../rpmdrake.pm:397
+#: ../rpmdrake.pm:402
 #, c-format
 msgid "Czech Republic"
 msgstr "جمهورية التشيك"
 
-#: ../rpmdrake.pm:398
+#: ../rpmdrake.pm:403
 #, c-format
 msgid "Germany"
 msgstr "ألمانيا"
 
-#: ../rpmdrake.pm:399
+#: ../rpmdrake.pm:404
 #, c-format
 msgid "Danmark"
 msgstr "الدنمارك"
 
-#: ../rpmdrake.pm:400 ../rpmdrake.pm:404
+#: ../rpmdrake.pm:405 ../rpmdrake.pm:409
 #, c-format
 msgid "Greece"
 msgstr "اليونان"
 
-#: ../rpmdrake.pm:401
+#: ../rpmdrake.pm:406
 #, c-format
 msgid "Spain"
 msgstr "أسبانيا"
 
-#: ../rpmdrake.pm:402
+#: ../rpmdrake.pm:407
 #, c-format
 msgid "Finland"
 msgstr "فنلندا"
 
-#: ../rpmdrake.pm:403
+#: ../rpmdrake.pm:408
 #, c-format
 msgid "France"
 msgstr "فرنسا"
 
-#: ../rpmdrake.pm:405
+#: ../rpmdrake.pm:410
 #, c-format
 msgid "Hungary"
 msgstr "المجر"
 
-#: ../rpmdrake.pm:406
+#: ../rpmdrake.pm:411
 #, c-format
 msgid "Israel"
 msgstr "اسرائيل"
 
-#: ../rpmdrake.pm:407
+#: ../rpmdrake.pm:412
 #, c-format
 msgid "Italy"
 msgstr "ايطاليا"
 
-#: ../rpmdrake.pm:408
+#: ../rpmdrake.pm:413
 #, c-format
 msgid "Japan"
 msgstr "اليابان"
 
-#: ../rpmdrake.pm:409
+#: ../rpmdrake.pm:414
 #, c-format
 msgid "Korea"
 msgstr "كوريا"
 
-#: ../rpmdrake.pm:410
+#: ../rpmdrake.pm:415
 #, c-format
 msgid "Netherlands"
 msgstr "هولندا"
 
-#: ../rpmdrake.pm:411
+#: ../rpmdrake.pm:416
 #, c-format
 msgid "Norway"
 msgstr "النرويج"
 
-#: ../rpmdrake.pm:412
+#: ../rpmdrake.pm:417
 #, c-format
 msgid "Poland"
 msgstr "بولندا"
 
-#: ../rpmdrake.pm:413
+#: ../rpmdrake.pm:418
 #, c-format
 msgid "Portugal"
 msgstr "البرتغال"
 
-#: ../rpmdrake.pm:414
+#: ../rpmdrake.pm:419
 #, c-format
 msgid "Russia"
 msgstr "روسيا"
 
-#: ../rpmdrake.pm:415
+#: ../rpmdrake.pm:420
 #, c-format
 msgid "Sweden"
 msgstr "السويد"
 
-#: ../rpmdrake.pm:416
+#: ../rpmdrake.pm:421
 #, c-format
 msgid "Singapore"
 msgstr "سنغافورة"
 
-#: ../rpmdrake.pm:417
+#: ../rpmdrake.pm:422
 #, c-format
 msgid "Slovakia"
 msgstr "سلوفاكيا"
 
-#: ../rpmdrake.pm:418
+#: ../rpmdrake.pm:423
 #, c-format
 msgid "Taiwan"
 msgstr "تايوان"
 
-#: ../rpmdrake.pm:419
+#: ../rpmdrake.pm:424
 #, c-format
 msgid "United Kingdom"
 msgstr "المملكة المتحدة"
 
-#: ../rpmdrake.pm:420
+#: ../rpmdrake.pm:425
 #, c-format
 msgid "China"
 msgstr "الصين"
 
-#: ../rpmdrake.pm:421 ../rpmdrake.pm:422 ../rpmdrake.pm:423 ../rpmdrake.pm:424
+#: ../rpmdrake.pm:426 ../rpmdrake.pm:427 ../rpmdrake.pm:428 ../rpmdrake.pm:429
 #, c-format
 msgid "United States"
 msgstr "الولايات المتحدة"
 
-#: ../rpmdrake.pm:521
+#: ../rpmdrake.pm:526
 #, c-format
 msgid ""
 "I need to access internet to get the mirror list.\n"
@@ -2556,7 +2549,7 @@ msgstr ""
 "\n"
 "هل من الممكن المتابعة؟"
 
-#: ../rpmdrake.pm:525
+#: ../rpmdrake.pm:530
 #, c-format
 msgid ""
 "I need to contact the Mandriva website to get the mirror list.\n"
@@ -2569,27 +2562,27 @@ msgstr ""
 "\n"
 "هل من الممكن المتابعة ؟"
 
-#: ../rpmdrake.pm:531 ../rpmdrake.pm:569
+#: ../rpmdrake.pm:536 ../rpmdrake.pm:574
 #, fuzzy, c-format
 msgid "Mirror choice"
 msgstr "%s اختيارات"
 
-#: ../rpmdrake.pm:534
+#: ../rpmdrake.pm:539
 #, c-format
 msgid "Please wait, downloading mirror addresses."
 msgstr "إنتظر من فضلك، يجري تنزيل عناوين المرايا."
 
-#: ../rpmdrake.pm:535
+#: ../rpmdrake.pm:540
 #, c-format
 msgid "Please wait, downloading mirror addresses from the Mandriva website."
 msgstr "إنتظر من فضلك، يجري تنزيل عناوين المرايا من موقع ماندريبا."
 
-#: ../rpmdrake.pm:542
+#: ../rpmdrake.pm:547
 #, c-format
 msgid "Error during download"
 msgstr "خطأ أثناء التنزيل"
 
-#: ../rpmdrake.pm:544
+#: ../rpmdrake.pm:549
 #, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2604,7 +2597,7 @@ msgstr ""
 "الشّبكة، أو الموقع، قد يكون غير متوفّر.\n"
 "الرجاء المحاولة لاحقاً."
 
-#: ../rpmdrake.pm:549
+#: ../rpmdrake.pm:554
 #, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2619,17 +2612,17 @@ msgstr ""
 "الشّبكة، أو موقع ماندريبا، قد يكونا غير متوفّرين.\n"
 "حاول مجدّدا في وقت لاحق من فضلك."
 
-#: ../rpmdrake.pm:559
+#: ../rpmdrake.pm:564
 #, c-format
 msgid "No mirror"
 msgstr "لا مرايا"
 
-#: ../rpmdrake.pm:561
+#: ../rpmdrake.pm:566
 #, c-format
 msgid "I can't find any suitable mirror."
 msgstr "لم يمكن العثور على أية مرآة ملائمة."
 
-#: ../rpmdrake.pm:562
+#: ../rpmdrake.pm:567
 #, c-format
 msgid ""
 "I can't find any suitable mirror.\n"
@@ -2644,68 +2637,68 @@ msgstr ""
 "أن تكون هندسة معالجك غير مدعومة\n"
 "من طرف تحديثات ماندريبا لينكس الّرسمية."
 
-#: ../rpmdrake.pm:581
+#: ../rpmdrake.pm:586
 #, c-format
 msgid "Please choose the desired mirror."
 msgstr "فضلاً اختر المرآة المطلوبة."
 
-#: ../rpmdrake.pm:634
+#: ../rpmdrake.pm:639
 #, c-format
 msgid "Copying file for medium `%s'..."
 msgstr "جاري نسخ الملف للوسيط `%s'..."
 
-#: ../rpmdrake.pm:637
+#: ../rpmdrake.pm:642
 #, c-format
 msgid "Examining file of medium `%s'..."
 msgstr "جاري اختبار الملف للوسيط `%s'..."
 
-#: ../rpmdrake.pm:640
+#: ../rpmdrake.pm:645
 #, c-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "جاري اختبار الملف البعيد للوسيط `%s'..."
 
-#: ../rpmdrake.pm:644
+#: ../rpmdrake.pm:649
 #, c-format
 msgid " done."
 msgstr " تم."
 
-#: ../rpmdrake.pm:648
+#: ../rpmdrake.pm:653
 #, c-format
 msgid " failed!"
 msgstr " فشل!"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:652
+#: ../rpmdrake.pm:657
 #, c-format
 msgid "%s from medium %s"
 msgstr "%s من الوسيط %s"
 
-#: ../rpmdrake.pm:656
+#: ../rpmdrake.pm:661
 #, c-format
 msgid "Starting download of `%s'..."
 msgstr "جاري بدء تنزيل `%s'..."
 
-#: ../rpmdrake.pm:660
+#: ../rpmdrake.pm:665
 #, c-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr "تنزيل `%s'، الوقت المتبقي:%s، السرعة:%s"
 
-#: ../rpmdrake.pm:663
+#: ../rpmdrake.pm:668
 #, c-format
 msgid "Download of `%s', speed:%s"
 msgstr "تنزيل `%s'، السرعة:%s"
 
-#: ../rpmdrake.pm:674
+#: ../rpmdrake.pm:679
 #, c-format
 msgid "Please wait, updating media..."
 msgstr "انتظر من فضلك، جاري تحديث الوسائط..."
 
-#: ../rpmdrake.pm:702
+#: ../rpmdrake.pm:706
 #, c-format
 msgid "Error retrieving packages"
 msgstr "خطأ في استرجاع الحزم"
 
-#: ../rpmdrake.pm:703
+#: ../rpmdrake.pm:707
 #, c-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
@@ -2721,28 +2714,28 @@ msgstr ""
 "لإعداده من جديد، و إمّا الوسيط غير قابل للوصل حاليا و بالتّالي فعليك\n"
 "بالمحاولة مجدّدا فيما بعد."
 
-#: ../rpmdrake.pm:734
+#: ../rpmdrake.pm:738
 #, c-format
 msgid "Update media"
 msgstr "حدّث الوسائط"
 
-#: ../rpmdrake.pm:739
+#: ../rpmdrake.pm:743
 #, c-format
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
 msgstr ""
 
-#: ../rpmdrake.pm:746
+#: ../rpmdrake.pm:750
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "اختر الوسائط التي تريد تحديثها:"
 
-#: ../rpmdrake.pm:764
+#: ../rpmdrake.pm:768
 #, c-format
 msgid "Update"
 msgstr "حدّث"
 
-#: ../rpmdrake.pm:785
+#: ../rpmdrake.pm:789
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -2755,7 +2748,7 @@ msgstr ""
 "الأخطاء:\n"
 "%s"
 
-#: ../rpmdrake.pm:808 ../rpmdrake.pm:819
+#: ../rpmdrake.pm:812 ../rpmdrake.pm:823
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -2766,17 +2759,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:831
+#: ../rpmdrake.pm:835
 #, c-format
 msgid "Unable to create medium."
 msgstr "تعذر انشاء الوسيط"
 
-#: ../rpmdrake.pm:836
+#: ../rpmdrake.pm:840
 #, c-format
 msgid "Failure when adding medium"
 msgstr "فشل عند إضافة الوسيط"
 
-#: ../rpmdrake.pm:837
+#: ../rpmdrake.pm:841
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -2787,7 +2780,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:850
+#: ../rpmdrake.pm:854
 #, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
@@ -2797,7 +2790,7 @@ msgstr ""
 "وسيطك `%s'، المُستخدَم للتّحديثات، لا يطابق النسخة %s الّتي تعمل عليها (%s).\n"
 "سيتمّ تعطيله."
 
-#: ../rpmdrake.pm:853
+#: ../rpmdrake.pm:857
 #, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of Mandriva "
@@ -2808,12 +2801,12 @@ msgstr ""
 "s).\n"
 "سيتمّ تعطيله."
 
-#: ../rpmdrake.pm:870
+#: ../rpmdrake.pm:874
 #, c-format
 msgid "Help launched in background"
 msgstr "تشغيل المساعدة في الخلفية"
 
-#: ../rpmdrake.pm:871
+#: ../rpmdrake.pm:875
 #, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
@@ -3091,10 +3084,6 @@ msgstr "مدير وسائط البرمجيات"
 
 #~ msgid "Please wait, reading packages database..."
 #~ msgstr "انتظر من فضلك، جاري قراءة قاعدة بيانات الحزم..."
-
-#, fuzzy
-#~ msgid "About Rpmdrake"
-#~ msgstr "معالج حزم ماندريبا (Rpmdrake)"
 
 #~ msgid "XFree86"
 #~ msgstr "XFree86"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-13 18:39+0200\n"
+"POT-Creation-Date: 2007-02-23 15:31+0100\n"
 "PO-Revision-Date: 2000-08-19 08:45+0200\n"
 "Last-Translator: Alexander Bokovoy <ab@avilink.net>\n"
 "Language-Team: be <be@li.org>\n"
@@ -14,11 +14,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../edit-urpm-sources.pl:80
+#: ../Rpmdrake/edit_urpm_sources.pm:67
+#, c-format
 msgid "Choose media type"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:81
+#: ../Rpmdrake/edit_urpm_sources.pm:68
+#, c-format
 msgid ""
 "This step enables you to add sources from a Mandriva Linux web or FTP "
 "mirror.\n"
@@ -32,17 +34,18 @@ msgid ""
 "to do this in two steps.)"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:89
+#: ../Rpmdrake/edit_urpm_sources.pm:76
+#, c-format
 msgid "Distribution sources"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:89
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:76
+#, fuzzy, c-format
 msgid "Official updates"
 msgstr "Рэжым Mmap"
 
-#: ../edit-urpm-sources.pl:92
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:79
+#, c-format
 msgid ""
 "This will attempt to install all official sources corresponding to your\n"
 "distribution (%s).\n"
@@ -53,430 +56,493 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:102
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:93
+#, fuzzy, c-format
 msgid "Please wait, adding media..."
 msgstr "Падрыхтоўка ўсталяваньня"
 
-#: ../edit-urpm-sources.pl:134
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:126
+#, fuzzy, c-format
 msgid "Add a medium"
 msgstr "Дадаць карыстальніка"
 
-#: ../edit-urpm-sources.pl:136
+#: ../Rpmdrake/edit_urpm_sources.pm:130
+#, c-format
 msgid "Local files"
 msgstr "Мясцовыя файлы"
 
-#: ../edit-urpm-sources.pl:136
+#: ../Rpmdrake/edit_urpm_sources.pm:130
+#, c-format
 msgid "Path:"
 msgstr "Шлях:"
 
-#: ../edit-urpm-sources.pl:137
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:131
+#, fuzzy, c-format
 msgid "FTP server"
 msgstr "X сэервер"
 
-#: ../edit-urpm-sources.pl:137 ../edit-urpm-sources.pl:138
-#: ../edit-urpm-sources.pl:139 ../edit-urpm-sources.pl:407
+#: ../Rpmdrake/edit_urpm_sources.pm:131 ../Rpmdrake/edit_urpm_sources.pm:132
+#: ../Rpmdrake/edit_urpm_sources.pm:133 ../Rpmdrake/edit_urpm_sources.pm:402
+#, c-format
 msgid "URL:"
 msgstr "URL:"
 
-#: ../edit-urpm-sources.pl:138
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:132
+#, fuzzy, c-format
 msgid "RSYNC server"
 msgstr "X сервер"
 
-#: ../edit-urpm-sources.pl:139
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:133
+#, fuzzy, c-format
 msgid "HTTP server"
 msgstr "X сервер"
 
-#: ../edit-urpm-sources.pl:140
-#, fuzzy
-msgid "Path or mount point:"
-msgstr "Пункт манціравання:"
-
-#: ../edit-urpm-sources.pl:140
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:134
+#, fuzzy, c-format
 msgid "Removable device"
 msgstr "Аддалены прынтэр"
 
-#: ../edit-urpm-sources.pl:159
+#: ../Rpmdrake/edit_urpm_sources.pm:134
+#, fuzzy, c-format
+msgid "Path or mount point:"
+msgstr "Пункт манціравання:"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:152
+#, c-format
 msgid "Browse..."
 msgstr "Праглядзець..."
 
-#: ../edit-urpm-sources.pl:187
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:179
+#, fuzzy, c-format
 msgid "Login:"
 msgstr "Імя (login ID)"
 
-#: ../edit-urpm-sources.pl:187 ../edit-urpm-sources.pl:487 ../rpmdrake.pm:130
+#: ../Rpmdrake/edit_urpm_sources.pm:179 ../Rpmdrake/edit_urpm_sources.pm:488
+#: ../rpmdrake.pm:131
+#, c-format
 msgid "Password:"
 msgstr "Пароля:"
 
-#: ../edit-urpm-sources.pl:192 ../edit-urpm-sources.pl:408
+#: ../Rpmdrake/edit_urpm_sources.pm:184 ../Rpmdrake/edit_urpm_sources.pm:403
+#, c-format
 msgid "Relative path to synthesis/hdlist:"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:194
+#: ../Rpmdrake/edit_urpm_sources.pm:186
+#, c-format
 msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:199
+#: ../Rpmdrake/edit_urpm_sources.pm:191
+#, c-format
 msgid "Name:"
 msgstr "Імя:"
 
-#: ../edit-urpm-sources.pl:207
+#: ../Rpmdrake/edit_urpm_sources.pm:199
+#, c-format
 msgid "Create media for a whole distribution"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:218
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:210
+#, fuzzy, c-format
 msgid "Search this media for updates"
 msgstr "Пазначце карыстальнікаў каб аб'яднаць у гэтыю групу"
 
-#: ../edit-urpm-sources.pl:228
+#: ../Rpmdrake/edit_urpm_sources.pm:220
+#, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr ""
 
-#: ../edit-urpm-sources.pl:232
+#: ../Rpmdrake/edit_urpm_sources.pm:224
+#, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
 "really want to replace it?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:243
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:236
+#, fuzzy, c-format
 msgid "Adding a medium:"
 msgstr "Дадаць карыстальніка"
 
-#: ../edit-urpm-sources.pl:245
+#: ../Rpmdrake/edit_urpm_sources.pm:238
+#, c-format
 msgid "Type of medium:"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:253 ../edit-urpm-sources.pl:328
-#: ../edit-urpm-sources.pl:414 ../edit-urpm-sources.pl:439
-#: ../edit-urpm-sources.pl:504 ../edit-urpm-sources.pl:586
-#: ../edit-urpm-sources.pl:626 ../edit-urpm-sources.pl:684
-#: ../edit-urpm-sources.pl:823 ../rpmdrake:191 ../rpmdrake:849
-#: ../rpmdrake:1752 ../rpmdrake:1760 ../rpmdrake.pm:284 ../rpmdrake.pm:597
-#: ../rpmdrake.pm:687 ../rpmdrake.pm:760
+#: ../Rpmdrake/edit_urpm_sources.pm:248 ../Rpmdrake/edit_urpm_sources.pm:324
+#: ../Rpmdrake/edit_urpm_sources.pm:412 ../Rpmdrake/edit_urpm_sources.pm:439
+#: ../Rpmdrake/edit_urpm_sources.pm:505 ../Rpmdrake/edit_urpm_sources.pm:589
+#: ../Rpmdrake/edit_urpm_sources.pm:630 ../Rpmdrake/edit_urpm_sources.pm:688
+#: ../Rpmdrake/edit_urpm_sources.pm:836 ../Rpmdrake/gui.pm:478
+#: ../Rpmdrake/init.pm:119 ../Rpmdrake/pkg.pm:511 ../Rpmdrake/pkg.pm:519
+#: ../rpmdrake.pm:289 ../rpmdrake.pm:602 ../rpmdrake.pm:687 ../rpmdrake.pm:760
+#, c-format
 msgid "Cancel"
 msgstr "Адмена"
 
-#: ../edit-urpm-sources.pl:255 ../edit-urpm-sources.pl:330
-#: ../edit-urpm-sources.pl:439 ../edit-urpm-sources.pl:494
-#: ../edit-urpm-sources.pl:583 ../edit-urpm-sources.pl:625
-#: ../edit-urpm-sources.pl:677 ../edit-urpm-sources.pl:749
-#: ../edit-urpm-sources.pl:816 ../edit-urpm-sources.pl:869
-#: ../edit-urpm-sources.pl:1018 ../rpmdrake:191 ../rpmdrake:849
-#: ../rpmdrake:866 ../rpmdrake:871 ../rpmdrake:1662 ../rpmdrake:1752
-#: ../rpmdrake:1903 ../rpmdrake.pm:121 ../rpmdrake.pm:226 ../rpmdrake.pm:286
-#: ../rpmdrake.pm:597
+#: ../Rpmdrake/edit_urpm_sources.pm:250 ../Rpmdrake/edit_urpm_sources.pm:326
+#: ../Rpmdrake/edit_urpm_sources.pm:439 ../Rpmdrake/edit_urpm_sources.pm:495
+#: ../Rpmdrake/edit_urpm_sources.pm:586 ../Rpmdrake/edit_urpm_sources.pm:629
+#: ../Rpmdrake/edit_urpm_sources.pm:681 ../Rpmdrake/edit_urpm_sources.pm:754
+#: ../Rpmdrake/edit_urpm_sources.pm:882 ../Rpmdrake/edit_urpm_sources.pm:1032
+#: ../Rpmdrake/gui.pm:478 ../Rpmdrake/gui.pm:494 ../Rpmdrake/gui.pm:499
+#: ../Rpmdrake/init.pm:119 ../Rpmdrake/pkg.pm:511 ../Rpmdrake/pkg.pm:658
+#: ../Rpmdrake/rpmnew.pm:159 ../rpmdrake.pm:122 ../rpmdrake.pm:229
+#: ../rpmdrake.pm:291 ../rpmdrake.pm:602
+#, c-format
 msgid "Ok"
 msgstr "Ок"
 
-#: ../edit-urpm-sources.pl:312
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:307
+#, fuzzy, c-format
 msgid "Global options for package installation"
 msgstr "Падрыхтоўка ўсталяваньня"
 
-#: ../edit-urpm-sources.pl:314
+#: ../Rpmdrake/edit_urpm_sources.pm:310
+#, c-format
 msgid "always"
 msgstr "заўсёды"
 
-#: ../edit-urpm-sources.pl:315
+#: ../Rpmdrake/edit_urpm_sources.pm:311
+#, c-format
 msgid "never"
 msgstr "ніколі"
 
-#: ../edit-urpm-sources.pl:324
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:320
+#, fuzzy, c-format
 msgid "Verify RPMs to be installed:"
 msgstr "Выбар пакетаў"
 
-#: ../edit-urpm-sources.pl:325
+#: ../Rpmdrake/edit_urpm_sources.pm:321
+#, c-format
 msgid "Download program to use:"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:355
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:351
+#, fuzzy, c-format
 msgid "Source Removal"
 msgstr "Мэнэджэр сэрвісаў"
 
-#: ../edit-urpm-sources.pl:356
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:352
+#, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:361
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:357
+#, fuzzy, c-format
 msgid "Please wait, removing medium..."
 msgstr "Падрыхтоўка ўсталяваньня"
 
-#: ../edit-urpm-sources.pl:398
+#: ../Rpmdrake/edit_urpm_sources.pm:392
+#, c-format
 msgid "Edit a medium"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:404
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:399
+#, c-format
 msgid "Editing medium \"%s\":"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:418
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:404
+#, c-format
+msgid "Downloader:"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:416
+#, fuzzy, c-format
 msgid "Save changes"
 msgstr "Змена спева"
 
-#: ../edit-urpm-sources.pl:426 ../edit-urpm-sources.pl:1005
+#: ../Rpmdrake/edit_urpm_sources.pm:425 ../Rpmdrake/edit_urpm_sources.pm:1019
+#, c-format
 msgid "Proxy..."
 msgstr "Проксі..."
 
-#: ../edit-urpm-sources.pl:437
+#: ../Rpmdrake/edit_urpm_sources.pm:437
+#, c-format
 msgid "You need to insert the medium to continue"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:438
+#: ../Rpmdrake/edit_urpm_sources.pm:438
+#, c-format
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr ""
 
-#: ../edit-urpm-sources.pl:459
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:459
+#, fuzzy, c-format
 msgid "Configure proxies"
 msgstr "Настройка IDE"
 
-#: ../edit-urpm-sources.pl:470
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:471
+#, c-format
 msgid "Proxy settings for media \"%s\""
 msgstr ""
 
-#: ../edit-urpm-sources.pl:471
+#: ../Rpmdrake/edit_urpm_sources.pm:472
+#, c-format
 msgid "Global proxy settings"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:473
+#: ../Rpmdrake/edit_urpm_sources.pm:474
+#, c-format
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
 "<proxyhost[:port]>):"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:476
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:477
+#, fuzzy, c-format
 msgid "Proxy hostname:"
 msgstr "Імя машыны"
 
-#: ../edit-urpm-sources.pl:479
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:480
+#, fuzzy, c-format
 msgid "You may specify a user/password for the proxy authentication:"
 msgstr "Першы сектар загрузачнага раздзелу"
 
-#: ../edit-urpm-sources.pl:482
+#: ../Rpmdrake/edit_urpm_sources.pm:483
+#, c-format
 msgid "User:"
 msgstr "Карыстальнік(ца):"
 
-#: ../edit-urpm-sources.pl:554
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:555
+#, fuzzy, c-format
 msgid "Add a parallel group"
 msgstr "Дадаць карыстальніка"
 
-#: ../edit-urpm-sources.pl:554
+#: ../Rpmdrake/edit_urpm_sources.pm:555
+#, c-format
 msgid "Edit a parallel group"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:565
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:567
+#, fuzzy, c-format
 msgid "Add a medium limit"
 msgstr "Дадаць карыстальніка"
 
-#: ../edit-urpm-sources.pl:577
+#: ../Rpmdrake/edit_urpm_sources.pm:580
+#, c-format
 msgid "Choose a medium for adding in the media limit:"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:614
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:617
+#, fuzzy, c-format
 msgid "Add a host"
 msgstr "Дадаць карыстальніка"
 
-#: ../edit-urpm-sources.pl:620
+#: ../Rpmdrake/edit_urpm_sources.pm:624
+#, c-format
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:651
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:655
+#, c-format
 msgid "Editing parallel group \"%s\":"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:655
+#: ../Rpmdrake/edit_urpm_sources.pm:659
+#, c-format
 msgid "Group name:"
 msgstr "Імя групы:"
 
-#: ../edit-urpm-sources.pl:656
+#: ../Rpmdrake/edit_urpm_sources.pm:660
+#, c-format
 msgid "Protocol:"
 msgstr "Пратакол:"
 
-#: ../edit-urpm-sources.pl:658
+#: ../Rpmdrake/edit_urpm_sources.pm:662
+#, c-format
 msgid "Media limit:"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:663 ../edit-urpm-sources.pl:670
+#: ../Rpmdrake/edit_urpm_sources.pm:667 ../Rpmdrake/edit_urpm_sources.pm:674
+#, c-format
 msgid "Add"
 msgstr "Дадаць"
 
-#: ../edit-urpm-sources.pl:664 ../edit-urpm-sources.pl:671
-#: ../edit-urpm-sources.pl:729 ../edit-urpm-sources.pl:983
+#: ../Rpmdrake/edit_urpm_sources.pm:668 ../Rpmdrake/edit_urpm_sources.pm:675
+#: ../Rpmdrake/edit_urpm_sources.pm:734 ../Rpmdrake/edit_urpm_sources.pm:997
+#, c-format
 msgid "Remove"
 msgstr "Выдаліць"
 
-#: ../edit-urpm-sources.pl:665
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:669
+#, fuzzy, c-format
 msgid "Hosts:"
 msgstr "Хост:"
 
-#: ../edit-urpm-sources.pl:699
+#: ../Rpmdrake/edit_urpm_sources.pm:703
+#, c-format
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:702
+#: ../Rpmdrake/edit_urpm_sources.pm:707
+#, c-format
 msgid "Group"
 msgstr "Група"
 
-#: ../edit-urpm-sources.pl:702
-msgid "Media limit"
-msgstr ""
-
-#: ../edit-urpm-sources.pl:702
+#: ../Rpmdrake/edit_urpm_sources.pm:707
+#, c-format
 msgid "Protocol"
 msgstr "Пратакол"
 
-#: ../edit-urpm-sources.pl:703
+#: ../Rpmdrake/edit_urpm_sources.pm:707
+#, c-format
+msgid "Media limit"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:708
+#, c-format
 msgid "Command"
 msgstr "Каманда"
 
-#: ../edit-urpm-sources.pl:713 ../rpmdrake:413 ../rpmdrake:437 ../rpmdrake:576
-#: ../rpmdrake:775
+#: ../Rpmdrake/edit_urpm_sources.pm:718 ../Rpmdrake/gui.pm:680
+#: ../Rpmdrake/pkg.pm:98 ../Rpmdrake/pkg.pm:129 ../Rpmdrake/pkg.pm:168
+#: ../Rpmdrake/rpmnew.pm:80
+#, c-format
 msgid "(none)"
 msgstr "(не)"
 
-#: ../edit-urpm-sources.pl:733 ../edit-urpm-sources.pl:987
+#: ../Rpmdrake/edit_urpm_sources.pm:738 ../Rpmdrake/edit_urpm_sources.pm:1001
+#, c-format
 msgid "Edit..."
 msgstr "Рэдагаваць"
 
-#: ../edit-urpm-sources.pl:741 ../edit-urpm-sources.pl:993
+#: ../Rpmdrake/edit_urpm_sources.pm:746 ../Rpmdrake/edit_urpm_sources.pm:1007
+#, c-format
 msgid "Add..."
 msgstr "Дадаць..."
 
-#: ../edit-urpm-sources.pl:757
+#: ../Rpmdrake/edit_urpm_sources.pm:762
+#, c-format
 msgid "Manage keys for digital signatures of packages"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:761 ../edit-urpm-sources.pl:918
+#: ../Rpmdrake/edit_urpm_sources.pm:768 ../Rpmdrake/edit_urpm_sources.pm:932
+#, c-format
 msgid "Medium"
 msgstr "Сярэдне"
 
-#: ../edit-urpm-sources.pl:766
+#: ../Rpmdrake/edit_urpm_sources.pm:774
+#, c-format
 msgid ""
 "_:cryptographic keys\n"
 "Keys"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:785
+#: ../Rpmdrake/edit_urpm_sources.pm:797
+#, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:798
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:810
+#, fuzzy, c-format
 msgid "Add a key"
 msgstr "Дадаць карыстальніка"
 
-#: ../edit-urpm-sources.pl:810
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:823
+#, c-format
 msgid "Choose a key for adding to the medium %s"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:838
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:829
+#, c-format
+msgid "Close"
+msgstr "Зачыніць"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:851
+#, fuzzy, c-format
 msgid "Remove a key"
 msgstr "/Выдаліць дохлыя файлы"
 
-#: ../edit-urpm-sources.pl:839
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:852
+#, c-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
 "(name of the key: %s)"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:857
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:870
+#, fuzzy, c-format
 msgid "Add a key..."
 msgstr "Дадаць карыстальніка"
 
-#: ../edit-urpm-sources.pl:861
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:874
+#, fuzzy, c-format
 msgid "Remove key"
 msgstr "Аддалены прынтэр"
 
-#: ../edit-urpm-sources.pl:877
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:890
+#, fuzzy, c-format
 msgid "Configure media"
 msgstr "Настроіць панэль"
 
-#: ../edit-urpm-sources.pl:916
-#, fuzzy
-msgid "Enabled?"
+#: ../Rpmdrake/edit_urpm_sources.pm:930
+#, fuzzy, c-format
+msgid "Enabled"
 msgstr "Дазволіць пашырэнне"
 
-#: ../edit-urpm-sources.pl:917
-#, fuzzy
-msgid "Updates?"
+#: ../Rpmdrake/edit_urpm_sources.pm:931
+#, fuzzy, c-format
+msgid "Updates"
 msgstr "Аднавіць"
 
-#: ../edit-urpm-sources.pl:933
+#: ../Rpmdrake/edit_urpm_sources.pm:947
+#, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:963
-#, fuzzy, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:977
+#, fuzzy, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
 "\n"
 "%s"
 msgstr "Немагчыма адчыніць файл %s\n"
 
-#: ../edit-urpm-sources.pl:997
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:1011
+#, fuzzy, c-format
 msgid "Add custom..."
 msgstr "Дадаць"
 
-#: ../edit-urpm-sources.pl:1001
+#: ../Rpmdrake/edit_urpm_sources.pm:1015
+#, c-format
 msgid "Update..."
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1004
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:1018
+#, fuzzy, c-format
 msgid "Manage keys..."
 msgstr "Наладка вашага сэансу"
 
-#: ../edit-urpm-sources.pl:1006
+#: ../Rpmdrake/edit_urpm_sources.pm:1020
+#, c-format
 msgid "Parallel..."
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1007
+#: ../Rpmdrake/edit_urpm_sources.pm:1021
+#, c-format
 msgid "Global options..."
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1017 ../rpmdrake:1290
+#: ../Rpmdrake/edit_urpm_sources.pm:1031 ../rpmdrake:472
+#, c-format
 msgid "Help"
 msgstr "Дапамога"
 
-#: ../edit-urpm-sources.pl:1030 ../gurpmi.addmedia:97 ../rpmdrake:1978
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:1044 ../Rpmdrake/init.pm:125
+#: ../gurpmi.addmedia:93
+#, c-format
 msgid ""
 "%s\n"
 "\n"
 "Is it ok to continue?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1033
+#: ../Rpmdrake/edit_urpm_sources.pm:1047
+#, c-format
 msgid ""
 "Welcome to the Software Media Manager!\n"
 "\n"
@@ -485,7 +551,8 @@ msgid ""
 "or to perform updates."
 msgstr ""
 
-#: ../edit-urpm-sources.pl:1045
+#: ../Rpmdrake/edit_urpm_sources.pm:1063
+#, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
 "working with packages database (do you have another media\n"
@@ -493,888 +560,226 @@ msgid ""
 "packages as well?)."
 msgstr ""
 
-#: ../gurpmi.addmedia:87
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr ""
-
-#: ../gurpmi.addmedia:101
-#, perl-format
-msgid ""
-"You are about to add new packages media, %s.\n"
-"That means you will be able to add new software packages\n"
-"to your system from these new media."
-msgstr ""
-
-#: ../gurpmi.addmedia:104
-#, perl-format
-msgid ""
-"You are about to add a new packages medium, `%s'.\n"
-"That means you will be able to add new software packages\n"
-"to your system from that new medium."
-msgstr ""
-
-#: ../gurpmi.addmedia:129
-#, perl-format
-msgid "Successfully added media %s."
-msgstr ""
-
-#: ../gurpmi.addmedia:130
-#, perl-format
-msgid "Successfully added medium `%s'."
-msgstr ""
-
-#: ../rpmdrake:38
-#, perl-format
-msgid "Usage: %s [OPTION]..."
-msgstr "Выкарыстаньне: %s [ВЫБАР]..."
-
-#: ../rpmdrake:39
-msgid ""
-"  --changelog-first      display changelog before filelist in the "
-"description window"
-msgstr ""
-
-#: ../rpmdrake:40
-msgid "  --media=medium1,..     limit to given media"
-msgstr ""
-
-#: ../rpmdrake:41
-msgid ""
-"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
-msgstr ""
-
-#: ../rpmdrake:42
-msgid "  --mode=MODE            set mode (install (default), remove, update)"
-msgstr ""
-
-#: ../rpmdrake:43
-msgid ""
-"  --no-confirmation      don't ask first confirmation question in update mode"
-msgstr ""
-
-#: ../rpmdrake:44
-msgid "  --no-media-update      don't update media at startup"
-msgstr ""
-
-#: ../rpmdrake:45
-msgid "  --no-verify-rpm        don't verify packages signatures"
-msgstr ""
-
-#: ../rpmdrake:46
-msgid ""
-"  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
-"\" machine to show needed deps"
-msgstr ""
-
-#: ../rpmdrake:47
-msgid "  --pkg-nosel=pkg1,..    show only these packages"
-msgstr ""
-
-#: ../rpmdrake:48
-msgid "  --pkg-sel=pkg1,..      preselect these packages"
-msgstr ""
-
-#: ../rpmdrake:49
-#, fuzzy
-msgid "  --root                 force to run as root"
-msgstr "  --no-mmx                 Не выкарыстоўваць шаблёны MMX.\n"
-
-#: ../rpmdrake:50
-msgid "  --search=pkg           run search for \"pkg\""
-msgstr ""
-
-#: ../rpmdrake:188
-msgid "Running in user mode"
-msgstr ""
-
-#: ../rpmdrake:189
-msgid ""
-"You are launching this program as a normal user.\n"
-"You will not be able to perform modifications on the system,\n"
-"but you may still browse the existing database."
-msgstr ""
-
-#: ../rpmdrake:197
-msgid "Accessibility"
-msgstr "Зручнасьці"
-
-#: ../rpmdrake:198 ../rpmdrake:199 ../rpmdrake:200 ../rpmdrake:201
-#: ../rpmdrake:202
-msgid "Archiving"
-msgstr ""
-
-#: ../rpmdrake:199
-msgid "Backup"
-msgstr "Рэзерваваньне даньняў"
-
-#: ../rpmdrake:200
-msgid "Cd burning"
-msgstr ""
-
-#: ../rpmdrake:201
-#, fuzzy
-msgid "Compression"
-msgstr "Сэанс"
-
-#: ../rpmdrake:202 ../rpmdrake:208 ../rpmdrake:222 ../rpmdrake:235
-#: ../rpmdrake:253 ../rpmdrake:274 ../rpmdrake:287 ../rpmdrake:297
-#: ../rpmdrake:383
-msgid "Other"
-msgstr "Іншыя"
-
-#: ../rpmdrake:203 ../rpmdrake:204 ../rpmdrake:205 ../rpmdrake:206
-#: ../rpmdrake:207 ../rpmdrake:208
-#, fuzzy
-msgid "Books"
-msgstr "Закладкі (cookies)"
-
-#: ../rpmdrake:204
-msgid "Computer books"
-msgstr ""
-
-#: ../rpmdrake:205
-#, fuzzy
-msgid "Faqs"
-msgstr "Гульні"
-
-#: ../rpmdrake:206
-#, fuzzy
-msgid "Howtos"
-msgstr "Хост:"
-
-#: ../rpmdrake:207
-msgid "Literature"
-msgstr ""
-
-#: ../rpmdrake:209 ../rpmdrake:210 ../rpmdrake:211
-msgid "Cluster"
-msgstr ""
-
-#: ../rpmdrake:210
-msgid "Message Passing"
-msgstr ""
-
-#: ../rpmdrake:211
-msgid "Queueing Services"
-msgstr ""
-
-#: ../rpmdrake:212
-#, fuzzy
-msgid "Communications"
-msgstr "Канфігурацыя"
-
-#: ../rpmdrake:213 ../rpmdrake:217
-#, fuzzy
-msgid "Databases"
-msgstr "База даньняў дыскаў"
-
-#: ../rpmdrake:214 ../rpmdrake:215 ../rpmdrake:216 ../rpmdrake:217
-#: ../rpmdrake:218 ../rpmdrake:219 ../rpmdrake:220 ../rpmdrake:221
-#: ../rpmdrake:222 ../rpmdrake:223 ../rpmdrake:224 ../rpmdrake:225
-msgid "Development"
-msgstr "Распрацоўка"
-
-#: ../rpmdrake:215
-msgid "C"
-msgstr "C"
-
-#: ../rpmdrake:216
-msgid "C++"
-msgstr "C++"
-
-#: ../rpmdrake:218
-msgid "GNOME and GTK+"
-msgstr ""
-
-#: ../rpmdrake:219
-msgid "Java"
-msgstr "Java"
-
-#: ../rpmdrake:220
-msgid "KDE and Qt"
-msgstr ""
-
-#: ../rpmdrake:221
-msgid "Kernel"
-msgstr "Ядро"
-
-#: ../rpmdrake:223
-msgid "Perl"
-msgstr "Perl"
-
-#: ../rpmdrake:224
-msgid "PHP"
-msgstr "PHP"
-
-#: ../rpmdrake:225
-msgid "Python"
-msgstr "Python"
-
-#: ../rpmdrake:226
-msgid "Editors"
-msgstr "Рэдактары"
-
-#: ../rpmdrake:227
-msgid "Education"
-msgstr "Адукацыя"
-
-#: ../rpmdrake:228
-#, fuzzy
-msgid "Emulators"
-msgstr "Калькулятар"
-
-#: ../rpmdrake:229
-msgid "File tools"
-msgstr ""
-
-#: ../rpmdrake:230 ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233
-#: ../rpmdrake:234 ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237
-#: ../rpmdrake:238
-msgid "Games"
-msgstr "Гульні"
-
-#: ../rpmdrake:231
-msgid "Adventure"
-msgstr ""
-
-#: ../rpmdrake:232
-msgid "Arcade"
-msgstr "Аркады"
-
-#: ../rpmdrake:233
-#, fuzzy
-msgid "Boards"
-msgstr "Карты"
-
-#: ../rpmdrake:234
-msgid "Cards"
-msgstr "Карты"
-
-#: ../rpmdrake:236
-#, fuzzy
-msgid "Puzzles"
-msgstr "Пурпурны"
-
-#: ../rpmdrake:237
-msgid "Sports"
-msgstr "Спорт"
-
-#: ../rpmdrake:238
-#, fuzzy
-msgid "Strategy"
-msgstr "Тактыка і стратэгія"
-
-#: ../rpmdrake:239 ../rpmdrake:240 ../rpmdrake:243 ../rpmdrake:244
-#: ../rpmdrake:247 ../rpmdrake:250 ../rpmdrake:253 ../rpmdrake:254
-#: ../rpmdrake:257 ../rpmdrake:260
-#, fuzzy
-msgid "Graphical desktop"
-msgstr "Іншыя графічныя Працоўныя сталы"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:242
-msgid "Enlightenment"
-msgstr ""
-
-#: ../rpmdrake:243
-msgid "FVWM based"
-msgstr ""
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:246
-msgid "GNOME"
-msgstr "GNOME"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:249
-msgid "Icewm"
-msgstr ""
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:252
-msgid "KDE"
-msgstr "KDE"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:256
-msgid "Sawfish"
-msgstr "Sawfish"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:259
-#, fuzzy
-msgid "WindowMaker"
-msgstr "Паводзіны вокнаў"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:262
-msgid "Xfce"
-msgstr ""
-
-#: ../rpmdrake:263
-msgid "Graphics"
-msgstr "Графіка"
-
-#: ../rpmdrake:264
-#, fuzzy
-msgid "Monitoring"
-msgstr "Манітор"
-
-#: ../rpmdrake:265 ../rpmdrake:266
-msgid "Multimedia"
-msgstr "Музыка й фільмы"
-
-#: ../rpmdrake:266 ../rpmdrake:317
-msgid "Video"
-msgstr "Відэа"
-
-#: ../rpmdrake:267 ../rpmdrake:268 ../rpmdrake:269 ../rpmdrake:270
-#: ../rpmdrake:271 ../rpmdrake:272 ../rpmdrake:273 ../rpmdrake:274
-#: ../rpmdrake:275 ../rpmdrake:276 ../rpmdrake:296
-#, fuzzy
-msgid "Networking"
-msgstr "Сетка"
-
-#: ../rpmdrake:268
-msgid "Chat"
-msgstr "Гутарка"
-
-#: ../rpmdrake:269
-#, fuzzy
-msgid "File transfer"
-msgstr "Мэнэджэр файлаў"
-
-#: ../rpmdrake:270
-msgid "IRC"
-msgstr "IRC"
-
-#: ../rpmdrake:271
-msgid "Instant messaging"
-msgstr ""
-
-#: ../rpmdrake:272
-msgid "Mail"
-msgstr "Пошта"
-
-#: ../rpmdrake:273
-msgid "News"
-msgstr "Навіны"
-
-#: ../rpmdrake:275
-msgid "Remote access"
-msgstr ""
-
-#: ../rpmdrake:276
-msgid "WWW"
-msgstr "Уэб"
-
-#: ../rpmdrake:277
-msgid "Office"
-msgstr "Офіс"
-
-#: ../rpmdrake:278
-msgid "Public Keys"
-msgstr ""
-
-#: ../rpmdrake:279
-msgid "Publishing"
-msgstr "Выдавецтва"
-
-#: ../rpmdrake:280 ../rpmdrake:281 ../rpmdrake:282 ../rpmdrake:283
-#: ../rpmdrake:284 ../rpmdrake:285 ../rpmdrake:286 ../rpmdrake:287
-#: ../rpmdrake:288
-#, fuzzy
-msgid "Sciences"
-msgstr "Радкі"
-
-#: ../rpmdrake:281
-msgid "Astronomy"
-msgstr "Зоркаведаньне"
-
-#: ../rpmdrake:282
-msgid "Biology"
-msgstr ""
-
-#: ../rpmdrake:283
-msgid "Chemistry"
-msgstr ""
-
-#: ../rpmdrake:284
-msgid "Computer science"
-msgstr ""
-
-#: ../rpmdrake:285
-msgid "Geosciences"
-msgstr ""
-
-#: ../rpmdrake:286
-msgid "Mathematics"
-msgstr ""
-
-#: ../rpmdrake:288
-msgid "Physics"
-msgstr ""
-
-#: ../rpmdrake:289
-#, fuzzy
-msgid "Shells"
-msgstr "Абалонка:"
-
-#: ../rpmdrake:290
-msgid "Sound"
-msgstr "Гук"
-
-#: ../rpmdrake:291 ../rpmdrake:292 ../rpmdrake:293 ../rpmdrake:294
-#: ../rpmdrake:295 ../rpmdrake:296 ../rpmdrake:297 ../rpmdrake:298
-#: ../rpmdrake:299 ../rpmdrake:300 ../rpmdrake:301 ../rpmdrake:302
-#: ../rpmdrake:303 ../rpmdrake:304 ../rpmdrake:305 ../rpmdrake:306
-#: ../rpmdrake:307 ../rpmdrake:308 ../rpmdrake:309 ../rpmdrake:310
-#: ../rpmdrake:311
-msgid "System"
-msgstr "Сістэма"
-
-#: ../rpmdrake:292
-#, fuzzy
-msgid "Base"
-msgstr "Басы"
-
-#: ../rpmdrake:293 ../rpmdrake:294 ../rpmdrake:295 ../rpmdrake:296
-#: ../rpmdrake:297 ../rpmdrake:298 ../rpmdrake:299
-msgid "Configuration"
-msgstr "Канфігурацыя"
-
-#: ../rpmdrake:294
-msgid "Boot and Init"
-msgstr ""
-
-#: ../rpmdrake:295
-msgid "Hardware"
-msgstr "Абсталяваньне"
-
-#: ../rpmdrake:298
-msgid "Packaging"
-msgstr ""
-
-#: ../rpmdrake:299
-msgid "Printing"
-msgstr "Друкаваньне"
-
-#: ../rpmdrake:300
-#, fuzzy
-msgid "Deploiement"
-msgstr "Распрацоўка"
-
-#: ../rpmdrake:301
-#, fuzzy
-msgid "Deployment"
-msgstr "Распрацоўка"
-
-#: ../rpmdrake:302 ../rpmdrake:303 ../rpmdrake:304 ../rpmdrake:305
-#: ../rpmdrake:306
-msgid "Fonts"
-msgstr "Шрыфты"
-
-#: ../rpmdrake:303
-msgid "Console"
-msgstr ""
-
-#: ../rpmdrake:304
-#, fuzzy
-msgid "True type"
-msgstr "Тып мышы: %s\n"
-
-#: ../rpmdrake:305
-#, fuzzy
-msgid "Type1"
-msgstr "Тып"
-
-#: ../rpmdrake:306
-#, fuzzy
-msgid "X11 bitmap"
-msgstr "Растар"
-
-#: ../rpmdrake:307
-#, fuzzy
-msgid "Internationalization"
-msgstr "Слоўнік GNOME"
-
-#: ../rpmdrake:308
-#, fuzzy
-msgid "Kernel and hardware"
-msgstr "Гл. апісанне абсталявання"
-
-#: ../rpmdrake:309
-msgid "Libraries"
-msgstr "Бібліятэкі"
-
-#: ../rpmdrake:310
-msgid "Servers"
-msgstr "Сэрвэры"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:313
-msgid "X11"
-msgstr ""
-
-#: ../rpmdrake:314
-#, fuzzy
-msgid "Terminals"
-msgstr "Тэрмінал GNOME"
-
-#: ../rpmdrake:315
-msgid "Text tools"
-msgstr ""
-
-#: ../rpmdrake:316
-msgid "Toys"
-msgstr "Цацкі"
-
-#. - to highlight information
-#: ../rpmdrake:443 ../rpmdrake:614 ../rpmdrake:619 ../rpmdrake:633
-#: ../rpmdrake:635
-#, fuzzy
-msgid "(Not available)"
-msgstr "няма даступных раздзелаў"
-
-#: ../rpmdrake:475
-msgid "Search results"
-msgstr "Вынікі пошуку"
-
-#: ../rpmdrake:475
-msgid "Search results (none)"
-msgstr ""
-
-#: ../rpmdrake:486
-#, fuzzy
-msgid "Please wait, searching..."
-msgstr "Падрыхтоўка ўсталяваньня"
-
-#: ../rpmdrake:558 ../rpmdrake:810
-#, fuzzy
-msgid "Addable"
-msgstr "(адмовіць)"
-
-#: ../rpmdrake:558 ../rpmdrake:810
-#, fuzzy
-msgid "Upgradable"
-msgstr "Аркады"
-
-#: ../rpmdrake:560
-msgid "Not selected"
-msgstr "Ня вылучаны"
-
-#: ../rpmdrake:560
-msgid "Selected"
-msgstr "Пазначаны"
-
-#: ../rpmdrake:602 ../rpmdrake:651
-#, fuzzy
+#: ../Rpmdrake/gui.pm:59 ../Rpmdrake/gui.pm:116
+#, fuzzy, c-format
 msgid "Importance: "
 msgstr "важна"
 
-#: ../rpmdrake:603 ../rpmdrake:659
+#: ../Rpmdrake/gui.pm:60 ../Rpmdrake/gui.pm:124
+#, c-format
 msgid "Reason for update: "
 msgstr ""
 
-#: ../rpmdrake:647
-#, fuzzy
+#: ../Rpmdrake/gui.pm:64
+#, fuzzy, c-format
 msgid "Security advisory"
 msgstr "Бясьпека"
 
-#: ../rpmdrake:655 ../rpmdrake:708
+#: ../Rpmdrake/gui.pm:72 ../Rpmdrake/gui.pm:126
+#, c-format
 msgid "No description"
 msgstr "Апісаньне адсутнічае"
 
-#: ../rpmdrake:609
-#, fuzzy
+#: ../Rpmdrake/gui.pm:75
+#, fuzzy, c-format
 msgid "Files:"
 msgstr "Файлы"
 
-#: ../rpmdrake:618
-#, fuzzy
+#: ../Rpmdrake/gui.pm:79 ../Rpmdrake/gui.pm:84 ../Rpmdrake/gui.pm:98
+#: ../Rpmdrake/gui.pm:100 ../Rpmdrake/pkg.pm:135
+#, fuzzy, c-format
+msgid "(Not available)"
+msgstr "няма даступных раздзелаў"
+
+#: ../Rpmdrake/gui.pm:83
+#, fuzzy, c-format
 msgid "Changelog:"
 msgstr "Каналы:"
 
-#: ../rpmdrake:630
-#, fuzzy
+#: ../Rpmdrake/gui.pm:95
+#, fuzzy, c-format
 msgid "Files:\n"
 msgstr "Файлы"
 
-#: ../rpmdrake:635
-#, fuzzy
+#: ../Rpmdrake/gui.pm:100
+#, fuzzy, c-format
 msgid "Changelog:\n"
 msgstr "Каналы:"
 
-#: ../rpmdrake:640
+#: ../Rpmdrake/gui.pm:105 ../rpmdrake.pm:813
+#, c-format
 msgid "Medium: "
 msgstr ""
 
-#: ../rpmdrake:641
-#, fuzzy
+#: ../Rpmdrake/gui.pm:106
+#, fuzzy, c-format
 msgid "Currently installed version: "
 msgstr "Настройка драйверу Sun"
 
-#: ../rpmdrake:645
+#: ../Rpmdrake/gui.pm:110
+#, c-format
 msgid "Name: "
 msgstr "Імя: "
 
-#: ../rpmdrake:646
-#, fuzzy
+#: ../Rpmdrake/gui.pm:111
+#, fuzzy, c-format
 msgid "Version: "
 msgstr "Версія: "
 
-#: ../rpmdrake:647
+#: ../Rpmdrake/gui.pm:112
+#, c-format
 msgid "Architecture: "
 msgstr ""
 
-#: ../rpmdrake:648
-#, perl-format
-msgid "%s KB"
-msgstr ""
-
-#: ../rpmdrake:648
-#, fuzzy
+#: ../Rpmdrake/gui.pm:113
+#, fuzzy, c-format
 msgid "Size: "
 msgstr "Памер: %s"
 
-#. extra empty line
-#: ../rpmdrake:655
-#, fuzzy
+#: ../Rpmdrake/gui.pm:113
+#, c-format
+msgid "%s KB"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:120
+#, fuzzy, c-format
 msgid "Summary: "
 msgstr "Агульныя зьвесткі"
 
-#: ../rpmdrake:661
+#: ../Rpmdrake/gui.pm:126
+#, c-format
 msgid "Description: "
 msgstr "Апісаньне:"
 
-#: ../rpmdrake:698 ../rpmdrake.pm:178
-#, fuzzy
-msgid "Software Management"
-msgstr "Мэнэджэр сэрвісаў"
-
-#. - TODO change those labels to something more sensible, e.g. "Upgrade information about this package"
-#: ../rpmdrake:715 ../rpmdrake:862 ../rpmdrake:864 ../rpmdrake:1893
-#, fuzzy
+#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:490 ../Rpmdrake/gui.pm:492
+#, fuzzy, c-format
 msgid "More information on package..."
 msgstr "Інфармацыя аб памяці"
 
-#: ../rpmdrake:717
-#, fuzzy
-msgid "One of the following packages is needed:"
-msgstr "Наступныя пакеты будуць даданы да сістэмы"
-
-#: ../rpmdrake:717
-#, fuzzy
+#: ../Rpmdrake/gui.pm:455
+#, fuzzy, c-format
 msgid "Please choose"
 msgstr "калі ласка, пазначце тып вашай мышы."
 
-#: ../rpmdrake:759
-#, fuzzy
-msgid "Please wait, listing packages..."
-msgstr "Усталяванне пакету %s"
+#: ../Rpmdrake/gui.pm:456
+#, fuzzy, c-format
+msgid "The following package is needed:"
+msgstr "Наступныя пакеты будуць даданы да сістэмы"
 
-#: ../rpmdrake:777
-#, fuzzy
-msgid "No update"
-msgstr "Імя друкаркі"
-
-#: ../rpmdrake:778
-msgid ""
-"The list of updates is empty. This means that either there is\n"
-"no available update for the packages installed on your computer,\n"
-"or you already installed all of them."
-msgstr ""
-
-#: ../rpmdrake:801 ../rpmdrake:1057
-msgid "All"
-msgstr "Усё"
+#: ../Rpmdrake/gui.pm:456
+#, fuzzy, c-format
+msgid "One of the following packages is needed:"
+msgstr "Наступныя пакеты будуць даданы да сістэмы"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../rpmdrake:849 ../rpmdrake:854
-#, fuzzy
+#: ../Rpmdrake/gui.pm:478 ../Rpmdrake/gui.pm:483
+#, fuzzy, c-format
 msgid "More info"
 msgstr "Дастасаваньні"
 
-#: ../rpmdrake:857 ../rpmdrake:1882
-#, fuzzy
+#: ../Rpmdrake/gui.pm:485
+#, fuzzy, c-format
 msgid "Information on packages"
 msgstr "Інфармацыя"
 
-#: ../rpmdrake:879
-#, fuzzy
+#: ../Rpmdrake/gui.pm:508
+#, fuzzy, c-format
 msgid "Some additional packages need to be removed"
 msgstr "Наступныя пакеты будуць выдалены"
 
-#: ../rpmdrake:880
+#: ../Rpmdrake/gui.pm:509
+#, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
 msgstr ""
 
-#: ../rpmdrake:886 ../rpmdrake:895
-#, fuzzy
+#: ../Rpmdrake/gui.pm:515 ../Rpmdrake/gui.pm:524
+#, fuzzy, c-format
 msgid "Some packages can't be removed"
 msgstr "Наступныя пакеты будуць выдалены"
 
-#: ../rpmdrake:887
+#: ../Rpmdrake/gui.pm:516
+#, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
 "\n"
 msgstr ""
 
-#: ../rpmdrake:896 ../rpmdrake:961
+#: ../Rpmdrake/gui.pm:525 ../Rpmdrake/gui.pm:592
+#, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
 "\n"
 msgstr ""
 
-#: ../rpmdrake:925
+#: ../Rpmdrake/gui.pm:554
+#, c-format
 msgid "Additional packages needed"
 msgstr ""
 
-#: ../rpmdrake:926
-#, fuzzy
+#: ../Rpmdrake/gui.pm:555
+#, fuzzy, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
 "\n"
 msgstr "Наступныя пакеты будуць даданы да сістэмы"
 
-#: ../rpmdrake:941
-#, perl-format
+#: ../Rpmdrake/gui.pm:569
+#, c-format
 msgid "%s (belongs to the skip list)"
 msgstr ""
 
-#: ../rpmdrake:944
-#, fuzzy
+#: ../Rpmdrake/gui.pm:573
+#, fuzzy, c-format
+msgid "One package cannot be installed"
+msgstr "Выбар пакетаў"
+
+#: ../Rpmdrake/gui.pm:573
+#, fuzzy, c-format
 msgid "Some packages can't be installed"
 msgstr "Выбар пакетаў"
 
-#: ../rpmdrake:945
-#, fuzzy, perl-format
+#: ../Rpmdrake/gui.pm:575
+#, fuzzy, c-format
 msgid ""
-"Sorry, the following package(s) can't be selected:\n"
+"Sorry, the following package cannot be selected:\n"
 "\n"
 "%s"
 msgstr "Наступныя пакеты будуць даданы да сістэмы"
 
-#: ../rpmdrake:960 ../rpmdrake:1729
-#, fuzzy
+#: ../Rpmdrake/gui.pm:576
+#, fuzzy, c-format
+msgid ""
+"Sorry, the following packages can't be selected:\n"
+"\n"
+"%s"
+msgstr "Наступныя пакеты будуць даданы да сістэмы"
+
+#: ../Rpmdrake/gui.pm:591 ../Rpmdrake/pkg.pm:486
+#, fuzzy, c-format
 msgid "Some packages need to be removed"
 msgstr "Наступныя пакеты будуць выдалены"
 
-#: ../rpmdrake:985
-#, perl-format
-msgid "Selected: %s / Free disk space: %s"
-msgstr ""
-
-#: ../rpmdrake:986
-#, fuzzy, perl-format
-msgid "Selected size: %d MB"
-msgstr "Памер файла: %d байт"
-
-#. - the package information hasn't been loaded. Instead of rescanning the media, just give up.
-#: ../rpmdrake:991
-msgid "Description not available for this package\n"
-msgstr ""
-
-#: ../rpmdrake:1057
-#, fuzzy
-msgid "Installed"
-msgstr "Усталёўка"
-
-#: ../rpmdrake:1057
-#, fuzzy
-msgid "Non installed"
-msgstr "Усталёўка"
-
-#: ../rpmdrake:1058
-#, perl-format
-msgid "%s choices"
-msgstr ""
-
-#: ../rpmdrake:1058
-#, fuzzy
-msgid "Mandriva Linux choices"
-msgstr "Наладка вашага сэансу"
-
-#. let's keep the translated strings (to be resurected as sorting the treeview):
-#: ../rpmdrake:1060
-msgid "All packages, alphabetical"
-msgstr ""
-
-#: ../rpmdrake:1061
-msgid "All packages, by update availability"
-msgstr ""
-
-#: ../rpmdrake:1062
-msgid "All packages, by size"
-msgstr ""
-
-#: ../rpmdrake:1063
-#, fuzzy
-msgid "All packages, by selection state"
-msgstr "Асабісты выбар пакетаў"
-
-#: ../rpmdrake:1064
-msgid "Leaves only, sorted by install date"
-msgstr ""
-
-#: ../rpmdrake:1065
-msgid "All packages, by group"
-msgstr ""
-
-#: ../rpmdrake:1067
-#, fuzzy
-msgid "All updates"
-msgstr "Рэжым Mmap"
-
-#: ../rpmdrake:1067
-msgid "Bugfixes updates"
-msgstr ""
-
-#: ../rpmdrake:1067
-#, fuzzy
-msgid "Normal updates"
-msgstr "Рэжым Mmap"
-
-#: ../rpmdrake:1067
-#, fuzzy
-msgid "Security updates"
-msgstr "Бясьпека"
-
-#: ../rpmdrake:1123
-#, fuzzy
-msgid "in names"
-msgstr "Гульня ў косьці"
-
-#: ../rpmdrake:1125
-#, fuzzy
-msgid "in descriptions"
-msgstr "Апісанне"
-
-#: ../rpmdrake:1127
-#, fuzzy
-msgid "in file names"
-msgstr "Уласнае імя"
-
-#: ../rpmdrake:1230
-#, perl-format
+#: ../Rpmdrake/gui.pm:622
+#, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr ""
 
-#: ../rpmdrake:1153
-#, fuzzy
+#: ../Rpmdrake/gui.pm:626
+#, fuzzy, c-format
 msgid "You need to select some packages first."
 msgstr "Вы не можаце вылучаць і адмяняць вылучэнне гэтага пакету"
 
-#: ../rpmdrake:1158
-#, fuzzy
+#: ../Rpmdrake/gui.pm:631
+#, fuzzy, c-format
 msgid "Too many packages are selected"
 msgstr "Гэта абавязковы пакет, яго вылучэнне нельга адмяніць"
 
-#: ../rpmdrake:1159
+#: ../Rpmdrake/gui.pm:632
+#, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -1384,136 +789,821 @@ msgid ""
 "Do you really want to install all the selected packages?"
 msgstr ""
 
-#: ../rpmdrake:1188 ../rpmdrake:1191 ../rpmdrake:1201 ../rpmdrake:1213
-#: ../rpmdrake:1219
-msgid "/_File"
-msgstr "/_Файл"
+#: ../Rpmdrake/gui.pm:664
+#, fuzzy, c-format
+msgid "Please wait, listing packages..."
+msgstr "Усталяванне пакету %s"
 
-#: ../rpmdrake:1191
-#, fuzzy
-msgid "/_Update media"
-msgstr "Іншыя"
+#: ../Rpmdrake/gui.pm:682
+#, fuzzy, c-format
+msgid "No update"
+msgstr "Імя друкаркі"
 
-#: ../rpmdrake:1201
-#, fuzzy
-msgid "/_Reset the selection"
-msgstr "Дзеяньні"
-
-#: ../rpmdrake:1213
-#, fuzzy
-msgid "/Reload the _packages list"
-msgstr "Выбар пакетаў"
-
-#: ../rpmdrake:1219
-msgid "/_Quit"
-msgstr "/_Выхад"
-
-#: ../rpmdrake:1219
-msgid "<control>Q"
-msgstr "<control>Q"
-
-#: ../rpmdrake:1222 ../rpmdrake:1223 ../rpmdrake:1226 ../rpmdrake:1256
-msgid "/_Options"
-msgstr "/_Налады"
-
-#: ../rpmdrake:1223
-msgid "/_Media Manager"
-msgstr ""
-
-#: ../rpmdrake:1226 ../rpmdrake:1256
-msgid "/_Show automatically selected packages"
-msgstr ""
-
-#: ../rpmdrake:1230 ../rpmdrake:1231 ../rpmdrake:1232 ../rpmdrake:1233
-msgid "/_Help"
-msgstr "/_Дапамога"
-
-#: ../rpmdrake:1231
-msgid "/_Report Bug"
-msgstr "/_Паведаміць пра памылку"
-
-#: ../rpmdrake:1233
-msgid "/_About..."
-msgstr "/_Пра..."
-
-#. nicer formatting
-#: ../rpmdrake:1236
-msgid "About Rpmdrake"
-msgstr ""
-
-#: ../rpmdrake:1238
-#, perl-format
-msgid "Copyright (C) %s by Mandriva"
-msgstr ""
-
-#: ../rpmdrake:1240
-msgid "Rpmdrake is Mandriva Linux package management tool."
-msgstr ""
-
-#: ../rpmdrake:1242
-#, fuzzy
-msgid "Mandriva Linux"
-msgstr "Цэнтар кіраваньня"
-
-#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:1247
-msgid "_: Translator(s) name(s) & email(s)\n"
-msgstr ""
-
-#: ../rpmdrake:1271
-msgid "Find:"
-msgstr "Шукаць:"
-
-#: ../rpmdrake:1280
-msgid "Search"
-msgstr "Шукаць"
-
-#: ../rpmdrake:1282
-msgid "Clear"
-msgstr "Ачысьціць"
-
-#: ../rpmdrake:1295
-msgid "Apply"
-msgstr "Применить"
-
-#: ../rpmdrake:1299
-msgid "Quit"
-msgstr "Выхад"
-
-#: ../rpmdrake:1315
-msgid "Quick Introduction"
-msgstr ""
-
-#: ../rpmdrake:1316
-msgid "You can browse the packages through the categories tree on the left."
-msgstr ""
-
-#: ../rpmdrake:1317
+#: ../Rpmdrake/gui.pm:683
+#, c-format
 msgid ""
-"You can view information about a package by clicking on it on the right list."
+"The list of updates is empty. This means that either there is\n"
+"no available update for the packages installed on your computer,\n"
+"or you already installed all of them."
 msgstr ""
 
-#: ../rpmdrake:1318
-msgid "To install, update or remove a package, just click on its \"checkbox\"."
+#: ../Rpmdrake/gui.pm:706 ../rpmdrake:256
+#, c-format
+msgid "All"
+msgstr "Усё"
+
+#: ../Rpmdrake/gui.pm:715 ../rpmdrake:142
+#, fuzzy, c-format
+msgid "Upgradable"
+msgstr "Аркады"
+
+#: ../Rpmdrake/gui.pm:715 ../rpmdrake:142
+#, fuzzy, c-format
+msgid "Addable"
+msgstr "(адмовіць)"
+
+#: ../Rpmdrake/gui.pm:735
+#, c-format
+msgid "Description not available for this package\n"
 msgstr ""
 
-#: ../rpmdrake:1360
-msgid "Fatal error"
-msgstr ""
-
-#: ../rpmdrake:1361
-#, fuzzy, perl-format
+#: ../Rpmdrake/gui.pm:741 ../Rpmdrake/pkg.pm:189
+#, fuzzy, c-format
 msgid "A fatal error occurred: %s."
 msgstr ""
 "ПАМЫЛАЧКА АТРЫМАЛАСЯ: \n"
 "%s"
 
-#: ../rpmdrake:1368
-#, fuzzy
-msgid "Confirmation"
+#: ../Rpmdrake/icon.pm:35
+#, c-format
+msgid "Accessibility"
+msgstr "Зручнасьці"
+
+#: ../Rpmdrake/icon.pm:36 ../Rpmdrake/icon.pm:37 ../Rpmdrake/icon.pm:38
+#: ../Rpmdrake/icon.pm:39 ../Rpmdrake/icon.pm:40
+#, c-format
+msgid "Archiving"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:37
+#, c-format
+msgid "Backup"
+msgstr "Рэзерваваньне даньняў"
+
+#: ../Rpmdrake/icon.pm:38
+#, c-format
+msgid "Cd burning"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:39
+#, fuzzy, c-format
+msgid "Compression"
+msgstr "Сэанс"
+
+#: ../Rpmdrake/icon.pm:40 ../Rpmdrake/icon.pm:46 ../Rpmdrake/icon.pm:60
+#: ../Rpmdrake/icon.pm:73 ../Rpmdrake/icon.pm:91 ../Rpmdrake/icon.pm:112
+#: ../Rpmdrake/icon.pm:125 ../Rpmdrake/icon.pm:135 ../Rpmdrake/pkg.pm:75
+#, c-format
+msgid "Other"
+msgstr "Іншыя"
+
+#: ../Rpmdrake/icon.pm:41 ../Rpmdrake/icon.pm:42 ../Rpmdrake/icon.pm:43
+#: ../Rpmdrake/icon.pm:44 ../Rpmdrake/icon.pm:45 ../Rpmdrake/icon.pm:46
+#, fuzzy, c-format
+msgid "Books"
+msgstr "Закладкі (cookies)"
+
+#: ../Rpmdrake/icon.pm:42
+#, c-format
+msgid "Computer books"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:43
+#, fuzzy, c-format
+msgid "Faqs"
+msgstr "Гульні"
+
+#: ../Rpmdrake/icon.pm:44
+#, fuzzy, c-format
+msgid "Howtos"
+msgstr "Хост:"
+
+#: ../Rpmdrake/icon.pm:45
+#, c-format
+msgid "Literature"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:47 ../Rpmdrake/icon.pm:48 ../Rpmdrake/icon.pm:49
+#, c-format
+msgid "Cluster"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:48
+#, c-format
+msgid "Message Passing"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:49
+#, c-format
+msgid "Queueing Services"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:50
+#, fuzzy, c-format
+msgid "Communications"
 msgstr "Канфігурацыя"
 
-#: ../rpmdrake:1369
+#: ../Rpmdrake/icon.pm:51 ../Rpmdrake/icon.pm:55
+#, fuzzy, c-format
+msgid "Databases"
+msgstr "База даньняў дыскаў"
+
+#: ../Rpmdrake/icon.pm:52 ../Rpmdrake/icon.pm:53 ../Rpmdrake/icon.pm:54
+#: ../Rpmdrake/icon.pm:55 ../Rpmdrake/icon.pm:56 ../Rpmdrake/icon.pm:57
+#: ../Rpmdrake/icon.pm:58 ../Rpmdrake/icon.pm:59 ../Rpmdrake/icon.pm:60
+#: ../Rpmdrake/icon.pm:61 ../Rpmdrake/icon.pm:62 ../Rpmdrake/icon.pm:63
+#: ../Rpmdrake/icon.pm:174 ../Rpmdrake/icon.pm:175 ../Rpmdrake/icon.pm:176
+#, c-format
+msgid "Development"
+msgstr "Распрацоўка"
+
+#: ../Rpmdrake/icon.pm:53
+#, c-format
+msgid "C"
+msgstr "C"
+
+#: ../Rpmdrake/icon.pm:54
+#, c-format
+msgid "C++"
+msgstr "C++"
+
+#: ../Rpmdrake/icon.pm:56
+#, c-format
+msgid "GNOME and GTK+"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:57
+#, c-format
+msgid "Java"
+msgstr "Java"
+
+#: ../Rpmdrake/icon.pm:58
+#, c-format
+msgid "KDE and Qt"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:59
+#, c-format
+msgid "Kernel"
+msgstr "Ядро"
+
+#: ../Rpmdrake/icon.pm:61
+#, c-format
+msgid "Perl"
+msgstr "Perl"
+
+#: ../Rpmdrake/icon.pm:62
+#, c-format
+msgid "PHP"
+msgstr "PHP"
+
+#: ../Rpmdrake/icon.pm:63
+#, c-format
+msgid "Python"
+msgstr "Python"
+
+#: ../Rpmdrake/icon.pm:64
+#, c-format
+msgid "Editors"
+msgstr "Рэдактары"
+
+#: ../Rpmdrake/icon.pm:65
+#, c-format
+msgid "Education"
+msgstr "Адукацыя"
+
+#: ../Rpmdrake/icon.pm:66
+#, fuzzy, c-format
+msgid "Emulators"
+msgstr "Калькулятар"
+
+#: ../Rpmdrake/icon.pm:67
+#, c-format
+msgid "File tools"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:68 ../Rpmdrake/icon.pm:69 ../Rpmdrake/icon.pm:70
+#: ../Rpmdrake/icon.pm:71 ../Rpmdrake/icon.pm:72 ../Rpmdrake/icon.pm:73
+#: ../Rpmdrake/icon.pm:74 ../Rpmdrake/icon.pm:75 ../Rpmdrake/icon.pm:76
+#, c-format
+msgid "Games"
+msgstr "Гульні"
+
+#: ../Rpmdrake/icon.pm:69
+#, c-format
+msgid "Adventure"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:70
+#, c-format
+msgid "Arcade"
+msgstr "Аркады"
+
+#: ../Rpmdrake/icon.pm:71
+#, fuzzy, c-format
+msgid "Boards"
+msgstr "Карты"
+
+#: ../Rpmdrake/icon.pm:72
+#, c-format
+msgid "Cards"
+msgstr "Карты"
+
+#: ../Rpmdrake/icon.pm:74
+#, fuzzy, c-format
+msgid "Puzzles"
+msgstr "Пурпурны"
+
+#: ../Rpmdrake/icon.pm:75
+#, c-format
+msgid "Sports"
+msgstr "Спорт"
+
+#: ../Rpmdrake/icon.pm:76
+#, fuzzy, c-format
+msgid "Strategy"
+msgstr "Тактыка і стратэгія"
+
+#: ../Rpmdrake/icon.pm:77 ../Rpmdrake/icon.pm:78 ../Rpmdrake/icon.pm:81
+#: ../Rpmdrake/icon.pm:82 ../Rpmdrake/icon.pm:85 ../Rpmdrake/icon.pm:88
+#: ../Rpmdrake/icon.pm:91 ../Rpmdrake/icon.pm:92 ../Rpmdrake/icon.pm:95
+#: ../Rpmdrake/icon.pm:98
+#, fuzzy, c-format
+msgid "Graphical desktop"
+msgstr "Іншыя графічныя Працоўныя сталы"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:80
+#, c-format
+msgid "Enlightenment"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:81
+#, c-format
+msgid "FVWM based"
+msgstr ""
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:84
+#, c-format
+msgid "GNOME"
+msgstr "GNOME"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:87
+#, c-format
+msgid "Icewm"
+msgstr ""
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:90
+#, c-format
+msgid "KDE"
+msgstr "KDE"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:94
+#, c-format
+msgid "Sawfish"
+msgstr "Sawfish"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:97
+#, fuzzy, c-format
+msgid "WindowMaker"
+msgstr "Паводзіны вокнаў"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:100
+#, c-format
+msgid "Xfce"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:101
+#, c-format
+msgid "Graphics"
+msgstr "Графіка"
+
+#: ../Rpmdrake/icon.pm:102
+#, fuzzy, c-format
+msgid "Monitoring"
+msgstr "Манітор"
+
+#: ../Rpmdrake/icon.pm:103 ../Rpmdrake/icon.pm:104
+#, c-format
+msgid "Multimedia"
+msgstr "Музыка й фільмы"
+
+#: ../Rpmdrake/icon.pm:104 ../Rpmdrake/icon.pm:155
+#, c-format
+msgid "Video"
+msgstr "Відэа"
+
+#: ../Rpmdrake/icon.pm:105 ../Rpmdrake/icon.pm:106 ../Rpmdrake/icon.pm:107
+#: ../Rpmdrake/icon.pm:108 ../Rpmdrake/icon.pm:109 ../Rpmdrake/icon.pm:110
+#: ../Rpmdrake/icon.pm:111 ../Rpmdrake/icon.pm:112 ../Rpmdrake/icon.pm:113
+#: ../Rpmdrake/icon.pm:114 ../Rpmdrake/icon.pm:134
+#, fuzzy, c-format
+msgid "Networking"
+msgstr "Сетка"
+
+#: ../Rpmdrake/icon.pm:106
+#, c-format
+msgid "Chat"
+msgstr "Гутарка"
+
+#: ../Rpmdrake/icon.pm:107
+#, fuzzy, c-format
+msgid "File transfer"
+msgstr "Мэнэджэр файлаў"
+
+#: ../Rpmdrake/icon.pm:108
+#, c-format
+msgid "IRC"
+msgstr "IRC"
+
+#: ../Rpmdrake/icon.pm:109
+#, c-format
+msgid "Instant messaging"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:110 ../Rpmdrake/icon.pm:181
+#, c-format
+msgid "Mail"
+msgstr "Пошта"
+
+#: ../Rpmdrake/icon.pm:111
+#, c-format
+msgid "News"
+msgstr "Навіны"
+
+#: ../Rpmdrake/icon.pm:113
+#, c-format
+msgid "Remote access"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:114
+#, c-format
+msgid "WWW"
+msgstr "Уэб"
+
+#: ../Rpmdrake/icon.pm:115
+#, c-format
+msgid "Office"
+msgstr "Офіс"
+
+#: ../Rpmdrake/icon.pm:116
+#, c-format
+msgid "Public Keys"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:117
+#, c-format
+msgid "Publishing"
+msgstr "Выдавецтва"
+
+#: ../Rpmdrake/icon.pm:118 ../Rpmdrake/icon.pm:119 ../Rpmdrake/icon.pm:120
+#: ../Rpmdrake/icon.pm:121 ../Rpmdrake/icon.pm:122 ../Rpmdrake/icon.pm:123
+#: ../Rpmdrake/icon.pm:124 ../Rpmdrake/icon.pm:125 ../Rpmdrake/icon.pm:126
+#, fuzzy, c-format
+msgid "Sciences"
+msgstr "Радкі"
+
+#: ../Rpmdrake/icon.pm:119
+#, c-format
+msgid "Astronomy"
+msgstr "Зоркаведаньне"
+
+#: ../Rpmdrake/icon.pm:120
+#, c-format
+msgid "Biology"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:121
+#, c-format
+msgid "Chemistry"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:122
+#, c-format
+msgid "Computer science"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:123
+#, c-format
+msgid "Geosciences"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:124
+#, c-format
+msgid "Mathematics"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:126
+#, c-format
+msgid "Physics"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:127
+#, fuzzy, c-format
+msgid "Shells"
+msgstr "Абалонка:"
+
+#: ../Rpmdrake/icon.pm:128
+#, c-format
+msgid "Sound"
+msgstr "Гук"
+
+#: ../Rpmdrake/icon.pm:129 ../Rpmdrake/icon.pm:130 ../Rpmdrake/icon.pm:131
+#: ../Rpmdrake/icon.pm:132 ../Rpmdrake/icon.pm:133 ../Rpmdrake/icon.pm:134
+#: ../Rpmdrake/icon.pm:135 ../Rpmdrake/icon.pm:136 ../Rpmdrake/icon.pm:137
+#: ../Rpmdrake/icon.pm:138 ../Rpmdrake/icon.pm:139 ../Rpmdrake/icon.pm:140
+#: ../Rpmdrake/icon.pm:141 ../Rpmdrake/icon.pm:142 ../Rpmdrake/icon.pm:143
+#: ../Rpmdrake/icon.pm:144 ../Rpmdrake/icon.pm:145 ../Rpmdrake/icon.pm:146
+#: ../Rpmdrake/icon.pm:147 ../Rpmdrake/icon.pm:148 ../Rpmdrake/icon.pm:149
+#, c-format
+msgid "System"
+msgstr "Сістэма"
+
+#: ../Rpmdrake/icon.pm:130
+#, fuzzy, c-format
+msgid "Base"
+msgstr "Басы"
+
+#: ../Rpmdrake/icon.pm:131 ../Rpmdrake/icon.pm:132 ../Rpmdrake/icon.pm:133
+#: ../Rpmdrake/icon.pm:134 ../Rpmdrake/icon.pm:135 ../Rpmdrake/icon.pm:136
+#: ../Rpmdrake/icon.pm:137 ../Rpmdrake/icon.pm:159
+#, c-format
+msgid "Configuration"
+msgstr "Канфігурацыя"
+
+#: ../Rpmdrake/icon.pm:132
+#, c-format
+msgid "Boot and Init"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:133
+#, c-format
+msgid "Hardware"
+msgstr "Абсталяваньне"
+
+#: ../Rpmdrake/icon.pm:136
+#, c-format
+msgid "Packaging"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:137
+#, c-format
+msgid "Printing"
+msgstr "Друкаваньне"
+
+#: ../Rpmdrake/icon.pm:138
+#, fuzzy, c-format
+msgid "Deploiement"
+msgstr "Распрацоўка"
+
+#: ../Rpmdrake/icon.pm:139
+#, fuzzy, c-format
+msgid "Deployment"
+msgstr "Распрацоўка"
+
+#: ../Rpmdrake/icon.pm:140 ../Rpmdrake/icon.pm:141 ../Rpmdrake/icon.pm:142
+#: ../Rpmdrake/icon.pm:143 ../Rpmdrake/icon.pm:144
+#, c-format
+msgid "Fonts"
+msgstr "Шрыфты"
+
+#: ../Rpmdrake/icon.pm:141
+#, c-format
+msgid "Console"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:142
+#, fuzzy, c-format
+msgid "True type"
+msgstr "Тып мышы: %s\n"
+
+#: ../Rpmdrake/icon.pm:143
+#, fuzzy, c-format
+msgid "Type1"
+msgstr "Тып"
+
+#: ../Rpmdrake/icon.pm:144
+#, fuzzy, c-format
+msgid "X11 bitmap"
+msgstr "Растар"
+
+#: ../Rpmdrake/icon.pm:145
+#, fuzzy, c-format
+msgid "Internationalization"
+msgstr "Слоўнік GNOME"
+
+#: ../Rpmdrake/icon.pm:146
+#, fuzzy, c-format
+msgid "Kernel and hardware"
+msgstr "Гл. апісанне абсталявання"
+
+#: ../Rpmdrake/icon.pm:147
+#, c-format
+msgid "Libraries"
+msgstr "Бібліятэкі"
+
+#: ../Rpmdrake/icon.pm:148
+#, c-format
+msgid "Servers"
+msgstr "Сэрвэры"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:151
+#, c-format
+msgid "X11"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:152
+#, fuzzy, c-format
+msgid "Terminals"
+msgstr "Тэрмінал GNOME"
+
+#: ../Rpmdrake/icon.pm:153
+#, c-format
+msgid "Text tools"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:154
+#, c-format
+msgid "Toys"
+msgstr "Цацкі"
+
+#: ../Rpmdrake/icon.pm:158 ../Rpmdrake/icon.pm:159 ../Rpmdrake/icon.pm:160
+#: ../Rpmdrake/icon.pm:161 ../Rpmdrake/icon.pm:162 ../Rpmdrake/icon.pm:163
+#: ../Rpmdrake/icon.pm:164 ../Rpmdrake/icon.pm:165 ../Rpmdrake/icon.pm:166
+#: ../Rpmdrake/icon.pm:167
+#, fuzzy, c-format
+msgid "Workstation"
+msgstr "Канфігурацыя"
+
+#: ../Rpmdrake/icon.pm:160
+#, c-format
+msgid "Console Tools"
+msgstr "Кансольныя інструментальныя сродкі"
+
+#: ../Rpmdrake/icon.pm:161 ../Rpmdrake/icon.pm:176
+#, c-format
+msgid "Documentation"
+msgstr "Дакумэнтацыя"
+
+#: ../Rpmdrake/icon.pm:162
+#, fuzzy, c-format
+msgid "Game station"
+msgstr "Аўтэнтыфікацыя"
+
+#: ../Rpmdrake/icon.pm:163
+#, fuzzy, c-format
+msgid "Internet station"
+msgstr "Інтэрнэт"
+
+#: ../Rpmdrake/icon.pm:164
+#, fuzzy, c-format
+msgid "Multimedia station"
+msgstr "Мульцімедыя"
+
+#: ../Rpmdrake/icon.pm:165
+#, fuzzy, c-format
+msgid "Network Computer (client)"
+msgstr "Сеткавы прынтэр (TCP/Socket)"
+
+#: ../Rpmdrake/icon.pm:166
+#, fuzzy, c-format
+msgid "Office Workstation"
+msgstr "Працоўныя мейсцы"
+
+#: ../Rpmdrake/icon.pm:167
+#, c-format
+msgid "Scientific Workstation"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:168 ../Rpmdrake/icon.pm:170 ../Rpmdrake/icon.pm:171
+#: ../Rpmdrake/icon.pm:172 ../Rpmdrake/icon.pm:173
+#, fuzzy, c-format
+msgid "Graphical Environment"
+msgstr "Абалонка"
+
+#: ../Rpmdrake/icon.pm:170
+#, fuzzy, c-format
+msgid "GNOME Workstation"
+msgstr "Інфармацыя аб памяці"
+
+#: ../Rpmdrake/icon.pm:171
+#, fuzzy, c-format
+msgid "IceWm Desktop"
+msgstr "Працоўны стол"
+
+#: ../Rpmdrake/icon.pm:172
+#, fuzzy, c-format
+msgid "KDE Workstation"
+msgstr "Канфігурацыя"
+
+#: ../Rpmdrake/icon.pm:173
+#, c-format
+msgid "Other Graphical Desktops"
+msgstr "Іншыя графічныя Працоўныя сталы"
+
+#: ../Rpmdrake/icon.pm:177 ../Rpmdrake/icon.pm:178 ../Rpmdrake/icon.pm:179
+#: ../Rpmdrake/icon.pm:180 ../Rpmdrake/icon.pm:181 ../Rpmdrake/icon.pm:182
+#: ../Rpmdrake/icon.pm:183 ../Rpmdrake/icon.pm:184
+#, c-format
+msgid "Server"
+msgstr "Сервак"
+
+#: ../Rpmdrake/icon.pm:178
+#, c-format
+msgid "DNS/NIS"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:179
+#, c-format
+msgid "Database"
+msgstr "База даньняў"
+
+#: ../Rpmdrake/icon.pm:180
+#, fuzzy, c-format
+msgid "Firewall/Router"
+msgstr "Рэстарт"
+
+#: ../Rpmdrake/icon.pm:182
+#, c-format
+msgid "Mail/Groupware/News"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:183
+#, fuzzy, c-format
+msgid "Network Computer server"
+msgstr "Сеткавыя інтэрфэйсы"
+
+#: ../Rpmdrake/icon.pm:184
+#, c-format
+msgid "Web/FTP"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:40
+#, c-format
+msgid "Usage: %s [OPTION]..."
+msgstr "Выкарыстаньне: %s [ВЫБАР]..."
+
+#: ../Rpmdrake/init.pm:41
+#, c-format
+msgid ""
+"  --changelog-first      display changelog before filelist in the "
+"description window"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:42
+#, c-format
+msgid "  --media=medium1,..     limit to given media"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:43
+#, c-format
+msgid ""
+"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:44
+#, c-format
+msgid "  --mode=MODE            set mode (install (default), remove, update)"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:45
+#, c-format
+msgid ""
+"  --no-confirmation      don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:46
+#, c-format
+msgid "  --no-media-update      don't update media at startup"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:47
+#, c-format
+msgid "  --no-verify-rpm        don't verify packages signatures"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:48
+#, c-format
+msgid ""
+"  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
+"\" machine to show needed deps"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:49
+#, c-format
+msgid "  --pkg-nosel=pkg1,..    show only these packages"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:50
+#, c-format
+msgid "  --pkg-sel=pkg1,..      preselect these packages"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:51
+#, fuzzy, c-format
+msgid "  --root                 force to run as root"
+msgstr "  --no-mmx                 Не выкарыстоўваць шаблёны MMX.\n"
+
+#: ../Rpmdrake/init.pm:52
+#, c-format
+msgid "  --search=pkg           run search for \"pkg\""
+msgstr ""
+
+#: ../Rpmdrake/init.pm:116
+#, c-format
+msgid "Running in user mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:117
+#, c-format
+msgid ""
+"You are launching this program as a normal user.\n"
+"You will not be able to perform modifications on the system,\n"
+"but you may still browse the existing database."
+msgstr ""
+
+#: ../Rpmdrake/init.pm:124
+#, c-format
+msgid "Welcome"
+msgstr "Вітаем"
+
+#: ../Rpmdrake/init.pm:129
+#, c-format
+msgid ""
+"Welcome to the software removal tool!\n"
+"\n"
+"This tool will help you choose which software you want to remove from\n"
+"your computer."
+msgstr ""
+
+#: ../Rpmdrake/init.pm:134
+#, c-format
+msgid ""
+"Welcome to %s!\n"
+"\n"
+"This tool will help you choose the updates you want to install on your\n"
+"computer."
+msgstr ""
+
+#: ../Rpmdrake/init.pm:139
+#, c-format
+msgid "Welcome to the software installation tool!"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:140
+#, c-format
+msgid ""
+"Welcome to the software installation tool!\n"
+"\n"
+"Your Mandriva Linux system comes with several thousands of software\n"
+"packages on CDROM or DVD. This tool will help you choose which software\n"
+"you want to install on your computer."
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:188
+#, c-format
+msgid "Fatal error"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:193 ../Rpmdrake/pkg.pm:499 ../rpmdrake.pm:316
+#, c-format
+msgid "Please wait"
+msgstr "Калі ласка, пачакайце"
+
+#: ../Rpmdrake/pkg.pm:193 ../Rpmdrake/pkg.pm:499
+#, fuzzy, c-format
+msgid "Package installation..."
+msgstr "Падрыхтоўка ўсталяваньня"
+
+#: ../Rpmdrake/pkg.pm:193 ../Rpmdrake/pkg.pm:499
+#, c-format
+msgid "Initializing..."
+msgstr "Ініцыялізацыя..."
+
+#: ../Rpmdrake/pkg.pm:215 ../Rpmdrake/pkg.pm:486
+#, c-format
+msgid "Confirmation"
+msgstr "Падцьверджаньне"
+
+#: ../Rpmdrake/pkg.pm:216
+#, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -1521,12 +1611,13 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#: ../rpmdrake:1378
+#: ../Rpmdrake/pkg.pm:225
+#, c-format
 msgid "Already existing update media"
 msgstr ""
 
-#: ../rpmdrake:1379
-#, perl-format
+#: ../Rpmdrake/pkg.pm:226
+#, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
 "all of them are currently disabled. You should run the Software\n"
@@ -1536,12 +1627,13 @@ msgid ""
 "Then, restart %s."
 msgstr ""
 
-#: ../rpmdrake:1389
+#: ../Rpmdrake/pkg.pm:237
+#, c-format
 msgid "How to choose manually your mirror"
 msgstr ""
 
-#: ../rpmdrake:1390
-#, perl-format
+#: ../Rpmdrake/pkg.pm:238
+#, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Media Manager, and then add a `Security\n"
@@ -1550,81 +1642,56 @@ msgid ""
 "Then, restart %s."
 msgstr ""
 
-#: ../rpmdrake:1427
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:252
+#, fuzzy, c-format
+msgid "Reading updates description"
+msgstr "Апісанне"
+
+#: ../Rpmdrake/pkg.pm:278 ../Rpmdrake/pkg.pm:358
+#, fuzzy, c-format
 msgid "Please wait, finding available packages..."
 msgstr "Прагляд даступных пакетаў"
 
-#: ../rpmdrake:1428
-#, fuzzy
-msgid "Please wait, reading packages database..."
-msgstr "Падрыхтоўка ўсталяваньня"
+#: ../Rpmdrake/pkg.pm:286
+#, fuzzy, c-format
+msgid "Please wait, listing base packages..."
+msgstr "Усталяванне пакету %s"
 
-#: ../rpmdrake:1584
-#, fuzzy, perl-format
-msgid "Inspecting %s"
-msgstr "Усталёўваем"
+#: ../Rpmdrake/pkg.pm:323
+#, fuzzy, c-format
+msgid "Please wait, finding installed packages..."
+msgstr "Прагляд даступных пакетаў"
 
-#: ../rpmdrake:1607
-#, fuzzy
-msgid "changes:"
-msgstr "Мэнэджэр сэрвісаў"
-
-#: ../rpmdrake:1615
-#, fuzzy, perl-format
-msgid "Remove .%s"
-msgstr "/Перавярнуць спіс"
-
-#: ../rpmdrake:1619
-#, fuzzy, perl-format
-msgid "Use .%s as main file"
-msgstr "Дрэнны файл рэзервовай копіі"
-
-#: ../rpmdrake:1623
-#, fuzzy
-msgid "Do nothing"
-msgstr "Нічога"
-
-#: ../rpmdrake:1639
-#, fuzzy
-msgid "Installation finished"
-msgstr "Усталяванне SILO"
-
-#: ../rpmdrake:1654
-#, fuzzy
-msgid "Inspect..."
-msgstr "Настройка IDE"
-
-#. N("Everything installed successfully"),
-#: ../rpmdrake:1687 ../rpmdrake:1879
+#: ../Rpmdrake/pkg.pm:440 ../Rpmdrake/pkg.pm:635
+#, c-format
 msgid "All requested packages were installed successfully."
 msgstr ""
 
-#: ../rpmdrake:1691 ../rpmdrake:1859
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:444 ../Rpmdrake/pkg.pm:615
+#, fuzzy, c-format
 msgid "Problem during installation"
 msgstr "Падрыхтоўка ўсталяваньня"
 
-#: ../rpmdrake:1692 ../rpmdrake:1860 ../rpmdrake:1920
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:445 ../Rpmdrake/pkg.pm:616 ../Rpmdrake/pkg.pm:674
+#, fuzzy, c-format
 msgid ""
 "There was a problem during the installation:\n"
 "\n"
 "%s"
 msgstr "Падрыхтоўка ўсталяваньня"
 
-#: ../rpmdrake:1709
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:464
+#, fuzzy, c-format
 msgid "Unable to get source packages."
 msgstr "Немагчыма захаваць спіс"
 
-#: ../rpmdrake:1710
-#, perl-format
+#: ../Rpmdrake/pkg.pm:465
+#, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr ""
 
-#: ../rpmdrake:1711 ../rpmdrake:1806
-#, perl-format
+#: ../Rpmdrake/pkg.pm:466 ../Rpmdrake/pkg.pm:566
+#, c-format
 msgid ""
 "\n"
 "\n"
@@ -1632,63 +1699,64 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../rpmdrake:1727
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:483
+#, fuzzy, c-format
 msgid ""
-"To satisfy dependencies, the following %d packages are going to be "
-"installed:\n"
-"%s\n"
-msgstr "Наступныя пакеты будуць даданы да сістэмы"
+"To satisfy dependencies, the following package is going to be installed:"
+msgid_plural ""
+"To satisfy dependencies, the following %d packages are going to be installed:"
+msgstr[0] "Наступныя пакеты будуць даданы да сістэмы"
+msgstr[1] "Наступныя пакеты будуць даданы да сістэмы"
 
-#: ../rpmdrake:1730
-#, perl-format
-msgid ""
-"The following packages have to be removed for others to be upgraded:\n"
-"\n"
-"%s\n"
-"\n"
-"Is it ok to continue?"
+#: ../Rpmdrake/pkg.pm:488
+#, fuzzy, c-format
+msgid "Remove one package?"
+msgid_plural "Remove %d packages?"
+msgstr[0] "/Выдаліць дохлыя файлы"
+msgstr[1] "/Выдаліць дохлыя файлы"
+
+#: ../Rpmdrake/pkg.pm:490
+#, c-format
+msgid "The following package has to be removed for others to be upgraded:"
 msgstr ""
 
-#: ../rpmdrake:1741
-msgid "Initializing..."
-msgstr "Ініцыялізацыя..."
+#: ../Rpmdrake/pkg.pm:491
+#, fuzzy, c-format
+msgid "The following packages have to be removed for others to be upgraded:"
+msgstr "Наступныя пакеты будуць выдалены"
 
-#: ../rpmdrake:1741
-#, fuzzy
-msgid "Package installation..."
-msgstr "Падрыхтоўка ўсталяваньня"
+#: ../Rpmdrake/pkg.pm:491
+#, c-format
+msgid "Is it ok to continue?"
+msgstr ""
 
-#: ../rpmdrake:1741 ../rpmdrake.pm:307
-msgid "Please wait"
-msgstr "Калі ласка, пачакайце"
-
-#: ../rpmdrake:1750
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:509
+#, fuzzy, c-format
 msgid "Change medium"
 msgstr "Змяніць тып раздзелу"
 
-#: ../rpmdrake:1751
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:510
+#, fuzzy, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Устаўце дыскету ў дыскавод %s"
 
-#: ../rpmdrake:1758
-#, perl-format
+#: ../Rpmdrake/pkg.pm:517
+#, c-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr ""
 
-#: ../rpmdrake:1781
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:537
+#, fuzzy, c-format
 msgid "Verifying package signatures..."
 msgstr "Пошук пакетаў для абнаўлення"
 
-#: ../rpmdrake:1793 ../rpmdrake.pm:743 ../rpmdrake.pm:852
+#: ../Rpmdrake/pkg.pm:550 ../rpmdrake.pm:743 ../rpmdrake.pm:852
+#, c-format
 msgid "Warning"
 msgstr "Увага!"
 
-#: ../rpmdrake:1794
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:551
+#, fuzzy, c-format
 msgid ""
 "The following packages have bad signatures:\n"
 "\n"
@@ -1697,13 +1765,13 @@ msgid ""
 "Do you want to continue installation?"
 msgstr "Наступныя пакеты будуць даданы да сістэмы"
 
-#: ../rpmdrake:1803 ../rpmdrake:1919
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:563 ../Rpmdrake/pkg.pm:673
+#, fuzzy, c-format
 msgid "Installation failed"
 msgstr "Усталяванне SILO"
 
-#: ../rpmdrake:1804
-#, perl-format
+#: ../Rpmdrake/pkg.pm:564
+#, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
 "%s\n"
@@ -1711,26 +1779,28 @@ msgid ""
 "You may want to update your media database."
 msgstr ""
 
-#: ../rpmdrake:1819
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:578
+#, fuzzy, c-format
 msgid "Preparing packages installation..."
 msgstr "Падрыхтоўка ўсталяваньня"
 
-#: ../rpmdrake:1819
+#: ../Rpmdrake/pkg.pm:578
+#, c-format
 msgid "Preparing..."
 msgstr ""
 
-#: ../rpmdrake:1822
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:581
+#, fuzzy, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Усталяванне пакету %s"
 
-#: ../rpmdrake:1838
-#, perl-format
+#: ../Rpmdrake/pkg.pm:596
+#, c-format
 msgid "unable to access rpm file [%s]"
 msgstr ""
 
-#: ../rpmdrake:1874
+#: ../Rpmdrake/pkg.pm:630
+#, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
 "\n"
@@ -1738,247 +1808,596 @@ msgid ""
 "you may now inspect some in order to take actions:"
 msgstr ""
 
-#: ../rpmdrake:1884
+#: ../Rpmdrake/pkg.pm:638
+#, fuzzy, c-format
+msgid "Upgrade information"
+msgstr "Інфармацыя аб памяці"
+
+#: ../Rpmdrake/pkg.pm:640
+#, c-format
 msgid "These packages come with upgrade information"
 msgstr ""
 
-#: ../rpmdrake:1896
-#, fuzzy, perl-format
-msgid "More information on package... [%s]"
+#: ../Rpmdrake/pkg.pm:648
+#, fuzzy, c-format
+msgid "Upgrade information about this package"
 msgstr "Інфармацыя аб памяці"
 
-#: ../rpmdrake:1909 ../rpmdrake.pm:730 ../rpmdrake.pm:811 ../rpmdrake.pm:835
+#: ../Rpmdrake/pkg.pm:651
+#, fuzzy, c-format
+msgid "Upgrade information about package %s"
+msgstr "Інфармацыя аб памяці"
+
+#: ../Rpmdrake/pkg.pm:663 ../rpmdrake.pm:730 ../rpmdrake.pm:811
+#: ../rpmdrake.pm:835
+#, c-format
 msgid "Error"
 msgstr "Памылка"
 
-#: ../rpmdrake:1910
+#: ../Rpmdrake/pkg.pm:664
+#, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr ""
 
-#: ../rpmdrake:1935
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:689
+#, fuzzy, c-format
 msgid "Please wait, removing packages..."
 msgstr "Прагляд даступных пакетаў"
 
-#: ../rpmdrake:1946
+#: ../Rpmdrake/pkg.pm:700
+#, c-format
 msgid "Problem during removal"
 msgstr ""
 
-#: ../rpmdrake:1947
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
 "\n"
 "%s"
 msgstr "Атрымалася памылка ўпарадкавання пакетаў:"
 
-#: ../rpmdrake:1977
-msgid "Welcome"
-msgstr "Вітаем"
+#: ../Rpmdrake/rpmnew.pm:81
+#, fuzzy, c-format
+msgid "Inspecting %s"
+msgstr "Усталёўваем"
 
-#: ../rpmdrake:1982
+#: ../Rpmdrake/rpmnew.pm:104
+#, fuzzy, c-format
+msgid "Changes:"
+msgstr "Мэнэджэр сэрвісаў"
+
+#: ../Rpmdrake/rpmnew.pm:112
+#, fuzzy, c-format
+msgid "Remove .%s"
+msgstr "/Перавярнуць спіс"
+
+#: ../Rpmdrake/rpmnew.pm:116
+#, fuzzy, c-format
+msgid "Use .%s as main file"
+msgstr "Дрэнны файл рэзервовай копіі"
+
+#: ../Rpmdrake/rpmnew.pm:120
+#, fuzzy, c-format
+msgid "Do nothing"
+msgstr "Нічога"
+
+#: ../Rpmdrake/rpmnew.pm:136
+#, fuzzy, c-format
+msgid "Installation finished"
+msgstr "Усталяванне SILO"
+
+#: ../Rpmdrake/rpmnew.pm:151
+#, fuzzy, c-format
+msgid "Inspect..."
+msgstr "Настройка IDE"
+
+#: ../Rpmdrake/rpmnew.pm:169 ../rpmdrake:70 ../rpmdrake:98
+#, fuzzy, c-format
+msgid "Please wait, searching..."
+msgstr "Падрыхтоўка ўсталяваньня"
+
+#: ../gurpmi.addmedia:83
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
+
+#: ../gurpmi.addmedia:97
+#, c-format
 msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
+"You are about to add new packages media, %s.\n"
+"That means you will be able to add new software packages\n"
+"to your system from these new media."
 msgstr ""
 
-#: ../rpmdrake:1987
-#, perl-format
+#: ../gurpmi.addmedia:100
+#, c-format
 msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
+"You are about to add a new packages medium, `%s'.\n"
+"That means you will be able to add new software packages\n"
+"to your system from that new medium."
 msgstr ""
 
-#: ../rpmdrake:1992
-msgid "Welcome to the software installation tool!"
+#: ../gurpmi.addmedia:125
+#, c-format
+msgid "Successfully added media %s."
 msgstr ""
 
-#: ../rpmdrake:1993
+#: ../gurpmi.addmedia:126
+#, c-format
+msgid "Successfully added medium `%s'."
+msgstr ""
+
+#: ../rpmdrake:59 ../rpmdrake:141
+#, c-format
+msgid "Search results"
+msgstr "Вынікі пошуку"
+
+#: ../rpmdrake:59
+#, c-format
+msgid "Search results (none)"
+msgstr ""
+
+#: ../rpmdrake:93 ../rpmdrake:187 ../rpmdrake.pm:180
+#, fuzzy, c-format
+msgid "Software Management"
+msgstr "Мэнэджэр сэрвісаў"
+
+#: ../rpmdrake:103
+#, c-format
+msgid "Stop"
+msgstr "Спыніць"
+
+#: ../rpmdrake:144
+#, c-format
+msgid "Selected"
+msgstr "Пазначаны"
+
+#: ../rpmdrake:144
+#, c-format
+msgid "Not selected"
+msgstr "Ня вылучаны"
+
+#: ../rpmdrake:200
+#, c-format
+msgid "Selected: %s / Free disk space: %s"
+msgstr ""
+
+#: ../rpmdrake:201
+#, fuzzy, c-format
+msgid "Selected size: %d MB"
+msgstr "Памер файла: %d байт"
+
+#: ../rpmdrake:256
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Усталёўка"
+
+#: ../rpmdrake:256
+#, fuzzy, c-format
+msgid "Non installed"
+msgstr "Усталёўка"
+
+#: ../rpmdrake:257
+#, c-format
+msgid "%s choices"
+msgstr ""
+
+#: ../rpmdrake:257
+#, fuzzy, c-format
+msgid "Mandriva Linux choices"
+msgstr "Наладка вашага сэансу"
+
+#: ../rpmdrake:259
+#, c-format
+msgid "All packages, alphabetical"
+msgstr ""
+
+#: ../rpmdrake:260
+#, c-format
+msgid "All packages, by update availability"
+msgstr ""
+
+#: ../rpmdrake:261
+#, c-format
+msgid "All packages, by size"
+msgstr ""
+
+#: ../rpmdrake:262
+#, fuzzy, c-format
+msgid "All packages, by selection state"
+msgstr "Асабісты выбар пакетаў"
+
+#: ../rpmdrake:263
+#, c-format
+msgid "Leaves only, sorted by install date"
+msgstr ""
+
+#: ../rpmdrake:264
+#, c-format
+msgid "All packages, by group"
+msgstr ""
+
+#: ../rpmdrake:266
+#, fuzzy, c-format
+msgid "All updates"
+msgstr "Рэжым Mmap"
+
+#: ../rpmdrake:266
+#, fuzzy, c-format
+msgid "Security updates"
+msgstr "Бясьпека"
+
+#: ../rpmdrake:266
+#, c-format
+msgid "Bugfixes updates"
+msgstr ""
+
+#: ../rpmdrake:266
+#, fuzzy, c-format
+msgid "Normal updates"
+msgstr "Рэжым Mmap"
+
+#: ../rpmdrake:327
+#, fuzzy, c-format
+msgid "in names"
+msgstr "Гульня ў косьці"
+
+#: ../rpmdrake:329
+#, fuzzy, c-format
+msgid "in descriptions"
+msgstr "Апісанне"
+
+#: ../rpmdrake:331
+#, fuzzy, c-format
+msgid "in file names"
+msgstr "Уласнае імя"
+
+#: ../rpmdrake:362 ../rpmdrake:365 ../rpmdrake:376 ../rpmdrake:389
+#: ../rpmdrake:398
+#, c-format
+msgid "/_File"
+msgstr "/_Файл"
+
+#: ../rpmdrake:365
+#, fuzzy, c-format
+msgid "/_Update media"
+msgstr "Іншыя"
+
+#: ../rpmdrake:376
+#, fuzzy, c-format
+msgid "/_Reset the selection"
+msgstr "Дзеяньні"
+
+#: ../rpmdrake:389
+#, fuzzy, c-format
+msgid "/Reload the _packages list"
+msgstr "Выбар пакетаў"
+
+#: ../rpmdrake:398
+#, c-format
+msgid "/_Quit"
+msgstr "/_Выхад"
+
+#: ../rpmdrake:398
+#, c-format
+msgid "<control>Q"
+msgstr "<control>Q"
+
+#: ../rpmdrake:401 ../rpmdrake:402 ../rpmdrake:407 ../rpmdrake:437
+#, c-format
+msgid "/_Options"
+msgstr "/_Налады"
+
+#: ../rpmdrake:402
+#, c-format
+msgid "/_Media Manager"
+msgstr ""
+
+#: ../rpmdrake:407 ../rpmdrake:437
+#, c-format
+msgid "/_Show automatically selected packages"
+msgstr ""
+
+#: ../rpmdrake:411 ../rpmdrake:412 ../rpmdrake:413 ../rpmdrake:414
+#, c-format
+msgid "/_Help"
+msgstr "/_Дапамога"
+
+#: ../rpmdrake:412
+#, c-format
+msgid "/_Report Bug"
+msgstr "/_Паведаміць пра памылку"
+
+#: ../rpmdrake:414
+#, c-format
+msgid "/_About..."
+msgstr "/_Пра..."
+
+#: ../rpmdrake:417
+#, c-format
+msgid "Rpmdrake"
+msgstr ""
+
+#: ../rpmdrake:419
+#, c-format
+msgid "Copyright (C) %s by Mandriva"
+msgstr ""
+
+#: ../rpmdrake:421
+#, c-format
+msgid "Rpmdrake is Mandriva Linux package management tool."
+msgstr ""
+
+#: ../rpmdrake:423
+#, fuzzy, c-format
+msgid "Mandriva Linux"
+msgstr "Цэнтар кіраваньня"
+
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#: ../rpmdrake:428
+#, c-format
+msgid "_: Translator(s) name(s) & email(s)\n"
+msgstr ""
+
+#: ../rpmdrake:452
+#, c-format
+msgid "Find:"
+msgstr "Шукаць:"
+
+#: ../rpmdrake:461
+#, c-format
+msgid "Search"
+msgstr "Шукаць"
+
+#: ../rpmdrake:463
+#, c-format
+msgid "Clear"
+msgstr "Ачысьціць"
+
+#: ../rpmdrake:477 ../rpmdrake.pm:764
+#, fuzzy, c-format
+msgid "Select all"
+msgstr "Абярыце файл"
+
+#: ../rpmdrake:484
+#, c-format
+msgid "Apply"
+msgstr "Применить"
+
+#: ../rpmdrake:488
+#, c-format
+msgid "Quit"
+msgstr "Выхад"
+
+#: ../rpmdrake:504
+#, c-format
+msgid "Quick Introduction"
+msgstr ""
+
+#: ../rpmdrake:505
+#, c-format
+msgid "You can browse the packages through the categories tree on the left."
+msgstr ""
+
+#: ../rpmdrake:506
+#, c-format
 msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
+"You can view information about a package by clicking on it on the right list."
 msgstr ""
 
-#: ../rpmdrake.pm:102
-msgid "Mandriva Linux Update"
+#: ../rpmdrake:507
+#, c-format
+msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
 
-#: ../rpmdrake.pm:102
-#, fuzzy
+#: ../rpmdrake.pm:103
+#, fuzzy, c-format
 msgid "Software Update"
 msgstr "Мэнэджэр сэрвісаў"
 
-#: ../rpmdrake.pm:129
-#, fuzzy
+#: ../rpmdrake.pm:103
+#, c-format
+msgid "Mandriva Linux Update"
+msgstr ""
+
+#: ../rpmdrake.pm:130
+#, fuzzy, c-format
 msgid "Please enter your credentials for accessing proxy\n"
 msgstr "Калі ласка, увядзіце Ваш пароль для гэтае пляцоўкі"
 
-#: ../rpmdrake.pm:130
+#: ../rpmdrake.pm:131
+#, c-format
 msgid "User name:"
 msgstr "Імя карыстальніка:"
 
-#: ../rpmdrake.pm:173
-#, fuzzy
+#: ../rpmdrake.pm:175
+#, fuzzy, c-format
 msgid "Software Packages Removal"
 msgstr "Мэнэджэр сэрвісаў"
 
-#: ../rpmdrake.pm:174
-#, fuzzy
+#: ../rpmdrake.pm:176 ../rpmdrake.pm:180
+#, fuzzy, c-format
 msgid "Software Packages Update"
 msgstr "Мэнэджэр сэрвісаў"
 
-#: ../rpmdrake.pm:175
-#, fuzzy
+#: ../rpmdrake.pm:177
+#, fuzzy, c-format
 msgid "Software Packages Installation"
 msgstr "Асабісты выбар пакетаў"
 
-#: ../rpmdrake.pm:217
+#: ../rpmdrake.pm:220
+#, c-format
 msgid "No"
 msgstr "Не"
 
-#: ../rpmdrake.pm:221
+#: ../rpmdrake.pm:224
+#, c-format
 msgid "Yes"
 msgstr "Так"
 
-#: ../rpmdrake.pm:269
-#, fuzzy
+#: ../rpmdrake.pm:274
+#, fuzzy, c-format
 msgid "Info..."
 msgstr "Інфармацыя"
 
-#: ../rpmdrake.pm:386
+#: ../rpmdrake.pm:395
+#, c-format
 msgid "Austria"
 msgstr "Аўстрыя"
 
-#: ../rpmdrake.pm:387
+#: ../rpmdrake.pm:396
+#, c-format
 msgid "Australia"
 msgstr "Аўстралія"
 
-#: ../rpmdrake.pm:388
+#: ../rpmdrake.pm:397
+#, c-format
 msgid "Belgium"
 msgstr "Бэльгія"
 
-#: ../rpmdrake.pm:389
+#: ../rpmdrake.pm:398
+#, c-format
 msgid "Brazil"
 msgstr "Бразылія"
 
-#: ../rpmdrake.pm:390
+#: ../rpmdrake.pm:399
+#, c-format
 msgid "Canada"
 msgstr "Канада"
 
-#: ../rpmdrake.pm:391
+#: ../rpmdrake.pm:400
+#, c-format
 msgid "Switzerland"
 msgstr "Щвэйцарыя"
 
-#: ../rpmdrake.pm:392
+#: ../rpmdrake.pm:401
+#, c-format
 msgid "Costa Rica"
 msgstr "Коста-Рыка"
 
-#: ../rpmdrake.pm:393
+#: ../rpmdrake.pm:402
+#, c-format
 msgid "Czech Republic"
 msgstr "Чэская Рэспубліка"
 
-#: ../rpmdrake.pm:394
+#: ../rpmdrake.pm:403
+#, c-format
 msgid "Germany"
 msgstr "Нямецкі"
 
-#: ../rpmdrake.pm:395
-#, fuzzy
+#: ../rpmdrake.pm:404
+#, fuzzy, c-format
 msgid "Danmark"
 msgstr "Данія"
 
-#: ../rpmdrake.pm:396 ../rpmdrake.pm:400
+#: ../rpmdrake.pm:405 ../rpmdrake.pm:409
+#, c-format
 msgid "Greece"
 msgstr "Грэцыя"
 
-#: ../rpmdrake.pm:397
+#: ../rpmdrake.pm:406
+#, c-format
 msgid "Spain"
 msgstr "Гішпанія"
 
-#: ../rpmdrake.pm:398
+#: ../rpmdrake.pm:407
+#, c-format
 msgid "Finland"
 msgstr "Фінляндыя"
 
-#: ../rpmdrake.pm:399
+#: ../rpmdrake.pm:408
+#, c-format
 msgid "France"
 msgstr "Францыя"
 
-#: ../rpmdrake.pm:401
+#: ../rpmdrake.pm:410
+#, c-format
 msgid "Hungary"
 msgstr "Вугоршчына"
 
-#: ../rpmdrake.pm:402
+#: ../rpmdrake.pm:411
+#, c-format
 msgid "Israel"
 msgstr "Ізраіль"
 
-#: ../rpmdrake.pm:403
+#: ../rpmdrake.pm:412
+#, c-format
 msgid "Italy"
 msgstr "Італія"
 
-#: ../rpmdrake.pm:404
+#: ../rpmdrake.pm:413
+#, c-format
 msgid "Japan"
 msgstr "Японія"
 
-#: ../rpmdrake.pm:405
+#: ../rpmdrake.pm:414
+#, c-format
 msgid "Korea"
 msgstr "Карэя"
 
-#: ../rpmdrake.pm:406
+#: ../rpmdrake.pm:415
+#, c-format
 msgid "Netherlands"
 msgstr "Нідэрлянды"
 
-#: ../rpmdrake.pm:407
+#: ../rpmdrake.pm:416
+#, c-format
 msgid "Norway"
 msgstr "Нарвэгія"
 
-#: ../rpmdrake.pm:408
+#: ../rpmdrake.pm:417
+#, c-format
 msgid "Poland"
 msgstr "Польшча"
 
-#: ../rpmdrake.pm:409
+#: ../rpmdrake.pm:418
+#, c-format
 msgid "Portugal"
 msgstr "Партугалія"
 
-#: ../rpmdrake.pm:410
+#: ../rpmdrake.pm:419
+#, c-format
 msgid "Russia"
 msgstr "Расея"
 
-#: ../rpmdrake.pm:411
+#: ../rpmdrake.pm:420
+#, c-format
 msgid "Sweden"
 msgstr "Швэцыя"
 
-#: ../rpmdrake.pm:412
+#: ../rpmdrake.pm:421
+#, c-format
 msgid "Singapore"
 msgstr "Сынгапур"
 
-#: ../rpmdrake.pm:413
+#: ../rpmdrake.pm:422
+#, c-format
 msgid "Slovakia"
 msgstr "Славакія"
 
-#: ../rpmdrake.pm:414
+#: ../rpmdrake.pm:423
+#, c-format
 msgid "Taiwan"
 msgstr "Тайвань"
 
-#: ../rpmdrake.pm:415
+#: ../rpmdrake.pm:424
+#, c-format
 msgid "United Kingdom"
 msgstr "Злучанае Каралеўства"
 
-#: ../rpmdrake.pm:416
+#: ../rpmdrake.pm:425
+#, c-format
 msgid "China"
 msgstr "Кітай"
 
-#: ../rpmdrake.pm:417 ../rpmdrake.pm:418 ../rpmdrake.pm:419 ../rpmdrake.pm:420
-#: ../rpmdrake.pm:509
+#: ../rpmdrake.pm:426 ../rpmdrake.pm:427 ../rpmdrake.pm:428 ../rpmdrake.pm:429
+#, c-format
 msgid "United States"
 msgstr "Злучаныя Штаты"
 
-#: ../rpmdrake.pm:523
+#: ../rpmdrake.pm:526
+#, c-format
 msgid ""
 "I need to access internet to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -1986,7 +2405,8 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#: ../rpmdrake.pm:527
+#: ../rpmdrake.pm:530
+#, c-format
 msgid ""
 "I need to contact the Mandriva website to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -1994,27 +2414,28 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#: ../rpmdrake.pm:532 ../rpmdrake.pm:569
+#: ../rpmdrake.pm:536 ../rpmdrake.pm:574
+#, c-format
 msgid "Mirror choice"
 msgstr ""
 
-#: ../rpmdrake.pm:535
-#, fuzzy
+#: ../rpmdrake.pm:539
+#, fuzzy, c-format
 msgid "Please wait, downloading mirror addresses."
 msgstr "Падрыхтоўка ўсталяваньня"
 
-#: ../rpmdrake.pm:536
+#: ../rpmdrake.pm:540
+#, c-format
 msgid "Please wait, downloading mirror addresses from the Mandriva website."
 msgstr ""
 
-#. - seems that value is bitten before being printed by next func..
-#: ../rpmdrake.pm:542
-#, fuzzy
+#: ../rpmdrake.pm:547
+#, fuzzy, c-format
 msgid "Error during download"
 msgstr "Памылка аднаўленьня меню"
 
-#: ../rpmdrake.pm:544
-#, perl-format
+#: ../rpmdrake.pm:549
+#, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
 "\n"
@@ -2023,8 +2444,8 @@ msgid ""
 "Please try again later."
 msgstr ""
 
-#: ../rpmdrake.pm:549
-#, perl-format
+#: ../rpmdrake.pm:554
+#, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
 "\n"
@@ -2033,16 +2454,18 @@ msgid ""
 "Please try again later."
 msgstr ""
 
-#: ../rpmdrake.pm:559
-#, fuzzy
+#: ../rpmdrake.pm:564
+#, fuzzy, c-format
 msgid "No mirror"
 msgstr "Няма мікшера"
 
-#: ../rpmdrake.pm:561
+#: ../rpmdrake.pm:566
+#, c-format
 msgid "I can't find any suitable mirror."
 msgstr ""
 
-#: ../rpmdrake.pm:562
+#: ../rpmdrake.pm:567
+#, c-format
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
@@ -2051,69 +2474,69 @@ msgid ""
 "by Mandriva Linux Official Updates."
 msgstr ""
 
-#: ../rpmdrake.pm:581
-#, fuzzy
+#: ../rpmdrake.pm:586
+#, fuzzy, c-format
 msgid "Please choose the desired mirror."
 msgstr "калі ласка, пазначце тып вашай мышы."
 
 #: ../rpmdrake.pm:639
-#, perl-format
+#, c-format
 msgid "Copying file for medium `%s'..."
 msgstr ""
 
 #: ../rpmdrake.pm:642
-#, perl-format
+#, c-format
 msgid "Examining file of medium `%s'..."
 msgstr ""
 
 #: ../rpmdrake.pm:645
-#, perl-format
+#, c-format
 msgid "Examining remote file of medium `%s'..."
 msgstr ""
 
 #: ../rpmdrake.pm:649
-#, fuzzy
+#, fuzzy, c-format
 msgid " done."
 msgstr "Зроблена"
 
 #: ../rpmdrake.pm:653
-#, fuzzy
+#, fuzzy, c-format
 msgid " failed!"
 msgstr "mkraid не працаздольны"
 
 #. -PO: We're downloading the said file from the said medium
 #: ../rpmdrake.pm:657
-#, perl-format
+#, c-format
 msgid "%s from medium %s"
 msgstr ""
 
 #: ../rpmdrake.pm:661
-#, perl-format
+#, c-format
 msgid "Starting download of `%s'..."
 msgstr ""
 
 #: ../rpmdrake.pm:665
-#, perl-format
+#, c-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr ""
 
 #: ../rpmdrake.pm:668
-#, perl-format
+#, c-format
 msgid "Download of `%s', speed:%s"
 msgstr ""
 
 #: ../rpmdrake.pm:679
-#, fuzzy
+#, fuzzy, c-format
 msgid "Please wait, updating media..."
 msgstr "Падрыхтоўка ўсталяваньня"
 
 #: ../rpmdrake.pm:706
-#, fuzzy
+#, fuzzy, c-format
 msgid "Error retrieving packages"
 msgstr "Атрымалася памылка ўпарадкавання пакетаў:"
 
 #: ../rpmdrake.pm:707
-#, perl-format
+#, c-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
 "`%s'. Either this update media is misconfigured, and in this case\n"
@@ -2124,31 +2547,28 @@ msgid ""
 msgstr ""
 
 #: ../rpmdrake.pm:738
-#, fuzzy
+#, fuzzy, c-format
 msgid "Update media"
 msgstr "Іншыя"
 
 #: ../rpmdrake.pm:743
+#, c-format
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
 msgstr ""
 
 #: ../rpmdrake.pm:750
-#, fuzzy
+#, fuzzy, c-format
 msgid "Select the media you wish to update:"
 msgstr "Пазначце карыстальнікаў каб аб'яднаць у гэтыю групу"
 
-#: ../rpmdrake.pm:764
-#, fuzzy
-msgid "Select all"
-msgstr "Абярыце файл"
-
 #: ../rpmdrake.pm:768
+#, c-format
 msgid "Update"
 msgstr "Аднавіць"
 
 #: ../rpmdrake.pm:789
-#, perl-format
+#, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
 "\n"
@@ -2157,7 +2577,7 @@ msgid ""
 msgstr ""
 
 #: ../rpmdrake.pm:812 ../rpmdrake.pm:823
-#, fuzzy, perl-format
+#, fuzzy, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
 "\n"
@@ -2165,16 +2585,17 @@ msgid ""
 msgstr "Немагчыма адчыніць файл %s\n"
 
 #: ../rpmdrake.pm:835
-#, fuzzy
+#, fuzzy, c-format
 msgid "Unable to create medium."
 msgstr "Немагчыма адчыніць файл %s\n"
 
 #: ../rpmdrake.pm:840
+#, c-format
 msgid "Failure when adding medium"
 msgstr ""
 
 #: ../rpmdrake.pm:841
-#, perl-format
+#, c-format
 msgid ""
 "There was a problem adding medium:\n"
 "\n"
@@ -2182,7 +2603,7 @@ msgid ""
 msgstr ""
 
 #: ../rpmdrake.pm:854
-#, perl-format
+#, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
 "running (%s).\n"
@@ -2190,7 +2611,7 @@ msgid ""
 msgstr ""
 
 #: ../rpmdrake.pm:857
-#, perl-format
+#, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of Mandriva "
 "Linux you're running (%s).\n"
@@ -2198,10 +2619,12 @@ msgid ""
 msgstr ""
 
 #: ../rpmdrake.pm:874
+#, c-format
 msgid "Help launched in background"
 msgstr ""
 
 #: ../rpmdrake.pm:875
+#, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
 msgstr ""
@@ -2489,19 +2912,27 @@ msgid "Software Media Manager"
 msgstr ""
 
 #, fuzzy
+#~ msgid ""
+#~ "To satisfy dependencies, the following package is going to be installed:\n"
+#~ "%2$s\n"
+#~ msgid_plural ""
+#~ "To satisfy dependencies, the following %d packages are going to be "
+#~ "installed:\n"
+#~ "%s\n"
+#~ msgstr[0] "Наступныя пакеты будуць даданы да сістэмы"
+#~ msgstr[1] "Наступныя пакеты будуць даданы да сістэмы"
+
+#, fuzzy
+#~ msgid "Please wait, reading packages database..."
+#~ msgstr "Падрыхтоўка ўсталяваньня"
+
+#, fuzzy
 #~ msgid "XFree86"
 #~ msgstr "Сервер XFree86 %s"
 
 #, fuzzy
 #~ msgid "No package found for installation."
 #~ msgstr "Падрыхтоўка ўсталяваньня"
-
-#~ msgid "Stop"
-#~ msgstr "Спыніць"
-
-#, fuzzy
-#~ msgid "Normal information"
-#~ msgstr "Інфармацыя аб памяці"
 
 #, fuzzy
 #~ msgid "Maximum information"
