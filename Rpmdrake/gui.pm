@@ -452,7 +452,8 @@ sub callback_choices {
     }
     my $callback = sub { interactive_msg(N("More information on package..."), get_info($_[0]), scroll => 1) };
     $choices = [ sort { $a->name cmp $b->name } @$choices ];
-    my @choices = interactive_list_(N("Please choose"), P("The following package is needed:", "One of the following packages is needed:", scalar(@$choices)),
+    my @choices = interactive_list_(N("Please choose"), scalar(@$choices)==1 ?
+    N("The following package is needed:") : N("One of the following packages is needed:"),
                                     [ map { urpm_name($_) } @$choices ], $callback);
     $choices->[$choices[0]];
 }
@@ -569,8 +570,12 @@ sub toggle_nodes {
                 } @cant;
                 my $count = @reasons;
                 interactive_msg(
-                    P("One package cannot be installed", "Some packages can't be installed", $count),
-                    P("Sorry, the following package cannot be selected:\n\n%s", "Sorry, the following packages can't be selected:\n\n%s", $count, join("\n", @reasons)),
+                    $count==1 ?
+                    N("One package cannot be installed")
+		    : N("Some packages can't be installed"),
+		    $count==1 ?
+                    N("Sorry, the following package cannot be selected:\n\n%s",join("\n", @reasons))
+		    : N("Sorry, the following packages can't be selected:\n\n%s", join("\n", @reasons)),
                     scroll => 1,
                 );
                 foreach (@cant) {

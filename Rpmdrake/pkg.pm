@@ -479,15 +479,18 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $r = join "\n", urpm::select::translate_why_removed($urpm, $urpm->{state}, @to_remove);
 
     my $install_count = int(@pkgs);
-    my $to_install = $install_count ? 
-      #-PO: in singular form, we use %2\$
-      P("To satisfy dependencies, the following package is going to be installed:\n%2\$s\n", "To satisfy dependencies, the following %d packages are going to be installed:\n%s\n", $install_count, $install_count,
-      formatlistpkg(map { s!.*/!!; $_ } @pkgs)) : '';
+    my $to_install = $install_count == 0 ? '' :
+      $install_count == 1 ?
+      N("To satisfy dependencies, the following package is going to be installed:\n%s\n", formatlistpkg(map { s!.*/!!; $_ } @pkgs))
+      : P("To satisfy dependencies, the following %d package is going to be installed:\n%s\n", "To satisfy dependencies, the following %d packages are going to be installed:\n%s\n", $install_count, $install_count,
+      formatlistpkg(map { s!.*/!!; $_ } @pkgs));
     my $remove_count =  scalar(@to_remove);
     interactive_msg(($to_install ? N("Confirmation") : N("Some packages need to be removed")),
                      ($r ? 
-                        (!$to_install ? join("\n\n", P("Remove one package?", "Remove %d packages?", $remove_count, $remove_count), $r) :
- P("The following package has to be removed for others to be upgraded:", "The following packages have to be removed for others to be upgraded:", $remove_count) . join("\n\n", $r, if_($to_install, $to_install)) . N("Is it ok to continue?"))
+                        (!$to_install ? join("\n\n", P("Remove %d package?", "Remove %d packages?", $remove_count, $remove_count), $r) :
+ $remove_count == 1 ?
+ N("The following package has to be removed for others to be upgraded:")
+ : N("The following packages have to be removed for others to be upgraded:") . join("\n\n", $r, if_($to_install, $to_install)) . N("Is it ok to continue?"))
                           : $to_install),
                      scroll => 1,
                      yesno => 1) or do {
