@@ -44,7 +44,7 @@ our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_
 
 our $dont_show_selections = $> ? 1 : 0;
 
-our ($descriptions, %filter_methods, $force_displaying_group, $force_rebuild, @initial_selection, $initial_selection_done, $pkgs, $size_free, $size_selected, $urpm);
+our ($descriptions, %filter_methods, $force_displaying_group, $force_rebuild, @initial_selection, $pkgs, $size_free, $size_selected, $urpm);
 
 
 sub format_pkg_simplifiedinfo {
@@ -413,11 +413,6 @@ sub pkgs_provider {
             };
         },
     );
-    if (!$initial_selection_done) {
-        $filter_methods{all}->();
-        @initial_selection = grep { $pkgs->{$_}{selected} } keys %$pkgs;
-        $initial_selection_done = 1;
-    }
     foreach my $importance (qw(bugfix security normal)) {
         $filter_methods{$importance} = sub {
             $pkgs = $h->{updates};
