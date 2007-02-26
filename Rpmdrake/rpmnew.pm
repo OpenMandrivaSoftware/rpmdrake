@@ -30,6 +30,8 @@ use rpmdrake;
 use Rpmdrake::init;
 use Rpmdrake::pkg;
 use Rpmdrake::formatting;
+use Gtk2::SourceView;
+use File::MimeInfo::Magic;
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
 use Exporter;
@@ -81,6 +83,7 @@ sub dialog_rpmnew {
 	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $::main_window);
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my %texts;
+	my $lang_manager = Gtk2::SourceView::LanguagesManager->new;
 	gtkadd(
 	    $d->{window},
 	    gtkpack_(
@@ -90,19 +93,19 @@ sub dialog_rpmnew {
 			gtkpack_(
 			    gtknew('VBox'),
 			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$file:</span>)),
-			    1, gtknew('ScrolledWindow', child => $texts{file} = gtknew('TextView')),
+			    1, gtknew('ScrolledWindow', child => $texts{file} = Gtk2::SourceView::View->new),
 			),
 			gtkpack_(
 			    gtknew('VBox'),
 			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$rpmnew:</span>)),
-			    1, gtknew('ScrolledWindow', child => $texts{rpmnew} = gtknew('TextView')),
+			    1, gtknew('ScrolledWindow', child => $texts{rpmnew} = Gtk2::SourceView::View->new),
 			),
 			resize1 => 1,
 		    ),
 		    gtkpack_(
 			gtknew('VBox'),
-			0, gtknew('Label', text => N("changes:")),
-			1, gtknew('ScrolledWindow', child => $texts{diff} = gtknew('TextView')),
+			0, gtknew('Label', text => N("Changes:")),
+			1, gtknew('ScrolledWindow', child => $texts{diff} = Gtk2::SourceView::View->new),
 		    ),
 		    resize1 => 1,
 		),
@@ -123,11 +126,21 @@ sub dialog_rpmnew {
 		)
 	    )
 	);
-	my %contents = (file => scalar(cat_($file)), rpmnew => scalar(cat_($rpmnew)));
-	gtktext_insert($texts{$_}, [ [ $contents{$_}, { 'font' => 'monospace' } ] ]) foreach keys %contents;
-	my @regexps = ([ '^(--- )|(\+\+\+ )', 'blue' ], [ '^@@ ', 'darkcyan' ], [ '^-', 'red3' ], [ '^\+', 'green3' ]);
-	my $line2col = sub { $_[0] =~ /$_->[0]/ and return $_->[1] foreach @regexps; 'black' };
-	gtktext_insert($texts{diff}, [ map { [ $_, { 'font' => 'monospace', 'foreground' => $line2col->($_) } ] } @diff ]);
+	my %files = (file => $file, rpmnew => $rpmnew);
+     foreach (keys %files) {
+         gtktext_insert($texts{$_}, [ [ scalar(cat_($files{$_})), { 'font' => 'monospace' } ] ]);
+         my $mime_type = mimetype($files{$_});
+         next if !$mime_type;
+         my $lang = $lang_manager->get_language_from_mime_type($mime_type);
+         my $buffer = $texts{$_}->get_buffer;
+        $buffer->set('highlight', $lang);
+         $buffer->set_language($lang) if $lang;
+     }
+	gtktext_insert($texts{diff}, [ [ join('', @diff), { 'font' => 'monospace' } ] ]);
+	my $buffer = $texts{diff}->get_buffer;
+	my $lang = $lang_manager->get_language_from_mime_type('text/x-patch');
+	$buffer->set('highlight', $lang);
+	$buffer->set_language($lang) if $lang;
 	$d->{rwindow}->set_default_size(@inspect_wsize);
 	$d->main;
     };
