@@ -65,15 +65,10 @@ my %ignores_rpmnew = map { $_ => 1 } qw(
     /etc/sysconfig/xinetd
 );
 
-sub dialog_rpmnew {
-    my ($msg, %p2r) = @_;
-    @{$p2r{$_}} = grep { !$ignores_rpmnew{$_} } @{$p2r{$_}} foreach keys %p2r;
-    my $sum_rpmnew = sum(map { int @{$p2r{$_}} } keys %p2r);
-    $sum_rpmnew == 0 and return 1;
-    my @inspect_wsize = ($typical_width*2.5, 500);
-    my $inspect = sub {
+sub inspect {
 	my ($file) = @_;
 	my ($rpmnew, $rpmsave) = ("$file.rpmnew", "$file.rpmsave");
+	my @inspect_wsize = ($typical_width*2.5, 500);
 	my $rpmfile = 'rpmnew';
 	-r $rpmnew or $rpmfile = 'rpmsave';
 	-r $rpmnew && -r $rpmsave && (stat $rpmsave)[9] > (stat $rpmnew)[9] and $rpmfile = 'rpmsave';
@@ -143,8 +138,13 @@ sub dialog_rpmnew {
 	$buffer->set_language($lang) if $lang;
 	$d->{rwindow}->set_default_size(@inspect_wsize);
 	$d->main;
-    };
+}
 
+sub dialog_rpmnew {
+    my ($msg, %p2r) = @_;
+    @{$p2r{$_}} = grep { !$ignores_rpmnew{$_} } @{$p2r{$_}} foreach keys %p2r;
+    my $sum_rpmnew = sum(map { int @{$p2r{$_}} } keys %p2r);
+    $sum_rpmnew == 0 and return 1;
     interactive_packtable(
 	N("Installation finished"),
 	$::main_window,
@@ -163,7 +163,7 @@ sub dialog_rpmnew {
 		gtksignal_connect(
 		    $b = gtknew('Button', text => N("Inspect...")),
 		    clicked => sub {
-			$inspect->($f);
+			inspect($f);
 			-r "$f.rpmnew" || -r "$f.rpmsave" or $b->set_sensitive(0);
 		    },
 		) ];
