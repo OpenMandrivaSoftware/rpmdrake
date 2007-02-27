@@ -36,7 +36,7 @@ use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() whic
 use ugtk2 qw(:all);
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(do_merge_if_needed);
+our @EXPORT = qw(dialog_rpmnew do_merge_if_needed);
 
 # /var/lib/nfs/etab /var/lib/nfs/rmtab /var/lib/nfs/xtab /var/cache/man/whatis
 my %ignores_rpmnew = map { $_ => 1 } qw(
