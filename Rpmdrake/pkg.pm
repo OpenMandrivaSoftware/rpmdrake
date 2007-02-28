@@ -192,6 +192,7 @@ sub get_pkgs {
 
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::w->{real_window});
     my $_guard = before_leaving { Rpmdrake::gurpm::end() };
+    my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     $urpm = urpm->new;
     $urpm->{fatal} = $fatal_handler;
@@ -429,6 +430,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $w = $::main_window;
     $w->set_sensitive(0);
+    my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     my $group;
     if ($::options{parallel} && (($group) = @{$::options{parallel}})) {
