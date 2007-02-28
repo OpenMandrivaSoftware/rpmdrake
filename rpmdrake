@@ -79,7 +79,7 @@ sub do_search($$$$$$$) {
 	    }
 	} else {
 	    my @hdlists = map {
-		my $h = urpm::media::any_hdlist($_);
+		my $h = urpm::media::any_hdlist($urpm, $_);
 		$h =~ s!^file:/+!!;
 		if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h);
 	    } @{$urpm->{media}};
