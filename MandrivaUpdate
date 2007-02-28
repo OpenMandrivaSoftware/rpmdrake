@@ -136,6 +136,14 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
     @{$list->{data}} = map {
         [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", translate(rpm_summary($pkgs->{$_}{pkg}->summary))) ]
     } sort map { urpm_name($_) } @requested;
+    my $cell = ($list->get_column(0)->get_cell_renderers)[0];
+    $cell->signal_connect (toggled => sub {
+	my ($cell, $text_path) = @_;
+	my ($val, $name) = @{$list->{data}[$text_path]};
+	($name) = $name =~ m!<b>(.*)</b>!;
+	$pkgs->{$name}{selected} = to_bool($val);
+	$pkgs->{$name}{pkg}->set_flag_required($val);
+    });
     $action_button->set_sensitive(0) if $>;
 
     $w->{rwindow}->set_sensitive(1);
