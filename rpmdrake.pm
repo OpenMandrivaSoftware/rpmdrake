@@ -85,7 +85,9 @@ our @EXPORT = qw(
     strip_first_underscore
 );
 our $typical_width = 280;
-unshift @::textdomains, qw(rpmdrake urpmi rpm-summary-main rpm-summary-contrib rpm-summary-devel);
+
+# i18n: IMPORTANT: to get correct namespace (rpmdrake instead of libDrakX)
+BEGIN { unshift @::textdomains, qw(rpmdrake urpmi rpm-summary-main rpm-summary-contrib rpm-summary-devel) };
 
 use ugtk2 qw(:all);
 ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
