@@ -130,6 +130,7 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
     # don't select kernel*-latest by default:
     foreach my $name (sort(map { urpm_name($_) } @requested)) {
 	$pkgs->{$name}{selected} = to_bool($name !~ /^kernel.*-latest/);
+	$pkgs->{$name}{pkg}->set_flag_required($name !~ /^kernel.*-latest/);
     };
 
     @{$list->{data}} = map {
