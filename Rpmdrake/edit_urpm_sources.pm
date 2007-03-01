@@ -58,7 +58,7 @@ sub selected_rows {
     my ($o_list_tv) = @_;
     defined $o_list_tv or $o_list_tv = $list_tv;
     my (@rows) = $o_list_tv->get_selection->get_selected_rows;
-    return -1 if $#rows == -1;
+    return -1 if @rows == 0;
     map { $_->to_string } @rows;
 }
 
@@ -354,11 +354,10 @@ sub options_callback() {
 
 sub remove_callback() {
     my @rows = selected_rows();
-    my $wait;
-    $#rows == -1 and return;
+    @rows == 0 and return;
     interactive_msg(
 	N("Source Removal"),
-	$#rows == 0 ?
+	@rows == 1 ?
 	  N("Are you sure you want to remove source \"%s\"?", to_utf8($urpm->{media}[$rows[0]]{name})) :
 	    N("Are you sure you want to remove the following sources ?") . "\n\n\n" .
 	      join("\n\n", sort map { to_utf8($urpm->{media}[$_]{name}) } @rows),
@@ -907,7 +906,7 @@ sub mainwindow() {
     my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('multiple');
-    my ($dw_button, $edit_button, $up_button, $update_button);
+    my ($dw_button, $edit_button, $remove_button, $up_button);
     $list_tv->get_selection->signal_connect(changed => sub {
         my ($selection) = @_;
         my @rows = $selection->get_selected_rows;
@@ -915,7 +914,7 @@ sub mainwindow() {
         # we can delete several medium at a time:
         $remove_button and $remove_button->set_sensitive($#rows != -1);
         # we can only edit/move one item at a time:
-        $_ and $_->set_sensitive($#rows == 0) foreach $up_button, $dw_button, $edit_button;
+        $_ and $_->set_sensitive(@rows == 1) foreach $up_button, $dw_button, $edit_button;
         return if !$#rows == 0;
 	
         my $curr_path = $rows[0];
