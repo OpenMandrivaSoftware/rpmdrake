@@ -353,19 +353,25 @@ sub options_callback() {
 }
 
 sub remove_callback() {
-    my $row = selrow();
-    $row == -1 and return;
+    my @rows = selected_rows();
+    my $wait;
+    $#rows == -1 and return;
     interactive_msg(
 	N("Source Removal"),
-	N("Are you sure you want to remove source \"%s\"?", to_utf8($urpm->{media}[$row]{name})),
+	$#rows == 0 ?
+	  N("Are you sure you want to remove source \"%s\"?", to_utf8($urpm->{media}[$rows[0]]{name})) :
+	    N("Are you sure you want to remove the following sources ?") . "\n\n\n" .
+	      join("\n\n", sort map { to_utf8($urpm->{media}[$_]{name}) } @rows),
 	yesno => 1,
 	 transient => $::main_window,
     ) or return;
 
     my $wait = wait_msg(N("Please wait, removing medium..."));
-    urpm::media::remove_media($urpm, [ $urpm->{media}[$row] ]);
-    urpm::media::write_urpmi_cfg($urpm);
-    remove_wait_msg($wait);
+    foreach my $row (@rows) {
+	urpm::media::remove_media($urpm, [ $urpm->{media}[$row] ]);
+	urpm::media::write_urpmi_cfg($urpm);
+	remove_wait_msg($wait);
+    }
     return 1;
 }
 
