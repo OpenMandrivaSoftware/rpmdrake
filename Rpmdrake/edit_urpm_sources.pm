@@ -893,7 +893,7 @@ sub mainwindow() {
     my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('browse');
-    my ($up_button, $dw_button, $remove_button, $edit_button);
+    my ($dw_button, $edit_button, $up_button, $update_button);
     $list_tv->get_selection->signal_connect(changed => sub {
         my ($model, $iter) = $_[0]->get_selected;
         $_ and $_->set_sensitive(defined $iter) foreach $remove_button, $edit_button;
