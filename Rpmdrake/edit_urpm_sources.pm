@@ -895,10 +895,16 @@ sub mainwindow() {
     $list_tv->get_selection->set_mode('multiple');
     my ($dw_button, $edit_button, $up_button, $update_button);
     $list_tv->get_selection->signal_connect(changed => sub {
-        my ($model, $iter) = $_[0]->get_selected;
-        $_ and $_->set_sensitive(defined $iter) foreach $remove_button, $edit_button;
-        return if !$iter;
-        my $curr_path = $model->get_path($iter);
+        my ($selection) = @_;
+        my @rows = $selection->get_selected_rows;
+        my $model = $list;
+        # we can delete several medium at a time:
+        $remove_button and $remove_button->set_sensitive($#rows != -1);
+        # we can only edit/move one item at a time:
+        $_ and $_->set_sensitive($#rows == 0) foreach $up_button, $dw_button, $edit_button;
+        return if !$#rows == 0;
+	
+        my $curr_path = $rows[0];
         my $first_path = $model->get_path($model->get_iter_first);
         $up_button->set_sensitive($first_path && $first_path->compare($curr_path));
 
