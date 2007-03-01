@@ -54,6 +54,14 @@ sub selrow {
     return $row;
 }
 
+sub selected_rows {
+    my ($o_list_tv) = @_;
+    defined $o_list_tv or $o_list_tv = $list_tv;
+    my (@rows) = $o_list_tv->get_selection->get_selected_rows;
+    return -1 if $#rows == -1;
+    map { $_->to_string } @rows;
+}
+
 sub remove_row {
     my ($model, $path_str) = @_;
     my $iter = $model->get_iter_from_string($path_str);
