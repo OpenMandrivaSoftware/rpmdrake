@@ -124,10 +124,10 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
     # select packages to update:
     my @requested = sort keys %$pkgs;
 
-    # don't select kernel*-latest by default:
+    # don't select kernel*-latest by default and the kernels they require:
     foreach my $name (@requested) {
-	$pkgs->{$name}{selected} = to_bool($name !~ /^kernel.*-latest/);
-	$pkgs->{$name}{pkg}->set_flag_required($name !~ /^kernel.*-latest/);
+	$pkgs->{$name}{selected} = to_bool($name !~ /^kernel/);
+	$pkgs->{$name}{pkg}->set_flag_required($name !~ /^kernel/);
     };
 
     @{$list->{data}} = map {
