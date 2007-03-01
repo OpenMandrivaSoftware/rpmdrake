@@ -399,7 +399,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		$pkg_sel{$n} and $selected = 1;
 	    } else {
              # selecting updates by default:
-             $selected = 1;
+             $selected = 1 if $probe_only_for_updates;
 	    }
 	$updates{urpm_name($pkg)} = { selected => $selected, pkg => $pkg };
 	} else {
