@@ -51,10 +51,26 @@ warn_about_user_mode();
 
 open_db();
 
+sub refresh_packages_list {
+    my ($pkgs, $list) = @_;
+    # select packages to update:
+    my @requested = sort keys %$pkgs;
+
+    # don't select kernel*-latest by default and the kernels they require:
+    foreach my $name (@requested) {
+	$pkgs->{$name}{selected} = to_bool($name !~ /^kernel/);
+	$pkgs->{$name}{pkg}->set_flag_required($name !~ /^kernel/);
+    }
+
+    @{$list->{data}} = map {
+        [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", translate(rpm_summary($pkgs->{$_}{pkg}->summary))) ];
+    } grep { $pkgs->{$_}{pkg} } @requested;
+}
+
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
-    my ($size_selected, %elems);
+    my ($size_selected, %elems, $list);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $w = ugtk2->new(N("Software Update"));
@@ -73,7 +89,7 @@ sub run_treeview_dialog {
               1, gtkadd(
                   gtknew('Frame', border_width => 3, shadow_type => 'in'),
 gtknew('ScrolledWindow', width => $typical_width*0.9,
-                        child => my $list = Gtk2::SimpleList->new(
+                        child => $list = Gtk2::SimpleList->new(
                             " " . " " . " "    => 'bool', #N("Selected")
                             " " . "" . " "        => 'markup', #N("Name")
                         ),
@@ -98,7 +114,10 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
                1, gtknew('Label'),
 			0, my $action_button = gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Update"))),
-			    clicked => sub { do_action({ tree_mode => 'all_updates' }, $callback_action) },
+			    clicked => sub {
+                                do_action({ tree_mode => 'all_updates' }, $callback_action);
+                                refresh_packages_list($pkgs, $list);
+                            },
 			),
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Quit"))),
@@ -121,20 +140,10 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
     $Rpmdrake::pkg::probe_only_for_updates = 1; # faster startup
     pkgs_provider({}, $default_list_mode); # default mode
 
-    # select packages to update:
-    my @requested = sort keys %$pkgs;
+    refresh_packages_list($pkgs, $list);
 
-    # don't select kernel*-latest by default and the kernels they require:
-    foreach my $name (@requested) {
-	$pkgs->{$name}{selected} = to_bool($name !~ /^kernel/);
-	$pkgs->{$name}{pkg}->set_flag_required($name !~ /^kernel/);
-    };
-
-    @{$list->{data}} = map {
-        [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", translate(rpm_summary($pkgs->{$_}{pkg}->summary))) ]
-    } grep { $pkgs->{$_}{pkg} } @requested;
     my $cell = ($list->get_column(0)->get_cell_renderers)[0];
-    $cell->signal_connect (toggled => sub {
+    $cell->signal_connect(toggled => sub {
 	my ($cell, $text_path) = @_;
 	my ($val, $name) = @{$list->{data}[$text_path]};
 	($name) = $name =~ m!<b>(.*)</b>!;
