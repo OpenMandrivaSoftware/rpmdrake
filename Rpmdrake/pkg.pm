@@ -371,6 +371,10 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	start => 0,
 	end   => $#{$urpm->{depslist}},
     );
+    my @requested = $probe_only_for_updates ?
+      sort map { urpm_name($_) } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&callback_choices)
+        : sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
+
     if (!$probe_only_for_updates) {
         $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
         $urpm->{depslist}[$_]->set_flag_installed foreach keys %$requested; #- pretend it's installed
@@ -387,8 +391,8 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	$pkg->flag_upgrade or next;
         my $selected = 0;
 
-	if (member(pkg2medium($pkg, $urpm)->{name}, @updates_media_names) && $pkg->flag_installed) { # TODO/FIXME: for updates
-            any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next;
+	if (member(urpm_name($pkg), @requested)) {
+            #any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next;
             if ($::options{'pkg-sel'} || $::options{'pkg-nosel'}) {
 		my $n = urpm_name($pkg);
 		$pkg_sel{$n} || $pkg_nosel{$n} or next;

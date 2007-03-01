@@ -122,20 +122,17 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
     pkgs_provider({}, $default_list_mode); # default mode
 
     # select packages to update:
-    my @requested = $urpm->resolve_requested($db, $urpm->{state},
-                        { map { $pkgs->{$_}{pkg}->id => 1 } keys %$pkgs },
-                        callback_choices => \&callback_choices,
-                    );
+    my @requested = sort keys %$pkgs;
 
     # don't select kernel*-latest by default:
-    foreach my $name (sort(map { urpm_name($_) } @requested)) {
+    foreach my $name (@requested) {
 	$pkgs->{$name}{selected} = to_bool($name !~ /^kernel.*-latest/);
 	$pkgs->{$name}{pkg}->set_flag_required($name !~ /^kernel.*-latest/);
     };
 
     @{$list->{data}} = map {
         [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", translate(rpm_summary($pkgs->{$_}{pkg}->summary))) ]
-    } sort map { urpm_name($_) } @requested;
+    } grep { $pkgs->{$_}{pkg} } @requested;
     my $cell = ($list->get_column(0)->get_cell_renderers)[0];
     $cell->signal_connect (toggled => sub {
 	my ($cell, $text_path) = @_;
