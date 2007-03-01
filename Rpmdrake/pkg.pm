@@ -100,7 +100,6 @@ sub extract_header {
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist = urpm::media::any_hdlist($urpm, $medium);
-	$hdlist =~ s!^file:/+!!;
 	if (-r $hdlist) {
 	    my $packer;
          require MDV::Packdrakeng; 
