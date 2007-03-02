@@ -659,6 +659,33 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                             nodeps => 1,
                                             %install_options_common,
                                         );
+                if (@l) {
+                    if (!$urpm->{options}{'allow-force'}) {
+                        ++$nok;
+                        ++$urpm->{logger_id};
+                        push @errors, @l;
+                    } else {
+                        interactive_msg(N("Error"),
+                                   N("Installation failed:") . "\n" . join("\n",  map { "\t$_" } @l) . "\n\n" .
+                                     N("Try harder to install (--force)? (y/N) "),
+                                        yesno => 1
+                                    ) or ++$nok, next;
+                        $urpm->{log}("starting force installing packages without deps");
+                        @l = urpm::install::install($urpm,
+                                                    $to_remove,
+                                                    \%transaction_sources_install, \%transaction_sources,
+                                                    nodeps => 1, force => 1,
+                                                    %install_options_common,
+                                                );
+                        if (@l) {
+                            #- Warning : the following message is parsed in urpm::parallel_*
+                            print N("Installation failed") . ":\n" . join("\n", map { "\t$_" } @l), "\n";
+                            ++$nok;
+                            ++$urpm->{logger_id};
+                            push @errors, @l;
+                        }
+                    }
+                }
             }
         }
     }
