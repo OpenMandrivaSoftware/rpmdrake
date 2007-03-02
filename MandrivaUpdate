@@ -58,8 +58,9 @@ sub refresh_packages_list {
 
     # don't select kernel*-latest by default and the kernels they require:
     foreach my $name (@requested) {
-	$pkgs->{$name}{selected} = to_bool($name !~ /^kernel/);
-	$pkgs->{$name}{pkg}->set_flag_required($name !~ /^kernel/);
+        my $selected = $automatically_update_kernels->[0] ? 1 : $name !~ /^kernel/;
+        $pkgs->{$name}{selected} = to_bool($selected);
+        $pkgs->{$name}{pkg}->set_flag_required($selected);
     }
 
     @{$list->{data}} = map {
