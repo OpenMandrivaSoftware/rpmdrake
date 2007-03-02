@@ -456,10 +456,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         return 0;
     }
 
-    my $_lock = urpm::lock::urpmi_db($urpm);
+    my $lock = urpm::lock::urpmi_db($urpm);
     my $_rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
     my $state = $urpm->{rpmdrake_state};
-    my ($local_sources, $list, $local_to_removes) = urpm::get_pkgs::selected2list($urpm, 
+    my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 
 	$state->{selected},
 	clean_all => 0
     );
@@ -506,7 +506,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my (@errors, @missing_errors);
     my $something_installed;
 
-
     my %sources = %$local_sources;
     my %error_sources;
 
@@ -528,7 +527,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 				  );
 
         my $progress_nb;
-        my $total_nb = 0; #scalar grep { m|^/| } @rpms_install, @rpms_upgrade;
 
     my $transaction;
     my $callback_inst = sub {
@@ -703,7 +701,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
 
         Rpmdrake::gurpm::end();
-        undef $_lock;
+        undef $lock;
 
         if (@errors || @error_msgs) {
             interactive_msg(
