@@ -703,6 +703,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
 
         Rpmdrake::gurpm::end();
+        undef $_lock;
 
         if (@errors || @error_msgs) {
             interactive_msg(
