@@ -553,7 +553,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         $progress_nb = 0;
         #- prepare transaction...
         urpm::install::prepare_transaction($urpm, $set, $list, \%sources, \@transaction_list, \%transaction_sources);
-my $j;
         #- first, filter out what is really needed to download for this small transaction.
         urpm::get_pkgs::download_packages_of_distant_media($urpm,
                                                            \@transaction_list,
