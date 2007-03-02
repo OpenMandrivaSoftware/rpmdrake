@@ -461,7 +461,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}};
     my ($local_sources, $list, $local_to_removes) = urpm::get_pkgs::selected2list($urpm, 
 	\%pkgs,
-	clean_all => 1,
+	clean_all => 0
     );
     my $distant_number = scalar keys %pkgs;
     if (!$local_sources && (!$list || !@$list)) {
@@ -472,9 +472,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    scroll => 1,
 	);
         goto return_with_error;
-    }
-    foreach (@$local_to_removes) {
-        unlink $_;
     }
 
     my @pkgs = map { scalar($_->fullname) } sort(grep { $_->flag_selected } @{$urpm->{depslist}});#{ $a->name cmp $b->name } @{$urpm->{depslist}}[keys %{$state->{selected}}];
