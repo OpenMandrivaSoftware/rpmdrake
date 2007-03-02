@@ -458,12 +458,12 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $_lock = urpm::lock::urpmi_db($urpm);
     my $_rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
-    my %pkgs = map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}};
+    my $state = $urpm->{rpmdrake_state};
     my ($local_sources, $list, $local_to_removes) = urpm::get_pkgs::selected2list($urpm, 
-	\%pkgs,
+	$state->{selected},
 	clean_all => 0
     );
-    my $distant_number = scalar keys %pkgs;
+    my $distant_number = scalar keys %$state;
     if (!$local_sources && (!$list || !@$list)) {
         interactive_msg(
 	    N("Unable to get source packages."),
@@ -498,21 +498,67 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                          return 'canceled';
                      };
 
+    my $_guard = before_leaving { urpm::removable::try_umounting_removables($urpm) };
+
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::w->{real_window});
     my $distant_progress;
     my $canceled;
-    my %sources = urpm::download_source_packages(
-	$urpm,
-	$local_sources,
-	$list,
-	force_local => 1, # removed in urpmi 4.8.7
-	ask_for_medium => sub {
+    my (@errors, @missing_errors);
+    my $something_installed;
+
+
+    my %sources = %$local_sources;
+    my %error_sources;
+
+    urpm::removable::copy_packages_of_removable_media($urpm,
+						      $list, \%sources,
+						      sub {
 	    interactive_msg(
 		N("Change medium"),
 		N("Please insert the medium named \"%s\" on device [%s]", $_[0], $_[1]),
 		yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
 	    );
 	},
+    );
+
+    urpm::install::create_transaction($urpm, $state,
+			  nodeps => $urpm->{options}{'allow-nodeps'} || $urpm->{options}{'allow-force'},
+			  split_level => $urpm->{options}{'split-level'} || 20,
+			  split_length => $urpm->{options}{'split-length'} || 1,
+				  );
+
+        my $progress_nb;
+        my $total_nb = 0; #scalar grep { m|^/| } @rpms_install, @rpms_upgrade;
+
+    my $transaction;
+    my $callback_inst = sub {
+        my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
+        my $pkg = defined $id ? $urpm->{depslist}[$id] : undef;
+        if ($subtype eq 'start') {
+            if ($type eq 'trans') {
+                Rpmdrake::gurpm::label(@rpms_install ? N("Preparing packages installation...") : N("Preparing..."));
+                } elsif (defined $pkg) {
+                    $something_installed = 1;
+                    Rpmdrake::gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$progress_nb, scalar(@{$transaction->{upgrade}})));
+                }
+        } elsif ($subtype eq 'progress') {
+            Rpmdrake::gurpm::progress($total ? $amount/$total : 1);
+        }
+    };
+    
+   my ($nok, @rpms_install, @rpms_upgrade);
+    foreach my $set (@{$state->{transaction} || []}) {
+        my (@transaction_list, %transaction_sources);
+        $transaction = $set;
+        $progress_nb = 0;
+        #- prepare transaction...
+        urpm::install::prepare_transaction($urpm, $set, $list, \%sources, \@transaction_list, \%transaction_sources);
+my $j;
+        #- first, filter out what is really needed to download for this small transaction.
+        urpm::get_pkgs::download_packages_of_distant_media($urpm,
+                                                           \@transaction_list,
+                                                           \%transaction_sources,
+                                                           \%error_sources,
 	callback => sub {
 	    my ($mode, $file, $percent) = @_;
 	    if ($mode eq 'start') {
@@ -531,16 +577,16 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     $canceled and goto return_with_error;
     Rpmdrake::gurpm::invalidate_cancel_forever();
 
-    my %sources_install = %{urpm::extract_packages_to_install($urpm, \%sources, $urpm->{rpmdrake_state}) || {}};
-    my @rpms_install = grep { !/\.src\.rpm$/ } values %sources_install;
-    my @rpms_upgrade = grep { !/\.src\.rpm$/ } values %sources;
+        my %transaction_sources_install = %{$urpm->extract_packages_to_install(\%transaction_sources, $state) || {}};
+        push @rpms_install, grep { !/\.src\.rpm$/ } values %transaction_sources_install;
+        push @rpms_upgrade, grep { !/\.src\.rpm$/ } values %transaction_sources;
 
     if (!$::options{'no-verify-rpm'}) {
         Rpmdrake::gurpm::label(N("Verifying package signatures..."));
-        my $total = @rpms_install + @rpms_upgrade;
+        my $total = keys(%transaction_sources_install) + keys %transaction_sources;
         my $progress;
 	my @invalid_sources = urpm::signature::check($urpm,
-	    \%sources_install, \%sources,
+	    \%transaction_sources_install, \%transaction_sources,
 	    translate => 1, basename => 1,
 	    callback => sub {
 		Rpmdrake::gurpm::progress(++$progress/$total);
@@ -556,60 +602,67 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     }
 
-    my $_guard = before_leaving { urpm::removable::try_umounting_removables($urpm) };
+        #- check for local files.
+        if (my @missing = grep { m|^/| && ! -e $_ } values %transaction_sources_install, values %transaction_sources) {
+            push @missing_errors, @missing;
+            next;
+        }
 
-    my $something_installed;
+        if (keys(%transaction_sources_install) || keys(%transaction_sources)) {
+
+            if ($verbose >= 0) {
+                my @packnames = (values %transaction_sources_install, values %transaction_sources);
+                (my $common_prefix) = $packnames[0] =~ m!^(.*)/!;
+                if (length($common_prefix) && @packnames == grep { m!^\Q$common_prefix/! } @packnames) {
+                    #- there's a common prefix, simplify message
+                    print N("installing %s from %s", join(' ', map { s!.*/!!; $_ } @packnames), $common_prefix), "\n";
+                } else {
+                    print N("installing %s", join "\n", @packnames), "\n";
+                }
+            }
+            my $to_remove = $urpm->{options}{'allow-force'} ? [] : $set->{remove} || [];
+            @$to_remove and print N("removing %s", "@$to_remove"), "\n";
+            print join('', scalar localtime(), " ", join(' ', values %transaction_sources_install, values %transaction_sources), "\n");
+            $urpm->{log}("starting installing packages");
+            my %install_options_common = (
+                excludepath => $urpm->{options}{excludepath},
+                excludedocs => $urpm->{options}{excludedocs},
+                repackage   => $urpm->{options}{repackage},
+                post_clean_cache => $urpm->{options}{'post-clean'},
+                oldpackage => $state->{oldpackage},
+                nosize => $urpm->{options}{ignoresize},
+                ignorearch => $urpm->{options}{ignorearch},
+                noscripts => $urpm->{options}{noscripts},
+                callback_inst => $callback_inst,
+                callback_trans => $callback_inst,
+            );
+            my @l = urpm::install::install($urpm,
+                                           $to_remove,
+                                           \%transaction_sources_install, \%transaction_sources,
+                                           %install_options_common,
+                                       );
+            if (@l) {
+                if ($urpm->{options}{auto} || !$urpm->{options}{'allow-nodeps'} && !$urpm->{options}{'allow-force'}) {
+                    ++$nok;
+                    ++$urpm->{logger_id};
+                    push @errors, @l;
+                }
+            }
+        }
+    }
+
     if (@rpms_install || @rpms_upgrade || @to_remove) {
-        if (my @missing = grep { m|^/| && ! -e $_ } @rpms_install, @rpms_upgrade) {
+        if (@missing_errors) {
             interactive_msg(
 		N("Installation failed"),
 		N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
-		    join "\n", map { "    $_" } @missing) .
+		    join "\n", map { "    $_" } @missing_errors) .
 		    (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
 		if_(@error_msgs > 1, scroll => 1),
 	    );
             goto return_with_error;
         }
-        my $progress_nb;
-        my $total_nb = scalar grep { m|^/| } @rpms_install, @rpms_upgrade;
-        my $callback_inst = sub {
-            my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
-            my $pkg = defined $id ? $urpm->{depslist}[$id] : undef;
-            if ($subtype eq 'start') {
-                if ($type eq 'trans') {
-                    Rpmdrake::gurpm::label(@rpms_install ? N("Preparing packages installation...") : N("Preparing..."));
-                } elsif (defined $pkg) {
-                    $something_installed = 1;
-                    Rpmdrake::gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$progress_nb, $total_nb));
-                }
-            } elsif ($subtype eq 'progress') {
-                Rpmdrake::gurpm::progress($total ? $amount/$total : 1);
-            }
-        };
-	my $fh;
-        my @errors = urpm::install::install($urpm,
-	    \@to_remove,
-	    \%sources_install,
-	    \%sources,
-	    post_clean_cache => $urpm->{options}{'post-clean'},
-	    callback_open => sub {
-		my ($_data, $_type, $id) = @_;
-		my $f = $sources_install{$id} || $sources{$id};
-		open $fh, $f or $urpm->{error}(N("unable to access rpm file [%s]", $f));
-		return fileno $fh;
-	    },
-	    callback_inst => $callback_inst,
-	    callback_trans => $callback_inst,
-	    callback_close => sub {
-		my ($urpm, undef, $pkgid) = @_;
-		return unless defined $pkgid;
-		my $pkg = $urpm->{depslist}[$pkgid];
-		my $fullname = $pkg->fullname;
-		my $trtype = (any { /\Q$fullname/ } values %sources_install) ? 'install' : '(update|upgrade)';
-		foreach ($pkg->files) { /\bREADME(\.$trtype)?\.urpmi$/ and $Readmes{$_} = $fullname }
-		close $fh;
-	    },
-	);
+
         Rpmdrake::gurpm::end();
 
         if (@errors || @error_msgs) {
