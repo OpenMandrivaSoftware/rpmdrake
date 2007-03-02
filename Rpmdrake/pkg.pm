@@ -707,6 +707,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         if (@errors || @error_msgs) {
             interactive_msg(
 		N("Problem during installation"),
+		if_($nok, N("%d installation transactions failed", $nok) . "\n\n") .
 		N("There was a problem during the installation:\n\n%s",
 		    join("\n", @errors, @error_msgs)),
 		if_(@errors + @error_msgs > 1, scroll => 1),
