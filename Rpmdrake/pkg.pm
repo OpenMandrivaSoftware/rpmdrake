@@ -647,6 +647,19 @@ my $j;
                     ++$urpm->{logger_id};
                     push @errors, @l;
                 }
+            } else {
+                interactive_msg(N("Error"),
+                                N("Installation failed:") . "\n" . join("\n",  map { "\t$_" } @l) . "\n\n" .
+                                  N("Try installation without checking dependencies? (y/N) "),
+                                yesno => 1
+                            ) or ++$nok, next;
+                $urpm->{log}("starting installing packages without deps");
+                @l = urpm::install::install($urpm,
+                                            $to_remove,
+                                            \%transaction_sources_install, \%transaction_sources,
+                                            nodeps => 1,
+                                            %install_options_common,
+                                        );
             }
         }
     }
