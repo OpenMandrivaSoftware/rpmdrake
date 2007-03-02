@@ -546,7 +546,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     };
     
-   my ($nok, @rpms_install, @rpms_upgrade);
+    my ($nok, @rpms_install, @rpms_upgrade);
     foreach my $set (@{$state->{transaction} || []}) {
         my (@transaction_list, %transaction_sources);
         $transaction = $set;
@@ -558,48 +558,48 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                            \@transaction_list,
                                                            \%transaction_sources,
                                                            \%error_sources,
-	callback => sub {
-	    my ($mode, $file, $percent) = @_;
-	    if ($mode eq 'start') {
-		Rpmdrake::gurpm::label(N("Downloading package `%s' (%s/%s)...",
-			basename($file), ++$distant_progress, $distant_number));
-		Rpmdrake::gurpm::validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
-	    } elsif ($mode eq 'progress') {
-		Rpmdrake::gurpm::progress($percent/100);
-	    } elsif ($mode eq 'end') {
-		Rpmdrake::gurpm::progress(1);
-		Rpmdrake::gurpm::invalidate_cancel();
-	    }
-	    $canceled and return 'canceled';
-	},
-    );
-    $canceled and goto return_with_error;
-    Rpmdrake::gurpm::invalidate_cancel_forever();
+                                                           callback => sub {
+                                                               my ($mode, $file, $percent) = @_;
+                                                               if ($mode eq 'start') {
+                                                                   Rpmdrake::gurpm::label(N("Downloading package `%s' (%s/%s)...",
+                                                                                            basename($file), ++$distant_progress, $distant_number));
+                                                                   Rpmdrake::gurpm::validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
+                                                               } elsif ($mode eq 'progress') {
+                                                                   Rpmdrake::gurpm::progress($percent/100);
+                                                               } elsif ($mode eq 'end') {
+                                                                   Rpmdrake::gurpm::progress(1);
+                                                                   Rpmdrake::gurpm::invalidate_cancel();
+                                                               }
+                                                               $canceled and return 'canceled';
+                                                           },
+                                                       );
+        $canceled and goto return_with_error;
+        Rpmdrake::gurpm::invalidate_cancel_forever();
 
         my %transaction_sources_install = %{$urpm->extract_packages_to_install(\%transaction_sources, $state) || {}};
         push @rpms_install, grep { !/\.src\.rpm$/ } values %transaction_sources_install;
         push @rpms_upgrade, grep { !/\.src\.rpm$/ } values %transaction_sources;
 
-    if (!$::options{'no-verify-rpm'}) {
-        Rpmdrake::gurpm::label(N("Verifying package signatures..."));
-        my $total = keys(%transaction_sources_install) + keys %transaction_sources;
-        my $progress;
-	my @invalid_sources = urpm::signature::check($urpm,
-	    \%transaction_sources_install, \%transaction_sources,
-	    translate => 1, basename => 1,
-	    callback => sub {
-		Rpmdrake::gurpm::progress(++$progress/$total);
-	    },
-	);
-        if (@invalid_sources) {
-            local $::main_window = $Rpmdrake::gurpm::mainw->{real_window};
-            interactive_msg(
-		N("Warning"),
-		N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
-		join("\n", sort @invalid_sources)), yesno => 1, if_(@invalid_sources > 10, scroll => 1),
-	    ) or goto return_with_error;
+        if (!$::options{'no-verify-rpm'}) {
+            Rpmdrake::gurpm::label(N("Verifying package signatures..."));
+            my $total = keys(%transaction_sources_install) + keys %transaction_sources;
+            my $progress;
+            my @invalid_sources = urpm::signature::check($urpm,
+                                                         \%transaction_sources_install, \%transaction_sources,
+                                                         translate => 1, basename => 1,
+                                                         callback => sub {
+                                                             Rpmdrake::gurpm::progress(++$progress/$total);
+                                                         },
+                                                     );
+            if (@invalid_sources) {
+                local $::main_window = $Rpmdrake::gurpm::mainw->{real_window};
+                interactive_msg(
+                    N("Warning"),
+                    N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
+                      join("\n", sort @invalid_sources)), yesno => 1, if_(@invalid_sources > 10, scroll => 1),
+                ) or goto return_with_error;
+            }
         }
-    }
 
         #- check for local files.
         if (my @missing = grep { m|^/| && ! -e $_ } values %transaction_sources_install, values %transaction_sources) {
@@ -666,8 +666,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                         push @errors, @l;
                     } else {
                         interactive_msg(N("Error"),
-                                   N("Installation failed:") . "\n" . join("\n",  map { "\t$_" } @l) . "\n\n" .
-                                     N("Try harder to install (--force)? (y/N) "),
+                                        N("Installation failed:") . "\n" . join("\n",  map { "\t$_" } @l) . "\n\n" .
+                                          N("Try harder to install (--force)? (y/N) "),
                                         yesno => 1
                                     ) or ++$nok, next;
                         $urpm->{log}("starting force installing packages without deps");
