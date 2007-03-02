@@ -528,6 +528,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
         my $progress_nb;
 
+    my ($nok, @rpms_install, @rpms_upgrade, $verbose);
     my $transaction;
     my $callback_inst = sub {
         my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
@@ -544,7 +545,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     };
     
-    my ($nok, @rpms_install, @rpms_upgrade);
     foreach my $set (@{$state->{transaction} || []}) {
         my (@transaction_list, %transaction_sources);
         $transaction = $set;
