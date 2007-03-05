@@ -457,7 +457,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     }
 
     my $lock = urpm::lock::urpmi_db($urpm);
-    my $_rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
+    my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
     my $state = $urpm->{rpmdrake_state};
     my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 
 	$state->{selected},
@@ -689,6 +689,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     }
 
     undef $lock;
+    undef $rpm_lock;
     if (@rpms_install || @rpms_upgrade || @to_remove) {
         if (@missing_errors) {
             interactive_msg(
