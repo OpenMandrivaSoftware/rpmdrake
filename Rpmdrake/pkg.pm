@@ -688,6 +688,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     }
 
+    undef $lock;
     if (@rpms_install || @rpms_upgrade || @to_remove) {
         if (@missing_errors) {
             interactive_msg(
@@ -701,7 +702,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
 
         Rpmdrake::gurpm::end();
-        undef $lock;
 
         if (@errors || @error_msgs) {
             interactive_msg(
