@@ -42,7 +42,7 @@ use mygtk2 qw(gtknew gtkset);
 use ugtk2 qw(:all);
 
 my $urpm;
-my ($mainw, $list_tv);
+my ($mainw, $list_tv, $something_changed);
 
 sub selrow {
     my ($o_list_tv) = @_;
@@ -340,6 +340,7 @@ sub options_callback() {
 			    $downl_radio[$i]->get_active
 				and $urpm->{global_config}{downloader} = $avail_downloaders[$i];
 			}
+               $something_changed = 1;
 			urpm::media::write_config($urpm);
 			$urpm = urpm->new;
 			urpm::media::read_config($urpm);
@@ -367,6 +368,7 @@ sub remove_callback() {
 
     my $wait = wait_msg(N("Please wait, removing medium..."));
     foreach my $row (@rows) {
+     $something_changed = 1;
 	urpm::media::remove_media($urpm, [ $urpm->{media}[$row] ]);
 	urpm::media::write_urpmi_cfg($urpm);
 	remove_wait_msg($wait);
@@ -380,6 +382,7 @@ sub renum_media ($$$) {
     my @media = map { $urpm->{media}[$_] } @rows;
     $urpm->{media}[$rows[$_]] = $media[1 - $_] foreach 0, 1;
     $model->swap(@iters);
+    $something_changed = 1;
     urpm::media::write_config($urpm); $urpm = urpm->new; urpm::media::read_config($urpm);
 }
 
@@ -534,7 +537,10 @@ sub proxy_callback {
     $proxyuserbutton->signal_connect(clicked => sub { $_->set_sensitive($_[0]->get_active) foreach $hb_user, $hb_pswd;
     $proxypasswordentry->set_sensitive($_[0]->get_active) });
 
-    $w->main and curl_download::writeproxy($proxy, $proxy_user, $medium_name);
+    $w->main and do {
+        $something_changed = 1;
+        curl_download::writeproxy($proxy, $proxy_user, $medium_name);
+    };
 }
 
 sub parallel_read_sysconf() {
@@ -798,6 +804,7 @@ sub keys_callback() {
         @keys = map { [ split /[,\s]+/, $_->{'key-ids'} ] } @{$urpm->{media}};
     };
     my $write = sub {
+        $something_changed = 1;
         urpm::media::write_config($urpm);
         $urpm = urpm->new;
         urpm::media::read_config($urpm);
@@ -900,6 +907,7 @@ sub keys_callback() {
 }
 
 sub mainwindow() {
+    undef $something_changed;
     $mainw = ugtk2->new(N("Configure media"), center => 1, transient => $::main_window, modal => 1);
     local $::main_window = $mainw->{real_window};
 
@@ -976,12 +984,14 @@ sub mainwindow() {
 	    my $iter = $list->get_iter_from_string($path);
 	    $urpm->{media}[$path]{update} = !$urpm->{media}[$path]{update} || undef;
 	    $list->set($iter, 1, ! !$urpm->{media}[$path]{update});
+         $something_changed = 1;
 	},
     );
 
     $reread_media = sub {
 	my ($name) = @_;
         $reorder_ok = 0;
+     $something_changed = 1;
 	$urpm = urpm->new;
 	urpm::media::read_config($urpm);
 	if (defined $name) {
@@ -1002,6 +1012,7 @@ sub mainwindow() {
         $reorder_ok = 1;
     };
     $reread_media->();
+    $something_changed = 0;
 
     gtkadd(
 	$mainw->{window},
@@ -1054,6 +1065,7 @@ sub mainwindow() {
     );
     $mainw->{rwindow}->set_size_request(600, -1);
     $mainw->main;
+    return $something_changed;
 }
 
 
@@ -1089,12 +1101,13 @@ packages as well?)."));
         $lock = urpm::lock::urpmi_db($urpm, 'exclusive');
     }
 
-    mainwindow();
+    my $res = mainwindow();
     urpm::media::write_config($urpm);
 
     writeconf();
 
     undef $lock;
+    $res;
 }
 
 
