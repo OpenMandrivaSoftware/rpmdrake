@@ -50,6 +50,7 @@ N("  --pkg-nosel=pkg1,..    show only these packages"),
 N("  --pkg-sel=pkg1,..      preselect these packages"),
 N("  --root                 force to run as root"),
 N("  --search=pkg           run search for \"pkg\""),
+N("  --version              output version information and exit"),
 ""
 );
 	exit 0;
@@ -78,6 +79,7 @@ if ($collation_locale) {
   $collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8");
 }
 
+my $version = '3.38';
 our %options;
 foreach (@ARGV) {
     /^-?-(\S+)$/ or next;
@@ -87,6 +89,10 @@ foreach (@ARGV) {
         my @values = split /,/, $values;
         $options{$name} = \@values if @values;
     } else {
+        if ($val eq 'version') {
+            print "$0 $version\n";
+            exit(0);
+       }
         $options{$val} = 1;
     }
 }
