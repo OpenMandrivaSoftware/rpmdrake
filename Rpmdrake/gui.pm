@@ -397,7 +397,7 @@ sub switch_pkg_list_mode {
 }
 
 sub pkgs_provider {
-    my ($options, $mode) = @_;
+    my ($options, $mode, %options) = @_;
     return if !$mode;
     my $h = &get_pkgs($urpm, $options); # was given (1, @_) for updates
     ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
@@ -406,7 +406,7 @@ sub pkgs_provider {
         installed => sub { $pkgs = $h->{installed} },
         non_installed => sub { $pkgs = $h->{installable} },
         all_updates => sub {
-            my @pkgs = grep { my $p = $h->{installable}{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } keys %{$h->{installable}};
+            my @pkgs = $options{pure_updates} ? () : (grep { my $p = $h->{installable}{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } keys %{$h->{installable}});
             $pkgs = {
                 (map { $_ => $h->{updates}{$_} } keys %{$h->{updates}}),
                 (map { $_ => $h->{installable}{$_} } @pkgs)
