@@ -50,7 +50,8 @@ N("  --pkg-nosel=pkg1,..    show only these packages"),
 N("  --pkg-sel=pkg1,..      preselect these packages"),
 N("  --root                 force to run as root"),
 N("  --search=pkg           run search for \"pkg\""),
-N("  --version              output version information and exit"),
+chomp_(N("  --version      - print this tool's version number.
+")),
 ""
 );
 	exit 0;

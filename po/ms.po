@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-04 09:56+0100\n"
+"POT-Creation-Date: 2007-03-06 16:07+0100\n"
 "PO-Revision-Date: 2005-11-26 15:26+0800\n"
 "Last-Translator: Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>\n"
 "Language-Team: Malay <translation-team-ms@lists.sourceforge.net>\n"
@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0\n"
 
-#: ../edit-urpm-sources.pl:85
+#: ../Rpmdrake/edit_urpm_sources.pm:75
+#, c-format
 msgid "Choose media type"
 msgstr "Pilih jenis media"
 
-#: ../edit-urpm-sources.pl:86
+#: ../Rpmdrake/edit_urpm_sources.pm:76
+#, c-format
 msgid ""
 "This step enables you to add sources from a Mandriva Linux web or FTP "
 "mirror.\n"
@@ -35,16 +37,18 @@ msgid ""
 "to do this in two steps.)"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:94
+#: ../Rpmdrake/edit_urpm_sources.pm:84
+#, c-format
 msgid "Distribution sources"
 msgstr "Sumber edaran"
 
-#: ../edit-urpm-sources.pl:94
+#: ../Rpmdrake/edit_urpm_sources.pm:84
+#, c-format
 msgid "Official updates"
 msgstr "Kemaskini rasmi"
 
-#: ../edit-urpm-sources.pl:97
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:87
+#, c-format
 msgid ""
 "This will attempt to install all official sources corresponding to your\n"
 "distribution (%s).\n"
@@ -55,373 +59,451 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#. because updates media do not provide media.cfg yet
-#: ../edit-urpm-sources.pl:111
+#: ../Rpmdrake/edit_urpm_sources.pm:101
+#, c-format
 msgid "Please wait, adding media..."
 msgstr "Sila tunggu, menambah media..."
 
-#: ../edit-urpm-sources.pl:144
+#: ../Rpmdrake/edit_urpm_sources.pm:134
+#, c-format
 msgid "Add a medium"
 msgstr "Tambah medium"
 
-#: ../edit-urpm-sources.pl:146
+#: ../Rpmdrake/edit_urpm_sources.pm:138
+#, c-format
 msgid "Local files"
 msgstr "Fail lokal"
 
-#: ../edit-urpm-sources.pl:146
+#: ../Rpmdrake/edit_urpm_sources.pm:138
+#, c-format
 msgid "Path:"
 msgstr "Laluan:"
 
-#: ../edit-urpm-sources.pl:147
+#: ../Rpmdrake/edit_urpm_sources.pm:139
+#, c-format
 msgid "FTP server"
 msgstr "Pelayan FTP"
 
-#: ../edit-urpm-sources.pl:147 ../edit-urpm-sources.pl:148
-#: ../edit-urpm-sources.pl:149 ../edit-urpm-sources.pl:416
+#: ../Rpmdrake/edit_urpm_sources.pm:139 ../Rpmdrake/edit_urpm_sources.pm:140
+#: ../Rpmdrake/edit_urpm_sources.pm:141 ../Rpmdrake/edit_urpm_sources.pm:418
+#, c-format
 msgid "URL:"
 msgstr "URL:"
 
-#: ../edit-urpm-sources.pl:148
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:140
+#, fuzzy, c-format
 msgid "RSYNC server"
 msgstr "Pelayan FTP"
 
-#: ../edit-urpm-sources.pl:149
+#: ../Rpmdrake/edit_urpm_sources.pm:141
+#, c-format
 msgid "HTTP server"
 msgstr "Pelayan HTTP"
 
-#: ../edit-urpm-sources.pl:150
-msgid "Path or mount point:"
-msgstr "Path atau titik mount:"
-
-#: ../edit-urpm-sources.pl:150
+#: ../Rpmdrake/edit_urpm_sources.pm:142
+#, c-format
 msgid "Removable device"
 msgstr "Peranti bolehubah"
 
-#: ../edit-urpm-sources.pl:169
+#: ../Rpmdrake/edit_urpm_sources.pm:142
+#, c-format
+msgid "Path or mount point:"
+msgstr "Path atau titik mount:"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:160
+#, c-format
 msgid "Browse..."
 msgstr "Lungsur..."
 
-#: ../edit-urpm-sources.pl:197
+#: ../Rpmdrake/edit_urpm_sources.pm:187
+#, c-format
 msgid "Login:"
 msgstr "Login:"
 
-#: ../edit-urpm-sources.pl:197 ../edit-urpm-sources.pl:501 ../rpmdrake.pm:131
+#: ../Rpmdrake/edit_urpm_sources.pm:187 ../Rpmdrake/edit_urpm_sources.pm:504
+#: ../rpmdrake.pm:135
+#, c-format
 msgid "Password:"
 msgstr "Katalaluan:"
 
-#: ../edit-urpm-sources.pl:202 ../edit-urpm-sources.pl:417
+#: ../Rpmdrake/edit_urpm_sources.pm:192 ../Rpmdrake/edit_urpm_sources.pm:419
+#, c-format
 msgid "Relative path to synthesis/hdlist:"
 msgstr "Path relatif ke sintesis/hdlist:"
 
-#: ../edit-urpm-sources.pl:204
+#: ../Rpmdrake/edit_urpm_sources.pm:194
+#, c-format
 msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:209
+#: ../Rpmdrake/edit_urpm_sources.pm:199
+#, c-format
 msgid "Name:"
 msgstr "Nama:"
 
-#: ../edit-urpm-sources.pl:217
+#: ../Rpmdrake/edit_urpm_sources.pm:207
+#, c-format
 msgid "Create media for a whole distribution"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:228
+#: ../Rpmdrake/edit_urpm_sources.pm:218
+#, c-format
 msgid "Search this media for updates"
 msgstr "Cari media ini untuk kemaskini"
 
-#: ../edit-urpm-sources.pl:238
+#: ../Rpmdrake/edit_urpm_sources.pm:228
+#, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr ""
 
-#: ../edit-urpm-sources.pl:242
+#: ../Rpmdrake/edit_urpm_sources.pm:232
+#, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
 "really want to replace it?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:253
+#: ../Rpmdrake/edit_urpm_sources.pm:244
+#, c-format
 msgid "Adding a medium:"
 msgstr "Menambah media:"
 
-#: ../edit-urpm-sources.pl:255
+#: ../Rpmdrake/edit_urpm_sources.pm:246
+#, c-format
 msgid "Type of medium:"
 msgstr "Jenis media:"
 
-#: ../edit-urpm-sources.pl:263 ../edit-urpm-sources.pl:338
-#: ../edit-urpm-sources.pl:426 ../edit-urpm-sources.pl:453
-#: ../edit-urpm-sources.pl:518 ../edit-urpm-sources.pl:600
-#: ../edit-urpm-sources.pl:640 ../edit-urpm-sources.pl:698
-#: ../edit-urpm-sources.pl:837 ../rpmdrake:208 ../rpmdrake:960
-#: ../rpmdrake:1921 ../rpmdrake:1929 ../rpmdrake.pm:287 ../rpmdrake.pm:596
-#: ../rpmdrake.pm:681 ../rpmdrake.pm:754
+#: ../Rpmdrake/edit_urpm_sources.pm:256 ../Rpmdrake/edit_urpm_sources.pm:332
+#: ../Rpmdrake/edit_urpm_sources.pm:428 ../Rpmdrake/edit_urpm_sources.pm:455
+#: ../Rpmdrake/edit_urpm_sources.pm:521 ../Rpmdrake/edit_urpm_sources.pm:608
+#: ../Rpmdrake/edit_urpm_sources.pm:649 ../Rpmdrake/edit_urpm_sources.pm:707
+#: ../Rpmdrake/edit_urpm_sources.pm:856 ../Rpmdrake/gui.pm:473
+#: ../Rpmdrake/init.pm:126 ../Rpmdrake/pkg.pm:527 ../Rpmdrake/pkg.pm:573
+#: ../rpmdrake.pm:296 ../rpmdrake.pm:609 ../rpmdrake.pm:694 ../rpmdrake.pm:767
+#, c-format
 msgid "Cancel"
 msgstr "Batal"
 
-#: ../edit-urpm-sources.pl:265 ../edit-urpm-sources.pl:340
-#: ../edit-urpm-sources.pl:453 ../edit-urpm-sources.pl:508
-#: ../edit-urpm-sources.pl:597 ../edit-urpm-sources.pl:639
-#: ../edit-urpm-sources.pl:691 ../edit-urpm-sources.pl:763
-#: ../edit-urpm-sources.pl:830 ../edit-urpm-sources.pl:883
-#: ../edit-urpm-sources.pl:1032 ../rpmdrake:208 ../rpmdrake:960
-#: ../rpmdrake:977 ../rpmdrake:982 ../rpmdrake:1827 ../rpmdrake:1921
-#: ../rpmdrake:2068 ../rpmdrake.pm:122 ../rpmdrake.pm:227 ../rpmdrake.pm:289
-#: ../rpmdrake.pm:596
+#: ../Rpmdrake/edit_urpm_sources.pm:258 ../Rpmdrake/edit_urpm_sources.pm:334
+#: ../Rpmdrake/edit_urpm_sources.pm:455 ../Rpmdrake/edit_urpm_sources.pm:511
+#: ../Rpmdrake/edit_urpm_sources.pm:605 ../Rpmdrake/edit_urpm_sources.pm:648
+#: ../Rpmdrake/edit_urpm_sources.pm:700 ../Rpmdrake/edit_urpm_sources.pm:773
+#: ../Rpmdrake/edit_urpm_sources.pm:902 ../Rpmdrake/edit_urpm_sources.pm:1062
+#: ../Rpmdrake/gui.pm:473 ../Rpmdrake/gui.pm:489 ../Rpmdrake/gui.pm:494
+#: ../Rpmdrake/init.pm:126 ../Rpmdrake/pkg.pm:527 ../Rpmdrake/pkg.pm:756
+#: ../Rpmdrake/rpmnew.pm:172 ../rpmdrake.pm:126 ../rpmdrake.pm:236
+#: ../rpmdrake.pm:298 ../rpmdrake.pm:609
+#, c-format
 msgid "Ok"
 msgstr "Ok"
 
-#: ../edit-urpm-sources.pl:322
+#: ../Rpmdrake/edit_urpm_sources.pm:315
+#, c-format
 msgid "Global options for package installation"
 msgstr "Pilihan global untuk pemasangan pakej"
 
-#: ../edit-urpm-sources.pl:324
+#: ../Rpmdrake/edit_urpm_sources.pm:318
+#, c-format
 msgid "always"
 msgstr "sentiasa"
 
-#: ../edit-urpm-sources.pl:325
+#: ../Rpmdrake/edit_urpm_sources.pm:319
+#, c-format
 msgid "never"
 msgstr "tidak sekali-kali"
 
-#: ../edit-urpm-sources.pl:334
+#: ../Rpmdrake/edit_urpm_sources.pm:328
+#, c-format
 msgid "Verify RPMs to be installed:"
 msgstr "Sahkan RPM untuk dipasang:"
 
-#: ../edit-urpm-sources.pl:335
+#: ../Rpmdrake/edit_urpm_sources.pm:329
+#, c-format
 msgid "Download program to use:"
 msgstr "Muatturun program untuk digunakan:"
 
-#: ../edit-urpm-sources.pl:365
+#: ../Rpmdrake/edit_urpm_sources.pm:360
+#, c-format
 msgid "Source Removal"
 msgstr "Membuang Sumber"
 
-#: ../edit-urpm-sources.pl:366
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:362
+#, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Adakah anda pasti untuk memadam sumber \"%s\"?"
 
-#: ../edit-urpm-sources.pl:371
+#: ../Rpmdrake/edit_urpm_sources.pm:363
+#, fuzzy, c-format
+msgid "Are you sure you want to remove the following sources ?"
+msgstr "Adakah anda pasti untuk memadam sumber \"%s\"?"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:369
+#, c-format
 msgid "Please wait, removing medium..."
 msgstr "Sila tunggu, mengeluarkan medium..."
 
-#: ../edit-urpm-sources.pl:407
+#: ../Rpmdrake/edit_urpm_sources.pm:408
+#, c-format
 msgid "Edit a medium"
 msgstr "Sunting media"
 
-#: ../edit-urpm-sources.pl:413
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:415
+#, c-format
 msgid "Editing medium \"%s\":"
 msgstr "Menyunting media \"%s\":"
 
-#: ../edit-urpm-sources.pl:418
+#: ../Rpmdrake/edit_urpm_sources.pm:420
+#, c-format
 msgid "Downloader:"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:430
+#: ../Rpmdrake/edit_urpm_sources.pm:432
+#, c-format
 msgid "Save changes"
 msgstr "Simpan perubahan"
 
-#: ../edit-urpm-sources.pl:439 ../edit-urpm-sources.pl:1019
+#: ../Rpmdrake/edit_urpm_sources.pm:441 ../Rpmdrake/edit_urpm_sources.pm:1049
+#, c-format
 msgid "Proxy..."
 msgstr "Proksi..."
 
-#: ../edit-urpm-sources.pl:451
+#: ../Rpmdrake/edit_urpm_sources.pm:453
+#, c-format
 msgid "You need to insert the medium to continue"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:452
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:454
+#, fuzzy, c-format
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr "Masuk dalam."
 
-#: ../edit-urpm-sources.pl:473
+#: ../Rpmdrake/edit_urpm_sources.pm:475
+#, c-format
 msgid "Configure proxies"
 msgstr "Tetapkan proksi"
 
-#: ../edit-urpm-sources.pl:484
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:487
+#, c-format
 msgid "Proxy settings for media \"%s\""
 msgstr "Tetapan proksi untuk media \"%s\""
 
-#: ../edit-urpm-sources.pl:485
+#: ../Rpmdrake/edit_urpm_sources.pm:488
+#, c-format
 msgid "Global proxy settings"
 msgstr "Tetapan proksi global"
 
-#: ../edit-urpm-sources.pl:487
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:490
+#, fuzzy, c-format
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
 "<proxyhost[:port]>):"
 msgstr "dan<proxyhost[:port]>:"
 
-#: ../edit-urpm-sources.pl:490
+#: ../Rpmdrake/edit_urpm_sources.pm:493
+#, c-format
 msgid "Proxy hostname:"
 msgstr "Namahos proksi:"
 
-#: ../edit-urpm-sources.pl:493
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:496
+#, fuzzy, c-format
 msgid "You may specify a user/password for the proxy authentication:"
 msgstr "pengguna:"
 
-#: ../edit-urpm-sources.pl:496
+#: ../Rpmdrake/edit_urpm_sources.pm:499
+#, c-format
 msgid "User:"
 msgstr "Pengguna:"
 
-#: ../edit-urpm-sources.pl:568
+#: ../Rpmdrake/edit_urpm_sources.pm:574
+#, c-format
 msgid "Add a parallel group"
 msgstr "Tambah kumpulan selari"
 
-#: ../edit-urpm-sources.pl:568
+#: ../Rpmdrake/edit_urpm_sources.pm:574
+#, c-format
 msgid "Edit a parallel group"
 msgstr "Sunting kumpulan selari"
 
-#: ../edit-urpm-sources.pl:579
+#: ../Rpmdrake/edit_urpm_sources.pm:586
+#, c-format
 msgid "Add a medium limit"
 msgstr "Tambah had medium"
 
-#: ../edit-urpm-sources.pl:591
+#: ../Rpmdrake/edit_urpm_sources.pm:599
+#, c-format
 msgid "Choose a medium for adding in the media limit:"
 msgstr "Pilih media untuk menambah didalam had media:"
 
-#: ../edit-urpm-sources.pl:628
+#: ../Rpmdrake/edit_urpm_sources.pm:636
+#, c-format
 msgid "Add a host"
 msgstr "Tambah hos"
 
-#: ../edit-urpm-sources.pl:634
+#: ../Rpmdrake/edit_urpm_sources.pm:643
+#, c-format
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr "Taip namahos atau alamat IP hos untuk ditambah:"
 
-#: ../edit-urpm-sources.pl:665
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:674
+#, c-format
 msgid "Editing parallel group \"%s\":"
 msgstr "Menyunting kumpulan selari \"%s\":"
 
-#: ../edit-urpm-sources.pl:669
+#: ../Rpmdrake/edit_urpm_sources.pm:678
+#, c-format
 msgid "Group name:"
 msgstr "Nama kumpulan:"
 
-#: ../edit-urpm-sources.pl:670
+#: ../Rpmdrake/edit_urpm_sources.pm:679
+#, c-format
 msgid "Protocol:"
 msgstr "Protokol:"
 
-#: ../edit-urpm-sources.pl:672
+#: ../Rpmdrake/edit_urpm_sources.pm:681
+#, c-format
 msgid "Media limit:"
 msgstr "Had media:"
 
-#: ../edit-urpm-sources.pl:677 ../edit-urpm-sources.pl:684
+#: ../Rpmdrake/edit_urpm_sources.pm:686 ../Rpmdrake/edit_urpm_sources.pm:693
+#, c-format
 msgid "Add"
 msgstr "Tambah"
 
-#: ../edit-urpm-sources.pl:678 ../edit-urpm-sources.pl:685
-#: ../edit-urpm-sources.pl:743 ../edit-urpm-sources.pl:997
+#: ../Rpmdrake/edit_urpm_sources.pm:687 ../Rpmdrake/edit_urpm_sources.pm:694
+#: ../Rpmdrake/edit_urpm_sources.pm:753 ../Rpmdrake/edit_urpm_sources.pm:1027
+#, c-format
 msgid "Remove"
 msgstr "Buang"
 
-#: ../edit-urpm-sources.pl:679
+#: ../Rpmdrake/edit_urpm_sources.pm:688
+#, c-format
 msgid "Hosts:"
 msgstr "Hos:"
 
-#: ../edit-urpm-sources.pl:713
+#: ../Rpmdrake/edit_urpm_sources.pm:722
+#, c-format
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:716
+#: ../Rpmdrake/edit_urpm_sources.pm:726
+#, c-format
 msgid "Group"
 msgstr "Kumpulan"
 
-#: ../edit-urpm-sources.pl:716
-msgid "Media limit"
-msgstr "Had media"
-
-#: ../edit-urpm-sources.pl:716
+#: ../Rpmdrake/edit_urpm_sources.pm:726
+#, c-format
 msgid "Protocol"
 msgstr "Protokol"
 
-#: ../edit-urpm-sources.pl:717
+#: ../Rpmdrake/edit_urpm_sources.pm:726
+#, c-format
+msgid "Media limit"
+msgstr "Had media"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:727
+#, c-format
 msgid "Command"
 msgstr "Arahan"
 
-#: ../edit-urpm-sources.pl:727 ../rpmdrake:465 ../rpmdrake:496 ../rpmdrake:635
-#: ../rpmdrake:886 ../rpmdrake:1748
+#: ../Rpmdrake/edit_urpm_sources.pm:737 ../Rpmdrake/gui.pm:675
+#: ../Rpmdrake/pkg.pm:98 ../Rpmdrake/pkg.pm:128 ../Rpmdrake/pkg.pm:167
+#: ../Rpmdrake/rpmnew.pm:77
+#, c-format
 msgid "(none)"
 msgstr "(tiada)"
 
-#: ../edit-urpm-sources.pl:747 ../edit-urpm-sources.pl:1001
+#: ../Rpmdrake/edit_urpm_sources.pm:757 ../Rpmdrake/edit_urpm_sources.pm:1031
+#, c-format
 msgid "Edit..."
 msgstr "Ubah..."
 
-#: ../edit-urpm-sources.pl:755 ../edit-urpm-sources.pl:1007
+#: ../Rpmdrake/edit_urpm_sources.pm:765 ../Rpmdrake/edit_urpm_sources.pm:1037
+#, c-format
 msgid "Add..."
 msgstr "Tambah..."
 
-#: ../edit-urpm-sources.pl:771
+#: ../Rpmdrake/edit_urpm_sources.pm:781
+#, c-format
 msgid "Manage keys for digital signatures of packages"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:775 ../edit-urpm-sources.pl:932
+#: ../Rpmdrake/edit_urpm_sources.pm:787 ../Rpmdrake/edit_urpm_sources.pm:959
+#, c-format
 msgid "Medium"
 msgstr "Sederhana"
 
-#: ../edit-urpm-sources.pl:780
+#: ../Rpmdrake/edit_urpm_sources.pm:793
+#, c-format
 msgid ""
 "_:cryptographic keys\n"
 "Keys"
 msgstr "Kekunci"
 
-#: ../edit-urpm-sources.pl:799
+#: ../Rpmdrake/edit_urpm_sources.pm:817
+#, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:812
+#: ../Rpmdrake/edit_urpm_sources.pm:830
+#, c-format
 msgid "Add a key"
 msgstr "Tambah kekunci"
 
-#: ../edit-urpm-sources.pl:824
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:843
+#, c-format
 msgid "Choose a key for adding to the medium %s"
 msgstr "Pilih kekunci untuk ditambah ke dalam media %s"
 
-#: ../edit-urpm-sources.pl:833
+#: ../Rpmdrake/edit_urpm_sources.pm:849
+#, c-format
 msgid "Close"
 msgstr "Tutup"
 
-#: ../edit-urpm-sources.pl:855
+#: ../Rpmdrake/edit_urpm_sources.pm:871
+#, c-format
 msgid "Remove a key"
 msgstr "Buang kekunci"
 
-#: ../edit-urpm-sources.pl:853
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:872
+#, c-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
 "(name of the key: %s)"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:871
+#: ../Rpmdrake/edit_urpm_sources.pm:890
+#, c-format
 msgid "Add a key..."
 msgstr "Tambah kekunci..."
 
-#: ../edit-urpm-sources.pl:875
+#: ../Rpmdrake/edit_urpm_sources.pm:894
+#, c-format
 msgid "Remove key"
 msgstr "Buang kekunci"
 
-#: ../edit-urpm-sources.pl:891
+#: ../Rpmdrake/edit_urpm_sources.pm:911
+#, c-format
 msgid "Configure media"
 msgstr "Tetapkan media"
 
-#: ../edit-urpm-sources.pl:930
-msgid "Enabled?"
-msgstr "Hidupkan?"
+#: ../Rpmdrake/edit_urpm_sources.pm:957
+#, c-format
+msgid "Enabled"
+msgstr "Hidupkan"
 
-#: ../edit-urpm-sources.pl:931
-msgid "Updates?"
-msgstr "Kemaskini?"
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, c-format
+msgid "Updates"
+msgstr "Kemaskini"
 
-#: ../edit-urpm-sources.pl:947
+#: ../Rpmdrake/edit_urpm_sources.pm:974
+#, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 
-#: ../edit-urpm-sources.pl:977
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:1006
+#, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
 "\n"
@@ -431,32 +513,39 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../edit-urpm-sources.pl:1011
+#: ../Rpmdrake/edit_urpm_sources.pm:1041
+#, c-format
 msgid "Add custom..."
 msgstr "Tambah custom..."
 
-#: ../edit-urpm-sources.pl:1015
+#: ../Rpmdrake/edit_urpm_sources.pm:1045
+#, c-format
 msgid "Update..."
 msgstr "Kemaskini..."
 
-#: ../edit-urpm-sources.pl:1018
+#: ../Rpmdrake/edit_urpm_sources.pm:1048
+#, c-format
 msgid "Manage keys..."
 msgstr "Urus kekunci..."
 
-#: ../edit-urpm-sources.pl:1020
+#: ../Rpmdrake/edit_urpm_sources.pm:1050
+#, c-format
 msgid "Parallel..."
 msgstr "Selari..."
 
-#: ../edit-urpm-sources.pl:1021
+#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#, c-format
 msgid "Global options..."
 msgstr "Pilihan global..."
 
-#: ../edit-urpm-sources.pl:1031 ../rpmdrake:1428
+#: ../Rpmdrake/edit_urpm_sources.pm:1061 ../rpmdrake:470
+#, c-format
 msgid "Help"
 msgstr "Pertolongan"
 
-#: ../edit-urpm-sources.pl:1047 ../gurpmi.addmedia:98 ../rpmdrake:2144
-#, perl-format
+#: ../Rpmdrake/edit_urpm_sources.pm:1077 ../Rpmdrake/init.pm:132
+#: ../gurpmi.addmedia:93
+#, c-format
 msgid ""
 "%s\n"
 "\n"
@@ -466,8 +555,8 @@ msgstr ""
 "\n"
 "Adakah ok untuk meneruskan?"
 
-#: ../edit-urpm-sources.pl:1050
-#, fuzzy
+#: ../Rpmdrake/edit_urpm_sources.pm:1080
+#, fuzzy, c-format
 msgid ""
 "Welcome to the Software Media Manager!\n"
 "\n"
@@ -476,7 +565,8 @@ msgid ""
 "or to perform updates."
 msgstr "Selamat Datang on."
 
-#: ../edit-urpm-sources.pl:1063
+#: ../Rpmdrake/edit_urpm_sources.pm:1096
+#, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
 "working with packages database (do you have another media\n"
@@ -484,963 +574,226 @@ msgid ""
 "packages as well?)."
 msgstr ""
 
-#: ../gurpmi.addmedia:88
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr ""
-
-#: ../gurpmi.addmedia:102
-#, perl-format
-msgid ""
-"You are about to add new packages media, %s.\n"
-"That means you will be able to add new software packages\n"
-"to your system from these new media."
-msgstr ""
-
-#: ../gurpmi.addmedia:105
-#, perl-format
-msgid ""
-"You are about to add a new packages medium, `%s'.\n"
-"That means you will be able to add new software packages\n"
-"to your system from that new medium."
-msgstr ""
-
-#: ../gurpmi.addmedia:130
-#, fuzzy, perl-format
-msgid "Successfully added media %s."
-msgstr "Berjaya menambah media `%s'."
-
-#: ../gurpmi.addmedia:131
-#, perl-format
-msgid "Successfully added medium `%s'."
-msgstr "Berjaya menambah media `%s'."
-
-#: ../rpmdrake:39
-#, perl-format
-msgid "Usage: %s [OPTION]..."
-msgstr "Penggunaan: %s [PILIHAN]..."
-
-#: ../rpmdrake:40
-msgid ""
-"  --changelog-first      display changelog before filelist in the "
-"description window"
-msgstr ""
-
-#: ../rpmdrake:41
-msgid "  --media=medium1,..     limit to given media"
-msgstr ""
-
-#: ../rpmdrake:42
-msgid ""
-"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
-msgstr ""
-
-#: ../rpmdrake:43
-msgid "  --mode=MODE            set mode (install (default), remove, update)"
-msgstr ""
-
-#: ../rpmdrake:44
-msgid ""
-"  --no-confirmation      don't ask first confirmation question in update mode"
-msgstr ""
-
-#: ../rpmdrake:45
-msgid "  --no-media-update      don't update media at startup"
-msgstr "  --no-media-update      jangan kemaskini media ketika permulaan"
-
-#: ../rpmdrake:46
-msgid "  --no-verify-rpm        don't verify packages signatures"
-msgstr ""
-
-#: ../rpmdrake:47
-msgid ""
-"  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
-"\" machine to show needed deps"
-msgstr ""
-
-#: ../rpmdrake:48
-msgid "  --pkg-nosel=pkg1,..    show only these packages"
-msgstr ""
-
-#: ../rpmdrake:49
-msgid "  --pkg-sel=pkg1,..      preselect these packages"
-msgstr ""
-
-#: ../rpmdrake:50
-msgid "  --root                 force to run as root"
-msgstr "  --root                 paksa untuk laksana sebagai root"
-
-#: ../rpmdrake:51
-msgid "  --search=pkg           run search for \"pkg\""
-msgstr "  --search=pkg           laksana carian untuk \"pkg\""
-
-#: ../rpmdrake:205
-msgid "Running in user mode"
-msgstr "Melaksanakan dalam mod pengguna"
-
-#: ../rpmdrake:206
-#, fuzzy
-msgid ""
-"You are launching this program as a normal user.\n"
-"You will not be able to perform modifications on the system,\n"
-"but you may still browse the existing database."
-msgstr "normal pengguna on."
-
-#: ../rpmdrake:214
-msgid "Accessibility"
-msgstr "Kebolehcapaian"
-
-#: ../rpmdrake:215 ../rpmdrake:216 ../rpmdrake:217 ../rpmdrake:218
-#: ../rpmdrake:219
-msgid "Archiving"
-msgstr "Mengarkib"
-
-#: ../rpmdrake:216
-msgid "Backup"
-msgstr "Sandaran"
-
-#: ../rpmdrake:217
-msgid "Cd burning"
-msgstr "Menulis CD"
-
-#: ../rpmdrake:218
-msgid "Compression"
-msgstr "Mampatan"
-
-#: ../rpmdrake:219 ../rpmdrake:225 ../rpmdrake:239 ../rpmdrake:252
-#: ../rpmdrake:270 ../rpmdrake:291 ../rpmdrake:304 ../rpmdrake:314
-#: ../rpmdrake:426
-msgid "Other"
-msgstr "Lain-lain"
-
-#: ../rpmdrake:220 ../rpmdrake:221 ../rpmdrake:222 ../rpmdrake:223
-#: ../rpmdrake:224 ../rpmdrake:225
-msgid "Books"
-msgstr "Buku"
-
-#: ../rpmdrake:221
-msgid "Computer books"
-msgstr "Buku komputer"
-
-#: ../rpmdrake:222
-msgid "Faqs"
-msgstr ""
-
-#: ../rpmdrake:223
-msgid "Howtos"
-msgstr ""
-
-#: ../rpmdrake:224
-msgid "Literature"
-msgstr "Kesusasteraan"
-
-#: ../rpmdrake:226 ../rpmdrake:227 ../rpmdrake:228
-msgid "Cluster"
-msgstr "Gugusan"
-
-#: ../rpmdrake:227
-msgid "Message Passing"
-msgstr "Pemindahan Mesej"
-
-#: ../rpmdrake:228
-msgid "Queueing Services"
-msgstr "Servis Giliran"
-
-#: ../rpmdrake:229
-msgid "Communications"
-msgstr "Komunikasi"
-
-#: ../rpmdrake:230 ../rpmdrake:234
-msgid "Databases"
-msgstr "PangkalanData"
-
-#: ../rpmdrake:231 ../rpmdrake:232 ../rpmdrake:233 ../rpmdrake:234
-#: ../rpmdrake:235 ../rpmdrake:236 ../rpmdrake:237 ../rpmdrake:238
-#: ../rpmdrake:239 ../rpmdrake:240 ../rpmdrake:241 ../rpmdrake:242
-#: ../rpmdrake:353 ../rpmdrake:354 ../rpmdrake:355
-msgid "Development"
-msgstr "Pemaju"
-
-#: ../rpmdrake:232
-msgid "C"
-msgstr "C"
-
-#: ../rpmdrake:233
-msgid "C++"
-msgstr "C++"
-
-#: ../rpmdrake:235
-msgid "GNOME and GTK+"
-msgstr "GNOME dan GTK+"
-
-#: ../rpmdrake:236
-msgid "Java"
-msgstr "Java"
-
-#: ../rpmdrake:237
-msgid "KDE and Qt"
-msgstr "KDE dan Qt"
-
-#: ../rpmdrake:238
-msgid "Kernel"
-msgstr "Kernel"
-
-#: ../rpmdrake:240
-msgid "Perl"
-msgstr "Perl"
-
-#: ../rpmdrake:241
-msgid "PHP"
-msgstr ""
-
-#: ../rpmdrake:242
-msgid "Python"
-msgstr "Python"
-
-#: ../rpmdrake:243
-msgid "Editors"
-msgstr "Penyunting"
-
-#: ../rpmdrake:244
-msgid "Education"
-msgstr "Pendidikan"
-
-#: ../rpmdrake:245
-msgid "Emulators"
-msgstr "Emulator"
-
-#: ../rpmdrake:246
-msgid "File tools"
-msgstr "Alatan fail"
-
-#: ../rpmdrake:247 ../rpmdrake:248 ../rpmdrake:249 ../rpmdrake:250
-#: ../rpmdrake:251 ../rpmdrake:252 ../rpmdrake:253 ../rpmdrake:254
-#: ../rpmdrake:255
-msgid "Games"
-msgstr "Permainan"
-
-#: ../rpmdrake:248
-msgid "Adventure"
-msgstr "Pengembaraan"
-
-#: ../rpmdrake:249
-msgid "Arcade"
-msgstr "Arked"
-
-#: ../rpmdrake:250
-msgid "Boards"
-msgstr "Papan"
-
-#: ../rpmdrake:251
-msgid "Cards"
-msgstr "Kad"
-
-#: ../rpmdrake:253
-msgid "Puzzles"
-msgstr "Tekasuai"
-
-#: ../rpmdrake:254
-msgid "Sports"
-msgstr "Sukan"
-
-#: ../rpmdrake:255
-msgid "Strategy"
-msgstr "Strategi"
-
-#: ../rpmdrake:256 ../rpmdrake:257 ../rpmdrake:260 ../rpmdrake:261
-#: ../rpmdrake:264 ../rpmdrake:267 ../rpmdrake:270 ../rpmdrake:271
-#: ../rpmdrake:274 ../rpmdrake:277
-msgid "Graphical desktop"
-msgstr "Desktop bergrafik"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:259
-msgid "Enlightenment"
-msgstr "Enlightenment"
-
-#: ../rpmdrake:260
-msgid "FVWM based"
-msgstr "Berasaskan FVWM"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:263
-msgid "GNOME"
-msgstr "GNOME"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:266
-msgid "Icewm"
-msgstr "Icewm"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:269
-msgid "KDE"
-msgstr "KDE"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:273
-msgid "Sawfish"
-msgstr "Sawfish"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:276
-msgid "WindowMaker"
-msgstr "WindowMaker"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:279
-msgid "Xfce"
-msgstr ""
-
-#: ../rpmdrake:280
-msgid "Graphics"
-msgstr "Grafik"
-
-#: ../rpmdrake:281
-msgid "Monitoring"
-msgstr "Pemerhatian"
-
-#: ../rpmdrake:282 ../rpmdrake:283
-msgid "Multimedia"
-msgstr "Multimedia"
-
-#: ../rpmdrake:283 ../rpmdrake:334
-msgid "Video"
-msgstr "Video"
-
-#: ../rpmdrake:284 ../rpmdrake:285 ../rpmdrake:286 ../rpmdrake:287
-#: ../rpmdrake:288 ../rpmdrake:289 ../rpmdrake:290 ../rpmdrake:291
-#: ../rpmdrake:292 ../rpmdrake:293 ../rpmdrake:313
-msgid "Networking"
-msgstr "Rangkaian"
-
-#: ../rpmdrake:285
-msgid "Chat"
-msgstr "Chat"
-
-#: ../rpmdrake:286
-msgid "File transfer"
-msgstr "Pemindahan fail"
-
-#: ../rpmdrake:287
-msgid "IRC"
-msgstr "IRC"
-
-#: ../rpmdrake:288
-msgid "Instant messaging"
-msgstr "Pesanan segera"
-
-#: ../rpmdrake:289 ../rpmdrake:360
-msgid "Mail"
-msgstr "Mel"
-
-#: ../rpmdrake:290
-msgid "News"
-msgstr "Berita"
-
-#: ../rpmdrake:292
-msgid "Remote access"
-msgstr "Akses jauh"
-
-#: ../rpmdrake:293
-msgid "WWW"
-msgstr "WWW"
-
-#: ../rpmdrake:294
-msgid "Office"
-msgstr "Pejabat"
-
-#: ../rpmdrake:295
-msgid "Public Keys"
-msgstr "Kekunci Awam"
-
-#: ../rpmdrake:296
-msgid "Publishing"
-msgstr "Penerbitan"
-
-#: ../rpmdrake:297 ../rpmdrake:298 ../rpmdrake:299 ../rpmdrake:300
-#: ../rpmdrake:301 ../rpmdrake:302 ../rpmdrake:303 ../rpmdrake:304
-#: ../rpmdrake:305
-msgid "Sciences"
-msgstr "Sains"
-
-#: ../rpmdrake:298
-msgid "Astronomy"
-msgstr "Falak"
-
-#: ../rpmdrake:299
-msgid "Biology"
-msgstr ""
-
-#: ../rpmdrake:300
-msgid "Chemistry"
-msgstr "Kimia"
-
-#: ../rpmdrake:301
-msgid "Computer science"
-msgstr "Sains komputer"
-
-#: ../rpmdrake:302
-msgid "Geosciences"
-msgstr "Geosains"
-
-#: ../rpmdrake:303
-msgid "Mathematics"
-msgstr "Matematik"
-
-#: ../rpmdrake:305
-msgid "Physics"
-msgstr ""
-
-#: ../rpmdrake:306
-msgid "Shells"
-msgstr "Shell"
-
-#: ../rpmdrake:307
-msgid "Sound"
-msgstr "Bunyi"
-
-#: ../rpmdrake:308 ../rpmdrake:309 ../rpmdrake:310 ../rpmdrake:311
-#: ../rpmdrake:312 ../rpmdrake:313 ../rpmdrake:314 ../rpmdrake:315
-#: ../rpmdrake:316 ../rpmdrake:317 ../rpmdrake:318 ../rpmdrake:319
-#: ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322 ../rpmdrake:323
-#: ../rpmdrake:324 ../rpmdrake:325 ../rpmdrake:326 ../rpmdrake:327
-#: ../rpmdrake:328
-msgid "System"
-msgstr "Sistem"
-
-#: ../rpmdrake:309
-msgid "Base"
-msgstr "Asas"
-
-#: ../rpmdrake:310 ../rpmdrake:311 ../rpmdrake:312 ../rpmdrake:313
-#: ../rpmdrake:314 ../rpmdrake:315 ../rpmdrake:316 ../rpmdrake:338
-msgid "Configuration"
-msgstr "Penyelarasan"
-
-#: ../rpmdrake:311
-msgid "Boot and Init"
-msgstr "Boot dan Init"
-
-#: ../rpmdrake:312
-msgid "Hardware"
-msgstr "Perkakasan"
-
-#: ../rpmdrake:315
-msgid "Packaging"
-msgstr "Pakejan"
-
-#: ../rpmdrake:316
-msgid "Printing"
-msgstr "Cetakan"
-
-#: ../rpmdrake:317
-msgid "Deploiement"
-msgstr "Pengagihan"
-
-#: ../rpmdrake:318
-msgid "Deployment"
-msgstr "Pengagihan"
-
-#: ../rpmdrake:319 ../rpmdrake:320 ../rpmdrake:321 ../rpmdrake:322
-#: ../rpmdrake:323
-msgid "Fonts"
-msgstr "Font"
-
-#: ../rpmdrake:320
-msgid "Console"
-msgstr "Konsol"
-
-#: ../rpmdrake:321
-msgid "True type"
-msgstr "True type"
-
-#: ../rpmdrake:322
-msgid "Type1"
-msgstr "Type1"
-
-#: ../rpmdrake:323
-msgid "X11 bitmap"
-msgstr "Bitmap X11"
-
-#: ../rpmdrake:324
-msgid "Internationalization"
-msgstr ""
-
-#: ../rpmdrake:325
-msgid "Kernel and hardware"
-msgstr "Kernel dan perkakasan"
-
-#: ../rpmdrake:326
-msgid "Libraries"
-msgstr "Pustaka"
-
-#: ../rpmdrake:327
-msgid "Servers"
-msgstr "Pelayan"
-
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../rpmdrake:330
-msgid "X11"
-msgstr ""
-
-#: ../rpmdrake:331
-msgid "Terminals"
-msgstr "Terminal"
-
-#: ../rpmdrake:332
-msgid "Text tools"
-msgstr "Alatan teks"
-
-#: ../rpmdrake:333
-msgid "Toys"
-msgstr "Permainan"
-
-#. for Mandriva Choice:
-#: ../rpmdrake:337 ../rpmdrake:338 ../rpmdrake:339 ../rpmdrake:340
-#: ../rpmdrake:341 ../rpmdrake:342 ../rpmdrake:343 ../rpmdrake:344
-#: ../rpmdrake:345 ../rpmdrake:346
-#, fuzzy
-msgid "Workstation"
-msgstr "Konfigurasi VNC"
-
-#: ../rpmdrake:339
-#, fuzzy
-msgid "Console Tools"
-msgstr "Konsol"
-
-#: ../rpmdrake:340 ../rpmdrake:355
-msgid "Documentation"
-msgstr ""
-
-#: ../rpmdrake:341
-msgid "Game station"
-msgstr ""
-
-#: ../rpmdrake:342
-#, fuzzy
-msgid "Internet station"
-msgstr "Pesanan segera"
-
-#: ../rpmdrake:343
-#, fuzzy
-msgid "Multimedia station"
-msgstr "Multimedia"
-
-#: ../rpmdrake:344
-#, fuzzy
-msgid "Network Computer (client)"
-msgstr "Sains komputer"
-
-#: ../rpmdrake:345
-msgid "Office Workstation"
-msgstr ""
-
-#: ../rpmdrake:346
-msgid "Scientific Workstation"
-msgstr ""
-
-#: ../rpmdrake:347 ../rpmdrake:349 ../rpmdrake:350 ../rpmdrake:351
-#: ../rpmdrake:352
-#, fuzzy
-msgid "Graphical Environment"
-msgstr "Desktop bergrafik"
-
-#: ../rpmdrake:349
-msgid "GNOME Workstation"
-msgstr ""
-
-#: ../rpmdrake:350
-msgid "IceWm Desktop"
-msgstr ""
-
-#: ../rpmdrake:351
-msgid "KDE Workstation"
-msgstr ""
-
-#: ../rpmdrake:352
-#, fuzzy
-msgid "Other Graphical Desktops"
-msgstr "Desktop bergrafik"
-
-#: ../rpmdrake:356 ../rpmdrake:357 ../rpmdrake:358 ../rpmdrake:359
-#: ../rpmdrake:360 ../rpmdrake:361 ../rpmdrake:362 ../rpmdrake:363
-msgid "Server"
-msgstr "Pelayan"
-
-#: ../rpmdrake:357
-msgid "DNS/NIS"
-msgstr ""
-
-#: ../rpmdrake:358
-#, fuzzy
-msgid "Database"
-msgstr "PangkalanData"
-
-#: ../rpmdrake:359
-msgid "Firewall/Router"
-msgstr ""
-
-#: ../rpmdrake:361
-msgid "Mail/Groupware/News"
-msgstr ""
-
-#: ../rpmdrake:362
-#, fuzzy
-msgid "Network Computer server"
-msgstr "Sains komputer"
-
-#: ../rpmdrake:363
-msgid "Web/FTP"
-msgstr ""
-
-#. - to highlight information
-#: ../rpmdrake:502 ../rpmdrake:707 ../rpmdrake:712 ../rpmdrake:726
-#: ../rpmdrake:728
-msgid "(Not available)"
-msgstr "(Tiada)"
-
-#: ../rpmdrake:534
-msgid "Search results"
-msgstr "Hasil carian"
-
-#: ../rpmdrake:534
-msgid "Search results (none)"
-msgstr "Keputusan carian (tiada)"
-
-#: ../rpmdrake:545 ../rpmdrake:2125
-msgid "Please wait, searching..."
-msgstr "Sila tunggu, mencari..."
-
-#: ../rpmdrake:617 ../rpmdrake:921
-msgid "Addable"
-msgstr ""
-
-#: ../rpmdrake:617 ../rpmdrake:921
-msgid "Upgradable"
-msgstr ""
-
-#: ../rpmdrake:619
-msgid "Not selected"
-msgstr "Tidak dipilih"
-
-#: ../rpmdrake:619
-msgid "Selected"
-msgstr "Dipilih "
-
-#. is it an update?
-#: ../rpmdrake:687 ../rpmdrake:744
+#: ../Rpmdrake/gui.pm:59 ../Rpmdrake/gui.pm:116
+#, c-format
 msgid "Importance: "
 msgstr ""
 
-#: ../rpmdrake:688 ../rpmdrake:752
+#: ../Rpmdrake/gui.pm:60 ../Rpmdrake/gui.pm:124
+#, c-format
 msgid "Reason for update: "
 msgstr "Sebab untuk kemaskini:"
 
-#: ../rpmdrake:692
-#, fuzzy
+#: ../Rpmdrake/gui.pm:64
+#, fuzzy, c-format
 msgid "Security advisory"
 msgstr "Kemaskini sekuriti"
 
-#: ../rpmdrake:700 ../rpmdrake:754
+#: ../Rpmdrake/gui.pm:72 ../Rpmdrake/gui.pm:126
+#, c-format
 msgid "No description"
 msgstr "Tiada keterangan"
 
-#: ../rpmdrake:703
+#: ../Rpmdrake/gui.pm:75
+#, c-format
 msgid "Files:"
 msgstr "Fail:"
 
-#: ../rpmdrake:711
+#: ../Rpmdrake/gui.pm:79 ../Rpmdrake/gui.pm:84 ../Rpmdrake/gui.pm:98
+#: ../Rpmdrake/gui.pm:100 ../Rpmdrake/pkg.pm:134
+#, c-format
+msgid "(Not available)"
+msgstr "(Tiada)"
+
+#: ../Rpmdrake/gui.pm:83
+#, c-format
 msgid "Changelog:"
 msgstr "Changelog:"
 
-#: ../rpmdrake:723
+#: ../Rpmdrake/gui.pm:95
+#, c-format
 msgid "Files:\n"
 msgstr "Fail:\n"
 
-#: ../rpmdrake:728
+#: ../Rpmdrake/gui.pm:100
+#, c-format
 msgid "Changelog:\n"
 msgstr "Changelog:\n"
 
-#: ../rpmdrake:733 ../rpmdrake.pm:807
+#: ../Rpmdrake/gui.pm:105 ../rpmdrake.pm:820
+#, c-format
 msgid "Medium: "
 msgstr "Media:"
 
-#: ../rpmdrake:734
+#: ../Rpmdrake/gui.pm:106
+#, c-format
 msgid "Currently installed version: "
 msgstr "Versi dipasang semasa:"
 
-#: ../rpmdrake:738
+#: ../Rpmdrake/gui.pm:110
+#, c-format
 msgid "Name: "
 msgstr "Nama: "
 
-#: ../rpmdrake:739
+#: ../Rpmdrake/gui.pm:111
+#, c-format
 msgid "Version: "
 msgstr "Versi: "
 
-#: ../rpmdrake:740
+#: ../Rpmdrake/gui.pm:112
+#, c-format
 msgid "Architecture: "
 msgstr "Rekabentuk:"
 
-#: ../rpmdrake:741
-#, perl-format
-msgid "%s KB"
-msgstr "%s KB"
-
-#: ../rpmdrake:741
+#: ../Rpmdrake/gui.pm:113
+#, c-format
 msgid "Size: "
 msgstr "Saiz: "
 
-#. extra empty line
-#: ../rpmdrake:748
+#: ../Rpmdrake/gui.pm:113
+#, c-format
+msgid "%s KB"
+msgstr "%s KB"
+
+#: ../Rpmdrake/gui.pm:120
+#, c-format
 msgid "Summary: "
 msgstr "Ringkasan: "
 
-#: ../rpmdrake:754
+#: ../Rpmdrake/gui.pm:126
+#, c-format
 msgid "Description: "
 msgstr "Huraian: "
 
-#: ../rpmdrake:810 ../rpmdrake.pm:179
-#, fuzzy
-msgid "Software Management"
-msgstr "Pengurus Media Perisian"
-
-#: ../rpmdrake:827 ../rpmdrake:973 ../rpmdrake:975
-#, fuzzy
+#: ../Rpmdrake/gui.pm:448 ../Rpmdrake/gui.pm:485 ../Rpmdrake/gui.pm:487
+#, fuzzy, c-format
 msgid "More information on package..."
 msgstr "Lebih maklumat pada pakej %s"
 
-#: ../rpmdrake:829
-msgid "One of the following packages is needed:"
-msgstr "Salah satu pakej berikut diperlukan:"
-
-#: ../rpmdrake:829
-#, fuzzy
+#: ../Rpmdrake/gui.pm:450
+#, fuzzy, c-format
 msgid "Please choose"
 msgstr "Pilih secara manual"
 
-#: ../rpmdrake:870
-#, fuzzy
-msgid "Please wait, listing packages..."
-msgstr "Memuatkan Tetapan... Sila tunggu"
+#: ../Rpmdrake/gui.pm:451
+#, fuzzy, c-format
+msgid "The following package is needed:"
+msgstr "Salah satu pakej berikut diperlukan:"
 
-#: ../rpmdrake:888
-#, fuzzy
-msgid "No update"
-msgstr "Kemaskini Sistem"
-
-#: ../rpmdrake:889
-#, fuzzy
-msgid ""
-"The list of updates is empty. This means that either there is\n"
-"no available update for the packages installed on your computer,\n"
-"or you already installed all of them."
-msgstr "on."
-
-#: ../rpmdrake:912 ../rpmdrake:1174
-msgid "All"
-msgstr "Semua"
+#: ../Rpmdrake/gui.pm:451
+#, c-format
+msgid "One of the following packages is needed:"
+msgstr "Salah satu pakej berikut diperlukan:"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../rpmdrake:960 ../rpmdrake:965
-#, fuzzy
+#: ../Rpmdrake/gui.pm:473 ../Rpmdrake/gui.pm:478
+#, fuzzy, c-format
 msgid "More info"
 msgstr "Lebih Maklumat"
 
-#: ../rpmdrake:968
-#, fuzzy
+#: ../Rpmdrake/gui.pm:480
+#, fuzzy, c-format
 msgid "Information on packages"
 msgstr "Lebih maklumat pada pakej %s"
 
-#: ../rpmdrake:991
-#, fuzzy
+#: ../Rpmdrake/gui.pm:503
+#, fuzzy, c-format
 msgid "Some additional packages need to be removed"
 msgstr "Pakej-pakej ini perlu diinstal dulu agar semuanya dapat berjalan baik."
 
-#: ../rpmdrake:992
-#, fuzzy
+#: ../Rpmdrake/gui.pm:504
+#, fuzzy, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
 msgstr "Untuk memenuhi kebergantungan, Pakej-pakej berikut akan dihapus:"
 
-#: ../rpmdrake:998 ../rpmdrake:1007
-#, fuzzy
+#: ../Rpmdrake/gui.pm:510 ../Rpmdrake/gui.pm:519
+#, fuzzy, c-format
 msgid "Some packages can't be removed"
 msgstr "Peranti gelungbalik tidak boleh dibuang!"
 
-#: ../rpmdrake:999
+#: ../Rpmdrake/gui.pm:511
+#, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
 "\n"
 msgstr ""
 
-#: ../rpmdrake:1008 ../rpmdrake:1073
+#: ../Rpmdrake/gui.pm:520 ../Rpmdrake/gui.pm:587
+#, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
 "unselected now:\n"
 "\n"
 msgstr ""
 
-#: ../rpmdrake:1037
-#, fuzzy
+#: ../Rpmdrake/gui.pm:549
+#, fuzzy, c-format
 msgid "Additional packages needed"
 msgstr "\"%s\" cakera %d diperlukan untuk memasang pakej"
 
-#: ../rpmdrake:1038
-#, fuzzy
+#: ../Rpmdrake/gui.pm:550
+#, fuzzy, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
 "to be installed:\n"
 "\n"
 msgstr "Kepada"
 
-#: ../rpmdrake:1053
-#, fuzzy, perl-format
+#: ../Rpmdrake/gui.pm:564
+#, fuzzy, c-format
 msgid "%s (belongs to the skip list)"
 msgstr "gagal baca senarai fail \"%s\""
 
-#: ../rpmdrake:1056
-#, fuzzy
+#: ../Rpmdrake/gui.pm:568
+#, fuzzy, c-format
+msgid "One package cannot be installed"
+msgstr "_Personalisasikan pakej perisian untuk dipasang"
+
+#: ../Rpmdrake/gui.pm:568
+#, fuzzy, c-format
 msgid "Some packages can't be installed"
 msgstr "_Personalisasikan pakej perisian untuk dipasang"
 
-#: ../rpmdrake:1057
-#, fuzzy, perl-format
+#: ../Rpmdrake/gui.pm:570
+#, fuzzy, c-format
 msgid ""
-"Sorry, the following package(s) can't be selected:\n"
+"Sorry, the following package cannot be selected:\n"
 "\n"
 "%s"
 msgstr "Pakej `%s' tidak boleh diinstal\n"
 
-#: ../rpmdrake:1072 ../rpmdrake:1896
-#, fuzzy
+#: ../Rpmdrake/gui.pm:571
+#, fuzzy, c-format
+msgid ""
+"Sorry, the following packages can't be selected:\n"
+"\n"
+"%s"
+msgstr "Pakej `%s' tidak boleh diinstal\n"
+
+#: ../Rpmdrake/gui.pm:586 ../Rpmdrake/pkg.pm:497
+#, fuzzy, c-format
 msgid "Some packages need to be removed"
 msgstr "_Kekalkan pakej yang kini tersenarai untuk dibuang"
 
-#: ../rpmdrake:1101
-#, fuzzy, perl-format
-msgid "Selected: %s / Free disk space: %s"
-msgstr "Bebas"
-
-#: ../rpmdrake:1102
-#, fuzzy, perl-format
-msgid "Selected size: %d MB"
-msgstr "Saiz dicadangkan (MB):"
-
-#. - the package information hasn't been loaded. Instead of rescanning the media, just give up.
-#: ../rpmdrake:1107
-#, fuzzy
-msgid "Description not available for this package\n"
-msgstr "Tiada status tersedia utk pakej ini\n"
-
-#: ../rpmdrake:1113 ../rpmdrake:1506
-#, fuzzy, perl-format
-msgid "A fatal error occurred: %s."
-msgstr ""
-"Ralat OS yang tidak dijangka berlaku:\n"
-"%s"
-
-#: ../rpmdrake:1174
-#, fuzzy
-msgid "Installed"
-msgstr "Install"
-
-#: ../rpmdrake:1174
-#, fuzzy
-msgid "Non installed"
-msgstr "Install"
-
-#: ../rpmdrake:1175
-#, perl-format
-msgid "%s choices"
-msgstr ""
-
-#: ../rpmdrake:1175
-#, fuzzy
-msgid "Mandriva Linux choices"
-msgstr "SELAMAT DATANG - Mandriva Linux %s"
-
-#. let's keep the translated strings (to be resurected as sorting the treeview):
-#: ../rpmdrake:1177
-#, fuzzy
-msgid "All packages, alphabetical"
-msgstr "_Pilih pakej individu"
-
-#: ../rpmdrake:1178
-#, fuzzy
-msgid "All packages, by update availability"
-msgstr "Semua"
-
-#: ../rpmdrake:1179
-#, fuzzy
-msgid "All packages, by size"
-msgstr "G&una saiz sama untuk semua elemen"
-
-#: ../rpmdrake:1180
-#, fuzzy
-msgid "All packages, by selection state"
-msgstr "Semua"
-
-#: ../rpmdrake:1181
-msgid "Leaves only, sorted by install date"
-msgstr ""
-
-#: ../rpmdrake:1182
-#, fuzzy
-msgid "All packages, by group"
-msgstr "Pilih _semua dalam kumpulan"
-
-#: ../rpmdrake:1184
-#, fuzzy
-msgid "All updates"
-msgstr "Kemaskini Cakera"
-
-#: ../rpmdrake:1184
-#, fuzzy
-msgid "Bugfixes updates"
-msgstr "Kemaskini Cakera"
-
-#: ../rpmdrake:1184
-#, fuzzy
-msgid "Normal updates"
-msgstr "Kemaskini Cakera"
-
-#: ../rpmdrake:1184
-msgid "Security updates"
-msgstr "Kemaskini sekuriti"
-
-#: ../rpmdrake:1247
-#, fuzzy
-msgid "in names"
-msgstr "Nama Trek:"
-
-#: ../rpmdrake:1249
-#, fuzzy
-msgid "in descriptions"
-msgstr "Sedang dilaksanakan...   "
-
-#: ../rpmdrake:1251
-#, fuzzy
-msgid "in file names"
-msgstr "akhir fail tidak dijangka dalam %s\n"
-
-#: ../rpmdrake:1278
-#, perl-format
+#: ../Rpmdrake/gui.pm:617
+#, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr ""
 
-#: ../rpmdrake:1282
-#, fuzzy
+#: ../Rpmdrake/gui.pm:621
+#, fuzzy, c-format
 msgid "You need to select some packages first."
 msgstr "Pakej rosak, tidak boleh dibaca/dicari"
 
-#: ../rpmdrake:1287
-#, fuzzy
+#: ../Rpmdrake/gui.pm:626
+#, fuzzy, c-format
 msgid "Too many packages are selected"
 msgstr "Pakej ini sudah diinstal sebelumnya"
 
-#: ../rpmdrake:1288
-#, fuzzy
+#: ../Rpmdrake/gui.pm:627
+#, fuzzy, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
 "packages that your filesystem may run out of free diskspace,\n"
@@ -1450,148 +803,837 @@ msgid ""
 "Do you really want to install all the selected packages?"
 msgstr "Amaran keluar dan?"
 
-#: ../rpmdrake:1320 ../rpmdrake:1323 ../rpmdrake:1334 ../rpmdrake:1347
-#: ../rpmdrake:1356
-msgid "/_File"
-msgstr "/_Fail"
+#: ../Rpmdrake/gui.pm:659
+#, fuzzy, c-format
+msgid "Please wait, listing packages..."
+msgstr "Memuatkan Tetapan... Sila tunggu"
 
-#: ../rpmdrake:1323
-#, fuzzy
-msgid "/_Update media"
-msgstr "  --update       - guna hanya kemaskini media.\n"
+#: ../Rpmdrake/gui.pm:677
+#, fuzzy, c-format
+msgid "No update"
+msgstr "Kemaskini Sistem"
 
-#: ../rpmdrake:1334
-#, fuzzy
-msgid "/_Reset the selection"
-msgstr "Pilihan Bahasa"
-
-#: ../rpmdrake:1347
-#, fuzzy
-msgid "/Reload the _packages list"
-msgstr "penggunaan:   %s --list [nama]\n"
-
-#: ../rpmdrake:1356
-msgid "/_Quit"
-msgstr "/_Keluar"
-
-#: ../rpmdrake:1356
-msgid "<control>Q"
-msgstr "<control>Q"
-
-#: ../rpmdrake:1359 ../rpmdrake:1360 ../rpmdrake:1363 ../rpmdrake:1393
-msgid "/_Options"
-msgstr "/_Pilihan"
-
-#: ../rpmdrake:1360
-#, fuzzy
-msgid "/_Media Manager"
-msgstr "Pengurus Media Perisian"
-
-#: ../rpmdrake:1363 ../rpmdrake:1393
-msgid "/_Show automatically selected packages"
-msgstr ""
-
-#: ../rpmdrake:1367 ../rpmdrake:1368 ../rpmdrake:1369 ../rpmdrake:1370
-msgid "/_Help"
-msgstr "/_Bantuan"
-
-#: ../rpmdrake:1368
-msgid "/_Report Bug"
-msgstr "/_Lapor Pepijat"
-
-#: ../rpmdrake:1370
-msgid "/_About..."
-msgstr "/_Perihal..."
-
-#. nicer formatting
-#: ../rpmdrake:1373
-#, fuzzy
-msgid "Rpmdrake"
-msgstr "Rpmdrake"
-
-#: ../rpmdrake:1375
-#, perl-format
-msgid "Copyright (C) %s by Mandriva"
-msgstr ""
-
-#: ../rpmdrake:1377
-msgid "Rpmdrake is Mandriva Linux package management tool."
-msgstr ""
-
-#: ../rpmdrake:1379
-msgid "Mandriva Linux"
-msgstr "Mandriva Linux"
-
-#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:1384
-msgid "_: Translator(s) name(s) & email(s)\n"
-msgstr ""
-
-#: ../rpmdrake:1408
-msgid "Find:"
-msgstr "Cari:"
-
-#: ../rpmdrake:1417
-msgid "Search"
-msgstr "Cari"
-
-#: ../rpmdrake:1419
-msgid "Clear"
-msgstr "Kosongkan"
-
-#: ../rpmdrake:1433 ../rpmdrake.pm:758
-#, fuzzy
-msgid "Select all"
-msgstr "  -a             - pilih semua media.\n"
-
-#: ../rpmdrake:1440
-msgid "Apply"
-msgstr "Terap"
-
-#: ../rpmdrake:1444
-msgid "Quit"
-msgstr "Keluar"
-
-#: ../rpmdrake:1460
-msgid "Quick Introduction"
-msgstr ""
-
-#: ../rpmdrake:1461
-msgid "You can browse the packages through the categories tree on the left."
-msgstr ""
-
-#: ../rpmdrake:1462
+#: ../Rpmdrake/gui.pm:678
+#, fuzzy, c-format
 msgid ""
-"You can view information about a package by clicking on it on the right list."
+"The list of updates is empty. This means that either there is\n"
+"no available update for the packages installed on your computer,\n"
+"or you already installed all of them."
+msgstr "on."
+
+#: ../Rpmdrake/gui.pm:701 ../rpmdrake:255
+#, c-format
+msgid "All"
+msgstr "Semua"
+
+#: ../Rpmdrake/gui.pm:710 ../rpmdrake:141
+#, c-format
+msgid "Upgradable"
 msgstr ""
 
-#: ../rpmdrake:1463
-msgid "To install, update or remove a package, just click on its \"checkbox\"."
+#: ../Rpmdrake/gui.pm:710 ../rpmdrake:141
+#, c-format
+msgid "Addable"
 msgstr ""
 
-#: ../rpmdrake:1505
-#, fuzzy
+#: ../Rpmdrake/gui.pm:730
+#, fuzzy, c-format
+msgid "Description not available for this package\n"
+msgstr "Tiada status tersedia utk pakej ini\n"
+
+#: ../Rpmdrake/gui.pm:736 ../Rpmdrake/pkg.pm:188
+#, fuzzy, c-format
+msgid "A fatal error occurred: %s."
+msgstr ""
+"Ralat OS yang tidak dijangka berlaku:\n"
+"%s"
+
+#: ../Rpmdrake/icon.pm:35
+#, c-format
+msgid "Accessibility"
+msgstr "Kebolehcapaian"
+
+#: ../Rpmdrake/icon.pm:36 ../Rpmdrake/icon.pm:37 ../Rpmdrake/icon.pm:38
+#: ../Rpmdrake/icon.pm:39 ../Rpmdrake/icon.pm:40
+#, c-format
+msgid "Archiving"
+msgstr "Mengarkib"
+
+#: ../Rpmdrake/icon.pm:37
+#, c-format
+msgid "Backup"
+msgstr "Sandaran"
+
+#: ../Rpmdrake/icon.pm:38
+#, c-format
+msgid "Cd burning"
+msgstr "Menulis CD"
+
+#: ../Rpmdrake/icon.pm:39
+#, c-format
+msgid "Compression"
+msgstr "Mampatan"
+
+#: ../Rpmdrake/icon.pm:40 ../Rpmdrake/icon.pm:46 ../Rpmdrake/icon.pm:60
+#: ../Rpmdrake/icon.pm:73 ../Rpmdrake/icon.pm:91 ../Rpmdrake/icon.pm:112
+#: ../Rpmdrake/icon.pm:125 ../Rpmdrake/icon.pm:135 ../Rpmdrake/pkg.pm:75
+#, c-format
+msgid "Other"
+msgstr "Lain-lain"
+
+#: ../Rpmdrake/icon.pm:41 ../Rpmdrake/icon.pm:42 ../Rpmdrake/icon.pm:43
+#: ../Rpmdrake/icon.pm:44 ../Rpmdrake/icon.pm:45 ../Rpmdrake/icon.pm:46
+#, c-format
+msgid "Books"
+msgstr "Buku"
+
+#: ../Rpmdrake/icon.pm:42
+#, c-format
+msgid "Computer books"
+msgstr "Buku komputer"
+
+#: ../Rpmdrake/icon.pm:43
+#, c-format
+msgid "Faqs"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:44
+#, c-format
+msgid "Howtos"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:45
+#, c-format
+msgid "Literature"
+msgstr "Kesusasteraan"
+
+#: ../Rpmdrake/icon.pm:47 ../Rpmdrake/icon.pm:48 ../Rpmdrake/icon.pm:49
+#, c-format
+msgid "Cluster"
+msgstr "Gugusan"
+
+#: ../Rpmdrake/icon.pm:48
+#, c-format
+msgid "Message Passing"
+msgstr "Pemindahan Mesej"
+
+#: ../Rpmdrake/icon.pm:49
+#, c-format
+msgid "Queueing Services"
+msgstr "Servis Giliran"
+
+#: ../Rpmdrake/icon.pm:50
+#, c-format
+msgid "Communications"
+msgstr "Komunikasi"
+
+#: ../Rpmdrake/icon.pm:51 ../Rpmdrake/icon.pm:55
+#, c-format
+msgid "Databases"
+msgstr "PangkalanData"
+
+#: ../Rpmdrake/icon.pm:52 ../Rpmdrake/icon.pm:53 ../Rpmdrake/icon.pm:54
+#: ../Rpmdrake/icon.pm:55 ../Rpmdrake/icon.pm:56 ../Rpmdrake/icon.pm:57
+#: ../Rpmdrake/icon.pm:58 ../Rpmdrake/icon.pm:59 ../Rpmdrake/icon.pm:60
+#: ../Rpmdrake/icon.pm:61 ../Rpmdrake/icon.pm:62 ../Rpmdrake/icon.pm:63
+#: ../Rpmdrake/icon.pm:174 ../Rpmdrake/icon.pm:175 ../Rpmdrake/icon.pm:176
+#, c-format
+msgid "Development"
+msgstr "Pemaju"
+
+#: ../Rpmdrake/icon.pm:53
+#, c-format
+msgid "C"
+msgstr "C"
+
+#: ../Rpmdrake/icon.pm:54
+#, c-format
+msgid "C++"
+msgstr "C++"
+
+#: ../Rpmdrake/icon.pm:56
+#, c-format
+msgid "GNOME and GTK+"
+msgstr "GNOME dan GTK+"
+
+#: ../Rpmdrake/icon.pm:57
+#, c-format
+msgid "Java"
+msgstr "Java"
+
+#: ../Rpmdrake/icon.pm:58
+#, c-format
+msgid "KDE and Qt"
+msgstr "KDE dan Qt"
+
+#: ../Rpmdrake/icon.pm:59
+#, c-format
+msgid "Kernel"
+msgstr "Kernel"
+
+#: ../Rpmdrake/icon.pm:61
+#, c-format
+msgid "Perl"
+msgstr "Perl"
+
+#: ../Rpmdrake/icon.pm:62
+#, c-format
+msgid "PHP"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:63
+#, c-format
+msgid "Python"
+msgstr "Python"
+
+#: ../Rpmdrake/icon.pm:64
+#, c-format
+msgid "Editors"
+msgstr "Penyunting"
+
+#: ../Rpmdrake/icon.pm:65
+#, c-format
+msgid "Education"
+msgstr "Pendidikan"
+
+#: ../Rpmdrake/icon.pm:66
+#, c-format
+msgid "Emulators"
+msgstr "Emulator"
+
+#: ../Rpmdrake/icon.pm:67
+#, c-format
+msgid "File tools"
+msgstr "Alatan fail"
+
+#: ../Rpmdrake/icon.pm:68 ../Rpmdrake/icon.pm:69 ../Rpmdrake/icon.pm:70
+#: ../Rpmdrake/icon.pm:71 ../Rpmdrake/icon.pm:72 ../Rpmdrake/icon.pm:73
+#: ../Rpmdrake/icon.pm:74 ../Rpmdrake/icon.pm:75 ../Rpmdrake/icon.pm:76
+#, c-format
+msgid "Games"
+msgstr "Permainan"
+
+#: ../Rpmdrake/icon.pm:69
+#, c-format
+msgid "Adventure"
+msgstr "Pengembaraan"
+
+#: ../Rpmdrake/icon.pm:70
+#, c-format
+msgid "Arcade"
+msgstr "Arked"
+
+#: ../Rpmdrake/icon.pm:71
+#, c-format
+msgid "Boards"
+msgstr "Papan"
+
+#: ../Rpmdrake/icon.pm:72
+#, c-format
+msgid "Cards"
+msgstr "Kad"
+
+#: ../Rpmdrake/icon.pm:74
+#, c-format
+msgid "Puzzles"
+msgstr "Tekasuai"
+
+#: ../Rpmdrake/icon.pm:75
+#, c-format
+msgid "Sports"
+msgstr "Sukan"
+
+#: ../Rpmdrake/icon.pm:76
+#, c-format
+msgid "Strategy"
+msgstr "Strategi"
+
+#: ../Rpmdrake/icon.pm:77 ../Rpmdrake/icon.pm:78 ../Rpmdrake/icon.pm:81
+#: ../Rpmdrake/icon.pm:82 ../Rpmdrake/icon.pm:85 ../Rpmdrake/icon.pm:88
+#: ../Rpmdrake/icon.pm:91 ../Rpmdrake/icon.pm:92 ../Rpmdrake/icon.pm:95
+#: ../Rpmdrake/icon.pm:98
+#, c-format
+msgid "Graphical desktop"
+msgstr "Desktop bergrafik"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:80
+#, c-format
+msgid "Enlightenment"
+msgstr "Enlightenment"
+
+#: ../Rpmdrake/icon.pm:81
+#, c-format
+msgid "FVWM based"
+msgstr "Berasaskan FVWM"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:84
+#, c-format
+msgid "GNOME"
+msgstr "GNOME"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:87
+#, c-format
+msgid "Icewm"
+msgstr "Icewm"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:90
+#, c-format
+msgid "KDE"
+msgstr "KDE"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:94
+#, c-format
+msgid "Sawfish"
+msgstr "Sawfish"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:97
+#, c-format
+msgid "WindowMaker"
+msgstr "WindowMaker"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:100
+#, c-format
+msgid "Xfce"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:101
+#, c-format
+msgid "Graphics"
+msgstr "Grafik"
+
+#: ../Rpmdrake/icon.pm:102
+#, c-format
+msgid "Monitoring"
+msgstr "Pemerhatian"
+
+#: ../Rpmdrake/icon.pm:103 ../Rpmdrake/icon.pm:104
+#, c-format
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: ../Rpmdrake/icon.pm:104 ../Rpmdrake/icon.pm:155
+#, c-format
+msgid "Video"
+msgstr "Video"
+
+#: ../Rpmdrake/icon.pm:105 ../Rpmdrake/icon.pm:106 ../Rpmdrake/icon.pm:107
+#: ../Rpmdrake/icon.pm:108 ../Rpmdrake/icon.pm:109 ../Rpmdrake/icon.pm:110
+#: ../Rpmdrake/icon.pm:111 ../Rpmdrake/icon.pm:112 ../Rpmdrake/icon.pm:113
+#: ../Rpmdrake/icon.pm:114 ../Rpmdrake/icon.pm:134
+#, c-format
+msgid "Networking"
+msgstr "Rangkaian"
+
+#: ../Rpmdrake/icon.pm:106
+#, c-format
+msgid "Chat"
+msgstr "Chat"
+
+#: ../Rpmdrake/icon.pm:107
+#, c-format
+msgid "File transfer"
+msgstr "Pemindahan fail"
+
+#: ../Rpmdrake/icon.pm:108
+#, c-format
+msgid "IRC"
+msgstr "IRC"
+
+#: ../Rpmdrake/icon.pm:109
+#, c-format
+msgid "Instant messaging"
+msgstr "Pesanan segera"
+
+#: ../Rpmdrake/icon.pm:110 ../Rpmdrake/icon.pm:181
+#, c-format
+msgid "Mail"
+msgstr "Mel"
+
+#: ../Rpmdrake/icon.pm:111
+#, c-format
+msgid "News"
+msgstr "Berita"
+
+#: ../Rpmdrake/icon.pm:113
+#, c-format
+msgid "Remote access"
+msgstr "Akses jauh"
+
+#: ../Rpmdrake/icon.pm:114
+#, c-format
+msgid "WWW"
+msgstr "WWW"
+
+#: ../Rpmdrake/icon.pm:115
+#, c-format
+msgid "Office"
+msgstr "Pejabat"
+
+#: ../Rpmdrake/icon.pm:116
+#, c-format
+msgid "Public Keys"
+msgstr "Kekunci Awam"
+
+#: ../Rpmdrake/icon.pm:117
+#, c-format
+msgid "Publishing"
+msgstr "Penerbitan"
+
+#: ../Rpmdrake/icon.pm:118 ../Rpmdrake/icon.pm:119 ../Rpmdrake/icon.pm:120
+#: ../Rpmdrake/icon.pm:121 ../Rpmdrake/icon.pm:122 ../Rpmdrake/icon.pm:123
+#: ../Rpmdrake/icon.pm:124 ../Rpmdrake/icon.pm:125 ../Rpmdrake/icon.pm:126
+#, c-format
+msgid "Sciences"
+msgstr "Sains"
+
+#: ../Rpmdrake/icon.pm:119
+#, c-format
+msgid "Astronomy"
+msgstr "Falak"
+
+#: ../Rpmdrake/icon.pm:120
+#, c-format
+msgid "Biology"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:121
+#, c-format
+msgid "Chemistry"
+msgstr "Kimia"
+
+#: ../Rpmdrake/icon.pm:122
+#, c-format
+msgid "Computer science"
+msgstr "Sains komputer"
+
+#: ../Rpmdrake/icon.pm:123
+#, c-format
+msgid "Geosciences"
+msgstr "Geosains"
+
+#: ../Rpmdrake/icon.pm:124
+#, c-format
+msgid "Mathematics"
+msgstr "Matematik"
+
+#: ../Rpmdrake/icon.pm:126
+#, c-format
+msgid "Physics"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:127
+#, c-format
+msgid "Shells"
+msgstr "Shell"
+
+#: ../Rpmdrake/icon.pm:128
+#, c-format
+msgid "Sound"
+msgstr "Bunyi"
+
+#: ../Rpmdrake/icon.pm:129 ../Rpmdrake/icon.pm:130 ../Rpmdrake/icon.pm:131
+#: ../Rpmdrake/icon.pm:132 ../Rpmdrake/icon.pm:133 ../Rpmdrake/icon.pm:134
+#: ../Rpmdrake/icon.pm:135 ../Rpmdrake/icon.pm:136 ../Rpmdrake/icon.pm:137
+#: ../Rpmdrake/icon.pm:138 ../Rpmdrake/icon.pm:139 ../Rpmdrake/icon.pm:140
+#: ../Rpmdrake/icon.pm:141 ../Rpmdrake/icon.pm:142 ../Rpmdrake/icon.pm:143
+#: ../Rpmdrake/icon.pm:144 ../Rpmdrake/icon.pm:145 ../Rpmdrake/icon.pm:146
+#: ../Rpmdrake/icon.pm:147 ../Rpmdrake/icon.pm:148 ../Rpmdrake/icon.pm:149
+#, c-format
+msgid "System"
+msgstr "Sistem"
+
+#: ../Rpmdrake/icon.pm:130
+#, c-format
+msgid "Base"
+msgstr "Asas"
+
+#: ../Rpmdrake/icon.pm:131 ../Rpmdrake/icon.pm:132 ../Rpmdrake/icon.pm:133
+#: ../Rpmdrake/icon.pm:134 ../Rpmdrake/icon.pm:135 ../Rpmdrake/icon.pm:136
+#: ../Rpmdrake/icon.pm:137 ../Rpmdrake/icon.pm:159
+#, c-format
+msgid "Configuration"
+msgstr "Penyelarasan"
+
+#: ../Rpmdrake/icon.pm:132
+#, c-format
+msgid "Boot and Init"
+msgstr "Boot dan Init"
+
+#: ../Rpmdrake/icon.pm:133
+#, c-format
+msgid "Hardware"
+msgstr "Perkakasan"
+
+#: ../Rpmdrake/icon.pm:136
+#, c-format
+msgid "Packaging"
+msgstr "Pakejan"
+
+#: ../Rpmdrake/icon.pm:137
+#, c-format
+msgid "Printing"
+msgstr "Cetakan"
+
+#: ../Rpmdrake/icon.pm:138
+#, c-format
+msgid "Deploiement"
+msgstr "Pengagihan"
+
+#: ../Rpmdrake/icon.pm:139
+#, c-format
+msgid "Deployment"
+msgstr "Pengagihan"
+
+#: ../Rpmdrake/icon.pm:140 ../Rpmdrake/icon.pm:141 ../Rpmdrake/icon.pm:142
+#: ../Rpmdrake/icon.pm:143 ../Rpmdrake/icon.pm:144
+#, c-format
+msgid "Fonts"
+msgstr "Font"
+
+#: ../Rpmdrake/icon.pm:141
+#, c-format
+msgid "Console"
+msgstr "Konsol"
+
+#: ../Rpmdrake/icon.pm:142
+#, c-format
+msgid "True type"
+msgstr "True type"
+
+#: ../Rpmdrake/icon.pm:143
+#, c-format
+msgid "Type1"
+msgstr "Type1"
+
+#: ../Rpmdrake/icon.pm:144
+#, c-format
+msgid "X11 bitmap"
+msgstr "Bitmap X11"
+
+#: ../Rpmdrake/icon.pm:145
+#, c-format
+msgid "Internationalization"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:146
+#, c-format
+msgid "Kernel and hardware"
+msgstr "Kernel dan perkakasan"
+
+#: ../Rpmdrake/icon.pm:147
+#, c-format
+msgid "Libraries"
+msgstr "Pustaka"
+
+#: ../Rpmdrake/icon.pm:148
+#, c-format
+msgid "Servers"
+msgstr "Pelayan"
+
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:151
+#, c-format
+msgid "X11"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:152
+#, c-format
+msgid "Terminals"
+msgstr "Terminal"
+
+#: ../Rpmdrake/icon.pm:153
+#, c-format
+msgid "Text tools"
+msgstr "Alatan teks"
+
+#: ../Rpmdrake/icon.pm:154
+#, c-format
+msgid "Toys"
+msgstr "Permainan"
+
+#: ../Rpmdrake/icon.pm:158 ../Rpmdrake/icon.pm:159 ../Rpmdrake/icon.pm:160
+#: ../Rpmdrake/icon.pm:161 ../Rpmdrake/icon.pm:162 ../Rpmdrake/icon.pm:163
+#: ../Rpmdrake/icon.pm:164 ../Rpmdrake/icon.pm:165 ../Rpmdrake/icon.pm:166
+#: ../Rpmdrake/icon.pm:167
+#, c-format
+msgid "Workstation"
+msgstr "StesyenKerja"
+
+#: ../Rpmdrake/icon.pm:160
+#, fuzzy, c-format
+msgid "Console Tools"
+msgstr "Alatan Pentadbiran"
+
+#: ../Rpmdrake/icon.pm:161 ../Rpmdrake/icon.pm:176
+#, c-format
+msgid "Documentation"
+msgstr "Dokumentasi"
+
+#: ../Rpmdrake/icon.pm:162
+#, fuzzy, c-format
+msgid "Game station"
+msgstr "Permainan memori"
+
+#: ../Rpmdrake/icon.pm:163
+#, fuzzy, c-format
+msgid "Internet station"
+msgstr "Internet Bergrafik"
+
+#: ../Rpmdrake/icon.pm:164
+#, fuzzy, c-format
+msgid "Multimedia station"
+msgstr "Menu multimedia"
+
+#: ../Rpmdrake/icon.pm:165
+#, fuzzy, c-format
+msgid "Network Computer (client)"
+msgstr "Memulakan sm-client: "
+
+#: ../Rpmdrake/icon.pm:166
+#, fuzzy, c-format
+msgid "Office Workstation"
+msgstr "StesyenKerja Default"
+
+#: ../Rpmdrake/icon.pm:167
+#, c-format
+msgid "Scientific Workstation"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:168 ../Rpmdrake/icon.pm:170 ../Rpmdrake/icon.pm:171
+#: ../Rpmdrake/icon.pm:172 ../Rpmdrake/icon.pm:173
+#, fuzzy, c-format
+msgid "Graphical Environment"
+msgstr "Pembolehubah Persekitaran"
+
+#: ../Rpmdrake/icon.pm:170
+#, fuzzy, c-format
+msgid "GNOME Workstation"
+msgstr "StesyenKerja Default"
+
+#: ../Rpmdrake/icon.pm:171
+#, fuzzy, c-format
+msgid "IceWm Desktop"
+msgstr "Desktop Default:"
+
+#: ../Rpmdrake/icon.pm:172
+#, fuzzy, c-format
+msgid "KDE Workstation"
+msgstr "StesyenKerja Default"
+
+#: ../Rpmdrake/icon.pm:173
+#, fuzzy, c-format
+msgid "Other Graphical Desktops"
+msgstr "Pada Semua Desktop"
+
+#: ../Rpmdrake/icon.pm:177 ../Rpmdrake/icon.pm:178 ../Rpmdrake/icon.pm:179
+#: ../Rpmdrake/icon.pm:180 ../Rpmdrake/icon.pm:181 ../Rpmdrake/icon.pm:182
+#: ../Rpmdrake/icon.pm:183 ../Rpmdrake/icon.pm:184
+#, c-format
+msgid "Server"
+msgstr "Pelayan"
+
+#: ../Rpmdrake/icon.pm:178
+#, c-format
+msgid "DNS/NIS"
+msgstr "DNS/NIS"
+
+#: ../Rpmdrake/icon.pm:179
+#, c-format
+msgid "Database"
+msgstr "Pangkalan Data"
+
+#: ../Rpmdrake/icon.pm:180
+#, fuzzy, c-format
+msgid "Firewall/Router"
+msgstr "_Konfigurasikan Firewall"
+
+#: ../Rpmdrake/icon.pm:182
+#, c-format
+msgid "Mail/Groupware/News"
+msgstr ""
+
+#: ../Rpmdrake/icon.pm:183
+#, fuzzy, c-format
+msgid "Network Computer server"
+msgstr "Pelayan Rangkaian Lama"
+
+#: ../Rpmdrake/icon.pm:184
+#, c-format
+msgid "Web/FTP"
+msgstr "Web/FTP"
+
+#: ../Rpmdrake/init.pm:40
+#, c-format
+msgid "Usage: %s [OPTION]..."
+msgstr "Penggunaan: %s [PILIHAN]..."
+
+#: ../Rpmdrake/init.pm:41
+#, c-format
+msgid ""
+"  --changelog-first      display changelog before filelist in the "
+"description window"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:42
+#, c-format
+msgid "  --media=medium1,..     limit to given media"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:43
+#, c-format
+msgid ""
+"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:44
+#, c-format
+msgid "  --mode=MODE            set mode (install (default), remove, update)"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:45
+#, c-format
+msgid ""
+"  --no-confirmation      don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:46
+#, c-format
+msgid "  --no-media-update      don't update media at startup"
+msgstr "  --no-media-update      jangan kemaskini media ketika permulaan"
+
+#: ../Rpmdrake/init.pm:47
+#, c-format
+msgid "  --no-verify-rpm        don't verify packages signatures"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:48
+#, c-format
+msgid ""
+"  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
+"\" machine to show needed deps"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:49
+#, c-format
+msgid "  --pkg-nosel=pkg1,..    show only these packages"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:50
+#, c-format
+msgid "  --pkg-sel=pkg1,..      preselect these packages"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:51
+#, c-format
+msgid "  --root                 force to run as root"
+msgstr "  --root                 paksa untuk laksana sebagai root"
+
+#: ../Rpmdrake/init.pm:52
+#, c-format
+msgid "  --search=pkg           run search for \"pkg\""
+msgstr "  --search=pkg           laksana carian untuk \"pkg\""
+
+#: ../Rpmdrake/init.pm:53
+#, c-format
+msgid "  --version      - print this tool's version number.\n"
+msgstr "  --version       - cetak nombor versi alatan ini.\n"
+
+#: ../Rpmdrake/init.pm:123
+#, c-format
+msgid "Running in user mode"
+msgstr "Melaksanakan dalam mod pengguna"
+
+#: ../Rpmdrake/init.pm:124
+#, fuzzy, c-format
+msgid ""
+"You are launching this program as a normal user.\n"
+"You will not be able to perform modifications on the system,\n"
+"but you may still browse the existing database."
+msgstr "normal pengguna on."
+
+#: ../Rpmdrake/init.pm:131 ../Rpmdrake/init.pm:156
+#, c-format
+msgid "Welcome"
+msgstr "Selamat Datang"
+
+#: ../Rpmdrake/init.pm:136
+#, fuzzy, c-format
+msgid ""
+"Welcome to the software removal tool!\n"
+"\n"
+"This tool will help you choose which software you want to remove from\n"
+"your computer."
+msgstr "Selamat Datang."
+
+#: ../Rpmdrake/init.pm:141
+#, fuzzy, c-format
+msgid ""
+"Welcome to %s!\n"
+"\n"
+"This tool will help you choose the updates you want to install on your\n"
+"computer."
+msgstr "Selamat Datang on."
+
+#: ../Rpmdrake/init.pm:146
+#, fuzzy, c-format
+msgid "Welcome to the software installation tool!"
+msgstr "Selamat Datang ke Alat Penyelarasan Pelayan CUPS"
+
+#: ../Rpmdrake/init.pm:147
+#, fuzzy, c-format
+msgid ""
+"Welcome to the software installation tool!\n"
+"\n"
+"Your Mandriva Linux system comes with several thousands of software\n"
+"packages on CDROM or DVD. This tool will help you choose which software\n"
+"you want to install on your computer."
+msgstr "Selamat Datang on on."
+
+#: ../Rpmdrake/init.pm:158
+#, c-format
+msgid "The software installation tool can set up media sources."
+msgstr ""
+
+#: ../Rpmdrake/init.pm:159
+#, fuzzy, c-format
+msgid "Do you want to add media sources now?"
+msgstr "Adakah anda pasti untuk memadam sumber \"%s\"?"
+
+#: ../Rpmdrake/pkg.pm:187
+#, fuzzy, c-format
 msgid "Fatal error"
 msgstr "Ralat Maut"
 
-#: ../rpmdrake:1507 ../rpmdrake:1932
-msgid "Initializing..."
-msgstr "Persediaan..."
-
-#: ../rpmdrake:1507 ../rpmdrake:1932
-msgid "Package installation..."
-msgstr "Pemasangan pakej..."
-
-#: ../rpmdrake:1507 ../rpmdrake:1932 ../rpmdrake.pm:311
+#: ../Rpmdrake/pkg.pm:192 ../Rpmdrake/pkg.pm:512 ../Rpmdrake/pkg.pm:786
+#: ../rpmdrake.pm:323
+#, c-format
 msgid "Please wait"
 msgstr "Sila tunggu"
 
-#: ../rpmdrake:1530 ../rpmdrake:1918
-#, fuzzy
-msgid "Confirmation"
-msgstr "Konfigurasi VNC"
+#: ../Rpmdrake/pkg.pm:192 ../Rpmdrake/pkg.pm:512
+#, c-format
+msgid "Package installation..."
+msgstr "Pemasangan pakej..."
 
-#: ../rpmdrake:1532
+#: ../Rpmdrake/pkg.pm:192 ../Rpmdrake/pkg.pm:512 ../Rpmdrake/pkg.pm:786
+#, c-format
+msgid "Initializing..."
+msgstr "Persediaan..."
+
+#: ../Rpmdrake/pkg.pm:215 ../Rpmdrake/pkg.pm:497
+#, fuzzy, c-format
+msgid "Confirmation"
+msgstr "Konfigurasikan"
+
+#: ../Rpmdrake/pkg.pm:216
+#, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
 "Please check that your network is currently running.\n"
@@ -1599,13 +1641,13 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#: ../rpmdrake:1541
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:225
+#, fuzzy, c-format
 msgid "Already existing update media"
 msgstr "  --update       - guna hanya kemaskini media.\n"
 
-#: ../rpmdrake:1542
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:226
+#, fuzzy, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
 "all of them are currently disabled. You should run the Software\n"
@@ -1615,13 +1657,13 @@ msgid ""
 "Then, restart %s."
 msgstr "dimatikan dalam ulanghidup."
 
-#: ../rpmdrake:1553
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:237
+#, fuzzy, c-format
 msgid "How to choose manually your mirror"
 msgstr "secara manual"
 
-#: ../rpmdrake:1554
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:238
+#, fuzzy, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
 "launch the Software Media Manager, and then add a `Security\n"
@@ -1630,73 +1672,38 @@ msgid ""
 "Then, restart %s."
 msgstr "secara manual dan Keselamatan ulanghidup."
 
-#: ../rpmdrake:1567
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:252
+#, fuzzy, c-format
 msgid "Reading updates description"
 msgstr "Sedang dilaksanakan...   "
 
-#: ../rpmdrake:1593 ../rpmdrake:1670
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:278 ../Rpmdrake/pkg.pm:358
+#, fuzzy, c-format
 msgid "Please wait, finding available packages..."
 msgstr "muat ulang senarai pakej yg tersedia"
 
-#: ../rpmdrake:1601
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:286
+#, fuzzy, c-format
 msgid "Please wait, listing base packages..."
 msgstr "Memuatkan Tetapan... Sila tunggu"
 
-#: ../rpmdrake:1637
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:323
+#, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "muat ulang senarai pakej yg tersedia"
 
-#: ../rpmdrake:1771
-#, perl-format
-msgid "Inspecting %s"
-msgstr ""
-
-#: ../rpmdrake:1772
-#, fuzzy
-msgid "changes:"
-msgstr "Terap perubahan"
-
-#: ../rpmdrake:1780
-#, fuzzy, perl-format
-msgid "Remove .%s"
-msgstr "_Buang"
-
-#: ../rpmdrake:1784
-#, fuzzy, perl-format
-msgid "Use .%s as main file"
-msgstr "Guna format fail Microsoft® Excel"
-
-#: ../rpmdrake:1788
-#, fuzzy
-msgid "Do nothing"
-msgstr "Janga_n Simpan"
-
-#: ../rpmdrake:1804
-msgid "Installation finished"
-msgstr "Pemasangan selesai"
-
-#: ../rpmdrake:1819
-#, fuzzy
-msgid "Inspect..."
-msgstr "Gst-inspect"
-
-#. N("Everything installed successfully"),
-#: ../rpmdrake:1852 ../rpmdrake:2045
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:445 ../Rpmdrake/pkg.pm:733
+#, fuzzy, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Semua."
 
-#: ../rpmdrake:1856 ../rpmdrake:2025
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:449 ../Rpmdrake/pkg.pm:712
+#, fuzzy, c-format
 msgid "Problem during installation"
 msgstr "%s %s pemasangan pada hos %s"
 
-#: ../rpmdrake:1857 ../rpmdrake:2026 ../rpmdrake:2084
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:450 ../Rpmdrake/pkg.pm:714 ../Rpmdrake/pkg.pm:772
+#, fuzzy, c-format
 msgid ""
 "There was a problem during the installation:\n"
 "\n"
@@ -1706,18 +1713,18 @@ msgstr ""
 "ke giliran '%s':\n"
 "\n"
 
-#: ../rpmdrake:1876
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:475
+#, fuzzy, c-format
 msgid "Unable to get source packages."
 msgstr "tidak dapat mengambil pakej asal, batal"
 
-#: ../rpmdrake:1877
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:476
+#, fuzzy, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "tidak dapat mengambil pakej asal, batal"
 
-#: ../rpmdrake:1878 ../rpmdrake:1976
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:477 ../Rpmdrake/pkg.pm:702
+#, fuzzy, c-format
 msgid ""
 "\n"
 "\n"
@@ -1727,29 +1734,25 @@ msgstr ""
 "\n"
 "ralat membaca pilihan\n"
 
-#: ../rpmdrake:1894
-#, perl-format
+#: ../Rpmdrake/pkg.pm:494
+#, c-format
 msgid ""
-"To satisfy dependencies, the following %d packages are going to be "
-"installed:\n"
-"%s\n"
-msgstr ""
-"Untuk memenuhi kebergantungan, %d pakej berikut perlu dipasang:\n"
-"%s\n"
+"To satisfy dependencies, the following package is going to be installed:"
+msgid_plural ""
+"To satisfy dependencies, the following %d packages are going to be installed:"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../rpmdrake:1898
-#, fuzzy, perl-format
-msgid "Remove %d packages?"
-msgstr "Buang kekunci"
+#: ../Rpmdrake/pkg.pm:499
+#, c-format
+msgid "Remove one package?"
+msgid_plural "Remove %d packages?"
+msgstr[0] "Buang kekunci"
+msgstr[1] "Buang kekunci"
 
-#: ../rpmdrake:1899
-#, fuzzy, perl-format
-msgid ""
-"The following packages have to be removed for others to be upgraded:\n"
-"\n"
-"%s\n"
-"\n"
-"Is it ok to continue?"
+#: ../Rpmdrake/pkg.pm:501
+#, fuzzy, c-format
+msgid "The following package has to be removed for others to be upgraded:"
 msgstr ""
 "Fail yang berikut adalah tidak sah:\n"
 "\n"
@@ -1757,32 +1760,66 @@ msgstr ""
 "\n"
 "Adakah anda ingin teruskan (langkui pakej ini)?"
 
-#: ../rpmdrake:1941
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:502
+#, fuzzy, c-format
+msgid "The following packages have to be removed for others to be upgraded:"
+msgstr ""
+"Fail yang berikut adalah tidak sah:\n"
+"\n"
+"%s\n"
+"\n"
+"Adakah anda ingin teruskan (langkui pakej ini)?"
+
+#: ../Rpmdrake/pkg.pm:502
+#, fuzzy, c-format
+msgid "Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Adakah ok untuk meneruskan?"
+
+#: ../Rpmdrake/pkg.pm:525
+#, fuzzy, c-format
 msgid "Change medium"
 msgstr "Tambah medium"
 
-#: ../rpmdrake:1920
-#, perl-format
+#: ../Rpmdrake/pkg.pm:526
+#, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Masukkan media \"%s\" ke peranti [%s]"
 
-#: ../rpmdrake:1927
-#, perl-format
+#: ../Rpmdrake/pkg.pm:547
+#, fuzzy, c-format
+msgid "Preparing packages installation..."
+msgstr "%d pakej bergilir untuk dipasang\n"
+
+#: ../Rpmdrake/pkg.pm:547
+#, c-format
+msgid "Preparing..."
+msgstr "Menyediakan..."
+
+#: ../Rpmdrake/pkg.pm:550
+#, c-format
+msgid "Installing package `%s' (%s/%s)..."
+msgstr "Install pakej `%s' (%s/%s)..."
+
+#: ../Rpmdrake/pkg.pm:571
+#, c-format
 msgid "Downloading package `%s' (%s/%s)..."
 msgstr "Muatturun pakej `%s' (%s/%s)..."
 
-#: ../rpmdrake:1947
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:591
+#, fuzzy, c-format
 msgid "Verifying package signatures..."
 msgstr "Membaca maklumat pakej..."
 
-#: ../rpmdrake:1960 ../rpmdrake.pm:737 ../rpmdrake.pm:846
+#: ../Rpmdrake/pkg.pm:604 ../rpmdrake.pm:750 ../rpmdrake.pm:859
+#, c-format
 msgid "Warning"
 msgstr "Amaran"
 
-#: ../rpmdrake:1961
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:605
+#, fuzzy, c-format
 msgid ""
 "The following packages have bad signatures:\n"
 "\n"
@@ -1795,12 +1832,49 @@ msgstr ""
 "\n"
 "Adakah anda hendak meneruskan pemasangan ?"
 
-#: ../rpmdrake:1973 ../rpmdrake:2083
+#: ../Rpmdrake/pkg.pm:618
+#, fuzzy, c-format
+msgid "installing %s from %s"
+msgstr "Tapisan From:"
+
+#: ../Rpmdrake/pkg.pm:620
+#, fuzzy, c-format
+msgid "installing %s"
+msgstr "Memasang %s-%s-%s... "
+
+#: ../Rpmdrake/pkg.pm:624
+#, c-format
+msgid "removing %s"
+msgstr "membuang %s"
+
+#: ../Rpmdrake/pkg.pm:650 ../Rpmdrake/pkg.pm:668 ../Rpmdrake/pkg.pm:761
+#: ../rpmdrake.pm:737 ../rpmdrake.pm:818 ../rpmdrake.pm:842
+#, c-format
+msgid "Error"
+msgstr "Ralat"
+
+#: ../Rpmdrake/pkg.pm:651 ../Rpmdrake/pkg.pm:669
+#, fuzzy, c-format
+msgid "Installation failed:"
+msgstr "Instalasi gagal"
+
+#: ../Rpmdrake/pkg.pm:652
+#, c-format
+msgid "Try installation without checking dependencies? (y/N) "
+msgstr "Cuba instalasi tanpa periksa kebergantungan? (y/T) "
+
+#: ../Rpmdrake/pkg.pm:670
+#, fuzzy, c-format
+msgid "Try harder to install (--force)? (y/N) "
+msgstr "Cuba instalasi lebih keras (--force)? (y/T) "
+
+#: ../Rpmdrake/pkg.pm:682 ../Rpmdrake/pkg.pm:699 ../Rpmdrake/pkg.pm:771
+#, c-format
 msgid "Installation failed"
 msgstr "Instalasi gagal"
 
-#: ../rpmdrake:1974
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:700
+#, fuzzy, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
 "%s\n"
@@ -1808,27 +1882,13 @@ msgid ""
 "You may want to update your media database."
 msgstr "fail."
 
-#: ../rpmdrake:1988
-#, fuzzy
-msgid "Preparing packages installation..."
-msgstr "%d pakej bergilir untuk dipasang\n"
+#: ../Rpmdrake/pkg.pm:713
+#, fuzzy, c-format
+msgid "%d installation transactions failed"
+msgstr "Gagal menerima %s: %s"
 
-#: ../rpmdrake:1988
-msgid "Preparing..."
-msgstr "Menyediakan..."
-
-#: ../rpmdrake:1991
-#, perl-format
-msgid "Installing package `%s' (%s/%s)..."
-msgstr "Install pakej `%s' (%s/%s)..."
-
-#: ../rpmdrake:2006
-#, perl-format
-msgid "unable to access rpm file [%s]"
-msgstr "gagal akses fail rpm [%s]"
-
-#: ../rpmdrake:2040
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:728
+#, fuzzy, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
 "\n"
@@ -1836,46 +1896,43 @@ msgid ""
 "you may now inspect some in order to take actions:"
 msgstr "fail dalam:"
 
-#: ../rpmdrake:2048
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:736
+#, fuzzy, c-format
 msgid "Upgrade information"
 msgstr "Maklumat tidak sah"
 
-#: ../rpmdrake:2050
+#: ../Rpmdrake/pkg.pm:738
+#, c-format
 msgid "These packages come with upgrade information"
 msgstr ""
 
-#: ../rpmdrake:2058
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:746
+#, fuzzy, c-format
 msgid "Upgrade information about this package"
 msgstr "Lebih maklumat pada pakej %s"
 
-#: ../rpmdrake:2061
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:749
+#, fuzzy, c-format
 msgid "Upgrade information about package %s"
 msgstr "Lebih maklumat pada pakej %s"
 
-#: ../rpmdrake:2073 ../rpmdrake.pm:724 ../rpmdrake.pm:805 ../rpmdrake.pm:829
-msgid "Error"
-msgstr "Ralat"
-
-#: ../rpmdrake:2074
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:762
+#, fuzzy, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "ralat tidak."
 
-#: ../rpmdrake:2099
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:786 ../Rpmdrake/pkg.pm:791
+#, fuzzy, c-format
 msgid "Please wait, removing packages..."
 msgstr "Sila tunggu, mengeluarkan medium..."
 
-#: ../rpmdrake:2110
-#, fuzzy
+#: ../Rpmdrake/pkg.pm:802
+#, fuzzy, c-format
 msgid "Problem during removal"
 msgstr "Pembuangan Pakej Selesai"
 
-#: ../rpmdrake:2111
-#, fuzzy, perl-format
+#: ../Rpmdrake/pkg.pm:803
+#, fuzzy, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
 "\n"
@@ -1885,213 +1942,547 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake:2143
-msgid "Welcome"
-msgstr "Selamat Datang"
+#: ../Rpmdrake/rpmnew.pm:78
+#, c-format
+msgid "Inspecting %s"
+msgstr ""
 
-#: ../rpmdrake:2148
-#, fuzzy
+#: ../Rpmdrake/rpmnew.pm:102
+#, fuzzy, c-format
+msgid "Changes:"
+msgstr "Terap perubahan"
+
+#: ../Rpmdrake/rpmnew.pm:110
+#, fuzzy, c-format
+msgid "Remove .%s"
+msgstr "_Buang"
+
+#: ../Rpmdrake/rpmnew.pm:114
+#, fuzzy, c-format
+msgid "Use .%s as main file"
+msgstr "Guna format fail Microsoft® Excel"
+
+#: ../Rpmdrake/rpmnew.pm:118
+#, fuzzy, c-format
+msgid "Do nothing"
+msgstr "Janga_n Simpan"
+
+#: ../Rpmdrake/rpmnew.pm:149
+#, c-format
+msgid "Installation finished"
+msgstr "Pemasangan selesai"
+
+#: ../Rpmdrake/rpmnew.pm:164
+#, fuzzy, c-format
+msgid "Inspect..."
+msgstr "Gst-inspect"
+
+#: ../Rpmdrake/rpmnew.pm:182 ../rpmdrake:70 ../rpmdrake:97
+#, c-format
+msgid "Please wait, searching..."
+msgstr "Sila tunggu, mencari..."
+
+#: ../gurpmi.addmedia:83
+#, c-format
+msgid "Unable to add medium, wrong or missing arguments"
+msgstr ""
+
+#: ../gurpmi.addmedia:97
+#, c-format
 msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr "Selamat Datang."
+"You are about to add new packages media, %s.\n"
+"That means you will be able to add new software packages\n"
+"to your system from these new media."
+msgstr ""
 
-#: ../rpmdrake:2153
-#, fuzzy, perl-format
+#: ../gurpmi.addmedia:100
+#, c-format
 msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr "Selamat Datang on."
+"You are about to add a new packages medium, `%s'.\n"
+"That means you will be able to add new software packages\n"
+"to your system from that new medium."
+msgstr ""
 
-#: ../rpmdrake:2158
-#, fuzzy
-msgid "Welcome to the software installation tool!"
-msgstr "Selamat Datang ke Alat Penyelarasan Pelayan CUPS"
+#: ../gurpmi.addmedia:125
+#, fuzzy, c-format
+msgid "Successfully added media %s."
+msgstr "Berjaya menambah media `%s'."
 
-#: ../rpmdrake:2159
-#, fuzzy
+#: ../gurpmi.addmedia:126
+#, c-format
+msgid "Successfully added medium `%s'."
+msgstr "Berjaya menambah media `%s'."
+
+#: ../rpmdrake:59 ../rpmdrake:140
+#, c-format
+msgid "Search results"
+msgstr "Hasil carian"
+
+#: ../rpmdrake:59
+#, c-format
+msgid "Search results (none)"
+msgstr "Keputusan carian (tiada)"
+
+#: ../rpmdrake:92 ../rpmdrake:186 ../rpmdrake.pm:187
+#, fuzzy, c-format
+msgid "Software Management"
+msgstr "Pengurus Media Perisian"
+
+#: ../rpmdrake:102
+#, c-format
+msgid "Stop"
+msgstr "Henti"
+
+#: ../rpmdrake:143
+#, c-format
+msgid "Selected"
+msgstr "Dipilih "
+
+#: ../rpmdrake:143
+#, c-format
+msgid "Not selected"
+msgstr "Tidak dipilih"
+
+#: ../rpmdrake:199
+#, fuzzy, c-format
+msgid "Selected: %s / Free disk space: %s"
+msgstr "Bebas"
+
+#: ../rpmdrake:200
+#, fuzzy, c-format
+msgid "Selected size: %d MB"
+msgstr "Saiz dicadangkan (MB):"
+
+#: ../rpmdrake:255
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Install"
+
+#: ../rpmdrake:255
+#, fuzzy, c-format
+msgid "Non installed"
+msgstr "Install"
+
+#: ../rpmdrake:256
+#, c-format
+msgid "%s choices"
+msgstr ""
+
+#: ../rpmdrake:256
+#, fuzzy, c-format
+msgid "Mandriva Linux choices"
+msgstr "SELAMAT DATANG - Mandriva Linux %s"
+
+#: ../rpmdrake:258
+#, fuzzy, c-format
+msgid "All packages, alphabetical"
+msgstr "_Pilih pakej individu"
+
+#: ../rpmdrake:259
+#, fuzzy, c-format
+msgid "All packages, by update availability"
+msgstr "Semua"
+
+#: ../rpmdrake:260
+#, fuzzy, c-format
+msgid "All packages, by size"
+msgstr "G&una saiz sama untuk semua elemen"
+
+#: ../rpmdrake:261
+#, fuzzy, c-format
+msgid "All packages, by selection state"
+msgstr "Semua"
+
+#: ../rpmdrake:262
+#, c-format
+msgid "Leaves only, sorted by install date"
+msgstr ""
+
+#: ../rpmdrake:263
+#, fuzzy, c-format
+msgid "All packages, by group"
+msgstr "Pilih _semua dalam kumpulan"
+
+#: ../rpmdrake:265
+#, fuzzy, c-format
+msgid "All updates"
+msgstr "Kemaskini Cakera"
+
+#: ../rpmdrake:265
+#, c-format
+msgid "Security updates"
+msgstr "Kemaskini sekuriti"
+
+#: ../rpmdrake:265
+#, fuzzy, c-format
+msgid "Bugfixes updates"
+msgstr "Kemaskini Cakera"
+
+#: ../rpmdrake:265
+#, fuzzy, c-format
+msgid "Normal updates"
+msgstr "Kemaskini Cakera"
+
+#: ../rpmdrake:326
+#, fuzzy, c-format
+msgid "in names"
+msgstr "Nama Trek:"
+
+#: ../rpmdrake:328
+#, fuzzy, c-format
+msgid "in descriptions"
+msgstr "Sedang dilaksanakan...   "
+
+#: ../rpmdrake:330
+#, fuzzy, c-format
+msgid "in file names"
+msgstr "akhir fail tidak dijangka dalam %s\n"
+
+#: ../rpmdrake:361 ../rpmdrake:364 ../rpmdrake:375 ../rpmdrake:388
+#: ../rpmdrake:397
+#, c-format
+msgid "/_File"
+msgstr "/_Fail"
+
+#: ../rpmdrake:364
+#, fuzzy, c-format
+msgid "/_Update media"
+msgstr "  --update       - guna hanya kemaskini media.\n"
+
+#: ../rpmdrake:375
+#, fuzzy, c-format
+msgid "/_Reset the selection"
+msgstr "Pilihan Bahasa"
+
+#: ../rpmdrake:388
+#, fuzzy, c-format
+msgid "/Reload the _packages list"
+msgstr "penggunaan:   %s --list [nama]\n"
+
+#: ../rpmdrake:397
+#, c-format
+msgid "/_Quit"
+msgstr "/_Keluar"
+
+#: ../rpmdrake:397
+#, c-format
+msgid "<control>Q"
+msgstr "<control>Q"
+
+#: ../rpmdrake:400 ../rpmdrake:401 ../rpmdrake:405 ../rpmdrake:435
+#, c-format
+msgid "/_Options"
+msgstr "/_Pilihan"
+
+#: ../rpmdrake:401
+#, fuzzy, c-format
+msgid "/_Media Manager"
+msgstr "Pengurus Media Perisian"
+
+#: ../rpmdrake:405 ../rpmdrake:435
+#, c-format
+msgid "/_Show automatically selected packages"
+msgstr ""
+
+#: ../rpmdrake:409 ../rpmdrake:410 ../rpmdrake:411 ../rpmdrake:412
+#, c-format
+msgid "/_Help"
+msgstr "/_Bantuan"
+
+#: ../rpmdrake:410
+#, c-format
+msgid "/_Report Bug"
+msgstr "/_Lapor Pepijat"
+
+#: ../rpmdrake:412
+#, c-format
+msgid "/_About..."
+msgstr "/_Perihal..."
+
+#: ../rpmdrake:415
+#, fuzzy, c-format
+msgid "Rpmdrake"
+msgstr "Rpmdrake"
+
+#: ../rpmdrake:417
+#, c-format
+msgid "Copyright (C) %s by Mandriva"
+msgstr ""
+
+#: ../rpmdrake:419
+#, c-format
+msgid "Rpmdrake is Mandriva Linux package management tool."
+msgstr ""
+
+#: ../rpmdrake:421
+#, c-format
+msgid "Mandriva Linux"
+msgstr "Mandriva Linux"
+
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#: ../rpmdrake:426
+#, c-format
+msgid "_: Translator(s) name(s) & email(s)\n"
+msgstr ""
+
+#: ../rpmdrake:450
+#, c-format
+msgid "Find:"
+msgstr "Cari:"
+
+#: ../rpmdrake:459
+#, c-format
+msgid "Search"
+msgstr "Cari"
+
+#: ../rpmdrake:461
+#, c-format
+msgid "Clear"
+msgstr "Kosongkan"
+
+#: ../rpmdrake:475 ../rpmdrake.pm:771
+#, fuzzy, c-format
+msgid "Select all"
+msgstr "  -a             - pilih semua media.\n"
+
+#: ../rpmdrake:482
+#, c-format
+msgid "Apply"
+msgstr "Terap"
+
+#: ../rpmdrake:486
+#, c-format
+msgid "Quit"
+msgstr "Keluar"
+
+#: ../rpmdrake:502
+#, c-format
+msgid "Quick Introduction"
+msgstr ""
+
+#: ../rpmdrake:503
+#, c-format
+msgid "You can browse the packages through the categories tree on the left."
+msgstr ""
+
+#: ../rpmdrake:504
+#, c-format
 msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr "Selamat Datang on on."
+"You can view information about a package by clicking on it on the right list."
+msgstr ""
 
-#: ../rpmdrake.pm:103
-msgid "Mandriva Linux Update"
-msgstr "Mandriva Linux Update"
+#: ../rpmdrake:505
+#, c-format
+msgid "To install, update or remove a package, just click on its \"checkbox\"."
+msgstr ""
 
-#: ../rpmdrake.pm:103
-#, fuzzy
+#: ../rpmdrake.pm:107
+#, fuzzy, c-format
 msgid "Software Update"
 msgstr "Kemaskini Sistem"
 
-#: ../rpmdrake.pm:130
-#, fuzzy
+#: ../rpmdrake.pm:107
+#, c-format
+msgid "Mandriva Linux Update"
+msgstr "Mandriva Linux Update"
+
+#: ../rpmdrake.pm:134
+#, fuzzy, c-format
 msgid "Please enter your credentials for accessing proxy\n"
 msgstr "Masukkan kalimat kunci utk %s@%s:"
 
-#: ../rpmdrake.pm:131
+#: ../rpmdrake.pm:135
+#, c-format
 msgid "User name:"
 msgstr "Nama pengguna:"
 
-#: ../rpmdrake.pm:174
-#, fuzzy
+#: ../rpmdrake.pm:182
+#, fuzzy, c-format
 msgid "Software Packages Removal"
 msgstr "_Pasang pakej perisian default"
 
-#: ../rpmdrake.pm:175
-#, fuzzy
+#: ../rpmdrake.pm:183 ../rpmdrake.pm:187
+#, fuzzy, c-format
 msgid "Software Packages Update"
 msgstr "_Pasang pakej perisian default"
 
-#: ../rpmdrake.pm:176
-#, fuzzy
+#: ../rpmdrake.pm:184
+#, fuzzy, c-format
 msgid "Software Packages Installation"
 msgstr "Masukkan keterangan bagi pemasangan perisian."
 
-#: ../rpmdrake.pm:218
+#: ../rpmdrake.pm:227
+#, c-format
 msgid "No"
 msgstr "Tidak"
 
-#: ../rpmdrake.pm:222
+#: ../rpmdrake.pm:231
+#, c-format
 msgid "Yes"
 msgstr "Ya"
 
-#: ../rpmdrake.pm:272
+#: ../rpmdrake.pm:281
+#, c-format
 msgid "Info..."
 msgstr "Maklumat..."
 
-#: ../rpmdrake.pm:389
+#: ../rpmdrake.pm:402
+#, c-format
 msgid "Austria"
 msgstr "Austria"
 
-#: ../rpmdrake.pm:390
+#: ../rpmdrake.pm:403
+#, c-format
 msgid "Australia"
 msgstr "Australia"
 
-#: ../rpmdrake.pm:391
+#: ../rpmdrake.pm:404
+#, c-format
 msgid "Belgium"
 msgstr "Belgium"
 
-#: ../rpmdrake.pm:392
+#: ../rpmdrake.pm:405
+#, c-format
 msgid "Brazil"
 msgstr "Brazil"
 
-#: ../rpmdrake.pm:393
+#: ../rpmdrake.pm:406
+#, c-format
 msgid "Canada"
 msgstr "Kanada"
 
-#: ../rpmdrake.pm:394
+#: ../rpmdrake.pm:407
+#, c-format
 msgid "Switzerland"
 msgstr "Switzerland"
 
-#: ../rpmdrake.pm:395
+#: ../rpmdrake.pm:408
+#, c-format
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: ../rpmdrake.pm:396
+#: ../rpmdrake.pm:409
+#, c-format
 msgid "Czech Republic"
 msgstr "Republik Czech"
 
-#: ../rpmdrake.pm:397
+#: ../rpmdrake.pm:410
+#, c-format
 msgid "Germany"
 msgstr "Jerman"
 
-#: ../rpmdrake.pm:398
+#: ../rpmdrake.pm:411
+#, c-format
 msgid "Danmark"
 msgstr ""
 
-#: ../rpmdrake.pm:399 ../rpmdrake.pm:403
+#: ../rpmdrake.pm:412 ../rpmdrake.pm:416
+#, c-format
 msgid "Greece"
 msgstr "Greek"
 
-#: ../rpmdrake.pm:400
+#: ../rpmdrake.pm:413
+#, c-format
 msgid "Spain"
 msgstr "Sepanyol"
 
-#: ../rpmdrake.pm:401
+#: ../rpmdrake.pm:414
+#, c-format
 msgid "Finland"
 msgstr "Finland"
 
-#: ../rpmdrake.pm:402
+#: ../rpmdrake.pm:415
+#, c-format
 msgid "France"
 msgstr "Perancis"
 
-#: ../rpmdrake.pm:404
+#: ../rpmdrake.pm:417
+#, c-format
 msgid "Hungary"
 msgstr "Hungary"
 
-#: ../rpmdrake.pm:405
+#: ../rpmdrake.pm:418
+#, c-format
 msgid "Israel"
 msgstr "Israel"
 
-#: ../rpmdrake.pm:406
+#: ../rpmdrake.pm:419
+#, c-format
 msgid "Italy"
 msgstr "Itali"
 
-#: ../rpmdrake.pm:407
+#: ../rpmdrake.pm:420
+#, c-format
 msgid "Japan"
 msgstr "Jepun"
 
-#: ../rpmdrake.pm:408
+#: ../rpmdrake.pm:421
+#, c-format
 msgid "Korea"
 msgstr "Korea"
 
-#: ../rpmdrake.pm:409
+#: ../rpmdrake.pm:422
+#, c-format
 msgid "Netherlands"
 msgstr "Belanda"
 
-#: ../rpmdrake.pm:410
+#: ../rpmdrake.pm:423
+#, c-format
 msgid "Norway"
 msgstr "Norway"
 
-#: ../rpmdrake.pm:411
+#: ../rpmdrake.pm:424
+#, c-format
 msgid "Poland"
 msgstr "Poland"
 
-#: ../rpmdrake.pm:412
+#: ../rpmdrake.pm:425
+#, c-format
 msgid "Portugal"
 msgstr "Portugal"
 
-#: ../rpmdrake.pm:413
+#: ../rpmdrake.pm:426
+#, c-format
 msgid "Russia"
 msgstr "Russia"
 
-#: ../rpmdrake.pm:414
+#: ../rpmdrake.pm:427
+#, c-format
 msgid "Sweden"
 msgstr "Sweden"
 
-#: ../rpmdrake.pm:415
+#: ../rpmdrake.pm:428
+#, c-format
 msgid "Singapore"
 msgstr "Singapura"
 
-#: ../rpmdrake.pm:416
+#: ../rpmdrake.pm:429
+#, c-format
 msgid "Slovakia"
 msgstr "Slovakia"
 
-#: ../rpmdrake.pm:417
+#: ../rpmdrake.pm:430
+#, c-format
 msgid "Taiwan"
 msgstr "Taiwan"
 
-#: ../rpmdrake.pm:418
+#: ../rpmdrake.pm:431
+#, c-format
 msgid "United Kingdom"
 msgstr "United Kingdom"
 
-#: ../rpmdrake.pm:419
+#: ../rpmdrake.pm:432
+#, c-format
 msgid "China"
 msgstr "China"
 
-#: ../rpmdrake.pm:420 ../rpmdrake.pm:421 ../rpmdrake.pm:422 ../rpmdrake.pm:423
+#: ../rpmdrake.pm:433 ../rpmdrake.pm:434 ../rpmdrake.pm:435 ../rpmdrake.pm:436
+#, c-format
 msgid "United States"
 msgstr "Amerika Syarikat"
 
-#: ../rpmdrake.pm:520
+#: ../rpmdrake.pm:533
+#, c-format
 msgid ""
 "I need to access internet to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -2099,7 +2490,8 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#: ../rpmdrake.pm:524
+#: ../rpmdrake.pm:537
+#, c-format
 msgid ""
 "I need to contact the Mandriva website to get the mirror list.\n"
 "Please check that your network is currently running.\n"
@@ -2107,26 +2499,28 @@ msgid ""
 "Is it ok to continue?"
 msgstr ""
 
-#: ../rpmdrake.pm:530 ../rpmdrake.pm:568
+#: ../rpmdrake.pm:543 ../rpmdrake.pm:581
+#, c-format
 msgid "Mirror choice"
 msgstr ""
 
-#: ../rpmdrake.pm:533
-#, fuzzy
+#: ../rpmdrake.pm:546
+#, fuzzy, c-format
 msgid "Please wait, downloading mirror addresses."
 msgstr "Penmeriksaan kebergantungan..."
 
-#: ../rpmdrake.pm:534
+#: ../rpmdrake.pm:547
+#, c-format
 msgid "Please wait, downloading mirror addresses from the Mandriva website."
 msgstr ""
 
-#. - seems that value is bitten before being printed by next func..
-#: ../rpmdrake.pm:541
+#: ../rpmdrake.pm:554
+#, c-format
 msgid "Error during download"
 msgstr "Ralat semasa muatturun"
 
-#: ../rpmdrake.pm:543
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:556
+#, fuzzy, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
 "\n"
@@ -2135,8 +2529,8 @@ msgid ""
 "Please try again later."
 msgstr "ralat."
 
-#: ../rpmdrake.pm:548
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:561
+#, fuzzy, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
 "\n"
@@ -2145,17 +2539,18 @@ msgid ""
 "Please try again later."
 msgstr "ralat."
 
-#: ../rpmdrake.pm:558
-#, fuzzy
+#: ../rpmdrake.pm:571
+#, fuzzy, c-format
 msgid "No mirror"
 msgstr "Tiada katalaluan"
 
-#: ../rpmdrake.pm:560
+#: ../rpmdrake.pm:573
+#, c-format
 msgid "I can't find any suitable mirror."
 msgstr ""
 
-#: ../rpmdrake.pm:561
-#, fuzzy
+#: ../rpmdrake.pm:574
+#, fuzzy, c-format
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
@@ -2164,67 +2559,69 @@ msgid ""
 "by Mandriva Linux Official Updates."
 msgstr "Kemaskini."
 
-#: ../rpmdrake.pm:580
-#, fuzzy
+#: ../rpmdrake.pm:593
+#, fuzzy, c-format
 msgid "Please choose the desired mirror."
 msgstr "Sila pilih jenis logmasuk anda:"
 
-#: ../rpmdrake.pm:633
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:646
+#, fuzzy, c-format
 msgid "Copying file for medium `%s'..."
 msgstr "menulis senarai fail untuk media \"%s\""
 
-#: ../rpmdrake.pm:636
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:649
+#, fuzzy, c-format
 msgid "Examining file of medium `%s'..."
 msgstr "periksa file sintesis [%s]"
 
-#: ../rpmdrake.pm:639
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:652
+#, fuzzy, c-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "Dari Fail Jauh (SSH)"
 
-#: ../rpmdrake.pm:643
+#: ../rpmdrake.pm:656
+#, c-format
 msgid " done."
 msgstr " selesai."
 
-#: ../rpmdrake.pm:647
-#, fuzzy
+#: ../rpmdrake.pm:660
+#, fuzzy, c-format
 msgid " failed!"
 msgstr "GAGAL"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:651
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:664
+#, fuzzy, c-format
 msgid "%s from medium %s"
 msgstr "membaca pengepala dari media \"%s\""
 
-#: ../rpmdrake.pm:655
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:668
+#, fuzzy, c-format
 msgid "Starting download of `%s'..."
 msgstr "Memulakan VNC..."
 
-#: ../rpmdrake.pm:659
-#, perl-format
+#: ../rpmdrake.pm:672
+#, c-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr ""
 
-#: ../rpmdrake.pm:662
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:675
+#, fuzzy, c-format
 msgid "Download of `%s', speed:%s"
 msgstr "Kelajuan Failover"
 
-#: ../rpmdrake.pm:673
+#: ../rpmdrake.pm:686
+#, c-format
 msgid "Please wait, updating media..."
 msgstr "Sila tunggu, mengemaskini media..."
 
-#: ../rpmdrake.pm:700
-#, fuzzy
+#: ../rpmdrake.pm:713
+#, fuzzy, c-format
 msgid "Error retrieving packages"
 msgstr "Ralat memasang pakej"
 
-#: ../rpmdrake.pm:701
-#, perl-format
+#: ../rpmdrake.pm:714
+#, c-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
 "`%s'. Either this update media is misconfigured, and in this case\n"
@@ -2234,27 +2631,29 @@ msgid ""
 "later."
 msgstr ""
 
-#: ../rpmdrake.pm:732
-#, fuzzy
+#: ../rpmdrake.pm:745
+#, fuzzy, c-format
 msgid "Update media"
 msgstr "  --update       - guna hanya kemaskini media.\n"
 
-#: ../rpmdrake.pm:737
+#: ../rpmdrake.pm:750
+#, c-format
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
 msgstr ""
 
-#: ../rpmdrake.pm:744
-#, fuzzy
+#: ../rpmdrake.pm:757
+#, fuzzy, c-format
 msgid "Select the media you wish to update:"
 msgstr "Pilih perkara yang anda hendak ubahsuai "
 
-#: ../rpmdrake.pm:762
+#: ../rpmdrake.pm:775
+#, c-format
 msgid "Update"
 msgstr "Kemaskini"
 
-#: ../rpmdrake.pm:783
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:796
+#, fuzzy, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
 "\n"
@@ -2262,26 +2661,26 @@ msgid ""
 "%s"
 msgstr "dimatikan"
 
-#: ../rpmdrake.pm:806 ../rpmdrake.pm:817
-#, perl-format
+#: ../rpmdrake.pm:819 ../rpmdrake.pm:830
+#, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
 "\n"
 "%s"
 msgstr ""
 
-#: ../rpmdrake.pm:829
-#, fuzzy
+#: ../rpmdrake.pm:842
+#, fuzzy, c-format
 msgid "Unable to create medium."
 msgstr "gagal membuat media \"%s\"\n"
 
-#: ../rpmdrake.pm:834
-#, fuzzy
+#: ../rpmdrake.pm:847
+#, fuzzy, c-format
 msgid "Failure when adding medium"
 msgstr "Pilih kekunci untuk ditambah ke dalam media %s"
 
-#: ../rpmdrake.pm:835
-#, fuzzy, perl-format
+#: ../rpmdrake.pm:848
+#, fuzzy, c-format
 msgid ""
 "There was a problem adding medium:\n"
 "\n"
@@ -2291,29 +2690,29 @@ msgstr ""
 "ke giliran '%s':\n"
 "\n"
 
-#: ../rpmdrake.pm:848
-#, perl-format
+#: ../rpmdrake.pm:861
+#, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
 "running (%s).\n"
 "It will be disabled."
 msgstr ""
 
-#: ../rpmdrake.pm:851
-#, perl-format
+#: ../rpmdrake.pm:864
+#, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of Mandriva "
 "Linux you're running (%s).\n"
 "It will be disabled."
 msgstr ""
 
-#: ../rpmdrake.pm:868
-#, fuzzy
+#: ../rpmdrake.pm:881
+#, fuzzy, c-format
 msgid "Help launched in background"
 msgstr "fail bantuan pemasangan dalam pelbagai bahasa"
 
-#: ../rpmdrake.pm:869
-#, fuzzy
+#: ../rpmdrake.pm:882
+#, fuzzy, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
 msgstr "on."
@@ -2589,15 +2988,34 @@ msgstr "Buang Perisian"
 msgid "Software Media Manager"
 msgstr "Pengurus Media Perisian"
 
+#, fuzzy
+#~ msgid "  --version              output version information and exit"
+#~ msgstr "  --root                 paksa untuk laksana sebagai root"
+
+#~ msgid "unable to access rpm file [%s]"
+#~ msgstr "gagal akses fail rpm [%s]"
+
+#, fuzzy
+#~ msgid ""
+#~ "To satisfy dependencies, the following package is going to be installed:\n"
+#~ "%2$s\n"
+#~ msgid_plural ""
+#~ "To satisfy dependencies, the following %d packages are going to be "
+#~ "installed:\n"
+#~ "%s\n"
+#~ msgstr[0] ""
+#~ "Untuk memenuhi kebergantungan, %d pakej berikut perlu dipasang:\n"
+#~ "%s\n"
+#~ msgstr[1] ""
+#~ "Untuk memenuhi kebergantungan, %d pakej berikut perlu dipasang:\n"
+#~ "%s\n"
+
 #~ msgid "XFree86"
 #~ msgstr "XFree86"
 
 #, fuzzy
 #~ msgid "No package found for installation."
 #~ msgstr "%d pakej bergilir untuk dipasang\n"
-
-#~ msgid "Stop"
-#~ msgstr "Henti"
 
 #, fuzzy
 #~ msgid "All packages, by medium repository"
