@@ -400,7 +400,7 @@ sub downwards_callback() {
 
 #- returns the name of the media for which edition failed, or undef on success
 sub edit_callback() {
-    my $row = selrow();
+    my ($row) = selected_rows(); # selrow
     $row == -1 and return;
     my $medium = $urpm->{media}[$row];
     my $config = urpm::cfg::load_config_raw($urpm->{config}, 1);
