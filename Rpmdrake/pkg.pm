@@ -503,7 +503,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::w->{real_window});
     my $distant_progress;
     my $canceled;
-    my (@errors, @missing_errors);
+    my (@errors);
     my $something_installed;
 
     my %sources = %$local_sources;
@@ -601,7 +601,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
         #- check for local files.
         if (my @missing = grep { m|^/| && ! -e $_ } values %transaction_sources_install, values %transaction_sources) {
-            push @missing_errors, @missing;
             next;
         }
 
@@ -691,7 +690,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     undef $lock;
     undef $rpm_lock;
     if (@rpms_install || @rpms_upgrade || @to_remove) {
-        if (@missing_errors) {
+        if (my @missing_errors = values %error_sources) {
             interactive_msg(
 		N("Installation failed"),
 		N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
