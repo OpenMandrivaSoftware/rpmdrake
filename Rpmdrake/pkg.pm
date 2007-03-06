@@ -696,9 +696,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
             interactive_msg(
 		N("Installation failed"),
 		N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
-		    join "\n", map { "    $_" } @missing_errors) .
+		    join "\n", map { "- $_" } sort @missing_errors) .
 		    (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
-		if_(@error_msgs > 1, scroll => 1),
+		scroll => 1,
 	    );
             goto return_with_error;
         }
