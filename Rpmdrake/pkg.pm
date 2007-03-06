@@ -601,6 +601,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
         #- check for local files.
         if (my @missing = grep { m|^/| && ! -e $_ } values %transaction_sources_install, values %transaction_sources) {
+            print N("Installation failed, some files are missing:\n%s\nYou may want to update your urpmi database",
+                    join "\n", map { s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|; "    $_" } @missing), "\n";
             next;
         }
 
