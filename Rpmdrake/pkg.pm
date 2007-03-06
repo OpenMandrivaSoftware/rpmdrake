@@ -367,8 +367,6 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	$db,
 	$state,
 	$requested,
-	start => 0,
-	end   => $#{$urpm->{depslist}},
     );
     my @requested = $probe_only_for_updates ?
       sort map { urpm_name($_) } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices)
