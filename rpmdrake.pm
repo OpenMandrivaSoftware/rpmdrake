@@ -51,6 +51,7 @@ our @EXPORT = qw(
     $mandrakeupdate_wanted_categories
     $already_splashed
     $max_info_in_descr
+    $offered_to_add_sources
     $tree_mode
     $tree_flat
     $typical_width
@@ -150,11 +151,12 @@ $ENV{HOME} ||= '/root';
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
 our ($already_splashed, $changelog_first_config, $max_info_in_descr, $tree_flat, $tree_mode);
-our ($automatically_update_kernels, $mandrakeupdate_wanted_categories);
+our ($automatically_update_kernels, $mandrakeupdate_wanted_categories, $offered_to_add_sources);
 our %config = (
     mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
     already_splashed => { var => \$already_splashed, default => [] },
     max_info_in_descr => { var => \$max_info_in_descr, default => [] },
+    offered_to_add_sources => { var => \$offered_to_add_sources, default => [ 0 ] },
     tree_mode => { var => \$tree_mode, default => [ qw(mandrake_choices) ] },
     tree_flat => { var => \$tree_flat, default => [ 0 ] },
     changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },

@@ -145,6 +145,20 @@ you want to install on your computer.")))
                           , yesno => 1) or myexit(-1);
         push @$already_splashed, $MODE;
     }
+    if (!$> && !$offered_to_add_sources->[0]) {
+        if (interactive_msg(N("Welcome"),
+                            join("\n\n",
+                                 N("The software installation tool can set up media sources."),
+                                 N("Do you want to add media sources now?"),
+                                 ),
+                            yesno => 1,
+                        )
+        ) {
+            require Rpmdrake::edit_urpm_sources;
+            Rpmdrake::edit_urpm_sources::easy_add_callback();
+        }
+        $offered_to_add_sources->[0] = 1;
+    }
 }
 
 1;
