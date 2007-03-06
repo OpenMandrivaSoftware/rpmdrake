@@ -367,7 +367,7 @@ sub remove_callback() {
     ) or return;
 
     my $wait = wait_msg(N("Please wait, removing medium..."));
-    foreach my $row (@rows) {
+    foreach my $row (reverse(@rows)) {
      $something_changed = 1;
 	urpm::media::remove_media($urpm, [ $urpm->{media}[$row] ]);
 	urpm::media::write_urpmi_cfg($urpm);
