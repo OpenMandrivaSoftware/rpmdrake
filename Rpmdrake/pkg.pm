@@ -484,6 +484,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     @{$urpm->{ask_remove}} = sort urpm::select::removed_packages($urpm, $urpm->{state});
     my @to_remove = grep { $_ } map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
 
+    # select packages to uninstall for !update mode:
+    perform_removal($urpm, $pkgs) if !$probe_only_for_updates;
+
     my $r = join "\n", urpm::select::translate_why_removed($urpm, $urpm->{state}, @to_remove);
 
     my $install_count = int(@pkgs);
