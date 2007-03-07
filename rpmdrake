@@ -41,6 +41,7 @@ use urpm::media;
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
 use Gtk2::Gdk::Keysyms;
+use Rpmdrake::widgets;
 
 $ugtk2::wm_icon = "title-$MODE";
 
@@ -151,30 +152,6 @@ sub do_search($$$$$$$) {
 	$options->{add_nodes}->([ '', $results_none, { nochild => 1 } ]);
     }
 }
-
-package Gtk2::Mdv::TextView;
-
-sub new {
-    my ($_class) = @_;
-    my $w = mygtk2::gtknew('TextView');
-    my $time if 0;
-    require Time::HiRes;
-    $w->signal_connect(size_allocate => sub {
-        my ($w, $requisition) = @_;
-        return if !ref($w->{anchors});
-        return if Time::HiRes::clock_gettime() - $time < 0.200;
-        $time = Time::HiRes::clock_gettime();
-        foreach my $anchor (@{$w->{anchors}}) {
-            $_->set_size_request($requisition->width-30, -1) foreach $anchor->get_widgets;
-        }
-        1;
-    });
-    $w;
-}
-
-1;
-
-package main;
 
 
 sub run_treeview_dialog {
