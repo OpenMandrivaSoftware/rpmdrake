@@ -118,6 +118,7 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
 			    clicked => sub {
                                 do_action({ tree_mode => 'all_updates' }, $callback_action);
                                 refresh_packages_list($pkgs, $list);
+                                pkgs_provider({}, $default_list_mode, pure_updates => 1); # default mode
                             },
 			),
 			0, gtksignal_connect(
