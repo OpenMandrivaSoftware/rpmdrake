@@ -467,7 +467,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	$state->{selected},
 	clean_all => 0
     );
-    my $distant_number = scalar keys %$state;
     if (!$local_sources && (!$list || !@$list)) {
         interactive_msg(
 	    N("Unable to get source packages."),
@@ -508,7 +507,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $_guard = before_leaving { urpm::removable::try_umounting_removables($urpm) };
 
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::w->{real_window});
-    my $distant_progress;
     my $canceled;
     my (@errors);
     my $something_installed;
@@ -564,12 +562,20 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                            \%transaction_sources,
                                                            \%error_sources,
                                                            callback => sub {
-                                                               my ($mode, $file, $percent) = @_;
+                                                               my ($mode, $file, $percent, $total, $eta, $speed) = @_;
                                                                if ($mode eq 'start') {
-                                                                   Rpmdrake::gurpm::label(N("Downloading package `%s' (%s/%s)...",
-                                                                                            basename($file), ++$distant_progress, $distant_number));
+                                                                   Rpmdrake::gurpm::label(N("Downloading package `%s'...", basename($file)));
                                                                    Rpmdrake::gurpm::validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
                                                                } elsif ($mode eq 'progress') {
+                                                                   Rpmdrake::gurpm::label(
+                                                                       join("\n",
+                                                                              N("Downloading package `%s'...", basename($file)),
+                                                                              (defined $total && defined $eta ?
+                                                                                 N("        %s%% of %s completed, ETA = %s, speed = %s", $percent, $total, $eta, $speed)
+                                                                                   : N("        %s%% completed, speed = %s", $percent, $speed)
+                                                                               ) =~ /^\s*(.*)/
+                                                                        ),
+                                                                   );
                                                                    Rpmdrake::gurpm::progress($percent/100);
                                                                } elsif ($mode eq 'end') {
                                                                    Rpmdrake::gurpm::progress(1);
