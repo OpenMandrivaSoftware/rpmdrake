@@ -40,11 +40,23 @@ use Rpmdrake::icon;
 use Gtk2::Gdk::Keysyms;
 
 our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices closure_removal do_action get_info is_locale_available pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_nodes
-            $clear_button $dont_show_selections $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
+            $clear_button %grp_columns %pkg_columns $dont_show_selections $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
 
 our $dont_show_selections = $> ? 1 : 0;
 
 our ($descriptions, %filter_methods, $force_displaying_group, $force_rebuild, @initial_selection, $pkgs, $size_free, $size_selected, $urpm);
+
+our %grp_columns = (
+    label => 0,
+    text => 1,
+    icon => 2,
+);
+
+our %pkg_columns = (
+    text => 0,
+    state_icon => 1,
+    state => 2,
+);
 
 
 sub format_pkg_simplifiedinfo {
@@ -147,8 +159,8 @@ sub set_node_state_flat {
     $state eq 'XXX' and return;
     $pix{$state} ||= gtkcreate_pixbuf($state);
     $model ||= $w->{tree_model};
-    $model->set($iter, 1 => $pix{$state});
-    $model->set($iter, 2 => $state);
+    $model->set($iter, $pkg_columns{state_icon} => $pix{$state});
+    $model->set($iter, $pkg_columns{state} => $state);
 }
 
 sub set_node_state_tree {
@@ -167,8 +179,8 @@ sub set_node_state_tree {
             $node_state{$parent_str} ne $new_state and
               set_node_state_tree($parent, $new_state);
         }
-        $model->set($iter, 1 => $pix{$state});
-        $model->set($iter, 2 => $state);
+        $model->set($iter, $pkg_columns{state_icon} => $pix{$state});
+        $model->set($iter, $pkg_columns{state} => $state);
         #$node_state{$iter_str} = $state;  #- cache for efficiency
     } else  {
     }
@@ -191,7 +203,8 @@ sub add_parent {
         my $s2 = $s ? "$s|$_" : $_;
         $wtree{$s2} ||= do {
             my $pixbuf = get_icon($s2, $s);
-            my $iter = $w->{tree_model}->append_set($s ? add_parent($s, $state, get_icon($s)) : undef, [ 0 => $_, if_($pixbuf, 2 => $pixbuf) ]);
+            my $iter = $w->{tree_model}->append_set($s ? add_parent($s, $state, get_icon($s)) : undef,
+                                                    [ $grp_columns{label} => $_, if_($pixbuf, $grp_columns{icon} => $pixbuf) ]);
             $iter;
         };
         $s = $s2;
@@ -235,10 +248,10 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	if ($leaf) {
 	    my $iter;
          if (is_a_package($leaf)) {
-             $iter = $w->{detail_list_model}->append_set([ 0 => $leaf ]);
+             $iter = $w->{detail_list_model}->append_set([ $pkg_columns{text} => $leaf ]);
              set_node_state($iter, $state, $w->{detail_list_model});
          } else {
-             $iter = $w->{tree_model}->append_set(add_parent($root, $state), [ 0 => $leaf ]);
+             $iter = $w->{tree_model}->append_set(add_parent($root, $state), [ $grp_columns{label} => $leaf ]);
          }
 	    push @{$ptree{$leaf}}, $iter;
 	} else {
@@ -247,7 +260,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	    #- if leaf is void, we may create the parent and one child (to have the [+] in front of the parent in the ctree)
 	    #- though we use '' as the label of the child; then rpmdrake will connect on tree_expand, and whenever
 	    #- the first child has '' as the label, it will remove the child and add all the "right" children
-	    $options->{nochild} or $w->{tree_model}->append_set($parent, [ 0 => '' ]);  # test $leaf?
+	    $options->{nochild} or $w->{tree_model}->append_set($parent, [ $grp_columns{label} => '' ]);  # test $leaf?
 	}
     };
     my $clear_all_caches = sub {
@@ -285,7 +298,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 		my $parent = $node;
 		my @parents;
 		while ($parent = $w->{tree_model}->iter_parent($parent)) {    #- LEAKS
-		    my $parent_name = $w->{tree_model}->get($parent, 0);
+		    my $parent_name = $w->{tree_model}->get($parent, $grp_columns{label});
 		    $category = $category ? "$parent_name|$category" : $parent_name;
 		    $_->[1] = "$parent_name|$_->[1]" foreach @parents;
 		    push @parents, [ $parent, $category ];
@@ -327,7 +340,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
         $w->{info}->scroll_to_iter($w->{info}->get_buffer->get_start_iter, 0, 0, 0, 0);
         0;
     };
-    my $children = sub { map { $w->{detail_list_model}->get($_, 0) } gtktreeview_children($w->{detail_list_model}, $_[0]) };
+    my $children = sub { map { $w->{detail_list_model}->get($_, $pkg_columns{text}) } gtktreeview_children($w->{detail_list_model}, $_[0]) };
     $common->{toggle_all} = sub {
         my ($_val) = @_;
 		my @l = $children->() or return;
@@ -343,14 +356,15 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     my $fast_toggle = sub {
         my ($iter) = @_;
         gtkset_mousecursor_wait($w->{w}{rwindow}->window);
-        toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, 2), $w->{detail_list_model}->get($iter, 0));
+        toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, $pkg_columns{state}),
+                     $w->{detail_list_model}->get($iter, $pkg_columns{text}));
 	    &$update_size;
 	    gtkset_mousecursor_normal($w->{w}{rwindow}->window);
     };
     $w->{detail_list}->get_selection->signal_connect(changed => sub {
 	my ($model, $iter) = $_[0]->get_selected;
 	$model && $iter or return;
-     $common->{display_info}($model->get($iter, 0));
+     $common->{display_info}($model->get($iter, $pkg_columns{text}));
  });
     $w->{detail_list}->signal_connect(button_press_event => sub {  #- not too good, but CellRendererPixbuf does not have the needed signals :(
 	my ($path, $column) = $w->{detail_list}->get_path_at_pos($_[1]->x, $_[1]->y);
