@@ -80,7 +80,7 @@ if ($collation_locale) {
   $collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8");
 }
 
-my $version = '3.38';
+my $version = '3.41';
 our %options;
 foreach (@ARGV) {
     /^-?-(\S+)$/ or next;
