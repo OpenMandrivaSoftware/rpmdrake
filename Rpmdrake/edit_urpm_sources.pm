@@ -888,11 +888,11 @@ sub keys_callback() {
 		0, gtkpack__(
 		    gtknew('VBox', spacing => 5),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Add a key..."))),
+			Gtk2::Button->new(but(N("Add"))),
 			clicked => \&$add_key,
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Remove key"))),
+			Gtk2::Button->new(but(N("Remove"))),
 			clicked => \&$remove_key,
 		    )
 		)
