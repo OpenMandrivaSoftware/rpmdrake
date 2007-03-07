@@ -71,6 +71,7 @@ sub remove_row {
 
 sub easy_add_callback() {
     #- cooker and community don't have update sources
+    $urpm ||= urpm->new; # when called on early init by rpmdrake
     my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
 N("This step enables you to add sources from a Mandriva Linux web or FTP mirror.
