@@ -48,7 +48,6 @@ our ($descriptions, %filter_methods, $force_displaying_group, $force_rebuild, @i
 
 our %grp_columns = (
     label => 0,
-    text => 1,
     icon => 2,
 );
 
