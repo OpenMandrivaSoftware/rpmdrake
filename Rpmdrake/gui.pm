@@ -60,7 +60,7 @@ our %pkg_columns = (
 
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
-    my ($name, $_version) = split_fullname($key);
+    my ($name, $version) = split_fullname($key);
     my $medium = pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name};
     my $update_descr = $pkgs->{$key}{pkg}->flag_upgrade && $descriptions->{$name}{pre} && $descriptions->{$name}{medium} eq $medium;
     my $s = ugtk2::markup_to_TextView_format(join("\n", format_header($name . ' - ' . translate($pkgs->{$key}{summary})) .
@@ -83,6 +83,22 @@ sub format_pkg_simplifiedinfo {
       (escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $descriptions->{$name}{description}) || '<i>' . N("No description") . '</i>')
     )) };
     push @$s, [ "\n" ];
+    push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
+                       gtknew('TextView', text => ugtk2::markup_to_TextView_format(
+                           join("\n",
+                                format_field(N("Version: ")) . $version,
+                                ($pkgs->{$key}{pkg}->flag_installed ?
+                                   format_field(N("Currently installed version: ")) . find_installed_version($pkgs->{$key}{pkg})
+                                     : ()
+                                 ),
+                                format_field(N("Architecture: ")) . $pkgs->{$key}{pkg}->arch,
+                                format_field(N("Size: ")) . N("%s KB", int($pkgs->{$key}{pkg}->size/1024)),
+                                format_field(N("Medium: ")) . pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name},
+                            ),
+                       ),
+                   )) ];
+    $exp0->set_use_markup(1);
+    push @$s, [ "\n\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp = Gtk2::Expander->new(format_field(N("Files:")))),
                        gtknew('TextView', text => 
                                       exists $pkgs->{$key}{files} ?
