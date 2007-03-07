@@ -790,6 +790,7 @@ sub keys_callback() {
     my $key_col_size = 200;
     my $keys_list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
     my $keys_list = Gtk2::TreeView->new_with_model($keys_list_ls);
+    $keys_list->set_rules_hint(1);
     $keys_list->append_column(my $col = Gtk2::TreeViewColumn->new_with_attributes(N("_:cryptographic keys\nKeys"), my $renderer = Gtk2::CellRendererText->new, 'text' => 0));
     $col->set_sizing('fixed');
     $col->set_fixed_width($key_col_size);
