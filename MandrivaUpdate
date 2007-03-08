@@ -35,6 +35,7 @@ use Rpmdrake::gui;
 use Rpmdrake::rpmnew;
 use Rpmdrake::formatting;
 use Rpmdrake::pkg;
+use Rpmdrake::widgets;
 
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
@@ -52,7 +53,7 @@ warn_about_user_mode();
 open_db();
 
 sub refresh_packages_list {
-    my ($pkgs, $list) = @_;
+    my ($pkgs, $list, $info, $button) = @_;
     # select packages to update:
     my @requested = sort keys %$pkgs;
 
@@ -66,12 +67,22 @@ sub refresh_packages_list {
     @{$list->{data}} = map {
         [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", translate(rpm_summary($pkgs->{$_}{pkg}->summary))) ];
     } grep { $pkgs->{$_}{pkg} } @requested;
+    gtktext_insert($info,
+      formatAlaTeX(N("The list of updates is empty. This means that either there is
+no available update for the packages installed on your computer,
+or you already installed all of them."))) if !@{$list->{data}};
+    $button->set_sensitive(scalar(@{$list->{data}}));
+}
+
+sub get_name {
+	my ($name) = @_;
+     ($name) = $name =~ m!<b>(.*)</b>!;
 }
 
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
-    my ($size_selected, %elems, $list);
+    my ($size_selected, %elems, $list, $info, $update_button);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $w = ugtk2->new(N("Software Update"));
@@ -87,15 +98,22 @@ sub run_treeview_dialog {
 	    gtknew('VBox', spacing => 3),
 	    0, getbanner(),
               0, gtknew('Title2', label => N("Here is the list of software packages updates")),
-              1, gtkadd(
-                  gtknew('Frame', border_width => 3, shadow_type => 'in'),
-gtknew('ScrolledWindow', width => $typical_width*0.9,
+         1, create_vpaned(
+             gtkadd(
+                 gtknew('Frame', border_width => 3, shadow_type => 'in'),
+                 gtknew('ScrolledWindow', width => $typical_width*0.9,
                         child => $list = Gtk2::SimpleList->new(
                             " " . " " . " "    => 'bool', #N("Selected")
                             " " . "" . " "        => 'markup', #N("Name")
                         ),
                     ),
-	    ),
+                 
+             ),
+             gtknew('ScrolledWindow', width => $typical_width*0.9,
+                    child => $info = Gtk2::Mdv::TextView->new,
+                ),
+             resize1 => 1,
+         ),
               0, gtknew('Label', font => '2'),
               0, Gtk2::HSeparator->new,
               0, gtknew('Label', font => '2'),
@@ -114,10 +132,10 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
 			),
                1, gtknew('Label'),
 			0, my $action_button = gtksignal_connect(
-			    Gtk2::Button->new(but_(N("Update"))),
+			    $update_button = Gtk2::Button->new(but_(N("Update"))),
 			    clicked => sub {
                                 do_action({ tree_mode => 'all_updates' }, $callback_action);
-                                refresh_packages_list($pkgs, $list);
+                                refresh_packages_list($pkgs, $list, $info, $update_button);
                                 pkgs_provider({}, $default_list_mode, pure_updates => 1); # default mode
                             },
 			),
@@ -133,6 +151,12 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
 
     $list->set_rules_hint(1);
     $list->set_headers_visible(0);
+    $list->get_selection->signal_connect(changed => sub {
+                                             my ($model, $iter) = $_[0]->get_selected;
+                                             $model && $iter or return;
+                                             gtktext_insert($info, get_info(get_name($model->get($iter, 1)), $w->{real_window}->window));
+                                             $info->scroll_to_iter($info->get_buffer->get_start_iter, 0, 0, 0, 0);
+                                         });
 
     $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
 
@@ -142,13 +166,13 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
     $Rpmdrake::pkg::probe_only_for_updates = 1; # faster startup
     pkgs_provider({}, $default_list_mode, pure_updates => 1); # default mode
 
-    refresh_packages_list($pkgs, $list);
+    refresh_packages_list($pkgs, $list, $info, $update_button);
 
     my $cell = ($list->get_column(0)->get_cell_renderers)[0];
     $cell->signal_connect(toggled => sub {
 	my ($cell, $text_path) = @_;
 	my ($val, $name) = @{$list->{data}[$text_path]};
-	($name) = $name =~ m!<b>(.*)</b>!;
+	$name = get_name($name);
 	$pkgs->{$name}{selected} = to_bool($val);
 	$pkgs->{$name}{pkg}->set_flag_required($val);
     });
@@ -164,6 +188,8 @@ gtknew('ScrolledWindow', width => $typical_width*0.9,
 # -=-=-=---=-=-=---=-=-=-- main -=-=-=---=-=-=---=-=-=-
 
 do_merge_if_needed();
+
+urpm::set_files($urpm, '/big2/');  # TV FIXME
 
 readconf();
 
