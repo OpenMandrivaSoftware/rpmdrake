@@ -388,13 +388,18 @@ sub renum_media ($$$) {
 }
 
 sub upwards_callback() {
-    my ($model, $iter) = $list_tv->get_selection->get_selected; $model && $iter or return;
-    my $prev = $model->get_iter_from_string($model->get_path($iter)->to_string - 1);
-    defined $prev and renum_media($model, $iter, $prev);
+    my @rows = selected_rows();
+    @rows == 0 and return;
+    my $model = $list_tv->get_model;
+    my $prev = $model->get_iter_from_string($rows[0] - 1);
+    defined $prev and renum_media($model, $model->get_iter_from_string($rows[0]), $prev);
 }
 
 sub downwards_callback() {
-    my ($model, $iter) = $list_tv->get_selection->get_selected; $model && $iter or return;
+    my @rows = selected_rows();
+    @rows == 0 and return;
+    my $model = $list_tv->get_model;
+    my $iter = $model->get_iter_from_string($rows[0]);
     my $next = $model->iter_next($iter);
     defined $next and renum_media($model, $iter, $next);
 }
