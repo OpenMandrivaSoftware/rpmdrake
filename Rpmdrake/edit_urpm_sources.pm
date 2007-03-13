@@ -393,6 +393,7 @@ sub upwards_callback() {
     my $model = $list_tv->get_model;
     my $prev = $model->get_iter_from_string($rows[0] - 1);
     defined $prev and renum_media($model, $model->get_iter_from_string($rows[0]), $prev);
+    $list_tv->get_selection->signal_emit('changed');
 }
 
 sub downwards_callback() {
@@ -402,6 +403,7 @@ sub downwards_callback() {
     my $iter = $model->get_iter_from_string($rows[0]);
     my $next = $model->iter_next($iter);
     defined $next and renum_media($model, $iter, $next);
+    $list_tv->get_selection->signal_emit('changed');
 }
 
 #- returns the name of the media for which edition failed, or undef on success
