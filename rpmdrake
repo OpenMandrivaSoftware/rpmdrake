@@ -196,9 +196,7 @@ sub run_treeview_dialog {
     $detail_list->set_headers_visible(0);
     $detail_list->set_rules_hint(1);
 
-    ($typical_width) = string_size($tree, translate("Graphical Environment") . "xmms-more-vis-plugins");
-    $typical_width > 600 and $typical_width = 600;  #- try to not being crazy with a too large value
-    $typical_width < 150 and $typical_width = 150;
+    compute_main_window_size($w);
 
     my $cursor_to_restore;
     $_->signal_connect(

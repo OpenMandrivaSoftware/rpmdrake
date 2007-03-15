@@ -89,9 +89,7 @@ sub run_treeview_dialog {
     $w = ugtk2->new(N("Software Update"));
     $::main_window = $w->{real_window};
 
-    ($typical_width) = string_size($w->{real_window}, translate("Graphical Environment") . "xmms-more-vis-plugins");
-    $typical_width > 600 and $typical_width = 600;  #- try to not being crazy with a too large value
-    $typical_width < 150 and $typical_width = 150;
+    compute_main_window_size($w);
 
     gtkadd(
 	$w->{window},

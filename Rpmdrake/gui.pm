@@ -39,7 +39,7 @@ use Rpmdrake::pkg;
 use Rpmdrake::icon;
 use Gtk2::Gdk::Keysyms;
 
-our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices closure_removal do_action get_info is_locale_available pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_nodes
+our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices closure_removal compute_main_window_size do_action get_info is_locale_available pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_nodes
             $clear_button %grp_columns %pkg_columns $dont_show_selections $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
 
 our $dont_show_selections = $> ? 1 : 0;
@@ -56,6 +56,14 @@ our %pkg_columns = (
     state_icon => 1,
     state => 2,
 );
+
+
+sub compute_main_window_size {
+    my ($w) = @_;
+    ($typical_width) = string_size($w->{real_window}, translate("Graphical Environment") . "xmms-more-vis-plugins");
+    $typical_width > 600 and $typical_width = 600;  #- try to not being crazy with a too large value
+    $typical_width < 150 and $typical_width = 150;
+}
 
 
 sub format_pkg_simplifiedinfo {
