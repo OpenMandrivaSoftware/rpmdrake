@@ -214,7 +214,7 @@ sub get_pkgs {
 	    if (@update_medias > 0) {
 		if (!$opts->{skip_updating_mu} && !$is_update_media_already_asked) {
               $is_update_media_already_asked = 1;
-		    $ask_confirmation and interactive_msg_with_banner(N("Confirmation"),
+		     $::options{'no-confirmation'} or interactive_msg_with_banner(N("Confirmation"),
 N("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
