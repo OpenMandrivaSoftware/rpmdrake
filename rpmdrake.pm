@@ -145,7 +145,10 @@ sub to_utf8 {
     wantarray() ? @_ : $_[0];
 }
 
-sub myexit { ugtk2::exit(undef, @_) }
+sub myexit {
+    writeconf();
+    ugtk2::exit(undef, @_);
+}
 
 $ENV{HOME} ||= '/root';
 
