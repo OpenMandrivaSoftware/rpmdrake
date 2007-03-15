@@ -220,7 +220,7 @@ sub run_treeview_dialog {
         while ($parent = $model->iter_parent($parent)) {
             $group = join('|', $model->get($parent, 0), $group);
         }
-        slow_func($tree->window, sub { $options->{add_nodes}->(@{$elems{$group}}) });
+        slow_func($::main_window->window, sub { $options->{add_nodes}->(@{$elems{$group}}) });
     });
 
     $options->{state}{splited} = 1;
