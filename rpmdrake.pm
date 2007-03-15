@@ -551,21 +551,21 @@ Is it ok to continue?");
      @transient_options
     );
     my @mirrors = eval { mirrors('/var/cache/urpmi', $options{want_base_distro}) };
-    my $msg = $@;
+    my $error = $@;
     remove_wait_msg($wait);
-    if ($msg) {
+    if ($error) {
 	interactive_msg(N("Error during download"),
 ($branded
 ? N("There was an error downloading the mirror list:
 
 %s
 The network, or the website, may be unavailable.
-Please try again later.", $msg)
+Please try again later.", $error)
 : N("There was an error downloading the mirror list:
 
 %s
 The network, or the Mandriva website, may be unavailable.
-Please try again later.", $msg)), %options
+Please try again later.", $error)), %options
 
 	);
 	return '';
