@@ -180,6 +180,7 @@ sub get_pkgs {
     my %update_descr;
     my @update_medias;
     my $w = $::main_window;
+    my $is_update_media_already_asked if 0;
 
     my $error_happened;
     my $fatal_handler = sub {
@@ -211,8 +212,9 @@ sub get_pkgs {
     if (member($::default_list_mode, qw(all_updates security bugfix normal))) {
 	unless ($::options{'no-media-update'}) {
 	    if (@update_medias > 0) {
-		if (!$opts->{skip_updating_mu}) {
-		    $::options{'no-confirmation'} or interactive_msg_with_banner(N("Confirmation"),
+		if (!$opts->{skip_updating_mu} && !$is_update_media_already_asked) {
+              $is_update_media_already_asked = 1;
+		    $ask_confirmation and interactive_msg_with_banner(N("Confirmation"),
 N("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
