@@ -551,9 +551,9 @@ Is it ok to continue?");
      @transient_options
     );
     my @mirrors = eval { mirrors('/var/cache/urpmi', $options{want_base_distro}) };
+    my $msg = $@;
     remove_wait_msg($wait);
-    if ($@) {
-	my $msg = $@;  #- seems that value is bitten before being printed by next func..
+    if ($msg) {
 	interactive_msg(N("Error during download"),
 ($branded
 ? N("There was an error downloading the mirror list:
