@@ -35,11 +35,11 @@ my $previous_main_window;
 
 sub init {
     my ($title, $initializing, %options) = @_;
-    $mainw = ugtk2->new($title, %options);
+    $mainw = ugtk2->new($title, %options, default_width => 600);
     $previous_main_window = $::main_window;
     $::main_window = $mainw->{real_window};
     $label = gtknew('Label', text => $initializing);
-    $progressbar = gtknew('ProgressBar', width => 300);
+    $progressbar = gtknew('ProgressBar');
     gtkadd($mainw->{window}, $vbox = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [ $label, $progressbar ]));
     $mainw->{rwindow}->set_position('center-on-parent');
     $mainw->sync;
