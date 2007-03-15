@@ -190,7 +190,7 @@ sub get_pkgs {
         myexit(-1) if 0; #FIXME
     };
 
-    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::w->{real_window});
+    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $_guard = before_leaving { Rpmdrake::gurpm::end() };
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
@@ -508,7 +508,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $_guard = before_leaving { urpm::removable::try_umounting_removables($urpm) };
 
-    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::w->{real_window});
+    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $canceled;
     my (@errors);
     my $something_installed;
@@ -789,7 +789,7 @@ sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
     return if !@toremove;
-    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::w->{real_window});
+    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
     my $_a = before_leaving { Rpmdrake::gurpm::end() };
 
     my @results;
