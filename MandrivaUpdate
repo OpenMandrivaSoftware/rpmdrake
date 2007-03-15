@@ -159,7 +159,7 @@ sub run_treeview_dialog {
                                              $info->scroll_to_iter($info->get_buffer->get_start_iter, 0, 0, 0, 0);
                                          });
 
-    $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
+    $w->{rwindow}->set_default_size(-1, 500) if !$::isEmbedded;
 
     $w->{rwindow}->show_all;
     $w->{rwindow}->set_sensitive(0);
