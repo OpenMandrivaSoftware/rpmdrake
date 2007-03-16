@@ -533,7 +533,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 			  split_length => $urpm->{options}{'split-length'} || 1,
 				  );
 
-        my $progress_nb;
+        my ($progress_nb, $transaction_progress_nb);
 
     my ($nok, @rpms_install, @rpms_upgrade, $verbose);
     my $transaction;
@@ -545,7 +545,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                 Rpmdrake::gurpm::label(@rpms_install ? N("Preparing packages installation...") : N("Preparing..."));
                 } elsif (defined $pkg) {
                     $something_installed = 1;
-                    Rpmdrake::gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$progress_nb, scalar(@{$transaction->{upgrade}})));
+                    Rpmdrake::gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$transaction_progress_nb, scalar(@{$transaction->{upgrade}}))
+                                             . "\n" .N("Total: %s/%s", ++$progress_nb, $install_count));
                 }
         } elsif ($subtype eq 'progress') {
             Rpmdrake::gurpm::progress($total ? $amount/$total : 1);
@@ -555,7 +556,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     foreach my $set (@{$state->{transaction} || []}) {
         my (@transaction_list, %transaction_sources);
         $transaction = $set;
-        $progress_nb = 0;
+        $transaction_progress_nb = 0;
         #- prepare transaction...
         urpm::install::prepare_transaction($urpm, $set, $list, \%sources, \@transaction_list, \%transaction_sources);
         #- first, filter out what is really needed to download for this small transaction.
