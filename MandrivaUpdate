@@ -150,6 +150,10 @@ sub run_treeview_dialog {
 
     $list->set_rules_hint(1);
     $list->set_headers_visible(0);
+    $list->get_column(0)->set_fixed_width(24);
+    $list->get_column(0)->set_sizing('fixed');
+    $list->get_column(1)->set_sizing('fixed');
+    $list->set_fixed_height_mode(1);
     $list->get_selection->signal_connect(changed => sub {
                                              my ($model, $iter) = $_[0]->get_selected;
                                              $model && $iter or return;

@@ -189,12 +189,17 @@ sub run_treeview_dialog {
 
     $detail_list_model = Gtk2::ListStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String");
     $detail_list = Gtk2::TreeView->new_with_model($detail_list_model);
-    $detail_list->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererPixbuf->new, 'pixbuf' => $pkg_columns{state_icon}));
+    $detail_list->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, my $rdr = Gtk2::CellRendererPixbuf->new, 'pixbuf' => $pkg_columns{state_icon}));
+    $rdr->set_fixed_size(42, 24);
+    $pixcolumn->set_fixed_width(48); # w/o this the pixbuf cells is empty
+    $pixcolumn->set_sizing('fixed');
     $pixcolumn->{is_pix} = 1;
-    $detail_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => $pkg_columns{text}));
+    $detail_list->append_column(my $col = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => $pkg_columns{text}));
+    $col->set_sizing('fixed');
     $detail_list_model->set_sort_column_id(0, 'ascending');
     $detail_list->set_headers_visible(0);
     $detail_list->set_rules_hint(1);
+    $detail_list->set_fixed_height_mode(1);
 
     compute_main_window_size($w);
 
@@ -220,7 +225,9 @@ sub run_treeview_dialog {
         while ($parent = $model->iter_parent($parent)) {
             $group = join('|', $model->get($parent, 0), $group);
         }
+        $detail_list->window->freeze_updates;
         slow_func($::main_window->window, sub { $options->{add_nodes}->(@{$elems{$group}}) });
+        $detail_list->window->thaw_updates;
     });
 
     $options->{state}{splited} = 1;
