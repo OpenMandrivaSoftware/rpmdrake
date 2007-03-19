@@ -201,8 +201,7 @@ sub set_node_state_tree {
             $node_state{$parent_str} ne $new_state and
               set_node_state_tree($parent, $new_state);
         }
-        $model->set($iter, $pkg_columns{state_icon} => $pix{$state});
-        $model->set($iter, $pkg_columns{state} => $state);
+        set_node_state_flat($iter, $state, $model)
         #$node_state{$iter_str} = $state;  #- cache for efficiency
     } else  {
     }
