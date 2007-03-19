@@ -171,7 +171,7 @@ sub node_state {
       ($urpm_obj->flag_installed ? ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove') : 'to_install')
         : ($urpm_obj->flag_installed ? 
              ($urpm_obj->flag_upgrade ? 'to_update' : 'installed')
-               : ($urpm_obj->flag_base ? '/usr/share/rpmdrake/icons/base.png' : 'uninstalled')) : 'XXX';
+               : ($urpm_obj->flag_base ? 'base' : 'uninstalled')) : 'XXX';
 }
 
 my ($common, $w, %wtree, %ptree, %pix, %node_state, %state_stats);
