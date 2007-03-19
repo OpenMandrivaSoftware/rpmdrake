@@ -637,7 +637,7 @@ sub toggle_nodes {
     }
 }
 
-sub do_action {
+sub do_action__real {
     my ($options, $callback_action, $o_info) = @_;
     require urpm::sys;
     if (!urpm::sys::check_fs_writable()) {
@@ -668,6 +668,16 @@ Do you really want to install all the selected packages?"), yesno => 1)
         $options->{rebuild_tree}->() if $options->{rebuild_tree};
         gtktext_insert($o_info, '') if $o_info;
     }
+}
+
+sub do_action {
+    my ($options, $callback_action, $o_info) = @_;
+    my $res = eval { do_action__real($options, $callback_action, $o_info) };
+    if (my $err = $@) {
+        interactive_msg(N("Fatal error"),
+                        N("A fatal error occurred: %s.", $err));
+    }
+    $res;
 }
 
 
