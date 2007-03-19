@@ -170,8 +170,8 @@ sub node_state {
     $_[0] ? $pkg->{selected} ?
       ($urpm_obj->flag_installed ? ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove') : 'to_install')
         : ($urpm_obj->flag_installed ? 
-             ($urpm_obj->flag_upgrade ? 'to_update' : 'installed')
-               : ($urpm_obj->flag_base ? 'base' : 'uninstalled')) : 'XXX';
+             ($urpm_obj->flag_upgrade ? 'to_update' : ($urpm_obj->flag_base ? 'base' : 'installed'))
+               : 'uninstalled') : 'XXX';
 }
 
 my ($common, $w, %wtree, %ptree, %pix, %node_state, %state_stats);
