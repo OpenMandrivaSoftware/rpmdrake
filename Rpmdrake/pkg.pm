@@ -781,7 +781,7 @@ you may now inspect some in order to take actions:"),
   return_with_error:
     Rpmdrake::gurpm::end();
     $w->set_sensitive(1);
-    return 1;
+    return !$something_installed;
 }
 
 
