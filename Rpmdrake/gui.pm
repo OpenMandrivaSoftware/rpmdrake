@@ -55,6 +55,7 @@ our %pkg_columns = (
     text => 0,
     state_icon => 1,
     state => 2,
+    selected => 3,
 );
 
 
@@ -183,6 +184,7 @@ sub set_node_state_flat {
     $model ||= $w->{tree_model};
     $model->set($iter, $pkg_columns{state_icon} => $pix{$state});
     $model->set($iter, $pkg_columns{state} => $state);
+    $model->set($iter, $pkg_columns{selected} => to_bool(member($state, qw(base installed to_install)))); #$pkg->{selected}));
 }
 
 sub set_node_state_tree {
@@ -387,13 +389,11 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	$model && $iter or return;
      $common->{display_info}($model->get($iter, $pkg_columns{text}));
  });
-    $w->{detail_list}->signal_connect(button_press_event => sub {  #- not too good, but CellRendererPixbuf does not have the needed signals :(
-	my ($path, $column) = $w->{detail_list}->get_path_at_pos($_[1]->x, $_[1]->y);
-	if ($path && $column && $column->{is_pix}) {
-	    my $iter = $w->{detail_list_model}->get_iter($path);
+    ($w->{detail_list}->get_column(0)->get_cell_renderers)[0]->signal_connect(toggled => sub {
+	    my ($cell, $path) = @_; #text_
+	    my $iter = $w->{detail_list_model}->get_iter_from_string($path);
 	    $fast_toggle->($iter) if $iter;
-	}
-        0;
+     1;
     });
     $w->{detail_list}->signal_connect(key_press_event => sub {
 	my $c = chr($_[1]->keyval & 0xff);
