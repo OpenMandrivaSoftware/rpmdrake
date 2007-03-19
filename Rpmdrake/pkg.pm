@@ -389,20 +389,21 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
         $update->();
 	$pkg->flag_upgrade or next;
         my $selected = 0;
+        my $name = urpm_name($pkg);
 
-	if (member(urpm_name($pkg), @requested)) {
+	if (member($name, @requested)) {
             #any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next;
             if ($::options{'pkg-sel'} || $::options{'pkg-nosel'}) {
-		my $n = urpm_name($pkg);
+		my $n = $name;
 		$pkg_sel{$n} || $pkg_nosel{$n} or next;
 		$pkg_sel{$n} and $selected = 1;
 	    } else {
              # selecting updates by default:
              $selected = 1 if $probe_only_for_updates;
 	    }
-	$updates{urpm_name($pkg)} = { selected => $selected, pkg => $pkg };
+	$updates{$name} = { selected => $selected, pkg => $pkg };
 	} else {
-	$installable_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg };
+	$installable_pkgs{$name} = { selected => $selected, pkg => $pkg };
      }
     }
     if ($::options{'pkg-sel'} && $::options{'pkg-nosel'}) {
