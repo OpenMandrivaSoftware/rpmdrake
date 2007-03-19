@@ -178,7 +178,6 @@ my ($common, $w, %wtree, %ptree, %pix, %node_state, %state_stats);
 
 sub set_node_state_flat {
     my ($iter, $state, $model) = @_;
-    print "STATE: $state\n";
     $state eq 'XXX' and return;
     $pix{$state} ||= gtkcreate_pixbuf($state);
     $model ||= $w->{tree_model};
