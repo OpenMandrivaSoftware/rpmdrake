@@ -53,7 +53,7 @@ warn_about_user_mode();
 open_db();
 
 sub refresh_packages_list {
-    my ($pkgs, $list, $info, $button) = @_;
+    my ($list, $info, $button) = @_;
     # select packages to update:
     my @requested = sort keys %$pkgs;
 
@@ -132,7 +132,7 @@ sub run_treeview_dialog {
 			    $update_button = Gtk2::Button->new(but_(N("Update"))),
 			    clicked => sub {
                                 do_action({ tree_mode => 'all_updates' }, $callback_action);
-                                refresh_packages_list($pkgs, $list, $info, $update_button);
+                                refresh_packages_list($list, $info, $update_button);
                                 pkgs_provider({}, $default_list_mode, pure_updates => 1); # default mode
                             },
 			),
@@ -167,7 +167,7 @@ sub run_treeview_dialog {
     $Rpmdrake::pkg::probe_only_for_updates = 1; # faster startup
     pkgs_provider({}, $default_list_mode, pure_updates => 1); # default mode
 
-    refresh_packages_list($pkgs, $list, $info, $update_button);
+    refresh_packages_list($list, $info, $update_button);
 
     my $cell = ($list->get_column(0)->get_cell_renderers)[0];
     $cell->signal_connect(toggled => sub {
