@@ -113,9 +113,7 @@ sub run_treeview_dialog {
                 ),
              resize1 => 1,
          ),
-              0, gtknew('Label', font => '2'),
-              0, Gtk2::HSeparator->new,
-              0, gtknew('Label', font => '2'),
+              0, gtkset_size_request(Gtk2::HSeparator->new, -1, 5),
 		    0, gtkpack_(
 			gtknew('HBox', spacing => 20),
 			0, gtksignal_connect(
