@@ -197,7 +197,6 @@ sub run_treeview_dialog {
     $rdr->set_fixed_size(42, 24);
     $pixcolumn->set_fixed_width(48); # w/o this the pixbuf cells is empty
     $pixcolumn->set_sizing('fixed');
-    $pixcolumn->{is_pix} = 1;
     $detail_list->append_column(my $col = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => $pkg_columns{text}));
     $col->set_sizing('fixed');
     $detail_list_model->set_sort_column_id(0, 'ascending');
