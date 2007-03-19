@@ -395,14 +395,6 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	    $fast_toggle->($iter) if $iter;
      1;
     });
-    $w->{detail_list}->signal_connect(key_press_event => sub {
-	my $c = chr($_[1]->keyval & 0xff);
-	if ($_[1]->keyval >= 0x100 ? $c eq "\r" || $c eq "\x8d" : $c eq ' ') {
-         my ($model, $iter) = $w->{detail_list}->get_selection->get_selected;
-	    $fast_toggle->($iter) if $model && $iter;
-	}
-	0;
-    });
     $common->{rebuild_tree}->();
     &$update_size;
     $common->{initial_selection} and toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, undef, @{$common->{initial_selection}});
