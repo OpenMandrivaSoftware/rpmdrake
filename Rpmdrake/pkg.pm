@@ -325,22 +325,23 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
     Rpmdrake::gurpm::label(N("Please wait, finding installed packages..."));
     Rpmdrake::gurpm::progress($level = 0.33);
     $reset_update->(0.66);
-    my %installed_pkgs;
+    my (@installed_pkgs, %all_pkgs);
     if (!$probe_only_for_updates) {
     $db->traverse(sub {
 	    my ($pkg) = @_;
 	    $update->();
 	    my $fullname = urpm_name($pkg);
 	    #- Extract summary and description since they'll be lost when the header is packed
-	    $installed_pkgs{$fullname} = {
+	    $all_pkgs{$fullname} = {
 		selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
 		summary => rpm_summary($pkg->summary),
 		description => rpm_description($pkg->description),
-	    } if !($installed_pkgs{$fullname} && $installed_pkgs{$fullname}{description});
+	    } if !($all_pkgs{$fullname} && $all_pkgs{$fullname}{description});
 	    if (my $name = $base{$fullname}) {
-		$installed_pkgs{$fullname}{base} = \$name;
+		$all_pkgs{$fullname}{base} = \$name;
 		$pkg->set_flag_base(1) if $$name == 1;
 	    }
+         push @installed_pkgs, $fullname;
 	    $pkg->pack_header; # needed in order to call methods on objects outside ->traverse
 	});
     my $group;
@@ -354,8 +355,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 
     #$urpm = urpm->new;
     $urpm->{state} = {};
-    my %installable_pkgs;
-    my %updates;
+    my (@installable_pkgs, @updates);
 
     Rpmdrake::gurpm::label(N("Please wait, finding available packages..."));
     Rpmdrake::gurpm::progress($level = 0.66);
@@ -401,22 +401,24 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
              # selecting updates by default:
              $selected = 1 if $probe_only_for_updates;
 	    }
-	$updates{$name} = { selected => $selected, pkg => $pkg };
+            push @updates, $name;
 	} else {
-	$installable_pkgs{$name} = { selected => $selected, pkg => $pkg };
+         push @installable_pkgs, $name;
      }
+        $all_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg };
     }
     if ($::options{'pkg-sel'} && $::options{'pkg-nosel'}) {
         push @{$::options{'pkg-nosel'}}, @{$::options{'pkg-sel'}};
         delete $::options{'pkg-sel'};
     }
 
-    $_->{pkg}->set_flag_installed foreach values %installed_pkgs;
+    $all_pkgs{$_}{pkg}->set_flag_installed foreach @installed_pkgs;
 
     +{ urpm => $urpm,
-       installed => \%installed_pkgs,
-       installable => \%installable_pkgs,
-       updates => \%updates,
+       all_pkgs => \%all_pkgs,
+       installed => \@installed_pkgs,
+       installable => \@installable_pkgs,
+       updates => \@updates,
        update_descr => \%update_descr,
    };
 }

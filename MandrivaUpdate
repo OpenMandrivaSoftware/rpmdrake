@@ -55,7 +55,7 @@ open_db();
 sub refresh_packages_list {
     my ($list, $info, $button) = @_;
     # select packages to update:
-    my @requested = sort keys %$pkgs;
+    my @requested = sort @filtered_pkgs;
 
     # don't select kernel*-latest by default and the kernels they require:
     foreach my $name (@requested) {

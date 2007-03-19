@@ -40,11 +40,11 @@ use Rpmdrake::icon;
 use Gtk2::Gdk::Keysyms;
 
 our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices closure_removal compute_main_window_size do_action get_info is_locale_available pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_nodes
-            $clear_button %grp_columns %pkg_columns $dont_show_selections $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
+            $clear_button %grp_columns %pkg_columns $dont_show_selections @filtered_pkgs $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
 
 our $dont_show_selections = $> ? 1 : 0;
 
-our ($descriptions, %filter_methods, $force_displaying_group, $force_rebuild, @initial_selection, $pkgs, $size_free, $size_selected, $urpm);
+our ($descriptions, @filtered_pkgs, %filter_methods, $force_displaying_group, $force_rebuild, @initial_selection, $pkgs, $size_free, $size_selected, $urpm);
 
 our %grp_columns = (
     label => 0,
@@ -428,24 +428,22 @@ sub pkgs_provider {
     return if !$mode;
     my $h = &get_pkgs($urpm, $options); # was given (1, @_) for updates
     ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
+    $pkgs = $h->{all_pkgs};
     %filter_methods = (
-        all => sub { $pkgs = { map { %{$h->{$_}} } qw(installed installable updates) } },
-        installed => sub { $pkgs = $h->{installed} },
-        non_installed => sub { $pkgs = $h->{installable} },
+        all => sub { @filtered_pkgs = map { @$_} @$h{qw(installed installable updates)} },
+        installed => sub { @filtered_pkgs = @{$h->{installed}} },
+        non_installed => sub { @filtered_pkgs = @{$h->{installable}} },
         all_updates => sub {
-            my @pkgs = $options{pure_updates} ? () : (grep { my $p = $h->{installable}{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } keys %{$h->{installable}});
-            $pkgs = {
-                (map { $_ => $h->{updates}{$_} } keys %{$h->{updates}}),
-                (map { $_ => $h->{installable}{$_} } @pkgs)
-            };
+            my @pkgs = $options{pure_updates} ? () : (grep { my $p = $pkgs->{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } @{$h->{installable}});
+            @filtered_pkgs = @{$h->{updates}}, @pkgs;
         },
     );
     foreach my $importance (qw(bugfix security normal)) {
         $filter_methods{$importance} = sub {
-            $pkgs = $h->{updates};
-            $pkgs = { map { $_ => $pkgs->{$_} } grep { 
+            @filtered_pkgs = $h->{updates};
+            @filtered_pkgs = { map { $_ => @filtered_pkgs->{$_} } grep { 
                 my ($name, $_version) = split_fullname($_);
-                $descriptions->{$name}{importance} eq $importance } keys %$pkgs };
+                $descriptions->{$name}{importance} eq $importance } @filtered_pkgs };
         };
     }
     $filter_methods{mandrake_choices} = $filter_methods{non_installed};
@@ -701,7 +699,7 @@ sub build_tree {
             push @elems, [ $pkg, $_ ] foreach @{$compssUsers->{$name}};
         }
     } else {
-        my @keys = keys %$pkgs;
+        my @keys = @filtered_pkgs;
         if (member($mode, qw(all_updates security bugfix normal))) {
             @keys = grep {
                 my ($name) = split_fullname($_);
