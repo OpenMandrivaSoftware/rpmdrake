@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-07 15:42+0100\n"
-"PO-Revision-Date: 2007-03-07 14:24+0200\n"
+"POT-Creation-Date: 2007-03-16 14:24+0100\n"
+"PO-Revision-Date: 2007-03-20 17:34+0200\n"
 "Last-Translator: Marek Laane <bald@starman.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,9 +24,9 @@ msgid "Software Update"
 msgstr "Tarkvara uuendamine"
 
 #: ../MandrivaUpdate:95
-#, fuzzy, c-format
-msgid "Here is the list of software packages updates"
-msgstr "Tarkvara uuendamine"
+#, c-format
+msgid "Here is the list of software package updates"
+msgstr "See on tarkvara uuenduste nimekiri"
 
 #: ../MandrivaUpdate:118 ../Rpmdrake/edit_urpm_sources.pm:1062 ../rpmdrake:446
 #, c-format
@@ -647,7 +647,7 @@ msgstr "Kirjeldus puudub"
 #: ../Rpmdrake/gui.pm:86
 #, c-format
 msgid "Details:"
-msgstr ""
+msgstr "Üksikasjad:"
 
 #: ../Rpmdrake/gui.pm:89 ../Rpmdrake/gui.pm:138
 #, c-format
@@ -1695,12 +1695,12 @@ msgstr ""
 #: ../Rpmdrake/init.pm:158
 #, c-format
 msgid "The software installation tool can set up media sources."
-msgstr "Tarkvara paigaldamise tööriistaga saab seadistada allikandmekandjaid."
+msgstr "Tarkvara paigaldamise tööriistaga saab seadistada tarkvara asukohti."
 
 #: ../Rpmdrake/init.pm:159
 #, c-format
 msgid "Do you want to add media sources now?"
-msgstr "Kas lisada allikandmekandjad kohe?"
+msgstr "Kas lisada andmekandjate asukohad kohe?"
 
 #: ../Rpmdrake/pkg.pm:187
 #, c-format
@@ -1756,10 +1756,10 @@ msgid ""
 "\n"
 "Then, restart %s."
 msgstr ""
-"Vähemalt üks uuenduste allikas peab olema seadistatud,\n"
+"Vähemalt üks uuenduste allikas on juba seadistatud,\n"
 "kuid praegu on kõik keelatud.\n"
 "Teil tuleks käivitada tarkvara allikate haldur,\n"
-"et vähemalt üks lubada (klõpsake selleks veerul 'Kas lubada?').\n"
+"et vähemalt üks lubada (klõpsake selleks veerul 'Lubatud').\n"
 "\n"
 "Seejärel käivitage %s uuesti."
 
@@ -1903,7 +1903,12 @@ msgstr "Valmistumine..."
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Paketi '%s' paigaldamine (%s/%s)..."
 
-#: ../Rpmdrake/pkg.pm:567 ../Rpmdrake/pkg.pm:572
+#: ../Rpmdrake/pkg.pm:549
+#, c-format
+msgid "Total: %s/%s"
+msgstr "Kokku: %s/%s"
+
+#: ../Rpmdrake/pkg.pm:570 ../Rpmdrake/pkg.pm:575
 #, c-format
 msgid "Downloading package `%s'..."
 msgstr "Paketi '%s' allalaadimine..."
