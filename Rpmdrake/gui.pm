@@ -440,10 +440,9 @@ sub pkgs_provider {
     );
     foreach my $importance (qw(bugfix security normal)) {
         $filter_methods{$importance} = sub {
-            @filtered_pkgs = $h->{updates};
-            @filtered_pkgs = { map { $_ => @filtered_pkgs->{$_} } grep { 
+            @filtered_pkgs = grep { 
                 my ($name, $_version) = split_fullname($_);
-                $descriptions->{$name}{importance} eq $importance } @filtered_pkgs };
+                $descriptions->{$name}{importance} eq $importance } @{$h->{updates}};
         };
     }
     $filter_methods{mandrake_choices} = $filter_methods{non_installed};
