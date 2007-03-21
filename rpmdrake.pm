@@ -150,6 +150,7 @@ sub myexit {
     ugtk2::exit(undef, @_);
 }
 
+$ENV{HOME} = '/root' if $> == 0;
 $ENV{HOME} ||= '/root';
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
