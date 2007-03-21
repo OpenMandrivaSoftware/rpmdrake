@@ -150,8 +150,8 @@ sub myexit {
     ugtk2::exit(undef, @_);
 }
 
-$ENV{HOME} = '/root' if $> == 0;
-$ENV{HOME} ||= '/root';
+my ($root) = grep { $_->[2] == 0 } list_passwd();
+$ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
 our ($already_splashed, $changelog_first_config, $max_info_in_descr, $tree_flat, $tree_mode);
