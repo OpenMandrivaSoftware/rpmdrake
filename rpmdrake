@@ -153,6 +153,8 @@ sub do_search($$$$$$$) {
     }
 }
 
+$w = ugtk2->new(N("Software Management"));
+$w->{rwindow}->show_all if $::isEmbedded;
 
 sub run_treeview_dialog {
     my ($callback_action) = @_;
@@ -160,7 +162,6 @@ sub run_treeview_dialog {
     my ($options, $compssUsers, $tree, $tree_model, $detail_list, $detail_list_model, %elems);
     (undef, $size_free) = MDK::Common::System::df('/usr');
 
-    $w = ugtk2->new(N("Software Management"));
     $::main_window = $w->{real_window};
 
     $options = {
