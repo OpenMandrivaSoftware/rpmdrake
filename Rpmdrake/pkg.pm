@@ -424,6 +424,28 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 }
 
 
+sub perform_parallel_install {
+    my ($urpm, $group, $w, $statusbar_msg_id) = @_;
+    my $pkgs = join(' ', map { if_($_->flag_requested, urpm_name($_)) } @{$urpm->{depslist}});
+    my @error_msgs;
+    system("urpmi -v --X --parallel $group $pkgs");
+    if ($? == 0) {
+        $statusbar_msg_id = statusbar_msg(
+            #N("Everything installed successfully"),
+            N("All requested packages were installed successfully."),
+        );
+    } else {
+        interactive_msg(
+            N("Problem during installation"),
+            N("There was a problem during the installation:\n\n%s", join("\n", @error_msgs)),
+            scroll => 1,
+        );
+    }
+    open_db('force_sync');
+    $w->set_sensitive(1);
+    return 0;
+}
+
 sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($urpm, $pkgs) = @_;
 
@@ -439,25 +461,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     my $group;
-    if ($::options{parallel} && (($group) = @{$::options{parallel}})) {
-        my $pkgs = join(' ', map { if_($_->flag_requested, urpm_name($_)) } @{$urpm->{depslist}});
-        system("urpmi -v --X --parallel $group $pkgs");
-        if ($? == 0) {
-            $statusbar_msg_id = statusbar_msg(
-		#N("Everything installed successfully"),
-		N("All requested packages were installed successfully."),
-	    );
-        } else {
-            interactive_msg(
-		N("Problem during installation"),
-		N("There was a problem during the installation:\n\n%s", join("\n", @error_msgs)),
-		scroll => 1,
-	    );
-        }
-        open_db('force_sync');
-        $w->set_sensitive(1);
-        return 0;
-    }
+    return perform_parallel_install($urpm, $group, \$statusbar_msg_id) if $::options{parallel} && (($group) = @{$::options{parallel}});
 
     my $lock = urpm::lock::urpmi_db($urpm);
     my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
