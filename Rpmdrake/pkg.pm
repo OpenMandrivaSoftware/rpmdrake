@@ -462,6 +462,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $w = $::main_window;
     $w->set_sensitive(0);
+    my $_restore_sensitive = before_leaving { warn" RESTORE\n";$w->set_sensitive(1) };
+
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     my $group;
@@ -513,7 +515,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                           : $to_install),
                      scroll => 1,
                      yesno => 1) or do {
-                         $w->set_sensitive(1);
                          return 1;
                      };
 
@@ -733,7 +734,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		    join("\n\n", @errors, @error_msgs)),
 		if_(@errors + @error_msgs > 1, scroll => 1),
 	    );
-            $w->set_sensitive(1);
             return !$something_installed;
         }
 
@@ -780,7 +780,6 @@ you may now inspect some in order to take actions:"),
                          N("Unrecoverable error: no package found for installation, sorry."));
     }
 
-    $w->set_sensitive(1);
     statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
     return !($something_installed || scalar(@to_remove));
 
@@ -790,7 +789,6 @@ you may now inspect some in order to take actions:"),
                      N("There was a problem during the installation:\n\n%s", $fatal_msg));
   return_with_error:
     Rpmdrake::gurpm::end();
-    $w->set_sensitive(1);
     return !$something_installed;
 }
 
