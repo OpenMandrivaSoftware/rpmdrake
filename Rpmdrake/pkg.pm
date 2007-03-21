@@ -506,7 +506,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                      scroll => 1,
                      yesno => 1) or do {
                          $w->set_sensitive(1);
-                         return 'canceled';
+                         return 1;
                      };
 
     my $_guard = before_leaving { urpm::removable::try_umounting_removables($urpm) };
