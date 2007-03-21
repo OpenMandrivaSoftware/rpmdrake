@@ -496,9 +496,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     @{$urpm->{ask_remove}} = sort urpm::select::removed_packages($urpm, $urpm->{state});
     my @to_remove = grep { $_ } map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
 
-    # select packages to uninstall for !update mode:
-    perform_removal($urpm, { map { my $p = $pkgs->{$_}; $p->{selected} && $p->{pkg}->flag_installed ? ($_ => $p) : () } keys %$pkgs }) if !$probe_only_for_updates;
-
     my $r = join "\n", urpm::select::translate_why_removed($urpm, $urpm->{state}, @to_remove);
 
     my $install_count = int(@pkgs);
@@ -519,6 +516,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                      };
 
     my $_guard = before_leaving { urpm::removable::try_umounting_removables($urpm) };
+
+    # select packages to uninstall for !update mode:
+    perform_removal($urpm, { map { my $p = $pkgs->{$_}; $p->{selected} && $p->{pkg}->flag_installed ? ($_ => $p) : () } keys %$pkgs }) if !$probe_only_for_updates;
 
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $canceled;
