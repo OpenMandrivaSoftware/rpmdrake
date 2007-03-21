@@ -462,7 +462,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $w = $::main_window;
     $w->set_sensitive(0);
-    my $_restore_sensitive = before_leaving { warn" RESTORE\n";$w->set_sensitive(1) };
+    my $_restore_sensitive = before_leaving { $w->set_sensitive(1) };
 
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
