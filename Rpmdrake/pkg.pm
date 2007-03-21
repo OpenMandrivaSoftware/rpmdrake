@@ -426,11 +426,15 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 
 sub perform_parallel_install {
     my ($urpm, $group, $w, $statusbar_msg_id) = @_;
-    my $pkgs = join(' ', map { if_($_->flag_requested, urpm_name($_)) } @{$urpm->{depslist}});
-    my @error_msgs;
-    system("urpmi -v --X --parallel $group $pkgs");
-    if ($? == 0) {
-        $statusbar_msg_id = statusbar_msg(
+    my @pkgs = map { if_($_->flag_requested, urpm_name($_)) } @{$urpm->{depslist}};
+    my $temp = chomp_(`mktemp /tmp/rpmdrake.XXXXXXXX`);
+    -e $temp or die N("Could not create temporary directory '%s'", $temp);
+
+    my $res = !run_program::get_stderr('urpmi', '2>', $temp, '-v', '--X', '--parallel', $group, @pkgs);
+    my @error_msgs = cat_($temp);
+
+    if ($res) {
+        $$statusbar_msg_id = statusbar_msg(
             #N("Everything installed successfully"),
             N("All requested packages were installed successfully."),
         );
