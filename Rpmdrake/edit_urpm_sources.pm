@@ -72,6 +72,7 @@ sub remove_row {
 sub easy_add_callback() {
     #- cooker and community don't have update sources
     $urpm ||= urpm->new; # when called on early init by rpmdrake
+    my $arch = arch();
     my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
 N("This step enables you to add sources from a Mandriva Linux web or FTP mirror.
@@ -82,6 +83,11 @@ of what comes on the standard installation CDs), or sources that provide the
 official updates for your distribution. (You can add both, but you'll have
 to do this in two steps.)"),
 	 transient => $::main_window,
+     if_($arch eq 'x86_64', widget => gtknew('HBox', children => [
+         0, gtknew('Label', text => "Architecture: "),
+         1, gtknew('ComboBox', text_ref => \$arch, list => [ arch(), 'i586' ]),
+     ]),
+     ),
 	yesno => 1, text => { yes => N("Distribution sources"), no => N("Official updates") },
     ) : 1;
     my ($mirror) = choose_mirror(message =>
@@ -94,6 +100,7 @@ Please check that your network is currently running.
 Is it ok to continue?", $rpmdrake::mandrake_release),
 	want_base_distro => $want_base_distro,
      transient => $::main_window,
+     arch => $arch,
     ) or return 0;
     ref $mirror or return;
     my $m = $mirror->{url};
