@@ -474,7 +474,7 @@ sub callback_choices {
     my @choices = interactive_list_(N("Please choose"), (scalar(@$choices) == 1 ? 
     N("The following package is needed:") : N("One of the following packages is needed:")),
                                     [ map { urpm_name($_) } @$choices ], $callback);
-    $choices->[$choices[0]];
+    $choices[0] ? $choices->[$choices[0]] : undef;
 }
 
 sub toggle_nodes {
