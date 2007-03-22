@@ -301,6 +301,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	}
 	%ptree = %wtree = ();
     };
+    $common->{clear_all_caches} = $clear_all_caches;
     $common->{delete_all} = sub {
 	$clear_all_caches->();
 	$w->{detail_list_model}->clear;
