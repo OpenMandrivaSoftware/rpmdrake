@@ -214,6 +214,7 @@ sub interactive_msg {
 		    )
 		) : gtkpack(create_hbox(), Gtk2::WrappedLabel->new($contents))
 	    ),
+         if_($options{widget}, 0, $options{widget}),
 	    0,
 	    gtkpack(
 		create_hbox(),
