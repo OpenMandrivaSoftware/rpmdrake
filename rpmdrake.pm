@@ -503,7 +503,7 @@ sub compat_arch_for_updates($) {
 }
 
 sub mirrors {
-    my ($cachedir, $want_base_distro) = @_;
+    my ($cachedir, $want_base_distro, $o_arch) = @_;
     $cachedir ||= '/root';
     use mirror;
     mirror::register_downloader(sub {
@@ -516,7 +516,8 @@ sub mirrors {
                                     $res and do { c::set_tagged_utf8($res); die $res };
                                     return cat_($file);
                                 });
-    my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')), $want_base_distro ? 'distrib' : 'updates') || [] };
+    my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')),
+                                  ($want_base_distro ? 'distrib' : 'updates'), $o_arch) || [] };
     require timezone;
     my $tz = ${timezone::read()}{timezone};
     foreach my $mirror (@mirrors) {
@@ -552,7 +553,7 @@ Is it ok to continue?");
 	: N("Please wait, downloading mirror addresses from the Mandriva website.")),
      @transient_options
     );
-    my @mirrors = eval { mirrors('/var/cache/urpmi', $options{want_base_distro}) };
+    my @mirrors = eval { mirrors('/var/cache/urpmi', $options{want_base_distro}, $options{arch}) };
     my $error = $@;
     remove_wait_msg($wait);
     if ($error) {
