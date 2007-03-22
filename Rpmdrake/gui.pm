@@ -273,10 +273,10 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
          if (is_a_package($leaf)) {
              $iter = $w->{detail_list_model}->append_set([ $pkg_columns{text} => $leaf ]);
              set_node_state($iter, $state, $w->{detail_list_model});
+             $ptree{$leaf} = [ $iter ];
          } else {
              $iter = $w->{tree_model}->append_set(add_parent($root, $state), [ $grp_columns{label} => $leaf ]);
          }
-	    push @{$ptree{$leaf}}, $iter;
 	} else {
 	    my $parent = add_parent($root, $state);
 	    #- hackery for partial displaying of trees, used in rpmdrake:
