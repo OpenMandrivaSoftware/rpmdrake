@@ -236,7 +236,7 @@ sub add_parent {
     $wtree{$s};
 }
 
-# ask_browse_tree_given_widgets will run gtk+ loop. its main parameter "common" is a hash containing:
+# ask_browse_tree_given_widgets_for_rpmdrake will run gtk+ loop. its main parameter "common" is a hash containing:
 # - a "widgets" subhash which holds:
 #   o a "w" reference on a ugtk2 object
 #   o "tree" & "info" references a TreeView
