@@ -203,7 +203,7 @@ sub set_node_state_tree {
             $node_state{$parent_str} ne $new_state and
               set_node_state_tree($parent, $new_state);
         }
-        set_node_state_flat($iter, $state, $model)
+        set_node_state_flat($iter, $state, $model);
         #$node_state{$iter_str} = $state;  #- cache for efficiency
     } else  {
     }
@@ -390,7 +390,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
      $common->{display_info}($model->get($iter, $pkg_columns{text}));
  });
     ($w->{detail_list}->get_column(0)->get_cell_renderers)[0]->signal_connect(toggled => sub {
-	    my ($cell, $path) = @_; #text_
+	    my ($_cell, $path) = @_; #text_
 	    my $iter = $w->{detail_list_model}->get_iter_from_string($path);
 	    $fast_toggle->($iter) if $iter;
      1;
