@@ -90,6 +90,9 @@ to do this in two steps.)"),
      ),
 	yesno => 1, text => { yes => N("Distribution sources"), no => N("Official updates") },
     ) : 1;
+    my $distro = $rpmdrake::mandrake_release;
+    my $real_arch = arch();
+    $distro =~ s/$real_arch/$arch/;
     my ($mirror) = choose_mirror(message =>
 N("This will attempt to install all official sources corresponding to your
 distribution (%s).
@@ -97,7 +100,7 @@ distribution (%s).
 I need to contact the Mandriva website to get the mirror list.
 Please check that your network is currently running.
 
-Is it ok to continue?", $rpmdrake::mandrake_release),
+Is it ok to continue?", $distro),
 	want_base_distro => $want_base_distro,
      transient => $::main_window,
      arch => $arch,
