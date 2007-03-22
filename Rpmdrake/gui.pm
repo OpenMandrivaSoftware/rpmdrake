@@ -668,7 +668,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
     }
     if (!$callback_action->($urpm, $pkgs)) {
         $force_rebuild = 1;
-        pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode});
+        pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode}, if_($Rpmdrake::pkg::probe_only_for_updates, pure_updates => 1));
         reset_search();
         $size_selected = 0;
         (undef, $size_free) = MDK::Common::System::df('/usr');
