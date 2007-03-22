@@ -458,7 +458,7 @@ sub closure_removal {
 sub is_locale_available {
     any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
     my $found;
-    $db->traverse_tag('name', [ $_ ], sub { $found ||= 1 });
+    open_db()->traverse_tag('name', [ $_ ], sub { $found ||= 1 });
     return $found;
 }
 
@@ -574,7 +574,7 @@ sub toggle_nodes {
                 $widget,
                 sub {
                     @requested = $urpm->resolve_requested(
-                        $db, $urpm->{state},
+                        open_db(), $urpm->{state},
                         { map { $pkgs->{$_}{pkg}->id => 1 } @nodes },
                         callback_choices => \&callback_choices,
                     );
@@ -585,7 +585,7 @@ sub toggle_nodes {
                              N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
                              \@nodes, \@nodes_with_deps)) {
                 @nodes_with_deps = ();
-                $urpm->disable_selected($db, $urpm->{state}, @requested);
+                $urpm->disable_selected(open_db(), $urpm->{state}, @requested);
                 goto packages_selection_ok;
             }
 
@@ -615,14 +615,14 @@ sub toggle_nodes {
         } else {
             my @unrequested;
             slow_func($widget,
-                      sub { @unrequested = $urpm->disable_selected($db, $urpm->{state},
+                      sub { @unrequested = $urpm->disable_selected(open_db(), $urpm->{state},
                                                                    map { $pkgs->{$_}{pkg} } @nodes) });
             @nodes_with_deps = map { urpm_name($_) } @unrequested;
             if (!$deps_msg->(N("Some packages need to be removed"),
                              N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
                              \@nodes, \@nodes_with_deps)) {
                 @nodes_with_deps = ();
-                $urpm->resolve_requested($db, $urpm->{state}, { map { $_->id => 1 } @unrequested });
+                $urpm->resolve_requested(open_db(), $urpm->{state}, { map { $_->id => 1 } @unrequested });
                 goto packages_unselection_ok;
             }
           packages_unselection_ok:

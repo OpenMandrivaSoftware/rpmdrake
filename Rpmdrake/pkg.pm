@@ -44,14 +44,13 @@ use urpm::select;
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs open_db parse_compssUsers_flat perform_installation perform_removal run_rpm $db);
+our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs open_db parse_compssUsers_flat perform_installation perform_removal run_rpm);
 
 use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
 use Gtk2::Pango;
 use Gtk2::Gdk::Keysyms;
 
-our $db;
 
 sub parse_compssUsers_flat() {
     my (%compssUsers, $category);
@@ -153,9 +152,9 @@ sub open_db {
             $done = 1;
             print "done.\n";
         }
-        $db = URPM::DB::open($dblocation) or die "Couldn't open RPM DB";
+        URPM::DB::open($dblocation) or die "Couldn't open RPM DB";
     } else {
-        $db = URPM::DB::open or die "Couldn't open RPM DB";
+        URPM::DB::open or die "Couldn't open RPM DB";
     }
 }
 
@@ -163,7 +162,7 @@ sub open_db {
 sub find_installed_version {
     my ($p) = @_;
     my @version;
-    $db->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version . '-' . $_[0]->release });
+    open_db()->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version . '-' . $_[0]->release });
     @version ? join(',', sort @version) : N("(none)");
 }
 
@@ -303,7 +302,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 
     my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
     my (%base, %basepackages);
-    my $db = $db;
+    my $db = open_db();
     my $sig_handler = sub { undef $db; exit 3 };
     local $SIG{INT} = $sig_handler;
     local $SIG{QUIT} = $sig_handler;
@@ -475,7 +474,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     # select packages to install for !update mode:
     if (!$probe_only_for_updates) {
-        $urpm->resolve_requested($db, $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} }, callback_choices => \&Rpmdrake::gui::callback_choices);
+        $urpm->resolve_requested(open_db(), $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} }, callback_choices => \&Rpmdrake::gui::callback_choices);
     }
 
     my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 

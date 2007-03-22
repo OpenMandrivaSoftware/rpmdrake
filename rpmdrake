@@ -71,7 +71,7 @@ sub do_search($$$$$$$) {
 		    N("Please wait, searching..."),
 		    $w->{real_window},
 		    sub {
-			$db->traverse(sub {
+			open_db()->traverse(sub {
 			    push @search_results, map { if_($_ =~ $entry_rx, urpm_name($_[0])) } $_[0]->files;
 			});
 			@search_results = grep { exists $pkgs->{$_} } uniq(@search_results);
@@ -361,7 +361,7 @@ sub run_treeview_dialog {
 	[ N("/_File") . N("/_Reset the selection"), undef, sub {
 	    if ($MODE ne 'remove') {
 		$urpm->disable_selected(
-		    $db, $urpm->{state},
+		    open_db(), $urpm->{state},
 		    map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs,
 		);
 	    }
