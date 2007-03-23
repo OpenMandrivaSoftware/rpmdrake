@@ -280,8 +280,6 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 
     # find out installed packages:
 
-    #$urpm = urpm->new;
-    #$urpm->read_config;
     my $level = 0.05;
     my $total = @{$urpm->{depslist}};
     Rpmdrake::gurpm::label(N("Please wait, listing base packages..."));
@@ -352,7 +350,6 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 
     # find out availlable packages:
 
-    #$urpm = urpm->new;
     $urpm->{state} = {};
     my (@installable_pkgs, @updates);
 
@@ -369,9 +366,17 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	$state,
 	$requested,
     );
-    my @requested = $probe_only_for_updates ?
-      sort map { urpm_name($_) } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices)
-        : sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
+
+    # list of updates (including those matching /etc/urpmi/skip.list):
+    my @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
+    # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
+    my @requested_strict = $probe_only_for_updates ?
+      sort map {
+          urpm_name($_);
+      } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices)
+        : ();
+    # list updates including skiped ones + their deps in MandrivaUpdate:
+    push @requested, difference2(\@requested_strict, \@requested) if $probe_only_for_updates;
 
     if (!$probe_only_for_updates) {
         $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
@@ -397,8 +402,8 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		$pkg_sel{$n} || $pkg_nosel{$n} or next;
 		$pkg_sel{$n} and $selected = 1;
 	    } else {
-             # selecting updates by default:
-             $selected = 1 if $probe_only_for_updates;
+             # selecting updates by default but skipped ones (MandrivaUpdate only):
+             $selected = member($name, @requested_strict);
 	    }
             push @updates, $name;
 	} else {
@@ -470,12 +475,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $lock = urpm::lock::urpmi_db($urpm);
     my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
-    my $state = $urpm->{rpmdrake_state};
+    my $state = $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 
     # select packages to install for !update mode:
-    if (!$probe_only_for_updates) {
         $urpm->resolve_requested(open_db(), $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} }, callback_choices => \&Rpmdrake::gui::callback_choices);
-    }
 
     my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 
 	$state->{selected},
