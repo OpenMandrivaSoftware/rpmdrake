@@ -477,8 +477,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
     my $state = $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 
-    # select packages to install for !update mode:
-        $urpm->resolve_requested(open_db(), $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} }, callback_choices => \&Rpmdrake::gui::callback_choices);
+    # select packages to install:
+    $urpm->resolve_requested(open_db(), $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} },
+                             callback_choices => \&Rpmdrake::gui::callback_choices);
 
     my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 
 	$state->{selected},
