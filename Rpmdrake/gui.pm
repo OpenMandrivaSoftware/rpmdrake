@@ -478,16 +478,7 @@ sub callback_choices {
     $choices[0] ? $choices->[$choices[0]] : undef;
 }
 
-sub toggle_nodes {
-    my ($widget, $model, $set_state, $old_state, @nodes) = @_;
-    @nodes = grep { exists $pkgs->{$_} } @nodes
-      or return;
-    #- avoid selecting too many packages at once
-    return if !$dont_show_selections && @nodes > 2000;
-    my $new_state = !$pkgs->{$nodes[0]}{selected};
-
-    my @nodes_with_deps;
-    my $deps_msg = sub {
+sub deps_msg {
         return 1 if $dont_show_selections;
         my ($title, $msg, $nodes, $nodes_with_deps) = @_;
         my @deps = sort { $a cmp $b } difference2($nodes_with_deps, $nodes);
@@ -528,14 +519,24 @@ sub toggle_nodes {
         } else {
             return $results eq N("Ok");
         }
-    };                          # deps_msg
+}
+
+sub toggle_nodes {
+    my ($widget, $model, $set_state, $old_state, @nodes) = @_;
+    @nodes = grep { exists $pkgs->{$_} } @nodes
+      or return;
+    #- avoid selecting too many packages at once
+    return if !$dont_show_selections && @nodes > 2000;
+    my $new_state = !$pkgs->{$nodes[0]}{selected};
+
+    my @nodes_with_deps;
 
     if (member($old_state, qw(to_remove installed))) { # remove pacckages
         if ($new_state) {
             my @remove;
             slow_func($widget, sub { @remove = closure_removal(@nodes) });
             @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } @remove;
-            $deps_msg->(N("Some additional packages need to be removed"),
+            deps_msg(N("Some additional packages need to be removed"),
                         formatAlaTeX(N("Because of their dependencies, the following package(s) also need to be\nremoved:")) . "\n\n",
                         \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
             my @impossible_to_remove;
@@ -551,7 +552,7 @@ sub toggle_nodes {
                       sub { @nodes_with_deps = grep { intersection(\@nodes, [ closure_removal($_) ]) }
                               grep { $pkgs->{$_}{selected} && !member($_, @nodes) } keys %$pkgs });
             push @nodes_with_deps, @nodes;
-            $deps_msg->(N("Some packages can't be removed"),
+            deps_msg(N("Some packages can't be removed"),
                         N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
                         \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
             $pkgs->{$_}{base} && ${$pkgs->{$_}{base}}++ foreach @nodes_with_deps;
@@ -581,7 +582,7 @@ sub toggle_nodes {
                 },
             );
             @nodes_with_deps = map { urpm_name($_) } @requested;
-            if (!$deps_msg->(N("Additional packages needed"),
+            if (!deps_msg(N("Additional packages needed"),
                              N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
                              \@nodes, \@nodes_with_deps)) {
                 @nodes_with_deps = ();
@@ -618,7 +619,7 @@ sub toggle_nodes {
                       sub { @unrequested = $urpm->disable_selected(open_db(), $urpm->{state},
                                                                    map { $pkgs->{$_}{pkg} } @nodes) });
             @nodes_with_deps = map { urpm_name($_) } @unrequested;
-            if (!$deps_msg->(N("Some packages need to be removed"),
+            if (!deps_msg(N("Some packages need to be removed"),
                              N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
                              \@nodes, \@nodes_with_deps)) {
                 @nodes_with_deps = ();
