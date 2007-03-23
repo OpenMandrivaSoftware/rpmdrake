@@ -46,7 +46,6 @@ use curl_download;
 our @ISA = qw(Exporter);
 our $VERSION = '2.27';
 our @EXPORT = qw(
-    $automatically_update_kernels
     $changelog_first_config
     $mandrakeupdate_wanted_categories
     $already_splashed
@@ -155,7 +154,7 @@ $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
 our ($already_splashed, $changelog_first_config, $max_info_in_descr, $tree_flat, $tree_mode);
-our ($automatically_update_kernels, $mandrakeupdate_wanted_categories, $offered_to_add_sources);
+our ($mandrakeupdate_wanted_categories, $offered_to_add_sources);
 our %config = (
     mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
     already_splashed => { var => \$already_splashed, default => [] },
@@ -164,7 +163,6 @@ our %config = (
     tree_mode => { var => \$tree_mode, default => [ qw(mandrake_choices) ] },
     tree_flat => { var => \$tree_flat, default => [ 0 ] },
     changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },
-    automatically_update_kernels => { var => \$automatically_update_kernels, default => [ 0 ]},
 );
 
 sub readconf() {
