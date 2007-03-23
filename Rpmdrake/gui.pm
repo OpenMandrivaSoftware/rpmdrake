@@ -650,11 +650,11 @@ sub do_action__real {
     require urpm::sys;
     if (!urpm::sys::check_fs_writable()) {
         $urpm->{fatal}(1, N("Error: %s appears to be mounted read-only.", $urpm::sys::mountpoint));
-        return;
+        return 1;
     }
     if (!int(grep { $pkgs->{$_}{selected} } keys %$pkgs)) {
         interactive_msg(N("You need to select some packages first."), N("You need to select some packages first."));
-        return;
+        return 1;
     }
     my $size_added = sum(map { if_($_->flag_selected && !$_->flag_installed, $_->size) } @{$urpm->{depslist}});
     if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*1024) {
@@ -665,7 +665,7 @@ during or after package installation ; this is particularly
 dangerous and should be considered with care.
 
 Do you really want to install all the selected packages?"), yesno => 1)
-          or return;
+          or return 1;
     }
     my $res = $callback_action->($urpm, $pkgs);
     if (!$res) {
