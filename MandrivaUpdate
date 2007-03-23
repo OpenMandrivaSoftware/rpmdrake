@@ -62,7 +62,8 @@ sub refresh_packages_list {
     # don't select kernel*-latest by default and the kernels they require:
     if (!$initialized) {
         $pkgs->{$_}{selected} = 0 foreach @requested;
-        toggle($list, grep { !$pkgs->{$_}{pkg}->flag_skip } @requested);
+        my @selectable = grep { !$pkgs->{$_}{pkg}->flag_skip } @requested;
+        toggle($list, @selectable) if @selectable;
         $initialized = 1;
     }
 
