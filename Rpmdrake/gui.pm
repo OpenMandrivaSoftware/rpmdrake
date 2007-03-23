@@ -236,6 +236,28 @@ sub add_parent {
     $wtree{$s};
 }
 
+sub add_node {
+    my ($leaf, $root, $options) = @_;
+    my $state = node_state($leaf) or return;
+    if ($leaf) {
+        my $iter;
+        if (is_a_package($leaf)) {
+            $iter = $w->{detail_list_model}->append_set([ $pkg_columns{text} => $leaf ]);
+            set_node_state($iter, $state, $w->{detail_list_model});
+             $ptree{$leaf} = [ $iter ];
+        } else {
+            $iter = $w->{tree_model}->append_set(add_parent($root, $state), [ $grp_columns{label} => $leaf ]);
+        }
+    } else {
+        my $parent = add_parent($root, $state);
+        #- hackery for partial displaying of trees, used in rpmdrake:
+        #- if leaf is void, we may create the parent and one child (to have the [+] in front of the parent in the ctree)
+        #- though we use '' as the label of the child; then rpmdrake will connect on tree_expand, and whenever
+        #- the first child has '' as the label, it will remove the child and add all the "right" children
+        $options->{nochild} or $w->{tree_model}->append_set($parent, [ $grp_columns{label} => '' ]); # test $leaf?
+    }
+}
+
 # ask_browse_tree_given_widgets_for_rpmdrake will run gtk+ loop. its main parameter "common" is a hash containing:
 # - a "widgets" subhash which holds:
 #   o a "w" reference on a ugtk2 object
@@ -265,27 +287,6 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     };  
 
     $common->{add_parent} = \&add_parent;
-    my $add_node = sub {
-	my ($leaf, $root, $options) = @_;
-	my $state = node_state($leaf) or return;
-	if ($leaf) {
-	    my $iter;
-         if (is_a_package($leaf)) {
-             $iter = $w->{detail_list_model}->append_set([ $pkg_columns{text} => $leaf ]);
-             set_node_state($iter, $state, $w->{detail_list_model});
-             $ptree{$leaf} = [ $iter ];
-         } else {
-             $iter = $w->{tree_model}->append_set(add_parent($root, $state), [ $grp_columns{label} => $leaf ]);
-         }
-	} else {
-	    my $parent = add_parent($root, $state);
-	    #- hackery for partial displaying of trees, used in rpmdrake:
-	    #- if leaf is void, we may create the parent and one child (to have the [+] in front of the parent in the ctree)
-	    #- though we use '' as the label of the child; then rpmdrake will connect on tree_expand, and whenever
-	    #- the first child has '' as the label, it will remove the child and add all the "right" children
-	    $options->{nochild} or $w->{tree_model}->append_set($parent, [ $grp_columns{label} => '' ]);  # test $leaf?
-	}
-    };
     my $clear_all_caches = sub {
 	foreach (values %ptree) {
 	    foreach my $n (@$_) {
@@ -309,7 +310,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     };
     $common->{rebuild_tree} = sub {
 	$common->{delete_all}->();
-	$common->{build_tree}($add_node, $common->{state}{flat}, $common->{tree_mode});
+	$common->{build_tree}($common->{state}{flat}, $common->{tree_mode});
 	&$update_size;
     };
     $common->{delete_category} = sub {
@@ -355,7 +356,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	my (@nodes) = @_;
 	$w->{detail_list_model}->clear;
 	$w->{detail_list}->scroll_to_point(0, 0);
-	$add_node->($_->[0], $_->[1], $_->[2]) foreach @nodes;
+	add_node($_->[0], $_->[1], $_->[2]) foreach @nodes;
 	&$update_size;
     };
     
@@ -698,7 +699,7 @@ sub ctreefy {
 }
 
 sub build_tree {
-    my ($tree, $tree_model, $elems, $options, $force_rebuild, $compssUsers, $add_node, $flat, $mode) = @_;
+    my ($tree, $tree_model, $elems, $options, $force_rebuild, $compssUsers, $flat, $mode) = @_;
     my $old_mode if 0;
     $mode = $options->{rmodes}{$mode} || $mode;
     return if $old_mode eq $mode && !$force_rebuild;
@@ -721,7 +722,7 @@ sub build_tree {
                   || ! $descriptions->{$name}{importance};
             } @keys;
             if (@keys == 0) {
-                $add_node->('', N("(none)"), { nochild => 1 });
+                add_node('', N("(none)"), { nochild => 1 });
                 my $explanation_only_once if 0;
                 $explanation_only_once or interactive_msg(N("No update"),
                                                           N("The list of updates is empty. This means that either there is
@@ -744,17 +745,17 @@ or you already installed all of them."));
         by_medium => sub { sort { $a->[2] <=> $b->[2] || uc($a->[0]) cmp uc($b->[0]) } @_ },
     );
     if ($flat) {
-        $add_node->($_->[0], '') foreach $sortmethods{$mode || 'flat'}->(@elems);
+        add_node($_->[0], '') foreach $sortmethods{$mode || 'flat'}->(@elems);
     } else {
         if (0 && $MODE eq 'update') {
-            $add_node->($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
+            add_node($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
             $tree->expand_row($tree_model->get_path($tree_model->get_iter_first), 0);
         } elsif ($mode eq 'by_source') {
-            $add_node->($_->[0], $_->[1]) foreach $sortmethods{by_medium}->(map {
+            add_node($_->[0], $_->[1]) foreach $sortmethods{by_medium}->(map {
                 my $m = pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm); [ $_->[0], $m->{name}, $m->{priority} ];
             } @elems);
         } elsif ($mode eq 'by_presence') {
-            $add_node->(
+            add_node(
                 $_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed && !$pkgs->{$_->[0]}{pkg}->flag_skip
                   ? N("Upgradable") : N("Addable")
 		    ) foreach $sortmethods{flat}->(@elems);
