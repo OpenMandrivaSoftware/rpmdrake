@@ -195,8 +195,12 @@ sub run_treeview_dialog {
     $cell->signal_connect(toggled => sub {
 	my ($cell, $text_path) = @_;
 	my ($val, $name) = @{$list->{data}[$text_path]};
+	gtkset_mousecursor_wait($w->{real_window}->window);
+	my $_guard = before_leaving(sub {gtkset_mousecursor_normal($w->{real_window}->window) });
 	$name = get_name($name);
 	toggle($list, $name);
+	gtkset_mousecursor_normal($w->{real_window}->window);
+
     });
     $action_button->set_sensitive(0) if $>;
 
