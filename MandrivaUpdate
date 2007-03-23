@@ -57,13 +57,6 @@ sub refresh_packages_list {
     # select packages to update:
     my @requested = sort @filtered_pkgs;
 
-    # don't select kernel*-latest by default and the kernels they require:
-    foreach my $name (@requested) {
-        my $selected = $pkgs->{$name}{selected};
-        $pkgs->{$name}{selected} = to_bool($selected);
-        $pkgs->{$name}{pkg}->set_flag_required($selected);
-    }
-
     @{$list->{data}} = map {
         [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", translate(rpm_summary($pkgs->{$_}{pkg}->summary))) ];
     } grep { $pkgs->{$_}{pkg} } @requested;
