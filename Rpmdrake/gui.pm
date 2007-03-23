@@ -667,7 +667,8 @@ dangerous and should be considered with care.
 Do you really want to install all the selected packages?"), yesno => 1)
           or return;
     }
-    if (!$callback_action->($urpm, $pkgs)) {
+    my $res = $callback_action->($urpm, $pkgs);
+    if (!$res) {
         $force_rebuild = 1;
         pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode}, if_($Rpmdrake::pkg::probe_only_for_updates, pure_updates => 1));
         reset_search();
@@ -676,6 +677,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
         $options->{rebuild_tree}->() if $options->{rebuild_tree};
         gtktext_insert($o_info, '') if $o_info;
     }
+    $res;
 }
 
 sub do_action {
