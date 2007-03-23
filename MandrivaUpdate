@@ -52,6 +52,8 @@ warn_about_user_mode();
 
 open_db();
 
+my (%data, $initialized);
+
 sub refresh_packages_list {
     my ($list, $info, $button) = @_;
     # select packages to update:
@@ -65,6 +67,23 @@ sub refresh_packages_list {
 no available update for the packages installed on your computer,
 or you already installed all of them."))) if !@{$list->{data}};
     $button->set_sensitive(scalar(@{$list->{data}}));
+}
+
+sub toggle {
+    my ($list, @names) = @_;
+    my $name = $names[0];
+    my $val = $pkgs->{$name}{selected};
+    my $old_status = $val ? 'to_install' : 'to_update';
+    my $done;
+    $pkgs->{$name}{pkg}->set_flag_skip(0);
+    toggle_nodes($w->{real_window}->window, $list->get_model, sub {
+                     my ($leaf, $state, $model) = @_;
+                     $done = 1;
+                     $list->{data}[$data{$leaf}][0] = $pkgs->{$name}{selected};
+                 },
+                 $old_status, @names);
+    # handle canceling:
+    $list->{data}[$data{$name}][0] = !$list->{data}[$data{$name}][0] if !$done;
 }
 
 sub get_name {
