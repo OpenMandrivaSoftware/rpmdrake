@@ -171,43 +171,11 @@ sub formatlistpkg { join("\n", sort { uc($a) cmp uc($b) } @_) }
 
 # -=-=-=---=-=-=---=-=-=-- install packages -=-=-=---=-=-=---=-=-=-
 
+my (@update_medias, $is_update_media_already_asked);
 
-our $probe_only_for_updates;
-sub get_pkgs {
-    my ($urpm, $opts) = @_;
+sub warn_about_media {
+    my ($urpm, $w, $opts) = @_;
     my $update_name = 'update_source';
-    my %update_descr;
-    my @update_medias;
-    my $w = $::main_window;
-    my $is_update_media_already_asked if 0;
-
-    my $error_happened;
-    my $fatal_handler = sub {
-        $error_happened = 1;
-        interactive_msg(N("Fatal error"),
-                         N("A fatal error occurred: %s.", $_[1]));
-        myexit(-1) if 0; #FIXME
-    };
-
-    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
-    my $_guard = before_leaving { Rpmdrake::gurpm::end() };
-    my $_flush_guard = Gtk2::GUI_Update_Guard->new;
-
-    $urpm = urpm->new;
-    $urpm->{fatal} = $fatal_handler;
-    my $media = ref $::options{media} ? join(',', @{$::options{media}}) : '';
-    urpm::media::configure($urpm, media => $media);
-    if ($error_happened) {
-        touch('/etc/urpmi/urpmi.cfg');
-        exec('edit-urpm-sources.pl');
-    }
-
-    my $_lock = urpm::lock::urpmi_db($urpm);
-    my $statedir = $urpm->{statedir};
-    @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
-
-
-        $urpm->{fatal} = $fatal_handler;
     if (member($::default_list_mode, qw(all_updates security bugfix normal))) {
 	unless ($::options{'no-media-update'}) {
 	    if (@update_medias > 0) {
@@ -249,6 +217,43 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	    }
 	}
     }
+}
+
+our $probe_only_for_updates;
+sub get_pkgs {
+    my ($urpm, $opts) = @_;
+    my %update_descr;
+    @update_medias = ();
+    my $w = $::main_window;
+
+    my $error_happened;
+    my $fatal_handler = sub {
+        $error_happened = 1;
+        interactive_msg(N("Fatal error"),
+                         N("A fatal error occurred: %s.", $_[1]));
+        myexit(-1) if 0; #FIXME
+    };
+
+    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
+    my $_guard = before_leaving { Rpmdrake::gurpm::end() };
+    my $_flush_guard = Gtk2::GUI_Update_Guard->new;
+
+    $urpm = urpm->new;
+    $urpm->{fatal} = $fatal_handler;
+    my $media = ref $::options{media} ? join(',', @{$::options{media}}) : '';
+    urpm::media::configure($urpm, media => $media);
+    if ($error_happened) {
+        touch('/etc/urpmi/urpmi.cfg');
+        exec('edit-urpm-sources.pl');
+    }
+
+    my $_lock = urpm::lock::urpmi_db($urpm);
+    my $statedir = $urpm->{statedir};
+    @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
+
+    $urpm->{fatal} = $fatal_handler;
+
+    warn_about_media($urpm, $w, $opts);
 
     Rpmdrake::gurpm::label(N("Reading updates description"));
     Rpmdrake::gurpm::progress(0.05);
