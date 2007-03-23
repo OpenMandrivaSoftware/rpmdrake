@@ -154,7 +154,8 @@ sub run_treeview_dialog {
 			0, my $action_button = gtksignal_connect(
 			    $update_button = Gtk2::Button->new(but_(N("Update"))),
 			    clicked => sub {
-                                do_action({ tree_mode => 'all_updates' }, $callback_action);
+                                my $res = do_action({ tree_mode => 'all_updates' }, $callback_action);
+                                $initialized = 0 if !$res;
                                 refresh_packages_list($list, $info, $update_button);
                             },
 			),
