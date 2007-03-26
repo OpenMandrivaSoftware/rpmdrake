@@ -226,20 +226,17 @@ sub get_pkgs {
     @update_medias = ();
     my $w = $::main_window;
 
-    my $error_happened;
-    my $fatal_handler = sub {
-        $error_happened = 1;
-        interactive_msg(N("Fatal error"),
-                         N("A fatal error occurred: %s.", $_[1]));
-        myexit(-1) if 0; #FIXME
-    };
-
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $_guard = before_leaving { Rpmdrake::gurpm::end() };
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
+    my $error_happened;
     $urpm = urpm->new;
-    $urpm->{fatal} = $fatal_handler;
+    $urpm->{fatal} = sub {
+        $error_happened = 1;
+        interactive_msg(N("Fatal error"),
+                         N("A fatal error occurred: %s.", $_[1]));
+    };
     my $media = ref $::options{media} ? join(',', @{$::options{media}}) : '';
     urpm::media::configure($urpm, media => $media);
     if ($error_happened) {
