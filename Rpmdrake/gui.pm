@@ -177,26 +177,14 @@ sub node_state {
 
 my ($common, $w, %wtree, %ptree, %pix);
 
-sub set_node_state_flat {
+sub set_node_state {
     my ($iter, $state, $model) = @_;
-    $state eq 'XXX' and return;
-    $pix{$state} ||= gtkcreate_pixbuf($state);
+    ($state eq 'XXX' || !$state) and return;
+    $pix{$state} ||= gtkcreate_pixbuf('state_' . $state);
     $model ||= $w->{tree_model};
     $model->set($iter, $pkg_columns{state_icon} => $pix{$state});
     $model->set($iter, $pkg_columns{state} => $state);
     $model->set($iter, $pkg_columns{selected} => to_bool(member($state, qw(base installed to_install)))); #$pkg->{selected}));
-}
-
-sub set_node_state_tree {
-    my ($iter, $state, $model) = @_;
-    $model ||= $w->{tree_model};
-    ($state eq 'XXX' || !$state) and return;
-    $pix{$state} ||= gtkcreate_pixbuf('state_' . $state);
-        set_node_state_flat($iter, $state, $model);
-}
-
-sub set_node_state {
-    $common->{state}{flat} ? set_node_state_flat(@_) : \&set_node_state_tree(@_);
 }
 
 sub set_leaf_state {
