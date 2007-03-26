@@ -803,6 +803,14 @@ sub perform_removal {
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
     my $_a = before_leaving { Rpmdrake::gurpm::end() };
 
+    my $logger = $urpm->{log};
+    local $urpm->{log} = sub {
+        my $str = $_[0];
+        print $str;
+        Rpmdrake::gurpm::label($str); # display "removing package %s"
+        gtkflush();
+    };
+
     my @results;
     slow_func_statusbar(
 	N("Please wait, removing packages..."),
