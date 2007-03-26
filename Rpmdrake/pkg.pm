@@ -789,10 +789,9 @@ you may now inspect some in order to take actions:"),
     }
 
     statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
-    return !($something_installed || scalar(@to_remove));
 
   return_with_error:
-    return !$something_installed;
+    return !($something_installed || scalar(@to_remove));
 }
 
 
