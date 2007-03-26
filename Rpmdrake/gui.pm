@@ -175,7 +175,7 @@ sub node_state {
                : 'uninstalled') : 'XXX';
 }
 
-my ($common, $w, %wtree, %ptree, %pix, %node_state, %state_stats);
+my ($common, $w, %wtree, %ptree, %pix);
 
 sub set_node_state_flat {
     my ($iter, $state, $model) = @_;
@@ -190,23 +190,9 @@ sub set_node_state_flat {
 sub set_node_state_tree {
     my ($iter, $state, $model) = @_;
     $model ||= $w->{tree_model};
-    my $iter_str = $model->get_path_str($iter);
     ($state eq 'XXX' || !$state) and return;
     $pix{$state} ||= gtkcreate_pixbuf('state_' . $state);
-    if ($node_state{$iter_str} ne $state) {
-        my $parent;
-        if (!$model->iter_has_child($iter) && ($parent = $model->iter_parent($iter))) {
-            my $parent_str = $model->get_path_str($parent);
-            my $stats = $state_stats{$parent_str} ||= {}; $stats->{$node_state{$iter_str}}--; $stats->{$state}++;
-            my @list = grep { $stats->{$_} > 0 } keys %$stats;
-            my $new_state = @list == 1 ? $list[0] : 'semiselected';
-            $node_state{$parent_str} ne $new_state and
-              set_node_state_tree($parent, $new_state);
-        }
         set_node_state_flat($iter, $state, $model);
-        #$node_state{$iter_str} = $state;  #- cache for efficiency
-    } else  {
-    }
 }
 
 sub set_node_state {
@@ -288,18 +274,6 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 
     $common->{add_parent} = \&add_parent;
     my $clear_all_caches = sub {
-	foreach (values %ptree) {
-	    foreach my $n (@$_) {
-		delete $node_state{$w->{detail_list_model}->get_path_str($n)};
-	    }
-	}
-	foreach (values %wtree) {
-         foreach my $model ($w->{tree_model}) {
-	    my $iter_str = $model->get_path_str($_);
-	    delete $node_state{$iter_str};
-	    delete $state_stats{$iter_str};
-         }
-	}
 	%ptree = %wtree = ();
     };
     $common->{clear_all_caches} = $clear_all_caches;
@@ -333,20 +307,13 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 		    foreach (@parents) {
 			next if $_->[1] eq $cat || !exists $wtree{$_->[1]};
 			delete $wtree{$_->[1]};
-			delete $node_state{$w->{tree_model}->get_path_str($_->[0])};
-			delete $state_stats{$w->{tree_model}->get_path_str($_->[0])};
 		    }
 		}
-	    }
-	    foreach (@to_remove) {
-		delete $node_state{$w->{tree_model}->get_path_str($_)};
 	    }
 	    @{$ptree{$_}} = difference2($ptree{$_}, \@to_remove);
 	}
 	if (exists $wtree{$cat}) {
 	    my $iter_str = $w->{tree_model}->get_path_str($wtree{$cat});
-	    delete $node_state{$iter_str};
-	    delete $state_stats{$iter_str};
 	    $w->{tree_model}->remove($wtree{$cat});
 	    delete $wtree{$cat};
 	}
