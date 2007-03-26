@@ -497,7 +497,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
 	    scroll => 1,
 	);
-        goto return_with_error;
+        goto return_with_exit_code;
     }
 
     my @pkgs = map { scalar($_->fullname) } sort(grep { $_->flag_selected } @{$urpm->{depslist}});#{ $a->name cmp $b->name } @{$urpm->{depslist}}[keys %{$state->{selected}}];
@@ -607,7 +607,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                                $canceled and return 'canceled';
                                                            },
                                                        );
-        $canceled and goto return_with_error;
+        $canceled and goto return_with_exit_code;
         Rpmdrake::gurpm::invalidate_cancel_forever();
 
         my %transaction_sources_install = %{$urpm->extract_packages_to_install(\%transaction_sources, $state) || {}};
@@ -631,7 +631,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                     N("Warning"),
                     N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
                       join("\n", sort @invalid_sources)), yesno => 1, if_(@invalid_sources > 10, scroll => 1),
-                ) or goto return_with_error;
+                ) or goto return_with_exit_code;
             }
         }
 
@@ -729,7 +729,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		    (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
 		scroll => 1,
 	    );
-            goto return_with_error;
+            goto return_with_exit_code;
         }
 
         Rpmdrake::gurpm::end();
@@ -790,7 +790,7 @@ you may now inspect some in order to take actions:"),
 
     statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
 
-  return_with_error:
+  return_with_exit_code:
     return !($something_installed || scalar(@to_remove));
 }
 
