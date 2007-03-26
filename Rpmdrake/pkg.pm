@@ -253,7 +253,7 @@ sub get_pkgs {
 	my ($cur, $section);
 	#- parse the description file
     foreach my $medium (@update_medias) {
-        foreach (cat_("$statedir/descriptions.$medium->{name}")) {
+        foreach (cat_(urpm::media::statedir_descriptions($urpm, $medium))) {
             /^%package +(.+)/ and do {
                 my @pkg_list = split /\s+/, $1;
                  exists $cur->{importance} && $cur->{importance} !~ /^(?:security|bugfix)\z/
