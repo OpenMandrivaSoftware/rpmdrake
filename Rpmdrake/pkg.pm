@@ -127,7 +127,7 @@ sub extract_header {
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
 		changelog => $chg_prepro->(join("\n", mapn { "* " . localtime2changelog($_[2]) . " $_[0]\n\n$_[1]\n" }
 						[ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ])) });
-	    $p->pack_header;
+	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
 	} else {
            header_non_available:
              add2hash($pkg, { summary => $p->summary || N("(Not available)"), description => undef });
