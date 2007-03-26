@@ -464,6 +464,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         Rpmdrake::gurpm::end();
         interactive_msg(N("Installation failed"),
                         N("There was a problem during the installation:\n\n%s", $fatal_msg));
+        goto return_with_exit_code;
     };
     local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, $_[0] };
 
