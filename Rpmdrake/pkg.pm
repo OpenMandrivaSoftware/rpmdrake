@@ -804,10 +804,14 @@ sub perform_removal {
     my $_a = before_leaving { Rpmdrake::gurpm::end() };
 
     my $logger = $urpm->{log};
+    my $progress = -1;
     local $urpm->{log} = sub {
         my $str = $_[0];
         print $str;
+        $progress++;
+        return if $progress <= 0; # skip first "creating transaction..." message
         Rpmdrake::gurpm::label($str); # display "removing package %s"
+        Rpmdrake::gurpm::progress(min(0.99, scalar($progress/@toremove)));
         gtkflush();
     };
 
