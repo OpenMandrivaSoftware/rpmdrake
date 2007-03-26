@@ -428,7 +428,7 @@ sub switch_pkg_list_mode {
 sub pkgs_provider {
     my ($options, $mode, %options) = @_;
     return if !$mode;
-    my $h = &get_pkgs($urpm, $options); # was given (1, @_) for updates
+    my $h = &get_pkgs($options); # was given (1, @_) for updates
     ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
     $pkgs = $h->{all_pkgs};
     %filter_methods = (

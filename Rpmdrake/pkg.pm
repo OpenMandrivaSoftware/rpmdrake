@@ -221,7 +221,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 
 our $probe_only_for_updates;
 sub get_pkgs {
-    my ($urpm, $opts) = @_;
+    my ($opts) = @_;
     my %update_descr;
     @update_medias = ();
     my $w = $::main_window;
@@ -231,7 +231,7 @@ sub get_pkgs {
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     my $error_happened;
-    $urpm = urpm->new;
+    my $urpm = urpm->new;
     $urpm->{fatal} = sub {
         $error_happened = 1;
         interactive_msg(N("Fatal error"),
