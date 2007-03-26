@@ -251,8 +251,6 @@ sub get_pkgs {
     my $statedir = $urpm->{statedir};
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 
-    $urpm->{fatal} = $fatal_handler;
-
     warn_about_media($urpm, $w, $opts);
 
     Rpmdrake::gurpm::label(N("Reading updates description"));
