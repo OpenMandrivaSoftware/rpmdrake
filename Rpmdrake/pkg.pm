@@ -176,8 +176,8 @@ my (@update_medias, $is_update_media_already_asked);
 sub warn_about_media {
     my ($urpm, $w, $opts) = @_;
     my $update_name = 'update_source';
-    if (member($::default_list_mode, qw(all_updates security bugfix normal))) {
-	unless ($::options{'no-media-update'}) {
+    return if !member($::default_list_mode, qw(all_updates security bugfix normal));
+    return if $::options{'no-media-update'};
 	    if (@update_medias > 0) {
 		if (!$opts->{skip_updating_mu} && !$is_update_media_already_asked) {
               $is_update_media_already_asked = 1;
@@ -215,8 +215,6 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		);
 		@update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
 	    }
-	}
-    }
 }
 
 our $probe_only_for_updates;
