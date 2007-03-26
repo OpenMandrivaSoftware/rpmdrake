@@ -457,11 +457,16 @@ sub perform_parallel_install {
 sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($urpm, $pkgs) = @_;
 
-    my $fatal_msg;
     my @error_msgs;
     my %Readmes;
     my $statusbar_msg_id;
-    local $urpm->{fatal} = sub { printf STDERR "Fatal: %s\n", $_[1]; $fatal_msg = $_[1]; goto fatal_error };
+    local $urpm->{fatal} = sub {
+        my $fatal_msg = $_[1];
+        printf STDERR "Fatal: %s\n", $fatal_msg;
+        Rpmdrake::gurpm::end();
+        interactive_msg(N("Installation failed"),
+                        N("There was a problem during the installation:\n\n%s", $fatal_msg));
+    };
     local $urpm->{error} = sub { printf STDERR "Error: %s\n", $_[0]; push @error_msgs, $_[0] };
 
     my $w = $::main_window;
@@ -786,10 +791,6 @@ you may now inspect some in order to take actions:"),
     statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
     return !($something_installed || scalar(@to_remove));
 
-  fatal_error:
-    Rpmdrake::gurpm::end();
-    interactive_msg(N("Installation failed"),
-                     N("There was a problem during the installation:\n\n%s", $fatal_msg));
   return_with_error:
     Rpmdrake::gurpm::end();
     return !$something_installed;
