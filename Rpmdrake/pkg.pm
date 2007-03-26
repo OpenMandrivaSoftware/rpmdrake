@@ -604,7 +604,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                                    Rpmdrake::gurpm::progress(1);
                                                                    Rpmdrake::gurpm::invalidate_cancel();
                                                                }
-                                                               $canceled and return 'canceled';
+                                                               $canceled and goto return_with_exit_code;
+
                                                            },
                                                        );
         $canceled and goto return_with_exit_code;
@@ -742,7 +743,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 		    join("\n\n", @errors, @error_msgs)),
 		if_(@errors + @error_msgs > 1, scroll => 1),
 	    );
-            return !$something_installed;
+            goto return_with_exit_code;
         }
 
         my %pkg2rpmnew;
