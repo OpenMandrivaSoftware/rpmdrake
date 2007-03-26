@@ -519,9 +519,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
  : N("The following packages have to be removed for others to be upgraded:")) . join("\n\n", '', $r, if_($to_install, $to_install)) . N("Is it ok to continue?"))
                           : $to_install),
                      scroll => 1,
-                     yesno => 1) or do {
-                         return 1;
-                     };
+                     yesno => 1) or return 1;
 
     my $_guard = before_leaving { urpm::removable::try_umounting_removables($urpm) };
 
