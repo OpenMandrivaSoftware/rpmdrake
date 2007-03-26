@@ -792,7 +792,6 @@ you may now inspect some in order to take actions:"),
     return !($something_installed || scalar(@to_remove));
 
   return_with_error:
-    Rpmdrake::gurpm::end();
     return !$something_installed;
 }
 
