@@ -65,7 +65,7 @@ sub do_search($$$$$$$) {
     if ($current_search_type ne 'normal') {
 	if ($MODE eq 'remove') {
 	    if ($current_search_type eq 'descriptions') {
-		@search_results = grep { ($pkgs->{$_}{summary} . $pkgs->{$_}{description}) =~ $entry_rx } keys %$pkgs;
+		@search_results = grep { ($pkgs->{$_}{summary} . $pkgs->{$_}{description}) =~ $entry_rx } @filtered_pkgs;
 	    } else {
 		slow_func_statusbar(
 		    N("Please wait, searching..."),
@@ -135,7 +135,7 @@ sub do_search($$$$$$$) {
 	    $searchw->destroy;
 	}
     } else {
-	@search_results = grep { $_ =~ $entry_rx } keys %$pkgs;
+	@search_results = grep { $_ =~ $entry_rx } @filtered_pkgs;
     }
     if (@search_results) {
 	$options->{add_nodes}->(map { [ $_, N("Search results") . ($options->{tree_mode} eq 'by_presence'
