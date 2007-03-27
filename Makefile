@@ -45,6 +45,7 @@ install: $(ALL)
 	mkdir -p $(PERL_VENDORLIB)/Rpmdrake
 	install -m 644 rpmdrake.pm $(PERL_VENDORLIB)
 	install -m 644 Rpmdrake/*.pm $(PERL_VENDORLIB)/Rpmdrake
+	perl -pi -e "s/version = 1/version=$(VERSION)/" $(PERL_VENDORLIB)/Rpmdrake/init.pm
 
 clean:
 	@for n in $(DIRS); do \
