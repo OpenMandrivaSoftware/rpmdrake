@@ -736,12 +736,7 @@ sub get_info {
     exists $pkgs->{$key} or return [ [ N("Description not available for this package\n") ] ];
     exists $pkgs->{$key}{description} && exists $pkgs->{$key}{files}
       or slow_func($widget, sub { extract_header($pkgs->{$key}, $urpm) });
-    my $s;
-    eval { $s = format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions) };
-    if (my $err = $@) {
-        $s = N("A fatal error occurred: %s.", $err);
-    }
-    $s;
+    format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions);
 }
 
 1;
