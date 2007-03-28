@@ -30,6 +30,8 @@ use rpmdrake;
 use common;
 use Rpmdrake::edit_urpm_sources;
 
+require_root_capability();
+
 readconf();
 
 check_if_first_run();
