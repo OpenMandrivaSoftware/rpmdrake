@@ -76,8 +76,8 @@ sub format_pkg_simplifiedinfo {
       # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
                                                       "\x{200b} \x{feff}" . ' ' x 120,
       if_($update_descr, # is it an update?
-	  format_field(N("Importance: ")) . escape_text_for_TextView_markup_format($descriptions->{$name}{importance}),
-	  format_field(N("Reason for update: ")) . escape_text_for_TextView_markup_format(rpm_description($descriptions->{$name}{pre})),
+	  format_field(N("Importance: ")) . eval { escape_text_for_TextView_markup_format($descriptions->{$name}{importance}) },
+	  format_field(N("Reason for update: ")) . eval { escape_text_for_TextView_markup_format(rpm_description($descriptions->{$name}{pre})) },
       ),
       '')); # extra empty line
     if ($update_descr) {
@@ -89,7 +89,7 @@ sub format_pkg_simplifiedinfo {
       }
 
     push @$s, @{ ugtk2::markup_to_TextView_format(join("\n",
-      (escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $descriptions->{$name}{description}) || '<i>' . N("No description") . '</i>')
+      (eval { escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $descriptions->{$name}{description}) } || '<i>' . N("No description") . '</i>')
     )) };
     push @$s, [ "\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
