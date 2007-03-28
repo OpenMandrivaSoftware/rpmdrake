@@ -30,14 +30,6 @@ use rpmdrake;
 use common;
 use Rpmdrake::edit_urpm_sources;
 
-BEGIN { #- for mcc
-    if ("@ARGV" =~ /--embedded (\w+)/) {
-	$::XID = $1;
-	$::isEmbedded = 1;
-    }
-}
-require_root_capability();
-
 readconf();
 
 check_if_first_run();
