@@ -25,6 +25,7 @@
 
 use strict;
 use lib qw(/usr/lib/libDrakX);
+use standalone;
 use rpmdrake;
 use common;
 use Rpmdrake::edit_urpm_sources;
@@ -35,9 +36,6 @@ BEGIN { #- for mcc
 	$::isEmbedded = 1;
     }
 }
-
-$::isStandalone = 1;
-
 require_root_capability();
 
 readconf();
