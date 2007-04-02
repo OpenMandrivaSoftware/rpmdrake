@@ -441,18 +441,8 @@ sub deps_msg {
         my @deps = sort { $a cmp $b } difference2($nodes_with_deps, $nodes);
         @deps > 0 or return 1;
       deps_msg_again:
-        # workaround s/formatlistpkg()/urpm::select::translate_why_removed()/ introducing regression
-        # in (un)selecting packages with deps (#28613):
-        my $cmd = bg_command->new(sub {
-                                      my $str = urpm::select::translate_why_removed($urpm, $urpm->{state}, @deps);
-                                      print "$str\n";
-                                  });
-        my $fd = $cmd->{fd};
-        my $reasons;
-        local $_;
-        $reasons .= $_ while <$fd>;
         my $results = interactive_msg(
-            $title, $msg . $reasons,
+            $title, $msg . urpm::select::translate_why_removed($urpm, $urpm->{state}, @deps),
             yesno => [ N("Cancel"), N("More info"), N("Ok") ],
             scroll => 1,
         );
