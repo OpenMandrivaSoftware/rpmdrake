@@ -70,7 +70,8 @@ sub compute_main_window_size {
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name, $version) = split_fullname($key);
-    my $medium = pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name};
+    my $raw_medium = pkg2medium($pkgs->{$key}{pkg}, $urpm);
+    my $medium = $raw_medium->{name} if $raw_medium;
     my $update_descr = $pkgs->{$key}{pkg}->flag_upgrade && $descriptions->{$name}{pre} && $descriptions->{$name}{medium} eq $medium;
     my $s = ugtk2::markup_to_TextView_format(join("\n", format_header($name . ' - ' . translate($pkgs->{$key}{summary})) .
       # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
@@ -96,13 +97,14 @@ sub format_pkg_simplifiedinfo {
                        gtknew('TextView', text => ugtk2::markup_to_TextView_format(
                            join("\n",
                                 format_field(N("Version: ")) . $version,
+                                
                                 ($pkgs->{$key}{pkg}->flag_installed ?
-                                   format_field(N("Currently installed version: ")) . find_installed_version($pkgs->{$key}{pkg})
+                                   format_field(N("Currently installed version: ")) . eval { find_installed_version($pkgs->{$key}{pkg}) }
                                      : ()
                                  ),
                                 format_field(N("Architecture: ")) . $pkgs->{$key}{pkg}->arch,
                                 format_field(N("Size: ")) . N("%s KB", int($pkgs->{$key}{pkg}->size/1024)),
-                                format_field(N("Medium: ")) . pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name},
+                                eval { format_field(N("Medium: ")) . pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} },
                             ),
                        ),
                    )) ];
