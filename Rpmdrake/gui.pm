@@ -71,7 +71,7 @@ sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name, $version) = split_fullname($key);
     my $raw_medium = pkg2medium($pkgs->{$key}{pkg}, $urpm);
-    my $medium = $raw_medium->{name} if $raw_medium;
+    my $medium = $raw_medium ? $raw_medium->{name} : undef;
     my $update_descr = $pkgs->{$key}{pkg}->flag_upgrade && $descriptions->{$name}{pre} && $descriptions->{$name}{medium} eq $medium;
     my $s = ugtk2::markup_to_TextView_format(join("\n", format_header($name . ' - ' . translate($pkgs->{$key}{summary})) .
       # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
