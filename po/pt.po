@@ -21,15 +21,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-07 15:42+0100\n"
-"PO-Revision-Date: 2007-01-22 22:39+0000\n"
+"POT-Creation-Date: 2007-03-16 14:24+0100\n"
+"PO-Revision-Date: 2007-04-07 00:28+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
 
 #: ../MandrivaUpdate:83 ../rpmdrake.pm:107
 #, c-format
@@ -37,9 +37,9 @@ msgid "Software Update"
 msgstr "Actualizar Software"
 
 #: ../MandrivaUpdate:95
-#, fuzzy, c-format
-msgid "Here is the list of software packages updates"
-msgstr "Actualização de Pacotes de Software"
+#, c-format
+msgid "Here is the list of software package updates"
+msgstr "Aqui está a lista de actualizações de pacotes de software"
 
 #: ../MandrivaUpdate:118 ../Rpmdrake/edit_urpm_sources.pm:1062 ../rpmdrake:446
 #, c-format
@@ -193,8 +193,7 @@ msgstr "Localização relativa para o synthesis/hdlist:"
 #: ../Rpmdrake/edit_urpm_sources.pm:194
 #, c-format
 msgid "If left blank, synthesis/hdlist will be automatically probed"
-msgstr ""
-"Se deixado em branco, o synthesis/hdlist será automáticamente verificado"
+msgstr "Se deixado em branco, o synthesis/hdlist será automáticamente verificado"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:199
 #, c-format
@@ -295,9 +294,9 @@ msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Tem certeza que deseja remover a fonte \"%s\"?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:363
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to remove the following sources ?"
-msgstr "Tem certeza que deseja remover a fonte \"%s\"?"
+msgstr "Tem certeza que deseja remover as seguintes fontes?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:369
 #, c-format
@@ -336,8 +335,7 @@ msgstr "Precisa inserir a média para continuar"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:454
 #, c-format
-msgid ""
-"In order to save the changes, you need to insert the medium in the drive."
+msgid "In order to save the changes, you need to insert the medium in the drive."
 msgstr "Para gravar as alterações, precisa inserir a média no dispositivo."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:475
@@ -659,7 +657,7 @@ msgstr "Nenhuma descrição"
 #: ../Rpmdrake/gui.pm:86
 #, c-format
 msgid "Details:"
-msgstr ""
+msgstr "Detalhes:"
 
 #: ../Rpmdrake/gui.pm:89 ../Rpmdrake/gui.pm:138
 #, c-format
@@ -1580,8 +1578,7 @@ msgstr "  --media=medium1,..     limita-se à média indicada"
 
 #: ../Rpmdrake/init.pm:43
 #, c-format
-msgid ""
-"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgid "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
 "  --merge-all-rpmnew     propõe juntar todos os ficheiros .rpmnew/.rpmsave "
 "encontrados"
@@ -1595,8 +1592,7 @@ msgstr ""
 
 #: ../Rpmdrake/init.pm:45
 #, c-format
-msgid ""
-"  --no-confirmation      don't ask first confirmation question in update mode"
+msgid "  --no-confirmation      don't ask first confirmation question in update mode"
 msgstr "  --no-confirmation      não pede confirmação no modo actualização"
 
 #: ../Rpmdrake/init.pm:46
@@ -1713,12 +1709,12 @@ msgstr ""
 #: ../Rpmdrake/init.pm:158
 #, c-format
 msgid "The software installation tool can set up media sources."
-msgstr ""
+msgstr "A ferramenta de instalação de software pode configurar as médias fonte."
 
 #: ../Rpmdrake/init.pm:159
-#, fuzzy, c-format
+#, c-format
 msgid "Do you want to add media sources now?"
-msgstr "Tem certeza que deseja remover a fonte \"%s\"?"
+msgstr "Deseja adicionar agora as médias fonte?"
 
 #: ../Rpmdrake/pkg.pm:187
 #, c-format
@@ -1867,14 +1863,10 @@ msgstr ""
 
 #: ../Rpmdrake/pkg.pm:491
 #, c-format
-msgid ""
-"To satisfy dependencies, the following package is going to be installed:"
-msgid_plural ""
-"To satisfy dependencies, the following %d packages are going to be installed:"
-msgstr[0] ""
-"Para satisfazer as dependências, o seguintes pacote irá ser instalado:"
-msgstr[1] ""
-"Para satisfazer as dependências, os seguintes %d pacotes irão ser instalados:"
+msgid "To satisfy dependencies, the following package is going to be installed:"
+msgid_plural "To satisfy dependencies, the following %d packages are going to be installed:"
+msgstr[0] "Para satisfazer as dependências, o seguintes pacote irá ser instalado:"
+msgstr[1] "Para satisfazer as dependências, os seguintes %d pacotes irão ser instalados:"
 
 #: ../Rpmdrake/pkg.pm:496
 #, c-format
@@ -1927,7 +1919,12 @@ msgstr "A preparar..."
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "A instalar o pacote '%s' (%s/%s)..."
 
-#: ../Rpmdrake/pkg.pm:567 ../Rpmdrake/pkg.pm:572
+#: ../Rpmdrake/pkg.pm:549
+#, c-format
+msgid "Total: %s/%s"
+msgstr "Total: %s/%s"
+
+#: ../Rpmdrake/pkg.pm:570 ../Rpmdrake/pkg.pm:575
 #, c-format
 msgid "Downloading package `%s'..."
 msgstr "A transferir o pacote `%s'..."
@@ -2062,8 +2059,7 @@ msgstr "Informação de actualização acerca do pacote %s"
 #: ../Rpmdrake/pkg.pm:766
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
-msgstr ""
-"Erro irrecuperável: nenhum pacote encontrado para instalação, desculpe."
+msgstr "Erro irrecuperável: nenhum pacote encontrado para instalação, desculpe."
 
 #: ../Rpmdrake/pkg.pm:790 ../Rpmdrake/pkg.pm:795
 #, c-format
@@ -2407,10 +2403,8 @@ msgstr "Pode procurar os pacotes através da árvore de categorias na esquerda."
 
 #: ../rpmdrake:480
 #, c-format
-msgid ""
-"You can view information about a package by clicking on it on the right list."
-msgstr ""
-"Pode ver informação acerca de um pacote clicando neste na lista à direita."
+msgid "You can view information about a package by clicking on it on the right list."
+msgstr "Pode ver informação acerca de um pacote clicando neste na lista à direita."
 
 #: ../rpmdrake:481
 #, c-format
@@ -2806,8 +2800,7 @@ msgstr "Actualizar média"
 
 #: ../rpmdrake.pm:750
 #, c-format
-msgid ""
-"No active medium found. You must enable some media to be able to update them."
+msgid "No active medium found. You must enable some media to be able to update them."
 msgstr ""
 "Nenhuma média activa encontrada. Deve activar algumas médias para assim as "
 "poder actualizar."
@@ -2891,8 +2884,7 @@ msgstr "Ajuda executada em 2º plano"
 
 #: ../rpmdrake.pm:882
 #, c-format
-msgid ""
-"The help window has been started, it should appear shortly on your desktop."
+msgid "The help window has been started, it should appear shortly on your desktop."
 msgstr "A janela de ajuda foi iniciada, deverá aparecer em breve no seu ecrã."
 
 #: ../grpmi/curl_download/curl_download.xs:86
@@ -3165,15 +3157,3 @@ msgstr "Remover Software"
 msgid "Software Media Manager"
 msgstr "Gestor de Médias de Software"
 
-#~ msgid "Add a key..."
-#~ msgstr "Adicionar chave..."
-
-#~ msgid "Remove key"
-#~ msgstr "Remover chave"
-
-#, fuzzy
-#~ msgid "  --version              output version information and exit"
-#~ msgstr "  --root                 força a execução como root"
-
-#~ msgid "unable to access rpm file [%s]"
-#~ msgstr "não foi possível aceder ao ficheiro rpm [%s]"
