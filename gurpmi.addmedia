@@ -28,11 +28,12 @@ BEGIN {
     @ARGV == 0 || "@ARGV" =~ /-h/ and do {
         print "usage: gurpmi.addmedia [options] <name> <url> [with <relative_path>]
 where <url> is one of
-  file://<path>
-  ftp://<login>:<password>@<host>/<path> with <relative filename of hdlist>
-  ftp://<host>/<path> with <relative filename of hdlist>
-  http://<host>/<path> with <relative filename of hdlist>
-  removable://<path>
+       [file:/]/<path>
+       ftp://<login>:<password>\@<host>/<path>
+       ftp://<host>/<path>
+       http://<host>/<path>
+       removable://<path>
+
 and [options] are from
   --update         create an update medium.
   --silent-success don't show popup window on success
@@ -78,7 +79,12 @@ my @names;
 while (@ARGV) {
     my ($name, $url, $with, $with_hdlist) = @ARGV;
     $with eq 'with' or ($with, $with_hdlist) = (undef, undef);
-    if ($url !~ m,^(file://|ftp://|http://|removable://), || $with && !$with_hdlist) {
+    if ($url !~ m,^(([^:]*):/)?/,) {
+	interactive_msg('gurpmi.addmedia',
+			N("bad <url> (for local directory, the path must be absolute)"));
+	myexit(-1);
+    }
+    if ($with && !$with_hdlist) {
 	interactive_msg('gurpmi.addmedia',
 			N("Unable to add medium, wrong or missing arguments"));
 	myexit(-1);
