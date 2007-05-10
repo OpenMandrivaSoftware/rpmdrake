@@ -34,7 +34,7 @@ use Time::HiRes;
 
 sub new {
     my ($_class) = @_;
-    my $w = mygtk2::gtknew('TextView');
+    my $w = gtknew('TextView', editable => 0);
     my $time if 0;
     $w->signal_connect(size_allocate => sub {
         my ($w, $requisition) = @_;
