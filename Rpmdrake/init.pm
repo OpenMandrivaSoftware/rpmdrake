@@ -98,6 +98,13 @@ foreach (@ARGV) {
     }
 }
 
+foreach my $option (qw(media mode parallel pkg-nosel pkg-sel search)) {
+    if (defined $options{$option} && !ref($options{$option})) {
+        warn "wrong usage of \"$option\" option!\n";
+        exit(-1); # too early for my_exit()
+    }
+}
+
 our $MODE = ref $options{mode} ? $options{mode}[0] : undef;
 unless ($MODE) {
     $MODE = 'install';
