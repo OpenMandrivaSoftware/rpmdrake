@@ -135,7 +135,12 @@ sub do_search($$$$$$$) {
 	    $searchw->destroy;
 	}
     } else {
-	@search_results = grep { $_ =~ $entry_rx } @filtered_pkgs;
+        my $count;
+        foreach (@filtered_pkgs) {
+            next if !/$entry_rx/;
+            push @search_results, $_;
+            last if $count++ > 2000;
+        }
     }
     if (@search_results) {
 	$options->{add_nodes}->(map { [ $_, N("Search results") . ($options->{tree_mode} eq 'by_presence'
