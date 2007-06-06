@@ -461,7 +461,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     local $urpm->{fatal} = sub {
         my $fatal_msg = $_[1];
         printf STDERR "Fatal: %s\n", $fatal_msg;
-        Rpmdrake::gurpm::end();
         interactive_msg(N("Installation failed"),
                         N("There was a problem during the installation:\n\n%s", $fatal_msg));
         goto return_with_exit_code;
@@ -526,6 +525,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     perform_removal($urpm, { map { $_ => $pkgs->{$_} } @to_remove }) if !$probe_only_for_updates;
 
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
+    my $_guard = before_leaving { Rpmdrake::gurpm::end() };
     my $canceled;
     my (@errors);
     my $something_installed;
@@ -730,8 +730,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
             goto return_with_exit_code;
         }
 
-        Rpmdrake::gurpm::end();
-
         if (@errors || @error_msgs) {
             interactive_msg(
 		N("Problem during installation"),
@@ -781,7 +779,6 @@ you may now inspect some in order to take actions:"),
 	    );
 	}
     } else {
-        Rpmdrake::gurpm::end();
         interactive_msg(N("Error"),
                          N("Unrecoverable error: no package found for installation, sorry."));
     }
