@@ -76,8 +76,9 @@ sub urpm_name {
 
 sub pkg2medium {
     my ($p, $urpm) = @_;
+    my $id = $p->id;
     foreach (@{$urpm->{media}}) {
-	!$_->{ignore} && $p->id <= $_->{end} and return $_;
+        !$_->{ignore} && $id >= $_->{start} && $id <= $_->{end} and return $_;
     }
     undef;
 }
