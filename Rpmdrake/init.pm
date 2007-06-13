@@ -33,6 +33,12 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(init warn_about_user_mode $changelog_first $default_list_mode %options $MODE);
 
+# prevent urpmi.update to run /usr/bin/resize through Term::ReadKey->GetTerminalSize() when xterm is installed
+# (which freezes the GNOME desktop):
+BEGIN {
+    $ENV{COLUMNS} = 80;
+    $ENV{LINES} = 25;
+}
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
