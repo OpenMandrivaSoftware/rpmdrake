@@ -217,17 +217,9 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	    }
 }
 
-our $probe_only_for_updates;
-sub get_pkgs {
-    my ($opts) = @_;
-    my %update_descr;
-    @update_medias = ();
-    my $w = $::main_window;
 
-    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
-    my $_guard = before_leaving { Rpmdrake::gurpm::end() };
-    my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
+sub open_urpmi_db() {
     my $error_happened;
     my $urpm = urpm->new;
     $urpm->{fatal} = sub {
@@ -241,7 +233,22 @@ sub get_pkgs {
         touch('/etc/urpmi/urpmi.cfg');
         exec('edit-urpm-sources.pl');
     }
+    $urpm;
+}
 
+
+our $probe_only_for_updates;
+sub get_pkgs {
+    my ($opts) = @_;
+    my %update_descr;
+    @update_medias = ();
+    my $w = $::main_window;
+
+    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
+    my $_guard = before_leaving { Rpmdrake::gurpm::end() };
+    my $_flush_guard = Gtk2::GUI_Update_Guard->new;
+
+    my $urpm = open_urpmi_db();
     my $_lock = urpm::lock::urpmi_db($urpm);
     my $statedir = $urpm->{statedir};
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
