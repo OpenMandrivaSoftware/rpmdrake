@@ -174,7 +174,7 @@ sub readconf() {
 
 sub writeconf() {
     unlink $configfile;
-    output $configfile, map { "$_ " . join(' ', @${$config{$_}{var}}) . "\n" } keys %config;
+    output $configfile, map { "$_ " . (ref ${$config{$_}{var}} ? join(' ', @${$config{$_}{var}}) : ()) . "\n" } keys %config;
 }
 
 sub getbanner() {
