@@ -174,7 +174,9 @@ sub formatlistpkg { join("\n", sort { uc($a) cmp uc($b) } @_) }
 my (@update_medias, $is_update_media_already_asked);
 
 sub warn_about_media {
-    my ($urpm, $w, $opts) = @_;
+    my ($w, $opts) = @_;
+    my $urpm = open_urpmi_db();
+
     my $update_name = 'update_source';
     return if !member($::default_list_mode, qw(all_updates security bugfix normal));
     return if $::options{'no-media-update'};
@@ -253,7 +255,7 @@ sub get_pkgs {
     my $statedir = $urpm->{statedir};
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 
-    warn_about_media($urpm, $w, $opts);
+    warn_about_media($w, $opts);
 
     Rpmdrake::gurpm::label(N("Reading updates description"));
     Rpmdrake::gurpm::progress(0.05);
