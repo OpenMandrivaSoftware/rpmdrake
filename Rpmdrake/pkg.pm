@@ -726,6 +726,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     }
 
+    # explicitly destroy the progress window when it's over; we may
+    # have sg to display before returning (errors, rpmnew/rpmsave, ...):
+    Rpmdrake::gurpm::end();
+
     undef $lock;
     undef $rpm_lock;
     if (@rpms_install || @rpms_upgrade || @to_remove) {
@@ -739,8 +743,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 	    );
             goto return_with_exit_code;
         }
-
-        Rpmdrake::gurpm::end();
 
         if (@errors || @error_msgs) {
             interactive_msg(
@@ -791,7 +793,6 @@ you may now inspect some in order to take actions:"),
 	    );
 	}
     } else {
-        Rpmdrake::gurpm::end();
         interactive_msg(N("Error"),
                          N("Unrecoverable error: no package found for installation, sorry."));
     }
