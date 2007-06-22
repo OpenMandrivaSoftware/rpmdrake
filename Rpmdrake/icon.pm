@@ -145,7 +145,7 @@ my %group_icons = (
 	join('|', N("System"), N("Servers")) => '',
 	join('|', N("System"),
           #-PO: This is a package/product name. Only translate it if needed:
-          N("X11")) => '',
+          N("X11")) => 'office_section',
 	N("Terminals") => 'terminals_section',
 	N("Text tools") => 'text_tools_section',
 	N("Toys") => 'toys_section',
