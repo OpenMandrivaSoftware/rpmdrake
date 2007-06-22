@@ -58,6 +58,7 @@ my %group_icons = (
 	join('|', N("Development"), N("Perl")) => '',
 	join('|', N("Development"), N("PHP")) => '',
 	join('|', N("Development"), N("Python")) => '',
+	join('|', N("Development"), N("X11")) => 'office_section',
 	N("Editors") => 'emulators_section',
 	N("Education") => 'education_section',
 	N("Emulators") => 'emulators_section',
