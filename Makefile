@@ -77,5 +77,5 @@ log: ChangeLog
 changelog: ChangeLog
 
 ChangeLog:
-	svn2cl --accum --strip-prefix=soft/rpmdrake/trunk --authors ../../soft/common/username.xml
+	svn2cl --accum --authors ../../soft/common/username.xml
 	rm -f *.bak
