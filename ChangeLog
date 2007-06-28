@@ -1,3 +1,261 @@
+2007-06-27 13:37  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: (changelog) --strip-prefix is now uneeded with
+	  svn2cl-0.9
+
+2007-06-22 19:47  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.70)
+
+2007-06-22 13:55  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/icon.pm: set an icon for "System/X11" group
+
+2007-06-22 13:54  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/icon.pm: add "Development/X11" rpm group
+
+2007-06-22 13:51  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/icon.pm: deprecate "Cluster/Message Passing",
+	  "Cluster/Queueing Services",
+	  "System/Deploiement" & "System/Deployment" groups in favor of new
+	  "System/Cluster" group
+
+2007-06-21 17:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.69)
+
+2007-06-20 11:01  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) factorize explicitly
+	  destroying the progress
+	  window when it's over so that it's also done if we need to
+	  display
+	  rpmnew/rpmsave files, ...
+
+2007-06-20 10:57  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) partially revert r219992:
+	  explicitly destroy
+	  the progress window when it's over but we've sg to display before
+	  returning (error, ...)
+
+2007-06-16 15:57  Pavel Maryanov <acid_jack at ukr.net>
+
+	* po/ru.po: updated translation
+
+2007-06-15 09:58  ybando
+
+	* grpmi/po/ja.po: Japanese translation reviewed.
+
+2007-06-14 09:28  ybando
+
+	* po/ja.po: Japanese translation updated.
+
+2007-06-14 07:01  Tomasz Bednarski <tbednarski at mandrivalinux.pl>
+
+	* po/pl.po: update
+
+2007-06-13 15:35  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.68)
+
+2007-06-13 15:34  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/init.pm: prevent urpmi.update to run /usr/bin/resize
+	  through
+	  Term::ReadKey->GetTerminalSize() when xterm is installed (which
+	  freezes
+	  the GNOME desktop) (#30867)
+
+2007-06-13 13:57  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (warn_about_media) use our own instance of urpmi
+	  db in order not to
+	  alter skip.list managment (#31092)
+
+2007-06-13 13:55  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (open_urpmi_db) split it out of get_pkgs()
+
+2007-06-13 12:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (writeconf) fix crash when trying to save non set
+	  variables (#31367)
+
+2007-06-13 12:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: read config before warning if running as user in order
+	  to fix error
+	  when trying to save config (#31367)
+
+2007-06-12 16:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm: (pkg2medium) return "None" medium for
+	  already installed packages (#30556)
+
+2007-06-12 16:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm: (pkg2medium) factorize: do not call
+	  URPM::Package->id() quite a lot of time
+
+2007-06-06 13:34  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.67)
+
+2007-06-06 12:28  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) ensure "initialization"
+	  dialog got destroyed if an
+	  error happens very early (ie if no package was ever installed)
+
+2007-06-05 13:51  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (do_search) limit the number of results to 2000, else
+	  Gtk2::TreeView
+	  takes quite a lot of time in order to render the lsit (#30355)
+
+2007-05-30 15:32  ybando
+
+	* po/ja.po: Japanese translation revised.
+
+2007-05-29 09:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.66)
+
+2007-05-29 07:59  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: (refresh_packages_list) fix crash due to UTF-8
+	  issue
+
+2007-05-22 17:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* park-rpmdrake: (group_modify) use english word order; make a real
+	  english sentence
+	  out of this; explicit what is the actual error
+
+2007-05-22 16:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/init.pm: workaround crash due to option abuse (#30817)
+
+2007-05-21 16:25  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/fr.po: improved translation
+
+2007-05-17 13:56  berthy
+
+	* po/fr.po: Update fr translation
+
+2007-05-10 09:27  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/widgets.pm: (new) ensure it's not editable
+
+2007-05-09 17:01  Pixel <pixel at mandriva.com>
+
+	* gurpmi.addmedia: - allow adding local media without file://
+	  (#27291)
+	  - update usage accordingly
+	  - do not mention "... with hdlist" in usage (it's deprecated)
+
+2007-05-07 23:13  mmodem
+
+	* po/pt.po: up
+
+2007-05-07 23:05  mmodem
+
+	* po/pt.po: up
+
+2007-05-05 15:36  Funda Wang <fundawang at linux.net.cn>
+
+	* po/af.po, po/af.pom, po/am.po, po/am.pom, po/ar.po, po/ar.pom,
+	  po/az.po, po/az.pom, po/be.po, po/be.pom, po/bg.po, po/bg.pom,
+	  po/bn.po, po/bn.pom, po/br.po, po/br.pom, po/bs.po, po/bs.pom,
+	  po/ca.po, po/ca.pom, po/cs.po, po/cs.pom, po/cy.po, po/cy.pom,
+	  po/da.po, po/da.pom, po/de.po, po/de.pom, po/el.po, po/el.pom,
+	  po/eo.po, po/eo.pom, po/es.po, po/es.pom, po/et.po, po/et.pom,
+	  po/eu.po, po/eu.pom, po/fa.po, po/fa.pom, po/fi.po, po/fi.pom,
+	  po/fr.po, po/fr.pom, po/fur.po, po/fur.pom, po/ga.po, po/ga.pom,
+	  po/gl.po, po/gl.pom, po/he.po, po/he.pom, po/hi.po, po/hi.pom,
+	  po/hr.po, po/hr.pom, po/hu.po, po/hu.pom, po/hy.po, po/hy.pom,
+	  po/id.po, po/id.pom, po/is.po, po/is.pom, po/it.po, po/it.pom,
+	  po/ja.po, po/ja.pom, po/ka.po, po/ka.pom, po/ko.po, po/ko.pom,
+	  po/ku.po, po/ku.pom, po/ky.po, po/ky.pom, po/lt.po, po/lt.pom,
+	  po/ltg.po, po/ltg.pom, po/lv.po, po/lv.pom, po/mk.po, po/mk.pom,
+	  po/mn.po, po/mn.pom, po/ms.po, po/ms.pom, po/mt.po, po/mt.pom,
+	  po/nb.po, po/nb.pom, po/nl.po, po/nl.pom, po/nn.po, po/nn.pom,
+	  po/pa_IN.po, po/pa_IN.pom, po/pl.po, po/pl.pom, po/pt.po,
+	  po/pt.pom, po/pt_BR.po, po/pt_BR.pom, po/ro.po, po/ro.pom,
+	  po/rpmdrake.pot, po/ru.po, po/ru.pom, po/sc.po, po/sc.pom,
+	  po/sk.po, po/sk.pom, po/sl.po, po/sl.pom, po/sq.po, po/sq.pom,
+	  po/sr.po, po/sr.pom, po/sr@Latn.po, po/sr@Latn.pom, po/sv.po,
+	  po/sv.pom, po/ta.po, po/ta.pom, po/tg.po, po/tg.pom, po/th.po,
+	  po/th.pom, po/tl.po, po/tl.pom, po/tr.po, po/tr.pom, po/uk.po,
+	  po/uk.pom, po/uz.po, po/uz.pom, po/uz@Latn.po, po/uz@Latn.pom,
+	  po/vi.po, po/vi.pom, po/wa.po, po/wa.pom, po/zh_CN.po,
+	  po/zh_CN.pom, po/zh_TW.po, po/zh_TW.pom: Updated POT file
+
+2007-05-02 19:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.65)
+
+2007-05-02 19:51  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (format_pkg_simplifiedinfo) handle invalid UTF8
+	  summaries, thus fixing
+	  crash (#30409)
+
+2007-04-30 14:30  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.64)
+
+2007-04-26 12:56  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* data/mandrivaupdate.desktop, data/rpmdrake-browse-only.desktop,
+	  data/rpmdrake-remove.desktop, data/rpmdrake-sources.desktop,
+	  data/rpmdrake.desktop, icons/state_installed.png,
+	  icons/state_to_install.png, icons/state_to_remove.png,
+	  icons/state_to_update.png, icons/state_uninstalled.png: readd
+	  back files lost after SVN crash (#30466)
+
+2007-04-25 15:21  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.63)
+
+2007-04-25 09:01  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/fr.po: better translation
+
+2007-04-25 09:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/fr.po: better translation
+
+2007-04-25 08:42  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) fix not refreshing a subcategory
+	  if old & new
+	  subcategories have the same name (#30421)
+
+2007-04-25 07:59  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* .perl_checker: blacklist File::Find, File::Temp,
+	  File::MimeInfo::Magic & encoding too
+
+2007-04-24 13:37  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (callback_choices) fix selecting first choice,
+	  thus preventing asking
+	  again the same question if choosing the first one
+
+2007-04-24 13:37  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: (refresh_packages_list) escape characters, thus
+	  fixing duplicated names (#28970)
+
+2007-04-24 13:35  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* README: add an example
+
 2006-11-23 20:06  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* ChangeLog: update
