@@ -105,7 +105,7 @@ sub format_pkg_simplifiedinfo {
                                  ),
                                 format_field(N("Architecture: ")) . $pkgs->{$key}{pkg}->arch,
                                 format_field(N("Size: ")) . N("%s KB", int($pkgs->{$key}{pkg}->size/1024)),
-                                eval { format_field(N("Medium: ")) . pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name} },
+                                eval { format_field(N("Medium: ")) . $raw_medium->{name} },
                             ),
                        ),
                    )) ];
