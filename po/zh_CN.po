@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-05 17:29+0200\n"
+"POT-Creation-Date: 2007-06-28 17:08+0200\n"
 "PO-Revision-Date: 2007-03-08 12:39+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: Mandriva Linux i18n Team <cooker-i18n@mandrakelinux.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../MandrivaUpdate:76 ../Rpmdrake/gui.pm:677
+#: ../MandrivaUpdate:78 ../Rpmdrake/gui.pm:677
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -31,32 +31,32 @@ msgstr ""
 "更新列表为空。这意味着可能您所安装的软件包没有相应的更新，\n"
 "或者您已经安装了全部更新。"
 
-#: ../MandrivaUpdate:105 ../rpmdrake:93 ../rpmdrake:156 ../rpmdrake.pm:189
+#: ../MandrivaUpdate:107 ../rpmdrake:90 ../rpmdrake:158 ../rpmdrake.pm:189
 #, c-format
 msgid "Software Management"
 msgstr "软件管理器"
 
-#: ../MandrivaUpdate:123
+#: ../MandrivaUpdate:125
 #, fuzzy, c-format
 msgid "Here is the list of software package updates"
 msgstr "在此列出了软件包更新"
 
-#: ../MandrivaUpdate:144 ../Rpmdrake/edit_urpm_sources.pm:1081 ../rpmdrake:456
+#: ../MandrivaUpdate:146 ../Rpmdrake/edit_urpm_sources.pm:1081 ../rpmdrake:458
 #, c-format
 msgid "Help"
 msgstr "帮助"
 
-#: ../MandrivaUpdate:148 ../rpmdrake:461 ../rpmdrake.pm:777
+#: ../MandrivaUpdate:150 ../rpmdrake:463 ../rpmdrake.pm:777
 #, c-format
 msgid "Select all"
 msgstr "全选"
 
-#: ../MandrivaUpdate:156 ../rpmdrake.pm:781
+#: ../MandrivaUpdate:158 ../rpmdrake.pm:781
 #, c-format
 msgid "Update"
 msgstr "更新"
 
-#: ../MandrivaUpdate:164 ../rpmdrake:472
+#: ../MandrivaUpdate:166 ../rpmdrake:474
 #, c-format
 msgid "Quit"
 msgstr "退出"
@@ -234,7 +234,7 @@ msgstr "介质类型:"
 #: ../Rpmdrake/edit_urpm_sources.pm:540 ../Rpmdrake/edit_urpm_sources.pm:627
 #: ../Rpmdrake/edit_urpm_sources.pm:668 ../Rpmdrake/edit_urpm_sources.pm:726
 #: ../Rpmdrake/edit_urpm_sources.pm:876 ../Rpmdrake/gui.pm:449
-#: ../Rpmdrake/init.pm:126 ../Rpmdrake/pkg.pm:542 ../Rpmdrake/pkg.pm:588
+#: ../Rpmdrake/init.pm:139 ../Rpmdrake/pkg.pm:552 ../Rpmdrake/pkg.pm:598
 #: ../rpmdrake.pm:300 ../rpmdrake.pm:615 ../rpmdrake.pm:700 ../rpmdrake.pm:773
 #, c-format
 msgid "Cancel"
@@ -246,7 +246,7 @@ msgstr "取消"
 #: ../Rpmdrake/edit_urpm_sources.pm:719 ../Rpmdrake/edit_urpm_sources.pm:792
 #: ../Rpmdrake/edit_urpm_sources.pm:922 ../Rpmdrake/edit_urpm_sources.pm:1082
 #: ../Rpmdrake/gui.pm:449 ../Rpmdrake/gui.pm:465 ../Rpmdrake/gui.pm:470
-#: ../Rpmdrake/init.pm:126 ../Rpmdrake/pkg.pm:542 ../Rpmdrake/pkg.pm:780
+#: ../Rpmdrake/init.pm:139 ../Rpmdrake/pkg.pm:552 ../Rpmdrake/pkg.pm:792
 #: ../Rpmdrake/rpmnew.pm:172 ../rpmdrake.pm:125 ../rpmdrake.pm:239
 #: ../rpmdrake.pm:303 ../rpmdrake.pm:615
 #, c-format
@@ -588,8 +588,8 @@ msgstr "并行..."
 msgid "Global options..."
 msgstr "全局选项..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1097 ../Rpmdrake/init.pm:132
-#: ../gurpmi.addmedia:93
+#: ../Rpmdrake/edit_urpm_sources.pm:1097 ../Rpmdrake/init.pm:145
+#: ../gurpmi.addmedia:99
 #, c-format
 msgid ""
 "%s\n"
@@ -624,6 +624,11 @@ msgid ""
 msgstr ""
 "软件包数据库已锁定。请关闭其它使用软件包数据库的应用程序(您是否有其它介质管理"
 "器或其它桌面，或者您正在安装软件包？)。"
+
+#: ../Rpmdrake/formatting.pm:80
+#, fuzzy, c-format
+msgid "None"
+msgstr "否"
 
 #: ../Rpmdrake/gui.pm:81 ../Rpmdrake/gui.pm:155
 #, c-format
@@ -840,7 +845,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:572 ../Rpmdrake/pkg.pm:513
+#: ../Rpmdrake/gui.pm:572 ../Rpmdrake/pkg.pm:522
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "需要删除一些软件包"
@@ -875,12 +880,12 @@ msgstr ""
 "\n"
 "您真的想要安装所有选中的软件包吗?"
 
-#: ../Rpmdrake/gui.pm:639 ../Rpmdrake/pkg.pm:235
+#: ../Rpmdrake/gui.pm:639 ../Rpmdrake/pkg.pm:229
 #, c-format
 msgid "Fatal error"
 msgstr "致命错误"
 
-#: ../Rpmdrake/gui.pm:640 ../Rpmdrake/pkg.pm:236
+#: ../Rpmdrake/gui.pm:640 ../Rpmdrake/pkg.pm:230
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "发生了一个致命错误: %s。"
@@ -895,17 +900,17 @@ msgstr "正在列出软件包，请稍候..."
 msgid "No update"
 msgstr "没有更新"
 
-#: ../Rpmdrake/gui.pm:700 ../rpmdrake:241
+#: ../Rpmdrake/gui.pm:700 ../rpmdrake:243
 #, c-format
 msgid "All"
 msgstr "全部"
 
-#: ../Rpmdrake/gui.pm:709 ../rpmdrake:142
+#: ../Rpmdrake/gui.pm:709 ../rpmdrake:144
 #, c-format
 msgid "Upgradable"
 msgstr "可升级"
 
-#: ../Rpmdrake/gui.pm:709 ../rpmdrake:142
+#: ../Rpmdrake/gui.pm:709 ../rpmdrake:144
 #, c-format
 msgid "Addable"
 msgstr "可添加"
@@ -941,9 +946,9 @@ msgstr "光盘刻录"
 msgid "Compression"
 msgstr "压缩"
 
-#: ../Rpmdrake/icon.pm:40 ../Rpmdrake/icon.pm:46 ../Rpmdrake/icon.pm:60
-#: ../Rpmdrake/icon.pm:73 ../Rpmdrake/icon.pm:91 ../Rpmdrake/icon.pm:112
-#: ../Rpmdrake/icon.pm:125 ../Rpmdrake/icon.pm:135 ../Rpmdrake/pkg.pm:74
+#: ../Rpmdrake/icon.pm:40 ../Rpmdrake/icon.pm:46 ../Rpmdrake/icon.pm:57
+#: ../Rpmdrake/icon.pm:71 ../Rpmdrake/icon.pm:89 ../Rpmdrake/icon.pm:110
+#: ../Rpmdrake/icon.pm:123 ../Rpmdrake/icon.pm:134 ../Rpmdrake/pkg.pm:74
 #, c-format
 msgid "Other"
 msgstr "其它"
@@ -974,613 +979,594 @@ msgstr "Howtos"
 msgid "Literature"
 msgstr "文献"
 
-#: ../Rpmdrake/icon.pm:47 ../Rpmdrake/icon.pm:48 ../Rpmdrake/icon.pm:49
-#, c-format
-msgid "Cluster"
-msgstr "簇"
-
-#: ../Rpmdrake/icon.pm:48
-#, c-format
-msgid "Message Passing"
-msgstr "信息传递"
-
-#: ../Rpmdrake/icon.pm:49
-#, c-format
-msgid "Queueing Services"
-msgstr "查询服务"
-
-#: ../Rpmdrake/icon.pm:50
+#: ../Rpmdrake/icon.pm:47
 #, c-format
 msgid "Communications"
 msgstr "通讯"
 
-#: ../Rpmdrake/icon.pm:51 ../Rpmdrake/icon.pm:55
+#: ../Rpmdrake/icon.pm:48 ../Rpmdrake/icon.pm:52
 #, c-format
 msgid "Databases"
 msgstr "数据库"
 
+#: ../Rpmdrake/icon.pm:49 ../Rpmdrake/icon.pm:50 ../Rpmdrake/icon.pm:51
 #: ../Rpmdrake/icon.pm:52 ../Rpmdrake/icon.pm:53 ../Rpmdrake/icon.pm:54
 #: ../Rpmdrake/icon.pm:55 ../Rpmdrake/icon.pm:56 ../Rpmdrake/icon.pm:57
 #: ../Rpmdrake/icon.pm:58 ../Rpmdrake/icon.pm:59 ../Rpmdrake/icon.pm:60
-#: ../Rpmdrake/icon.pm:61 ../Rpmdrake/icon.pm:62 ../Rpmdrake/icon.pm:63
-#: ../Rpmdrake/icon.pm:174 ../Rpmdrake/icon.pm:175 ../Rpmdrake/icon.pm:176
+#: ../Rpmdrake/icon.pm:61 ../Rpmdrake/icon.pm:171 ../Rpmdrake/icon.pm:172
+#: ../Rpmdrake/icon.pm:173
 #, c-format
 msgid "Development"
 msgstr "开发"
 
-#: ../Rpmdrake/icon.pm:53
+#: ../Rpmdrake/icon.pm:50
 #, c-format
 msgid "C"
 msgstr "C"
 
-#: ../Rpmdrake/icon.pm:54
+#: ../Rpmdrake/icon.pm:51
 #, c-format
 msgid "C++"
 msgstr "C++"
 
-#: ../Rpmdrake/icon.pm:56
+#: ../Rpmdrake/icon.pm:53
 #, c-format
 msgid "GNOME and GTK+"
 msgstr "GNOME 和 GTK+"
 
-#: ../Rpmdrake/icon.pm:57
+#: ../Rpmdrake/icon.pm:54
 #, c-format
 msgid "Java"
 msgstr "Java"
 
-#: ../Rpmdrake/icon.pm:58
+#: ../Rpmdrake/icon.pm:55
 #, c-format
 msgid "KDE and Qt"
 msgstr "KDE 和 Qt"
 
-#: ../Rpmdrake/icon.pm:59
+#: ../Rpmdrake/icon.pm:56
 #, c-format
 msgid "Kernel"
 msgstr "内核"
 
-#: ../Rpmdrake/icon.pm:61
+#: ../Rpmdrake/icon.pm:58
 #, c-format
 msgid "Perl"
 msgstr "Perl"
 
-#: ../Rpmdrake/icon.pm:62
+#: ../Rpmdrake/icon.pm:59
 #, c-format
 msgid "PHP"
 msgstr "PHP"
 
-#: ../Rpmdrake/icon.pm:63
+#: ../Rpmdrake/icon.pm:60
 #, c-format
 msgid "Python"
 msgstr "Python"
 
-#: ../Rpmdrake/icon.pm:64
+#. -PO: This is a package/product name. Only translate it if needed:
+#: ../Rpmdrake/icon.pm:61 ../Rpmdrake/icon.pm:148
+#, c-format
+msgid "X11"
+msgstr "X11"
+
+#: ../Rpmdrake/icon.pm:62
 #, c-format
 msgid "Editors"
 msgstr "编辑器"
 
-#: ../Rpmdrake/icon.pm:65
+#: ../Rpmdrake/icon.pm:63
 #, c-format
 msgid "Education"
 msgstr "教育"
 
-#: ../Rpmdrake/icon.pm:66
+#: ../Rpmdrake/icon.pm:64
 #, c-format
 msgid "Emulators"
 msgstr "模拟器"
 
-#: ../Rpmdrake/icon.pm:67
+#: ../Rpmdrake/icon.pm:65
 #, c-format
 msgid "File tools"
 msgstr "文件工具"
 
-#: ../Rpmdrake/icon.pm:68 ../Rpmdrake/icon.pm:69 ../Rpmdrake/icon.pm:70
-#: ../Rpmdrake/icon.pm:71 ../Rpmdrake/icon.pm:72 ../Rpmdrake/icon.pm:73
-#: ../Rpmdrake/icon.pm:74 ../Rpmdrake/icon.pm:75 ../Rpmdrake/icon.pm:76
+#: ../Rpmdrake/icon.pm:66 ../Rpmdrake/icon.pm:67 ../Rpmdrake/icon.pm:68
+#: ../Rpmdrake/icon.pm:69 ../Rpmdrake/icon.pm:70 ../Rpmdrake/icon.pm:71
+#: ../Rpmdrake/icon.pm:72 ../Rpmdrake/icon.pm:73 ../Rpmdrake/icon.pm:74
 #, c-format
 msgid "Games"
 msgstr "游戏"
 
-#: ../Rpmdrake/icon.pm:69
+#: ../Rpmdrake/icon.pm:67
 #, c-format
 msgid "Adventure"
 msgstr "探险"
 
-#: ../Rpmdrake/icon.pm:70
+#: ../Rpmdrake/icon.pm:68
 #, c-format
 msgid "Arcade"
 msgstr "街机"
 
-#: ../Rpmdrake/icon.pm:71
+#: ../Rpmdrake/icon.pm:69
 #, c-format
 msgid "Boards"
 msgstr "棋盘"
 
-#: ../Rpmdrake/icon.pm:72
+#: ../Rpmdrake/icon.pm:70
 #, c-format
 msgid "Cards"
 msgstr "卡"
 
-#: ../Rpmdrake/icon.pm:74
+#: ../Rpmdrake/icon.pm:72
 #, c-format
 msgid "Puzzles"
 msgstr "拼图"
 
-#: ../Rpmdrake/icon.pm:75
+#: ../Rpmdrake/icon.pm:73
 #, c-format
 msgid "Sports"
 msgstr "运动"
 
-#: ../Rpmdrake/icon.pm:76
+#: ../Rpmdrake/icon.pm:74
 #, c-format
 msgid "Strategy"
 msgstr "策略"
 
-#: ../Rpmdrake/icon.pm:77 ../Rpmdrake/icon.pm:78 ../Rpmdrake/icon.pm:81
-#: ../Rpmdrake/icon.pm:82 ../Rpmdrake/icon.pm:85 ../Rpmdrake/icon.pm:88
-#: ../Rpmdrake/icon.pm:91 ../Rpmdrake/icon.pm:92 ../Rpmdrake/icon.pm:95
-#: ../Rpmdrake/icon.pm:98
+#: ../Rpmdrake/icon.pm:75 ../Rpmdrake/icon.pm:76 ../Rpmdrake/icon.pm:79
+#: ../Rpmdrake/icon.pm:80 ../Rpmdrake/icon.pm:83 ../Rpmdrake/icon.pm:86
+#: ../Rpmdrake/icon.pm:89 ../Rpmdrake/icon.pm:90 ../Rpmdrake/icon.pm:93
+#: ../Rpmdrake/icon.pm:96
 #, c-format
 msgid "Graphical desktop"
 msgstr "图形桌面"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../Rpmdrake/icon.pm:80
+#: ../Rpmdrake/icon.pm:78
 #, c-format
 msgid "Enlightenment"
 msgstr "Enlightenment"
 
-#: ../Rpmdrake/icon.pm:81
+#: ../Rpmdrake/icon.pm:79
 #, c-format
 msgid "FVWM based"
 msgstr "基于 FVWM"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../Rpmdrake/icon.pm:84
+#: ../Rpmdrake/icon.pm:82
 #, c-format
 msgid "GNOME"
 msgstr "GNOME"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../Rpmdrake/icon.pm:87
+#: ../Rpmdrake/icon.pm:85
 #, c-format
 msgid "Icewm"
 msgstr "Icewm"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../Rpmdrake/icon.pm:90
+#: ../Rpmdrake/icon.pm:88
 #, c-format
 msgid "KDE"
 msgstr "KDE"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../Rpmdrake/icon.pm:94
+#: ../Rpmdrake/icon.pm:92
 #, c-format
 msgid "Sawfish"
 msgstr "Sawfish"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../Rpmdrake/icon.pm:97
+#: ../Rpmdrake/icon.pm:95
 #, c-format
 msgid "WindowMaker"
 msgstr "WindowMaker"
 
 #. -PO: This is a package/product name. Only translate it if needed:
-#: ../Rpmdrake/icon.pm:100
+#: ../Rpmdrake/icon.pm:98
 #, c-format
 msgid "Xfce"
 msgstr "Xfce"
 
-#: ../Rpmdrake/icon.pm:101
+#: ../Rpmdrake/icon.pm:99
 #, c-format
 msgid "Graphics"
 msgstr "图形"
 
-#: ../Rpmdrake/icon.pm:102
+#: ../Rpmdrake/icon.pm:100
 #, c-format
 msgid "Monitoring"
 msgstr "监视"
 
-#: ../Rpmdrake/icon.pm:103 ../Rpmdrake/icon.pm:104
+#: ../Rpmdrake/icon.pm:101 ../Rpmdrake/icon.pm:102
 #, c-format
 msgid "Multimedia"
 msgstr "多媒体"
 
-#: ../Rpmdrake/icon.pm:104 ../Rpmdrake/icon.pm:155
+#: ../Rpmdrake/icon.pm:102 ../Rpmdrake/icon.pm:152
 #, c-format
 msgid "Video"
 msgstr "视频"
 
-#: ../Rpmdrake/icon.pm:105 ../Rpmdrake/icon.pm:106 ../Rpmdrake/icon.pm:107
-#: ../Rpmdrake/icon.pm:108 ../Rpmdrake/icon.pm:109 ../Rpmdrake/icon.pm:110
-#: ../Rpmdrake/icon.pm:111 ../Rpmdrake/icon.pm:112 ../Rpmdrake/icon.pm:113
-#: ../Rpmdrake/icon.pm:114 ../Rpmdrake/icon.pm:134
+#: ../Rpmdrake/icon.pm:103 ../Rpmdrake/icon.pm:104 ../Rpmdrake/icon.pm:105
+#: ../Rpmdrake/icon.pm:106 ../Rpmdrake/icon.pm:107 ../Rpmdrake/icon.pm:108
+#: ../Rpmdrake/icon.pm:109 ../Rpmdrake/icon.pm:110 ../Rpmdrake/icon.pm:111
+#: ../Rpmdrake/icon.pm:112 ../Rpmdrake/icon.pm:133
 #, c-format
 msgid "Networking"
 msgstr "网络"
 
-#: ../Rpmdrake/icon.pm:106
+#: ../Rpmdrake/icon.pm:104
 #, c-format
 msgid "Chat"
 msgstr "聊天"
 
-#: ../Rpmdrake/icon.pm:107
+#: ../Rpmdrake/icon.pm:105
 #, c-format
 msgid "File transfer"
 msgstr "文件传送"
 
-#: ../Rpmdrake/icon.pm:108
+#: ../Rpmdrake/icon.pm:106
 #, c-format
 msgid "IRC"
 msgstr "IRC"
 
-#: ../Rpmdrake/icon.pm:109
+#: ../Rpmdrake/icon.pm:107
 #, c-format
 msgid "Instant messaging"
 msgstr "即时通讯"
 
-#: ../Rpmdrake/icon.pm:110 ../Rpmdrake/icon.pm:181
+#: ../Rpmdrake/icon.pm:108 ../Rpmdrake/icon.pm:178
 #, c-format
 msgid "Mail"
 msgstr "邮件"
 
-#: ../Rpmdrake/icon.pm:111
+#: ../Rpmdrake/icon.pm:109
 #, c-format
 msgid "News"
 msgstr "新闻"
 
-#: ../Rpmdrake/icon.pm:113
+#: ../Rpmdrake/icon.pm:111
 #, c-format
 msgid "Remote access"
 msgstr "远程访问"
 
-#: ../Rpmdrake/icon.pm:114
+#: ../Rpmdrake/icon.pm:112
 #, c-format
 msgid "WWW"
 msgstr "WWW"
 
-#: ../Rpmdrake/icon.pm:115
+#: ../Rpmdrake/icon.pm:113
 #, c-format
 msgid "Office"
 msgstr "办公"
 
-#: ../Rpmdrake/icon.pm:116
+#: ../Rpmdrake/icon.pm:114
 #, c-format
 msgid "Public Keys"
 msgstr "公钥"
 
-#: ../Rpmdrake/icon.pm:117
+#: ../Rpmdrake/icon.pm:115
 #, c-format
 msgid "Publishing"
 msgstr "出版"
 
-#: ../Rpmdrake/icon.pm:118 ../Rpmdrake/icon.pm:119 ../Rpmdrake/icon.pm:120
-#: ../Rpmdrake/icon.pm:121 ../Rpmdrake/icon.pm:122 ../Rpmdrake/icon.pm:123
-#: ../Rpmdrake/icon.pm:124 ../Rpmdrake/icon.pm:125 ../Rpmdrake/icon.pm:126
+#: ../Rpmdrake/icon.pm:116 ../Rpmdrake/icon.pm:117 ../Rpmdrake/icon.pm:118
+#: ../Rpmdrake/icon.pm:119 ../Rpmdrake/icon.pm:120 ../Rpmdrake/icon.pm:121
+#: ../Rpmdrake/icon.pm:122 ../Rpmdrake/icon.pm:123 ../Rpmdrake/icon.pm:124
 #, c-format
 msgid "Sciences"
 msgstr "科学"
 
-#: ../Rpmdrake/icon.pm:119
+#: ../Rpmdrake/icon.pm:117
 #, c-format
 msgid "Astronomy"
 msgstr "天文"
 
-#: ../Rpmdrake/icon.pm:120
+#: ../Rpmdrake/icon.pm:118
 #, c-format
 msgid "Biology"
 msgstr "生物"
 
-#: ../Rpmdrake/icon.pm:121
+#: ../Rpmdrake/icon.pm:119
 #, c-format
 msgid "Chemistry"
 msgstr "化学"
 
-#: ../Rpmdrake/icon.pm:122
+#: ../Rpmdrake/icon.pm:120
 #, c-format
 msgid "Computer science"
 msgstr "计算机科学"
 
-#: ../Rpmdrake/icon.pm:123
+#: ../Rpmdrake/icon.pm:121
 #, c-format
 msgid "Geosciences"
 msgstr "地球科学"
 
-#: ../Rpmdrake/icon.pm:124
+#: ../Rpmdrake/icon.pm:122
 #, c-format
 msgid "Mathematics"
 msgstr "数学"
 
-#: ../Rpmdrake/icon.pm:126
+#: ../Rpmdrake/icon.pm:124
 #, c-format
 msgid "Physics"
 msgstr "物理"
 
-#: ../Rpmdrake/icon.pm:127
+#: ../Rpmdrake/icon.pm:125
 #, c-format
 msgid "Shells"
 msgstr "Shell"
 
-#: ../Rpmdrake/icon.pm:128
+#: ../Rpmdrake/icon.pm:126
 #, c-format
 msgid "Sound"
 msgstr "声音"
 
-#: ../Rpmdrake/icon.pm:129 ../Rpmdrake/icon.pm:130 ../Rpmdrake/icon.pm:131
-#: ../Rpmdrake/icon.pm:132 ../Rpmdrake/icon.pm:133 ../Rpmdrake/icon.pm:134
-#: ../Rpmdrake/icon.pm:135 ../Rpmdrake/icon.pm:136 ../Rpmdrake/icon.pm:137
-#: ../Rpmdrake/icon.pm:138 ../Rpmdrake/icon.pm:139 ../Rpmdrake/icon.pm:140
-#: ../Rpmdrake/icon.pm:141 ../Rpmdrake/icon.pm:142 ../Rpmdrake/icon.pm:143
-#: ../Rpmdrake/icon.pm:144 ../Rpmdrake/icon.pm:145 ../Rpmdrake/icon.pm:146
-#: ../Rpmdrake/icon.pm:147 ../Rpmdrake/icon.pm:148 ../Rpmdrake/icon.pm:149
+#: ../Rpmdrake/icon.pm:127 ../Rpmdrake/icon.pm:128 ../Rpmdrake/icon.pm:129
+#: ../Rpmdrake/icon.pm:130 ../Rpmdrake/icon.pm:131 ../Rpmdrake/icon.pm:132
+#: ../Rpmdrake/icon.pm:133 ../Rpmdrake/icon.pm:134 ../Rpmdrake/icon.pm:135
+#: ../Rpmdrake/icon.pm:136 ../Rpmdrake/icon.pm:137 ../Rpmdrake/icon.pm:138
+#: ../Rpmdrake/icon.pm:139 ../Rpmdrake/icon.pm:140 ../Rpmdrake/icon.pm:141
+#: ../Rpmdrake/icon.pm:142 ../Rpmdrake/icon.pm:143 ../Rpmdrake/icon.pm:144
+#: ../Rpmdrake/icon.pm:145 ../Rpmdrake/icon.pm:146
 #, c-format
 msgid "System"
 msgstr "系统"
 
-#: ../Rpmdrake/icon.pm:130
+#: ../Rpmdrake/icon.pm:128
 #, c-format
 msgid "Base"
 msgstr "基本"
 
-#: ../Rpmdrake/icon.pm:131 ../Rpmdrake/icon.pm:132 ../Rpmdrake/icon.pm:133
-#: ../Rpmdrake/icon.pm:134 ../Rpmdrake/icon.pm:135 ../Rpmdrake/icon.pm:136
-#: ../Rpmdrake/icon.pm:137 ../Rpmdrake/icon.pm:159
+#: ../Rpmdrake/icon.pm:129
+#, c-format
+msgid "Cluster"
+msgstr "簇"
+
+#: ../Rpmdrake/icon.pm:130 ../Rpmdrake/icon.pm:131 ../Rpmdrake/icon.pm:132
+#: ../Rpmdrake/icon.pm:133 ../Rpmdrake/icon.pm:134 ../Rpmdrake/icon.pm:135
+#: ../Rpmdrake/icon.pm:136 ../Rpmdrake/icon.pm:156
 #, c-format
 msgid "Configuration"
 msgstr "配置"
 
-#: ../Rpmdrake/icon.pm:132
+#: ../Rpmdrake/icon.pm:131
 #, c-format
 msgid "Boot and Init"
 msgstr "启动和初始化"
 
-#: ../Rpmdrake/icon.pm:133
+#: ../Rpmdrake/icon.pm:132
 #, c-format
 msgid "Hardware"
 msgstr "硬件"
 
-#: ../Rpmdrake/icon.pm:136
+#: ../Rpmdrake/icon.pm:135
 #, c-format
 msgid "Packaging"
 msgstr "打包"
 
-#: ../Rpmdrake/icon.pm:137
+#: ../Rpmdrake/icon.pm:136
 #, c-format
 msgid "Printing"
 msgstr "打印"
 
-#: ../Rpmdrake/icon.pm:138
-#, c-format
-msgid "Deploiement"
-msgstr "部署"
-
-#: ../Rpmdrake/icon.pm:139
-#, c-format
-msgid "Deployment"
-msgstr "部署"
-
-#: ../Rpmdrake/icon.pm:140 ../Rpmdrake/icon.pm:141 ../Rpmdrake/icon.pm:142
-#: ../Rpmdrake/icon.pm:143 ../Rpmdrake/icon.pm:144
+#: ../Rpmdrake/icon.pm:137 ../Rpmdrake/icon.pm:138 ../Rpmdrake/icon.pm:139
+#: ../Rpmdrake/icon.pm:140 ../Rpmdrake/icon.pm:141
 #, c-format
 msgid "Fonts"
 msgstr "字体"
 
-#: ../Rpmdrake/icon.pm:141
+#: ../Rpmdrake/icon.pm:138
 #, c-format
 msgid "Console"
 msgstr "控制台"
 
-#: ../Rpmdrake/icon.pm:142
+#: ../Rpmdrake/icon.pm:139
 #, c-format
 msgid "True type"
 msgstr "TrueType"
 
-#: ../Rpmdrake/icon.pm:143
+#: ../Rpmdrake/icon.pm:140
 #, c-format
 msgid "Type1"
 msgstr "Type1"
 
-#: ../Rpmdrake/icon.pm:144
+#: ../Rpmdrake/icon.pm:141
 #, c-format
 msgid "X11 bitmap"
 msgstr "X11 位图"
 
-#: ../Rpmdrake/icon.pm:145
+#: ../Rpmdrake/icon.pm:142
 #, c-format
 msgid "Internationalization"
 msgstr "国际化"
 
-#: ../Rpmdrake/icon.pm:146
+#: ../Rpmdrake/icon.pm:143
 #, c-format
 msgid "Kernel and hardware"
 msgstr "内核和硬件"
 
-#: ../Rpmdrake/icon.pm:147
+#: ../Rpmdrake/icon.pm:144
 #, c-format
 msgid "Libraries"
 msgstr "库"
 
-#: ../Rpmdrake/icon.pm:148
+#: ../Rpmdrake/icon.pm:145
 #, c-format
 msgid "Servers"
 msgstr "服务器"
 
-#. -PO: This is a package/product name. Only translate it if needed:
-#: ../Rpmdrake/icon.pm:151
-#, c-format
-msgid "X11"
-msgstr "X11"
-
-#: ../Rpmdrake/icon.pm:152
+#: ../Rpmdrake/icon.pm:149
 #, c-format
 msgid "Terminals"
 msgstr "终端"
 
-#: ../Rpmdrake/icon.pm:153
+#: ../Rpmdrake/icon.pm:150
 #, c-format
 msgid "Text tools"
 msgstr "文本工具"
 
-#: ../Rpmdrake/icon.pm:154
+#: ../Rpmdrake/icon.pm:151
 #, c-format
 msgid "Toys"
 msgstr "玩具"
 
+#: ../Rpmdrake/icon.pm:155 ../Rpmdrake/icon.pm:156 ../Rpmdrake/icon.pm:157
 #: ../Rpmdrake/icon.pm:158 ../Rpmdrake/icon.pm:159 ../Rpmdrake/icon.pm:160
 #: ../Rpmdrake/icon.pm:161 ../Rpmdrake/icon.pm:162 ../Rpmdrake/icon.pm:163
-#: ../Rpmdrake/icon.pm:164 ../Rpmdrake/icon.pm:165 ../Rpmdrake/icon.pm:166
-#: ../Rpmdrake/icon.pm:167
+#: ../Rpmdrake/icon.pm:164
 #, c-format
 msgid "Workstation"
 msgstr "工作站"
 
-#: ../Rpmdrake/icon.pm:160
+#: ../Rpmdrake/icon.pm:157
 #, c-format
 msgid "Console Tools"
 msgstr "控制台工具"
 
-#: ../Rpmdrake/icon.pm:161 ../Rpmdrake/icon.pm:176
+#: ../Rpmdrake/icon.pm:158 ../Rpmdrake/icon.pm:173
 #, c-format
 msgid "Documentation"
 msgstr "文档"
 
-#: ../Rpmdrake/icon.pm:162
+#: ../Rpmdrake/icon.pm:159
 #, c-format
 msgid "Game station"
 msgstr "游戏机"
 
-#: ../Rpmdrake/icon.pm:163
+#: ../Rpmdrake/icon.pm:160
 #, c-format
 msgid "Internet station"
 msgstr "Internet 工作站"
 
-#: ../Rpmdrake/icon.pm:164
+#: ../Rpmdrake/icon.pm:161
 #, c-format
 msgid "Multimedia station"
 msgstr "多媒体工作站"
 
-#: ../Rpmdrake/icon.pm:165
+#: ../Rpmdrake/icon.pm:162
 #, c-format
 msgid "Network Computer (client)"
 msgstr "网络计算机(客户端)"
 
-#: ../Rpmdrake/icon.pm:166
+#: ../Rpmdrake/icon.pm:163
 #, c-format
 msgid "Office Workstation"
 msgstr "办公工作站"
 
-#: ../Rpmdrake/icon.pm:167
+#: ../Rpmdrake/icon.pm:164
 #, c-format
 msgid "Scientific Workstation"
 msgstr "科学工作站"
 
-#: ../Rpmdrake/icon.pm:168 ../Rpmdrake/icon.pm:170 ../Rpmdrake/icon.pm:171
-#: ../Rpmdrake/icon.pm:172 ../Rpmdrake/icon.pm:173
+#: ../Rpmdrake/icon.pm:165 ../Rpmdrake/icon.pm:167 ../Rpmdrake/icon.pm:168
+#: ../Rpmdrake/icon.pm:169 ../Rpmdrake/icon.pm:170
 #, c-format
 msgid "Graphical Environment"
 msgstr "图形环境"
 
-#: ../Rpmdrake/icon.pm:170
+#: ../Rpmdrake/icon.pm:167
 #, c-format
 msgid "GNOME Workstation"
 msgstr "GNOME 工作站"
 
-#: ../Rpmdrake/icon.pm:171
+#: ../Rpmdrake/icon.pm:168
 #, c-format
 msgid "IceWm Desktop"
 msgstr "IceWM 桌面"
 
-#: ../Rpmdrake/icon.pm:172
+#: ../Rpmdrake/icon.pm:169
 #, c-format
 msgid "KDE Workstation"
 msgstr "KDE 工作站"
 
-#: ../Rpmdrake/icon.pm:173
+#: ../Rpmdrake/icon.pm:170
 #, c-format
 msgid "Other Graphical Desktops"
 msgstr "其它图形桌面"
 
+#: ../Rpmdrake/icon.pm:174 ../Rpmdrake/icon.pm:175 ../Rpmdrake/icon.pm:176
 #: ../Rpmdrake/icon.pm:177 ../Rpmdrake/icon.pm:178 ../Rpmdrake/icon.pm:179
-#: ../Rpmdrake/icon.pm:180 ../Rpmdrake/icon.pm:181 ../Rpmdrake/icon.pm:182
-#: ../Rpmdrake/icon.pm:183 ../Rpmdrake/icon.pm:184
+#: ../Rpmdrake/icon.pm:180 ../Rpmdrake/icon.pm:181
 #, c-format
 msgid "Server"
 msgstr "服务器"
 
-#: ../Rpmdrake/icon.pm:178
+#: ../Rpmdrake/icon.pm:175
 #, c-format
 msgid "DNS/NIS"
 msgstr "DNS/NIS"
 
-#: ../Rpmdrake/icon.pm:179
+#: ../Rpmdrake/icon.pm:176
 #, c-format
 msgid "Database"
 msgstr "数据库"
 
-#: ../Rpmdrake/icon.pm:180
+#: ../Rpmdrake/icon.pm:177
 #, c-format
 msgid "Firewall/Router"
 msgstr "防火墙/路由器"
 
-#: ../Rpmdrake/icon.pm:182
+#: ../Rpmdrake/icon.pm:179
 #, c-format
 msgid "Mail/Groupware/News"
 msgstr "邮件/群件/新闻"
 
-#: ../Rpmdrake/icon.pm:183
+#: ../Rpmdrake/icon.pm:180
 #, c-format
 msgid "Network Computer server"
 msgstr "网络计算机服务器"
 
-#: ../Rpmdrake/icon.pm:184
+#: ../Rpmdrake/icon.pm:181
 #, c-format
 msgid "Web/FTP"
 msgstr "Web/FTP"
 
-#: ../Rpmdrake/init.pm:40
+#: ../Rpmdrake/init.pm:46
 #, c-format
 msgid "Usage: %s [OPTION]..."
 msgstr "用法：%s [选项]..."
 
-#: ../Rpmdrake/init.pm:41
+#: ../Rpmdrake/init.pm:47
 #, c-format
 msgid ""
 "  --changelog-first      display changelog before filelist in the "
 "description window"
 msgstr "  --changelog-first      描述窗口中更改日志排在文件列表之前"
 
-#: ../Rpmdrake/init.pm:42
+#: ../Rpmdrake/init.pm:48
 #, c-format
 msgid "  --media=medium1,..     limit to given media"
 msgstr "  --media=介质1,..       限制使用指定的介质"
 
-#: ../Rpmdrake/init.pm:43
+#: ../Rpmdrake/init.pm:49
 #, c-format
 msgid ""
 "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr "  --merge-all-rpmnew     合并找到的全部 .rpmnew/.rpmsave 文件"
 
-#: ../Rpmdrake/init.pm:44
+#: ../Rpmdrake/init.pm:50
 #, c-format
 msgid "  --mode=MODE            set mode (install (default), remove, update)"
 msgstr "  --mode=模式            设定模式(安装(默认)、删除、更新)"
 
-#: ../Rpmdrake/init.pm:45
+#: ../Rpmdrake/init.pm:51
 #, c-format
 msgid ""
 "  --no-confirmation      don't ask first confirmation question in update mode"
 msgstr "  --no-confirmation      更新模式中不询问第一个确认问题"
 
-#: ../Rpmdrake/init.pm:46
+#: ../Rpmdrake/init.pm:52
 #, c-format
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      启动时不更新介质"
 
-#: ../Rpmdrake/init.pm:47
+#: ../Rpmdrake/init.pm:53
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        不校验软件包签名"
 
-#: ../Rpmdrake/init.pm:48
+#: ../Rpmdrake/init.pm:54
 #, c-format
 msgid ""
 "  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
@@ -1588,37 +1574,37 @@ msgid ""
 msgstr ""
 "  --parallel=别名,主机   在并行模式中使用[别名]组和[主机]来显示所需的依赖关系"
 
-#: ../Rpmdrake/init.pm:49
+#: ../Rpmdrake/init.pm:55
 #, c-format
 msgid "  --pkg-nosel=pkg1,..    show only these packages"
 msgstr "  --pkg-nosel=包1,..     只显示这些软件包"
 
-#: ../Rpmdrake/init.pm:50
+#: ../Rpmdrake/init.pm:56
 #, c-format
 msgid "  --pkg-sel=pkg1,..      preselect these packages"
 msgstr "  --pkg-sel=包1,..       预先选择这些软件包"
 
-#: ../Rpmdrake/init.pm:51
+#: ../Rpmdrake/init.pm:57
 #, c-format
 msgid "  --root                 force to run as root"
 msgstr "  --root                 强制以 root 身份运行"
 
-#: ../Rpmdrake/init.pm:52
+#: ../Rpmdrake/init.pm:58
 #, c-format
 msgid "  --search=pkg           run search for \"pkg\""
 msgstr "  --search=包            搜索“包”"
 
-#: ../Rpmdrake/init.pm:53
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --version      - print this tool's version number.\n"
 msgstr "  --version      - 打印此工具的版本号。\n"
 
-#: ../Rpmdrake/init.pm:123
+#: ../Rpmdrake/init.pm:136
 #, c-format
 msgid "Running in user mode"
 msgstr "以用户模式运行"
 
-#: ../Rpmdrake/init.pm:124
+#: ../Rpmdrake/init.pm:137
 #, c-format
 msgid ""
 "You are launching this program as a normal user.\n"
@@ -1629,12 +1615,12 @@ msgstr ""
 "您将无法执行对系统的修改，\n"
 "但您仍然可以浏览已有数据库。"
 
-#: ../Rpmdrake/init.pm:131 ../Rpmdrake/init.pm:156
+#: ../Rpmdrake/init.pm:144 ../Rpmdrake/init.pm:169
 #, c-format
 msgid "Welcome"
 msgstr "欢迎"
 
-#: ../Rpmdrake/init.pm:136
+#: ../Rpmdrake/init.pm:149
 #, c-format
 msgid ""
 "Welcome to the software removal tool!\n"
@@ -1646,7 +1632,7 @@ msgstr ""
 "\n"
 "本工具将帮助您删除掉您想要从您的电脑中删除的软件包。"
 
-#: ../Rpmdrake/init.pm:141
+#: ../Rpmdrake/init.pm:154
 #, c-format
 msgid ""
 "Welcome to %s!\n"
@@ -1658,12 +1644,12 @@ msgstr ""
 "\n"
 "本工具将帮助您为您的电脑中安装更新的软件包。"
 
-#: ../Rpmdrake/init.pm:146
+#: ../Rpmdrake/init.pm:159
 #, c-format
 msgid "Welcome to the software installation tool!"
 msgstr "欢迎使用软件安装工具!"
 
-#: ../Rpmdrake/init.pm:147
+#: ../Rpmdrake/init.pm:160
 #, c-format
 msgid ""
 "Welcome to the software installation tool!\n"
@@ -1677,22 +1663,22 @@ msgstr ""
 "您的 Mandriva Linux 的安装光盘包含有数千个软件包。\n"
 "本工具将帮助您选择要为您的电脑安装的软件包。"
 
-#: ../Rpmdrake/init.pm:158
+#: ../Rpmdrake/init.pm:171
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr "软件安装工具可设置介质源。"
 
-#: ../Rpmdrake/init.pm:159
+#: ../Rpmdrake/init.pm:172
 #, c-format
 msgid "Do you want to add media sources now?"
 msgstr "您想要现在就添加介质源吗?"
 
-#: ../Rpmdrake/pkg.pm:184 ../Rpmdrake/pkg.pm:513
+#: ../Rpmdrake/pkg.pm:186 ../Rpmdrake/pkg.pm:522
 #, c-format
 msgid "Confirmation"
 msgstr "确认"
 
-#: ../Rpmdrake/pkg.pm:185
+#: ../Rpmdrake/pkg.pm:187
 #, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
@@ -1705,12 +1691,12 @@ msgstr ""
 "\n"
 "确定继续吗?"
 
-#: ../Rpmdrake/pkg.pm:194
+#: ../Rpmdrake/pkg.pm:196
 #, c-format
 msgid "Already existing update media"
 msgstr "更新介质已经存在"
 
-#: ../Rpmdrake/pkg.pm:195
+#: ../Rpmdrake/pkg.pm:197
 #, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -1726,12 +1712,12 @@ msgstr ""
 "\n"
 "然后，重新启动 %s。"
 
-#: ../Rpmdrake/pkg.pm:206
+#: ../Rpmdrake/pkg.pm:208
 #, c-format
 msgid "How to choose manually your mirror"
 msgstr "如何手工选择您的镜像"
 
-#: ../Rpmdrake/pkg.pm:207
+#: ../Rpmdrake/pkg.pm:209
 #, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -1745,58 +1731,58 @@ msgstr ""
 "\n"
 "然后，重新启动 %s。"
 
-#: ../Rpmdrake/pkg.pm:227 ../Rpmdrake/pkg.pm:528 ../Rpmdrake/pkg.pm:802
+#: ../Rpmdrake/pkg.pm:249 ../Rpmdrake/pkg.pm:537 ../Rpmdrake/pkg.pm:813
 #: ../rpmdrake.pm:328
 #, c-format
 msgid "Please wait"
 msgstr "请稍候"
 
-#: ../Rpmdrake/pkg.pm:227 ../Rpmdrake/pkg.pm:528
+#: ../Rpmdrake/pkg.pm:249 ../Rpmdrake/pkg.pm:537
 #, c-format
 msgid "Package installation..."
 msgstr "软件包安装..."
 
-#: ../Rpmdrake/pkg.pm:227 ../Rpmdrake/pkg.pm:528 ../Rpmdrake/pkg.pm:802
+#: ../Rpmdrake/pkg.pm:249 ../Rpmdrake/pkg.pm:537 ../Rpmdrake/pkg.pm:813
 #, c-format
 msgid "Initializing..."
 msgstr "正在初始化..."
 
-#: ../Rpmdrake/pkg.pm:251
+#: ../Rpmdrake/pkg.pm:260
 #, c-format
 msgid "Reading updates description"
 msgstr "读取更新描述"
 
-#: ../Rpmdrake/pkg.pm:277 ../Rpmdrake/pkg.pm:354
+#: ../Rpmdrake/pkg.pm:286 ../Rpmdrake/pkg.pm:363
 #, c-format
 msgid "Please wait, finding available packages..."
 msgstr "正在寻找可用的软件包，请稍候..."
 
-#: ../Rpmdrake/pkg.pm:283
+#: ../Rpmdrake/pkg.pm:292
 #, c-format
 msgid "Please wait, listing base packages..."
 msgstr "正在列出基本软件包，请稍候..."
 
-#: ../Rpmdrake/pkg.pm:320
+#: ../Rpmdrake/pkg.pm:329
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "正在寻找已安装的软件包，请稍候..."
 
-#: ../Rpmdrake/pkg.pm:433
+#: ../Rpmdrake/pkg.pm:442
 #, c-format
 msgid "Could not create temporary directory '%s'"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:441 ../Rpmdrake/pkg.pm:757
+#: ../Rpmdrake/pkg.pm:450 ../Rpmdrake/pkg.pm:769
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "所有要求的软件包都已成功安装。"
 
-#: ../Rpmdrake/pkg.pm:445 ../Rpmdrake/pkg.pm:737
+#: ../Rpmdrake/pkg.pm:454 ../Rpmdrake/pkg.pm:749
 #, c-format
 msgid "Problem during installation"
 msgstr "在安装过程中发生问题"
 
-#: ../Rpmdrake/pkg.pm:446 ../Rpmdrake/pkg.pm:466 ../Rpmdrake/pkg.pm:739
+#: ../Rpmdrake/pkg.pm:455 ../Rpmdrake/pkg.pm:475 ../Rpmdrake/pkg.pm:751
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -1807,22 +1793,22 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:465 ../Rpmdrake/pkg.pm:707 ../Rpmdrake/pkg.pm:724
+#: ../Rpmdrake/pkg.pm:474 ../Rpmdrake/pkg.pm:717 ../Rpmdrake/pkg.pm:738
 #, c-format
 msgid "Installation failed"
 msgstr "安装失败"
 
-#: ../Rpmdrake/pkg.pm:494
+#: ../Rpmdrake/pkg.pm:503
 #, c-format
 msgid "Unable to get source packages."
 msgstr "源软件包未找到。"
 
-#: ../Rpmdrake/pkg.pm:495
+#: ../Rpmdrake/pkg.pm:504
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "对不起，无法得到源软件包。%s"
 
-#: ../Rpmdrake/pkg.pm:496 ../Rpmdrake/pkg.pm:727
+#: ../Rpmdrake/pkg.pm:505 ../Rpmdrake/pkg.pm:741
 #, c-format
 msgid ""
 "\n"
@@ -1835,7 +1821,7 @@ msgstr ""
 "报告的错误:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:510
+#: ../Rpmdrake/pkg.pm:519
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package is going to be installed:"
@@ -1843,83 +1829,83 @@ msgid_plural ""
 "To satisfy dependencies, the following %d packages are going to be installed:"
 msgstr[0] "为了满足依赖性要求，将另外安装以下%d个软件包:"
 
-#: ../Rpmdrake/pkg.pm:515
+#: ../Rpmdrake/pkg.pm:524
 #, c-format
 msgid "Remove one package?"
 msgid_plural "Remove %d packages?"
 msgstr[0] "删除 %d 个软件包吗?"
 
-#: ../Rpmdrake/pkg.pm:517
+#: ../Rpmdrake/pkg.pm:526
 #, c-format
 msgid "The following package has to be removed for others to be upgraded:"
 msgstr "要升级其它软件包，必须删除下列软件包:"
 
-#: ../Rpmdrake/pkg.pm:518
+#: ../Rpmdrake/pkg.pm:527
 #, c-format
 msgid "The following packages have to be removed for others to be upgraded:"
 msgstr "要升级其它软件包，必须删除下列软件包:"
 
-#: ../Rpmdrake/pkg.pm:518
+#: ../Rpmdrake/pkg.pm:527
 #, c-format
 msgid "Is it ok to continue?"
 msgstr "确定继续吗?"
 
-#: ../Rpmdrake/pkg.pm:540
+#: ../Rpmdrake/pkg.pm:550
 #, c-format
 msgid "Change medium"
 msgstr "更改介质"
 
-#: ../Rpmdrake/pkg.pm:541
+#: ../Rpmdrake/pkg.pm:551
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "请把名为“%s”的介质放进设备 [%s]"
 
-#: ../Rpmdrake/pkg.pm:562
+#: ../Rpmdrake/pkg.pm:572
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "准备安装软件包..."
 
-#: ../Rpmdrake/pkg.pm:562
+#: ../Rpmdrake/pkg.pm:572
 #, c-format
 msgid "Preparing..."
 msgstr "正在准备..."
 
-#: ../Rpmdrake/pkg.pm:565
+#: ../Rpmdrake/pkg.pm:575
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "正在安装软件包“%s”(%s/%s)..."
 
-#: ../Rpmdrake/pkg.pm:566
+#: ../Rpmdrake/pkg.pm:576
 #, c-format
 msgid "Total: %s/%s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:587 ../Rpmdrake/pkg.pm:592
+#: ../Rpmdrake/pkg.pm:597 ../Rpmdrake/pkg.pm:602
 #, c-format
 msgid "Downloading package `%s'..."
 msgstr "正在下载软件包“%s”..."
 
-#: ../Rpmdrake/pkg.pm:594
+#: ../Rpmdrake/pkg.pm:604
 #, c-format
 msgid "        %s%% of %s completed, ETA = %s, speed = %s"
 msgstr "        已完成 %s%%，共 %s，预计剩余时间 %s，速度为 %s"
 
-#: ../Rpmdrake/pkg.pm:595
+#: ../Rpmdrake/pkg.pm:605
 #, c-format
 msgid "        %s%% completed, speed = %s"
 msgstr "        %s%% 已完成，速度为 %s"
 
-#: ../Rpmdrake/pkg.pm:616
+#: ../Rpmdrake/pkg.pm:626
 #, c-format
 msgid "Verifying package signatures..."
 msgstr "正在校验软件包的签名..."
 
-#: ../Rpmdrake/pkg.pm:629 ../rpmdrake.pm:756 ../rpmdrake.pm:865
+#: ../Rpmdrake/pkg.pm:639 ../rpmdrake.pm:756 ../rpmdrake.pm:865
 #, c-format
 msgid "Warning"
 msgstr "警告"
 
-#: ../Rpmdrake/pkg.pm:630
+#: ../Rpmdrake/pkg.pm:640
 #, c-format
 msgid ""
 "The following packages have bad signatures:\n"
@@ -1934,43 +1920,43 @@ msgstr ""
 "\n"
 "您想要继续安装吗?"
 
-#: ../Rpmdrake/pkg.pm:643
+#: ../Rpmdrake/pkg.pm:653
 #, c-format
 msgid "installing %s from %s"
 msgstr "正在从 %2$s 安装 %1$s"
 
-#: ../Rpmdrake/pkg.pm:645
+#: ../Rpmdrake/pkg.pm:655
 #, c-format
 msgid "installing %s"
 msgstr "正在安装 %s"
 
-#: ../Rpmdrake/pkg.pm:649
+#: ../Rpmdrake/pkg.pm:659
 #, c-format
 msgid "removing %s"
 msgstr "正在删除 %s"
 
-#: ../Rpmdrake/pkg.pm:675 ../Rpmdrake/pkg.pm:693 ../Rpmdrake/pkg.pm:785
+#: ../Rpmdrake/pkg.pm:685 ../Rpmdrake/pkg.pm:703 ../Rpmdrake/pkg.pm:796
 #: ../rpmdrake.pm:743 ../rpmdrake.pm:824 ../rpmdrake.pm:848
 #, c-format
 msgid "Error"
 msgstr "错误"
 
-#: ../Rpmdrake/pkg.pm:676 ../Rpmdrake/pkg.pm:694
+#: ../Rpmdrake/pkg.pm:686 ../Rpmdrake/pkg.pm:704
 #, c-format
 msgid "Installation failed:"
 msgstr "安装失败: "
 
-#: ../Rpmdrake/pkg.pm:677
+#: ../Rpmdrake/pkg.pm:687
 #, c-format
 msgid "Try installation without checking dependencies? (y/N) "
 msgstr "尝试忽略相关性检查而安装吗?(是(y)/否(N))[否]"
 
-#: ../Rpmdrake/pkg.pm:695
+#: ../Rpmdrake/pkg.pm:705
 #, c-format
 msgid "Try harder to install (--force)? (y/N) "
 msgstr "尝试强制安装吗(使用 --force)(是(y)/否(N))[否]?"
 
-#: ../Rpmdrake/pkg.pm:725
+#: ../Rpmdrake/pkg.pm:739
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -1983,12 +1969,12 @@ msgstr ""
 "\n"
 "您可能需要更新您的介质数据库。"
 
-#: ../Rpmdrake/pkg.pm:738
+#: ../Rpmdrake/pkg.pm:750
 #, c-format
 msgid "%d installation transactions failed"
 msgstr "%d 个安装交易失败"
 
-#: ../Rpmdrake/pkg.pm:752
+#: ../Rpmdrake/pkg.pm:764
 #, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
@@ -2001,42 +1987,42 @@ msgstr ""
 "某些配置文件被保存为“.rpmnew”或“.rpmsave”，\n"
 "在执行操作以前，您需要检查一下:"
 
-#: ../Rpmdrake/pkg.pm:760
+#: ../Rpmdrake/pkg.pm:772
 #, c-format
 msgid "Upgrade information"
 msgstr "升级信息"
 
-#: ../Rpmdrake/pkg.pm:762
+#: ../Rpmdrake/pkg.pm:774
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr "这些软件包带有升级信息"
 
-#: ../Rpmdrake/pkg.pm:770
+#: ../Rpmdrake/pkg.pm:782
 #, c-format
 msgid "Upgrade information about this package"
 msgstr "关于此软件包的升级信息"
 
-#: ../Rpmdrake/pkg.pm:773
+#: ../Rpmdrake/pkg.pm:785
 #, c-format
 msgid "Upgrade information about package %s"
 msgstr "关于软件包 %s 的升级信息"
 
-#: ../Rpmdrake/pkg.pm:786
+#: ../Rpmdrake/pkg.pm:797
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "不可恢复的错误: 对不起，没有发现可安装的软件包。"
 
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:819
+#: ../Rpmdrake/pkg.pm:813 ../Rpmdrake/pkg.pm:830
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "正在删除软件包，请稍候..."
 
-#: ../Rpmdrake/pkg.pm:830
+#: ../Rpmdrake/pkg.pm:841
 #, c-format
 msgid "Problem during removal"
 msgstr "在删除过程中发生问题"
 
-#: ../Rpmdrake/pkg.pm:831
+#: ../Rpmdrake/pkg.pm:842
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -2082,17 +2068,22 @@ msgstr "安装完成"
 msgid "Inspect..."
 msgstr "检查..."
 
-#: ../Rpmdrake/rpmnew.pm:182 ../rpmdrake:71 ../rpmdrake:98
+#: ../Rpmdrake/rpmnew.pm:182 ../rpmdrake:68 ../rpmdrake:95
 #, c-format
 msgid "Please wait, searching..."
 msgstr "正在搜索，请稍候..."
 
-#: ../gurpmi.addmedia:83
+#: ../gurpmi.addmedia:84
+#, c-format
+msgid "bad <url> (for local directory, the path must be absolute)"
+msgstr ""
+
+#: ../gurpmi.addmedia:89
 #, c-format
 msgid "Unable to add medium, wrong or missing arguments"
 msgstr "无法添加介质，给出的参数有错或者不够"
 
-#: ../gurpmi.addmedia:97
+#: ../gurpmi.addmedia:103
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2102,7 +2093,7 @@ msgstr ""
 "您即将添加新的软件包介质 %s。\n"
 "这意味着您可以从新介质中向系统添加新的软件包。"
 
-#: ../gurpmi.addmedia:100
+#: ../gurpmi.addmedia:106
 #, c-format
 msgid ""
 "You are about to add a new packages medium, `%s'.\n"
@@ -2112,260 +2103,260 @@ msgstr ""
 "您即将添加新的软件包介质“%s”。\n"
 "这意味着您可以从新介质中向系统添加新的软件包。"
 
-#: ../gurpmi.addmedia:125
+#: ../gurpmi.addmedia:131
 #, c-format
 msgid "Successfully added media %s."
 msgstr "成功添加了介质 %s。"
 
-#: ../gurpmi.addmedia:126
+#: ../gurpmi.addmedia:132
 #, c-format
 msgid "Successfully added medium `%s'."
 msgstr "成功添加了介质“%s”。"
 
-#: ../rpmdrake:60 ../rpmdrake:141
+#: ../rpmdrake:57 ../rpmdrake:143
 #, c-format
 msgid "Search results"
 msgstr "搜索结果"
 
-#: ../rpmdrake:60
+#: ../rpmdrake:57
 #, c-format
 msgid "Search results (none)"
 msgstr "搜索结果(无)"
 
-#: ../rpmdrake:103
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "停止"
 
-#: ../rpmdrake:144
+#: ../rpmdrake:146
 #, c-format
 msgid "Selected"
 msgstr "选中"
 
-#: ../rpmdrake:144
+#: ../rpmdrake:146
 #, c-format
 msgid "Not selected"
 msgstr "未选中"
 
-#: ../rpmdrake:177
+#: ../rpmdrake:179
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "选中软件: %s / 剩余磁盘空间: %s"
 
-#: ../rpmdrake:178
+#: ../rpmdrake:180
 #, c-format
 msgid "Selected size: %d MB"
 msgstr "选中大小: %d MB"
 
-#: ../rpmdrake:241
+#: ../rpmdrake:243
 #, c-format
 msgid "Installed"
 msgstr "已安装"
 
-#: ../rpmdrake:241
+#: ../rpmdrake:243
 #, c-format
 msgid "Non installed"
 msgstr "未安装"
 
-#: ../rpmdrake:242
+#: ../rpmdrake:244
 #, c-format
 msgid "%s choices"
 msgstr "%s 精选"
 
-#: ../rpmdrake:242
+#: ../rpmdrake:244
 #, c-format
 msgid "Mandriva Linux choices"
 msgstr "Mandriva Linux 精选"
 
-#: ../rpmdrake:244
+#: ../rpmdrake:246
 #, c-format
 msgid "All packages, alphabetical"
 msgstr "全部软件包，按字母次序排列"
 
-#: ../rpmdrake:245
+#: ../rpmdrake:247
 #, c-format
 msgid "All packages, by update availability"
 msgstr "全部软件包，按照是否可更新排列"
 
-#: ../rpmdrake:246
+#: ../rpmdrake:248
 #, c-format
 msgid "All packages, by size"
 msgstr "全部软件包，按大小排列"
 
-#: ../rpmdrake:247
+#: ../rpmdrake:249
 #, c-format
 msgid "All packages, by selection state"
 msgstr "全部软件包，按选中状态排列"
 
-#: ../rpmdrake:248
+#: ../rpmdrake:250
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "不分类，按安装日期排列"
 
-#: ../rpmdrake:249
+#: ../rpmdrake:251
 #, c-format
 msgid "All packages, by group"
 msgstr "全部软件包，按组别排列"
 
-#: ../rpmdrake:251
+#: ../rpmdrake:253
 #, c-format
 msgid "All updates"
 msgstr "全部更新"
 
-#: ../rpmdrake:251
+#: ../rpmdrake:253
 #, c-format
 msgid "Security updates"
 msgstr "安全更新"
 
-#: ../rpmdrake:251
+#: ../rpmdrake:253
 #, c-format
 msgid "Bugfixes updates"
 msgstr "缺陷修正更新"
 
-#: ../rpmdrake:251
+#: ../rpmdrake:253
 #, c-format
 msgid "Normal updates"
 msgstr "正常更新"
 
-#: ../rpmdrake:312
+#: ../rpmdrake:314
 #, c-format
 msgid "in names"
 msgstr "在名称中"
 
-#: ../rpmdrake:314
+#: ../rpmdrake:316
 #, c-format
 msgid "in descriptions"
 msgstr "在描述中"
 
-#: ../rpmdrake:316
+#: ../rpmdrake:318
 #, c-format
 msgid "in file names"
 msgstr "在文件名中"
 
-#: ../rpmdrake:347 ../rpmdrake:350 ../rpmdrake:361 ../rpmdrake:374
-#: ../rpmdrake:383
+#: ../rpmdrake:349 ../rpmdrake:352 ../rpmdrake:363 ../rpmdrake:376
+#: ../rpmdrake:385
 #, c-format
 msgid "/_File"
 msgstr "/文件(_F)"
 
-#: ../rpmdrake:350
+#: ../rpmdrake:352
 #, c-format
 msgid "/_Update media"
 msgstr "/更新介质(_U)"
 
-#: ../rpmdrake:361
+#: ../rpmdrake:363
 #, c-format
 msgid "/_Reset the selection"
 msgstr "/重置选中内容(_R)"
 
-#: ../rpmdrake:374
+#: ../rpmdrake:376
 #, c-format
 msgid "/Reload the _packages list"
 msgstr "/重新装入软件包清单(_P)"
 
-#: ../rpmdrake:383
+#: ../rpmdrake:385
 #, c-format
 msgid "/_Quit"
 msgstr "/退出(_Q)"
 
-#: ../rpmdrake:383
+#: ../rpmdrake:385
 #, c-format
 msgid "<control>Q"
 msgstr "<control>Q"
 
-#: ../rpmdrake:386 ../rpmdrake:387 ../rpmdrake:391 ../rpmdrake:421
+#: ../rpmdrake:388 ../rpmdrake:389 ../rpmdrake:393 ../rpmdrake:423
 #, c-format
 msgid "/_Options"
 msgstr "/选项(_O)"
 
-#: ../rpmdrake:387
+#: ../rpmdrake:389
 #, c-format
 msgid "/_Media Manager"
 msgstr "/介质管理器(_M)"
 
-#: ../rpmdrake:391 ../rpmdrake:421
+#: ../rpmdrake:393 ../rpmdrake:423
 #, c-format
 msgid "/_Show automatically selected packages"
 msgstr "/自动显示选中的软件包(_S)"
 
-#: ../rpmdrake:395 ../rpmdrake:396 ../rpmdrake:397 ../rpmdrake:398
+#: ../rpmdrake:397 ../rpmdrake:398 ../rpmdrake:399 ../rpmdrake:400
 #, c-format
 msgid "/_Help"
 msgstr "/帮助(_H)"
 
-#: ../rpmdrake:396
+#: ../rpmdrake:398
 #, c-format
 msgid "/_Report Bug"
 msgstr "/报告错误(_R)"
 
-#: ../rpmdrake:398
+#: ../rpmdrake:400
 #, c-format
 msgid "/_About..."
 msgstr "/关于(_A)..."
 
-#: ../rpmdrake:401
+#: ../rpmdrake:403
 #, c-format
 msgid "Rpmdrake"
 msgstr "Rpmdrake"
 
-#: ../rpmdrake:403
+#: ../rpmdrake:405
 #, c-format
 msgid "Copyright (C) %s by Mandriva"
 msgstr "版权 (C) %s Mandriva"
 
-#: ../rpmdrake:405
+#: ../rpmdrake:407
 #, c-format
 msgid "Rpmdrake is Mandriva Linux package management tool."
 msgstr "Rpmdrake 是 Mandriva Linux 的软件包管理工具。"
 
-#: ../rpmdrake:407
+#: ../rpmdrake:409
 #, c-format
 msgid "Mandriva Linux"
 msgstr "Mandriva Linux"
 
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:412
+#: ../rpmdrake:414
 #, c-format
 msgid "_: Translator(s) name(s) & email(s)\n"
 msgstr "Funda Wang <fundawang@gmail.com>\n"
 
-#: ../rpmdrake:436
+#: ../rpmdrake:438
 #, c-format
 msgid "Find:"
 msgstr "查找:"
 
-#: ../rpmdrake:445
+#: ../rpmdrake:447
 #, c-format
 msgid "Search"
 msgstr "搜索"
 
-#: ../rpmdrake:447
+#: ../rpmdrake:449
 #, c-format
 msgid "Clear"
 msgstr "清除"
 
-#: ../rpmdrake:468
+#: ../rpmdrake:470
 #, c-format
 msgid "Apply"
 msgstr "应用"
 
-#: ../rpmdrake:488
+#: ../rpmdrake:490
 #, c-format
 msgid "Quick Introduction"
 msgstr "简介"
 
-#: ../rpmdrake:489
+#: ../rpmdrake:491
 #, c-format
 msgid "You can browse the packages through the categories tree on the left."
 msgstr "您可以使用左侧的类别树浏览软件包。"
 
-#: ../rpmdrake:490
+#: ../rpmdrake:492
 #, c-format
 msgid ""
 "You can view information about a package by clicking on it on the right list."
 msgstr "单击右侧列表中的软件包可以查看其信息。"
 
-#: ../rpmdrake:491
+#: ../rpmdrake:493
 #, c-format
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr "要安装、更新或删除软件包，只需单击相应的复选框。"
@@ -3110,3 +3101,15 @@ msgstr "删除软件"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "软件介质管理器"
+
+#~ msgid "Message Passing"
+#~ msgstr "信息传递"
+
+#~ msgid "Queueing Services"
+#~ msgstr "查询服务"
+
+#~ msgid "Deploiement"
+#~ msgstr "部署"
+
+#~ msgid "Deployment"
+#~ msgstr "部署"
