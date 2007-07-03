@@ -543,16 +543,25 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my %sources = %$local_sources;
     my %error_sources;
 
-    urpm::removable::copy_packages_of_removable_media($urpm,
+    {
+        # Gtk2::GUI_Update_Guard->new use of alarm() kill us when
+        # running system(), thus making DVD being ejected and printing
+        # wrong error messages (#30463)
+
+        local $SIG{ALRM} = sub { die "ALARM" };
+        my $remaining = alarm(0);
+        urpm::removable::copy_packages_of_removable_media($urpm,
 						      $list, \%sources,
 						      sub {
-	    interactive_msg(
-		N("Change medium"),
-		N("Please insert the medium named \"%s\" on device [%s]", $_[0], $_[1]),
-		yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
-	    );
-	},
-    );
+                                        interactive_msg(
+                                            N("Change medium"),
+                                            N("Please insert the medium named \"%s\" on device [%s]", $_[0], $_[1]),
+                                            yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
+                                        );
+                                    },
+                                                      );
+        alarm $remaining;
+    }
 
     urpm::install::create_transaction($urpm, $state,
 			  nodeps => $urpm->{options}{'allow-nodeps'} || $urpm->{options}{'allow-force'},
