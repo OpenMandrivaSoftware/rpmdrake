@@ -1,3 +1,68 @@
+2007-07-03 13:51  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation)
+	  Gtk2::GUI_Update_Guard->new use of alarm() kill
+	  us when running system(), thus making DVD being ejected and
+	  printing
+	  wrong error messages (#30463)
+
+2007-06-28 18:24  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: restore some lost history
+
+2007-06-28 15:28  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (format_pkg_simplifiedinfo) simplify
+
+2007-06-28 15:15  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po, po/cy.po,
+	  po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po, po/ga.po,
+	  po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po, po/id.po,
+	  po/is.po, po/it.po, po/ja.po, po/ko.po, po/ky.po, po/lt.po,
+	  po/ltg.po, po/lv.po, po/mk.po, po/mn.po, po/ms.po, po/mt.po,
+	  po/nb.po, po/nl.po, po/nn.po, po/pa_IN.po, po/pl.po, po/pt.po,
+	  po/pt_BR.po, po/ro.po, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po, po/uz@Latn.po,
+	  po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po: import translations
+	  from drakx/perl-install/share/po/
+
+2007-06-28 15:09  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/af.pom, po/am.po, po/am.pom, po/ar.po, po/ar.pom,
+	  po/az.po, po/az.pom, po/be.po, po/be.pom, po/bg.po, po/bg.pom,
+	  po/bn.po, po/bn.pom, po/br.po, po/br.pom, po/bs.po, po/bs.pom,
+	  po/ca.po, po/ca.pom, po/cs.po, po/cs.pom, po/cy.po, po/cy.pom,
+	  po/da.po, po/da.pom, po/de.po, po/de.pom, po/el.po, po/el.pom,
+	  po/eo.po, po/eo.pom, po/es.po, po/es.pom, po/et.po, po/et.pom,
+	  po/eu.po, po/eu.pom, po/fa.po, po/fa.pom, po/fi.po, po/fi.pom,
+	  po/fr.po, po/fr.pom, po/fur.po, po/fur.pom, po/ga.po, po/ga.pom,
+	  po/gl.po, po/gl.pom, po/he.po, po/he.pom, po/hi.po, po/hi.pom,
+	  po/hr.po, po/hr.pom, po/hu.po, po/hu.pom, po/hy.po, po/id.po,
+	  po/id.pom, po/is.po, po/is.pom, po/it.po, po/it.pom, po/ja.po,
+	  po/ja.pom, po/ka.po, po/ko.po, po/ko.pom, po/ku.po, po/ky.po,
+	  po/ky.pom, po/lt.po, po/lt.pom, po/ltg.po, po/ltg.pom, po/lv.po,
+	  po/lv.pom, po/mk.po, po/mk.pom, po/mn.po, po/mn.pom, po/ms.po,
+	  po/ms.pom, po/mt.po, po/mt.pom, po/nb.po, po/nb.pom, po/nl.po,
+	  po/nl.pom, po/nn.po, po/nn.pom, po/pa_IN.po, po/pa_IN.pom,
+	  po/pl.po, po/pl.pom, po/pt.po, po/pt.pom, po/pt_BR.po,
+	  po/pt_BR.pom, po/ro.po, po/ro.pom, po/rpmdrake.pot, po/ru.po,
+	  po/ru.pom, po/sc.po, po/sc.pom, po/sk.po, po/sk.pom, po/sl.po,
+	  po/sl.pom, po/sq.po, po/sq.pom, po/sr.po, po/sr.pom,
+	  po/sr@Latn.po, po/sr@Latn.pom, po/sv.po, po/sv.pom, po/ta.po,
+	  po/ta.pom, po/tg.po, po/tg.pom, po/th.po, po/th.pom, po/tl.po,
+	  po/tl.pom, po/tr.po, po/tr.pom, po/uk.po, po/uk.pom, po/uz.po,
+	  po/uz.pom, po/uz@Latn.po, po/uz@Latn.pom, po/vi.po, po/vi.pom,
+	  po/wa.po, po/wa.pom, po/zh_CN.po, po/zh_CN.pom, po/zh_TW.po,
+	  po/zh_TW.pom: sync with code
+
+2007-06-28 15:06  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2007-06-27 13:37  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Makefile: (changelog) --strip-prefix is now uneeded with
