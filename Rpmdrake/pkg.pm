@@ -137,6 +137,7 @@ sub extract_header {
 
 my %options;
 
+# because rpm blocks some signals when rpm DB is opened, we don't keep open around:
 sub open_db {
     my ($o_force) = @_;
     my $host;
