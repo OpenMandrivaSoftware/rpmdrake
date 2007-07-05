@@ -246,10 +246,15 @@ sub update_size {
     }
 }
 
+sub children {
+    my ($w) = @_;
+    map { $w->{detail_list_model}->get($_, $pkg_columns{text}) } gtktreeview_children($w->{detail_list_model});
+}
+
 sub toggle_all {
     my ($common, $_val) = @_;
-    my @l = children() or return;
     my $w = $common->{widgets};
+    my @l = children($w) or return;
 
     my @unsel = grep_unselected(@l);
     use Data::Dumper; print Dumper \@unsel;
@@ -342,7 +347,6 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
         $w->{info}->scroll_to_iter($w->{info}->get_buffer->get_start_iter, 0, 0, 0, 0);
         0;
     };
-    my $children = sub { map { $w->{detail_list_model}->get($_, $pkg_columns{text}) } gtktreeview_children($w->{detail_list_model}, $_[0]) };
 
     my $fast_toggle = sub {
         my ($iter) = @_;
