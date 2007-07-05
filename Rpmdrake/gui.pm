@@ -246,6 +246,21 @@ sub update_size {
     }
 }
 
+sub toggle_all {
+    my ($common, $_val) = @_;
+    my @l = children() or return;
+    my $w = $common->{widgets};
+
+    my @unsel = grep_unselected(@l);
+    use Data::Dumper; print Dumper \@unsel;
+    my @p = @unsel ?
+      #- not all is selected, select all if no option to potentially override
+      (exists $common->{partialsel_unsel} && $common->{partialsel_unsel}->(\@unsel, \@l) ? difference2(\@l, \@unsel) : @unsel)
+        : @l;
+    toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, undef, @p);
+    update_size($common);
+}
+
 # ask_browse_tree_given_widgets_for_rpmdrake will run gtk+ loop. its main parameter "common" is a hash containing:
 # - a "widgets" subhash which holds:
 #   o a "w" reference on a ugtk2 object
@@ -328,18 +343,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
         0;
     };
     my $children = sub { map { $w->{detail_list_model}->get($_, $pkg_columns{text}) } gtktreeview_children($w->{detail_list_model}, $_[0]) };
-    $common->{toggle_all} = sub {
-        my ($_val) = @_;
-		my @l = $children->() or return;
 
-		my @unsel = grep_unselected(@l);
-		my @p = @unsel ?
-		  #- not all is selected, select all if no option to potentially override
-		  (exists $common->{partialsel_unsel} && $common->{partialsel_unsel}->(\@unsel, \@l) ? difference2(\@l, \@unsel) : @unsel)
-		  : @l;
-		toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, undef, @p);
-		&$update_size;
-    };
     my $fast_toggle = sub {
         my ($iter) = @_;
         gtkset_mousecursor_wait($w->{w}{rwindow}->window);
