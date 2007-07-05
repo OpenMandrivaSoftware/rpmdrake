@@ -257,7 +257,6 @@ sub toggle_all {
     my @l = children($w) or return;
 
     my @unsel = grep_unselected(@l);
-    use Data::Dumper; print Dumper \@unsel;
     my @p = @unsel ?
       #- not all is selected, select all if no option to potentially override
       (exists $common->{partialsel_unsel} && $common->{partialsel_unsel}->(\@unsel, \@l) ? difference2(\@l, \@unsel) : @unsel)
