@@ -235,6 +235,15 @@ sub add_node {
     }
 }
 
+my ($prev_label);
+sub update_size {
+    my ($common) = shift @_;
+    if ($w->{status}) {
+        my $new_label = $common->{get_status}();
+        $prev_label ne $new_label and $w->{status}->set($prev_label = $new_label);
+    }
+}
+
 # ask_browse_tree_given_widgets_for_rpmdrake will run gtk+ loop. its main parameter "common" is a hash containing:
 # - a "widgets" subhash which holds:
 #   o a "w" reference on a ugtk2 object
@@ -255,14 +264,6 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     $w->{detail_list} ||= $w->{tree};
     $w->{detail_list_model} ||= $w->{tree_model};
 
-    my ($prev_label);
-    my $update_size = sub {
-	if ($w->{status}) {
-	    my $new_label = $common->{get_status}();
-	    $prev_label ne $new_label and $w->{status}->set($prev_label = $new_label);
-	}
-    };  
-
     $common->{add_parent} = \&add_parent;
     my $clear_all_caches = sub {
 	%ptree = %wtree = ();
@@ -276,7 +277,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     $common->{rebuild_tree} = sub {
 	$common->{delete_all}->();
 	$common->{build_tree}($common->{state}{flat}, $common->{tree_mode});
-	&$update_size;
+	update_size($common);
     };
     $common->{delete_category} = sub {
 	my ($cat) = @_;
@@ -308,7 +309,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	    $w->{tree_model}->remove($wtree{$cat});
 	    delete $wtree{$cat};
 	}
-	&$update_size;
+	update_size($common);
     };
     $common->{add_nodes} = sub {
 	my (@nodes) = @_;
@@ -316,7 +317,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	$w->{detail_list_model}->clear;
 	$w->{detail_list}->scroll_to_point(0, 0);
 	add_node($_->[0], $_->[1], $_->[2]) foreach @nodes;
-	&$update_size;
+	update_size($common);
     };
     
     $common->{display_info} = sub {
@@ -342,7 +343,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
         gtkset_mousecursor_wait($w->{w}{rwindow}->window);
         toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, $pkg_columns{state}),
                      $w->{detail_list_model}->get($iter, $pkg_columns{text}));
-	    &$update_size;
+	    update_size($common);
 	    gtkset_mousecursor_normal($w->{w}{rwindow}->window);
     };
     $w->{detail_list}->get_selection->signal_connect(changed => sub {
@@ -357,7 +358,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
      1;
     });
     $common->{rebuild_tree}->();
-    &$update_size;
+    update_size($common);
     $common->{initial_selection} and toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, undef, @{$common->{initial_selection}});
     #my $_b = before_leaving { $clear_all_caches->() };
     $common->{init_callback}->() if $common->{init_callback};
