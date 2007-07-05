@@ -225,6 +225,7 @@ sub add_node {
              $ptree{$leaf} = [ $iter ];
         } else {
             $iter = $w->{tree_model}->append_set(add_parent($root, $state), [ $grp_columns{label} => $leaf ]);
+            push @{$wtree{$leaf}}, $iter;
         }
     } else {
         my $parent = add_parent($root, $state);
