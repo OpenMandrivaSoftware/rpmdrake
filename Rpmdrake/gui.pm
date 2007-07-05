@@ -195,6 +195,8 @@ sub set_leaf_state {
     set_node_state($_, $state, $model) foreach @{$ptree{$leaf}};
 }
 
+sub grep_unselected { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ }
+
 sub add_parent {
     my ($root, $state) = @_;
     $root or return undef;
@@ -330,7 +332,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
         my ($_val) = @_;
 		my @l = $children->() or return;
 
-		my @unsel = $common->{grep_unselected}(@l);
+		my @unsel = grep_unselected(@l);
 		my @p = @unsel ?
 		  #- not all is selected, select all if no option to potentially override
 		  (exists $common->{partialsel_unsel} && $common->{partialsel_unsel}->(\@unsel, \@l) ? difference2(\@l, \@unsel) : @unsel)

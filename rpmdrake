@@ -168,7 +168,6 @@ sub run_treeview_dialog {
 
     $options = {
 	build_tree => sub { build_tree($tree, $tree_model, \%elems, $options, $force_rebuild, $compssUsers, @_) },
-	grep_unselected => sub { grep { exists $pkgs->{$_} && !$pkgs->{$_}{selected} } @_ },
 	partialsel_unsel => sub {
 	    my ($unsel, $sel) = @_;
 	    @$sel = grep { exists $pkgs->{$_} } @$sel;
