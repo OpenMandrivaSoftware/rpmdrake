@@ -724,7 +724,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                     );
                             if (@l) {
                                 #- Warning : the following message is parsed in urpm::parallel_*
-                                print N("Installation failed") . ":\n" . join("\n", map { "\t$_" } @l), "\n";
+                                print N("Installation failed:") . "\n" . join("\n", map { "\t$_" } @l), "\n";
                                 ++$nok;
                                 ++$urpm->{logger_id};
                                 push @errors, @l;
