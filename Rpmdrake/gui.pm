@@ -184,7 +184,6 @@ sub set_node_state {
     my ($iter, $state, $model) = @_;
     ($state eq 'XXX' || !$state) and return;
     $pix{$state} ||= gtkcreate_pixbuf('state_' . $state);
-    $model ||= $w->{tree_model};
     $model->set($iter, $pkg_columns{state_icon} => $pix{$state});
     $model->set($iter, $pkg_columns{state} => $state);
     $model->set($iter, $pkg_columns{selected} => to_bool(member($state, qw(base installed to_install)))); #$pkg->{selected}));
@@ -211,7 +210,7 @@ sub add_parent {
         };
         $s = $s2;
     }
-        set_node_state($wtree{$s}, $state); #- use this state by default as tree is building.
+    set_node_state($wtree{$s}, $state, $w->{tree_model}); #- use this state by default as tree is building. #
     $wtree{$s};
 }
 
