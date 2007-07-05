@@ -155,9 +155,6 @@ sub do_search($$$$$$$) {
     }
 }
 
-$w = ugtk2->new(N("Software Management"));
-$w->{rwindow}->show_all if $::isEmbedded;
-
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
@@ -523,6 +520,10 @@ sub run_treeview_dialog {
 
 
 # -=-=-=---=-=-=---=-=-=-- main -=-=-=---=-=-=---=-=-=-
+
+
+$w = ugtk2->new(N("Software Management"));
+$w->{rwindow}->show_all if $::isEmbedded;
 
 readconf();
 
