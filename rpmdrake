@@ -461,8 +461,7 @@ sub run_treeview_dialog {
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Select all"))),
 			    clicked => sub {
-                       return if !ref($options->{toggle_all});
-                       $options->{toggle_all}->(1);
+                       toggle_all($options, 1);
                    },
 			),
 			0, my $action_button = gtksignal_connect(
