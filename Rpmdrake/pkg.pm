@@ -44,7 +44,7 @@ use urpm::select;
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs open_db parse_compssUsers_flat perform_installation perform_removal run_rpm);
+our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs open_rpm_db parse_compssUsers_flat perform_installation perform_removal run_rpm);
 
 use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
@@ -138,7 +138,7 @@ sub extract_header {
 my %options;
 
 # because rpm blocks some signals when rpm DB is opened, we don't keep open around:
-sub open_db {
+sub open_rpm_db {
     my ($o_force) = @_;
     my $host;
     log::explanations("opening the RPM database");
@@ -163,7 +163,7 @@ sub open_db {
 sub find_installed_version {
     my ($p) = @_;
     my @version;
-    open_db()->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version . '-' . $_[0]->release });
+    open_rpm_db()->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version . '-' . $_[0]->release });
     @version ? join(',', sort @version) : N("(none)");
 }
 
@@ -308,7 +308,7 @@ sub get_pkgs {
 
     my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
     my (%base, %basepackages);
-    my $db = open_db();
+    my $db = open_rpm_db();
     my $sig_handler = sub { undef $db; exit 3 };
     local $SIG{INT} = $sig_handler;
     local $SIG{QUIT} = $sig_handler;
@@ -458,7 +458,7 @@ sub perform_parallel_install {
             scroll => 1,
         );
     }
-    open_db('force_sync');
+    open_rpm_db('force_sync');
     $w->set_sensitive(1);
     return 0;
 }
@@ -493,7 +493,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $state = $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 
     # select packages to install:
-    $urpm->resolve_requested(open_db(), $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} },
+    $urpm->resolve_requested(open_rpm_db(), $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} },
                              callback_choices => \&Rpmdrake::gui::callback_choices);
 
     my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 
@@ -844,7 +844,7 @@ sub perform_removal {
 	    @results = $::options{parallel}
 		? urpm::parallel::remove($urpm, \@toremove)
 		: urpm::install::install($urpm, \@toremove, {}, {});
-	    open_db('force_sync');
+	    open_rpm_db('force_sync');
 	},
     );
     if (@results) {
