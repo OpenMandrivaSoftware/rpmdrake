@@ -425,6 +425,7 @@ sub get_pkgs {
     }
 
     $all_pkgs{$_}{pkg}->set_flag_installed foreach @installed_pkgs;
+    @installable_pkgs = uniq(@installable_pkgs);
 
     +{ urpm => $urpm,
        all_pkgs => \%all_pkgs,
