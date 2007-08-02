@@ -425,6 +425,9 @@ sub get_pkgs {
     }
 
     $all_pkgs{$_}{pkg}->set_flag_installed foreach @installed_pkgs;
+
+    # urpmi only care about the first medium where it found the package,
+    # so there's no need to list the same package several time:
     @installable_pkgs = uniq(@installable_pkgs);
 
     +{ urpm => $urpm,
