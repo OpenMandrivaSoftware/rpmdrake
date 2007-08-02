@@ -793,7 +793,7 @@ you may now inspect some in order to take actions:"),
 	if (keys %Readmes) { #- display the README*.urpmi files
 	    interactive_packtable(
 		N("Upgrade information"),
-		$w->{real_window},
+		$w,
 		N("These packages come with upgrade information"),
 		[ map {
 		    my $fullname = $_;
