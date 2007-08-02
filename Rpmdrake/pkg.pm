@@ -684,6 +684,14 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                 noscripts => $urpm->{options}{noscripts},
                 callback_inst => $callback_inst,
                 callback_trans => $callback_inst,
+                callback_close => sub {
+                    my ($urpm, undef, $pkgid) = @_;
+                    return unless defined $pkgid;
+                    my $pkg = $urpm->{depslist}[$pkgid];
+                    my $fullname = $pkg->fullname;
+                    my $trtype = (any { /\Q$fullname/ } values %transaction_sources_install) ? 'install' : '(update|upgrade)';
+                    for ($pkg->files) { /\bREADME(\.$trtype)?\.urpmi$/ and $Readmes{$_} = $fullname }
+                },
             );
             my @l = urpm::install::install($urpm,
                                            $to_remove,
