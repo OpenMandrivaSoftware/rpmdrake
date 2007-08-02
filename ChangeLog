@@ -1,3 +1,105 @@
+2007-08-02 20:38  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.72)
+
+2007-08-02 20:37  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) ensure list of
+	  update/install instructions is
+	  centered on main window
+
+2007-08-02 20:24  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) add a note about code
+	  that need to be
+	  factorized with urpmi
+
+2007-08-02 20:18  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) readd back callback_close
+	  that was wrongly
+	  killed along callback_open (which indeed was redondant with urpmi
+	  code) while adding support for transaction in r22950, thus
+	  displaying
+	  again README.urpmi*
+	  
+	  note that readme processing really is duplicated with what
+	  urpmi::install::install() does
+
+2007-08-02 20:02  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate, rpmdrake: kill a useless open of rpm database
+
+2007-08-02 19:54  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: open_db() was renamed as open_rpm_db() for
+	  consistency with open_urpmi_db() but a call point was forgotten
+
+2007-08-02 20:37  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) ensure list of
+	  update/install instructions is
+	  centered on main window
+
+2007-08-02 20:24  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) add a note about code
+	  that need to be
+	  factorized with urpmi
+
+2007-08-02 20:18  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) readd back callback_close
+	  that was wrongly
+	  killed along callback_open (which indeed was redondant with urpmi
+	  code) while adding support for transaction in r22950, thus
+	  displaying
+	  again README.urpmi*
+	  
+	  note that readme processing really is duplicated with what
+	  urpmi::install::install() does
+
+2007-08-02 20:02  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate, rpmdrake: kill a useless open of rpm database
+
+2007-08-02 19:54  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: open_db() was renamed as open_rpm_db() for
+	  consistency with open_urpmi_db() but a call point was forgotten
+
+2007-08-02 18:17  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs) explain
+
+2007-08-01 21:39  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* data/mandrivaupdate.desktop, data/mandrivaupdate.desktop.in,
+	  data/rpmdrake-browse-only.desktop,
+	  data/rpmdrake-browse-only.desktop.in,
+	  data/rpmdrake-remove.desktop, data/rpmdrake-remove.desktop.in,
+	  data/rpmdrake-sources.desktop, data/rpmdrake-sources.desktop.in,
+	  data/rpmdrake.desktop, data/rpmdrake.desktop.in: disable
+	  notifications (#18965)
+
+2007-08-01 16:58  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, Rpmdrake/pkg.pm, Rpmdrake/rpmnew.pm, rpmdrake:
+	  (open_db) rename as open_rpm_db() for consistency with
+	  open_urpmi_db()
+
+2007-08-01 16:55  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs) do not list identical packages
+	  several time when existing
+	  in several medium since urpmi only consider the first one anyway
+	  (same
+	  behavior as old rpmdrake-2.x) (#31810)
+
+2007-08-01 00:14  kamberd
+
+	* po/he.po: update translation for Hebrew
+
 2007-07-26 00:27  mmodem
 
 	* po/pt.po: update
