@@ -684,6 +684,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                 noscripts => $urpm->{options}{noscripts},
                 callback_inst => $callback_inst,
                 callback_trans => $callback_inst,
+                # FIXME: this needs to be factorizd with urpmi::install::install():
                 callback_close => sub {
                     my ($urpm, undef, $pkgid) = @_;
                     return unless defined $pkgid;
