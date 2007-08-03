@@ -470,7 +470,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($urpm, $pkgs) = @_;
 
     my @error_msgs;
-    my %Readmes;
     my $statusbar_msg_id;
     local $urpm->{fatal} = sub {
         my $fatal_msg = $_[1];
@@ -684,15 +683,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                 noscripts => $urpm->{options}{noscripts},
                 callback_inst => $callback_inst,
                 callback_trans => $callback_inst,
-                # FIXME: this needs to be factorizd with urpmi::install::install():
-                callback_close => sub {
-                    my ($urpm, undef, $pkgid) = @_;
-                    return unless defined $pkgid;
-                    my $pkg = $urpm->{depslist}[$pkgid];
-                    my $fullname = $pkg->fullname;
-                    my $trtype = (any { /\Q$fullname/ } values %transaction_sources_install) ? 'install' : '(update|upgrade)';
-                    for ($pkg->files) { /\bREADME(\.$trtype)?\.urpmi$/ and $Readmes{$_} = $fullname }
-                },
             );
             my @l = urpm::install::install($urpm,
                                            $to_remove,
@@ -790,6 +780,8 @@ Some configuration files were created as `.rpmnew' or `.rpmsave',
 you may now inspect some in order to take actions:"),
 	    %pkg2rpmnew)
 	    and $statusbar_msg_id = statusbar_msg(N("All requested packages were installed successfully."));
+
+	my %Readmes = %{$urpm->{readmes}};
 	if (keys %Readmes) { #- display the README*.urpmi files
 	    interactive_packtable(
 		N("Upgrade information"),
