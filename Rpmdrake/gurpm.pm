@@ -38,7 +38,7 @@ sub init {
     $mainw = ugtk2->new($title, %options, default_width => 600, width => 600);
     $previous_main_window = $::main_window;
     $::main_window = $mainw->{real_window};
-    $label = gtknew('Label', text => $initializing);
+    $label = gtknew('Label', text => $initializing, alignment => [ 0.5, 0 ]);
     # size label's heigh to 2 lines in order to prevent dummy vertical resizing:
     my $context = $label->get_layout->get_context;
     my $metrics = $context->get_metrics($label->style->font_desc, $context->get_language);
