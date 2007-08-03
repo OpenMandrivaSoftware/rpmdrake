@@ -248,7 +248,7 @@ sub get_pkgs {
     my $w = $::main_window;
 
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
-    my $_guard = before_leaving { Rpmdrake::gurpm::end() };
+    my $_gurpm_clean_guard = before_leaving { Rpmdrake::gurpm::end() };
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     my $urpm = open_urpmi_db();
@@ -533,7 +533,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                      scroll => 1,
                      yesno => 1) or return 1;
 
-    my $_guard = before_leaving { urpm::removable::try_umounting_removables($urpm) };
+    my $_umount_guard = before_leaving { urpm::removable::try_umounting_removables($urpm) };
 
     # select packages to uninstall for !update mode:
     perform_removal($urpm, { map { $_ => $pkgs->{$_} } @to_remove }) if !$probe_only_for_updates;
