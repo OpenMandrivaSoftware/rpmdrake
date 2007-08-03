@@ -439,6 +439,35 @@ sub get_pkgs {
    };
 }
 
+sub display_READMEs_if_needed {
+    my ($urpm, $w) = @_;
+    my %Readmes = %{$urpm->{readmes}};
+    if (keys %Readmes) {        #- display the README*.urpmi files
+        interactive_packtable(
+            N("Upgrade information"),
+            $w,
+            N("These packages come with upgrade information"),
+            [ map {
+                my $fullname = $_;
+                [ gtkpack__(
+                    gtknew('HBox'),
+                    gtkset_selectable(gtknew('Label', text => $Readmes{$fullname}),1),
+                ),
+                  gtksignal_connect(
+                      gtknew('Button', text => N("Upgrade information about this package")),
+                      clicked => sub {
+                          interactive_msg(
+                              N("Upgrade information about package %s", $Readmes{$fullname}),
+                              (join '' => formatAlaTeX(scalar cat_($fullname))),
+                              scroll => 1,
+                          );
+                      },
+                  ),
+		    ] } keys %Readmes ],
+            [ gtknew('Button', text => N("Ok"), clicked => sub { Gtk2->main_quit }) ]
+        );
+    }
+}
 
 sub perform_parallel_install {
     my ($urpm, $group, $w, $statusbar_msg_id) = @_;
@@ -781,32 +810,7 @@ you may now inspect some in order to take actions:"),
 	    %pkg2rpmnew)
 	    and $statusbar_msg_id = statusbar_msg(N("All requested packages were installed successfully."));
 
-	my %Readmes = %{$urpm->{readmes}};
-	if (keys %Readmes) { #- display the README*.urpmi files
-	    interactive_packtable(
-		N("Upgrade information"),
-		$w,
-		N("These packages come with upgrade information"),
-		[ map {
-		    my $fullname = $_;
-		    [ gtkpack__(
-			    gtknew('HBox'),
-			    gtkset_selectable(gtknew('Label', text => $Readmes{$fullname}),1),
-			),
-			gtksignal_connect(
-			    gtknew('Button', text => N("Upgrade information about this package")),
-			    clicked => sub {
-				interactive_msg(
-				    N("Upgrade information about package %s", $Readmes{$fullname}),
-				    (join '' => formatAlaTeX(scalar cat_($fullname))),
-				    scroll => 1,
-				);
-			    },
-			),
-		    ] } keys %Readmes ],
-		[ gtknew('Button', text => N("Ok"), clicked => sub { Gtk2->main_quit }) ]
-	    );
-	}
+        display_READMEs_if_needed($urpm, $w);
     } else {
         interactive_msg(N("Error"),
                          N("Unrecoverable error: no package found for installation, sorry."));
