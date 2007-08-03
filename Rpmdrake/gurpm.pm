@@ -39,6 +39,11 @@ sub init {
     $previous_main_window = $::main_window;
     $::main_window = $mainw->{real_window};
     $label = gtknew('Label', text => $initializing);
+    # size label's heigh to 2 lines in order to prevent dummy vertical resizing:
+    my $context = $label->get_layout->get_context;
+    my $metrics = $context->get_metrics($label->style->font_desc, $context->get_language);
+    $label->set_size_request(-1, 2 * Gtk2::Pango->PANGO_PIXELS($metrics->get_ascent + $metrics->get_descent));
+
     $progressbar = gtknew('ProgressBar');
     gtkadd($mainw->{window}, $vbox = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [ $label, $progressbar ]));
     $mainw->{rwindow}->set_position('center-on-parent');
