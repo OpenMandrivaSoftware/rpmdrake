@@ -104,6 +104,13 @@ sub inspect {
 		    ),
 		    resize1 => 1,
 		),
+		0, Gtk2::HSeparator->new,
+		0, gtknew('WrappedLabel',
+                    # prevent bad sizing of Gtk2::WrappedLabel:
+                    width => $inspect_wsize[0],
+                    text => N("You can either remove the .%s file, use it as main file or do nothing. If unsure, keep the current file (\"%s\").",
+                              $rpmfile, N("Remove .%s", $rpmfile)),
+                    ),
 		0, gtkpack__(
 		    gtknew('HButtonBox'),
 		    gtksignal_connect(
