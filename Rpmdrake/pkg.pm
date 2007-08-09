@@ -197,10 +197,10 @@ Is it ok to continue?"), yesno => 1) or myexit(-1);
 		    interactive_msg(N("Already existing update media"),
 N("You already have at least one update medium configured, but
 all of them are currently disabled. You should run the Software
-Media Manager to enable at least one (check it in the Enabled?
+Media Manager to enable at least one (check it in the \"%s\"
 column).
 
-Then, restart %s.", $rpmdrake::myname_update));
+Then, restart \"%s\".", N("Enabled"), $rpmdrake::myname_update));
 		    myexit(-1);
 		}
 	      mu_retry_another_mirror:
