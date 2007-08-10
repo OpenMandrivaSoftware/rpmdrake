@@ -40,6 +40,7 @@ use urpm::install;
 use urpm::signature;
 use urpm::get_pkgs;
 use urpm::select;
+use urpm::main_loop;
 
 
 use Exporter;
@@ -225,6 +226,10 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 sub open_urpmi_db() {
     my $error_happened;
     my $urpm = urpm->new;
+    $urpm->{options}{'split-level'} ||= 20;
+    $urpm->{options}{'split-length'} ||= 1;
+    $urpm->{options}{'no-verify-rpm'} = $::options{'no-verify-rpm'};
+
     $urpm->{fatal} = sub {
         $error_happened = 1;
         interactive_msg(N("Fatal error"),
@@ -253,7 +258,6 @@ sub get_pkgs {
 
     my $urpm = open_urpmi_db();
     my $_lock = urpm::lock::urpmi_db($urpm);
-    my $statedir = $urpm->{statedir};
     @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 
     warn_about_media($w, $opts);
@@ -395,7 +399,6 @@ sub get_pkgs {
 
     my %pkg_sel   = map { $_ => 1 } @{$::options{'pkg-sel'}   || []};
     my %pkg_nosel = map { $_ => 1 } @{$::options{'pkg-nosel'} || []};
-    my @updates_media_names = map { $_->{name} } @update_medias;
     $reset_update->(1);
     foreach my $pkg (@{$urpm->{depslist}}) {
         $update->();
@@ -570,48 +573,17 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $_guard = before_leaving { Rpmdrake::gurpm::end() };
     my $canceled;
-    my (@errors);
     my $something_installed;
 
-    my %sources = %$local_sources;
-    my %error_sources;
-
-    {
-        # Gtk2::GUI_Update_Guard->new use of alarm() kill us when
-        # running system(), thus making DVD being ejected and printing
-        # wrong error messages (#30463)
-
-        local $SIG{ALRM} = sub { die "ALARM" };
-        my $remaining = alarm(0);
-        urpm::removable::copy_packages_of_removable_media($urpm,
-						      $list, \%sources,
-						      sub {
-                                        interactive_msg(
-                                            N("Change medium"),
-                                            N("Please insert the medium named \"%s\" on device [%s]", $_[0], $_[1]),
-                                            yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
-                                        );
-                                    },
-                                                      );
-        alarm $remaining;
-    }
-
-    urpm::install::create_transaction($urpm, $state,
-			  nodeps => $urpm->{options}{'allow-nodeps'} || $urpm->{options}{'allow-force'},
-			  split_level => $urpm->{options}{'split-level'} || 20,
-			  split_length => $urpm->{options}{'split-length'} || 1,
-				  );
-
-        my ($progress_nb, $transaction_progress_nb);
-
-    my ($nok, @rpms_install, @rpms_upgrade, $verbose);
+    my ($progress, $total, @rpms_upgrade);
     my $transaction;
+    my ($progress_nb, $transaction_progress_nb, $remaining, $done);
     my $callback_inst = sub {
         my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
         my $pkg = defined $id ? $urpm->{depslist}[$id] : undef;
         if ($subtype eq 'start') {
             if ($type eq 'trans') {
-                Rpmdrake::gurpm::label(@rpms_install ? N("Preparing packages installation...") : N("Preparing package installation transaction..."));
+                Rpmdrake::gurpm::label(1 ? N("Preparing packages installation...") : N("Preparing package installation transaction..."));
                 } elsif (defined $pkg) {
                     $something_installed = 1;
                     Rpmdrake::gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$transaction_progress_nb, scalar(@{$transaction->{upgrade}}))
@@ -621,200 +593,129 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
             Rpmdrake::gurpm::progress($total ? $amount/$total : 1);
         }
     };
-    
-    foreach my $set (@{$state->{transaction} || []}) {
-        my (@transaction_list, %transaction_sources);
-        $transaction = $set;
-        $transaction_progress_nb = 0;
-        #- prepare transaction...
-        urpm::install::prepare_transaction($urpm, $set, $list, \%sources, \@transaction_list, \%transaction_sources);
-        #- first, filter out what is really needed to download for this small transaction.
-        urpm::get_pkgs::download_packages_of_distant_media($urpm,
-                                                           \@transaction_list,
-                                                           \%transaction_sources,
-                                                           \%error_sources,
-                                                           callback => sub {
-                                                               my ($mode, $file, $percent, $total, $eta, $speed) = @_;
-                                                               if ($mode eq 'start') {
-                                                                   Rpmdrake::gurpm::label(N("Downloading package `%s'...", basename($file)));
-                                                                   Rpmdrake::gurpm::validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
-                                                               } elsif ($mode eq 'progress') {
-                                                                   Rpmdrake::gurpm::label(
-                                                                       join("\n",
-                                                                              N("Downloading package `%s'...", basename($file)),
-                                                                              (defined $total && defined $eta ?
-                                                                                 N("        %s%% of %s completed, ETA = %s, speed = %s", $percent, $total, $eta, $speed)
-                                                                                   : N("        %s%% completed, speed = %s", $percent, $speed)
-                                                                               ) =~ /^\s*(.*)/
-                                                                        ),
-                                                                   );
-                                                                   Rpmdrake::gurpm::progress($percent/100);
-                                                               } elsif ($mode eq 'end') {
-                                                                   Rpmdrake::gurpm::progress(1);
-                                                                   Rpmdrake::gurpm::invalidate_cancel();
-                                                               }
-                                                               $canceled and goto return_with_exit_code;
 
-                                                           },
-                                                       );
-        $canceled and goto return_with_exit_code;
-        Rpmdrake::gurpm::invalidate_cancel_forever();
+    urpm::main_loop::run($urpm, $state, undef, undef, { },
+                         {
+                             completed => sub {
+                                 # explicitly destroy the progress window when it's over; we may
+                                 # have sg to display before returning (errors, rpmnew/rpmsave, ...):
+                                 Rpmdrake::gurpm::end();
+                                       
+                                 undef $lock;
+                                 undef $rpm_lock;
+                             },
+                             inst => $callback_inst,
+                             trans => $callback_inst,
+                             ask_yes_or_no => sub { }, # FIXME: allow-force & the like weren't previously implemented
+                             message => sub {
+                                 my ($message) = @_;
+                                 interactive_msg(N("Error"), $message, yesno => 1);
+                             },
+                             trans_log => sub {
+                                 my ($mode, $file, $percent, $total, $eta, $speed) = @_;
+                                 if ($mode eq 'start') {
+                                     Rpmdrake::gurpm::label(N("Downloading package `%s'...", basename($file)));
+                                     Rpmdrake::gurpm::validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
+                                 } elsif ($mode eq 'progress') {
+                                     Rpmdrake::gurpm::label(
+                                         join("\n",
+                                              N("Downloading package `%s'...", basename($file)),
+                                              (defined $total && defined $eta ?
+                                                 N("        %s%% of %s completed, ETA = %s, speed = %s", $percent, $total, $eta, $speed)
+                                                   : N("        %s%% completed, speed = %s", $percent, $speed)
+                                               ) =~ /^\s*(.*)/
+                                           ),
+                                     );
+                                     Rpmdrake::gurpm::progress($percent/100);
+                                 } elsif ($mode eq 'end') {
+                                     Rpmdrake::gurpm::progress(1);
+                                     Rpmdrake::gurpm::invalidate_cancel();
+                                 }
+                                 $canceled and goto return_with_exit_code;
 
-        my %transaction_sources_install = %{$urpm->extract_packages_to_install(\%transaction_sources, $state) || {}};
-        push @rpms_install, grep { !/\.src\.rpm$/ } values %transaction_sources_install;
-        push @rpms_upgrade, grep { !/\.src\.rpm$/ } values %transaction_sources;
+                             },
+                             post_extract => sub {
+                                 my ($set, $transaction_sources, $transaction_sources_install) = @_;
+                                 $transaction = $set;
+                                 $transaction_progress_nb = 0;
+                                 $done += grep { !/\.src\.rpm$/ } values %$transaction_sources;         #updates
+                                 $total = keys(%$transaction_sources_install) + keys %$transaction_sources;
+                                 push @rpms_upgrade, grep { !/\.src\.rpm$/ } values %$transaction_sources;
+                                 $done += grep { !/\.src\.rpm$/ } values %$transaction_sources_install; # installs
+                             },
+                             pre_removable => sub {
+                                 # Gtk2::GUI_Update_Guard->new use of alarm() kill us when
+                                 # running system(), thus making DVD being ejected and printing
+                                 # wrong error messages (#30463)
+                                       
+                                 local $SIG{ALRM} = sub { die "ALARM" };
+                                 $remaining = alarm(0);
+                             },
 
-        if (!$::options{'no-verify-rpm'}) {
-            Rpmdrake::gurpm::label(N("Verifying package signatures..."));
-            my $total = keys(%transaction_sources_install) + keys %transaction_sources;
-            my $progress;
-            my @invalid_sources = urpm::signature::check($urpm,
-                                                         \%transaction_sources_install, \%transaction_sources,
-                                                         translate => 1, basename => 1,
-                                                         callback => sub {
-                                                             Rpmdrake::gurpm::progress(++$progress/$total);
-                                                         },
-                                                     );
-            if (@invalid_sources) {
-                local $::main_window = $Rpmdrake::gurpm::mainw->{real_window};
-                interactive_msg(
-                    N("Warning"),
-                    N("The following packages have bad signatures:\n\n%s\n\nDo you want to continue installation?",
-                      join("\n", sort @invalid_sources)), yesno => 1, if_(@invalid_sources > 10, scroll => 1),
-                ) or goto return_with_exit_code;
-            }
-        }
-
-        if (keys(%transaction_sources_install) || keys(%transaction_sources)) {
-
-            if ($verbose >= 0) {
-                my @packnames = (values %transaction_sources_install, values %transaction_sources);
-                (my $common_prefix) = $packnames[0] =~ m!^(.*)/!;
-                if (length($common_prefix) && @packnames == grep { m!^\Q$common_prefix/! } @packnames) {
-                    #- there's a common prefix, simplify message
-                    print N("installing %s from %s", join(' ', map { s!.*/!!; $_ } @packnames), $common_prefix), "\n";
-                } else {
-                    print N("installing %s", join "\n", @packnames), "\n";
-                }
-            }
-            my $to_remove = $urpm->{options}{'allow-force'} ? [] : $set->{remove} || [];
-            @$to_remove and print N("removing %s", "@$to_remove"), "\n";
-            print join('', scalar localtime(), " ", join(' ', values %transaction_sources_install, values %transaction_sources), "\n");
-            $urpm->{log}("starting installing packages");
-            my %install_options_common = (
-                excludepath => $urpm->{options}{excludepath},
-                excludedocs => $urpm->{options}{excludedocs},
-                repackage   => $urpm->{options}{repackage},
-                post_clean_cache => $urpm->{options}{'post-clean'},
-                oldpackage => $state->{oldpackage},
-                nosize => $urpm->{options}{ignoresize},
-                ignorearch => $urpm->{options}{ignorearch},
-                noscripts => $urpm->{options}{noscripts},
-                callback_inst => $callback_inst,
-                callback_trans => $callback_inst,
-            );
-            my @l = urpm::install::install($urpm,
-                                           $to_remove,
-                                           \%transaction_sources_install, \%transaction_sources,
-                                           %install_options_common,
-                                       );
-            if (@l) {
-                if ($urpm->{options}{auto} || !$urpm->{options}{'allow-nodeps'} && !$urpm->{options}{'allow-force'}) {
-                    ++$nok;
-                    ++$urpm->{logger_id};
-                    push @errors, @l;
-                } else {
-                    interactive_msg(N("Error"),
-                                    N("Installation failed:") . "\n" . join("\n",  map { "\t$_" } @l) . "\n\n" .
-                                      N("Try installation without checking dependencies? (y/N) "),
-                                    yesno => 1
-                                ) or ++$nok, next;
-                    $urpm->{log}("starting installing packages without deps");
-                    @l = urpm::install::install($urpm,
-                                                $to_remove,
-                                                \%transaction_sources_install, \%transaction_sources,
-                                                nodeps => 1,
-                                                %install_options_common,
-                                            );
-                    if (@l) {
-                        if (!$urpm->{options}{'allow-force'}) {
-                            ++$nok;
-                            ++$urpm->{logger_id};
-                            push @errors, @l;
-                        } else {
-                            interactive_msg(N("Error"),
-                                            N("Installation failed:") . "\n" . join("\n",  map { "\t$_" } @l) . "\n\n" .
-                                              N("Try harder to install (--force)? (y/N) "),
-                                            yesno => 1
-                                        ) or ++$nok, next;
-                            $urpm->{log}("starting force installing packages without deps");
-                            @l = urpm::install::install($urpm,
-                                                        $to_remove,
-                                                        \%transaction_sources_install, \%transaction_sources,
-                                                        nodeps => 1, force => 1,
-                                                        %install_options_common,
-                                                    );
-                            if (@l) {
-                                #- Warning : the following message is parsed in urpm::parallel_*
-                                print N("Installation failed:") . "\n" . join("\n", map { "\t$_" } @l), "\n";
-                                ++$nok;
-                                ++$urpm->{logger_id};
-                                push @errors, @l;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    # explicitly destroy the progress window when it's over; we may
-    # have sg to display before returning (errors, rpmnew/rpmsave, ...):
-    Rpmdrake::gurpm::end();
-
-    undef $lock;
-    undef $rpm_lock;
-    if (@rpms_install || @rpms_upgrade || @to_remove) {
-        if (my @missing_errors = values %error_sources) {
-            interactive_msg(
-		N("Installation failed"),
-		N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
-		    join "\n", map { "- $_" } sort @missing_errors) .
-		    (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
-		scroll => 1,
-	    );
-            goto return_with_exit_code;
-        }
-
-        if (@errors || @error_msgs) {
-            interactive_msg(
-		N("Problem during installation"),
-		if_($nok, N("%d installation transactions failed", $nok) . "\n\n") .
-		N("There was a problem during the installation:\n\n%s",
-		    join("\n\n", @errors, @error_msgs)),
-		if_(@errors + @error_msgs > 1, scroll => 1),
-	    );
-            goto return_with_exit_code;
-        }
-
-        my %pkg2rpmnew;
-        foreach my $u (@rpms_upgrade) {
-            $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
-              and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
-                                      map { chomp_($_) } run_rpm("rpm -ql $1") ];
-        }
-	dialog_rpmnew(N("The installation is finished; everything was installed correctly.
+                             post_removable => sub { alarm $remaining },
+                             copy_removable => sub {
+                                 interactive_msg(
+                                     N("Change medium"),
+                                     N("Please insert the medium named \"%s\" on device [%s]", $_[0], $_[1]),
+                                     yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
+                                 );
+                             },
+                             pre_check_sig => sub { Rpmdrake::gurpm::label(N("Verifying package signatures...")) },
+                             check_sig => sub { Rpmdrake::gurpm::progress(++$progress/$total) },
+                             bad_signature => sub {
+                                 my ($msg, $msg2) = @_;
+                                 local $::main_window = $Rpmdrake::gurpm::mainw->{real_window};
+                                 interactive_msg(
+                                     N("Warning"), "$msg\n$msg2", yesno => 1, if_(10 < $msg =~ tr/\n/\n/, scroll => 1),
+                                 ) or goto return_with_exit_code;
+                             },
+                             post_download => sub {
+                                 $canceled and goto return_with_exit_code;
+                                 Rpmdrake::gurpm::invalidate_cancel_forever();
+                             },
+                             missing_files_summary => sub {
+                                 my ($error_sources) = @_;
+                                 my @missing_errors = values %$error_sources or return;
+                                 interactive_msg(
+                                     N("Installation failed"),
+                                     N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
+                                       join "\n", map { "- $_" } sort @missing_errors) .
+                                         (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
+                                     scroll => 1,
+                                 );
+                             },
+                             trans_error_summary => sub {
+                                 my ($nok, $errors) = @_;
+                                 interactive_msg(
+                                     N("Problem during installation"),
+                                     if_($nok, N("%d installation transactions failed", $nok) . "\n\n") .
+                                       N("There was a problem during the installation:\n\n%s",
+                                         join("\n\n", @$errors, @error_msgs)),
+                                     if_(@$errors + @error_msgs > 1, scroll => 1),
+                                 );
+                             },
+                             success_summary => sub {
+                                 if (!($done || @to_remove)) {
+                                     interactive_msg(N("Error"),
+                                                     N("Unrecoverable error: no package found for installation, sorry."));
+                                     return;
+                                 }
+                                 my %pkg2rpmnew;
+                                 foreach my $u (@rpms_upgrade) {
+                                     $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
+                                       and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
+                                                                 map { chomp_($_) } run_rpm("rpm -ql $1") ];
+                                 }
+                                 dialog_rpmnew(N("The installation is finished; everything was installed correctly.
 
 Some configuration files were created as `.rpmnew' or `.rpmsave',
 you may now inspect some in order to take actions:"),
-	    %pkg2rpmnew)
-	    and $statusbar_msg_id = statusbar_msg(N("All requested packages were installed successfully."));
-
-        display_READMEs_if_needed($urpm, $w);
-    } else {
-        interactive_msg(N("Error"),
-                         N("Unrecoverable error: no package found for installation, sorry."));
-    }
+                                               %pkg2rpmnew)
+                                   and $statusbar_msg_id = statusbar_msg(N("All requested packages were installed successfully."));
+                                 display_READMEs_if_needed($urpm, $w);
+                             },
+                         },
+                     );
 
     statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
 
@@ -832,7 +733,6 @@ sub perform_removal {
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
     my $_a = before_leaving { Rpmdrake::gurpm::end() };
 
-    my $logger = $urpm->{log};
     my $progress = -1;
     local $urpm->{log} = sub {
         my $str = $_[0];
