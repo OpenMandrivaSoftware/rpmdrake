@@ -340,6 +340,8 @@ sub run_treeview_dialog {
 
     my $status = gtknew('Label');
     my $checkbox_show_autoselect;
+    my %check_boxes;
+    my $auto_string = N("/_Options") . N("/_Auto solve dependancies");
     my ($menu, $factory) = create_factory_menu(
 	$w->{real_window},
 	[ N("/_File"), undef, undef, undef, '<Branch>' ],
@@ -382,6 +384,9 @@ sub run_treeview_dialog {
 	#[ N("/_View"), undef, undef, undef, '<Branch>' ],
 	if_(!$>,
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
+	    [ $auto_string, undef, sub {
+               $urpm->{options}{auto} = $::options{auto} = $check_boxes{$auto_string}->get_active if $check_boxes{$auto_string};
+           }, undef, '<CheckItem>' ],
 	    [ N("/_Options") . N("/_Media Manager"), undef, sub {
                require Rpmdrake::edit_urpm_sources;
                Rpmdrake::edit_urpm_sources::run() and $rmodes{pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode})};
@@ -416,6 +421,15 @@ sub run_treeview_dialog {
      ]
 
     );
+
+    # to retrieve a path, one must prevent "accelerators completion":
+    my $get_path = sub { return join('', map { my $i = $_; $i =~ s/_//g; print ">> $i\n"; $i } @_) };
+
+    %check_boxes = map {
+        $_ => $factory->get_widget("<main>" . $get_path->($auto_string));
+    } ($auto_string);
+    $check_boxes{$auto_string}->set_active($::options{auto});
+
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections);
     gtkadd(
