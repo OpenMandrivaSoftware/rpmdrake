@@ -455,7 +455,8 @@ sub deps_msg {
         @deps > 0 or return 1;
       deps_msg_again:
         my $results = interactive_msg(
-            $title, $msg . urpm::select::translate_why_removed($urpm, $urpm->{state}, @deps),
+            $title, $msg .
+              formatlistpkg(map { scalar(urpm::select::translate_why_removed_one($urpm, $urpm->{state}, $_)) } @deps),
             yesno => [ N("Cancel"), N("More info"), N("Ok") ],
             scroll => 1,
         );
@@ -563,8 +564,8 @@ sub toggle_nodes {
                 interactive_msg(
                     ($count == 1 ? N("One package cannot be installed") : N("Some packages can't be installed")),
 		    ($count == 1 ? 
-                 N("Sorry, the following package cannot be selected:\n\n%s", join("\n", @reasons))
-                   : N("Sorry, the following packages can't be selected:\n\n%s", join("\n", @reasons))),
+                 N("Sorry, the following package cannot be selected:\n\n%s", formatlistpkg(@reasons))
+                   : N("Sorry, the following packages can't be selected:\n\n%s", formatlistpkg(@reasons))),
                     scroll => 1,
                 );
                 foreach (@cant) {

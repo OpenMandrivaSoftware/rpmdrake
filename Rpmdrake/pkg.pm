@@ -548,12 +548,12 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     @{$urpm->{ask_remove}} = sort urpm::select::removed_packages($urpm, $urpm->{state});
     my @to_remove = map { if_($pkgs->{$_}{selected} && !$pkgs->{$_}{pkg}->flag_upgrade, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
 
-    my $r = join "\n", urpm::select::translate_why_removed($urpm, $urpm->{state}, @to_remove);
+    my $r = formatlistpkg(map { scalar(urpm::select::translate_why_removed_one($urpm, $urpm->{state}, $_)) } @to_remove);
 
     my $install_count = int(@pkgs);
     my $to_install = $install_count == 0 ? '' :
       ( P("The following package is going to be installed:", "The following %d packages are going to be installed:", $install_count, $install_count)
-      . "\n" . formatlistpkg(map { s!.*/!!; $_ } @pkgs) . "\n");
+      . "\n" . formatlistpkg(map { print ">> $_\n"; s!.*/!!; $_ } @pkgs) . "\n");
     my $remove_count =  scalar(@to_remove);
     interactive_msg(($to_install ? N("Confirmation") : N("Some packages need to be removed")),
                      ($r ? 
