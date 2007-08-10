@@ -228,6 +228,8 @@ sub open_urpmi_db() {
     my $urpm = urpm->new;
     $urpm->{options}{'split-level'} ||= 20;
     $urpm->{options}{'split-length'} ||= 1;
+    $urpm->{options}{'allow-force'}   = 1;
+    $urpm->{options}{'allow-nodeps'}  = 1;
     $urpm->{options}{'no-verify-rpm'} = $::options{'no-verify-rpm'};
 
     $urpm->{fatal} = sub {
