@@ -543,7 +543,7 @@ sub toggle_nodes {
             );
             @nodes_with_deps = map { urpm_name($_) } @requested;
             if (!deps_msg(N("Additional packages needed"),
-                             N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n"),
+                             formatAlaTeX(N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n")) . "\n\n",
                              \@nodes, \@nodes_with_deps)) {
                 @nodes_with_deps = ();
                 $urpm->disable_selected(open_rpm_db(), $urpm->{state}, @requested);
