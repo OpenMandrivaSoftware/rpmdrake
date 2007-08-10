@@ -1,3 +1,135 @@
+2007-08-10 15:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.74)
+
+2007-08-10 15:37  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) handle 'allow-force' and
+	  'allow-nodeps' options
+
+2007-08-10 15:37  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (open_urpmi_db) enable 'allow-force' and
+	  'allow-nodeps' options by default
+
+2007-08-10 15:28  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) kill debug statement
+
+2007-08-10 15:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, Rpmdrake/pkg.pm:
+	  (deps_msg,perform_installation,toggle_nodes) use new
+	  formatlistpkg() for better rendering
+
+2007-08-10 15:06  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (formatlistpkg) format list with bullets ("-")
+	  and indent urpmi
+	  reasons (eg: "foobar-1.i586\n (due to missing...)")
+
+2007-08-10 12:56  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* .perl_checker: blacklist more modules in order to increase signal
+	  to noise ratio
+
+2007-08-10 12:54  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* .perl_checker: sort
+
+2007-08-10 12:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* .perl_checker: blacklist more modules for perl_checker
+
+2007-08-10 10:54  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) factorize code through
+	  new urpm::main_loo
+	  module (100 lines killed while supporting new features)
+
+2007-08-10 10:32  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (toggle_nodes) prevent bad wrapping when
+	  additional packages are needed
+
+2007-08-09 14:34  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/fr.po, po/hy.po, po/ku.po: import some translations from
+	  mdkonline
+
+2007-08-09 14:32  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm, po/af.po, po/am.po, po/ar.po, po/az.po,
+	  po/be.po, po/bg.po, po/bn.po, po/br.po, po/bs.po, po/ca.po,
+	  po/cs.po, po/cy.po, po/da.po, po/de.po, po/el.po, po/eo.po,
+	  po/es.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
+	  po/fur.po, po/ga.po, po/gl.po, po/he.po, po/hi.po, po/hr.po,
+	  po/hu.po, po/hy.po, po/id.po, po/is.po, po/it.po, po/ja.po,
+	  po/ka.po, po/ko.po, po/ku.po, po/ky.po, po/lt.po, po/ltg.po,
+	  po/lv.po, po/mk.po, po/mn.po, po/ms.po, po/mt.po, po/nb.po,
+	  po/nl.po, po/nn.po, po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po,
+	  po/ro.po, po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po,
+	  po/sl.po, po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po,
+	  po/tg.po, po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po,
+	  po/uz@Latn.po, po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po:
+	  improve a string by spliting out the column substring in order to
+	  ease futur changes; add quotes
+
+2007-08-08 14:13  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/fr.po: update
+
+2007-08-08 14:09  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po, po/cy.po,
+	  po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po, po/ga.po,
+	  po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po, po/hy.po,
+	  po/id.po, po/is.po, po/it.po, po/ja.po, po/ka.po, po/ko.po,
+	  po/ku.po, po/ky.po, po/lt.po, po/ltg.po, po/lv.po, po/mk.po,
+	  po/mn.po, po/ms.po, po/mt.po, po/nb.po, po/nl.po, po/nn.po,
+	  po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po, po/ro.po,
+	  po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po, po/uz@Latn.po,
+	  po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po: sync with code
+
+2007-08-08 14:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/rpmnew.pm: (inspect) add a warning: suggest to keep the
+	  current file if unsure
+
+2007-08-07 13:57  Marek Laane <bald at starman.ee>
+
+	* po/et.po: Updated Estonian translation.
+
+2007-08-07 08:29  ybando
+
+	* po/ja.po: Japanese translation updated.
+
+2007-08-05 16:13  Karl Ove Hufthammer <karl at huftis.org>
+
+	* po/nn.po: Updated Norwegian Nynorsk translation.
+
+2007-08-03 16:27  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (display_READMEs_if_needed) split it out of
+	  perform_installation()
+
+2007-08-03 16:05  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs) do not mask earlier declaration in
+	  same scope (cosmetic)
+
+2007-08-03 15:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.73)
+
+2007-08-03 14:21  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2007-08-03 14:18  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* po/br.po, po/fr.po: update
