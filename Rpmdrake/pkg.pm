@@ -114,12 +114,12 @@ sub extract_header {
              -d $headersdir or warn qq(Could not create temporary directory "$headersdir");
          }
          -d $headersdir or  do {
-             warn "Warning, could not extract header!";
+             warn "Warning, could not extract header for $name from $hdlist!";
              goto header_non_available;
 	    };
 	    $packer->extract($headersdir, $p->header_filename);
 	    $p->update_header("$headersdir/" . $p->header_filename) or do {
-		warn "Warning, could not extract header!";
+		warn "Warning, could not extract header for $name from $hdlist!";
 		goto header_non_available;
 	    };
 	    rm_rf($headersdir);
