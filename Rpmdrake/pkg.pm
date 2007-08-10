@@ -608,7 +608,13 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              },
                              inst => $callback_inst,
                              trans => $callback_inst,
-                             ask_yes_or_no => sub { }, # FIXME: allow-force & the like weren't previously implemented
+                             ask_yes_or_no => sub {
+                                 # handle 'allow-force' and 'allow-nodeps' options:
+                                 my ($title, $msg) = @_;
+                                 local $::main_window = $Rpmdrake::gurpm::mainw->{real_window};
+                                 interactive_msg($title, $msg, yesno => 1, if_(10 < $msg =~ tr/\n/\n/, scroll => 1),
+                                 ) or goto return_with_exit_code;
+                             },
                              message => sub {
                                  my ($message) = @_;
                                  interactive_msg(N("Error"), $message, yesno => 1);
