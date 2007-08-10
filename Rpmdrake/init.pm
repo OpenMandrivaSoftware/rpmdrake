@@ -37,6 +37,7 @@ BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
     any { /^--?h/ } @ARGV and do {
 	printf join("\n", N("Usage: %s [OPTION]...", $basename->($0)),
+N("  --auto                 assume default answers to questions"),
 N("  --changelog-first      display changelog before filelist in the description window"),
 N("  --media=medium1,..     limit to given media"),
 N("  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"),

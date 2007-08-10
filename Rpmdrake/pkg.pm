@@ -231,6 +231,7 @@ sub open_urpmi_db() {
     $urpm->{options}{'allow-force'}   = 1;
     $urpm->{options}{'allow-nodeps'}  = 1;
     $urpm->{options}{'no-verify-rpm'} = $::options{'no-verify-rpm'};
+    $urpm->{options}{auto} = $::options{'auto'};
 
     $urpm->{fatal} = sub {
         $error_happened = 1;
