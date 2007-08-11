@@ -424,7 +424,7 @@ sub run_treeview_dialog {
     );
 
     # to retrieve a path, one must prevent "accelerators completion":
-    my $get_path = sub { return join('', map { my $i = $_; $i =~ s/_//g; print ">> $i\n"; $i } @_) };
+    my $get_path = sub { return join('', map { my $i = $_; $i =~ s/_//g; $i } @_) };
 
     %check_boxes = map {
         $_ => $factory->get_widget("<main>" . $get_path->($auto_string));
