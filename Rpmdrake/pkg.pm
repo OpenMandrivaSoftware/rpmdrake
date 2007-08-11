@@ -251,7 +251,6 @@ sub open_urpmi_db() {
 our $probe_only_for_updates;
 sub get_pkgs {
     my ($opts) = @_;
-    my %update_descr;
     @update_medias = ();
     my $w = $::main_window;
 
@@ -267,29 +266,9 @@ sub get_pkgs {
 
     Rpmdrake::gurpm::label(N("Reading updates description"));
     Rpmdrake::gurpm::progress(0.05);
-	my ($cur, $section);
+
 	#- parse the description file
-    foreach my $medium (@update_medias) {
-        foreach (cat_(urpm::media::statedir_descriptions($urpm, $medium))) {
-            /^%package +(.+)/ and do {
-                my @pkg_list = split /\s+/, $1;
-                 exists $cur->{importance} && $cur->{importance} !~ /^(?:security|bugfix)\z/
-                   and $cur->{importance} = 'normal';
-                $update_descr{$_} = $cur foreach @{$cur->{pkgs} || []};
-                $cur = { pkgs => \@pkg_list, medium => $medium->{name} };
-                $section = 'pkg';
-                next;
-            };
-            /^%(pre|description)/ and do { $section = $1; next };
-            /^Updated?: +(.+)/ && $section eq 'pkg'
-              and do { $cur->{update} = $1; next };
-            /^Importance: +(.+)/ && $section eq 'pkg'
-              and do { $cur->{importance} = $1; next };
-            /^(ID|URL): +(.+)/ && $section eq 'pkg'
-              and do { $cur->{$1} = $2; next };
-            $section =~ /^(pre|description)\z/ and $cur->{$1} .= $_;
-        }
-    }
+    my %update_descr = urpm::get_updates_description($urpm, @update_medias);
 
     my $_unused = N("Please wait, finding available packages...");
 
