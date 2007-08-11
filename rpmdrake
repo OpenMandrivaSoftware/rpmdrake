@@ -54,8 +54,8 @@ sub do_search($$$$$$$) {
     my ($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) = @_;
     my $entry = $find_entry->get_text or return;
     my $entry_rx = eval { qr/$entry/i } or return;
-    my ($results_ok, $results_none) = (N("Search results"), N("Search results (none)"));
-    $options->{delete_category}->($_) foreach $results_ok, $results_none;
+    my ($results_ok) = (N("Search results"));
+    $options->{delete_category}->($_) foreach $results_ok;
     $options->{state}{flat} and $options->{delete_all}->();
     $tree->collapse_all;
     my @search_results;
@@ -151,7 +151,8 @@ sub do_search($$$$$$$) {
 	$tree->expand_row($path, 0);
     	$tree->scroll_to_cell($path, undef, 1, 0.5, 0);
     } else {
-	$options->{add_nodes}->([ '', $results_none, { nochild => 1 } ]);
+        statusbar_msg(N("Search results (none)"));
+        gtkset_mousecursor_normal($::w->{rwindow}->window);
     }
 }
 
