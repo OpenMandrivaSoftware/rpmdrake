@@ -428,7 +428,6 @@ sub get_pkgs {
 
 sub display_READMEs_if_needed {
     my ($urpm, $w) = @_;
-    use Data::Dumper; print Dumper $urpm->{readmes};
     return if !$urpm->{readmes};
     my %Readmes = %{$urpm->{readmes}};
     if (keys %Readmes) {        #- display the README*.urpmi files
