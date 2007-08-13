@@ -706,6 +706,10 @@ you may now inspect some in order to take actions:"),
                                    and $statusbar_msg_id = statusbar_msg(N("All requested packages were installed successfully."));
                                  display_READMEs_if_needed($urpm, $w);
                              },
+                             already_installed_or_not_installable => sub {
+                                 my ($msg1, $msg2) = @_;
+                                 interactive_msg(N("Error"), join("\n", @$msg1, @$msg2));                                
+                             },
                          },
                      );
 
