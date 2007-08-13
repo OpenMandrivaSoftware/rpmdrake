@@ -428,7 +428,7 @@ sub run_treeview_dialog {
     %check_boxes = map {
         $_ => $factory->get_widget("<main>" . $get_path->($auto_string));
     } ($auto_string);
-    $check_boxes{$auto_string}->set_active($::options{auto});
+    $check_boxes{$auto_string}->set_active($::options{auto}) if !$>;
 
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections);
