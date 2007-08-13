@@ -35,12 +35,14 @@ use Rpmdrake::formatting;
 use Rpmdrake::rpmnew;
 
 use rpmdrake;
+use urpm;
 use urpm::lock;
 use urpm::install;
 use urpm::signature;
 use urpm::get_pkgs;
 use urpm::select;
 use urpm::main_loop;
+use urpm::args qw();
 
 
 use Exporter;
@@ -156,7 +158,7 @@ sub open_rpm_db {
         }
         URPM::DB::open($dblocation) or die "Couldn't open RPM DB";
     } else {
-        URPM::DB::open or die "Couldn't open RPM DB";
+        URPM::DB::open($::options{'rpm-root'}->[0]) or die "Couldn't open RPM DB ($::options{'rpm-root'}->[0])";
     }
 }
 
@@ -232,6 +234,8 @@ sub open_urpmi_db() {
     $urpm->{options}{'allow-nodeps'}  = 1;
     $urpm->{options}{'no-verify-rpm'} = $::options{'no-verify-rpm'};
     $urpm->{options}{auto} = $::options{'auto'};
+    urpm::set_files($urpm, $::options{'urpmi-root'}->[0]) if $::options{'urpmi-root'}->[0];
+    urpm::args::set_root($urpm, $::options{'rpm-root'}->[0]) if $::options{'rpm-root'}->[0];
 
     $urpm->{fatal} = sub {
         $error_happened = 1;

@@ -48,6 +48,8 @@ N("  --no-verify-rpm        don't verify packages signatures"),
 N("  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps"),
 N("  --pkg-nosel=pkg1,..    show only these packages"),
 N("  --pkg-sel=pkg1,..      preselect these packages"),
+N("  --rpm-root             use another root for rpm installation"),
+N("  --urpmi-root           use another root for urpmi db & rpm installation"),
 N("  --root                 force to run as root"),
 N("  --search=pkg           run search for \"pkg\""),
 chomp_(N("  --version      - print this tool's version number.
