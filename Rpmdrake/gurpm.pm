@@ -57,7 +57,10 @@ sub label {
 }
 
 sub progress {
-    $progressbar->set_fraction($_[0]);
+    my ($fraction) = @_;
+    $fraction = 0 if $fraction < 0;
+    $fraction = 1 if 1 < $fraction;
+    $progressbar->set_fraction($fraction);
     $mainw->flush;
 }
 
