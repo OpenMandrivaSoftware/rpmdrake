@@ -743,7 +743,9 @@ sub perform_removal {
 	sub {
 	    @results = $::options{parallel}
 		? urpm::parallel::remove($urpm, \@toremove)
-		: urpm::install::install($urpm, \@toremove, {}, {});
+		: urpm::install::install($urpm, \@toremove, {}, {},
+                                   callback_report_uninst => sub { Rpmdrake::gurpm::label($_[0]) },
+                               );
 	    open_rpm_db('force_sync');
 	},
     );
