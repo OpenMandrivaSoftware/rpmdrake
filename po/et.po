@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-13 12:10+0200\n"
-"PO-Revision-Date: 2007-08-07 16:53+0200\n"
+"PO-Revision-Date: 2007-08-14 17:10+0200\n"
 "Last-Translator: Marek Laane <bald@starman.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1542,7 +1542,7 @@ msgstr "Kasutamine: %s [VÕTI]..."
 #: ../Rpmdrake/init.pm:40
 #, c-format
 msgid "  --auto                 assume default answers to questions"
-msgstr ""
+msgstr "  --auto                 eeldatakse vaikevastuse andmist küsimustele"
 
 #: ../Rpmdrake/init.pm:41
 #, c-format
@@ -1556,7 +1556,7 @@ msgstr ""
 #: ../Rpmdrake/init.pm:42
 #, c-format
 msgid "  --media=medium1,..     limit to given media"
-msgstr "  --media=medium1,..     piirdumine määratud andmekandjaga"
+msgstr "  --media=andmekandja1,...     piirdumine määratud andmekandjaga"
 
 #: ../Rpmdrake/init.pm:43
 #, c-format
@@ -1602,17 +1602,17 @@ msgstr ""
 #: ../Rpmdrake/init.pm:49
 #, c-format
 msgid "  --pkg-nosel=pkg1,..    show only these packages"
-msgstr "  --pkg-nosel=pkg1,..    näidatakse ainult määratud pakette"
+msgstr "  --pkg-nosel=pakett1,..    näidatakse ainult määratud pakette"
 
 #: ../Rpmdrake/init.pm:50
 #, c-format
 msgid "  --pkg-sel=pkg1,..      preselect these packages"
-msgstr "  --pkg-sel=pkg1,..      määratud pakettide eelvalimine"
+msgstr "  --pkg-sel=pakett1,..      määratud pakettide eelvalimine"
 
 #: ../Rpmdrake/init.pm:51
 #, c-format
 msgid "  --rpm-root             use another root for rpm installation"
-msgstr ""
+msgstr "  --rpm-root             muu baasi kasutamine RPM-ide paigaldamisel"
 
 #: ../Rpmdrake/init.pm:52
 #, c-format
@@ -1630,7 +1630,7 @@ msgstr "  --root                 sunnitakse töötama administraatori õigustes"
 #: ../Rpmdrake/init.pm:54
 #, c-format
 msgid "  --search=pkg           run search for \"pkg\""
-msgstr "  --search=pkg           otsitakse paketti \"pkg\""
+msgstr "  --search=pakett           otsitakse paketti \"pakett\""
 
 #: ../Rpmdrake/init.pm:55
 #, c-format
@@ -1735,7 +1735,7 @@ msgid "Already existing update media"
 msgstr "Olemasolevad uuenduste allikad"
 
 #: ../Rpmdrake/pkg.pm:199
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
 "all of them are currently disabled. You should run the Software\n"
@@ -1747,9 +1747,9 @@ msgstr ""
 "Vähemalt üks uuenduste allikas on juba seadistatud,\n"
 "kuid praegu on kõik keelatud.\n"
 "Teil tuleks käivitada tarkvara allikate haldur,\n"
-"et vähemalt üks lubada (klõpsake selleks veerul 'Lubatud').\n"
+"et vähemalt üks lubada (klõpsake selleks veerul \"%s\").\n"
 "\n"
-"Seejärel käivitage %s uuesti."
+"Seejärel käivitage \"%s\" uuesti."
 
 #: ../Rpmdrake/pkg.pm:210
 #, c-format
@@ -2044,6 +2044,8 @@ msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
 "unsure, keep the current file (\"%s\")."
 msgstr ""
+"Te võite eemaldada .%s faili, kasutada seda põhifailina või ka mitte midagi "
+"ette võtta. Kui Te pole kindel, jätke senine fail alles (\"%s\")."
 
 #: ../Rpmdrake/rpmnew.pm:112 ../Rpmdrake/rpmnew.pm:117
 #, c-format
@@ -2246,7 +2248,7 @@ msgstr "/_Seadistused"
 #: ../rpmdrake:344
 #, c-format
 msgid "/_Auto solve dependancies"
-msgstr ""
+msgstr "/Sõltuvuste _automaatne lahendamine"
 
 #: ../rpmdrake:347 ../rpmdrake:350 ../rpmdrake:361 ../rpmdrake:374
 #: ../rpmdrake:383
