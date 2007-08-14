@@ -9,9 +9,6 @@ POFILES = $(wildcard *.po)
 MOFILES = $(POFILES:%.po=%.mo)
 LANGS = $(POFILES:%.po=%)
 
-# because of different charsets or encodings.. :-(
-IGNOREPOMS = 
-
 PREFIX = $(RPM_BUILD_ROOT)/usr
 DATADIR = $(PREFIX)/share
 LOCALEDIR=$(DATADIR)/locale
@@ -19,12 +16,7 @@ LOCALEDIR=$(DATADIR)/locale
 all: $(MOFILES)
 
 %.mo: %.po
-	-if [ -z "`echo $(IGNOREPOMS) | grep $<`" ]; then msgcat --use-first -o "$<"f $< "$<"m; else cp $< "$<"f; fi
-	./clean_po.pl "$<"f > "$<"g
-	msgfmt -o $@ "$<"g
-
-%.pom: %.po
-	./get_from_compssusers.pl "$<" > $@
+	msgfmt -o $@ $<
 
 merge: $(PGOAL).pot
 	@for n in $(POFILES); do \
