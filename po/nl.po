@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: rpmdrake-nl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-13 12:10+0200\n"
-"PO-Revision-Date: 2007-03-07 23:48+0200\n"
+"PO-Revision-Date: 2007-08-16 22:55+0200\n"
 "Last-Translator: Reinout van Schouwen <reinouts@gnome.org>\n"
 "Language-Team: Nederlands <vertaling@vrijschrift.nl>\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgid "Software Management"
 msgstr "Softwarebeheer"
 
 #: ../MandrivaUpdate:123
-#, fuzzy, c-format
+#, c-format
 msgid "Here is the list of software package updates"
 msgstr "Hier is de lijst met bijgewerkte softwarepakketten"
 
@@ -1570,7 +1570,7 @@ msgstr "Gebruik: %s [OPTIE]..."
 #: ../Rpmdrake/init.pm:40
 #, c-format
 msgid "  --auto                 assume default answers to questions"
-msgstr ""
+msgstr "  --auto                  uitgaan van standaardantwoorden op vragen"
 
 #: ../Rpmdrake/init.pm:41
 #, c-format
@@ -1640,7 +1640,7 @@ msgstr "  --pkg-sel=pkg1,..      maak een voorselectie van deze pakketten"
 #: ../Rpmdrake/init.pm:51
 #, c-format
 msgid "  --rpm-root             use another root for rpm installation"
-msgstr ""
+msgstr "  --rpm-root              gebruik een andere hoofdmap voor rpm-installatie"
 
 #: ../Rpmdrake/init.pm:52
 #, c-format
@@ -1768,7 +1768,7 @@ msgid "Already existing update media"
 msgstr "Reeds bestaand vernieuwingsmedium"
 
 #: ../Rpmdrake/pkg.pm:199
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
 "all of them are currently disabled. You should run the Software\n"
@@ -1777,12 +1777,12 @@ msgid ""
 "\n"
 "Then, restart \"%s\"."
 msgstr ""
-"U hebt al tenminste één pakket bijwerkingsmedium geconfigureerd, maar\n"
-"deze zijn momenteel alle uitgeschakeld. U dient Software Mediabeheer te\n"
-"starten om er tenminste één te activeren (selecteer dit in de Ingeschakeld?\n"
-"kolom).\n"
+"U hebt al tenminste één medium met herzieningen geconfigureerd, maar\n"
+"er is er geen ingeschakeld. U dient Software Mediabeheer te\n"
+"starten om er tenminste één te activeren (selecteer dit in de kolom\n"
+"‘%s’).\n"
 "\n"
-"Daarna herstart u %s."
+"Daarna herstart u ‘%s’."
 
 #: ../Rpmdrake/pkg.pm:210
 #, c-format
@@ -1863,7 +1863,7 @@ msgstr "Herzieningsinformatie over pakket %s"
 #: ../Rpmdrake/pkg.pm:482
 #, c-format
 msgid "Could not create temporary directory '%s'"
-msgstr ""
+msgstr "Kan tijdelijke map ‘%s’ niet aanmaken"
 
 #: ../Rpmdrake/pkg.pm:490 ../Rpmdrake/pkg.pm:723
 #, c-format
@@ -1915,15 +1915,13 @@ msgstr ""
 "%s"
 
 #: ../Rpmdrake/pkg.pm:558
-#, fuzzy, c-format
+#, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
 msgstr[0] ""
-"Om aan de afhankelijkheden te voldoen, wordt het volgende pakket "
-"geïnstalleerd:"
+"Het volgende pakket zal worden geïnstalleerd:"
 msgstr[1] ""
-"Om aan de afhankelijkheden te voldoen, worden de volgende %d pakketten "
-"geïnstalleerd:"
+"De volgende %d pakketten zullen worden geïnstalleerd:"
 
 #: ../Rpmdrake/pkg.pm:563
 #, c-format
@@ -1957,19 +1955,19 @@ msgid "Preparing packages installation..."
 msgstr "Voorbereiden van pakketinstallatie…"
 
 #: ../Rpmdrake/pkg.pm:589
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing package installation transaction..."
-msgstr "Voorbereiden van pakketinstallatie…"
+msgstr "Voorbereiden van pakketinstallatie-transactie…"
 
 #: ../Rpmdrake/pkg.pm:592
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr "Installeren pakket `%s' (%s/%s)…"
+msgstr "Installeren pakket ‘%s’ (%s/%s)…"
 
 #: ../Rpmdrake/pkg.pm:593
 #, c-format
 msgid "Total: %s/%s"
-msgstr ""
+msgstr "Totaal: %s/%s"
 
 #: ../Rpmdrake/pkg.pm:621 ../Rpmdrake/pkg.pm:708 ../rpmdrake.pm:741
 #: ../rpmdrake.pm:822 ../rpmdrake.pm:846
@@ -2085,12 +2083,14 @@ msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
 "unsure, keep the current file (\"%s\")."
 msgstr ""
+"U kunt ofwel het bestand .%s verwijderen, het als hoofdbestand gebruiken of "
+"niets doen. Als u het niet zeker weet, behoud dan het huidige bestand (‘%s’)."
 
 #  Removable media
 #: ../Rpmdrake/rpmnew.pm:112 ../Rpmdrake/rpmnew.pm:117
 #, c-format
 msgid "Remove .%s"
-msgstr ".%s verwijderen"
+msgstr ".%s verwisselen"
 
 #: ../Rpmdrake/rpmnew.pm:121
 #, c-format
@@ -2110,17 +2110,17 @@ msgstr "Installatie voltooid"
 #: ../Rpmdrake/rpmnew.pm:171
 #, c-format
 msgid "Inspect..."
-msgstr "Inspecteren..."
+msgstr "Inspecteren…"
 
 #: ../Rpmdrake/rpmnew.pm:189 ../rpmdrake:68 ../rpmdrake:95
 #, c-format
 msgid "Please wait, searching..."
-msgstr "Even geduld, bezig met zoeken..."
+msgstr "Even geduld, bezig met zoeken…"
 
 #: ../gurpmi.addmedia:84
-#, fuzzy, c-format
+#, c-format
 msgid "bad <url> (for local directory, the path must be absolute)"
-msgstr "ongeldige <url> (voor een lokale map dient het pad absoluut te zijn)\n"
+msgstr "ongeldige <url> (voor een lokale map dient het pad absoluut te zijn)"
 
 #: ../gurpmi.addmedia:89
 #, c-format
@@ -2289,7 +2289,7 @@ msgstr "/_Opties"
 #: ../rpmdrake:344
 #, c-format
 msgid "/_Auto solve dependancies"
-msgstr ""
+msgstr "/Auto_matisch afhankelijkheden oplossen"
 
 #: ../rpmdrake:347 ../rpmdrake:350 ../rpmdrake:361 ../rpmdrake:374
 #: ../rpmdrake:383
@@ -2345,7 +2345,7 @@ msgstr "/Programmafout _rapporteren"
 #: ../rpmdrake:401
 #, c-format
 msgid "/_About..."
-msgstr "/_Info over..."
+msgstr "/In_fo…"
 
 #: ../rpmdrake:404
 #, c-format
