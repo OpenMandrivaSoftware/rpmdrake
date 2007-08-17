@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: rpmdrake-ja\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-13 12:10+0200\n"
-"PO-Revision-Date: 2007-08-07 17:00+0900\n"
+"PO-Revision-Date: 2007-08-17 11:00+0900\n"
 "Last-Translator: BANDO Yukiko <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <cooker-i18n@mandrivalinux.org>\n"
 "MIME-Version: 1.0\n"
@@ -1543,7 +1543,7 @@ msgstr "使い方: %s [オプション]..."
 #: ../Rpmdrake/init.pm:40
 #, c-format
 msgid "  --auto                 assume default answers to questions"
-msgstr ""
+msgstr "  --auto                 質問に対してデフォルトの答えを想定する"
 
 #: ../Rpmdrake/init.pm:41
 #, c-format
@@ -1611,7 +1611,7 @@ msgstr "  --pkg-sel=pkg1,.       指定したパッケージを事前に選択�
 #: ../Rpmdrake/init.pm:51
 #, c-format
 msgid "  --rpm-root             use another root for rpm installation"
-msgstr ""
+msgstr "  --rpm-root             RPM のインストールに別のルートを使う"
 
 #: ../Rpmdrake/init.pm:52
 #, c-format
@@ -1735,7 +1735,7 @@ msgid "Already existing update media"
 msgstr "更新メディアは既に存在します"
 
 #: ../Rpmdrake/pkg.pm:199
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
 "all of them are currently disabled. You should run the Software\n"
@@ -1744,10 +1744,11 @@ msgid ""
 "\n"
 "Then, restart \"%s\"."
 msgstr ""
-"更新メディアは既に設定されていますが、すべて無効になっています。\n"
-"RPM メディアマネージャを起動して、少なくとも一つは有効にしてください。\n"
-"(有効の欄にチェックを入れてください)\n"
-"その後で %s を再起動してください。"
+"一つ以上の更新メディアが設定されていますが、すべて無効になっています。\n"
+"RPM メディアマネージャを起動し、「%s」の欄にチェックを入れて\n"
+"少なくとも一つの更新メディアを有効にしてください。\n"
+"\n"
+"その後、%s を再起動してください。"
 
 #: ../Rpmdrake/pkg.pm:210
 #, c-format
@@ -2040,6 +2041,8 @@ msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
 "unsure, keep the current file (\"%s\")."
 msgstr ""
+".%s ファイルを削除する、メインファイルとして使う、何もしないの中から選択でき"
+"ます。よく分からない場合は、現在のファイル (%s) を残しておいてください。"
 
 #: ../Rpmdrake/rpmnew.pm:112 ../Rpmdrake/rpmnew.pm:117
 #, c-format
@@ -2242,7 +2245,7 @@ msgstr "/オプション(_O)"
 #: ../rpmdrake:344
 #, c-format
 msgid "/_Auto solve dependancies"
-msgstr ""
+msgstr "/依存関係を自動解決(_A)"
 
 #: ../rpmdrake:347 ../rpmdrake:350 ../rpmdrake:361 ../rpmdrake:374
 #: ../rpmdrake:383
@@ -3122,49 +3125,3 @@ msgstr "RPM を削除"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "RPM メディアマネージャ"
-
-#~ msgid ""
-#~ "The following packages have bad signatures:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Do you want to continue installation?"
-#~ msgstr ""
-#~ "以下のパッケージの署名は間違っています:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "インストールを続けますか？"
-
-#~ msgid "installing %s from %s"
-#~ msgstr "%s を %s からインストール"
-
-#~ msgid "installing %s"
-#~ msgstr "%s をインストール"
-
-#~ msgid "removing %s"
-#~ msgstr "%s を削除"
-
-#~ msgid "Installation failed:"
-#~ msgstr "インストール失敗:"
-
-#~ msgid "Try installation without checking dependencies? (y/N) "
-#~ msgstr "依存を確認せずにインストールしますか？ (y/N)[デフォルトはN] "
-
-#~ msgid "Try harder to install (--force)? (y/N) "
-#~ msgstr "インストールを強行 (--force) してみますか？(y/N)[デフォルトはN]"
-
-#~ msgid "Preparing..."
-#~ msgstr "準備中..."
-
-#~ msgid "Message Passing"
-#~ msgstr "メッセージ転送"
-
-#~ msgid "Queueing Services"
-#~ msgstr "キューイングサービス"
-
-#~ msgid "Deploiement"
-#~ msgstr "Deployment"
-
-#~ msgid "Deployment"
-#~ msgstr "Deployment"
