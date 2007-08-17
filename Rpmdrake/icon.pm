@@ -142,6 +142,7 @@ my %group_icons = (
 	join('|', N("System"), N("Internationalization")) => 'chinese_section',
 	join('|', N("System"), N("Kernel and hardware")) => 'hardware_configuration_section',
 	join('|', N("System"), N("Libraries")) => '',
+	join('|', N("System"), N("Printing")) => 'printing_section',
 	join('|', N("System"), N("Servers")) => '',
 	join('|', N("System"),
           #-PO: This is a package/product name. Only translate it if needed:
