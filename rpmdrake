@@ -236,7 +236,9 @@ sub run_treeview_dialog {
     $options->{state}{splited} = 1;
     #$options->{state}{flat} = 1;
     $compssUsers = parse_compssUsers_flat();
-    my %modes = (all => N("All"), installed => N("Installed"), non_installed => N("Non installed"),
+    my %modes = (all => N("All"),
+                 installed => N("Installed"),
+                 non_installed => N("Non installed"),
                  mandrake_choices => $rpmdrake::branded ? N("%s choices", $rpmdrake::distrib{system}) : N("Mandriva Linux choices"),
                  if_(0, # let's keep the translated strings (to be resurected as sorting the treeview):
                      N("All packages, alphabetical"),
@@ -247,7 +249,10 @@ sub run_treeview_dialog {
                      by_group => N("All packages, by group"),
                  ),
                  if_(0, N("Backports")),
-                 all_updates => N("All updates"), security => N("Security updates"), bugfix => N("Bugfixes updates"), normal => N("Normal updates")
+                 all_updates => N("All updates"),
+                 security => N("Security updates"),
+                 bugfix => N("Bugfixes updates"),
+                 normal => N("Normal updates")
              );
     my %rmodes = reverse %modes;
     $options->{rmodes} = \%rmodes;
