@@ -246,6 +246,7 @@ sub run_treeview_dialog {
                      by_leaves => N("Leaves only, sorted by install date"),
                      by_group => N("All packages, by group"),
                  ),
+                 if_(0, N("Backports")),
                  all_updates => N("All updates"), security => N("Security updates"), bugfix => N("Bugfixes updates"), normal => N("Normal updates")
              );
     my %rmodes = reverse %modes;
