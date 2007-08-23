@@ -235,6 +235,8 @@ sub open_urpmi_db() {
     urpm::set_files($urpm, $::options{'urpmi-root'}->[0]) if $::options{'urpmi-root'}->[0];
     urpm::args::set_root($urpm, $::options{'rpm-root'}->[0]) if $::options{'rpm-root'}->[0];
 
+    $urpm::args::options{justdb} = $::options{justdb};
+
     $urpm->{fatal} = sub {
         $error_happened = 1;
         interactive_msg(N("Fatal error"),

@@ -42,6 +42,7 @@ N("  --changelog-first      display changelog before filelist in the description
 N("  --media=medium1,..     limit to given media"),
 N("  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"),
 N("  --mode=MODE            set mode (install (default), remove, update)"),
+N("  --justdb               update the database, but do not modify the filesystem"),
 N("  --no-confirmation      don't ask first confirmation question in update mode"),
 N("  --no-media-update      don't update media at startup"),
 N("  --no-verify-rpm        don't verify packages signatures"),
