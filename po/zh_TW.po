@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-13 12:10+0200\n"
+"POT-Creation-Date: 2007-08-23 16:00+0200\n"
 "PO-Revision-Date: 2006-09-18 22:52+0800\n"
 "Last-Translator: You-Cheng Hsieh <yochenhsieh@xuite.net>\n"
 "Language-Team: Chinese Traditional <zh@li.org>\n"
@@ -1572,20 +1572,27 @@ msgstr "  --mode=MODE            設定模式 (install (預設值)、remove、up
 #: ../Rpmdrake/init.pm:45
 #, c-format
 msgid ""
+"  --justdb               update the database, but do not modify the "
+"filesystem"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:46
+#, c-format
+msgid ""
 "  --no-confirmation      don't ask first confirmation question in update mode"
 msgstr "  --no-confirmation      在升級模式時不詢問第一個確認問題"
 
-#: ../Rpmdrake/init.pm:46
+#: ../Rpmdrake/init.pm:47
 #, c-format
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      啟動時不更新媒體"
 
-#: ../Rpmdrake/init.pm:47
+#: ../Rpmdrake/init.pm:48
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        不驗證套件簽章"
 
-#: ../Rpmdrake/init.pm:48
+#: ../Rpmdrake/init.pm:49
 #, c-format
 msgid ""
 "  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
@@ -2119,12 +2126,7 @@ msgstr "成功的新增了媒體 `%s'。"
 msgid "Search results"
 msgstr "搜尋結果"
 
-#: ../rpmdrake:57
-#, c-format
-msgid "Search results (none)"
-msgstr "搜尋結果 (無)"
-
-#: ../rpmdrake:100
+#: ../rpmdrake:99
 #, c-format
 msgid "Stop"
 msgstr "停止"
@@ -2138,6 +2140,11 @@ msgstr "已選取"
 #, c-format
 msgid "Not selected"
 msgstr "未選取"
+
+#: ../rpmdrake:153
+#, c-format
+msgid "Search results (none)"
+msgstr "搜尋結果 (無)"
 
 #: ../rpmdrake:175
 #, c-format
@@ -2199,7 +2206,12 @@ msgstr "不分類，僅依安裝時間排序"
 msgid "All packages, by group"
 msgstr "所有套件，依照群組分類"
 
-#: ../rpmdrake:249
+#: ../rpmdrake:251
+#, fuzzy, c-format
+msgid "Backports"
+msgstr "備份"
+
+#: ../rpmdrake:252
 #, c-format
 msgid "All updates"
 msgstr "所有更新"
