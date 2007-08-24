@@ -245,8 +245,8 @@ sub open_urpmi_db() {
     my $media = ref $::options{media} ? join(',', @{$::options{media}}) : '';
     urpm::media::configure($urpm, media => $media);
     # urpmi only support one search media, hance we'll only support "Main backport":
-    my $searchmedia = (grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}})[0]->{name};
-    urpm::media::configure($urpm, media => $media, searchmedia => $searchmedia);
+    my ($searchmedia) = grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}};
+    urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia->{name}));
     if ($error_happened) {
         touch('/etc/urpmi/urpmi.cfg');
         exec('edit-urpm-sources.pl');
