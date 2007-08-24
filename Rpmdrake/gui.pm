@@ -408,6 +408,7 @@ sub pkgs_provider {
             my @pkgs = $options{pure_updates} ? () : (grep { my $p = $pkgs->{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } @{$h->{installable}});
             @filtered_pkgs = @{$h->{updates}}, @pkgs;
         },
+        backports => sub { @filtered_pkgs = @{$h->{backports}} },
     );
     foreach my $importance (qw(bugfix security normal)) {
         $filter_methods{$importance} = sub {
