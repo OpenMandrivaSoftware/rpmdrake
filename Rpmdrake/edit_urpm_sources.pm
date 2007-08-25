@@ -424,6 +424,7 @@ sub edit_callback() {
     my $medium = $urpm->{media}[$row];
     my $config = urpm::cfg::load_config_raw($urpm->{config}, 1);
     my ($verbatim_medium) = grep { $medium->{name} eq $_->{name} } @$config;
+    my $old_main_window = $::main_window;
     my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1,  transient => $::main_window);
     local $::main_window = $w->{real_window};
     my ($url_entry, $hdlist_entry, $downloader_entry, $url, $with_hdlist, $downloader);
@@ -488,6 +489,7 @@ sub edit_callback() {
              modified => 1,
          });
          urpm::media::write_config($urpm);
+         local $::main_window = $old_main_window;
          update_sources_noninteractive($urpm, [ media => $name ], transient => $::main_window, nolock => 1);
      } else {
          urpm::media::remove_selected_media($urpm);
