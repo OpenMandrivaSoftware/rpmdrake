@@ -477,8 +477,22 @@ sub edit_callback() {
 	my $saved_proxy = urpm::download::get_proxy($name);
 	undef $saved_proxy if !defined $saved_proxy->{http_proxy} && !defined $saved_proxy->{ftp_proxy};
 	urpm::media::select_media($urpm, $name);
+     if (my ($media) = grep { $_->{name} eq $name } @{$urpm->{media}}) {
+         put_in_hash($media, {
+             url => $url,
+             name => $name,
+             with_hdlist => $with_hdlist,
+             update => $update,
+             proxy => $saved_proxy,
+             downloader => $downloader,
+             modified => 1,
+         });
+         urpm::media::write_config($urpm);
+         update_sources_noninteractive($urpm, [ media => $name ], transient => $::main_window, nolock => 1);
+     } else {
 	urpm::media::remove_selected_media($urpm);
 	add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, $with_hdlist, update => $update, if_($downloader, downloader => $downloader));
+     }
 	return $name;
     }
     return undef;
