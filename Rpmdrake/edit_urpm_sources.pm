@@ -490,8 +490,8 @@ sub edit_callback() {
          urpm::media::write_config($urpm);
          update_sources_noninteractive($urpm, [ media => $name ], transient => $::main_window, nolock => 1);
      } else {
-	urpm::media::remove_selected_media($urpm);
-	add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, $with_hdlist, update => $update, if_($downloader, downloader => $downloader));
+         urpm::media::remove_selected_media($urpm);
+         add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, $with_hdlist, update => $update, if_($downloader, downloader => $downloader));
      }
 	return $name;
     }
