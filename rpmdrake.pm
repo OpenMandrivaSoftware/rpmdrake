@@ -81,6 +81,7 @@ our @EXPORT = qw(
     update_sources
     update_sources_check
     update_sources_interactive
+    update_sources_noninteractive
     add_medium_and_check
     check_update_media_version
     strip_first_underscore
@@ -791,20 +792,26 @@ sub update_sources_interactive {
 	)
     );
     if ($w->main) {
+        update_sources_noninteractive($urpm, \@media, %options);
+    }
+    return 0;
+}
+
+sub update_sources_noninteractive {
+    my ($urpm, $media, %options) = @_;
+
 	#- force ignored media to be returned alive (forked from urpmi.update...)
 	foreach (@{$urpm->{media}}) {
 	    $_->{modified} and delete $_->{ignore};
 	}
-        urpm::media::select_media($urpm, @media);
+        urpm::media::select_media($urpm, @$media);
         update_sources_check(
 	    $urpm,
 	    {},
 	    N_("Unable to update medium; it will be automatically disabled.\n\nErrors:\n%s"),
-	    @media,
+	    @$media,
 	);
 	return 1;
-    }
-    return 0;
 }
 
 sub add_medium_and_check {
