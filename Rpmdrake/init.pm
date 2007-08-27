@@ -101,7 +101,7 @@ foreach (@ARGV) {
     }
 }
 
-foreach my $option (qw(media mode parallel pkg-nosel pkg-sel search)) {
+foreach my $option (qw(media mode parallel pkg-nosel pkg-sel rpm-root search)) {
     if (defined $rpmdrake_options{$option} && !ref($rpmdrake_options{$option})) {
         warn "wrong usage of \"$option\" option!\n";
         exit(-1); # too early for my_exit()
