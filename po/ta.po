@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-23 16:00+0200\n"
+"POT-Creation-Date: 2007-08-27 11:59+0200\n"
 "PO-Revision-Date: 2002-08-31 16:35+0800\n"
 "Last-Translator: prabu anand <prabu_anand2000@yahoo.com>\n"
 "Language-Team: tamil <tamilinix@yahoogroups.com>\n"
@@ -122,9 +122,9 @@ msgid "Local files"
 msgstr "உள்ளமைக் கோப்புகள்"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:150
-#, c-format
-msgid "Path:"
-msgstr "பாதை:"
+#, fuzzy, c-format
+msgid "Medium path:"
+msgstr "நடுத்தர"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:151
 #, c-format
@@ -184,9 +184,9 @@ msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr ""
 
 #: ../Rpmdrake/edit_urpm_sources.pm:211
-#, c-format
-msgid "Name:"
-msgstr "பெயர்:"
+#, fuzzy, c-format
+msgid "Medium name:"
+msgstr "நடுத்தர"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:219
 #, c-format
@@ -195,7 +195,7 @@ msgstr ""
 
 #: ../Rpmdrake/edit_urpm_sources.pm:230
 #, fuzzy, c-format
-msgid "Search this media for updates"
+msgid "Tag this medium as an update medium"
 msgstr "நீங்கள் புதுப்பிக்க விரும்புகிற  மூலங்களை தேர்வு செய்யவும்"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:240
@@ -530,22 +530,152 @@ msgstr ""
 msgid "Configure media"
 msgstr "மூலங்களை வடிவமை"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:977 ../Rpmdrake/pkg.pm:204
+#: ../Rpmdrake/edit_urpm_sources.pm:954 ../Rpmdrake/edit_urpm_sources.pm:955
+#: ../Rpmdrake/edit_urpm_sources.pm:956 ../rpmdrake:337 ../rpmdrake:340
+#: ../rpmdrake:351 ../rpmdrake:364 ../rpmdrake:373
+#, c-format
+msgid "/_File"
+msgstr "/_கோப்பு"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "/_Quit"
+msgstr "/_வெளிச்செல்"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "<control>Q"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "/_Update"
+msgstr "புதுப்பிக்கவும்"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "<control>U"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:957 ../Rpmdrake/edit_urpm_sources.pm:958
+#: ../Rpmdrake/edit_urpm_sources.pm:959 ../Rpmdrake/edit_urpm_sources.pm:960
+#: ../Rpmdrake/edit_urpm_sources.pm:961 ../Rpmdrake/edit_urpm_sources.pm:962
+#: ../rpmdrake:334 ../rpmdrake:376 ../rpmdrake:380 ../rpmdrake:384
+#: ../rpmdrake:423
+#, c-format
+msgid "/_Options"
+msgstr "/_விருப்பத்தேர்வு"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "/_Global options"
+msgstr "/_விருப்பத்தேர்வு"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "<control>G"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "/_Add media"
+msgstr "புதுப்பிக்கப்பட வேண்டிய மூல(ங்கள்)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "<control>A"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, c-format
+msgid "/Manage _keys"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, fuzzy, c-format
+msgid "<control>K"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "/_Parallel"
+msgstr "முழுமையடையாத கோப்பு\n"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "<control>P"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "/P_roxy"
+msgstr " பிழை நேர்ந்துள்ளது..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "<control>R"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:964 ../Rpmdrake/edit_urpm_sources.pm:965
+#: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
+#: ../rpmdrake:388 ../rpmdrake:389 ../rpmdrake:390 ../rpmdrake:391
+#, c-format
+msgid "/_Help"
+msgstr "/_உதவி"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:389
+#, c-format
+msgid "/_Report Bug"
+msgstr "/_பிழைகளை அறிவிக்க"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:967 ../rpmdrake:391
+#, c-format
+msgid "/_About..."
+msgstr "/_பற்றி"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:970 ../rpmdrake:394
+#, fuzzy, c-format
+msgid "Rpmdrake"
+msgstr "டிேரக்ெமன்ெபாருள்"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:972 ../rpmdrake:396
+#, c-format
+msgid "Copyright (C) %s by Mandriva"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:974 ../rpmdrake:398
+#, c-format
+msgid "Rpmdrake is Mandriva Linux package management tool."
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:976 ../rpmdrake:400
+#, fuzzy, c-format
+msgid "Mandriva Linux"
+msgstr "மாண்ட்ேரக்இணைய"
+
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#: ../Rpmdrake/edit_urpm_sources.pm:981 ../rpmdrake:405
+#, c-format
+msgid "_: Translator(s) name(s) & email(s)\n"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1034 ../Rpmdrake/pkg.pm:214
 #, c-format
 msgid "Enabled"
 msgstr "ெசயல்படுத்தப்பட்டுள்ளதா"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:978
+#: ../Rpmdrake/edit_urpm_sources.pm:1035
 #, fuzzy, c-format
 msgid "Updates"
 msgstr "புதுப்பிக்கவும்"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:994
+#: ../Rpmdrake/edit_urpm_sources.pm:1051
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1026
+#: ../Rpmdrake/edit_urpm_sources.pm:1083
 #, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -553,32 +683,12 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1061
+#: ../Rpmdrake/edit_urpm_sources.pm:1109
 #, fuzzy, c-format
-msgid "Add custom..."
-msgstr "சேர்..."
+msgid "Edit"
+msgstr "தொகு"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1065
-#, c-format
-msgid "Update..."
-msgstr "புதுப்பிக்கவும்..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1068
-#, c-format
-msgid "Manage keys..."
-msgstr ""
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1070
-#, c-format
-msgid "Parallel..."
-msgstr ""
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1071
-#, c-format
-msgid "Global options..."
-msgstr ""
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1097 ../Rpmdrake/init.pm:139
+#: ../Rpmdrake/edit_urpm_sources.pm:1143 ../Rpmdrake/init.pm:142
 #: ../gurpmi.addmedia:99
 #, c-format
 msgid ""
@@ -1701,7 +1811,12 @@ msgstr ""
 "\n"
 "தொடர்ந்து செல்ல சம்மதமா?"
 
-#: ../Rpmdrake/pkg.pm:198
+#: ../Rpmdrake/pkg.pm:199
+#, c-format
+msgid "Do not ask me next time"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:208
 #, fuzzy, c-format
 msgid "Already existing update media"
 msgstr "புதுப்பித்தல்ல் ஊடகத்தில் பிழை நேர்ந்துள்ளது"
@@ -2209,29 +2324,22 @@ msgstr "பெயர்களில்"
 msgid "in descriptions"
 msgstr "விளக்கங்களில் "
 
-#: ../rpmdrake:314
+#: ../rpmdrake:302
+#, fuzzy, c-format
+msgid "in summaries"
+msgstr "பெயர்களில்"
+
+#: ../rpmdrake:303
 #, fuzzy, c-format
 msgid "in file names"
 msgstr "கோப்புகளில்"
 
-#: ../rpmdrake:344 ../rpmdrake:386 ../rpmdrake:390 ../rpmdrake:394
-#: ../rpmdrake:433
-#, c-format
-msgid "/_Options"
-msgstr "/_விருப்பத்தேர்வு"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:334
 #, c-format
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:347 ../rpmdrake:350 ../rpmdrake:361 ../rpmdrake:374
-#: ../rpmdrake:383
-#, c-format
-msgid "/_File"
-msgstr "/_கோப்பு"
-
-#: ../rpmdrake:350
+#: ../rpmdrake:340
 #, fuzzy, c-format
 msgid "/_Update media"
 msgstr "புதுப்பிக்கப்பட வேண்டிய மூல(ங்கள்)"
@@ -2246,17 +2354,7 @@ msgstr "/தேர்வுகளை மறந்து விடு"
 msgid "/Reload the _packages list"
 msgstr "/பொதிகளின் பட்டியலை மீலேற்றவும்"
 
-#: ../rpmdrake:383
-#, c-format
-msgid "/_Quit"
-msgstr "/_வெளிச்செல்"
-
-#: ../rpmdrake:383
-#, c-format
-msgid "<control>Q"
-msgstr "<control>Q"
-
-#: ../rpmdrake:390
+#: ../rpmdrake:380
 #, fuzzy, c-format
 msgid "/_Media Manager"
 msgstr " ெமன்ெபாருள் மூலங்கள் மேலாளர்"
@@ -2266,48 +2364,7 @@ msgstr " ெமன்ெபாருள் மூலங்கள் மேலா
 msgid "/_Show automatically selected packages"
 msgstr "/தானாக தேர்வுச் செய்யப்பட்டுள்ள பொதிகளைக் காட்டு"
 
-#: ../rpmdrake:398 ../rpmdrake:399 ../rpmdrake:400 ../rpmdrake:401
-#, c-format
-msgid "/_Help"
-msgstr "/_உதவி"
-
-#: ../rpmdrake:399
-#, c-format
-msgid "/_Report Bug"
-msgstr "/_பிழைகளை அறிவிக்க"
-
-#: ../rpmdrake:401
-#, c-format
-msgid "/_About..."
-msgstr "/_பற்றி"
-
-#: ../rpmdrake:404
-#, fuzzy, c-format
-msgid "Rpmdrake"
-msgstr "டிேரக்ெமன்ெபாருள்"
-
-#: ../rpmdrake:406
-#, c-format
-msgid "Copyright (C) %s by Mandriva"
-msgstr ""
-
-#: ../rpmdrake:408
-#, c-format
-msgid "Rpmdrake is Mandriva Linux package management tool."
-msgstr ""
-
-#: ../rpmdrake:410
-#, fuzzy, c-format
-msgid "Mandriva Linux"
-msgstr "மாண்ட்ேரக்இணைய"
-
-#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:415
-#, c-format
-msgid "_: Translator(s) name(s) & email(s)\n"
-msgstr ""
-
-#: ../rpmdrake:448
+#: ../rpmdrake:438
 #, c-format
 msgid "Find:"
 msgstr "கண்டுபிடி:"
@@ -3077,6 +3134,19 @@ msgstr " ெமன்ெபாருளை நீக்கவும்"
 #, fuzzy
 msgid "Software Media Manager"
 msgstr " ெமன்ெபாருள் மூலங்கள் மேலாளர்"
+
+#~ msgid "Path:"
+#~ msgstr "பாதை:"
+
+#~ msgid "Name:"
+#~ msgstr "பெயர்:"
+
+#, fuzzy
+#~ msgid "Add custom..."
+#~ msgstr "சேர்..."
+
+#~ msgid "Update..."
+#~ msgstr "புதுப்பிக்கவும்..."
 
 #, fuzzy
 #~ msgid ""

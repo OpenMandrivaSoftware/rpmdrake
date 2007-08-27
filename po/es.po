@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-23 16:00+0200\n"
+"POT-Creation-Date: 2007-08-27 11:59+0200\n"
 "PO-Revision-Date: 2007-03-19 14:21-0300\n"
 "Last-Translator: Fabián Mandelbaum <fabman@mandriva.com>\n"
 "Language-Team: Español <es@li.org>\n"
@@ -145,9 +145,9 @@ msgid "Local files"
 msgstr "Archivos locales"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:150
-#, c-format
-msgid "Path:"
-msgstr "Ruta:"
+#, fuzzy, c-format
+msgid "Medium path:"
+msgstr "Soporte: "
 
 #: ../Rpmdrake/edit_urpm_sources.pm:151
 #, c-format
@@ -207,9 +207,9 @@ msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "Si se deja vacío, se buscará automáticamente synthesis/hdlist"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:211
-#, c-format
-msgid "Name:"
-msgstr "Nombre:"
+#, fuzzy, c-format
+msgid "Medium name:"
+msgstr "Soporte: "
 
 #: ../Rpmdrake/edit_urpm_sources.pm:219
 #, c-format
@@ -217,8 +217,8 @@ msgid "Create media for a whole distribution"
 msgstr "Crear soporte para una distribucion completa"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:230
-#, c-format
-msgid "Search this media for updates"
+#, fuzzy, c-format
+msgid "Tag this medium as an update medium"
 msgstr "Buscar actualizaciones en este soporte"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:240
@@ -557,23 +557,156 @@ msgstr ""
 msgid "Configure media"
 msgstr "Configurar soportes"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:977 ../Rpmdrake/pkg.pm:204
+#: ../Rpmdrake/edit_urpm_sources.pm:954 ../Rpmdrake/edit_urpm_sources.pm:955
+#: ../Rpmdrake/edit_urpm_sources.pm:956 ../rpmdrake:337 ../rpmdrake:340
+#: ../rpmdrake:351 ../rpmdrake:364 ../rpmdrake:373
+#, c-format
+msgid "/_File"
+msgstr "/_Fichero"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "/_Quit"
+msgstr "/_Salir"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "<control>Q"
+msgstr "<control>S"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "/_Update"
+msgstr "Actualizar"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "<control>U"
+msgstr "<control>S"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:957 ../Rpmdrake/edit_urpm_sources.pm:958
+#: ../Rpmdrake/edit_urpm_sources.pm:959 ../Rpmdrake/edit_urpm_sources.pm:960
+#: ../Rpmdrake/edit_urpm_sources.pm:961 ../Rpmdrake/edit_urpm_sources.pm:962
+#: ../rpmdrake:334 ../rpmdrake:376 ../rpmdrake:380 ../rpmdrake:384
+#: ../rpmdrake:423
+#, c-format
+msgid "/_Options"
+msgstr "/_Opciones"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "/_Global options"
+msgstr "Opciones globales..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "<control>G"
+msgstr "<control>S"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "/_Add media"
+msgstr "/_Actualizar soportes"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "<control>A"
+msgstr "<control>S"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, fuzzy, c-format
+msgid "/Manage _keys"
+msgstr "Administrar claves..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, fuzzy, c-format
+msgid "<control>K"
+msgstr "<control>S"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "/_Parallel"
+msgstr "Paralelo..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "<control>P"
+msgstr "<control>S"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "/P_roxy"
+msgstr "Proxy..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "<control>R"
+msgstr "<control>S"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:964 ../Rpmdrake/edit_urpm_sources.pm:965
+#: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
+#: ../rpmdrake:388 ../rpmdrake:389 ../rpmdrake:390 ../rpmdrake:391
+#, c-format
+msgid "/_Help"
+msgstr "/A_yuda"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:389
+#, c-format
+msgid "/_Report Bug"
+msgstr "/_Reportar un error"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:967 ../rpmdrake:391
+#, c-format
+msgid "/_About..."
+msgstr "/_Acerca..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:970 ../rpmdrake:394
+#, c-format
+msgid "Rpmdrake"
+msgstr "Rpmdrake"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:972 ../rpmdrake:396
+#, c-format
+msgid "Copyright (C) %s by Mandriva"
+msgstr "Copyright © %s por Mandriva"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:974 ../rpmdrake:398
+#, c-format
+msgid "Rpmdrake is Mandriva Linux package management tool."
+msgstr ""
+"Rpmdrake es la herramienta de administración de paquetes de Mandriva Linux."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:976 ../rpmdrake:400
+#, c-format
+msgid "Mandriva Linux"
+msgstr "Mandriva Linux"
+
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#: ../Rpmdrake/edit_urpm_sources.pm:981 ../rpmdrake:405
+#, c-format
+msgid "_: Translator(s) name(s) & email(s)\n"
+msgstr ""
+"José Manuel Pérez <jmprodu@hotmail.com>\n"
+"Pablo Saratxaga <pablo@mandriva.com>\n"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1034 ../Rpmdrake/pkg.pm:214
 #, c-format
 msgid "Enabled"
 msgstr "¿Habilitada"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:978
+#: ../Rpmdrake/edit_urpm_sources.pm:1035
 #, c-format
 msgid "Updates"
 msgstr "¿Actualizaciones"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:994
+#: ../Rpmdrake/edit_urpm_sources.pm:1051
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 "Este soporte necesita actualizarse para que sea usable. ¿Actualizarlo ahora?"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1026
+#: ../Rpmdrake/edit_urpm_sources.pm:1083
 #, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -584,32 +717,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1061
-#, c-format
-msgid "Add custom..."
-msgstr "Agregar personalizado..."
+#: ../Rpmdrake/edit_urpm_sources.pm:1109
+#, fuzzy, c-format
+msgid "Edit"
+msgstr "Editar..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1065
-#, c-format
-msgid "Update..."
-msgstr "Actualizar..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1068
-#, c-format
-msgid "Manage keys..."
-msgstr "Administrar claves..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1070
-#, c-format
-msgid "Parallel..."
-msgstr "Paralelo..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1071
-#, c-format
-msgid "Global options..."
-msgstr "Opciones globales..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1097 ../Rpmdrake/init.pm:139
+#: ../Rpmdrake/edit_urpm_sources.pm:1143 ../Rpmdrake/init.pm:142
 #: ../gurpmi.addmedia:99
 #, c-format
 msgid ""
@@ -1758,7 +1871,12 @@ msgstr ""
 "\n"
 "¿Desea continuar?"
 
-#: ../Rpmdrake/pkg.pm:198
+#: ../Rpmdrake/pkg.pm:199
+#, c-format
+msgid "Do not ask me next time"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:208
 #, c-format
 msgid "Already existing update media"
 msgstr "Soporte de actualizaciones ya existente"
@@ -2268,29 +2386,22 @@ msgstr "en nombres"
 msgid "in descriptions"
 msgstr "en descripciones"
 
-#: ../rpmdrake:314
+#: ../rpmdrake:302
+#, fuzzy, c-format
+msgid "in summaries"
+msgstr "en nombres"
+
+#: ../rpmdrake:303
 #, c-format
 msgid "in file names"
 msgstr "en nombres de archivo"
 
-#: ../rpmdrake:344 ../rpmdrake:386 ../rpmdrake:390 ../rpmdrake:394
-#: ../rpmdrake:433
-#, c-format
-msgid "/_Options"
-msgstr "/_Opciones"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:334
 #, c-format
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:347 ../rpmdrake:350 ../rpmdrake:361 ../rpmdrake:374
-#: ../rpmdrake:383
-#, c-format
-msgid "/_File"
-msgstr "/_Fichero"
-
-#: ../rpmdrake:350
+#: ../rpmdrake:340
 #, c-format
 msgid "/_Update media"
 msgstr "/_Actualizar soportes"
@@ -2305,17 +2416,7 @@ msgstr "/_Reiniciar la selección"
 msgid "/Reload the _packages list"
 msgstr "/Recargar la lista de _paquetes"
 
-#: ../rpmdrake:383
-#, c-format
-msgid "/_Quit"
-msgstr "/_Salir"
-
-#: ../rpmdrake:383
-#, c-format
-msgid "<control>Q"
-msgstr "<control>S"
-
-#: ../rpmdrake:390
+#: ../rpmdrake:380
 #, c-format
 msgid "/_Media Manager"
 msgstr "/Administrador de _soportes"
@@ -2325,51 +2426,7 @@ msgstr "/Administrador de _soportes"
 msgid "/_Show automatically selected packages"
 msgstr "/_Mostrar los paquetes seleccionados automáticamente"
 
-#: ../rpmdrake:398 ../rpmdrake:399 ../rpmdrake:400 ../rpmdrake:401
-#, c-format
-msgid "/_Help"
-msgstr "/A_yuda"
-
-#: ../rpmdrake:399
-#, c-format
-msgid "/_Report Bug"
-msgstr "/_Reportar un error"
-
-#: ../rpmdrake:401
-#, c-format
-msgid "/_About..."
-msgstr "/_Acerca..."
-
-#: ../rpmdrake:404
-#, c-format
-msgid "Rpmdrake"
-msgstr "Rpmdrake"
-
-#: ../rpmdrake:406
-#, c-format
-msgid "Copyright (C) %s by Mandriva"
-msgstr "Copyright © %s por Mandriva"
-
-#: ../rpmdrake:408
-#, c-format
-msgid "Rpmdrake is Mandriva Linux package management tool."
-msgstr ""
-"Rpmdrake es la herramienta de administración de paquetes de Mandriva Linux."
-
-#: ../rpmdrake:410
-#, c-format
-msgid "Mandriva Linux"
-msgstr "Mandriva Linux"
-
-#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:415
-#, c-format
-msgid "_: Translator(s) name(s) & email(s)\n"
-msgstr ""
-"José Manuel Pérez <jmprodu@hotmail.com>\n"
-"Pablo Saratxaga <pablo@mandriva.com>\n"
-
-#: ../rpmdrake:448
+#: ../rpmdrake:438
 #, c-format
 msgid "Find:"
 msgstr "Encontrar:"
@@ -3169,6 +3226,18 @@ msgstr "Quitar software"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "Administrador de soportes de software"
+
+#~ msgid "Path:"
+#~ msgstr "Ruta:"
+
+#~ msgid "Name:"
+#~ msgstr "Nombre:"
+
+#~ msgid "Add custom..."
+#~ msgstr "Agregar personalizado..."
+
+#~ msgid "Update..."
+#~ msgstr "Actualizar..."
 
 #~ msgid ""
 #~ "The following packages have bad signatures:\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-23 16:00+0200\n"
+"POT-Creation-Date: 2007-08-27 11:59+0200\n"
 "PO-Revision-Date: 2005-09-07 17:34+0100\n"
 "Last-Translator: Tibor Pittich <Tibor.Pittich@mandriva.org>\n"
 "Language-Team: Slovak <i18n@mandrake.sk>\n"
@@ -133,9 +133,9 @@ msgid "Local files"
 msgstr "Lokálne súbory"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:150
-#, c-format
-msgid "Path:"
-msgstr "Cesta:"
+#, fuzzy, c-format
+msgid "Medium path:"
+msgstr "Zdroj:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:151
 #, c-format
@@ -195,9 +195,9 @@ msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "Ak ponecháte nevyplnené, synthesis/hdlist budú automaticky nájdené"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:211
-#, c-format
-msgid "Name:"
-msgstr "Meno:"
+#, fuzzy, c-format
+msgid "Medium name:"
+msgstr "Zdroj:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:219
 #, c-format
@@ -205,8 +205,8 @@ msgid "Create media for a whole distribution"
 msgstr "Vytvoriť zdroj pre celú distribúciu"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:230
-#, c-format
-msgid "Search this media for updates"
+#, fuzzy, c-format
+msgid "Tag this medium as an update medium"
 msgstr "Prehľadať toto médium na aktualizácie"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:240
@@ -543,22 +543,152 @@ msgstr ""
 msgid "Configure media"
 msgstr "Nastaviť média"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:977 ../Rpmdrake/pkg.pm:204
+#: ../Rpmdrake/edit_urpm_sources.pm:954 ../Rpmdrake/edit_urpm_sources.pm:955
+#: ../Rpmdrake/edit_urpm_sources.pm:956 ../rpmdrake:337 ../rpmdrake:340
+#: ../rpmdrake:351 ../rpmdrake:364 ../rpmdrake:373
+#, c-format
+msgid "/_File"
+msgstr "/_Súbor"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "/_Quit"
+msgstr "/_Koniec"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "<control>Q"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "/_Update"
+msgstr "Aktualizácia"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "<control>U"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:957 ../Rpmdrake/edit_urpm_sources.pm:958
+#: ../Rpmdrake/edit_urpm_sources.pm:959 ../Rpmdrake/edit_urpm_sources.pm:960
+#: ../Rpmdrake/edit_urpm_sources.pm:961 ../Rpmdrake/edit_urpm_sources.pm:962
+#: ../rpmdrake:334 ../rpmdrake:376 ../rpmdrake:380 ../rpmdrake:384
+#: ../rpmdrake:423
+#, c-format
+msgid "/_Options"
+msgstr "/_Nastavenia"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "/_Global options"
+msgstr "Globálne nastavenia.."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "<control>G"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "/_Add media"
+msgstr "/_Akutalizácia média"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "<control>A"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, fuzzy, c-format
+msgid "/Manage _keys"
+msgstr "Správa kľúčov..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, fuzzy, c-format
+msgid "<control>K"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "/_Parallel"
+msgstr "Paralelné..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "<control>P"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "/P_roxy"
+msgstr "Proxy..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "<control>R"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:964 ../Rpmdrake/edit_urpm_sources.pm:965
+#: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
+#: ../rpmdrake:388 ../rpmdrake:389 ../rpmdrake:390 ../rpmdrake:391
+#, c-format
+msgid "/_Help"
+msgstr "/_Pomoc"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:389
+#, c-format
+msgid "/_Report Bug"
+msgstr "/_Ohlásiť chybu"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:967 ../rpmdrake:391
+#, c-format
+msgid "/_About..."
+msgstr "/_O aplikácii..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:970 ../rpmdrake:394
+#, fuzzy, c-format
+msgid "Rpmdrake"
+msgstr "Rpmdrake %s"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:972 ../rpmdrake:396
+#, c-format
+msgid "Copyright (C) %s by Mandriva"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:974 ../rpmdrake:398
+#, c-format
+msgid "Rpmdrake is Mandriva Linux package management tool."
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:976 ../rpmdrake:400
+#, c-format
+msgid "Mandriva Linux"
+msgstr "Mandriva Linux"
+
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#: ../Rpmdrake/edit_urpm_sources.pm:981 ../rpmdrake:405
+#, c-format
+msgid "_: Translator(s) name(s) & email(s)\n"
+msgstr "Tibor Pittich <Tibor.Pittich@mandriva.org>\n"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1034 ../Rpmdrake/pkg.pm:214
 #, c-format
 msgid "Enabled"
 msgstr "Povolené"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:978
+#: ../Rpmdrake/edit_urpm_sources.pm:1035
 #, c-format
 msgid "Updates"
 msgstr "Aktualizácie"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:994
+#: ../Rpmdrake/edit_urpm_sources.pm:1051
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1026
+#: ../Rpmdrake/edit_urpm_sources.pm:1083
 #, fuzzy, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -569,32 +699,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1061
-#, c-format
-msgid "Add custom..."
-msgstr "Pridať vlastný..."
+#: ../Rpmdrake/edit_urpm_sources.pm:1109
+#, fuzzy, c-format
+msgid "Edit"
+msgstr "Zmeň"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1065
-#, c-format
-msgid "Update..."
-msgstr "Aktualizácia..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1068
-#, c-format
-msgid "Manage keys..."
-msgstr "Správa kľúčov..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1070
-#, c-format
-msgid "Parallel..."
-msgstr "Paralelné..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1071
-#, c-format
-msgid "Global options..."
-msgstr "Globálne nastavenia.."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1097 ../Rpmdrake/init.pm:139
+#: ../Rpmdrake/edit_urpm_sources.pm:1143 ../Rpmdrake/init.pm:142
 #: ../gurpmi.addmedia:99
 #, c-format
 msgid ""
@@ -1739,7 +1849,12 @@ msgstr ""
 "\n"
 "Je možné pokračovať?"
 
-#: ../Rpmdrake/pkg.pm:198
+#: ../Rpmdrake/pkg.pm:199
+#, c-format
+msgid "Do not ask me next time"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:208
 #, c-format
 msgid "Already existing update media"
 msgstr "Už existuje zdroj s aktualizáciami"
@@ -2258,29 +2373,22 @@ msgstr "v menách"
 msgid "in descriptions"
 msgstr "v popisoch"
 
-#: ../rpmdrake:314
+#: ../rpmdrake:302
+#, fuzzy, c-format
+msgid "in summaries"
+msgstr "v menách"
+
+#: ../rpmdrake:303
 #, c-format
 msgid "in file names"
 msgstr "v menách súborov"
 
-#: ../rpmdrake:344 ../rpmdrake:386 ../rpmdrake:390 ../rpmdrake:394
-#: ../rpmdrake:433
-#, c-format
-msgid "/_Options"
-msgstr "/_Nastavenia"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:334
 #, c-format
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:347 ../rpmdrake:350 ../rpmdrake:361 ../rpmdrake:374
-#: ../rpmdrake:383
-#, c-format
-msgid "/_File"
-msgstr "/_Súbor"
-
-#: ../rpmdrake:350
+#: ../rpmdrake:340
 #, c-format
 msgid "/_Update media"
 msgstr "/_Akutalizácia média"
@@ -2295,17 +2403,7 @@ msgstr "/_Resetovať výber"
 msgid "/Reload the _packages list"
 msgstr "/Obnova zoznamu balíkov"
 
-#: ../rpmdrake:383
-#, c-format
-msgid "/_Quit"
-msgstr "/_Koniec"
-
-#: ../rpmdrake:383
-#, c-format
-msgid "<control>Q"
-msgstr "<control>Q"
-
-#: ../rpmdrake:390
+#: ../rpmdrake:380
 #, fuzzy, c-format
 msgid "/_Media Manager"
 msgstr "Manažér zdrojov softvéru"
@@ -2315,48 +2413,7 @@ msgstr "Manažér zdrojov softvéru"
 msgid "/_Show automatically selected packages"
 msgstr "/_Zobraziť automaticky zvolené balíky"
 
-#: ../rpmdrake:398 ../rpmdrake:399 ../rpmdrake:400 ../rpmdrake:401
-#, c-format
-msgid "/_Help"
-msgstr "/_Pomoc"
-
-#: ../rpmdrake:399
-#, c-format
-msgid "/_Report Bug"
-msgstr "/_Ohlásiť chybu"
-
-#: ../rpmdrake:401
-#, c-format
-msgid "/_About..."
-msgstr "/_O aplikácii..."
-
-#: ../rpmdrake:404
-#, fuzzy, c-format
-msgid "Rpmdrake"
-msgstr "Rpmdrake %s"
-
-#: ../rpmdrake:406
-#, c-format
-msgid "Copyright (C) %s by Mandriva"
-msgstr ""
-
-#: ../rpmdrake:408
-#, c-format
-msgid "Rpmdrake is Mandriva Linux package management tool."
-msgstr ""
-
-#: ../rpmdrake:410
-#, c-format
-msgid "Mandriva Linux"
-msgstr "Mandriva Linux"
-
-#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:415
-#, c-format
-msgid "_: Translator(s) name(s) & email(s)\n"
-msgstr "Tibor Pittich <Tibor.Pittich@mandriva.org>\n"
-
-#: ../rpmdrake:448
+#: ../rpmdrake:438
 #, c-format
 msgid "Find:"
 msgstr "Hľadať:"
@@ -3146,6 +3203,18 @@ msgstr "Odstrániť softvér"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "Manažér zdrojov softvéru"
+
+#~ msgid "Path:"
+#~ msgstr "Cesta:"
+
+#~ msgid "Name:"
+#~ msgstr "Meno:"
+
+#~ msgid "Add custom..."
+#~ msgstr "Pridať vlastný..."
+
+#~ msgid "Update..."
+#~ msgstr "Aktualizácia..."
 
 #~ msgid ""
 #~ "The following packages have bad signatures:\n"

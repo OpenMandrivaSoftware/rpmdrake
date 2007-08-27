@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-23 16:00+0200\n"
+"POT-Creation-Date: 2007-08-27 11:59+0200\n"
 "PO-Revision-Date: 2004-02-01 19:31+0100\n"
 "Last-Translator: Miodrag Zivkovic <miodragz@linuxo.org\n"
 "Language-Team: serbian <www.linuxo.org>\n"
@@ -128,9 +128,9 @@ msgid "Local files"
 msgstr "Локални фајлови"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:150
-#, c-format
-msgid "Path:"
-msgstr "Путања:"
+#, fuzzy, c-format
+msgid "Medium path:"
+msgstr "Медиј: "
 
 #: ../Rpmdrake/edit_urpm_sources.pm:151
 #, c-format
@@ -190,9 +190,9 @@ msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "Уколико оставите празно, synthesis/hdlist ће бити аутоматски тестирана"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:211
-#, c-format
-msgid "Name:"
-msgstr "Име:"
+#, fuzzy, c-format
+msgid "Medium name:"
+msgstr "Медиј: "
 
 #: ../Rpmdrake/edit_urpm_sources.pm:219
 #, c-format
@@ -200,8 +200,8 @@ msgid "Create media for a whole distribution"
 msgstr "Направи медиј за целу дистрибуцију"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:230
-#, c-format
-msgid "Search this media for updates"
+#, fuzzy, c-format
+msgid "Tag this medium as an update medium"
 msgstr "Претражите овај медиј за надоградњама"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:240
@@ -540,24 +540,154 @@ msgstr ""
 msgid "Configure media"
 msgstr "Подешавање медија"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:977 ../Rpmdrake/pkg.pm:204
+#: ../Rpmdrake/edit_urpm_sources.pm:954 ../Rpmdrake/edit_urpm_sources.pm:955
+#: ../Rpmdrake/edit_urpm_sources.pm:956 ../rpmdrake:337 ../rpmdrake:340
+#: ../rpmdrake:351 ../rpmdrake:364 ../rpmdrake:373
+#, c-format
+msgid "/_File"
+msgstr "/_Фајл"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "/_Quit"
+msgstr "/_Крај"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "<control>Q"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "/_Update"
+msgstr "Надоградња"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "<control>U"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:957 ../Rpmdrake/edit_urpm_sources.pm:958
+#: ../Rpmdrake/edit_urpm_sources.pm:959 ../Rpmdrake/edit_urpm_sources.pm:960
+#: ../Rpmdrake/edit_urpm_sources.pm:961 ../Rpmdrake/edit_urpm_sources.pm:962
+#: ../rpmdrake:334 ../rpmdrake:376 ../rpmdrake:380 ../rpmdrake:384
+#: ../rpmdrake:423
+#, c-format
+msgid "/_Options"
+msgstr "/_Опције"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "/_Global options"
+msgstr "Глобалне опције"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "<control>G"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "/_Add media"
+msgstr "/_Надоградња медија"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "<control>A"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, fuzzy, c-format
+msgid "/Manage _keys"
+msgstr "Уреди кључеве..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, fuzzy, c-format
+msgid "<control>K"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "/_Parallel"
+msgstr "Паралелно..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "<control>P"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "/P_roxy"
+msgstr "Прокси..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "<control>R"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:964 ../Rpmdrake/edit_urpm_sources.pm:965
+#: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
+#: ../rpmdrake:388 ../rpmdrake:389 ../rpmdrake:390 ../rpmdrake:391
+#, c-format
+msgid "/_Help"
+msgstr "/_Помоћ"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:389
+#, c-format
+msgid "/_Report Bug"
+msgstr "/_Пријавите Баг"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:967 ../rpmdrake:391
+#, c-format
+msgid "/_About..."
+msgstr "/_О..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:970 ../rpmdrake:394
+#, c-format
+msgid "Rpmdrake"
+msgstr "Rpmdrake"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:972 ../rpmdrake:396
+#, c-format
+msgid "Copyright (C) %s by Mandriva"
+msgstr "Сва права (C) %s задржава Мандрива"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:974 ../rpmdrake:398
+#, c-format
+msgid "Rpmdrake is Mandriva Linux package management tool."
+msgstr "Rpmdrake је Мандрива Линукс алат за руковање пакетима"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:976 ../rpmdrake:400
+#, c-format
+msgid "Mandriva Linux"
+msgstr "Мандрива Линукс"
+
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#: ../Rpmdrake/edit_urpm_sources.pm:981 ../rpmdrake:405
+#, c-format
+msgid "_: Translator(s) name(s) & email(s)\n"
+msgstr "Миодраг Живковић <miodragz@linuxo.org>\n"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1034 ../Rpmdrake/pkg.pm:214
 #, c-format
 msgid "Enabled"
 msgstr "Укључи"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:978
+#: ../Rpmdrake/edit_urpm_sources.pm:1035
 #, c-format
 msgid "Updates"
 msgstr "Надоградње"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:994
+#: ../Rpmdrake/edit_urpm_sources.pm:1051
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 "Овај медиј се мора надоградити да био употребљив. Да ли желите сада да се "
 "надогради ?"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1026
+#: ../Rpmdrake/edit_urpm_sources.pm:1083
 #, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -568,32 +698,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1061
-#, c-format
-msgid "Add custom..."
-msgstr "Додај уобичајно..."
+#: ../Rpmdrake/edit_urpm_sources.pm:1109
+#, fuzzy, c-format
+msgid "Edit"
+msgstr "Измени"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1065
-#, c-format
-msgid "Update..."
-msgstr "Надогради..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1068
-#, c-format
-msgid "Manage keys..."
-msgstr "Уреди кључеве..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1070
-#, c-format
-msgid "Parallel..."
-msgstr "Паралелно..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1071
-#, c-format
-msgid "Global options..."
-msgstr "Глобалне опције"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1097 ../Rpmdrake/init.pm:139
+#: ../Rpmdrake/edit_urpm_sources.pm:1143 ../Rpmdrake/init.pm:142
 #: ../gurpmi.addmedia:99
 #, c-format
 msgid ""
@@ -1738,7 +1848,12 @@ msgstr ""
 "\n"
 "Да ли је У реду да наставим?"
 
-#: ../Rpmdrake/pkg.pm:198
+#: ../Rpmdrake/pkg.pm:199
+#, c-format
+msgid "Do not ask me next time"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:208
 #, c-format
 msgid "Already existing update media"
 msgstr "Већ постојићи медиј за надоградњу"
@@ -2257,29 +2372,22 @@ msgstr "у именима"
 msgid "in descriptions"
 msgstr "у описима"
 
-#: ../rpmdrake:314
+#: ../rpmdrake:302
+#, fuzzy, c-format
+msgid "in summaries"
+msgstr "у именима"
+
+#: ../rpmdrake:303
 #, c-format
 msgid "in file names"
 msgstr "у именима фајлова"
 
-#: ../rpmdrake:344 ../rpmdrake:386 ../rpmdrake:390 ../rpmdrake:394
-#: ../rpmdrake:433
-#, c-format
-msgid "/_Options"
-msgstr "/_Опције"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:334
 #, c-format
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:347 ../rpmdrake:350 ../rpmdrake:361 ../rpmdrake:374
-#: ../rpmdrake:383
-#, c-format
-msgid "/_File"
-msgstr "/_Фајл"
-
-#: ../rpmdrake:350
+#: ../rpmdrake:340
 #, c-format
 msgid "/_Update media"
 msgstr "/_Надоградња медија"
@@ -2294,17 +2402,7 @@ msgstr "/_Поново изабери"
 msgid "/Reload the _packages list"
 msgstr "/Поново учитај листу пакета"
 
-#: ../rpmdrake:383
-#, c-format
-msgid "/_Quit"
-msgstr "/_Крај"
-
-#: ../rpmdrake:383
-#, c-format
-msgid "<control>Q"
-msgstr "<control>Q"
-
-#: ../rpmdrake:390
+#: ../rpmdrake:380
 #, c-format
 msgid "/_Media Manager"
 msgstr "/_Менаџер за Медије"
@@ -2314,48 +2412,7 @@ msgstr "/_Менаџер за Медије"
 msgid "/_Show automatically selected packages"
 msgstr "/Аутоматски прикажи изабране пакете"
 
-#: ../rpmdrake:398 ../rpmdrake:399 ../rpmdrake:400 ../rpmdrake:401
-#, c-format
-msgid "/_Help"
-msgstr "/_Помоћ"
-
-#: ../rpmdrake:399
-#, c-format
-msgid "/_Report Bug"
-msgstr "/_Пријавите Баг"
-
-#: ../rpmdrake:401
-#, c-format
-msgid "/_About..."
-msgstr "/_О..."
-
-#: ../rpmdrake:404
-#, c-format
-msgid "Rpmdrake"
-msgstr "Rpmdrake"
-
-#: ../rpmdrake:406
-#, c-format
-msgid "Copyright (C) %s by Mandriva"
-msgstr "Сва права (C) %s задржава Мандрива"
-
-#: ../rpmdrake:408
-#, c-format
-msgid "Rpmdrake is Mandriva Linux package management tool."
-msgstr "Rpmdrake је Мандрива Линукс алат за руковање пакетима"
-
-#: ../rpmdrake:410
-#, c-format
-msgid "Mandriva Linux"
-msgstr "Мандрива Линукс"
-
-#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:415
-#, c-format
-msgid "_: Translator(s) name(s) & email(s)\n"
-msgstr "Миодраг Живковић <miodragz@linuxo.org>\n"
-
-#: ../rpmdrake:448
+#: ../rpmdrake:438
 #, c-format
 msgid "Find:"
 msgstr "Пронађи:"
@@ -3149,6 +3206,18 @@ msgstr "Уклони софтвер"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "Менаџер за Медије са софтвером"
+
+#~ msgid "Path:"
+#~ msgstr "Путања:"
+
+#~ msgid "Name:"
+#~ msgstr "Име:"
+
+#~ msgid "Add custom..."
+#~ msgstr "Додај уобичајно..."
+
+#~ msgid "Update..."
+#~ msgstr "Надогради..."
 
 #~ msgid ""
 #~ "The following packages have bad signatures:\n"

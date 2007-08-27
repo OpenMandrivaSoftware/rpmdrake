@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-23 16:00+0200\n"
+"POT-Creation-Date: 2007-08-27 11:59+0200\n"
 "PO-Revision-Date: 2006-09-18 22:52+0800\n"
 "Last-Translator: You-Cheng Hsieh <yochenhsieh@xuite.net>\n"
 "Language-Team: Chinese Traditional <zh@li.org>\n"
@@ -140,9 +140,9 @@ msgid "Local files"
 msgstr "本地端檔案"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:150
-#, c-format
-msgid "Path:"
-msgstr "路徑："
+#, fuzzy, c-format
+msgid "Medium path:"
+msgstr "媒體："
 
 #: ../Rpmdrake/edit_urpm_sources.pm:151
 #, c-format
@@ -202,9 +202,9 @@ msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "若留下空白，程式將自動尋找 synthesis/hdlist "
 
 #: ../Rpmdrake/edit_urpm_sources.pm:211
-#, c-format
-msgid "Name:"
-msgstr "名稱："
+#, fuzzy, c-format
+msgid "Medium name:"
+msgstr "媒體："
 
 #: ../Rpmdrake/edit_urpm_sources.pm:219
 #, c-format
@@ -212,8 +212,8 @@ msgid "Create media for a whole distribution"
 msgstr "建立一個適用於所有散佈套件的媒體"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:230
-#, c-format
-msgid "Search this media for updates"
+#, fuzzy, c-format
+msgid "Tag this medium as an update medium"
 msgstr "在這個媒體中搜尋更新"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:240
@@ -550,22 +550,154 @@ msgstr ""
 msgid "Configure media"
 msgstr "設定媒體"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:977 ../Rpmdrake/pkg.pm:204
+#: ../Rpmdrake/edit_urpm_sources.pm:954 ../Rpmdrake/edit_urpm_sources.pm:955
+#: ../Rpmdrake/edit_urpm_sources.pm:956 ../rpmdrake:337 ../rpmdrake:340
+#: ../rpmdrake:351 ../rpmdrake:364 ../rpmdrake:373
+#, c-format
+msgid "/_File"
+msgstr "/檔案 (_F)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "/_Quit"
+msgstr "/離開 (_Q)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:373
+#, c-format
+msgid "<control>Q"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "/_Update"
+msgstr "更新"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:956
+#, fuzzy, c-format
+msgid "<control>U"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:957 ../Rpmdrake/edit_urpm_sources.pm:958
+#: ../Rpmdrake/edit_urpm_sources.pm:959 ../Rpmdrake/edit_urpm_sources.pm:960
+#: ../Rpmdrake/edit_urpm_sources.pm:961 ../Rpmdrake/edit_urpm_sources.pm:962
+#: ../rpmdrake:334 ../rpmdrake:376 ../rpmdrake:380 ../rpmdrake:384
+#: ../rpmdrake:423
+#, c-format
+msgid "/_Options"
+msgstr "/選項 (_O)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "/_Global options"
+msgstr "全域選項"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:958
+#, fuzzy, c-format
+msgid "<control>G"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "/_Add media"
+msgstr "/更新媒體 (_U)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:959
+#, fuzzy, c-format
+msgid "<control>A"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, fuzzy, c-format
+msgid "/Manage _keys"
+msgstr "管理鑰匙..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:960
+#, fuzzy, c-format
+msgid "<control>K"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "/_Parallel"
+msgstr "同步管理..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:961
+#, fuzzy, c-format
+msgid "<control>P"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "/P_roxy"
+msgstr "代理伺服器..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:962
+#, fuzzy, c-format
+msgid "<control>R"
+msgstr "<control>Q"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:964 ../Rpmdrake/edit_urpm_sources.pm:965
+#: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
+#: ../rpmdrake:388 ../rpmdrake:389 ../rpmdrake:390 ../rpmdrake:391
+#, c-format
+msgid "/_Help"
+msgstr "/輔助說明 (_H)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:389
+#, c-format
+msgid "/_Report Bug"
+msgstr "/回報臭蟲 (_R)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:967 ../rpmdrake:391
+#, c-format
+msgid "/_About..."
+msgstr "/關於... (_A)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:970 ../rpmdrake:394
+#, fuzzy, c-format
+msgid "Rpmdrake"
+msgstr "關於 Rpmdrake"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:972 ../rpmdrake:396
+#, c-format
+msgid "Copyright (C) %s by Mandriva"
+msgstr "Copyright (C) %s by Mandriva"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:974 ../rpmdrake:398
+#, c-format
+msgid "Rpmdrake is Mandriva Linux package management tool."
+msgstr "Rpmdrake 是 Mandriva Linux 的套件管理工具。"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:976 ../rpmdrake:400
+#, c-format
+msgid "Mandriva Linux"
+msgstr "Mandriva Linux"
+
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+#: ../Rpmdrake/edit_urpm_sources.pm:981 ../rpmdrake:405
+#, c-format
+msgid "_: Translator(s) name(s) & email(s)\n"
+msgstr ""
+"Shiva Huang <shivahuang@gmail.com>\n"
+"You-Cheng Hsieh <yochenhsieh@xuite.net>\n"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1034 ../Rpmdrake/pkg.pm:214
 #, c-format
 msgid "Enabled"
 msgstr "是否啟用？"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:978
+#: ../Rpmdrake/edit_urpm_sources.pm:1035
 #, c-format
 msgid "Updates"
 msgstr "自動更新來源？"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:994
+#: ../Rpmdrake/edit_urpm_sources.pm:1051
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr "此媒體需要更新才能使用。現在要更新嗎？"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1026
+#: ../Rpmdrake/edit_urpm_sources.pm:1083
 #, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -576,32 +708,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1061
-#, c-format
-msgid "Add custom..."
-msgstr "新增自訂..."
+#: ../Rpmdrake/edit_urpm_sources.pm:1109
+#, fuzzy, c-format
+msgid "Edit"
+msgstr "編輯"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1065
-#, c-format
-msgid "Update..."
-msgstr "更新..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1068
-#, c-format
-msgid "Manage keys..."
-msgstr "管理鑰匙..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1070
-#, c-format
-msgid "Parallel..."
-msgstr "同步管理..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1071
-#, c-format
-msgid "Global options..."
-msgstr "全域選項"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1097 ../Rpmdrake/init.pm:139
+#: ../Rpmdrake/edit_urpm_sources.pm:1143 ../Rpmdrake/init.pm:142
 #: ../gurpmi.addmedia:99
 #, c-format
 msgid ""
@@ -1730,7 +1842,12 @@ msgstr ""
 "\n"
 "您要繼續嗎?"
 
-#: ../Rpmdrake/pkg.pm:198
+#: ../Rpmdrake/pkg.pm:199
+#, c-format
+msgid "Do not ask me next time"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:208
 #, c-format
 msgid "Already existing update media"
 msgstr "更新媒體已存在"
@@ -2241,29 +2358,22 @@ msgstr "依名稱"
 msgid "in descriptions"
 msgstr "依描述"
 
-#: ../rpmdrake:314
+#: ../rpmdrake:302
+#, fuzzy, c-format
+msgid "in summaries"
+msgstr "依名稱"
+
+#: ../rpmdrake:303
 #, c-format
 msgid "in file names"
 msgstr "依檔案名稱"
 
-#: ../rpmdrake:344 ../rpmdrake:386 ../rpmdrake:390 ../rpmdrake:394
-#: ../rpmdrake:433
-#, c-format
-msgid "/_Options"
-msgstr "/選項 (_O)"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:334
 #, c-format
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:347 ../rpmdrake:350 ../rpmdrake:361 ../rpmdrake:374
-#: ../rpmdrake:383
-#, c-format
-msgid "/_File"
-msgstr "/檔案 (_F)"
-
-#: ../rpmdrake:350
+#: ../rpmdrake:340
 #, c-format
 msgid "/_Update media"
 msgstr "/更新媒體 (_U)"
@@ -2278,17 +2388,7 @@ msgstr "/重新選取 (_R)"
 msgid "/Reload the _packages list"
 msgstr "/重新載入套件清單 (_P)"
 
-#: ../rpmdrake:383
-#, c-format
-msgid "/_Quit"
-msgstr "/離開 (_Q)"
-
-#: ../rpmdrake:383
-#, c-format
-msgid "<control>Q"
-msgstr "<control>Q"
-
-#: ../rpmdrake:390
+#: ../rpmdrake:380
 #, c-format
 msgid "/_Media Manager"
 msgstr "/軟體套件媒體管理程式 (_M)"
@@ -2298,50 +2398,7 @@ msgstr "/軟體套件媒體管理程式 (_M)"
 msgid "/_Show automatically selected packages"
 msgstr "/顯示自動選取的套件 (_S)"
 
-#: ../rpmdrake:398 ../rpmdrake:399 ../rpmdrake:400 ../rpmdrake:401
-#, c-format
-msgid "/_Help"
-msgstr "/輔助說明 (_H)"
-
-#: ../rpmdrake:399
-#, c-format
-msgid "/_Report Bug"
-msgstr "/回報臭蟲 (_R)"
-
-#: ../rpmdrake:401
-#, c-format
-msgid "/_About..."
-msgstr "/關於... (_A)"
-
-#: ../rpmdrake:404
-#, fuzzy, c-format
-msgid "Rpmdrake"
-msgstr "關於 Rpmdrake"
-
-#: ../rpmdrake:406
-#, c-format
-msgid "Copyright (C) %s by Mandriva"
-msgstr "Copyright (C) %s by Mandriva"
-
-#: ../rpmdrake:408
-#, c-format
-msgid "Rpmdrake is Mandriva Linux package management tool."
-msgstr "Rpmdrake 是 Mandriva Linux 的套件管理工具。"
-
-#: ../rpmdrake:410
-#, c-format
-msgid "Mandriva Linux"
-msgstr "Mandriva Linux"
-
-#. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../rpmdrake:415
-#, c-format
-msgid "_: Translator(s) name(s) & email(s)\n"
-msgstr ""
-"Shiva Huang <shivahuang@gmail.com>\n"
-"You-Cheng Hsieh <yochenhsieh@xuite.net>\n"
-
-#: ../rpmdrake:448
+#: ../rpmdrake:438
 #, c-format
 msgid "Find:"
 msgstr "尋找："
@@ -3123,6 +3180,18 @@ msgstr "移除軟體"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "軟體套件媒體管理員"
+
+#~ msgid "Path:"
+#~ msgstr "路徑："
+
+#~ msgid "Name:"
+#~ msgstr "名稱："
+
+#~ msgid "Add custom..."
+#~ msgstr "新增自訂..."
+
+#~ msgid "Update..."
+#~ msgstr "更新..."
 
 #~ msgid ""
 #~ "The following packages have bad signatures:\n"
