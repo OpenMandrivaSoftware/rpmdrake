@@ -87,18 +87,21 @@ sub do_search($$$$$$$) {
 		    eval { require MDV::Packdrakeng; $pack = MDV::Packdrakeng->open(archive => $_, quiet => 1) } ? $pack->{toc_f_count} : 0;
 		} @hdlists
 	    );
-	    open my $sf, 'parsehdlist --fileswinfo --description --summary ' . join(' ', map { "'$_'" } @hdlists) . ' |';
-	    my ($pkg, $progresscount);
+	    open my $sf, join(' ','parsehdlist', '--name',
+                           if_($current_search_type eq 'files', '--files'),
+                           if_($current_search_type eq 'descriptions', '--description', '--summary'),
+                           map { "'$_'" } @hdlists) . ' |';
+	    my ($pkg, $progresscount, $found);
 	    local $_;
 	    while (<$sf>) {
 		$searchstop and last;
-		if (/^NAME<([^>]+)> VERSION<([^>]+)> RELEASE<([^>]+)> ARCH<([^>]+)>/) {
-		    $pkg = "$1-$2-$3.$4";
+		if (my ($pkg) = chomp_(/:name:(.+-[^-]+-[^-]+.[^.-]+)$/)) {
 		    $progresscount++; $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
 		    $searchw->flush;
+		    exists $pkgs->{$pkg} and $found and push @search_results, $pkg;
+		    undef $found;
 		    next;
 		}
-		$pkg or next;
 		my (undef, $key, $value) = split ':', $_;
 		if ($current_search_type eq 'descriptions') {
 		    $key =~ /^summary|description$/ or next;
@@ -106,8 +109,7 @@ sub do_search($$$$$$$) {
 		    $key eq 'files' or next;
 		}
 		if ($value =~ $entry_rx) {
-		    exists $pkgs->{$pkg} and push @search_results, $pkg;
-		    $pkg = '';
+              $found = 1;
 		}
 	    }
 	    close $sf;
