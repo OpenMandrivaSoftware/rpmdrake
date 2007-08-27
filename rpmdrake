@@ -59,22 +59,6 @@ sub do_search($$$$$$$) {
     $tree->collapse_all;
     my @search_results;
     if ($current_search_type ne 'normal') {
-	if ($MODE eq 'remove') {
-	    if ($current_search_type eq 'descriptions') {
-		@search_results = grep { ($pkgs->{$_}{summary} . $pkgs->{$_}{description}) =~ $entry_rx } @filtered_pkgs;
-	    } else {
-		slow_func_statusbar(
-		    N("Please wait, searching..."),
-		    $w->{real_window},
-		    sub {
-			open_rpm_db()->traverse(sub {
-			    push @search_results, map { if_($_ =~ $entry_rx, urpm_name($_[0])) } $_[0]->files;
-			});
-			@search_results = grep { exists $pkgs->{$_} } uniq(@search_results);
-		    },
-		);
-	    }
-	} else {
 	    my @hdlists = map {
 		my $h = urpm::media::any_hdlist($urpm, $_);
 		if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h);
@@ -129,7 +113,6 @@ sub do_search($$$$$$$) {
 	    close $sf;
 	    @search_results = uniq(@search_results); #- there can be multiple packages with same version/release for different arch's
 	    $searchw->destroy;
-	}
     } else {
         my $count;
         foreach (@filtered_pkgs) {
