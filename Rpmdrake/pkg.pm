@@ -158,7 +158,7 @@ sub open_rpm_db {
         }
         URPM::DB::open($dblocation) or die "Couldn't open RPM DB";
     } else {
-        URPM::DB::open($::options{'rpm-root'}->[0]) or die "Couldn't open RPM DB ($::options{'rpm-root'}->[0])";
+        URPM::DB::open($::rpmdrake_options{'rpm-root'}->[0]) or die "Couldn't open RPM DB ($::rpmdrake_options{'rpm-root'}->[0])";
     }
 }
 
@@ -183,11 +183,11 @@ sub warn_about_media {
 
     my $update_name = 'update_source';
     return if !member($::default_list_mode, qw(all_updates security bugfix normal));
-    return if $::options{'no-media-update'};
+    return if $::rpmdrake_options{'no-media-update'};
 	    if (@update_medias > 0) {
 		if (!$opts->{skip_updating_mu} && !$is_update_media_already_asked) {
               $is_update_media_already_asked = 1;
-		     $::options{'no-confirmation'} or interactive_msg_with_banner(N("Confirmation"),
+		     $::rpmdrake_options{'no-confirmation'} or interactive_msg_with_banner(N("Confirmation"),
 N("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
@@ -230,19 +230,19 @@ sub open_urpmi_db() {
     my $urpm = urpm->new;
     $urpm->{options}{'split-level'} ||= 20;
     $urpm->{options}{'split-length'} ||= 1;
-    $urpm->{options}{'no-verify-rpm'} = $::options{'no-verify-rpm'};
-    $urpm->{options}{auto} = $::options{'auto'};
-    urpm::set_files($urpm, $::options{'urpmi-root'}->[0]) if $::options{'urpmi-root'}->[0];
-    urpm::args::set_root($urpm, $::options{'rpm-root'}->[0]) if $::options{'rpm-root'}->[0];
+    $urpm->{options}{'no-verify-rpm'} = $::rpmdrake_options{'no-verify-rpm'};
+    $urpm->{options}{auto} = $::rpmdrake_options{'auto'};
+    urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}->[0]) if $::rpmdrake_options{'urpmi-root'}->[0];
+    urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}->[0]) if $::rpmdrake_options{'rpm-root'}->[0];
 
-    $urpm::args::options{justdb} = $::options{justdb};
+    $urpm::args::rpmdrake_options{justdb} = $::rpmdrake_options{justdb};
 
     $urpm->{fatal} = sub {
         $error_happened = 1;
         interactive_msg(N("Fatal error"),
                          N("A fatal error occurred: %s.", $_[1]));
     };
-    my $media = ref $::options{media} ? join(',', @{$::options{media}}) : '';
+    my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
     urpm::media::configure($urpm, media => $media);
     # urpmi only support one search media, hance we'll only support "Main backport":
     my ($searchmedia) = grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}};
@@ -343,7 +343,7 @@ sub get_pkgs {
 	    $pkg->pack_header; # needed in order to call methods on objects outside ->traverse
 	});
     my $group;
-    if ($::options{parallel} && (($group) = @{$::options{parallel}})) {
+    if ($::rpmdrake_options{parallel} && (($group) = @{$::rpmdrake_options{parallel}})) {
         urpm::media::configure($urpm, parallel => $group);
     }
 
@@ -387,8 +387,8 @@ sub get_pkgs {
     Rpmdrake::gurpm::progress($level = 0.7);
 
     my @backports;
-    my %pkg_sel   = map { $_ => 1 } @{$::options{'pkg-sel'}   || []};
-    my %pkg_nosel = map { $_ => 1 } @{$::options{'pkg-nosel'} || []};
+    my %pkg_sel   = map { $_ => 1 } @{$::rpmdrake_options{'pkg-sel'}   || []};
+    my %pkg_nosel = map { $_ => 1 } @{$::rpmdrake_options{'pkg-nosel'} || []};
     $reset_update->(1);
     foreach my $pkg (@{$urpm->{depslist}}) {
         $update->();
@@ -397,7 +397,7 @@ sub get_pkgs {
         my $name = urpm_name($pkg);
 
 	if (member($name, @requested) && any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias) {
-            if ($::options{'pkg-sel'} || $::options{'pkg-nosel'}) {
+            if ($::rpmdrake_options{'pkg-sel'} || $::rpmdrake_options{'pkg-nosel'}) {
 		my $n = $name;
 		$pkg_sel{$n} || $pkg_nosel{$n} or next;
 		$pkg_sel{$n} and $selected = 1;
@@ -414,9 +414,9 @@ sub get_pkgs {
      }
         $all_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg };
     }
-    if ($::options{'pkg-sel'} && $::options{'pkg-nosel'}) {
-        push @{$::options{'pkg-nosel'}}, @{$::options{'pkg-sel'}};
-        delete $::options{'pkg-sel'};
+    if ($::rpmdrake_options{'pkg-sel'} && $::rpmdrake_options{'pkg-nosel'}) {
+        push @{$::rpmdrake_options{'pkg-nosel'}}, @{$::rpmdrake_options{'pkg-sel'}};
+        delete $::rpmdrake_options{'pkg-sel'};
     }
 
     $all_pkgs{$_}{pkg}->set_flag_installed foreach @installed_pkgs;
@@ -514,7 +514,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     my $group;
-    return perform_parallel_install($urpm, $group, \$statusbar_msg_id) if $::options{parallel} && (($group) = @{$::options{parallel}});
+    return perform_parallel_install($urpm, $group, \$statusbar_msg_id) if $::rpmdrake_options{parallel} && (($group) = @{$::rpmdrake_options{parallel}});
 
     my $lock = urpm::lock::urpmi_db($urpm);
     my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
@@ -753,7 +753,7 @@ sub perform_removal {
 	N("Please wait, removing packages..."),
 	$::main_window,
 	sub {
-	    @results = $::options{parallel}
+	    @results = $::rpmdrake_options{parallel}
 		? urpm::parallel::remove($urpm, \@toremove)
 		: urpm::install::install($urpm, \@toremove, {}, {},
                                    callback_report_uninst => sub { Rpmdrake::gurpm::label($_[0]) },

@@ -392,7 +392,7 @@ sub run_treeview_dialog {
 	if_(!$>,
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
 	    [ $auto_string, undef, sub {
-               $urpm->{options}{auto} = $::options{auto} = $check_boxes{$auto_string}->get_active if $check_boxes{$auto_string};
+               $urpm->{options}{auto} = $::rpmdrake_options{auto} = $check_boxes{$auto_string}->get_active if $check_boxes{$auto_string};
            }, undef, '<CheckItem>' ],
 	    [ N("/_Options") . N("/_Media Manager"), undef, sub {
                require Rpmdrake::edit_urpm_sources;
@@ -435,7 +435,7 @@ sub run_treeview_dialog {
     %check_boxes = map {
         $_ => $factory->get_widget("<main>" . $get_path->($auto_string));
     } ($auto_string);
-    $check_boxes{$auto_string}->set_active($::options{auto}) if !$>;
+    $check_boxes{$auto_string}->set_active($::rpmdrake_options{auto}) if !$>;
 
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections);
@@ -511,7 +511,7 @@ sub run_treeview_dialog {
     ]);
 
     $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
-    $find_entry->set_text($options{search}[0]) if $options{search};
+    $find_entry->set_text($rpmdrake_options{search}[0]) if $rpmdrake_options{search};
 
     $w->{rwindow}->show_all;
     $w->{rwindow}->set_sensitive(0);
@@ -533,7 +533,7 @@ sub run_treeview_dialog {
 	info => $info,
 	status => $status,
     };
-    $options->{init_callback} = $find_callback if $options{search};
+    $options->{init_callback} = $find_callback if $rpmdrake_options{search};
 
     ask_browse_tree_given_widgets_for_rpmdrake($options);
 }

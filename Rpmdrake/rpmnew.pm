@@ -184,7 +184,7 @@ sub dialog_rpmnew {
 
 
 sub do_merge_if_needed() {
-    if ($options{'merge-all-rpmnew'}) {
+    if ($rpmdrake_options{'merge-all-rpmnew'}) {
         my %pkg2rpmnew;
         my $wait = wait_msg(N("Please wait, searching..."));
         print "Searching .rpmnew and .rpmsave files...\n";

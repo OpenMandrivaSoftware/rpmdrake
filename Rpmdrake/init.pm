@@ -31,7 +31,7 @@ BEGIN { $::no_global_argv_parsing = 1 }
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(init warn_about_user_mode $changelog_first $default_list_mode %options $MODE);
+our @EXPORT = qw(init warn_about_user_mode $changelog_first $default_list_mode %rpmdrake_options $MODE);
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
@@ -84,31 +84,31 @@ if ($collation_locale) {
 }
 
 my $version = 1;
-our %options;
+our %rpmdrake_options;
 foreach (@ARGV) {
     /^-?-(\S+)$/ or next;
     my $val = $1;
     if ($val =~ /=/) {
         my ($name, $values) = split /=/, $val;
         my @values = split /,/, $values;
-        $options{$name} = \@values if @values;
+        $rpmdrake_options{$name} = \@values if @values;
     } else {
         if ($val eq 'version') {
             print "$0 $version\n";
             exit(0);
        }
-        $options{$val} = 1;
+        $rpmdrake_options{$val} = 1;
     }
 }
 
 foreach my $option (qw(media mode parallel pkg-nosel pkg-sel search)) {
-    if (defined $options{$option} && !ref($options{$option})) {
+    if (defined $rpmdrake_options{$option} && !ref($rpmdrake_options{$option})) {
         warn "wrong usage of \"$option\" option!\n";
         exit(-1); # too early for my_exit()
     }
 }
 
-our $MODE = ref $options{mode} ? $options{mode}[0] : undef;
+our $MODE = ref $rpmdrake_options{mode} ? $rpmdrake_options{mode}[0] : undef;
 unless ($MODE) {
     $MODE = 'install';
     $0 =~ m|remove$|  and $MODE = 'remove';
@@ -123,11 +123,11 @@ if ($MODE eq 'remove') {
     $default_list_mode = 'all_updates';
 }
 
-$MODE eq 'update' || $options{root} and require_root_capability();
+$MODE eq 'update' || $rpmdrake_options{root} and require_root_capability();
 $::noborderWhenEmbedded = 1;
 
 our $changelog_first = $changelog_first_config->[0];
-$changelog_first = 1 if $options{'changelog-first'};
+$changelog_first = 1 if $rpmdrake_options{'changelog-first'};
 
 sub warn_about_user_mode() {
     $> and (interactive_msg(N("Running in user mode"),

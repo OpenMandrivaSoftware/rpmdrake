@@ -435,7 +435,7 @@ sub is_locale_available {
 
 sub callback_choices {
     my (undef, undef, undef, $choices) = @_;
-    return $choices->[0] if $::options{'auto'};
+    return $choices->[0] if $::rpmdrake_options{'auto'};
     foreach my $pkg (@$choices) {
         foreach ($pkg->requires_nosense) {
             /locales-/ or next;
