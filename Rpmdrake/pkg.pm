@@ -254,6 +254,9 @@ sub open_urpmi_db() {
     $urpm;
 }
 
+sub get_parallel_group() {
+    $::rpmdrake_options{parallel} ? $::rpmdrake_options{parallel}[0] : undef;
+}
 
 our $probe_only_for_updates;
 sub get_pkgs {
@@ -342,8 +345,7 @@ sub get_pkgs {
          push @installed_pkgs, $fullname;
 	    $pkg->pack_header; # needed in order to call methods on objects outside ->traverse
 	});
-    my $group;
-    if ($::rpmdrake_options{parallel} && (($group) = @{$::rpmdrake_options{parallel}})) {
+    if (my $group = get_parallel_group()) {
         urpm::media::configure($urpm, parallel => $group);
     }
 
@@ -513,8 +515,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
-    my $group;
-    return perform_parallel_install($urpm, $group, \$statusbar_msg_id) if $::rpmdrake_options{parallel} && (($group) = @{$::rpmdrake_options{parallel}});
+    if (my $group = get_parallel_group()) {
+        return perform_parallel_install($urpm, $group, \$statusbar_msg_id);
+    }
 
     my $lock = urpm::lock::urpmi_db($urpm);
     my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
