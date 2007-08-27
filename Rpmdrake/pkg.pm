@@ -184,6 +184,10 @@ sub warn_about_media {
     my $update_name = 'update_source';
     return if !member($::default_list_mode, qw(all_updates security bugfix normal));
     return if $::rpmdrake_options{'no-media-update'};
+
+    # do not update again media after installing/removing some packages:
+    $::rpmdrake_options{'no-media-update'} ||= 1;
+
 	    if (@update_medias > 0) {
 		if (!$opts->{skip_updating_mu} && !$is_update_media_already_asked) {
               $is_update_media_already_asked = 1;
