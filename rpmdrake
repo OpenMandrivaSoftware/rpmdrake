@@ -118,6 +118,7 @@ sub do_search($$$$$$$) {
         foreach (@filtered_pkgs) {
             next if !/$entry_rx/;
             push @search_results, $_;
+            # FIXME: should be done for all research types
             last if $count++ > 2000;
         }
     }
