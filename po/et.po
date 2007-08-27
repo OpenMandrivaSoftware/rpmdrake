@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-27 11:59+0200\n"
-"PO-Revision-Date: 2007-08-14 17:10+0200\n"
+"PO-Revision-Date: 2007-08-27 17:10+0200\n"
 "Last-Translator: Marek Laane <bald@starman.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -133,9 +133,9 @@ msgid "Local files"
 msgstr "Kohalikud failid"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:150
-#, fuzzy, c-format
+#, c-format
 msgid "Medium path:"
-msgstr "Andmekandja: "
+msgstr "Andmekandja asukoht:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:151
 #, c-format
@@ -195,9 +195,9 @@ msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "Tühjaksjätmisel püütakse automaatselt kasutada sünteesi/hdlisti"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:211
-#, fuzzy, c-format
+#, c-format
 msgid "Medium name:"
-msgstr "Andmekandja: "
+msgstr "Andmekandja nimi:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:219
 #, c-format
@@ -205,9 +205,9 @@ msgid "Create media for a whole distribution"
 msgstr "Andmekandja loomine kogu distributsioonile"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:230
-#, fuzzy, c-format
+#, c-format
 msgid "Tag this medium as an update medium"
-msgstr "Uuenduste otsimine sellelt andmekandjalt"
+msgstr "Seda andmekandjat kasutatakse uuenduste andmekandjana"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:240
 #, c-format
@@ -562,14 +562,14 @@ msgid "<control>Q"
 msgstr "<control>Q"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:956
-#, fuzzy, c-format
+#, c-format
 msgid "/_Update"
-msgstr "Uuenda"
+msgstr "/_Uuenda"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:956
-#, fuzzy, c-format
+#, c-format
 msgid "<control>U"
-msgstr "<control>Q"
+msgstr "<control>U"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:957 ../Rpmdrake/edit_urpm_sources.pm:958
 #: ../Rpmdrake/edit_urpm_sources.pm:959 ../Rpmdrake/edit_urpm_sources.pm:960
@@ -581,54 +581,54 @@ msgid "/_Options"
 msgstr "/_Seadistused"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:958
-#, fuzzy, c-format
+#, c-format
 msgid "/_Global options"
-msgstr "Globaalsed valikud..."
+msgstr "/_Globaalsed valikud..."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:958
-#, fuzzy, c-format
+#, c-format
 msgid "<control>G"
-msgstr "<control>Q"
+msgstr "<control>G"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:959
-#, fuzzy, c-format
+#, c-format
 msgid "/_Add media"
-msgstr "/_Uuenda allikaid"
+msgstr "/Lisa _andmekandja"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:959
-#, fuzzy, c-format
+#, c-format
 msgid "<control>A"
-msgstr "<control>Q"
+msgstr "<control>A"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:960
-#, fuzzy, c-format
+#, c-format
 msgid "/Manage _keys"
-msgstr "Võtmete haldamine"
+msgstr "/_Halda võtmeid"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:960
-#, fuzzy, c-format
+#, c-format
 msgid "<control>K"
-msgstr "<control>Q"
+msgstr "<control>H"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:961
-#, fuzzy, c-format
+#, c-format
 msgid "/_Parallel"
-msgstr "Paralleel..."
+msgstr "/_Paralleelne"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:961
-#, fuzzy, c-format
+#, c-format
 msgid "<control>P"
-msgstr "<control>Q"
+msgstr "<control>P"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:962
-#, fuzzy, c-format
+#, c-format
 msgid "/P_roxy"
-msgstr "Puhverserver..."
+msgstr "/Puhve_rserver"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:962
-#, fuzzy, c-format
+#, c-format
 msgid "<control>R"
-msgstr "<control>Q"
+msgstr "<control>R"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:964 ../Rpmdrake/edit_urpm_sources.pm:965
 #: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
@@ -701,9 +701,9 @@ msgstr ""
 "%s"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:1109
-#, fuzzy, c-format
+#, c-format
 msgid "Edit"
-msgstr "Muuda..."
+msgstr "Muuda"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:1143 ../Rpmdrake/init.pm:142
 #: ../gurpmi.addmedia:99
@@ -1688,6 +1688,8 @@ msgid ""
 "  --justdb               update the database, but do not modify the "
 "filesystem"
 msgstr ""
+"  --justdb               uuendatakse andmebaasi, aga ei muudeta "
+"failisüsteemi"
 
 #: ../Rpmdrake/init.pm:46
 #, c-format
@@ -1729,7 +1731,7 @@ msgstr "  --pkg-sel=pakett1,..      määratud pakettide eelvalimine"
 #: ../Rpmdrake/init.pm:51
 #, c-format
 msgid "  --rpm-root=path        use another root for rpm installation"
-msgstr "  --rpm-root=path        muu baasi kasutamine RPM-ide paigaldamisel"
+msgstr "  --rpm-root=asukoht        muu baasi kasutamine RPM-ide paigaldamisel"
 
 #: ../Rpmdrake/init.pm:52
 #, c-format
@@ -1849,7 +1851,7 @@ msgstr ""
 #: ../Rpmdrake/pkg.pm:199
 #, c-format
 msgid "Do not ask me next time"
-msgstr ""
+msgstr "Rohkem ei küsita"
 
 #: ../Rpmdrake/pkg.pm:208
 #, c-format
@@ -2327,9 +2329,9 @@ msgid "All packages, by group"
 msgstr "Kõik paketid grupi järgi"
 
 #: ../rpmdrake:251
-#, fuzzy, c-format
+#, c-format
 msgid "Backports"
-msgstr "Varundamine"
+msgstr "Tagasi porditud"
 
 #: ../rpmdrake:252
 #, c-format
@@ -2362,9 +2364,9 @@ msgid "in descriptions"
 msgstr "kirjeldustes"
 
 #: ../rpmdrake:302
-#, fuzzy, c-format
+#, c-format
 msgid "in summaries"
-msgstr "nimedes"
+msgstr "kokkuvõtetes"
 
 #: ../rpmdrake:303
 #, c-format
@@ -3192,63 +3194,3 @@ msgstr "Tarkvara eemaldamine"
 msgid "Software Media Manager"
 msgstr "Tarkvaraallikate haldur"
 
-#~ msgid "Path:"
-#~ msgstr "Otsingutee:"
-
-#~ msgid "Name:"
-#~ msgstr "Nimi:"
-
-#~ msgid "Add custom..."
-#~ msgstr "Lisa omaloodud..."
-
-#~ msgid "Update..."
-#~ msgstr "Uuenda..."
-
-#~ msgid ""
-#~ "The following packages have bad signatures:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Do you want to continue installation?"
-#~ msgstr ""
-#~ "Järgmistel pakettidel puudub korralik signatuur:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Kas jätkata?"
-
-#~ msgid "installing %s from %s"
-#~ msgstr "%s paigaldamine andmekandjalt %s"
-
-#~ msgid "installing %s"
-#~ msgstr "%s paigaldamine"
-
-#~ msgid "removing %s"
-#~ msgstr "%s eemaldamine"
-
-#~ msgid "Installation failed:"
-#~ msgstr "Paigaldamine ebaõnnestus:"
-
-#~ msgid "Try installation without checking dependencies? (y/N) "
-#~ msgstr "Kas proovida paigaldust ilma sõltuvusi kontrollimata? (j/E)"
-
-#~ msgid "Try harder to install (--force)? (y/N) "
-#~ msgstr "Kas proovida paigaldust veel jõulisemalt (--force)? (j/E) "
-
-#~ msgid "Message Passing"
-#~ msgstr "Teateedastus"
-
-#~ msgid "Queueing Services"
-#~ msgstr "Järjekorrateenused"
-
-#~ msgid "Deploiement"
-#~ msgstr "Jaosvõrk"
-
-#~ msgid "Deployment"
-#~ msgstr "Jaosvõrk"
-
-#~ msgid "Add a key..."
-#~ msgstr "Lisa võti..."
-
-#~ msgid "Remove key"
-#~ msgstr "Eemalda võti"
