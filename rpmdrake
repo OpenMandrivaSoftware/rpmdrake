@@ -59,16 +59,6 @@ sub do_search($$$$$$$) {
     $tree->collapse_all;
     my @search_results;
     if ($current_search_type ne 'normal') {
-	    my @hdlists = map {
-		my $h = urpm::media::any_hdlist($urpm, $_);
-		if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h);
-	    } @{$urpm->{media}};
-	    my $total_size = sum(
-		map {
-		    my $pack;
-		    eval { require MDV::Packdrakeng; $pack = MDV::Packdrakeng->open(archive => $_, quiet => 1) } ? $pack->{toc_f_count} : 0;
-		} @hdlists
-	    );
 	    my $searchstop;
 	    my $searchw = ugtk2->new(N("Software Management"), grab => 1, transient => $w->{real_window});
 	    gtkadd(
@@ -87,6 +77,16 @@ sub do_search($$$$$$$) {
 		),
 	    );
 	    $searchw->sync;
+	    my @hdlists = map {
+		my $h = urpm::media::any_hdlist($urpm, $_);
+		if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h);
+	    } @{$urpm->{media}};
+	    my $total_size = sum(
+		map {
+		    my $pack;
+		    eval { require MDV::Packdrakeng; $pack = MDV::Packdrakeng->open(archive => $_, quiet => 1) } ? $pack->{toc_f_count} : 0;
+		} @hdlists
+	    );
 	    open my $sf, 'parsehdlist --fileswinfo --description --summary ' . join(' ', map { "'$_'" } @hdlists) . ' |';
 	    my ($pkg, $progresscount);
 	    local $_;
