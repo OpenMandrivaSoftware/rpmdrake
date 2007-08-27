@@ -396,8 +396,7 @@ sub get_pkgs {
         my $selected = 0;
         my $name = urpm_name($pkg);
 
-	if (member($name, @requested)) {
-            #any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias or next;
+	if (member($name, @requested) && any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias) {
             if ($::options{'pkg-sel'} || $::options{'pkg-nosel'}) {
 		my $n = $name;
 		$pkg_sel{$n} || $pkg_nosel{$n} or next;
