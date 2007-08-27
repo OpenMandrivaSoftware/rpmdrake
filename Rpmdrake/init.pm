@@ -46,7 +46,7 @@ N("  --justdb               update the database, but do not modify the filesyste
 N("  --no-confirmation      don't ask first confirmation question in update mode"),
 N("  --no-media-update      don't update media at startup"),
 N("  --no-verify-rpm        don't verify packages signatures"),
-N("  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps"),
+if_($0 !~ /MandrivaUpdate/, N("  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps")),
 N("  --pkg-nosel=pkg1,..    show only these packages"),
 N("  --pkg-sel=pkg1,..      preselect these packages"),
 N("  --rpm-root=path        use another root for rpm installation"),
