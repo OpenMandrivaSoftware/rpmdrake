@@ -1131,7 +1131,7 @@ sub mainwindow() {
     );
     $_->set_sensitive(0) foreach $dw_button, $edit_button, $remove_button, $up_button;
 
-    $mainw->{rwindow}->set_size_request(600, -1);
+    $mainw->{rwindow}->set_size_request(600, 400);
     $mainw->main;
     return $something_changed;
 }
