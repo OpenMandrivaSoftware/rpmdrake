@@ -295,28 +295,20 @@ sub run_treeview_dialog {
 
     my @search_types = qw(normal descriptions summaries files);
     my $current_search_type = $search_types[0];
-    my $search_types_optionmenu = Gtk2::ComboBox->new;
-    {
-	$search_types_optionmenu->set_model(Gtk2::ListStore->new('Glib::String'));
-	my $search_types_renderer = Gtk2::CellRendererText->new;
-	$search_types_optionmenu->pack_start($search_types_renderer, 0);
-	$search_types_optionmenu->set_attributes($search_types_renderer, text => 0);
-	my $iter = $search_types_optionmenu->get_model->iter_nth_child(undef, 0);
-	$iter = $search_types_optionmenu->get_model->insert(0);
-	$search_types_optionmenu->get_model->set($iter, 0, N("in names"));
-	$iter = $search_types_optionmenu->get_model->insert(1);
-	$search_types_optionmenu->get_model->set($iter, 0, N("in descriptions"));
-	$iter = $search_types_optionmenu->get_model->insert(2);
-	$search_types_optionmenu->get_model->set($iter, 0, N("in summaries"));
-	$iter = $search_types_optionmenu->get_model->insert(3);
-	$search_types_optionmenu->get_model->set($iter, 0, N("in file names"));
-	$search_types_optionmenu->set_active(0);
+    my $search_types_optionmenu = Gtk2::ComboBox->new_with_strings(
+        [
+            N("in names"),
+            N("in descriptions"),
+            N("in summaries"),
+            N("in file names"),
+        ],
+        N("in names")
+    );
 	$search_types_optionmenu->signal_connect(
 	    changed => sub {
 		$current_search_type = $search_types[$search_types_optionmenu->get_active];
 	    },
 	);
-    }
 
     my $info = Gtk2::Mdv::TextView->new;
     $info->set_left_margin(2);
