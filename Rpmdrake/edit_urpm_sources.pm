@@ -147,7 +147,7 @@ sub add_callback() {
     my $prev_main_window = $::main_window;
     local $::main_window = $w->{real_window};
     my %radios_infos = (
-	local => { name => N("Local files"), url => N("Path:"), dirsel => 1 },
+	local => { name => N("Local files"), url => N("Medium path:"), dirsel => 1 },
 	ftp => { name => N("FTP server"), url => N("URL:"), loginpass => 1 },
 	rsync => { name => N("RSYNC server"), url => N("URL:") },
 	http => { name => N("HTTP server"), url => N("URL:") },
@@ -208,7 +208,7 @@ sub add_callback() {
 	$notebook->append_page(
 	    gtkshow(create_packtable(
 		{ xpadding => 0, ypadding => 0 },
-		[ gtkset_alignment(gtknew('Label', text => N("Name:")), 0, 0.5),
+		[ gtkset_alignment(gtknew('Label', text => N("Medium name:")), 0, 0.5),
 		    $info->{name_entry} = gtkentry('') ],
 		[ gtkset_alignment(gtknew('Label', text => $info->{url}), 0, 0.5),
 		    $url_entry->() ],
@@ -227,7 +227,7 @@ sub add_callback() {
 		    ];
 		}->(),
 		sub {
-		    [ $info->{update_check} = $cb2 = gtknew('CheckButton', text => N("Search this media for updates")) ];
+		    [ $info->{update_check} = $cb2 = gtknew('CheckButton', text => N("Tag this medium as an update medium")) ];
 		}->(),
 	    ))
 	);
