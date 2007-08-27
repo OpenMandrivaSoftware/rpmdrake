@@ -90,6 +90,7 @@ sub do_search($$$$$$$) {
 	    open my $sf, join(' ','parsehdlist', '--name',
                            if_($current_search_type eq 'files', '--files'),
                            if_($current_search_type eq 'descriptions', '--description', '--summary'),
+                           if_($current_search_type eq 'summaries', '--summary'),
                            map { "'$_'" } @hdlists) . ' |';
 	    my ($pkg, $progresscount, $found);
 	    local $_;
@@ -105,6 +106,8 @@ sub do_search($$$$$$$) {
 		my (undef, $key, $value) = split ':', $_;
 		if ($current_search_type eq 'descriptions') {
 		    $key =~ /^summary|description$/ or next;
+		} elsif ($current_search_type eq 'summaries') {
+		    $key =~ /^summary$/ or next;
 		} else {
 		    $key eq 'files' or next;
 		}
@@ -290,7 +293,7 @@ sub run_treeview_dialog {
 	$options->{tree_submode} ||= $default_radio;
 	$options->{tree_subflat} ||= $options->{state}{flat};
 
-    my @search_types = qw(normal descriptions files);
+    my @search_types = qw(normal descriptions summaries files);
     my $current_search_type = $search_types[0];
     my $search_types_optionmenu = Gtk2::ComboBox->new;
     {
@@ -304,6 +307,8 @@ sub run_treeview_dialog {
 	$iter = $search_types_optionmenu->get_model->insert(1);
 	$search_types_optionmenu->get_model->set($iter, 0, N("in descriptions"));
 	$iter = $search_types_optionmenu->get_model->insert(2);
+	$search_types_optionmenu->get_model->set($iter, 0, N("in summaries"));
+	$iter = $search_types_optionmenu->get_model->insert(3);
 	$search_types_optionmenu->get_model->set($iter, 0, N("in file names"));
 	$search_types_optionmenu->set_active(0);
 	$search_types_optionmenu->signal_connect(
