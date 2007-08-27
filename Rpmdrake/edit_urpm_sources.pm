@@ -947,6 +947,21 @@ sub mainwindow() {
     $mainw = ugtk2->new(N("Configure media"), center => 1, transient => $::main_window, modal => 1);
     local $::main_window = $mainw->{real_window};
 
+    my $reread_media;
+
+    my ($menu, $factory) = create_factory_menu(
+	$mainw->{real_window},
+	[ N("/_File"), undef, undef, undef, '<Branch>' ],
+	[ N("/_File") . N("/_Quit"), N("<control>Q"), sub { Gtk2->main_quit }, undef, '<Item>', ],
+	[ N("/_File") . N("/_Update"), N("<control>U"), sub { update_callback() and $reread_media->() }, undef, '<Item>', ],
+     [ N("/_Options"), undef, undef, undef, '<Branch>' ],
+     [ N("/_Options") . N("/_Global options"), N("<control>G"), \&options_callback, undef, '<Item>' ],
+     [ N("/_Options") . N("/_Add media"), N("<control>A"), sub { easy_add_callback() and $reread_media->() }, undef, '<Item>' ],
+     [ N("/_Options") . N("/Manage _keys"), N("<control>K"), \&keys_callback, undef, '<Item>' ],
+     [ N("/_Options") . N("/_Parallel"), N("<control>P"), \&parallel_callback, undef, '<Item>' ],
+     [ N("/_Options") . N("/P_roxy"), N("<control>R"), \&proxy_callback, undef, '<Item>' ],
+    );
+
     my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('multiple');
@@ -994,7 +1009,7 @@ sub mainwindow() {
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates"), my $cu = Gtk2::CellRendererToggle->new, 'active' => 1));
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 2));
 
-    my $reread_media; #- closure defined later
+    $reread_media; #- closure defined later
     $tr->signal_connect(
 	toggled => sub {
 	    my (undef, $path) = @_;
@@ -1054,6 +1069,7 @@ sub mainwindow() {
 	$mainw->{window},
 	gtkpack_(
 	    gtknew('VBox', spacing => 5),
+	    0, $menu,
 	    1, gtkpack_(
 		gtknew('HBox', spacing => 10),
 		1, gtknew('ScrolledWindow', child => $list_tv),
@@ -1070,21 +1086,9 @@ sub mainwindow() {
 			}
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Add..."))),
-			clicked => sub { easy_add_callback() and $reread_media->() },
-		    ),
-		    gtksignal_connect(
 			Gtk2::Button->new(but(N("Add custom..."))),
 			clicked => sub { add_callback() and $reread_media->() },
 		    ),
-		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Update..."))),
-			clicked => sub { update_callback() and $reread_media->() },
-		    ),
-		    gtksignal_connect(Gtk2::Button->new(but(N("Manage keys..."))), clicked => \&keys_callback),
-		    gtksignal_connect(Gtk2::Button->new(but(N("Proxy..."))), clicked => \&proxy_callback),
-		    gtksignal_connect(Gtk2::Button->new(but(N("Parallel..."))), clicked => \&parallel_callback),
-		    gtksignal_connect(Gtk2::Button->new(but(N("Global options..."))), clicked => \&options_callback),
 		    gtkpack(
 			gtknew('HBox'),
 			gtksignal_connect($up_button = gtknew('Button', child => Gtk2::Arrow->new("up", "none")), clicked => \&upwards_callback),
