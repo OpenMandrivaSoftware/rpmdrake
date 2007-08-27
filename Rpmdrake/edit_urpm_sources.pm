@@ -960,6 +960,32 @@ sub mainwindow() {
      [ N("/_Options") . N("/Manage _keys"), N("<control>K"), \&keys_callback, undef, '<Item>' ],
      [ N("/_Options") . N("/_Parallel"), N("<control>P"), \&parallel_callback, undef, '<Item>' ],
      [ N("/_Options") . N("/P_roxy"), N("<control>R"), \&proxy_callback, undef, '<Item>' ],
+     if_($0 =~ /edit-urpm-sources/,
+         [ N("/_Help"), undef, undef, undef, '<Branch>' ],
+         [ N("/_Help") . N("/_Report Bug"), undef, sub { run_program::raw({ detach => 1 }, 'drakbug', '--report', 'edit-urpm-sources.pl') }, undef, '<Item>' ],
+         [ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help('sources') }, undef, '<Item>' ],
+         [ N("/_Help") . N("/_About..."), undef, sub {
+               my $license = formatAlaTeX(translate($::license));
+               $license =~ s/\n/\n\n/sg; # nicer formatting
+               my $w = gtknew('AboutDialog', name => N("Rpmdrake"),
+                              version => '2007',
+                              copyright => N("Copyright (C) %s by Mandriva", '2002-2007'),
+                              license => $license, wrap_license => 1,
+                              comments => N("Rpmdrake is Mandriva Linux package management tool."),
+                              website => 'http://mandrivalinux.com',
+                              website_label => N("Mandriva Linux"),
+                              authors => 'Thierry Vignaud <vignaud@mandriva.com>',
+                              artists => 'Hélène Durosini <ln@mandriva.com>',
+                              translator_credits =>
+                                #-PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+                                N("_: Translator(s) name(s) & email(s)\n"),
+                              transient_for => $::main_window, modal => 1, position_policy => 'center-on-parent',
+                          );
+               $w->show_all;
+               $w->run;
+           }, undef, '<Item>'
+       ]
+     ),
     );
 
     my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
