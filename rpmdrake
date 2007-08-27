@@ -375,7 +375,7 @@ sub run_treeview_dialog {
            }, undef, '<CheckItem>' ],
 	    [ N("/_Options") . N("/_Media Manager"), undef, sub {
                require Rpmdrake::edit_urpm_sources;
-               Rpmdrake::edit_urpm_sources::run() && kgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode});
+               Rpmdrake::edit_urpm_sources::run() && $reload_db_and_clear_all->();
            }, undef, '<Item>' ],
 	    [ N("/_Options") . N("/_Show automatically selected packages"), undef, sub {
 		$dont_show_selections = !$checkbox_show_autoselect->get_active;
