@@ -1106,13 +1106,13 @@ sub mainwindow() {
 			clicked => sub { remove_callback() and $reread_media->() },
 		    ),
 		    gtksignal_connect(
-			$edit_button = Gtk2::Button->new(but(N("Edit..."))),
+			$edit_button = Gtk2::Button->new(but(N("Edit"))),
 			clicked => sub {
 			    my $name = edit_callback(); defined $name and $reread_media->($name);
 			}
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Add custom..."))),
+			Gtk2::Button->new(but(N("Add"))),
 			clicked => sub { add_callback() and $reread_media->() },
 		    ),
 		    gtkpack(
