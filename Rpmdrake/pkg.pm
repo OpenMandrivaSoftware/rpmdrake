@@ -195,7 +195,11 @@ sub warn_about_media {
 N("I need to contact the mirror to get latest update packages.
 Please check that your network is currently running.
 
-Is it ok to continue?"), yesno => 1) or myexit(-1);
+Is it ok to continue?"), yesno => 1,
+                   widget =>  gtknew('CheckButton', text => N("Do not ask me next time"),
+                                     active_ref => \$::rpmdrake_options{'no-confirmation'}
+                                 )) or myexit(-1);
+		    writeconf();
 		    urpm::media::select_media($urpm, map { $_->{name} } @update_medias);
 		    update_sources($urpm, noclean => 1, banner => $::isEmbedded);
 		}

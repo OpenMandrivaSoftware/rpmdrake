@@ -155,7 +155,7 @@ $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
 our ($already_splashed, $changelog_first_config, $max_info_in_descr, $tree_flat, $tree_mode);
-our ($mandrakeupdate_wanted_categories, $offered_to_add_sources);
+our ($mandrakeupdate_wanted_categories, $offered_to_add_sources, $no_confirmation);
 our %config = (
     mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
     already_splashed => { var => \$already_splashed, default => [] },
@@ -164,6 +164,7 @@ our %config = (
     tree_mode => { var => \$tree_mode, default => [ qw(mandrake_choices) ] },
     tree_flat => { var => \$tree_flat, default => [ 0 ] },
     changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },
+    'no-confirmation' => { var => \$no_confirmation, default => [ 0 ] },
 );
 
 sub readconf() {
@@ -171,10 +172,14 @@ sub readconf() {
     foreach my $l (cat_($configfile)) {
 	$l =~ /^\Q$_\E (.*)/ and ${$config{$_}{var}} = [ split ' ', $1 ] foreach keys %config;
     }
+    # special case:
+    $::rpmdrake_options{'no-confirmation'} = $no_confirmation->[0] if !defined $::rpmdrake_options{'no-confirmation'};
 }
 
 sub writeconf() {
     unlink $configfile;
+    # special case:
+    $no_confirmation->[0] = $::rpmdrake_options{'no-confirmation'};
     output $configfile, map { "$_ " . (ref ${$config{$_}{var}} ? join(' ', @${$config{$_}{var}}) : ()) . "\n" } keys %config;
 }
 
