@@ -328,6 +328,16 @@ sub run_treeview_dialog {
                                      )
                     );
 
+    my $reload_db_and_clear_all = sub {
+        slow_func($::main_window->window, sub {
+                      $force_rebuild = 1;
+                      pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode});
+                      reset_search();
+                      $size_selected = 0;
+                      $options->{rebuild_tree}->();
+                  });
+    };
+
     my $status = gtknew('Label');
     my $checkbox_show_autoselect;
     my %check_boxes;
@@ -339,13 +349,7 @@ sub run_treeview_dialog {
 	    ! $>,
 	    [ N("/_File") . N("/_Update media"), undef, sub {
 		update_sources_interactive($urpm, transient => $w->{real_window})
-		    and do {
-			$force_rebuild = 1;
-			pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode});
-			reset_search();
-			$size_selected = 0;
-			$options->{rebuild_tree}->();
-		    };
+		    and $reload_db_and_clear_all->();
 	    }, undef, '<Item>' ]
 	),
 	[ N("/_File") . N("/_Reset the selection"), undef, sub {
@@ -361,15 +365,7 @@ sub run_treeview_dialog {
 	    $force_displaying_group = 1;
 	    $tree->get_selection->signal_emit('changed');
 	}, undef, '<Item>' ],
-	[ N("/_File") . N("/Reload the _packages list"), undef, sub {
-	    slow_func($::main_window->window, sub {
-                       $force_rebuild = 1;
-                       pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode});
-                   });
-	    reset_search();
-	    $size_selected = 0;
-	    $options->{rebuild_tree}->();
-	}, undef, '<Item>' ],
+	[ N("/_File") . N("/Reload the _packages list"), undef, $reload_db_and_clear_all, undef, '<Item>' ],
 	[ N("/_File") . N("/_Quit"), N("<control>Q"), sub { Gtk2->main_quit }, undef, '<Item>', ],
 	#[ N("/_View"), undef, undef, undef, '<Branch>' ],
 	if_(!$>,
