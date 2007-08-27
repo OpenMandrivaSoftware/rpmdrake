@@ -235,7 +235,7 @@ sub open_urpmi_db() {
     $urpm->{options}{'split-level'} ||= 20;
     $urpm->{options}{'split-length'} ||= 1;
     $urpm->{options}{'no-verify-rpm'} = $::rpmdrake_options{'no-verify-rpm'};
-    $urpm->{options}{auto} = $::rpmdrake_options{'auto'};
+    $urpm->{options}{auto} = $::rpmdrake_options{'auto'} if defined $::rpmdrake_options{'auto'};
     urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}->[0]) if $::rpmdrake_options{'urpmi-root'}->[0];
     urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}->[0]) if $::rpmdrake_options{'rpm-root'}->[0];
 
