@@ -345,10 +345,10 @@ sub get_pkgs {
          push @installed_pkgs, $fullname;
 	    $pkg->pack_header; # needed in order to call methods on objects outside ->traverse
 	});
-    if (my $group = get_parallel_group()) {
-        urpm::media::configure($urpm, parallel => $group);
     }
 
+    if (my $group = get_parallel_group()) {
+        urpm::media::configure($urpm, parallel => $group);
     }
 
     # find out availlable packages:
