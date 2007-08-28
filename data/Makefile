@@ -13,8 +13,8 @@ clean:
 	rm -f $(DESKTOP)
 
 install: all
-	install -d $(rpmdrake_dir)/desktop
-	install -m644 $(DESKTOP) $(rpmdrake_dir)/desktop
+	install -d $(DATADIR)/applications
+	install -m644 $(DESKTOP) $(DATADIR)/applications
 
 
 %.desktop:   %.desktop.in
