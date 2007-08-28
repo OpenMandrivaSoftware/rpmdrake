@@ -93,7 +93,11 @@ sub invalidate_cancel() {
 sub invalidate_cancel_forever() {
     $hbox_cancel or return;
     $hbox_cancel->destroy;
-    $mainw->shrink_topwindow;
+    # FIXME: temporary workaround that prevents
+    # Gtk2::Label::set_text() set_text_internal() -> queue_resize() ->
+    # size_allocate() call chain to mess up when ->shrink_topwindow()
+    # has been called (#32613):
+    #$mainw->shrink_topwindow;
 }
 
 1;
