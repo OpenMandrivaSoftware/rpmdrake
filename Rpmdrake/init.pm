@@ -52,6 +52,7 @@ N("  --pkg-sel=pkg1,..      preselect these packages"),
 N("  --rpm-root=path        use another root for rpm installation"),
 N("  --urpmi-root           use another root for urpmi db & rpm installation"),
 N("  --root                 force to run as root"),
+N("  --run-as-root          force to run as root"),
 N("  --search=pkg           run search for \"pkg\""),
 chomp_(N("  --version      - print this tool's version number.
 ")),
@@ -123,7 +124,7 @@ if ($MODE eq 'remove') {
     $default_list_mode = 'all_updates';
 }
 
-$MODE eq 'update' || $rpmdrake_options{root} and require_root_capability();
+$MODE eq 'update' || $rpmdrake_options{'run-as-root'} || $rpmdrake_options{root} and require_root_capability();
 $::noborderWhenEmbedded = 1;
 
 our $changelog_first = $changelog_first_config->[0];
