@@ -269,7 +269,6 @@ sub get_parallel_group() {
 our $probe_only_for_updates;
 sub get_pkgs {
     my ($opts) = @_;
-    @update_medias = ();
     my $w = $::main_window;
 
     Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
