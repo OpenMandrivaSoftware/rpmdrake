@@ -367,7 +367,6 @@ sub get_pkgs {
     Rpmdrake::gurpm::label(N("Please wait, finding available packages..."));
     Rpmdrake::gurpm::progress($level = 0.66);
 
-    @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
     check_update_media_version($urpm, @update_medias);
 
     my $requested = {};
