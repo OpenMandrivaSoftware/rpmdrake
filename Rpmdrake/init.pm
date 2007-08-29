@@ -51,7 +51,7 @@ N("  --pkg-nosel=pkg1,..    show only these packages"),
 N("  --pkg-sel=pkg1,..      preselect these packages"),
 N("  --rpm-root=path        use another root for rpm installation"),
 N("  --urpmi-root           use another root for urpmi db & rpm installation"),
-N("  --root                 force to run as root"),
+N("  --root                 force to run as root") . ' ' . N("(Deprecated)"),
 N("  --run-as-root          force to run as root"),
 N("  --search=pkg           run search for \"pkg\""),
 chomp_(N("  --version      - print this tool's version number.
