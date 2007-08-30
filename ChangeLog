@@ -2,24 +2,6 @@
 
 	* rpmdrake: kill useless return values
 
-2007-08-27 15:39  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* rpmdrake: (run_treeview_dialog) refresh packages tree when
-	  edit-urpm-sources
-	  performed something thus fixing crash when removing source then
-	  selecting a package that is no more know to urpmi (#32832)
-
-2007-08-27 15:38  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* rpmdrake: (reload_db_and_clear_all) factorize some code for
-	  rereading URPM DB
-	  and updating the packages tree & be consistant regarding
-	  slow_func() usage
-
-2007-08-27 15:28  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* rpmdrake: kill useless return values
-
 2007-08-27 10:36  Marek Laane <bald at starman.ee>
 
 	* po/et.po: Updated Estonian translation.
@@ -743,39 +725,6 @@
 	* MandrivaUpdate: open_db() was renamed as open_rpm_db() for
 	  consistency with open_urpmi_db() but a call point was forgotten
 
-2007-08-02 20:37  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/pkg.pm: (perform_installation) ensure list of
-	  update/install instructions is
-	  centered on main window
-
-2007-08-02 20:24  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/pkg.pm: (perform_installation) add a note about code
-	  that need to be
-	  factorized with urpmi
-
-2007-08-02 20:18  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/pkg.pm: (perform_installation) readd back callback_close
-	  that was wrongly
-	  killed along callback_open (which indeed was redondant with urpmi
-	  code) while adding support for transaction in r22950, thus
-	  displaying
-	  again README.urpmi*
-	  
-	  note that readme processing really is duplicated with what
-	  urpmi::install::install() does
-
-2007-08-02 20:02  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* MandrivaUpdate, rpmdrake: kill a useless open of rpm database
-
-2007-08-02 19:54  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* MandrivaUpdate: open_db() was renamed as open_rpm_db() for
-	  consistency with open_urpmi_db() but a call point was forgotten
-
 2007-08-02 18:17  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Rpmdrake/pkg.pm: (get_pkgs) explain
@@ -1276,16 +1225,6 @@
 	  toggle() to handle
 	  deps when toggling
 
-2007-03-23 06:05  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* MandrivaUpdate: (toggle) introduce this wrapper arount
-	  toggle_nodes() in oder to handle
-	  deps while toggling
-
-2007-03-23 06:00  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* MandrivaUpdate: (refresh_packages_list) kill noop loop
-
 2007-03-23 05:21  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Rpmdrake/gui.pm: (do_action__real) now that return value is
@@ -1301,31 +1240,6 @@
 
 	* Rpmdrake/gui.pm: export node_state()
 
-2007-03-23 06:07  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/pkg.pm: (perform_installation) reindent & adjust comment
-
-2007-03-23 06:06  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/pkg.pm: (perform_installation) fix installing more than
-	  selection in MandrivaUpdate
-
-2007-03-23 06:05  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* MandrivaUpdate: (run_treeview_dialog) do not reset selection if
-	  canceling installation
-
-2007-03-23 06:05  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* MandrivaUpdate: (run_treeview_dialog) since checking deps can
-	  take time, show it
-
-2007-03-23 06:05  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* MandrivaUpdate: (refresh_packages_list, run_treeview_dialog) use
-	  toggle() to handle
-	  deps when toggling
-
 2007-03-23 06:05  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* MandrivaUpdate: (toggle) introduce this wrapper arount
@@ -1335,21 +1249,6 @@
 2007-03-23 06:00  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* MandrivaUpdate: (refresh_packages_list) kill noop loop
-
-2007-03-23 05:21  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/gui.pm: (do_action__real) now that return value is
-	  meaningfull, tell we didn't
-	  performed anything on early error
-
-2007-03-23 05:18  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/gui.pm: (do_action__real) return whether we've
-	  removed/installed something
-
-2007-03-23 05:14  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/gui.pm: export node_state()
 
 2007-03-23 04:02  Thierry Vignaud <tvignaud at mandriva.com>
 
@@ -1459,23 +1358,6 @@
 	* Rpmdrake/gui.pm: (do_action__real) use "pure_updates" option if
 	  in MandrivaUpdate
 
-
-2007-03-22 16:24  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Makefile: bump release (3.58)
-
-2007-03-22 16:23  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* MandrivaUpdate: (run_treeview_dialog) once we updated some
-	  packages, do not bother
-	  refresh the list since do_action() already did it for us, if
-	  needed
-
-2007-03-22 16:23  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/gui.pm: (do_action__real) use "pure_updates" option if
-	  in MandrivaUpdate
-
 2007-03-22 14:58  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Rpmdrake/gui.pm: (callback_choices) do not show "cancel" button
@@ -1518,22 +1400,6 @@
 2007-03-22 12:46  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* rpmdrake.pm: (interactive_msg) enable to pack extra widgets
-
-2007-03-22 12:18  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* MandrivaUpdate: (run_treeview_dialog) once we updated some
-	  packages, refresh the list
-	  _after_ updating the packagel list
-
-2007-03-22 12:16  Pablo Saratxaga <pablo at mandriva.com>
-
-	* po/sv.po, po/wa.po: updated po file
-
-2007-03-22 12:13  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/gui.pm: (perform_installation) workaround cannot
-	  selecting a selected then
-	  unselected package witth deps (#28613)
 
 2007-03-22 12:18  Thierry Vignaud <tvignaud at mandriva.com>
 
@@ -5014,28 +4880,6 @@
 
 	* po/pt_BR.po: fixing a fuzzy entry
 
-2006-09-11 12:11  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* po/af.pom, po/am.pom, po/ar.pom, po/az.pom, po/be.pom,
-	  po/bg.pom, po/bn.pom, po/br.pom, po/bs.pom, po/ca.pom,
-	  po/cs.pom, po/cy.pom, po/da.pom, po/de.pom, po/el.pom,
-	  po/eo.pom, po/es.pom, po/et.pom, po/eu.pom, po/fa.pom,
-	  po/fi.pom, po/fr.pom, po/fur.pom, po/ga.pom, po/gl.pom,
-	  po/he.pom, po/hi.pom, po/hr.pom, po/hu.pom, po/id.pom,
-	  po/is.pom, po/it.pom, po/ja.pom, po/ko.pom, po/ky.pom,
-	  po/lt.pom, po/ltg.pom, po/lv.pom, po/mk.pom, po/mn.pom,
-	  po/ms.pom, po/mt.pom, po/nb.pom, po/nl.pom, po/nn.pom,
-	  po/pa_IN.pom, po/pl.pom, po/pt.pom, po/pt_BR.pom, po/ro.pom,
-	  po/ru.pom, po/sc.pom, po/sk.pom, po/sl.pom, po/sq.pom,
-	  po/sr.pom, po/sr@Latn.pom, po/sv.pom, po/ta.pom, po/tg.pom,
-	  po/th.pom, po/tl.pom, po/tr.pom, po/uk.pom, po/uz.pom,
-	  po/uz@Latn.pom, po/vi.pom, po/wa.pom, po/zh_CN.pom,
-	  po/zh_TW.pom: fix po
-
-2006-09-11 11:58  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* rpmdrake.spec: 3.2-1mdv2007.0
-
 2006-09-11 11:55  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Makefile: (log, changelog) add aliasesd entries
@@ -6234,11 +6078,6 @@
 2005-12-08 15:49  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
 
 	* rpmdrake.spec: Require next urpmi
-
-2005-12-08 15:49  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
-
-	* rpmdrake: Adapt code to the new syntax of
-	  extract_packages_to_install in upcoming urpmi 4.8.4
 
 2005-12-08 15:49  Rafael Garcia-Suarez <rgarciasuarez at mandriva.com>
 
