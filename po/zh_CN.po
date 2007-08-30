@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-29 16:40+0200\n"
-"PO-Revision-Date: 2007-03-08 12:39+0800\n"
+"PO-Revision-Date: 2007-08-30 12:54+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: Mandriva Linux i18n Team <cooker-i18n@mandrakelinux.org>\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgid "Software Management"
 msgstr "软件管理器"
 
 #: ../MandrivaUpdate:123
-#, fuzzy, c-format
+#, c-format
 msgid "Here is the list of software package updates"
 msgstr "在此列出了软件包更新"
 
@@ -131,9 +131,9 @@ msgid "Local files"
 msgstr "本机文件"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:150
-#, fuzzy, c-format
+#, c-format
 msgid "Medium path:"
-msgstr "介质:"
+msgstr "介质路径:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:151
 #, c-format
@@ -193,9 +193,9 @@ msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "如果留空, 将会自动探测综合文件/hdlist"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:211
-#, fuzzy, c-format
+#, c-format
 msgid "Medium name:"
-msgstr "介质:"
+msgstr "介质名称:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:219
 #, c-format
@@ -203,9 +203,9 @@ msgid "Create media for a whole distribution"
 msgstr "创建整个发行版的介质"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:230
-#, fuzzy, c-format
+#, c-format
 msgid "Tag this medium as an update medium"
-msgstr "在此介质中搜索更新"
+msgstr "将此介质标记为更新介质"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:240
 #, c-format
@@ -555,14 +555,14 @@ msgid "<control>Q"
 msgstr "<control>Q"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:956
-#, fuzzy, c-format
+#, c-format
 msgid "/_Update"
-msgstr "更新"
+msgstr "/更新(_U)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:956
-#, fuzzy, c-format
+#, c-format
 msgid "<control>U"
-msgstr "<control>Q"
+msgstr "<control>U"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:957 ../Rpmdrake/edit_urpm_sources.pm:958
 #: ../Rpmdrake/edit_urpm_sources.pm:959 ../Rpmdrake/edit_urpm_sources.pm:960
@@ -574,54 +574,54 @@ msgid "/_Options"
 msgstr "/选项(_O)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:958
-#, fuzzy, c-format
+#, c-format
 msgid "/_Global options"
-msgstr "全局选项..."
+msgstr "/全局选项(_G)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:958
-#, fuzzy, c-format
+#, c-format
 msgid "<control>G"
-msgstr "<control>Q"
+msgstr "<control>G"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:959
-#, fuzzy, c-format
+#, c-format
 msgid "/_Add media"
-msgstr "/更新介质(_U)"
+msgstr "/添加介质(_A)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:959
-#, fuzzy, c-format
+#, c-format
 msgid "<control>A"
-msgstr "<control>Q"
+msgstr "<control>A"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:960
-#, fuzzy, c-format
+#, c-format
 msgid "/Manage _keys"
-msgstr "管理密钥..."
+msgstr "/管理密钥(_K)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:960
-#, fuzzy, c-format
+#, c-format
 msgid "<control>K"
-msgstr "<control>Q"
+msgstr "<control>K"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:961
-#, fuzzy, c-format
+#, c-format
 msgid "/_Parallel"
-msgstr "并行..."
+msgstr "/并行(_P)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:961
-#, fuzzy, c-format
+#, c-format
 msgid "<control>P"
-msgstr "<control>Q"
+msgstr "<control>P"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:962
-#, fuzzy, c-format
+#, c-format
 msgid "/P_roxy"
-msgstr "代理服务器..."
+msgstr "/代理服务器(_R)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:962
-#, fuzzy, c-format
+#, c-format
 msgid "<control>R"
-msgstr "<control>Q"
+msgstr "<control>R"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:964 ../Rpmdrake/edit_urpm_sources.pm:965
 #: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
@@ -694,7 +694,7 @@ msgstr ""
 "%s"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:1109
-#, fuzzy, c-format
+#, c-format
 msgid "Edit"
 msgstr "编辑"
 
@@ -1640,7 +1640,7 @@ msgstr "用法：%s [选项]..."
 #: ../Rpmdrake/init.pm:40
 #, c-format
 msgid "  --auto                 assume default answers to questions"
-msgstr ""
+msgstr "  --auto                 对问题假定默认答案"
 
 #: ../Rpmdrake/init.pm:41
 #, c-format
@@ -1671,6 +1671,7 @@ msgid ""
 "  --justdb               update the database, but do not modify the "
 "filesystem"
 msgstr ""
+"  --justdb               更新数据库而不修改文件系统"
 
 #: ../Rpmdrake/init.pm:46
 #, c-format
@@ -1709,7 +1710,7 @@ msgstr "  --pkg-sel=包1,..       预先选择这些软件包"
 #: ../Rpmdrake/init.pm:52
 #, c-format
 msgid "  --rpm-root=path        use another root for rpm installation"
-msgstr ""
+msgstr "  --rpm-root=path        使用另外一个根安装 rpm"
 
 #: ../Rpmdrake/init.pm:53
 #, c-format
@@ -1723,9 +1724,9 @@ msgid "  --root                 force to run as root"
 msgstr "  --root                 强制以 root 身份运行"
 
 #: ../Rpmdrake/init.pm:54
-#, fuzzy, c-format
+#, c-format
 msgid "(Deprecated)"
-msgstr "选中"
+msgstr "(已启用)"
 
 #: ../Rpmdrake/init.pm:55
 #, c-format
@@ -1837,7 +1838,7 @@ msgstr ""
 #: ../Rpmdrake/pkg.pm:199
 #, c-format
 msgid "Do not ask me next time"
-msgstr ""
+msgstr "下次不要再询问"
 
 #: ../Rpmdrake/pkg.pm:208
 #, c-format
@@ -1845,7 +1846,7 @@ msgid "Already existing update media"
 msgstr "更新介质已经存在"
 
 #: ../Rpmdrake/pkg.pm:209
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
 "all of them are currently disabled. You should run the Software\n"
@@ -1856,7 +1857,7 @@ msgid ""
 msgstr ""
 "你已经至少配置了一个升级介质，但是它们现在全部都不\n"
 "可用。你需要运行“软件介质管理器”来启用其中的至少\n"
-"一项(在“启用?”栏中选中)。\n"
+"一项(在“%s”栏中选中)。\n"
 "\n"
 "然后，重新启动 %s。"
 
@@ -1938,7 +1939,7 @@ msgstr "关于软件包 %s 的升级信息"
 #: ../Rpmdrake/pkg.pm:483
 #, c-format
 msgid "Could not create temporary directory '%s'"
-msgstr ""
+msgstr "无法创建临时目录“%s”"
 
 #: ../Rpmdrake/pkg.pm:491 ../Rpmdrake/pkg.pm:725
 #, c-format
@@ -1990,10 +1991,10 @@ msgstr ""
 "%s"
 
 #: ../Rpmdrake/pkg.pm:560
-#, fuzzy, c-format
+#, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
-msgstr[0] "为了满足依赖性要求，将另外安装以下%d个软件包:"
+msgstr[0] "即将安装以下%d个软件包:"
 
 #: ../Rpmdrake/pkg.pm:565
 #, c-format
@@ -2022,9 +2023,9 @@ msgid "Preparing packages installation..."
 msgstr "准备安装软件包..."
 
 #: ../Rpmdrake/pkg.pm:591
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing package installation transaction..."
-msgstr "准备安装软件包..."
+msgstr "正在准备安装交易..."
 
 #: ../Rpmdrake/pkg.pm:594
 #, c-format
@@ -2034,7 +2035,7 @@ msgstr "正在安装软件包“%s”(%s/%s)..."
 #: ../Rpmdrake/pkg.pm:595
 #, c-format
 msgid "Total: %s/%s"
-msgstr ""
+msgstr "总计: %s/%s"
 
 #: ../Rpmdrake/pkg.pm:623 ../Rpmdrake/pkg.pm:710 ../Rpmdrake/pkg.pm:730
 #: ../rpmdrake.pm:749 ../rpmdrake.pm:836 ../rpmdrake.pm:860
@@ -2150,6 +2151,7 @@ msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
 "unsure, keep the current file (\"%s\")."
 msgstr ""
+"您可以删除 .%s 文件，将其用作主文件，或者干脆不管它。如果不确定的话，请保留当前文件(“%s”)。"
 
 #: ../Rpmdrake/rpmnew.pm:112 ../Rpmdrake/rpmnew.pm:117
 #, c-format
@@ -2164,7 +2166,7 @@ msgstr "使用 .%s 作为主文件"
 #: ../Rpmdrake/rpmnew.pm:125
 #, c-format
 msgid "Do nothing"
-msgstr "不做任何事"
+msgstr "不予理会"
 
 #: ../Rpmdrake/rpmnew.pm:156
 #, c-format
@@ -2307,9 +2309,9 @@ msgid "All packages, by group"
 msgstr "全部软件包，按组别排列"
 
 #: ../rpmdrake:241
-#, fuzzy, c-format
+#, c-format
 msgid "Backports"
-msgstr "备份"
+msgstr "移植"
 
 #: ../rpmdrake:242
 #, c-format
@@ -2342,9 +2344,9 @@ msgid "in descriptions"
 msgstr "在描述中"
 
 #: ../rpmdrake:302
-#, fuzzy, c-format
+#, c-format
 msgid "in summaries"
-msgstr "在名称中"
+msgstr "在摘要中"
 
 #: ../rpmdrake:303
 #, c-format
@@ -2354,7 +2356,7 @@ msgstr "在文件名中"
 #: ../rpmdrake:344
 #, c-format
 msgid "/_Auto solve dependancies"
-msgstr ""
+msgstr "/自动解决依赖关系(_A)"
 
 #: ../rpmdrake:350
 #, c-format
@@ -3153,80 +3155,21 @@ msgstr "未知的错误代码 %d\n"
 
 #: data/rpmdrake-browse-only.desktop.in.h:1
 msgid "A graphical front end for browsing installed & available packages"
-msgstr ""
+msgstr "浏览已安装和可安装软件的图形化工具"
 
 #: data/rpmdrake-browse-only.desktop.in.h:2
-#, fuzzy
 msgid "Browse Available Software"
-msgstr "删除软件"
+msgstr "浏览可用的软件"
 
 #: data/rpmdrake.desktop.in.h:1
 msgid "A graphical front end for installing, removing and updating packages"
-msgstr ""
+msgstr "安装、删除和更新软件包的图形化工具"
 
 #: data/rpmdrake.desktop.in.h:2
-#, fuzzy
 msgid "Install & Remove Software"
-msgstr "安装软件"
+msgstr "安装/删除软件"
 
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "软件介质管理器"
 
-#~ msgid "Path:"
-#~ msgstr "路径:"
-
-#~ msgid "Name:"
-#~ msgstr "名称:"
-
-#~ msgid "Add custom..."
-#~ msgstr "添加自定义..."
-
-#~ msgid "Update..."
-#~ msgstr "更新..."
-
-#~ msgid ""
-#~ "The following packages have bad signatures:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Do you want to continue installation?"
-#~ msgstr ""
-#~ "下列软件包的签名出现以下问题:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "您想要继续安装吗?"
-
-#~ msgid "installing %s from %s"
-#~ msgstr "正在从 %2$s 安装 %1$s"
-
-#~ msgid "installing %s"
-#~ msgstr "正在安装 %s"
-
-#~ msgid "removing %s"
-#~ msgstr "正在删除 %s"
-
-#~ msgid "Installation failed:"
-#~ msgstr "安装失败: "
-
-#~ msgid "Try installation without checking dependencies? (y/N) "
-#~ msgstr "尝试忽略相关性检查而安装吗?(是(y)/否(N))[否]"
-
-#~ msgid "Try harder to install (--force)? (y/N) "
-#~ msgstr "尝试强制安装吗(使用 --force)(是(y)/否(N))[否]?"
-
-#~ msgid "Preparing..."
-#~ msgstr "正在准备..."
-
-#~ msgid "Message Passing"
-#~ msgstr "信息传递"
-
-#~ msgid "Queueing Services"
-#~ msgstr "查询服务"
-
-#~ msgid "Deploiement"
-#~ msgstr "部署"
-
-#~ msgid "Deployment"
-#~ msgstr "部署"
