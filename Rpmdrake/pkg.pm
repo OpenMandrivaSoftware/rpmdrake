@@ -252,7 +252,6 @@ sub open_urpmi_db() {
     };
     my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
     urpm::media::configure($urpm, media => $media);
-    print "VERIF: $::rpmdrake_options{'no-verify-rpm'} == $urpm->{options}{'verify-rpm'}\n";
     # urpmi only support one search media, hance we'll only support "Main backport":
     my ($searchmedia) = grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}};
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia->{name}));
