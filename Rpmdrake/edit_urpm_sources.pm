@@ -44,6 +44,14 @@ use ugtk2 qw(:all);
 my $urpm;
 my ($mainw, $list_tv, $something_changed);
 
+my %col = (
+    mainw => {
+        is_enabled => 0,
+        is_update  => 1,
+        name       => 2,
+    },
+);
+
 sub selrow {
     my ($o_list_tv) = @_;
     defined $o_list_tv or $o_list_tv = $list_tv;
@@ -1023,7 +1031,7 @@ sub mainwindow() {
 	    $model->foreach(
 		sub {
 		    my (undef, undef, $iter) = @_;
-		    my $name = $model->get($iter, 2);
+		    my $name = $model->get($iter, $col{mainw}{name});
 		    push @media, urpm::media::name2medium($urpm, $name);
 		    0;
 		}, undef);
@@ -1031,9 +1039,9 @@ sub mainwindow() {
 	},
     );
 
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled"), my $tr = Gtk2::CellRendererToggle->new, 'active' => 0));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates"), my $cu = Gtk2::CellRendererToggle->new, 'active' => 1));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 2));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled"), my $tr = Gtk2::CellRendererToggle->new, 'active' => $col{mainw}{is_enabled}));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates"), my $cu = Gtk2::CellRendererToggle->new, 'active' => $col{mainw}{is_update}));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => $col{mainw}{name}));
 
     $reread_media; #- closure defined later
     $tr->signal_connect(
@@ -1041,7 +1049,7 @@ sub mainwindow() {
 	    my (undef, $path) = @_;
 	    my $iter = $list->get_iter_from_string($path);
 	    $urpm->{media}[$path]{ignore} = !$urpm->{media}[$path]{ignore} || undef;
-	    $list->set($iter, 0, !$urpm->{media}[$path]{ignore});
+	    $list->set($iter, $col{mainw}{is_enabled}, !$urpm->{media}[$path]{ignore});
 	    urpm::media::write_config($urpm);
 	    my $ignored = $urpm->{media}[$path]{ignore};
 	    $reread_media->();
@@ -1060,7 +1068,7 @@ sub mainwindow() {
 	    my (undef, $path) = @_;
 	    my $iter = $list->get_iter_from_string($path);
 	    $urpm->{media}[$path]{update} = !$urpm->{media}[$path]{update} || undef;
-	    $list->set($iter, 1, ! !$urpm->{media}[$path]{update});
+	    $list->set($iter, $col{mainw}{is_update}, ! !$urpm->{media}[$path]{update});
          $something_changed = 1;
 	},
     );
@@ -1085,7 +1093,7 @@ sub mainwindow() {
 	    );
 	}
 	$list->clear;
-	$list->append_set(0 => !$_->{ignore}, 1 => ! !$_->{update}, 2 => $_->{name}) foreach grep { ! $_->{external} } @{$urpm->{media}};
+	$list->append_set($col{mainw}{is_enabled} => !$_->{ignore}, $col{mainw}{is_update} => ! !$_->{update}, $col{mainw}{name} => $_->{name}) foreach grep { ! $_->{external} } @{$urpm->{media}};
         $reorder_ok = 1;
     };
     $reread_media->();
