@@ -238,7 +238,7 @@ sub open_urpmi_db() {
     my $urpm = urpm->new;
     $urpm->{options}{'split-level'} ||= 20;
     $urpm->{options}{'split-length'} ||= 1;
-    $urpm->{options}{'no-verify-rpm'} = $::rpmdrake_options{'no-verify-rpm'} if defined $::rpmdrake_options{'no-verify-rpm'};
+    $urpm->{options}{'verify-rpm'} = $::rpmdrake_options{'no-verify-rpm'} if defined $::rpmdrake_options{'no-verify-rpm'};
     $urpm->{options}{auto} = $::rpmdrake_options{'auto'} if defined $::rpmdrake_options{'auto'};
     urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}->[0]) if $::rpmdrake_options{'urpmi-root'}->[0];
     urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}->[0]) if $::rpmdrake_options{'rpm-root'}->[0];
@@ -252,6 +252,7 @@ sub open_urpmi_db() {
     };
     my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
     urpm::media::configure($urpm, media => $media);
+    print "VERIF: $::rpmdrake_options{'no-verify-rpm'} == $urpm->{options}{'verify-rpm'}\n";
     # urpmi only support one search media, hance we'll only support "Main backport":
     my ($searchmedia) = grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}};
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia->{name}));
