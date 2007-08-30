@@ -1093,7 +1093,11 @@ sub mainwindow() {
 	    );
 	}
 	$list->clear;
-	$list->append_set($col{mainw}{is_enabled} => !$_->{ignore}, $col{mainw}{is_update} => ! !$_->{update}, $col{mainw}{name} => $_->{name}) foreach grep { ! $_->{external} } @{$urpm->{media}};
+     foreach (grep { ! $_->{external} } @{$urpm->{media}}) {
+         $list->append_set($col{mainw}{is_enabled} => !$_->{ignore},
+                           $col{mainw}{is_update} => ! !$_->{update},
+                           $col{mainw}{name} => $_->{name});
+     }
         $reorder_ok = 1;
     };
     $reread_media->();
