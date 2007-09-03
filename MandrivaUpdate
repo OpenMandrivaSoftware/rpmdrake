@@ -96,12 +96,6 @@ sub toggle {
     $list->{data}[$data{$name}][0] = !$list->{data}[$data{$name}][0] if !$done;
 }
 
-sub get_name {
-	my ($name) = @_;
-     ($name) = $name =~ m!<b>(.*)</b>!;
-     return $name;
-}
-
 $w = ugtk2->new(N("Software Management"));
 $w->{rwindow}->show_all if $::isEmbedded;
 
