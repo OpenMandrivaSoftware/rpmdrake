@@ -246,6 +246,12 @@ sub update_size {
     }
 }
 
+sub get_name {
+    my ($name) = @_;
+    ($name) = $name =~ m!<b>(.*)</b>!;
+    return $name;
+}
+
 sub children {
     my ($w) = @_;
     map {
