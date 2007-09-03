@@ -48,7 +48,8 @@ my %col = (
     mainw => {
         is_enabled => 0,
         is_update  => 1,
-        name       => 2,
+        type       => 2,
+        name       => 3,
     },
 );
 
@@ -1013,7 +1014,7 @@ sub mainwindow() {
      ),
     );
 
-    my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String");
+    my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String", "Glib::String");
     $list_tv = Gtk2::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('multiple');
     my ($dw_button, $edit_button, $remove_button, $up_button);
@@ -1058,6 +1059,7 @@ sub mainwindow() {
 
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled"), my $tr = Gtk2::CellRendererToggle->new, 'active' => $col{mainw}{is_enabled}));
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates"), my $cu = Gtk2::CellRendererToggle->new, 'active' => $col{mainw}{is_update}));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Type"), Gtk2::CellRendererText->new, 'text' => $col{mainw}{type}));
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => $col{mainw}{name}));
 
     $reread_media; #- closure defined later
@@ -1113,6 +1115,7 @@ sub mainwindow() {
      foreach (grep { ! $_->{external} } @{$urpm->{media}}) {
          $list->append_set($col{mainw}{is_enabled} => !$_->{ignore},
                            $col{mainw}{is_update} => ! !$_->{update},
+                           $col{mainw}{type} => get_medium_type($_),
                            $col{mainw}{name} => $_->{name});
      }
         $reorder_ok = 1;
