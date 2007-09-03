@@ -982,7 +982,7 @@ sub mainwindow() {
 	[ N("/_File") . N("/_Update"), N("<control>U"), sub { update_callback() and $reread_media->() }, undef, '<Item>', ],
      [ N("/_Options"), undef, undef, undef, '<Branch>' ],
      [ N("/_Options") . N("/_Global options"), N("<control>G"), \&options_callback, undef, '<Item>' ],
-     [ N("/_Options") . N("/_Add media"), N("<control>A"), sub { easy_add_callback() and $reread_media->() }, undef, '<Item>' ],
+     [ N("/_Options") . N("/_Add a custom media"), N("<control>A"), sub { add_callback() and $reread_media->() }, undef, '<Item>' ],
      [ N("/_Options") . N("/Manage _keys"), N("<control>K"), \&keys_callback, undef, '<Item>' ],
      [ N("/_Options") . N("/_Parallel"), N("<control>P"), \&parallel_callback, undef, '<Item>' ],
      [ N("/_Options") . N("/P_roxy"), N("<control>R"), \&proxy_callback, undef, '<Item>' ],
@@ -1145,7 +1145,7 @@ sub mainwindow() {
 		    ),
 		    gtksignal_connect(
 			Gtk2::Button->new(but(N("Add"))),
-			clicked => sub { add_callback() and $reread_media->() },
+			clicked => sub { easy_add_callback() and $reread_media->() },
 		    ),
 		    gtkpack(
 			gtknew('HBox'),
