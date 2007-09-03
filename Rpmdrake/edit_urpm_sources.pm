@@ -102,9 +102,9 @@ sub easy_add_callback() {
         urpm::media::read_config($urpm);
     }
 
-    #- cooker and community don't have update sources
     my $arch = arch();
     $arch = 'i586' if $arch =~ /^i.86$/;
+    #- cooker and community don't have update sources
     my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
 N("This step enables you to add sources from a Mandriva Linux web or FTP mirror.
