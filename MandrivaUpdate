@@ -153,6 +153,7 @@ sub run_treeview_dialog {
                                detail_list_model => $list->get_model
                            },
                        }, 1);
+                       refresh_packages_list($list, $info, $update_button);
                    },
 			),
                1, gtknew('Label'),
