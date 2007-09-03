@@ -96,7 +96,12 @@ sub remove_row {
 }
 
 sub easy_add_callback() {
-    $urpm ||= urpm->new; # when called on early init by rpmdrake
+    # when called on early init by rpmdrake
+    if (!$urpm) {
+        $urpm = urpm->new;
+        urpm::media::read_config($urpm);
+    }
+
     #- cooker and community don't have update sources
     my $arch = arch();
     $arch = 'i586' if $arch =~ /^i.86$/;
