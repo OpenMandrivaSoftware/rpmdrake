@@ -52,6 +52,23 @@ my %col = (
     },
 );
 
+
+sub get_medium_type {
+    my ($medium) = @_;
+    my %medium_type = (
+        ftp       => N("FTP"),
+        file      => N("Local"),
+        http      => N("HTTP"),
+        https     => N("HTTPS"),
+        nfs       => N("NFS"),
+        removable => N("Removable"),
+        rsync     => N("rsync"),
+        ssh       => N("NFS"),
+    );
+    return $medium_type{$1} if $medium->{url} =~ m!^([^:]*)://!;
+    return N("Local");
+}
+
 sub selrow {
     my ($o_list_tv) = @_;
     defined $o_list_tv or $o_list_tv = $list_tv;
