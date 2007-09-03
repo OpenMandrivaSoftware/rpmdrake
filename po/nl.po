@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-nl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-29 16:40+0200\n"
+"POT-Creation-Date: 2007-09-03 11:54+0200\n"
 "PO-Revision-Date: 2007-08-16 22:55+0200\n"
 "Last-Translator: Reinout van Schouwen <reinouts@gnome.org>\n"
 "Language-Team: Nederlands <vertaling@vrijschrift.nl>\n"
@@ -67,7 +67,48 @@ msgstr "Verversen"
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:78
+#: ../Rpmdrake/edit_urpm_sources.pm:60
+#, fuzzy, c-format
+msgid "FTP"
+msgstr "Web/FTP"
+
+#  Local media
+#: ../Rpmdrake/edit_urpm_sources.pm:61 ../Rpmdrake/edit_urpm_sources.pm:70
+#, fuzzy, c-format
+msgid "Local"
+msgstr "Lokale bestanden"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:62
+#, c-format
+msgid "HTTP"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:63
+#, c-format
+msgid "HTTPS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:64 ../Rpmdrake/edit_urpm_sources.pm:67
+#, c-format
+msgid "NFS"
+msgstr ""
+
+#  Removable media
+#
+#  I don't know why it says 'removable media' here, but translating
+#  it in the sense of taking out the media is definately wrong!
+#  -Reinout
+#: ../Rpmdrake/edit_urpm_sources.pm:65
+#, fuzzy, c-format
+msgid "Removable"
+msgstr "Verwijderen"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:66
+#, c-format
+msgid "rsync"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:104
 #, c-format
 msgid "Choose media type"
 msgstr "Kies mediatype"
@@ -713,7 +754,12 @@ msgstr "Ingeschakeld"
 msgid "Updates"
 msgstr "Herzieningen"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#: ../Rpmdrake/edit_urpm_sources.pm:1062
+#, fuzzy, c-format
+msgid "Type"
+msgstr "Type1"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1078
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
@@ -876,7 +922,20 @@ msgstr "Samenvatting: "
 msgid "Description: "
 msgstr "Beschrijving: "
 
-#: ../Rpmdrake/gui.pm:445 ../Rpmdrake/gui.pm:474 ../Rpmdrake/gui.pm:476
+#: ../Rpmdrake/gui.pm:359 ../Rpmdrake/pkg.pm:681 ../rpmdrake.pm:762
+#: ../rpmdrake.pm:877
+#, c-format
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: ../Rpmdrake/gui.pm:359
+#, c-format
+msgid ""
+"The \"%s\" package is in urpmi skip list.\n"
+"Do you want to select it anyway?"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:484
 #, c-format
 msgid "More information on package..."
 msgstr "Meer informatie over pakket..."
@@ -2087,7 +2146,17 @@ msgstr ""
 msgid "Is it ok to continue?"
 msgstr "Wilt u doorgaan?"
 
-#: ../Rpmdrake/pkg.pm:591
+#: ../Rpmdrake/pkg.pm:577
+#, c-format
+msgid "RPM transaction %d/%d"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:578
+#, fuzzy, c-format
+msgid "Unselect all"
+msgstr "Alles selecteren"
+
+#: ../Rpmdrake/pkg.pm:592
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Voorbereiden van pakketinstallatie…"
@@ -2143,12 +2212,7 @@ msgstr "Voer het medium in met de naam ‘%s’ in apparaat [%s]"
 msgid "Verifying package signatures..."
 msgstr "Controleren van pakket-ondertekeningen…"
 
-#: ../Rpmdrake/pkg.pm:680 ../rpmdrake.pm:762 ../rpmdrake.pm:877
-#, c-format
-msgid "Warning"
-msgstr "Waarschuwing"
-
-#: ../Rpmdrake/pkg.pm:692
+#: ../Rpmdrake/pkg.pm:693
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2433,7 +2497,12 @@ msgstr "in bestandsnamen"
 msgid "/_Auto solve dependancies"
 msgstr "/Auto_matisch afhankelijkheden oplossen"
 
-#: ../rpmdrake:350
+#: ../rpmdrake:345
+#, c-format
+msgid "/Do _not remove any package from the cache"
+msgstr ""
+
+#: ../rpmdrake:351
 #, c-format
 msgid "/_Update media"
 msgstr "/_Media verversen"

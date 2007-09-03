@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-29 16:40+0200\n"
+"POT-Creation-Date: 2007-09-03 11:54+0200\n"
 "PO-Revision-Date: 2007-08-30 12:54+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: Mandriva Linux i18n Team <cooker-i18n@mandrakelinux.org>\n"
@@ -61,7 +61,42 @@ msgstr "更新"
 msgid "Quit"
 msgstr "退出"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:78
+#: ../Rpmdrake/edit_urpm_sources.pm:60
+#, fuzzy, c-format
+msgid "FTP"
+msgstr "Web/FTP"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:61 ../Rpmdrake/edit_urpm_sources.pm:70
+#, fuzzy, c-format
+msgid "Local"
+msgstr "本机文件"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:62
+#, c-format
+msgid "HTTP"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:63
+#, c-format
+msgid "HTTPS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:64 ../Rpmdrake/edit_urpm_sources.pm:67
+#, c-format
+msgid "NFS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:65
+#, fuzzy, c-format
+msgid "Removable"
+msgstr "删除"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:66
+#, c-format
+msgid "rsync"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:104
 #, c-format
 msgid "Choose media type"
 msgstr "选择介质类型"
@@ -677,7 +712,12 @@ msgstr "启用"
 msgid "Updates"
 msgstr "更新"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#: ../Rpmdrake/edit_urpm_sources.pm:1062
+#, fuzzy, c-format
+msgid "Type"
+msgstr "Type1"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1078
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr "此介质需要更新才能使用。现在更新吗？"
@@ -836,7 +876,20 @@ msgstr "摘要:"
 msgid "Description: "
 msgstr "描述:"
 
-#: ../Rpmdrake/gui.pm:445 ../Rpmdrake/gui.pm:474 ../Rpmdrake/gui.pm:476
+#: ../Rpmdrake/gui.pm:359 ../Rpmdrake/pkg.pm:681 ../rpmdrake.pm:762
+#: ../rpmdrake.pm:877
+#, c-format
+msgid "Warning"
+msgstr "警告"
+
+#: ../Rpmdrake/gui.pm:359
+#, c-format
+msgid ""
+"The \"%s\" package is in urpmi skip list.\n"
+"Do you want to select it anyway?"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:484
 #, c-format
 msgid "More information on package..."
 msgstr "该软件包的更多信息..."
@@ -1670,8 +1723,7 @@ msgstr "  --mode=模式            设定模式(安装(默认)、删除、更新
 msgid ""
 "  --justdb               update the database, but do not modify the "
 "filesystem"
-msgstr ""
-"  --justdb               更新数据库而不修改文件系统"
+msgstr "  --justdb               更新数据库而不修改文件系统"
 
 #: ../Rpmdrake/init.pm:46
 #, c-format
@@ -2017,7 +2069,17 @@ msgstr "要升级其它软件包，必须删除下列软件包:"
 msgid "Is it ok to continue?"
 msgstr "确定继续吗?"
 
-#: ../Rpmdrake/pkg.pm:591
+#: ../Rpmdrake/pkg.pm:577
+#, c-format
+msgid "RPM transaction %d/%d"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:578
+#, fuzzy, c-format
+msgid "Unselect all"
+msgstr "全选"
+
+#: ../Rpmdrake/pkg.pm:592
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "准备安装软件包..."
@@ -2073,12 +2135,7 @@ msgstr "请把名为“%s”的介质放进设备 [%s]"
 msgid "Verifying package signatures..."
 msgstr "正在校验软件包的签名..."
 
-#: ../Rpmdrake/pkg.pm:680 ../rpmdrake.pm:762 ../rpmdrake.pm:877
-#, c-format
-msgid "Warning"
-msgstr "警告"
-
-#: ../Rpmdrake/pkg.pm:692
+#: ../Rpmdrake/pkg.pm:693
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2151,7 +2208,8 @@ msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
 "unsure, keep the current file (\"%s\")."
 msgstr ""
-"您可以删除 .%s 文件，将其用作主文件，或者干脆不管它。如果不确定的话，请保留当前文件(“%s”)。"
+"您可以删除 .%s 文件，将其用作主文件，或者干脆不管它。如果不确定的话，请保留当"
+"前文件(“%s”)。"
 
 #: ../Rpmdrake/rpmnew.pm:112 ../Rpmdrake/rpmnew.pm:117
 #, c-format
@@ -2358,7 +2416,12 @@ msgstr "在文件名中"
 msgid "/_Auto solve dependancies"
 msgstr "/自动解决依赖关系(_A)"
 
-#: ../rpmdrake:350
+#: ../rpmdrake:345
+#, c-format
+msgid "/Do _not remove any package from the cache"
+msgstr ""
+
+#: ../rpmdrake:351
 #, c-format
 msgid "/_Update media"
 msgstr "/更新介质(_U)"
@@ -3172,4 +3235,3 @@ msgstr "安装/删除软件"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "软件介质管理器"
-

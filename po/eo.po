@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-eo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-29 16:40+0200\n"
+"POT-Creation-Date: 2007-09-03 11:54+0200\n"
 "PO-Revision-Date: 2003-08-21 11:57+0000\n"
 "Last-Translator: Vilhelmo Lutermano <vlutermano@free.fr>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -62,7 +62,42 @@ msgstr "Ĝisdatigu"
 msgid "Quit"
 msgstr "Forlasu"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:78
+#: ../Rpmdrake/edit_urpm_sources.pm:60
+#, fuzzy, c-format
+msgid "FTP"
+msgstr "TTT/FTP"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:61 ../Rpmdrake/edit_urpm_sources.pm:70
+#, fuzzy, c-format
+msgid "Local"
+msgstr "Lokaj dosieroj"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:62
+#, c-format
+msgid "HTTP"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:63
+#, c-format
+msgid "HTTPS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:64 ../Rpmdrake/edit_urpm_sources.pm:67
+#, c-format
+msgid "NFS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:65
+#, fuzzy, c-format
+msgid "Removable"
+msgstr "Malinstalu"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:66
+#, c-format
+msgid "rsync"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:104
 #, c-format
 msgid "Choose media type"
 msgstr ""
@@ -673,7 +708,12 @@ msgstr "Ĉu enŝaltita"
 msgid "Updates"
 msgstr "Ĝisdatigu"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#: ../Rpmdrake/edit_urpm_sources.pm:1062
+#, fuzzy, c-format
+msgid "Type"
+msgstr "Speco1"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1078
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
@@ -829,7 +869,24 @@ msgstr "Resumo: "
 msgid "Description: "
 msgstr "Priskribo: "
 
-#: ../Rpmdrake/gui.pm:445 ../Rpmdrake/gui.pm:474 ../Rpmdrake/gui.pm:476
+#: ../Rpmdrake/gui.pm:359 ../Rpmdrake/pkg.pm:681 ../rpmdrake.pm:762
+#: ../rpmdrake.pm:877
+#, c-format
+msgid "Warning"
+msgstr "Averto"
+
+#: ../Rpmdrake/gui.pm:359
+#, fuzzy, c-format
+msgid ""
+"The \"%s\" package is in urpmi skip list.\n"
+"Do you want to select it anyway?"
+msgstr ""
+"La subskribo de la pakaĵo `%s' ne estas ĝusta:\n"
+"\n"
+"%s\n"
+"Ĉu vi volas tamen instali ĝin?"
+
+#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:484
 #, c-format
 msgid "More information on package..."
 msgstr "Kromaj informoj pri pakaĵo..."
@@ -2031,7 +2088,17 @@ msgstr ""
 "\n"
 "Ĉu mi nun daŭrigu?"
 
-#: ../Rpmdrake/pkg.pm:591
+#: ../Rpmdrake/pkg.pm:577
+#, c-format
+msgid "RPM transaction %d/%d"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:578
+#, c-format
+msgid "Unselect all"
+msgstr "Malelektu ĉiujn"
+
+#: ../Rpmdrake/pkg.pm:592
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Preparas instaldon de pakaĵoj..."
@@ -2087,12 +2154,7 @@ msgstr "Bonvolu enmeti la portilon nomitan\"%s\" en la legilon [%s]"
 msgid "Verifying package signatures..."
 msgstr "Kontrolante signaturojn de pakaĵoj..."
 
-#: ../Rpmdrake/pkg.pm:680 ../rpmdrake.pm:762 ../rpmdrake.pm:877
-#, c-format
-msgid "Warning"
-msgstr "Averto"
-
-#: ../Rpmdrake/pkg.pm:692
+#: ../Rpmdrake/pkg.pm:693
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2366,7 +2428,12 @@ msgstr "en dosieroj"
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:350
+#: ../rpmdrake:345
+#, c-format
+msgid "/Do _not remove any package from the cache"
+msgstr ""
+
+#: ../rpmdrake:351
 #, fuzzy, c-format
 msgid "/_Update media"
 msgstr "Ĝisdatigu datenportilon"
@@ -3519,9 +3586,6 @@ msgstr "Programfont-mastrumilo"
 #~ "Listo de\n"
 #~ "Ĝisdatigaj Dosieroj"
 
-#~ msgid "Unselect all"
-#~ msgstr "Malelektu ĉiujn"
-
 #~ msgid ""
 #~ "Do\n"
 #~ "updates"
@@ -3708,17 +3772,6 @@ msgstr "Programfont-mastrumilo"
 
 #~ msgid "Yes to all"
 #~ msgstr "Jes por ĉiuj"
-
-#~ msgid ""
-#~ "The signature of the package `%s' is not correct:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Do you want to install it anyway?"
-#~ msgstr ""
-#~ "La subskribo de la pakaĵo `%s' ne estas ĝusta:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Ĉu vi volas tamen instali ĝin?"
 
 #~ msgid "Signature verification error"
 #~ msgstr "Eraro dum kontrolado de subskribo"

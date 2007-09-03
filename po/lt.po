@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-29 16:40+0200\n"
+"POT-Creation-Date: 2007-09-03 11:54+0200\n"
 "PO-Revision-Date: 2003-02-20 13:01+0200\n"
 "Last-Translator: Darius Liepuonis <dariusle@takas.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -60,7 +60,42 @@ msgstr "Atnaujinti"
 msgid "Quit"
 msgstr "Išeiti"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:78
+#: ../Rpmdrake/edit_urpm_sources.pm:60
+#, fuzzy, c-format
+msgid "FTP"
+msgstr "Serveris, Tinklapių/FTP"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:61 ../Rpmdrake/edit_urpm_sources.pm:70
+#, fuzzy, c-format
+msgid "Local"
+msgstr "Vietinės bylos"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:62
+#, c-format
+msgid "HTTP"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:63
+#, c-format
+msgid "HTTPS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:64 ../Rpmdrake/edit_urpm_sources.pm:67
+#, c-format
+msgid "NFS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:65
+#, fuzzy, c-format
+msgid "Removable"
+msgstr "Pašalinti"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:66
+#, c-format
+msgid "rsync"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:104
 #, c-format
 msgid "Choose media type"
 msgstr ""
@@ -670,7 +705,12 @@ msgstr "Įjungtas"
 msgid "Updates"
 msgstr "Atnaujinti"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#: ../Rpmdrake/edit_urpm_sources.pm:1062
+#, fuzzy, c-format
+msgid "Type"
+msgstr "Tipas"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1078
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
@@ -817,7 +857,24 @@ msgstr "Apibendrinimas"
 msgid "Description: "
 msgstr "Aprašas: "
 
-#: ../Rpmdrake/gui.pm:445 ../Rpmdrake/gui.pm:474 ../Rpmdrake/gui.pm:476
+#: ../Rpmdrake/gui.pm:359 ../Rpmdrake/pkg.pm:681 ../rpmdrake.pm:762
+#: ../rpmdrake.pm:877
+#, c-format
+msgid "Warning"
+msgstr "Dėmesio"
+
+#: ../Rpmdrake/gui.pm:359
+#, fuzzy, c-format
+msgid ""
+"The \"%s\" package is in urpmi skip list.\n"
+"Do you want to select it anyway?"
+msgstr ""
+"Paketo `%s' parašas neatitinka:\n"
+"\n"
+"%s\n"
+"Vistiek diegti?"
+
+#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:484
 #, c-format
 msgid "More information on package..."
 msgstr ""
@@ -1964,7 +2021,17 @@ msgstr ""
 msgid "Is it ok to continue?"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:591
+#: ../Rpmdrake/pkg.pm:577
+#, c-format
+msgid "RPM transaction %d/%d"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:578
+#, c-format
+msgid "Unselect all"
+msgstr "Nesirinkti nieko"
+
+#: ../Rpmdrake/pkg.pm:592
 #, fuzzy, c-format
 msgid "Preparing packages installation..."
 msgstr "Ruošiamasi paketo diegimui"
@@ -2020,12 +2087,7 @@ msgstr "Prašome įkišti laikmeną pavadintą \"%s\", į įrenginį [%s]"
 msgid "Verifying package signatures..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:680 ../rpmdrake.pm:762 ../rpmdrake.pm:877
-#, c-format
-msgid "Warning"
-msgstr "Dėmesio"
-
-#: ../Rpmdrake/pkg.pm:692
+#: ../Rpmdrake/pkg.pm:693
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2292,7 +2354,12 @@ msgstr "%d bylos"
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:350
+#: ../rpmdrake:345
+#, c-format
+msgid "/Do _not remove any package from the cache"
+msgstr ""
+
+#: ../rpmdrake:351
 #, fuzzy, c-format
 msgid "/_Update media"
 msgstr "Atnaujinti laikmeną"
@@ -3377,9 +3444,6 @@ msgstr "Programinės įrangos įdiegimas"
 #~ "Atnaujinti\n"
 #~ "Sąrašą"
 
-#~ msgid "Unselect all"
-#~ msgstr "Nesirinkti nieko"
-
 #~ msgid ""
 #~ "Do\n"
 #~ "updates"
@@ -3576,17 +3640,6 @@ msgstr "Programinės įrangos įdiegimas"
 
 #~ msgid "Yes to all"
 #~ msgstr "Taip visiems"
-
-#~ msgid ""
-#~ "The signature of the package `%s' is not correct:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Do you want to install it anyway?"
-#~ msgstr ""
-#~ "Paketo `%s' parašas neatitinka:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Vistiek diegti?"
 
 #~ msgid "Signature verification error"
 #~ msgstr "Parašo tikrinimo klaida"

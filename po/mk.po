@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-29 16:40+0200\n"
+"POT-Creation-Date: 2007-09-03 11:54+0200\n"
 "PO-Revision-Date: 2006-09-18 11:29+0200\n"
 "Last-Translator: Зоран Димовски <zoki.dimovski@gmail.com>\n"
 "Language-Team: Macedonian\n"
@@ -61,7 +61,42 @@ msgstr "Ажурирај"
 msgid "Quit"
 msgstr "Напушти"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:78
+#: ../Rpmdrake/edit_urpm_sources.pm:60
+#, fuzzy, c-format
+msgid "FTP"
+msgstr "Web/FTP"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:61 ../Rpmdrake/edit_urpm_sources.pm:70
+#, fuzzy, c-format
+msgid "Local"
+msgstr "Локални датотеки"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:62
+#, c-format
+msgid "HTTP"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:63
+#, c-format
+msgid "HTTPS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:64 ../Rpmdrake/edit_urpm_sources.pm:67
+#, c-format
+msgid "NFS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:65
+#, fuzzy, c-format
+msgid "Removable"
+msgstr "Отстрани"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:66
+#, c-format
+msgid "rsync"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:104
 #, c-format
 msgid "Choose media type"
 msgstr "Изберете тип на медиум"
@@ -690,7 +725,12 @@ msgstr "Овозможено"
 msgid "Updates"
 msgstr "Надоградби"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#: ../Rpmdrake/edit_urpm_sources.pm:1062
+#, fuzzy, c-format
+msgid "Type"
+msgstr "Type1"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1078
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr "За да се користи, медиумот треба да се надгради. Надгради сега?"
@@ -852,7 +892,20 @@ msgstr "Функција: "
 msgid "Description: "
 msgstr "Опис: "
 
-#: ../Rpmdrake/gui.pm:445 ../Rpmdrake/gui.pm:474 ../Rpmdrake/gui.pm:476
+#: ../Rpmdrake/gui.pm:359 ../Rpmdrake/pkg.pm:681 ../rpmdrake.pm:762
+#: ../rpmdrake.pm:877
+#, c-format
+msgid "Warning"
+msgstr "Предупредување"
+
+#: ../Rpmdrake/gui.pm:359
+#, c-format
+msgid ""
+"The \"%s\" package is in urpmi skip list.\n"
+"Do you want to select it anyway?"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:484
 #, c-format
 msgid "More information on package..."
 msgstr "Повеќе информации за пакетот..."
@@ -2063,7 +2116,17 @@ msgstr ""
 "\n"
 "Да продолжиме?"
 
-#: ../Rpmdrake/pkg.pm:591
+#: ../Rpmdrake/pkg.pm:577
+#, c-format
+msgid "RPM transaction %d/%d"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:578
+#, fuzzy, c-format
+msgid "Unselect all"
+msgstr "Избери ги сите"
+
+#: ../Rpmdrake/pkg.pm:592
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Подготовка за инсталирање пакети..."
@@ -2119,12 +2182,7 @@ msgstr "Ве молиме внесете го медиумот „%s“ во у�
 msgid "Verifying package signatures..."
 msgstr "Потврдување на електронските потписи на пакетите..."
 
-#: ../Rpmdrake/pkg.pm:680 ../rpmdrake.pm:762 ../rpmdrake.pm:877
-#, c-format
-msgid "Warning"
-msgstr "Предупредување"
-
-#: ../Rpmdrake/pkg.pm:692
+#: ../Rpmdrake/pkg.pm:693
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2405,7 +2463,12 @@ msgstr "во имињата на датотеките"
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:350
+#: ../rpmdrake:345
+#, c-format
+msgid "/Do _not remove any package from the cache"
+msgstr ""
+
+#: ../rpmdrake:351
 #, c-format
 msgid "/_Update media"
 msgstr "/_Ажурирај медиум"

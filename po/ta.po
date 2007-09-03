@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-29 16:40+0200\n"
+"POT-Creation-Date: 2007-09-03 11:54+0200\n"
 "PO-Revision-Date: 2002-08-31 16:35+0800\n"
 "Last-Translator: prabu anand <prabu_anand2000@yahoo.com>\n"
 "Language-Team: tamil <tamilinix@yahoogroups.com>\n"
@@ -60,7 +60,42 @@ msgstr "புதுப்பிக்கவும்"
 msgid "Quit"
 msgstr "ெவளிச்ெசல்"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:78
+#: ../Rpmdrake/edit_urpm_sources.pm:60
+#, fuzzy, c-format
+msgid "FTP"
+msgstr "இணையதள/கோப்புப் பாிமாற்றம்"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:61 ../Rpmdrake/edit_urpm_sources.pm:70
+#, fuzzy, c-format
+msgid "Local"
+msgstr "உள்ளமைக் கோப்புகள்"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:62
+#, c-format
+msgid "HTTP"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:63
+#, c-format
+msgid "HTTPS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:64 ../Rpmdrake/edit_urpm_sources.pm:67
+#, c-format
+msgid "NFS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:65
+#, fuzzy, c-format
+msgid "Removable"
+msgstr "நீக்கு"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:66
+#, c-format
+msgid "rsync"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:104
 #, c-format
 msgid "Choose media type"
 msgstr ""
@@ -670,7 +705,12 @@ msgstr "ெசயல்படுத்தப்பட்டுள்ளதா"
 msgid "Updates"
 msgstr "புதுப்பிக்கவும்"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#: ../Rpmdrake/edit_urpm_sources.pm:1062
+#, c-format
+msgid "Type"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1078
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
@@ -825,7 +865,24 @@ msgstr "விவரம்: "
 msgid "Description: "
 msgstr "விளக்கம்: "
 
-#: ../Rpmdrake/gui.pm:445 ../Rpmdrake/gui.pm:474 ../Rpmdrake/gui.pm:476
+#: ../Rpmdrake/gui.pm:359 ../Rpmdrake/pkg.pm:681 ../rpmdrake.pm:762
+#: ../rpmdrake.pm:877
+#, c-format
+msgid "Warning"
+msgstr "எச்சரிக்ைக"
+
+#: ../Rpmdrake/gui.pm:359
+#, fuzzy, c-format
+msgid ""
+"The \"%s\" package is in urpmi skip list.\n"
+"Do you want to select it anyway?"
+msgstr ""
+" பின்வரும் பொதியில் கையெழுத்து  தவறாக உள்ளது  `%s' \n"
+"\n"
+"%s\n"
+"இருந்தாலும் தொடர்ந்து நிறுவ விரும்புகிறீர்களா?"
+
+#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:484
 #, c-format
 msgid "More information on package..."
 msgstr "பொதிகளைப் பற்றிய மேலும் விவரங்கள்"
@@ -2015,7 +2072,17 @@ msgstr ""
 "\n"
 "இப்படியே தொடரலாமா?"
 
-#: ../Rpmdrake/pkg.pm:591
+#: ../Rpmdrake/pkg.pm:577
+#, c-format
+msgid "RPM transaction %d/%d"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:578
+#, fuzzy, c-format
+msgid "Unselect all"
+msgstr "தேர்வு ெசய்யப்பட்டுள்ளது"
+
+#: ../Rpmdrake/pkg.pm:592
 #, fuzzy, c-format
 msgid "Preparing packages installation..."
 msgstr "நிறுவுவதற்காக பொதிகள் தயாராகின்றன..."
@@ -2071,12 +2138,7 @@ msgstr " \"%s\" என்ற ஊடகத்ைத [%s] என்ற சாத�
 msgid "Verifying package signatures..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:680 ../rpmdrake.pm:762 ../rpmdrake.pm:877
-#, c-format
-msgid "Warning"
-msgstr "எச்சரிக்ைக"
-
-#: ../Rpmdrake/pkg.pm:692
+#: ../Rpmdrake/pkg.pm:693
 #, fuzzy, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2349,7 +2411,12 @@ msgstr "கோப்புகளில்"
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:350
+#: ../rpmdrake:345
+#, c-format
+msgid "/Do _not remove any package from the cache"
+msgstr ""
+
+#: ../rpmdrake:351
 #, fuzzy, c-format
 msgid "/_Update media"
 msgstr "புதுப்பிக்கப்பட வேண்டிய மூல(ங்கள்)"
@@ -3517,17 +3584,6 @@ msgstr " ெமன்ெபாருள் மூலங்கள் மேலா
 
 #~ msgid "Yes to all"
 #~ msgstr "அைனத்திற்கும் ஆம் என்ற பதில்"
-
-#~ msgid ""
-#~ "The signature of the package `%s' is not correct:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Do you want to install it anyway?"
-#~ msgstr ""
-#~ " பின்வரும் பொதியில் கையெழுத்து  தவறாக உள்ளது  `%s' \n"
-#~ "\n"
-#~ "%s\n"
-#~ "இருந்தாலும் தொடர்ந்து நிறுவ விரும்புகிறீர்களா?"
 
 #~ msgid "Signature verification error"
 #~ msgstr "பொதி கையெழுத்து சோதனையில் வெற்றி பெறவில்ைல"

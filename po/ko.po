@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-29 16:40+0200\n"
+"POT-Creation-Date: 2007-09-03 11:54+0200\n"
 "PO-Revision-Date: 2002-08-25 14:32+0900\n"
 "Last-Translator: Jaegeum Cze <baedaron@hanafos.com>\n"
 "Language-Team: Korean <baedaron@hananet.net>\n"
@@ -65,7 +65,42 @@ msgstr "업데이트 버전"
 msgid "Quit"
 msgstr "종료"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:78
+#: ../Rpmdrake/edit_urpm_sources.pm:60
+#, fuzzy, c-format
+msgid "FTP"
+msgstr "웹/FTP"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:61 ../Rpmdrake/edit_urpm_sources.pm:70
+#, fuzzy, c-format
+msgid "Local"
+msgstr "지역 파일"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:62
+#, c-format
+msgid "HTTP"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:63
+#, c-format
+msgid "HTTPS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:64 ../Rpmdrake/edit_urpm_sources.pm:67
+#, c-format
+msgid "NFS"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:65
+#, fuzzy, c-format
+msgid "Removable"
+msgstr "제거"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:66
+#, c-format
+msgid "rsync"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:104
 #, c-format
 msgid "Choose media type"
 msgstr ""
@@ -675,7 +710,12 @@ msgstr "사용가"
 msgid "Updates"
 msgstr "업데이트 버전"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#: ../Rpmdrake/edit_urpm_sources.pm:1062
+#, c-format
+msgid "Type"
+msgstr ""
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1078
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
@@ -830,7 +870,24 @@ msgstr "요약 설명: "
 msgid "Description: "
 msgstr "설명:"
 
-#: ../Rpmdrake/gui.pm:445 ../Rpmdrake/gui.pm:474 ../Rpmdrake/gui.pm:476
+#: ../Rpmdrake/gui.pm:359 ../Rpmdrake/pkg.pm:681 ../rpmdrake.pm:762
+#: ../rpmdrake.pm:877
+#, c-format
+msgid "Warning"
+msgstr "경고"
+
+#: ../Rpmdrake/gui.pm:359
+#, fuzzy, c-format
+msgid ""
+"The \"%s\" package is in urpmi skip list.\n"
+"Do you want to select it anyway?"
+msgstr ""
+"[%s] 팩키지의 서명이 정확하지 않습니다:\n"
+"\n"
+"%s\n"
+"어쨋거나 설치할까요?"
+
+#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:484
 #, c-format
 msgid "More information on package..."
 msgstr "추가 팩키지 정보..."
@@ -2016,7 +2073,17 @@ msgstr ""
 "\n"
 "계속할까요?"
 
-#: ../Rpmdrake/pkg.pm:591
+#: ../Rpmdrake/pkg.pm:577
+#, c-format
+msgid "RPM transaction %d/%d"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:578
+#, fuzzy, c-format
+msgid "Unselect all"
+msgstr "모두 선택"
+
+#: ../Rpmdrake/pkg.pm:592
 #, fuzzy, c-format
 msgid "Preparing packages installation..."
 msgstr "설치할 팩키지 준비 중..."
@@ -2072,12 +2139,7 @@ msgstr "장치 [%2$s]에 「%1$s」미디어를 넣으세요."
 msgid "Verifying package signatures..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:680 ../rpmdrake.pm:762 ../rpmdrake.pm:877
-#, c-format
-msgid "Warning"
-msgstr "경고"
-
-#: ../Rpmdrake/pkg.pm:692
+#: ../Rpmdrake/pkg.pm:693
 #, fuzzy, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2350,7 +2412,12 @@ msgstr "파일별"
 msgid "/_Auto solve dependancies"
 msgstr ""
 
-#: ../rpmdrake:350
+#: ../rpmdrake:345
+#, c-format
+msgid "/Do _not remove any package from the cache"
+msgstr ""
+
+#: ../rpmdrake:351
 #, c-format
 msgid "/_Update media"
 msgstr "/매체 업데이트(_U)"
@@ -3426,17 +3493,6 @@ msgstr "소프트웨어 소스 관리자"
 #~ "%s\n"
 #~ "\n"
 #~ "어쨋거나 계속할까요? (이 팩키지 건너뜀)"
-
-#~ msgid ""
-#~ "The signature of the package `%s' is not correct:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "Do you want to install it anyway?"
-#~ msgstr ""
-#~ "[%s] 팩키지의 서명이 정확하지 않습니다:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "어쨋거나 설치할까요?"
 
 #~ msgid "Signature verification error"
 #~ msgstr "서명 검증 오류"
