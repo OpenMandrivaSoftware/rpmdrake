@@ -1,3 +1,141 @@
+2007-09-03 09:51  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (mainwindow) display media type in
+	  media list (#25043)
+
+2007-09-03 09:50  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (get_medium_type) introduce it in
+	  order to get medium type (needed for #25043)
+
+2007-09-03 09:44  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: (run_treeview_dialog) kill useless code
+
+2007-09-03 09:39  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: (run_treeview_dialog) make "select all" working
+	  but disable it for now (#29892)
+
+2007-09-03 09:32  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (children) use get_name() in order to be able to
+	  select all packages from
+	  within MandrivaUpdate where package names are mangled
+
+2007-09-03 09:32  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate, Rpmdrake/gui.pm: (get_name) move it from
+	  MandrivaUpdate into Rpmdrake/gui.pm
+
+2007-09-03 09:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (fast_toggle) enable to select a package listed
+	  in urpmi's skip.list (#31548)
+
+2007-09-03 08:55  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (fast_toggle) use before_leaving() (needed for
+	  next commit)
+
+2007-09-02 22:24  kamberd
+
+	* po/he.po: update translation for Hebrew
+
+2007-09-02 12:36  Karl Ove Hufthammer <karl at huftis.org>
+
+	* po/nn.po: Updated Norwegian Nynorsk translation.
+
+2007-09-01 16:10  berthy
+
+	* po/fr.po: Update fr translation
+
+2007-09-01 13:14  Marek Laane <bald at starman.ee>
+
+	* po/et.po: Updated Estonian translation.
+
+2007-08-30 16:15  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (mainwindow) make it more readable
+
+2007-08-30 16:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: do not harcode column indexes for
+	  main window
+
+2007-08-30 10:43  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (open_urpmi_db) fix --no-verify-rpm option
+
+2007-08-30 10:31  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.83)
+
+2007-08-30 10:29  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (open_urpmi_db) kill debug statement
+
+2007-08-30 10:29  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (open_urpmi_db) fix --no-verify-rpm option (got
+	  broken when
+	  introducing urpm::main_loop)
+
+2007-08-30 10:13  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (open_urpmi_db) do not disable no-verify-rpm
+	  option if set in
+	  urpmi.cfg but not passed to rpmdrake through command line
+
+2007-08-30 09:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* data/mandrivaupdate.desktop.in,
+	  data/rpmdrake-browse-only.desktop.in,
+	  data/rpmdrake-sources.desktop.in, data/rpmdrake.desktop.in: use
+	  X-MandrivaLinux-CrossDesktop category in menu entries
+
+2007-08-30 09:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/Makefile: (merge) stop extracting strings from compsusers.pl
+
+2007-08-30 09:47  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
+2007-08-30 09:47  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: kill doble entries
+
+2007-08-30 09:36  ybando
+
+	* po/ja.po: Japanese translation updated.
+
+2007-08-30 04:54  Funda Wang <fundawang at linux.net.cn>
+
+	* po/zh_CN.po: Updated zh_CN translation
+
+2007-08-29 21:34  mmodem
+
+	* po/pt.po: up
+
+2007-08-29 14:59  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/init.pm, po/af.po, po/am.po, po/ar.po, po/az.po,
+	  po/be.po, po/bg.po, po/bn.po, po/br.po, po/bs.po, po/ca.po,
+	  po/cs.po, po/cy.po, po/da.po, po/de.po, po/el.po, po/eo.po,
+	  po/es.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
+	  po/fur.po, po/ga.po, po/gl.po, po/he.po, po/hi.po, po/hr.po,
+	  po/hu.po, po/hy.po, po/id.po, po/is.po, po/it.po, po/ja.po,
+	  po/ka.po, po/ko.po, po/ku.po, po/ky.po, po/lt.po, po/ltg.po,
+	  po/lv.po, po/mk.po, po/mn.po, po/ms.po, po/mt.po, po/nb.po,
+	  po/nl.po, po/nn.po, po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po,
+	  po/ro.po, po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po,
+	  po/sl.po, po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po,
+	  po/tg.po, po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po,
+	  po/uz@Latn.po, po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po:
+	  deprecate --root option (the goal being unifying rpmdrake & urpmi
+	  options in mdv2008.1)
+
 2007-08-29 12:03  ybando
 
 	* po/ja.po: Japanese translation updated.
