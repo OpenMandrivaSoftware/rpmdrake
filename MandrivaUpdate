@@ -42,6 +42,12 @@ use ugtk2 qw(:all);
 use Gtk2::Gdk::Keysyms;
 use Gtk2::SimpleList;
 
+# make Rpmdrake::gui aware MandrivaUpdate do not use the same columns ids as rpmdrake:
+%Rpmdrake::gui::pkg_columns = (
+    text => 1,
+    selected => 0,
+);
+
 $ugtk2::wm_icon = "title-$MODE";
 
 our $w;
