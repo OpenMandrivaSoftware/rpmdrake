@@ -248,8 +248,7 @@ sub update_size {
 
 sub get_name {
     my ($name) = @_;
-    ($name) = $name =~ m!<b>(.*)</b>!;
-    return $name;
+    return $name=~ m!<b>(.*)</b>! ? $1 : $name;
 }
 
 sub children {
