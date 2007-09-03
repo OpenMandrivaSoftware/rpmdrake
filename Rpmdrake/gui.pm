@@ -248,7 +248,9 @@ sub update_size {
 
 sub children {
     my ($w) = @_;
-    map { $w->{detail_list_model}->get($_, $pkg_columns{text}) } gtktreeview_children($w->{detail_list_model});
+    map {
+        my $txt = get_name($w->{detail_list_model}->get($_, $pkg_columns{text}));
+        get_name($w->{detail_list_model}->get($_, $pkg_columns{text})) } gtktreeview_children($w->{detail_list_model});
 }
 
 sub toggle_all {
