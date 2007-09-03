@@ -147,7 +147,6 @@ sub run_treeview_dialog {
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Select all"))),
 			    clicked => sub {
-                       return;
                        toggle_all({
                            widgets => {
                                detail_list => $list,
