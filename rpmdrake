@@ -87,12 +87,12 @@ sub do_search($$$$$$$) {
 		    eval { require MDV::Packdrakeng; $pack = MDV::Packdrakeng->open(archive => $_, quiet => 1) } ? $pack->{toc_f_count} : 0;
 		} @hdlists
 	    );
-	    open my $sf, join(' ','parsehdlist', '--name',
+	    open my $sf, join(' ', 'parsehdlist', '--name',
                            if_($current_search_type eq 'files', '--files'),
                            if_($current_search_type eq 'descriptions', '--description', '--summary'),
                            if_($current_search_type eq 'summaries', '--summary'),
                            map { "'$_'" } @hdlists) . ' |';
-	    my ($pkg, $progresscount, $found);
+	    my ($progresscount, $found);
 	    local $_;
 	    while (<$sf>) {
 		$searchstop and last;
@@ -107,7 +107,7 @@ sub do_search($$$$$$$) {
 		if ($current_search_type eq 'descriptions') {
 		    $key =~ /^summary|description$/ or next;
 		} elsif ($current_search_type eq 'summaries') {
-		    $key =~ /^summary$/ or next;
+		    $key eq 'summary' or next;
 		} else {
 		    $key eq 'files' or next;
 		}
