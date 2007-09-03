@@ -351,6 +351,12 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
         my ($iter) = @_;
         gtkset_mousecursor_wait($w->{w}{rwindow}->window);
         my $_cleaner = before_leaving { gtkset_mousecursor_normal($w->{w}{rwindow}->window) };
+        my $name = $w->{detail_list_model}->get($iter, $pkg_columns{text});
+        my $urpm_obj = $pkgs->{$name}{pkg};
+        if ($urpm_obj->flag_skip) {
+            interactive_msg(N("Warning"), N("The \"%s\" package is in urpmi skip list.\nDo you want to select it anyway?", $name), yesno => 1) or return '';
+            $urpm_obj->set_flag_skip(0);
+        }
         toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, $pkg_columns{state}),
                      $w->{detail_list_model}->get($iter, $pkg_columns{text}));
 	    update_size($common);
