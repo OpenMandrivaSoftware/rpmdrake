@@ -200,8 +200,6 @@ sub run_treeview_dialog {
 	my $_guard = before_leaving(sub {gtkset_mousecursor_normal($w->{real_window}->window) });
 	$name = get_name($name);
 	toggle($list, $name);
-	gtkset_mousecursor_normal($w->{real_window}->window);
-
     });
     $action_button->set_sensitive(0) if $>;
 
