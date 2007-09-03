@@ -450,10 +450,6 @@ sub run_treeview_dialog {
 		    0, $status,
 		    0, gtkpack_(
 			gtknew('HBox', spacing => 20),
-			0, gtksignal_connect(
-			    Gtk2::Button->new(but_(N("Help"))),
-			    clicked => sub { rpmdrake::open_help($MODE) },
-			),
                1, gtknew('Label'),
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Select all"))),
