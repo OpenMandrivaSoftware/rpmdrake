@@ -350,10 +350,10 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     my $fast_toggle = sub {
         my ($iter) = @_;
         gtkset_mousecursor_wait($w->{w}{rwindow}->window);
+        my $_cleaner = before_leaving { gtkset_mousecursor_normal($w->{w}{rwindow}->window) };
         toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, $pkg_columns{state}),
                      $w->{detail_list_model}->get($iter, $pkg_columns{text}));
 	    update_size($common);
-	    gtkset_mousecursor_normal($w->{w}{rwindow}->window);
     };
     $w->{detail_list}->get_selection->signal_connect(changed => sub {
 	my ($model, $iter) = $_[0]->get_selected;
