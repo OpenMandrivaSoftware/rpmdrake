@@ -97,10 +97,8 @@ sub remove_row {
 
 sub easy_add_callback() {
     # when called on early init by rpmdrake
-    if (!$urpm) {
-        $urpm = urpm->new;
-        urpm::media::read_config($urpm);
-    }
+    require Rpmdrake::pkg;
+    $urpm ||= Rpmdrake::pkg::open_urpmi_db();
 
     my $arch = arch();
     $arch = 'i586' if $arch =~ /^i.86$/;
