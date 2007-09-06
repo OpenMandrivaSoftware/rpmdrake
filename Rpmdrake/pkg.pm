@@ -125,7 +125,7 @@ sub extract_header {
 		goto header_non_available;
 	    };
 	    rm_rf($headersdir);
-	    add2hash($pkg, { summary => rpm_summary($p->summary), description => rpm_description($p->description) });
+	    add2hash($pkg, { description => rpm_description($p->description) });
 	    add2hash($pkg, {
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
 		changelog => $chg_prepro->(join("\n", mapn { "* " . localtime2changelog($_[2]) . " $_[0]\n\n$_[1]\n" }
@@ -420,7 +420,9 @@ sub get_pkgs {
              push @backports, $name if $search_med->{start} <= $pkg->id && $pkg->id <= $search_med->{end};
          }
      }
-        $all_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg };
+        $all_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg,
+                                       summary => rpm_summary($pkg->summary),
+                                   };
     }
     if ($::rpmdrake_options{'pkg-sel'} && $::rpmdrake_options{'pkg-nosel'}) {
         push @{$::rpmdrake_options{'pkg-nosel'}}, @{$::rpmdrake_options{'pkg-sel'}};
