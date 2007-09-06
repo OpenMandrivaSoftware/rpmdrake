@@ -191,7 +191,6 @@ sub run_treeview_dialog {
     $detail_list->append_column(my $col_arch = Gtk2::TreeViewColumn->new_with_attributes(N("Arch"), Gtk2::CellRendererText->new, 'text' => $pkg_columns{arch}));
     #$_->set_sizing('fixed') foreach $col_nm, $col_ver, $col_arch;
     $detail_list_model->set_sort_column_id(0, 'ascending');
-    $detail_list->set_headers_visible(0);
     $detail_list->set_rules_hint(1);
     #$detail_list->set_fixed_height_mode(1);
 
