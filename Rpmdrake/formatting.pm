@@ -38,7 +38,7 @@ our @EXPORT = qw(format_field format_header localtime2changelog my_fullname pkg2
 
 sub rpm_summary {
     my ($summary) = @_;
-    utf8::decode($summary);
+    utf8::decode($summary) if !utf8::is_utf8($summary);
     $summary;
 }
 
