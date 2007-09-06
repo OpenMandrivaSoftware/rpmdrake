@@ -203,7 +203,7 @@ sub run_treeview_dialog {
     foreach my $col (values %columns) {
         $detail_list->append_column(
             $col->{widget} =
-              Gtk2::TreeViewColumn->new_with_attributes($col->{title},
+              Gtk2::TreeViewColumn->new_with_attributes(' ' . $col->{title} . ' ',
                                                         $col->{renderer} = Gtk2::CellRendererText->new,
                                                         text => $col->{text},
                                                     )
