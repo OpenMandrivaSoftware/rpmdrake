@@ -192,6 +192,7 @@ sub run_treeview_dialog {
     $_->set_sizing('autosize') foreach $col_nm, $col_ver, $col_arch;
     $nm_rdr->set_property('width-chars', '20');
     $nm_rdr->set_property('ellipsize', 'end');
+    $col_nm->set_resizable(1); 
     $detail_list_model->set_sort_column_id(0, 'ascending');
     $detail_list->set_rules_hint(1);
     #$detail_list->set_fixed_height_mode(1);
