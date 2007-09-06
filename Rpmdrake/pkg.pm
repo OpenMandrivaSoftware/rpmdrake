@@ -252,9 +252,9 @@ sub open_urpmi_db() {
     };
     my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
     urpm::media::configure($urpm, media => $media);
-    # urpmi only support one search media, hance we'll only support "Main backport":
-    my ($searchmedia) = grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}};
-    urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia->{name}));
+
+    my $searchmedia = join(',', map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}});
+    urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia));
     if ($error_happened) {
         touch('/etc/urpmi/urpmi.cfg');
         exec('edit-urpm-sources.pl');
@@ -394,6 +394,8 @@ sub get_pkgs {
     $urpm->{rpmdrake_state} = $state; #- Don't forget it
     Rpmdrake::gurpm::progress($level = 0.7);
 
+    my @search_medias = grep { $_->{searchmedia} } @{$urpm->{media}};
+
     my @backports;
     my %pkg_sel   = map { $_ => 1 } @{$::rpmdrake_options{'pkg-sel'}   || []};
     my %pkg_nosel = map { $_ => 1 } @{$::rpmdrake_options{'pkg-nosel'} || []};
@@ -416,8 +418,10 @@ sub get_pkgs {
             push @updates, $name;
 	} else {
          push @installable_pkgs, $name;
-         if (my $search_med = $urpm->{searchmedia}) {
-             push @backports, $name if $search_med->{start} <= $pkg->id && $pkg->id <= $search_med->{end};
+         if (@search_medias) {
+             my $raw_medium = pkg2medium($pkg, $urpm);
+             my $medium = $raw_medium->{name};
+             push @backports, $name if any { $_->{start} <= $pkg->id && $pkg->id <= $_->{end} } @search_medias;
          }
      }
         $all_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg,
