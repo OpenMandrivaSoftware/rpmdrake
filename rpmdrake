@@ -186,14 +186,34 @@ sub run_treeview_dialog {
     $rdr->set_fixed_size(34, 24);
     $pixcolumn->set_fixed_width(34); # w/o this the pixbuf cells is empty
     $pixcolumn->set_sizing('fixed');
-    $detail_list->append_column(my $col_nm = Gtk2::TreeViewColumn->new_with_attributes(N("Package"), my $nm_rdr = Gtk2::CellRendererText->new, 'text' => $pkg_columns{short_name}));
-    $detail_list->append_column(my $col_ver = Gtk2::TreeViewColumn->new_with_attributes(N("Version"),my $ver_rdr =  Gtk2::CellRendererText->new, 'text' => $pkg_columns{version}));
-    $detail_list->append_column(my $col_arch = Gtk2::TreeViewColumn->new_with_attributes(N("Arch"), my $arch_rdr = Gtk2::CellRendererText->new, 'text' => $pkg_columns{arch}));
-    $_->set_sizing('autosize') foreach $col_nm, $col_ver, $col_arch;
-    $nm_rdr->set_property('width-chars', '20');
-    $nm_rdr->set_property('ellipsize', 'end');
-    $_->set_property('xpad', '6') foreach $arch_rdr, $nm_rdr, $ver_rdr;
-    $col_nm->set_resizable(1); 
+    my %columns = (
+        'name' => {
+            title => N("Package"),
+            text => $pkg_columns{short_name}
+        },
+        'version' => {
+            title => N("Version"),
+            text => $pkg_columns{version}
+        },
+        'arch' => {
+            title => N("Arch"),
+            text => $pkg_columns{arch}
+        },
+    );
+    foreach my $col (values %columns) {
+        $detail_list->append_column(
+            $col->{widget} =
+              Gtk2::TreeViewColumn->new_with_attributes($col->{title},
+                                                        $col->{renderer} = Gtk2::CellRendererText->new,
+                                                        text => $col->{text},
+                                                    )
+            );
+    }
+    $columns{$_}{widget}->set_sizing('autosize') foreach  qw(name version arch);
+    $columns{name}{renderer}->set_property('width-chars', '20');
+    $columns{name}{renderer}->set_property('ellipsize', 'end');
+    $columns{$_}{renderer}->set_property('xpad', '6') foreach qw(name version arch);
+    $columns{name}{widget}->set_resizable(1); 
     $detail_list_model->set_sort_column_id(0, 'ascending');
     $detail_list->set_rules_hint(1);
     #$detail_list->set_fixed_height_mode(1);
