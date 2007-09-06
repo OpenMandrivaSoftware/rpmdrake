@@ -187,11 +187,12 @@ sub run_treeview_dialog {
     $pixcolumn->set_fixed_width(34); # w/o this the pixbuf cells is empty
     $pixcolumn->set_sizing('fixed');
     $detail_list->append_column(my $col_nm = Gtk2::TreeViewColumn->new_with_attributes(N("Package"), my $nm_rdr = Gtk2::CellRendererText->new, 'text' => $pkg_columns{short_name}));
-    $detail_list->append_column(my $col_ver = Gtk2::TreeViewColumn->new_with_attributes(N("Version"), Gtk2::CellRendererText->new, 'text' => $pkg_columns{version}));
-    $detail_list->append_column(my $col_arch = Gtk2::TreeViewColumn->new_with_attributes(N("Arch"), Gtk2::CellRendererText->new, 'text' => $pkg_columns{arch}));
+    $detail_list->append_column(my $col_ver = Gtk2::TreeViewColumn->new_with_attributes(N("Version"),my $ver_rdr =  Gtk2::CellRendererText->new, 'text' => $pkg_columns{version}));
+    $detail_list->append_column(my $col_arch = Gtk2::TreeViewColumn->new_with_attributes(N("Arch"), my $arch_rdr = Gtk2::CellRendererText->new, 'text' => $pkg_columns{arch}));
     $_->set_sizing('autosize') foreach $col_nm, $col_ver, $col_arch;
     $nm_rdr->set_property('width-chars', '20');
     $nm_rdr->set_property('ellipsize', 'end');
+    $_->set_property('xpad', '6') foreach $arch_rdr, $nm_rdr, $ver_rdr;
     $col_nm->set_resizable(1); 
     $detail_list_model->set_sort_column_id(0, 'ascending');
     $detail_list->set_rules_hint(1);
