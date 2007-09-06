@@ -176,7 +176,7 @@ sub run_treeview_dialog {
     $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::MDV::CellRendererPixWithLabel->new, 'pixbuf' => $grp_columns{icon}, label => $grp_columns{label}));
     $tree->set_headers_visible(0);
 
-    $detail_list_model = Gtk2::ListStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String", "Glib::Boolean");
+    $detail_list_model = Gtk2::ListStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String", "Glib::Boolean", "Glib::String", "Glib::String", "Glib::String");
     $detail_list = Gtk2::TreeView->new_with_model($detail_list_model);
     $detail_list->append_column(my $col1 = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererToggle->new, active => $pkg_columns{selected}));
     $col1->set_fixed_width(34); # w/o this the toggle cells are not displayed
@@ -186,12 +186,14 @@ sub run_treeview_dialog {
     $rdr->set_fixed_size(34, 24);
     $pixcolumn->set_fixed_width(34); # w/o this the pixbuf cells is empty
     $pixcolumn->set_sizing('fixed');
-    $detail_list->append_column(my $col = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => $pkg_columns{text}));
-    $col->set_sizing('fixed');
+    $detail_list->append_column(my $col_nm = Gtk2::TreeViewColumn->new_with_attributes(N("Package"), Gtk2::CellRendererText->new, 'text' => $pkg_columns{short_name}));
+    $detail_list->append_column(my $col_ver = Gtk2::TreeViewColumn->new_with_attributes(N("Version"), Gtk2::CellRendererText->new, 'text' => $pkg_columns{version}));
+    $detail_list->append_column(my $col_arch = Gtk2::TreeViewColumn->new_with_attributes(N("Arch"), Gtk2::CellRendererText->new, 'text' => $pkg_columns{arch}));
+    #$_->set_sizing('fixed') foreach $col_nm, $col_ver, $col_arch;
     $detail_list_model->set_sort_column_id(0, 'ascending');
     $detail_list->set_headers_visible(0);
     $detail_list->set_rules_hint(1);
-    $detail_list->set_fixed_height_mode(1);
+    #$detail_list->set_fixed_height_mode(1);
 
     compute_main_window_size($w);
 

@@ -56,6 +56,9 @@ our %pkg_columns = (
     state_icon => 1,
     state => 2,
     selected => 3,
+    short_name => 4,
+    version => 5,
+    arch => 6,
 );
 
 
@@ -220,7 +223,12 @@ sub add_node {
     if ($leaf) {
         my $iter;
         if (is_a_package($leaf)) {
-            $iter = $w->{detail_list_model}->append_set([ $pkg_columns{text} => $leaf ]);
+            my ($name, $version, $arch) = split_fullname($leaf);
+            $iter = $w->{detail_list_model}->append_set([ $pkg_columns{text} => $leaf,
+                                                          $pkg_columns{short_name} => $name,
+                                                          $pkg_columns{version} => $version,
+                                                          $pkg_columns{arch} => $arch,
+                                                      ]);
             set_node_state($iter, $state, $w->{detail_list_model});
              $ptree{$leaf} = [ $iter ];
         } else {
