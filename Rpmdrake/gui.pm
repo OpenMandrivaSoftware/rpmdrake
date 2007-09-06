@@ -69,6 +69,12 @@ sub compute_main_window_size {
     $typical_width < 150 and $typical_width = 150;
 }
 
+sub get_summary {
+    my ($key) = @_;
+    my $summary = translate(to_utf8($pkgs->{$key}{summary}));
+    utf8::valid($summary) ? $summary : ();
+}
+
 
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
@@ -76,8 +82,8 @@ sub format_pkg_simplifiedinfo {
     my $raw_medium = pkg2medium($pkgs->{$key}{pkg}, $urpm);
     my $medium = $raw_medium ? $raw_medium->{name} : undef;
     my $update_descr = $pkgs->{$key}{pkg}->flag_upgrade && $descriptions->{$name}{pre} && $descriptions->{$name}{medium} eq $medium;
-    my $summary = translate(to_utf8($pkgs->{$key}{summary}));
-    my $s = ugtk2::markup_to_TextView_format(join("\n", format_header(join(' - ', $name, (utf8::valid($summary) ? $summary : ()))) .
+    my $summary = get_summary($key);
+    my $s = ugtk2::markup_to_TextView_format(join("\n", format_header(join(' - ', $name, $summary)) .
       # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
                                                       "\x{200b} \x{feff}" . ' ' x 120,
       if_($update_descr, # is it an update?
