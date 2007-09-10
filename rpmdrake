@@ -200,7 +200,7 @@ sub run_treeview_dialog {
             text => $pkg_columns{arch}
         },
     );
-    foreach my $col (values %columns) {
+    foreach my $col (@columns{qw(name version arch)}) {
         $detail_list->append_column(
             $col->{widget} =
               Gtk2::TreeViewColumn->new_with_attributes(' ' . $col->{title} . ' ',
