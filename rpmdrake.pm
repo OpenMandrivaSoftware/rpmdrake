@@ -139,8 +139,7 @@ $urpm::download::PROMPT_PROXY = new rpmdrake::prompt(
 
 sub to_utf8 {
     foreach (@_) {
-        $_ = Locale::gettext::iconv($_, undef, "UTF-8");
-        c::set_tagged_utf8($_);
+        $_ = common::to_utf8($_);
     }
     wantarray() ? @_ : $_[0];
 }
