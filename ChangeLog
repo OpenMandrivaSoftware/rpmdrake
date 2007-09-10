@@ -1,3 +1,193 @@
+2007-09-10 16:57  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.91)
+
+2007-09-10 16:57  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) explicitely convert changelog
+	  to UTF-8
+
+2007-09-10 16:54  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (run_rpm) do not try to convert into UTF-8, thus
+	  fixing a SIGV loop while
+	  inserting file list of "balazar" package
+
+2007-09-10 16:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (get_summary) simplify (since perl-URPM-1.56,
+	  perl knows that strings from rpm
+	  headers are UTF-8)
+
+2007-09-10 16:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm, Rpmdrake/pkg.pm: (rpm_summary) kill it;
+	  since perl-URPM-1.56, perl knows that strings from rpm
+	  headers are UTF-8, thus fixing a crash (#33283)
+
+2007-09-10 16:42  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (to_utf8) do not reinvent the wheel; just reuse
+	  common::to_utf8()
+
+2007-09-10 16:57  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) explicitely convert changelog
+	  to UTF-8
+
+2007-09-10 16:54  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (run_rpm) do not try to convert into UTF-8, thus
+	  fixing a SIGV loop while
+	  inserting file list of "balazar" package
+
+2007-09-10 16:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (get_summary) simplify (since perl-URPM-1.56,
+	  perl knows that strings from rpm
+	  headers are UTF-8)
+
+2007-09-10 16:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm, Rpmdrake/pkg.pm: (rpm_summary) kill it;
+	  since perl-URPM-1.56, perl knows that strings from rpm
+	  headers are UTF-8, thus fixing a crash (#33283)
+
+2007-09-10 16:42  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (to_utf8) do not reinvent the wheel; just reuse
+	  common::to_utf8()
+
+2007-09-10 14:27  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) fix order of columns
+
+2007-09-10 12:32  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.90)
+
+2007-09-10 10:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (mainwindow) display a banner now
+	  that we don't display mcc's banner &
+	  menubar while embedded (side effect of #33316's fix)
+
+2007-09-09 13:56  Karl Ove Hufthammer <karl at huftis.org>
+
+	* po/nn.po: Updated Norwegian Nynorsk translation.
+
+2007-09-09 13:51  jure
+
+	* po/sl.po: Updated Slovenian translation
+
+2007-09-08 22:59  kamberd
+
+	* po/he.po: update translation for Hebrew
+
+2007-09-08 22:21  Michal Bukovjan <bukovjan at mbox.dkm.cz>
+
+	* po/cs.po: Updated Czech translation.
+
+2007-09-08 20:28  kmashrab
+
+	* po/uz.po, po/uz@Latn.po: Accel fix.
+
+2007-09-08 20:14  kmashrab
+
+	* po/uz.po, po/uz@Latn.po: New translations.
+
+2007-09-08 13:57  kmashrab
+
+	* po/uz.po, po/uz@Latn.po: A few fixes.
+
+2007-09-08 04:14  mmodem
+
+	* po/pt.po: up
+
+2007-09-07 23:45  kmashrab
+
+	* po/uz.po, po/uz@Latn.po: New translations.
+
+2007-09-07 13:58  Tomasz Bednarski <tbednarski at mandrivalinux.pl>
+
+	* po/pl.po: update
+
+2007-09-07 12:31  Tomasz Bednarski <tbednarski at mandrivalinux.pl>
+
+	* po/pl.po: update
+
+2007-09-06 14:47  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.89
+
+2007-09-06 14:47  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) add margins to columns titles
+	  (better than using
+	  set_alignment(0.1))
+
+2007-09-06 14:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) make column creation more
+	  readable
+
+2007-09-06 14:27  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) add margins in package list's
+	  columns
+
+2007-09-06 14:18  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs,open_urpmi_db) add support for several
+	  searchmedia (needs urpmi' SVN)
+
+2007-09-06 13:29  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm: (rpm_summary) do not decode package
+	  summary if already in UTF-8 thus
+	  fixing not displaying summaries when already translated in rpm
+
+2007-09-06 13:10  Funda Wang <fundawang at linux.net.cn>
+
+	* po/zh_CN.po, po/zh_TW.po: Updated translation, zh_TW from
+	  You-Cheng Hsieh
+
+2007-09-06 13:09  ybando
+
+	* po/ja.po: Japanese translation updated.
+
+2007-09-06 09:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/br.po: update
+
+2007-09-06 09:51  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/fr.po: update
+
+2007-09-06 09:50  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po, po/cy.po,
+	  po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po, po/ga.po,
+	  po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po, po/hy.po,
+	  po/id.po, po/is.po, po/it.po, po/ja.po, po/ka.po, po/ko.po,
+	  po/ku.po, po/ky.po, po/lt.po, po/ltg.po, po/lv.po, po/mk.po,
+	  po/mn.po, po/ms.po, po/mt.po, po/nb.po, po/nl.po, po/nn.po,
+	  po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po, po/ro.po,
+	  po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po, po/uz@Latn.po,
+	  po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po: sync with code
+
+2007-09-06 09:17  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
+2007-09-06 09:17  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.88)
+
 2007-09-06 09:16  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* rpmdrake: (run_treeview_dialog) make package name column be
