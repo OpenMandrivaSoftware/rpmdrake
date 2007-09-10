@@ -71,7 +71,7 @@ sub compute_main_window_size {
 
 sub get_summary {
     my ($key) = @_;
-    my $summary = translate(to_utf8($pkgs->{$key}{summary}));
+    my $summary = translate($pkgs->{$key}{summary});
     utf8::valid($summary) ? $summary : ();
 }
 
