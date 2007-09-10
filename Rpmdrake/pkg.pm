@@ -342,7 +342,7 @@ sub get_pkgs {
 	    #- Extract summary and description since they'll be lost when the header is packed
 	    $all_pkgs{$fullname} = {
 		selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
-		summary => rpm_summary($pkg->summary),
+		summary => $pkg->summary,
 		description => rpm_description($pkg->description),
 	    } if !($all_pkgs{$fullname} && $all_pkgs{$fullname}{description});
 	    if (my $name = $base{$fullname}) {
@@ -425,7 +425,7 @@ sub get_pkgs {
          }
      }
         $all_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg,
-                                       summary => rpm_summary($pkg->summary),
+                                       summary => $pkg->summary,
                                    };
     }
     if ($::rpmdrake_options{'pkg-sel'} && $::rpmdrake_options{'pkg-nosel'}) {

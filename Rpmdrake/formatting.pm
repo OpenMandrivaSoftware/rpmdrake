@@ -33,14 +33,8 @@ use ugtk2 qw(escape_text_for_TextView_markup_format);
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(format_field format_header localtime2changelog my_fullname pkg2medium rpm_description rpm_summary split_fullname urpm_name);
+our @EXPORT = qw(format_field format_header localtime2changelog my_fullname pkg2medium rpm_description split_fullname urpm_name);
 
-
-sub rpm_summary {
-    my ($summary) = @_;
-    utf8::decode($summary) if !utf8::is_utf8($summary);
-    $summary;
-}
 
 sub rpm_description {
     my ($description) = @_;
