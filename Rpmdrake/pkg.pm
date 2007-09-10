@@ -98,7 +98,7 @@ sub extract_header {
     my $name = urpm_name($pkg->{pkg});
     if ($pkg->{pkg}->flag_installed && !$pkg->{pkg}->flag_upgrade) {
 	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(run_rpm("rpm -ql $name"))) || N("(none)") ],
-                         changelog => $chg_prepro->(scalar(run_rpm("rpm -q --changelog $name"))) });
+                         changelog => $chg_prepro->(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
 	my $hdlist = urpm::media::any_hdlist($urpm, $medium);
