@@ -153,6 +153,11 @@ sub formatlistpkg { join("\n", map { s/^(\s)/  \1/mg; "- $_" } sort { uc($a) cmp
 
 my (@update_medias, $is_update_media_already_asked);
 
+sub get_update_medias {
+    my ($urpm) = @_;
+    grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
+}
+
 sub warn_about_media {
     my ($w, $opts) = @_;
 
@@ -225,7 +230,7 @@ sub get_pkgs {
 
     my $urpm = open_urpmi_db();
     my $_lock = urpm::lock::urpmi_db($urpm);
-    @update_medias = grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
+    @update_medias = get_update_medias($urpm);
 
     warn_about_media($w, $opts);
 
