@@ -138,14 +138,12 @@ sub extract_header {
     }
 }
 
-my %options;
-
 # because rpm blocks some signals when rpm DB is opened, we don't keep open around:
 sub open_rpm_db {
     my ($o_force) = @_;
     my $host;
     log::explanations("opening the RPM database");
-    if ($options{parallel} && ((undef, $host) = @{$options{parallel}})) {
+    if ($::rpmdrake_options{parallel} && ((undef, $host) = @{$::rpmdrake_options{parallel}})) {
         my $done if 0;
         my $dblocation = "/var/cache/urpmi/distantdb/$host";
         if (!$done || $o_force) {
