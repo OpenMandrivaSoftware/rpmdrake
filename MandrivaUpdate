@@ -74,7 +74,7 @@ sub refresh_packages_list {
     my $i;
     @{$list->{data}} = map {
         $data{$_} = $i++;
-        my $summary = translate(to_utf8(rpm_summary($pkgs->{$_}{pkg}->summary)));
+        my $summary = translate(to_utf8($pkgs->{$_}{pkg}->summary));
         [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>",
                                       utf8::valid($summary) ? escape_text_for_TextView_markup_format($summary) : '') ];
     } grep { $pkgs->{$_}{pkg} } @requested;
