@@ -27,6 +27,7 @@ use strict;
 use lib qw(/usr/lib/libDrakX);
 use common;
 use rpmdrake;
+use Rpmdrake::open_db;
 use URPM::Signature;
 use POSIX qw(_exit);
 use MDK::Common::Math qw(max);
@@ -97,8 +98,7 @@ sub remove_row {
 
 sub easy_add_callback() {
     # when called on early init by rpmdrake
-    require Rpmdrake::pkg;
-    $urpm ||= Rpmdrake::pkg::open_urpmi_db();
+    $urpm ||= fast_open_urpmi_db();
 
     my $arch = arch();
     $arch = 'i586' if $arch =~ /^i.86$/;
@@ -383,8 +383,7 @@ sub options_callback() {
 			}
                $something_changed = 1;
 			urpm::media::write_config($urpm);
-			$urpm = urpm->new;
-			urpm::media::read_config($urpm);
+			$urpm = fast_open_urpmi_db();
 			Gtk2->main_quit;
 		    },
 		),
@@ -424,7 +423,8 @@ sub renum_media ($$$) {
     $urpm->{media}[$rows[$_]] = $media[1 - $_] foreach 0, 1;
     $model->swap(@iters);
     $something_changed = 1;
-    urpm::media::write_config($urpm); $urpm = urpm->new; urpm::media::read_config($urpm);
+    urpm::media::write_config($urpm);
+    $urpm = fast_open_urpmi_db();
 }
 
 sub upwards_callback() {
@@ -871,8 +871,7 @@ sub keys_callback() {
     my $write = sub {
         $something_changed = 1;
         urpm::media::write_config($urpm);
-        $urpm = urpm->new;
-        urpm::media::read_config($urpm);
+        $urpm = fast_open_urpmi_db();
         $read_conf->();
         $media_list->get_selection->signal_emit('changed');
     };
@@ -1099,8 +1098,7 @@ sub mainwindow() {
 	my ($name) = @_;
         $reorder_ok = 0;
      $something_changed = 1;
-	$urpm = urpm->new;
-	urpm::media::read_config($urpm);
+	$urpm = fast_open_urpmi_db();
 	if (defined $name) {
 	    #- this media must be reconstructed since editing it failed
 	    if (my $medium = urpm::media::name2medium($urpm, $name)) {
