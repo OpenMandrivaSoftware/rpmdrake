@@ -1,3 +1,35 @@
+2007-09-11 16:56  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: bump release (3.92)
+
+2007-09-11 16:55  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs) reduce package enumeration by 10%
+	  (thanks to pixel) (#33334)
+	  
+	  but in fact, we spent only 1sec out of 11sec (on my x86_64
+	  machine
+	  with 29 media) there, all remaining time is spent in
+	  request_packages_to_upgrade(), resolve_requested() and
+	  compute_installed_flags()
+
+2007-09-11 16:34  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: (refresh_packages_list) rpm_summary() is dead
+
+2007-09-11 15:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) make "Package" column use all
+	  available space
+
+2007-09-11 15:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) minor cleanups
+
+2007-09-11 15:26  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2007-09-11 15:23  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* edit-urpm-sources.pl: use Rpmdrake::init in order to parse
