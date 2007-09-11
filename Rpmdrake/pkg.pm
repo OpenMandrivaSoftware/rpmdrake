@@ -156,7 +156,7 @@ sub open_rpm_db {
         }
         URPM::DB::open($dblocation) or die "Couldn't open RPM DB";
     } else {
-        URPM::DB::open($::rpmdrake_options{'rpm-root'}->[0]) or die "Couldn't open RPM DB ($::rpmdrake_options{'rpm-root'}->[0])";
+        URPM::DB::open($::rpmdrake_options{'rpm-root'}[0]) or die "Couldn't open RPM DB ($::rpmdrake_options{'rpm-root'}[0])";
     }
 }
 
@@ -237,9 +237,9 @@ sub open_urpmi_db() {
     $urpm->{options}{'split-level'} ||= 20;
     $urpm->{options}{'split-length'} ||= 1;
     $urpm->{options}{'verify-rpm'} = !$::rpmdrake_options{'no-verify-rpm'} if defined $::rpmdrake_options{'no-verify-rpm'};
-    $urpm->{options}{auto} = $::rpmdrake_options{'auto'} if defined $::rpmdrake_options{'auto'};
-    urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}->[0]) if $::rpmdrake_options{'urpmi-root'}->[0];
-    urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}->[0]) if $::rpmdrake_options{'rpm-root'}->[0];
+    $urpm->{options}{auto} = $::rpmdrake_options{auto} if defined $::rpmdrake_options{auto};
+    urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}[0]) if $::rpmdrake_options{'urpmi-root'}[0];
+    urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}[0]) if $::rpmdrake_options{'rpm-root'}[0];
 
     $urpm::args::rpmdrake_options{justdb} = $::rpmdrake_options{justdb};
 
@@ -558,7 +558,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $install_count = int(@pkgs);
     my $to_install = $install_count == 0 ? '' :
-      ( P("The following package is going to be installed:", "The following %d packages are going to be installed:", $install_count, $install_count)
+      (P("The following package is going to be installed:", "The following %d packages are going to be installed:", $install_count, $install_count)
       . "\n" . formatlistpkg(map { s!.*/!!; $_ } @pkgs) . "\n");
     my $remove_count =  scalar(@to_remove);
     interactive_msg(($to_install ? N("Confirmation") : N("Some packages need to be removed")),
@@ -593,7 +593,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                 } elsif (defined $pkg) {
                     $something_installed = 1;
                     Rpmdrake::gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$transaction_progress_nb, scalar(@{$transaction->{upgrade}}))
-                                             . "\n" .N("Total: %s/%s", ++$progress_nb, $install_count));
+                                             . "\n" . N("Total: %s/%s", ++$progress_nb, $install_count));
                 }
         } elsif ($subtype eq 'progress') {
             Rpmdrake::gurpm::progress($total ? $amount/$total : 1);
