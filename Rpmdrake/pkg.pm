@@ -251,7 +251,7 @@ sub open_urpmi_db() {
                          N("A fatal error occurred: %s.", $_[1]));
     };
     my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
-    urpm::media::configure($urpm, media => $media);
+    urpm::media::read_config($urpm);
 
     my $searchmedia = join(',', map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}});
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia));
