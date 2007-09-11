@@ -30,34 +30,6 @@
 	* rpmdrake.pm: (to_utf8) do not reinvent the wheel; just reuse
 	  common::to_utf8()
 
-2007-09-10 16:57  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/pkg.pm: (extract_header) explicitely convert changelog
-	  to UTF-8
-
-2007-09-10 16:54  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/pkg.pm: (run_rpm) do not try to convert into UTF-8, thus
-	  fixing a SIGV loop while
-	  inserting file list of "balazar" package
-
-2007-09-10 16:53  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/gui.pm: (get_summary) simplify (since perl-URPM-1.56,
-	  perl knows that strings from rpm
-	  headers are UTF-8)
-
-2007-09-10 16:53  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* Rpmdrake/formatting.pm, Rpmdrake/pkg.pm: (rpm_summary) kill it;
-	  since perl-URPM-1.56, perl knows that strings from rpm
-	  headers are UTF-8, thus fixing a crash (#33283)
-
-2007-09-10 16:42  Thierry Vignaud <tvignaud at mandriva.com>
-
-	* rpmdrake.pm: (to_utf8) do not reinvent the wheel; just reuse
-	  common::to_utf8()
-
 2007-09-10 14:27  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* rpmdrake: (run_treeview_dialog) fix order of columns
