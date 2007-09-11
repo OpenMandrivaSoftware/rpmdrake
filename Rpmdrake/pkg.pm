@@ -197,7 +197,6 @@ column).
 Then, restart \"%s\".", N("Enabled"), $rpmdrake::myname_update));
 		    myexit(-1);
 		}
-	      mu_retry_another_mirror:
 		my ($mirror) = choose_mirror(if_(exists $w->{real_window}, transient => $w->{real_window}));
 		my $m = ref($mirror) ? $mirror->{url} : '';
 		$m or interactive_msg(N("How to choose manually your mirror"),
