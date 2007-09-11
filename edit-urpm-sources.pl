@@ -25,6 +25,7 @@
 
 use strict;
 use lib qw(/usr/lib/libDrakX);
+use Rpmdrake::init;
 use standalone;
 use rpmdrake;
 use common;
