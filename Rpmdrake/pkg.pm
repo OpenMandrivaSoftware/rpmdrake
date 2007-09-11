@@ -30,6 +30,7 @@ use common;
 use POSIX qw(_exit);
 use URPM;
 use utf8;
+use Rpmdrake::open_db;
 use Rpmdrake::gurpm;
 use Rpmdrake::formatting;
 use Rpmdrake::rpmnew;
@@ -47,7 +48,7 @@ use urpm::args qw();
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs open_rpm_db parse_compssUsers_flat perform_installation perform_removal run_rpm);
+our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs parse_compssUsers_flat perform_installation perform_removal run_rpm);
 
 use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
@@ -138,29 +139,6 @@ sub extract_header {
     }
 }
 
-# because rpm blocks some signals when rpm DB is opened, we don't keep open around:
-sub open_rpm_db {
-    my ($o_force) = @_;
-    my $host;
-    log::explanations("opening the RPM database");
-    if ($::rpmdrake_options{parallel} && ((undef, $host) = @{$::rpmdrake_options{parallel}})) {
-        my $done if 0;
-        my $dblocation = "/var/cache/urpmi/distantdb/$host";
-        if (!$done || $o_force) {
-            print "syncing db from $host to $dblocation...";
-            mkdir_p "$dblocation/var/lib/rpm";
-            system "rsync -Sauz -e ssh $host:/var/lib/rpm/ $dblocation/var/lib/rpm";
-            $? == 0 or die "Couldn't sync db from $host to $dblocation";
-            $done = 1;
-            print "done.\n";
-        }
-        URPM::DB::open($dblocation) or die "Couldn't open RPM DB";
-    } else {
-        URPM::DB::open($::rpmdrake_options{'rpm-root'}[0]) or die "Couldn't open RPM DB ($::rpmdrake_options{'rpm-root'}[0])";
-    }
-}
-
-
 sub find_installed_version {
     my ($p) = @_;
     my @version;
@@ -229,36 +207,6 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 	    }
 }
 
-
-
-sub open_urpmi_db() {
-    my $error_happened;
-    my $urpm = urpm->new;
-    $urpm->{options}{'split-level'} ||= 20;
-    $urpm->{options}{'split-length'} ||= 1;
-    $urpm->{options}{'verify-rpm'} = !$::rpmdrake_options{'no-verify-rpm'} if defined $::rpmdrake_options{'no-verify-rpm'};
-    $urpm->{options}{auto} = $::rpmdrake_options{auto} if defined $::rpmdrake_options{auto};
-    urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}[0]) if $::rpmdrake_options{'urpmi-root'}[0];
-    urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}[0]) if $::rpmdrake_options{'rpm-root'}[0];
-
-    $urpm::args::rpmdrake_options{justdb} = $::rpmdrake_options{justdb};
-
-    $urpm->{fatal} = sub {
-        $error_happened = 1;
-        interactive_msg(N("Fatal error"),
-                         N("A fatal error occurred: %s.", $_[1]));
-    };
-    my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
-    urpm::media::read_config($urpm);
-
-    my $searchmedia = join(',', map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}});
-    urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia));
-    if ($error_happened) {
-        touch('/etc/urpmi/urpmi.cfg');
-        exec('edit-urpm-sources.pl');
-    }
-    $urpm;
-}
 
 sub get_parallel_group() {
     $::rpmdrake_options{parallel} ? $::rpmdrake_options{parallel}[0] : undef;

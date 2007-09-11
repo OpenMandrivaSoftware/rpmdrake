@@ -32,6 +32,7 @@ use mygtk2 qw(gtknew); #- do not import gtkadd which conflicts with ugtk2 versio
 
 use ugtk2 qw(:helpers :wrappers);
 use rpmdrake;
+use Rpmdrake::open_db;
 use Rpmdrake::formatting;
 use Rpmdrake::init;
 use Rpmdrake::icon;

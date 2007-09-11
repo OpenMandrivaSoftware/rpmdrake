@@ -29,6 +29,7 @@ use common;
 use rpmdrake;
 use Rpmdrake::init;
 use Rpmdrake::pkg;
+use Rpmdrake::open_db;
 use Rpmdrake::formatting;
 use Gtk2::SourceView;
 use File::MimeInfo::Magic;
@@ -188,7 +189,7 @@ sub do_merge_if_needed() {
         my %pkg2rpmnew;
         my $wait = wait_msg(N("Please wait, searching..."));
         print "Searching .rpmnew and .rpmsave files...\n";
-        Rpmdrake::pkg::open_rpm_db()->traverse(sub {
+        open_rpm_db()->traverse(sub {
                           my $n = my_fullname($_[0]);
                           $pkg2rpmnew{$n} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") } map { chomp_($_) } $_[0]->files ];
                       });
