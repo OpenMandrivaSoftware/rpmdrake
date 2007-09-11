@@ -156,12 +156,12 @@ my (@update_medias, $is_update_media_already_asked);
 sub warn_about_media {
     my ($w, $opts) = @_;
 
-    # we use our own instance of the urpmi db in order not to mess up with skip-list managment (#31092):
-    my $urpm = open_urpmi_db();
-
     my $update_name = 'update_source';
     return if !member($::default_list_mode, qw(all_updates security bugfix normal));
     return if $::rpmdrake_options{'no-media-update'};
+
+    # we use our own instance of the urpmi db in order not to mess up with skip-list managment (#31092):
+    my $urpm = open_urpmi_db();
 
     # do not update again media after installing/removing some packages:
     $::rpmdrake_options{'no-media-update'} ||= 1;
