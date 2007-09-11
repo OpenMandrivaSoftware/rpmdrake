@@ -15,16 +15,14 @@ msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-06 11:49+0200\n"
-"PO-Revision-Date: 2007-09-07 16:02+0200\n"
-"Last-Translator: Tomasz Bednarski - Mandriva Poland <tomasz."
-"bednarski@mandriva.pl>\n"
+"PO-Revision-Date: 2007-09-11 09:48+0200\n"
+"Last-Translator: Tomasz Bednarski - Mandriva Poland <tomasz.bednarski@mandriva.pl>\n"
 "Language-Team: pl <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%"
-"100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../MandrivaUpdate:76 ../Rpmdrake/gui.pm:690
 #, c-format
@@ -380,8 +378,7 @@ msgstr "Włóż nośnik, aby kontynuować"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:474
 #, c-format
-msgid ""
-"In order to save the changes, you need to insert the medium in the drive."
+msgid "In order to save the changes, you need to insert the medium in the drive."
 msgstr "By zapisać zmiany, należy włożyć nośnik do napędu."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:510
@@ -638,9 +635,9 @@ msgid "<control>G"
 msgstr "<control>G"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:978
-#, fuzzy, c-format
+#, c-format
 msgid "/_Add a custom media"
-msgstr "/_Dodawanie nośnika(-ów)"
+msgstr "/_Dodawanie dowolnego nośnika(-ów)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:978
 #, c-format
@@ -682,7 +679,7 @@ msgstr "<control>R"
 #: ../rpmdrake:384 ../rpmdrake:385 ../rpmdrake:386 ../rpmdrake:387
 #, c-format
 msgid "/_Help"
-msgstr "/_Pomoc"
+msgstr "/Pomo_c"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:385
 #, c-format
@@ -914,6 +911,8 @@ msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
 "Do you want to select it anyway?"
 msgstr ""
+"Pakiet \"%s\" znajduje się na liście pakietów\n"
+"do pominięcia. Czy chcesz go wybrać mimo to?"
 
 #: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:484
 #, c-format
@@ -956,8 +955,7 @@ msgstr "Zostanie usuniętych kilka dodatkowych pakietów"
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
-msgstr ""
-"Z powodu swoich zależności, poniższe pakiety także muszą zostać usunięte:"
+msgstr "Z powodu swoich zależności, poniższe pakiety także muszą zostać usunięte:"
 
 #: ../Rpmdrake/gui.pm:509 ../Rpmdrake/gui.pm:518
 #, c-format
@@ -1045,8 +1043,7 @@ msgstr "Niektóre pakiety muszą zostać usunięte"
 #: ../Rpmdrake/gui.pm:616
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
-msgstr ""
-"Błąd: wygląda na to, że %s został zamontowany tylko w trybie do odczytu."
+msgstr "Błąd: wygląda na to, że %s został zamontowany tylko w trybie do odczytu."
 
 #: ../Rpmdrake/gui.pm:620
 #, c-format
@@ -1725,7 +1722,7 @@ msgstr "Użycie: %s [OPCJA]..."
 #: ../Rpmdrake/init.pm:40
 #, c-format
 msgid "  --auto                 assume default answers to questions"
-msgstr ""
+msgstr "  --auto                 przyjmij domyślne odpowiedzi na wszystkie pytania"
 
 #: ../Rpmdrake/init.pm:41
 #, c-format
@@ -1743,8 +1740,7 @@ msgstr "  --media=medium1,..     ograniczenie do oznaczonego nośnika"
 
 #: ../Rpmdrake/init.pm:43
 #, c-format
-msgid ""
-"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgid "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
 "  --merge-all-rpmnew     proponuje połączenie wszystkich odnalezionych "
 "plików .rpmnew/.rpmsave files found"
@@ -1761,12 +1757,11 @@ msgstr ""
 msgid ""
 "  --justdb               update the database, but do not modify the "
 "filesystem"
-msgstr ""
+msgstr "  --justdb               zaktualizuj bazę danych, ale nie zmieniaj danych w systemie plików"
 
 #: ../Rpmdrake/init.pm:46
 #, c-format
-msgid ""
-"  --no-confirmation      don't ask first confirmation question in update mode"
+msgid "  --no-confirmation      don't ask first confirmation question in update mode"
 msgstr ""
 "  --no-confirmation      w trybie aktualizacji pomija pytanie o "
 "potwierdzenie "
@@ -1803,12 +1798,11 @@ msgstr "  --pkg-sel=pkg1,..      preselekcja podanych pakietów"
 #: ../Rpmdrake/init.pm:52
 #, c-format
 msgid "  --rpm-root=path        use another root for rpm installation"
-msgstr ""
+msgstr "  --rpm-root=ścieżka        użyj innej ścieżki do instalacji pakietu rpm"
 
 #: ../Rpmdrake/init.pm:53
 #, c-format
-msgid ""
-"  --urpmi-root           use another root for urpmi db & rpm installation"
+msgid "  --urpmi-root           use another root for urpmi db & rpm installation"
 msgstr ""
 "  --urpmi-root           używa innego katalogu głównego  bazy danych urpmi i "
 "instalacji rpm."
@@ -1819,9 +1813,9 @@ msgid "  --root                 force to run as root"
 msgstr "  --root                 wymusza uruchomienie jako root"
 
 #: ../Rpmdrake/init.pm:54
-#, fuzzy, c-format
+#, c-format
 msgid "(Deprecated)"
-msgstr "Wybrane"
+msgstr "(zdeprecjonowane)"
 
 #: ../Rpmdrake/init.pm:55
 #, c-format
@@ -1908,8 +1902,7 @@ msgstr ""
 #: ../Rpmdrake/init.pm:168
 #, c-format
 msgid "The software installation tool can set up media sources."
-msgstr ""
-"Program do instalacji oprogramowania może skonfigurować nośniki źródłowe."
+msgstr "Program do instalacji oprogramowania może skonfigurować nośniki źródłowe."
 
 #: ../Rpmdrake/init.pm:169
 #, c-format
@@ -1946,7 +1939,7 @@ msgid "Already existing update media"
 msgstr "Już istniejące nośniki aktualizacyjne"
 
 #: ../Rpmdrake/pkg.pm:209
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
 "all of them are currently disabled. You should run the Software\n"
@@ -1957,10 +1950,10 @@ msgid ""
 msgstr ""
 "Posiadasz już co najmniej jeden skonfigurowany nośnik aktualizacyjny\n"
 "lecz jest on aktualnie wyłączony. Należy uruchomić Menedżera\n"
-"Źródeł Nośników aby włączyć co najmniej jeden (zaznacz je\n"
-"w kolumnie Włączone?).\n"
+"Nośników Oprogramowania aby włączyć co najmniej jeden \n"
+"(zaznacz je w kolumnie \"%s\").\n"
 "\n"
-"Następnie uruchom ponownie %s."
+"Następnie uruchom ponownie \"%s\"."
 
 #: ../Rpmdrake/pkg.pm:220
 #, c-format
@@ -2093,12 +2086,11 @@ msgstr ""
 "%s"
 
 #: ../Rpmdrake/pkg.pm:560
-#, fuzzy, c-format
+#, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
-msgstr[0] "Dla zachowania zależności zostanie zainstalowany poniższy pakiet:"
-msgstr[1] ""
-"Dla zachowania zależności zostaną zainstalowane poniższe pakiety %d:"
+msgstr[0] "Zostanie zainstalowany następujący pakiet:"
+msgstr[1] "Zostaną zainstalowane następujące pakiety %d:"
 msgstr[2] ""
 
 #: ../Rpmdrake/pkg.pm:565
@@ -2262,7 +2254,7 @@ msgstr "Zmiany:"
 msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
 "unsure, keep the current file (\"%s\")."
-msgstr ""
+msgstr "Możesz usunąć plik %s, użyć go jako plik główny lub nie robić nic. Jeżeli nie jesteś pewny co zrobić zachowaj aktualny plik (\"%s)."
 
 #: ../Rpmdrake/rpmnew.pm:112 ../Rpmdrake/rpmnew.pm:117
 #, c-format
@@ -2295,11 +2287,11 @@ msgid "Please wait, searching..."
 msgstr "Proszę czekać, wyszukiwanie..."
 
 #: ../gurpmi.addmedia:84
-#, fuzzy, c-format
+#, c-format
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 "nieprawidłowy <url> (dla katalogu lokalnego wymagana jest ścieżka "
-"bezwzględna)\n"
+"bezwzględna)"
 
 #: ../gurpmi.addmedia:89
 #, c-format
@@ -2374,19 +2366,19 @@ msgid "Selected size: %d MB"
 msgstr "Wybrany rozmiar: %d MB"
 
 #: ../rpmdrake:189
-#, fuzzy, c-format
+#, c-format
 msgid "Package"
-msgstr "Pakowanie"
+msgstr "Pakiet"
 
 #: ../rpmdrake:190
-#, fuzzy, c-format
+#, c-format
 msgid "Version"
-msgstr "Wersja: "
+msgstr "Wersja"
 
 #: ../rpmdrake:191
-#, fuzzy, c-format
+#, c-format
 msgid "Arch"
-msgstr "Archiwizacja"
+msgstr "Arch"
 
 #: ../rpmdrake:234
 #, c-format
@@ -2439,9 +2431,9 @@ msgid "All packages, by group"
 msgstr "Wszystkie pakiety, według grupy"
 
 #: ../rpmdrake:241
-#, fuzzy, c-format
+#, c-format
 msgid "Backports"
-msgstr "Archiwizacja"
+msgstr "Pakiety dla wcześniejszych wersji"
 
 #: ../rpmdrake:242
 #, c-format
@@ -2484,14 +2476,14 @@ msgid "in file names"
 msgstr "w nazwach plików"
 
 #: ../rpmdrake:344
-#, fuzzy, c-format
+#, c-format
 msgid "/_Automatically resolve queries"
-msgstr "/P_okaż automatycznie wybrane pakiety"
+msgstr "/_Automatycznie sprawdzaj zależności"
 
 #: ../rpmdrake:345
 #, c-format
 msgid "/Do _not remove any package from the cache"
-msgstr ""
+msgstr "/_Nie usuwaj pakietów z bufora"
 
 #: ../rpmdrake:351
 #, c-format
@@ -2552,8 +2544,7 @@ msgstr ""
 
 #: ../rpmdrake:487
 #, c-format
-msgid ""
-"You can view information about a package by clicking on it on the right list."
+msgid "You can view information about a package by clicking on it on the right list."
 msgstr ""
 "Informację na temat pakietu można uzyskać klikając na niego w oknie po "
 "prawej stronie."
@@ -2957,8 +2948,7 @@ msgstr "Aktualizacja nośnika(-ów)"
 
 #: ../rpmdrake.pm:762
 #, c-format
-msgid ""
-"No active medium found. You must enable some media to be able to update them."
+msgid "No active medium found. You must enable some media to be able to update them."
 msgstr ""
 "Nie odnaleziono aktywnego nośnika. Aby zaktualizować nośnik należy go "
 "aktywować."
@@ -3041,10 +3031,8 @@ msgstr "Pomoc uruchomiona w tle"
 
 #: ../rpmdrake.pm:900
 #, c-format
-msgid ""
-"The help window has been started, it should appear shortly on your desktop."
-msgstr ""
-"Okno pomocy zostało uruchomione, powinno wkrótce pojawić się na ekranie."
+msgid "The help window has been started, it should appear shortly on your desktop."
+msgstr "Okno pomocy zostało uruchomione, powinno wkrótce pojawić się na ekranie."
 
 #: ../grpmi/curl_download/curl_download.xs:86
 msgid "Download directory does not exist"
@@ -3306,8 +3294,7 @@ msgstr "Nieznany kod błędu %d\n"
 
 #: data/rpmdrake-browse-only.desktop.in.h:1
 msgid "A graphical front end for browsing installed & available packages"
-msgstr ""
-"Graficzny program do przeglądania zainstalowanych i dostępnych pakietów"
+msgstr "Graficzny program do przeglądania zainstalowanych i dostępnych pakietów"
 
 #: data/rpmdrake-browse-only.desktop.in.h:2
 msgid "Browse Available Software"
@@ -3324,3 +3311,4 @@ msgstr "Instalacja i usuwanie oprogramowania"
 #: data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "Menedżer nośników oprogramowania"
+
