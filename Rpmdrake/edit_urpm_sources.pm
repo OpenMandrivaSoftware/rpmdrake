@@ -1190,7 +1190,7 @@ sub run() {
     local $ugtk2::wm_icon = "title-install";
     my $lock;
     {
-        $urpm = urpm->new;
+        $urpm = fast_open_urpmi_db();
         local $urpm->{fatal} = sub {
             interactive_msg('rpmdrake',
                             N("Packages database is locked. Please close other applications
