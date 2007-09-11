@@ -155,6 +155,8 @@ my (@update_medias, $is_update_media_already_asked);
 
 sub warn_about_media {
     my ($w, $opts) = @_;
+
+    # we use our own instance of the urpmi db in order not to mess up with skip-list managment (#31092):
     my $urpm = open_urpmi_db();
 
     my $update_name = 'update_source';
