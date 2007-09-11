@@ -349,10 +349,29 @@ sub get_pkgs {
     foreach my $pkg (@{$urpm->{depslist}}) {
         $update->();
 	$pkg->flag_upgrade or next;
+        my $name = urpm_name($pkg);
+        push @installable_pkgs, $name;
+        $all_pkgs{$name} = { pkg => $pkg, summary => $pkg->summary };
+    }
+    foreach my $medium (@search_medias) {
+        $update->();
+      foreach my $pkg_id ($medium->{start} .. $medium->{end}) {
+          my $pkg = $urpm->{depslist}[$pkg_id];
+          $pkg->flag_upgrade or next;
+          my $name = urpm_name($pkg);
+	  	push @backports, $name;
+          $all_pkgs{$name} = { pkg => $pkg, summary => $pkg->summary };
+      }
+    }
+    foreach my $medium (@update_medias) {
+        $update->();
+      foreach my $pkg_id ($medium->{start} .. $medium->{end}) {
+          my $pkg = $urpm->{depslist}[$pkg_id];
+          $pkg->flag_upgrade or next;
         my $selected = 0;
         my $name = urpm_name($pkg);
 
-	if (member($name, @requested) && any { $pkg->id >= $_->{start} && $pkg->id <= $_->{end} } @update_medias) {
+	if (member($name, @requested)) {
             if ($::rpmdrake_options{'pkg-sel'} || $::rpmdrake_options{'pkg-nosel'}) {
 		my $n = $name;
 		$pkg_sel{$n} || $pkg_nosel{$n} or next;
@@ -362,17 +381,11 @@ sub get_pkgs {
              $selected = member($name, @requested_strict);
 	    }
             push @updates, $name;
-	} else {
-         push @installable_pkgs, $name;
-         if (@search_medias) {
-             my $raw_medium = pkg2medium($pkg, $urpm);
-             my $medium = $raw_medium->{name};
-             push @backports, $name if any { $_->{start} <= $pkg->id && $pkg->id <= $_->{end} } @search_medias;
-         }
-     }
+	}
         $all_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg,
                                        summary => $pkg->summary,
                                    };
+      }
     }
     if ($::rpmdrake_options{'pkg-sel'} && $::rpmdrake_options{'pkg-nosel'}) {
         push @{$::rpmdrake_options{'pkg-nosel'}}, @{$::rpmdrake_options{'pkg-sel'}};
@@ -383,7 +396,7 @@ sub get_pkgs {
 
     # urpmi only care about the first medium where it found the package,
     # so there's no need to list the same package several time:
-    @installable_pkgs = uniq(@installable_pkgs);
+    @installable_pkgs = uniq(difference2(\@installable_pkgs, \@updates));
 
     +{ urpm => $urpm,
        all_pkgs => \%all_pkgs,
