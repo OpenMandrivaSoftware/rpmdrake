@@ -1,3 +1,74 @@
+2007-09-11 15:23  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* edit-urpm-sources.pl: use Rpmdrake::init in order to parse
+	  options, eventually enabling
+	  --urpmi-root options and the like
+
+2007-09-11 15:22  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (run) use fast_open_urpmi_db()
+	  instead of urpm::new() in order to
+	  support --urpmi-root and the like options
+
+2007-09-11 15:21  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: simplify by reusing
+	  Rpmdrake::open_db::fast_open_urpmi_db()
+
+2007-09-11 15:19  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/open_db.pm: (fast_open_urpmi_db) split it out of
+	  open_urpmi_db() in order to
+	  factorize code into edit-urpm-sources and enable it to support
+	  --urpmi-root option
+	  
+	  callers don't have the pay the urpm::media::configure() heavy
+	  cost
+
+2007-09-11 15:13  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, Rpmdrake/open_db.pm, Rpmdrake/pkg.pm,
+	  Rpmdrake/rpmnew.pm, rpmdrake: (open_rpm_db,open_urpmi_db) split
+	  them from Rpmdrake::pkg into
+	  Rpmdrake::open_db (needed for next commits in order not to
+	  increase
+	  edit-urpm-sources startup time)
+
+2007-09-11 14:56  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: perl_checker cleanups
+
+2007-09-11 14:49  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (open_rpm_db) obvioulsly wasn't been converted
+	  when renaming options
+	  as rpmdrake_options on 2007-08-27
+
+2007-09-11 13:31  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (open_urpmi_db) shrink opening urpmi DB time by
+	  30% (#33334)
+
+2007-09-11 12:41  kmashrab
+
+	* po/uz.po, po/uz@Latn.po: New translation.
+
+2007-09-11 11:44  ybando
+
+	* po/ja.po: Japanese translation updated.
+
+2007-09-11 10:16  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
+2007-09-11 10:16  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: add missing entries
+
+2007-09-11 10:16  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: kill doble entries
+
 2007-09-11 09:44  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Rpmdrake/pkg.pm: (perform_installation) do not pass "clean_all"
