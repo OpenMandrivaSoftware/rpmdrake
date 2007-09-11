@@ -190,15 +190,15 @@ sub run_treeview_dialog {
     my %columns = (
         'name' => {
             title => N("Package"),
-            text => $pkg_columns{short_name}
+            text => $pkg_columns{short_name},
         },
         'version' => {
             title => N("Version"),
-            text => $pkg_columns{version}
+            text => $pkg_columns{version},
         },
         'arch' => {
             title => N("Arch"),
-            text => $pkg_columns{arch}
+            text => $pkg_columns{arch},
         },
     );
     foreach my $col (@columns{qw(name version arch)}) {
