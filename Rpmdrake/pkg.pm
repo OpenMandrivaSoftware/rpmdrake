@@ -211,6 +211,7 @@ Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		    $update_name, make_url_mirror($m), 'media_info/synthesis.hdlist.cz', update => 1,
 		);
 		@update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
+		return 1;
 	    }
 }
 
@@ -230,9 +231,16 @@ sub get_pkgs {
 
     my $urpm = open_urpmi_db();
     my $_lock = urpm::lock::urpmi_db($urpm);
+
+    # build media list for warn_about_media():
     @update_medias = get_update_medias($urpm);
 
-    warn_about_media($w, $opts);
+    if (warn_about_media($w, $opts)) {
+        # reread db since it has been reconfigured:
+        $urpm = open_urpmi_db();
+        # update media list in case warn_about_media() added some:
+        @update_medias = get_update_medias($urpm);
+    }
 
     Rpmdrake::gurpm::label(N("Reading updates description"));
     Rpmdrake::gurpm::progress(0.05);
