@@ -541,7 +541,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 
 	$state->{selected},
-	clean_all => 0
     );
     if (!$local_sources && (!$list || !@$list)) {
         interactive_msg(
