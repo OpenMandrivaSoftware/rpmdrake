@@ -30,7 +30,7 @@ use urpm;
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(open_rpm_db open_urpmi_db);
+our @EXPORT = qw(fast_open_urpmi_db open_rpm_db open_urpmi_db);
 
 
 # because rpm blocks some signals when rpm DB is opened, we don't keep open around:
@@ -55,8 +55,9 @@ sub open_rpm_db {
     }
 }
 
-sub open_urpmi_db() {
-    my $error_happened;
+# do not pay the urpm::media::configure() heavy cost:
+my $error_happened;
+sub fast_open_urpmi_db() {
     my $urpm = urpm->new;
     $urpm->{options}{'split-level'} ||= 20;
     $urpm->{options}{'split-length'} ||= 1;
@@ -72,8 +73,14 @@ sub open_urpmi_db() {
         interactive_msg(N("Fatal error"),
                          N("A fatal error occurred: %s.", $_[1]));
     };
-    my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
+
     urpm::media::read_config($urpm);
+    $urpm;
+}
+
+sub open_urpmi_db() {
+    my $urpm = fast_open_urpmi_db();
+    my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
 
     my $searchmedia = join(',', map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}});
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia));
