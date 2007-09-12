@@ -1,3 +1,67 @@
+2007-09-12 14:14  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs,warn_about_media) simplify workflow,
+	  ensure we never perform
+	  more than 2 costly urpm::media::configure() in worse case and
+	  only one
+	  in regular case
+
+2007-09-12 14:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (warn_about_media) we don't really need to
+	  perform a costly
+	  urpm::media::configure() here; urpm::media::read_config() is
+	  enough
+
+2007-09-11 22:45  kamberd
+
+	* po/he.po: update translation for Hebrew
+
+2007-09-11 22:00  mmodem
+
+	* po/pt.po: up
+
+2007-09-11 21:06  Wanderlei Antonio Cavassin <cavassin at mandriva.com>
+
+	* po/pt_BR.po: Updated pt_BR translation
+
+2007-09-11 19:02  Arpad Biro <biro_arpad at yahoo.com>
+
+	* po/hu.po: update
+
+2007-09-11 17:27  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (warn_about_media) kill a label unused for years
+
+2007-09-11 17:26  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs,warn_about_media) reread the db if we
+	  added a new repository
+
+2007-09-11 17:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_update_medias) split it out of get_pkgs()
+
+2007-09-11 17:05  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (warn_about_media) further improve startup time
+	  by killing a costly
+	  urpm::media::configure that is only needed in some cases (#33334)
+
+2007-09-11 17:02  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (warn_about_media) explain why we own our own
+	  instance of the urpmi db
+	  in order not to mess up with skip-list managment (#31092)
+
+2007-09-11 17:01  mmodem
+
+	* po/pt.po: up
+
+2007-09-11 16:57  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2007-09-11 16:56  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Makefile: bump release (3.92)
