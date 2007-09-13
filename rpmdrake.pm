@@ -202,6 +202,7 @@ sub interactive_msg {
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     $contents = formatAlaTeX($contents) unless $options{scroll}; #- because we'll use a WrappedLabel
     my $banner = $options{banner} ? getbanner() : undef;
+    my $text_w;
     gtkadd(
 	$d->{window},
 	gtkpack_(
@@ -211,11 +212,8 @@ sub interactive_msg {
 	    (
 		$options{scroll} ? gtkadd(
 		    gtkset_shadow_type(Gtk2::Frame->new, 'in'),
-		    gtkset_size_request(
-			create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)),
-			$typical_width*2, 300
-		    )
-		) : Gtk2::WrappedLabel->new($contents)
+			($text_w = create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents))),
+		) : ($text_w = Gtk2::WrappedLabel->new($contents))
 	    ),
          if_($options{widget}, 0, $options{widget}),
 	    0,
@@ -249,6 +247,7 @@ sub interactive_msg {
 	    )
 	)
     );
+    $text_w->set_size_request($typical_width*2, -1);
     $d->main;
     return $d->{retval};
 }
