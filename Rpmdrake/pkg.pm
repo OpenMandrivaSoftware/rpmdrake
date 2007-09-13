@@ -166,7 +166,13 @@ sub warn_about_media {
     return if $::rpmdrake_options{'no-media-update'};
 
     # we use our own instance of the urpmi db in order not to mess up with skip-list managment (#31092):
+    # and no need to fully configure urpmi since we may have to do it again anyway because of new media:
     my $urpm = fast_open_urpmi_db();
+
+    my $_lock = urpm::lock::urpmi_db($urpm);
+
+    # build media list:
+    @update_medias = get_update_medias($urpm);
 
     # do not update again media after installing/removing some packages:
     $::rpmdrake_options{'no-media-update'} ||= 1;
@@ -227,16 +233,12 @@ sub get_pkgs {
     my $_gurpm_clean_guard = before_leaving { Rpmdrake::gurpm::end() };
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
-    # no need to fully configure urpmi since we may have to do it again anyway because of warn_about_media():
-    my $urpm = fast_open_urpmi_db();
-    my $_lock = urpm::lock::urpmi_db($urpm);
-
-    # build media list for warn_about_media():
-    @update_medias = get_update_medias($urpm);
-
     warn_about_media($w, $opts);
 
-    $urpm = open_urpmi_db();
+    my $urpm = open_urpmi_db();
+
+    my $_lock = urpm::lock::urpmi_db($urpm);
+
     # update media list in case warn_about_media() added some:
     @update_medias = get_update_medias($urpm);
 
