@@ -96,7 +96,7 @@ sub format_pkg_simplifiedinfo {
         push @$s, [ my $link = gtkshow(Gtk2::LinkButton->new($descriptions->{$name}{URL}, N("Security advisory"))) ];
         $link->set_uri_hook(sub {
             my (undef, $url) = @_;
-            run_program::raw({ detach => 1 }, 'www-browser', $url);
+            run_program::raw({ detach => 1, setuid => get_parent_uid() }, 'www-browser', $url);
         });
       }
 
