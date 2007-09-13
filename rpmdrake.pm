@@ -247,7 +247,7 @@ sub interactive_msg {
 	    )
 	)
     );
-    $text_w->set_size_request($typical_width*2, -1);
+    $text_w->set_size_request($typical_width*2, $options{scroll} ? 300 : -1);
     $d->main;
     return $d->{retval};
 }
