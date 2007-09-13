@@ -82,18 +82,20 @@ sub format_pkg_simplifiedinfo {
     my ($name, $version) = split_fullname($key);
     my $raw_medium = pkg2medium($pkgs->{$key}{pkg}, $urpm);
     my $medium = $raw_medium ? $raw_medium->{name} : undef;
-    my $update_descr = $pkgs->{$key}{pkg}->flag_upgrade && $descriptions->{$name}{pre} && $descriptions->{$name}{medium} eq $medium;
+    my $update_descr = $descriptions->{$name};
+    # discard update fields if not matching:
+    undef $update_descr if !($pkgs->{$key}{pkg}->flag_upgrade && $update_descr->{pre} && $update_descr->{medium} eq $medium);
     my $summary = get_summary($key);
     my $s = ugtk2::markup_to_TextView_format(join("\n", format_header(join(' - ', $name, $summary)) .
       # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
                                                       "\x{200b} \x{feff}" . ' ' x 120,
       if_($update_descr, # is it an update?
-	  format_field(N("Importance: ")) . eval { escape_text_for_TextView_markup_format($descriptions->{$name}{importance}) },
-	  format_field(N("Reason for update: ")) . eval { escape_text_for_TextView_markup_format(rpm_description($descriptions->{$name}{pre})) },
+	  format_field(N("Importance: ")) . eval { escape_text_for_TextView_markup_format($update_descr->{importance}) },
+	  format_field(N("Reason for update: ")) . eval { escape_text_for_TextView_markup_format(rpm_description($update_descr->{pre})) },
       ),
       '')); # extra empty line
     if ($update_descr) {
-        push @$s, [ my $link = gtkshow(Gtk2::LinkButton->new($descriptions->{$name}{URL}, N("Security advisory"))) ];
+        push @$s, [ my $link = gtkshow(Gtk2::LinkButton->new($update_descr->{URL}, N("Security advisory"))) ];
         $link->set_uri_hook(sub {
             my (undef, $url) = @_;
             run_program::raw({ detach => 1, setuid => get_parent_uid() }, 'www-browser', $url);
@@ -101,7 +103,7 @@ sub format_pkg_simplifiedinfo {
       }
 
     push @$s, @{ ugtk2::markup_to_TextView_format(join("\n",
-      (eval { escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $descriptions->{$name}{description}) } || '<i>' . N("No description") . '</i>')
+      (eval { escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $update_descr->{description}) } || '<i>' . N("No description") . '</i>')
     )) };
     push @$s, [ "\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
