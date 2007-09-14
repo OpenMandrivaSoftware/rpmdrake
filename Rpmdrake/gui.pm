@@ -82,7 +82,7 @@ sub format_pkg_simplifiedinfo {
     my ($name, $version) = split_fullname($key);
     my $raw_medium = pkg2medium($pkgs->{$key}{pkg}, $urpm);
     my $medium = $raw_medium ? $raw_medium->{name} : undef;
-    my $update_descr = $descriptions->{$name};
+    my $update_descr = $descriptions->{$medium}{$name};
     # discard update fields if not matching:
     my $is_update = ($pkgs->{$key}{pkg}->flag_upgrade && $update_descr && $update_descr->{pre});
     my $summary = get_summary($key);
