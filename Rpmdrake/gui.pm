@@ -84,17 +84,17 @@ sub format_pkg_simplifiedinfo {
     my $medium = $raw_medium ? $raw_medium->{name} : undef;
     my $update_descr = $descriptions->{$name};
     # discard update fields if not matching:
-    undef $update_descr if !($pkgs->{$key}{pkg}->flag_upgrade && $update_descr->{pre} && $update_descr->{medium} eq $medium);
+    my $is_update = ($pkgs->{$key}{pkg}->flag_upgrade && $update_descr && $update_descr->{pre});
     my $summary = get_summary($key);
     my $s = ugtk2::markup_to_TextView_format(join("\n", format_header(join(' - ', $name, $summary)) .
       # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
                                                       "\x{200b} \x{feff}" . ' ' x 120,
-      if_($update_descr, # is it an update?
+      if_($is_update, # is it an update?
 	  format_field(N("Importance: ")) . eval { escape_text_for_TextView_markup_format($update_descr->{importance}) },
 	  format_field(N("Reason for update: ")) . eval { escape_text_for_TextView_markup_format(rpm_description($update_descr->{pre})) },
       ),
       '')); # extra empty line
-    if ($update_descr) {
+    if ($is_update) {
         push @$s, [ my $link = gtkshow(Gtk2::LinkButton->new($update_descr->{URL}, N("Security advisory"))) ];
         $link->set_uri_hook(sub {
             my (undef, $url) = @_;
