@@ -246,7 +246,7 @@ sub get_pkgs {
     Rpmdrake::gurpm::progress(0.05);
 
 	#- parse the description file
-    my %update_descr = urpm::get_updates_description($urpm, @update_medias);
+    my $update_descr = urpm::get_updates_description($urpm, @update_medias);
 
     my $_unused = N("Please wait, finding available packages...");
 
@@ -418,7 +418,7 @@ sub get_pkgs {
        installed => \@installed_pkgs,
        installable => \@installable_pkgs,
        updates => \@updates,
-       update_descr => \%update_descr,
+       update_descr => $update_descr,
        backports => \@backports,
    };
 }
