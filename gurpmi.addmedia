@@ -23,6 +23,7 @@
 # $Id$
 
 use strict;
+use Rpmdrake::open_db;
 
 BEGIN {
     @ARGV == 0 || "@ARGV" =~ /-h/ and do {
@@ -110,8 +111,7 @@ to your system from that new medium.", $names[0])
     yesno => 1) or myexit(-1);
 };
 
-my $urpm = urpm->new;
-urpm::media::read_config($urpm);
+my $urpm = fast_open_urpmi_db();
 my $success = 1;
 foreach (@addmedia_args) {
     #- NB: that short circuits
