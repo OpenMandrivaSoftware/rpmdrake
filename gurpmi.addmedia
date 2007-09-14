@@ -103,7 +103,7 @@ $fromfile and do {
 N("%s
 
 Is it ok to continue?",
-@names > 1
+$distrib || 1 < @names
 ? N("You are about to add new packages media, %s.
 That means you will be able to add new software packages
 to your system from these new media.", join ", ", @names)
