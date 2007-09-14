@@ -85,7 +85,7 @@ while (@ARGV) {
     $with eq 'with' or ($with, $with_hdlist) = (undef, undef);
     if ($url !~ m,^(([^:]*):/)?/,) {
 	interactive_msg('gurpmi.addmedia',
-			N("bad <url> (for local directory, the path must be absolute)"));
+			N("bad <url> (for local directory, the path must be absolute)") . "\n\n$url");
 	myexit(-1);
     }
     if ($with && !$with_hdlist) {
