@@ -76,7 +76,6 @@ our @EXPORT = qw(
     statusbar_msg_remove
     choose_mirror
     make_url_mirror
-    make_url_mirror_dist
     show_urpm_progress
     update_sources
     update_sources_check
@@ -638,12 +637,6 @@ sub make_url_mirror {
     my ($mirror) = @_;
     # because updates media do not provide media.cfg yet
     $mirror . '/media/main/updates';
-}
-
-sub make_url_mirror_dist {
-    my ($mirror) = @_;
-    $mirror =~ s!/(?:RPMS|media/main)/?\Z!/!;
-    $mirror;
 }
 
 sub show_urpm_progress {
