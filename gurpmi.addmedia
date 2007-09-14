@@ -37,6 +37,7 @@ where <url> is one of
        removable://<path>
 
 and [options] are from
+  --distrib        install a set of media from a distribution
   --update         create an update medium.
   --silent-success don't show popup window on success
 ";
@@ -62,10 +63,11 @@ if (@ARGV == 1 && $ARGV[0] =~ /\.urpmi-media$/) {
     $fromfile = 1;
 }
 
-my ($update, $silent_success) = (0, 0);
+my ($update, $distrib, $silent_success) = (0, 0, 0);
 
 GetOptions(
     'update'	     => \$update,
+    'distrib'       => \$distrib,
     'silent-success' => \$silent_success,
 );
 
@@ -118,7 +120,7 @@ foreach (@addmedia_args) {
     #- NB: that short circuits
     $success = $success && add_medium_and_check(
 	$urpm,
-	{ probe_with => !$_->[2] },
+	{ probe_with => !$_->[2], distrib => $distrib },
 	$_->[0],
 	$_->[1],
 	$_->[3],
