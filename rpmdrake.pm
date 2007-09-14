@@ -210,10 +210,9 @@ sub interactive_msg {
 	    if_($banner, 0, $banner),
 	    1,
 	    (
-		$options{scroll} ? gtkadd(
-		    gtkset_shadow_type(Gtk2::Frame->new, 'in'),
-			($text_w = create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents))),
-		) : ($text_w = Gtk2::WrappedLabel->new($contents))
+		$options{scroll} ?
+            ($text_w = create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)))
+              : ($text_w = Gtk2::WrappedLabel->new($contents))
 	    ),
          if_($options{widget}, 0, $options{widget}),
 	    0,
