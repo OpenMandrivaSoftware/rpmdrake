@@ -346,7 +346,8 @@ sub run_treeview_dialog {
     };
 
     my $hpaned = gtknew('HPaned',
-                        child1 => gtknew('ScrolledWindow', child => $tree, width => $typical_width*0.9) , resize1 => 0, shrink1 => 0,
+                        child1 => gtknew('ScrolledWindow', child => $tree, width => $typical_width*0.9),
+                        resize1 => 0, shrink1 => 0,
                         resize2 => 1, shrink2 => 0,
                         child2 => gtknew('VPaned',
                                          child1 => gtknew('ScrolledWindow', child => $detail_list), resize1 => 1, shrink1 => 0,
