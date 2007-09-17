@@ -70,12 +70,8 @@ sub urpm_name {
 
 sub pkg2medium {
     my ($p, $urpm) = @_;
-    my $id = $p->id;
-    return { name => N("None") } if !$id;
-    foreach (@{$urpm->{media}}) {
-        !$_->{ignore} && $id >= $_->{start} && $id <= $_->{end} and return $_;
-    }
-    undef;
+    return { name => N("None") } if !$p->id; # if installed
+    URPM::pkg2media($urpm->{media}, $p) || undef;
 }
 
 #- strftime returns a string in the locale charset encoding;
