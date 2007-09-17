@@ -210,7 +210,7 @@ sub run_treeview_dialog {
                                                     )
             );
     }
-    $columns{$_}{widget}->set_sizing('autosize') foreach  qw(name version arch);
+    $columns{$_}{widget}->set_sizing('autosize') foreach qw(name version arch);
     $columns{name}{widget}->set_property('expand', '1');
     $columns{name}{renderer}->set_property('ellipsize', 'end');
     $columns{$_}{renderer}->set_property('xpad', '6') foreach qw(name version arch);
