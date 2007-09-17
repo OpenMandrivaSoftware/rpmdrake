@@ -48,7 +48,7 @@ use urpm::args qw();
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs parse_compssUsers_flat perform_installation perform_removal run_rpm);
+our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs parse_compssUsers_flat perform_installation perform_removal run_rpm $spacing);
 
 use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
@@ -90,11 +90,12 @@ sub run_rpm {
 }
 
 
+our $spacing = "        ";
 sub extract_header {
     my ($pkg, $urpm) = @_;
     my $chg_prepro = sub {
 	#- preprocess changelog for faster TextView insert reaction
-	[ map { [ "$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
+	[ map { [ "$spacing$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
     };
     my $name = urpm_name($pkg->{pkg});
     if ($pkg->{pkg}->flag_installed && !$pkg->{pkg}->flag_upgrade) {

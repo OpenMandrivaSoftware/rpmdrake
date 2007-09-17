@@ -111,7 +111,7 @@ sub format_pkg_simplifiedinfo {
     push @$s, [ "\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
                        gtknew('TextView', text => ugtk2::markup_to_TextView_format(
-                           join("\n",
+                           $spacing . join("\n$spacing",
                                 format_field(N("Version: ")) . $version,
                                 
                                 ($pkgs->{$key}{pkg}->flag_installed ?
@@ -129,7 +129,7 @@ sub format_pkg_simplifiedinfo {
     push @$s, [ gtkadd(gtkshow(my $exp = Gtk2::Expander->new(format_field(N("Files:")))),
                        gtknew('TextView', text => 
                                       exists $pkgs->{$key}{files} ?
-                                          ugtk2::markup_to_TextView_format('<tt>' . join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}) . '</tt>') #- to highlight information
+                                          ugtk2::markup_to_TextView_format('<tt>' . $spacing . join("\n$spacing", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}) . '</tt>') #- to highlight information
                            : N("(Not available)"),
                    )) ];
     $exp->set_use_markup(1);
