@@ -237,7 +237,8 @@ sub add_node {
         if (is_a_package($leaf)) {
             my ($name, $version, $arch) = split_fullname($leaf);
             $iter = $w->{detail_list_model}->append_set([ $pkg_columns{text} => $leaf,
-                                                          $pkg_columns{short_name} => $name . "\n" . get_summary($leaf),
+                                                          $pkg_columns{short_name} => '<b>' . $name . '</b>' .
+                                                            "\n" . get_summary($leaf),
                                                           $pkg_columns{version} => $version,
                                                           $pkg_columns{arch} => $arch,
                                                       ]);
