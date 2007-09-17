@@ -86,7 +86,10 @@ sub format_pkg_simplifiedinfo {
     # discard update fields if not matching:
     my $is_update = ($pkgs->{$key}{pkg}->flag_upgrade && $update_descr && $update_descr->{pre});
     my $summary = get_summary($key);
-    my $s = ugtk2::markup_to_TextView_format(join("\n", format_header(join(' - ', $name, $summary)) .
+    my $s = ugtk2::markup_to_TextView_format(
+        # force align "name - summary" to the right with RTL languages (#33603):
+        (lang::text_direction_rtl() ? "\x{200f}" : ()) .
+        join("\n", format_header(join(' - ', $name, $summary)) .
       # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
                                                       "\x{200b} \x{feff}" . ' ' x 120,
       if_($is_update, # is it an update?
