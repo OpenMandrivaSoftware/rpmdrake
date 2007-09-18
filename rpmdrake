@@ -209,6 +209,7 @@ sub run_treeview_dialog {
                                                         ($col->{markup} ? (markup => $col->{markup}) : (text => $col->{text})),
                                                     )
             );
+        $col->{widget}->set_sort_column_id($col->{markup} ? $col->{markup} : $col->{text});
     }
     $columns{$_}{widget}->set_sizing('autosize') foreach qw(name version arch);
     $columns{name}{widget}->set_property('expand', '1');
