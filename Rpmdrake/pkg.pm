@@ -230,9 +230,9 @@ sub get_pkgs {
     my ($opts) = @_;
     my $w = $::main_window;
 
-    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
+    my $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $_gurpm_clean_guard = before_leaving { Rpmdrake::gurpm::end() };
-    my $_flush_guard = Gtk2::GUI_Update_Guard->new;
+    #my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     warn_about_media($w, $opts);
 
@@ -243,8 +243,8 @@ sub get_pkgs {
     # update media list in case warn_about_media() added some:
     @update_medias = get_update_medias($urpm);
 
-    Rpmdrake::gurpm::label(N("Reading updates description"));
-    Rpmdrake::gurpm::progress(0.05);
+    $gurpm->label(N("Reading updates description"));
+    $gurpm->progress(0.05);
 
 	#- parse the description file
     my $update_descr = urpm::get_updates_description($urpm, @update_medias);
@@ -255,8 +255,8 @@ sub get_pkgs {
 
     my $level = 0.05;
     my $total = @{$urpm->{depslist}};
-    Rpmdrake::gurpm::label(N("Please wait, listing base packages..."));
-    Rpmdrake::gurpm::progress($level);
+    $gurpm->label(N("Please wait, listing base packages..."));
+    $gurpm->progress($level);
 
     my ($count, $prev_stage, $new_stage, $limit);
     
@@ -267,7 +267,7 @@ sub get_pkgs {
         $new_stage = $level+($limit-$level)*$count/$total;
         if ($prev_stage + 0.01 < $new_stage) {
             $prev_stage = $new_stage;
-            Rpmdrake::gurpm::progress($new_stage);
+            $gurpm->progress($new_stage);
         }
     };
 
@@ -292,8 +292,8 @@ sub get_pkgs {
 	    $base{$_} = \$n;
 	}
     }
-    Rpmdrake::gurpm::label(N("Please wait, finding installed packages..."));
-    Rpmdrake::gurpm::progress($level = 0.33);
+    $gurpm->label(N("Please wait, finding installed packages..."));
+    $gurpm->progress($level = 0.33);
     $reset_update->(0.66);
     my (@installed_pkgs, %all_pkgs);
     if (!$probe_only_for_updates) {
@@ -325,8 +325,8 @@ sub get_pkgs {
     $urpm->{state} = {};
     my (@installable_pkgs, @updates);
 
-    Rpmdrake::gurpm::label(N("Please wait, finding available packages..."));
-    Rpmdrake::gurpm::progress($level = 0.66);
+    $gurpm->label(N("Please wait, finding available packages..."));
+    $gurpm->progress($level = 0.66);
 
     check_update_media_version($urpm, @update_medias);
 
@@ -354,7 +354,7 @@ sub get_pkgs {
         $urpm->{depslist}[$_]->set_flag_installed foreach keys %$requested; #- pretend it's installed
     }
     $urpm->{rpmdrake_state} = $state; #- Don't forget it
-    Rpmdrake::gurpm::progress($level = 0.7);
+    $gurpm->progress($level = 0.7);
 
     my @search_medias = grep { $_->{searchmedia} } @{$urpm->{media}};
 
@@ -486,10 +486,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my @error_msgs;
     my $statusbar_msg_id;
+    my $gurpm;
     local $urpm->{fatal} = sub {
         my $fatal_msg = $_[1];
         printf STDERR "Fatal: %s\n", $fatal_msg;
-        Rpmdrake::gurpm::end();
+        undef $gurpm;
         interactive_msg(N("Installation failed"),
                         N("There was a problem during the installation:\n\n%s", $fatal_msg));
         goto return_with_exit_code;
@@ -553,8 +554,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     # select packages to uninstall for !update mode:
     perform_removal($urpm, { map { $_ => $pkgs->{$_} } @to_remove }) if !$probe_only_for_updates;
 
-    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
-    my $_guard = before_leaving { Rpmdrake::gurpm::end() };
+    $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $canceled;
     my $something_installed;
 
@@ -566,14 +566,14 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         my $pkg = defined $id ? $urpm->{depslist}[$id] : undef;
         if ($subtype eq 'start') {
             if ($type eq 'trans') {
-                Rpmdrake::gurpm::label(1 ? N("Preparing packages installation...") : N("Preparing package installation transaction..."));
+                $gurpm->label(1 ? N("Preparing packages installation...") : N("Preparing package installation transaction..."));
                 } elsif (defined $pkg) {
                     $something_installed = 1;
-                    Rpmdrake::gurpm::label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$transaction_progress_nb, scalar(@{$transaction->{upgrade}}))
+                    $gurpm->label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$transaction_progress_nb, scalar(@{$transaction->{upgrade}}))
                                              . "\n" . N("Total: %s/%s", ++$progress_nb, $install_count));
                 }
         } elsif ($subtype eq 'progress') {
-            Rpmdrake::gurpm::progress($total ? $amount/$total : 1);
+            $gurpm->progress($total ? $amount/$total : 1);
         }
     };
 
@@ -582,7 +582,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              completed => sub {
                                  # explicitly destroy the progress window when it's over; we may
                                  # have sg to display before returning (errors, rpmnew/rpmsave, ...):
-                                 Rpmdrake::gurpm::end();
+                                 undef $gurpm;
                                        
                                  undef $lock;
                                  undef $rpm_lock;
@@ -592,7 +592,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              ask_yes_or_no => sub {
                                  # handle 'allow-force' and 'allow-nodeps' options:
                                  my ($title, $msg) = @_;
-                                 local $::main_window = $Rpmdrake::gurpm::mainw->{real_window};
+                                 local $::main_window = $$gurpm->mainw->{real_window};
                                  interactive_msg($title, $msg, yesno => 1, scroll => 1,
                                  ) or goto return_with_exit_code;
                              },
@@ -603,10 +603,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              trans_log => sub {
                                  my ($mode, $file, $percent, $total, $eta, $speed) = @_;
                                  if ($mode eq 'start') {
-                                     Rpmdrake::gurpm::label(N("Downloading package `%s'...", basename($file)));
-                                     Rpmdrake::gurpm::validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
+                                     $gurpm->label(N("Downloading package `%s'...", basename($file)));
+                                     $gurpm->validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
                                  } elsif ($mode eq 'progress') {
-                                     Rpmdrake::gurpm::label(
+                                     $gurpm->label(
                                          join("\n",
                                               N("Downloading package `%s'...", basename($file)),
                                               (defined $total && defined $eta ?
@@ -615,10 +615,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                ) =~ /^\s*(.*)/
                                            ),
                                      );
-                                     Rpmdrake::gurpm::progress($percent/100);
+                                     $gurpm->progress($percent/100);
                                  } elsif ($mode eq 'end') {
-                                     Rpmdrake::gurpm::progress(1);
-                                     Rpmdrake::gurpm::invalidate_cancel();
+                                     $gurpm->progress(1);
+                                     $gurpm->invalidate_cancel();
                                  }
                                  $canceled and goto return_with_exit_code;
 
@@ -649,18 +649,18 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                      yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
                                  );
                              },
-                             pre_check_sig => sub { Rpmdrake::gurpm::label(N("Verifying package signatures...")) },
-                             check_sig => sub { Rpmdrake::gurpm::progress(++$progress/$total) },
+                             pre_check_sig => sub { $gurpm->label(N("Verifying package signatures...")) },
+                             check_sig => sub { $gurpm->progress(++$progress/$total) },
                              bad_signature => sub {
                                  my ($msg, $msg2) = @_;
-                                 local $::main_window = $Rpmdrake::gurpm::mainw->{real_window};
+                                 local $::main_window = $$gurpm->mainw->{real_window};
                                  interactive_msg(
                                      N("Warning"), "$msg\n$msg2", yesno => 1, if_(10 < $msg =~ tr/\n/\n/, scroll => 1),
                                  ) or goto return_with_exit_code;
                              },
                              post_download => sub {
                                  $canceled and goto return_with_exit_code;
-                                 Rpmdrake::gurpm::invalidate_cancel_forever();
+                                 $gurpm->invalidate_cancel_forever();
                              },
                              missing_files_summary => sub {
                                  my ($error_sources) = @_;
@@ -723,8 +723,7 @@ sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
     return if !@toremove;
-    Rpmdrake::gurpm::init(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
-    my $_a = before_leaving { Rpmdrake::gurpm::end() };
+    my $gurpm = Rpmdrake::gurpm::new(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
 
     my $progress = -1;
     local $urpm->{log} = sub {
@@ -732,8 +731,8 @@ sub perform_removal {
         print $str;
         $progress++;
         return if $progress <= 0; # skip first "creating transaction..." message
-        Rpmdrake::gurpm::label($str); # display "removing package %s"
-        Rpmdrake::gurpm::progress(min(0.99, scalar($progress/@toremove)));
+        $gurpm->label($str); # display "removing package %s"
+        $gurpm->progress(min(0.99, scalar($progress/@toremove)));
         gtkflush();
     };
 
@@ -745,7 +744,7 @@ sub perform_removal {
 	    @results = $::rpmdrake_options{parallel}
 		? urpm::parallel::remove($urpm, \@toremove)
 		: urpm::install::install($urpm, \@toremove, {}, {},
-                                   callback_report_uninst => sub { Rpmdrake::gurpm::label($_[0]) },
+                                   callback_report_uninst => sub { $gurpm->label($_[0]) },
                                );
 	    open_rpm_db('force_sync');
 	},

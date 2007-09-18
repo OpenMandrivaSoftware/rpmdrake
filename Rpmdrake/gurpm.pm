@@ -27,77 +27,82 @@ use strict;
 use lib qw(/usr/lib/libDrakX);
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
+use base qw(ugtk2);
 
 
-our ($mainw, $label, $progressbar, $vbox, $cancel, $hbox_cancel);
-
-my $previous_main_window;
-
-sub init {
-    my ($title, $initializing, %options) = @_;
-    $mainw = ugtk2->new($title, %options, default_width => 600, width => 600);
-    $previous_main_window = $::main_window;
+sub new {
+    my ($self, $title, $initializing, %options) = @_;
+    my $mainw = bless(ugtk2->new($title, %options, default_width => 600, width => 600), $self);
+    $mainw->{previous_main_window} = $::main_window;
     $::main_window = $mainw->{real_window};
-    $label = gtknew('Label', text => $initializing, alignment => [ 0.5, 0 ]);
+    $mainw->{label} = gtknew('Label', text => $initializing, alignment => [ 0.5, 0 ]);
     # size label's heigh to 2 lines in order to prevent dummy vertical resizing:
-    my $context = $label->get_layout->get_context;
-    my $metrics = $context->get_metrics($label->style->font_desc, $context->get_language);
-    $label->set_size_request(-1, 2 * Gtk2::Pango->PANGO_PIXELS($metrics->get_ascent + $metrics->get_descent));
+    my $context = $mainw->{label}->get_layout->get_context;
+    my $metrics = $context->get_metrics($mainw->{label}->style->font_desc, $context->get_language);
+    $mainw->{label}->set_size_request(-1, 2 * Gtk2::Pango->PANGO_PIXELS($metrics->get_ascent + $metrics->get_descent));
 
-    $progressbar = gtknew('ProgressBar');
-    gtkadd($mainw->{window}, $vbox = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [ $label, $progressbar ]));
+    $mainw->{progressbar} = gtknew('ProgressBar');
+    gtkadd($mainw->{window}, $mainw->{vbox} = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [
+        $mainw->{label},
+        $mainw->{progressbar}
+    ]));
     $mainw->{rwindow}->set_position('center-on-parent');
-    $mainw->sync;
+    $mainw->SUPER::sync;
+    $mainw;
 }
 
 sub label {
-    $label->set($_[0]);
+    my ($self, $label) = @_;
+    $self->{label}->set($label);
     select(undef, undef, undef, 0.1);  #- hackish :-(
-    $mainw->flush;
+    $self->flush;
 }
 
 sub progress {
-    my ($fraction) = @_;
+    my ($self, $fraction) = @_;
     $fraction = 0 if $fraction < 0;
     $fraction = 1 if 1 < $fraction;
-    $progressbar->set_fraction($fraction);
-    $mainw->flush;
+    $self->{progressbar}->set_fraction($fraction);
+    $self->flush;
 }
 
-sub end() {
-    $mainw and $mainw->destroy;
-    $mainw = undef;
-    $cancel = undef;  #- in case we'll do another one later
-    $::main_window = $previous_main_window;
+sub DESTROY {
+    my ($self) = @_;
+    $::main_window = $self->{previous_main_window};
+    $self and $self->destroy;
+    $self = undef;
+    $self->{cancel} = undef;  #- in case we'll do another one later
 }
 
 sub validate_cancel {
-    my ($cancel_msg, $cancel_cb) = @_;
-    if (!$cancel) {
+    my ($self, $cancel_msg, $cancel_cb) = @_;
+    if (!$self->{cancel}) {
         gtkpack__(
-	    $vbox,
-	    $hbox_cancel = gtkpack__(
+	    $self->{vbox},
+	    $self->{hbox_cancel} = gtkpack__(
 		gtknew('HButtonBox'),
-		$cancel = gtknew('Button', text => $cancel_msg, clicked => \&$cancel_cb),
+		$self->{cancel} = gtknew('Button', text => $cancel_msg, clicked => \&$cancel_cb),
 	    ),
 	);
     }
-    $cancel->set_sensitive(1);
-    $cancel->show;
+    $self->{cancel}->set_sensitive(1);
+    $self->{cancel}->show;
 }
 
-sub invalidate_cancel() {
-    $cancel and $cancel->set_sensitive(0);
+sub invalidate_cancel {
+    my ($self) = @_;
+    $self->{cancel} and $self->{cancel}->set_sensitive(0);
 }
 
-sub invalidate_cancel_forever() {
-    $hbox_cancel or return;
-    $hbox_cancel->destroy;
+sub invalidate_cancel_forever {
+    my ($self) = @_;
+    $self->{hbox_cancel} or return;
+    $self->{hbox_cancel}->destroy;
     # FIXME: temporary workaround that prevents
     # Gtk2::Label::set_text() set_text_internal() -> queue_resize() ->
     # size_allocate() call chain to mess up when ->shrink_topwindow()
     # has been called (#32613):
-    #$mainw->shrink_topwindow;
+    #$self->shrink_topwindow;
 }
 
 1;
