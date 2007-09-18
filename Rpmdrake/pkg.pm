@@ -654,8 +654,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              bad_signature => sub {
                                  my ($msg, $msg2) = @_;
                                  local $::main_window = $gurpm->{mainw}->{real_window};
+                                 $msg =~ s/:$/\n\n/m; # FIXME: to be fixed in urpmi after 2008.0
                                  interactive_msg(
-                                     N("Warning"), "$msg\n$msg2", yesno => 1, if_(10 < $msg =~ tr/\n/\n/, scroll => 1),
+                                     N("Warning"), "$msg\n\n$msg2", yesno => 1, if_(10 < $msg =~ tr/\n/\n/, scroll => 1),
                                  ) or goto return_with_exit_code;
                              },
                              post_download => sub {
