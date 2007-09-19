@@ -9,6 +9,7 @@ POFILES = $(wildcard *.po)
 MOFILES = $(POFILES:%.po=%.mo)
 LANGS = $(POFILES:%.po=%)
 
+top_srcdir=..
 PREFIX = $(RPM_BUILD_ROOT)/usr
 DATADIR = $(PREFIX)/share
 LOCALEDIR=$(DATADIR)/locale
@@ -26,7 +27,7 @@ merge: $(PGOAL).pot
 	done
 
 $(PGOAL).pot: $(PL_FILES) $(CFILES)
-	INTLTOOL_EXTRACT=./intltool-extract ./intltool-update --gettext-package desktopstuff --pot
+	intltool-update --gettext-package desktopstuff --pot
 	perl_checker -q --generate-pot $(PGOAL)_tmp.pot $(PL_FILES)
 	xgettext -F -n --add-comments='-PO' \
 		--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
