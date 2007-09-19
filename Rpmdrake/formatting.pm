@@ -33,7 +33,7 @@ use ugtk2 qw(escape_text_for_TextView_markup_format);
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(format_field format_header localtime2changelog my_fullname pkg2medium rpm_description split_fullname urpm_name);
+our @EXPORT = qw(format_field format_header format_name_n_summary localtime2changelog my_fullname pkg2medium rpm_description split_fullname urpm_name);
 
 
 sub rpm_description {
@@ -81,6 +81,11 @@ sub pkg2medium {
 #- it doesn't work if those two variables have values with different
 #- encodings; but if a user has a so broken setup we can't do much anyway
 sub localtime2changelog { to_utf8(POSIX::strftime("%c", localtime($_[0]))) }
+
+sub format_name_n_summary {
+    my ($name, $summary) = @_;
+    join("\n", '<b>' . $name . '</b>', escape_text_for_TextView_markup_format($summary));
+}
 
 sub format_header {
     my ($str) = @_;
