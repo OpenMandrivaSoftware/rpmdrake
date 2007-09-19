@@ -373,12 +373,14 @@ sub statusbar_msg {
     unless ($::statusbar) { #- fallback if no status bar
 	if (defined &::wait_msg_) { goto &::wait_msg_ } else { goto &wait_msg }
     }
-    my ($msg) = @_;
+    my ($msg, $o_timeout) = @_;
     #- always use the same context description for now
     my $cx = $::statusbar->get_context_id("foo");
     $::w and $::w->{rwindow} and gtkset_mousecursor_wait($::w->{rwindow}->window);
     #- returns a msg_id to be passed optionnally to statusbar_msg_remove
-    $::statusbar->push($cx, $msg);
+    my $id = $::statusbar->push($cx, $msg);
+    Glib::Timeout->add(5000, sub { statusbar_msg_remove($id); 0 }) if $o_timeout;
+    $id;
 }
 
 sub statusbar_msg_remove {
