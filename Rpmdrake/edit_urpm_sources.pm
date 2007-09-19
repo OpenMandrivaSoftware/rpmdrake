@@ -1129,7 +1129,7 @@ sub mainwindow() {
 	gtkpack_(
 	    gtknew('VBox', spacing => 5),
 	    0, $menu,
-	    0, Gtk2::Banner->new('title-install', N("Configure media")),
+	    ($0 =~ /rpm-edit-media|edit-urpm-sources/ ? (0, Gtk2::Banner->new('title-install', N("Configure media"))) : ()),
 	    1, gtkpack_(
 		gtknew('HBox', spacing => 10),
 		1, gtknew('ScrolledWindow', child => $list_tv),
