@@ -52,16 +52,6 @@ clean:
 		(cd $$n; make clean) \
 	done
 
-tar:
-	mkdir ../t; \
-	cd ../t; \
-	cp -a ../rpmdrake .; \
-	mv rpmdrake rpmdrake-$(VERSION); \
-	find -name ".svn" | xargs rm -rf; \
-	tar jcvf ../rpmdrake-$(VERSION).tar.bz2 rpmdrake-$(VERSION); \
-	cd ..; \
-	rm -rf t
-
 dis: clean
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
 	svn export -q -rBASE . $(NAME)-$(VERSION)
