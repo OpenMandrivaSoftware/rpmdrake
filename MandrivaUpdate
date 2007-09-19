@@ -74,7 +74,7 @@ sub refresh_packages_list {
     my $i;
     @{$list->{data}} = map {
         $data{$_} = $i++;
-        my $summary = translate($pkgs->{$_}{pkg}->summary);
+        my $summary = get_summary($_);
         [ $pkgs->{$_}{selected}, format_name_n_summary($_, $summary) ];
     } grep { $pkgs->{$_}{pkg} } @requested;
     gtktext_insert($info,
