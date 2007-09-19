@@ -74,9 +74,8 @@ sub refresh_packages_list {
     my $i;
     @{$list->{data}} = map {
         $data{$_} = $i++;
-        my $summary = translate(to_utf8($pkgs->{$_}{pkg}->summary));
-        [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>",
-                                      utf8::valid($summary) ? escape_text_for_TextView_markup_format($summary) : '') ];
+        my $summary = translate($pkgs->{$_}{pkg}->summary);
+        [ $pkgs->{$_}{selected}, join("\n", "<b>$_</b>", escape_text_for_TextView_markup_format($summary) ];
     } grep { $pkgs->{$_}{pkg} } @requested;
     gtktext_insert($info,
       formatAlaTeX(N("The list of updates is empty. This means that either there is
