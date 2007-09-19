@@ -49,7 +49,7 @@ install: $(ALL)
 
 clean:
 	@for n in $(DIRS); do \
-		(cd $$n; make clean) \
+		make -C $$n clean; \
 	done
 
 dis: clean
