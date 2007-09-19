@@ -887,10 +887,8 @@ sub open_help {
     my ($mode) = @_;
     use run_program;
     run_program::raw({ detach => 1 }, 'drakhelp', '--id', "software-management-$mode");
-    interactive_msg(
-	N("Help launched in background"),
-	N("The help window has been started, it should appear shortly on your desktop."),
-    );
+    N("Help launched in background");
+    statusbar_msg(N("The help window has been started, it should appear shortly on your desktop."), 1);
 }
 
 sub strip_first_underscore { join '', map { s/_//; $_ } @_ }
