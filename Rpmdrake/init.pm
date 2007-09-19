@@ -139,6 +139,7 @@ but you may still browse the existing database."), yesno => 1, text => { no => N
 }
 
 sub init() {
+    URPM::bind_rpm_textdomain_codeset();
     if (!$> && !member($MODE, @$already_splashed)) {
         interactive_msg(N("Welcome"),
                         N("%s
