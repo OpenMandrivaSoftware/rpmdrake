@@ -1,5 +1,5 @@
 # sync this with Rpmdrake/init.pm:
-VERSION = 3.102
+VERSION = 3.103
 NAME = rpmdrake
 
 DIRS = grpmi po data mime
