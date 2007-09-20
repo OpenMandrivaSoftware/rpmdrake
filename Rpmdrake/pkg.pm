@@ -562,6 +562,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     perform_removal($urpm, { map { $_ => $pkgs->{$_} } @to_remove }) if !$probe_only_for_updates;
 
     $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
+    my $_gurpm_clean_guard = before_leaving { undef $gurpm };
     my $canceled;
     my $something_installed;
 
@@ -732,6 +733,7 @@ sub perform_removal {
     my @toremove = map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
     return if !@toremove;
     my $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
+    my $_gurpm_clean_guard = before_leaving { undef $gurpm };
 
     my $progress = -1;
     local $urpm->{log} = sub {
