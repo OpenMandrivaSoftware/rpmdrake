@@ -544,8 +544,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                         (!$to_install ? join("\n\n", P("Remove one package?", "Remove %d packages?", $remove_count, $remove_count), $r) :
  ($remove_count == 1 ?
  N("The following package has to be removed for others to be upgraded:")
- : N("The following packages have to be removed for others to be upgraded:")) . join("\n\n", '', $r, if_($to_install, $to_install)) . N("Is it ok to continue?"))
+ : N("The following packages have to be removed for others to be upgraded:")) . join("\n\n", '', $r, if_($to_install, $to_install)))
                           : $to_install),
+                         N("Is it ok to continue?")),
                      scroll => 1,
                      yesno => 1) or return 1;
 
