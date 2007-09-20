@@ -540,11 +540,12 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
       . "\n" . formatlistpkg(map { s!.*/!!; $_ } @pkgs) . "\n");
     my $remove_count =  scalar(@to_remove);
     interactive_msg(($to_install ? N("Confirmation") : N("Some packages need to be removed")),
+                    join("\n\n", 
                      ($r ? 
-                        (!$to_install ? join("\n\n", P("Remove one package?", "Remove %d packages?", $remove_count, $remove_count), $r) :
- ($remove_count == 1 ?
+                        (!$to_install ? (P("Remove one package?", "Remove %d packages?", $remove_count, $remove_count), $r) :
+ (($remove_count == 1 ?
  N("The following package has to be removed for others to be upgraded:")
- : N("The following packages have to be removed for others to be upgraded:")) . join("\n\n", '', $r, if_($to_install, $to_install)))
+   : N("The following packages have to be removed for others to be upgraded:")), $r), if_($to_install, $to_install))
                           : $to_install),
                          N("Is it ok to continue?")),
                      scroll => 1,
