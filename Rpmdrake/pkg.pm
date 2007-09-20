@@ -681,7 +681,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                      if_($nok, N("%d installation transactions failed", $nok) . "\n\n") .
                                        N("There was a problem during the installation:\n\n%s",
                                          join("\n\n", @$errors, @error_msgs)),
-                                     if_(@$errors + @error_msgs > 1, scroll => 1),
+                                     scroll => 1,
                                  );
                              },
                              success_summary => sub {
