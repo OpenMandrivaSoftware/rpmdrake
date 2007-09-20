@@ -1,3 +1,269 @@
+2007-09-20 10:23  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (get_status) there's no sense in displaying different
+	  data according
+	  to the current view mode
+
+2007-09-20 10:23  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (toggle_nodes) fix counting size of selected
+	  package (#32506); maybe should we
+	  stop maintaining this counter and just reuse
+	  URPM::selected_size() if not too
+	  costly?
+
+2007-09-20 10:23  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (closure_removal) keep around rejected data so
+	  that we can count size of removed packages
+
+2007-09-20 10:22  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs,perform_installation) rename
+	  urpm->{rpmdrake_state} as urpm->{state}
+
+2007-09-20 10:22  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation,perform_removal) readd
+	  guards that really are needed
+
+2007-09-20 10:21  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_removal) fix a crash
+
+2007-09-20 10:21  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) make to be installed
+	  package list look consistent with
+	  to be removed package list
+
+2007-09-20 10:20  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) display added/removed
+	  size
+
+2007-09-20 10:20  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) kill an useless extra
+	  empty line
+
+2007-09-20 10:20  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) better formatting
+
+2007-09-20 10:20  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) always display "Is it ok
+	  to continue?"
+
+2007-09-20 10:20  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) enable to copy/paste
+	  transaction errors
+
+2007-09-20 04:41  Funda Wang <fundawang at linux.net.cn>
+
+	* po/cy.po: Updated cy translation
+
+2007-09-20 00:46  jure
+
+	* po/sl.po: Updated Slovenian translation
+
+2007-09-20 00:44  jure
+
+	* grpmi/po/sl.po: Updated Slovenian translation
+
+2007-09-19 22:28  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: (clean) don't fork subprocesses
+
+2007-09-19 22:28  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: remove obsolete "tar" target
+
+2007-09-19 22:18  acelli
+
+	* po/it.po: update translation for Italian
+
+2007-09-19 21:49  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/Makefile, po/intltool-extract, po/intltool-merge,
+	  po/intltool-update: use system intltool
+
+2007-09-19 21:38  ybando
+
+	* po/ja.po: Japanese translation updated.
+
+2007-09-19 15:44  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/cy.po: update (Rhoslyn Prys)
+
+2007-09-19 14:16  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.100
+
+2007-09-19 13:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (open_help) reports staring the browser in status
+	  bar rather than with
+	  an annoying popup
+
+2007-09-19 13:45  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (do_search) simplify with new statusbar_msg() semantics
+
+2007-09-19 13:44  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (statusbar_msg) enable to automatically remove the
+	  status message
+	  after 5 seconds
+
+2007-09-19 13:36  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (mainwindow) only show banner when
+	  runned from edit-urpm-sources
+
+2007-09-19 13:29  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) enable to sort by state
+
+2007-09-19 10:21  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.99
+
+2007-09-19 10:09  Tomasz Bednarski <tbednarski at mandrivalinux.pl>
+
+	* po/pl.po: update
+
+2007-09-19 10:04  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (mainwindow) put menubar above
+	  banner
+
+2007-09-19 10:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: reuse get_summary()
+
+2007-09-19 10:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: export get_summary()
+
+2007-09-19 10:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate, Rpmdrake/formatting.pm, Rpmdrake/gui.pm:
+	  (format_name_n_summary) factorize package name and summary
+	  formatting there
+
+2007-09-19 10:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/init.pm: (init) call URPM::bind_rpm_textdomain_codeset()
+	  to ensure perl-URPM
+	  return proper strings
+
+2007-09-19 10:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: (refresh_packages_list) simplify now that
+	  perl-URPM always return UTF-8
+
+2007-09-19 02:23  Funda Wang <fundawang at linux.net.cn>
+
+	* po/et.po, po/zh_CN.po: Updated et and zh_CN translation
+
+2007-09-18 22:37  kamberd
+
+	* po/he.po: update translation for Hebrew
+
+2007-09-18 22:33  Wanderlei Antonio Cavassin <cavassin at mandriva.com>
+
+	* po/pt_BR.po: pt_BR updates
+
+2007-09-18 22:14  Arpad Biro <biro_arpad at yahoo.com>
+
+	* po/hu.po: update
+
+2007-09-18 20:51  andreas
+
+	* data/rpmdrake-sources.desktop.in: - correct path for Software
+	  Media Manager desktop file so that consolehelper kicks in
+
+2007-09-18 20:22  mmodem
+
+	* po/pt.po: up
+
+2007-09-18 18:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/fr.po: updatec
+
+2007-09-18 18:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.98
+
+2007-09-18 18:36  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* mime/urpmi-media.xml, mime/x-urpmi-media.desktop.in: add patterns
+	  since it was documented in old twiki
+
+2007-09-18 18:26  anssi
+
+	* mime/gurpmi.addmedia.desktop.in: remove duplicate NoDisplay=true
+
+2007-09-18 18:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) enable to sort by selected
+	  status(#27338)
+
+2007-09-18 18:04  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: build & install mime type
+
+2007-09-18 18:04  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po, po/cy.po,
+	  po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po, po/ga.po,
+	  po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po, po/hy.po,
+	  po/id.po, po/is.po, po/it.po, po/ja.po, po/ka.po, po/ko.po,
+	  po/ku.po, po/ky.po, po/lt.po, po/ltg.po, po/lv.po, po/mk.po,
+	  po/mn.po, po/ms.po, po/mt.po, po/nb.po, po/nl.po, po/nn.po,
+	  po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po, po/ro.po,
+	  po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po, po/uz@Latn.po,
+	  po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po: enable to translate
+	  MIME type
+
+2007-09-18 18:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/POTFILES.in: list new MIME desktop files
+
+2007-09-18 18:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* mime, mime/Makefile, mime/gurpmi.addmedia.desktop.in,
+	  mime/urpmi-media.xml, mime/x-urpmi-media.desktop.in: register
+	  application/x-urpmi-media MIME type again (#33436)
+
+2007-09-18 16:55  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/br.po: update
+
+2007-09-18 16:52  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) better looking message
+	  for bad signatures
+
+2007-09-18 16:38  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (perform_installation) yet more typos
+
+2007-09-18 16:36  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: typo fixes
+
+2007-09-18 10:18  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2007-09-18 10:07  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Makefile: 3.97
