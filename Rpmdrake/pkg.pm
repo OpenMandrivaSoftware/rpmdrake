@@ -538,7 +538,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $install_count = int(@pkgs);
     my $to_install = $install_count == 0 ? '' :
       (P("The following package is going to be installed:", "The following %d packages are going to be installed:", $install_count, $install_count)
-      . "\n" . formatlistpkg(map { s!.*/!!; $_ } @pkgs));
+      . "\n\n" . formatlistpkg(map { s!.*/!!; $_ } @pkgs));
     my $remove_count =  scalar(@to_remove);
     interactive_msg(($to_install ? N("Confirmation") : N("Some packages need to be removed")),
                     join("\n\n", 
