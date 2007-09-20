@@ -534,6 +534,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $r = formatlistpkg(map { scalar(urpm::select::translate_why_removed_one($urpm, $urpm->{state}, $_)) } @to_remove);
 
+    my $size = $urpm->selected_size($state);
     my $install_count = int(@pkgs);
     my $to_install = $install_count == 0 ? '' :
       (P("The following package is going to be installed:", "The following %d packages are going to be installed:", $install_count, $install_count)
@@ -547,6 +548,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
  N("The following package has to be removed for others to be upgraded:")
    : N("The following packages have to be removed for others to be upgraded:")), $r), if_($to_install, $to_install))
                           : $to_install),
+                         ($size >= 0 ? 
+                            N("%s of additional disk space will be used.", formatXiB($size)) :
+                              N("%s of disk space will be freed.", formatXiB(-$size))
+                          ),
                          N("Is it ok to continue?")),
                      scroll => 1,
                      yesno => 1) or return 1;
