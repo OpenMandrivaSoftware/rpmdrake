@@ -18,5 +18,5 @@ install: all
 
 
 %.desktop:   %.desktop.in
-	../po/intltool-merge --utf8 ../po $< $@ -d -u -c ../po/.intltool-merge-cache
+	intltool-merge --utf8 ../po $< $@ -d -u -c intltool-merge-cache
 
