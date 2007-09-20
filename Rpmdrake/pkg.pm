@@ -353,7 +353,7 @@ sub get_pkgs {
         $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
         $urpm->{depslist}[$_]->set_flag_installed foreach keys %$requested; #- pretend it's installed
     }
-    $urpm->{state} = $state; #- Don't forget it
+    $urpm->{rpmdrake_state} = $state; #- Don't forget it
     $gurpm->progress($level = 0.7);
 
     my @search_medias = grep { $_->{searchmedia} } @{$urpm->{media}};
@@ -509,7 +509,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $lock = urpm::lock::urpmi_db($urpm);
     my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
-    my $state = $probe_only_for_updates ? { } : $urpm->{state};
+    my $state = $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 
     # select packages to install:
     $urpm->resolve_requested(open_rpm_db(), $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} },
