@@ -19,5 +19,5 @@ install: all
 	install -m644 urpmi-media.xml $(MIMEDIR)/
 
 %.desktop:   %.desktop.in
-	../po/intltool-merge --utf8 ../po $< $@ -d -u -c ../po/.intltool-merge-cache
+	intltool-merge --utf8 ../po $< $@ -d -u -c intltool-merge-cache
 
