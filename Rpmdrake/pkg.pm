@@ -731,7 +731,7 @@ sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
     return if !@toremove;
-    my $gurpm = Rpmdrake::gurpm::new(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
+    my $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
 
     my $progress = -1;
     local $urpm->{log} = sub {
