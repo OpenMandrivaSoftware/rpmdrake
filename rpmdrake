@@ -59,7 +59,15 @@ sub do_search($$$$$$$) {
     $options->{state}{flat} and $options->{delete_all}->();
     $tree->collapse_all;
     my @search_results;
-    if ($current_search_type ne 'normal') {
+    if ($current_search_type eq 'normal') {
+        my $count;
+        foreach (@filtered_pkgs) {
+            next if !/$entry_rx/;
+            push @search_results, $_;
+            # FIXME: should be done for all research types
+            last if $count++ > 2000;
+        }
+    } else {
 	    my $searchstop;
 	    my $searchw = ugtk2->new(N("Software Management"), grab => 1, transient => $w->{real_window});
 	    gtkadd(
@@ -119,14 +127,6 @@ sub do_search($$$$$$$) {
 	    close $sf;
 	    @search_results = uniq(@search_results); #- there can be multiple packages with same version/release for different arch's
 	    $searchw->destroy;
-    } else {
-        my $count;
-        foreach (@filtered_pkgs) {
-            next if !/$entry_rx/;
-            push @search_results, $_;
-            # FIXME: should be done for all research types
-            last if $count++ > 2000;
-        }
     }
     if (@search_results) {
 	$options->{add_nodes}->(map { [ $_, N("Search results") . ($options->{tree_mode} eq 'by_presence'
