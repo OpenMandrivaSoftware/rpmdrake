@@ -638,7 +638,7 @@ sub toggle_nodes {
         }
         $set_state->($_, node_state($_), $model);
         if (my $pkg = $pkgs->{$_}{pkg}) {
-            $size_selected += $pkg->size * ($pkg->flag_installed ? ($new_state ? -1 : 1) : ($new_state ? 1 : -1));
+            $size_selected += $pkg->size * ($pkg->flag_installed && !$pkg->flag_upgrade ? ($new_state ? -1 : 1) : ($new_state ? 1 : -1));
         }
     }
 }
