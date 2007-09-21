@@ -67,6 +67,14 @@ sub do_search($$$$$$$) {
             # FIXME: should be done for all research types
             last if $count++ > 2000;
         }
+    } elsif ($current_search_type eq 'summaries') {
+        my $count;
+        foreach (@filtered_pkgs) {
+            next if $pkgs->{$_}{summary} !~ /$entry_rx/;
+            push @search_results, $_;
+            # FIXME: should be done for all research types
+            last if $count++ > 2000;
+        }
     } else {
 	    my $searchstop;
 	    my $searchw = ugtk2->new(N("Software Management"), grab => 1, transient => $w->{real_window});
