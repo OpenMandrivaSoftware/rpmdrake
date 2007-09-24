@@ -638,6 +638,7 @@ sub toggle_nodes {
         }
         $set_state->($_, node_state($_), $model);
         if (my $pkg = $pkgs->{$_}{pkg}) {
+            # FIXME: shouldn't we threat all of them as POSITIVE (as selected size)
             $size_selected += $pkg->size * ($pkg->flag_installed && !$pkg->flag_upgrade ? ($new_state ? -1 : 1) : ($new_state ? 1 : -1));
         }
     }
