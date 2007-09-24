@@ -24,7 +24,8 @@ package Rpmdrake::open_db;
 # $Id$
 
 use strict;
-use MDK::Common;
+use common;
+use rpmdrake;
 use URPM;
 use urpm;
 
