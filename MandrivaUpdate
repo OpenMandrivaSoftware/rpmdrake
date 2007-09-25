@@ -44,7 +44,7 @@ use Gtk2::SimpleList;
 
 # make Rpmdrake::gui aware MandrivaUpdate do not use the same columns ids as rpmdrake:
 %Rpmdrake::gui::pkg_columns = (
-    text => 1,
+    text => 2,
     selected => 0,
 );
 
@@ -75,7 +75,7 @@ sub refresh_packages_list {
     @{$list->{data}} = map {
         $data{$_} = $i++;
         my $summary = get_summary($_);
-        [ $pkgs->{$_}{selected}, format_name_n_summary($_, $summary) ];
+        [ $pkgs->{$_}{selected}, format_name_n_summary($_, $summary), $_ ];
     } grep { $pkgs->{$_}{pkg} } @requested;
     gtktext_insert($info,
       formatAlaTeX(N("The list of updates is empty. This means that either there is
@@ -127,6 +127,7 @@ sub run_treeview_dialog {
                         child => $list = Gtk2::SimpleList->new(
                             " " . " " . " "    => 'bool', #N("Selected")
                             " " . "" . " "        => 'markup', #N("Name")
+                            '' => 'hidden',
                         ),
                     ),
                  
@@ -183,7 +184,7 @@ sub run_treeview_dialog {
     $list->get_selection->signal_connect(changed => sub {
                                              my ($model, $iter) = $_[0]->get_selected;
                                              $model && $iter or return;
-                                             gtktext_insert($info, get_info(get_name($model->get($iter, 1)), $w->{real_window}->window));
+                                             gtktext_insert($info, get_info($model->get($iter, 2), $w->{real_window}->window));
                                              $info->scroll_to_iter($info->get_buffer->get_start_iter, 0, 0, 0, 0);
                                          });
 
@@ -200,10 +201,9 @@ sub run_treeview_dialog {
     my $cell = ($list->get_column(0)->get_cell_renderers)[0];
     $cell->signal_connect(toggled => sub {
 	my ($cell, $text_path) = @_;
-	my ($val, $name) = @{$list->{data}[$text_path]};
+	my ($val, undef, $name) = @{$list->{data}[$text_path]};
 	gtkset_mousecursor_wait($w->{real_window}->window);
 	my $_guard = before_leaving(sub {gtkset_mousecursor_normal($w->{real_window}->window) });
-	$name = get_name($name);
 	toggle($list, $name);
     });
     $action_button->set_sensitive(0) if $>;

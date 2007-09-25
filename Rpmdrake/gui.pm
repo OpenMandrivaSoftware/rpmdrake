@@ -40,7 +40,7 @@ use Rpmdrake::pkg;
 use Rpmdrake::icon;
 use Gtk2::Gdk::Keysyms;
 
-our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices closure_removal compute_main_window_size do_action get_info get_name get_summary is_locale_available node_state pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_all toggle_nodes
+our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices closure_removal compute_main_window_size do_action get_info get_summary is_locale_available node_state pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_all toggle_nodes
             $clear_button %grp_columns %pkg_columns $dont_show_selections @filtered_pkgs $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
 
 our $dont_show_selections = $> ? 1 : 0;
@@ -266,16 +266,9 @@ sub update_size {
     }
 }
 
-sub get_name {
-    my ($name) = @_;
-    return $name=~ m!<b>(.*)</b>! ? $1 : $name;
-}
-
 sub children {
     my ($w) = @_;
-    map {
-        my $txt = get_name($w->{detail_list_model}->get($_, $pkg_columns{text}));
-        get_name($w->{detail_list_model}->get($_, $pkg_columns{text})) } gtktreeview_children($w->{detail_list_model});
+    map { $w->{detail_list_model}->get($_, $pkg_columns{text}) } gtktreeview_children($w->{detail_list_model});
 }
 
 sub toggle_all {
