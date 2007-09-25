@@ -184,7 +184,7 @@ sub run_treeview_dialog {
     $list->get_selection->signal_connect(changed => sub {
                                              my ($model, $iter) = $_[0]->get_selected;
                                              $model && $iter or return;
-                                             gtktext_insert($info, get_info($model->get($iter, 2), $w->{real_window}->window));
+                                             gtktext_insert($info, get_info($model->get($iter, $pkg_columns{text}), $w->{real_window}->window));
                                              $info->scroll_to_iter($info->get_buffer->get_start_iter, 0, 0, 0, 0);
                                          });
 
