@@ -185,6 +185,7 @@ sub run_treeview_dialog {
     my $bool_col = $list->get_column(0);
     $bool_col->set_fixed_width(24);
     $bool_col->set_sizing('fixed');
+    $bool_col->set_sort_column_id($pkg_columns{selected});
 
     # -1 because actual widget count differs from TreeModel one due to the hidden column:
     foreach (@pkg_columns{qw(short_name version arch)}) {
