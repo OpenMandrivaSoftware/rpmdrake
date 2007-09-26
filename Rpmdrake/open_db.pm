@@ -57,9 +57,9 @@ sub open_rpm_db {
 }
 
 # do not pay the urpm::media::configure() heavy cost:
-my $error_happened;
 sub fast_open_urpmi_db() {
     my $urpm = urpm->new;
+    my $error_happened;
     $urpm->{options}{'split-level'} ||= 20;
     $urpm->{options}{'split-length'} ||= 1;
     $urpm->{options}{'verify-rpm'} = !$::rpmdrake_options{'no-verify-rpm'} if defined $::rpmdrake_options{'no-verify-rpm'};
@@ -76,6 +76,10 @@ sub fast_open_urpmi_db() {
     };
 
     urpm::media::read_config($urpm);
+    if ($error_happened) {
+        touch('/etc/urpmi/urpmi.cfg');
+        exec('edit-urpm-sources.pl');
+    }
     $urpm;
 }
 
@@ -85,10 +89,6 @@ sub open_urpmi_db() {
 
     my $searchmedia = join(',', map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}});
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia));
-    if ($error_happened) {
-        touch('/etc/urpmi/urpmi.cfg');
-        exec('edit-urpm-sources.pl');
-    }
     $urpm;
 }
 
