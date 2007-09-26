@@ -47,6 +47,8 @@ use Gtk2::SimpleList;
     selected => 0,
     text => 1,
     short_name => 2,
+    version => 3,
+    arch => 4
 );
 
 $ugtk2::wm_icon = "title-$MODE";
@@ -76,7 +78,8 @@ sub refresh_packages_list {
     @{$list->{data}} = map {
         $data{$_} = $i++;
         my $summary = get_summary($_);
-        [ $pkgs->{$_}{selected}, $_, format_name_n_summary($_, $summary) ];
+        my ($name, $version, $arch) = split_fullname($_);
+        [ $pkgs->{$_}{selected}, $_, format_name_n_summary($name, $summary), $version, $arch ];
     } grep { $pkgs->{$_}{pkg} } @requested;
     gtktext_insert($info,
       formatAlaTeX(N("The list of updates is empty. This means that either there is
@@ -128,7 +131,9 @@ sub run_treeview_dialog {
                         child => $list = Gtk2::SimpleList->new(
                             " " . " " . " "    => 'bool', #N("Selected")
                             '' => 'hidden',
-                            " " . "" . " "        => 'markup', #N("Name")
+                            " " . N("Name") . " "        => 'markup', #N("Name")
+                            " " . N("version") . " "        => 'text',
+                            " " . N("arch") . " "        => 'text',
                         ),
                     ),
                  
@@ -180,7 +185,6 @@ sub run_treeview_dialog {
     $list->set_headers_visible(0);
     $list->get_column(0)->set_fixed_width(24);
     $list->get_column(0)->set_sizing('fixed');
-    $list->get_column(1)->set_sizing('fixed');
     $list->set_fixed_height_mode(1);
     $list->get_selection->signal_connect(changed => sub {
                                              my ($model, $iter) = $_[0]->get_selected;
