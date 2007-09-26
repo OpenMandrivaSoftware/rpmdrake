@@ -76,6 +76,7 @@ sub fast_open_urpmi_db() {
     };
 
     urpm::media::read_config($urpm);
+    # FIXME: seems uneeded with newer urpmi:
     if ($error_happened) {
         touch('/etc/urpmi/urpmi.cfg');
         exec('edit-urpm-sources.pl');
