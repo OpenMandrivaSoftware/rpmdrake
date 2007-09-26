@@ -182,8 +182,9 @@ sub run_treeview_dialog {
     $statusbar = Gtk2::Statusbar->new;
 
     $list->set_rules_hint(1);
-    $list->get_column(0)->set_fixed_width(24);
-    $list->get_column(0)->set_sizing('fixed');
+    my $bool_col = $list->get_column(0);
+    $bool_col->set_fixed_width(24);
+    $bool_col->set_sizing('fixed');
 
     # -1 because actual widget count differs from TreeModel one due to the hidden column:
     foreach (@pkg_columns{qw(short_name version arch)}) {
@@ -215,7 +216,7 @@ sub run_treeview_dialog {
 
     refresh_packages_list($list, $info, $update_button);
 
-    my $cell = ($list->get_column(0)->get_cell_renderers)[0];
+    my $cell = ($bool_col->get_cell_renderers)[0];
     $cell->signal_connect(toggled => sub {
 	my ($cell, $text_path) = @_;
 	my ($val, $name) = @{$list->{data}[$text_path]};
