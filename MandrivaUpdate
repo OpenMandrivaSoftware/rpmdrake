@@ -192,7 +192,7 @@ sub run_treeview_dialog {
         my $col = $list->get_column($_-1);
         ($col->get_cell_renderers)[0]->set_property('xpad', '6');
         $col->set_sizing('autosize');
-        $col->set_sort_column_id($_-1);
+        $col->set_sort_column_id($_);
     }
 
     my $pretty_column = $list->get_column($pkg_columns{short_name}-1);
