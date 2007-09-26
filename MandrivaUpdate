@@ -44,8 +44,8 @@ use Gtk2::SimpleList;
 
 # make Rpmdrake::gui aware MandrivaUpdate do not use the same columns ids as rpmdrake:
 %pkg_columns = (
-    text => 2,
     selected => 0,
+    text => 1,
 );
 
 $ugtk2::wm_icon = "title-$MODE";
@@ -75,7 +75,7 @@ sub refresh_packages_list {
     @{$list->{data}} = map {
         $data{$_} = $i++;
         my $summary = get_summary($_);
-        [ $pkgs->{$_}{selected}, format_name_n_summary($_, $summary), $_ ];
+        [ $pkgs->{$_}{selected}, $_, format_name_n_summary($_, $summary) ];
     } grep { $pkgs->{$_}{pkg} } @requested;
     gtktext_insert($info,
       formatAlaTeX(N("The list of updates is empty. This means that either there is
@@ -126,8 +126,8 @@ sub run_treeview_dialog {
                  gtknew('ScrolledWindow', width => $typical_width*0.9, height => 240,
                         child => $list = Gtk2::SimpleList->new(
                             " " . " " . " "    => 'bool', #N("Selected")
-                            " " . "" . " "        => 'markup', #N("Name")
                             '' => 'hidden',
+                            " " . "" . " "        => 'markup', #N("Name")
                         ),
                     ),
                  
@@ -201,7 +201,7 @@ sub run_treeview_dialog {
     my $cell = ($list->get_column(0)->get_cell_renderers)[0];
     $cell->signal_connect(toggled => sub {
 	my ($cell, $text_path) = @_;
-	my ($val, undef, $name) = @{$list->{data}[$text_path]};
+	my ($val, $name) = @{$list->{data}[$text_path]};
 	gtkset_mousecursor_wait($w->{real_window}->window);
 	my $_guard = before_leaving(sub {gtkset_mousecursor_normal($w->{real_window}->window) });
 	toggle($list, $name);
