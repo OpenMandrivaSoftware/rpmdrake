@@ -184,6 +184,19 @@ sub run_treeview_dialog {
     $list->set_rules_hint(1);
     $list->get_column(0)->set_fixed_width(24);
     $list->get_column(0)->set_sizing('fixed');
+
+    # -1 because actual widget count differs from TreeModel one due to the hidden column:
+    foreach (@pkg_columns{qw(short_name version arch)}) {
+        my $col = $list->get_column($_-1);
+        ($col->get_cell_renderers)[0]->set_property('xpad', '6');
+        $col->set_sizing('autosize');
+    }
+
+    my $pretty_column = $list->get_column($pkg_columns{short_name}-1);
+    $pretty_column->set_resizable(1);
+    ($pretty_column->get_cell_renderers)[0]->set_property('ellipsize', 'end');
+    $pretty_column->set_property('expand', '1');
+
     $list->get_selection->signal_connect(changed => sub {
                                              my ($model, $iter) = $_[0]->get_selected;
                                              $model && $iter or return;
