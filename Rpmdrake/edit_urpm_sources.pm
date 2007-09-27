@@ -984,7 +984,7 @@ sub mainwindow() {
 	[ N("/_File") . N("/_Update"), N("<control>U"), sub { update_callback() and $reread_media->() }, undef, '<Item>', ],
      [ N("/_Options"), undef, undef, undef, '<Branch>' ],
      [ N("/_Options") . N("/_Global options"), N("<control>G"), \&options_callback, undef, '<Item>' ],
-     [ N("/_Options") . N("/_Add a custom media"), N("<control>A"), sub { add_callback() and $reread_media->() }, undef, '<Item>' ],
+     [ N("/_Options") . N("/_Add a custom medium"), N("<control>A"), sub { add_callback() and $reread_media->() }, undef, '<Item>' ],
      [ N("/_Options") . N("/Manage _keys"), N("<control>K"), \&keys_callback, undef, '<Item>' ],
      [ N("/_Options") . N("/_Parallel"), N("<control>P"), \&parallel_callback, undef, '<Item>' ],
      [ N("/_Options") . N("/P_roxy"), N("<control>R"), \&proxy_callback, undef, '<Item>' ],
