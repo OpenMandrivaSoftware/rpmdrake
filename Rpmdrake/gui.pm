@@ -448,7 +448,7 @@ sub pkgs_provider {
 }
 
 sub closure_removal {
-    local $urpm->{state} = $urpm->{rpmdrake_state};
+    local $urpm->{state} = {};
     urpm::select::find_packages_to_remove($urpm, $urpm->{state}, \@_);
 }
 
