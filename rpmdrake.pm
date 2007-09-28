@@ -789,7 +789,7 @@ sub update_sources_interactive {
 	)
     );
     if ($w->main) {
-        update_sources_noninteractive($urpm, \@media, %options);
+        return update_sources_noninteractive($urpm, \@media, %options);
     }
     return 0;
 }
