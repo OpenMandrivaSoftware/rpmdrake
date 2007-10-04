@@ -138,11 +138,9 @@ Is it ok to continue?", $distro),
     ref $mirror or return;
     my $m = $mirror->{url};
     my $is_update = $mirror->{type} eq 'updates';
-    $m = make_url_mirror($m) if $is_update; # because updates media do not provide media.cfg yet
     my $wait = wait_msg(N("Please wait, adding media..."));
     my $url = $m;
     my $medium_name;
-    if ($want_base_distro && !$is_update) {
 	if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
 	    $medium_name = $2 . $1 . '-';
 	} else {
@@ -156,17 +154,6 @@ Is it ok to continue?", $distro),
 	    $medium_name, $url, probe_with => 'synthesis', initial_number => $initial_number,
 	    usedistrib => 1,
 	);
-    } else {
-	$medium_name = 'update_source';
-	#- ensure a unique medium name
-	my $nb_sources = max map { $_->{name} =~ /^\Q$medium_name\E(\d*)$/ ? $1 || 1 : 0 } @{$urpm->{media}};
-	if ($nb_sources) { $medium_name .= $nb_sources + 1 }
-	add_medium_and_check(
-	    $urpm,
-	    { nolock => 1, probe_with => 1 },
-	    $medium_name, $url, '', update => 1,
-	);
-    }
     remove_wait_msg($wait);
     return 1;
 }

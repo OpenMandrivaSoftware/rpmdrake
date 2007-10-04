@@ -214,7 +214,7 @@ updates' medium.
 Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		add_medium_and_check(
 		    $urpm, {},
-		    $update_name, make_url_mirror($m), 'media_info/synthesis.hdlist.cz', update => 1,
+		    $update_name, $m, 'media_info/synthesis.hdlist.cz', update => 1,
 		);
 		@update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
 	    }
