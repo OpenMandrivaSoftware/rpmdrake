@@ -964,7 +964,7 @@ sub mainwindow() {
 
     my $reread_media;
 
-    my ($menu, $factory) = create_factory_menu(
+    my ($menu, $_factory) = create_factory_menu(
 	$mainw->{real_window},
 	[ N("/_File"), undef, undef, undef, '<Branch>' ],
 	[ N("/_File") . N("/_Quit"), N("<control>Q"), sub { Gtk2->main_quit }, undef, '<Item>', ],
