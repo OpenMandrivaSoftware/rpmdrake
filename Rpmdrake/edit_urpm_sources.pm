@@ -136,10 +136,9 @@ Is it ok to continue?", $distro),
      arch => $arch,
     ) or return 0;
     ref $mirror or return;
-    my $m = $mirror->{url};
+    my $url = $mirror->{url};
     my $is_update = $mirror->{type} eq 'updates';
     my $wait = wait_msg(N("Please wait, adding media..."));
-    my $url = $m;
     my $medium_name;
 	if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
 	    $medium_name = $2 . $1 . '-';
