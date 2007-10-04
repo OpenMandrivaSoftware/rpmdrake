@@ -75,7 +75,6 @@ our @EXPORT = qw(
     statusbar_msg
     statusbar_msg_remove
     choose_mirror
-    make_url_mirror
     show_urpm_progress
     update_sources
     update_sources_check
@@ -633,12 +632,6 @@ by Mandriva Linux Official Updates.")), %options
     $tree->get_selection->select_path($path);
 
     $w->main && return grep { $w->{retval}{sel} eq $_->{url} } @mirrors;
-}
-
-sub make_url_mirror {
-    my ($mirror) = @_;
-    # because updates media do not provide media.cfg yet
-    $mirror . '/media/main/updates';
 }
 
 sub show_urpm_progress {
