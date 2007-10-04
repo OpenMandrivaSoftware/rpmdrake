@@ -212,9 +212,13 @@ launch the Software Media Manager, and then add a `Security
 updates' medium.
 
 Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
+		my $is_update = $mirror->{type} eq 'updates';
 		add_medium_and_check(
-		    $urpm, {},
-		    $update_name, $m, 'media_info/synthesis.hdlist.cz', update => 1,
+		    $urpm,
+		    { nolock => 1, distrib => 1 },
+		    $update_name, $m, probe_with => 'synthesis', update => 1,
+		    usedistrib => 1,
+		    if_($is_update, only_updates => 1),
 		);
 		@update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
 	    }
