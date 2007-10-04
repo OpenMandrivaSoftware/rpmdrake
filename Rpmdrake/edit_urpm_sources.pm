@@ -153,6 +153,7 @@ Is it ok to continue?", $distro),
 	    { nolock => 1, distrib => 1 },
 	    $medium_name, $url, probe_with => 'synthesis', initial_number => $initial_number,
 	    usedistrib => 1,
+	    if_($is_update, only_updates => 1),
 	);
     remove_wait_msg($wait);
     return 1;
