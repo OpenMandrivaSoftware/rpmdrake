@@ -125,8 +125,6 @@ sub run_treeview_dialog {
 	    0, getbanner(),
               0, gtknew('Title2', label => N("Here is the list of software package updates")),
          1, create_vpaned(
-             gtkadd(
-                 gtknew('Frame', border_width => 3, shadow_type => 'in'),
                  gtknew('ScrolledWindow', width => $typical_width*0.9, height => 240,
                         child => $list = Gtk2::SimpleList->new(
                             " " . " " . " "    => 'bool', #N("Selected")
@@ -137,7 +135,6 @@ sub run_treeview_dialog {
                         ),
                     ),
                  
-             ),
              gtknew('ScrolledWindow', width => $typical_width*0.9,
                     child => $info = Gtk2::Mdv::TextView->new, height => 110,
                 ),
