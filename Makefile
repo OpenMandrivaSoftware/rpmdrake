@@ -24,7 +24,7 @@ install: $(ALL)
 		(cd $$n; $(MAKE) install) \
 	done
 	install -d $(SBINDIR)
-	install rpmdrake park-rpmdrake MandrivaUpdate edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
+	install rpmdrake MandrivaUpdate edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
 	ln -sf rpmdrake $(SBINDIR)/rpmdrake-remove
 	install -d $(BINDIR)
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/rpmdrake
