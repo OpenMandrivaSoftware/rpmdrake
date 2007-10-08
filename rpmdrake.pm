@@ -521,7 +521,7 @@ sub mirrors {
                                     return cat_($file);
                                 });
     my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')),
-                                  ($want_base_distro ? 'distrib' : 'updates'), $o_arch) || [] };
+                                  'distrib', $o_arch) || [] };
     require timezone;
     my $tz = ${timezone::read()}{timezone};
     foreach my $mirror (@mirrors) {
