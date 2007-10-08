@@ -54,6 +54,7 @@ our @EXPORT = qw(
     $tree_mode
     $tree_flat
     $typical_width
+    add_distrib_update_media
     distro_type
     to_utf8
     myexit
@@ -874,6 +875,18 @@ It will be disabled.",
 	}
     }
     1;
+}
+
+sub add_distrib_update_media {
+    my ($urpm, $name, $mirror, %options) = @_;
+    my $is_update = $mirror->{type} eq 'updates';
+    add_medium_and_check(
+        $urpm,
+        { nolock => 1, distrib => 1 },
+        $name, $mirror->{url}, probe_with => 'synthesis', %options,
+        usedistrib => 1,
+        if_($is_update, only_updates => 1),
+    );
 }
 
 sub open_help {

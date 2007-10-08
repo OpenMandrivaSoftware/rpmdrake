@@ -136,8 +136,6 @@ Is it ok to continue?", $distro),
      arch => $arch,
     ) or return 0;
     ref $mirror or return;
-    my $url = $mirror->{url};
-    my $is_update = $mirror->{type} eq 'updates';
     my $wait = wait_msg(N("Please wait, adding media..."));
     my $medium_name;
 	if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
@@ -147,13 +145,7 @@ Is it ok to continue?", $distro),
 	}
 	#- ensure a unique medium name
 	my $initial_number = 1 + max map { $_->{name} =~ /\(\Q$medium_name\E(\d+)\b/ ? $1 : 0 } @{$urpm->{media}};
-	add_medium_and_check(
-	    $urpm,
-	    { nolock => 1, distrib => 1 },
-	    $medium_name, $url, probe_with => 'synthesis', initial_number => $initial_number,
-	    usedistrib => 1,
-	    if_($is_update, only_updates => 1),
-	);
+    add_distrib_update_media($urpm, $medium_name, $mirror, initial_number => $initial_number);
     remove_wait_msg($wait);
     return 1;
 }
