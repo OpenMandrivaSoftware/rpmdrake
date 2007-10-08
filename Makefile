@@ -1,4 +1,3 @@
-# sync this with Rpmdrake/init.pm:
 VERSION = 3.117
 NAME = rpmdrake
 
