@@ -439,7 +439,7 @@ sub pkgs_provider {
     foreach my $importance (qw(bugfix security normal)) {
         $filter_methods{$importance} = sub {
             @filtered_pkgs = grep { 
-                my ($name, $_version) = split_fullname($_);
+                my ($name) = split_fullname($_);
                 $descriptions->{$name}{importance} eq $importance } @{$h->{updates}};
         };
     }
