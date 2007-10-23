@@ -182,7 +182,7 @@ sub run_treeview_dialog {
     $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::MDV::CellRendererPixWithLabel->new, 'pixbuf' => $grp_columns{icon}, label => $grp_columns{label}));
     $tree->set_headers_visible(0);
 
-    $detail_list_model = Gtk2::ListStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String", "Glib::Boolean", "Glib::String", "Glib::String", "Glib::String");
+    $detail_list_model = Gtk2::ListStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String", "Glib::Boolean", "Glib::String", "Glib::String", "Glib::String", "Glib::String");
     $detail_list = Gtk2::TreeView->new_with_model($detail_list_model);
     $detail_list->append_column(my $col1 = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererToggle->new, active => $pkg_columns{selected}));
     $col1->set_fixed_width(34); # w/o this the toggle cells are not displayed
@@ -203,12 +203,16 @@ sub run_treeview_dialog {
             title => N("Version"),
             text => $pkg_columns{version},
         },
+        'release' => {
+            title => N("Release"),
+            text => $pkg_columns{release},
+        },
         'arch' => {
             title => N("Arch"),
             text => $pkg_columns{arch},
         },
     );
-    foreach my $col (@columns{qw(name version arch)}) {
+    foreach my $col (@columns{qw(name version release arch)}) {
         $detail_list->append_column(
             $col->{widget} =
               Gtk2::TreeViewColumn->new_with_attributes(' ' . $col->{title} . ' ',
@@ -218,10 +222,10 @@ sub run_treeview_dialog {
             );
         $col->{widget}->set_sort_column_id($col->{markup} ? $col->{markup} : $col->{text});
     }
-    $columns{$_}{widget}->set_sizing('autosize') foreach qw(name version arch);
+    $columns{$_}{widget}->set_sizing('autosize') foreach qw(name version release arch);
     $columns{name}{widget}->set_property('expand', '1');
     $columns{name}{renderer}->set_property('ellipsize', 'end');
-    $columns{$_}{renderer}->set_property('xpad', '6') foreach qw(name version arch);
+    $columns{$_}{renderer}->set_property('xpad', '6') foreach qw(name version release arch);
     $columns{name}{widget}->set_resizable(1); 
     $detail_list_model->set_sort_column_id(0, 'ascending');
     $detail_list->set_rules_hint(1);

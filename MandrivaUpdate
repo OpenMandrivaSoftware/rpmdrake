@@ -48,7 +48,8 @@ use Gtk2::SimpleList;
     text => 1,
     short_name => 2,
     version => 3,
-    arch => 4
+    release => 4,
+    arch => 5
 );
 
 $ugtk2::wm_icon = "title-$MODE";
@@ -78,8 +79,8 @@ sub refresh_packages_list {
     @{$list->{data}} = map {
         $data{$_} = $i++;
         my $summary = get_summary($_);
-        my ($name, $version, $arch) = split_fullname($_);
-        [ $pkgs->{$_}{selected}, $_, format_name_n_summary($name, $summary), $version, $arch ];
+        my ($name, $version, $release, $arch) = split_fullname($_);
+        [ $pkgs->{$_}{selected}, $_, format_name_n_summary($name, $summary), $version, $release, $arch ];
     } grep { $pkgs->{$_}{pkg} } @requested;
     gtktext_insert($info,
       formatAlaTeX(N("The list of updates is empty. This means that either there is
@@ -130,6 +131,7 @@ sub run_treeview_dialog {
                             '' => 'hidden',
                             " " . N("Name") . " "        => 'markup', #N("Name")
                             " " . N("Version") . " "        => 'text',
+                            " " . N("Release") . " "        => 'text',
                             " " . N("Arch") . " "        => 'text',
                         ),
                     ),
@@ -184,7 +186,7 @@ sub run_treeview_dialog {
     $bool_col->set_sort_column_id($pkg_columns{selected});
 
     # -1 because actual widget count differs from TreeModel one due to the hidden column:
-    foreach (@pkg_columns{qw(short_name version arch)}) {
+    foreach (@pkg_columns{qw(short_name version release arch)}) {
         my $col = $list->get_column($_-1);
         ($col->get_cell_renderers)[0]->set_property('xpad', '6');
         $col->set_sizing('autosize');
