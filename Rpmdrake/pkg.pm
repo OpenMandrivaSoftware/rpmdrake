@@ -212,7 +212,7 @@ launch the Software Media Manager, and then add a `Security
 updates' medium.
 
 Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
-		add_distrib_update_media($urpm, $update_name, $mirror);
+		add_distrib_update_media($urpm, $mirror);
 		@update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
 	    }
 }

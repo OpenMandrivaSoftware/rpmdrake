@@ -878,12 +878,15 @@ It will be disabled.",
 }
 
 sub add_distrib_update_media {
-    my ($urpm, $medium_name, $mirror, %options) = @_;
+    my ($urpm, $mirror, %options) = @_;
     my $is_update = $mirror->{type} eq 'updates';
+    #- ensure a unique medium name
+    my $medium_name = $rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/ ? $2 . $1 . '-' : 'distrib';
+    my $initial_number = 1 + max map { $_->{name} =~ /\(\Q$medium_name\E(\d+)\b/ ? $1 : 0 } @{$urpm->{media}};
     add_medium_and_check(
         $urpm,
         { nolock => 1, distrib => 1 },
-        $medium_name, $mirror->{url}, probe_with => 'synthesis', %options,
+        $medium_name, $mirror->{url}, probe_with => 'synthesis', initial_number => $initial_number, %options, 
         usedistrib => 1,
         if_($is_update, only_updates => 1),
     );

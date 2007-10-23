@@ -137,15 +137,7 @@ Is it ok to continue?", $distro),
     ) or return 0;
     ref $mirror or return;
     my $wait = wait_msg(N("Please wait, adding media..."));
-    my $medium_name;
-	if ($rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/) {
-	    $medium_name = $2 . $1 . '-';
-	} else {
-	    $medium_name = 'distrib';
-	}
-	#- ensure a unique medium name
-	my $initial_number = 1 + max map { $_->{name} =~ /\(\Q$medium_name\E(\d+)\b/ ? $1 : 0 } @{$urpm->{media}};
-    add_distrib_update_media($urpm, $medium_name, $mirror, initial_number => $initial_number);
+    add_distrib_update_media($urpm, $mirror);
     remove_wait_msg($wait);
     return 1;
 }
