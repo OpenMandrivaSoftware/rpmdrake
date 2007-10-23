@@ -878,12 +878,12 @@ It will be disabled.",
 }
 
 sub add_distrib_update_media {
-    my ($urpm, $name, $mirror, %options) = @_;
+    my ($urpm, $medium_name, $mirror, %options) = @_;
     my $is_update = $mirror->{type} eq 'updates';
     add_medium_and_check(
         $urpm,
         { nolock => 1, distrib => 1 },
-        $name, $mirror->{url}, probe_with => 'synthesis', %options,
+        $medium_name, $mirror->{url}, probe_with => 'synthesis', %options,
         usedistrib => 1,
         if_($is_update, only_updates => 1),
     );
