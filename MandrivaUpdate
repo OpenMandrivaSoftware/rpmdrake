@@ -107,14 +107,13 @@ sub toggle {
 
 $w = ugtk2->new(N("Software Management"));
 $w->{rwindow}->show_all if $::isEmbedded;
+$::main_window = $w->{real_window};
 
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
     my ($size_selected, %elems, $list, $info, $update_button);
     my (undef, $size_free) = MDK::Common::System::df('/usr');
-
-    $::main_window = $w->{real_window};
 
     compute_main_window_size($w);
 
