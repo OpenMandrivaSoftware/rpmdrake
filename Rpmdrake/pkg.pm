@@ -203,7 +203,15 @@ column).
 Then, restart \"%s\".", N("Enabled"), $rpmdrake::myname_update));
 		    myexit(-1);
 		}
-		my ($mirror) = choose_mirror(if_(exists $w->{real_window}, transient => $w->{real_window}));
+		my ($mirror) = choose_mirror(if_(exists $w->{real_window}, transient => $w->{real_window}),
+                                       message => join("\n\n",
+                                                       N("You have no configured update media. MandrivaUpdate cannot operate without any update media."),
+                                                       N("I need to contact the Mandriva website to get the mirror list.
+Please check that your network is currently running.
+
+Is it ok to continue?"),
+                                                         ),
+                                   );
 		my $m = ref($mirror) ? $mirror->{url} : '';
 		$m or interactive_msg(N("How to choose manually your mirror"),
 N("You may also choose your desired mirror manually: to do so,
