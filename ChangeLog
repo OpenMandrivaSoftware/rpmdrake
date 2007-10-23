@@ -1,3 +1,83 @@
+2007-10-23 11:51  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (format_pkg_simplifiedinfo) display release as
+	  part of version field in details like before
+
+2007-10-23 11:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate, Rpmdrake/gui.pm, rpmdrake:
+	  (add_node,refresh_packages_list,run_treeview_dialog) split
+	  "release"
+	  column from "version" column
+
+2007-10-23 11:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm: (split_fullname) split "release" from
+	  "version" (needed for next commits)
+
+2007-10-23 11:47  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (pkgs_providerà) cleanup
+
+2007-10-23 01:42  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.119
+
+2007-10-23 01:39  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
+2007-10-23 01:38  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate: make sure main window is registered early
+
+2007-10-23 01:37  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (warn_about_media) ensure mirror list got
+	  centered on MandrivaUpdate
+
+2007-10-23 01:33  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (warn_about_media) explain the actual issue when
+	  there's no configured
+	  update medium
+
+2007-10-23 01:27  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
+2007-10-23 01:26  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (mirrors) revert bogus commit r230982 ("no more sent
+	  'updates'
+	  requests") of 2007-10-08 that prevents to install only update
+	  media
+
+2007-10-23 01:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (warn_about_media) simplify since caller take
+	  care of rebuilding
+	  update media list
+
+2007-10-23 01:10  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm, Rpmdrake/pkg.pm, rpmdrake.pm:
+	  (add_distrib_update_media) factorize computing unique media names
+
+2007-10-23 00:20  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (add_distrib_update_media) rename "name" as
+	  "medium_name"
+
+2007-10-23 00:18  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
+2007-10-23 00:08  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (mainwindow) handle media with non
+	  ASCII characters in names (#34906)
+
 2007-10-23 01:37  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Rpmdrake/pkg.pm: (warn_about_media) ensure mirror list got
