@@ -162,7 +162,6 @@ sub get_update_medias {
 sub warn_about_media {
     my ($w, $opts) = @_;
 
-    my $update_name = 'update_source';
     return if !member($::default_list_mode, qw(all_updates security bugfix normal));
     return if $::rpmdrake_options{'no-media-update'};
 
@@ -213,7 +212,6 @@ updates' medium.
 
 Then, restart %s.", $rpmdrake::myname_update)), myexit(-1);
 		add_distrib_update_media($urpm, $mirror);
-		@update_medias = { name => $update_name };  #- hack to simulate a medium for parsing of descriptions
 	    }
 }
 
