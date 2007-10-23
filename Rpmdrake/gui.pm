@@ -80,7 +80,7 @@ sub get_summary {
 
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
-    my ($name, $version) = split_fullname($key);
+    my ($name, $version, $release) = split_fullname($key);
     my $raw_medium = pkg2medium($pkgs->{$key}{pkg}, $urpm);
     my $medium = $raw_medium ? $raw_medium->{name} : undef;
     my $update_descr = $descriptions->{$medium}{$name};
@@ -113,7 +113,7 @@ sub format_pkg_simplifiedinfo {
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
                        gtknew('TextView', text => ugtk2::markup_to_TextView_format(
                            $spacing . join("\n$spacing",
-                                format_field(N("Version: ")) . $version,
+                                format_field(N("Version: ")) . $version . $release,
                                 
                                 ($pkgs->{$key}{pkg}->flag_installed ?
                                    format_field(N("Currently installed version: ")) . eval { find_installed_version($pkgs->{$key}{pkg}) }
