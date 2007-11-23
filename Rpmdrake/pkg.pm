@@ -241,7 +241,7 @@ sub get_pkgs {
 
     my $urpm = open_urpmi_db();
 
-    my $_lock = urpm::lock::urpmi_db($urpm);
+    my $_drop_lock = before_leaving { undef $urpm->{lock} };
 
     # update media list in case warn_about_media() added some:
     @update_medias = get_update_medias($urpm);
