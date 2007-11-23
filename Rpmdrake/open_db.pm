@@ -62,6 +62,7 @@ sub fast_open_urpmi_db() {
     my $error_happened;
     $urpm->{options}{'split-level'} ||= 20;
     $urpm->{options}{'split-length'} ||= 1;
+    $urpm->{options}{wait_lock} = $::rpmdrake_options{'wait-lock'};
     $urpm->{options}{'verify-rpm'} = !$::rpmdrake_options{'no-verify-rpm'} if defined $::rpmdrake_options{'no-verify-rpm'};
     $urpm->{options}{auto} = $::rpmdrake_options{auto} if defined $::rpmdrake_options{auto};
     urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}[0]) if $::rpmdrake_options{'urpmi-root'}[0];
@@ -89,7 +90,7 @@ sub open_urpmi_db() {
     my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
 
     my $searchmedia = join(',', map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}});
-    $urpm->{lock} = urpm::lock::urpmi_db($urpm, undef);
+    $urpm->{lock} = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia));
     $urpm;
 }

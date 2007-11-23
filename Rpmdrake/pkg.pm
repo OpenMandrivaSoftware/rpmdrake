@@ -169,7 +169,7 @@ sub warn_about_media {
     # and no need to fully configure urpmi since we may have to do it again anyway because of new media:
     my $urpm = fast_open_urpmi_db();
 
-    my $_lock = urpm::lock::urpmi_db($urpm);
+    my $_lock = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
 
     # build media list:
     @update_medias = get_update_medias($urpm);
@@ -510,7 +510,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         return perform_parallel_install($urpm, $group, \$statusbar_msg_id);
     }
 
-    my $lock = urpm::lock::urpmi_db($urpm);
+    my $lock = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
     my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
     my $state = $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 

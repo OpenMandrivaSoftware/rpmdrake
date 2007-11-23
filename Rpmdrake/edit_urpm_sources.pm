@@ -1173,7 +1173,7 @@ packages as well?)."));
             myexit -1;
         };
         # lock urpmi DB
-        $lock = urpm::lock::urpmi_db($urpm, 'exclusive');
+        $lock = urpm::lock::urpmi_db($urpm, 'exclusive', wait => $urpm->{options}{wait_lock});
     }
 
     my $res = mainwindow();
