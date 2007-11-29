@@ -1,3 +1,51 @@
+2007-11-29 18:59  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/init.pm, Rpmdrake/pkg.pm: - drop --pkg-sel and
+	  --pkg-nosel broken options (introduced in
+	  rpmdrake-2.1.2-8mdk on Feb 26 2004 for MandrakeOnline which
+	  didn't
+	  use them since 2007.0)
+
+2007-11-29 17:40  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (easy_add_callback) update button
+	  labels & message in order to make
+	  the clearer and more up to date concerning current media
+	  structure
+	  (#35834)
+
+2007-11-29 11:52  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/open_db.pm: (fast_open_urpmi_db) 'split-level' and
+	  'split-length' have now default
+	  values set by urpm module
+
+2007-11-26 15:24  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.121
+
+2007-11-23 13:18  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm, Rpmdrake/open_db.pm,
+	  Rpmdrake/pkg.pm: add support for --wait-lock option
+
+2007-11-23 13:14  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/open_db.pm, Rpmdrake/pkg.pm: (open_db::open_urpmi_db)
+	  for consistency, move locking here from pkg::get_pkgs()
+
+2007-11-17 17:12  Karl Ove Hufthammer <karl at huftis.org>
+
+	* po/nn.po: Updated Norwegian Nynorsk translation.
+
+2007-10-23 11:51  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.120
+
+2007-10-23 11:51  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2007-10-23 11:51  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Rpmdrake/gui.pm: (format_pkg_simplifiedinfo) display release as
