@@ -105,20 +105,19 @@ sub easy_add_callback() {
     #- cooker and community don't have update sources
     my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
-N("This step enables you to add sources from a Mandriva Linux web or FTP mirror.
-
-There are two kinds of official mirrors. You can choose to add sources that
-contain the complete set of packages of your distribution (usually a superset
-of what comes on the standard installation CDs), or sources that provide the
-official updates for your distribution. (You can add both, but you'll have
-to do this in two steps.)"),
+N("In order to keep your system secure and stable, you must at a minimum set up
+sources for official security and stability updates. You can also choose to set
+up a fuller set of sources which includes the complete official Mandriva
+repositories, giving you access to more software than can fit on the Mandriva
+discs. Please choose whether to configure update sources only, or the full set
+of sources."),
 	 transient => $::main_window,
      if_($arch eq 'x86_64', widget => gtknew('HBox', children => [
          0, gtknew('Label', text => "Architecture: "),
          1, gtknew('ComboBox', text_ref => \$arch, list => [ arch(), 'i586' ]),
      ]),
      ),
-	yesno => 1, text => { yes => N("Distribution sources"), no => N("Official updates") },
+	yesno => 1, text => { yes => N("Full set of sources"), no => N("Update sources only") },
     ) : 1;
     my $distro = $rpmdrake::mandrake_release;
     my $real_arch = arch();
