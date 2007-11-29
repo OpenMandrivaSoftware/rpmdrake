@@ -362,8 +362,6 @@ sub get_pkgs {
     my @search_medias = grep { $_->{searchmedia} } @{$urpm->{media}};
 
     my @backports;
-    my %pkg_sel   = map { $_ => 1 } @{$::rpmdrake_options{'pkg-sel'}   || []};
-    my %pkg_nosel = map { $_ => 1 } @{$::rpmdrake_options{'pkg-nosel'} || []};
     $reset_update->(1);
     foreach my $pkg (@{$urpm->{depslist}}) {
         $update->();
@@ -391,24 +389,14 @@ sub get_pkgs {
         my $name = urpm_name($pkg);
 
 	if (member($name, @requested)) {
-            if ($::rpmdrake_options{'pkg-sel'} || $::rpmdrake_options{'pkg-nosel'}) {
-		my $n = $name;
-		$pkg_sel{$n} || $pkg_nosel{$n} or next;
-		$pkg_sel{$n} and $selected = 1;
-	    } else {
              # selecting updates by default but skipped ones (MandrivaUpdate only):
              $selected = member($name, @requested_strict);
-	    }
             push @updates, $name;
 	}
         $all_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg,
                                        summary => $pkg->summary,
                                    };
       }
-    }
-    if ($::rpmdrake_options{'pkg-sel'} && $::rpmdrake_options{'pkg-nosel'}) {
-        push @{$::rpmdrake_options{'pkg-nosel'}}, @{$::rpmdrake_options{'pkg-sel'}};
-        delete $::rpmdrake_options{'pkg-sel'};
     }
 
     $all_pkgs{$_}{pkg}->set_flag_installed foreach @installed_pkgs;

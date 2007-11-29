@@ -47,8 +47,6 @@ N("  --no-confirmation      don't ask first confirmation question in update mode
 N("  --no-media-update      don't update media at startup"),
 N("  --no-verify-rpm        don't verify packages signatures"),
 if_($0 !~ /MandrivaUpdate/, N("  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps")),
-N("  --pkg-nosel=pkg1,..    show only these packages"),
-N("  --pkg-sel=pkg1,..      preselect these packages"),
 N("  --rpm-root=path        use another root for rpm installation"),
 N("  --urpmi-root           use another root for urpmi db & rpm installation"),
 N("  --root                 force to run as root") . ' ' . N("(Deprecated)"),
@@ -103,7 +101,7 @@ foreach (@ARGV) {
     }
 }
 
-foreach my $option (qw(media mode parallel pkg-nosel pkg-sel rpm-root search)) {
+foreach my $option (qw(media mode parallel rpm-root search)) {
     if (defined $rpmdrake_options{$option} && !ref($rpmdrake_options{$option})) {
         warn "wrong usage of \"$option\" option!\n";
         exit(-1); # too early for my_exit()
