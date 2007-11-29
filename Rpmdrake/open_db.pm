@@ -60,8 +60,6 @@ sub open_rpm_db {
 sub fast_open_urpmi_db() {
     my $urpm = urpm->new;
     my $error_happened;
-    $urpm->{options}{'split-level'} ||= 20;
-    $urpm->{options}{'split-length'} ||= 1;
     $urpm->{options}{wait_lock} = $::rpmdrake_options{'wait-lock'};
     $urpm->{options}{'verify-rpm'} = !$::rpmdrake_options{'no-verify-rpm'} if defined $::rpmdrake_options{'no-verify-rpm'};
     $urpm->{options}{auto} = $::rpmdrake_options{auto} if defined $::rpmdrake_options{auto};
