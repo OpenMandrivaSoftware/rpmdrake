@@ -379,6 +379,7 @@ sub statusbar_msg {
     $::w and $::w->{rwindow} and gtkset_mousecursor_wait($::w->{rwindow}->window);
     #- returns a msg_id to be passed optionnally to statusbar_msg_remove
     my $id = $::statusbar->push($cx, $msg);
+    gtkflush();
     Glib::Timeout->add(5000, sub { statusbar_msg_remove($id); 0 }) if $o_timeout;
     $id;
 }
