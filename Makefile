@@ -1,4 +1,4 @@
-VERSION = 3.122
+VERSION = 3.123
 NAME = rpmdrake
 
 DIRS = grpmi po data mime
