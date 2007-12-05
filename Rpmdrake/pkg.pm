@@ -502,9 +502,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
     my $state = $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 
+    my $bar_id = statusbar_msg(N("Checking validity of requested packages..."), 0);
     # select packages to install:
     $urpm->resolve_requested(open_rpm_db(), $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} },
                              callback_choices => \&Rpmdrake::gui::callback_choices);
+    statusbar_msg_remove($bar_id);
 
     my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 
 	$state->{selected},
@@ -689,18 +691,21 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                                      N("Unrecoverable error: no package found for installation, sorry."));
                                      return;
                                  }
+                                 my $id = statusbar_msg(N("Inspecting configuration files..."), 0);
                                  my %pkg2rpmnew;
                                  foreach my $u (@rpms_upgrade) {
                                      $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
                                        and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
                                                                  map { chomp_($_) } run_rpm("rpm -ql $1") ];
                                  }
+                                 statusbar_msg_remove($id);
                                  dialog_rpmnew(N("The installation is finished; everything was installed correctly.
 
 Some configuration files were created as `.rpmnew' or `.rpmsave',
 you may now inspect some in order to take actions:"),
                                                %pkg2rpmnew)
-                                   and $statusbar_msg_id = statusbar_msg(N("All requested packages were installed successfully."));
+                                   and statusbar_msg(N("All requested packages were installed successfully."), 1);
+                                 statusbar_msg(N("Looking for \"README\" files..."), 1);
                                  display_READMEs_if_needed($urpm, $w);
                              },
                              already_installed_or_not_installable => sub {

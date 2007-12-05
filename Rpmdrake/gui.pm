@@ -522,11 +522,13 @@ sub toggle_nodes {
 
     my @nodes_with_deps;
 
+    my $bar_id = statusbar_msg(N("Checking dependancies of package..."), 0);
     if (member($old_state, qw(to_remove installed))) { # remove pacckages
         if ($new_state) {
             my @remove;
             slow_func($widget, sub { @remove = closure_removal(@nodes) });
             @nodes_with_deps = grep { !$pkgs->{$_}{selected} && !/^basesystem/ } @remove;
+            statusbar_msg_remove($bar_id);
             deps_msg(N("Some additional packages need to be removed"),
                         formatAlaTeX(N("Because of their dependencies, the following package(s) also need to be\nremoved:")) . "\n\n",
                         \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
@@ -543,6 +545,7 @@ sub toggle_nodes {
                       sub { @nodes_with_deps = grep { intersection(\@nodes, [ closure_removal($_) ]) }
                               grep { $pkgs->{$_}{selected} && !member($_, @nodes) } keys %$pkgs });
             push @nodes_with_deps, @nodes;
+            statusbar_msg_remove($bar_id);
             deps_msg(N("Some packages can't be removed"),
                         N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
                         \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
@@ -573,6 +576,7 @@ sub toggle_nodes {
                 },
             );
             @nodes_with_deps = map { urpm_name($_) } @requested;
+            statusbar_msg_remove($bar_id);
             if (!deps_msg(N("Additional packages needed"),
                              formatAlaTeX(N("To satisfy dependencies, the following package(s) also need\nto be installed:\n\n")) . "\n\n",
                              \@nodes, \@nodes_with_deps)) {
@@ -610,6 +614,7 @@ sub toggle_nodes {
                       sub { @unrequested = $urpm->disable_selected(open_rpm_db(), $urpm->{state},
                                                                    map { $pkgs->{$_}{pkg} } @nodes) });
             @nodes_with_deps = map { urpm_name($_) } @unrequested;
+            statusbar_msg_remove($bar_id);
             if (!deps_msg(N("Some packages need to be removed"),
                              N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
                              \@nodes, \@nodes_with_deps)) {
