@@ -239,7 +239,7 @@ sub get_pkgs {
 
     warn_about_media($w, $opts);
 
-    my $urpm = open_urpmi_db();
+    my $urpm = open_urpmi_db(update => $probe_only_for_updates);
 
     my $_drop_lock = before_leaving { undef $urpm->{lock} };
 
