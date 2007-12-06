@@ -184,10 +184,10 @@ sub run_treeview_dialog {
 
     $detail_list_model = Gtk2::ListStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String", "Glib::Boolean", "Glib::String", "Glib::String", "Glib::String", "Glib::String");
     $detail_list = Gtk2::TreeView->new_with_model($detail_list_model);
-    $detail_list->append_column(my $col1 = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererToggle->new, active => $pkg_columns{selected}));
-    $col1->set_fixed_width(34); # w/o this the toggle cells are not displayed
-    $col1->set_sizing('fixed');
-    $col1->set_sort_column_id($pkg_columns{selected});
+    $detail_list->append_column(my $col_sel = Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererToggle->new, active => $pkg_columns{selected}));
+    $col_sel->set_fixed_width(34); # w/o this the toggle cells are not displayed
+    $col_sel->set_sizing('fixed');
+    $col_sel->set_sort_column_id($pkg_columns{selected});
 
     $detail_list->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, my $rdr = Gtk2::CellRendererPixbuf->new, 'pixbuf' => $pkg_columns{state_icon}));
     $rdr->set_fixed_size(34, 24);
