@@ -41,6 +41,7 @@ use Rpmdrake::icon;
 use Gtk2::Gdk::Keysyms;
 
 our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices compute_main_window_size do_action get_info get_summary is_locale_available node_state pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_all toggle_nodes
+                 sort_callback
             $clear_button %grp_columns %pkg_columns $dont_show_selections @filtered_pkgs $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
 
 our $dont_show_selections = $> ? 1 : 0;
@@ -778,6 +779,11 @@ sub get_info {
     exists $pkgs->{$key}{description} && exists $pkgs->{$key}{files}
       or slow_func($widget, sub { extract_header($pkgs->{$key}, $urpm) });
     format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions);
+}
+
+sub sort_callback {
+    my ($store, $treeiter1, $treeiter2) = @_;
+    URPM::rpmvercmp(map { $store->get_value($_, $pkg_columns{version}) } $treeiter1, $treeiter2);
 }
 
 1;
