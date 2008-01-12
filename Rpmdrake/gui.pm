@@ -523,7 +523,7 @@ sub toggle_nodes {
 
     my @nodes_with_deps;
 
-    my $bar_id = statusbar_msg(N("Checking dependancies of package..."), 0);
+    my $bar_id = statusbar_msg(N("Checking dependencies of package..."), 0);
     if (member($old_state, qw(to_remove installed))) { # remove pacckages
         if ($new_state) {
             my @remove;
