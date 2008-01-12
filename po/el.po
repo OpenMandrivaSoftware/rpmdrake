@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-25 14:03+0200\n"
+"POT-Creation-Date: 2008-01-12 17:31+0100\n"
 "PO-Revision-Date: 2006-03-13 10:55+0200\n"
 "Last-Translator: Theophanis Mastakas <mastakas@otenet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Generator: KBabel 1.10.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../MandrivaUpdate:76 ../Rpmdrake/gui.pm:690
+#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:726
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -34,113 +34,122 @@ msgstr ""
 "υπάρχουν διαθέσιμα πακέτα για αναβάθμιση για τα εγκατεστημένα\n"
 "πακέτα του υπολογιστή σας ή τα έχετε ήδη αναβαθμίσει."
 
-#: ../MandrivaUpdate:105 ../rpmdrake:63 ../rpmdrake:524 ../rpmdrake.pm:195
+#: ../MandrivaUpdate:109 ../rpmdrake:80 ../rpmdrake:561 ../rpmdrake.pm:193
 #, fuzzy, c-format
 msgid "Software Management"
 msgstr "Διαχειριστής Μέσων Λογισμικού"
 
-#: ../MandrivaUpdate:123
+#: ../MandrivaUpdate:126
 #, fuzzy, c-format
 msgid "Here is the list of software package updates"
 msgstr "Αναβάθμιση Πακέτων Λογισμικού"
 
-#: ../MandrivaUpdate:144 ../Rpmdrake/edit_urpm_sources.pm:1127 ../rpmdrake:454
+#: ../MandrivaUpdate:132
+#, fuzzy, c-format
+msgid "Name"
+msgstr "Όνομα:"
+
+#: ../MandrivaUpdate:133 ../rpmdrake:203
+#, fuzzy, c-format
+msgid "Version"
+msgstr "Έκδοση: "
+
+#: ../MandrivaUpdate:134 ../rpmdrake:207
+#, c-format
+msgid "Release"
+msgstr ""
+
+#: ../MandrivaUpdate:135 ../rpmdrake:211
+#, fuzzy, c-format
+msgid "Arch"
+msgstr "Αρχειοθέτηση"
+
+#: ../MandrivaUpdate:148 ../Rpmdrake/edit_urpm_sources.pm:1133
 #, c-format
 msgid "Help"
 msgstr "Βοήθεια"
 
-#: ../MandrivaUpdate:148 ../rpmdrake:459 ../rpmdrake.pm:783
+#: ../MandrivaUpdate:152 ../rpmdrake:495 ../rpmdrake.pm:770
 #, c-format
 msgid "Select all"
 msgstr "Επιλογή όλων"
 
-#: ../MandrivaUpdate:156 ../rpmdrake.pm:787
+#: ../MandrivaUpdate:165 ../rpmdrake.pm:774
 #, c-format
 msgid "Update"
 msgstr "Ανανέωση"
 
-#: ../MandrivaUpdate:164 ../rpmdrake:469
+#: ../MandrivaUpdate:173 ../rpmdrake:506
 #, c-format
 msgid "Quit"
 msgstr "Έξοδος"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:60
+#: ../Rpmdrake/edit_urpm_sources.pm:61
 #, fuzzy, c-format
 msgid "FTP"
 msgstr "Web/FTP"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:61 ../Rpmdrake/edit_urpm_sources.pm:70
+#: ../Rpmdrake/edit_urpm_sources.pm:62 ../Rpmdrake/edit_urpm_sources.pm:71
 #, fuzzy, c-format
 msgid "Local"
 msgstr "Τοπικά αρχεία"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:62
+#: ../Rpmdrake/edit_urpm_sources.pm:63
 #, c-format
 msgid "HTTP"
 msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:63
+#: ../Rpmdrake/edit_urpm_sources.pm:64
 #, c-format
 msgid "HTTPS"
 msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:64 ../Rpmdrake/edit_urpm_sources.pm:67
+#: ../Rpmdrake/edit_urpm_sources.pm:65 ../Rpmdrake/edit_urpm_sources.pm:68
 #, c-format
 msgid "NFS"
 msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:65
+#: ../Rpmdrake/edit_urpm_sources.pm:66
 #, fuzzy, c-format
 msgid "Removable"
 msgstr "Αφαίρεση"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:66
+#: ../Rpmdrake/edit_urpm_sources.pm:67
 #, c-format
 msgid "rsync"
 msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:104
+#: ../Rpmdrake/edit_urpm_sources.pm:107
 #, c-format
 msgid "Choose media type"
 msgstr "Επιλέξτε είδος μέσων"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:79
+#: ../Rpmdrake/edit_urpm_sources.pm:108
 #, c-format
 msgid ""
-"This step enables you to add sources from a Mandriva Linux web or FTP "
-"mirror.\n"
-"\n"
-"There are two kinds of official mirrors. You can choose to add sources that\n"
-"contain the complete set of packages of your distribution (usually a "
-"superset\n"
-"of what comes on the standard installation CDs), or sources that provide "
-"the\n"
-"official updates for your distribution. (You can add both, but you'll have\n"
-"to do this in two steps.)"
+"In order to keep your system secure and stable, you must at a minimum set "
+"up\n"
+"sources for official security and stability updates. You can also choose to "
+"set\n"
+"up a fuller set of sources which includes the complete official Mandriva\n"
+"repositories, giving you access to more software than can fit on the "
+"Mandriva\n"
+"discs. Please choose whether to configure update sources only, or the full "
+"set\n"
+"of sources."
 msgstr ""
-"Αυτό το στάδιο σας επιτρέπει να προσθέσετε πηγές από μία ιστοσελίδα της "
-"Mandriva Linux ή μια εναλλακτική διεύθυνση FTP.\n"
-"\n"
-"Υπάρχουν δύο είδη επίσημων εναλλακτικών διευθύνσεων.Μπορείτε να επιλέξετε "
-"την προσθήκη μέσων που\n"
-"περιέχουν το πλήρες σύνολο πακέτων της διανομής σας (συνήθως ένα υπέρ "
-"σύνολο\n"
-"του τι υπάρχει στα πρότυπα CDs εγκατάστασης),ή πηγές που παρέχουν τις\n"
-"επίσημες αναβαθμίσεις για τη διανομή σας. (Μπορείτε να προσθέσετε αμφότερες,"
-"αλλά θα πρέπει\n"
-"να το κάνετε σε δύο στάδια.)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:92
+#: ../Rpmdrake/edit_urpm_sources.pm:120
 #, c-format
-msgid "Distribution sources"
-msgstr "Πηγές διανομής"
+msgid "Full set of sources"
+msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:92
+#: ../Rpmdrake/edit_urpm_sources.pm:120
 #, c-format
-msgid "Official updates"
-msgstr "Επίσημες αναβαθμίσεις"
+msgid "Update sources only"
+msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:98
+#: ../Rpmdrake/edit_urpm_sources.pm:126
 #, c-format
 msgid ""
 "This will attempt to install all official sources corresponding to your\n"
@@ -160,104 +169,104 @@ msgstr ""
 "\n"
 "Να συνεχίσω;"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:113
+#: ../Rpmdrake/edit_urpm_sources.pm:138
 #, c-format
 msgid "Please wait, adding media..."
 msgstr "Παρακαλώ περιμένετε, προσθήκη μέσου..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:146
+#: ../Rpmdrake/edit_urpm_sources.pm:145
 #, c-format
 msgid "Add a medium"
 msgstr "Προσθήκη ενός μέσου"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:150
+#: ../Rpmdrake/edit_urpm_sources.pm:149
 #, c-format
 msgid "Local files"
 msgstr "Τοπικά αρχεία"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:150
+#: ../Rpmdrake/edit_urpm_sources.pm:149
 #, fuzzy, c-format
 msgid "Medium path:"
 msgstr "Μέσο: "
 
-#: ../Rpmdrake/edit_urpm_sources.pm:151
+#: ../Rpmdrake/edit_urpm_sources.pm:150
 #, c-format
 msgid "FTP server"
 msgstr "Διακομιστής FTP"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:151 ../Rpmdrake/edit_urpm_sources.pm:152
-#: ../Rpmdrake/edit_urpm_sources.pm:153 ../Rpmdrake/edit_urpm_sources.pm:438
+#: ../Rpmdrake/edit_urpm_sources.pm:150 ../Rpmdrake/edit_urpm_sources.pm:151
+#: ../Rpmdrake/edit_urpm_sources.pm:152 ../Rpmdrake/edit_urpm_sources.pm:437
 #, c-format
 msgid "URL:"
 msgstr "URL:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:152
+#: ../Rpmdrake/edit_urpm_sources.pm:151
 #, c-format
 msgid "RSYNC server"
 msgstr "Διακομιστής  RSYNC"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:153
+#: ../Rpmdrake/edit_urpm_sources.pm:152
 #, c-format
 msgid "HTTP server"
 msgstr "Διακομιστής HTTP"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:154
+#: ../Rpmdrake/edit_urpm_sources.pm:153
 #, c-format
 msgid "Removable device"
 msgstr "Αφαιρούμενη συσκευή"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:154
+#: ../Rpmdrake/edit_urpm_sources.pm:153
 #, c-format
 msgid "Path or mount point:"
 msgstr "Θέση ή σημείο προσάρτησης:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:172
+#: ../Rpmdrake/edit_urpm_sources.pm:171
 #, c-format
 msgid "Browse..."
 msgstr "Αναζήτηση..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:199
+#: ../Rpmdrake/edit_urpm_sources.pm:198
 #, c-format
 msgid "Login:"
 msgstr "Προσπέλαση:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:199 ../Rpmdrake/edit_urpm_sources.pm:539
-#: ../rpmdrake.pm:135
+#: ../Rpmdrake/edit_urpm_sources.pm:198 ../Rpmdrake/edit_urpm_sources.pm:538
+#: ../rpmdrake.pm:134
 #, c-format
 msgid "Password:"
 msgstr "Κωδικός πρόσβασης:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:204 ../Rpmdrake/edit_urpm_sources.pm:439
+#: ../Rpmdrake/edit_urpm_sources.pm:203 ../Rpmdrake/edit_urpm_sources.pm:438
 #, c-format
 msgid "Relative path to synthesis/hdlist:"
 msgstr "Σχετική θέση των synthesis/hdlist:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:206
+#: ../Rpmdrake/edit_urpm_sources.pm:205
 #, fuzzy, c-format
 msgid "If left blank, synthesis/hdlist will be automatically probed"
 msgstr "Αν μείνει κενό, το synthesis/hdlist  θα επιμεληθεί αυτόματα"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:211
+#: ../Rpmdrake/edit_urpm_sources.pm:210
 #, fuzzy, c-format
 msgid "Medium name:"
 msgstr "Μέσο: "
 
-#: ../Rpmdrake/edit_urpm_sources.pm:219
+#: ../Rpmdrake/edit_urpm_sources.pm:218
 #, fuzzy, c-format
 msgid "Create media for a whole distribution"
 msgstr "Δημιουργία μέσων για μια ολόκληρη διανομή"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:230
+#: ../Rpmdrake/edit_urpm_sources.pm:229
 #, fuzzy, c-format
 msgid "Tag this medium as an update medium"
 msgstr "Αναζήτηση για αναβαθμίσεις στο μέσον"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:240
+#: ../Rpmdrake/edit_urpm_sources.pm:239
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Πρέπει να συμπληρώσετε τουλάχιστον τα δύο πρώτα πεδία."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:244
+#: ../Rpmdrake/edit_urpm_sources.pm:243
 #, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
@@ -266,138 +275,138 @@ msgstr ""
 "Υπάρχει ήδη ένα μέσο με αυτό το όνομα, είστε βέβαιοι\n"
 "για την αντικατάστασή του;"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:256
+#: ../Rpmdrake/edit_urpm_sources.pm:255
 #, c-format
 msgid "Adding a medium:"
 msgstr "Προσθήκη ενός μέσου:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:258
+#: ../Rpmdrake/edit_urpm_sources.pm:257
 #, c-format
 msgid "Type of medium:"
 msgstr "Τύπος μέσου:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:268 ../Rpmdrake/edit_urpm_sources.pm:344
-#: ../Rpmdrake/edit_urpm_sources.pm:448 ../Rpmdrake/edit_urpm_sources.pm:475
-#: ../Rpmdrake/edit_urpm_sources.pm:556 ../Rpmdrake/edit_urpm_sources.pm:643
-#: ../Rpmdrake/edit_urpm_sources.pm:684 ../Rpmdrake/edit_urpm_sources.pm:742
-#: ../Rpmdrake/edit_urpm_sources.pm:892 ../Rpmdrake/gui.pm:462
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:629 ../Rpmdrake/pkg.pm:671
-#: ../rpmdrake.pm:306 ../rpmdrake.pm:621 ../rpmdrake.pm:706 ../rpmdrake.pm:779
+#: ../Rpmdrake/edit_urpm_sources.pm:267 ../Rpmdrake/edit_urpm_sources.pm:343
+#: ../Rpmdrake/edit_urpm_sources.pm:447 ../Rpmdrake/edit_urpm_sources.pm:474
+#: ../Rpmdrake/edit_urpm_sources.pm:555 ../Rpmdrake/edit_urpm_sources.pm:642
+#: ../Rpmdrake/edit_urpm_sources.pm:683 ../Rpmdrake/edit_urpm_sources.pm:741
+#: ../Rpmdrake/edit_urpm_sources.pm:890 ../Rpmdrake/gui.pm:491
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:608 ../Rpmdrake/pkg.pm:650
+#: ../rpmdrake.pm:302 ../rpmdrake.pm:620 ../rpmdrake.pm:693 ../rpmdrake.pm:766
 #, c-format
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:270 ../Rpmdrake/edit_urpm_sources.pm:346
-#: ../Rpmdrake/edit_urpm_sources.pm:475 ../Rpmdrake/edit_urpm_sources.pm:546
-#: ../Rpmdrake/edit_urpm_sources.pm:640 ../Rpmdrake/edit_urpm_sources.pm:683
-#: ../Rpmdrake/edit_urpm_sources.pm:735 ../Rpmdrake/edit_urpm_sources.pm:808
-#: ../Rpmdrake/edit_urpm_sources.pm:938 ../Rpmdrake/edit_urpm_sources.pm:1128
-#: ../Rpmdrake/gui.pm:462 ../Rpmdrake/gui.pm:478 ../Rpmdrake/gui.pm:483
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:474 ../Rpmdrake/pkg.pm:671
-#: ../Rpmdrake/rpmnew.pm:179 ../rpmdrake.pm:126 ../rpmdrake.pm:245
-#: ../rpmdrake.pm:309 ../rpmdrake.pm:621
+#: ../Rpmdrake/edit_urpm_sources.pm:269 ../Rpmdrake/edit_urpm_sources.pm:345
+#: ../Rpmdrake/edit_urpm_sources.pm:474 ../Rpmdrake/edit_urpm_sources.pm:545
+#: ../Rpmdrake/edit_urpm_sources.pm:639 ../Rpmdrake/edit_urpm_sources.pm:682
+#: ../Rpmdrake/edit_urpm_sources.pm:734 ../Rpmdrake/edit_urpm_sources.pm:807
+#: ../Rpmdrake/edit_urpm_sources.pm:936 ../Rpmdrake/edit_urpm_sources.pm:1134
+#: ../Rpmdrake/gui.pm:491 ../Rpmdrake/gui.pm:507 ../Rpmdrake/gui.pm:512
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:444 ../Rpmdrake/pkg.pm:650
+#: ../Rpmdrake/rpmnew.pm:180 ../rpmdrake.pm:125 ../rpmdrake.pm:240
+#: ../rpmdrake.pm:305 ../rpmdrake.pm:620
 #, c-format
 msgid "Ok"
 msgstr "OK"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:327
+#: ../Rpmdrake/edit_urpm_sources.pm:326
 #, c-format
 msgid "Global options for package installation"
 msgstr "Καθολικές επιλογές για εγκατάσταση πακέτου"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:330
+#: ../Rpmdrake/edit_urpm_sources.pm:329
 #, c-format
 msgid "always"
 msgstr "πάντα"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:331
+#: ../Rpmdrake/edit_urpm_sources.pm:330
 #, c-format
 msgid "never"
 msgstr "ποτέ"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:340
+#: ../Rpmdrake/edit_urpm_sources.pm:339
 #, c-format
 msgid "Verify RPMs to be installed:"
 msgstr "Επιβεβαιώστε RPMs προς εγκατάσταση:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:341
+#: ../Rpmdrake/edit_urpm_sources.pm:340
 #, c-format
 msgid "Download program to use:"
 msgstr "Λήψη προγράμματος προς χρήση:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:372
+#: ../Rpmdrake/edit_urpm_sources.pm:370
 #, c-format
 msgid "Source Removal"
 msgstr "Αφαίρεση Πηγής"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:374
+#: ../Rpmdrake/edit_urpm_sources.pm:372
 #, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Είστε βέβαιοι για την αφαίρεση της πηγής\" %s \";"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:375
+#: ../Rpmdrake/edit_urpm_sources.pm:373
 #, fuzzy, c-format
 msgid "Are you sure you want to remove the following sources ?"
 msgstr "Είστε βέβαιοι για την αφαίρεση της πηγής\" %s \";"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:381
+#: ../Rpmdrake/edit_urpm_sources.pm:379
 #, c-format
 msgid "Please wait, removing medium..."
 msgstr "Παρακαλώ περιμένετε, αφαιρείται το μέσο..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:428
+#: ../Rpmdrake/edit_urpm_sources.pm:427
 #, c-format
 msgid "Edit a medium"
 msgstr "Επεξεργασία ενός μέσου"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:435
+#: ../Rpmdrake/edit_urpm_sources.pm:434
 #, c-format
 msgid "Editing medium \"%s\":"
 msgstr "Επεξεργασία μέσου \"%s\":"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:440
+#: ../Rpmdrake/edit_urpm_sources.pm:439
 #, c-format
 msgid "Downloader:"
 msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:452
+#: ../Rpmdrake/edit_urpm_sources.pm:451
 #, c-format
 msgid "Save changes"
 msgstr "Αποθήκευση αλλαγών"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:461
+#: ../Rpmdrake/edit_urpm_sources.pm:460
 #, c-format
 msgid "Proxy..."
 msgstr "Διαμεσολαβητής..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:473
+#: ../Rpmdrake/edit_urpm_sources.pm:472
 #, c-format
 msgid "You need to insert the medium to continue"
 msgstr "Πρέπει να εισάγετε το μέσο για να συνεχίσετε"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:474
+#: ../Rpmdrake/edit_urpm_sources.pm:473
 #, c-format
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr ""
 "Για να αποθηκευτούν οι αλλαγές, θα πρέπει να εισάγετε το μέσο στον οδηγό."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:510
+#: ../Rpmdrake/edit_urpm_sources.pm:509
 #, c-format
 msgid "Configure proxies"
 msgstr "Ρύθμιση διαμεσολαβητών"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:522
+#: ../Rpmdrake/edit_urpm_sources.pm:521
 #, c-format
 msgid "Proxy settings for media \"%s\""
 msgstr "Ρυθμίσεις διαμεσολαβητή για μέσον \"%s\""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:523
+#: ../Rpmdrake/edit_urpm_sources.pm:522
 #, c-format
 msgid "Global proxy settings"
 msgstr "Καθολικές ρυθμίσεις διαμεσολαβητή"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:525
+#: ../Rpmdrake/edit_urpm_sources.pm:524
 #, fuzzy, c-format
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
@@ -407,146 +416,146 @@ msgstr ""
 "και μια προαιρετική θύρα(σύνταξη:<διαμεσολαβητής κεντρικού υπολογιστή[:θύρα]"
 "> / <proxyhost[:port]>)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:528
+#: ../Rpmdrake/edit_urpm_sources.pm:527
 #, c-format
 msgid "Proxy hostname:"
 msgstr "Όνομα κεντρικού υπολογιστή διαμεσολαβητή:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:531
+#: ../Rpmdrake/edit_urpm_sources.pm:530
 #, fuzzy, c-format
 msgid "You may specify a user/password for the proxy authentication:"
 msgstr ""
 "Μπορείτε να ορίσετε ένα χρήστη/κωδικό για την πιστοποίηση ταυτότητας του "
 "διαμεσολαβητή:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:534
+#: ../Rpmdrake/edit_urpm_sources.pm:533
 #, c-format
 msgid "User:"
 msgstr "Χρήστης:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:609
+#: ../Rpmdrake/edit_urpm_sources.pm:608
 #, c-format
 msgid "Add a parallel group"
 msgstr "Προσθήκη παράλληλης ομάδας"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:609
+#: ../Rpmdrake/edit_urpm_sources.pm:608
 #, c-format
 msgid "Edit a parallel group"
 msgstr "Επεξεργασία μιας παράλληλης ομάδας"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:621
+#: ../Rpmdrake/edit_urpm_sources.pm:620
 #, c-format
 msgid "Add a medium limit"
 msgstr "Προσθήκη ενός ορίου μέσου"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:634
+#: ../Rpmdrake/edit_urpm_sources.pm:633
 #, c-format
 msgid "Choose a medium for adding in the media limit:"
 msgstr "Επιλέξτε ένα μέσο για προσθήκη στο όριο μέσων:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:671
+#: ../Rpmdrake/edit_urpm_sources.pm:670
 #, fuzzy, c-format
 msgid "Add a host"
 msgstr "Προσθήκη ενός κεντρικού υπολογιστή"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:678
+#: ../Rpmdrake/edit_urpm_sources.pm:677
 #, fuzzy, c-format
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr ""
 "Εισάγετε το όνομα του κεντρικού υπολογιστή ή την διεύθυνση IP του προς "
 "προσθήκη κεντρικού υπολογιστή: "
 
-#: ../Rpmdrake/edit_urpm_sources.pm:709
+#: ../Rpmdrake/edit_urpm_sources.pm:708
 #, c-format
 msgid "Editing parallel group \"%s\":"
 msgstr "Επεξεργασία παράλληλης ομάδας \"%s\":"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:713
+#: ../Rpmdrake/edit_urpm_sources.pm:712
 #, c-format
 msgid "Group name:"
 msgstr "Όνομα ομάδας:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:714
+#: ../Rpmdrake/edit_urpm_sources.pm:713
 #, c-format
 msgid "Protocol:"
 msgstr "Πρωτόκολλο:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:716
+#: ../Rpmdrake/edit_urpm_sources.pm:715
 #, c-format
 msgid "Media limit:"
 msgstr "Όριο μέσου:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:721 ../Rpmdrake/edit_urpm_sources.pm:728
-#: ../Rpmdrake/edit_urpm_sources.pm:926 ../Rpmdrake/edit_urpm_sources.pm:1115
+#: ../Rpmdrake/edit_urpm_sources.pm:720 ../Rpmdrake/edit_urpm_sources.pm:727
+#: ../Rpmdrake/edit_urpm_sources.pm:924 ../Rpmdrake/edit_urpm_sources.pm:1121
 #, c-format
 msgid "Add"
 msgstr "Προσθήκη"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:722 ../Rpmdrake/edit_urpm_sources.pm:729
-#: ../Rpmdrake/edit_urpm_sources.pm:788 ../Rpmdrake/edit_urpm_sources.pm:930
-#: ../Rpmdrake/edit_urpm_sources.pm:1105
+#: ../Rpmdrake/edit_urpm_sources.pm:721 ../Rpmdrake/edit_urpm_sources.pm:728
+#: ../Rpmdrake/edit_urpm_sources.pm:787 ../Rpmdrake/edit_urpm_sources.pm:928
+#: ../Rpmdrake/edit_urpm_sources.pm:1111
 #, c-format
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:723
+#: ../Rpmdrake/edit_urpm_sources.pm:722
 #, c-format
 msgid "Hosts:"
 msgstr "Κεντρικοί Υπολογιστές:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:757
+#: ../Rpmdrake/edit_urpm_sources.pm:756
 #, fuzzy, c-format
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr "Ρυθμίστε παράλληλο urpmi (κατανεμημένη εκτέλεση του urpmi)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:761
+#: ../Rpmdrake/edit_urpm_sources.pm:760
 #, c-format
 msgid "Group"
 msgstr "Ομάδα"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:761
+#: ../Rpmdrake/edit_urpm_sources.pm:760
 #, c-format
 msgid "Protocol"
 msgstr "Πρωτόκολλο"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:761
+#: ../Rpmdrake/edit_urpm_sources.pm:760
 #, c-format
 msgid "Media limit"
 msgstr "Όριο μέσων"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:762
+#: ../Rpmdrake/edit_urpm_sources.pm:761
 #, c-format
 msgid "Command"
 msgstr "Εντολή"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:772 ../Rpmdrake/gui.pm:687
-#: ../Rpmdrake/pkg.pm:100 ../Rpmdrake/pkg.pm:130 ../Rpmdrake/pkg.pm:170
-#: ../Rpmdrake/rpmnew.pm:77
+#: ../Rpmdrake/edit_urpm_sources.pm:771 ../Rpmdrake/gui.pm:723
+#: ../Rpmdrake/pkg.pm:102 ../Rpmdrake/pkg.pm:132 ../Rpmdrake/pkg.pm:147
+#: ../Rpmdrake/rpmnew.pm:78
 #, c-format
 msgid "(none)"
 msgstr "(κανένα)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:792
+#: ../Rpmdrake/edit_urpm_sources.pm:791
 #, c-format
 msgid "Edit..."
 msgstr "Επεξεργασία"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:800
+#: ../Rpmdrake/edit_urpm_sources.pm:799
 #, c-format
 msgid "Add..."
 msgstr "Προσθήκη..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:816
+#: ../Rpmdrake/edit_urpm_sources.pm:815
 #, c-format
 msgid "Manage keys for digital signatures of packages"
 msgstr "Διαχείριση κλειδιών για πακέτα με ψηφιακές επιλογές"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:822 ../Rpmdrake/edit_urpm_sources.pm:1036
+#: ../Rpmdrake/edit_urpm_sources.pm:821 ../Rpmdrake/edit_urpm_sources.pm:1035
 #, c-format
 msgid "Medium"
 msgstr "Μέσο"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:829
+#: ../Rpmdrake/edit_urpm_sources.pm:828
 #, c-format
 msgid ""
 "_:cryptographic keys\n"
@@ -555,33 +564,33 @@ msgstr ""
 "_:κρυπτογραφικά κλειδιά\n"
 "Κλειδιά"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:853
+#: ../Rpmdrake/edit_urpm_sources.pm:851
 #, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr ""
 "δε βρέθηκε όνομα, το κλειδί δεν υπάρχει στη διαδικασία κλειδιού του rpm "
 
-#: ../Rpmdrake/edit_urpm_sources.pm:866
+#: ../Rpmdrake/edit_urpm_sources.pm:864
 #, c-format
 msgid "Add a key"
 msgstr "Προσθήκη ενός κλειδιού"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:879
+#: ../Rpmdrake/edit_urpm_sources.pm:877
 #, c-format
 msgid "Choose a key for adding to the medium %s"
 msgstr "Επιλέξτε ένα κλειδί για να προστεθεί στο μέσο %s"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:885
+#: ../Rpmdrake/edit_urpm_sources.pm:883
 #, c-format
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:907
+#: ../Rpmdrake/edit_urpm_sources.pm:905
 #, c-format
 msgid "Remove a key"
 msgstr "Αφαίρεση ενός κλειδιού"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:908
+#: ../Rpmdrake/edit_urpm_sources.pm:906
 #, c-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
@@ -590,164 +599,164 @@ msgstr ""
 "Είστε βέβαιοι για την αφαίρεση του κλειδιού %s από το μέσο %s?\n"
 "(όνομα κλειδιού: %s)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:947
+#: ../Rpmdrake/edit_urpm_sources.pm:945 ../Rpmdrake/edit_urpm_sources.pm:1104
 #, c-format
 msgid "Configure media"
 msgstr "Ρύθμιση μέσων"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:954 ../Rpmdrake/edit_urpm_sources.pm:955
-#: ../Rpmdrake/edit_urpm_sources.pm:956 ../rpmdrake:347 ../rpmdrake:350
-#: ../rpmdrake:355 ../rpmdrake:368 ../rpmdrake:369
+#: ../Rpmdrake/edit_urpm_sources.pm:952 ../Rpmdrake/edit_urpm_sources.pm:953
+#: ../Rpmdrake/edit_urpm_sources.pm:954 ../rpmdrake:386 ../rpmdrake:389
+#: ../rpmdrake:394 ../rpmdrake:409 ../rpmdrake:410
 #, c-format
 msgid "/_File"
 msgstr "/_Αρχείο"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:369
+#: ../Rpmdrake/edit_urpm_sources.pm:953 ../rpmdrake:410
 #, c-format
 msgid "/_Quit"
 msgstr "/_Εξοδος"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:369
+#: ../Rpmdrake/edit_urpm_sources.pm:953 ../rpmdrake:410
 #, c-format
 msgid "<control>Q"
 msgstr "<control>Q"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:956
+#: ../Rpmdrake/edit_urpm_sources.pm:954
 #, fuzzy, c-format
 msgid "/_Update"
 msgstr "Ανανέωση"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:956
+#: ../Rpmdrake/edit_urpm_sources.pm:954
 #, fuzzy, c-format
 msgid "<control>U"
 msgstr "<control>Q"
 
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../Rpmdrake/edit_urpm_sources.pm:956
 #: ../Rpmdrake/edit_urpm_sources.pm:957 ../Rpmdrake/edit_urpm_sources.pm:958
 #: ../Rpmdrake/edit_urpm_sources.pm:959 ../Rpmdrake/edit_urpm_sources.pm:960
-#: ../Rpmdrake/edit_urpm_sources.pm:961 ../Rpmdrake/edit_urpm_sources.pm:962
-#: ../rpmdrake:344 ../rpmdrake:372 ../rpmdrake:376 ../rpmdrake:380
-#: ../rpmdrake:419
+#: ../rpmdrake:383 ../rpmdrake:413 ../rpmdrake:417 ../rpmdrake:421
+#: ../rpmdrake:460
 #, c-format
 msgid "/_Options"
 msgstr "/_Επιλογές"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:958
+#: ../Rpmdrake/edit_urpm_sources.pm:956
 #, fuzzy, c-format
 msgid "/_Global options"
 msgstr "Καθολικές επιλογές..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:958
+#: ../Rpmdrake/edit_urpm_sources.pm:956
 #, fuzzy, c-format
 msgid "<control>G"
 msgstr "<control>Q"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:978
+#: ../Rpmdrake/edit_urpm_sources.pm:957
 #, fuzzy, c-format
 msgid "/_Add a custom medium"
 msgstr "/_Αναβάθμιση μέσων"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:978
+#: ../Rpmdrake/edit_urpm_sources.pm:957
 #, fuzzy, c-format
 msgid "<control>A"
 msgstr "<control>Q"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:960
+#: ../Rpmdrake/edit_urpm_sources.pm:958
 #, fuzzy, c-format
 msgid "/Manage _keys"
 msgstr "Διαχείριση κλειδιών..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:960
+#: ../Rpmdrake/edit_urpm_sources.pm:958
 #, fuzzy, c-format
 msgid "<control>K"
 msgstr "<control>Q"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:961
+#: ../Rpmdrake/edit_urpm_sources.pm:959
 #, fuzzy, c-format
 msgid "/_Parallel"
 msgstr "Παράλληλη..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:961
+#: ../Rpmdrake/edit_urpm_sources.pm:959
 #, fuzzy, c-format
 msgid "<control>P"
 msgstr "<control>Q"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:962
+#: ../Rpmdrake/edit_urpm_sources.pm:960
 #, fuzzy, c-format
 msgid "/P_roxy"
 msgstr "Διαμεσολαβητής..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:962
+#: ../Rpmdrake/edit_urpm_sources.pm:960
 #, fuzzy, c-format
 msgid "<control>R"
 msgstr "<control>Q"
 
+#: ../Rpmdrake/edit_urpm_sources.pm:962 ../Rpmdrake/edit_urpm_sources.pm:963
 #: ../Rpmdrake/edit_urpm_sources.pm:964 ../Rpmdrake/edit_urpm_sources.pm:965
-#: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
-#: ../rpmdrake:384 ../rpmdrake:385 ../rpmdrake:386 ../rpmdrake:387
+#: ../rpmdrake:425 ../rpmdrake:426 ../rpmdrake:427 ../rpmdrake:428
 #, c-format
 msgid "/_Help"
 msgstr "/_Βοήθεια"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:385
+#: ../Rpmdrake/edit_urpm_sources.pm:963 ../rpmdrake:426
 #, c-format
 msgid "/_Report Bug"
 msgstr "/_Αναφορά Bug"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:967 ../rpmdrake:387
+#: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:428
 #, c-format
 msgid "/_About..."
 msgstr "/_Σχετικά με..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:970 ../rpmdrake:390
+#: ../Rpmdrake/edit_urpm_sources.pm:968 ../rpmdrake:431
 #, fuzzy, c-format
 msgid "Rpmdrake"
 msgstr "Rpmdrake"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:972 ../rpmdrake:392
+#: ../Rpmdrake/edit_urpm_sources.pm:970 ../rpmdrake:433
 #, c-format
 msgid "Copyright (C) %s by Mandriva"
 msgstr "Copyright (C)%s by mandriva"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:974 ../rpmdrake:394
+#: ../Rpmdrake/edit_urpm_sources.pm:972 ../rpmdrake:435
 #, c-format
 msgid "Rpmdrake is Mandriva Linux package management tool."
 msgstr ""
 
-#: ../Rpmdrake/edit_urpm_sources.pm:976 ../rpmdrake:396
+#: ../Rpmdrake/edit_urpm_sources.pm:974 ../rpmdrake:437
 #, c-format
 msgid "Mandriva Linux"
 msgstr "Mandriva Linux"
 
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../Rpmdrake/edit_urpm_sources.pm:981 ../rpmdrake:401
+#: ../Rpmdrake/edit_urpm_sources.pm:979 ../rpmdrake:442
 #, c-format
 msgid "_: Translator(s) name(s) & email(s)\n"
 msgstr "Theophanis Mastakas <mastakas@otenet.gr>\n"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1034 ../Rpmdrake/pkg.pm:214
+#: ../Rpmdrake/edit_urpm_sources.pm:1032 ../Rpmdrake/pkg.pm:203
 #, c-format
 msgid "Enabled"
 msgstr "Ενεργοποίηση;"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1035
+#: ../Rpmdrake/edit_urpm_sources.pm:1033
 #, c-format
 msgid "Updates"
 msgstr "Αναβαθμίσεις ;"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1062
+#: ../Rpmdrake/edit_urpm_sources.pm:1034
 #, c-format
 msgid "Type"
 msgstr "Τύπος"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1078
+#: ../Rpmdrake/edit_urpm_sources.pm:1050
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
 msgstr ""
 "Το μέσο χρήζει αναβάθμισης για να είναι χρησιμοποιήσιμο. Ν' αναβαθμιστεί "
 "τώρα ;"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1083
+#: ../Rpmdrake/edit_urpm_sources.pm:1081
 #, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -758,13 +767,13 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1109
+#: ../Rpmdrake/edit_urpm_sources.pm:1115
 #, c-format
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1143 ../Rpmdrake/init.pm:142
-#: ../gurpmi.addmedia:99
+#: ../Rpmdrake/edit_urpm_sources.pm:1149 ../Rpmdrake/init.pm:143
+#: ../gurpmi.addmedia:103
 #, c-format
 msgid ""
 "%s\n"
@@ -775,7 +784,7 @@ msgstr ""
 "\n"
 "Να συνεχιστεί;"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1146
+#: ../Rpmdrake/edit_urpm_sources.pm:1152
 #, c-format
 msgid ""
 "Welcome to the Software Media Manager!\n"
@@ -791,7 +800,7 @@ msgstr ""
 "να \n"
 "εγκατασταθούν σαν νέα πακέτα ή να αναβαθμίσετε υπάρχοντα πακέτα."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1162
+#: ../Rpmdrake/edit_urpm_sources.pm:1168
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -805,157 +814,162 @@ msgstr ""
 "μέσων σε άλλη επιφάνεια εργασίας, ή κάνετε επί του παρόντος εγκατάσταση "
 "πακέτων ;)"
 
-#: ../Rpmdrake/formatting.pm:80
+#: ../Rpmdrake/formatting.pm:73
 #, c-format
 msgid "None"
 msgstr "Κανένας"
 
-#: ../Rpmdrake/gui.pm:81 ../Rpmdrake/gui.pm:155
+#: ../Rpmdrake/gui.pm:98 ../Rpmdrake/gui.pm:172
 #, c-format
 msgid "Importance: "
 msgstr "Σπουδαιότητα: "
 
-#: ../Rpmdrake/gui.pm:82 ../Rpmdrake/gui.pm:163
+#: ../Rpmdrake/gui.pm:99 ../Rpmdrake/gui.pm:180
 #, c-format
 msgid "Reason for update: "
 msgstr "Αιτία αναβάθμισης: "
 
-#: ../Rpmdrake/gui.pm:86
+#: ../Rpmdrake/gui.pm:103
 #, fuzzy, c-format
 msgid "Security advisory"
 msgstr "Αναβαθμίσεις Ασφαλείας"
 
-#: ../Rpmdrake/gui.pm:94 ../Rpmdrake/gui.pm:165
+#: ../Rpmdrake/gui.pm:111 ../Rpmdrake/gui.pm:182
 #, c-format
 msgid "No description"
 msgstr "Χωρίς περιγραφή"
 
-#: ../Rpmdrake/gui.pm:97
+#: ../Rpmdrake/gui.pm:114
 #, c-format
 msgid "Details:"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:100 ../Rpmdrake/gui.pm:150
+#: ../Rpmdrake/gui.pm:117 ../Rpmdrake/gui.pm:167
 #, c-format
 msgid "Version: "
 msgstr "Έκδοση: "
 
-#: ../Rpmdrake/gui.pm:103 ../Rpmdrake/gui.pm:145
+#: ../Rpmdrake/gui.pm:120 ../Rpmdrake/gui.pm:162
 #, c-format
 msgid "Currently installed version: "
 msgstr "Τρέχουσα εγκατεστημένη έκδοση: "
 
-#: ../Rpmdrake/gui.pm:106 ../Rpmdrake/gui.pm:151
+#: ../Rpmdrake/gui.pm:123 ../Rpmdrake/gui.pm:168
 #, c-format
 msgid "Architecture: "
 msgstr "Αρχιτεκτονική: "
 
-#: ../Rpmdrake/gui.pm:107 ../Rpmdrake/gui.pm:152
+#: ../Rpmdrake/gui.pm:124 ../Rpmdrake/gui.pm:169
 #, c-format
 msgid "Size: "
 msgstr "Μέγεθος: "
 
-#: ../Rpmdrake/gui.pm:107 ../Rpmdrake/gui.pm:152
+#: ../Rpmdrake/gui.pm:124 ../Rpmdrake/gui.pm:169
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../Rpmdrake/gui.pm:108 ../Rpmdrake/gui.pm:144 ../rpmdrake.pm:838
+#: ../Rpmdrake/gui.pm:125 ../Rpmdrake/gui.pm:161 ../rpmdrake.pm:825
 #, c-format
 msgid "Medium: "
 msgstr "Μέσο: "
 
-#: ../Rpmdrake/gui.pm:114
+#: ../Rpmdrake/gui.pm:131
 #, c-format
 msgid "Files:"
 msgstr "Άρχεία:"
 
-#: ../Rpmdrake/gui.pm:118 ../Rpmdrake/gui.pm:123 ../Rpmdrake/gui.pm:137
-#: ../Rpmdrake/gui.pm:139 ../Rpmdrake/pkg.pm:136
+#: ../Rpmdrake/gui.pm:135 ../Rpmdrake/gui.pm:140 ../Rpmdrake/gui.pm:154
+#: ../Rpmdrake/gui.pm:156 ../Rpmdrake/pkg.pm:138
 #, c-format
 msgid "(Not available)"
 msgstr "(Δεν είναι διαθέσιμο/η)"
 
-#: ../Rpmdrake/gui.pm:122
+#: ../Rpmdrake/gui.pm:139
 #, c-format
 msgid "Changelog:"
 msgstr "Αλλαγές:"
 
-#: ../Rpmdrake/gui.pm:134
+#: ../Rpmdrake/gui.pm:151
 #, c-format
 msgid "Files:\n"
 msgstr "Άρχεία:\n"
 
-#: ../Rpmdrake/gui.pm:139
+#: ../Rpmdrake/gui.pm:156
 #, c-format
 msgid "Changelog:\n"
 msgstr "Αλλαγές:\n"
 
-#: ../Rpmdrake/gui.pm:149
+#: ../Rpmdrake/gui.pm:166
 #, c-format
 msgid "Name: "
 msgstr "Όνομα: "
 
-#: ../Rpmdrake/gui.pm:159
+#: ../Rpmdrake/gui.pm:176
 #, c-format
 msgid "Summary: "
 msgstr "Σύνοψη: "
 
-#: ../Rpmdrake/gui.pm:165
+#: ../Rpmdrake/gui.pm:182
 #, c-format
 msgid "Description: "
 msgstr "Περιγραφή: "
 
-#: ../Rpmdrake/gui.pm:359 ../Rpmdrake/pkg.pm:681 ../rpmdrake.pm:762
-#: ../rpmdrake.pm:877
+#: ../Rpmdrake/gui.pm:380 ../Rpmdrake/pkg.pm:660 ../rpmdrake.pm:749
+#: ../rpmdrake.pm:864
 #, c-format
 msgid "Warning"
 msgstr "Προσοχή"
 
-#: ../Rpmdrake/gui.pm:359
+#: ../Rpmdrake/gui.pm:380
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:453 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:484
+#: ../Rpmdrake/gui.pm:474 ../Rpmdrake/gui.pm:503 ../Rpmdrake/gui.pm:505
 #, c-format
 msgid "More information on package..."
 msgstr "Περισσότερες πληροφορίες για το πακέτο..."
 
-#: ../Rpmdrake/gui.pm:447
+#: ../Rpmdrake/gui.pm:476
 #, c-format
 msgid "Please choose"
 msgstr "Παρακαλώ επιλέξτε"
 
-#: ../Rpmdrake/gui.pm:448
+#: ../Rpmdrake/gui.pm:477
 #, fuzzy, c-format
 msgid "The following package is needed:"
 msgstr "Ένα από τα παρακάτω πακέτα απαιτούνται:"
 
-#: ../Rpmdrake/gui.pm:448
+#: ../Rpmdrake/gui.pm:477
 #, c-format
 msgid "One of the following packages is needed:"
 msgstr "Ένα εκ των παρακάτω πακέτων απαιτείται:"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../Rpmdrake/gui.pm:462 ../Rpmdrake/gui.pm:467
+#: ../Rpmdrake/gui.pm:491 ../Rpmdrake/gui.pm:496
 #, c-format
 msgid "More info"
 msgstr "Περισσότερες πληροφορίες"
 
-#: ../Rpmdrake/gui.pm:469
+#: ../Rpmdrake/gui.pm:498
 #, c-format
 msgid "Information on packages"
 msgstr "Πληροφορίες για τα πακέτα"
 
-#: ../Rpmdrake/gui.pm:502
+#: ../Rpmdrake/gui.pm:526
+#, c-format
+msgid "Checking dependencies of package..."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:533
 #, c-format
 msgid "Some additional packages need to be removed"
 msgstr "Ορισμένα επιπλέον πακέτα πρέπει να αφαιρεθούν"
 
-#: ../Rpmdrake/gui.pm:503
+#: ../Rpmdrake/gui.pm:534
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -964,12 +978,12 @@ msgstr ""
 "Για να ικανοποιηθούν οι εξαρτήσεις τους τα παρακάτω πακέτα πρέπει επίσης να "
 "αφαιρεθούν:"
 
-#: ../Rpmdrake/gui.pm:509 ../Rpmdrake/gui.pm:518
+#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:550
 #, c-format
 msgid "Some packages can't be removed"
 msgstr "Ορισμένα πακέτα δεν μπορούν να αφαιρεθούν"
 
-#: ../Rpmdrake/gui.pm:510
+#: ../Rpmdrake/gui.pm:541
 #, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
@@ -978,7 +992,7 @@ msgstr ""
 "Συγνώμη, αλλά η αφαίρεση αυτών των πακέτων θα καταστρέψει το σύστημά σας:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:519 ../Rpmdrake/gui.pm:586
+#: ../Rpmdrake/gui.pm:551 ../Rpmdrake/gui.pm:620
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
@@ -989,12 +1003,12 @@ msgstr ""
 "να αποεπιλεγούν:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:548
+#: ../Rpmdrake/gui.pm:581
 #, c-format
 msgid "Additional packages needed"
 msgstr "Απαιτούνται επιπλέον πακέτα"
 
-#: ../Rpmdrake/gui.pm:549
+#: ../Rpmdrake/gui.pm:582
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
@@ -1005,22 +1019,22 @@ msgstr ""
 " τα παρακάτω πακέτα:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:563
+#: ../Rpmdrake/gui.pm:596
 #, fuzzy, c-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (ανήκει στη λίστα των προς παράβλεψη)"
 
-#: ../Rpmdrake/gui.pm:567
+#: ../Rpmdrake/gui.pm:600
 #, fuzzy, c-format
 msgid "One package cannot be installed"
 msgstr "Ορισμένα πακέτα δεν μπορούν να εγκατασταθούν"
 
-#: ../Rpmdrake/gui.pm:567
+#: ../Rpmdrake/gui.pm:600
 #, c-format
 msgid "Some packages can't be installed"
 msgstr "Ορισμένα πακέτα δεν μπορούν να εγκατασταθούν"
 
-#: ../Rpmdrake/gui.pm:569
+#: ../Rpmdrake/gui.pm:602
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following package cannot be selected:\n"
@@ -1031,7 +1045,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:570
+#: ../Rpmdrake/gui.pm:603
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following packages can't be selected:\n"
@@ -1042,27 +1056,27 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:585 ../Rpmdrake/pkg.pm:563
+#: ../Rpmdrake/gui.pm:619 ../Rpmdrake/pkg.pm:536
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Ορισμένα πακέτα πρέπει να αφαιρεθούν"
 
-#: ../Rpmdrake/gui.pm:616
+#: ../Rpmdrake/gui.pm:652
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:620
+#: ../Rpmdrake/gui.pm:656
 #, c-format
 msgid "You need to select some packages first."
 msgstr "Πρέπει να επιλέξετε πρώτα κάποια πακέτα."
 
-#: ../Rpmdrake/gui.pm:625
+#: ../Rpmdrake/gui.pm:661
 #, c-format
 msgid "Too many packages are selected"
 msgstr "Έχουν επιλεγεί πάρα πολλά πακέτα"
 
-#: ../Rpmdrake/gui.pm:626
+#: ../Rpmdrake/gui.pm:662
 #, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
@@ -1079,42 +1093,42 @@ msgstr ""
 " \n"
 " Είστε βέβαιοι για την εγκατάσταση των επιλεγμένων πακέτων;"
 
-#: ../Rpmdrake/gui.pm:652 ../Rpmdrake/pkg.pm:250
+#: ../Rpmdrake/gui.pm:688 ../Rpmdrake/open_db.pm:74
 #, c-format
 msgid "Fatal error"
 msgstr "Μοιραίο σφάλμα"
 
-#: ../Rpmdrake/gui.pm:653 ../Rpmdrake/pkg.pm:251
+#: ../Rpmdrake/gui.pm:689 ../Rpmdrake/open_db.pm:75
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "Συνέβη ένα μοιραίο σφάλμα: %s."
 
-#: ../Rpmdrake/gui.pm:671
+#: ../Rpmdrake/gui.pm:707
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Παρακαλώ περιμένετε, ταξινομούνται τα πακέτα"
 
-#: ../Rpmdrake/gui.pm:689
+#: ../Rpmdrake/gui.pm:725
 #, c-format
 msgid "No update"
 msgstr "Χωρίς αναβαθμίσεις"
 
-#: ../Rpmdrake/gui.pm:713 ../rpmdrake:229
+#: ../Rpmdrake/gui.pm:749 ../rpmdrake:267
 #, c-format
 msgid "All"
 msgstr "Όλα"
 
-#: ../Rpmdrake/gui.pm:722 ../rpmdrake:132
+#: ../Rpmdrake/gui.pm:758 ../rpmdrake:141
 #, c-format
 msgid "Upgradable"
 msgstr "Αναβαθμίσιμα"
 
-#: ../Rpmdrake/gui.pm:722 ../rpmdrake:132
+#: ../Rpmdrake/gui.pm:758 ../rpmdrake:141
 #, c-format
 msgid "Addable"
 msgstr "Προστιθέμενα"
 
-#: ../Rpmdrake/gui.pm:742
+#: ../Rpmdrake/gui.pm:778
 #, c-format
 msgid "Description not available for this package\n"
 msgstr "Μη διαθέσιμη περιγραφή γι'αυτό το πακέτο\n"
@@ -1147,7 +1161,7 @@ msgstr "Συμπίεση"
 
 #: ../Rpmdrake/icon.pm:40 ../Rpmdrake/icon.pm:46 ../Rpmdrake/icon.pm:57
 #: ../Rpmdrake/icon.pm:71 ../Rpmdrake/icon.pm:89 ../Rpmdrake/icon.pm:110
-#: ../Rpmdrake/icon.pm:123 ../Rpmdrake/icon.pm:134 ../Rpmdrake/pkg.pm:77
+#: ../Rpmdrake/icon.pm:123 ../Rpmdrake/icon.pm:134 ../Rpmdrake/pkg.pm:78
 #, c-format
 msgid "Other"
 msgstr "Άλλα"
@@ -1795,21 +1809,11 @@ msgid ""
 msgstr "  --parallel"
 
 #: ../Rpmdrake/init.pm:50
-#, fuzzy, c-format
-msgid "  --pkg-nosel=pkg1,..    show only these packages"
-msgstr "  --pkg-nose=pkg1,..    προβολή μόνο αυτών των πακέτων"
-
-#: ../Rpmdrake/init.pm:51
-#, c-format
-msgid "  --pkg-sel=pkg1,..      preselect these packages"
-msgstr "  --pkg-sel=pkg1,..     προεπιλογή αυτών των πακέτων"
-
-#: ../Rpmdrake/init.pm:52
 #, c-format
 msgid "  --rpm-root=path        use another root for rpm installation"
 msgstr ""
 
-#: ../Rpmdrake/init.pm:53
+#: ../Rpmdrake/init.pm:51
 #, fuzzy, c-format
 msgid ""
 "  --urpmi-root           use another root for urpmi db & rpm installation"
@@ -1817,27 +1821,27 @@ msgstr ""
 "  --run-as-root          χρησιμοποίηση μία άλλη διαδρομή root για την "
 "εγκατάσταση του rpm."
 
-#: ../Rpmdrake/init.pm:54
+#: ../Rpmdrake/init.pm:52
 #, c-format
 msgid "  --root                 force to run as root"
 msgstr "  --root               προτροπή να εκτελεστεί ως βασικό/root"
 
-#: ../Rpmdrake/init.pm:54
+#: ../Rpmdrake/init.pm:52
 #, fuzzy, c-format
 msgid "(Deprecated)"
 msgstr "Επιλεγμένα"
 
-#: ../Rpmdrake/init.pm:55
+#: ../Rpmdrake/init.pm:53
 #, c-format
 msgid "  --run-as-root          force to run as root"
 msgstr "  --run-as-root        προτροπή να εκτελεστεί ως βασικό/root"
 
-#: ../Rpmdrake/init.pm:56
+#: ../Rpmdrake/init.pm:54
 #, fuzzy, c-format
 msgid "  --search=pkg           run search for \"pkg\""
 msgstr "  --search=pkg         εκτελέστε αναζήτηση για \"pkg\""
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:55
 #, c-format
 msgid "  --version      - print this tool's version number.\n"
 msgstr "  --έκδοση         - τύπωσε τον αριθμό έκδοσης αυτού του εργαλείου\n"
@@ -1858,12 +1862,12 @@ msgstr ""
 " Δεν θα μπορείτε να εκτελέσετε τροποποιήσεις στο σύστημα σας,\n"
 "αλλά θα μπορείτε να περιηγηθείτε στην υπάρχουσα βάση δεδομένων."
 
-#: ../Rpmdrake/init.pm:141 ../Rpmdrake/init.pm:166
+#: ../Rpmdrake/init.pm:142 ../Rpmdrake/init.pm:167
 #, c-format
 msgid "Welcome"
 msgstr "Καλώς Ορίσατε"
 
-#: ../Rpmdrake/init.pm:146
+#: ../Rpmdrake/init.pm:147
 #, c-format
 msgid ""
 "Welcome to the software removal tool!\n"
@@ -1876,7 +1880,7 @@ msgstr ""
 "Αυτό το εργαλείο θα σας βοηθήσει να επιλέξετε το πρόγραμμα που θέλετε\n"
 "να αφαιρέσετε από τον υπολογιστή σας."
 
-#: ../Rpmdrake/init.pm:151
+#: ../Rpmdrake/init.pm:152
 #, c-format
 msgid ""
 "Welcome to %s!\n"
@@ -1889,12 +1893,12 @@ msgstr ""
 "Αυτό το εργαλείο θα σας βοηθήσει να επιλέξετε τις αναβαθμίσεις που θέλετε\n"
 "να εγκαταστήσετε στον υπολογιστή σας."
 
-#: ../Rpmdrake/init.pm:156
+#: ../Rpmdrake/init.pm:157
 #, c-format
 msgid "Welcome to the software installation tool!"
 msgstr "Καλώς ήρθατε στο εργαλείο εγκατάστασης λογισμικού"
 
-#: ../Rpmdrake/init.pm:157
+#: ../Rpmdrake/init.pm:158
 #, c-format
 msgid ""
 "Welcome to the software installation tool!\n"
@@ -1909,22 +1913,22 @@ msgstr ""
 "Αυτό το εργαλείο θα σας βοηθήσει να επιλέξετε το πρόγραμμα που θέλετε\n"
 "να εγκαταστήσετε στον υπολογιστή σας."
 
-#: ../Rpmdrake/init.pm:168
+#: ../Rpmdrake/init.pm:169
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
 
-#: ../Rpmdrake/init.pm:169
+#: ../Rpmdrake/init.pm:170
 #, fuzzy, c-format
 msgid "Do you want to add media sources now?"
 msgstr "Είστε βέβαιοι για την αφαίρεση της πηγής\" %s \";"
 
-#: ../Rpmdrake/pkg.pm:194 ../Rpmdrake/pkg.pm:563
+#: ../Rpmdrake/pkg.pm:183 ../Rpmdrake/pkg.pm:536
 #, fuzzy, c-format
 msgid "Confirmation"
 msgstr "Ρύθμιση"
 
-#: ../Rpmdrake/pkg.pm:195
+#: ../Rpmdrake/pkg.pm:184
 #, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
@@ -1938,17 +1942,17 @@ msgstr ""
 "\n"
 "Να συνεχίσω;"
 
-#: ../Rpmdrake/pkg.pm:199
+#: ../Rpmdrake/pkg.pm:188
 #, c-format
 msgid "Do not ask me next time"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:208
+#: ../Rpmdrake/pkg.pm:197
 #, c-format
 msgid "Already existing update media"
 msgstr "Ήδη υπάρχοντα μέσα αναβάθμισης"
 
-#: ../Rpmdrake/pkg.pm:209
+#: ../Rpmdrake/pkg.pm:198
 #, fuzzy, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -1965,12 +1969,33 @@ msgstr ""
 "\n"
 "Μετά, επανεκκινήστε το %s."
 
-#: ../Rpmdrake/pkg.pm:220
+#: ../Rpmdrake/pkg.pm:208
+#, c-format
+msgid ""
+"You have no configured update media. MandrivaUpdate cannot operate without "
+"any update media."
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:209 ../rpmdrake.pm:548
+#, c-format
+msgid ""
+"I need to contact the Mandriva website to get the mirror list.\n"
+"Please check that your network is currently running.\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"Πρέπει να επικοινωνήσω με την ιστοσελίδα της Mandriva  για να πάρω\n"
+"την λίστα με τις εναλλακτικές διευθύνσεις\n"
+"Παρακαλώ ελέγξτε ότι το δίκτυό σας είναι ενεργό\n"
+"\n"
+"Να συνεχίσω;"
+
+#: ../Rpmdrake/pkg.pm:216
 #, c-format
 msgid "How to choose manually your mirror"
 msgstr "Πως να επιλέξετε μόνοι σας την εναλλακτική διεύθυνση σας"
 
-#: ../Rpmdrake/pkg.pm:221
+#: ../Rpmdrake/pkg.pm:217
 #, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -1985,78 +2010,78 @@ msgstr ""
 "\n"
 "Μετά, επανεκκινήστε το %s."
 
-#: ../Rpmdrake/pkg.pm:275 ../Rpmdrake/pkg.pm:578 ../Rpmdrake/pkg.pm:748
-#: ../rpmdrake.pm:334
+#: ../Rpmdrake/pkg.pm:236 ../Rpmdrake/pkg.pm:557 ../Rpmdrake/pkg.pm:731
+#: ../rpmdrake.pm:330
 #, c-format
 msgid "Please wait"
 msgstr "Παρακαλώ περιμένετε"
 
-#: ../Rpmdrake/pkg.pm:275 ../Rpmdrake/pkg.pm:578
+#: ../Rpmdrake/pkg.pm:236 ../Rpmdrake/pkg.pm:557
 #, c-format
 msgid "Package installation..."
 msgstr "Εγκατάσταση πακέτου..."
 
-#: ../Rpmdrake/pkg.pm:275 ../Rpmdrake/pkg.pm:578 ../Rpmdrake/pkg.pm:748
+#: ../Rpmdrake/pkg.pm:236 ../Rpmdrake/pkg.pm:557 ../Rpmdrake/pkg.pm:731
 #, c-format
 msgid "Initializing..."
 msgstr "Αρχικοποίηση..."
 
-#: ../Rpmdrake/pkg.pm:285
+#: ../Rpmdrake/pkg.pm:249
 #, fuzzy, c-format
 msgid "Reading updates description"
 msgstr "στις περιγραφές"
 
-#: ../Rpmdrake/pkg.pm:291 ../Rpmdrake/pkg.pm:367
+#: ../Rpmdrake/pkg.pm:255 ../Rpmdrake/pkg.pm:331
 #, c-format
 msgid "Please wait, finding available packages..."
 msgstr "Παρακαλώ περιμένετε, αναζητούνται τα διαθέσιμα πακέτα..."
 
-#: ../Rpmdrake/pkg.pm:297
+#: ../Rpmdrake/pkg.pm:261
 #, fuzzy, c-format
 msgid "Please wait, listing base packages..."
 msgstr "Παρακαλώ περιμένετε, ταξινομούνται τα πακέτα"
 
-#: ../Rpmdrake/pkg.pm:334
+#: ../Rpmdrake/pkg.pm:298
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Παρακαλώ περιμένετε, αναζητούνται τα διαθέσιμα πακέτα..."
 
-#: ../Rpmdrake/pkg.pm:454
+#: ../Rpmdrake/pkg.pm:424
 #, fuzzy, c-format
 msgid "Upgrade information"
 msgstr "Κανονικές πληροφορίες"
 
-#: ../Rpmdrake/pkg.pm:456
+#: ../Rpmdrake/pkg.pm:426
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr "Αυτά τα πακέτα διαθέτουν πληροφορία αναβάθμισης"
 
-#: ../Rpmdrake/pkg.pm:464
+#: ../Rpmdrake/pkg.pm:434
 #, fuzzy, c-format
 msgid "Upgrade information about this package"
 msgstr "Περισσότερες πληροφορίες για το πακέτο..."
 
-#: ../Rpmdrake/pkg.pm:467
+#: ../Rpmdrake/pkg.pm:437
 #, fuzzy, c-format
 msgid "Upgrade information about package %s"
 msgstr "Περισσότερες πληροφορίες για το πακέτο...[%s]"
 
-#: ../Rpmdrake/pkg.pm:483
+#: ../Rpmdrake/pkg.pm:453
 #, c-format
 msgid "Could not create temporary directory '%s'"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:491 ../Rpmdrake/pkg.pm:725
+#: ../Rpmdrake/pkg.pm:461 ../Rpmdrake/pkg.pm:707
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Όλα τα ζητηθέντα πακέτα εγκαταστάθηκαν επιτυχώς."
 
-#: ../Rpmdrake/pkg.pm:495 ../Rpmdrake/pkg.pm:701
+#: ../Rpmdrake/pkg.pm:465 ../Rpmdrake/pkg.pm:681
 #, c-format
 msgid "Problem during installation"
 msgstr "Πρόβλημα κατά την εγκατάσταση"
 
-#: ../Rpmdrake/pkg.pm:496 ../Rpmdrake/pkg.pm:515 ../Rpmdrake/pkg.pm:703
+#: ../Rpmdrake/pkg.pm:466 ../Rpmdrake/pkg.pm:486 ../Rpmdrake/pkg.pm:683
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -2067,22 +2092,27 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:514 ../Rpmdrake/pkg.pm:691
+#: ../Rpmdrake/pkg.pm:485 ../Rpmdrake/pkg.pm:671
 #, c-format
 msgid "Installation failed"
 msgstr "Η εγκατάσταση απέτυχε"
 
-#: ../Rpmdrake/pkg.pm:544
+#: ../Rpmdrake/pkg.pm:505
+#, c-format
+msgid "Checking validity of requested packages..."
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:516
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Αδύνατη η λήψη των πηγαίων πακέτων."
 
-#: ../Rpmdrake/pkg.pm:545
+#: ../Rpmdrake/pkg.pm:517
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Αδυναμία λήψης πηγαίων πακέτων, συγνώμη. %s"
 
-#: ../Rpmdrake/pkg.pm:546 ../Rpmdrake/pkg.pm:694
+#: ../Rpmdrake/pkg.pm:518 ../Rpmdrake/pkg.pm:674
 #, c-format
 msgid ""
 "\n"
@@ -2095,21 +2125,21 @@ msgstr ""
 "Αναφερθέντα σφάλματα:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:560
+#: ../Rpmdrake/pkg.pm:533
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
 msgstr[0] "Ένα από τα παρακάτω πακέτα απαιτούνται:"
 msgstr[1] "Ένα από τα παρακάτω πακέτα απαιτούνται:"
 
-#: ../Rpmdrake/pkg.pm:565
+#: ../Rpmdrake/pkg.pm:539
 #, c-format
 msgid "Remove one package?"
 msgid_plural "Remove %d packages?"
 msgstr[0] "Αφαίρεση ενός κλειδιού"
 msgstr[1] "Αφαίρεση ενός κλειδιού"
 
-#: ../Rpmdrake/pkg.pm:567
+#: ../Rpmdrake/pkg.pm:541
 #, fuzzy, c-format
 msgid "The following package has to be removed for others to be upgraded:"
 msgstr ""
@@ -2119,24 +2149,24 @@ msgstr ""
 "\n"
 "Να συνεχιστεί;"
 
-#: ../Rpmdrake/pkg.pm:568
+#: ../Rpmdrake/pkg.pm:542
 #, fuzzy, c-format
 msgid "The following packages have to be removed for others to be upgraded:"
 msgstr ""
 "Τα παρακάτω πακέτα πρέπει να αφαιρεθούν για να αναβαθμιστούν κάποια άλλα:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:552
+#: ../Rpmdrake/pkg.pm:545
 #, c-format
 msgid "%s of additional disk space will be used."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:553
+#: ../Rpmdrake/pkg.pm:546
 #, c-format
 msgid "%s of disk space will be freed."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:555
+#: ../Rpmdrake/pkg.pm:548
 #, fuzzy, c-format
 msgid "Is it ok to continue?"
 msgstr ""
@@ -2144,73 +2174,63 @@ msgstr ""
 "\n"
 "Να συνεχιστεί;"
 
-#: ../Rpmdrake/pkg.pm:577
-#, c-format
-msgid "RPM transaction %d/%d"
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:578
-#, fuzzy, c-format
-msgid "Unselect all"
-msgstr "Επιλογή όλων"
-
-#: ../Rpmdrake/pkg.pm:592
+#: ../Rpmdrake/pkg.pm:570
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Προετοιμασία πακέτων για εγκατάσταση..."
 
-#: ../Rpmdrake/pkg.pm:591
+#: ../Rpmdrake/pkg.pm:570
 #, fuzzy, c-format
 msgid "Preparing package installation transaction..."
 msgstr "Προετοιμασία πακέτων για εγκατάσταση..."
 
-#: ../Rpmdrake/pkg.pm:594
+#: ../Rpmdrake/pkg.pm:573
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Εγκατάσταση πακέτου `%s' (%s/%s)..."
 
-#: ../Rpmdrake/pkg.pm:595
+#: ../Rpmdrake/pkg.pm:574
 #, c-format
 msgid "Total: %s/%s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:623 ../Rpmdrake/pkg.pm:710 ../Rpmdrake/pkg.pm:730
-#: ../rpmdrake.pm:749 ../rpmdrake.pm:836 ../rpmdrake.pm:860
+#: ../Rpmdrake/pkg.pm:602 ../Rpmdrake/pkg.pm:690 ../Rpmdrake/pkg.pm:713
+#: ../rpmdrake.pm:736 ../rpmdrake.pm:823 ../rpmdrake.pm:847
 #, c-format
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: ../Rpmdrake/pkg.pm:628 ../Rpmdrake/pkg.pm:633
+#: ../Rpmdrake/pkg.pm:607 ../Rpmdrake/pkg.pm:612
 #, c-format
 msgid "Downloading package `%s'..."
 msgstr "Λήψη πακέτου `%s'..."
 
-#: ../Rpmdrake/pkg.pm:635
+#: ../Rpmdrake/pkg.pm:614
 #, c-format
 msgid "        %s%% of %s completed, ETA = %s, speed = %s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:636
+#: ../Rpmdrake/pkg.pm:615
 #, c-format
 msgid "        %s%% completed, speed = %s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:669
+#: ../Rpmdrake/pkg.pm:648
 #, c-format
 msgid "Change medium"
 msgstr "Αλλαγή μέσου"
 
-#: ../Rpmdrake/pkg.pm:670
+#: ../Rpmdrake/pkg.pm:649
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Παρακαλώ εισάγετε το μέσο με όνομα \"%s\" στη συσκευή [%s]"
 
-#: ../Rpmdrake/pkg.pm:674
+#: ../Rpmdrake/pkg.pm:653
 #, c-format
 msgid "Verifying package signatures..."
 msgstr "Επαλήθευση υπογραφών πακέτων..."
 
-#: ../Rpmdrake/pkg.pm:693
+#: ../Rpmdrake/pkg.pm:672
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2223,17 +2243,22 @@ msgstr ""
 "\n"
 "Ίσως να πρέπει να αναβαθμίσετε την βάση δεδομένων των μέσων."
 
-#: ../Rpmdrake/pkg.pm:702
+#: ../Rpmdrake/pkg.pm:682
 #, fuzzy, c-format
 msgid "%d installation transactions failed"
 msgstr "Η εγκατάσταση απέτυχε"
 
-#: ../Rpmdrake/pkg.pm:711
+#: ../Rpmdrake/pkg.pm:691
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Μη επανακτήσιμο σφάλμα: δεν βρέθηκε πακέτο για εγκατάσταση, λυπάμαι."
 
-#: ../Rpmdrake/pkg.pm:720
+#: ../Rpmdrake/pkg.pm:694
+#, c-format
+msgid "Inspecting configuration files..."
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:702
 #, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
@@ -2246,17 +2271,22 @@ msgstr ""
 "Ορισμένα αρχεία ρυθμίσεων δημιουργήθηκαν ως `.rpmnew' ή`.rpmsave',\n"
 "ίσως πρέπει να ελέγξετε μερικά για να εκτελέσετε ορισμένες ενέργειες:"
 
-#: ../Rpmdrake/pkg.pm:748 ../Rpmdrake/pkg.pm:764
+#: ../Rpmdrake/pkg.pm:708
+#, c-format
+msgid "Looking for \"README\" files..."
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:731 ../Rpmdrake/pkg.pm:747
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Παρακαλώ περιμένετε, αφαιρούνται τα πακέτα..."
 
-#: ../Rpmdrake/pkg.pm:777
+#: ../Rpmdrake/pkg.pm:760
 #, c-format
 msgid "Problem during removal"
 msgstr "Πρόβλημα κατά την αφαίρεση"
 
-#: ../Rpmdrake/pkg.pm:778
+#: ../Rpmdrake/pkg.pm:761
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -2267,64 +2297,64 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/rpmnew.pm:78
+#: ../Rpmdrake/rpmnew.pm:79
 #, c-format
 msgid "Inspecting %s"
 msgstr "Ελέγχεται το %s"
 
-#: ../Rpmdrake/rpmnew.pm:102
+#: ../Rpmdrake/rpmnew.pm:103
 #, c-format
 msgid "Changes:"
 msgstr "αλλαγές:"
 
-#: ../Rpmdrake/rpmnew.pm:111
+#: ../Rpmdrake/rpmnew.pm:112
 #, c-format
 msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
 "unsure, keep the current file (\"%s\")."
 msgstr ""
 
-#: ../Rpmdrake/rpmnew.pm:112 ../Rpmdrake/rpmnew.pm:117
+#: ../Rpmdrake/rpmnew.pm:113 ../Rpmdrake/rpmnew.pm:118
 #, c-format
 msgid "Remove .%s"
 msgstr "Αφαίρεση.%s"
 
-#: ../Rpmdrake/rpmnew.pm:121
+#: ../Rpmdrake/rpmnew.pm:122
 #, c-format
 msgid "Use .%s as main file"
 msgstr "Χρήση του .%s ως κύριο αρχείο"
 
-#: ../Rpmdrake/rpmnew.pm:125
+#: ../Rpmdrake/rpmnew.pm:126
 #, c-format
 msgid "Do nothing"
 msgstr "Να μη γίνει τίποτα"
 
-#: ../Rpmdrake/rpmnew.pm:156
+#: ../Rpmdrake/rpmnew.pm:157
 #, c-format
 msgid "Installation finished"
 msgstr "Η εγκατάσταση τελείωσε"
 
-#: ../Rpmdrake/rpmnew.pm:171
+#: ../Rpmdrake/rpmnew.pm:172
 #, c-format
 msgid "Inspect..."
 msgstr "Έλεγχος..."
 
-#: ../Rpmdrake/rpmnew.pm:189 ../rpmdrake:68
+#: ../Rpmdrake/rpmnew.pm:190 ../rpmdrake:85
 #, c-format
 msgid "Please wait, searching..."
 msgstr "Παρακαλώ περιμένετε, γίνεται αναζήτηση..."
 
-#: ../gurpmi.addmedia:84
+#: ../gurpmi.addmedia:88
 #, c-format
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:89
+#: ../gurpmi.addmedia:93
 #, c-format
 msgid "Unable to add medium, wrong or missing arguments"
 msgstr "Αδυναμία προσθήκης μέσου, εσφαλμένα ή ελλειπή ορίσματα"
 
-#: ../gurpmi.addmedia:103
+#: ../gurpmi.addmedia:107
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2335,7 +2365,7 @@ msgstr ""
 "Αυτό σημαίνει ότι θα 'μπορείτε να προσθέσετε νέα πακέτα λογισμικού\n"
 "στο σύστημα σας από το νέο μέσο"
 
-#: ../gurpmi.addmedia:106
+#: ../gurpmi.addmedia:110
 #, c-format
 msgid ""
 "You are about to add a new packages medium, `%s'.\n"
@@ -2346,443 +2376,423 @@ msgstr ""
 "Αυτό σημαίνει ότι θα 'μπορείτε να προσθέσετε νέα πακέτα λογισμικού\n"
 "στο σύστημα σας από το νέο μέσο"
 
-#: ../gurpmi.addmedia:131
+#: ../gurpmi.addmedia:134
 #, fuzzy, c-format
 msgid "Successfully added media %s."
 msgstr "Επιτυχής προσθήκη μέσου '%s'"
 
-#: ../gurpmi.addmedia:132
+#: ../gurpmi.addmedia:135
 #, c-format
 msgid "Successfully added medium `%s'."
 msgstr "Επιτυχής προσθήκη μέσου '%s'"
 
-#: ../rpmdrake:56 ../rpmdrake:131
+#: ../rpmdrake:57 ../rpmdrake:140
 #, c-format
 msgid "Search results"
 msgstr "Αποτέλεσμα Αναζήτησης"
 
-#: ../rpmdrake:73
+#: ../rpmdrake:90
 #, c-format
 msgid "Stop"
 msgstr "Τερματισμός"
 
-#: ../rpmdrake:134
+#: ../rpmdrake:143
 #, c-format
 msgid "Selected"
 msgstr "Επιλεγμένα"
 
-#: ../rpmdrake:134
+#: ../rpmdrake:143
 #, c-format
 msgid "Not selected"
 msgstr "Μη επιλεγμένα"
 
-#: ../rpmdrake:142
+#: ../rpmdrake:151
 #, c-format
 msgid "Search results (none)"
 msgstr "Αποτέλεσμα Αναζήτησης (κανένα)"
 
-#: ../rpmdrake:165
+#: ../rpmdrake:172
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Επιλεγμένο: %s/ Ελεύθερος χώρος στον δίσκο: %s"
 
-#: ../rpmdrake:166
-#, c-format
-msgid "Selected size: %d MB"
-msgstr "Επιλεγμένο μέγεθος: %d MB"
-
-#: ../rpmdrake:189
+#: ../rpmdrake:199
 #, fuzzy, c-format
 msgid "Package"
 msgstr "Πακετοποίηση"
 
-#: ../rpmdrake:190
-#, fuzzy, c-format
-msgid "Version"
-msgstr "Έκδοση: "
-
-#: ../rpmdrake:191
-#, fuzzy, c-format
-msgid "Arch"
-msgstr "Αρχειοθέτηση"
-
-#: ../rpmdrake:234
+#: ../rpmdrake:268
 #, fuzzy, c-format
 msgid "Installed"
 msgstr "Εγκατάσταση"
 
-#: ../rpmdrake:231
+#: ../rpmdrake:269
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Εγκατάσταση"
 
-#: ../rpmdrake:232
+#: ../rpmdrake:270
 #, c-format
 msgid "%s choices"
 msgstr "%s επιλογές"
 
-#: ../rpmdrake:232
+#: ../rpmdrake:270
 #, c-format
 msgid "Mandriva Linux choices"
 msgstr "Επιλογές Mandriva Linux"
 
-#: ../rpmdrake:234
+#: ../rpmdrake:272
 #, c-format
 msgid "All packages, alphabetical"
 msgstr "Όλα τα πακέτα, αλφαβητικά"
 
-#: ../rpmdrake:235
+#: ../rpmdrake:273
 #, c-format
 msgid "All packages, by update availability"
 msgstr "Όλα τα πακέτα, βάση διαθεσιμότητας αναβάθμισης"
 
-#: ../rpmdrake:236
+#: ../rpmdrake:274
 #, c-format
 msgid "All packages, by size"
 msgstr "Όλα τα πακέτα, βάση μεγέθους"
 
-#: ../rpmdrake:237
+#: ../rpmdrake:275
 #, c-format
 msgid "All packages, by selection state"
 msgstr "Όλα τα πακέτα, βάση κατάστασης επιλογής"
 
-#: ../rpmdrake:238
+#: ../rpmdrake:276
 #, fuzzy, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Τερματικοί κόμβοι μόνο, ταξινομημένοι κατά ημερομηνία εγκατάστασης"
 
-#: ../rpmdrake:239
+#: ../rpmdrake:277
 #, c-format
 msgid "All packages, by group"
 msgstr "Όλα τα πακέτα, βάση ομάδας"
 
-#: ../rpmdrake:241
+#: ../rpmdrake:279
 #, fuzzy, c-format
 msgid "Backports"
 msgstr "Αντίγραφα Ασφαλείας"
 
-#: ../rpmdrake:242
+#: ../rpmdrake:280
 #, fuzzy, c-format
 msgid "All updates"
 msgstr "Κανονικές αναβαθμίσεις"
 
-#: ../rpmdrake:243
+#: ../rpmdrake:281
 #, c-format
 msgid "Security updates"
 msgstr "Αναβαθμίσεις Ασφαλείας"
 
-#: ../rpmdrake:244
+#: ../rpmdrake:282
 #, c-format
 msgid "Bugfixes updates"
 msgstr "Αναβαθμίσεις διορθώσεων"
 
-#: ../rpmdrake:245
+#: ../rpmdrake:283
 #, c-format
 msgid "Normal updates"
 msgstr "Κανονικές αναβαθμίσεις"
 
-#: ../rpmdrake:300 ../rpmdrake:305
+#: ../rpmdrake:338 ../rpmdrake:343
 #, c-format
 msgid "in names"
 msgstr "στα ονόματα"
 
-#: ../rpmdrake:301
+#: ../rpmdrake:339
 #, c-format
 msgid "in descriptions"
 msgstr "στις περιγραφές"
 
-#: ../rpmdrake:302
+#: ../rpmdrake:340
 #, fuzzy, c-format
 msgid "in summaries"
 msgstr "στα ονόματα"
 
-#: ../rpmdrake:303
+#: ../rpmdrake:341
 #, c-format
 msgid "in file names"
 msgstr "στα ονόματα αρχείων"
 
-#: ../rpmdrake:344
+#: ../rpmdrake:383
 #, c-format
 msgid "/_Select dependencies without asking"
 msgstr ""
 
-#: ../rpmdrake:345
-#, c-format
-msgid "/Do _not remove any package from the cache"
-msgstr ""
-
-#: ../rpmdrake:351
+#: ../rpmdrake:389
 #, c-format
 msgid "/_Update media"
 msgstr "/_Αναβάθμιση μέσων"
 
-#: ../rpmdrake:355
+#: ../rpmdrake:394
 #, c-format
 msgid "/_Reset the selection"
 msgstr "/_Επαναφορά της επιλογής"
 
-#: ../rpmdrake:368
+#: ../rpmdrake:409
 #, c-format
 msgid "/Reload the _packages list"
 msgstr "/Επαναφόρτωση της _λίστας πακέτων"
 
-#: ../rpmdrake:376
+#: ../rpmdrake:417
 #, fuzzy, c-format
 msgid "/_Media Manager"
 msgstr "Διαχειριστής Μέσων Λογισμικού"
 
-#: ../rpmdrake:380 ../rpmdrake:419
+#: ../rpmdrake:421 ../rpmdrake:460
 #, c-format
 msgid "/_Show automatically selected packages"
 msgstr "/_Αυτόματη προβολή επιλεγμένων πακέτων"
 
-#: ../rpmdrake:434
+#: ../rpmdrake:475
 #, c-format
 msgid "Find:"
 msgstr "Εύρεση:"
 
-#: ../rpmdrake:443
+#: ../rpmdrake:484
 #, c-format
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: ../rpmdrake:445
+#: ../rpmdrake:486
 #, c-format
 msgid "Clear"
 msgstr "Καθαρισμός"
 
-#: ../rpmdrake:465
+#: ../rpmdrake:502
 #, c-format
 msgid "Apply"
 msgstr "Εφαρμογή"
 
-#: ../rpmdrake:485
+#: ../rpmdrake:522
 #, c-format
 msgid "Quick Introduction"
 msgstr ""
 
-#: ../rpmdrake:486
+#: ../rpmdrake:523
 #, c-format
 msgid "You can browse the packages through the categories tree on the left."
 msgstr ""
 
-#: ../rpmdrake:487
+#: ../rpmdrake:524
 #, c-format
 msgid ""
 "You can view information about a package by clicking on it on the right list."
 msgstr ""
 
-#: ../rpmdrake:488
+#: ../rpmdrake:525
 #, c-format
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
 
-#: ../rpmdrake.pm:107
+#: ../rpmdrake.pm:106
 #, c-format
 msgid "Software Update"
 msgstr "Αναβάθμιση Λογισμικού"
 
-#: ../rpmdrake.pm:107
+#: ../rpmdrake.pm:106
 #, c-format
 msgid "Mandriva Linux Update"
 msgstr "Αναβάθμιση Mandriva Linux "
 
-#: ../rpmdrake.pm:134
+#: ../rpmdrake.pm:133
 #, c-format
 msgid "Please enter your credentials for accessing proxy\n"
 msgstr "Παρακαλώ εισάγετε  πιστοποίηση για πρόσβαση διαμεσολαβητή\n"
 
-#: ../rpmdrake.pm:135
+#: ../rpmdrake.pm:134
 #, c-format
 msgid "User name:"
 msgstr "Όνομα χρήστη:"
 
-#: ../rpmdrake.pm:190
+#: ../rpmdrake.pm:188
 #, c-format
 msgid "Software Packages Removal"
 msgstr "Αφαίρεση Πακέτων Λογισμικού"
 
-#: ../rpmdrake.pm:191 ../rpmdrake.pm:195
+#: ../rpmdrake.pm:189 ../rpmdrake.pm:193
 #, c-format
 msgid "Software Packages Update"
 msgstr "Αναβάθμιση Πακέτων Λογισμικού"
 
-#: ../rpmdrake.pm:192
+#: ../rpmdrake.pm:190
 #, c-format
 msgid "Software Packages Installation"
 msgstr "Εγκατάσταση Πακέτων Λογισμικού"
 
-#: ../rpmdrake.pm:236
+#: ../rpmdrake.pm:231
 #, c-format
 msgid "No"
 msgstr "Όχι"
 
-#: ../rpmdrake.pm:240
+#: ../rpmdrake.pm:235
 #, c-format
 msgid "Yes"
 msgstr "Ναι"
 
-#: ../rpmdrake.pm:290
+#: ../rpmdrake.pm:286
 #, c-format
 msgid "Info..."
 msgstr "Πληροφορίες..."
 
-#: ../rpmdrake.pm:413
+#: ../rpmdrake.pm:412
 #, c-format
 msgid "Austria"
 msgstr "Αυστρία"
 
-#: ../rpmdrake.pm:414
+#: ../rpmdrake.pm:413
 #, c-format
 msgid "Australia"
 msgstr "Αυστραλία"
 
-#: ../rpmdrake.pm:415
+#: ../rpmdrake.pm:414
 #, c-format
 msgid "Belgium"
 msgstr "Βέλγιο"
 
-#: ../rpmdrake.pm:416
+#: ../rpmdrake.pm:415
 #, c-format
 msgid "Brazil"
 msgstr "Βραζιλία"
 
-#: ../rpmdrake.pm:417
+#: ../rpmdrake.pm:416
 #, c-format
 msgid "Canada"
 msgstr "Καναδάς"
 
-#: ../rpmdrake.pm:418
+#: ../rpmdrake.pm:417
 #, c-format
 msgid "Switzerland"
 msgstr "Ελβετία"
 
-#: ../rpmdrake.pm:419
+#: ../rpmdrake.pm:418
 #, c-format
 msgid "Costa Rica"
 msgstr "Κόστα Ρίκα"
 
-#: ../rpmdrake.pm:420
+#: ../rpmdrake.pm:419
 #, c-format
 msgid "Czech Republic"
 msgstr "Τσεχία"
 
-#: ../rpmdrake.pm:421
+#: ../rpmdrake.pm:420
 #, c-format
 msgid "Germany"
 msgstr "Γερμανία"
 
-#: ../rpmdrake.pm:422
+#: ../rpmdrake.pm:421
 #, c-format
 msgid "Danmark"
 msgstr "Δανία"
 
-#: ../rpmdrake.pm:423 ../rpmdrake.pm:427
+#: ../rpmdrake.pm:422 ../rpmdrake.pm:426
 #, c-format
 msgid "Greece"
 msgstr "Ελλάδα"
 
-#: ../rpmdrake.pm:424
+#: ../rpmdrake.pm:423
 #, c-format
 msgid "Spain"
 msgstr "Ισπανία"
 
-#: ../rpmdrake.pm:425
+#: ../rpmdrake.pm:424
 #, c-format
 msgid "Finland"
 msgstr "Φινλανδία"
 
-#: ../rpmdrake.pm:426
+#: ../rpmdrake.pm:425
 #, c-format
 msgid "France"
 msgstr "Γαλλία"
 
-#: ../rpmdrake.pm:428
+#: ../rpmdrake.pm:427
 #, c-format
 msgid "Hungary"
 msgstr "Ουγγαρία"
 
-#: ../rpmdrake.pm:429
+#: ../rpmdrake.pm:428
 #, c-format
 msgid "Israel"
 msgstr "Ισραήλ"
 
-#: ../rpmdrake.pm:430
+#: ../rpmdrake.pm:429
 #, c-format
 msgid "Italy"
 msgstr "Ιταλία"
 
-#: ../rpmdrake.pm:431
+#: ../rpmdrake.pm:430
 #, c-format
 msgid "Japan"
 msgstr "Ιαπωνία"
 
-#: ../rpmdrake.pm:432
+#: ../rpmdrake.pm:431
 #, c-format
 msgid "Korea"
 msgstr "Κορέα"
 
-#: ../rpmdrake.pm:433
+#: ../rpmdrake.pm:432
 #, c-format
 msgid "Netherlands"
 msgstr "Ολλανδία"
 
-#: ../rpmdrake.pm:434
+#: ../rpmdrake.pm:433
 #, c-format
 msgid "Norway"
 msgstr "Νορβηγία"
 
-#: ../rpmdrake.pm:435
+#: ../rpmdrake.pm:434
 #, c-format
 msgid "Poland"
 msgstr "Πολωνία"
 
-#: ../rpmdrake.pm:436
+#: ../rpmdrake.pm:435
 #, c-format
 msgid "Portugal"
 msgstr "Πορτογαλία"
 
-#: ../rpmdrake.pm:437
+#: ../rpmdrake.pm:436
 #, c-format
 msgid "Russia"
 msgstr "Ρωσία"
 
-#: ../rpmdrake.pm:438
+#: ../rpmdrake.pm:437
 #, c-format
 msgid "Sweden"
 msgstr "Σουηδία"
 
-#: ../rpmdrake.pm:439
+#: ../rpmdrake.pm:438
 #, c-format
 msgid "Singapore"
 msgstr "Σιγγαπούρη"
 
-#: ../rpmdrake.pm:440
+#: ../rpmdrake.pm:439
 #, c-format
 msgid "Slovakia"
 msgstr "Σλοβακία"
 
-#: ../rpmdrake.pm:441
+#: ../rpmdrake.pm:440
 #, c-format
 msgid "Taiwan"
 msgstr "Ταϊβάν"
 
-#: ../rpmdrake.pm:442
+#: ../rpmdrake.pm:441
 #, c-format
 msgid "United Kingdom"
 msgstr "Ηνωμένο Βασίλειο"
 
-#: ../rpmdrake.pm:443
+#: ../rpmdrake.pm:442
 #, c-format
 msgid "China"
 msgstr "Κίνα"
 
-#: ../rpmdrake.pm:444 ../rpmdrake.pm:445 ../rpmdrake.pm:446 ../rpmdrake.pm:447
+#: ../rpmdrake.pm:443 ../rpmdrake.pm:444 ../rpmdrake.pm:445 ../rpmdrake.pm:446
 #, c-format
 msgid "United States"
 msgstr "Ηνωμένες Πολιτείες Αμερικής"
 
-#: ../rpmdrake.pm:545
+#: ../rpmdrake.pm:544
 #, c-format
 msgid ""
 "I need to access internet to get the mirror list.\n"
@@ -2796,43 +2806,29 @@ msgstr ""
 "\n"
 "Να συνεχίσω;"
 
-#: ../rpmdrake.pm:549
-#, c-format
-msgid ""
-"I need to contact the Mandriva website to get the mirror list.\n"
-"Please check that your network is currently running.\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"Πρέπει να επικοινωνήσω με την ιστοσελίδα της Mandriva  για να πάρω\n"
-"την λίστα με τις εναλλακτικές διευθύνσεις\n"
-"Παρακαλώ ελέγξτε ότι το δίκτυό σας είναι ενεργό\n"
-"\n"
-"Να συνεχίσω;"
-
-#: ../rpmdrake.pm:555 ../rpmdrake.pm:593
+#: ../rpmdrake.pm:554 ../rpmdrake.pm:592
 #, fuzzy, c-format
 msgid "Mirror choice"
 msgstr "%s επιλογές"
 
-#: ../rpmdrake.pm:558
+#: ../rpmdrake.pm:557
 #, c-format
 msgid "Please wait, downloading mirror addresses."
 msgstr "Παρακαλώ περιμένετε, γίνεται η λήψη των εναλλακτικών διευθύνσεων."
 
-#: ../rpmdrake.pm:559
+#: ../rpmdrake.pm:558
 #, c-format
 msgid "Please wait, downloading mirror addresses from the Mandriva website."
 msgstr ""
 "Παρακαλώ περιμένετε γίνεται η λήψη των διευθύνσεων των εναλλακτικών θέσεων "
 "από την ιστοσελίδα της Mandriva."
 
-#: ../rpmdrake.pm:566
+#: ../rpmdrake.pm:565
 #, c-format
 msgid "Error during download"
 msgstr "Σφάλμα κατά τη λήψη"
 
-#: ../rpmdrake.pm:568
+#: ../rpmdrake.pm:567
 #, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2847,7 +2843,7 @@ msgstr ""
 "Το δίκτυο ή η ιστοσελίδα μπορεί να μην είναι διαθέσιμα.\n"
 "Παρακαλώ προσπαθήστε ξανά αργότερα."
 
-#: ../rpmdrake.pm:573
+#: ../rpmdrake.pm:572
 #, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -2862,17 +2858,17 @@ msgstr ""
 "Το δίκτυο ή η ιστοσελίδα της Mandriva μπορεί να μην είναι διαθέσιμη.\n"
 "Παρακαλώ προσπαθήστε ξανά αργότερα."
 
-#: ../rpmdrake.pm:583
+#: ../rpmdrake.pm:582
 #, c-format
 msgid "No mirror"
 msgstr "Χωρίς εναλλακτικές διευθύνσεις"
 
-#: ../rpmdrake.pm:585
+#: ../rpmdrake.pm:584
 #, c-format
 msgid "I can't find any suitable mirror."
 msgstr "Δεν μπορώ να βρω κατάλληλη εναλλακτική διεύθυνση"
 
-#: ../rpmdrake.pm:586
+#: ../rpmdrake.pm:585
 #, c-format
 msgid ""
 "I can't find any suitable mirror.\n"
@@ -2888,68 +2884,68 @@ msgstr ""
 "η αρχιτεκτονική του επεξεργαστή σας από τις επίσημες αναβαθμίσεις της\n"
 "Mandriva Linux"
 
-#: ../rpmdrake.pm:605
+#: ../rpmdrake.pm:604
 #, c-format
 msgid "Please choose the desired mirror."
 msgstr "Παρακαλώ επιλέξτε την επιθυμητή εναλλακτική."
 
-#: ../rpmdrake.pm:658
+#: ../rpmdrake.pm:645
 #, c-format
 msgid "Copying file for medium `%s'..."
 msgstr "Αντιγραφή αρχείου από το μέσο `%s'..."
 
-#: ../rpmdrake.pm:661
+#: ../rpmdrake.pm:648
 #, c-format
 msgid "Examining file of medium `%s'..."
 msgstr "Εξέταση αρχείο από το μέσο `%s'..."
 
-#: ../rpmdrake.pm:664
+#: ../rpmdrake.pm:651
 #, c-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "Εξέταση απομακρισμένου αρχείου του μέσου `%s'..."
 
-#: ../rpmdrake.pm:668
+#: ../rpmdrake.pm:655
 #, c-format
 msgid " done."
 msgstr " τέλος."
 
-#: ../rpmdrake.pm:672
+#: ../rpmdrake.pm:659
 #, c-format
 msgid " failed!"
 msgstr " απέτυχε!"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:676
+#: ../rpmdrake.pm:663
 #, c-format
 msgid "%s from medium %s"
 msgstr "%s για το μέσο %s"
 
-#: ../rpmdrake.pm:680
+#: ../rpmdrake.pm:667
 #, c-format
 msgid "Starting download of `%s'..."
 msgstr "Εκκίνηση λήψης του `%s'..."
 
-#: ../rpmdrake.pm:684
+#: ../rpmdrake.pm:671
 #, c-format
 msgid "Download of `%s', time to go:%s, speed:%s"
 msgstr "Λήψη του `%s', χρόνος που απομένει:%s, ταχύτητα:%s"
 
-#: ../rpmdrake.pm:687
+#: ../rpmdrake.pm:674
 #, c-format
 msgid "Download of `%s', speed:%s"
 msgstr "Λήψη του `%s', ταχύτητα:%s"
 
-#: ../rpmdrake.pm:698
+#: ../rpmdrake.pm:685
 #, c-format
 msgid "Please wait, updating media..."
 msgstr "Παρακαλώ περιμένετε, ανανεώνεται το μέσο..."
 
-#: ../rpmdrake.pm:725
+#: ../rpmdrake.pm:712
 #, c-format
 msgid "Error retrieving packages"
 msgstr "Σφάλμα κατά την ανάκτηση πακέτων"
 
-#: ../rpmdrake.pm:726
+#: ../rpmdrake.pm:713
 #, c-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
@@ -2967,12 +2963,12 @@ msgstr ""
 " να το ξανά-ρυθμίσετε, είτε είναι προς το παρόν μη προσβάσιμο και πρέπει να "
 "προσπαθήσετε ξανά αργότερα."
 
-#: ../rpmdrake.pm:757
+#: ../rpmdrake.pm:744
 #, c-format
 msgid "Update media"
 msgstr "Ανανέωση μέσων"
 
-#: ../rpmdrake.pm:762
+#: ../rpmdrake.pm:749
 #, c-format
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
@@ -2980,12 +2976,12 @@ msgstr ""
 "Δεν βρέθηκε ενεργό μέσο.Πρέπει να ενεργοποιήσετε ορισμένα μέσα για τη "
 "δυνατότητα αναβάθμισης των."
 
-#: ../rpmdrake.pm:769
+#: ../rpmdrake.pm:756
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Επιλέξτε τα μέσα που θέλετε να ανανεώσετε:"
 
-#: ../rpmdrake.pm:816
+#: ../rpmdrake.pm:803
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -2997,7 +2993,7 @@ msgstr ""
 "Σφάλματα:\n"
 "%s"
 
-#: ../rpmdrake.pm:837 ../rpmdrake.pm:848
+#: ../rpmdrake.pm:824 ../rpmdrake.pm:835
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -3008,17 +3004,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:860
+#: ../rpmdrake.pm:847
 #, c-format
 msgid "Unable to create medium."
 msgstr "Αδυναμία δημιουργίας μέσου."
 
-#: ../rpmdrake.pm:865
+#: ../rpmdrake.pm:852
 #, c-format
 msgid "Failure when adding medium"
 msgstr "Αποτυχία κατά την προσθήκη μέσου"
 
-#: ../rpmdrake.pm:866
+#: ../rpmdrake.pm:853
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -3029,7 +3025,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:879
+#: ../rpmdrake.pm:866
 #, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
@@ -3040,7 +3036,7 @@ msgstr ""
 "έκδοση του %s που εκτελείτε (%s).\n"
 "Θα απενεργοποιηθεί "
 
-#: ../rpmdrake.pm:882
+#: ../rpmdrake.pm:869
 #, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of Mandriva "
@@ -3051,12 +3047,12 @@ msgstr ""
 "εκτελούμενη έκδοση της Mandriva Linux (%s).\n"
 "Θα απενεργοποιηθεί "
 
-#: ../rpmdrake.pm:899
+#: ../rpmdrake.pm:900
 #, c-format
 msgid "Help launched in background"
 msgstr "Η βοήθεια ξεκίνησε στο παρασκήνιο"
 
-#: ../rpmdrake.pm:900
+#: ../rpmdrake.pm:901
 #, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
@@ -3323,37 +3319,83 @@ msgstr "Άγνωστη κωδικοποίηση μεταφοράς\n"
 msgid "Unknown error code %d\n"
 msgstr "Άγνωστος κωδικός σφάλματος %d\n"
 
-#: data/rpmdrake-browse-only.desktop.in.h:1
+#: ../data/rpmdrake-browse-only.desktop.in.h:1
 #, fuzzy
 msgid "A graphical front end for browsing installed & available packages"
 msgstr "Ένα γραφικό πρόγραμμα για την εγκατάσταση πακέτων"
 
-#: data/rpmdrake-browse-only.desktop.in.h:2
+#: ../data/rpmdrake-browse-only.desktop.in.h:2
 msgid "Browse Available Software"
 msgstr "Εμφάνιση διαθέσιμου λογισμικού"
 
-#: data/rpmdrake.desktop.in.h:1
+#: ../data/rpmdrake.desktop.in.h:1
 #, fuzzy
 msgid "A graphical front end for installing, removing and updating packages"
 msgstr "Ένα γραφικό πρόγραμμα για την εγκατάσταση πακέτων"
 
-#: data/rpmdrake.desktop.in.h:2
+#: ../data/rpmdrake.desktop.in.h:2
 #, fuzzy
 msgid "Install & Remove Software"
 msgstr "Εγκατάσταση Λογισμικού"
 
-#: data/rpmdrake-sources.desktop.in.h:1
+#: ../data/rpmdrake-sources.desktop.in.h:1
 msgid "Software Media Manager"
 msgstr "Διαχειριστής Μέσων Λογισμικού"
 
-#: mime/gurpmi.addmedia.desktop.in.h:1
+#: ../mime/gurpmi.addmedia.desktop.in.h:1
 #, fuzzy
 msgid "Add urpmi media"
 msgstr "/_Αναβάθμιση μέσων"
 
-#: mime/x-urpmi-media.desktop.in.h:1
+#: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr ""
+
+#~ msgid ""
+#~ "This step enables you to add sources from a Mandriva Linux web or FTP "
+#~ "mirror.\n"
+#~ "\n"
+#~ "There are two kinds of official mirrors. You can choose to add sources "
+#~ "that\n"
+#~ "contain the complete set of packages of your distribution (usually a "
+#~ "superset\n"
+#~ "of what comes on the standard installation CDs), or sources that provide "
+#~ "the\n"
+#~ "official updates for your distribution. (You can add both, but you'll "
+#~ "have\n"
+#~ "to do this in two steps.)"
+#~ msgstr ""
+#~ "Αυτό το στάδιο σας επιτρέπει να προσθέσετε πηγές από μία ιστοσελίδα της "
+#~ "Mandriva Linux ή μια εναλλακτική διεύθυνση FTP.\n"
+#~ "\n"
+#~ "Υπάρχουν δύο είδη επίσημων εναλλακτικών διευθύνσεων.Μπορείτε να επιλέξετε "
+#~ "την προσθήκη μέσων που\n"
+#~ "περιέχουν το πλήρες σύνολο πακέτων της διανομής σας (συνήθως ένα υπέρ "
+#~ "σύνολο\n"
+#~ "του τι υπάρχει στα πρότυπα CDs εγκατάστασης),ή πηγές που παρέχουν τις\n"
+#~ "επίσημες αναβαθμίσεις για τη διανομή σας. (Μπορείτε να προσθέσετε "
+#~ "αμφότερες,αλλά θα πρέπει\n"
+#~ "να το κάνετε σε δύο στάδια.)"
+
+#~ msgid "Distribution sources"
+#~ msgstr "Πηγές διανομής"
+
+#~ msgid "Official updates"
+#~ msgstr "Επίσημες αναβαθμίσεις"
+
+#, fuzzy
+#~ msgid "  --pkg-nosel=pkg1,..    show only these packages"
+#~ msgstr "  --pkg-nose=pkg1,..    προβολή μόνο αυτών των πακέτων"
+
+#~ msgid "  --pkg-sel=pkg1,..      preselect these packages"
+#~ msgstr "  --pkg-sel=pkg1,..     προεπιλογή αυτών των πακέτων"
+
+#, fuzzy
+#~ msgid "Unselect all"
+#~ msgstr "Επιλογή όλων"
+
+#~ msgid "Selected size: %d MB"
+#~ msgstr "Επιλεγμένο μέγεθος: %d MB"
 
 #, fuzzy
 #~ msgid "/_Automatically resolve queries"
@@ -3361,9 +3403,6 @@ msgstr ""
 
 #~ msgid "Path:"
 #~ msgstr "Θέση:"
-
-#~ msgid "Name:"
-#~ msgstr "Όνομα:"
 
 #, fuzzy
 #~ msgid "Add custom..."
