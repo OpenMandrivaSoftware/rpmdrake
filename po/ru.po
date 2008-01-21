@@ -1,24 +1,22 @@
-# Translation of rpmdrake.po to Russian
-# Latest versions of po files are at http://www.mandrivalinux.com/l10n/ru.php3
+# Translation of rpmdrake messages to Russian
 # Copyright (C) 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-#
 # Aleksey Smirnov <smi@logic.ru>, 2000.
 # Vladimir Choundalov <choundalovvv@point.pwp.ru>, 2001.
+# Pavel Maryanov <acid_jack@ukr.net>, 2003, 2004, 2005, 2006, 2007, 2008.
 # Alice Lafox <alice@lafox.com.ua>, 2003.
 # Alice Lafox <alice@lafox.net>, 2004.
-# Pavel Maryanov <acid_jack@ukr.net>, 2003, 2004, 2005, 2006, 2007.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-01-12 17:31+0100\n"
-"PO-Revision-Date: 2008-01-19 23:52+0200\n"
+"PO-Revision-Date: 2008-01-21 13:41+0200\n"
 "Last-Translator: Pavel Maryanov <acid_jack@ukr.net>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"Language-Team: Russian <gnu@mx.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../MandrivaUpdate:86
@@ -146,6 +144,11 @@ msgid ""
 "discs. Please choose whether to configure update sources only, or the full set\n"
 "of sources."
 msgstr ""
+"Чтобы поддерживать систему в надёжном и защищённом состоянии, нужно как\n"
+"минимум настроить источники с официальными обновлениями безопасности. Можно\n"
+"также добавить полный набор источников, в который входят официальные репозитории\n"
+"пакетов Mandriva, содержащие гораздо больше программного обеспечения, чем может\n"
+"поместиться на дисках с дистрибутивом. Выберите, какие источники нужно настроить."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:120
 #, c-format
@@ -168,18 +171,18 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
-"При этом будет выполнена попытка установить все официальные источники,\n"
-"соответствующие вашему дистрибутиву (%s).\n"
+"Будет выполнена попытка добавить все официальные источники,\n"
+"соответствующие данному дистрибутиву (%s).\n"
 "\n"
-"Мне необходимо подключится к веб-сайту Mandriva для получения списка зеркал.\n"
-"Пожалуйста, убедитесь, что ваша сеть в данный момент работает.\n"
+"Необходимо подключится к веб-сайту Mandriva для получения списка зеркал.\n"
+"Проверьте, чтобы сейчас было доступно подключение к Интернету.\n"
 "\n"
 "Всё в порядке? Можно продолжать?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:138
 #, c-format
 msgid "Please wait, adding media..."
-msgstr "Подождите, пожалуйста, добавляется источник..."
+msgstr "Подождите. Добавляется источник..."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:145
 #, c-format
@@ -268,9 +271,9 @@ msgid "Create media for a whole distribution"
 msgstr "Создать источник для всего дистрибутива"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:229
-#, fuzzy, c-format
+#, c-format
 msgid "Tag this medium as an update medium"
-msgstr "Искать обновления в этом источнике"
+msgstr "Пометить этот источник как источник с обновлениями"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:239
 #, c-format
@@ -994,6 +997,8 @@ msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
 "Do you want to select it anyway?"
 msgstr ""
+"Пакет \"%s\" присутствует в списке urpmi для игнорирования.\n"
+"Всё равно выбрать его?"
 
 #: ../Rpmdrake/gui.pm:474
 #: ../Rpmdrake/gui.pm:503
@@ -1032,7 +1037,7 @@ msgstr "Информация о пакетах"
 #: ../Rpmdrake/gui.pm:526
 #, c-format
 msgid "Checking dependencies of package..."
-msgstr ""
+msgstr "Проверяются зависимости пакета..."
 
 #: ../Rpmdrake/gui.pm:533
 #, c-format
@@ -1910,7 +1915,7 @@ msgstr "Использование: %s [ПАРАМЕТРЫ]..."
 #: ../Rpmdrake/init.pm:40
 #, c-format
 msgid "  --auto                 assume default answers to questions"
-msgstr ""
+msgstr "  --auto                 использовать ответ по умолчанию для всех вопросов"
 
 #: ../Rpmdrake/init.pm:41
 #, c-format
@@ -1935,7 +1940,7 @@ msgstr "  --mode=РЕЖИМ           выбор режима (install (по у�
 #: ../Rpmdrake/init.pm:45
 #, c-format
 msgid "  --justdb               update the database, but do not modify the filesystem"
-msgstr ""
+msgstr "  --justdb               обновить базу данных, но не изменять файловую систему"
 
 #: ../Rpmdrake/init.pm:46
 #, c-format
@@ -1961,6 +1966,8 @@ msgstr "  --parallel=алиас,хост  параллельный режим; �
 #, c-format
 msgid "  --rpm-root=path        use another root for rpm installation"
 msgstr ""
+"  --rpm-root=путь        использовать другой корневой каталог\n"
+"                         для установки rpm-пакета"
 
 #: ../Rpmdrake/init.pm:51
 #, c-format
@@ -2093,7 +2100,7 @@ msgstr ""
 #: ../Rpmdrake/pkg.pm:188
 #, c-format
 msgid "Do not ask me next time"
-msgstr ""
+msgstr "Не спрашивать в следующий раз"
 
 #: ../Rpmdrake/pkg.pm:197
 #, c-format
@@ -2101,7 +2108,7 @@ msgid "Already existing update media"
 msgstr "Уже существующий источник обновления"
 
 #: ../Rpmdrake/pkg.pm:198
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
 "all of them are currently disabled. You should run the Software\n"
@@ -2110,18 +2117,17 @@ msgid ""
 "\n"
 "Then, restart \"%s\"."
 msgstr ""
-"У вас уже есть как минимум один настроенный\n"
-"источник обновлений, но все они сейчас отключены.\n"
-"Вы должны запустить Менеджер источников\n"
-"программ, чтобы включить хотя бы один из них \n"
-"(проверьте это в колонке 'Включён?')\n"
+"Уже есть настроенные источники обновлений,\n"
+"но все они сейчас отключены. Воспользуйтесь Менеджером\n"
+"источников программ, чтобы включить хотя бы один источник\n"
+"проверьте столбец \"%s\").\n"
 "\n"
-"Затем перезапустите %s."
+"А затем перезапустите \"%s\"."
 
 #: ../Rpmdrake/pkg.pm:208
 #, c-format
 msgid "You have no configured update media. MandrivaUpdate cannot operate without any update media."
-msgstr ""
+msgstr "Источники обновлений не были настроены. Утилита MandrivaUpdate не может работать без источников обновлений."
 
 #: ../Rpmdrake/pkg.pm:209
 #: ../rpmdrake.pm:548
@@ -2258,17 +2264,17 @@ msgstr "Установка была прервана"
 #: ../Rpmdrake/pkg.pm:505
 #, c-format
 msgid "Checking validity of requested packages..."
-msgstr ""
+msgstr "Проверяются запрошенные пакеты..."
 
 #: ../Rpmdrake/pkg.pm:516
 #, c-format
 msgid "Unable to get source packages."
-msgstr "Невозможно получить исходные пакеты."
+msgstr "Не удаётся загрузить пакеты с исходными текстами."
 
 #: ../Rpmdrake/pkg.pm:517
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
-msgstr "К сожалению невозможно получить пакеты с исходниками. %s"
+msgstr "Не удаётся загрузить пакеты с исходными текстами. %s"
 
 #: ../Rpmdrake/pkg.pm:518
 #: ../Rpmdrake/pkg.pm:674
@@ -2285,7 +2291,7 @@ msgstr ""
 "%s"
 
 #: ../Rpmdrake/pkg.pm:533
-#, fuzzy, c-format
+#, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
 msgstr[0] "Для удовлетворения зависимостей будет установлен следующий пакет:"
@@ -2311,12 +2317,12 @@ msgstr "Следующие пакеты нужно удалить. Это поз
 #: ../Rpmdrake/pkg.pm:545
 #, c-format
 msgid "%s of additional disk space will be used."
-msgstr ""
+msgstr "Будет использовано %s дополнительного дискового пространства."
 
 #: ../Rpmdrake/pkg.pm:546
 #, c-format
 msgid "%s of disk space will be freed."
-msgstr ""
+msgstr "Будет особождено %s дискового пространства."
 
 #: ../Rpmdrake/pkg.pm:548
 #, c-format
@@ -2326,12 +2332,12 @@ msgstr "Всё в порядке? Можно продолжать?"
 #: ../Rpmdrake/pkg.pm:570
 #, c-format
 msgid "Preparing packages installation..."
-msgstr "Идёт подготовка к установке пакетов..."
+msgstr "Подготовка к установке пакетов..."
 
 #: ../Rpmdrake/pkg.pm:570
 #, c-format
 msgid "Preparing package installation transaction..."
-msgstr "Идёт подготовка к установке пакетов..."
+msgstr "Подготовка к установке пакета..."
 
 #: ../Rpmdrake/pkg.pm:573
 #, c-format
@@ -2410,7 +2416,7 @@ msgstr "Неисправимая ошибка: к сожалению не най
 #: ../Rpmdrake/pkg.pm:694
 #, c-format
 msgid "Inspecting configuration files..."
-msgstr ""
+msgstr "Изучаются конфигурационные файлы"
 
 #: ../Rpmdrake/pkg.pm:702
 #, c-format
@@ -2428,7 +2434,7 @@ msgstr ""
 #: ../Rpmdrake/pkg.pm:708
 #, c-format
 msgid "Looking for \"README\" files..."
-msgstr ""
+msgstr "Идёт поиск файлов \"README\"..."
 
 #: ../Rpmdrake/pkg.pm:731
 #: ../Rpmdrake/pkg.pm:747
@@ -2465,7 +2471,7 @@ msgstr "Изменения:"
 #: ../Rpmdrake/rpmnew.pm:112
 #, c-format
 msgid "You can either remove the .%s file, use it as main file or do nothing. If unsure, keep the current file (\"%s\")."
-msgstr ""
+msgstr "Можно удалить файл .%s, использовать его в качестве главного или ничего не делать. Если не уверены, оставьте текущий файл (\"%s\")."
 
 #: ../Rpmdrake/rpmnew.pm:113
 #: ../Rpmdrake/rpmnew.pm:118
@@ -2676,7 +2682,7 @@ msgstr "в именах файлов"
 #: ../rpmdrake:383
 #, c-format
 msgid "/_Select dependencies without asking"
-msgstr ""
+msgstr "/Автоматически _выбрать зависимости"
 
 #: ../rpmdrake:389
 #, c-format
@@ -3494,7 +3500,7 @@ msgstr "Добавить источник urpmi"
 
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
-msgstr ""
+msgstr "Сведения об источнике urpmi"
 
 #~ msgid ""
 #~ "This step enables you to add sources from a Mandriva Linux web or FTP "
