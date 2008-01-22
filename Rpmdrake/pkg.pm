@@ -103,40 +103,57 @@ sub extract_header {
                          changelog => $chg_prepro->(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
-	my $hdlist = urpm::media::any_hdlist($urpm, $medium);
-	if (-r $hdlist) {
-	    my $packer;
-         require MDV::Packdrakeng; 
-         eval { $packer = MDV::Packdrakeng->open(archive => $hdlist, quiet => 1) } or do {
-		    warn "Warning, hdlist $hdlist seems corrupted ($@)\n";
-		    goto header_non_available;
-		};
-            my ($headersdir, $retries);
-         while (!-d $headersdir && $retries < 5) {
-             $headersdir = chomp_(`mktemp -d /tmp/rpmdrake.XXXXXXXX`);
-             $retries++;
-             -d $headersdir or warn qq(Could not create temporary directory "$headersdir");
-         }
-         -d $headersdir or  do {
-             warn "Warning, could not extract header for $name from $hdlist!";
-             goto header_non_available;
-	    };
-	    $packer->extract($headersdir, $p->header_filename);
-	    $p->update_header("$headersdir/" . $p->header_filename) or do {
-		warn "Warning, could not extract header for $name from $hdlist!";
+        my ($local_source, %xml_info_pkgs);
+        if (my $dir = urpm::file_from_local_url($medium->{url})) {
+            $local_source = "$dir/" . $_->header_filename;
+            $urpm->{log}("getting information from rpms from $dir");
+        } else {
+            foreach my $xml_info ('info', 'files', 'changelog') {
+                if (my $xml_info_file = urpm::media::any_xml_info($urpm, $medium, $xml_info)) {
+                    require urpm::xml_info;
+                    require urpm::xml_info_pkg;
+                    $urpm->{log}("getting information from $xml_info_file");
+                    my %nodes = urpm::xml_info::get_nodes($xml_info, $xml_info_file, [ $name ]);
+                    put_in_hash($xml_info_pkgs{$name} ||= {}, $nodes{$name});
+                } else {
+                    my $pkgs_text = join(' ', $name);
+                    if ($xml_info eq 'info') {
+                        $urpm->{info}(N("no xml info for medium \"%s\", only partial result for package %s", $medium->{name}, $pkgs_text));
+                    } else {
+                        $urpm->{error}(N("no xml info for medium \"%s\", unable to return any result for package %s",$medium->{name}, $pkgs_text));
+                    }
+                }
+            }
+	}
+
+        #- even if non-root, search for a header in the global cachedir
+        my $file = $local_source || "$urpm->{cachedir}/headers/" . $pkg->{pkg}->header_filename;
+        if (-s $file) {
+            $p->update_header($file) or do {
+		warn "Warning, could not extract header for $name from $medium!";
 		goto header_non_available;
 	    };
-	    rm_rf($headersdir);
 	    add2hash($pkg, { description => rpm_description($p->description) });
 	    add2hash($pkg, {
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
 		changelog => $chg_prepro->(join("\n", mapn { "* " . localtime2changelog($_[2]) . " $_[0]\n\n$_[1]\n" }
 						[ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ])) });
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
-	} else {
+        } elsif ($xml_info_pkgs{$name}) {
+	    add2hash($pkg, { description => rpm_description($xml_info_pkgs{$name}{description}) });
+	    add2hash($pkg, {
+	        files => [ $xml_info_pkgs{$name}{files} || N("(none)") ],
+		changelog => $chg_prepro->(join("\n", map {
+                    "* " . localtime2changelog($_->{time}) . " $_->{name}\n$_->{text}\n\n"
+                } @{$xml_info_pkgs{$name}{changelogs}}))
+            });
+	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
+        } else {
+            goto header_non_available;
+        }
+        return;
            header_non_available:
              add2hash($pkg, { summary => $p->summary || N("(Not available)"), description => undef });
-	}
     }
 }
 
