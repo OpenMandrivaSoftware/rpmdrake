@@ -31,7 +31,6 @@ use Rpmdrake::init;
 use Rpmdrake::pkg;
 use Rpmdrake::open_db;
 use Rpmdrake::formatting;
-use Gtk2::SourceView;
 use File::MimeInfo::Magic;
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
@@ -79,6 +78,7 @@ sub inspect {
 	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $::main_window);
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my %texts;
+	require Gtk2::SourceView;
 	my $lang_manager = Gtk2::SourceView::LanguagesManager->new;
 	gtkadd(
 	    $d->{window},
