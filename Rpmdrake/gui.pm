@@ -376,6 +376,13 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
         my $_cleaner = before_leaving { gtkset_mousecursor_normal($w->{w}{rwindow}->window) };
         my $name = $w->{detail_list_model}->get($iter, $pkg_columns{text});
         my $urpm_obj = $pkgs->{$name}{pkg};
+
+        if ($urpm_obj->flag_base) {
+            interactive_msg(N("Warning"),
+                            N("Removing package %s would break your system", $name));
+            return '';
+        }
+
         if ($urpm_obj->flag_skip) {
             interactive_msg(N("Warning"), N("The \"%s\" package is in urpmi skip list.\nDo you want to select it anyway?", $name), yesno => 1) or return '';
             $urpm_obj->set_flag_skip(0);
