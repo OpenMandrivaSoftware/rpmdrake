@@ -118,9 +118,9 @@ sub extract_header {
                 } else {
                     my $pkgs_text = join(' ', $name);
                     if ($xml_info eq 'info') {
-                        $urpm->{info}(N("no xml info for medium \"%s\", only partial result for package %s", $medium->{name}, $pkgs_text));
+                        $urpm->{info}(N("No xml info for medium \"%s\", only partial result for package %s", $medium->{name}, $pkgs_text));
                     } else {
-                        $urpm->{error}(N("no xml info for medium \"%s\", unable to return any result for package %s",$medium->{name}, $pkgs_text));
+                        $urpm->{error}(N("No xml info for medium \"%s\", unable to return any result for package %s",$medium->{name}, $pkgs_text));
                     }
                 }
             }
