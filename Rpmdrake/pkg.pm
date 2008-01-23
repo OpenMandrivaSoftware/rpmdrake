@@ -390,6 +390,7 @@ sub get_pkgs {
     foreach my $medium (@search_medias) {
         $update->();
       foreach my $pkg_id ($medium->{start} .. $medium->{end}) {
+          next if !$pkg_id;
           my $pkg = $urpm->{depslist}[$pkg_id];
           $pkg->flag_upgrade or next;
           my $name = urpm_name($pkg);
