@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-12 17:31+0100\n"
+"POT-Creation-Date: 2008-01-23 18:32+0100\n"
 "PO-Revision-Date: 2007-08-30 12:54+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: Mandriva Linux i18n Team <cooker-i18n@mandrakelinux.org>\n"
@@ -896,7 +896,14 @@ msgstr "描述:"
 msgid "Warning"
 msgstr "警告"
 
-#: ../Rpmdrake/gui.pm:380
+#: ../Rpmdrake/gui.pm:385
+#, fuzzy, c-format
+msgid "Removing package %s would break your system"
+msgstr ""
+"对不起，删除这些软件包将可能毁坏您的系统:\n"
+"\n"
+
+#: ../Rpmdrake/gui.pm:390
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
@@ -1880,7 +1887,18 @@ msgstr "软件安装工具可设置介质源。"
 msgid "Do you want to add media sources now?"
 msgstr "您想要现在就添加介质源吗?"
 
-#: ../Rpmdrake/pkg.pm:183 ../Rpmdrake/pkg.pm:536
+#: ../Rpmdrake/pkg.pm:121
+#, c-format
+msgid "No xml info for medium \"%s\", only partial result for package %s"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:123
+#, c-format
+msgid ""
+"No xml info for medium \"%s\", unable to return any result for package %s"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:200 ../Rpmdrake/pkg.pm:554
 #, c-format
 msgid "Confirmation"
 msgstr "确认"

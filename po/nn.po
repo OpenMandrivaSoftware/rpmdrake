@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-12 17:31+0100\n"
+"POT-Creation-Date: 2008-01-23 18:32+0100\n"
 "PO-Revision-Date: 2008-01-13 12:20+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -131,7 +131,14 @@ msgid ""
 "discs. Please choose whether to configure update sources only, or the full "
 "set\n"
 "of sources."
-msgstr "For å halda systemet trygt og stabilt, må du minst setja opp kjelder for offisielle tryggleiks- og stabilitetsoppdateringar. Du kan òg setja opp fleire kjelder, som inneheld alle Mandriva-pakkelagera, som gjev deg tilgang til fleire program enn det det er plass til på Mandriva-CD-ane/-DVD-en.\n\nVel om du berre vil leggja til oppdateringskjeldene, eller om du vil leggja til alle kjeldene."
+msgstr ""
+"For å halda systemet trygt og stabilt, må du minst setja opp kjelder for "
+"offisielle tryggleiks- og stabilitetsoppdateringar. Du kan òg setja opp "
+"fleire kjelder, som inneheld alle Mandriva-pakkelagera, som gjev deg tilgang "
+"til fleire program enn det det er plass til på Mandriva-CD-ane/-DVD-en.\n"
+"\n"
+"Vel om du berre vil leggja til oppdateringskjeldene, eller om du vil leggja "
+"til alle kjeldene."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:120
 #, c-format
@@ -156,11 +163,13 @@ msgid ""
 msgstr ""
 "Du vil no installera alle offisielle kjelder som passar til distribusjonen "
 "din (%s).\n"
-"\n\n"
+"\n"
+"\n"
 "Må først kontakta Mandriva-nettstaden for å henta ei oversikt over "
 "pakkearkiv.\n"
 "Sjå til at nettverket er oppe.\n"
-"\n\n"
+"\n"
+"\n"
 "Vil du halda fram?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:138
@@ -380,7 +389,8 @@ msgstr "Du må setja inn mediet før du kan halda fram"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:473
 #, c-format
-msgid "In order to save the changes, you need to insert the medium in the drive."
+msgid ""
+"In order to save the changes, you need to insert the medium in the drive."
 msgstr "For å kunna lagra endringane må setja mediet i stasjonen."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:509
@@ -736,7 +746,8 @@ msgstr "Type"
 #: ../Rpmdrake/edit_urpm_sources.pm:1050
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
-msgstr "Dette mediet må oppdaterast for å kunna brukast. Vil du oppdatera det no?"
+msgstr ""
+"Dette mediet må oppdaterast for å kunna brukast. Vil du oppdatera det no?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:1081
 #, c-format
@@ -900,7 +911,14 @@ msgstr "Beskriving: "
 msgid "Warning"
 msgstr "Åtvaring"
 
-#: ../Rpmdrake/gui.pm:380
+#: ../Rpmdrake/gui.pm:385
+#, fuzzy, c-format
+msgid "Removing package %s would break your system"
+msgstr ""
+"Viss du fjerna desse pakkane ville ikkje systemet ditt fungert lenger:\n"
+"\n"
+
+#: ../Rpmdrake/gui.pm:390
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
@@ -1737,7 +1755,8 @@ msgstr "  --media=medium1, ...   – Avgrens til vald medium."
 
 #: ../Rpmdrake/init.pm:43
 #, c-format
-msgid "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgid ""
+"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
 "  --merge-all-rpmnew     – Føreslå å slå saman alle .rpmnew- og .rpmsave-"
 "filene funne."
@@ -1760,8 +1779,10 @@ msgstr ""
 
 #: ../Rpmdrake/init.pm:46
 #, c-format
-msgid "  --no-confirmation      don't ask first confirmation question in update mode"
-msgstr "  --no-confirmation      – Ikkje spør om stadfesting i oppdateringsmodus."
+msgid ""
+"  --no-confirmation      don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      – Ikkje spør om stadfesting i oppdateringsmodus."
 
 #: ../Rpmdrake/init.pm:47
 #, c-format
@@ -1789,8 +1810,10 @@ msgstr "  --rpm-root=path        – Bruk ei anna rot for rpm-installering."
 
 #: ../Rpmdrake/init.pm:51
 #, c-format
-msgid "  --urpmi-root           use another root for urpmi db & rpm installation"
-msgstr "  --urpmi-root   – Bruk ei anna rot for urpmi-database og rpm-installering"
+msgid ""
+"  --urpmi-root           use another root for urpmi db & rpm installation"
+msgstr ""
+"  --urpmi-root   – Bruk ei anna rot for urpmi-database og rpm-installering"
 
 #: ../Rpmdrake/init.pm:52
 #, c-format
@@ -1894,7 +1917,18 @@ msgstr "Installasjonprogrammet kan setja opp mediekjelder."
 msgid "Do you want to add media sources now?"
 msgstr "Ønskjer du å leggja til mediekjelder no?"
 
-#: ../Rpmdrake/pkg.pm:183 ../Rpmdrake/pkg.pm:536
+#: ../Rpmdrake/pkg.pm:121
+#, c-format
+msgid "No xml info for medium \"%s\", only partial result for package %s"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:123
+#, c-format
+msgid ""
+"No xml info for medium \"%s\", unable to return any result for package %s"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:200 ../Rpmdrake/pkg.pm:554
 #, c-format
 msgid "Confirmation"
 msgstr "Stadfesting"
@@ -1943,7 +1977,9 @@ msgstr ""
 msgid ""
 "You have no configured update media. MandrivaUpdate cannot operate without "
 "any update media."
-msgstr "Du har ikkje sett opp eit oppdateringsmedium. Programmet vil ikkje fungera utan eit oppdateringsmedium."
+msgstr ""
+"Du har ikkje sett opp eit oppdateringsmedium. Programmet vil ikkje fungera "
+"utan eit oppdateringsmedium."
 
 #: ../Rpmdrake/pkg.pm:209 ../rpmdrake.pm:548
 #, c-format
@@ -2541,7 +2577,8 @@ msgstr "Du kan leita etter pakkar gjennom kategoritreet til venstre."
 
 #: ../rpmdrake:524
 #, c-format
-msgid "You can view information about a package by clicking on it on the right list."
+msgid ""
+"You can view information about a package by clicking on it on the right list."
 msgstr ""
 "Du kan lesa meir informasjon om ein pakke ved å trykkja på han i lista til "
 "høgre."
@@ -2931,8 +2968,10 @@ msgstr "Oppdater medium"
 
 #: ../rpmdrake.pm:749
 #, c-format
-msgid "No active medium found. You must enable some media to be able to update them."
-msgstr "Fann ingen aktive medium. Du må aktivera mediuma før du kan oppdatera dei."
+msgid ""
+"No active medium found. You must enable some media to be able to update them."
+msgstr ""
+"Fann ingen aktive medium. Du må aktivera mediuma før du kan oppdatera dei."
 
 #: ../rpmdrake.pm:756
 #, c-format
@@ -3013,7 +3052,8 @@ msgstr "Hjelpa er starta opp i bakgrunnen"
 
 #: ../rpmdrake.pm:901
 #, c-format
-msgid "The help window has been started, it should appear shortly on your desktop."
+msgid ""
+"The help window has been started, it should appear shortly on your desktop."
 msgstr "Hjelpevindauget er no starta, og vil snart dukka opp på skrivebordet."
 
 #: ../grpmi/curl_download/curl_download.xs:86
@@ -3416,4 +3456,3 @@ msgstr "Informasjon for urpmi-medium"
 
 #~ msgid "Deployment"
 #~ msgstr "Utrulling"
-

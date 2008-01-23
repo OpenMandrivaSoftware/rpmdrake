@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-12 17:31+0100\n"
+"POT-Creation-Date: 2008-01-23 18:32+0100\n"
 "PO-Revision-Date: 2007-09-20 22:37+0800\n"
 "Last-Translator: You-Cheng Hsieh <yochenhsieh@gmail.com>\n"
 "Language-Team: Chinese Traditional <zh@li.org>\n"
@@ -913,7 +913,14 @@ msgstr "描述："
 msgid "Warning"
 msgstr "警告"
 
-#: ../Rpmdrake/gui.pm:380
+#: ../Rpmdrake/gui.pm:385
+#, fuzzy, c-format
+msgid "Removing package %s would break your system"
+msgstr ""
+"移除下面這些套件將會破壞您的系統，抱歉：\n"
+"\n"
+
+#: ../Rpmdrake/gui.pm:390
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
@@ -1900,7 +1907,18 @@ msgstr "軟體安裝工具可以設定媒體來源。"
 msgid "Do you want to add media sources now?"
 msgstr "您確定要現在新增媒體來源嗎？"
 
-#: ../Rpmdrake/pkg.pm:183 ../Rpmdrake/pkg.pm:536
+#: ../Rpmdrake/pkg.pm:121
+#, c-format
+msgid "No xml info for medium \"%s\", only partial result for package %s"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:123
+#, c-format
+msgid ""
+"No xml info for medium \"%s\", unable to return any result for package %s"
+msgstr ""
+
+#: ../Rpmdrake/pkg.pm:200 ../Rpmdrake/pkg.pm:554
 #, c-format
 msgid "Confirmation"
 msgstr "確認"
