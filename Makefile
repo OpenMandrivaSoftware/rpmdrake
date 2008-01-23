@@ -56,7 +56,7 @@ dis: clean
 	svn export -q -rBASE . $(NAME)-$(VERSION)
 	find $(NAME)-$(VERSION) -name .cvsignore |xargs rm -rf
 	tar cf ../$(NAME)-$(VERSION).tar $(NAME)-$(VERSION)
-	bzip2 -9f ../$(NAME)-$(VERSION).tar
+	lzma ../$(NAME)-$(VERSION).tar
 	rm -rf $(NAME)-$(VERSION)
 
 .PHONY: ChangeLog log changelog
