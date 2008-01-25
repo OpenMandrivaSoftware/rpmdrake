@@ -251,7 +251,7 @@ sub get_pkgs {
     my $w = $::main_window;
 
     my $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
-    my $_gurpm_clean_guard = before_leaving { Rpmdrake::gurpm::end() };
+    my $_gurpm_clean_guard = before_leaving { undef $gurpm };
     #my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     warn_about_media($w, $opts);
