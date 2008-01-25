@@ -31,7 +31,7 @@ use urpm;
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(fast_open_urpmi_db open_rpm_db open_urpmi_db);
+our @EXPORT = qw(fast_open_urpmi_db get_inactive_backport_media open_rpm_db open_urpmi_db);
 
 
 # because rpm blocks some signals when rpm DB is opened, we don't keep open around:
@@ -84,12 +84,17 @@ sub fast_open_urpmi_db() {
     $urpm;
 }
 
+sub get_inactive_backport_media {
+    my ($urpm) = @_;
+    map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}}
+}
+
 sub open_urpmi_db {
     my (%urpmi_options) = @_;
     my $urpm = fast_open_urpmi_db();
     my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
 
-    my $searchmedia = join(',', map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i } @{$urpm->{media}});
+    my $searchmedia = join(',', get_inactive_backport_media($urpm));
     $urpm->{lock} = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia), %urpmi_options);
     $urpm;
