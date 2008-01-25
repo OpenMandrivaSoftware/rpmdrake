@@ -264,6 +264,7 @@ sub run_treeview_dialog {
     $options->{state}{splited} = 1;
     #$options->{state}{flat} = 1;
     $compssUsers = parse_compssUsers_flat();
+    my $is_backports = get_inactive_backport_media(fast_open_urpmi_db());
     my %modes = (all => N("All"),
                  installed => N("Installed"),
                  non_installed => N("Not installed"),
@@ -276,7 +277,7 @@ sub run_treeview_dialog {
                      by_leaves => N("Leaves only, sorted by install date"),
                      by_group => N("All packages, by group"),
                  ),
-                 backports => N("Backports"),
+                 ($is_backports ? (backports => N("Backports")) : ()),
                  all_updates => N("All updates"),
                  security => N("Security updates"),
                  bugfix => N("Bugfixes updates"),
@@ -297,7 +298,9 @@ sub run_treeview_dialog {
     );
     my $old_value;
     my $cbox = gtksignal_connect(Gtk2::ComboBox->new_with_strings([ @modes{'all', if_($compssUsers, 'mandrake_choices'),
-                                                                              qw(installed non_installed all_updates security bugfix normal backports)
+                                                                              qw(installed non_installed all_updates security bugfix normal),
+                                                                                if_($is_backports, 'backports')
+
                                                                           } ],
                                                                   $modes{$default_mode{$MODE} || 'all'}),
                                  changed => sub {
