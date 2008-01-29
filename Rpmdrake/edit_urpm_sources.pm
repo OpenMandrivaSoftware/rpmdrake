@@ -508,6 +508,7 @@ sub proxy_callback {
     my $medium_name = $medium ? $medium->{name} : '';
     my $w = ugtk2->new(N("Configure proxies"), grab => 1, center => 1,  transient => $::main_window);
     local $::main_window = $w->{real_window};
+    require curl_download;
     my ($proxy, $proxy_user) = curl_download::readproxy($medium_name);
     my ($user, $pass) = $proxy_user =~ /^([^:]*):(.*)$/;
     my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry, $proxypasswordentry);
