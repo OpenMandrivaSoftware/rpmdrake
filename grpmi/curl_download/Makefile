@@ -1,11 +1,11 @@
 .PHONY: clean
 
-curl_download: %: %.xs
-	test -e Makefile_c || perl Makefile.PL INSTALLDIRS=$(INSTALLDIRS)
+curl_download:
+	test -e Makefile_c || perl Makefile.PL
 	$(MAKE) -f Makefile_c
 
 install:
-	test -e Makefile_c || perl Makefile.PL INSTALLDIRS=$(INSTALLDIRS)
+	test -e Makefile_c || perl Makefile.PL
 	$(MAKE) -f Makefile_c install
 
 clean:
