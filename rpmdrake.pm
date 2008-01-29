@@ -41,7 +41,6 @@ use POSIX qw(_exit);
 use common;
 use Locale::gettext;
 
-use curl_download;
 
 our @ISA = qw(Exporter);
 our $VERSION = '2.27';
@@ -508,8 +507,8 @@ sub compat_arch_for_updates($) {
 }
 
 sub mirrors {
-    my ($cachedir, $want_base_distro, $o_arch) = @_;
-    $cachedir ||= '/root';
+    my ($urpm, $want_base_distro, $o_arch) = @_;
+    my $cachedir = $urpm->{cachedir} || '/root';
     use mirror;
     mirror::register_downloader(sub {
                                     my ($url) = @_;
@@ -517,8 +516,8 @@ sub mirrors {
                                     $file =~ s!.*/!$cachedir/!;
                                     unlink $file; # prevent "partial file" errors
                                     before_leaving(sub { unlink $file });
-                                    my $res = curl_download::download($url, $cachedir, sub {});
-                                    $res and do { c::set_tagged_utf8($res); die $res };
+                                    my $res = urpm::download::sync($urpm, undef, [ $url ], dir => $cachedir);
+                                    $res or do { c::set_tagged_utf8($res); die $res };
                                     return cat_($file);
                                 });
     my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')),
@@ -538,7 +537,7 @@ sub mirrors {
 }
 
 sub choose_mirror {
-    my (%options) = @_;
+    my ($urpm, %options) = @_;
     my $message = $options{message} ? $options{message} :
 $branded
 ? N("I need to access internet to get the mirror list.
@@ -558,7 +557,7 @@ Is it ok to continue?");
 	: N("Please wait, downloading mirror addresses from the Mandriva website.")),
      @transient_options
     );
-    my @mirrors = eval { mirrors('/var/cache/urpmi', $options{want_base_distro}, $options{arch}) };
+    my @mirrors = eval { mirrors($urpm, $options{want_base_distro}, $options{arch}) };
     my $error = $@;
     remove_wait_msg($wait);
     if ($error) {

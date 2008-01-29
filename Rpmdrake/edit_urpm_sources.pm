@@ -122,7 +122,7 @@ of sources."),
     my $distro = $rpmdrake::mandrake_release;
     my $real_arch = arch();
     $distro =~ s/$real_arch/$arch/;
-    my ($mirror) = choose_mirror(message =>
+    my ($mirror) = choose_mirror($urpm, message =>
 N("This will attempt to install all official sources corresponding to your
 distribution (%s).
 
