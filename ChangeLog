@@ -1,3 +1,33 @@
+2008-01-29 23:01  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.130
+
+2008-01-29 23:01  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* grpmi/curl_download/Makefile, grpmi/curl_download/Makefile.PL,
+	  grpmi/curl_download/curl_download.pm,
+	  grpmi/curl_download/curl_download.xs: drop now useless curl XS
+	  binding
+
+2008-01-29 23:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm: (proxy_callback) lazy load
+	  curl_download now that rpmdrake.pm doesn't
+	  do it anymore
+
+2008-01-29 22:25  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/edit_urpm_sources.pm, Rpmdrake/pkg.pm, rpmdrake.pm:
+	  (choose_mirror,mirrors) use urpm::download::sync() instead of
+	  curl_download::download() in order to download mirror list from
+	  api.mandriva.com, thus using the downloader set up with urpmi
+	  instead
+	  of forcing curl, and using urpmi's proxy options
+
+2008-01-28 17:56  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2008-01-27 17:36  Karl Ove Hufthammer <karl at huftis.org>
 
 	* po/nn.po: Updated Norwegian Nynorsk translation.
