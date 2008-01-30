@@ -113,7 +113,8 @@ sub extract_header {
                     require urpm::xml_info;
                     require urpm::xml_info_pkg;
                     $urpm->{log}("getting information from $xml_info_file");
-                    my %nodes = urpm::xml_info::get_nodes($xml_info, $xml_info_file, [ $name ]);
+                    my %nodes = eval { urpm::xml_info::get_nodes($xml_info, $xml_info_file, [ $name ]) };
+                    goto header_non_available if $@;
                     put_in_hash($xml_info_pkgs{$name} ||= {}, $nodes{$name});
                 } else {
                     my $pkgs_text = join(' ', $name);
