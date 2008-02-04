@@ -102,7 +102,7 @@ sub extract_header {
     $name =~ s!\.src!!;
 
     if ($pkg->{pkg}->flag_installed && !$pkg->{pkg}->flag_upgrade) {
-	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(run_rpm("rpm -ql $name"))) || N("(none)") ],
+	add2hash($pkg, { files => [ split /\n/, chomp_(to_utf8(scalar(run_rpm("rpm -ql $name")))) || N("(none)") ],
                          changelog => $chg_prepro->(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
     } else {
 	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
