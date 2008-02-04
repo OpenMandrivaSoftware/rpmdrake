@@ -112,7 +112,11 @@ sub extract_header {
             $urpm->{log}("getting information from rpms from $dir");
         } else {
             foreach my $xml_info ('info', 'files', 'changelog') {
-                if (my $xml_info_file = urpm::media::any_xml_info($urpm, $medium, $xml_info, undef)) {
+                my $gurpm = Rpmdrake::gurpm->new(N("Please wait"), transient => $::main_window);
+                if (my $xml_info_file = urpm::media::any_xml_info($urpm, $medium, $xml_info, undef, sub {
+                                                                      download_callback($gurpm, @_)
+                                                                        or goto header_non_available;
+                                                                  })) {
                     require urpm::xml_info;
                     require urpm::xml_info_pkg;
                     $urpm->{log}("getting information from $xml_info_file");
