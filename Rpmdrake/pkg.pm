@@ -169,6 +169,31 @@ sub find_installed_version {
 
 sub formatlistpkg { join("\n", map { s/^(\s)/  \1/mg; "- $_" } sort { uc($a) cmp uc($b) } @_) }
 
+my $canceled;
+sub download_callback {
+    my ($gurpm, $mode, $file, $percent, $total, $eta, $speed) = @_;
+    $canceled = 0;
+    if ($mode eq 'start') {
+        $gurpm->label(N("Downloading package `%s'...", basename($file)));
+        $gurpm->validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
+    } elsif ($mode eq 'progress') {
+        $gurpm->label(
+            join("\n",
+                 N("Downloading package `%s'...", basename($file)),
+                 (defined $total && defined $eta ?
+                    N("        %s%% of %s completed, ETA = %s, speed = %s", $percent, $total, $eta, $speed)
+                      : N("        %s%% completed, speed = %s", $percent, $speed)
+                  ) =~ /^\s*(.*)/
+              ),
+        );
+        $gurpm->progress($percent/100);
+    } elsif ($mode eq 'end') {
+        $gurpm->progress(1);
+        $gurpm->invalidate_cancel;
+    }
+    !$canceled;
+}
+
 
 # -=-=-=---=-=-=---=-=-=-- install packages -=-=-=---=-=-=---=-=-=-
 
@@ -577,7 +602,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $_gurpm_clean_guard = before_leaving { undef $gurpm };
-    my $canceled;
     my $something_installed;
 
     my ($progress, $total, @rpms_upgrade);
@@ -622,29 +646,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  my ($message) = @_;
                                  interactive_msg(N("Error"), $message, yesno => 1);
                              },
-                             trans_log => sub {
-                                 my ($mode, $file, $percent, $total, $eta, $speed) = @_;
-                                 if ($mode eq 'start') {
-                                     $gurpm->label(N("Downloading package `%s'...", basename($file)));
-                                     $gurpm->validate_cancel(but(N("Cancel")), sub { $canceled = 1 });
-                                 } elsif ($mode eq 'progress') {
-                                     $gurpm->label(
-                                         join("\n",
-                                              N("Downloading package `%s'...", basename($file)),
-                                              (defined $total && defined $eta ?
-                                                 N("        %s%% of %s completed, ETA = %s, speed = %s", $percent, $total, $eta, $speed)
-                                                   : N("        %s%% completed, speed = %s", $percent, $speed)
-                                               ) =~ /^\s*(.*)/
-                                           ),
-                                     );
-                                     $gurpm->progress($percent/100);
-                                 } elsif ($mode eq 'end') {
-                                     $gurpm->progress(1);
-                                     $gurpm->invalidate_cancel;
-                                 }
-                                 $canceled and goto return_with_exit_code;
-
-                             },
+                             trans_log => sub { download_callback($gurpm, @_) or goto return_with_exit_code },
                              post_extract => sub {
                                  my ($set, $transaction_sources, $transaction_sources_install) = @_;
                                  $transaction = $set;
