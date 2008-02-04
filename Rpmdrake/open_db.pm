@@ -94,7 +94,7 @@ sub open_urpmi_db {
     my $urpm = fast_open_urpmi_db();
     my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
 
-    my $searchmedia = join(',', get_inactive_backport_media($urpm));
+    my $searchmedia = $urpmi_options{update} ? undef : join(',', get_inactive_backport_media($urpm));
     $urpm->{lock} = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia), %urpmi_options);
     $urpm;
