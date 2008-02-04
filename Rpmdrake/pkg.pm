@@ -112,7 +112,7 @@ sub extract_header {
             $urpm->{log}("getting information from rpms from $dir");
         } else {
             foreach my $xml_info ('info', 'files', 'changelog') {
-                if (my $xml_info_file = urpm::media::any_xml_info($urpm, $medium, $xml_info)) {
+                if (my $xml_info_file = urpm::media::any_xml_info($urpm, $medium, $xml_info, undef)) {
                     require urpm::xml_info;
                     require urpm::xml_info_pkg;
                     $urpm->{log}("getting information from $xml_info_file");
@@ -120,11 +120,10 @@ sub extract_header {
                     goto header_non_available if $@;
                     put_in_hash($xml_info_pkgs{$name} ||= {}, $nodes{$name});
                 } else {
-                    my $pkgs_text = join(' ', $name);
                     if ($xml_info eq 'info') {
-                        $urpm->{info}(N("No xml info for medium \"%s\", only partial result for package %s", $medium->{name}, $pkgs_text));
+                        $urpm->{info}(N("No xml info for medium \"%s\", only partial result for package %s", $medium->{name}, $name));
                     } else {
-                        $urpm->{error}(N("No xml info for medium \"%s\", unable to return any result for package %s",$medium->{name}, $pkgs_text));
+                        $urpm->{error}(N("No xml info for medium \"%s\", unable to return any result for package %s", $medium->{name}, $name));
                     }
                 }
             }
@@ -148,7 +147,7 @@ sub extract_header {
 	    add2hash($pkg, {
 	        files => [ $xml_info_pkgs{$name}{files} || N("(none)") ],
 		changelog => $chg_prepro->(join("\n", map {
-                    "* " . localtime2changelog($_->{time}) . " $_->{name}\n$_->{text}\n\n"
+                    "* " . localtime2changelog($_->{time}) . " $_->{name}\n$_->{text}\n\n";
                 } @{$xml_info_pkgs{$name}{changelogs}}))
             });
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
@@ -517,7 +516,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     if (my $group = get_parallel_group()) {
-        return perform_parallel_install($urpm, $group, \$statusbar_msg_id);
+        return perform_parallel_install($urpm, $group, $w, \$statusbar_msg_id);
     }
 
     my $lock = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
@@ -615,7 +614,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              ask_yes_or_no => sub {
                                  # handle 'allow-force' and 'allow-nodeps' options:
                                  my ($title, $msg) = @_;
-                                 local $::main_window = $gurpm->{mainw}->{real_window};
+                                 local $::main_window = $gurpm->{mainw}{real_window};
                                  interactive_msg($title, $msg, yesno => 1, scroll => 1,
                                  ) or goto return_with_exit_code;
                              },
@@ -641,7 +640,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                      $gurpm->progress($percent/100);
                                  } elsif ($mode eq 'end') {
                                      $gurpm->progress(1);
-                                     $gurpm->invalidate_cancel();
+                                     $gurpm->invalidate_cancel;
                                  }
                                  $canceled and goto return_with_exit_code;
 
@@ -676,7 +675,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              check_sig => sub { $gurpm->progress(++$progress/$total) },
                              bad_signature => sub {
                                  my ($msg, $msg2) = @_;
-                                 local $::main_window = $gurpm->{mainw}->{real_window};
+                                 local $::main_window = $gurpm->{mainw}{real_window};
                                  $msg =~ s/:$/\n\n/m; # FIXME: to be fixed in urpmi after 2008.0
                                  interactive_msg(
                                      N("Warning"), "$msg\n\n$msg2", yesno => 1, if_(10 < $msg =~ tr/\n/\n/, scroll => 1),
@@ -684,7 +683,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              },
                              post_download => sub {
                                  $canceled and goto return_with_exit_code;
-                                 $gurpm->invalidate_cancel_forever();
+                                 $gurpm->invalidate_cancel_forever;
                              },
                              missing_files_summary => sub {
                                  my ($error_sources) = @_;
