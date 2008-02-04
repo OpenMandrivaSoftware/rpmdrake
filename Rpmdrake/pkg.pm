@@ -98,6 +98,9 @@ sub extract_header {
 	[ map { [ "$spacing$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
     };
     my $name = urpm_name($pkg->{pkg});
+    # fix extracting info for SRPMS and RPM GPG keys:
+    $name =~ s!\.src!!;
+
     if ($pkg->{pkg}->flag_installed && !$pkg->{pkg}->flag_upgrade) {
 	add2hash($pkg, { files => [ split /\n/, chomp_(scalar(run_rpm("rpm -ql $name"))) || N("(none)") ],
                          changelog => $chg_prepro->(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
