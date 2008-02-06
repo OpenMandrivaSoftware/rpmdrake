@@ -97,6 +97,14 @@ sub extract_header {
 	#- preprocess changelog for faster TextView insert reaction
 	[ map { [ "$spacing$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
     };
+    my %fields = (
+        info => 'description',
+        files => 'files',
+        changelog => 'changelog',
+    );
+    # already extracted:
+    return if $pkg->{$fields{$xml_info}};
+
     my $p = $pkg->{pkg};
     my $name = urpm_name($p);
     # fix extracting info for SRPMS and RPM GPG keys:
