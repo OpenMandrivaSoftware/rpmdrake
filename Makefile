@@ -10,7 +10,6 @@ SBINDIR = $(PREFIX)/sbin
 RELATIVE_SBIN = ../sbin
 RPM=$(shell rpm --eval %_topdir)
 PERL_VENDORLIB=$(DESTDIR)/$(shell perl -V:installvendorlib   | perl -pi -e "s/.*=//; s/[;']//g")
-PERL_VENDORARCH=$(DESTDIR)/$(shell perl -V:installvendorarch | perl -pi -e "s/.*=//; s/[;']//g")
 
 all: dirs
 
