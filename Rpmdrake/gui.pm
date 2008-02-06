@@ -494,7 +494,8 @@ sub deps_msg {
       deps_msg_again:
         my $results = interactive_msg(
             $title, $msg .
-              formatlistpkg(map { scalar(urpm::select::translate_why_removed_one($urpm, $urpm->{state}, $_)) } @deps),
+              formatlistpkg(map { scalar(urpm::select::translate_why_removed_one($urpm, $urpm->{state}, $_)) } @deps)
+                . "\n\n" . format_size($urpm->selected_size($urpm->{state})),
             yesno => [ N("Cancel"), N("More info"), N("Ok") ],
             scroll => 1,
         );
