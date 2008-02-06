@@ -92,7 +92,7 @@ sub run_rpm {
 
 our $spacing = "        ";
 sub extract_header {
-    my ($pkg, $urpm) = @_;
+    my ($pkg, $urpm, $xml_info) = @_;
     my $chg_prepro = sub {
 	#- preprocess changelog for faster TextView insert reaction
 	[ map { [ "$spacing$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
@@ -112,7 +112,6 @@ sub extract_header {
             $local_source = "$dir/" . $p->filename;
             $urpm->{log}("getting information from rpms from $dir");
         } else {
-            foreach my $xml_info ('info', 'files', 'changelog') {
                 my $gurpm = Rpmdrake::gurpm->new(N("Please wait"), transient => $::main_window);
                 if (my $xml_info_file = urpm::media::any_xml_info($urpm, $medium, $xml_info, undef, sub {
                                                                       download_callback($gurpm, @_)
@@ -131,7 +130,6 @@ sub extract_header {
                         $urpm->{error}(N("No xml info for medium \"%s\", unable to return any result for package %s", $medium->{name}, $name));
                     }
                 }
-            }
 	}
 
         #- even if non-root, search for a header in the global cachedir
@@ -148,13 +146,17 @@ sub extract_header {
 						[ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ])) });
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
         } elsif ($xml_info_pkgs{$name}) {
-	    add2hash($pkg, { description => rpm_description($xml_info_pkgs{$name}{description}) });
-	    add2hash($pkg, {
-	        files => [ $xml_info_pkgs{$name}{files} || N("(none)") ],
-		changelog => $chg_prepro->(join("\n", map {
-                    "* " . localtime2changelog($_->{time}) . " $_->{name}\n$_->{text}\n\n";
-                } @{$xml_info_pkgs{$name}{changelogs}}))
-            });
+            if ($xml_info eq 'info') {
+                add2hash($pkg, { description => rpm_description($xml_info_pkgs{$name}{description}) });
+            } elsif ($xml_info eq 'files') {
+                add2hash($pkg, { files => [ $xml_info_pkgs{$name}{files} || N("(none)") ] });
+            } elsif ($xml_info eq 'changelog') {
+                add2hash($pkg, { 
+                    changelog => $chg_prepro->(join("\n", map {
+                        "* " . localtime2changelog($_->{time}) . " $_->{name}\n$_->{text}\n\n";
+                    } @{$xml_info_pkgs{$name}{changelogs}}))
+                });
+            }
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
         } else {
             goto header_non_available;

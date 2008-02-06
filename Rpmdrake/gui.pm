@@ -39,6 +39,7 @@ use Rpmdrake::icon;
 use Rpmdrake::pkg;
 use Rpmdrake::icon;
 use Gtk2::Gdk::Keysyms;
+use feature 'state';
 
 our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices compute_main_window_size do_action get_info get_summary is_locale_available node_state pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_all toggle_nodes
                  sort_callback
@@ -76,6 +77,27 @@ sub get_summary {
     my ($key) = @_;
     my $summary = translate($pkgs->{$key}{summary});
     utf8::valid($summary) ? $summary : ();
+}
+
+sub build_expander {
+    my ($key, $label, $type, $get_data) = @_;
+    my $textview;
+    gtkadd(
+        gtkshow(my $exp = gtksignal_connect(
+            Gtk2::Expander->new(format_field($label)),
+            activate => sub {
+                state $first;
+                return if $first;
+                $first = 1;
+                slow_func($::main_window->window, sub {
+                              extract_header($pkgs->{$key}, $urpm, $type);
+                              gtktext_insert($textview, $get_data->() || [ [  N("(Not available)") ] ]);
+                          });
+            })),
+        $textview = gtknew('TextView')
+    );
+    $exp->set_use_markup(1);
+    $exp;
 }
 
 
@@ -128,18 +150,15 @@ sub format_pkg_simplifiedinfo {
                    )) ];
     $exp0->set_use_markup(1);
     push @$s, [ "\n\n" ];
-    push @$s, [ gtkadd(gtkshow(my $exp = Gtk2::Expander->new(format_field(N("Files:")))),
-                       gtknew('TextView', text => 
-                                      exists $pkgs->{$key}{files} ?
-                                          ugtk2::markup_to_TextView_format('<tt>' . $spacing . join("\n$spacing", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}) . '</tt>') #- to highlight information
-                           : N("(Not available)"),
-                   )) ];
-    $exp->set_use_markup(1);
+    push @$s, [ build_expander($key, N("Files:"), 'files', sub {
+                                   exists $pkgs->{$key}{files} ?
+                                     ugtk2::markup_to_TextView_format('<tt>' . $spacing . 
+                                                                        join("\n$spacing", 
+                                                                             map { "\x{200e}$_" } @{$pkgs->{$key}{files}}
+                                                                         ) . '</tt>') #- to highlight information
+                                         : ()}) ];
     push @$s, [ "\n\n" ];
-    push @$s, [ gtkadd(gtkshow(my $exp2 = Gtk2::Expander->new(format_field(N("Changelog:")))),
-                       gtknew('TextView', text => $pkgs->{$key}{changelog} || N("(Not available)"))
-                   ) ];
-    $exp2->set_use_markup(1);
+    push @$s, [ build_expander($key, N("Changelog:"), 'changelog',  sub { $pkgs->{$key}{changelog} }) ];
     $s;
 
 }
@@ -785,8 +804,8 @@ sub get_info {
     my ($key, $widget) = @_;
     #- the package information hasn't been loaded. Instead of rescanning the media, just give up.
     exists $pkgs->{$key} or return [ [ N("Description not available for this package\n") ] ];
-    exists $pkgs->{$key}{description} && exists $pkgs->{$key}{files}
-      or slow_func($widget, sub { extract_header($pkgs->{$key}, $urpm) });
+    #- get the description if needed:
+    exists $pkgs->{$key}{description} or slow_func($widget, sub { extract_header($pkgs->{$key}, $urpm, 'info') });
     format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions);
 }
 
