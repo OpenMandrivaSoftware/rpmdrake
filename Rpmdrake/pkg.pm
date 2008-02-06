@@ -114,6 +114,7 @@ sub extract_header {
             $local_source = "$dir/" . $p->filename;
         }
         if (-e $local_source) {
+            $bar_id = statusbar_msg(N("Getting information from XML meta-data from $dir...", $dir), 0);
             $urpm->{log}("getting information from rpms from $dir");
         } else {
             my $gurpm;
