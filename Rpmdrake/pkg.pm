@@ -107,13 +107,16 @@ sub extract_header {
                          changelog => $chg_prepro->(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
     } else {
 	my $medium = pkg2medium($p, $urpm);
-        my ($local_source, %xml_info_pkgs);
+        my ($local_source, %xml_info_pkgs, $bar_id);
+        my $_statusbar_clean_guard = before_leaving { $bar_id and statusbar_msg_remove($bar_id) };
         if (my $dir = urpm::file_from_local_url($medium->{url})) {
             $local_source = "$dir/" . $p->filename;
             $urpm->{log}("getting information from rpms from $dir");
         } else {
-                my $gurpm = Rpmdrake::gurpm->new(N("Please wait"), transient => $::main_window);
+            my $gurpm;
+            $bar_id = statusbar_msg(N("Getting '%s' from XML meta-data...", $xml_info), 0);
                 if (my $xml_info_file = urpm::media::any_xml_info($urpm, $medium, $xml_info, undef, sub {
+                                                                      $urpm ||= Rpmdrake::gurpm->new(N("Please wait"), transient => $::main_window);
                                                                       download_callback($gurpm, @_)
                                                                         or goto header_non_available;
                                                                   })) {
