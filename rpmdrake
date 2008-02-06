@@ -278,7 +278,10 @@ sub run_treeview_dialog {
                      by_leaves => N("Leaves only, sorted by install date"),
                      by_group => N("All packages, by group"),
                  ),
-                 ($is_backports ? (backports => N("Backports")) : ()),
+                 ($is_backports ? (backports =>
+                                     #-PO: Backports media are newer but less-tested versions of some packages in main
+                                     #-PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
+                                     N("Backports")) : ()),
                  meta_pkgs => N("Meta packages"),
                  all_updates => N("All updates"),
                  security => N("Security updates"),

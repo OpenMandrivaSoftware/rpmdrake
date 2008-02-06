@@ -1,3 +1,143 @@
+2008-02-06 14:36  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.134
+
+2008-02-06 14:36  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fix a regression (not
+	  downloading XML metada)
+	  introduced in r233980 on 2008-02-06 (was "do not display the
+	  download
+	  progress dialog when not downloading, only a statusbar message")
+
+2008-02-06 14:19  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fix file list of installed RPMS
+	  by forcing list
+	  context (and simplfiy the code btw)
+
+2008-02-06 14:14  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) do not perform slow extract if
+	  already performed
+
+2008-02-06 14:14  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, Rpmdrake/open_db.pm, Rpmdrake/widgets.pm,
+	  rpmdrake, rpmdrake.pm:
+	  (build_tree,open_rpm_db,run_treeview_dialog,show_urpm_progress,Rpmdrake::widgets::new)
+	  kill warnings
+
+2008-02-06 14:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (run_rpm) skip empty environment variables
+
+2008-02-06 14:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (run_rpm) fix checking if locale is already in
+	  UTF-8
+
+2008-02-06 14:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: display a message in statusbar while extracting
+	  metada from a local package
+
+2008-02-06 14:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fallback to get XML metada when
+	  RPM is missing from
+	  local medium (mainly needed by me on my devel machine)
+
+2008-02-06 14:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) make sure we destroy the
+	  download progress dialog on error
+
+2008-02-06 14:10  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) do not display the download
+	  progress dialog when not
+	  downloading, only a statusbar message
+
+2008-02-06 14:05  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, Rpmdrake/pkg.pm:
+	  (build_expander,extract_header,format_pkg_simplifiedinfo)
+	  - stop downloading & parsing the XML meta data on selecting a
+	  package (side
+	  effect of urpmi-5.x)
+	  - download & parse the needed XML meta data on demand (aka only
+	  download & parse the needed ones and not all of them)
+
+2008-02-06 14:04  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, Rpmdrake/pkg.pm, rpmdrake: add a meta packages
+	  view (#34510)
+
+2008-02-06 14:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fix extracting info from
+	  packages from local media (#37354)
+
+2008-02-06 14:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gurpm.pm: (new) make dialogs be rendered instaneously by
+	  showing all widgets
+	  _and_ reusing label()'s hack
+
+2008-02-06 14:02  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (deps_msg) display size of selection (#34123)
+
+2008-02-06 14:02  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm, Rpmdrake/pkg.pm: (format_size) split it
+	  out of perform_installation() (needed for next commit)
+
+2008-02-06 14:01  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) simplify
+
+2008-02-04 19:52  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.133
+
+2008-02-04 17:15  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/open_db.pm: (open_urpmi_db) fix MandrivaUpdate not
+	  ignoring backport media tagged as update (#36654)
+
+2008-02-04 16:01  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
+2008-02-04 15:53  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.132
+
+2008-02-04 15:50  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fix encoding of rpm error
+	  message "package contains
+	  no file" (#37428)
+
+2008-02-04 15:05  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) display a progress bar while
+	  fetching XML metadata
+	  (#37264) (needs urpmi-5.3)
+
+2008-02-04 15:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (download_callback) split it out of "trans_log"
+	  callback (needed for
+	  next commit)
+
+2008-02-04 14:27  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: perl_checker cleanups (including one real bug
+	  fix in unused parallel mode)
+
 2008-02-04 15:53  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Makefile: 3.132
