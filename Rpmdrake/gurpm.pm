@@ -47,6 +47,8 @@ sub new {
         $mainw->{progressbar}
     ]));
     $mainw->{rwindow}->set_position('center-on-parent');
+    $mainw->{real_window}->show_all;
+    select(undef, undef, undef, 0.1);  #- hackish :-(
     $mainw->SUPER::sync;
     $mainw;
 }
