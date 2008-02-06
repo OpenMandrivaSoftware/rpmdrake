@@ -33,7 +33,7 @@ use ugtk2 qw(escape_text_for_TextView_markup_format);
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(format_field format_header format_name_n_summary localtime2changelog my_fullname pkg2medium rpm_description split_fullname urpm_name);
+our @EXPORT = qw(format_field format_header format_name_n_summary format_size localtime2changelog my_fullname pkg2medium rpm_description split_fullname urpm_name);
 
 
 sub rpm_description {
@@ -96,5 +96,12 @@ sub format_field {
     my ($str) = @_;
     '<b>' . escape_text_for_TextView_markup_format($str) . '</b>';
 }
+
+sub format_size {
+    my ($size) = @_;
+    $size >= 0 ? 
+      N("%s of additional disk space will be used.", formatXiB($size)) :
+        N("%s of disk space will be freed.", formatXiB(-$size));
+ }
 
 1;
