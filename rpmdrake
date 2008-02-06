@@ -309,32 +309,32 @@ sub run_treeview_dialog {
                        if_($is_backports, 'backports')
                          
                    } ],
-                                                                  $modes{$default_mode{$MODE} || 'all'}),
-                                 changed => sub {
-                                     my $val = $_[0]->get_text;
-                                     return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
-                                     $old_value = $val;
-                                     $default_list_mode = $rmodes{$val};
-                                     if (my @cat = $wanted_categories{$rmodes{$val}} && @{$wanted_categories{$rmodes{$val}}}) {
-                                         @$mandrakeupdate_wanted_categories = @cat;
-                                     }
-                                     if (0) {
-                                         reset_search();
-                                         $options->{rebuild_tree}->();
-                                     }
-                                     $options->{state}{flat} = 0; # was 1 only for the "All packages, alphabetical", "All packages, by size", "All packages, by selection state", and "Leaves only, sorted by install date"
+                                         $modes{$default_mode{$MODE} || 'all'}),
+        changed => sub {
+            my $val = $_[0]->get_text;
+            return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
+            $old_value = $val;
+            $default_list_mode = $rmodes{$val};
+            if (my @cat = $wanted_categories{$rmodes{$val}} && @{$wanted_categories{$rmodes{$val}}}) {
+                @$mandrakeupdate_wanted_categories = @cat;
+            }
+            if (0) {
+                reset_search();
+                $options->{rebuild_tree}->();
+            }
+            $options->{state}{flat} = 0; # was 1 only for the "All packages, alphabetical", "All packages, by size", "All packages, by selection state", and "Leaves only, sorted by install date"
 
-                                     if ($options->{tree_mode} ne $val) {
-                                         ($options->{tree_mode}) = $val =~ /^by/ ?
-                                           $options->{tree_submode} : $rmodes{$val};
-                                         $tree_mode->[0] = $options->{tree_mode};
-                                         $tree_flat->[0] = $options->{state}{flat};
-                                         reset_search();
-                                         slow_func($::main_window->window, sub { switch_pkg_list_mode($rmodes{$val}) });
-                                         $options->{rebuild_tree}->();
-                                     }
-                                 }
-                             );
+            if ($options->{tree_mode} ne $val) {
+                ($options->{tree_mode}) = $val =~ /^by/ ?
+                  $options->{tree_submode} : $rmodes{$val};
+                $tree_mode->[0] = $options->{tree_mode};
+                $tree_flat->[0] = $options->{state}{flat};
+                reset_search();
+                slow_func($::main_window->window, sub { switch_pkg_list_mode($rmodes{$val}) });
+                $options->{rebuild_tree}->();
+            }
+        }
+    );
     my $default_radio = $options->{tree_mode} = $default_list_mode;
     $cbox->set_text($modes{$default_radio});
 
