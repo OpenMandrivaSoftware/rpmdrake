@@ -109,7 +109,7 @@ sub extract_header {
 	my $medium = pkg2medium($p, $urpm);
         my ($local_source, %xml_info_pkgs);
         if (my $dir = urpm::file_from_local_url($medium->{url})) {
-            $local_source = "$dir/" . $p->header_filename;
+            $local_source = "$dir/" . $p->filename;
             $urpm->{log}("getting information from rpms from $dir");
         } else {
             foreach my $xml_info ('info', 'files', 'changelog') {
