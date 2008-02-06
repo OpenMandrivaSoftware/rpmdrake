@@ -97,15 +97,16 @@ sub extract_header {
 	#- preprocess changelog for faster TextView insert reaction
 	[ map { [ "$spacing$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
     };
-    my $name = urpm_name($pkg->{pkg});
+    my $p = $pkg->{pkg};
+    my $name = urpm_name($p);
     # fix extracting info for SRPMS and RPM GPG keys:
     $name =~ s!\.src!!;
 
-    if ($pkg->{pkg}->flag_installed && !$pkg->{pkg}->flag_upgrade) {
+    if ($p->flag_installed && !$p->flag_upgrade) {
 	add2hash($pkg, { files => [ split /\n/, chomp_(to_utf8(scalar(run_rpm("rpm -ql $name")))) || N("(none)") ],
                          changelog => $chg_prepro->(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
     } else {
-	my ($p, $medium) = ($pkg->{pkg}, pkg2medium($pkg->{pkg}, $urpm));
+	my $medium = pkg2medium($p, $urpm);
         my ($local_source, %xml_info_pkgs);
         if (my $dir = urpm::file_from_local_url($medium->{url})) {
             $local_source = "$dir/" . $p->header_filename;
@@ -134,7 +135,7 @@ sub extract_header {
 	}
 
         #- even if non-root, search for a header in the global cachedir
-        my $file = $local_source || "$urpm->{cachedir}/headers/" . $pkg->{pkg}->header_filename;
+        my $file = $local_source || "$urpm->{cachedir}/headers/" . $p->header_filename;
         if (-s $file) {
             $p->update_header($file) or do {
 		warn "Warning, could not extract header for $name from $medium!";
