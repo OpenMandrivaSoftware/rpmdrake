@@ -166,7 +166,8 @@ sub extract_header {
             if ($xml_info eq 'info') {
                 add2hash($pkg, { description => rpm_description($xml_info_pkgs{$name}{description}) });
             } elsif ($xml_info eq 'files') {
-                add2hash($pkg, { files => [ $xml_info_pkgs{$name}{files} || N("(none)") ] });
+                my @files = map { chomp_(to_utf8($_)) } split("\n", $xml_info_pkgs{$name}{files});
+                add2hash($pkg, { files => [ @files ? @files : N("(none)") ] });
             } elsif ($xml_info eq 'changelog') {
                 add2hash($pkg, { 
                     changelog => $chg_prepro->(join("\n", map {
