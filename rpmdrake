@@ -278,6 +278,7 @@ sub run_treeview_dialog {
                      by_group => N("All packages, by group"),
                  ),
                  ($is_backports ? (backports => N("Backports")) : ()),
+                 meta_pkgs => N("Meta packages"),
                  all_updates => N("All updates"),
                  security => N("Security updates"),
                  bugfix => N("Bugfixes updates"),
@@ -298,7 +299,7 @@ sub run_treeview_dialog {
     );
     my $old_value;
     my $cbox = gtksignal_connect(Gtk2::ComboBox->new_with_strings([ @modes{'all', if_($compssUsers, 'mandrake_choices'),
-                                                                              qw(installed non_installed all_updates security bugfix normal),
+                                                                              qw(meta_pkgs installed non_installed all_updates security bugfix normal),
                                                                                 if_($is_backports, 'backports')
 
                                                                           } ],
