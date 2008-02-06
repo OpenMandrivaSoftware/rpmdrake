@@ -83,7 +83,7 @@ sub parse_compssUsers_flat() {
 
 sub run_rpm {
     foreach (qw(LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION LC_ALL)) {
-        local $ENV{$_} = $ENV{$_} . '.UTF-8' if !/UTF-8/;
+        local $ENV{$_} = $ENV{$_} . '.UTF-8' if $ENV{$_} !~ /UTF-8/;
     }
     my @l = `@_`;
     wantarray() ? @l : join('', @l);
