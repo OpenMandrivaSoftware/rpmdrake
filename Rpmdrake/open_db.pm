@@ -28,6 +28,7 @@ use common;
 use rpmdrake;
 use URPM;
 use urpm;
+use feature 'state';
 
 use Exporter;
 our @ISA = qw(Exporter);
@@ -40,7 +41,7 @@ sub open_rpm_db {
     my $host;
     log::explanations("opening the RPM database");
     if ($::rpmdrake_options{parallel} && ((undef, $host) = @{$::rpmdrake_options{parallel}})) {
-        my $done if 0;
+        state $done;
         my $dblocation = "/var/cache/urpmi/distantdb/$host";
         if (!$done || $o_force) {
             print "syncing db from $host to $dblocation...";

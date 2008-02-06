@@ -43,6 +43,7 @@ use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() whic
 use ugtk2 qw(:all);
 use Gtk2::Gdk::Keysyms;
 use Rpmdrake::widgets;
+use feature 'state';
 
 $ugtk2::wm_icon = "title-$MODE";
 
@@ -244,7 +245,7 @@ sub run_treeview_dialog {
     $tree->get_selection->signal_connect(changed => sub {
         my ($model, $iter) = $_[0]->get_selected;
         return if !$iter;
-        my $current_group if 0;
+        state $current_group;
         my $new_group = $model->get_path_str($iter);
         return if $current_group eq $new_group && !$force_displaying_group;
         $options->{clear_all_caches}->();

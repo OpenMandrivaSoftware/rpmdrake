@@ -30,12 +30,13 @@ use lib qw(/usr/lib/libDrakX);
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
 use Time::HiRes;
+use feature 'state';
 
 
 sub new {
     my ($_class) = @_;
     my $w = gtknew('TextView', editable => 0);
-    my $time if 0;
+    state $time;
     $w->signal_connect(size_allocate => sub {
         my ($w, $requisition) = @_;
         return if !ref($w->{anchors});

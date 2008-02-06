@@ -40,7 +40,7 @@ use c;
 use POSIX qw(_exit);
 use common;
 use Locale::gettext;
-
+use feature 'state';
 
 our @ISA = qw(Exporter);
 our $VERSION = '2.27';
@@ -638,7 +638,7 @@ by Mandriva Linux Official Updates.")), %options
 sub show_urpm_progress {
     my ($label, $pb, $mode, $file, $percent, $total, $eta, $speed) = @_;
     $file =~ s|([^:]*://[^/:\@]*:)[^/:\@]*(\@.*)|$1xxxx$2|; #- if needed...
-    my $medium if 0;
+    state $medium;
     if ($mode eq 'copy') {
 	$pb->set_fraction(0);
 	$label->set_label(N("Copying file for medium `%s'...", $file));

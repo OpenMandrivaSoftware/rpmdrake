@@ -726,7 +726,7 @@ sub ctreefy {
 
 sub build_tree {
     my ($tree, $tree_model, $elems, $options, $force_rebuild, $compssUsers, $flat, $mode) = @_;
-    my $old_mode if 0;
+    state $old_mode;
     $mode = $options->{rmodes}{$mode} || $mode;
     return if $old_mode eq $mode && !$force_rebuild;
     $old_mode = $mode;
@@ -749,7 +749,7 @@ sub build_tree {
             } @keys;
             if (@keys == 0) {
                 add_node('', N("(none)"), { nochild => 1 });
-                my $explanation_only_once if 0;
+                state $explanation_only_once;
                 $explanation_only_once or interactive_msg(N("No update"),
                                                           N("The list of updates is empty. This means that either there is
 no available update for the packages installed on your computer,
