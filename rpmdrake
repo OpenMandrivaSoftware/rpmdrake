@@ -302,11 +302,13 @@ sub run_treeview_dialog {
         normal => [ 'normal' ],
     );
     my $old_value;
-    my $cbox = gtksignal_connect(Gtk2::ComboBox->new_with_strings([ @modes{'all', if_($compssUsers, 'mandrake_choices'),
-                                                                              qw(meta_pkgs installed non_installed all_updates security bugfix normal),
-                                                                                if_($is_backports, 'backports')
-
-                                                                          } ],
+    my $cbox = gtksignal_connect(
+        Gtk2::ComboBox->new_with_strings([
+            @modes{'all', if_($compssUsers, 'mandrake_choices'),
+                     qw(meta_pkgs installed non_installed all_updates security bugfix normal),
+                       if_($is_backports, 'backports')
+                         
+                   } ],
                                                                   $modes{$default_mode{$MODE} || 'all'}),
                                  changed => sub {
                                      my $val = $_[0]->get_text;
