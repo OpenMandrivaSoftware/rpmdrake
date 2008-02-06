@@ -475,14 +475,12 @@ sub get_pkgs {
     # so there's no need to list the same package several time:
     @installable_pkgs = uniq(difference2(\@installable_pkgs, \@updates));
 
-    my @meta_pkgs = (grep { /^task-/ } keys %all_pkgs);
-
     +{ urpm => $urpm,
        all_pkgs => \%all_pkgs,
        installed => \@installed_pkgs,
        installable => \@installable_pkgs,
        updates => \@updates,
-       meta_pkgs => \@meta_pkgs,
+       meta_pkgs => [ grep { /^task-/ } keys %all_pkgs ],
        update_descr => $update_descr,
        backports => \@backports,
    };
