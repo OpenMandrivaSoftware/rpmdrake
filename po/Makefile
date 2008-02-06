@@ -3,7 +3,6 @@ PGOAL = rpmdrake
 
 # perl files to search translatable strings in
 PL_FILES = ../rpmdrake ../edit-urpm-sources.pl ../rpmdrake.pm ../gurpmi.addmedia ../Rpmdrake/*.pm ../MandrivaUpdate
-CFILES = ../grpmi/curl_download/curl_download.xs
 
 POFILES = $(wildcard *.po)
 MOFILES = $(POFILES:%.po=%.mo)
@@ -26,14 +25,11 @@ merge: $(PGOAL).pot
 		mv -f "$$n"t "$$n"; \
 	done
 
-$(PGOAL).pot: $(PL_FILES) $(CFILES)
+$(PGOAL).pot: $(PL_FILES)
 	intltool-update --gettext-package desktopstuff --pot
 	perl_checker -q --generate-pot $(PGOAL)_tmp.pot $(PL_FILES)
-	xgettext -F -n --add-comments='-PO' \
-		--keyword=_ --keyword=__ --keyword=N_ --keyword=N \
-		--language=C -o $(PGOAL)_tmp_c.pot $(CFILES)
-	msgcat --use-first $(PGOAL)_tmp.pot $(PGOAL)_tmp_c.pot desktopstuff.pot > $@
-	rm -f desktopstuff.pot $(PGOAL)_tmp.pot $(PGOAL)_tmp_c.pot
+	msgcat --use-first $(PGOAL)_tmp.pot desktopstuff.pot > $@
+	rm -f desktopstuff.pot $(PGOAL)_tmp.pot 
 
 install:
 	for l in $(LANGS); do \
