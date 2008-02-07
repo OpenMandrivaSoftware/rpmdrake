@@ -95,45 +95,66 @@ sub do_search($$$$$$$) {
 		),
 	    );
 	    $searchw->sync;
-	    my @hdlists = map {
-		my $h = urpm::media::any_hdlist($urpm, $_);
-		if_(!$_->{ignore} && ($MODE ne 'update' || $_->{update}) && -r $h, $h);
-	    } @{$urpm->{media}};
-	    my $total_size = sum(
-		map {
-		    my $pack;
-		    eval { require MDV::Packdrakeng; $pack = MDV::Packdrakeng->open(archive => $_, quiet => 1) } ? $pack->{toc_f_count} : 0;
-		} @hdlists
-	    );
-	    open my $sf, join(' ', 'parsehdlist', '--name',
-                           if_($current_search_type eq 'files', '--files'),
-                           if_($current_search_type eq 'descriptions', '--description', '--summary'),
-                           if_($current_search_type eq 'summaries', '--summary'),
-                           map { "'$_'" } @hdlists) . ' |';
+            # should probably not account backports packages or find a way to search them:
+            my $total_size = keys %$pkgs;
 	    my ($progresscount, $found);
-	    local $_;
-	    while (<$sf>) {
-		$searchstop and last;
-		if (my ($pkg) = chomp_(/:name:(.+-[^-]+-[^-]+.[^.-]+)$/)) {
-		    $progresscount++; $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
-		    $searchw->flush; # refresh and handle clicks
-		    exists $pkgs->{$pkg} and $found and push @search_results, $pkg;
-		    undef $found;
-		    next;
-		}
-		my (undef, $key, $value) = split ':', $_;
-		if ($current_search_type eq 'descriptions') {
-		    $key =~ /^summary|description$/ or next;
-		} elsif ($current_search_type eq 'summaries') {
-		    $key eq 'summary' or next;
-		} else {
-		    $key eq 'files' or next;
-		}
-		if ($value =~ $entry_rx) {
-              $found = 1;
-		}
-	    }
-	    close $sf;
+
+            my $update_search_pb = sub {
+                $progresscount++;
+                $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
+                $searchw->flush; # refresh and handle clicks
+            };
+            foreach my $medium (grep { !$_->{ignore} } @{$urpm->{media}}) {
+                $searchstop and last;
+                my $gurpm; # per medium download progress bar (if needed)
+                my $_gurpm_clean_guard = before_leaving { undef $gurpm };
+                my $xml_info_file = urpm::media::any_xml_info($urpm, $medium,
+                                                              ($current_search_type eq 'files' ? 'files' : 'info'),
+                                                              undef, sub {
+                                                                  $gurpm ||= Rpmdrake::gurpm->new(N("Please wait"), transient => $::main_window);
+                                                                  download_callback($gurpm, @_) or do {
+                                                                        $searchstop = 1;
+                                                                    };
+                                                              }) or do {
+                    $urpm->{error}(N("no xml-info available for medium \"%s\"", $medium->{name}));
+                    next;
+                };
+                $searchstop and last;
+
+                require urpm::xml_info;
+                require urpm::xml_info_pkg;
+
+                $urpm->{log}("getting information from $xml_info_file");
+                if ($current_search_type eq 'files') {
+                    # special version for speed (3x faster), hopefully fully compatible
+                    my $F = urpm::xml_info::open_lzma($xml_info_file);
+                    my $fn;
+                    local $_;
+                    while (<$F>) {
+                        $searchstop and last;
+                        if (m!^<!) { 
+                            ($fn) = /fn="(.*)"/;
+                            $update_search_pb->();
+                        } elsif (/$entry_rx/) {
+                            $fn or $urpm->{fatal}("fast algorithm is broken, please report a bug");
+                            push @search_results, $fn;
+                        }
+                    }
+                } else {
+                    urpm::xml_info::do_something_with_nodes(
+                        'info',
+                        $xml_info_file,
+                        sub {
+                            my ($node) = @_;
+                            $update_search_pb->();
+                            push @search_results, $node->{fn} if $node->{description} =~ $entry_rx;
+                            #$searchstop and last;
+                            return 0 || $searchstop;
+                        },
+                    );
+                }	
+            }
+
 	    @search_results = uniq(@search_results); #- there can be multiple packages with same version/release for different arch's
 	    $searchw->destroy;
     }
