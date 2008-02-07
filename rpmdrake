@@ -116,7 +116,7 @@ sub do_search($$$$$$$) {
 		$searchstop and last;
 		if (my ($pkg) = chomp_(/:name:(.+-[^-]+-[^-]+.[^.-]+)$/)) {
 		    $progresscount++; $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
-		    $searchw->flush;
+		    $searchw->flush; # refresh and handle clicks
 		    exists $pkgs->{$pkg} and $found and push @search_results, $pkg;
 		    undef $found;
 		    next;
