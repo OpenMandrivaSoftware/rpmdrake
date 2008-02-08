@@ -117,8 +117,8 @@ sub format_pkg_simplifiedinfo {
       # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
                                                       "\x{200b} \x{feff}" . ' ' x 120,
       if_($is_update, # is it an update?
-	  format_field(N("Importance: ")) . eval { escape_text_for_TextView_markup_format($update_descr->{importance}) },
-	  format_field(N("Reason for update: ")) . eval { escape_text_for_TextView_markup_format(rpm_description($update_descr->{pre})) },
+	  format_field(N("Importance: ")) . format_update_field($update_descr->{importance}),
+	  format_field(N("Reason for update: ")) . format_update_field(rpm_description($update_descr->{pre})),
       ),
       '')); # extra empty line
     if ($is_update) {
