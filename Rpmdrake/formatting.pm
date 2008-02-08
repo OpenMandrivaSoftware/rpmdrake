@@ -33,7 +33,18 @@ use ugtk2 qw(escape_text_for_TextView_markup_format);
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(format_field format_header format_name_n_summary format_size format_update_field localtime2changelog my_fullname pkg2medium rpm_description split_fullname urpm_name);
+our @EXPORT = qw(
+                    format_field
+                    format_header
+                    format_name_n_summary
+                    format_size
+                    format_update_field
+                    localtime2changelog
+                    my_fullname
+                    pkg2medium
+                    rpm_description
+                    split_fullname
+                    urpm_name);
 
 
 sub rpm_description {
