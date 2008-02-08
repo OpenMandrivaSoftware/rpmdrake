@@ -104,11 +104,13 @@ sub build_expander {
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name, $version, $release) = split_fullname($key);
-    my $raw_medium = pkg2medium($pkgs->{$key}{pkg}, $urpm);
+    my $pkg = $pkgs->{$key};
+    my $upkg = $pkg->{pkg};
+    my $raw_medium = pkg2medium($upkg, $urpm);
     my $medium = $raw_medium ? $raw_medium->{name} : undef;
     my $update_descr = $descriptions->{$medium}{$name};
     # discard update fields if not matching:
-    my $is_update = ($pkgs->{$key}{pkg}->flag_upgrade && $update_descr && $update_descr->{pre});
+    my $is_update = ($upkg->flag_upgrade && $update_descr && $update_descr->{pre});
     my $summary = get_summary($key);
     my $s = ugtk2::markup_to_TextView_format(
         # force align "name - summary" to the right with RTL languages (#33603):
@@ -130,7 +132,7 @@ sub format_pkg_simplifiedinfo {
       }
 
     push @$s, @{ ugtk2::markup_to_TextView_format(join("\n",
-      (eval { escape_text_for_TextView_markup_format($pkgs->{$key}{description} || $update_descr->{description}) } || '<i>' . N("No description") . '</i>')
+      (eval { escape_text_for_TextView_markup_format($pkg->{description} || $update_descr->{description}) } || '<i>' . N("No description") . '</i>')
     )) };
     push @$s, [ "\n" ];
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
@@ -138,12 +140,12 @@ sub format_pkg_simplifiedinfo {
                            $spacing . join("\n$spacing",
                                 format_field(N("Version: ")) . $version . $release,
                                 
-                                ($pkgs->{$key}{pkg}->flag_installed ?
-                                   format_field(N("Currently installed version: ")) . eval { find_installed_version($pkgs->{$key}{pkg}) }
+                                ($upkg->flag_installed ?
+                                   format_field(N("Currently installed version: ")) . eval { find_installed_version($upkg) }
                                      : ()
                                  ),
-                                format_field(N("Architecture: ")) . $pkgs->{$key}{pkg}->arch,
-                                format_field(N("Size: ")) . N("%s KB", int($pkgs->{$key}{pkg}->size/1024)),
+                                format_field(N("Architecture: ")) . $upkg->arch,
+                                format_field(N("Size: ")) . N("%s KB", int($upkg->size/1024)),
                                 eval { format_field(N("Medium: ")) . $raw_medium->{name} },
                             ),
                        ),
@@ -151,54 +153,56 @@ sub format_pkg_simplifiedinfo {
     $exp0->set_use_markup(1);
     push @$s, [ "\n\n" ];
     push @$s, [ build_expander($key, N("Files:"), 'files', sub {
-                                   exists $pkgs->{$key}{files} ?
+                                   exists $pkg->{files} ?
                                      ugtk2::markup_to_TextView_format('<tt>' . $spacing . 
                                                                         join("\n$spacing", 
-                                                                             map { "\x{200e}$_" } @{$pkgs->{$key}{files}}
+                                                                             map { "\x{200e}$_" } @{$pkg->{files}}
                                                                          ) . '</tt>') #- to highlight information
                                          : ()}) ];
     push @$s, [ "\n\n" ];
-    push @$s, [ build_expander($key, N("Changelog:"), 'changelog',  sub { $pkgs->{$key}{changelog} }) ];
+    push @$s, [ build_expander($key, N("Changelog:"), 'changelog',  sub { $pkg->{changelog} }) ];
     $s;
 
 }
 
 sub format_pkg_info {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
+    my $pkg = $pkgs->{$key};
+    my $upkg = $pkg->{pkg};
     my ($name, $version) = split_fullname($key);
     my @files = (
 	format_field(N("Files:\n")),
-	exists $pkgs->{$key}{files}
-	    ? '<tt>' . join("\n", map { "\x{200e}$_" } @{$pkgs->{$key}{files}}) . '</tt>' #- to highlight information
+	exists $pkg->{files}
+	    ? '<tt>' . join("\n", map { "\x{200e}$_" } @{$pkg->{files}}) . '</tt>' #- to highlight information
 	    : N("(Not available)"),
     );
-    my @chglo = (format_field(N("Changelog:\n")), ($pkgs->{$key}{changelog} ? @{$pkgs->{$key}{changelog}} : N("(Not available)")));
+    my @chglo = (format_field(N("Changelog:\n")), ($pkg->{changelog} ? @{$pkg->{changelog}} : N("(Not available)")));
     my @source_info = (
 	$MODE eq 'remove' || !@$max_info_in_descr
 	    ? ()
 	    : (
-		format_field(N("Medium: ")) . pkg2medium($pkgs->{$key}{pkg}, $urpm)->{name},
-		format_field(N("Currently installed version: ")) . find_installed_version($pkgs->{$key}{pkg}),
+		format_field(N("Medium: ")) . pkg2medium($upkg, $urpm)->{name},
+		format_field(N("Currently installed version: ")) . find_installed_version($upkg),
 	    )
     );
     my @max_info = @$max_info_in_descr && $changelog_first ? (@chglo, @files) : (@files, '', @chglo);
     ugtk2::markup_to_TextView_format(join("\n", format_field(N("Name: ")) . $name,
       format_field(N("Version: ")) . $version,
-      format_field(N("Architecture: ")) . $pkgs->{$key}{pkg}->arch,
-      format_field(N("Size: ")) . N("%s KB", int($pkgs->{$key}{pkg}->size/1024)),
+      format_field(N("Architecture: ")) . $upkg->arch,
+      format_field(N("Size: ")) . N("%s KB", int($upkg->size/1024)),
       if_(
 	  $MODE eq 'update',
 	  format_field(N("Importance: ")) . $descriptions->{$name}{importance}
       ),
       @source_info,
       '', # extra empty line
-      format_field(N("Summary: ")) . $pkgs->{$key}{summary},
+      format_field(N("Summary: ")) . $pkg->{summary},
       '', # extra empty line
       if_(
 	  $MODE eq 'update',
 	  format_field(N("Reason for update: ")) . rpm_description($descriptions->{$name}{pre}),
       ),
-      format_field(N("Description: ")), ($pkgs->{$key}{description} || $descriptions->{$name}{description} || N("No description")),
+      format_field(N("Description: ")), ($pkg->{description} || $descriptions->{$name}{description} || N("No description")),
       @max_info,
     ));
 }
