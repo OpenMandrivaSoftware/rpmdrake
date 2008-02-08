@@ -48,7 +48,7 @@ use urpm::args qw();
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs parse_compssUsers_flat perform_installation perform_removal run_rpm $spacing);
+our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs parse_compssUsers_flat perform_installation perform_removal run_rpm);
 
 use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
@@ -90,13 +90,8 @@ sub run_rpm {
 }
 
 
-our $spacing = "        ";
 sub extract_header {
     my ($pkg, $urpm, $xml_info) = @_;
-    my $chg_prepro = sub {
-	#- preprocess changelog for faster TextView insert reaction
-	[ map { [ "$spacing$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
-    };
     my %fields = (
         info => 'description',
         files => 'files',
@@ -113,7 +108,7 @@ sub extract_header {
     if ($p->flag_installed && !$p->flag_upgrade) {
         my @files = map { chomp_(to_utf8($_)) } run_rpm("rpm -ql rpm");
 	add2hash($pkg, { files => [ @files ? @files : N("(none)") ],
-                         changelog => $chg_prepro->(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
+                         changelog => format_changelog_string(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
     } else {
 	my $medium = pkg2medium($p, $urpm);
         my ($local_source, %xml_info_pkgs, $bar_id);
@@ -158,7 +153,7 @@ sub extract_header {
 	    };
 	    add2hash($pkg, { description => rpm_description($p->description),
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
-		changelog => $chg_prepro->(join("\n", map {
+		changelog => format_changelog_string(join("\n", map {
                     "* " . localtime2changelog($_->{time}) . " $_->{name}\n\n$_->{text}\n" } $p->changelogs)) });
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
         } elsif ($xml_info_pkgs{$name}) {
@@ -169,7 +164,7 @@ sub extract_header {
                 add2hash($pkg, { files => [ @files ? @files : N("(none)") ] });
             } elsif ($xml_info eq 'changelog') {
                 add2hash($pkg, { 
-                    changelog => $chg_prepro->(join("\n", map {
+                    changelog => format_changelog_string(join("\n", map {
                         "* " . localtime2changelog($_->{time}) . " $_->{name}\n\n$_->{text}\n";
                     } @{$xml_info_pkgs{$name}{changelogs}}))
                 });

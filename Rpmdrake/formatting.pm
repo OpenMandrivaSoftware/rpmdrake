@@ -34,6 +34,8 @@ use ugtk2 qw(escape_text_for_TextView_markup_format);
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(
+                    $spacing
+                    format_changelog_string
                     format_field
                     format_header
                     format_name_n_summary
@@ -92,6 +94,12 @@ sub pkg2medium {
 #- it doesn't work if those two variables have values with different
 #- encodings; but if a user has a so broken setup we can't do much anyway
 sub localtime2changelog { to_utf8(POSIX::strftime("%c", localtime($_[0]))) }
+
+our $spacing = "        ";
+sub format_changelog_string {
+    #- preprocess changelog for faster TextView insert reaction
+    [ map { [ "$spacing$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
+}
 
 sub format_update_field {
     my ($name) = @_;
