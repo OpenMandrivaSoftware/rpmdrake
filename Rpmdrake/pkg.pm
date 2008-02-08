@@ -170,7 +170,7 @@ sub extract_header {
             } elsif ($xml_info eq 'changelog') {
                 add2hash($pkg, { 
                     changelog => $chg_prepro->(join("\n", map {
-                        "* " . localtime2changelog($_->{time}) . " $_->{name}\n$_->{text}\n\n";
+                        "* " . localtime2changelog($_->{time}) . " $_->{name}\n\n$_->{text}\n";
                     } @{$xml_info_pkgs{$name}{changelogs}}))
                 });
             }
