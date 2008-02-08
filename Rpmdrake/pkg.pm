@@ -156,8 +156,7 @@ sub extract_header {
 		warn "Warning, could not extract header for $name from $medium!";
 		goto header_non_available;
 	    };
-	    add2hash($pkg, { description => rpm_description($p->description) });
-	    add2hash($pkg, {
+	    add2hash($pkg, { description => rpm_description($p->description),
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
 		changelog => $chg_prepro->(join("\n", map {
                     "* " . localtime2changelog($_->{time}) . " $_->{name}\n\n$_->{text}\n" } $p->changelogs)) });
