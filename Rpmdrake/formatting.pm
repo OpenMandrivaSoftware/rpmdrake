@@ -84,7 +84,7 @@ sub localtime2changelog { to_utf8(POSIX::strftime("%c", localtime($_[0]))) }
 
 sub format_update_field {
     my ($name) = @_;
-    eval { escape_text_for_TextView_markup_format($name) };
+    '<i>' . eval { escape_text_for_TextView_markup_format($name) } . '</i>';
 }
 
 sub format_name_n_summary {
