@@ -35,6 +35,7 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(
                     $spacing
+                    format_changelog_changelogs
                     format_changelog_string
                     format_field
                     format_header
@@ -99,6 +100,13 @@ our $spacing = "        ";
 sub format_changelog_string {
     #- preprocess changelog for faster TextView insert reaction
     [ map { [ "$spacing$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
+}
+
+sub format_changelog_changelogs {
+    my (@changelogs) = @_;
+    format_changelog_string(join("\n", map {
+        "* " . localtime2changelog($_->{time}) . " $_->{name}\n\n$_->{text}\n";
+    } @changelogs));
 }
 
 sub format_update_field {

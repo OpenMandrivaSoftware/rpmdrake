@@ -153,8 +153,7 @@ sub extract_header {
 	    };
 	    add2hash($pkg, { description => rpm_description($p->description),
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
-		changelog => format_changelog_string(join("\n", map {
-                    "* " . localtime2changelog($_->{time}) . " $_->{name}\n\n$_->{text}\n" } $p->changelogs)) });
+		changelog => format_changelog_changelogs($p->changelogs) });
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
         } elsif ($xml_info_pkgs{$name}) {
             if ($xml_info eq 'info') {
@@ -164,9 +163,7 @@ sub extract_header {
                 add2hash($pkg, { files => [ @files ? @files : N("(none)") ] });
             } elsif ($xml_info eq 'changelog') {
                 add2hash($pkg, { 
-                    changelog => format_changelog_string(join("\n", map {
-                        "* " . localtime2changelog($_->{time}) . " $_->{name}\n\n$_->{text}\n";
-                    } @{$xml_info_pkgs{$name}{changelogs}}))
+                    changelog => format_changelog_changelogs(@{$xml_info_pkgs{$name}{changelogs}})
                 });
             }
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
