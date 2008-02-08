@@ -80,7 +80,7 @@ sub get_summary {
 }
 
 sub build_expander {
-    my ($pkg, $label, $type, $get_data) = @_;
+    my ($pkg, $label, $type, $get_data, $o_installed_version) = @_;
     my $textview;
     gtkadd(
         gtkshow(my $exp = gtksignal_connect(
@@ -90,7 +90,7 @@ sub build_expander {
                 return if $first;
                 $first = 1;
                 slow_func($::main_window->window, sub {
-                              extract_header($pkg, $urpm, $type);
+                              extract_header($pkg, $urpm, $type, $o_installed_version);
                               gtktext_insert($textview, $get_data->() || [ [  N("(Not available)") ] ]);
                           });
             })),
@@ -161,7 +161,7 @@ sub format_pkg_simplifiedinfo {
                                                                          ) . '</tt>') #- to highlight information
                                          : ()}) ];
     push @$s, [ "\n\n" ];
-    push @$s, [ build_expander($pkg, N("Changelog:"), 'changelog',  sub { $pkg->{changelog} }) ];
+    push @$s, [ build_expander($pkg, N("Changelog:"), 'changelog',  sub { $pkg->{changelog} }, $installed_version) ];
     $s;
 
 }

@@ -98,13 +98,27 @@ sub localtime2changelog { to_utf8(POSIX::strftime("%c", localtime($_[0]))) }
 
 our $spacing = "        ";
 sub format_changelog_string {
+    my ($installed_version, $string) = @_;
     #- preprocess changelog for faster TextView insert reaction
-    [ map { [ "$spacing$_\n", if_(/^\*/, { 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD }) ] } split("\n", $_[0]) ];
+    my %date_attr = ( 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD );
+    my %update_attr = ( 'style' => 'italic');
+    my $version;
+    my $highlight;
+    [ map {
+        my %attrs;
+        if (/^\*/) {
+            add2hash(\%attrs, \%date_attr);
+            ($version) = /(\S*-\S*)\s*$/;
+            $highlight = $installed_version ne N("(none)") && 0 < URPM::rpmvercmp($version, $installed_version);
+        }
+        add2hash(\%attrs, \%update_attr) if $highlight;
+        [ "$spacing$_\n", if_(%attrs, \%attrs) ]
+    } split("\n", $string) ];
 }
 
 sub format_changelog_changelogs {
-    my (@changelogs) = @_;
-    format_changelog_string(join("\n", map {
+    my ($installed_version, @changelogs) = @_;
+    format_changelog_string($installed_version, join("\n", map {
         "* " . localtime2changelog($_->{time}) . " $_->{name}\n\n$_->{text}\n";
     } @changelogs));
 }

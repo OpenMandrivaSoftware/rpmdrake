@@ -91,7 +91,7 @@ sub run_rpm {
 
 
 sub extract_header {
-    my ($pkg, $urpm, $xml_info) = @_;
+    my ($pkg, $urpm, $xml_info, $o_installed_version) = @_;
     my %fields = (
         info => 'description',
         files => 'files',
@@ -108,7 +108,7 @@ sub extract_header {
     if ($p->flag_installed && !$p->flag_upgrade) {
         my @files = map { chomp_(to_utf8($_)) } run_rpm("rpm -ql $name");
 	add2hash($pkg, { files => [ @files ? @files : N("(none)") ],
-                         changelog => format_changelog_string(to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
+                         changelog => format_changelog_string($o_installed_version, to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
     } else {
 	my $medium = pkg2medium($p, $urpm);
         my ($local_source, %xml_info_pkgs, $bar_id);
@@ -153,7 +153,7 @@ sub extract_header {
 	    };
 	    add2hash($pkg, { description => rpm_description($p->description),
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
-		changelog => format_changelog_changelogs($p->changelogs) });
+		changelog => format_changelog_changelogs($o_installed_version, $p->changelogs) });
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
         } elsif ($xml_info_pkgs{$name}) {
             if ($xml_info eq 'info') {
@@ -163,7 +163,8 @@ sub extract_header {
                 add2hash($pkg, { files => [ @files ? @files : N("(none)") ] });
             } elsif ($xml_info eq 'changelog') {
                 add2hash($pkg, { 
-                    changelog => format_changelog_changelogs(@{$xml_info_pkgs{$name}{changelogs}})
+                    changelog => format_changelog_changelogs($o_installed_version,
+                                                             @{$xml_info_pkgs{$name}{changelogs}})
                 });
             }
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
