@@ -159,8 +159,8 @@ sub extract_header {
 	    add2hash($pkg, { description => rpm_description($p->description) });
 	    add2hash($pkg, {
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
-		changelog => $chg_prepro->(join("\n", mapn { "* " . localtime2changelog($_[2]) . " $_[0]\n\n$_[1]\n" }
-						[ $p->changelog_name ], [ $p->changelog_text ], [ $p->changelog_time ])) });
+		changelog => $chg_prepro->(join("\n", map {
+                    "* " . localtime2changelog($_->{time}) . " $_->{name}\n\n$_->{text}\n" } $p->changelogs)) });
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
         } elsif ($xml_info_pkgs{$name}) {
             if ($xml_info eq 'info') {
