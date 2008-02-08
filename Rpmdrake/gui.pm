@@ -138,7 +138,7 @@ sub format_pkg_simplifiedinfo {
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
                        gtknew('TextView', text => ugtk2::markup_to_TextView_format(
                            $spacing . join("\n$spacing",
-                                format_field(N("Version: ")) . $version . $release,
+                                format_field(N("Version: ")) . $version . '-' . $release,
                                 
                                 ($upkg->flag_installed ?
                                    format_field(N("Currently installed version: ")) . eval { find_installed_version($upkg) }
