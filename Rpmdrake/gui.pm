@@ -135,13 +135,14 @@ sub format_pkg_simplifiedinfo {
       (eval { escape_text_for_TextView_markup_format($pkg->{description} || $update_descr->{description}) } || '<i>' . N("No description") . '</i>')
     )) };
     push @$s, [ "\n" ];
+    my $installed_version = eval { find_installed_version($upkg) };
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
                        gtknew('TextView', text => ugtk2::markup_to_TextView_format(
                            $spacing . join("\n$spacing",
                                 format_field(N("Version: ")) . $version . '-' . $release,
                                 
                                 ($upkg->flag_installed ?
-                                   format_field(N("Currently installed version: ")) . eval { find_installed_version($upkg) }
+                                   format_field(N("Currently installed version: ")) . $installed_version
                                      : ()
                                  ),
                                 format_field(N("Architecture: ")) . $upkg->arch,
