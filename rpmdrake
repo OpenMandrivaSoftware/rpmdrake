@@ -187,7 +187,7 @@ sub do_search($$$$$$$) {
 	$tree->expand_row($path, 0);
     	$tree->scroll_to_cell($path, undef, 1, 0.5, 0);
     } else {
-        my $wait = statusbar_msg(N("Search results (none)"), 1);
+        statusbar_msg(N("Search results (none)"), 1);
         gtkset_mousecursor_normal($::w->{rwindow}->window);
     }
 }
