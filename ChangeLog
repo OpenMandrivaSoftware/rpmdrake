@@ -1,3 +1,308 @@
+2008-02-11 13:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.138
+
+2008-02-11 13:39  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (do_search) fix canceling description search (maybe
+	  should we just use
+	  _iterate_on_nodes() directly??
+
+2008-02-11 13:39  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (do_search) fix canceling file search
+
+2008-02-11 13:38  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (do_search) flush X11 queue only every 10 packages
+	  while searching
+
+2008-02-09 20:59  Karl Ove Hufthammer <karl at huftis.org>
+
+	* po/nn.po: Updated Norwegian Nynorsk translation.
+
+2008-02-09 14:37  Yukiko Bando <ybando at k6.dion.ne.jp>
+
+	* po/ja.po: Japanese translation updated.
+
+2008-02-08 17:56  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.137
+
+2008-02-08 17:56  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm, Rpmdrake/gui.pm, Rpmdrake/pkg.pm:
+	  (format_changelog_string) highlight relevant parts of the
+	  changelog (#37208);
+	  updating callers (build_expander, extract_header,
+	  format_changelog_changelogs,
+	  format_pkg_simplifiedinfo)
+
+2008-02-08 17:25  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (format_pkg_simplifiedinfo) store
+	  installed_version
+
+2008-02-08 17:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (format_pkg_simplifiedinfo) separate version and
+	  release by '-' in details
+
+2008-02-08 16:23  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: perl_checker cleanups
+
+2008-02-08 16:22  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (build_expander) simplify by passing only the
+	  used field
+
+2008-02-08 16:19  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (format_pkg_simplifiedinfo, format_pkg_info)
+	  simplify
+
+2008-02-08 16:06  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fix querying file list of
+	  installed packages
+	  (regression introduced in r233988 on 2008-02-06 ("fix file list
+	  of
+	  installed RPMS...")
+
+2008-02-08 16:02  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm, Rpmdrake/pkg.pm:
+	  (format_changelog_changelogs) factorize formatting unlocalized
+	  changelogs
+
+2008-02-08 15:58  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm, Rpmdrake/pkg.pm:
+	  (format_changelog_string) make a real function out of a closure
+
+2008-02-08 15:52  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm: make export list more manageable and more
+	  readable
+
+2008-02-08 15:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) make format of XML changelog be
+	  the same as hdlists'
+	  ones and direct package query one
+
+2008-02-08 15:35  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) simplify
+
+2008-02-08 15:32  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) adapt to new ->changelogs() for
+	  local packages
+	  (instead of ->changelog_name(), ->changelog_text() and
+	  ->changelog_time())
+
+2008-02-08 15:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm: (format_update_field) render update
+	  fields as italic
+
+2008-02-08 14:59  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm, Rpmdrake/gui.pm: (format_update_field)
+	  factorize formating of update fields (type & description)
+
+2008-02-07 16:15  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.136
+
+2008-02-07 16:14  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (do_search) adapt to new urpmi API for searching in XML
+	  meta-data,
+	  thus stopping from downloading hdlists, side effect of urpmi-5.x
+	  (#37411)
+	  
+	  (we should probably factor urpmf code in urpm::search instead...)
+
+2008-02-07 15:39  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (do_search) explain a flush()
+
+2008-02-07 01:26  Inigo Salvador Azurmendi <xalba at euskalnet.net>
+
+	* po/eu.po: Osatuta.
+
+2008-02-06 17:35  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.135
+
+2008-02-06 17:21  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fix formating of file list of
+	  non installed packages
+
+2008-02-06 16:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: kill unused PERL_VENDORARCH
+
+2008-02-06 16:01  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) reindent a signal callback for
+	  readability too
+
+2008-02-06 16:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) minor reindentation
+
+2008-02-06 15:59  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs) simplify
+
+2008-02-06 15:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog, po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po,
+	  po/bg.po, po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po,
+	  po/cy.po, po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po,
+	  po/ga.po, po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po,
+	  po/hy.po, po/id.po, po/is.po, po/it.po, po/ja.po, po/ka.po,
+	  po/ko.po, po/ku.po, po/ky.po, po/lt.po, po/ltg.po, po/lv.po,
+	  po/mk.po, po/mn.po, po/ms.po, po/mt.po, po/nb.po, po/nl.po,
+	  po/nn.po, po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po, po/ro.po,
+	  po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po,
+	  po/uz@cyrillic.po, po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po,
+	  rpmdrake: add explanation for backports for translators
+
+2008-02-06 15:04  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* .perl_checker: blacklist Cwd
+
+2008-02-06 14:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/Makefile, po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po,
+	  po/bg.po, po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po,
+	  po/cy.po, po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po,
+	  po/ga.po, po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po,
+	  po/hy.po, po/id.po, po/is.po, po/it.po, po/ja.po, po/ka.po,
+	  po/ko.po, po/ku.po, po/ky.po, po/lt.po, po/ltg.po, po/lv.po,
+	  po/mk.po, po/mn.po, po/ms.po, po/mt.po, po/nb.po, po/nl.po,
+	  po/nn.po, po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po, po/ro.po,
+	  po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po,
+	  po/uz@cyrillic.po, po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po:
+	  sync with code
+
+2008-02-06 14:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) don't use interpolated
+	  translated string
+
+2008-02-06 14:36  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: 3.134
+
+2008-02-06 14:36  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fix a regression (not
+	  downloading XML metada)
+	  introduced in r233980 on 2008-02-06 (was "do not display the
+	  download
+	  progress dialog when not downloading, only a statusbar message")
+
+2008-02-06 14:19  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fix file list of installed RPMS
+	  by forcing list
+	  context (and simplfiy the code btw)
+
+2008-02-06 14:14  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) do not perform slow extract if
+	  already performed
+
+2008-02-06 14:14  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, Rpmdrake/open_db.pm, Rpmdrake/widgets.pm,
+	  rpmdrake, rpmdrake.pm:
+	  (build_tree,open_rpm_db,run_treeview_dialog,show_urpm_progress,Rpmdrake::widgets::new)
+	  kill warnings
+
+2008-02-06 14:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (run_rpm) skip empty environment variables
+
+2008-02-06 14:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (run_rpm) fix checking if locale is already in
+	  UTF-8
+
+2008-02-06 14:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: display a message in statusbar while extracting
+	  metada from a local package
+
+2008-02-06 14:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fallback to get XML metada when
+	  RPM is missing from
+	  local medium (mainly needed by me on my devel machine)
+
+2008-02-06 14:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) make sure we destroy the
+	  download progress dialog on error
+
+2008-02-06 14:10  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) do not display the download
+	  progress dialog when not
+	  downloading, only a statusbar message
+
+2008-02-06 14:05  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, Rpmdrake/pkg.pm:
+	  (build_expander,extract_header,format_pkg_simplifiedinfo)
+	  - stop downloading & parsing the XML meta data on selecting a
+	  package (side
+	  effect of urpmi-5.x)
+	  - download & parse the needed XML meta data on demand (aka only
+	  download & parse the needed ones and not all of them)
+
+2008-02-06 14:04  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, Rpmdrake/pkg.pm, rpmdrake: add a meta packages
+	  view (#34510)
+
+2008-02-06 14:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) fix extracting info from
+	  packages from local media (#37354)
+
+2008-02-06 14:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gurpm.pm: (new) make dialogs be rendered instaneously by
+	  showing all widgets
+	  _and_ reusing label()'s hack
+
+2008-02-06 14:02  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (deps_msg) display size of selection (#34123)
+
+2008-02-06 14:02  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/formatting.pm, Rpmdrake/pkg.pm: (format_size) split it
+	  out of perform_installation() (needed for next commit)
+
+2008-02-06 14:01  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (extract_header) simplify
+
 2008-02-06 14:36  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Makefile: 3.134
