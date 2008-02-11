@@ -146,18 +146,25 @@ sub do_search($$$$$$$) {
                         }
                     }
                 } else {
-                    urpm::xml_info::do_something_with_nodes(
-                        'info',
-                        $xml_info_file,
-                        sub {
-                            my ($node) = @_;
-                            $update_search_pb->();
-                            push @search_results, $node->{fn} if $node->{description} =~ $entry_rx;
-                            #$searchstop and last;
-                            return 0 || $searchstop;
-                        },
-                    );
-                }	
+                    eval {
+                        urpm::xml_info::do_something_with_nodes(
+                            'info',
+                            $xml_info_file,
+                            sub {
+                                $searchstop and die 'search aborted';
+                                my ($node) = @_;
+                                $update_search_pb->();
+                                push @search_results, $node->{fn} if $node->{description} =~ $entry_rx;
+                                #$searchstop and last;
+                                return 0 || $searchstop;
+                            },
+                        );
+                    };
+                    my $err = $@;
+                    if ($err =~ /search aborted/) {
+                        my $wait = statusbar_msg(N("Search aborted"), 1);
+                    }
+                }
             }
 
           end_search:
