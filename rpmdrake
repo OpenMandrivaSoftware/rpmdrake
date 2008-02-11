@@ -101,8 +101,10 @@ sub do_search($$$$$$$) {
 
             my $update_search_pb = sub {
                 $progresscount++;
-                $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
-                $searchw->flush; # refresh and handle clicks
+                if ($progresscount % 10) {
+                    $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
+                    $searchw->flush ; # refresh and handle clicks
+                }
             };
             foreach my $medium (grep { !$_->{ignore} } @{$urpm->{media}}) {
                 $searchstop and last;
