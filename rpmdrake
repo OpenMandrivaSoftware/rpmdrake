@@ -110,17 +110,21 @@ sub do_search($$$$$$$) {
                 $searchstop and last;
                 my $gurpm; # per medium download progress bar (if needed)
                 my $_gurpm_clean_guard = before_leaving { undef $gurpm };
-                my $xml_info_file = urpm::media::any_xml_info($urpm, $medium,
-                                                              ($current_search_type eq 'files' ? 'files' : 'info'),
-                                                              undef, sub {
-                                                                  $gurpm ||= Rpmdrake::gurpm->new(N("Please wait"), transient => $::main_window);
-                                                                  download_callback($gurpm, @_) or do {
-                                                                        $searchstop = 1;
-                                                                    };
-                                                              }) or do {
+                my $xml_info_file = 
+                  urpm::media::any_xml_info($urpm, $medium,
+                                            ($current_search_type eq 'files' ? 'files' : 'info'),
+                                            undef, 
+                                            sub {
+                                                $gurpm ||= Rpmdrake::gurpm->new(N("Please wait"),
+                                                                                transient => $::main_window);
+                                                download_callback($gurpm, @_) or do {
+                                                    $searchstop = 1;
+                                                };
+                                            });
+                if (!$xml_info_file) {
                     $urpm->{error}(N("no xml-info available for medium \"%s\"", $medium->{name}));
                     next;
-                };
+                }
                 $searchstop and last;
 
                 require urpm::xml_info;
