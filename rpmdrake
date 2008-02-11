@@ -522,8 +522,7 @@ sub run_treeview_dialog {
 			$cbox,
 			gtknew('Label', text => N("Find:")),
 			$search_types_optionmenu,
-			gtksignal_connect(
-			    $find_entry = gtknew('Entry'),
+                        $find_entry = gtknew('Entry',
 			    key_press_event => sub {
 				$_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
 				    and $find_callback->();
