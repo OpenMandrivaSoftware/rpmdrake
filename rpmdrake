@@ -133,7 +133,10 @@ sub do_search($$$$$$$) {
                     my $fn;
                     local $_;
                     while (<$F>) {
-                        $searchstop and last;
+                        if ($searchstop) {
+                            statusbar_msg(N("Search aborted"), 1);
+                            goto end_search;
+                        }
                         if (m!^<!) { 
                             ($fn) = /fn="(.*)"/;
                             $update_search_pb->();
@@ -157,6 +160,7 @@ sub do_search($$$$$$$) {
                 }	
             }
 
+          end_search:
 	    @search_results = uniq(@search_results); #- there can be multiple packages with same version/release for different arch's
 	    $searchw->destroy;
     }
