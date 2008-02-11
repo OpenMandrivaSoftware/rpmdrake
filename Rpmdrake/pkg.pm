@@ -49,6 +49,7 @@ use urpm::args qw();
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(
+                    download_callback
                     extract_header
                     find_installed_version
                     formatlistpkg
