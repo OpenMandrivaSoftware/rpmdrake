@@ -520,6 +520,7 @@ sub run_treeview_dialog {
 		    0, gtkpack__(
 			gtknew('HBox', spacing => 10),
 			$cbox,
+			gtkset_size_request(Gtk2::Alignment->new(0, 0, 0, 0), 100, 1),
 			gtknew('Label', text => N("Find:")),
 			$search_types_optionmenu,
                         $find_entry = gtknew('Sexy_IconEntry', clear_button => 1,
