@@ -48,7 +48,15 @@ use urpm::args qw();
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(extract_header find_installed_version formatlistpkg get_pkgs parse_compssUsers_flat perform_installation perform_removal run_rpm);
+our @EXPORT = qw(
+                    extract_header
+                    find_installed_version
+                    formatlistpkg
+                    get_pkgs
+                    parse_compssUsers_flat
+                    perform_installation
+                    perform_removal
+                    run_rpm);
 
 use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
