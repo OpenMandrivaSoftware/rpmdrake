@@ -44,6 +44,7 @@ use ugtk2 qw(:all);
 use Gtk2::Gdk::Keysyms;
 use Rpmdrake::widgets;
 use feature 'state';
+use Gtk2::Sexy;
 
 $ugtk2::wm_icon = "title-$MODE";
 
@@ -401,7 +402,6 @@ sub run_treeview_dialog {
     $info->set_right_margin(15);  #- workaround when right elevator of scrolled window appears
 
     my $find_callback = sub {
-	$clear_button and $clear_button->set_sensitive(1);
 	do_search($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs);
     };
 
@@ -522,17 +522,14 @@ sub run_treeview_dialog {
 			$cbox,
 			gtknew('Label', text => N("Find:")),
 			$search_types_optionmenu,
-                        $find_entry = gtknew('Entry',
+                        $find_entry = gtknew('Sexy_IconEntry', clear_button => 1,
+                                             primary_icon => Gtk2::Image->new_from_stock('gtk-find', 'menu'),
+                                             'icon-released' => $find_callback,
 			    key_press_event => sub {
 				$_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
 				    and $find_callback->();
 			    },
-			),
-			gtksignal_connect(Gtk2::Button->new(but(N("Search"))), clicked => $find_callback),
-			gtksignal_connect(
-			    $clear_button = Gtk2::Button->new(but(N("Clear"))),
-			    clicked => sub { reset_search() },
-			),
+                                         ),
 		    ),
 		    1, $hpaned,
 		    0, $status,
@@ -560,7 +557,6 @@ sub run_treeview_dialog {
 	),
     );
     $action_button->set_sensitive(0) if $>;
-    $clear_button->set_sensitive(0);
     $find_entry->grab_focus;
 
     gtktext_insert($info, [ 

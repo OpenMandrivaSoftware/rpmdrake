@@ -43,7 +43,7 @@ use feature 'state';
 
 our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices compute_main_window_size do_action get_info get_summary is_locale_available node_state pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_all toggle_nodes
                  sort_callback
-            $clear_button %grp_columns %pkg_columns $dont_show_selections @filtered_pkgs $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
+            %grp_columns %pkg_columns $dont_show_selections @filtered_pkgs $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
 
 our $dont_show_selections = $> ? 1 : 0;
 
@@ -434,10 +434,9 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     $w->{w}->main;
 }
 
-our ($clear_button, $find_entry);
+our $find_entry;
 
 sub reset_search() {
-    $clear_button and $clear_button->set_sensitive(0);
     $find_entry and $find_entry->set_text("");
 }
 
