@@ -382,20 +382,14 @@ sub run_treeview_dialog {
 
     my @search_types = qw(normal descriptions summaries files);
     my $current_search_type = $search_types[0];
-    my $search_types_optionmenu = Gtk2::ComboBox->new_with_strings(
-        [
-            N("in names"),
-            N("in descriptions"),
-            N("in summaries"),
-            N("in file names"),
-        ],
-        N("in names")
-    );
-	$search_types_optionmenu->signal_connect(
-	    changed => sub {
-		$current_search_type = $search_types[$search_types_optionmenu->get_active];
-	    },
-	);
+    my $search_menu = Gtk2::Menu->new;
+    my $i = 0;
+    foreach (N("in names"), N("in descriptions"), N("in summaries"), N("in file names")) { 
+        my ($name, $val) = ($_, $i);
+	$search_menu->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($name)),
+                                               activate => sub { $current_search_type = $search_types[$val] }));
+        $i++;
+    }
 
     my $info = Gtk2::Mdv::TextView->new;
     $info->set_left_margin(2);
@@ -522,10 +516,14 @@ sub run_treeview_dialog {
 			$cbox,
 			gtkset_size_request(Gtk2::Alignment->new(0, 0, 0, 0), 100, 1),
 			gtknew('Label', text => N("Find:")),
-			$search_types_optionmenu,
                         $find_entry = gtknew('Sexy_IconEntry', clear_button => 1,
                                              primary_icon => Gtk2::Image->new_from_stock('gtk-find', 'menu'),
                                              'icon-released' => $find_callback,
+                                             'icon-pressed' => sub {
+                                                 my (undef, $pos, $button) = @_;
+                                                 return if $pos != 0;
+                                                 $search_menu->popup(undef, undef, undef, undef, $button, undef);
+                                             },
 			    key_press_event => sub {
 				$_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
 				    and $find_callback->();
