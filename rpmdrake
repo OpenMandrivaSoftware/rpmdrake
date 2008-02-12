@@ -102,7 +102,7 @@ sub do_search($$$$$$$) {
 
             my $update_search_pb = sub {
                 $progresscount++;
-                if (!($progresscount % 10)) {
+                if (!($progresscount % 100)) {
                     $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
                     $searchw->flush ; # refresh and handle clicks
                 }
