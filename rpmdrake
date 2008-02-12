@@ -511,12 +511,12 @@ sub run_treeview_dialog {
 		gtknew('Frame', border_width => 3, shadow_type => 'none'),
 		gtkpack_(
 		    gtknew('VBox', spacing => 3),
-		    0, gtkpack__(
+		    0, gtkpack_(
 			gtknew('HBox', spacing => 10),
-			$cbox,
-			gtkset_size_request(Gtk2::Alignment->new(0, 0, 0, 0), 100, 1),
-			gtknew('Label', text => N("Find:")),
-                        $find_entry = gtknew('Sexy_IconEntry', clear_button => 1,
+			0, $cbox,
+			1, gtkset_size_request(Gtk2::Alignment->new(0, 0, 0, 0), 100, 1),
+			0, gtknew('Label', text => N("Find:")),
+			0, $find_entry = gtknew('Sexy_IconEntry', clear_button => 1,
                                              primary_icon => Gtk2::Image->new_from_stock('gtk-find', 'menu'),
                                              'icon-released' => $find_callback,
                                              'icon-pressed' => sub {
