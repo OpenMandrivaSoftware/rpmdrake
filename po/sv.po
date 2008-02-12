@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-06 15:47+0100\n"
+"POT-Creation-Date: 2008-02-12 12:31+0100\n"
 "PO-Revision-Date: 2007-03-20 20:44+0100\n"
 "Last-Translator: Kenneth Krekula <kenneth.krekula@kiruna.se>\n"
 "Language-Team:  <sv@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:754
+#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:759
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -38,7 +38,7 @@ msgstr ""
 "det inte finns några tillgängliga uppdateringar för paketen\n"
 "som är installerade på systemet. Eller så har du redan installerat alla."
 
-#: ../MandrivaUpdate:109 ../rpmdrake:81 ../rpmdrake:566 ../rpmdrake.pm:192
+#: ../MandrivaUpdate:109 ../rpmdrake:82 ../rpmdrake:604 ../rpmdrake.pm:192
 #, c-format
 msgid "Software Management"
 msgstr "Programhantering"
@@ -53,17 +53,17 @@ msgstr "Här är listan över mjukvarupaketuppdateringar"
 msgid "Name"
 msgstr "Namn"
 
-#: ../MandrivaUpdate:133 ../rpmdrake:204
+#: ../MandrivaUpdate:133 ../rpmdrake:243
 #, fuzzy, c-format
 msgid "Version"
 msgstr "Version: "
 
-#: ../MandrivaUpdate:134 ../rpmdrake:208
+#: ../MandrivaUpdate:134 ../rpmdrake:247
 #, c-format
 msgid "Release"
 msgstr ""
 
-#: ../MandrivaUpdate:135 ../rpmdrake:212
+#: ../MandrivaUpdate:135 ../rpmdrake:251
 #, fuzzy, c-format
 msgid "Arch"
 msgstr "Arkivering"
@@ -73,7 +73,7 @@ msgstr "Arkivering"
 msgid "Help"
 msgstr "Hjälp"
 
-#: ../MandrivaUpdate:152 ../rpmdrake:500 ../rpmdrake.pm:769
+#: ../MandrivaUpdate:152 ../rpmdrake:539 ../rpmdrake.pm:769
 #, c-format
 msgid "Select all"
 msgstr "Välj alla"
@@ -83,7 +83,7 @@ msgstr "Välj alla"
 msgid "Update"
 msgstr "Uppdatera"
 
-#: ../MandrivaUpdate:173 ../rpmdrake:511
+#: ../MandrivaUpdate:173 ../rpmdrake:550
 #, c-format
 msgid "Quit"
 msgstr "Avsluta"
@@ -292,8 +292,8 @@ msgstr "Typ av media:"
 #: ../Rpmdrake/edit_urpm_sources.pm:447 ../Rpmdrake/edit_urpm_sources.pm:474
 #: ../Rpmdrake/edit_urpm_sources.pm:556 ../Rpmdrake/edit_urpm_sources.pm:643
 #: ../Rpmdrake/edit_urpm_sources.pm:684 ../Rpmdrake/edit_urpm_sources.pm:742
-#: ../Rpmdrake/edit_urpm_sources.pm:891 ../Rpmdrake/gui.pm:519
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:202 ../Rpmdrake/pkg.pm:697
+#: ../Rpmdrake/edit_urpm_sources.pm:891 ../Rpmdrake/gui.pm:524
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:204 ../Rpmdrake/pkg.pm:700
 #: ../rpmdrake.pm:301 ../rpmdrake.pm:619 ../rpmdrake.pm:692 ../rpmdrake.pm:765
 #, c-format
 msgid "Cancel"
@@ -304,8 +304,8 @@ msgstr "Avbryt"
 #: ../Rpmdrake/edit_urpm_sources.pm:640 ../Rpmdrake/edit_urpm_sources.pm:683
 #: ../Rpmdrake/edit_urpm_sources.pm:735 ../Rpmdrake/edit_urpm_sources.pm:808
 #: ../Rpmdrake/edit_urpm_sources.pm:937 ../Rpmdrake/edit_urpm_sources.pm:1135
-#: ../Rpmdrake/gui.pm:519 ../Rpmdrake/gui.pm:535 ../Rpmdrake/gui.pm:540
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:517 ../Rpmdrake/pkg.pm:697
+#: ../Rpmdrake/gui.pm:524 ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:545
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:520 ../Rpmdrake/pkg.pm:700
 #: ../Rpmdrake/rpmnew.pm:180 ../rpmdrake.pm:124 ../rpmdrake.pm:239
 #: ../rpmdrake.pm:304 ../rpmdrake.pm:619
 #, c-format
@@ -525,9 +525,9 @@ msgstr "Mediagräns"
 msgid "Command"
 msgstr "Kommando"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:772 ../Rpmdrake/gui.pm:751
-#: ../Rpmdrake/pkg.pm:115 ../Rpmdrake/pkg.pm:161 ../Rpmdrake/pkg.pm:169
-#: ../Rpmdrake/pkg.pm:191 ../Rpmdrake/rpmnew.pm:77
+#: ../Rpmdrake/edit_urpm_sources.pm:772 ../Rpmdrake/formatting.pm:126
+#: ../Rpmdrake/gui.pm:756 ../Rpmdrake/pkg.pm:119 ../Rpmdrake/pkg.pm:164
+#: ../Rpmdrake/pkg.pm:172 ../Rpmdrake/pkg.pm:193 ../Rpmdrake/rpmnew.pm:77
 #, c-format
 msgid "(none)"
 msgstr "(inget)"
@@ -601,18 +601,18 @@ msgid "Configure media"
 msgstr "Anpassa media"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:953 ../Rpmdrake/edit_urpm_sources.pm:954
-#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:391 ../rpmdrake:394
-#: ../rpmdrake:399 ../rpmdrake:414 ../rpmdrake:415
+#: ../Rpmdrake/edit_urpm_sources.pm:955 ../rpmdrake:429 ../rpmdrake:432
+#: ../rpmdrake:437 ../rpmdrake:452 ../rpmdrake:453
 #, c-format
 msgid "/_File"
 msgstr "/_Arkiv"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:954 ../rpmdrake:415
+#: ../Rpmdrake/edit_urpm_sources.pm:954 ../rpmdrake:453
 #, c-format
 msgid "/_Quit"
 msgstr "/Av_sluta"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:954 ../rpmdrake:415
+#: ../Rpmdrake/edit_urpm_sources.pm:954 ../rpmdrake:453
 #, c-format
 msgid "<control>Q"
 msgstr "<control>Q"
@@ -630,8 +630,8 @@ msgstr "<control>Q"
 #: ../Rpmdrake/edit_urpm_sources.pm:956 ../Rpmdrake/edit_urpm_sources.pm:957
 #: ../Rpmdrake/edit_urpm_sources.pm:958 ../Rpmdrake/edit_urpm_sources.pm:959
 #: ../Rpmdrake/edit_urpm_sources.pm:960 ../Rpmdrake/edit_urpm_sources.pm:961
-#: ../rpmdrake:388 ../rpmdrake:418 ../rpmdrake:422 ../rpmdrake:426
-#: ../rpmdrake:465
+#: ../rpmdrake:426 ../rpmdrake:456 ../rpmdrake:460 ../rpmdrake:464
+#: ../rpmdrake:503
 #, c-format
 msgid "/_Options"
 msgstr "/_Inställningar"
@@ -688,44 +688,44 @@ msgstr "<control>Q"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:963 ../Rpmdrake/edit_urpm_sources.pm:964
 #: ../Rpmdrake/edit_urpm_sources.pm:965 ../Rpmdrake/edit_urpm_sources.pm:966
-#: ../rpmdrake:430 ../rpmdrake:431 ../rpmdrake:432 ../rpmdrake:433
+#: ../rpmdrake:468 ../rpmdrake:469 ../rpmdrake:470 ../rpmdrake:471
 #, c-format
 msgid "/_Help"
 msgstr "/_Hjälp"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:964 ../rpmdrake:431
+#: ../Rpmdrake/edit_urpm_sources.pm:964 ../rpmdrake:469
 #, c-format
 msgid "/_Report Bug"
 msgstr "/_Rapportera fel"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:966 ../rpmdrake:433
+#: ../Rpmdrake/edit_urpm_sources.pm:966 ../rpmdrake:471
 #, c-format
 msgid "/_About..."
 msgstr "/_Om..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:969 ../rpmdrake:436
+#: ../Rpmdrake/edit_urpm_sources.pm:969 ../rpmdrake:474
 #, c-format
 msgid "Rpmdrake"
 msgstr "Rpmdrake"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:971 ../rpmdrake:438
+#: ../Rpmdrake/edit_urpm_sources.pm:971 ../rpmdrake:476
 #, c-format
 msgid "Copyright (C) %s by Mandriva"
 msgstr "Copyright (C) %s, Mandriva"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:973 ../rpmdrake:440
+#: ../Rpmdrake/edit_urpm_sources.pm:973 ../rpmdrake:478
 #, c-format
 msgid "Rpmdrake is Mandriva Linux package management tool."
 msgstr "Rpmdrake är Mandriva Linux pakethanterings-verktyg."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:975 ../rpmdrake:442
+#: ../Rpmdrake/edit_urpm_sources.pm:975 ../rpmdrake:480
 #, c-format
 msgid "Mandriva Linux"
 msgstr "Mandriva Linux"
 
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../Rpmdrake/edit_urpm_sources.pm:980 ../rpmdrake:447
+#: ../Rpmdrake/edit_urpm_sources.pm:980 ../rpmdrake:485
 #, c-format
 msgid "_: Translator(s) name(s) & email(s)\n"
 msgstr ""
@@ -737,7 +737,7 @@ msgstr ""
 "Mattias Dahlberg <voz@home.se>\n"
 "Tom Svensson <tom@firstdev.com>\n"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1033 ../Rpmdrake/pkg.pm:272
+#: ../Rpmdrake/edit_urpm_sources.pm:1033 ../Rpmdrake/pkg.pm:274
 #, c-format
 msgid "Enabled"
 msgstr "Aktiverad"
@@ -812,191 +812,191 @@ msgstr ""
 "paketdatabasen (har du en annan pakethanterare på en annan\n"
 "arbetsyta, eller håller du redan på att installera paket?)."
 
-#: ../Rpmdrake/formatting.pm:73
+#: ../Rpmdrake/formatting.pm:101
 #, c-format
 msgid "None"
 msgstr "Ingen"
 
-#: ../Rpmdrake/formatting.pm:103
+#: ../Rpmdrake/formatting.pm:163
 #, c-format
 msgid "%s of additional disk space will be used."
 msgstr ""
 
-#: ../Rpmdrake/formatting.pm:104
+#: ../Rpmdrake/formatting.pm:164
 #, c-format
 msgid "%s of disk space will be freed."
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:94 ../Rpmdrake/gui.pm:173 ../Rpmdrake/gui.pm:175
-#: ../Rpmdrake/pkg.pm:183
+#: ../Rpmdrake/gui.pm:94 ../Rpmdrake/gui.pm:178 ../Rpmdrake/gui.pm:180
+#: ../Rpmdrake/pkg.pm:185
 #, c-format
 msgid "(Not available)"
 msgstr "(Ingen tillgänglig)"
 
-#: ../Rpmdrake/gui.pm:120 ../Rpmdrake/gui.pm:191
+#: ../Rpmdrake/gui.pm:122 ../Rpmdrake/gui.pm:196
 #, c-format
 msgid "Importance: "
 msgstr "Viktighet: "
 
-#: ../Rpmdrake/gui.pm:121 ../Rpmdrake/gui.pm:199
+#: ../Rpmdrake/gui.pm:123 ../Rpmdrake/gui.pm:204
 #, c-format
 msgid "Reason for update: "
 msgstr "Orsak för uppdatering: "
 
-#: ../Rpmdrake/gui.pm:125
+#: ../Rpmdrake/gui.pm:127
 #, c-format
 msgid "Security advisory"
 msgstr "Säkerhetsrekommendation"
 
-#: ../Rpmdrake/gui.pm:133 ../Rpmdrake/gui.pm:201
+#: ../Rpmdrake/gui.pm:135 ../Rpmdrake/gui.pm:206
 #, c-format
 msgid "No description"
 msgstr "Ingen beskrivning"
 
-#: ../Rpmdrake/gui.pm:136
+#: ../Rpmdrake/gui.pm:139
 #, c-format
 msgid "Details:"
 msgstr "Detaljer:"
 
-#: ../Rpmdrake/gui.pm:139 ../Rpmdrake/gui.pm:186
+#: ../Rpmdrake/gui.pm:142 ../Rpmdrake/gui.pm:191
 #, c-format
 msgid "Version: "
 msgstr "Version: "
 
-#: ../Rpmdrake/gui.pm:142 ../Rpmdrake/gui.pm:181
+#: ../Rpmdrake/gui.pm:145 ../Rpmdrake/gui.pm:186
 #, c-format
 msgid "Currently installed version: "
 msgstr "Installerad version: "
 
-#: ../Rpmdrake/gui.pm:145 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:148 ../Rpmdrake/gui.pm:192
 #, c-format
 msgid "Architecture: "
 msgstr "Arkitektur: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:188
+#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
 #, c-format
 msgid "Size: "
 msgstr "Storlek: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:188
+#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../Rpmdrake/gui.pm:147 ../Rpmdrake/gui.pm:180 ../rpmdrake.pm:824
+#: ../Rpmdrake/gui.pm:150 ../Rpmdrake/gui.pm:185 ../rpmdrake.pm:824
 #, c-format
 msgid "Medium: "
 msgstr "Media: "
 
-#: ../Rpmdrake/gui.pm:153
+#: ../Rpmdrake/gui.pm:156
 #, c-format
 msgid "Files:"
 msgstr "Filer:"
 
-#: ../Rpmdrake/gui.pm:161
+#: ../Rpmdrake/gui.pm:164
 #, c-format
 msgid "Changelog:"
 msgstr "Ändringslogg:"
 
-#: ../Rpmdrake/gui.pm:170
+#: ../Rpmdrake/gui.pm:175
 #, c-format
 msgid "Files:\n"
 msgstr "Filer:\n"
 
-#: ../Rpmdrake/gui.pm:175
+#: ../Rpmdrake/gui.pm:180
 #, c-format
 msgid "Changelog:\n"
 msgstr "Ändringslogg:\n"
 
-#: ../Rpmdrake/gui.pm:185
+#: ../Rpmdrake/gui.pm:190
 #, c-format
 msgid "Name: "
 msgstr "Namn: "
 
-#: ../Rpmdrake/gui.pm:195
+#: ../Rpmdrake/gui.pm:200
 #, c-format
 msgid "Summary: "
 msgstr "Sammanfattning: "
 
-#: ../Rpmdrake/gui.pm:201
+#: ../Rpmdrake/gui.pm:206
 #, c-format
 msgid "Description: "
 msgstr "Beskrivning: "
 
-#: ../Rpmdrake/gui.pm:400 ../Rpmdrake/gui.pm:406 ../Rpmdrake/pkg.pm:707
+#: ../Rpmdrake/gui.pm:405 ../Rpmdrake/gui.pm:411 ../Rpmdrake/pkg.pm:710
 #: ../rpmdrake.pm:748 ../rpmdrake.pm:863
 #, c-format
 msgid "Warning"
 msgstr "Varning"
 
-#: ../Rpmdrake/gui.pm:401
+#: ../Rpmdrake/gui.pm:406
 #, fuzzy, c-format
 msgid "Removing package %s would break your system"
 msgstr ""
 "Om du tar bort dessa paket kommer systemet att sluta fungera:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:406
+#: ../Rpmdrake/gui.pm:411
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:501 ../Rpmdrake/gui.pm:531 ../Rpmdrake/gui.pm:533
+#: ../Rpmdrake/gui.pm:506 ../Rpmdrake/gui.pm:536 ../Rpmdrake/gui.pm:538
 #, c-format
 msgid "More information on package..."
 msgstr "Mer information om paket..."
 
-#: ../Rpmdrake/gui.pm:503
+#: ../Rpmdrake/gui.pm:508
 #, c-format
 msgid "Please choose"
 msgstr "Välj"
 
-#: ../Rpmdrake/gui.pm:504
+#: ../Rpmdrake/gui.pm:509
 #, c-format
 msgid "The following package is needed:"
 msgstr "Följande paket krävs:"
 
-#: ../Rpmdrake/gui.pm:504
+#: ../Rpmdrake/gui.pm:509
 #, c-format
 msgid "One of the following packages is needed:"
 msgstr "Ett av följande paket är nödvändigt:"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../Rpmdrake/gui.pm:519 ../Rpmdrake/gui.pm:524
+#: ../Rpmdrake/gui.pm:524 ../Rpmdrake/gui.pm:529
 #, c-format
 msgid "More info"
 msgstr "Mer information"
 
-#: ../Rpmdrake/gui.pm:526
+#: ../Rpmdrake/gui.pm:531
 #, c-format
 msgid "Information on packages"
 msgstr "Information om paket"
 
-#: ../Rpmdrake/gui.pm:554
+#: ../Rpmdrake/gui.pm:559
 #, c-format
 msgid "Checking dependencies of package..."
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:561
+#: ../Rpmdrake/gui.pm:566
 #, c-format
 msgid "Some additional packages need to be removed"
 msgstr "Några ytterligare paket måste tas bort"
 
-#: ../Rpmdrake/gui.pm:562
+#: ../Rpmdrake/gui.pm:567
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
 msgstr "På grund av deras beroenden måste följande paket också tas bort:"
 
-#: ../Rpmdrake/gui.pm:568 ../Rpmdrake/gui.pm:578
+#: ../Rpmdrake/gui.pm:573 ../Rpmdrake/gui.pm:583
 #, c-format
 msgid "Some packages can't be removed"
 msgstr "Vissa paket kan inte tas bort"
 
-#: ../Rpmdrake/gui.pm:569
+#: ../Rpmdrake/gui.pm:574
 #, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
@@ -1005,7 +1005,7 @@ msgstr ""
 "Om du tar bort dessa paket kommer systemet att sluta fungera:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:579 ../Rpmdrake/gui.pm:648
+#: ../Rpmdrake/gui.pm:584 ../Rpmdrake/gui.pm:653
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
@@ -1016,12 +1016,12 @@ msgstr ""
 "avmarkeras:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:609
+#: ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "Additional packages needed"
 msgstr "Ytterligare paket krävs"
 
-#: ../Rpmdrake/gui.pm:610
+#: ../Rpmdrake/gui.pm:615
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
@@ -1031,22 +1031,22 @@ msgstr ""
 "För att uppfylla beroenden måste följande paket också installeras:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:624
+#: ../Rpmdrake/gui.pm:629
 #, c-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (tillhör undantagslistan)"
 
-#: ../Rpmdrake/gui.pm:628
+#: ../Rpmdrake/gui.pm:633
 #, c-format
 msgid "One package cannot be installed"
 msgstr "Ett paket kan inte installeras"
 
-#: ../Rpmdrake/gui.pm:628
+#: ../Rpmdrake/gui.pm:633
 #, c-format
 msgid "Some packages can't be installed"
 msgstr "Vissa paket kan inte installeras"
 
-#: ../Rpmdrake/gui.pm:630
+#: ../Rpmdrake/gui.pm:635
 #, c-format
 msgid ""
 "Sorry, the following package cannot be selected:\n"
@@ -1057,7 +1057,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:631
+#: ../Rpmdrake/gui.pm:636
 #, c-format
 msgid ""
 "Sorry, the following packages can't be selected:\n"
@@ -1068,27 +1068,27 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:647 ../Rpmdrake/pkg.pm:609
+#: ../Rpmdrake/gui.pm:652 ../Rpmdrake/pkg.pm:612
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Vissa paket måste tas bort"
 
-#: ../Rpmdrake/gui.pm:680
+#: ../Rpmdrake/gui.pm:685
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr "Fel: %s verkar vara monterad som read-only."
 
-#: ../Rpmdrake/gui.pm:684
+#: ../Rpmdrake/gui.pm:689
 #, c-format
 msgid "You need to select some packages first."
 msgstr "Du måste välja några paket först."
 
-#: ../Rpmdrake/gui.pm:689
+#: ../Rpmdrake/gui.pm:694
 #, c-format
 msgid "Too many packages are selected"
 msgstr "För många paket är valda"
 
-#: ../Rpmdrake/gui.pm:690
+#: ../Rpmdrake/gui.pm:695
 #, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
@@ -1105,42 +1105,42 @@ msgstr ""
 "\n"
 "Vill du verkligen installera alla valda paket?"
 
-#: ../Rpmdrake/gui.pm:716 ../Rpmdrake/open_db.pm:75
+#: ../Rpmdrake/gui.pm:721 ../Rpmdrake/open_db.pm:75
 #, c-format
 msgid "Fatal error"
 msgstr "Allvarligt fel"
 
-#: ../Rpmdrake/gui.pm:717 ../Rpmdrake/open_db.pm:76
+#: ../Rpmdrake/gui.pm:722 ../Rpmdrake/open_db.pm:76
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "Ett allvarligt fel inträffade: %s."
 
-#: ../Rpmdrake/gui.pm:735
+#: ../Rpmdrake/gui.pm:740
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Vänta, listar paket..."
 
-#: ../Rpmdrake/gui.pm:753
+#: ../Rpmdrake/gui.pm:758
 #, c-format
 msgid "No update"
 msgstr "Ingen uppdatering"
 
-#: ../Rpmdrake/gui.pm:777 ../rpmdrake:269
+#: ../Rpmdrake/gui.pm:782 ../rpmdrake:308
 #, c-format
 msgid "All"
 msgstr "Alla"
 
-#: ../Rpmdrake/gui.pm:786 ../rpmdrake:142
+#: ../Rpmdrake/gui.pm:791 ../rpmdrake:181
 #, c-format
 msgid "Upgradable"
 msgstr "Kan uppdateras"
 
-#: ../Rpmdrake/gui.pm:786 ../rpmdrake:142
+#: ../Rpmdrake/gui.pm:791 ../rpmdrake:181
 #, c-format
 msgid "Addable"
 msgstr "Kan läggas till"
 
-#: ../Rpmdrake/gui.pm:806
+#: ../Rpmdrake/gui.pm:811
 #, c-format
 msgid "Description not available for this package\n"
 msgstr "Ingen beskrivning tillgänglig för detta paket\n"
@@ -1174,7 +1174,7 @@ msgstr "Komprimering"
 
 #: ../Rpmdrake/icon.pm:40 ../Rpmdrake/icon.pm:46 ../Rpmdrake/icon.pm:57
 #: ../Rpmdrake/icon.pm:71 ../Rpmdrake/icon.pm:89 ../Rpmdrake/icon.pm:110
-#: ../Rpmdrake/icon.pm:123 ../Rpmdrake/icon.pm:134 ../Rpmdrake/pkg.pm:78
+#: ../Rpmdrake/icon.pm:123 ../Rpmdrake/icon.pm:134 ../Rpmdrake/pkg.pm:87
 #, c-format
 msgid "Other"
 msgstr "Annan"
@@ -1932,54 +1932,54 @@ msgstr "Mjukvaruinstallationsverktyget kan ställa in media."
 msgid "Do you want to add media sources now?"
 msgstr "Vill du lägga till media nu?"
 
-#: ../Rpmdrake/pkg.pm:126
+#: ../Rpmdrake/pkg.pm:130
 #, c-format
 msgid "Getting information from XML meta-data from %s..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:130
+#: ../Rpmdrake/pkg.pm:134
 #, c-format
 msgid "Getting '%s' from XML meta-data..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:133 ../Rpmdrake/pkg.pm:305 ../Rpmdrake/pkg.pm:627
-#: ../Rpmdrake/pkg.pm:778 ../rpmdrake.pm:329
+#: ../Rpmdrake/pkg.pm:137 ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630
+#: ../Rpmdrake/pkg.pm:781 ../rpmdrake:119 ../rpmdrake.pm:329
 #, c-format
 msgid "Please wait"
 msgstr "Vänta"
 
-#: ../Rpmdrake/pkg.pm:145
+#: ../Rpmdrake/pkg.pm:149
 #, c-format
 msgid "No xml info for medium \"%s\", only partial result for package %s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:147
+#: ../Rpmdrake/pkg.pm:151
 #, c-format
 msgid ""
 "No xml info for medium \"%s\", unable to return any result for package %s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:201 ../Rpmdrake/pkg.pm:206
+#: ../Rpmdrake/pkg.pm:203 ../Rpmdrake/pkg.pm:208
 #, c-format
 msgid "Downloading package `%s'..."
 msgstr "Laddar ner paket \"%s\"..."
 
-#: ../Rpmdrake/pkg.pm:208
+#: ../Rpmdrake/pkg.pm:210
 #, c-format
 msgid "        %s%% of %s completed, ETA = %s, speed = %s"
 msgstr "        %s%% av %s klart, ETA = %s, hastighet = %s"
 
-#: ../Rpmdrake/pkg.pm:209
+#: ../Rpmdrake/pkg.pm:211
 #, c-format
 msgid "        %s%% completed, speed = %s"
 msgstr "        %s%% klart, hastighet = %s"
 
-#: ../Rpmdrake/pkg.pm:252 ../Rpmdrake/pkg.pm:609
+#: ../Rpmdrake/pkg.pm:254 ../Rpmdrake/pkg.pm:612
 #, c-format
 msgid "Confirmation"
 msgstr "Bekräftelse"
 
-#: ../Rpmdrake/pkg.pm:253
+#: ../Rpmdrake/pkg.pm:255
 #, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
@@ -1992,17 +1992,17 @@ msgstr ""
 "\n"
 "Är det OK att fortsätta?"
 
-#: ../Rpmdrake/pkg.pm:257
+#: ../Rpmdrake/pkg.pm:259
 #, c-format
 msgid "Do not ask me next time"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:266
+#: ../Rpmdrake/pkg.pm:268
 #, c-format
 msgid "Already existing update media"
 msgstr "Uppdateringsmedia som redan finns"
 
-#: ../Rpmdrake/pkg.pm:267
+#: ../Rpmdrake/pkg.pm:269
 #, fuzzy, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -2018,14 +2018,14 @@ msgstr ""
 "\n"
 "Starta sedan om '%s'."
 
-#: ../Rpmdrake/pkg.pm:277
+#: ../Rpmdrake/pkg.pm:279
 #, c-format
 msgid ""
 "You have no configured update media. MandrivaUpdate cannot operate without "
 "any update media."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:278 ../rpmdrake.pm:547
+#: ../Rpmdrake/pkg.pm:280 ../rpmdrake.pm:547
 #, c-format
 msgid ""
 "I need to contact the Mandriva website to get the mirror list.\n"
@@ -2038,12 +2038,12 @@ msgstr ""
 "\n"
 "Är det OK att fortsätta?"
 
-#: ../Rpmdrake/pkg.pm:285
+#: ../Rpmdrake/pkg.pm:287
 #, c-format
 msgid "How to choose manually your mirror"
 msgstr "Hur du manuellt väljer en spegel"
 
-#: ../Rpmdrake/pkg.pm:286
+#: ../Rpmdrake/pkg.pm:288
 #, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -2058,72 +2058,72 @@ msgstr ""
 "\n"
 "Starta sedan om %s."
 
-#: ../Rpmdrake/pkg.pm:305 ../Rpmdrake/pkg.pm:627
+#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630
 #, c-format
 msgid "Package installation..."
 msgstr "Paketinstallation..."
 
-#: ../Rpmdrake/pkg.pm:305 ../Rpmdrake/pkg.pm:627 ../Rpmdrake/pkg.pm:778
+#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630 ../Rpmdrake/pkg.pm:781
 #, c-format
 msgid "Initializing..."
 msgstr "Initierar..."
 
-#: ../Rpmdrake/pkg.pm:318
+#: ../Rpmdrake/pkg.pm:320
 #, c-format
 msgid "Reading updates description"
 msgstr "Läser beskrivningar på uppdateringar"
 
-#: ../Rpmdrake/pkg.pm:324 ../Rpmdrake/pkg.pm:400
+#: ../Rpmdrake/pkg.pm:326 ../Rpmdrake/pkg.pm:402
 #, c-format
 msgid "Please wait, finding available packages..."
 msgstr "Vänta, hittar tillgängliga paket..."
 
-#: ../Rpmdrake/pkg.pm:330
+#: ../Rpmdrake/pkg.pm:332
 #, c-format
 msgid "Please wait, listing base packages..."
 msgstr "Var god vänta, listar grundpaket..."
 
-#: ../Rpmdrake/pkg.pm:367
+#: ../Rpmdrake/pkg.pm:369
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Var god vänta, tittar efter installerade paket..."
 
-#: ../Rpmdrake/pkg.pm:497
+#: ../Rpmdrake/pkg.pm:500
 #, c-format
 msgid "Upgrade information"
 msgstr "Uppgraderingsinformation"
 
-#: ../Rpmdrake/pkg.pm:499
+#: ../Rpmdrake/pkg.pm:502
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr "Dessa paket kommer med uppgraderingsinformation"
 
-#: ../Rpmdrake/pkg.pm:507
+#: ../Rpmdrake/pkg.pm:510
 #, c-format
 msgid "Upgrade information about this package"
 msgstr "Uppgraderingsinformation för detta paket"
 
-#: ../Rpmdrake/pkg.pm:510
+#: ../Rpmdrake/pkg.pm:513
 #, c-format
 msgid "Upgrade information about package %s"
 msgstr "Uppgraderingsinformation för paketet %s"
 
-#: ../Rpmdrake/pkg.pm:526
+#: ../Rpmdrake/pkg.pm:529
 #, c-format
 msgid "Could not create temporary directory '%s'"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:534 ../Rpmdrake/pkg.pm:754
+#: ../Rpmdrake/pkg.pm:537 ../Rpmdrake/pkg.pm:757
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Alla begärda paket installerades utan problem."
 
-#: ../Rpmdrake/pkg.pm:538 ../Rpmdrake/pkg.pm:728
+#: ../Rpmdrake/pkg.pm:541 ../Rpmdrake/pkg.pm:731
 #, c-format
 msgid "Problem during installation"
 msgstr "Problem under installation"
 
-#: ../Rpmdrake/pkg.pm:539 ../Rpmdrake/pkg.pm:559 ../Rpmdrake/pkg.pm:730
+#: ../Rpmdrake/pkg.pm:542 ../Rpmdrake/pkg.pm:562 ../Rpmdrake/pkg.pm:733
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -2134,27 +2134,27 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:558 ../Rpmdrake/pkg.pm:718
+#: ../Rpmdrake/pkg.pm:561 ../Rpmdrake/pkg.pm:721
 #, c-format
 msgid "Installation failed"
 msgstr "Installationen misslyckades"
 
-#: ../Rpmdrake/pkg.pm:578
+#: ../Rpmdrake/pkg.pm:581
 #, c-format
 msgid "Checking validity of requested packages..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:589
+#: ../Rpmdrake/pkg.pm:592
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Kunde inte hämta källpaket."
 
-#: ../Rpmdrake/pkg.pm:590
+#: ../Rpmdrake/pkg.pm:593
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Kan inte hämta källpaket, %s"
 
-#: ../Rpmdrake/pkg.pm:591 ../Rpmdrake/pkg.pm:721
+#: ../Rpmdrake/pkg.pm:594 ../Rpmdrake/pkg.pm:724
 #, c-format
 msgid ""
 "\n"
@@ -2167,7 +2167,7 @@ msgstr ""
 "Fel rapporterade:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:606
+#: ../Rpmdrake/pkg.pm:609
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2176,70 +2176,70 @@ msgstr[0] ""
 msgstr[1] ""
 "För att tillfredsställa beroenden, kommer följande paket att installeras:"
 
-#: ../Rpmdrake/pkg.pm:612
+#: ../Rpmdrake/pkg.pm:615
 #, c-format
 msgid "Remove one package?"
 msgid_plural "Remove %d packages?"
 msgstr[0] "Ta bort ett paket?"
 msgstr[1] "Ta bort %d paket?"
 
-#: ../Rpmdrake/pkg.pm:614
+#: ../Rpmdrake/pkg.pm:617
 #, c-format
 msgid "The following package has to be removed for others to be upgraded:"
 msgstr "Följande paket måste tas bort för att andra ska kunna uppgraderas:"
 
-#: ../Rpmdrake/pkg.pm:615
+#: ../Rpmdrake/pkg.pm:618
 #, c-format
 msgid "The following packages have to be removed for others to be upgraded:"
 msgstr "Följande paket måste tas bort för att andra ska bli uppgraderade:"
 
-#: ../Rpmdrake/pkg.pm:618
+#: ../Rpmdrake/pkg.pm:621
 #, c-format
 msgid "Is it ok to continue?"
 msgstr "Är det OK att fortsätta?"
 
-#: ../Rpmdrake/pkg.pm:639
+#: ../Rpmdrake/pkg.pm:642
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Förbereder paketinstallation..."
 
-#: ../Rpmdrake/pkg.pm:639
+#: ../Rpmdrake/pkg.pm:642
 #, fuzzy, c-format
 msgid "Preparing package installation transaction..."
 msgstr "Förbereder paketinstallation..."
 
-#: ../Rpmdrake/pkg.pm:642
+#: ../Rpmdrake/pkg.pm:645
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Installerar paket \"%s\" (%s/%s)..."
 
-#: ../Rpmdrake/pkg.pm:643
+#: ../Rpmdrake/pkg.pm:646
 #, c-format
 msgid "Total: %s/%s"
 msgstr "Totalt: %s/%s"
 
-#: ../Rpmdrake/pkg.pm:671 ../Rpmdrake/pkg.pm:737 ../Rpmdrake/pkg.pm:760
+#: ../Rpmdrake/pkg.pm:674 ../Rpmdrake/pkg.pm:740 ../Rpmdrake/pkg.pm:763
 #: ../rpmdrake.pm:735 ../rpmdrake.pm:822 ../rpmdrake.pm:846
 #, c-format
 msgid "Error"
 msgstr "Fel"
 
-#: ../Rpmdrake/pkg.pm:695
+#: ../Rpmdrake/pkg.pm:698
 #, c-format
 msgid "Change medium"
 msgstr "Byt media"
 
-#: ../Rpmdrake/pkg.pm:696
+#: ../Rpmdrake/pkg.pm:699
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Lägg i media med namn \"%s\" i enhet [%s]"
 
-#: ../Rpmdrake/pkg.pm:700
+#: ../Rpmdrake/pkg.pm:703
 #, c-format
 msgid "Verifying package signatures..."
 msgstr "Verifierar paketsignaturer..."
 
-#: ../Rpmdrake/pkg.pm:719
+#: ../Rpmdrake/pkg.pm:722
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2252,22 +2252,22 @@ msgstr ""
 "\n"
 "Du kanske ska uppdatera din mediadatabas."
 
-#: ../Rpmdrake/pkg.pm:729
+#: ../Rpmdrake/pkg.pm:732
 #, c-format
 msgid "%d installation transactions failed"
 msgstr "%d installationstransaktioner misslyckades"
 
-#: ../Rpmdrake/pkg.pm:738
+#: ../Rpmdrake/pkg.pm:741
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Fel som ej går att reparera: inget paket hittat för installation."
 
-#: ../Rpmdrake/pkg.pm:741
+#: ../Rpmdrake/pkg.pm:744
 #, c-format
 msgid "Inspecting configuration files..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:749
+#: ../Rpmdrake/pkg.pm:752
 #, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
@@ -2280,22 +2280,22 @@ msgstr ""
 "Några konfigurationsfiler skapades som \".rpmnew\" eller \".rpmsave\",\n"
 "du kan nu undersöka några för att vidta åtgärder:"
 
-#: ../Rpmdrake/pkg.pm:755
+#: ../Rpmdrake/pkg.pm:758
 #, c-format
 msgid "Looking for \"README\" files..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:778 ../Rpmdrake/pkg.pm:794
+#: ../Rpmdrake/pkg.pm:781 ../Rpmdrake/pkg.pm:797
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Vänta, tar bort paket..."
 
-#: ../Rpmdrake/pkg.pm:807
+#: ../Rpmdrake/pkg.pm:810
 #, c-format
 msgid "Problem during removal"
 msgstr "Problem vid borttag"
 
-#: ../Rpmdrake/pkg.pm:808
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -2348,7 +2348,7 @@ msgstr "Installation slutförd"
 msgid "Inspect..."
 msgstr "Undersök..."
 
-#: ../Rpmdrake/rpmnew.pm:190 ../rpmdrake:86
+#: ../Rpmdrake/rpmnew.pm:190 ../rpmdrake:87
 #, c-format
 msgid "Please wait, searching..."
 msgstr "Vänta, söker..."
@@ -2395,204 +2395,209 @@ msgstr "Installation av media %s lyckades."
 msgid "Successfully added medium `%s'."
 msgstr "Installation av media %s lyckades."
 
-#: ../rpmdrake:58 ../rpmdrake:141
+#: ../rpmdrake:59 ../rpmdrake:180
 #, c-format
 msgid "Search results"
 msgstr "Sökresultat"
 
-#: ../rpmdrake:91
+#: ../rpmdrake:92
 #, c-format
 msgid "Stop"
 msgstr "Stoppa"
 
-#: ../rpmdrake:144
+#: ../rpmdrake:126
+#, fuzzy, c-format
+msgid "no xml-info available for medium \"%s\""
+msgstr "Kopierar fil för media \"%s\"..."
+
+#: ../rpmdrake:142 ../rpmdrake:170
+#, fuzzy, c-format
+msgid "Search aborted"
+msgstr "Sökresultat"
+
+#: ../rpmdrake:183
 #, c-format
 msgid "Selected"
 msgstr "Vald"
 
-#: ../rpmdrake:144
+#: ../rpmdrake:183
 #, c-format
 msgid "Not selected"
 msgstr "Inte vald"
 
-#: ../rpmdrake:152
+#: ../rpmdrake:191
 #, c-format
 msgid "Search results (none)"
 msgstr "Sökresultat (inget)"
 
-#: ../rpmdrake:173
+#: ../rpmdrake:212
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Valda: %s / ledigt diskutrymme: %s"
 
-#: ../rpmdrake:200
+#: ../rpmdrake:239
 #, fuzzy, c-format
 msgid "Package"
 msgstr "Paketering"
 
-#: ../rpmdrake:270
+#: ../rpmdrake:309
 #, c-format
 msgid "Installed"
 msgstr "Installerad"
 
-#: ../rpmdrake:271
+#: ../rpmdrake:310
 #, c-format
 msgid "Not installed"
 msgstr "Inte Installerad"
 
-#: ../rpmdrake:272
+#: ../rpmdrake:311
 #, c-format
 msgid "%s choices"
 msgstr " %s val"
 
-#: ../rpmdrake:272
+#: ../rpmdrake:311
 #, c-format
 msgid "Mandriva Linux choices"
 msgstr "Mandriva Linux-val"
 
-#: ../rpmdrake:274
+#: ../rpmdrake:313
 #, c-format
 msgid "All packages, alphabetical"
 msgstr "Alla paket, alfabetiskt"
 
-#: ../rpmdrake:275
+#: ../rpmdrake:314
 #, c-format
 msgid "All packages, by update availability"
 msgstr "Alla paket, efter uppdateringstillgänglighet"
 
-#: ../rpmdrake:276
+#: ../rpmdrake:315
 #, c-format
 msgid "All packages, by size"
 msgstr "Alla paket, efter storlek"
 
-#: ../rpmdrake:277
+#: ../rpmdrake:316
 #, c-format
 msgid "All packages, by selection state"
 msgstr "Alla paket, efter valstatus"
 
-#: ../rpmdrake:278
+#: ../rpmdrake:317
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Ensamma paket; sorterat efter installationsdatum"
 
-#: ../rpmdrake:279
+#: ../rpmdrake:318
 #, c-format
 msgid "All packages, by group"
 msgstr "Alla paket, efter grupp"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
-#: ../rpmdrake:284
+#: ../rpmdrake:323
 #, fuzzy, c-format
 msgid "Backports"
 msgstr "Säkerhetskopiering"
 
-#: ../rpmdrake:282
+#: ../rpmdrake:324
 #, fuzzy, c-format
 msgid "Meta packages"
 msgstr "Paketering"
 
-#: ../rpmdrake:283
+#: ../rpmdrake:325
+#, c-format
+msgid "Packages with GUI"
+msgstr ""
+
+#: ../rpmdrake:326
 #, c-format
 msgid "All updates"
 msgstr "Alla uppdateringar"
 
-#: ../rpmdrake:284
+#: ../rpmdrake:327
 #, c-format
 msgid "Security updates"
 msgstr "Säkerhetsuppdateringar"
 
-#: ../rpmdrake:285
+#: ../rpmdrake:328
 #, c-format
 msgid "Bugfixes updates"
 msgstr "Felrättningsuppdateringar"
 
-#: ../rpmdrake:286
+#: ../rpmdrake:329
 #, c-format
 msgid "Normal updates"
 msgstr "Normala uppdateringar"
 
-#: ../rpmdrake:343 ../rpmdrake:348
+#: ../rpmdrake:388
 #, c-format
 msgid "in names"
 msgstr "i namn"
 
-#: ../rpmdrake:344
+#: ../rpmdrake:388
 #, c-format
 msgid "in descriptions"
 msgstr "i beskrivningar"
 
-#: ../rpmdrake:345
+#: ../rpmdrake:388
 #, fuzzy, c-format
 msgid "in summaries"
 msgstr "i namn"
 
-#: ../rpmdrake:346
+#: ../rpmdrake:388
 #, c-format
 msgid "in file names"
 msgstr "i filnamn"
 
-#: ../rpmdrake:388
+#: ../rpmdrake:426
 #, c-format
 msgid "/_Select dependencies without asking"
 msgstr ""
 
-#: ../rpmdrake:394
+#: ../rpmdrake:432
 #, c-format
 msgid "/_Update media"
 msgstr "/_Uppdatera media"
 
-#: ../rpmdrake:399
+#: ../rpmdrake:437
 #, c-format
 msgid "/_Reset the selection"
 msgstr "/Å_terställ valet"
 
-#: ../rpmdrake:414
+#: ../rpmdrake:452
 #, c-format
 msgid "/Reload the _packages list"
 msgstr "/Ladda om _paketlistan"
 
-#: ../rpmdrake:422
+#: ../rpmdrake:460
 #, c-format
 msgid "/_Media Manager"
 msgstr "/_Mediahanterare"
 
-#: ../rpmdrake:426 ../rpmdrake:465
+#: ../rpmdrake:464 ../rpmdrake:503
 #, c-format
 msgid "/_Show automatically selected packages"
 msgstr "/Visa auto_matiskt valda paket"
 
-#: ../rpmdrake:480
+#: ../rpmdrake:519
 #, c-format
 msgid "Find:"
 msgstr "Hitta:"
 
-#: ../rpmdrake:489
-#, c-format
-msgid "Search"
-msgstr "Sök"
-
-#: ../rpmdrake:491
-#, c-format
-msgid "Clear"
-msgstr "Töm"
-
-#: ../rpmdrake:507
+#: ../rpmdrake:546
 #, c-format
 msgid "Apply"
 msgstr "Verkställ"
 
-#: ../rpmdrake:527
+#: ../rpmdrake:565
 #, c-format
 msgid "Quick Introduction"
 msgstr "Snabb introduktion"
 
-#: ../rpmdrake:528
+#: ../rpmdrake:566
 #, c-format
 msgid "You can browse the packages through the categories tree on the left."
 msgstr "Du kan bläddra genom paketen genom kategoriträdet till vänster."
 
-#: ../rpmdrake:529
+#: ../rpmdrake:567
 #, c-format
 msgid ""
 "You can view information about a package by clicking on it on the right list."
@@ -2600,7 +2605,7 @@ msgstr ""
 "Du kan se information om ett paket genom att klicka på det i listan till "
 "höger."
 
-#: ../rpmdrake:530
+#: ../rpmdrake:568
 #, c-format
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
@@ -3106,6 +3111,12 @@ msgstr "/_Uppdatera media"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr ""
+
+#~ msgid "Search"
+#~ msgstr "Sök"
+
+#~ msgid "Clear"
+#~ msgstr "Töm"
 
 #~ msgid "Download directory does not exist"
 #~ msgstr "Katalogen där nedladdningen ska lagras måste finnas"
