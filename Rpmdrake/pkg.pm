@@ -193,7 +193,7 @@ sub find_installed_version {
     @version ? join(',', sort @version) : N("(none)");
 }
 
-sub formatlistpkg { join("\n", map { s/^(\s)/  \1/mg; "- $_" } sort { uc($a) cmp uc($b) } @_) }
+sub formatlistpkg { join("\n", map { s/^(\s)/  $1/mg; "- $_" } sort { uc($a) cmp uc($b) } @_) }
 
 my $canceled;
 sub download_callback {
