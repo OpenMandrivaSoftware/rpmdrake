@@ -115,9 +115,9 @@ sub extract_header {
     $name =~ s!\.src!!;
 
     if ($p->flag_installed && !$p->flag_upgrade) {
-        my @files = map { chomp_(to_utf8($_)) } run_rpm("rpm -ql $name");
+        my @files = map { chomp_(ensure_utf8($_)) } run_rpm("rpm -ql $name");
 	add2hash($pkg, { files => [ @files ? @files : N("(none)") ],
-                         changelog => format_changelog_string($o_installed_version, to_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
+                         changelog => format_changelog_string($o_installed_version, ensure_utf8(scalar(run_rpm("rpm -q --changelog $name")))) });
     } else {
 	my $medium = pkg2medium($p, $urpm);
         my ($local_source, %xml_info_pkgs, $bar_id);
