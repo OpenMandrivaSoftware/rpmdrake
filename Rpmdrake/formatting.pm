@@ -35,6 +35,7 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(
                     $spacing
+                    ensure_utf8
                     format_changelog_changelogs
                     format_changelog_string
                     format_field
@@ -49,6 +50,19 @@ our @EXPORT = qw(
                     split_fullname
                     urpm_name);
 
+
+# from rpmtools, #37482:
+sub ensure_utf8 {
+    my ($s) = @_;
+    require Encode;
+    Encode::_utf8_on($s); #- this is done on the copy
+    if (!Encode::is_utf8($s, 1)) {
+        Encode::_utf8_off($_[0]);
+        Encode::from_to($_[0], 'iso-8859-15', 'utf8'); # most probable
+    }
+    Encode::_utf8_on($_[0]); #- now we know it is valid utf8
+    $_[0];
+}
 
 sub rpm_description {
     my ($description) = @_;
