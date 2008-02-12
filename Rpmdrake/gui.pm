@@ -469,6 +469,7 @@ sub pkgs_provider {
         },
         backports => sub { @filtered_pkgs = @{$h->{backports}} },
         meta_pkgs => sub { @filtered_pkgs = @{$h->{meta_pkgs}} },
+        gui_pkgs => sub { @filtered_pkgs = @{$h->{gui_pkgs}} },
     );
     foreach my $importance (qw(bugfix security normal)) {
         $filter_methods{$importance} = sub {

@@ -11,7 +11,7 @@ RELATIVE_SBIN = ../sbin
 RPM=$(shell rpm --eval %_topdir)
 PERL_VENDORLIB=$(DESTDIR)/$(shell perl -V:installvendorlib   | perl -pi -e "s/.*=//; s/[;']//g")
 
-all: dirs
+all: dirs gui.lst
 
 dirs:
 	@for n in . $(DIRS); do \
@@ -39,6 +39,7 @@ install: $(ALL)
 	ln -sf $(RELATIVE_SBIN)/drakrpm-update $(BINDIR)/drakrpm-update
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
+	install -m644 gui.lst $(DATADIR)/rpmdrake
 	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
 	mkdir -p $(PERL_VENDORLIB)/Rpmdrake
 	install -m 644 rpmdrake.pm $(PERL_VENDORLIB)
@@ -57,6 +58,9 @@ dis: clean
 	tar cf ../$(NAME)-$(VERSION).tar $(NAME)-$(VERSION)
 	lzma ../$(NAME)-$(VERSION).tar
 	rm -rf $(NAME)-$(VERSION)
+
+gui.lst:
+	urpmf "/usr/share/applications/.*.desktop" |sed -e 's!:.*!!' |sort|uniq>gui.lst
 
 .PHONY: ChangeLog log changelog
 
