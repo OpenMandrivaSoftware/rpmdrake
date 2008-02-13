@@ -406,6 +406,11 @@ sub get_pkgs {
 
     my $requested = {};
     my $state = {};
+    my (@requested, @requested_strict);
+
+    {
+        local $urpm->{searchmedia} = undef;
+
     $urpm->request_packages_to_upgrade(
 	$db,
 	$state,
@@ -413,15 +418,17 @@ sub get_pkgs {
     );
 
     # list of updates (including those matching /etc/urpmi/skip.list):
-    my @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
+    @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
     # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
-    my @requested_strict = $probe_only_for_updates ?
+    @requested_strict = $probe_only_for_updates ?
       sort map {
           urpm_name($_);
       } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices)
         : ();
     # list updates including skiped ones + their deps in MandrivaUpdate:
     push @requested, difference2(\@requested_strict, \@requested) if $probe_only_for_updates;
+
+    }
 
     if (!$probe_only_for_updates) {
         $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
