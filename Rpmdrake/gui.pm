@@ -209,8 +209,30 @@ sub format_pkg_info {
 }
 
 sub node_state {
-    my $pkg = $pkgs->{$_[0]};
+    my ($name) = @_;
+    my $pkg = $pkgs->{$name};
     my $urpm_obj = $pkg->{pkg};
+    if (!$urpm_obj) {
+        my ($short_name) = split_fullname($name);
+        interactive_msg(N("Warning"),
+                        join("\n",
+                             N("The package \"%s\" was found.", $name),
+                             N("However this package is not in the package list."),
+                             N("You may want to update your urpmi database."),
+                             '',
+                             N("Matching packages:"),
+                             '',
+                             join("\n", sort map {
+                                 warn ">> $_ => $pkgs->{$_} $pkgs->{$_}{pkg}\n";
+                                 #-PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
+                                 #-PO: eg: "- rpmdrake (medium: "Main Release"
+                                 N("- %s (medium: %s)", $_, pkg2medium($pkgs->{$_}{pkg}, $urpm)->{name});
+                             } grep { /^$short_name/ } keys %$pkgs),
+                         ),
+                        scroll => 1,
+                    );
+        return 'XXX';
+    }
     #- checks $_[0] -> hack for partial tree displaying
     $_[0] ? $pkg->{selected} ?
       ($urpm_obj->flag_installed ? ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove') : 'to_install')
