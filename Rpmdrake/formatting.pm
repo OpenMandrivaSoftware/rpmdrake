@@ -43,7 +43,6 @@ our @EXPORT = qw(
                     format_name_n_summary
                     format_size
                     format_update_field
-                    localtime2changelog
                     my_fullname
                     pkg2medium
                     rpm_description
