@@ -187,9 +187,9 @@ sub get_icon {
     my ($group, $parent) = @_;
     my $pixbuf;
     my $path = $group =~ /\|/ ? '/usr/share/icons/mini/' : '/usr/share/icons/';
-    my $create_pixbuf = sub { gtknew('Pixbuf', file => join('', $path, $_[0], '.png')) };
-    eval { $pixbuf = $create_pixbuf->($group_icons{$group}) };
-    eval { $pixbuf ||= $create_pixbuf->($group_icons{$parent}) } if $parent;
+    my $create_pixbuf = sub { eval { gtknew('Pixbuf', file => join('', $path, $_[0], '.png')) } };
+    $pixbuf = $create_pixbuf->($group_icons{$group});
+    $pixbuf ||= $create_pixbuf->($group_icons{$parent}) if $parent;
     $pixbuf ||= $create_pixbuf->('applications_section');
 }
 
