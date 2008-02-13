@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-vi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-12 12:31+0100\n"
+"POT-Creation-Date: 2008-02-13 14:40+0100\n"
 "PO-Revision-Date: 2005-05-14 09:52+0700\n"
 "Last-Translator: Trinh Minh Thanh <tmthanh@yahoo.com>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:759
+#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:780
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -279,8 +279,8 @@ msgstr "Loại phương tiện:"
 #: ../Rpmdrake/edit_urpm_sources.pm:447 ../Rpmdrake/edit_urpm_sources.pm:474
 #: ../Rpmdrake/edit_urpm_sources.pm:556 ../Rpmdrake/edit_urpm_sources.pm:643
 #: ../Rpmdrake/edit_urpm_sources.pm:684 ../Rpmdrake/edit_urpm_sources.pm:742
-#: ../Rpmdrake/edit_urpm_sources.pm:891 ../Rpmdrake/gui.pm:524
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:204 ../Rpmdrake/pkg.pm:700
+#: ../Rpmdrake/edit_urpm_sources.pm:891 ../Rpmdrake/gui.pm:545
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:204 ../Rpmdrake/pkg.pm:707
 #: ../rpmdrake.pm:301 ../rpmdrake.pm:619 ../rpmdrake.pm:692 ../rpmdrake.pm:765
 #, c-format
 msgid "Cancel"
@@ -291,8 +291,8 @@ msgstr "Bỏ qua"
 #: ../Rpmdrake/edit_urpm_sources.pm:640 ../Rpmdrake/edit_urpm_sources.pm:683
 #: ../Rpmdrake/edit_urpm_sources.pm:735 ../Rpmdrake/edit_urpm_sources.pm:808
 #: ../Rpmdrake/edit_urpm_sources.pm:937 ../Rpmdrake/edit_urpm_sources.pm:1135
-#: ../Rpmdrake/gui.pm:524 ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:545
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:520 ../Rpmdrake/pkg.pm:700
+#: ../Rpmdrake/gui.pm:545 ../Rpmdrake/gui.pm:561 ../Rpmdrake/gui.pm:566
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:527 ../Rpmdrake/pkg.pm:707
 #: ../Rpmdrake/rpmnew.pm:180 ../rpmdrake.pm:124 ../rpmdrake.pm:239
 #: ../rpmdrake.pm:304 ../rpmdrake.pm:619
 #, c-format
@@ -513,7 +513,7 @@ msgid "Command"
 msgstr "Lệnh"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:772 ../Rpmdrake/formatting.pm:126
-#: ../Rpmdrake/gui.pm:756 ../Rpmdrake/pkg.pm:119 ../Rpmdrake/pkg.pm:164
+#: ../Rpmdrake/gui.pm:777 ../Rpmdrake/pkg.pm:119 ../Rpmdrake/pkg.pm:164
 #: ../Rpmdrake/pkg.pm:172 ../Rpmdrake/pkg.pm:193 ../Rpmdrake/rpmnew.pm:77
 #, c-format
 msgid "(none)"
@@ -902,81 +902,108 @@ msgstr "Tóm tắt: "
 msgid "Description: "
 msgstr "Mô tả: "
 
-#: ../Rpmdrake/gui.pm:405 ../Rpmdrake/gui.pm:411 ../Rpmdrake/pkg.pm:710
-#: ../rpmdrake.pm:748 ../rpmdrake.pm:863
+#: ../Rpmdrake/gui.pm:217 ../Rpmdrake/gui.pm:426 ../Rpmdrake/gui.pm:432
+#: ../Rpmdrake/pkg.pm:717 ../rpmdrake.pm:748 ../rpmdrake.pm:863
 #, c-format
 msgid "Warning"
 msgstr "Cảnh báo"
 
-#: ../Rpmdrake/gui.pm:406
+#: ../Rpmdrake/gui.pm:219
+#, c-format
+msgid "The package \"%s\" was found."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:220
+#, c-format
+msgid "However this package is not in the package list."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:221
+#, c-format
+msgid "You may want to update your urpmi database."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:223
+#, fuzzy, c-format
+msgid "Matching packages:"
+msgstr "Đóng gói"
+
+#. -PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
+#. -PO: eg: "- rpmdrake (medium: "Main Release"
+#: ../Rpmdrake/gui.pm:228
+#, fuzzy, c-format
+msgid "- %s (medium: %s)"
+msgstr "%s từ phương tiện %s"
+
+#: ../Rpmdrake/gui.pm:427
 #, fuzzy, c-format
 msgid "Removing package %s would break your system"
 msgstr ""
 "Xin lỗi, gỡ bỏ các gói này sẽ làm hỏng hệ thống của bạn:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:411
+#: ../Rpmdrake/gui.pm:432
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:506 ../Rpmdrake/gui.pm:536 ../Rpmdrake/gui.pm:538
+#: ../Rpmdrake/gui.pm:527 ../Rpmdrake/gui.pm:557 ../Rpmdrake/gui.pm:559
 #, c-format
 msgid "More information on package..."
 msgstr "Thêm các thông tin về gói..."
 
-#: ../Rpmdrake/gui.pm:508
+#: ../Rpmdrake/gui.pm:529
 #, c-format
 msgid "Please choose"
 msgstr "Hãy chọn"
 
-#: ../Rpmdrake/gui.pm:509
+#: ../Rpmdrake/gui.pm:530
 #, fuzzy, c-format
 msgid "The following package is needed:"
 msgstr "Cần đến một trong các gói tin sau:"
 
-#: ../Rpmdrake/gui.pm:509
+#: ../Rpmdrake/gui.pm:530
 #, c-format
 msgid "One of the following packages is needed:"
 msgstr "Cần một gói trong các gói tin sau đây:"
 
 #  -PO: Keep it short, this is gonna be on a button
 #. -PO: Keep it short, this is gonna be on a button
-#: ../Rpmdrake/gui.pm:524 ../Rpmdrake/gui.pm:529
+#: ../Rpmdrake/gui.pm:545 ../Rpmdrake/gui.pm:550
 #, c-format
 msgid "More info"
 msgstr "Thêm thông tin"
 
-#: ../Rpmdrake/gui.pm:531
+#: ../Rpmdrake/gui.pm:552
 #, c-format
 msgid "Information on packages"
 msgstr "Thông tin về các gói"
 
-#: ../Rpmdrake/gui.pm:559
+#: ../Rpmdrake/gui.pm:580
 #, c-format
 msgid "Checking dependencies of package..."
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:566
+#: ../Rpmdrake/gui.pm:587
 #, c-format
 msgid "Some additional packages need to be removed"
 msgstr "Cần gỡ bỏ một số gói bổ sung"
 
-#: ../Rpmdrake/gui.pm:567
+#: ../Rpmdrake/gui.pm:588
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
 msgstr "Do các phụ thuộc của chúng, mà những gói sau đây cũng cần được gỡ bỏ:"
 
-#: ../Rpmdrake/gui.pm:573 ../Rpmdrake/gui.pm:583
+#: ../Rpmdrake/gui.pm:594 ../Rpmdrake/gui.pm:604
 #, c-format
 msgid "Some packages can't be removed"
 msgstr "Không thể gỡ bỏ một số gói tin"
 
-#: ../Rpmdrake/gui.pm:574
+#: ../Rpmdrake/gui.pm:595
 #, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
@@ -985,7 +1012,7 @@ msgstr ""
 "Xin lỗi, gỡ bỏ các gói này sẽ làm hỏng hệ thống của bạn:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:584 ../Rpmdrake/gui.pm:653
+#: ../Rpmdrake/gui.pm:605 ../Rpmdrake/gui.pm:674
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
@@ -996,12 +1023,12 @@ msgstr ""
 "ngay bây giờ:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:614
+#: ../Rpmdrake/gui.pm:635
 #, c-format
 msgid "Additional packages needed"
 msgstr "Cần thêm các gói bổ sung"
 
-#: ../Rpmdrake/gui.pm:615
+#: ../Rpmdrake/gui.pm:636
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
@@ -1012,22 +1039,22 @@ msgstr ""
 "cài đặt:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:629
+#: ../Rpmdrake/gui.pm:650
 #, c-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (theo danh sách bỏ qua)"
 
-#: ../Rpmdrake/gui.pm:633
+#: ../Rpmdrake/gui.pm:654
 #, fuzzy, c-format
 msgid "One package cannot be installed"
 msgstr "Không thể cài đặt một số gói tin"
 
-#: ../Rpmdrake/gui.pm:633
+#: ../Rpmdrake/gui.pm:654
 #, c-format
 msgid "Some packages can't be installed"
 msgstr "Không thể cài đặt một số gói tin"
 
-#: ../Rpmdrake/gui.pm:635
+#: ../Rpmdrake/gui.pm:656
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following package cannot be selected:\n"
@@ -1038,7 +1065,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:636
+#: ../Rpmdrake/gui.pm:657
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following packages can't be selected:\n"
@@ -1049,27 +1076,27 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:652 ../Rpmdrake/pkg.pm:612
+#: ../Rpmdrake/gui.pm:673 ../Rpmdrake/pkg.pm:619
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Một số gói cần được gỡ bỏ"
 
-#: ../Rpmdrake/gui.pm:685
+#: ../Rpmdrake/gui.pm:706
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr "Lỗi: %s được mount là read-only."
 
-#: ../Rpmdrake/gui.pm:689
+#: ../Rpmdrake/gui.pm:710
 #, c-format
 msgid "You need to select some packages first."
 msgstr "Cần chọn một số gói tin trước tiên."
 
-#: ../Rpmdrake/gui.pm:694
+#: ../Rpmdrake/gui.pm:715
 #, c-format
 msgid "Too many packages are selected"
 msgstr "Có quá nhiều gói tin được chọn"
 
-#: ../Rpmdrake/gui.pm:695
+#: ../Rpmdrake/gui.pm:716
 #, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
@@ -1086,42 +1113,42 @@ msgstr ""
 "\n"
 "Bạn có thật sự muốn cài đặt tất cả các gói đã chọn không?"
 
-#: ../Rpmdrake/gui.pm:721 ../Rpmdrake/open_db.pm:75
+#: ../Rpmdrake/gui.pm:742 ../Rpmdrake/open_db.pm:75
 #, c-format
 msgid "Fatal error"
 msgstr "Lỗi trầm trọng"
 
-#: ../Rpmdrake/gui.pm:722 ../Rpmdrake/open_db.pm:76
+#: ../Rpmdrake/gui.pm:743 ../Rpmdrake/open_db.pm:76
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "Xả ra lỗi trầm trọng: %s."
 
-#: ../Rpmdrake/gui.pm:740
+#: ../Rpmdrake/gui.pm:761
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Hãy đợi, đang liệt kê các gói..."
 
-#: ../Rpmdrake/gui.pm:758
+#: ../Rpmdrake/gui.pm:779
 #, c-format
 msgid "No update"
 msgstr "Không có cập nhật"
 
-#: ../Rpmdrake/gui.pm:782 ../rpmdrake:308
+#: ../Rpmdrake/gui.pm:803 ../rpmdrake:308
 #, c-format
 msgid "All"
 msgstr "Toàn bộ"
 
-#: ../Rpmdrake/gui.pm:791 ../rpmdrake:181
+#: ../Rpmdrake/gui.pm:812 ../rpmdrake:181
 #, c-format
 msgid "Upgradable"
 msgstr "Có thể nâng cấp"
 
-#: ../Rpmdrake/gui.pm:791 ../rpmdrake:181
+#: ../Rpmdrake/gui.pm:812 ../rpmdrake:181
 #, c-format
 msgid "Addable"
 msgstr "Có thể thêm vào"
 
-#: ../Rpmdrake/gui.pm:811
+#: ../Rpmdrake/gui.pm:832
 #, c-format
 msgid "Description not available for this package\n"
 msgstr "Không có mô tả cho gói tin này\n"
@@ -1922,8 +1949,8 @@ msgstr ""
 msgid "Getting '%s' from XML meta-data..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:137 ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630
-#: ../Rpmdrake/pkg.pm:781 ../rpmdrake:119 ../rpmdrake.pm:329
+#: ../Rpmdrake/pkg.pm:137 ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637
+#: ../Rpmdrake/pkg.pm:788 ../rpmdrake:119 ../rpmdrake.pm:329
 #, c-format
 msgid "Please wait"
 msgstr "Hãy đợi"
@@ -1954,7 +1981,7 @@ msgstr ""
 msgid "        %s%% completed, speed = %s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:254 ../Rpmdrake/pkg.pm:612
+#: ../Rpmdrake/pkg.pm:254 ../Rpmdrake/pkg.pm:619
 #, fuzzy, c-format
 msgid "Confirmation"
 msgstr "Cấu hình"
@@ -2039,12 +2066,12 @@ msgstr ""
 "\n"
 "Sau đó chạy lại %s."
 
-#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630
+#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637
 #, c-format
 msgid "Package installation..."
 msgstr "Cài đặt gói tin..."
 
-#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630 ../Rpmdrake/pkg.pm:781
+#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637 ../Rpmdrake/pkg.pm:788
 #, c-format
 msgid "Initializing..."
 msgstr "Đang khởi tạo..."
@@ -2069,42 +2096,42 @@ msgstr "Hãy đợi, đang liệt kê các gói..."
 msgid "Please wait, finding installed packages..."
 msgstr "Hãy đợi, đang tìm các gói sẵn có..."
 
-#: ../Rpmdrake/pkg.pm:500
+#: ../Rpmdrake/pkg.pm:507
 #, fuzzy, c-format
 msgid "Upgrade information"
 msgstr "Thông tin thông thường"
 
-#: ../Rpmdrake/pkg.pm:502
+#: ../Rpmdrake/pkg.pm:509
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr "Các gói tin này có thông tin nâng cấp đi kèm."
 
-#: ../Rpmdrake/pkg.pm:510
+#: ../Rpmdrake/pkg.pm:517
 #, fuzzy, c-format
 msgid "Upgrade information about this package"
 msgstr "Thêm các thông tin về gói..."
 
-#: ../Rpmdrake/pkg.pm:513
+#: ../Rpmdrake/pkg.pm:520
 #, fuzzy, c-format
 msgid "Upgrade information about package %s"
 msgstr "Thêm các thông tin về gói... [%s]"
 
-#: ../Rpmdrake/pkg.pm:529
+#: ../Rpmdrake/pkg.pm:536
 #, c-format
 msgid "Could not create temporary directory '%s'"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:537 ../Rpmdrake/pkg.pm:757
+#: ../Rpmdrake/pkg.pm:544 ../Rpmdrake/pkg.pm:764
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Mọi gói tin yêu cầu đã được cài đặt thành công."
 
-#: ../Rpmdrake/pkg.pm:541 ../Rpmdrake/pkg.pm:731
+#: ../Rpmdrake/pkg.pm:548 ../Rpmdrake/pkg.pm:738
 #, c-format
 msgid "Problem during installation"
 msgstr "Trục trặc trong khi cài đặt"
 
-#: ../Rpmdrake/pkg.pm:542 ../Rpmdrake/pkg.pm:562 ../Rpmdrake/pkg.pm:733
+#: ../Rpmdrake/pkg.pm:549 ../Rpmdrake/pkg.pm:569 ../Rpmdrake/pkg.pm:740
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -2115,27 +2142,27 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:561 ../Rpmdrake/pkg.pm:721
+#: ../Rpmdrake/pkg.pm:568 ../Rpmdrake/pkg.pm:728
 #, c-format
 msgid "Installation failed"
 msgstr "Cài đặt không được"
 
-#: ../Rpmdrake/pkg.pm:581
+#: ../Rpmdrake/pkg.pm:588
 #, c-format
 msgid "Checking validity of requested packages..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:592
+#: ../Rpmdrake/pkg.pm:599
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Không thể lấy các gói nguồn."
 
-#: ../Rpmdrake/pkg.pm:593
+#: ../Rpmdrake/pkg.pm:600
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Xin lỗi, không thể lấy các gói nguồn. %s"
 
-#: ../Rpmdrake/pkg.pm:594 ../Rpmdrake/pkg.pm:724
+#: ../Rpmdrake/pkg.pm:601 ../Rpmdrake/pkg.pm:731
 #, c-format
 msgid ""
 "\n"
@@ -2148,19 +2175,19 @@ msgstr ""
 "Báo cáo lỗi:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:609
+#: ../Rpmdrake/pkg.pm:616
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
 msgstr[0] "Để thỏa mãn phụ thuộc, gói tin sau đây sẽ được cài đặt (%d MB)"
 
-#: ../Rpmdrake/pkg.pm:615
+#: ../Rpmdrake/pkg.pm:622
 #, c-format
 msgid "Remove one package?"
 msgid_plural "Remove %d packages?"
 msgstr[0] "Bỏ phím"
 
-#: ../Rpmdrake/pkg.pm:617
+#: ../Rpmdrake/pkg.pm:624
 #, fuzzy, c-format
 msgid "The following package has to be removed for others to be upgraded:"
 msgstr ""
@@ -2170,14 +2197,14 @@ msgstr ""
 "\n"
 "Đã được để tiếp tục chưa?"
 
-#: ../Rpmdrake/pkg.pm:618
+#: ../Rpmdrake/pkg.pm:625
 #, fuzzy, c-format
 msgid "The following packages have to be removed for others to be upgraded:"
 msgstr ""
 "Các gói sau đây phải được gỡ bỏ để nâng cấp các gói khác:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
+#: ../Rpmdrake/pkg.pm:628
 #, fuzzy, c-format
 msgid "Is it ok to continue?"
 msgstr ""
@@ -2185,48 +2212,48 @@ msgstr ""
 "\n"
 "Có đồng ý tiếp tục không?"
 
-#: ../Rpmdrake/pkg.pm:642
+#: ../Rpmdrake/pkg.pm:649
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Đang chuẩn bị cài đặt các gói tin..."
 
-#: ../Rpmdrake/pkg.pm:642
+#: ../Rpmdrake/pkg.pm:649
 #, fuzzy, c-format
 msgid "Preparing package installation transaction..."
 msgstr "Đang chuẩn bị cài đặt các gói tin..."
 
-#: ../Rpmdrake/pkg.pm:645
+#: ../Rpmdrake/pkg.pm:652
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Đang cài đặt gói tin `%s' (%s/%s)..."
 
-#: ../Rpmdrake/pkg.pm:646
+#: ../Rpmdrake/pkg.pm:653
 #, c-format
 msgid "Total: %s/%s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:674 ../Rpmdrake/pkg.pm:740 ../Rpmdrake/pkg.pm:763
+#: ../Rpmdrake/pkg.pm:681 ../Rpmdrake/pkg.pm:747 ../Rpmdrake/pkg.pm:770
 #: ../rpmdrake.pm:735 ../rpmdrake.pm:822 ../rpmdrake.pm:846
 #, c-format
 msgid "Error"
 msgstr "Lỗi"
 
-#: ../Rpmdrake/pkg.pm:698
+#: ../Rpmdrake/pkg.pm:705
 #, c-format
 msgid "Change medium"
 msgstr "Thay phương tiện"
 
-#: ../Rpmdrake/pkg.pm:699
+#: ../Rpmdrake/pkg.pm:706
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Hãy nạp phương tiện có tên \"%s\" lên thiết bị [%s]"
 
-#: ../Rpmdrake/pkg.pm:703
+#: ../Rpmdrake/pkg.pm:710
 #, c-format
 msgid "Verifying package signatures..."
 msgstr "Đang thẩm tra chữ ký của các gói tin..."
 
-#: ../Rpmdrake/pkg.pm:722
+#: ../Rpmdrake/pkg.pm:729
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2239,22 +2266,22 @@ msgstr ""
 "\n"
 "Có thể bạn cần cập nhật cơ sở dữ liệu phương tiện."
 
-#: ../Rpmdrake/pkg.pm:732
+#: ../Rpmdrake/pkg.pm:739
 #, c-format
 msgid "%d installation transactions failed"
 msgstr "%d phiên giao dịch cài đặt lỗi"
 
-#: ../Rpmdrake/pkg.pm:741
+#: ../Rpmdrake/pkg.pm:748
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Lỗi không thể khắc phục: không tìm thấy gói để cài đặt, xin lỗi."
 
-#: ../Rpmdrake/pkg.pm:744
+#: ../Rpmdrake/pkg.pm:751
 #, c-format
 msgid "Inspecting configuration files..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:752
+#: ../Rpmdrake/pkg.pm:759
 #, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
@@ -2267,22 +2294,22 @@ msgstr ""
 "Một số tập tin cấu hình được tạo là `.rpmnew' hay `.rpmsave',\n"
 "Bây giờ bạn có thể kiểm tra một số tập tin đó để tạo các hoạt động:"
 
-#: ../Rpmdrake/pkg.pm:758
+#: ../Rpmdrake/pkg.pm:765
 #, c-format
 msgid "Looking for \"README\" files..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:781 ../Rpmdrake/pkg.pm:797
+#: ../Rpmdrake/pkg.pm:788 ../Rpmdrake/pkg.pm:804
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Hãy đợi, đang gỡ bỏ các gói..."
 
-#: ../Rpmdrake/pkg.pm:810
+#: ../Rpmdrake/pkg.pm:817
 #, c-format
 msgid "Problem during removal"
 msgstr "Có trục trặc khi gỡ bỏ"
 
-#: ../Rpmdrake/pkg.pm:811
+#: ../Rpmdrake/pkg.pm:818
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"

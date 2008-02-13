@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-12 12:31+0100\n"
+"POT-Creation-Date: 2008-02-13 14:40+0100\n"
 "PO-Revision-Date: 2002-08-11 22:16+0200\n"
 "Last-Translator: Vitauts Stočka <vit@dau.lv>\n"
 "Language-Team: Latvian <cooker-i18n@mandrivalinux.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:759
+#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:780
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -286,8 +286,8 @@ msgstr "Avota tips:"
 #: ../Rpmdrake/edit_urpm_sources.pm:447 ../Rpmdrake/edit_urpm_sources.pm:474
 #: ../Rpmdrake/edit_urpm_sources.pm:556 ../Rpmdrake/edit_urpm_sources.pm:643
 #: ../Rpmdrake/edit_urpm_sources.pm:684 ../Rpmdrake/edit_urpm_sources.pm:742
-#: ../Rpmdrake/edit_urpm_sources.pm:891 ../Rpmdrake/gui.pm:524
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:204 ../Rpmdrake/pkg.pm:700
+#: ../Rpmdrake/edit_urpm_sources.pm:891 ../Rpmdrake/gui.pm:545
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:204 ../Rpmdrake/pkg.pm:707
 #: ../rpmdrake.pm:301 ../rpmdrake.pm:619 ../rpmdrake.pm:692 ../rpmdrake.pm:765
 #, c-format
 msgid "Cancel"
@@ -298,8 +298,8 @@ msgstr "Atcelt"
 #: ../Rpmdrake/edit_urpm_sources.pm:640 ../Rpmdrake/edit_urpm_sources.pm:683
 #: ../Rpmdrake/edit_urpm_sources.pm:735 ../Rpmdrake/edit_urpm_sources.pm:808
 #: ../Rpmdrake/edit_urpm_sources.pm:937 ../Rpmdrake/edit_urpm_sources.pm:1135
-#: ../Rpmdrake/gui.pm:524 ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:545
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:520 ../Rpmdrake/pkg.pm:700
+#: ../Rpmdrake/gui.pm:545 ../Rpmdrake/gui.pm:561 ../Rpmdrake/gui.pm:566
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:527 ../Rpmdrake/pkg.pm:707
 #: ../Rpmdrake/rpmnew.pm:180 ../rpmdrake.pm:124 ../rpmdrake.pm:239
 #: ../rpmdrake.pm:304 ../rpmdrake.pm:619
 #, c-format
@@ -520,7 +520,7 @@ msgid "Command"
 msgstr "Komanda"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:772 ../Rpmdrake/formatting.pm:126
-#: ../Rpmdrake/gui.pm:756 ../Rpmdrake/pkg.pm:119 ../Rpmdrake/pkg.pm:164
+#: ../Rpmdrake/gui.pm:777 ../Rpmdrake/pkg.pm:119 ../Rpmdrake/pkg.pm:164
 #: ../Rpmdrake/pkg.pm:172 ../Rpmdrake/pkg.pm:193 ../Rpmdrake/rpmnew.pm:77
 #, c-format
 msgid "(none)"
@@ -900,66 +900,93 @@ msgstr "Kopsavilkums: "
 msgid "Description: "
 msgstr "Apraksts: "
 
-#: ../Rpmdrake/gui.pm:405 ../Rpmdrake/gui.pm:411 ../Rpmdrake/pkg.pm:710
-#: ../rpmdrake.pm:748 ../rpmdrake.pm:863
+#: ../Rpmdrake/gui.pm:217 ../Rpmdrake/gui.pm:426 ../Rpmdrake/gui.pm:432
+#: ../Rpmdrake/pkg.pm:717 ../rpmdrake.pm:748 ../rpmdrake.pm:863
 #, c-format
 msgid "Warning"
 msgstr "Uzmanību"
 
-#: ../Rpmdrake/gui.pm:406
+#: ../Rpmdrake/gui.pm:219
+#, fuzzy, c-format
+msgid "The package \"%s\" was found."
+msgstr "Pakotne %s nav parakstīta"
+
+#: ../Rpmdrake/gui.pm:220
+#, c-format
+msgid "However this package is not in the package list."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:221
+#, c-format
+msgid "You may want to update your urpmi database."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:223
+#, fuzzy, c-format
+msgid "Matching packages:"
+msgstr "Pakotnes"
+
+#. -PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
+#. -PO: eg: "- rpmdrake (medium: "Main Release"
+#: ../Rpmdrake/gui.pm:228
+#, c-format
+msgid "- %s (medium: %s)"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:427
 #, c-format
 msgid "Removing package %s would break your system"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:411
+#: ../Rpmdrake/gui.pm:432
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:506 ../Rpmdrake/gui.pm:536 ../Rpmdrake/gui.pm:538
+#: ../Rpmdrake/gui.pm:527 ../Rpmdrake/gui.pm:557 ../Rpmdrake/gui.pm:559
 #, c-format
 msgid "More information on package..."
 msgstr "Vairāk informācijas par pakotni..."
 
-#: ../Rpmdrake/gui.pm:508
+#: ../Rpmdrake/gui.pm:529
 #, c-format
 msgid "Please choose"
 msgstr "Lūdzu izvēlieties"
 
-#: ../Rpmdrake/gui.pm:509
+#: ../Rpmdrake/gui.pm:530
 #, fuzzy, c-format
 msgid "The following package is needed:"
 msgstr "Ir nepieciešama viena no sekojošām pakotnēm:"
 
-#: ../Rpmdrake/gui.pm:509
+#: ../Rpmdrake/gui.pm:530
 #, c-format
 msgid "One of the following packages is needed:"
 msgstr "Ir nepieciešama viena no sekojošām pakotnēm:"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../Rpmdrake/gui.pm:524 ../Rpmdrake/gui.pm:529
+#: ../Rpmdrake/gui.pm:545 ../Rpmdrake/gui.pm:550
 #, c-format
 msgid "More info"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:531
+#: ../Rpmdrake/gui.pm:552
 #, fuzzy, c-format
 msgid "Information on packages"
 msgstr "Vairāk informācijas par pakotni..."
 
-#: ../Rpmdrake/gui.pm:559
+#: ../Rpmdrake/gui.pm:580
 #, c-format
 msgid "Checking dependencies of package..."
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:566
+#: ../Rpmdrake/gui.pm:587
 #, c-format
 msgid "Some additional packages need to be removed"
 msgstr "Nepieciešams noņemt dažas papildus pakotnes"
 
-#: ../Rpmdrake/gui.pm:567
+#: ../Rpmdrake/gui.pm:588
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
@@ -968,19 +995,19 @@ msgstr ""
 "Lai apmierinātu visas atkarības, ir nepieciešams noņemt arī sekojoša(s) "
 "pakotne(s):"
 
-#: ../Rpmdrake/gui.pm:573 ../Rpmdrake/gui.pm:583
+#: ../Rpmdrake/gui.pm:594 ../Rpmdrake/gui.pm:604
 #, fuzzy, c-format
 msgid "Some packages can't be removed"
 msgstr "Pakotni neizdodas instalēt"
 
-#: ../Rpmdrake/gui.pm:574
+#: ../Rpmdrake/gui.pm:595
 #, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
 "\n"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:584 ../Rpmdrake/gui.pm:653
+#: ../Rpmdrake/gui.pm:605 ../Rpmdrake/gui.pm:674
 #, fuzzy, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
@@ -991,12 +1018,12 @@ msgstr ""
 "\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:614
+#: ../Rpmdrake/gui.pm:635
 #, c-format
 msgid "Additional packages needed"
 msgstr "Papildus nepieciešamās pakotnes"
 
-#: ../Rpmdrake/gui.pm:615
+#: ../Rpmdrake/gui.pm:636
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
@@ -1007,22 +1034,22 @@ msgstr ""
 "ir nepieciešams instalēt arī sekojoša(s) pakotne(s):\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:629
+#: ../Rpmdrake/gui.pm:650
 #, c-format
 msgid "%s (belongs to the skip list)"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:633
+#: ../Rpmdrake/gui.pm:654
 #, fuzzy, c-format
 msgid "One package cannot be installed"
 msgstr "Pakotni neizdodas instalēt"
 
-#: ../Rpmdrake/gui.pm:633
+#: ../Rpmdrake/gui.pm:654
 #, fuzzy, c-format
 msgid "Some packages can't be installed"
 msgstr "Pakotni neizdodas instalēt"
 
-#: ../Rpmdrake/gui.pm:635
+#: ../Rpmdrake/gui.pm:656
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following package cannot be selected:\n"
@@ -1032,7 +1059,7 @@ msgstr ""
 "Atvainojiet, sekojošas pakotnes nevar tikt izvēlētas\"\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:636
+#: ../Rpmdrake/gui.pm:657
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following packages can't be selected:\n"
@@ -1042,27 +1069,27 @@ msgstr ""
 "Atvainojiet, sekojošas pakotnes nevar tikt izvēlētas\"\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:652 ../Rpmdrake/pkg.pm:612
+#: ../Rpmdrake/gui.pm:673 ../Rpmdrake/pkg.pm:619
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Dažas pakotnes nepieciešams noņemt"
 
-#: ../Rpmdrake/gui.pm:685
+#: ../Rpmdrake/gui.pm:706
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:689
+#: ../Rpmdrake/gui.pm:710
 #, fuzzy, c-format
 msgid "You need to select some packages first."
 msgstr "Nebija iespējams saņemt izejas pakotnes."
 
-#: ../Rpmdrake/gui.pm:694
+#: ../Rpmdrake/gui.pm:715
 #, c-format
 msgid "Too many packages are selected"
 msgstr "Izvēlētas pa daudz pakotnes"
 
-#: ../Rpmdrake/gui.pm:695
+#: ../Rpmdrake/gui.pm:716
 #, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
@@ -1079,42 +1106,42 @@ msgstr ""
 "\n"
 "Vai tiešām vēlaties instalēt visas izvēlētās pakotnes?"
 
-#: ../Rpmdrake/gui.pm:721 ../Rpmdrake/open_db.pm:75
+#: ../Rpmdrake/gui.pm:742 ../Rpmdrake/open_db.pm:75
 #, fuzzy, c-format
 msgid "Fatal error"
 msgstr "Ierakstīšanas kļūda\n"
 
-#: ../Rpmdrake/gui.pm:722 ../Rpmdrake/open_db.pm:76
+#: ../Rpmdrake/gui.pm:743 ../Rpmdrake/open_db.pm:76
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:740
+#: ../Rpmdrake/gui.pm:761
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Lūdzu gaidiet, veidoju pakotņu sarakstu..."
 
-#: ../Rpmdrake/gui.pm:758
+#: ../Rpmdrake/gui.pm:779
 #, c-format
 msgid "No update"
 msgstr "Nav jauninājuma"
 
-#: ../Rpmdrake/gui.pm:782 ../rpmdrake:308
+#: ../Rpmdrake/gui.pm:803 ../rpmdrake:308
 #, c-format
 msgid "All"
 msgstr "Viss"
 
-#: ../Rpmdrake/gui.pm:791 ../rpmdrake:181
+#: ../Rpmdrake/gui.pm:812 ../rpmdrake:181
 #, c-format
 msgid "Upgradable"
 msgstr "Atjaunināms"
 
-#: ../Rpmdrake/gui.pm:791 ../rpmdrake:181
+#: ../Rpmdrake/gui.pm:812 ../rpmdrake:181
 #, c-format
 msgid "Addable"
 msgstr "Pievienojams"
 
-#: ../Rpmdrake/gui.pm:811
+#: ../Rpmdrake/gui.pm:832
 #, c-format
 msgid "Description not available for this package\n"
 msgstr ""
@@ -1904,8 +1931,8 @@ msgstr ""
 msgid "Getting '%s' from XML meta-data..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:137 ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630
-#: ../Rpmdrake/pkg.pm:781 ../rpmdrake:119 ../rpmdrake.pm:329
+#: ../Rpmdrake/pkg.pm:137 ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637
+#: ../Rpmdrake/pkg.pm:788 ../rpmdrake:119 ../rpmdrake.pm:329
 #, c-format
 msgid "Please wait"
 msgstr "Lūdzu uzgaidiet"
@@ -1936,7 +1963,7 @@ msgstr ""
 msgid "        %s%% completed, speed = %s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:254 ../Rpmdrake/pkg.pm:612
+#: ../Rpmdrake/pkg.pm:254 ../Rpmdrake/pkg.pm:619
 #, fuzzy, c-format
 msgid "Confirmation"
 msgstr "Konfigurācija"
@@ -2017,12 +2044,12 @@ msgstr ""
 "\n"
 "Tad pārstartējiet %s."
 
-#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630
+#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637
 #, fuzzy, c-format
 msgid "Package installation..."
 msgstr "Sagatavoju instalēšanu"
 
-#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630 ../Rpmdrake/pkg.pm:781
+#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637 ../Rpmdrake/pkg.pm:788
 #, fuzzy, c-format
 msgid "Initializing..."
 msgstr "Instalēju:"
@@ -2047,42 +2074,42 @@ msgstr "Lūdzu gaidiet, veidoju pakotņu sarakstu..."
 msgid "Please wait, finding installed packages..."
 msgstr "Lūdzu gaidiet, meklēju pieejamās pakotnes..."
 
-#: ../Rpmdrake/pkg.pm:500
+#: ../Rpmdrake/pkg.pm:507
 #, fuzzy, c-format
 msgid "Upgrade information"
 msgstr "Parasta informācija"
 
-#: ../Rpmdrake/pkg.pm:502
+#: ../Rpmdrake/pkg.pm:509
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:510
+#: ../Rpmdrake/pkg.pm:517
 #, fuzzy, c-format
 msgid "Upgrade information about this package"
 msgstr "Vairāk informācijas par pakotni..."
 
-#: ../Rpmdrake/pkg.pm:513
+#: ../Rpmdrake/pkg.pm:520
 #, fuzzy, c-format
 msgid "Upgrade information about package %s"
 msgstr "Vairāk informācijas par pakotni..."
 
-#: ../Rpmdrake/pkg.pm:529
+#: ../Rpmdrake/pkg.pm:536
 #, c-format
 msgid "Could not create temporary directory '%s'"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:537 ../Rpmdrake/pkg.pm:757
+#: ../Rpmdrake/pkg.pm:544 ../Rpmdrake/pkg.pm:764
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Visas pieprasītās pakotnes tika veiksmīgi instalētas."
 
-#: ../Rpmdrake/pkg.pm:541 ../Rpmdrake/pkg.pm:731
+#: ../Rpmdrake/pkg.pm:548 ../Rpmdrake/pkg.pm:738
 #, fuzzy, c-format
 msgid "Problem during installation"
 msgstr "Instalēšanas laikā radās problēmas"
 
-#: ../Rpmdrake/pkg.pm:542 ../Rpmdrake/pkg.pm:562 ../Rpmdrake/pkg.pm:733
+#: ../Rpmdrake/pkg.pm:549 ../Rpmdrake/pkg.pm:569 ../Rpmdrake/pkg.pm:740
 #, fuzzy, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -2090,27 +2117,27 @@ msgid ""
 "%s"
 msgstr "Tiek sagatavota instalēšana"
 
-#: ../Rpmdrake/pkg.pm:561 ../Rpmdrake/pkg.pm:721
+#: ../Rpmdrake/pkg.pm:568 ../Rpmdrake/pkg.pm:728
 #, c-format
 msgid "Installation failed"
 msgstr "Instalēšana neizdevās"
 
-#: ../Rpmdrake/pkg.pm:581
+#: ../Rpmdrake/pkg.pm:588
 #, c-format
 msgid "Checking validity of requested packages..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:592
+#: ../Rpmdrake/pkg.pm:599
 #, fuzzy, c-format
 msgid "Unable to get source packages."
 msgstr "Nebija iespējams saņemt izejas pakotnes."
 
-#: ../Rpmdrake/pkg.pm:593
+#: ../Rpmdrake/pkg.pm:600
 #, fuzzy, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Atvainojiet, nebija iespējams paņemt izejas pakotnes."
 
-#: ../Rpmdrake/pkg.pm:594 ../Rpmdrake/pkg.pm:724
+#: ../Rpmdrake/pkg.pm:601 ../Rpmdrake/pkg.pm:731
 #, c-format
 msgid ""
 "\n"
@@ -2119,7 +2146,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:609
+#: ../Rpmdrake/pkg.pm:616
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2127,7 +2154,7 @@ msgstr[0] "Ir nepieciešama viena no sekojošām pakotnēm:"
 msgstr[1] "Ir nepieciešama viena no sekojošām pakotnēm:"
 msgstr[2] "Ir nepieciešama viena no sekojošām pakotnēm:"
 
-#: ../Rpmdrake/pkg.pm:615
+#: ../Rpmdrake/pkg.pm:622
 #, c-format
 msgid "Remove one package?"
 msgid_plural "Remove %d packages?"
@@ -2135,7 +2162,7 @@ msgstr[0] "Noņemt programmatūru"
 msgstr[1] "Noņemt programmatūru"
 msgstr[2] "Noņemt programmatūru"
 
-#: ../Rpmdrake/pkg.pm:617
+#: ../Rpmdrake/pkg.pm:624
 #, fuzzy, c-format
 msgid "The following package has to be removed for others to be upgraded:"
 msgstr ""
@@ -2145,7 +2172,7 @@ msgstr ""
 "\n"
 "Vai ir labi turpināt?"
 
-#: ../Rpmdrake/pkg.pm:618
+#: ../Rpmdrake/pkg.pm:625
 #, fuzzy, c-format
 msgid "The following packages have to be removed for others to be upgraded:"
 msgstr ""
@@ -2155,7 +2182,7 @@ msgstr ""
 "\n"
 "Vai ir labi turpināt?"
 
-#: ../Rpmdrake/pkg.pm:621
+#: ../Rpmdrake/pkg.pm:628
 #, fuzzy, c-format
 msgid "Is it ok to continue?"
 msgstr ""
@@ -2163,48 +2190,48 @@ msgstr ""
 "\n"
 "Vai ir labi turpināt?"
 
-#: ../Rpmdrake/pkg.pm:642
+#: ../Rpmdrake/pkg.pm:649
 #, fuzzy, c-format
 msgid "Preparing packages installation..."
 msgstr "Tiek sagatavota instalēšana"
 
-#: ../Rpmdrake/pkg.pm:642
+#: ../Rpmdrake/pkg.pm:649
 #, fuzzy, c-format
 msgid "Preparing package installation transaction..."
 msgstr "Tiek sagatavota instalēšana"
 
-#: ../Rpmdrake/pkg.pm:645
+#: ../Rpmdrake/pkg.pm:652
 #, fuzzy, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Instalēju pakotnes..."
 
-#: ../Rpmdrake/pkg.pm:646
+#: ../Rpmdrake/pkg.pm:653
 #, c-format
 msgid "Total: %s/%s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:674 ../Rpmdrake/pkg.pm:740 ../Rpmdrake/pkg.pm:763
+#: ../Rpmdrake/pkg.pm:681 ../Rpmdrake/pkg.pm:747 ../Rpmdrake/pkg.pm:770
 #: ../rpmdrake.pm:735 ../rpmdrake.pm:822 ../rpmdrake.pm:846
 #, c-format
 msgid "Error"
 msgstr "Kļūda"
 
-#: ../Rpmdrake/pkg.pm:698
+#: ../Rpmdrake/pkg.pm:705
 #, c-format
 msgid "Change medium"
 msgstr "Nomainiet datu nesēju"
 
-#: ../Rpmdrake/pkg.pm:699
+#: ../Rpmdrake/pkg.pm:706
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Lūdzu ielieciet datu nesēju \"%s\" ierīcē [%s]"
 
-#: ../Rpmdrake/pkg.pm:703
+#: ../Rpmdrake/pkg.pm:710
 #, c-format
 msgid "Verifying package signatures..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:722
+#: ../Rpmdrake/pkg.pm:729
 #, fuzzy, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2215,22 +2242,22 @@ msgstr ""
 "Instalēšana neizdevās, trūkst daži faili.\n"
 "Jūs varbūt vēlaties atjaunināt avotu datubāzi."
 
-#: ../Rpmdrake/pkg.pm:732
+#: ../Rpmdrake/pkg.pm:739
 #, fuzzy, c-format
 msgid "%d installation transactions failed"
 msgstr "Instalēšana neizdevās"
 
-#: ../Rpmdrake/pkg.pm:741
+#: ../Rpmdrake/pkg.pm:748
 #, fuzzy, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Tiek sagatavota instalēšana"
 
-#: ../Rpmdrake/pkg.pm:744
+#: ../Rpmdrake/pkg.pm:751
 #, c-format
 msgid "Inspecting configuration files..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:752
+#: ../Rpmdrake/pkg.pm:759
 #, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
@@ -2243,22 +2270,22 @@ msgstr ""
 "Daži konfigurācijas faili tika izveidoti kā `.rpmnew' vai `.rpmsave',\n"
 "jūs varat tagad pārbaudīt dažus, lai veiktu darbības:"
 
-#: ../Rpmdrake/pkg.pm:758
+#: ../Rpmdrake/pkg.pm:765
 #, c-format
 msgid "Looking for \"README\" files..."
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:781 ../Rpmdrake/pkg.pm:797
+#: ../Rpmdrake/pkg.pm:788 ../Rpmdrake/pkg.pm:804
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Lūdzu gaidiet, noņemu pakotnes..."
 
-#: ../Rpmdrake/pkg.pm:810
+#: ../Rpmdrake/pkg.pm:817
 #, fuzzy, c-format
 msgid "Problem during removal"
 msgstr "Problēma instalēšanas laikā"
 
-#: ../Rpmdrake/pkg.pm:811
+#: ../Rpmdrake/pkg.pm:818
 #, fuzzy, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -3445,9 +3472,6 @@ msgstr "Atjaunot avotus"
 #~ msgstr ""
 #~ "Pakotnei %s ir nepareizs paraksts,\n"
 #~ "vai arī GnuPG nav instalēts pareizi"
-
-#~ msgid "The package %s is not signed"
-#~ msgstr "Pakotne %s nav parakstīta"
 
 #~ msgid "Signature problem"
 #~ msgstr "Paraksta problēma"

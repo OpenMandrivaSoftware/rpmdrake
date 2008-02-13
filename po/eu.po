@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-12 12:31+0100\n"
+"POT-Creation-Date: 2008-02-13 14:40+0100\n"
 "PO-Revision-Date: 2008-02-07 02:26+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
 "Language-Team: Euskara <eu@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:759
+#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:780
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -293,8 +293,8 @@ msgstr "Euskarri-mota:"
 #: ../Rpmdrake/edit_urpm_sources.pm:447 ../Rpmdrake/edit_urpm_sources.pm:474
 #: ../Rpmdrake/edit_urpm_sources.pm:556 ../Rpmdrake/edit_urpm_sources.pm:643
 #: ../Rpmdrake/edit_urpm_sources.pm:684 ../Rpmdrake/edit_urpm_sources.pm:742
-#: ../Rpmdrake/edit_urpm_sources.pm:891 ../Rpmdrake/gui.pm:524
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:204 ../Rpmdrake/pkg.pm:700
+#: ../Rpmdrake/edit_urpm_sources.pm:891 ../Rpmdrake/gui.pm:545
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:204 ../Rpmdrake/pkg.pm:707
 #: ../rpmdrake.pm:301 ../rpmdrake.pm:619 ../rpmdrake.pm:692 ../rpmdrake.pm:765
 #, c-format
 msgid "Cancel"
@@ -305,8 +305,8 @@ msgstr "Utzi"
 #: ../Rpmdrake/edit_urpm_sources.pm:640 ../Rpmdrake/edit_urpm_sources.pm:683
 #: ../Rpmdrake/edit_urpm_sources.pm:735 ../Rpmdrake/edit_urpm_sources.pm:808
 #: ../Rpmdrake/edit_urpm_sources.pm:937 ../Rpmdrake/edit_urpm_sources.pm:1135
-#: ../Rpmdrake/gui.pm:524 ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:545
-#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:520 ../Rpmdrake/pkg.pm:700
+#: ../Rpmdrake/gui.pm:545 ../Rpmdrake/gui.pm:561 ../Rpmdrake/gui.pm:566
+#: ../Rpmdrake/init.pm:136 ../Rpmdrake/pkg.pm:527 ../Rpmdrake/pkg.pm:707
 #: ../Rpmdrake/rpmnew.pm:180 ../rpmdrake.pm:124 ../rpmdrake.pm:239
 #: ../rpmdrake.pm:304 ../rpmdrake.pm:619
 #, c-format
@@ -527,7 +527,7 @@ msgid "Command"
 msgstr "Komandoa"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:772 ../Rpmdrake/formatting.pm:126
-#: ../Rpmdrake/gui.pm:756 ../Rpmdrake/pkg.pm:119 ../Rpmdrake/pkg.pm:164
+#: ../Rpmdrake/gui.pm:777 ../Rpmdrake/pkg.pm:119 ../Rpmdrake/pkg.pm:164
 #: ../Rpmdrake/pkg.pm:172 ../Rpmdrake/pkg.pm:193 ../Rpmdrake/rpmnew.pm:77
 #, c-format
 msgid "(none)"
@@ -919,18 +919,45 @@ msgstr "Laburpena: "
 msgid "Description: "
 msgstr "Azalpena: "
 
-#: ../Rpmdrake/gui.pm:405 ../Rpmdrake/gui.pm:411 ../Rpmdrake/pkg.pm:710
-#: ../rpmdrake.pm:748 ../rpmdrake.pm:863
+#: ../Rpmdrake/gui.pm:217 ../Rpmdrake/gui.pm:426 ../Rpmdrake/gui.pm:432
+#: ../Rpmdrake/pkg.pm:717 ../rpmdrake.pm:748 ../rpmdrake.pm:863
 #, c-format
 msgid "Warning"
 msgstr "Kontuz"
 
-#: ../Rpmdrake/gui.pm:406
+#: ../Rpmdrake/gui.pm:219
+#, c-format
+msgid "The package \"%s\" was found."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:220
+#, c-format
+msgid "However this package is not in the package list."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:221
+#, c-format
+msgid "You may want to update your urpmi database."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:223
+#, fuzzy, c-format
+msgid "Matching packages:"
+msgstr "Meta paketeak"
+
+#. -PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
+#. -PO: eg: "- rpmdrake (medium: "Main Release"
+#: ../Rpmdrake/gui.pm:228
+#, fuzzy, c-format
+msgid "- %s (medium: %s)"
+msgstr "%s, %s euskarritik"
+
+#: ../Rpmdrake/gui.pm:427
 #, c-format
 msgid "Removing package %s would break your system"
 msgstr "%s paketea ezabatzeak zure sistema hondatuko luke"
 
-#: ../Rpmdrake/gui.pm:411
+#: ../Rpmdrake/gui.pm:432
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
@@ -939,60 +966,60 @@ msgstr ""
 "\"%s\" paketea urpmi jauzi zerrendan dago.\n"
 "Hala ere aukeratu nahi duzu?"
 
-#: ../Rpmdrake/gui.pm:506 ../Rpmdrake/gui.pm:536 ../Rpmdrake/gui.pm:538
+#: ../Rpmdrake/gui.pm:527 ../Rpmdrake/gui.pm:557 ../Rpmdrake/gui.pm:559
 #, c-format
 msgid "More information on package..."
 msgstr "Paketeari buruzko informazio gehiago..."
 
-#: ../Rpmdrake/gui.pm:508
+#: ../Rpmdrake/gui.pm:529
 #, c-format
 msgid "Please choose"
 msgstr "Aukeratu"
 
-#: ../Rpmdrake/gui.pm:509
+#: ../Rpmdrake/gui.pm:530
 #, c-format
 msgid "The following package is needed:"
 msgstr "Ondoko paketea behar da:"
 
-#: ../Rpmdrake/gui.pm:509
+#: ../Rpmdrake/gui.pm:530
 #, c-format
 msgid "One of the following packages is needed:"
 msgstr "Ondoko paketeetako bat behar da:"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../Rpmdrake/gui.pm:524 ../Rpmdrake/gui.pm:529
+#: ../Rpmdrake/gui.pm:545 ../Rpmdrake/gui.pm:550
 #, c-format
 msgid "More info"
 msgstr "Informazio gehiago"
 
-#: ../Rpmdrake/gui.pm:531
+#: ../Rpmdrake/gui.pm:552
 #, c-format
 msgid "Information on packages"
 msgstr "Paketeei buruzko informazioa"
 
-#: ../Rpmdrake/gui.pm:559
+#: ../Rpmdrake/gui.pm:580
 #, c-format
 msgid "Checking dependencies of package..."
 msgstr "Paketearen menpekotasunak egiaztatzen..."
 
-#: ../Rpmdrake/gui.pm:566
+#: ../Rpmdrake/gui.pm:587
 #, c-format
 msgid "Some additional packages need to be removed"
 msgstr "Pakete osagarri batzuk ere kendu egin behar dira"
 
-#: ../Rpmdrake/gui.pm:567
+#: ../Rpmdrake/gui.pm:588
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be\n"
 "removed:"
 msgstr "Mendekotasunak direla eta, pakete hauek ere kendu egin behar dira:"
 
-#: ../Rpmdrake/gui.pm:573 ../Rpmdrake/gui.pm:583
+#: ../Rpmdrake/gui.pm:594 ../Rpmdrake/gui.pm:604
 #, c-format
 msgid "Some packages can't be removed"
 msgstr "Pakete batzuk ezin dira kendu"
 
-#: ../Rpmdrake/gui.pm:574
+#: ../Rpmdrake/gui.pm:595
 #, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
@@ -1001,7 +1028,7 @@ msgstr ""
 "Pakete hauek kentzen badituzu, zure sistema hondatu egin liteke:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:584 ../Rpmdrake/gui.pm:653
+#: ../Rpmdrake/gui.pm:605 ../Rpmdrake/gui.pm:674
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be\n"
@@ -1011,12 +1038,12 @@ msgstr ""
 "Mendekotasunak direla eta, pakete hauek ezin dira hautatu orain:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:614
+#: ../Rpmdrake/gui.pm:635
 #, c-format
 msgid "Additional packages needed"
 msgstr "Pakete osagarriak behar dira"
 
-#: ../Rpmdrake/gui.pm:615
+#: ../Rpmdrake/gui.pm:636
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need\n"
@@ -1027,22 +1054,22 @@ msgstr ""
 "egin behar dira:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:629
+#: ../Rpmdrake/gui.pm:650
 #, c-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (alde batera utzitakoen zerrendari dagokio)"
 
-#: ../Rpmdrake/gui.pm:633
+#: ../Rpmdrake/gui.pm:654
 #, c-format
 msgid "One package cannot be installed"
 msgstr "Pakete bat ezin da instalatu"
 
-#: ../Rpmdrake/gui.pm:633
+#: ../Rpmdrake/gui.pm:654
 #, c-format
 msgid "Some packages can't be installed"
 msgstr "Pakete batzuk ezin dira instalatu"
 
-#: ../Rpmdrake/gui.pm:635
+#: ../Rpmdrake/gui.pm:656
 #, c-format
 msgid ""
 "Sorry, the following package cannot be selected:\n"
@@ -1053,7 +1080,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:636
+#: ../Rpmdrake/gui.pm:657
 #, c-format
 msgid ""
 "Sorry, the following packages can't be selected:\n"
@@ -1064,27 +1091,27 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:652 ../Rpmdrake/pkg.pm:612
+#: ../Rpmdrake/gui.pm:673 ../Rpmdrake/pkg.pm:619
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Pakete batzuk kendu egin behar dira"
 
-#: ../Rpmdrake/gui.pm:685
+#: ../Rpmdrake/gui.pm:706
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr "Akatsa: %s irakurri-soilik muntatu dela dirudi."
 
-#: ../Rpmdrake/gui.pm:689
+#: ../Rpmdrake/gui.pm:710
 #, c-format
 msgid "You need to select some packages first."
 msgstr "Lehenik pakete batzuk hautatu behar dituzu."
 
-#: ../Rpmdrake/gui.pm:694
+#: ../Rpmdrake/gui.pm:715
 #, c-format
 msgid "Too many packages are selected"
 msgstr "Pakete gehiegi hautatu dira"
 
-#: ../Rpmdrake/gui.pm:695
+#: ../Rpmdrake/gui.pm:716
 #, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so much\n"
@@ -1101,42 +1128,42 @@ msgstr ""
 "\n"
 "Ziur zaude hautatutako pakete guztiak instalatu nahi dituzula?"
 
-#: ../Rpmdrake/gui.pm:721 ../Rpmdrake/open_db.pm:75
+#: ../Rpmdrake/gui.pm:742 ../Rpmdrake/open_db.pm:75
 #, c-format
 msgid "Fatal error"
 msgstr "Errore larria"
 
-#: ../Rpmdrake/gui.pm:722 ../Rpmdrake/open_db.pm:76
+#: ../Rpmdrake/gui.pm:743 ../Rpmdrake/open_db.pm:76
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "Errore larria gertatu da: %s."
 
-#: ../Rpmdrake/gui.pm:740
+#: ../Rpmdrake/gui.pm:761
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "Itxaron, paketeen zerrenda egiten ari da..."
 
-#: ../Rpmdrake/gui.pm:758
+#: ../Rpmdrake/gui.pm:779
 #, c-format
 msgid "No update"
 msgstr "Eguneratzerik ez"
 
-#: ../Rpmdrake/gui.pm:782 ../rpmdrake:308
+#: ../Rpmdrake/gui.pm:803 ../rpmdrake:308
 #, c-format
 msgid "All"
 msgstr "Denak"
 
-#: ../Rpmdrake/gui.pm:791 ../rpmdrake:181
+#: ../Rpmdrake/gui.pm:812 ../rpmdrake:181
 #, c-format
 msgid "Upgradable"
 msgstr "Berritu daitekeena"
 
-#: ../Rpmdrake/gui.pm:791 ../rpmdrake:181
+#: ../Rpmdrake/gui.pm:812 ../rpmdrake:181
 #, c-format
 msgid "Addable"
 msgstr "Gehi daitekeena"
 
-#: ../Rpmdrake/gui.pm:811
+#: ../Rpmdrake/gui.pm:832
 #, c-format
 msgid "Description not available for this package\n"
 msgstr "Deskribapena ez dago eskuragarri pakete honentzako\n"
@@ -1942,8 +1969,8 @@ msgstr "%s-ren XML meta-datuetatik informazioa jasotzen..."
 msgid "Getting '%s' from XML meta-data..."
 msgstr "XML metadatuetatik '%s' jasotzen..."
 
-#: ../Rpmdrake/pkg.pm:137 ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630
-#: ../Rpmdrake/pkg.pm:781 ../rpmdrake:119 ../rpmdrake.pm:329
+#: ../Rpmdrake/pkg.pm:137 ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637
+#: ../Rpmdrake/pkg.pm:788 ../rpmdrake:119 ../rpmdrake.pm:329
 #, c-format
 msgid "Please wait"
 msgstr "Itxaron"
@@ -1978,7 +2005,7 @@ msgstr "        %s%% / %s osatuta, ETA = %s, abiadura = %s"
 msgid "        %s%% completed, speed = %s"
 msgstr "        %s%% osatuta, abiadura = %s"
 
-#: ../Rpmdrake/pkg.pm:254 ../Rpmdrake/pkg.pm:612
+#: ../Rpmdrake/pkg.pm:254 ../Rpmdrake/pkg.pm:619
 #, c-format
 msgid "Confirmation"
 msgstr "Baieztapena"
@@ -2065,12 +2092,12 @@ msgstr ""
 "\n"
 "Ondoren, %s berrabiarazi."
 
-#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630
+#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637
 #, c-format
 msgid "Package installation..."
 msgstr "Paketearen instalazioa..."
 
-#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:630 ../Rpmdrake/pkg.pm:781
+#: ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637 ../Rpmdrake/pkg.pm:788
 #, c-format
 msgid "Initializing..."
 msgstr "Berrabiarazten..."
@@ -2095,42 +2122,42 @@ msgstr "Itxoin mesedez, oinarrizko paketeak zerrendatzen..."
 msgid "Please wait, finding installed packages..."
 msgstr "Itxaron mesedez, instalatutako paketeak bilatzen..."
 
-#: ../Rpmdrake/pkg.pm:500
+#: ../Rpmdrake/pkg.pm:507
 #, c-format
 msgid "Upgrade information"
 msgstr "Bertsio berritze informazioa"
 
-#: ../Rpmdrake/pkg.pm:502
+#: ../Rpmdrake/pkg.pm:509
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr "Pakete hauek bertsio berritze informazioarekin datoz"
 
-#: ../Rpmdrake/pkg.pm:510
+#: ../Rpmdrake/pkg.pm:517
 #, c-format
 msgid "Upgrade information about this package"
 msgstr "Pakete honi buruzko bertsio berritze informazioa"
 
-#: ../Rpmdrake/pkg.pm:513
+#: ../Rpmdrake/pkg.pm:520
 #, c-format
 msgid "Upgrade information about package %s"
 msgstr "%s paketeari buruzko bertsio berritze informazioa"
 
-#: ../Rpmdrake/pkg.pm:529
+#: ../Rpmdrake/pkg.pm:536
 #, c-format
 msgid "Could not create temporary directory '%s'"
 msgstr "Ezin izan da '%s' aldiuneko direktorioa sortu"
 
-#: ../Rpmdrake/pkg.pm:537 ../Rpmdrake/pkg.pm:757
+#: ../Rpmdrake/pkg.pm:544 ../Rpmdrake/pkg.pm:764
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Eskatutako pakete guztiak ondo instalatu dira."
 
-#: ../Rpmdrake/pkg.pm:541 ../Rpmdrake/pkg.pm:731
+#: ../Rpmdrake/pkg.pm:548 ../Rpmdrake/pkg.pm:738
 #, c-format
 msgid "Problem during installation"
 msgstr "Arazoa sortu da instalatzean"
 
-#: ../Rpmdrake/pkg.pm:542 ../Rpmdrake/pkg.pm:562 ../Rpmdrake/pkg.pm:733
+#: ../Rpmdrake/pkg.pm:549 ../Rpmdrake/pkg.pm:569 ../Rpmdrake/pkg.pm:740
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -2141,27 +2168,27 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:561 ../Rpmdrake/pkg.pm:721
+#: ../Rpmdrake/pkg.pm:568 ../Rpmdrake/pkg.pm:728
 #, c-format
 msgid "Installation failed"
 msgstr "Instalazioak huts egin du"
 
-#: ../Rpmdrake/pkg.pm:581
+#: ../Rpmdrake/pkg.pm:588
 #, c-format
 msgid "Checking validity of requested packages..."
 msgstr "Eskatutako paketeen baliozkotasuna egiaztatzen..."
 
-#: ../Rpmdrake/pkg.pm:592
+#: ../Rpmdrake/pkg.pm:599
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Ezin dira iturburu-paketeak lortu."
 
-#: ../Rpmdrake/pkg.pm:593
+#: ../Rpmdrake/pkg.pm:600
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Ezin dira iturburu-paketeak lortu. %s"
 
-#: ../Rpmdrake/pkg.pm:594 ../Rpmdrake/pkg.pm:724
+#: ../Rpmdrake/pkg.pm:601 ../Rpmdrake/pkg.pm:731
 #, c-format
 msgid ""
 "\n"
@@ -2174,77 +2201,77 @@ msgstr ""
 "Erroreen berri eman da:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:609
+#: ../Rpmdrake/pkg.pm:616
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
 msgstr[0] "Ondorengo paketea instalatuko da:"
 msgstr[1] "Ondorengo %d paketeak instalatuko dira:"
 
-#: ../Rpmdrake/pkg.pm:615
+#: ../Rpmdrake/pkg.pm:622
 #, c-format
 msgid "Remove one package?"
 msgid_plural "Remove %d packages?"
 msgstr[0] "Pakete bat ezabatu?"
 msgstr[1] "%d pakete ezabatu?"
 
-#: ../Rpmdrake/pkg.pm:617
+#: ../Rpmdrake/pkg.pm:624
 #, c-format
 msgid "The following package has to be removed for others to be upgraded:"
 msgstr "Ondorengo paketea ezabatu behar da beste batzuk berritu ahal izateko:"
 
-#: ../Rpmdrake/pkg.pm:618
+#: ../Rpmdrake/pkg.pm:625
 #, c-format
 msgid "The following packages have to be removed for others to be upgraded:"
 msgstr "Pakete hauek kendu egin behar dira beste batzuk berritu ahal izateko:"
 
-#: ../Rpmdrake/pkg.pm:621
+#: ../Rpmdrake/pkg.pm:628
 #, c-format
 msgid "Is it ok to continue?"
 msgstr "Jarraitu nahi duzu?"
 
-#: ../Rpmdrake/pkg.pm:642
+#: ../Rpmdrake/pkg.pm:649
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Paketeen instalazioa prestatzen..."
 
-#: ../Rpmdrake/pkg.pm:642
+#: ../Rpmdrake/pkg.pm:649
 #, c-format
 msgid "Preparing package installation transaction..."
 msgstr "Paketeak instalatzeko eragiketa prestatzen..."
 
-#: ../Rpmdrake/pkg.pm:645
+#: ../Rpmdrake/pkg.pm:652
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "`%s' paketea instalatzen (%s/%s)..."
 
-#: ../Rpmdrake/pkg.pm:646
+#: ../Rpmdrake/pkg.pm:653
 #, c-format
 msgid "Total: %s/%s"
 msgstr "Guztira: %s/%s"
 
-#: ../Rpmdrake/pkg.pm:674 ../Rpmdrake/pkg.pm:740 ../Rpmdrake/pkg.pm:763
+#: ../Rpmdrake/pkg.pm:681 ../Rpmdrake/pkg.pm:747 ../Rpmdrake/pkg.pm:770
 #: ../rpmdrake.pm:735 ../rpmdrake.pm:822 ../rpmdrake.pm:846
 #, c-format
 msgid "Error"
 msgstr "Errorea"
 
-#: ../Rpmdrake/pkg.pm:698
+#: ../Rpmdrake/pkg.pm:705
 #, c-format
 msgid "Change medium"
 msgstr "Aldatu euskarria"
 
-#: ../Rpmdrake/pkg.pm:699
+#: ../Rpmdrake/pkg.pm:706
 #, c-format
 msgid "Please insert the medium named \"%s\" on device [%s]"
 msgstr "Sartu \"%s\" izena duen euskarria [%s] gailuan"
 
-#: ../Rpmdrake/pkg.pm:703
+#: ../Rpmdrake/pkg.pm:710
 #, c-format
 msgid "Verifying package signatures..."
 msgstr "Paketeen sinadurak egiaztatzen..."
 
-#: ../Rpmdrake/pkg.pm:722
+#: ../Rpmdrake/pkg.pm:729
 #, c-format
 msgid ""
 "Installation failed, some files are missing:\n"
@@ -2256,22 +2283,22 @@ msgstr ""
 "%s\n"
 "Komeni da zure euskarrien datu-basea eguneratzea."
 
-#: ../Rpmdrake/pkg.pm:732
+#: ../Rpmdrake/pkg.pm:739
 #, c-format
 msgid "%d installation transactions failed"
 msgstr "%d instaketa eragiketek huts egin dute"
 
-#: ../Rpmdrake/pkg.pm:741
+#: ../Rpmdrake/pkg.pm:748
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Akats konponezina: ez da instalatzeko paketerik aurkitu."
 
-#: ../Rpmdrake/pkg.pm:744
+#: ../Rpmdrake/pkg.pm:751
 #, c-format
 msgid "Inspecting configuration files..."
 msgstr "Konfigurazio fitxategiei inspekzioa egiten..."
 
-#: ../Rpmdrake/pkg.pm:752
+#: ../Rpmdrake/pkg.pm:759
 #, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
@@ -2284,22 +2311,22 @@ msgstr ""
 "Konfigurazio fitxategi batzuk `.rpmnew' edo `.rpmsave' luzapenarekin \n"
 "sortu dira, batzuk azter ditzakezu ekintzak egiteko:"
 
-#: ../Rpmdrake/pkg.pm:758
+#: ../Rpmdrake/pkg.pm:765
 #, c-format
 msgid "Looking for \"README\" files..."
 msgstr "\"README\" fitxategiak aurkitzen..."
 
-#: ../Rpmdrake/pkg.pm:781 ../Rpmdrake/pkg.pm:797
+#: ../Rpmdrake/pkg.pm:788 ../Rpmdrake/pkg.pm:804
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Itxaron, paketeak kentzen..."
 
-#: ../Rpmdrake/pkg.pm:810
+#: ../Rpmdrake/pkg.pm:817
 #, c-format
 msgid "Problem during removal"
 msgstr "Arazoa sortu da kentzean"
 
-#: ../Rpmdrake/pkg.pm:811
+#: ../Rpmdrake/pkg.pm:818
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
