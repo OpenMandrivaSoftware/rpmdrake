@@ -223,7 +223,6 @@ sub node_state {
                              N("Matching packages:"),
                              '',
                              join("\n", sort map {
-                                 warn ">> $_ => $pkgs->{$_} $pkgs->{$_}{pkg}\n";
                                  #-PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
                                  #-PO: eg: "- rpmdrake (medium: "Main Release"
                                  N("- %s (medium: %s)", $_, pkg2medium($pkgs->{$_}{pkg}, $urpm)->{name});
