@@ -60,7 +60,7 @@ dis: clean
 	rm -rf $(NAME)-$(VERSION)
 
 gui.lst:
-	urpmf "/usr/share/applications/.*.desktop" |sed -e 's!:.*!!' |sort|uniq>gui.lst
+	urpmf "/usr/share/(applnk|applications(|/kde))/.*.desktop" |sed -e 's!:.*!!' |sort|uniq>gui.lst
 
 .PHONY: ChangeLog log changelog
 
