@@ -1164,16 +1164,21 @@ sub run() {
     my $lock;
     {
         $urpm = fast_open_urpmi_db();
+        my $err_msg = "urpmdb locked\n";
         local $urpm->{fatal} = sub {
             interactive_msg('rpmdrake',
                             N("Packages database is locked. Please close other applications
 working with packages database (do you have another media
 manager on another desktop, or are you currently installing
 packages as well?)."));
-            myexit -1;
+            die $err_msg;
         };
         # lock urpmi DB
-        $lock = urpm::lock::urpmi_db($urpm, 'exclusive', wait => $urpm->{options}{wait_lock});
+        eval { $lock = urpm::lock::urpmi_db($urpm, 'exclusive', wait => $urpm->{options}{wait_lock}) };
+        if (my $err = $@) {
+            return if $err eq $err_msg;
+            die $err;
+        }
     }
 
     my $res = mainwindow();
