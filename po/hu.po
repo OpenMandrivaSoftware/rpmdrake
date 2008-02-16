@@ -11,14 +11,17 @@ msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-13 14:40+0100\n"
-"PO-Revision-Date: 2007-09-19 00:13+0200\n"
-"Last-Translator: Arpad Biro <biro_arpad@yahoo.com>\n"
-"Language-Team: Hungarian\n"
+"PO-Revision-Date: 2008-02-14 20:58+0100\n"
+"Last-Translator: Lónyai Gergely <alephlg@gmail.com>\n"
+"Language-Team: Hungarian <alephlg@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:780
 #, c-format
@@ -54,7 +57,7 @@ msgstr "Verzió"
 #: ../MandrivaUpdate:134 ../rpmdrake:247
 #, c-format
 msgid "Release"
-msgstr ""
+msgstr "Kiadás"
 
 #: ../MandrivaUpdate:135 ../rpmdrake:251
 #, c-format
@@ -135,16 +138,26 @@ msgid ""
 "set\n"
 "of sources."
 msgstr ""
+"A rendszer biztonságának és stabilitásának megőrzése végett, egy minimális, "
+"a\n"
+" biztonsági és stabilitási frissítéseket tartalmazó adatforrást ki kell "
+"választani, - amely\n"
+" kiegészíti az ön lemezeit. A másik lehetőség, hogy a teljes és hivatalos\n"
+" Mandriva csomagösszeállítás alapján végzi a frissítéseket. Ezzel mindig\n"
+" a legfrissebb csomagokhoz juthat hozzá, mintha csak a telepítési lemezeket\n"
+" használná. Kérjük válasszon, hogy csak frissítési adatforrásokat, vagy a "
+"teljes\n"
+" adatforrásokat szeretné használni."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:120
 #, c-format
 msgid "Full set of sources"
-msgstr ""
+msgstr "Teljes forráskészlet"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:120
 #, c-format
 msgid "Update sources only"
-msgstr ""
+msgstr "Csak frissítési forrás"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:126
 #, c-format
@@ -923,36 +936,34 @@ msgstr "Figyelmeztetés"
 #: ../Rpmdrake/gui.pm:219
 #, c-format
 msgid "The package \"%s\" was found."
-msgstr ""
+msgstr "A \"%s\" csomagot találtam."
 
 #: ../Rpmdrake/gui.pm:220
 #, c-format
 msgid "However this package is not in the package list."
-msgstr ""
+msgstr "Ezt a csomagot nem tartalmazza a csomaglista."
 
 #: ../Rpmdrake/gui.pm:221
 #, c-format
 msgid "You may want to update your urpmi database."
-msgstr ""
+msgstr "Lehet, hogy frissítenie kell az urpmi adatbázist."
 
 #: ../Rpmdrake/gui.pm:223
-#, fuzzy, c-format
+#, c-format
 msgid "Matching packages:"
-msgstr "Csomag"
+msgstr "Illeszkedő csomagok:"
 
 #. -PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
 #. -PO: eg: "- rpmdrake (medium: "Main Release"
 #: ../Rpmdrake/gui.pm:228
-#, fuzzy, c-format
+#, c-format
 msgid "- %s (medium: %s)"
-msgstr "%s a következő adatforrásból: %s"
+msgstr "- %s (adatforrás: %s)"
 
 #: ../Rpmdrake/gui.pm:427
-#, fuzzy, c-format
+#, c-format
 msgid "Removing package %s would break your system"
-msgstr ""
-"Ezen csomagok eltávolítása rendszerproblémákhoz vezetne:\n"
-"\n"
+msgstr "A %s csomag eltávolítása rendszerproblémákhoz vezet"
 
 #: ../Rpmdrake/gui.pm:432
 #, c-format
@@ -997,7 +1008,7 @@ msgstr "Információ a csomagokról"
 #: ../Rpmdrake/gui.pm:580
 #, c-format
 msgid "Checking dependencies of package..."
-msgstr ""
+msgstr "Csomagfüggőségek ellenőrzése..."
 
 #: ../Rpmdrake/gui.pm:587
 #, c-format
@@ -1963,12 +1974,12 @@ msgstr "Szeretne most felvenni médiaforrásokat?"
 #: ../Rpmdrake/pkg.pm:130
 #, c-format
 msgid "Getting information from XML meta-data from %s..."
-msgstr ""
+msgstr "Az XML adatok kinyerése a %s-ből..."
 
 #: ../Rpmdrake/pkg.pm:134
 #, c-format
 msgid "Getting '%s' from XML meta-data..."
-msgstr ""
+msgstr "'%s' megszerzése az XML adatokból..."
 
 #: ../Rpmdrake/pkg.pm:137 ../Rpmdrake/pkg.pm:307 ../Rpmdrake/pkg.pm:637
 #: ../Rpmdrake/pkg.pm:788 ../rpmdrake:119 ../rpmdrake.pm:329
@@ -1980,12 +1991,16 @@ msgstr "Kis türelmet..."
 #, c-format
 msgid "No xml info for medium \"%s\", only partial result for package %s"
 msgstr ""
+"Nincs xml információ a \"%s\" adatforráshoz, a %s csomagról csak részleges "
+"információit sikerült szerezni."
 
 #: ../Rpmdrake/pkg.pm:151
 #, c-format
 msgid ""
 "No xml info for medium \"%s\", unable to return any result for package %s"
 msgstr ""
+"Nincs xml információ a \"%s\" adatforráshoz, a %s csomag információit nem "
+"sikerült megszerezni."
 
 #: ../Rpmdrake/pkg.pm:203 ../Rpmdrake/pkg.pm:208
 #, c-format
@@ -2053,6 +2068,8 @@ msgid ""
 "You have no configured update media. MandrivaUpdate cannot operate without "
 "any update media."
 msgstr ""
+"Nincs frissítési adatforrás beállítva. A MandrivaUpdate nem működik "
+"frissítési média nélkül."
 
 #: ../Rpmdrake/pkg.pm:280 ../rpmdrake.pm:547
 #, c-format
@@ -2171,7 +2188,7 @@ msgstr "A telepítés sikertelen volt"
 #: ../Rpmdrake/pkg.pm:588
 #, c-format
 msgid "Checking validity of requested packages..."
-msgstr ""
+msgstr "Csomagok érvényességének ellenőrzése..."
 
 #: ../Rpmdrake/pkg.pm:599
 #, c-format
@@ -2296,7 +2313,7 @@ msgstr "Kijavíthatatlan hiba: nincs telepíthető csomag."
 #: ../Rpmdrake/pkg.pm:751
 #, c-format
 msgid "Inspecting configuration files..."
-msgstr ""
+msgstr "Konfigurációs fájlok vizsgálata..."
 
 #: ../Rpmdrake/pkg.pm:759
 #, c-format
@@ -2314,7 +2331,7 @@ msgstr ""
 #: ../Rpmdrake/pkg.pm:765
 #, c-format
 msgid "Looking for \"README\" files..."
-msgstr ""
+msgstr "Nézze meg a \"README\" fájlokat..."
 
 #: ../Rpmdrake/pkg.pm:788 ../Rpmdrake/pkg.pm:804
 #, c-format
@@ -2443,14 +2460,14 @@ msgid "Stop"
 msgstr "Leállítás"
 
 #: ../rpmdrake:126
-#, fuzzy, c-format
+#, c-format
 msgid "no xml-info available for medium \"%s\""
-msgstr "Az adatforráshoz tartozó fájl másolása: \"%s\"..."
+msgstr "A \"%s\" adatforráshoz nem tartozik xml-info"
 
 #: ../rpmdrake:142 ../rpmdrake:170
-#, fuzzy, c-format
+#, c-format
 msgid "Search aborted"
-msgstr "Keresési eredmény"
+msgstr "Keresés félbeszakítva"
 
 #: ../rpmdrake:183
 #, c-format
@@ -2540,14 +2557,14 @@ msgid "Backports"
 msgstr "Visszaportolt szoftver"
 
 #: ../rpmdrake:324
-#, fuzzy, c-format
+#, c-format
 msgid "Meta packages"
-msgstr "Csomag"
+msgstr "Alapcsomag"
 
 #: ../rpmdrake:325
 #, c-format
 msgid "Packages with GUI"
-msgstr ""
+msgstr "Csomagok GUI-val"
 
 #: ../rpmdrake:326
 #, c-format
