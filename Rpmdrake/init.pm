@@ -116,7 +116,7 @@ unless ($MODE) {
 }
 
 our $default_list_mode;
-$default_list_mode = 'all' if $MODE eq 'install';
+$default_list_mode = 'gui_pkgs' if $MODE eq 'install';
 if ($MODE eq 'remove') {
     $default_list_mode = 'installed';
 } elsif ($MODE eq 'update') {
