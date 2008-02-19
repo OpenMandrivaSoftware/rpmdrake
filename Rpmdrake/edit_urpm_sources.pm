@@ -137,6 +137,7 @@ Is it ok to continue?", $distro),
     ref $mirror or return;
     my $wait = wait_msg(N("Please wait, adding media..."));
     add_distrib_update_media($urpm, $mirror);
+    $offered_to_add_sources->[0] = 1;
     remove_wait_msg($wait);
     return 1;
 }
