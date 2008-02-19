@@ -386,7 +386,7 @@ sub options_callback() {
 			    $downl_radio[$i]->get_active
 				and $urpm->{global_config}{downloader} = $avail_downloaders[$i];
 			}
-               $something_changed = 1;
+                        $something_changed = 1;
 			urpm::media::write_config($urpm);
 			$urpm = fast_open_urpmi_db();
 			Gtk2->main_quit;
