@@ -333,12 +333,46 @@ sub options_callback() {
     my @verif_radio = gtkradio($verif_radio_infos[$urpm->{options}{'verify-rpm'} ? 0 : 1]{name}, map { $_->{name} } @verif_radio_infos);
     my @avail_downloaders = urpm::download::available_ftp_http_downloaders();
     my @downl_radio = gtkradio($urpm->{options}{downloader} || $avail_downloaders[0], @avail_downloaders);
+    my %xml_info_policies = (
+        'never'       => N("Never"), 
+        'on-demand'   => N("On-demand"), 
+        'update-only' => N("Update-only"), 
+        'always'      => N("Always"), 
+    );
+
     gtkadd(
 	$w->{window},
 	gtkpack(
 	    gtknew('VBox', spacing => 5),
 	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Verify RPMs to be installed:")), @verif_radio ]),
 	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Download program to use:")), @downl_radio ]),
+	    gtknew('HBox',
+                   children_loose =>
+                     [ gtknew('Label', text => N("XML metada download policy:")),
+                       gtknew('ComboBox',
+                              list => [ keys %xml_info_policies ], text_ref => \$urpm->{global_config}{'xml-info'},
+
+                              format => sub { $xml_info_policies{$_[0]} || $_[0] },
+                              tip => 
+                                join("\n",
+                                     N("For remote media, specify when XML meta-data (file lists, changelogs & informations) are downloaded."),
+                                     '',
+                                     N("Never"),
+                                     N("For remote media, XML meta-data are never downloaded."),
+                                     '',
+                                     N("On-demand"),
+                                     N("(This is the default)"),
+                                     N("The specific XML info file is downloaded when clicking on package."),
+                                     '',
+                                     N("Update-only"), 
+                                     N("Updating media implies updating XML info files already required at least once."),
+                                     '',
+                                     N("Always"),
+                                     N("All XML info files are downloaded when adding or updating media."),
+                                 ),
+                          ),
+                   ]),
+
 	    gtkpack(
 		gtknew('HButtonBox'),
 		gtknew('Button', text => N("Cancel"), clicked => sub { Gtk2->main_quit }),
