@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-13 14:40+0100\n"
-"PO-Revision-Date: 2007-09-19 23:14+0100\n"
+"PO-Revision-Date: 2008-01-31 21:27-0000\n"
 "Last-Translator: Rhoslyn Prys <post@meddal.com>\n"
 "Language-Team: Cymraeg/Welsh <post@meddal.com>\n"
 "MIME-Version: 1.0\n"
@@ -53,7 +53,7 @@ msgstr "Fersiwn "
 #: ../MandrivaUpdate:134 ../rpmdrake:247
 #, c-format
 msgid "Release"
-msgstr ""
+msgstr "Ryddhau"
 
 #: ../MandrivaUpdate:135 ../rpmdrake:251
 #, c-format
@@ -134,16 +134,25 @@ msgid ""
 "set\n"
 "of sources."
 msgstr ""
+"Er mwyn cadw eich system yn ddiogel a chadarn, rhaid gosod ffynonellau ar "
+"gyfer \n"
+"diweddariadau diogelwch a sefydlogrwydd. Gallwch hefyd ddewis i osod "
+"adnoddau\n"
+"ehangach sy'n cynnwys storfa swyddogol Mandriva, sy'n cynnig mwy o "
+"feddalwedd\n"
+"na all fynd ar ddisgiau Mandriva. Dewiswch p'un ai i ffurfweddu ffynonellau "
+"diweddaru\n"
+"yn unig neu'r set lawn o ffynonellau."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:120
 #, c-format
 msgid "Full set of sources"
-msgstr ""
+msgstr "Set lawn o ffynonellau"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:120
 #, c-format
 msgid "Update sources only"
-msgstr ""
+msgstr "Diweddaru ffynonellau'n unig"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:126
 #, c-format
@@ -933,7 +942,7 @@ msgstr ""
 #: ../Rpmdrake/gui.pm:223
 #, fuzzy, c-format
 msgid "Matching packages:"
-msgstr "Pecyn"
+msgstr "Gwybodaeth am becynnau"
 
 #. -PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
 #. -PO: eg: "- rpmdrake (medium: "Main Release"
@@ -943,11 +952,9 @@ msgid "- %s (medium: %s)"
 msgstr "%s o gyfrwng %s"
 
 #: ../Rpmdrake/gui.pm:427
-#, fuzzy, c-format
+#, c-format
 msgid "Removing package %s would break your system"
-msgstr ""
-"Bydd tynnu'r pecynnau hyn yn torri eich system, sori\n"
-"\n"
+msgstr "Bydd tynnu'r pecyn %s yn torri eich system"
 
 #: ../Rpmdrake/gui.pm:432
 #, c-format
@@ -992,7 +999,7 @@ msgstr "Gwybodaeth am becynnau"
 #: ../Rpmdrake/gui.pm:580
 #, c-format
 msgid "Checking dependencies of package..."
-msgstr ""
+msgstr "Gwirio dibyniaethau'r pecyn..."
 
 #: ../Rpmdrake/gui.pm:587
 #, c-format
@@ -1961,12 +1968,15 @@ msgstr "Arhoswch"
 #, c-format
 msgid "No xml info for medium \"%s\", only partial result for package %s"
 msgstr ""
+"Dim gwybodaeth xml ar gyfer cyfrwng \"%s\", dim ond canlyniad rhannol ar "
+"gyfer pecyn %s"
 
 #: ../Rpmdrake/pkg.pm:151
 #, c-format
 msgid ""
 "No xml info for medium \"%s\", unable to return any result for package %s"
 msgstr ""
+"Dim gwybodaeth xml ar gyfer cyfrwng \"%s\", dim canlyniad ar gyfer pecyn %s"
 
 #: ../Rpmdrake/pkg.pm:203 ../Rpmdrake/pkg.pm:208
 #, c-format
@@ -2034,6 +2044,8 @@ msgid ""
 "You have no configured update media. MandrivaUpdate cannot operate without "
 "any update media."
 msgstr ""
+"Nid oes gennych gyfrwng diweddaru wedi ei ffurfweddu. Nid yw MandrivaUpdate "
+"yn gallu gweithredu heb gyfrwng diweddaru."
 
 #: ../Rpmdrake/pkg.pm:280 ../rpmdrake.pm:547
 #, c-format
@@ -2152,7 +2164,7 @@ msgstr "Methodd y gosodiad"
 #: ../Rpmdrake/pkg.pm:588
 #, c-format
 msgid "Checking validity of requested packages..."
-msgstr ""
+msgstr "Gwirio dilysrwydd y pecynnau..."
 
 #: ../Rpmdrake/pkg.pm:599
 #, c-format
@@ -2182,7 +2194,7 @@ msgstr ""
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
 msgstr[0] "Mae'r pecyn canlynol yn mynd i gael ei osod:"
-msgstr[1] "Mae'r %s becyn canlynol yn mynd i gael eu gosod:"
+msgstr[1] "Mae'r %d pecyn canlynol yn mynd i gael eu gosod:"
 
 #: ../Rpmdrake/pkg.pm:622
 #, c-format
@@ -2273,7 +2285,7 @@ msgstr "Gwall anadferadwy: dim pecyn wedi ei ganfod ar gyfer y gosod."
 #: ../Rpmdrake/pkg.pm:751
 #, c-format
 msgid "Inspecting configuration files..."
-msgstr ""
+msgstr "Darllen ffeiliau ffurfweddu..."
 
 #: ../Rpmdrake/pkg.pm:759
 #, c-format
@@ -2291,7 +2303,7 @@ msgstr ""
 #: ../Rpmdrake/pkg.pm:765
 #, c-format
 msgid "Looking for \"README\" files..."
-msgstr ""
+msgstr "Chwilio am ffeiliau \"README\" ..."
 
 #: ../Rpmdrake/pkg.pm:788 ../Rpmdrake/pkg.pm:804
 #, c-format
@@ -3114,6 +3126,18 @@ msgstr "Ychwanegu cyfrwng urpmi"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Gwybodaeth cyfrwng urpmi"
+
+#, fuzzy
+#~ msgid "Never"
+#~ msgstr "byth"
+
+#, fuzzy
+#~ msgid "Update-only"
+#~ msgstr "Diweddaru"
+
+#, fuzzy
+#~ msgid "Always"
+#~ msgstr "bob tro"
 
 #~ msgid "Search"
 #~ msgstr "Chwilio"
