@@ -1001,6 +1001,8 @@ sub mainwindow() {
         $remove_button and $remove_button->set_sensitive($#rows != -1);
         # we can only edit/move one item at a time:
         $_ and $_->set_sensitive(@rows == 1) foreach $up_button, $dw_button, $edit_button;
+
+        # we can only up/down one item if not at begin/end:
         return if @rows != 1;
 	
         my $curr_path = $rows[0];
