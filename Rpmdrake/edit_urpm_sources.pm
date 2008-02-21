@@ -646,11 +646,16 @@ sub edit_parallel {
     local $::main_window = $w->{real_window};
     my $name_entry;
 
-    my $medias_ls = Gtk2::ListStore->new("Glib::String");
-    my $medias = Gtk2::TreeView->new_with_model($medias_ls);
-    $medias->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
-    $medias->set_headers_visible(0);
-    $medias->get_selection->set_mode('browse');
+    my ($medias_ls, $hosts_ls) = (Gtk2::ListStore->new("Glib::String"), Gtk2::ListStore->new("Glib::String"));
+
+    my ($medias, $hosts) = map {
+        my $list = Gtk2::TreeView->new_with_model($_);
+        $list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+        $list->set_headers_visible(0);
+        $list->get_selection->set_mode('browse');
+        $list;
+    } $medias_ls, $hosts_ls;
+
     $medias_ls->append_set([ 0 => $_ ]) foreach @{$edited->{medias}};
 
     my $add_media = sub {
@@ -687,11 +692,6 @@ sub edit_parallel {
         }
     };
 
-    my $hosts_ls = Gtk2::ListStore->new("Glib::String");
-    my $hosts = Gtk2::TreeView->new_with_model($hosts_ls);
-    $hosts->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
-    $hosts->set_headers_visible(0);
-    $hosts->get_selection->set_mode('browse');
     my $hosts_list;
     if    ($edited->{protocol} eq 'ssh')    { $hosts_list = [ split /:/, $edited->{command} ] }
     elsif ($edited->{protocol} eq 'ka-run') { push @$hosts_list, $1 while $edited->{command} =~ /-m (\S+)/g }
