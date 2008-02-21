@@ -512,8 +512,7 @@ sub mirrors {
                                     $res or do { c::set_tagged_utf8($res); die $res };
                                     return cat_($file);
                                 });
-    my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')),
-                                  ($want_base_distro ? 'distrib' : 'updates')) || [] };
+    my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')), 'distrib') || [] };
     require timezone;
     my $tz = ${timezone::read()}{timezone};
     foreach my $mirror (@mirrors) {
@@ -871,7 +870,6 @@ It will be disabled.",
 
 sub add_distrib_update_media {
     my ($urpm, $mirror, %options) = @_;
-    my $is_update = $mirror->{type} eq 'updates';
     #- ensure a unique medium name
     my $medium_name = $rpmdrake::mandrake_release =~ /(\d+\.\d+) \((\w+)\)/ ? $2 . $1 . '-' : 'distrib';
     my $initial_number = 1 + max map { $_->{name} =~ /\(\Q$medium_name\E(\d+)\b/ ? $1 : 0 } @{$urpm->{media}};
@@ -880,7 +878,6 @@ sub add_distrib_update_media {
         { nolock => 1, distrib => 1 },
         $medium_name, $mirror->{url}, probe_with => 'synthesis', initial_number => $initial_number, %options, 
         usedistrib => 1,
-        if_($is_update, only_updates => 1),
     );
 }
 

@@ -131,12 +131,11 @@ I need to contact the Mandriva website to get the mirror list.
 Please check that your network is currently running.
 
 Is it ok to continue?", $distro),
-	want_base_distro => $want_base_distro,
      transient => $::main_window,
     ) or return 0;
     ref $mirror or return;
     my $wait = wait_msg(N("Please wait, adding media..."));
-    add_distrib_update_media($urpm, $mirror);
+    add_distrib_update_media($urpm, $mirror, if_(!$want_base_distro, only_updates => 1));
     $offered_to_add_sources->[0] = 1;
     remove_wait_msg($wait);
     return 1;
