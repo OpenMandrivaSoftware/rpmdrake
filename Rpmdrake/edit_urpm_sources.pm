@@ -110,8 +110,6 @@ sub easy_add_callback() {
     # when called on early init by rpmdrake
     $urpm ||= fast_open_urpmi_db();
 
-    my $arch = arch();
-    $arch = 'i586' if $arch =~ /^i.86$/;
     #- cooker and community don't have update sources
     my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
@@ -122,16 +120,9 @@ repositories, giving you access to more software than can fit on the Mandriva
 discs. Please choose whether to configure update sources only, or the full set
 of sources."),
 	 transient => $::main_window,
-     if_($arch eq 'x86_64', widget => gtknew('HBox', children => [
-         0, gtknew('Label', text => "Architecture: "),
-         1, gtknew('ComboBox', text_ref => \$arch, list => [ arch(), 'i586' ]),
-     ]),
-     ),
 	yesno => 1, text => { yes => N("Full set of sources"), no => N("Update sources only") },
     ) : 1;
     my $distro = $rpmdrake::mandrake_release;
-    my $real_arch = arch();
-    $distro =~ s/$real_arch/$arch/;
     my ($mirror) = choose_mirror($urpm, message =>
 N("This will attempt to install all official sources corresponding to your
 distribution (%s).
@@ -142,7 +133,6 @@ Please check that your network is currently running.
 Is it ok to continue?", $distro),
 	want_base_distro => $want_base_distro,
      transient => $::main_window,
-     'arch' => $arch,
     ) or return 0;
     ref $mirror or return;
     my $wait = wait_msg(N("Please wait, adding media..."));
