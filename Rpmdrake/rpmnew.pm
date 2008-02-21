@@ -31,7 +31,6 @@ use Rpmdrake::init;
 use Rpmdrake::pkg;
 use Rpmdrake::open_db;
 use Rpmdrake::formatting;
-use File::MimeInfo::Magic;
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
 use Exporter;
@@ -132,7 +131,8 @@ sub inspect {
 	my %files = (file => $file, rpmnew => $rpmnew);
      foreach (keys %files) {
          gtktext_insert($texts{$_}, [ [ scalar(cat_($files{$_})), { 'font' => 'monospace' } ] ]);
-         my $mime_type = mimetype($files{$_});
+         require File::MimeInfo::Magic;
+         my $mime_type = File::MimeInfo::Magic::mimetype($files{$_});
          next if !$mime_type;
          my $lang = $lang_manager->get_language_from_mime_type($mime_type);
          my $buffer = $texts{$_}->get_buffer;
