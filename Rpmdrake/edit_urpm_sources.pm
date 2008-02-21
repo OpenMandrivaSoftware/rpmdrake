@@ -28,6 +28,7 @@ use lib qw(/usr/lib/libDrakX);
 use common;
 use rpmdrake;
 use Rpmdrake::open_db;
+use Rpmdrake::formatting;
 use URPM::Signature;
 use MDK::Common::Math qw(max);
 use urpm::media;
@@ -409,7 +410,7 @@ sub remove_callback() {
 	@rows == 1 ?
 	  N("Are you sure you want to remove source \"%s\"?", to_utf8($urpm->{media}[$rows[0]]{name})) :
 	    N("Are you sure you want to remove the following sources ?") . "\n\n\n" .
-	      join("\n\n", sort map { to_utf8($urpm->{media}[$_]{name}) } @rows),
+	      format_list(map { to_utf8($urpm->{media}[$_]{name}) . "\n" } @rows),
 	yesno => 1,
 	 transient => $::main_window,
     ) or return;
