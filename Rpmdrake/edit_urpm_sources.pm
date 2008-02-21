@@ -142,7 +142,7 @@ Please check that your network is currently running.
 Is it ok to continue?", $distro),
 	want_base_distro => $want_base_distro,
      transient => $::main_window,
-     arch => $arch,
+     'arch' => $arch,
     ) or return 0;
     ref $mirror or return;
     my $wait = wait_msg(N("Please wait, adding media..."));
@@ -1001,7 +1001,7 @@ sub mainwindow() {
         $remove_button and $remove_button->set_sensitive($#rows != -1);
         # we can only edit/move one item at a time:
         $_ and $_->set_sensitive(@rows == 1) foreach $up_button, $dw_button, $edit_button;
-        return if !$#rows == 0;
+        return if @rows != 1;
 	
         my $curr_path = $rows[0];
         my $first_path = $model->get_path($model->get_iter_first);
@@ -1037,7 +1037,6 @@ sub mainwindow() {
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Type"), Gtk2::CellRendererText->new, 'text' => $col{mainw}{type}));
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => $col{mainw}{name}));
 
-    $reread_media; #- closure defined later
     $tr->signal_connect(
 	toggled => sub {
 	    my (undef, $path) = @_;

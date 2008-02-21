@@ -525,7 +525,7 @@ sub perform_parallel_install {
     my $temp = chomp_(`mktemp /tmp/rpmdrake.XXXXXXXX`);
     -e $temp or die N("Could not create temporary directory '%s'", $temp);
 
-    my $res = !run_program::get_stderr('urpmi', '2>', $temp, '-v', '--X', '--parallel', $group, @pkgs);
+    my $res = !run_program::run('urpmi', '2>', $temp, '-v', '--X', '--parallel', $group, @pkgs);
     my @error_msgs = cat_($temp);
 
     if ($res) {
@@ -704,7 +704,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  local $::main_window = $gurpm->{mainw}{real_window};
                                  $msg =~ s/:$/\n\n/m; # FIXME: to be fixed in urpmi after 2008.0
                                  interactive_msg(
-                                     N("Warning"), "$msg\n\n$msg2", yesno => 1, if_(10 < $msg =~ tr/\n/\n/, scroll => 1),
+                                     N("Warning"), "$msg\n\n$msg2", yesno => 1, if_(10 < ($msg =~ tr/\n/\n/), scroll => 1),
                                  ) or goto return_with_exit_code;
                              },
                              post_download => sub {

@@ -115,8 +115,8 @@ our $spacing = "        ";
 sub format_changelog_string {
     my ($installed_version, $string) = @_;
     #- preprocess changelog for faster TextView insert reaction
-    my %date_attr = ( 'weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD );
-    my %update_attr = ( 'style' => 'italic');
+    my %date_attr = ('weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD);
+    my %update_attr = ('style' => 'italic');
     my $version;
     my $highlight;
     [ map {
@@ -127,7 +127,7 @@ sub format_changelog_string {
             $highlight = $installed_version ne N("(none)") && 0 < URPM::rpmvercmp($version, $installed_version);
         }
         add2hash(\%attrs, \%update_attr) if $highlight;
-        [ "$spacing$_\n", if_(%attrs, \%attrs) ]
+        [ "$spacing$_\n", if_(%attrs, \%attrs) ];
     } split("\n", $string) ];
 }
 

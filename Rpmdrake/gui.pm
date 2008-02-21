@@ -159,7 +159,7 @@ sub format_pkg_simplifiedinfo {
                                                                         join("\n$spacing", 
                                                                              map { "\x{200e}$_" } @{$pkg->{files}}
                                                                          ) . '</tt>') #- to highlight information
-                                         : ()}) ];
+                                         : () }) ];
     push @$s, [ "\n\n" ];
     push @$s, [ build_expander($pkg, N("Changelog:"), 'changelog',  sub { $pkg->{changelog} }, $installed_version) ];
     $s;
@@ -394,7 +394,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	    @{$ptree{$_}} = difference2($ptree{$_}, \@to_remove);
 	}
 	if (exists $wtree{$cat}) {
-	    my $iter_str = $w->{tree_model}->get_path_str($wtree{$cat});
+	    my $_iter_str = $w->{tree_model}->get_path_str($wtree{$cat});
 	    $w->{tree_model}->remove($wtree{$cat});
 	    delete $wtree{$cat};
 	}
@@ -517,7 +517,7 @@ sub is_locale_available {
 
 sub callback_choices {
     my (undef, undef, undef, $choices) = @_;
-    return $choices->[0] if $::rpmdrake_options{'auto'};
+    return $choices->[0] if $::rpmdrake_options{auto};
     foreach my $pkg (@$choices) {
         foreach ($pkg->requires_nosense) {
             /locales-/ or next;
