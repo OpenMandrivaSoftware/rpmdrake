@@ -40,6 +40,7 @@ our @EXPORT = qw(
                     format_changelog_string
                     format_field
                     format_header
+                    formatlistpkg
                     format_name_n_summary
                     format_size
                     format_update_field
@@ -163,5 +164,7 @@ sub format_size {
       N("%s of additional disk space will be used.", formatXiB($size)) :
         N("%s of disk space will be freed.", formatXiB(-$size));
  }
+
+sub formatlistpkg { join("\n", map { s/^(\s)/  $1/mg; "- $_" } sort { uc($a) cmp uc($b) } @_) }
 
 1;

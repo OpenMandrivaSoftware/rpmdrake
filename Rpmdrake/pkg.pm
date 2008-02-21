@@ -52,7 +52,6 @@ our @EXPORT = qw(
                     download_callback
                     extract_header
                     find_installed_version
-                    formatlistpkg
                     get_pkgs
                     parse_compssUsers_flat
                     perform_installation
@@ -192,8 +191,6 @@ sub find_installed_version {
     open_rpm_db()->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version . '-' . $_[0]->release });
     @version ? join(',', sort @version) : N("(none)");
 }
-
-sub formatlistpkg { join("\n", map { s/^(\s)/  $1/mg; "- $_" } sort { uc($a) cmp uc($b) } @_) }
 
 my $canceled;
 sub download_callback {
