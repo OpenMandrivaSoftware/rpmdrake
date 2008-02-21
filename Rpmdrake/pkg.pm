@@ -522,11 +522,9 @@ sub display_READMEs_if_needed {
 sub perform_parallel_install {
     my ($urpm, $group, $w, $statusbar_msg_id) = @_;
     my @pkgs = map { if_($_->flag_requested, urpm_name($_)) } @{$urpm->{depslist}};
-    my $temp = chomp_(`mktemp /tmp/rpmdrake.XXXXXXXX`);
-    -e $temp or die N("Could not create temporary directory '%s'", $temp);
 
-    my $res = !run_program::run('urpmi', '2>', $temp, '-v', '--X', '--parallel', $group, @pkgs);
-    my @error_msgs = cat_($temp);
+    my @error_msgs;
+    my $res = !run_program::run('urpmi', '2>', \@error_msgs, '-v', '--X', '--parallel', $group, @pkgs);
 
     if ($res) {
         $$statusbar_msg_id = statusbar_msg(
