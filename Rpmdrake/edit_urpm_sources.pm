@@ -199,12 +199,6 @@ sub add_callback() {
 	    } ([ 'login', N("Login:"), 1 ], [ 'pass', N("Password:"), 0 ]);
 	};
 	$pages{$info->{name}} = $count_nbs++;
-	my $with_hdlist_checkbut_entry;
-	$with_hdlist_checkbut_entry = $checkbut_entry->(
-	    'hdlist', N("Relative path to synthesis/hdlist:"), 1,
-	    sub { $info->{distrib_check} and $_[0]->get_active and $info->{distrib_check}->set_active(0) },
-	    N("If left blank, synthesis/hdlist will be automatically probed"),
-	);
 	$notebook->append_page(
 	    gtkshow(create_packtable(
 		{ xpadding => 0, ypadding => 0 },
@@ -212,7 +206,6 @@ sub add_callback() {
 		    $info->{name_entry} = gtkentry('') ],
 		[ gtkset_alignment(gtknew('Label', text => $info->{url}), 0, 0.5),
 		    $url_entry->() ],
-		$with_hdlist_checkbut_entry,
 		if_($info->{loginpass}, $loginpass_entries->()),
 		sub {
 		    [ gtksignal_connect(
@@ -461,7 +454,7 @@ sub edit_callback() {
     my $old_main_window = $::main_window;
     my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1,  transient => $::main_window);
     local $::main_window = $w->{real_window};
-    my ($url_entry, $hdlist_entry, $downloader_entry, $url, $with_hdlist, $downloader);
+    my ($url_entry, $downloader_entry, $url, $downloader);
     gtkadd(
 	$w->{window},
 	gtkpack_(
@@ -470,7 +463,6 @@ sub edit_callback() {
 	    0, create_packtable(
 		{},
 		[ gtknew('Label_Left', text => N("URL:")), $url_entry = gtkentry($verbatim_medium->{url}) ],
-		[ gtknew('Label_Left', text => N("Relative path to synthesis/hdlist:")), $hdlist_entry = gtkentry($verbatim_medium->{with_hdlist}) ],
 		[ gtknew('Label_Left', text => N("Downloader:")),
             my $download_combo = Gtk2::ComboBox->new_with_strings([ urpm::download::available_ftp_http_downloaders() ],
                                                                   $verbatim_medium->{downloader} || '') ],
@@ -486,7 +478,7 @@ sub edit_callback() {
 		    gtknew('Button', text => N("Save changes")),
 		    clicked => sub {
 			$w->{retval} = 1;
-			($url, $with_hdlist) = ($url_entry->get_text, $hdlist_entry->get_text);
+			$url = $url_entry->get_text;
 			$downloader = $downloader_entry->get_text;
 			Gtk2->main_quit;
 		    },
@@ -516,7 +508,6 @@ sub edit_callback() {
          put_in_hash($media, {
              url => $url,
              name => $name,
-             with_hdlist => $with_hdlist,
              update => $update,
              proxy => $saved_proxy,
              downloader => $downloader,
@@ -527,7 +518,7 @@ sub edit_callback() {
          update_sources_noninteractive($urpm, [ media => $name ], transient => $::main_window, nolock => 1);
      } else {
          urpm::media::remove_selected_media($urpm);
-         add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, $with_hdlist, update => $update, if_($downloader, downloader => $downloader));
+         add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, undef, update => $update, if_($downloader, downloader => $downloader));
      }
 	return $name;
     }
