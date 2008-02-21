@@ -319,13 +319,10 @@ really want to replace it?"), yesno => 1) or return 0;
 sub options_callback() {
     my $w = ugtk2->new(N("Global options for package installation"), grab => 1, center => 1,  transient => $::main_window);
     local $::main_window = $w->{real_window};
-    my @verif_radio_infos = (
-	{ name => N("always"), value => 1 },
-	{ name => N("never"),  value => 0 },
-    );
-    my @verif_radio = gtkradio($verif_radio_infos[$urpm->{options}{'verify-rpm'} ? 0 : 1]{name}, map { $_->{name} } @verif_radio_infos);
+    my %verif = (0 => N("never"), 1 => N("always"));
+    my $verify_rpm = $urpm->{global_config}{'verify-rpm'};
     my @avail_downloaders = urpm::download::available_ftp_http_downloaders();
-    my @downl_radio = gtkradio($urpm->{options}{downloader} || $avail_downloaders[0], @avail_downloaders);
+    my $downloader = $urpm->{global_config}{downloader} || $avail_downloaders[0];
     my %xml_info_policies = (
         'never'       => N("Never"), 
         'on-demand'   => N("On-demand"), 
@@ -337,8 +334,16 @@ sub options_callback() {
 	$w->{window},
 	gtkpack(
 	    gtknew('VBox', spacing => 5),
-	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Verify RPMs to be installed:")), @verif_radio ]),
-	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Download program to use:")), @downl_radio ]),
+	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Verify RPMs to be installed:")),
+                                               gtknew('ComboBox', list => [ keys %verif ], text_ref => \$verify_rpm,
+                                                      format => sub { $verif{$_[0]} || $_[0] },
+                                                  )
+                                           ]),
+	    gtknew('HBox', children_loose => [ gtknew('Label', text => N("Download program to use:")),
+                                               gtknew('ComboBox', list => \@avail_downloaders, text_ref => \$downloader,
+                                                      format => sub { $verif{$_[0]} || $_[0] },
+                                                  )
+                                           ]),
 	    gtknew('HBox',
                    children_loose =>
                      [ gtknew('Label', text => N("XML metada download policy:")),
@@ -371,14 +376,8 @@ sub options_callback() {
 		gtknew('Button', text => N("Cancel"), clicked => sub { Gtk2->main_quit }),
 		gtksignal_connect(
 		    gtknew('Button', text => N("Ok")), clicked => sub {
-			foreach my $i (0 .. $#verif_radio) {
-			    $verif_radio[$i]->get_active
-				and $urpm->{global_config}{'verify-rpm'} = $verif_radio_infos[$i]{value};
-			}
-			foreach my $i (0 .. $#downl_radio) {
-			    $downl_radio[$i]->get_active
-				and $urpm->{global_config}{downloader} = $avail_downloaders[$i];
-			}
+                        $urpm->{global_config}{'verify-rpm'} = $verify_rpm;
+                        $urpm->{global_config}{downloader} = $downloader;
                         $something_changed = 1;
 			urpm::media::write_config($urpm);
 			$urpm = fast_open_urpmi_db();
