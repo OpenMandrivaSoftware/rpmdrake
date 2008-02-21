@@ -29,7 +29,6 @@ use common;
 use rpmdrake;
 use Rpmdrake::open_db;
 use URPM::Signature;
-use POSIX qw(_exit);
 use MDK::Common::Math qw(max);
 use urpm::media;
 use urpm::download;
