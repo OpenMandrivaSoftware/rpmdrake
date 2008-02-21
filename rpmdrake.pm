@@ -887,7 +887,7 @@ sub add_distrib_update_media {
 sub open_help {
     my ($mode) = @_;
     use run_program;
-    run_program::raw({ detach => 1 }, 'drakhelp', '--id', "software-management-$mode");
+    run_program::raw({ detach => 1 }, 'drakhelp', '--id', $mode ?  "software-management-$mode" : 'software-management');
     N("Help launched in background");
     statusbar_msg(N("The help window has been started, it should appear shortly on your desktop."), 1);
 }

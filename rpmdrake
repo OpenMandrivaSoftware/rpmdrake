@@ -468,7 +468,7 @@ sub run_treeview_dialog {
 	),
 	[ N("/_Help"), undef, undef, undef, '<Branch>' ],
      [ N("/_Help") . N("/_Report Bug"), undef, sub { run_program::raw({ detach => 1 }, 'drakbug', '--report', 'rpmdrake') }, undef, '<Item>' ],
-	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help($MODE) }, undef, '<Item>' ],
+	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help('') }, undef, '<Item>' ],
      [ N("/_Help") . N("/_About..."), undef, sub {
          my $license = formatAlaTeX(translate($::license));
          $license =~ s/\n/\n\n/sg; # nicer formatting
