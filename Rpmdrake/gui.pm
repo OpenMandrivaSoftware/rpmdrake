@@ -540,7 +540,7 @@ sub deps_msg {
       deps_msg_again:
         my $results = interactive_msg(
             $title, $msg .
-              formatlistpkg(map { scalar(urpm::select::translate_why_removed_one($urpm, $urpm->{state}, $_)) } @deps)
+              format_list(map { scalar(urpm::select::translate_why_removed_one($urpm, $urpm->{state}, $_)) } @deps)
                 . "\n\n" . format_size($urpm->selected_size($urpm->{state})),
             yesno => [ N("Cancel"), N("More info"), N("Ok") ],
             scroll => 1,
@@ -593,7 +593,7 @@ sub toggle_nodes {
             }
             @impossible_to_remove and interactive_msg(N("Some packages can't be removed"),
                                                       N("Removing these packages would break your system, sorry:\n\n") .
-                                                        formatlistpkg(@impossible_to_remove));
+                                                        format_list(@impossible_to_remove));
             @nodes_with_deps = difference2(\@nodes_with_deps, \@impossible_to_remove);
         } else {
             slow_func($widget,
@@ -653,8 +653,8 @@ sub toggle_nodes {
                 interactive_msg(
                     ($count == 1 ? N("One package cannot be installed") : N("Some packages can't be installed")),
 		    ($count == 1 ? 
-                 N("Sorry, the following package cannot be selected:\n\n%s", formatlistpkg(@reasons))
-                   : N("Sorry, the following packages can't be selected:\n\n%s", formatlistpkg(@reasons))),
+                 N("Sorry, the following package cannot be selected:\n\n%s", format_list(@reasons))
+                   : N("Sorry, the following packages can't be selected:\n\n%s", format_list(@reasons))),
                     scroll => 1,
                 );
                 foreach (@cant) {
