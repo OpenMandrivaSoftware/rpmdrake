@@ -95,6 +95,16 @@ sub remove_row {
     $model->remove($iter);
 }
 
+sub remove_from_list {
+    my ($list, $list_ref, $model) = @_;
+    my $row = selrow($list);
+    if ($row != -1) {
+        splice @$list_ref, $row, 1;
+        remove_row($model, $row);
+    }
+
+}
+
 sub easy_add_callback() {
     # when called on early init by rpmdrake
     $urpm ||= fast_open_urpmi_db();
@@ -676,13 +686,6 @@ sub edit_parallel {
             push @{$edited->{medias}}, $media;
         }
     };
-    my $remove_media = sub {
-        my $row = selrow($medias);
-        if ($row != -1) {
-            splice @{$edited->{medias}}, $row, 1;
-            remove_row($medias_ls, $row);
-        }
-    };
 
     my $hosts_ls = Gtk2::ListStore->new("Glib::String");
     my $hosts = Gtk2::TreeView->new_with_model($hosts_ls);
@@ -716,13 +719,6 @@ sub edit_parallel {
             push @$hosts_list, $value;
         }
     };
-    my $remove_host = sub {
-        my $row = selrow($hosts);
-        if ($row != -1) {
-            splice @$hosts_list, $row, 1;
-            remove_row($hosts_ls, $row);
-        }
-    };
 
     my @protocols_names = qw(ka-run ssh);
     my @protocols;
@@ -745,14 +741,18 @@ sub edit_parallel {
 			gtknew('ScrolledWindow', h_policy => 'never', child => $medias)),
 		    0, gtknew('VBox', children_tight => [
 			gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_media->() }),
-			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_media->() }) ]) ]) ],
+			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub {
+                                              remove_from_list($medias, $edited->{medias}, $medias_ls);
+                                          }) ]) ]) ],
 		[ N("Hosts:"),
 		gtknew('HBox', spacing => 5, children => [
 		    1, gtknew('Frame', shadow_type => 'in', child => 
 			gtknew('ScrolledWindow', h_policy => 'never', child => $hosts)),
 		    0, gtknew('VBox', children_tight => [
 			gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_host->() }),
-			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub { $remove_host->() }) ]) ]) ]
+			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub {
+                                              remove_from_list($hosts, $hosts_list, $hosts_ls);
+                                          }) ]) ]) ]
 	    ),
 	    0, gtknew('HSeparator'),
 	    0, gtkpack(
