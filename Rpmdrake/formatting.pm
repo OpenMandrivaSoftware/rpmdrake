@@ -101,6 +101,7 @@ sub pkg2medium {
     URPM::pkg2media($urpm->{media}, $p) || undef;
 }
 
+# [ duplicate urpmi's urpm::msg::localtime2changelog() ]
 #- strftime returns a string in the locale charset encoding;
 #- but gtk2 requires UTF-8, so we use to_utf8() to ensure the
 #- output of localtime2changelog() is always in UTF-8
