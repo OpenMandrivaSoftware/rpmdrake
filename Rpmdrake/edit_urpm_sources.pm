@@ -329,6 +329,7 @@ sub options_callback() {
         'update-only' => N("Update-only"), 
         'always'      => N("Always"), 
     );
+    my $xml_info_policy = $urpm->{global_config}{'xml-info'};
 
     gtkadd(
 	$w->{window},
@@ -348,7 +349,7 @@ sub options_callback() {
                    children_loose =>
                      [ gtknew('Label', text => N("XML metada download policy:")),
                        gtknew('ComboBox',
-                              list => [ keys %xml_info_policies ], text_ref => \$urpm->{global_config}{'xml-info'},
+                              list => [ keys %xml_info_policies ], text_ref => \$xml_info_policy,
 
                               format => sub { $xml_info_policies{$_[0]} || $_[0] },
                               tip => 
@@ -378,6 +379,7 @@ sub options_callback() {
 		    gtknew('Button', text => N("Ok")), clicked => sub {
                         $urpm->{global_config}{'verify-rpm'} = $verify_rpm;
                         $urpm->{global_config}{downloader} = $downloader;
+                        $urpm->{global_config}{'xml-info'} = $xml_info_policy;
                         $something_changed = 1;
 			urpm::media::write_config($urpm);
 			$urpm = fast_open_urpmi_db();
