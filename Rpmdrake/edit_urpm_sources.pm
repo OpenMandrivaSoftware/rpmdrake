@@ -639,6 +639,27 @@ sub remove_parallel {
     }
 }
 
+sub add_callback_ {
+    my ($title, $label, $mainw, $widget, $get_value, $check) = @_;
+    my $w = ugtk2->new($title, grab => 1,  transient => $mainw->{real_window});
+    local $::main_window = $w->{real_window};
+    gtkadd(
+        $w->{window},
+        gtkpack__(
+            gtknew('VBox', spacing => 5),
+            gtknew('Label', text => $label),
+            $widget,
+            gtknew('HSeparator'),
+            gtkpack(
+                gtknew('HButtonBox'),
+                gtknew('Button', text => N("Ok"), clicked => sub { $w->{retval} = 1; $get_value->(); Gtk2->main_quit }),
+                gtknew('Button', text => N("Cancel"), clicked => sub { $w->{retval} = 0; Gtk2->main_quit })
+            )
+        )
+    );
+    $check->() if $w->main;
+}
+
 sub edit_parallel {
     my ($num, $conf) = @_;
     my $edited = $num == -1 ? {} : $conf->[$num];
@@ -659,8 +680,6 @@ sub edit_parallel {
     $medias_ls->append_set([ 0 => $_ ]) foreach @{$edited->{medias}};
 
     my $add_media = sub {
-        my $w = ugtk2->new(N("Add a medium limit"), grab => 1,  transient => $mainw->{real_window});
-        local $::main_window = $w->{real_window};
         my $medias_list_ls = Gtk2::ListStore->new("Glib::String");
         my $medias_list = Gtk2::TreeView->new_with_model($medias_list_ls);
         $medias_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
@@ -668,28 +687,15 @@ sub edit_parallel {
         $medias_list->get_selection->set_mode('browse');
         $medias_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
         my $sel;
-        gtkadd(
-	    $w->{window},
-	    gtkpack__(
-		gtknew('VBox', spacing => 5),
-		gtknew('Label', text => N("Choose a medium for adding in the media limit:")),
-		$medias_list,
-		gtknew('HSeparator'),
-		gtkpack(
-		    gtknew('HButtonBox'),
-		    gtksignal_connect(
-			gtknew('Button', text => N("Ok")),
-			clicked => sub { $w->{retval} = 1; $sel = selrow($medias_list); Gtk2->main_quit },
-		    ),
-		    gtknew('Button', text => N("Cancel"), clicked => sub { $w->{retval} = 0; Gtk2->main_quit })
-		)
-	    )
-	);
-        if ($w->main && $sel != -1) {
-            my $media = ${$urpm->{media}}[$sel]{name};
-            $medias_ls->append_set([ 0 => $media ]);
-            push @{$edited->{medias}}, $media;
-        }
+        add_callback_(N("Add a medium limit"), N("Choose a medium for adding in the media limit:"),
+                      $w, $medias_list, sub { $sel = selrow($medias_list) },
+                      sub {
+                          return if $sel == -1;
+                          my $media = ${$urpm->{media}}[$sel]{name};
+                          $medias_ls->append_set([ 0 => $media ]);
+                          push @{$edited->{medias}}, $media;
+                      }
+                  );
     };
 
     my $hosts_list;
@@ -697,27 +703,11 @@ sub edit_parallel {
     elsif ($edited->{protocol} eq 'ka-run') { push @$hosts_list, $1 while $edited->{command} =~ /-m (\S+)/g }
     $hosts_ls->append_set([ 0 => $_ ]) foreach @$hosts_list;
     my $add_host = sub {
-        my $w = ugtk2->new(N("Add a host"), grab => 1,  transient => $mainw->{real_window});
-        local $::main_window = $w->{real_window};
         my ($entry, $value);
-	gtkadd(
-	    $w->{window},
-	    gtkpack__(
-		gtknew('VBox', spacing => 5),
-		gtknew('Label', text => N("Type in the hostname or IP address of the host to add:")),
-		$entry = gtkentry(),
-		gtknew('HSeparator'),
-		gtkpack(
-		    gtknew('HButtonBox'),
-		    gtknew('Button', text => N("Ok"), clicked => sub { $w->{retval} = 1; $value = $entry->get_text; Gtk2->main_quit }),
-		    gtknew('Button', text => N("Cancel"), clicked => sub { $w->{retval} = 0; Gtk2->main_quit })
-		)
-	    )
-	);
-        if ($w->main) {
-            $hosts_ls->append_set([ 0 => $value ]);
-            push @$hosts_list, $value;
-        }
+        add_callback_(N("Add a host"), N("Type in the hostname or IP address of the host to add:"),
+                      $mainw, $entry = gtkentry(), sub { $value = $entry->get_text },
+                      sub { $hosts_ls->append_set([ 0 => $value ]); push @$hosts_list, $value }
+                  );
     };
 
     my @protocols_names = qw(ka-run ssh);
@@ -888,8 +878,6 @@ sub keys_callback() {
     });
 
     my $add_key = sub {
-        my $w_add = ugtk2->new(N("Add a key"), grab => 1,  transient => $w->{real_window});
-        local $::main_window = $w->{real_window};
         my $available_keyz_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
         my $available_keyz = Gtk2::TreeView->new_with_model($available_keyz_ls);
         $available_keyz->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
@@ -897,32 +885,19 @@ sub keys_callback() {
         $available_keyz->get_selection->set_mode('browse');
         $available_keyz_ls->append_set([ 0 => sprintf("%s (%s)", $_, $key_name->($_)), 1 => $_ ]) foreach keys %{$urpm->{keys}};
         my $key;
-	gtkadd(
-	    $w_add->{window},
-	    gtkpack__(
-		gtknew('VBox', spacing => 5),
-		gtknew('Label', text => N("Choose a key for adding to the medium %s", $current_medium)),
-		$available_keyz,
-		gtknew('HSeparator'),
-		gtkpack(
-		    gtknew('HButtonBox'),
-		    gtksignal_connect(
-			gtknew('Button', text => N("Close")),
-			clicked => sub {
-			    my ($model, $iter) = $available_keyz->get_selection->get_selected;
-			    $model && $iter and $key = $model->get($iter, 1);
-			    Gtk2->main_quit;
-			},
-		    ),
-		    gtknew('Button', text => N("Cancel"), clicked => sub { Gtk2->main_quit })
-		)
-	    )
-	);
-        $w_add->main;
-        if (defined $key) {
-            $urpm->{media}[$current_medium_nb]{'key-ids'} = join(',', sort(uniq(@{$keys[$current_medium_nb]}, $key)));
-            $write->();
-        }
+        add_callback_(N("Add a key"), N("Choose a key for adding to the medium %s", $current_medium), $w, $available_keyz,
+                      sub {
+                          my ($model, $iter) = $available_keyz->get_selection->get_selected;
+                          $model && $iter and $key = $model->get($iter, 1);
+                      },
+                      sub {
+                          return if !defined $key;
+                          $urpm->{media}[$current_medium_nb]{'key-ids'} = join(',', sort(uniq(@{$keys[$current_medium_nb]}, $key)));
+                          $write->();
+                      }
+                  );
+
+
     };
 
     my $remove_key = sub {
