@@ -55,7 +55,6 @@ our @EXPORT = qw(
     $typical_width
     add_distrib_update_media
     distro_type
-    to_utf8
     myexit
     readconf
     writeconf
@@ -134,13 +133,6 @@ $urpm::download::PROMPT_PROXY = new rpmdrake::prompt(
     undef,
     [ 0, 1 ],
 );
-
-sub to_utf8 {
-    foreach (@_) {
-        $_ = common::to_utf8($_);
-    }
-    wantarray() ? @_ : $_[0];
-}
 
 sub myexit {
     writeconf();
