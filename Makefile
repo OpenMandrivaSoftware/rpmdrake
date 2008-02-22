@@ -11,7 +11,7 @@ RELATIVE_SBIN = ../sbin
 RPM=$(shell rpm --eval %_topdir)
 PERL_VENDORLIB=$(DESTDIR)/$(shell perl -V:installvendorlib   | perl -pi -e "s/.*=//; s/[;']//g")
 
-all: dirs gui.lst
+all: dirs
 
 dirs:
 	@for n in . $(DIRS); do \
