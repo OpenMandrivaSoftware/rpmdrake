@@ -501,7 +501,7 @@ sub compat_arch_for_updates($) {
 sub mirrors {
     my ($urpm, $want_base_distro) = @_;
     my $cachedir = $urpm->{cachedir} || '/root';
-    use mirror;
+    require mirror;
     mirror::register_downloader(sub {
                                     my ($url) = @_;
                                     my $file = $url;
