@@ -211,7 +211,6 @@ sub add_callback() {
 			    $info->{distrib_check} = $cb1 = gtknew('CheckButton', text => N("Create media for a whole distribution")),
 			    clicked => sub {
 				if ($_[0]->get_active) {
-				    $info->{hdlist_entry}->set_sensitive(0);
 				    $info->{hdlist_check}->set_active(0);
 				}
 			    },
@@ -240,7 +239,7 @@ really want to replace it?"), yesno => 1) or return 0;
     };
 
     my $type = 'local';
-    my ($probe, %i, %make_url);
+    my (%i, %make_url);
     gtkadd(
 	$w->{window},
 	gtkpack(
@@ -266,7 +265,6 @@ really want to replace it?"), yesno => 1) or return 0;
 			    %i = (
 				name => $info->{name_entry}->get_text,
 				url => $info->{url_entry}->get_text,
-				hdlist => $info->{hdlist_entry}->get_text,
 				distrib => $info->{distrib_check} ? $info->{distrib_check}->get_active : 0,
 				update => $info->{update_check}->get_active ? 1 : undef,
 			    );
@@ -282,7 +280,6 @@ really want to replace it?"), yesno => 1) or return 0;
 				    ? ($info->{login_entry}->get_text . ':' . $info->{pass_entry}->get_text . '@')
 				    : '',
 				$i{url};
-			    $probe = $info->{hdlist_check}->get_active == 0 || $i{hdlist} eq '';
 			    Gtk2->main_quit;
 			}
 		    },
@@ -306,7 +303,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    }
 	    add_medium_and_check(
 		$urpm,
-		{ probe_with => $probe, nolock => 1 },
+		{ nolock => 1 },
 		$i{name}, $make_url{$type}, $i{hdlist}, update => $i{update},
 	    );
 	}
