@@ -2,14 +2,14 @@
 # Copyright (C) 1999, 2003 Free Software Foundation, Inc.
 # Copyright (C) 1999 Mandriva
 # Riho Kurg <rx@linux.ee>, 1999-2000
-# Marek Laane <bald@starman.ee>, 2003-2007
+# Marek Laane <bald@starman.ee>, 2003-2008
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-22 21:02+0100\n"
-"PO-Revision-Date: 2007-09-19 00:10+0200\n"
+"PO-Revision-Date: 2008-02-22 21:17+0200\n"
 "Last-Translator: Marek Laane <bald@starman.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr "Versioon"
 #: ../MandrivaUpdate:134 ../rpmdrake:248
 #, c-format
 msgid "Release"
-msgstr ""
+msgstr "Väljalase"
 
 #: ../MandrivaUpdate:135 ../rpmdrake:252
 #, c-format
@@ -133,16 +133,21 @@ msgid ""
 "set\n"
 "of sources."
 msgstr ""
+"Et Teie süsteem oleks turvaline ja stabiilne, tuleb määrata vähemalt\n"
+"ametlike turva- ja stabiilsete uuenduste allikad. Samuti võib valida kõik\n"
+"allikad, mis tähendab kõiki ametlikke Mandriva hoidlaid. See võimaldab\n"
+"paigaldada palju rohkem tarkvara, kui mahub Mandriva plaatidele. Palun\n"
+"valige, kas määrata ainult uuendusallikad või kõik allikad."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:123
 #, c-format
 msgid "Full set of sources"
-msgstr ""
+msgstr "Kõik allikad"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:123
 #, c-format
 msgid "Update sources only"
-msgstr ""
+msgstr "Ainult uuendusallikad"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:127
 #, c-format
@@ -307,24 +312,24 @@ msgid "always"
 msgstr "alati"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:326 ../Rpmdrake/edit_urpm_sources.pm:358
-#, fuzzy, c-format
+#, c-format
 msgid "Never"
-msgstr "mitte kunagi"
+msgstr "Mitte kunagi"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:327 ../Rpmdrake/edit_urpm_sources.pm:361
 #, c-format
 msgid "On-demand"
-msgstr ""
+msgstr "Nõudmisel"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:328 ../Rpmdrake/edit_urpm_sources.pm:365
-#, fuzzy, c-format
+#, c-format
 msgid "Update-only"
-msgstr "Uuenda"
+msgstr "Ainult uuendamisel"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:329 ../Rpmdrake/edit_urpm_sources.pm:368
-#, fuzzy, c-format
+#, c-format
 msgid "Always"
-msgstr "alati"
+msgstr "Alati"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:337
 #, c-format
@@ -339,7 +344,7 @@ msgstr "Kasutatav allalaadimisprogramm:"
 #: ../Rpmdrake/edit_urpm_sources.pm:349
 #, c-format
 msgid "XML metada download policy:"
-msgstr ""
+msgstr "XML-metaandmete allalaadimise reegel:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:356
 #, c-format
@@ -347,21 +352,23 @@ msgid ""
 "For remote media, specify when XML meta-data (file lists, changelogs & "
 "informations) are downloaded."
 msgstr ""
+"Määrake võrguandmekandja jaoks, millal laadida alla XML-metaandmed "
+"(failide nimekiri, muutuste nimekiri, teave)."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:359
 #, c-format
 msgid "For remote media, XML meta-data are never downloaded."
-msgstr ""
+msgstr "Võrguandmekandjate korral ei laadita XML-metaandmeid alla."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:362
 #, c-format
 msgid "(This is the default)"
-msgstr ""
+msgstr "(See on vaikeväärtus)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:363
 #, c-format
 msgid "The specific XML info file is downloaded when clicking on package."
-msgstr ""
+msgstr "Konkreetne XML-info fail laaditakse alla paketile klõpsamisel."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:366
 #, c-format
@@ -369,11 +376,13 @@ msgid ""
 "Updating media implies updating XML info files already required at least "
 "once."
 msgstr ""
+"Andmekandja uuendamisel uuendatakse ka vähemalt korra juba kasutatud "
+"XML-info failid."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:369
 #, c-format
 msgid "All XML info files are downloaded when adding or updating media."
-msgstr ""
+msgstr "Kõik XML-info failid laaditakse alla andmekandja lisamisel või uuendamisel."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:398
 #, c-format
@@ -650,14 +659,14 @@ msgid "<control>U"
 msgstr "<control>U"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:946
-#, fuzzy, c-format
+#, c-format
 msgid "/Close"
-msgstr "Sulge"
+msgstr "/Sulge"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:946
-#, fuzzy, c-format
+#, c-format
 msgid "<control>W"
-msgstr "<control>Q"
+msgstr "<control>W"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:947 ../Rpmdrake/edit_urpm_sources.pm:948
 #: ../Rpmdrake/edit_urpm_sources.pm:949 ../Rpmdrake/edit_urpm_sources.pm:950
@@ -666,7 +675,7 @@ msgstr "<control>Q"
 #: ../rpmdrake:504
 #, c-format
 msgid "/_Options"
-msgstr "/_Seadistused"
+msgstr "/_Valikud"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:948
 #, c-format
@@ -958,36 +967,34 @@ msgstr "Hoiatus"
 #: ../Rpmdrake/gui.pm:219
 #, c-format
 msgid "The package \"%s\" was found."
-msgstr ""
+msgstr "Leiti pakett \"%s\"."
 
 #: ../Rpmdrake/gui.pm:220
 #, c-format
 msgid "However this package is not in the package list."
-msgstr ""
+msgstr "Paraku ei leidu seda pakettide nimekirjas."
 
 #: ../Rpmdrake/gui.pm:221
 #, c-format
 msgid "You may want to update your urpmi database."
-msgstr ""
+msgstr "Võiksite vahest uuendada urpmi andmebaasi."
 
 #: ../Rpmdrake/gui.pm:223
-#, fuzzy, c-format
+#, c-format
 msgid "Matching packages:"
-msgstr "Pakett"
+msgstr "Sobivad paketid:"
 
 #. -PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
 #. -PO: eg: "- rpmdrake (medium: "Main Release"
 #: ../Rpmdrake/gui.pm:228
-#, fuzzy, c-format
+#, c-format
 msgid "- %s (medium: %s)"
-msgstr "%s andmekandjalt %s"
+msgstr "- %s (andmekandja: %s)"
 
 #: ../Rpmdrake/gui.pm:427
-#, fuzzy, c-format
+#, c-format
 msgid "Removing package %s would break your system"
-msgstr ""
-"Vabandust, nende pakettide eemaldamine võib halvata Teie süsteemi:\n"
-"\n"
+msgstr "Paketi %s eemaldamine võib halvata Teie süsteemi"
 
 #: ../Rpmdrake/gui.pm:432
 #, c-format
@@ -1032,7 +1039,7 @@ msgstr "Info pakettide kohta"
 #: ../Rpmdrake/gui.pm:580
 #, c-format
 msgid "Checking dependencies of package..."
-msgstr ""
+msgstr "Paketi sõltuvuste kontroll..."
 
 #: ../Rpmdrake/gui.pm:587
 #, c-format
@@ -1989,12 +1996,12 @@ msgstr "Kas lisada andmekandjate asukohad kohe?"
 #: ../Rpmdrake/pkg.pm:129
 #, c-format
 msgid "Getting information from XML meta-data from %s..."
-msgstr ""
+msgstr "%s XML-metaandmete info hankimine..."
 
 #: ../Rpmdrake/pkg.pm:133
 #, c-format
 msgid "Getting '%s' from XML meta-data..."
-msgstr ""
+msgstr "'%s' hankimine XML-metaandmetest..."
 
 #: ../Rpmdrake/pkg.pm:136 ../Rpmdrake/pkg.pm:304 ../Rpmdrake/pkg.pm:625
 #: ../Rpmdrake/pkg.pm:776 ../rpmdrake:119 ../rpmdrake.pm:321
@@ -2005,13 +2012,13 @@ msgstr "Palun oodake"
 #: ../Rpmdrake/pkg.pm:148
 #, c-format
 msgid "No xml info for medium \"%s\", only partial result for package %s"
-msgstr ""
+msgstr "Andmekandjale \"%s\" pole XML-infot, ainult osaline tulemus paketi %s puhul"
 
 #: ../Rpmdrake/pkg.pm:150
 #, c-format
 msgid ""
 "No xml info for medium \"%s\", unable to return any result for package %s"
-msgstr ""
+msgstr "Andmekandjale \"%s\" pole XML-infot, paketi %s puhul ei olnud mingit tulemust"
 
 #: ../Rpmdrake/pkg.pm:200 ../Rpmdrake/pkg.pm:205
 #, c-format
@@ -2079,6 +2086,8 @@ msgid ""
 "You have no configured update media. MandrivaUpdate cannot operate without "
 "any update media."
 msgstr ""
+"Te ei ole määranud uuendusandmekandjat. MandrivaUpdate ei saa midagi ette "
+"võtta, kui pole määratud ühtegi uuendusandmekandjat."
 
 #: ../Rpmdrake/pkg.pm:277 ../rpmdrake.pm:538
 #, c-format
@@ -2192,7 +2201,7 @@ msgstr "Paigaldamine ebaõnnestus"
 #: ../Rpmdrake/pkg.pm:576
 #, c-format
 msgid "Checking validity of requested packages..."
-msgstr ""
+msgstr "Soovitud pakettide korrektsuse kontroll..."
 
 #: ../Rpmdrake/pkg.pm:587
 #, c-format
@@ -2313,7 +2322,7 @@ msgstr "Parandamatu viga: kahjuks ei leitud paigaldamiseks ühtegi paketti."
 #: ../Rpmdrake/pkg.pm:739
 #, c-format
 msgid "Inspecting configuration files..."
-msgstr ""
+msgstr "Seadistusfailide uurimine..."
 
 #: ../Rpmdrake/pkg.pm:747
 #, c-format
@@ -2331,7 +2340,7 @@ msgstr ""
 #: ../Rpmdrake/pkg.pm:753
 #, c-format
 msgid "Looking for \"README\" files..."
-msgstr ""
+msgstr "\"README\" failide otsimine..."
 
 #: ../Rpmdrake/pkg.pm:776 ../Rpmdrake/pkg.pm:792
 #, c-format
@@ -2456,14 +2465,14 @@ msgid "Stop"
 msgstr "Peata"
 
 #: ../rpmdrake:126
-#, fuzzy, c-format
+#, c-format
 msgid "no xml-info available for medium \"%s\""
-msgstr "Faili kopeerimine allika `%s' jaoks..."
+msgstr "andmekandjale \"%s\" ei ole xml-infot"
 
 #: ../rpmdrake:142 ../rpmdrake:170
-#, fuzzy, c-format
+#, c-format
 msgid "Search aborted"
-msgstr "Otsingu tulemused"
+msgstr "Otsing katkestati"
 
 #: ../rpmdrake:183
 #, c-format
@@ -2548,14 +2557,14 @@ msgid "Backports"
 msgstr "Tagasi porditud"
 
 #: ../rpmdrake:325
-#, fuzzy, c-format
+#, c-format
 msgid "Meta packages"
-msgstr "Pakett"
+msgstr "Metapaketid"
 
 #: ../rpmdrake:326
 #, c-format
 msgid "Packages with GUI"
-msgstr ""
+msgstr "Graafilise kasutajaliidesega paketid"
 
 #: ../rpmdrake:327
 #, c-format
@@ -2573,7 +2582,7 @@ msgid "Bugfixes updates"
 msgstr "Veaparandused"
 
 #: ../rpmdrake:330
-#, fuzzy, c-format
+#, c-format
 msgid "General updates"
 msgstr "Tavalised uuendused"
 
