@@ -17,6 +17,7 @@ sub writeproxy {
     set_proxy_config(user => $user, $o_media_name);
     set_proxy_config(pwd => $pwd, $o_media_name);
     set_proxy_config(http_proxy => $proxy, $o_media_name);
+    set_proxy_config(ftp_proxy => $proxy, $o_media_name);
     dump_proxy_config();
 }
 
