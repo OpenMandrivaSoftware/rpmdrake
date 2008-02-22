@@ -509,6 +509,18 @@ sub mirrors {
             $file =~ s!.*/!$cachedir/!;
             unlink $file;       # prevent "partial file" errors
             before_leaving(sub { unlink $file });
+
+            my $id;
+            # display a message in statusbar (if availlable):
+            $::statusbar and $id = statusbar_msg(
+                $branded
+                  ? N("Please wait, downloading mirror addresses.")
+                    : N("Please wait, downloading mirror addresses from the Mandriva website."),
+                0);
+            my $_clean_guard = before_leaving {
+                $id and statusbar_msg_remove($id);
+            };
+
             my $res = urpm::download::sync($urpm, undef, [ $url ], dir => $cachedir);
             $res or do { c::set_tagged_utf8($res); die $res };
             return cat_($file);
@@ -543,15 +555,8 @@ Is it ok to continue?");
     delete $options{message};
     my @transient_options = exists $options{transient} ? (transient => $options{transient}) : ();
     interactive_msg(N("Mirror choice"), $message, yesno => 1, %options) or return '';
-    my $wait = wait_msg(
-	($branded
-	? N("Please wait, downloading mirror addresses.")
-	: N("Please wait, downloading mirror addresses from the Mandriva website.")),
-     @transient_options
-    );
     my @mirrors = eval { mirrors($urpm, $options{want_base_distro}) };
     my $error = $@;
-    remove_wait_msg($wait);
     if ($error) {
 	interactive_msg(N("Error during download"),
 ($branded
