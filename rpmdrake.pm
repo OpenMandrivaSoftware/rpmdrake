@@ -510,7 +510,7 @@ sub mirrors {
             unlink $file;       # prevent "partial file" errors
             before_leaving(sub { unlink $file });
 
-            my $id;
+            my ($gurpm, $id, $canceled);
             # display a message in statusbar (if availlable):
             $::statusbar and $id = statusbar_msg(
                 $branded
@@ -518,12 +518,26 @@ sub mirrors {
                     : N("Please wait, downloading mirror addresses from the Mandriva website."),
                 0);
             my $_clean_guard = before_leaving {
+                undef $gurpm;
                 $id and statusbar_msg_remove($id);
             };
 
-            my $res = urpm::download::sync($urpm, undef, [ $url ], dir => $cachedir);
+            require Rpmdrake::gurpm;
+            require Rpmdrake::pkg;
+
+            my $res = urpm::download::sync($urpm, undef, [ $url ],
+                                           dir => $cachedir,
+                                           callback => sub {
+                                               $gurpm ||= 
+                                                 Rpmdrake::gurpm->new(N("Please wait"),
+                                                                      transient => $::main_window);
+                                               $canceled ||=
+                                                 !Rpmdrake::pkg::download_callback($gurpm, @_);
+                                               gtkflush();
+                                           },
+                                       );
             $res or do { c::set_tagged_utf8($res); die $res };
-            return cat_($file);
+            return $canceled ? () : cat_($file);
         });
     my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')), 'distrib') || [] };
     require timezone;
