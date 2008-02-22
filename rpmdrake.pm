@@ -502,16 +502,17 @@ sub mirrors {
     my ($urpm, $want_base_distro) = @_;
     my $cachedir = $urpm->{cachedir} || '/root';
     require mirror;
-    mirror::register_downloader(sub {
-                                    my ($url) = @_;
-                                    my $file = $url;
-                                    $file =~ s!.*/!$cachedir/!;
-                                    unlink $file; # prevent "partial file" errors
-                                    before_leaving(sub { unlink $file });
-                                    my $res = urpm::download::sync($urpm, undef, [ $url ], dir => $cachedir);
-                                    $res or do { c::set_tagged_utf8($res); die $res };
-                                    return cat_($file);
-                                });
+    mirror::register_downloader(
+        sub {
+            my ($url) = @_;
+            my $file = $url;
+            $file =~ s!.*/!$cachedir/!;
+            unlink $file;       # prevent "partial file" errors
+            before_leaving(sub { unlink $file });
+            my $res = urpm::download::sync($urpm, undef, [ $url ], dir => $cachedir);
+            $res or do { c::set_tagged_utf8($res); die $res };
+            return cat_($file);
+        });
     my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')), 'distrib') || [] };
     require timezone;
     my $tz = ${timezone::read()}{timezone};
