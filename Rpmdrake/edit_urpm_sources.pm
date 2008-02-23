@@ -207,14 +207,7 @@ sub add_callback() {
 		    $url_entry->() ],
 		if_($info->{loginpass}, $loginpass_entries->()),
 		sub {
-		    [ gtksignal_connect(
-			    $info->{distrib_check} = $cb1 = gtknew('CheckButton', text => N("Create media for a whole distribution")),
-			    clicked => sub {
-				if ($_[0]->get_active) {
-				    $info->{hdlist_check}->set_active(0);
-				}
-			    },
-			)
+		    [ $info->{distrib_check} = $cb1 = gtknew('CheckButton', text => N("Create media for a whole distribution"))
 		    ];
 		}->(),
 		sub {
