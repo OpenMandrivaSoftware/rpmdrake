@@ -98,13 +98,13 @@ sub do_search($$$$$$$) {
 	    $searchw->sync;
             # should probably not account backports packages or find a way to search them:
             my $total_size = keys %$pkgs;
-	    my ($progresscount, $found);
+	    my $progresscount;
 
             my $update_search_pb = sub {
                 $progresscount++;
                 if (!($progresscount % 100)) {
                     $progresscount <= $total_size and $searchprogress->set_fraction($progresscount/$total_size);
-                    $searchw->flush ; # refresh and handle clicks
+                    $searchw->flush; # refresh and handle clicks
                 }
             };
             foreach my $medium (grep { !$_->{ignore} } @{$urpm->{media}}) {
@@ -167,7 +167,7 @@ sub do_search($$$$$$$) {
                     };
                     my $err = $@;
                     if ($err =~ /search aborted/) {
-                        my $wait = statusbar_msg(N("Search aborted"), 1);
+                        statusbar_msg(N("Search aborted"), 1);
                     }
                 }
             }
