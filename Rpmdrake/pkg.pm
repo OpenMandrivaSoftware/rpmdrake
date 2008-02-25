@@ -709,17 +709,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  $canceled and goto return_with_exit_code;
                                  $gurpm->invalidate_cancel_forever;
                              },
-                             missing_files_summary => sub {
-                                 my ($error_sources) = @_;
-                                 my @missing_errors = values %$error_sources or return;
-                                 interactive_msg(
-                                     N("Installation failed"),
-                                     N("Installation failed, some files are missing:\n%s\n\nYou may want to update your media database.",
-                                       join "\n", map { "- $_" } sort @missing_errors) .
-                                         (@error_msgs ? N("\n\nError(s) reported:\n%s", join("\n", @error_msgs)) : ''),
-                                     scroll => 1,
-                                 );
-                             },
                              trans_error_summary => sub {
                                  my ($nok, $errors) = @_;
                                  interactive_msg(
