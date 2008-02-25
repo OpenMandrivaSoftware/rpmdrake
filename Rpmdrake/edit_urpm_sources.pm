@@ -68,6 +68,7 @@ sub get_medium_type {
         ssh       => N("NFS"),
     );
     return $medium_type{$1} if $medium->{url} =~ m!^([^:]*)://!;
+    return N("Mirror list") if $medium->{mirrorlist};
     return N("Local");
 }
 
