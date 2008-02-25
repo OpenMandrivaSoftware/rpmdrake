@@ -233,7 +233,7 @@ sub node_state {
         return 'XXX';
     }
     #- checks $_[0] -> hack for partial tree displaying
-    return 'XXX' if $_[0];
+    return 'XXX' if !$_[0];
     $pkg->{selected} ?
       ($urpm_obj->flag_installed ?
          ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove')
