@@ -153,7 +153,7 @@ sub extract_header {
 	}
 
         #- even if non-root, search for a header in the global cachedir
-        my $file = $local_source || "$urpm->{cachedir}/headers/" . $p->header_filename;
+        my $file = $local_source;
         if (-s $file) {
             $p->update_header($file) or do {
 		warn "Warning, could not extract header for $name from $medium!";
