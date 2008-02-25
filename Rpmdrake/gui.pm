@@ -478,6 +478,11 @@ sub switch_pkg_list_mode {
     $filter_methods{$mode}->();
 }
 
+sub is_updatable {
+    my $p = $pkgs->{$_[0]};
+    $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade;
+}
+
 sub pkgs_provider {
     my ($options, $mode, %options) = @_;
     return if !$mode;
@@ -489,7 +494,8 @@ sub pkgs_provider {
         installed => sub { @filtered_pkgs = @{$h->{installed}} },
         non_installed => sub { @filtered_pkgs = @{$h->{installable}} },
         all_updates => sub {
-            my @pkgs = $options{pure_updates} ? () : (grep { my $p = $pkgs->{$_}; $p->{pkg} && !$p->{selected} && $p->{pkg}->flag_installed && $p->{pkg}->flag_upgrade } @{$h->{installable}});
+            my @pkgs = $options{pure_updates} ? () :
+              (grep { is_updatable($_) } @{$h->{installable}});
             @filtered_pkgs = @{$h->{updates}}, @pkgs;
         },
         backports => sub { @filtered_pkgs = @{$h->{backports}} },
