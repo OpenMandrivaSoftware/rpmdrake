@@ -233,11 +233,15 @@ sub node_state {
         return 'XXX';
     }
     #- checks $_[0] -> hack for partial tree displaying
-    $_[0] ? $pkg->{selected} ?
-      ($urpm_obj->flag_installed ? ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove') : 'to_install')
+    return 'XXX' if $_[0];
+    $pkg->{selected} ?
+      ($urpm_obj->flag_installed ?
+         ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove')
+           : 'to_install')
         : ($urpm_obj->flag_installed ? 
-             ($urpm_obj->flag_upgrade ? 'to_update' : ($urpm_obj->flag_base ? 'base' : 'installed'))
-               : 'uninstalled') : 'XXX';
+             ($urpm_obj->flag_upgrade ? 'to_update'
+                : ($urpm_obj->flag_base ? 'base' : 'installed'))
+               : 'uninstalled');
 }
 
 my ($common, $w, %wtree, %ptree, %pix);
