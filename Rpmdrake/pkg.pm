@@ -665,8 +665,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  ) or goto return_with_exit_code;
                              },
                              message => sub {
-                                 my ($message) = @_;
-                                 interactive_msg(N("Error"), $message, yesno => 1);
+                                 my ($title, $message) = @_;
+                                 interactive_msg($title, $message, scroll => 1);
                              },
                              trans_log => sub { download_callback($gurpm, @_) or goto return_with_exit_code },
                              post_extract => sub {
