@@ -236,6 +236,8 @@ sub run_treeview_dialog {
     $col_sel->set_sizing('fixed');
     $col_sel->set_sort_column_id($pkg_columns{selected});
 
+    my @columns = qw(name version release), if_($display_arch_col, 'arch');
+
     my %columns = (
         'name' => {
             title => N("Package"),
@@ -256,7 +258,7 @@ sub run_treeview_dialog {
             text => $pkg_columns{arch},
         },
     );
-    foreach my $col (@columns{qw(name version release arch)}) {
+    foreach my $col (@columns{@columns}) {
         $detail_list->append_column(
             $col->{widget} =
               Gtk2::TreeViewColumn->new_with_attributes(' ' . $col->{title} . ' ',
@@ -266,10 +268,10 @@ sub run_treeview_dialog {
             );
         $col->{widget}->set_sort_column_id($col->{markup} ? $col->{markup} : $col->{text});
     }
-    $columns{$_}{widget}->set_sizing('autosize') foreach qw(name version release arch);
+    $columns{$_}{widget}->set_sizing('autosize') foreach @columns;
     $columns{name}{widget}->set_property('expand', '1');
     $columns{name}{renderer}->set_property('ellipsize', 'end');
-    $columns{$_}{renderer}->set_property('xpad', '6') foreach qw(name version release arch);
+    $columns{$_}{renderer}->set_property('xpad', '6') foreach @columns;
     $columns{name}{widget}->set_resizable(1); 
     $detail_list_model->set_sort_column_id($pkg_columns{text}, 'ascending');
     $detail_list_model->set_sort_func($pkg_columns{version}, \&sort_callback);
