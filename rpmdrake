@@ -55,6 +55,12 @@ our $statusbar;
 sub do_search($$$$$$$) {
     my ($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) = @_;
     my $entry = $find_entry->get_text or return;
+    # remove leading/trailing spacing when pasting:
+    if ($entry !~ /\S\s\S/) {
+        # if spacing in middle, likely a string search in description
+        $entry =~ s/^\s*//;
+        $entry =~ s/^\s*$//;
+    }
     my $entry_rx = eval { qr/$entry/i } or return;
     my $results_ok = N("Search results");
     $options->{delete_category}->($_) foreach $results_ok;
