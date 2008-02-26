@@ -250,7 +250,9 @@ sub run_treeview_dialog {
             text => $pkg_columns{release},
         },
         'arch' => {
-            title => N("Arch"),
+            title =>
+              #-PO: "Architecture" but to be kept *small* !!!
+              N("Arch."),
             text => $pkg_columns{arch},
         },
     );
