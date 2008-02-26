@@ -32,6 +32,7 @@ use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() whic
 our @EXPORT = qw(get_icon);
 #- /usr/share/rpmlint/config (duplicates are normal, so that we are not too far away from .py)
 my %group_icons = (
+	N("All") => 'system_section',
 	N("Accessibility") => 'accessibility_section',
 	N("Archiving") => 'archiving_section',
 	join('|', N("Archiving"), N("Backup")) => 'backup_section',
