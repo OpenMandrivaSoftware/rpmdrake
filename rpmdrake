@@ -267,7 +267,7 @@ sub run_treeview_dialog {
                                                         ($col->{markup} ? (markup => $col->{markup}) : (text => $col->{text})),
                                                     )
             );
-        $col->{widget}->set_sort_column_id($col->{markup} ? $col->{markup} : $col->{text});
+        $col->{widget}->set_sort_column_id($col->{markup} || $col->{text});
     }
     $columns{$_}{widget}->set_sizing('autosize') foreach @columns;
     $columns{name}{widget}->set_property('expand', '1');
@@ -335,10 +335,10 @@ sub run_treeview_dialog {
                      by_leaves => N("Leaves only, sorted by install date"),
                      by_group => N("All packages, by group"),
                  ),
-                 ($is_backports ? (backports =>
+                 if_($is_backports, backports =>
                                      #-PO: Backports media are newer but less-tested versions of some packages in main
                                      #-PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
-                                     N("Backports")) : ()),
+                                     N("Backports")),
                  meta_pkgs => N("Meta packages"),
                  gui_pkgs => N("Packages with GUI"),
                  all_updates => N("All updates"),
@@ -365,7 +365,6 @@ sub run_treeview_dialog {
             @modes{'all', if_($compssUsers, 'mandrake_choices'),
                      qw(meta_pkgs gui_pkgs installed non_installed all_updates security bugfix normal),
                        if_($is_backports, 'backports')
-                         
                    } ],
                                          $modes{$default_mode{$MODE} || 'all'}),
         changed => sub {
