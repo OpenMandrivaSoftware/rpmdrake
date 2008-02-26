@@ -264,7 +264,9 @@ sub run_treeview_dialog {
             $col->{widget} =
               Gtk2::TreeViewColumn->new_with_attributes(' ' . $col->{title} . ' ',
                                                         $col->{renderer} = Gtk2::CellRendererText->new,
-                                                        ($col->{markup} ? (markup => $col->{markup}) : (text => $col->{text})),
+                                                        ($col->{markup} ? 
+                                                           (markup => $col->{markup}) :
+                                                             (text => $col->{text})),
                                                     )
             );
         $col->{widget}->set_sort_column_id($col->{markup} || $col->{text});
