@@ -236,11 +236,6 @@ sub run_treeview_dialog {
     $col_sel->set_sizing('fixed');
     $col_sel->set_sort_column_id($pkg_columns{selected});
 
-    $detail_list->append_column(my $pixcolumn  = Gtk2::TreeViewColumn->new_with_attributes(undef, my $rdr = Gtk2::CellRendererPixbuf->new, 'pixbuf' => $pkg_columns{state_icon}));
-    $rdr->set_fixed_size(34, 24);
-    $pixcolumn->set_sort_column_id($pkg_columns{state});
-    $pixcolumn->set_fixed_width(34); # w/o this the pixbuf cells is empty
-    $pixcolumn->set_sizing('fixed');
     my %columns = (
         'name' => {
             title => N("Package"),
@@ -277,6 +272,12 @@ sub run_treeview_dialog {
     $detail_list_model->set_sort_column_id($pkg_columns{text}, 'ascending');
     $detail_list_model->set_sort_func($pkg_columns{version}, \&sort_callback);
     $detail_list->set_rules_hint(1);
+
+    $detail_list->append_column(my $pixcolumn = Gtk2::TreeViewColumn->new_with_attributes(N("Statut"), my $rdr = Gtk2::CellRendererPixbuf->new, 'pixbuf' => $pkg_columns{state_icon}));
+    $rdr->set_fixed_size(34, 24);
+    $pixcolumn->set_sort_column_id($pkg_columns{state});
+    $pixcolumn->set_fixed_width(34); # w/o this the pixbuf cells is empty
+    $pixcolumn->set_sizing('fixed');
 
     compute_main_window_size($w);
 
