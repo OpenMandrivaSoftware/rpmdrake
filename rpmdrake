@@ -280,8 +280,8 @@ sub run_treeview_dialog {
           Gtk2::TreeViewColumn->new_with_attributes(
               #-PO: "Architecture" but to be kept *small* !!!
               N("Statut"),
-                                                    my $rdr = Gtk2::CellRendererPixbuf->new,
-                                                    'pixbuf' => $pkg_columns{state_icon})
+              my $rdr = Gtk2::CellRendererPixbuf->new,
+              'pixbuf' => $pkg_columns{state_icon})
         );
     $rdr->set_fixed_size(34, 24);
     $pixcolumn->set_sort_column_id($pkg_columns{state});
