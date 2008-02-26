@@ -236,7 +236,8 @@ sub run_treeview_dialog {
     $col_sel->set_sizing('fixed');
     $col_sel->set_sort_column_id($pkg_columns{selected});
 
-    my @columns = qw(name version release arch);
+    my $display_arch_col = to_bool(arch() =~ /64/);
+    my @columns = (qw(name version release), if_($display_arch_col, 'arch'));
 
     my %columns = (
         'name' => {
@@ -251,12 +252,12 @@ sub run_treeview_dialog {
             title => N("Release"),
             text => $pkg_columns{release},
         },
-        'arch' => {
+        if_($display_arch_col, 'arch' => {
             title =>
               #-PO: "Architecture" but to be kept *small* !!!
               N("Arch."),
             text => $pkg_columns{arch},
-        },
+        }),
     );
     foreach my $col (@columns{@columns}) {
         $detail_list->append_column(
