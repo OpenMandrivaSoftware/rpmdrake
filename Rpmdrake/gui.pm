@@ -494,6 +494,7 @@ sub pkgs_provider {
         installed => sub { @filtered_pkgs = @{$h->{installed}} },
         non_installed => sub { @filtered_pkgs = @{$h->{installable}} },
         all_updates => sub {
+            # potential "updates" from media not tagged as updates:
             my @pkgs = $options{pure_updates} ? () :
               (grep { is_updatable($_) } @{$h->{installable}});
             @filtered_pkgs = @{$h->{updates}}, @pkgs;
