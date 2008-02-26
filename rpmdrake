@@ -281,8 +281,6 @@ sub run_treeview_dialog {
         );
     $rdr->set_fixed_size(34, 24);
     $pixcolumn->set_sort_column_id($pkg_columns{state});
-    $pixcolumn->set_fixed_width(34); # w/o this the pixbuf cells is empty
-    $pixcolumn->set_sizing('fixed');
 
     compute_main_window_size($w);
 
