@@ -282,8 +282,8 @@ sub run_treeview_dialog {
     $detail_list->append_column(
         my $pixcolumn =
           Gtk2::TreeViewColumn->new_with_attributes(
-              #-PO: "Architecture" but to be kept *small* !!!
-              N("Statut"),
+              #-PO: "Status" should be kept *small* !!!
+              N("Status"),
               my $rdr = Gtk2::CellRendererPixbuf->new,
               'pixbuf' => $pkg_columns{state_icon})
         );
