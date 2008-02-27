@@ -229,7 +229,15 @@ sub run_treeview_dialog {
     $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::MDV::CellRendererPixWithLabel->new, 'pixbuf' => $grp_columns{icon}, label => $grp_columns{label}));
     $tree->set_headers_visible(0);
 
-    $detail_list_model = Gtk2::ListStore->new("Glib::String", "Gtk2::Gdk::Pixbuf", "Glib::String", "Glib::Boolean", "Glib::String", "Glib::String", "Glib::String", "Glib::String");
+    $detail_list_model = Gtk2::ListStore->new("Glib::String",
+                                              "Gtk2::Gdk::Pixbuf",
+                                              "Glib::String",
+                                              "Glib::Boolean",
+                                              "Glib::String",
+                                              "Glib::String",
+                                              "Glib::String",
+                                              "Glib::String");
+
     $detail_list = Gtk2::TreeView->new_with_model($detail_list_model);
     $detail_list->append_column(
         my $col_sel = Gtk2::TreeViewColumn->new_with_attributes(
