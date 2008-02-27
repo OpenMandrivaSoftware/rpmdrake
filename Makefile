@@ -20,7 +20,7 @@ dirs:
 
 install: $(ALL)
 	@for n in $(DIRS); do \
-		(cd $$n; $(MAKE) install) \
+		make -C $$n install \
 	done
 	install -d $(SBINDIR)
 	install rpmdrake MandrivaUpdate edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
