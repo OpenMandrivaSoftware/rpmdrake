@@ -2,8 +2,6 @@ PREFIX = /usr/local
 DATADIR = $(PREFIX)/share
 BINDIR = $(PREFIX)/bin
 
-rpmdrake_dir = $(DATADIR)/rpmdrake
-
 DESKTOP_IN := $(wildcard *.desktop.in)
 DESKTOP = $(DESKTOP_IN:.desktop.in=.desktop)
 
