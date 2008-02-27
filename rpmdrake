@@ -236,14 +236,16 @@ sub run_treeview_dialog {
                                               "Glib::String",
                                               "Glib::String",
                                               "Glib::String",
-                                              "Glib::String");
+                                              "Glib::String", 
+                                              "Glib::Boolean");
 
     $detail_list = Gtk2::TreeView->new_with_model($detail_list_model);
     $detail_list->append_column(
         my $col_sel = Gtk2::TreeViewColumn->new_with_attributes(
             undef,
             Gtk2::CellRendererToggle->new,
-            active => $pkg_columns{selected}
+            active => $pkg_columns{selected},
+            activatable => $pkg_columns{selectable}
         ));
     $col_sel->set_fixed_width(34); # w/o this the toggle cells are not displayed
     $col_sel->set_sizing('fixed');

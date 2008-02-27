@@ -63,6 +63,7 @@ our %pkg_columns = (
     version => 5,
     release => 6,
     'arch' => 7,
+    selectable => 8,
 );
 
 
@@ -253,6 +254,7 @@ sub set_node_state {
     $model->set($iter, $pkg_columns{state_icon} => $pix{$state});
     $model->set($iter, $pkg_columns{state} => $state);
     $model->set($iter, $pkg_columns{selected} => to_bool(member($state, qw(base installed to_install)))); #$pkg->{selected}));
+    $model->set($iter, $pkg_columns{selectable} => to_bool($state ne 'base'));
 }
 
 sub set_leaf_state {
