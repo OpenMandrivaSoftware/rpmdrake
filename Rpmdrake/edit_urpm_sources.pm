@@ -58,6 +58,7 @@ my %col = (
 sub get_medium_type {
     my ($medium) = @_;
     my %medium_type = (
+        cdrom     => N("CD-ROM"),
         ftp       => N("FTP"),
         file      => N("Local"),
         http      => N("HTTP"),
