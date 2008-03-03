@@ -337,7 +337,7 @@ sub options_callback() {
                                            ]),
 	    gtknew('HBox',
                    children_loose =>
-                     [ gtknew('Label', text => N("XML metada download policy:")),
+                     [ gtknew('Label', text => N("XML meta-data download policy:")),
                        gtknew('ComboBox',
                               list => [ keys %xml_info_policies ], text_ref => \$xml_info_policy,
 
