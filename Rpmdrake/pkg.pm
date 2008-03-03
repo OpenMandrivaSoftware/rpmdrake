@@ -691,9 +691,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
                              post_removable => sub { alarm $remaining },
                              copy_removable => sub {
+                                 my ($medium, $device) = @_;
                                  interactive_msg(
                                      N("Change medium"),
-                                     N("Please insert the medium named \"%s\" on device [%s]", $_[0], $_[1]),
+                                     N("Please insert the medium named \"%s\" on device [%s]", $medium, $device),
                                      yesno => 1, text => { no => N("Cancel"), yes => N("Ok") },
                                  );
                              },
