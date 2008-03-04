@@ -19,9 +19,7 @@ dirs:
 	done
 
 install: $(ALL)
-	@for n in $(DIRS); do \
-		make -C $$n install; \
-	done
+	@for n in $(DIRS); do make -C $$n install; done
 	install -d $(SBINDIR)
 	install rpmdrake MandrivaUpdate edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
 	ln -sf rpmdrake $(SBINDIR)/rpmdrake-remove
@@ -47,9 +45,7 @@ install: $(ALL)
 	perl -pi -e "s/version = 1/version=$(VERSION)/" $(PERL_VENDORLIB)/Rpmdrake/init.pm
 
 clean:
-	@for n in $(DIRS); do \
-		make -C $$n clean; \
-	done
+	@for n in $(DIRS); do make -C $$n clean; done
 
 dis: clean
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
