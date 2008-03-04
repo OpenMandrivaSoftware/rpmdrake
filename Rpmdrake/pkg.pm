@@ -579,8 +579,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $bar_id = statusbar_msg(N("Checking validity of requested packages..."), 0);
     # select packages to install:
     my $requested = { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} };
-    $urpm->resolve_requested(open_rpm_db(), $state, $requested,
-                             callback_choices => \&Rpmdrake::gui::callback_choices);
+    $restart_itself = urpm::select::resolve_dependencies(
+        $urpm, $state, $requested,
+        callback_choices => \&Rpmdrake::gui::callback_choices,
+    );
     statusbar_msg_remove($bar_id);
 
     my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 
@@ -596,7 +598,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         goto return_with_exit_code;
     }
 
-    my @pkgs = map { scalar($_->fullname) } sort(grep { $_->flag_selected } @{$urpm->{depslist}});#{ $a->name cmp $b->name } @{$urpm->{depslist}}[keys %{$state->{selected}}];
+    my @pkgs = map { scalar($_->fullname) } sort(grep { $_->flag_selected } @{$urpm->{depslist}}[keys %{$state->{selected}}]);#{ $a->name cmp $b->name } @{$urpm->{depslist}}[keys %{$state->{selected}}];
     @{$urpm->{ask_remove}} = sort urpm::select::removed_packages($urpm, $urpm->{state});
     my @to_remove = map { if_($pkgs->{$_}{selected} && !$pkgs->{$_}{pkg}->flag_upgrade, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
 
@@ -651,7 +653,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     };
 
-    urpm::main_loop::run($urpm, $state, undef, undef, { },
+    urpm::main_loop::run($urpm, $state, undef, undef, $requested,
                          {
                              completed => sub {
                                  # explicitly destroy the progress window when it's over; we may
