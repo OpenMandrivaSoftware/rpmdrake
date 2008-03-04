@@ -52,6 +52,7 @@ N("  --urpmi-root           use another root for urpmi db & rpm installation"),
 N("  --root                 force to run as root") . ' ' . N("(Deprecated)"),
 N("  --run-as-root          force to run as root"),
 N("  --search=pkg           run search for \"pkg\""),
+N("  --test                 only verify if the installation can be achieved correctly"),
 chomp_(N("  --version      - print this tool's version number.
 ")),
 ""
@@ -96,8 +97,11 @@ foreach (@ARGV) {
         if ($val eq 'version') {
             print "$0 $version\n";
             exit(0);
+       } elsif ($val eq 'test') {
+           $::test = 1;
+       } else {
+           $rpmdrake_options{$val} = 1;
        }
-        $rpmdrake_options{$val} = 1;
     }
 }
 
