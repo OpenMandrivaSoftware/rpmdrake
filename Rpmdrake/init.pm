@@ -53,7 +53,7 @@ N("  --root                 force to run as root") . ' ' . N("(Deprecated)"),
 N("  --run-as-root          force to run as root"),
 N("  --search=pkg           run search for \"pkg\""),
 N("  --test                 only verify if the installation can be achieved correctly"),
-chomp_(N("  --version      - print this tool's version number.
+chomp_(N("  --version              print this tool's version number.
 ")),
 ""
 );
