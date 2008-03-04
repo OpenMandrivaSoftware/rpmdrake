@@ -618,6 +618,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my ($size, $filesize) = $urpm->selected_size_filesize($state);
     my $install_count = int(@pkgs);
     my $to_install = $install_count == 0 ? '' :
+      ($priority_state ? N("Rpmdrake or one of its priority dependencies needs to be updated first. Rpmdrake will then restart.") . "\n\n" : '') .
       (P("The following package is going to be installed:", "The following %d packages are going to be installed:", $install_count, $install_count)
       . "\n\n" . format_list(map { s!.*/!!; $_ } @pkgs));
     my $remove_count =  scalar(@to_remove);
