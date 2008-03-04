@@ -31,7 +31,13 @@ BEGIN { $::no_global_argv_parsing = 1 }
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(init warn_about_user_mode $changelog_first $default_list_mode %rpmdrake_options $MODE);
+our @EXPORT = qw(init
+                 warn_about_user_mode
+                 $MODE
+                 $changelog_first
+                 $default_list_mode
+                 %rpmdrake_options
+                 );
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
