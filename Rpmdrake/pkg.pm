@@ -403,22 +403,25 @@ sub get_pkgs {
 
     my $requested = {};
     my $state = {};
-    $urpm->request_packages_to_upgrade(
-	$db,
-	$state,
-	$requested,
-    );
 
     # list of updates (including those matching /etc/urpmi/skip.list):
-    my @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
+    my @requested;
+
     # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
-    my @requested_strict = $probe_only_for_updates ?
-      sort map {
-          urpm_name($_);
-      } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices)
-        : ();
-    # list updates including skiped ones + their deps in MandrivaUpdate:
-    push @requested, difference2(\@requested_strict, \@requested) if $probe_only_for_updates;
+    my @requested_strict;
+
+    urpm::select::resolve_dependencies(
+        $urpm, $state, $requested,
+        callback_choices => \&Rpmdrake::gui::callback_choices,
+        priority_upgrade => $urpm->{options}{'priority-upgrade'},
+        auto_select => 1,
+        upgrade_callback => sub {
+            @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
+        },
+        if_($probe_only_for_updates,
+           resolve_req_callback => sub { @requested_strict = sort map { urpm_name($_) } @_ }
+       ),
+    );
 
     if (!$probe_only_for_updates) {
         $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
