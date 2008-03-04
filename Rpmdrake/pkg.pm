@@ -296,6 +296,11 @@ sub get_parallel_group() {
     $::rpmdrake_options{parallel} ? $::rpmdrake_options{parallel}[0] : undef;
 }
 
+
+urpm::select::add_packages_to_priority_upgrade_list('rpmdrake');
+
+my ($restart_itself, $priority_state, $priority_requested);
+
 our $probe_only_for_updates;
 sub get_pkgs {
     my ($opts) = @_;
@@ -410,7 +415,9 @@ sub get_pkgs {
     # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
     my @requested_strict;
 
-    urpm::select::resolve_dependencies(
+    #- return value is true if program should be restarted (in order to take care of important
+    #- packages being upgraded (urpmi, perl-URPM, rpm, glibc, ...).
+    $restart_itself = urpm::select::resolve_dependencies(
         $urpm, $state, $requested,
         callback_choices => \&Rpmdrake::gui::callback_choices,
         priority_upgrade => $urpm->{options}{'priority-upgrade'},
@@ -422,6 +429,8 @@ sub get_pkgs {
            resolve_req_callback => sub { @requested_strict = sort map { urpm_name($_) } @_ }
        ),
     );
+    $priority_state = $restart_itself ? $state : undef;
+    $priority_requested = $restart_itself ? $requested : undef;
 
     if (!$probe_only_for_updates) {
         $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
@@ -574,7 +583,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $lock = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
     my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
-    my $state = $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
+    my $state = $priority_state || $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 
     my $bar_id = statusbar_msg(N("Checking validity of requested packages..."), 0);
     # select packages to install:
@@ -582,6 +591,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     $restart_itself = urpm::select::resolve_dependencies(
         $urpm, $state, $requested,
         callback_choices => \&Rpmdrake::gui::callback_choices,
+        priority_upgrade => $urpm->{options}{'priority-upgrade'},
     );
     statusbar_msg_remove($bar_id);
 
@@ -653,7 +663,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     };
 
-    urpm::main_loop::run($urpm, $state, undef, undef, $requested,
+    my $exit_code = 
+      urpm::main_loop::run($urpm, $state, undef, undef, $requested,
                          {
                              completed => sub {
                                  # explicitly destroy the progress window when it's over; we may
@@ -757,6 +768,17 @@ you may now inspect some in order to take actions:"),
                              },
                          },
                      );
+
+    #- restart rpmdrake if needed, keep command line for that.
+    if ($restart_itself && !$exit_code) {
+        log::explanations("restarting rpmdrake");
+        #- added --previous-priority-upgrade to allow checking if yet if
+        #-   priority-upgrade list has changed. and make sure we don't uselessly restart
+        my @argv = ('--previous-priority-upgrade=' . $urpm->{options}{'priority-upgrade'}, 
+                grep { !/^--no-priority-upgrade$|--previous-priority-upgrade=/ } @Rpmdrake::init::ARGV_copy);
+        run_program::raw({ detach => 1 }, $0, @argv);
+        exit(0);
+    }
 
     N("RPM transaction %d/%d");
     N("Unselect all");

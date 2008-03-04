@@ -97,6 +97,8 @@ sub open_urpmi_db {
 
     my $searchmedia = $urpmi_options{update} ? undef : join(',', get_inactive_backport_media($urpm));
     $urpm->{lock} = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
+    my $previous = $::rpmdrake_options{'previous-priority-upgrade'};
+    urpm::select::set_priority_upgrade_option($urpm, (ref $previous ? join(',', @$previous) : ()));
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia), %urpmi_options);
     $urpm;
 }

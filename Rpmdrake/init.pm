@@ -37,7 +37,10 @@ our @EXPORT = qw(init
                  $changelog_first
                  $default_list_mode
                  %rpmdrake_options
+                 @ARGV_copy
                  );
+
+our @ARGV_copy =  @ARGV;
 
 BEGIN {  #- we want to run this code before the Gtk->init of the use-my_gtk
     my $basename = sub { local $_ = shift; s|/*\s*$||; s|.*/||; $_ };
