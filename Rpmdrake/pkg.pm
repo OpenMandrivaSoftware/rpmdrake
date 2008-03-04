@@ -586,6 +586,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $state = $priority_state || $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 
     my $bar_id = statusbar_msg(N("Checking validity of requested packages..."), 0);
+
     # select packages to install:
     my $requested = { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} };
     $restart_itself = urpm::select::resolve_dependencies(
