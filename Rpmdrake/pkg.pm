@@ -578,7 +578,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $bar_id = statusbar_msg(N("Checking validity of requested packages..."), 0);
     # select packages to install:
-    $urpm->resolve_requested(open_rpm_db(), $state, { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} },
+    my $requested = { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} };
+    $urpm->resolve_requested(open_rpm_db(), $state, $requested,
                              callback_choices => \&Rpmdrake::gui::callback_choices);
     statusbar_msg_remove($bar_id);
 
