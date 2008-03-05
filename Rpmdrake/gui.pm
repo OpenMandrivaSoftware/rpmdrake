@@ -463,7 +463,6 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 our $find_entry;
 
 sub reset_search() {
-    $find_entry and $find_entry->set_text("");
 }
 
 sub is_a_package {
