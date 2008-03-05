@@ -279,7 +279,7 @@ sub run_treeview_dialog {
             $col->{widget} =
               Gtk2::TreeViewColumn->new_with_attributes(
                   ' ' . $col->{title} . ' ',
-                  $col->{renderer} =Gtk2::CellRendererText->new,
+                  $col->{renderer} = Gtk2::CellRendererText->new,
                   ($col->{markup} ? (markup => $col->{markup}) : (text => $col->{text})),
               )
             );
@@ -495,7 +495,7 @@ sub run_treeview_dialog {
                Rpmdrake::edit_urpm_sources::run() && $reload_db_and_clear_all->();
            }, undef, '<Item>' ],
 	    [ N("/_Options") . N("/_Show automatically selected packages"), undef, sub {
-		$dont_show_selections = !$checkbox_show_autoselect->get_active;
+		$dont_show_selections->[0] = !$checkbox_show_autoselect->get_active;
 	    }, undef, '<CheckItem>' ],
 	),
 	[ N("/_Help"), undef, undef, undef, '<Branch>' ],
@@ -534,7 +534,7 @@ sub run_treeview_dialog {
     $check_boxes{$auto_string}->set_active($::rpmdrake_options{auto}) if !$>;
 
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
-	and $checkbox_show_autoselect->set_active(!$dont_show_selections);
+	and $checkbox_show_autoselect->set_active(!$dont_show_selections->[0]);
     gtkadd(
 	$w->{window},
 	gtkpack_(

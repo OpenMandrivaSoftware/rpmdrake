@@ -544,7 +544,7 @@ sub callback_choices {
 }
 
 sub deps_msg {
-        return 1 if $dont_show_selections;
+        return 1 if $dont_show_selections->[0];
         my ($title, $msg, $nodes, $nodes_with_deps) = @_;
         my @deps = sort { $a cmp $b } difference2($nodes_with_deps, $nodes);
         @deps > 0 or return 1;
@@ -583,7 +583,7 @@ sub toggle_nodes {
     @nodes = grep { exists $pkgs->{$_} } @nodes
       or return;
     #- avoid selecting too many packages at once
-    return if !$dont_show_selections && @nodes > 2000;
+    return if !$dont_show_selections->[0] && @nodes > 2000;
     my $new_state = !$pkgs->{$nodes[0]}{selected};
 
     my @nodes_with_deps;
