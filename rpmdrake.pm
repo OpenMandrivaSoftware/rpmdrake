@@ -46,6 +46,7 @@ our @ISA = qw(Exporter);
 our $VERSION = '2.27';
 our @EXPORT = qw(
     $changelog_first_config
+    $dont_show_selections
     $mandrakeupdate_wanted_categories
     $already_splashed
     $max_info_in_descr
@@ -84,6 +85,8 @@ our @EXPORT = qw(
     strip_first_underscore
 );
 our $typical_width = 280;
+
+our $dont_show_selections = $> ? 1 : 0;
 
 # i18n: IMPORTANT: to get correct namespace (rpmdrake instead of libDrakX)
 BEGIN { unshift @::textdomains, qw(rpmdrake urpmi rpm-summary-main rpm-summary-contrib rpm-summary-devel) }
