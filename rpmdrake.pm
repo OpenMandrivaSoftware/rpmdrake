@@ -45,44 +45,44 @@ use feature 'state';
 our @ISA = qw(Exporter);
 our $VERSION = '2.27';
 our @EXPORT = qw(
+    $already_splashed
     $changelog_first_config
     $dont_show_selections
     $mandrakeupdate_wanted_categories
-    $already_splashed
     $max_info_in_descr
     $offered_to_add_sources
-    $tree_mode
     $tree_flat
+    $tree_mode
     $typical_width
     add_distrib_update_media
-    distro_type
-    myexit
-    readconf
-    writeconf
-    interactive_msg
-    interactive_packtable
-    interactive_list
-    interactive_list_
-    interactive_msg_with_banner
-    fatal_msg
-    getbanner
-    wait_msg
-    remove_wait_msg
+    add_medium_and_check
     but
     but_
+    check_update_media_version
+    choose_mirror
+    distro_type
+    fatal_msg
+    getbanner
+    interactive_list
+    interactive_list_
+    interactive_msg
+    interactive_msg_with_banner
+    interactive_packtable
+    myexit
+    readconf
+    remove_wait_msg
+    show_urpm_progress
     slow_func
     slow_func_statusbar
     statusbar_msg
     statusbar_msg_remove
-    choose_mirror
-    show_urpm_progress
+    strip_first_underscore
     update_sources
     update_sources_check
     update_sources_interactive
     update_sources_noninteractive
-    add_medium_and_check
-    check_update_media_version
-    strip_first_underscore
+    wait_msg
+    writeconf
 );
 our $typical_width = 280;
 
