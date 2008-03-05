@@ -209,6 +209,7 @@ sub format_pkg_info {
 
 sub node_state {
     my ($name) = @_;
+    return if !$name;
     my $pkg = $pkgs->{$name};
     my $urpm_obj = $pkg->{pkg};
     if (!$urpm_obj) {
