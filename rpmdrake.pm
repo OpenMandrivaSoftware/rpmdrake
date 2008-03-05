@@ -86,7 +86,7 @@ our @EXPORT = qw(
 );
 our $typical_width = 280;
 
-our $dont_show_selections = $> ? 1 : 0;
+our $dont_show_selections;
 
 # i18n: IMPORTANT: to get correct namespace (rpmdrake instead of libDrakX)
 BEGIN { unshift @::textdomains, qw(rpmdrake urpmi rpm-summary-main rpm-summary-contrib rpm-summary-devel) }
@@ -151,6 +151,7 @@ our ($mandrakeupdate_wanted_categories, $offered_to_add_sources, $no_confirmatio
 our %config = (
     mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
     already_splashed => { var => \$already_splashed, default => [] },
+    dont_show_selections => { var => \$dont_show_selections, default => [ $> ? 1 : 0 ] },
     max_info_in_descr => { var => \$max_info_in_descr, default => [] },
     offered_to_add_sources => { var => \$offered_to_add_sources, default => [ 0 ] },
     tree_mode => { var => \$tree_mode, default => [ qw(gui_pkgs) ] },
