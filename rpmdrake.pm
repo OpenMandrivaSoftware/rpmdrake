@@ -150,7 +150,7 @@ our %config = (
     already_splashed => { var => \$already_splashed, default => [] },
     max_info_in_descr => { var => \$max_info_in_descr, default => [] },
     offered_to_add_sources => { var => \$offered_to_add_sources, default => [ 0 ] },
-    tree_mode => { var => \$tree_mode, default => [ qw(mandrake_choices) ] },
+    tree_mode => { var => \$tree_mode, default => [ qw(gui_pkgs) ] },
     tree_flat => { var => \$tree_flat, default => [ 0 ] },
     changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },
     'no-confirmation' => { var => \$no_confirmation, default => [ 0 ] },
