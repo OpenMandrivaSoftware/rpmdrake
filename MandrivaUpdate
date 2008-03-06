@@ -211,7 +211,7 @@ sub run_treeview_dialog {
     $w->{rwindow}->set_sensitive(0);
 
     $Rpmdrake::pkg::probe_only_for_updates = 1; # faster startup
-    pkgs_provider({}, $default_list_mode, pure_updates => 1); # default mode
+    pkgs_provider({}, 'all_updates', pure_updates => 1); # default mode
 
     refresh_packages_list($list, $info, $update_button);
 
