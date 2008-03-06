@@ -423,12 +423,17 @@ sub get_pkgs {
         priority_upgrade => $urpm->{options}{'priority-upgrade'},
         auto_select => 1,
         upgrade_callback => sub {
+            my ($requested) = @_;
             @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
         },
         if_($probe_only_for_updates,
            resolve_req_callback => sub { @requested_strict = sort map { urpm_name($_) } @_ }
        ),
     );
+
+    # list updates including skiped ones + their deps in MandrivaUpdate:
+    push @requested, difference2(\@requested_strict, \@requested) if $probe_only_for_updates;
+
     $priority_state = $restart_itself ? $state : undef;
     $priority_requested = $restart_itself ? $requested : undef;
 
