@@ -433,7 +433,7 @@ sub get_pkgs {
     );
 
     # list updates including skiped ones + their deps in MandrivaUpdate:
-    push @requested, difference2(\@requested_strict, \@requested) if $probe_only_for_updates;
+    @requested = uniq(@requested, @requested_strict) if $probe_only_for_updates;
 
     $priority_state = $restart_itself ? $state : undef;
     $priority_requested = $restart_itself ? $requested : undef;
