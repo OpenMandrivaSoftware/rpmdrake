@@ -424,7 +424,6 @@ sub get_pkgs {
         auto_select => 1,
         only_request_packages_to_upgrade => !$probe_only_for_updates,
         upgrade_callback => sub {
-            my ($requested) = @_;
             @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
         },
         if_($probe_only_for_updates,
