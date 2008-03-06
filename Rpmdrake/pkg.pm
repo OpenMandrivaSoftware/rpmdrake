@@ -422,7 +422,7 @@ sub get_pkgs {
         callback_choices => \&Rpmdrake::gui::callback_choices,
         priority_upgrade => $urpm->{options}{'priority-upgrade'},
         auto_select => 1,
-        only_request_packages_to_upgrade => $probe_only_for_updates,
+        only_request_packages_to_upgrade => !$probe_only_for_updates,
         upgrade_callback => sub {
             my ($requested) = @_;
             @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
