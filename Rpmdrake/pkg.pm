@@ -323,6 +323,46 @@ sub update_pbar {
 }
 
 
+sub get_installed_packages {
+    my ($urpm, $db, $all_pkgs, $gurpm) = @_;
+
+    my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
+    my (%base, %basepackages, @installed_pkgs);
+    reset_pbar_count(0.33);
+    while (defined(local $_ = shift @base)) {
+	exists $basepackages{$_} and next;
+	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
+			      update_pbar($gurpm);
+			      push @{$basepackages{$_}}, urpm_name($_[0]);
+			      push @base, $_[0]->requires_nosense;
+			  });
+    }
+    foreach (values %basepackages) {
+	my $n = @$_;            #- count number of times it's provided
+	foreach (@$_) {
+	    $base{$_} = \$n;
+	}
+    }
+    $db->traverse(sub {
+                      my ($pkg) = @_;
+                      update_pbar($gurpm);
+                      my $fullname = urpm_name($pkg);
+                      #- Extract summary and description since they'll be lost when the header is packed
+                      $all_pkgs->{$fullname} = {
+                          selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
+                          summary => $pkg->summary,
+                          description => rpm_description($pkg->description),
+                      } if !($all_pkgs->{$fullname} && $all_pkgs->{$fullname}{description});
+                      if (my $name = $base{$fullname}) {
+                          $all_pkgs->{$fullname}{base} = \$name;
+                          $pkg->set_flag_base(1) if $$name == 1;
+                      }
+                      push @installed_pkgs, $fullname;
+                      $pkg->pack_header; # needed in order to call methods on objects outside ->traverse
+                  });
+    @installed_pkgs;
+}
+
 urpm::select::add_packages_to_priority_upgrade_list('rpmdrake');
 
 my ($restart_itself, $priority_state, $priority_requested);
@@ -360,49 +400,17 @@ sub get_pkgs {
     $gurpm->label(N("Please wait, listing base packages..."));
     $gurpm->progress($level);
     
-    my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
-    my (%base, %basepackages);
     my $db = open_rpm_db();
     my $sig_handler = sub { undef $db; exit 3 };
     local $SIG{INT} = $sig_handler;
     local $SIG{QUIT} = $sig_handler;
-    reset_pbar_count(0.33);
-    while (defined(local $_ = shift @base)) {
-	exists $basepackages{$_} and next;
-	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
-			      update_pbar($gurpm);
-			      push @{$basepackages{$_}}, urpm_name($_[0]);
-			      push @base, $_[0]->requires_nosense;
-			  });
-    }
-    foreach (values %basepackages) {
-	my $n = @$_; #- count number of times it's provided
-	foreach (@$_) {
-	    $base{$_} = \$n;
-	}
-    }
+    
     $gurpm->label(N("Please wait, finding installed packages..."));
     $gurpm->progress($level = 0.33);
     reset_pbar_count(0.66);
     my (@installed_pkgs, %all_pkgs);
     if (!$probe_only_for_updates) {
-    $db->traverse(sub {
-	    my ($pkg) = @_;
-	    update_pbar($gurpm);
-	    my $fullname = urpm_name($pkg);
-	    #- Extract summary and description since they'll be lost when the header is packed
-	    $all_pkgs{$fullname} = {
-		selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
-		summary => $pkg->summary,
-		description => rpm_description($pkg->description),
-	    } if !($all_pkgs{$fullname} && $all_pkgs{$fullname}{description});
-	    if (my $name = $base{$fullname}) {
-		$all_pkgs{$fullname}{base} = \$name;
-		$pkg->set_flag_base(1) if $$name == 1;
-	    }
-         push @installed_pkgs, $fullname;
-	    $pkg->pack_header; # needed in order to call methods on objects outside ->traverse
-	});
+        @installed_pkgs = get_installed_packages($urpm, $db, \%all_pkgs, $gurpm);
     }
 
     if (my $group = get_parallel_group()) {
