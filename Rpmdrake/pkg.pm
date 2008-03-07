@@ -793,11 +793,13 @@ you may now inspect some in order to take actions:"),
     #- restart rpmdrake if needed, keep command line for that.
     if ($restart_itself && !$exit_code) {
         log::explanations("restarting rpmdrake");
+        #- it seems to work correctly with exec instead of system, provided we stop timers
         #- added --previous-priority-upgrade to allow checking if yet if
         #-   priority-upgrade list has changed. and make sure we don't uselessly restart
         my @argv = ('--previous-priority-upgrade=' . $urpm->{options}{'priority-upgrade'}, 
                 grep { !/^--no-priority-upgrade$|--previous-priority-upgrade=/ } @Rpmdrake::init::ARGV_copy);
-        run_program::raw({ detach => 1 }, $0, @argv);
+        alarm(0);
+        exec($0, @argv);
         exit(0);
     }
 
