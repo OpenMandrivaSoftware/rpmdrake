@@ -50,7 +50,7 @@ clean:
 dis: clean
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
 	svn export -q -rBASE . $(NAME)-$(VERSION)
-	find $(NAME)-$(VERSION) -name .cvsignore |xargs rm -rf
+	find $(NAME)-$(VERSION) -name .svnignore |xargs rm -rf
 	tar cfY ../$(NAME)-$(VERSION).tar.lzma $(NAME)-$(VERSION)
 	rm -rf $(NAME)-$(VERSION)
 
