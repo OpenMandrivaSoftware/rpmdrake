@@ -296,6 +296,32 @@ sub get_parallel_group() {
     $::rpmdrake_options{parallel} ? $::rpmdrake_options{parallel}[0] : undef;
 }
 
+my ($count, $level, $limit, $new_stage, $prev_stage, $total);
+
+sub init_progress_bar {
+    my ($urpm) = @_;
+    undef $_ foreach $count, $prev_stage, $new_stage, $limit;
+    $level = 0.05;
+    $total = @{$urpm->{depslist}};
+}
+    
+sub reset_pbar_count {
+    undef $prev_stage;
+    $count = 0;
+    $limit = $_[0];
+}
+
+sub update_pbar {
+    my ($gurpm) = @_;
+    return if !$total;          # don't die if there's no source
+    $count++;
+    $new_stage = $level+($limit-$level)*$count/$total;
+    if ($prev_stage + 0.01 < $new_stage) {
+        $prev_stage = $new_stage;
+        $gurpm->progress($new_stage);
+    }
+}
+
 
 urpm::select::add_packages_to_priority_upgrade_list('rpmdrake');
 
@@ -329,35 +355,22 @@ sub get_pkgs {
 
     # find out installed packages:
 
-    my $level = 0.05;
-    my $total = @{$urpm->{depslist}};
+    init_progress_bar($urpm);
+
     $gurpm->label(N("Please wait, listing base packages..."));
     $gurpm->progress($level);
-
-    my ($count, $prev_stage, $new_stage, $limit);
     
-    my $reset_update = sub { undef $prev_stage; $count = 0; $limit = $_[0] };
-    my $update = sub {
-        return if !$total; # don't die if there's no source
-        $count++;
-        $new_stage = $level+($limit-$level)*$count/$total;
-        if ($prev_stage + 0.01 < $new_stage) {
-            $prev_stage = $new_stage;
-            $gurpm->progress($new_stage);
-        }
-    };
-
     my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
     my (%base, %basepackages);
     my $db = open_rpm_db();
     my $sig_handler = sub { undef $db; exit 3 };
     local $SIG{INT} = $sig_handler;
     local $SIG{QUIT} = $sig_handler;
-    $reset_update->(0.33);
+    reset_pbar_count(0.33);
     while (defined(local $_ = shift @base)) {
 	exists $basepackages{$_} and next;
 	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
-			      $update->();
+			      update_pbar($gurpm);
 			      push @{$basepackages{$_}}, urpm_name($_[0]);
 			      push @base, $_[0]->requires_nosense;
 			  });
@@ -370,12 +383,12 @@ sub get_pkgs {
     }
     $gurpm->label(N("Please wait, finding installed packages..."));
     $gurpm->progress($level = 0.33);
-    $reset_update->(0.66);
+    reset_pbar_count(0.66);
     my (@installed_pkgs, %all_pkgs);
     if (!$probe_only_for_updates) {
     $db->traverse(sub {
 	    my ($pkg) = @_;
-	    $update->();
+	    update_pbar($gurpm);
 	    my $fullname = urpm_name($pkg);
 	    #- Extract summary and description since they'll be lost when the header is packed
 	    $all_pkgs{$fullname} = {
@@ -461,16 +474,16 @@ sub get_pkgs {
     my @search_medias = grep { $_->{searchmedia} } @{$urpm->{media}};
 
     my @backports;
-    $reset_update->(1);
+    reset_pbar_count(1);
     foreach my $pkg (@{$urpm->{depslist}}) {
-        $update->();
+        update_pbar($gurpm);
 	$pkg->flag_upgrade or next;
         my $name = urpm_name($pkg);
         push @installable_pkgs, $name;
         $all_pkgs{$name} = { pkg => $pkg, summary => $pkg->summary };
     }
     foreach my $medium (@search_medias) {
-        $update->();
+        update_pbar($gurpm);
       foreach my $pkg_id ($medium->{start} .. $medium->{end}) {
           next if !$pkg_id;
           my $pkg = $urpm->{depslist}[$pkg_id];
@@ -481,7 +494,7 @@ sub get_pkgs {
       }
     }
     foreach my $medium (@update_medias) {
-        $update->();
+        update_pbar($gurpm);
       foreach my $pkg_id ($medium->{start} .. $medium->{end}) {
           my $pkg = $urpm->{depslist}[$pkg_id];
           $pkg->flag_upgrade or next;
