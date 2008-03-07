@@ -408,29 +408,22 @@ sub get_pkgs {
 
     my $requested = {};
     my $state = {};
+    $urpm->request_packages_to_upgrade(
+	$db,
+	$state,
+	$requested,
+    );
 
     # list of updates (including those matching /etc/urpmi/skip.list):
-    my @requested;
+    my @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
 
     # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
     my @requested_strict;
-
-    #- return value is true if program should be restarted (in order to take care of important
-    #- packages being upgraded (urpmi, perl-URPM, rpm, glibc, ...).
-    $restart_itself = urpm::select::resolve_dependencies(
-        $urpm, $state, $requested,
-        callback_choices => \&Rpmdrake::gui::callback_choices,
-        priority_upgrade => $urpm->{options}{'priority-upgrade'},
-        auto_select => 1,
-        only_request_packages_to_upgrade => !$probe_only_for_updates,
-        upgrade_callback => sub {
-            @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
-        },
-        if_($probe_only_for_updates,
-           resolve_req_callback => sub { @requested_strict = sort map { urpm_name($_) } @_ }
-       ),
-    );
-
+    @requested_strict = $probe_only_for_updates ?
+      sort map {
+          urpm_name($_);
+      } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices)
+        : ();
     # list updates including skiped ones + their deps in MandrivaUpdate:
     @requested = uniq(@requested, @requested_strict) if $probe_only_for_updates;
 
