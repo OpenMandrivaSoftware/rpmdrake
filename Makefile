@@ -1,4 +1,4 @@
-VERSION = 4.4.2.3
+VERSION = 4.5
 NAME = rpmdrake
 
 DIRS = grpmi po data mime
