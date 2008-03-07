@@ -1,3 +1,194 @@
+2008-03-07 18:13  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.5
+
+2008-03-07 18:05  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_installed_packages) split it out of
+	  (get_pkgs)
+
+2008-03-07 17:49  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (init_progress_bar,reset_pbar_count,update_pbar)
+	  split them out of
+	  (perform_installation)
+
+2008-03-07 17:39  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: (perform_installation) when restarting
+	  after priority upgrade, free
+	  memory used by previous rpmdrake instance
+
+2008-03-07 17:30  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: (get_pkgs) reimplement priority upgrade
+	  support through urpmi-5.9's infrastructure
+
+2008-03-07 17:24  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs) make it more readable (needed for
+	  next commits)
+
+2008-03-07 17:23  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs) basically revert r238520 on
+	  2008-03-04 b/c pixel want to
+	  keep urpm::select::resolve_dependencies() simple and split it
+	  into
+	  smaller bits (reverting "(get_pkgs) use more modern
+	  urpm::select::resolve_dependencies() API instead of partially
+	  open-coding it, thus enabling further improvements")
+
+2008-03-07 12:29  Tomasz Bednarski <tbednarski at mandrivalinux.pl>
+
+	* po/pl.po: update translation for Polish
+
+2008-03-07 09:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, data/.cvsignore, data/.svnignore, po/.cvsignore,
+	  po/.svnignore: rename */.cvsignore
+
+2008-03-06 19:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.4.2.3
+
+2008-03-06 19:11  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: better explanation
+
+2008-03-06 19:09  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: (get_pkgs) fix another error introduced in
+	  4.4.2
+
+2008-03-06 19:08  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: (get_pkgs) simplify through uniq() (spotted by
+	  pixel)
+
+2008-03-06 18:55  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.4.2.2
+
+2008-03-06 18:54  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: (get_pkgs) fix error introduced in 4.4.2.1
+
+2008-03-06 17:28  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: add details to 4.4.2's log
+
+2008-03-06 16:57  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.4.2.1
+
+2008-03-06 16:57  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: (get_pkgs) tyo fix in latest commit
+
+2008-03-06 16:52  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.4.2
+
+2008-03-06 16:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: (resolve_dependencies) don't select all
+	  updates by default in rpmdrake
+	  (#38611)
+	  
+	  regression introduced in r238520 on 2008-03-04 in order to handle
+	  priority upgrade list in 4.3.2: "(get_pkgs) use more modern
+	  urpm::select::resolve_dependencies() API instead of partially
+	  open-coding it, thus enabling further improvements"
+
+2008-03-06 16:19  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate, NEWS: (run_treeview_dialog) really fix not
+	  listing all updates (#38595)
+	  (regression introduced in r238651 on 2008-03-05: "remember state
+	  of
+	  "Show automatically selected packages" (#38138)")
+
+2008-03-06 16:15  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (pkgs_provider) simplify ; make it clearer
+
+2008-03-06 15:26  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: (get_pkgs) fix not listing all updates
+	  (#38595) ; regression
+	  introduced in r238520 on 2008-03-04 while adding priority upgrade
+	  list
+	  support for 4.3.2:
+	  
+	  "(get_pkgs) use more modern urpm::select::resolve_dependencies()
+	  API
+	  instead of partially open-coding it, thus enabling further
+	  improvements"
+
+2008-03-06 11:43  Marek Laane <bald at starman.ee>
+
+	* po/et.po: Updated Estonian translation.
+
+2008-03-05 21:35  Pavel Maryanov <acid_jack at ukr.net>
+
+	* po/ru.po: updated translation
+
+2008-03-05 21:16  Michal Bukovjan <bukovjan at mbox.dkm.cz>
+
+	* po/cs.po: Update Czech translation.
+
+2008-03-05 16:22  Christophe Berthelé <cpjc at free.fr>
+
+	* po/fr.po: Update French translation
+
+2008-03-05 15:24  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: add bug reference
+
+2008-03-05 14:42  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: alter bug report id
+
+2008-03-05 14:40  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: fix date of 4.4
+
+2008-03-05 14:40  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.4.1
+
+2008-03-05 14:39  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, rpmdrake.pm: fix crash (#38514) due to not having commited
+	  all bits of 'remember state of
+	  "Show automatically selected packages" (#38138)'
+
+2008-03-05 11:58  aleph
+
+	* po/hu.po: update translation for hungarian language
+
+2008-03-05 11:01  Wanderlei Antonio Cavassin <cavassin at mandriva.com>
+
+	* po/pt_BR.po: more translations
+
+2008-03-05 09:01  Tomasz Bednarski <tbednarski at mandrivalinux.pl>
+
+	* po/pl.po: update translation for Polish
+
+2008-03-05 08:59  Inigo Salvador Azurmendi <xalba at euskalnet.net>
+
+	* po/eu.po: Osatuta.
+
+2008-03-05 04:47  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/gui.pm: (reset_search) do not reset search field
+	  (#35244)
+
+2008-03-05 04:08  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2008-03-05 04:07  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Makefile, NEWS: 4.4
