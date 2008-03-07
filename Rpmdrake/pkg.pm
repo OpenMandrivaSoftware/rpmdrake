@@ -414,6 +414,17 @@ sub get_pkgs {
 	$requested,
     );
 
+    my %common_opts = (
+        callback_choices => \&Rpmdrake::gui::callback_choices,
+        priority_upgrade => $urpm->{options}{'priority-upgrade'},
+    );
+
+    if ($urpm->{options}{'priority-upgrade'}) {
+        $restart_itself =
+          urpm::select::resolve_priority_upgrades_after_auto_select($urpm, $db, $state,
+                                                                    $requested, %common_opts);
+    }
+
     # list of updates (including those matching /etc/urpmi/skip.list):
     my @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
 
@@ -423,6 +434,15 @@ sub get_pkgs {
         @requested_strict = sort map {
             urpm_name($_);
         } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices);
+
+        if (my @l = grep { $state->{selected}{$_->id} }
+              urpm::select::_priority_upgrade_pkgs($urpm, $urpm->{options}{'priority-upgrade'})) {
+            if (!$restart_itself) {
+                $restart_itself =
+                  urpm::select::_resolve_priority_upgrades($urpm, $db, $state, $state->{selected},
+                                                           \@l, %common_opts);
+            }
+        }
     }
 
     # list updates including skiped ones + their deps in MandrivaUpdate:
