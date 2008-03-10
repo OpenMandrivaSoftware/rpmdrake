@@ -365,7 +365,7 @@ sub get_installed_packages {
 
 urpm::select::add_packages_to_priority_upgrade_list('rpmdrake');
 
-my ($restart_itself, $priority_state, $priority_requested);
+my ($need_restart, $priority_state, $priority_requested);
 
 our $probe_only_for_updates;
 sub get_pkgs {
@@ -441,7 +441,7 @@ sub get_pkgs {
     );
 
     if ($urpm->{options}{'priority-upgrade'}) {
-        $restart_itself =
+        $need_restart =
           urpm::select::resolve_priority_upgrades_after_auto_select($urpm, $db, $state,
                                                                     $requested, %common_opts);
     }
@@ -458,8 +458,8 @@ sub get_pkgs {
 
         if (my @l = grep { $state->{selected}{$_->id} }
               urpm::select::_priority_upgrade_pkgs($urpm, $urpm->{options}{'priority-upgrade'})) {
-            if (!$restart_itself) {
-                $restart_itself =
+            if (!$need_restart) {
+                $need_restart =
                   urpm::select::_resolve_priority_upgrades($urpm, $db, $state, $state->{selected},
                                                            \@l, %common_opts);
             }
@@ -469,8 +469,8 @@ sub get_pkgs {
     # list updates including skiped ones + their deps in MandrivaUpdate:
     @requested = uniq(@requested, @requested_strict) if $probe_only_for_updates;
 
-    $priority_state = $restart_itself ? $state : undef;
-    $priority_requested = $restart_itself ? $requested : undef;
+    $priority_state = $need_restart ? $state : undef;
+    $priority_requested = $need_restart ? $requested : undef;
 
     if (!$probe_only_for_updates) {
         $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
@@ -629,7 +629,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     # select packages to install / enssure selected pkg set is consistant:
     my $requested = { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} };
-    $restart_itself = urpm::select::resolve_dependencies(
+    $need_restart = urpm::select::resolve_dependencies(
         $urpm, $state, $requested,
         callback_choices => \&Rpmdrake::gui::callback_choices,
         priority_upgrade => $urpm->{options}{'priority-upgrade'},
@@ -812,7 +812,7 @@ you may now inspect some in order to take actions:"),
                      );
 
     #- restart rpmdrake if needed, keep command line for that.
-    if ($restart_itself && !$exit_code) {
+    if ($need_restart && !$exit_code) {
         log::explanations("restarting rpmdrake");
         #- it seems to work correctly with exec instead of system, provided we stop timers
         #- added --previous-priority-upgrade to allow checking if yet if
