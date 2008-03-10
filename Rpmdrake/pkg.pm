@@ -451,7 +451,7 @@ sub get_pkgs {
 
     # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
     my @requested_strict;
-    if ($probe_only_for_updates) {
+    if ($probe_only_for_updates && !$need_restart) {
         @requested_strict = sort map {
             urpm_name($_);
         } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices);
@@ -465,6 +465,13 @@ sub get_pkgs {
             }
         }
     }
+
+    if ($probe_only_for_updates && $need_restart) {
+        @requested_strict = map { scalar $_->fullname } @{$urpm->{depslist}}[keys %{$state->{selected}}];
+        # drop non priority updates:
+        undef @requested;
+    }
+
 
     # list updates including skiped ones + their deps in MandrivaUpdate:
     @requested = uniq(@requested, @requested_strict) if $probe_only_for_updates;
