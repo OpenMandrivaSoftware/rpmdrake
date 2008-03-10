@@ -497,8 +497,7 @@ sub pkgs_provider {
             @filtered_pkgs = @{$h->{updates}};
             # potential "updates" from media not tagged as updates:
             if (!$options{pure_updates}) {
-                push @filtered_pkgs, @{$h->{updates}},
-                  grep { is_updatable($_) } @{$h->{installable}};
+                push @filtered_pkgs, grep { is_updatable($_) } @{$h->{installable}};
             }
         },
         backports => sub { @filtered_pkgs = @{$h->{backports}} },
