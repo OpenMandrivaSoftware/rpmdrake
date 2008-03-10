@@ -230,7 +230,7 @@ sub get_update_medias {
 sub warn_about_media {
     my ($w, $opts) = @_;
 
-    return if !member($::default_list_mode, qw(all_updates security bugfix normal));
+    return if $::MODE ne 'update';
     return if $::rpmdrake_options{'no-media-update'};
 
     # we use our own instance of the urpmi db in order not to mess up with skip-list managment (#31092):
