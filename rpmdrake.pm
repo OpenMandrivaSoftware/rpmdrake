@@ -195,7 +195,11 @@ sub interactive_msg {
     local $::isEmbedded;
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
-    $contents = formatAlaTeX($contents) unless $options{scroll}; #- because we'll use a WrappedLabel
+    if ($options{scroll}) {
+        $contents = ugtk2::markup_to_TextView_format($contents);
+    } else { #- because we'll use a WrappedLabel
+        $contents = formatAlaTeX($contents);
+    }
     my $banner = $options{banner} ? getbanner() : undef;
     my $text_w;
     gtkadd(
