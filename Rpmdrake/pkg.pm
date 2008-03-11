@@ -827,6 +827,8 @@ you may now inspect some in order to take actions:"),
         my @argv = ('--previous-priority-upgrade=' . $urpm->{options}{'priority-upgrade'}, 
                 grep { !/^--no-priority-upgrade$|--previous-priority-upgrade=/ } @Rpmdrake::init::ARGV_copy);
         alarm(0);
+        # remember not to ask again questions and the like:
+        writeconf();
         exec($0, @argv);
         exit(0);
     }
