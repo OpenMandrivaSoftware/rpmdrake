@@ -91,6 +91,7 @@ our $dont_show_selections;
 # i18n: IMPORTANT: to get correct namespace (rpmdrake instead of libDrakX)
 BEGIN { unshift @::textdomains, qw(rpmdrake urpmi rpm-summary-main rpm-summary-contrib rpm-summary-devel) }
 
+use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
 ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
 
@@ -211,7 +212,7 @@ sub interactive_msg {
 	    (
 		$options{scroll} ?
             ($text_w = create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)))
-              : ($text_w = Gtk2::WrappedLabel->new($contents))
+              : ($text_w = gtknew('WrappedLabel', text_markup => $contents))
 	    ),
          if_($options{widget}, 0, $options{widget}),
 	    0,
