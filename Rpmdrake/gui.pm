@@ -496,7 +496,7 @@ sub pkgs_provider {
         all_updates => sub {
             @filtered_pkgs = @{$h->{updates}};
             # potential "updates" from media not tagged as updates:
-            if (!$options{pure_updates}) {
+            if (!$options{pure_updates} && !$Rpmdrake::pkg::need_restart) {
                 push @filtered_pkgs, grep { is_updatable($_) } @{$h->{installable}};
             }
         },

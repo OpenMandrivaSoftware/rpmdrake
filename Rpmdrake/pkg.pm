@@ -440,7 +440,7 @@ sub get_pkgs {
         }
     }
 
-    if ($probe_only_for_updates && $need_restart) {
+    if ($need_restart) {
         @requested_strict = map { scalar $_->fullname } @{$urpm->{depslist}}[keys %{$state->{selected}}];
         # drop non priority updates:
         undef @requested;
@@ -448,7 +448,7 @@ sub get_pkgs {
 
 
     # list updates including skiped ones + their deps in MandrivaUpdate:
-    @requested = uniq(@requested, @requested_strict) if $probe_only_for_updates;
+    @requested = uniq(@requested, @requested_strict);
 
     $priority_state = $need_restart ? $state : undef;
     $priority_requested = $need_restart ? $requested : undef;
