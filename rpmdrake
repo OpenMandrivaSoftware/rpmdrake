@@ -203,13 +203,13 @@ sub do_search($$$$$$$) {
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
-    my ($options, $compssUsers, $tree, $tree_model, $detail_list, $detail_list_model, %elems);
+    my ($options, $tree, $tree_model, $detail_list, $detail_list_model, %elems);
     (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $::main_window = $w->{real_window};
 
     $options = {
-	build_tree => sub { build_tree($tree, $tree_model, \%elems, $options, $force_rebuild, $compssUsers, @_) },
+	build_tree => sub { build_tree($tree, $tree_model, \%elems, $options, $force_rebuild, @_) },
 	partialsel_unsel => sub {
 	    my ($unsel, $sel) = @_;
 	    @$sel = grep { exists $pkgs->{$_} } @$sel;
@@ -337,12 +337,11 @@ sub run_treeview_dialog {
 
     $options->{state}{splited} = 1;
     #$options->{state}{flat} = 1;
-    $compssUsers = parse_compssUsers_flat();
+
     my $is_backports = get_inactive_backport_media(fast_open_urpmi_db());
     my %modes = (all => N("All"),
                  installed => N("Installed"),
                  non_installed => N("Not installed"),
-                 mandrake_choices => $rpmdrake::branded ? N("%s choices", $rpmdrake::distrib{system}) : N("Mandriva Linux choices"),
                  if_(0, # let's keep the translated strings (to be resurected as sorting the treeview):
                      N("All packages, alphabetical"),
                      by_presence => N("All packages, by update availability"),
@@ -378,7 +377,7 @@ sub run_treeview_dialog {
     my $old_value;
     my $cbox = gtksignal_connect(
         Gtk2::ComboBox->new_with_strings([
-            @modes{'all', if_($compssUsers, 'mandrake_choices'),
+            @modes{'all', 
                      qw(meta_pkgs gui_pkgs installed non_installed all_updates security bugfix normal),
                        if_($is_backports, 'backports')
                    } ],

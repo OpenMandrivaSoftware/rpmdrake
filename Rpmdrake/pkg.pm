@@ -53,7 +53,6 @@ our @EXPORT = qw(
                     extract_header
                     find_installed_version
                     get_pkgs
-                    parse_compssUsers_flat
                     perform_installation
                     perform_removal
                     run_rpm);
@@ -62,32 +61,6 @@ use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
 use Gtk2::Pango;
 use Gtk2::Gdk::Keysyms;
-
-
-sub parse_compssUsers_flat() {
-    my (%compssUsers, $category);
-    my $compss = '/var/lib/urpmi/compssUsers.flat';
-    -r $compss or $compss = '/usr/share/rpmdrake/compssUsers.flat.default';
-    -r $compss or do {
-	print STDERR "No compssUsers.flat file found\n";
-	return undef;
-    };
-    foreach (cat_($compss)) {
-	s/#.*//;
-	/^\s*$/ and next;
-	if (/^\S/) {
-	    if (/^(.+?) \[icon=.+?\] \[path=(.+?)\]/) {
-		$category = translate($2) . '|' . translate($1);
-	    } else {
-		print STDERR "Malformed category in compssUsers.flat: <$_>\n";
-	    }
-	} elsif (/^\t(\d) (\S+)\s*$/) {
-	    $category or print STDERR "Entry without category <$_>\n";
-	    push @{$compssUsers{$2}}, $category . ($1 <= 3 ? '|' . N("Other") : '');
-	}
-    }
-    \%compssUsers;
-}
 
 sub run_rpm {
     foreach (qw(LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION LC_ALL)) {

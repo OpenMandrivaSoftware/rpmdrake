@@ -38,7 +38,6 @@ install: $(ALL)
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
 	install -m644 gui.lst $(DATADIR)/rpmdrake
-	install -m644 compssUsers.flat.default $(DATADIR)/rpmdrake
 	mkdir -p $(PERL_VENDORLIB)/Rpmdrake
 	install -m 644 rpmdrake.pm $(PERL_VENDORLIB)
 	install -m 644 Rpmdrake/*.pm $(PERL_VENDORLIB)/Rpmdrake

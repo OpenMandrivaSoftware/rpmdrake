@@ -349,7 +349,7 @@ sub toggle_all {
 # - "tree_submode": the default mode (by group, mandriva choice), ...
 # - "state": a hash of misc flags: => { flat => '0' },
 #   o "flat": is the tree flat or not
-# - "tree_mode": mode of the tree ("mandrake_choices", "by_group", ...) (mainly used by rpmdrake)
+# - "tree_mode": mode of the tree ("gui_pkgs", "by_group", ...) (mainly used by rpmdrake)
           
 sub ask_browse_tree_given_widgets_for_rpmdrake {
     ($common) = @_;
@@ -511,7 +511,6 @@ sub pkgs_provider {
                 $descriptions->{$name}{importance} eq $importance } @{$h->{updates}};
         };
     }
-    $filter_methods{mandrake_choices} = $filter_methods{non_installed};
     switch_pkg_list_mode($mode);
 }
 
@@ -763,7 +762,7 @@ sub ctreefy {
 }
 
 sub build_tree {
-    my ($tree, $tree_model, $elems, $options, $force_rebuild, $compssUsers, $flat, $mode) = @_;
+    my ($tree, $tree_model, $elems, $options, $force_rebuild, $flat, $mode) = @_;
     state $old_mode;
     $mode = $options->{rmodes}{$mode} || $mode;
     return if $old_mode eq $mode && !$force_rebuild;
@@ -772,12 +771,7 @@ sub build_tree {
     my @elems;
     my $wait; $wait = statusbar_msg(N("Please wait, listing packages...")) if $MODE ne 'update';
     gtkflush();
-    if ($mode eq 'mandrake_choices') {
-        foreach my $pkg (keys %$pkgs) {
-            my ($name) = split_fullname($pkg);
-            push @elems, [ $pkg, $_ ] foreach @{$compssUsers->{$name}};
-        }
-    } else {
+    {
         my @keys = @filtered_pkgs;
         if (member($mode, qw(all_updates security bugfix normal))) {
             @keys = grep {
