@@ -437,6 +437,11 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
             interactive_msg(N("Warning"), N("The \"%s\" package is in urpmi skip list.\nDo you want to select it anyway?", $name), yesno => 1) or return '';
             $urpm_obj->set_flag_skip(0);
         }
+
+        if ($Rpmdrake::pkg::need_restart) {
+            interactive_msg(N("Warning"), '<b>' . N("Rpmdrake or one of its priority dependencies needs to be updated first. Rpmdrake will then restart.") . '</b>' . "\n\n");
+        }
+
         toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, $pkg_columns{state}),
                      $w->{detail_list_model}->get($iter, $pkg_columns{text}));
 	    update_size($common);
