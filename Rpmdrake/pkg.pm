@@ -338,7 +338,8 @@ sub get_installed_packages {
 
 urpm::select::add_packages_to_priority_upgrade_list('rpmdrake');
 
-my ($need_restart, $priority_state, $priority_requested);
+my ($priority_state, $priority_requested);
+our $need_restart;
 
 our $probe_only_for_updates;
 sub get_pkgs {
