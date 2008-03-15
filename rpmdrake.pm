@@ -89,7 +89,7 @@ our $typical_width = 280;
 our $dont_show_selections;
 
 # i18n: IMPORTANT: to get correct namespace (rpmdrake instead of libDrakX)
-BEGIN { unshift @::textdomains, qw(rpmdrake urpmi rpm-summary-main rpm-summary-contrib rpm-summary-devel) }
+BEGIN { unshift @::textdomains, qw(rpmdrake urpmi rpm-summary-main rpm-summary-contrib rpm-summary-devel rpm-summary-non-free) }
 
 use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
