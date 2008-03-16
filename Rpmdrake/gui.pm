@@ -41,9 +41,35 @@ use Rpmdrake::icon;
 use Gtk2::Gdk::Keysyms;
 use feature 'state';
 
-our @EXPORT = qw(ask_browse_tree_given_widgets_for_rpmdrake build_tree callback_choices compute_main_window_size do_action get_info get_summary is_locale_available node_state pkgs_provider reset_search set_node_state switch_pkg_list_mode toggle_all toggle_nodes
-                 sort_callback
-            %grp_columns %pkg_columns @filtered_pkgs $find_entry $force_displaying_group $force_rebuild @initial_selection $pkgs $size_free $size_selected $urpm);
+our @EXPORT = qw(
+                    $find_entry
+                    $force_displaying_group
+                    $force_rebuild
+                    $pkgs
+                    $size_free
+                    $size_selected
+                    $urpm
+                    %grp_columns
+                    %pkg_columns
+                    @filtered_pkgs
+                    @initial_selection
+                    ask_browse_tree_given_widgets_for_rpmdrake
+                    build_tree
+                    callback_choices
+                    compute_main_window_size
+                    do_action
+                    get_info
+                    get_summary
+                    is_locale_available
+                    node_state
+                    pkgs_provider
+                    reset_search
+                    set_node_state
+                    sort_callback
+                    switch_pkg_list_mode
+                    toggle_all
+                    toggle_nodes
+            );
 
 our ($descriptions, @filtered_pkgs, %filter_methods, $force_displaying_group, $force_rebuild, @initial_selection, $pkgs, $size_free, $size_selected, $urpm);
 
