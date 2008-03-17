@@ -56,7 +56,7 @@ dis: clean
 gui.lst:
 	urpmf "/(opt/kde4|usr)/share/(applnk|applications(|/kde))/.*.desktop" |sed -e 's!:.*!!' |sort|uniq>gui.lst
 
-.PHONY: ChangeLog log changelog
+.PHONY: ChangeLog log changelog gui.lst
 
 log: ChangeLog
 
