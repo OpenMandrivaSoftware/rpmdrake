@@ -578,9 +578,9 @@ sub run_treeview_dialog {
 			0, $cbox,
 			0, $fbox,
 			1, gtkset_size_request(Gtk2::Alignment->new(0, 0, 0, 0), 100, 1),
-			0, gtknew('Label', text => N("Find:")),
 			0, $find_entry = gtknew('Sexy_IconEntry', clear_button => 1, width => 260,
                                              primary_icon => Gtk2::Image->new_from_stock('gtk-find', 'menu'),
+                                             tip => N("Find"),
                                              'icon-released' => $find_callback,
                                              'icon-pressed' => sub {
                                                  my (undef, $pos, $button) = @_;
