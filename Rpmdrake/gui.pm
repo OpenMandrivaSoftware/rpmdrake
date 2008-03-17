@@ -520,7 +520,7 @@ sub pkgs_provider {
     my $h = &get_pkgs($options); # was given (1, @_) for updates
     ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
     $pkgs = $h->{all_pkgs};
-    %filter_methods = (
+    my %tmp_filter_methods = (
         all => sub { @filtered_pkgs = keys %$pkgs },
         installed => sub { @filtered_pkgs = @{$h->{installed}} },
         non_installed => sub { @filtered_pkgs = @{$h->{installable}} },
@@ -536,12 +536,15 @@ sub pkgs_provider {
         gui_pkgs => sub { @filtered_pkgs = @{$h->{gui_pkgs}} },
     );
     foreach my $importance (qw(bugfix security normal)) {
-        $filter_methods{$importance} = sub {
+        $tmp_filter_methods{$importance} = sub {
             @filtered_pkgs = grep { 
                 my ($name) = split_fullname($_);
                 $descriptions->{$name}{importance} eq $importance } @{$h->{updates}};
         };
     }
+
+    %filter_methods = %tmp_filter_methods;
+
     switch_pkg_list_mode($mode);
 }
 
