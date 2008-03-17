@@ -372,7 +372,7 @@ sub toggle_all {
 #   o "tree_model" is the associated model of "tree"
 #   o "status" references a Label
 # - some methods: get_info, node_state, build_tree, partialsel_unsel, grep_unselected, rebuild_tree, toggle_nodes, get_status
-# - "tree_submode": the default mode (by group, mandriva choice), ...
+# - "tree_submode": the default mode (by group, ...), ...
 # - "state": a hash of misc flags: => { flat => '0' },
 #   o "flat": is the tree flat or not
 # - "tree_mode": mode of the tree ("gui_pkgs", "by_group", ...) (mainly used by rpmdrake)
