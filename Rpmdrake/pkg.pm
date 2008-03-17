@@ -752,6 +752,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  $canceled and goto return_with_exit_code;
                                  $gurpm->invalidate_cancel_forever;
                              },
+                             need_restart => sub {
+                                 my ($need_restart_formatted) = @_;
+                                 # FIXME: offer to restart the system
+                                 interactive_msg(N("Warning"), join("\n", values %$need_restart_formatted), scroll => 1);
+                             },
                              trans_error_summary => sub {
                                  my ($nok, $errors) = @_;
                                  interactive_msg(
