@@ -339,9 +339,16 @@ sub run_treeview_dialog {
     #$options->{state}{flat} = 1;
 
     my $is_backports = get_inactive_backport_media(fast_open_urpmi_db());
+
+    my %filters = (all => N("All"),
+                   installed => N("Installed"),
+                   non_installed => N("Not installed"),
+               );
+
+    my %rfilters = reverse %filters;
+
+
     my %modes = (all => N("All"),
-                 installed => N("Installed"),
-                 non_installed => N("Not installed"),
                  if_(0, # let's keep the translated strings (to be resurected as sorting the treeview):
                      N("All packages, alphabetical"),
                      by_presence => N("All packages, by update availability"),
@@ -377,8 +384,8 @@ sub run_treeview_dialog {
     my $old_value;
     my $cbox = gtksignal_connect(
         Gtk2::ComboBox->new_with_strings([
-            @modes{'all', 
-                     qw(meta_pkgs gui_pkgs installed non_installed all_updates security bugfix normal),
+            @modes{
+                     qw(meta_pkgs gui_pkgs all_updates security bugfix normal),
                        if_($is_backports, 'backports')
                    } ],
                                          $modes{$default_mode{$MODE} || 'all'}),
@@ -412,6 +419,25 @@ sub run_treeview_dialog {
 
 	$options->{tree_submode} ||= $default_radio;
 	$options->{tree_subflat} ||= $options->{state}{flat};
+
+
+    my $fbox = gtksignal_connect(
+        Gtk2::ComboBox->new_with_strings([
+            @filters{qw(all installed non_installed)} ], $filters{$filter->[0]}),
+        changed => sub {
+            state $oldval;
+            my $val = $_[0]->get_text;
+            return if $val eq $oldval; # workarounding gtk+ sending us sometimes twice events
+            $oldval = $val;
+            $val = $rfilters{$val};
+            if ($filter->[0] ne $val) {
+                $filter->[0] = $val;
+                reset_search();
+                slow_func($::main_window->window, sub { switch_pkg_list_mode($default_list_mode) });
+                $options->{rebuild_tree}->();
+            }
+        }
+    );
 
     my @search_types = qw(normal descriptions summaries files);
     my $current_search_type = $search_types[0];
@@ -547,6 +573,7 @@ sub run_treeview_dialog {
 		    0, gtkpack_(
 			gtknew('HBox', spacing => 10),
 			0, $cbox,
+			0, $fbox,
 			1, gtkset_size_request(Gtk2::Alignment->new(0, 0, 0, 0), 100, 1),
 			0, gtknew('Label', text => N("Find:")),
 			0, $find_entry = gtknew('Sexy_IconEntry', clear_button => 1, width => 260,

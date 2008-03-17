@@ -71,7 +71,7 @@ our @EXPORT = qw(
                     toggle_nodes
             );
 
-our ($descriptions, @filtered_pkgs, %filter_methods, $force_displaying_group, $force_rebuild, @initial_selection, $pkgs, $size_free, $size_selected, $urpm);
+our ($descriptions, %filters, @filtered_pkgs, %filter_methods, $force_displaying_group, $force_rebuild, @initial_selection, $pkgs, $size_free, $size_selected, $urpm);
 
 our %grp_columns = (
     label => 0,
@@ -520,10 +520,13 @@ sub pkgs_provider {
     my $h = &get_pkgs($options); # was given (1, @_) for updates
     ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
     $pkgs = $h->{all_pkgs};
+    %filters = (
+        non_installed => $h->{installable},
+        installed => $h->{installed},
+        all => [ keys %$pkgs ],
+    );
     my %tmp_filter_methods = (
         all => sub { @filtered_pkgs = keys %$pkgs },
-        installed => sub { @filtered_pkgs = @{$h->{installed}} },
-        non_installed => sub { @filtered_pkgs = @{$h->{installable}} },
         all_updates => sub {
             @filtered_pkgs = @{$h->{updates}};
             # potential "updates" from media not tagged as updates:
@@ -544,7 +547,13 @@ sub pkgs_provider {
         };
     }
 
-    %filter_methods = %tmp_filter_methods;
+    undef %filter_methods;
+    foreach my $type (keys %tmp_filter_methods) {
+        $filter_methods{$type} = sub {
+            $force_rebuild = 1; # force rebuilding tree since we changed filter (FIXME: switch to SortModel)
+            @filtered_pkgs = intersection($filters{$filter->[0]}, [ $tmp_filter_methods{$type}->() ]);
+        };
+    }
 
     switch_pkg_list_mode($mode);
 }

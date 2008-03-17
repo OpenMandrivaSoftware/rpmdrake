@@ -210,6 +210,7 @@ sub run_treeview_dialog {
     $w->{rwindow}->show_all;
     $w->{rwindow}->set_sensitive(0);
 
+    $filter->[0] = 'all'; # default filter: availlable updates
     $Rpmdrake::pkg::probe_only_for_updates = 1; # faster startup
     pkgs_provider({}, 'all_updates', pure_updates => 1); # default mode
 
