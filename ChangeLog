@@ -1,3 +1,149 @@
+2008-03-17 21:38  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/br.po, po/fr.po: update
+
+2008-03-17 21:38  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po, po/cy.po,
+	  po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po, po/ga.po,
+	  po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po, po/hy.po,
+	  po/id.po, po/is.po, po/it.po, po/ja.po, po/ka.po, po/ko.po,
+	  po/ku.po, po/ky.po, po/lt.po, po/ltg.po, po/lv.po, po/mk.po,
+	  po/mn.po, po/ms.po, po/mt.po, po/nb.po, po/nl.po, po/nn.po,
+	  po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po, po/ro.po,
+	  po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po,
+	  po/uz@cyrillic.po, po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po:
+	  sync with code
+
+2008-03-17 21:35  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.8
+
+2008-03-17 21:33  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, rpmdrake: (run_treeview_dialog) make find box larger and
+	  left-aligned (#38298)
+
+2008-03-17 21:31  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) rename "fbox" as more meaningfull
+	  "filter_box"
+
+2008-03-17 21:31  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) rename "cbox" as more meaningfull
+	  "view_box"
+
+2008-03-17 21:29  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) simplify
+
+2008-03-17 21:28  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/gui.pm, rpmdrake, rpmdrake.pm: add a "mode" combo
+	  box, thus restoring flat mode (#25770) and allowing again to
+	  sort packages by size (#25417)
+
+2008-03-17 21:21  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm, rpmdrake: (build_tree,run_treeview_dialog) do
+	  the sort when filling in the tree
+	  in "by_group" mode rather than setting it as a tree propriety
+	  (needed
+	  before resurecting flat mode)
+
+2008-03-17 21:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (build_tree) fix "by_leaves" filter by
+	  chomp()ing readed lines
+
+2008-03-17 21:07  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (build_tree) fix by_leaves sorting by adding
+	  arch to package full
+	  names (needed before restoring flat mode)
+
+2008-03-17 21:03  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) restore tree_flat value (needed
+	  for next commits)
+
+2008-03-17 17:34  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: fix a comment for mandriva_choice death
+
+2008-03-17 17:33  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: tell the user to "restart system" when
+	  needed (needs urpmi-5.14)
+
+2008-03-17 15:46  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: this is a rpmdrake only change
+
+2008-03-17 15:45  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: kill unused $default_radio variable
+
+2008-03-17 15:42  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po, po/cy.po,
+	  po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po, po/ga.po,
+	  po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po, po/hy.po,
+	  po/id.po, po/is.po, po/it.po, po/ja.po, po/ka.po, po/ko.po,
+	  po/ku.po, po/ky.po, po/lt.po, po/ltg.po, po/lv.po, po/mk.po,
+	  po/mn.po, po/ms.po, po/mt.po, po/nb.po, po/nl.po, po/nn.po,
+	  po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po, po/ro.po,
+	  po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po,
+	  po/uz@cyrillic.po, po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po:
+	  sync with code
+
+2008-03-17 15:33  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, rpmdrake: add tooltip to search entry
+
+2008-03-17 15:31  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm, rpmdrake: add tooltips to pull down menus
+
+2008-03-17 15:29  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) simplify through mygtk2 (needed
+	  for next commit)
+
+2008-03-17 15:10  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) simplify initializing default
+	  view
+
+2008-03-17 14:59  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) rename 'modes' as 'views'
+
+2008-03-17 13:30  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.7
+
+2008-03-17 13:30  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: log Funda's change regarding translations
+
+2008-03-17 13:30  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: make clear it's rpmdrake changes
+
+2008-03-17 13:28  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2008-03-17 13:27  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* rpmdrake: (run_treeview_dialog) resurect 'all' view (got lost in
