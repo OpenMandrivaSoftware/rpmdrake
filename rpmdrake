@@ -384,13 +384,13 @@ sub run_treeview_dialog {
         normal => [ 'normal' ],
     );
     my $old_value;
-    my $cbox = gtksignal_connect(
-        Gtk2::ComboBox->new_with_strings([
-            @views{
-                     qw(all meta_pkgs gui_pkgs all_updates security bugfix normal),
-                       if_($is_backports, 'backports')
-                   } ],
-                                         $views{$default_radio}),
+    my $cbox = gtknew(
+        'ComboBox',
+        list => [
+            qw(all meta_pkgs gui_pkgs all_updates security bugfix normal),
+            if_($is_backports, 'backports')
+        ],
+        format => sub { $views{$_[0]} }, text => $views{$default_radio},
         changed => sub {
             my $val = $_[0]->get_text;
             return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
@@ -421,9 +421,10 @@ sub run_treeview_dialog {
 	$options->{tree_subflat} ||= $options->{state}{flat};
 
 
-    my $fbox = gtksignal_connect(
-        Gtk2::ComboBox->new_with_strings([
-            @filters{qw(all installed non_installed)} ], $filters{$filter->[0]}),
+    my $fbox = gtknew(
+        'ComboBox',
+        list => [ qw(all installed non_installed) ], text => $filters{$filter->[0]},
+        format => sub { $filters{$_[0]} },
         changed => sub {
             state $oldval;
             my $val = $_[0]->get_text;
