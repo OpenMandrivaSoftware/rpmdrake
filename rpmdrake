@@ -338,6 +338,8 @@ sub run_treeview_dialog {
     $options->{state}{splited} = 1;
     #$options->{state}{flat} = 1;
 
+    my $default_radio = $options->{tree_mode} = $default_list_mode;
+
     my $is_backports = get_inactive_backport_media(fast_open_urpmi_db());
 
     my %filters = (all => N("All"),
@@ -388,7 +390,7 @@ sub run_treeview_dialog {
                      qw(all meta_pkgs gui_pkgs all_updates security bugfix normal),
                        if_($is_backports, 'backports')
                    } ],
-                                         $views{$default_mode{$MODE} || 'all'}),
+                                         $views{$default_radio}),
         changed => sub {
             my $val = $_[0]->get_text;
             return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
@@ -414,8 +416,6 @@ sub run_treeview_dialog {
             }
         }
     );
-    my $default_radio = $options->{tree_mode} = $default_list_mode;
-    $cbox->set_text($views{$default_radio});
 
 	$options->{tree_submode} ||= $default_radio;
 	$options->{tree_subflat} ||= $options->{state}{flat};
