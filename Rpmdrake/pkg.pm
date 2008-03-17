@@ -809,7 +809,7 @@ you may now inspect some in order to take actions:"),
 
     N("RPM transaction %d/%d");
     N("Unselect all");
-    N("Details"); N("Filter");
+    N("Details");
 
     statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
 

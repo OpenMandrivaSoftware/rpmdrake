@@ -391,6 +391,7 @@ sub run_treeview_dialog {
             if_($is_backports, 'backports')
         ],
         format => sub { $views{$_[0]} }, text => $views{$default_radio},
+        tip => N("View"),
         changed => sub {
             my $val = $_[0]->get_text;
             return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
@@ -425,6 +426,7 @@ sub run_treeview_dialog {
         'ComboBox',
         list => [ qw(all installed non_installed) ], text => $filters{$filter->[0]},
         format => sub { $filters{$_[0]} },
+        tip => N("Filter"),
         changed => sub {
             state $oldval;
             my $val = $_[0]->get_text;
