@@ -51,6 +51,7 @@ our @EXPORT = qw(
     $dont_show_selections
     $mandrakeupdate_wanted_categories
     $max_info_in_descr
+    $mode
     $offered_to_add_sources
     $tree_flat
     $tree_mode
@@ -148,7 +149,7 @@ my ($root) = grep { $_->[2] == 0 } list_passwd();
 $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
-our ($already_splashed, $changelog_first_config, $filter, $max_info_in_descr, $tree_flat, $tree_mode);
+our ($already_splashed, $changelog_first_config, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode);
 our ($mandrakeupdate_wanted_categories, $offered_to_add_sources, $no_confirmation);
 our %config = (
     mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
@@ -161,6 +162,7 @@ our %config = (
     changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },
     'no-confirmation' => { var => \$no_confirmation, default => [ 0 ] },
     filter => { var => \$filter, default => [ 'all' ] },
+    mode => { var => \$mode, default => [ 'by_group' ] },
 );
 
 sub readconf() {

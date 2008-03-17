@@ -350,15 +350,18 @@ sub run_treeview_dialog {
     my %rfilters = reverse %filters;
 
 
+    my %modes = (
+        flat => N("All packages, alphabetical"),
+        by_group => N("All packages, by group"),
+        by_leaves => N("Leaves only, sorted by install date"),
+        by_presence => N("All packages, by update availability"),
+        by_selection => N("All packages, by selection state"),
+        by_size => N("All packages, by size"),
+    );
+    my %rmodes = reverse %modes;
+
+
     my %views = (all => N("All"),
-                 if_(0, # let's keep the translated strings (to be resurected as sorting the treeview):
-                     N("All packages, alphabetical"),
-                     by_presence => N("All packages, by update availability"),
-                     by_size => N("All packages, by size"),
-                     by_selection => N("All packages, by selection state"),
-                     by_leaves => N("Leaves only, sorted by install date"),
-                     by_group => N("All packages, by group"),
-                 ),
                  if_($is_backports, backports =>
                                      #-PO: Backports media are newer but less-tested versions of some packages in main
                                      #-PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -400,15 +403,9 @@ sub run_treeview_dialog {
             if (my @cat = $wanted_categories{$rviews{$val}} && @{$wanted_categories{$rviews{$val}}}) {
                 @$mandrakeupdate_wanted_categories = @cat;
             }
-            if (0) {
-                reset_search();
-                $options->{rebuild_tree}->();
-            }
-            $options->{state}{flat} = 0; # was 1 only for the "All packages, alphabetical", "All packages, by size", "All packages, by selection state", and "Leaves only, sorted by install date"
 
             if ($options->{tree_mode} ne $val) {
-                ($options->{tree_mode}) = $val =~ /^by/ ?
-                  $options->{tree_submode} : $rviews{$val};
+                $options->{tree_mode} = $rviews{$val};
                 $tree_mode->[0] = $options->{tree_mode};
                 $tree_flat->[0] = $options->{state}{flat};
                 reset_search();
@@ -441,6 +438,29 @@ sub run_treeview_dialog {
             }
         }
     );
+
+    my $mode_box = gtknew(
+        'ComboBox',
+        list => [ qw(flat by_group by_leaves by_presence by_selection by_size) ],
+        format => sub { $modes{$_[0]} }, text => $modes{$mode->[0]},
+        tip => N("Tree Mode"),
+        changed => sub {
+            my $val = $_[0]->get_text;
+            return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
+            $old_value = $val;
+            $val = $rmodes{$val};
+            return if $mode->[0] eq $val;
+            $mode->[0] = $val;
+            $tree_flat->[0] = $options->{state}{flat} = member($mode->[0], qw(flat by_leaves by_selection by_size));
+
+            if ($options->{tree_mode} ne $val) {
+                reset_search();
+                slow_func($::main_window->window, sub { switch_pkg_list_mode($rmodes{$val}) });
+                $options->{rebuild_tree}->();
+            }
+        }
+    );
+
 
     my @search_types = qw(normal descriptions summaries files);
     my $current_search_type = $search_types[0];
@@ -577,6 +597,7 @@ sub run_treeview_dialog {
 			gtknew('HBox', spacing => 10),
 			0, $cbox,
 			0, $fbox,
+			0, $mode_box,
 			1, gtkset_size_request(Gtk2::Alignment->new(0, 0, 0, 0), 100, 1),
 			0, $find_entry = gtknew('Sexy_IconEntry', clear_button => 1, width => 260,
                                              primary_icon => Gtk2::Image->new_from_stock('gtk-find', 'menu'),

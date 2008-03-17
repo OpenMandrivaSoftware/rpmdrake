@@ -847,7 +847,7 @@ or you already installed all of them."));
         by_medium => sub { sort { $a->[2] <=> $b->[2] || uc($a->[0]) cmp uc($b->[0]) } @_ },
     );
     if ($flat) {
-        add_node($_->[0], '') foreach $sortmethods{$mode || 'flat'}->(@elems);
+        add_node($_->[0], '') foreach $sortmethods{$::mode->[0] || 'flat'}->(@elems);
     } else {
         if (0 && $MODE eq 'update') {
             add_node($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
