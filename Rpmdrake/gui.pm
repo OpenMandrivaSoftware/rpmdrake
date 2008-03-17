@@ -530,6 +530,7 @@ sub pkgs_provider {
             if (!$options{pure_updates} && !$Rpmdrake::pkg::need_restart) {
                 push @filtered_pkgs, grep { is_updatable($_) } @{$h->{installable}};
             }
+            @filtered_pkgs;
         },
         backports => sub { @filtered_pkgs = @{$h->{backports}} },
         meta_pkgs => sub { @filtered_pkgs = @{$h->{meta_pkgs}} },
