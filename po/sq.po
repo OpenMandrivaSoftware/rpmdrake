@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2002-11-27 21:45:+0100\n"
 "Last-Translator: Naim Daka <naim70@freesurf>\n"
 "Language-Team: Albanian <LL@li.org>\n"
@@ -1002,7 +1002,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Më shumë informacione mbi pakon..."
@@ -2229,14 +2236,7 @@ msgstr ""
 "Gabim(et) i(e) raportuar(a):\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2370,12 +2370,7 @@ msgstr "Zgjedhur"
 msgid "Details"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/_Skedare"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Një moment ju lutemi, zhdukja pakove..."
@@ -2551,30 +2546,30 @@ msgstr "Instaloje"
 msgid "All packages, alphabetical"
 msgstr "Gjitha pakot, të radhitura simbas alfabetit"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Gjitha pakot, simbas azhurnimit janë të lira"
+msgid "All packages, by group"
+msgstr "Gjitha pakot, simbas grupit"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Gjitha pakot, simbas madhësisë"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Gjitha pakot, e zgjedhura simbas gjendjes së tyre"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Vetëm lejimet, të renditura simbas datës së instalimit"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Gjitha pakot, simbas grupit"
+msgid "All packages, by update availability"
+msgstr "Gjitha pakot, simbas azhurnimit janë të lira"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Gjitha pakot, e zgjedhura simbas gjendjes së tyre"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Gjitha pakot, simbas madhësisë"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2613,7 +2608,22 @@ msgstr "Korigjimi i bug(it) azhurnues"
 msgid "General updates"
 msgstr "Azhurnimet normale"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "/_Paraqitja"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/_Skedare"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "mes emrave"
@@ -3540,9 +3550,6 @@ msgstr "Azhurnim i burimit"
 
 #~ msgid "Keys"
 #~ msgstr "Çelësat"
-
-#~ msgid "/_View"
-#~ msgstr "/_Paraqitja"
 
 #~ msgid "<no description>"
 #~ msgstr "<asnjë përshkrim>"

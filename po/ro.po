@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2004-09-09 15:39+0300\n"
 "Last-Translator: Ovidiu Constantin <ovidiusoft@gmail.com>\n"
 "Language-Team: Romanian <rtfs-project@lists.sourceforge.net>\n"
@@ -1017,7 +1017,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Mai multe informaţii despre pachet..."
@@ -2244,14 +2251,7 @@ msgstr ""
 "Eroare(erori) raportată(e):\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2386,12 +2386,7 @@ msgstr "Selectate"
 msgid "Details"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/_Fişier"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Vă rog să aşteptaţi, şterg pachetele..."
@@ -2573,30 +2568,30 @@ msgstr "Instalează"
 msgid "All packages, alphabetical"
 msgstr "Toate pachetele, alfabetic"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Toate pachetele, după disponibilitatea actualizării"
+msgid "All packages, by group"
+msgstr "Toate pachetele, după grup"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Toate pachetele, după mărime"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Toate pachetele, după starea selecţiei"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Numai ramuri, după data instalării"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Toate pachetele, după grup"
+msgid "All packages, by update availability"
+msgstr "Toate pachetele, după disponibilitatea actualizării"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Toate pachetele, după starea selecţiei"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Toate pachetele, după mărime"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2635,7 +2630,22 @@ msgstr "Actualizări pentru corectarea erorilor"
 msgid "General updates"
 msgstr "Actualizări normale"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "/_Vizualizare"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/_Fişier"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "în nume"
@@ -3581,9 +3591,6 @@ msgstr "Actualizare medii"
 
 #~ msgid "Keys"
 #~ msgstr "Chei"
-
-#~ msgid "/_View"
-#~ msgstr "/_Vizualizare"
 
 #~ msgid "<no description>"
 #~ msgstr "<nici o descriere>"

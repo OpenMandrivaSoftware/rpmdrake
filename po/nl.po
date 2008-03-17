@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-nl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2008-03-12 01:28+0100\n"
 "Last-Translator: Reinout van Schouwen <reinouts@gnome.org>\n"
 "Language-Team: Nederlands <vertaling@vrijschrift.nl>\n"
@@ -1052,7 +1052,16 @@ msgstr ""
 "Het pakket ‘%s’ staat vermeld in de overslaan-lijst van urpmi.\n"
 "Wilt u het toch selecteren?"
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+"Rpmdrake, of één van zijn belangrijke afhankelijkheden, dient eerst te "
+"worden bijgewerkt. Rpmdrake zal daarna herstarten."
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Meer informatie over pakket..."
@@ -2298,16 +2307,7 @@ msgstr ""
 "Gerapporteerde fout(en):\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-"Rpmdrake, of één van zijn belangrijke afhankelijkheden, dient eerst te "
-"worden bijgewerkt. Rpmdrake zal daarna herstarten."
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2434,12 +2434,7 @@ msgstr "Alles deselecteren"
 msgid "Details"
 msgstr "Details"
 
-#: ../Rpmdrake/pkg.pm:787
-#, c-format
-msgid "Filter"
-msgstr "Filteren"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Even geduld, bezig met het verwijderen van pakketten…"
@@ -2624,30 +2619,30 @@ msgstr "Niet-geïnstalleerd"
 msgid "All packages, alphabetical"
 msgstr "Alle pakketten, alfabetisch"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Alle pakketten, op basis van beschikbaarheid van herzieningen"
+msgid "All packages, by group"
+msgstr "Alle pakketten, op groep"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Alle pakketten, op grootte"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Alle pakketten, op selectiestatus"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Alleen blaadjes, gesorteerd op installatie datum"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Alle pakketten, op groep"
+msgid "All packages, by update availability"
+msgstr "Alle pakketten, op basis van beschikbaarheid van herzieningen"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Alle pakketten, op selectiestatus"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Alle pakketten, op grootte"
 
 # Overgedragen?
 #. -PO: Backports media are newer but less-tested versions of some packages in main
@@ -2687,7 +2682,22 @@ msgstr "Programmafout-reparaties"
 msgid "General updates"
 msgstr "Algemene herzieningen"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "Video"
+
+#: ../rpmdrake:425
+#, c-format
+msgid "Filter"
+msgstr "Filteren"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "in namen"

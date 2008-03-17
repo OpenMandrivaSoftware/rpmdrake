@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2004-02-01 19:31+0100\n"
 "Last-Translator: Miodrag Zivkovic <miodragz@linuxo.org\n"
 "Language-Team: serbian <www.linuxo.org>\n"
@@ -1010,7 +1010,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Додатне информације о пакету..."
@@ -2245,14 +2252,7 @@ msgstr ""
 "Пријављена Грешка(е):\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2388,12 +2388,7 @@ msgstr "Изабери све"
 msgid "Details"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/_Фајл"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Молим Вас сачекајте, уклањам пакете..."
@@ -2572,30 +2567,30 @@ msgstr "Није инсталирано"
 msgid "All packages, alphabetical"
 msgstr "Сви пакети, по абецеди"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Сви пакети, по доступности нове верзије"
+msgid "All packages, by group"
+msgstr "Сви пакети, по групи"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Сви пакети, по величини"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Сви пакети, по стању бирања"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Сортирано је по датуму инсталације"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Сви пакети, по групи"
+msgid "All packages, by update availability"
+msgstr "Сви пакети, по доступности нове верзије"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Сви пакети, по стању бирања"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Сви пакети, по величини"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2634,7 +2629,22 @@ msgstr "Надоградње са исправкама"
 msgid "General updates"
 msgstr "Обичне надоградње"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "/_Преглед"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/_Фајл"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "у именима"
@@ -3642,9 +3652,6 @@ msgstr "Надогради медиј"
 
 #~ msgid "Keys"
 #~ msgstr "Кључеви"
-
-#~ msgid "/_View"
-#~ msgstr "/_Преглед"
 
 #~ msgid "<no description>"
 #~ msgstr "<без описа>"

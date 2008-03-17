@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2007-12-16 05:23+0100\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: dansk <dansk@dansk-gruppen.dk>\n"
@@ -1024,7 +1024,14 @@ msgstr ""
 "Pakken «%s» er i «hopp over»-lista.\n"
 "Vil du velge den likevel?"
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Mer informasjon om pakke …"
@@ -2259,14 +2266,7 @@ msgstr ""
 "Feil rapportert:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2389,12 +2389,7 @@ msgstr "Fjern merking av alle"
 msgid "Details"
 msgstr "Detaljer:"
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/_Fil"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Fjerner pakker..."
@@ -2578,30 +2573,30 @@ msgstr "Ikke installert"
 msgid "All packages, alphabetical"
 msgstr "Alle pakker, alfabetisk"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Alle pakker, ved oppdateringstilgjengelighet"
+msgid "All packages, by group"
+msgstr "Alle pakker, etter gruppe"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Alle pakker, etter størrelse"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Alle pakker, etter valgstadie"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Bare blader, sortert etter installasjonsdato"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Alle pakker, etter gruppe"
+msgid "All packages, by update availability"
+msgstr "Alle pakker, ved oppdateringstilgjengelighet"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Alle pakker, etter valgstadie"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Alle pakker, etter størrelse"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2640,7 +2635,22 @@ msgstr "Feilrettingsoppdateringer"
 msgid "General updates"
 msgstr "Normale oppdateringer"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "Video"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/_Fil"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "i navn"

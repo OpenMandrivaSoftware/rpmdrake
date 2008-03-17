@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2007-03-16 15:29-0300\n"
 "Last-Translator: Felipe Arruda <felipemiguel@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_br@mail.kde.org>\n"
@@ -1036,7 +1036,16 @@ msgstr ""
 "O pacote \"%s\" está na lista de pacotes ignorados do urpmi.\n"
 "Você deseja selecioná-lo mesmo assim?"
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+"O rpmdrake ou uma das sua dependências prioritárias precisa ser atualizada "
+"para continuar. Após isto, o rpmdrake será reiniciado."
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Mais informações no pacote..."
@@ -2278,16 +2287,7 @@ msgstr ""
 "Erro(s) reportados:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-"O rpmdrake ou uma das sua dependências prioritárias precisa ser atualizada "
-"para continuar. Após isto, o rpmdrake será reiniciado."
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2411,12 +2411,7 @@ msgstr "Deselecionar tudo"
 msgid "Details"
 msgstr "Detalhes"
 
-#: ../Rpmdrake/pkg.pm:787
-#, c-format
-msgid "Filter"
-msgstr "Filtro"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Aguarde, removendo pacotes..."
@@ -2601,30 +2596,30 @@ msgstr "Não Instalado"
 msgid "All packages, alphabetical"
 msgstr "Todos os pacotes, alfabeticamente"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Todos os pacotes, por disponibilidade de atualização"
+msgid "All packages, by group"
+msgstr "Todos os pacotes, por grupo"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Todos os pacotes, por tamanho"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Todos os pacotes, por estado de seleção"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Somente os existentes, classificados pela data de instalação"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Todos os pacotes, por grupo"
+msgid "All packages, by update availability"
+msgstr "Todos os pacotes, por disponibilidade de atualização"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Todos os pacotes, por estado de seleção"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Todos os pacotes, por tamanho"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2663,7 +2658,22 @@ msgstr "Atualizações para correção de erros"
 msgid "General updates"
 msgstr "Atualizações gerais"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "Vídeo"
+
+#: ../rpmdrake:425
+#, c-format
+msgid "Filter"
+msgstr "Filtro"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "nos nomes"

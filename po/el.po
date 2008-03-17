@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-el_2008-03-04\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2008-03-04 22:37+0200\n"
 "Last-Translator: nikos papadopoulos <231036448@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -1027,7 +1027,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Περισσότερες πληροφορίες για το πακέτο..."
@@ -2263,14 +2270,7 @@ msgstr ""
 "Αναφερθέντα σφάλματα:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2402,12 +2402,7 @@ msgstr "Αποεπιλογή όλων"
 msgid "Details"
 msgstr "Λεπτομέρειες"
 
-#: ../Rpmdrake/pkg.pm:787
-#, c-format
-msgid "Filter"
-msgstr "Φίλτρο"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Παρακαλώ περιμένετε, αφαιρούνται τα πακέτα..."
@@ -2589,30 +2584,30 @@ msgstr "Μη εγκατεστημένα"
 msgid "All packages, alphabetical"
 msgstr "Όλα τα πακέτα, αλφαβητικά"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Όλα τα πακέτα, βάση διαθεσιμότητας αναβάθμισης"
+msgid "All packages, by group"
+msgstr "Όλα τα πακέτα, βάση ομάδας"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Όλα τα πακέτα, βάση μεγέθους"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Όλα τα πακέτα, βάση κατάστασης επιλογής"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Τερματικοί κόμβοι μόνο, ταξινομημένοι κατά ημερομηνία εγκατάστασης"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Όλα τα πακέτα, βάση ομάδας"
+msgid "All packages, by update availability"
+msgstr "Όλα τα πακέτα, βάση διαθεσιμότητας αναβάθμισης"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Όλα τα πακέτα, βάση κατάστασης επιλογής"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Όλα τα πακέτα, βάση μεγέθους"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2651,7 +2646,22 @@ msgstr "Αναβαθμίσεις διορθώσεων"
 msgid "General updates"
 msgstr "Γενικές αναβαθμίσεις"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "Βίντεο"
+
+#: ../rpmdrake:425
+#, c-format
+msgid "Filter"
+msgstr "Φίλτρο"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "στα ονόματα"

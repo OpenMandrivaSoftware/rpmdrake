@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2007-08-30 12:54+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: Mandriva Linux i18n Team <cooker-i18n@mandrakelinux.org>\n"
@@ -999,7 +999,15 @@ msgstr ""
 "“%s”包位于 urpmi 跳过列表中。\n"
 "您是否仍然要选择该软件包？"
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+"Rpmdrake 或其优先依赖关系之一需要先进行更新。Rpmdrake 将会稍候自行重新启动。"
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "该软件包的更多信息..."
@@ -2211,15 +2219,7 @@ msgstr ""
 "报告的错误:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-"Rpmdrake 或其优先依赖关系之一需要先进行更新。Rpmdrake 将会稍候自行重新启动。"
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2340,12 +2340,7 @@ msgstr "全不选"
 msgid "Details"
 msgstr "细节"
 
-#: ../Rpmdrake/pkg.pm:787
-#, c-format
-msgid "Filter"
-msgstr "过滤"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "正在删除软件包，请稍候..."
@@ -2527,30 +2522,30 @@ msgstr "未安装"
 msgid "All packages, alphabetical"
 msgstr "全部软件包，按字母次序排列"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "全部软件包，按照是否可更新排列"
+msgid "All packages, by group"
+msgstr "全部软件包，按组别排列"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "全部软件包，按大小排列"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "全部软件包，按选中状态排列"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "不分类，按安装日期排列"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "全部软件包，按组别排列"
+msgid "All packages, by update availability"
+msgstr "全部软件包，按照是否可更新排列"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "全部软件包，按选中状态排列"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "全部软件包，按大小排列"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2589,7 +2584,22 @@ msgstr "缺陷修正更新"
 msgid "General updates"
 msgstr "常规更新"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "视频"
+
+#: ../rpmdrake:425
+#, c-format
+msgid "Filter"
+msgstr "过滤"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "在名称中"

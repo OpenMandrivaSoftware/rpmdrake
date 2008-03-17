@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2008-03-10 03:02+0200\n"
 "Last-Translator: Dotan Kamber <kamberd@yahoo.com>\n"
 "Language-Team: Hebrew\n"
@@ -1016,7 +1016,16 @@ msgstr ""
 "החבילה \"%s\" נמצאת ב-urpmi skip list.\n"
 "האם ברצונך לבחור בה למרות זאת?"
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+"יש לעדכן תחילה את Rpmdrake או את אחת מהתלויות החשובות שלו. אחר כך Rpmdrake "
+"יאותחל."
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "עוד מידע על החבילות..."
@@ -2240,16 +2249,7 @@ msgstr ""
 "דו\"ח שגיאות:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-"יש לעדכן תחילה את Rpmdrake או את אחת מהתלויות החשובות שלו. אחר כך Rpmdrake "
-"יאותחל."
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2372,12 +2372,7 @@ msgstr "בטל בחירת הכל"
 msgid "Details"
 msgstr "פרטים"
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "מסנן"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "נא להמתין בעת הסרת החבילות..."
@@ -2560,30 +2555,30 @@ msgstr "לא מותקן"
 msgid "All packages, alphabetical"
 msgstr "כל החבילות, עפ\"י סדר האלף-בית"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "כל החבילות על פי זמינות עדכון"
+msgid "All packages, by group"
+msgstr "כל החבילות, לפי נושא"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "כל החבילות, לפי גודל"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "כל החבילות, לפי מחרוזת החיפוש"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "עלים בלבד, ממוין עפ\"י תאריך התקנה"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "כל החבילות, לפי נושא"
+msgid "All packages, by update availability"
+msgstr "כל החבילות על פי זמינות עדכון"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "כל החבילות, לפי מחרוזת החיפוש"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "כל החבילות, לפי גודל"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2622,7 +2617,22 @@ msgstr "עדכוני באגים"
 msgid "General updates"
 msgstr "עדכונים כלליים"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "וידאו"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "מסנן"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "בשמות"

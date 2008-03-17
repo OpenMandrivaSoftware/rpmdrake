@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2002-08-11 22:16+0200\n"
 "Last-Translator: Vitauts Stočka <vit@dau.lv>\n"
 "Language-Team: Latvian <cooker-i18n@mandrivalinux.org>\n"
@@ -997,7 +997,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Vairāk informācijas par pakotni..."
@@ -2201,14 +2208,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2346,12 +2346,7 @@ msgstr "Iezīmēt visu"
 msgid "Details"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/_Fails"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Lūdzu gaidiet, noņemu pakotnes..."
@@ -2524,29 +2519,29 @@ msgstr "Neinstalēt"
 msgid "All packages, alphabetical"
 msgstr "Visas pakotnes, pēc alfabēta"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, fuzzy, c-format
-msgid "All packages, by update availability"
-msgstr "pēc atjauninājuma pieejamības"
-
-#: ../rpmdrake:349
-#, fuzzy, c-format
-msgid "All packages, by size"
+msgid "All packages, by group"
 msgstr "Visas pakotnes,"
 
-#: ../rpmdrake:350
-#, fuzzy, c-format
-msgid "All packages, by selection state"
-msgstr "pēc izvēlēšanās statusa"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr ""
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, fuzzy, c-format
-msgid "All packages, by group"
+msgid "All packages, by update availability"
+msgstr "pēc atjauninājuma pieejamības"
+
+#: ../rpmdrake:358
+#, fuzzy, c-format
+msgid "All packages, by selection state"
+msgstr "pēc izvēlēšanās statusa"
+
+#: ../rpmdrake:359
+#, fuzzy, c-format
+msgid "All packages, by size"
 msgstr "Visas pakotnes,"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
@@ -2586,7 +2581,22 @@ msgstr "Kļūdu labojumu jauninājumi"
 msgid "General updates"
 msgstr "Parasti jauninājumi"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "/_Skats"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/_Fails"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "vārdos"
@@ -3458,9 +3468,6 @@ msgstr "Atjaunot avotus"
 
 #~ msgid "Keys"
 #~ msgstr "Taustiņi"
-
-#~ msgid "/_View"
-#~ msgstr "/_Skats"
 
 #~ msgid "Choose a mirror..."
 #~ msgstr "Izvēlieties spoguļserveri..."

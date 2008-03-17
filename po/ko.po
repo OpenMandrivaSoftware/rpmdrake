@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2002-08-25 14:32+0900\n"
 "Last-Translator: Jaegeum Cze <baedaron@hanafos.com>\n"
 "Language-Team: Korean <baedaron@hananet.net>\n"
@@ -1001,7 +1001,14 @@ msgstr ""
 "%s\n"
 "어쨋거나 설치할까요?"
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "추가 팩키지 정보..."
@@ -2206,14 +2213,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2347,12 +2347,7 @@ msgstr "모두 선택"
 msgid "Details"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/파일(_F)"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "기다려 주세요. 팩키지 제거 중..."
@@ -2528,29 +2523,29 @@ msgstr "설치"
 msgid "All packages, alphabetical"
 msgstr "모든 팩키지, 가나다순"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, fuzzy, c-format
-msgid "All packages, by update availability"
-msgstr "업데이트 가능성별"
-
-#: ../rpmdrake:349
-#, fuzzy, c-format
-msgid "All packages, by size"
+msgid "All packages, by group"
 msgstr "모든 팩키지"
 
-#: ../rpmdrake:350
-#, fuzzy, c-format
-msgid "All packages, by selection state"
-msgstr "선택 상태별"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr ""
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, fuzzy, c-format
-msgid "All packages, by group"
+msgid "All packages, by update availability"
+msgstr "업데이트 가능성별"
+
+#: ../rpmdrake:358
+#, fuzzy, c-format
+msgid "All packages, by selection state"
+msgstr "선택 상태별"
+
+#: ../rpmdrake:359
+#, fuzzy, c-format
+msgid "All packages, by size"
 msgstr "모든 팩키지"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
@@ -2590,7 +2585,22 @@ msgstr "버그수정 업데이트"
 msgid "General updates"
 msgstr "일반 업데이트"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "/보기(_V)"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/파일(_F)"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "이름별"
@@ -3456,9 +3466,6 @@ msgstr "매체 업데이트"
 
 #~ msgid "Keys"
 #~ msgstr "키"
-
-#~ msgid "/_View"
-#~ msgstr "/보기(_V)"
 
 #~ msgid "<no description>"
 #~ msgstr "<설명 없음>"

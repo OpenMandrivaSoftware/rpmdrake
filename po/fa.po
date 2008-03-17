@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-fa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2005-02-06 09:05-0500\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian\n"
@@ -1003,7 +1003,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "اطلاعات بیشتر درباره‌ی بسته..."
@@ -2226,14 +2233,7 @@ msgstr ""
 "خطا(های) گزارش شده:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2359,12 +2359,7 @@ msgstr "انتخاب همگی"
 msgid "Details"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/_پرونده"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "لطفا صبر کنید، در حال برداشتن بسته‌ها..."
@@ -2546,30 +2541,30 @@ msgstr "نصب"
 msgid "All packages, alphabetical"
 msgstr "همه‌ی بسته‌ها، الفبایی"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "همه‌ی بسته‌ها، بوسیله در دسترسی بروزسازی آنها"
+msgid "All packages, by group"
+msgstr "همه‌ی بسته‌ها، بوسیله‌ی گروه"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "همه‌ی بسته‌ها، بوسیله اندازه"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "تمام بسته‌ها، بوسیله‌ی وضعیت انتخاب"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "فقط مرتب شده با تاریخ نصب باقی بماند"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "همه‌ی بسته‌ها، بوسیله‌ی گروه"
+msgid "All packages, by update availability"
+msgstr "همه‌ی بسته‌ها، بوسیله در دسترسی بروزسازی آنها"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "تمام بسته‌ها، بوسیله‌ی وضعیت انتخاب"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "همه‌ی بسته‌ها، بوسیله اندازه"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2608,7 +2603,22 @@ msgstr "بروزسازی‌های اشکال‌زدایی‌"
 msgid "General updates"
 msgstr "بروزسازی‌های عادی"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "/_نما"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/_پرونده"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "در نام‌ها"
@@ -3575,6 +3585,3 @@ msgstr "بروزسازی رسانه"
 
 #~ msgid "Keys"
 #~ msgstr "کلیدها"
-
-#~ msgid "/_View"
-#~ msgstr "/_نما"

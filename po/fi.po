@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-fi - Mandriva 2007 Release\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2006-09-18 19:44+0300\n"
 "Last-Translator: Thomas Backlund <tmb@mandriva.org>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -1017,7 +1017,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Lisätietoa paketista..."
@@ -2244,14 +2251,7 @@ msgstr ""
 "Raportoidut virheet:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2385,12 +2385,7 @@ msgstr "Valitse kaikki"
 msgid "Details"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/_Tiedosto"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Odota, paketteja poistetaan..."
@@ -2573,30 +2568,30 @@ msgstr "Ei asennettu"
 msgid "All packages, alphabetical"
 msgstr "Kaikki paketit, aakkosjärjestyksessä"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Kaikki paketit, päivityksien saatavuuden mukaan"
+msgid "All packages, by group"
+msgstr "Kaikki paketit, ryhmän mukaan"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Kaikki paketit, koon mukaan"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Kaikki paketit, valinnan mukaan"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Jäämistöt, eriteltynä asennuspäivämäärän mukaan"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Kaikki paketit, ryhmän mukaan"
+msgid "All packages, by update availability"
+msgstr "Kaikki paketit, päivityksien saatavuuden mukaan"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Kaikki paketit, valinnan mukaan"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Kaikki paketit, koon mukaan"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2635,7 +2630,22 @@ msgstr "Virhekorjaukset"
 msgid "General updates"
 msgstr "Tavalliset päivitykset"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "/_Näytä"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/_Tiedosto"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "nimistä"
@@ -3612,9 +3622,6 @@ msgstr "Päivitä lähteet"
 
 #~ msgid "Keys"
 #~ msgstr "Avaimet"
-
-#~ msgid "/_View"
-#~ msgstr "/_Näytä"
 
 #~ msgid "<no description>"
 #~ msgstr "<ei kuvausta>"

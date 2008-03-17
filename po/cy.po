@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2008-03-11 18:01+0100\n"
 "Last-Translator: Rhoslyn Prys <post@meddal.com>\n"
 "Language-Team: Cymraeg/Welsh <post@meddal.com>\n"
@@ -1024,7 +1024,16 @@ msgstr ""
 "Mae'r pecyn \"%s\" yn rhestr hepgor urpmi.\n"
 "Hoffech chi ei ddewis beth bynnag?"
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+"Mae rpmdrake neu un o'i ddibyniaethau angen ei ddiweddaru yn gyntaf. Bydd "
+"rpmdrake yn ail gychwyn."
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Rhagor o wybodaeth ar becyn..."
@@ -2251,16 +2260,7 @@ msgstr ""
 "Gwall(au) wedi eu hadrodd:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-"Mae rpmdrake neu un o'i ddibyniaethau angen ei ddiweddaru yn gyntaf. Bydd "
-"rpmdrake yn ail gychwyn."
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2383,12 +2383,7 @@ msgstr "Dad ddewis popeth"
 msgid "Details"
 msgstr "Manylion"
 
-#: ../Rpmdrake/pkg.pm:787
-#, c-format
-msgid "Filter"
-msgstr "Hidl"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Arhoswch, tynnu'r pecynnau..."
@@ -2572,30 +2567,30 @@ msgstr "Heb eu gosod"
 msgid "All packages, alphabetical"
 msgstr "Pob pecyn, trefn yr wyddor"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Pob pecyn, yn ôl diweddariad"
+msgid "All packages, by group"
+msgstr "Pob pecyn, yn ôl grŵp"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Pob pecyn, yn ôl maint"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Pob pecyn, yn ôl dyddiad dewis"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Gadael, yn ôl dyddiad gosod"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Pob pecyn, yn ôl grŵp"
+msgid "All packages, by update availability"
+msgstr "Pob pecyn, yn ôl diweddariad"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Pob pecyn, yn ôl dyddiad dewis"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Pob pecyn, yn ôl maint"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2634,7 +2629,22 @@ msgstr "Diweddariad cywiro gwallau"
 msgid "General updates"
 msgstr "Diweddariadau cyffredinol"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "Fideo"
+
+#: ../rpmdrake:425
+#, c-format
+msgid "Filter"
+msgstr "Hidl"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "mewn enwau"

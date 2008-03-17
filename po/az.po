@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-az\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2004-09-12 20:17+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
@@ -1008,7 +1008,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Paket haqqında daha çox mə'lumat..."
@@ -2231,14 +2238,7 @@ msgstr ""
 "Raport edilən xəta(lar):\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2370,12 +2370,7 @@ msgstr "Seçili"
 msgid "Details"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/_Fayl"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Xahiş edirik gözləyin, paketlər silinir..."
@@ -2557,30 +2552,30 @@ msgstr "Qur"
 msgid "All packages, alphabetical"
 msgstr "Bütün paketlər, əlifba sırasına görə"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Bütün paketlər, yeniləmə imkanlarına görə"
+msgid "All packages, by group"
+msgstr "Bütün paketlər, qrupa görə"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Bütün paketlər, böyüklüklərinə görə"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Bütün paketlər, seçim vəziyyətinə görə"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Qurulma tarixinə görə sıralanmış, yalnız yarpaqlar"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Bütün paketlər, qrupa görə"
+msgid "All packages, by update availability"
+msgstr "Bütün paketlər, yeniləmə imkanlarına görə"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Bütün paketlər, seçim vəziyyətinə görə"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Bütün paketlər, böyüklüklərinə görə"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2619,7 +2614,22 @@ msgstr "Xəta düzəltməsi yeniləmələri"
 msgid "General updates"
 msgstr "Normal yeniləmələr"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "/_Görünüş"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/_Fayl"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "adlarda"
@@ -3540,9 +3550,6 @@ msgstr "Mediyumu yenilə"
 
 #~ msgid "Keys"
 #~ msgstr "Açarlar"
-
-#~ msgid "/_View"
-#~ msgstr "/_Görünüş"
 
 #~ msgid "<no description>"
 #~ msgstr "<izahat yoxdur>"

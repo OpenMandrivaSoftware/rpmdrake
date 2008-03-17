@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2008-03-05 22:16+0100\n"
 "Last-Translator: Michal Bukovjan <bukm@centrum.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1030,7 +1030,16 @@ msgstr ""
 "Balíček \"%s\" je na seznamu urpmi pro vynechávání.\n"
 "Chcete jej přesto vybrat?"
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+"Je třeba nejprve aktualizovat aplikaci Rpmdrake nebo jednu z jejich "
+"prioritních závislostí. Aplikace Rpmdrake se poté restartuje."
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Více informací o balíčku..."
@@ -2268,16 +2277,7 @@ msgstr ""
 "Nahlášené chyby:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-"Je třeba nejprve aktualizovat aplikaci Rpmdrake nebo jednu z jejich "
-"prioritních závislostí. Aplikace Rpmdrake se poté restartuje."
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2404,12 +2404,7 @@ msgstr "Odvybrat vše"
 msgid "Details"
 msgstr "Podrobnosti"
 
-#: ../Rpmdrake/pkg.pm:787
-#, c-format
-msgid "Filter"
-msgstr "Filtr"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Prosím počkejte, odebírám balíčky..."
@@ -2593,30 +2588,30 @@ msgstr "Nenainstalováno"
 msgid "All packages, alphabetical"
 msgstr "Všechny balíčky, abecedně"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "Všechny balíčky, podle dostupnosti aktualizace"
+msgid "All packages, by group"
+msgstr "Všechny balíčky, podle skupiny"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Všechny balíčky, podle velikosti"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Všechny balíčky, podle stavu výběru"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Pouze listy, tříděné podle data instalace"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Všechny balíčky, podle skupiny"
+msgid "All packages, by update availability"
+msgstr "Všechny balíčky, podle dostupnosti aktualizace"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Všechny balíčky, podle stavu výběru"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Všechny balíčky, podle velikosti"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2655,7 +2650,22 @@ msgstr "Opravy chyb"
 msgid "General updates"
 msgstr "Běžné aktualizace"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "Video"
+
+#: ../rpmdrake:425
+#, c-format
+msgid "Filter"
+msgstr "Filtr"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "v názvech"

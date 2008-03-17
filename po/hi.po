@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-hi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2005-08-21 15:37+0530\n"
 "Last-Translator: धनञ्जय शर्मा (Dhananjaya Sharma)\n"
 "Language-Team: Hindi, India\n"
@@ -1007,7 +1007,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "पैकेज पर और ज्यादा सूचना..."
@@ -2234,14 +2241,7 @@ msgstr ""
 "त्रुटि(त्रुटियां) बतायी गई:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2374,12 +2374,7 @@ msgstr "सभी का चयन"
 msgid "Details"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/संचिका (_F)"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "कृपया प्रतीक्षा करें, पैकेज हटाये जा रहे है..."
@@ -2559,30 +2554,30 @@ msgstr "संसाधन"
 msgid "All packages, alphabetical"
 msgstr "सभी पैकेज, वर्णमाला के क्रम में"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "सभी पैकेज, अपडेट की उपलब्धता पर आधारित"
+msgid "All packages, by group"
+msgstr "सभी पैकेज, समूहों के क्रम में"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "सभी पैकेज, आकार के क्रम में"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "सभी पैकेज, चयन अवस्था के क्रम में "
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "सिर्फ़ लीवस, संसाधन तिथि के क्रम में "
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "सभी पैकेज, समूहों के क्रम में"
+msgid "All packages, by update availability"
+msgstr "सभी पैकेज, अपडेट की उपलब्धता पर आधारित"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "सभी पैकेज, चयन अवस्था के क्रम में "
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "सभी पैकेज, आकार के क्रम में"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2621,7 +2616,22 @@ msgstr "दोष-निवारक अपडेटस"
 msgid "General updates"
 msgstr "सामान्य अपडेटस"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "वीडीओ"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/संचिका (_F)"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "नामों में"

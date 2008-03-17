@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-14 14:14+0100\n"
+"POT-Creation-Date: 2008-03-17 22:37+0100\n"
 "PO-Revision-Date: 2005-04-02 16:13+0200\n"
 "Last-Translator: Lucyin Mahin <lucyin@walon.org>\n"
 "Language-Team: Walon <linux-wa@walon.org>\n"
@@ -1014,7 +1014,14 @@ msgid ""
 "Do you want to select it anyway?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:540 ../Rpmdrake/gui.pm:570 ../Rpmdrake/gui.pm:572
+#: ../Rpmdrake/gui.pm:468 ../Rpmdrake/pkg.pm:642
+#, c-format
+msgid ""
+"Rpmdrake or one of its priority dependencies needs to be updated first. "
+"Rpmdrake will then restart."
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:582 ../Rpmdrake/gui.pm:612 ../Rpmdrake/gui.pm:614
 #, c-format
 msgid "More information on package..."
 msgstr "Pus d' informåcions sol pacaedje..."
@@ -2248,14 +2255,7 @@ msgstr ""
 "Aroke(s) di rapoirté(s):\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:621
-#, c-format
-msgid ""
-"Rpmdrake or one of its priority dependencies needs to be updated first. "
-"Rpmdrake will then restart."
-msgstr ""
-
-#: ../Rpmdrake/pkg.pm:622
+#: ../Rpmdrake/pkg.pm:643
 #, fuzzy, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2383,12 +2383,7 @@ msgstr "Tchoezi ttafwait"
 msgid "Details"
 msgstr "Detays:"
 
-#: ../Rpmdrake/pkg.pm:787
-#, fuzzy, c-format
-msgid "Filter"
-msgstr "/_Fitchî"
-
-#: ../Rpmdrake/pkg.pm:802 ../Rpmdrake/pkg.pm:818
+#: ../Rpmdrake/pkg.pm:832 ../Rpmdrake/pkg.pm:848
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Tårdjîz on pô s' i vs plait, rpm oistêye les pacaedjes..."
@@ -2570,30 +2565,30 @@ msgstr "Nén astalé(s)"
 msgid "All packages, alphabetical"
 msgstr "Tos les pacaedjes, relîs alfabeticmint"
 
-#: ../rpmdrake:348
+#: ../rpmdrake:355
 #, c-format
-msgid "All packages, by update availability"
-msgstr "To les pacaedjes, pa disponibilité di metaedjes a djoû"
+msgid "All packages, by group"
+msgstr "Tos les pacaedjes, pa groupe"
 
-#: ../rpmdrake:349
-#, c-format
-msgid "All packages, by size"
-msgstr "Tos les pacaedjes, pa grandeu"
-
-#: ../rpmdrake:350
-#, c-format
-msgid "All packages, by selection state"
-msgstr "Tos les pacaedjes, pa l' estat di tchoezixhaedje"
-
-#: ../rpmdrake:351
+#: ../rpmdrake:356
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "Rén k' les foyes, reléjhowes pal date d' astalaedje"
 
-#: ../rpmdrake:352
+#: ../rpmdrake:357
 #, c-format
-msgid "All packages, by group"
-msgstr "Tos les pacaedjes, pa groupe"
+msgid "All packages, by update availability"
+msgstr "To les pacaedjes, pa disponibilité di metaedjes a djoû"
+
+#: ../rpmdrake:358
+#, c-format
+msgid "All packages, by selection state"
+msgstr "Tos les pacaedjes, pa l' estat di tchoezixhaedje"
+
+#: ../rpmdrake:359
+#, c-format
+msgid "All packages, by size"
+msgstr "Tos les pacaedjes, pa grandeu"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
@@ -2632,7 +2627,22 @@ msgstr "Metaedjes a djoû di coridjaedje"
 msgid "General updates"
 msgstr "Metaedjes a djoû normås"
 
-#: ../rpmdrake:421
+#: ../rpmdrake:397
+#, fuzzy, c-format
+msgid "View"
+msgstr "/_Vey"
+
+#: ../rpmdrake:425
+#, fuzzy, c-format
+msgid "Filter"
+msgstr "/_Fitchî"
+
+#: ../rpmdrake:445
+#, c-format
+msgid "Tree Mode"
+msgstr ""
+
+#: ../rpmdrake:468
 #, c-format
 msgid "in names"
 msgstr "ezès nos d' pacaedje"
@@ -3599,9 +3609,6 @@ msgstr "Mete a djoû on sopoirt"
 
 #~ msgid "Keys"
 #~ msgstr "Clés"
-
-#~ msgid "/_View"
-#~ msgstr "/_Vey"
 
 #~ msgid "<no description>"
 #~ msgstr "<nou discrijhaedje>"
