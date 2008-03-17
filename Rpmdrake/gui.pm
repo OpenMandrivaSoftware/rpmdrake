@@ -865,7 +865,7 @@ or you already installed all of them."));
             #- we populate all the groups tree at first
             %$elems = ();
             # better loop on packages, create groups tree and push packages in the proper place:
-            foreach my $pkg (@elems) {
+            foreach my $pkg (sort @elems) {
                 my $grp = $pkg->[1];
                 add_parent($grp);
                 $elems->{$grp} ||= [];

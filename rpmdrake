@@ -290,7 +290,7 @@ sub run_treeview_dialog {
     $columns{name}{renderer}->set_property('ellipsize', 'end');
     $columns{$_}{renderer}->set_property('xpad', '6') foreach @columns;
     $columns{name}{widget}->set_resizable(1); 
-    $detail_list_model->set_sort_column_id($pkg_columns{text}, 'ascending');
+    #$detail_list_model->set_sort_column_id($pkg_columns{text}, 'ascending');
     $detail_list_model->set_sort_func($pkg_columns{version}, \&sort_callback);
     $detail_list->set_rules_hint(1);
 
