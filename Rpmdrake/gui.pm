@@ -526,24 +526,24 @@ sub pkgs_provider {
         all => [ keys %$pkgs ],
     );
     my %tmp_filter_methods = (
-        all => sub { @filtered_pkgs = keys %$pkgs },
+        all => sub { [ keys %$pkgs ] },
         all_updates => sub {
-            @filtered_pkgs = @{$h->{updates}};
             # potential "updates" from media not tagged as updates:
             if (!$options{pure_updates} && !$Rpmdrake::pkg::need_restart) {
-                push @filtered_pkgs, grep { is_updatable($_) } @{$h->{installable}};
+                [ @{$h->{updates}}, grep { is_updatable($_) } @{$h->{installable}} ];
+            } else {
+                $h->{updates};
             }
-            @filtered_pkgs;
         },
-        backports => sub { @filtered_pkgs = @{$h->{backports}} },
-        meta_pkgs => sub { @filtered_pkgs = @{$h->{meta_pkgs}} },
-        gui_pkgs => sub { @filtered_pkgs = @{$h->{gui_pkgs}} },
+        backports => sub { $h->{backports} },
+        meta_pkgs => sub { $h->{meta_pkgs} },
+        gui_pkgs => sub { $h->{gui_pkgs} },
     );
     foreach my $importance (qw(bugfix security normal)) {
         $tmp_filter_methods{$importance} = sub {
-            @filtered_pkgs = grep { 
+            [ grep { 
                 my ($name) = split_fullname($_);
-                $descriptions->{$name}{importance} eq $importance } @{$h->{updates}};
+                $descriptions->{$name}{importance} eq $importance } @{$h->{updates}} ];
         };
     }
 
@@ -551,7 +551,7 @@ sub pkgs_provider {
     foreach my $type (keys %tmp_filter_methods) {
         $filter_methods{$type} = sub {
             $force_rebuild = 1; # force rebuilding tree since we changed filter (FIXME: switch to SortModel)
-            @filtered_pkgs = intersection($filters{$filter->[0]}, [ $tmp_filter_methods{$type}->() ]);
+            @filtered_pkgs = intersection($filters{$filter->[0]}, $tmp_filter_methods{$type}->());
         };
     }
 
