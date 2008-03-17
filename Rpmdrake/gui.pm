@@ -521,7 +521,7 @@ sub pkgs_provider {
     ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
     $pkgs = $h->{all_pkgs};
     %filter_methods = (
-        all => sub { @filtered_pkgs = map { @$_ } @$h{qw(installed installable updates)} },
+        all => sub { @filtered_pkgs = keys %$pkgs },
         installed => sub { @filtered_pkgs = @{$h->{installed}} },
         non_installed => sub { @filtered_pkgs = @{$h->{installable}} },
         all_updates => sub {
