@@ -405,8 +405,7 @@ sub run_treeview_dialog {
             }
 
             if ($options->{tree_mode} ne $val) {
-                $options->{tree_mode} = $rviews{$val};
-                $tree_mode->[0] = $options->{tree_mode};
+                $tree_mode->[0] = $options->{tree_mode} = $rviews{$val};
                 $tree_flat->[0] = $options->{state}{flat};
                 reset_search();
                 slow_func($::main_window->window, sub { switch_pkg_list_mode($rviews{$val}) });
