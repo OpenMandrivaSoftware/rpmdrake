@@ -1,3 +1,175 @@
+2008-03-17 13:27  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) resurect 'all' view (got lost in
+	  latest commit
+	  while splitting views from filters)
+
+2008-03-17 13:24  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (pkgs_provider) optimize (less copy, less
+	  dereferencing, less memory used)
+
+2008-03-17 13:08  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* MandrivaUpdate, NEWS, Rpmdrake/gui.pm, rpmdrake, rpmdrake.pm:
+	  split filters (all, installed, non installed) from views (GUI,
+	  meta packages,
+	  updates, ...)
+
+2008-03-17 13:06  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (pkgs_provider) make 'all_updates' return its
+	  result list like other methods (needed for next commit)
+
+2008-03-17 13:06  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (pkgs_provider) use a temporary variable (needed
+	  for next commits)
+
+2008-03-17 11:58  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: log latest gui.lst change
+
+2008-03-17 11:57  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* gui.lst: update
+
+2008-03-17 11:56  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile: (.PHONY) add gui.lst
+
+2008-03-17 07:34  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: (pkgs_provider) simplify
+
+2008-03-16 21:58  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/gui.pm: sort export list for readability
+
+2008-03-16 17:31  Zé <ze at mandriva.org>
+
+	* po/pt.po: update
+
+2008-03-15 16:23  Funda Wang <fundawang at gmail.com>
+
+	* rpmdrake.pm: consider rpm-summary-non-free when fetching package
+	  summaries
+
+2008-03-15 07:59  Shiva Huang <blueshiva at giga.net.tw>
+
+	* po/zh_TW.po: Update zh_TW translation
+
+2008-03-14 21:25  aleph
+
+	* po/hu.po: hungarian translation update
+
+2008-03-14 15:42  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.6.2
+
+2008-03-14 14:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/gui.pm: warn there're priority upgrades when
+	  selecting other packages (#38885)
+
+2008-03-14 14:41  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake.pm: (interactive_msg) support markups for simple Labels
+	  too (needed for
+	  next commit)
+
+2008-03-14 14:29  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/gui.pm, Rpmdrake/pkg.pm: only list priority
+	  upgrades if there're
+
+2008-03-14 14:16  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/fr.po: better phrasing
+
+2008-03-14 14:12  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Rpmdrake/pkg.pm: make $need_restart visible from outside (needed
+	  for next commit)
+
+2008-03-14 14:10  Tomasz Bednarski <tbednarski at mandrivalinux.pl>
+
+	* po/pl.po: update translation for Polish
+
+2008-03-14 13:15  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po, po/cy.po,
+	  po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po, po/ga.po,
+	  po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po, po/hy.po,
+	  po/id.po, po/is.po, po/it.po, po/ja.po, po/ka.po, po/ko.po,
+	  po/ku.po, po/ky.po, po/lt.po, po/ltg.po, po/lv.po, po/mk.po,
+	  po/mn.po, po/ms.po, po/mt.po, po/nb.po, po/nl.po, po/nn.po,
+	  po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po, po/ro.po,
+	  po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po,
+	  po/uz@cyrillic.po, po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po:
+	  kill "Mandriva choices" translations
+
+2008-03-14 13:13  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS, Rpmdrake/gui.pm, Rpmdrake/pkg.pm,
+	  compssUsers.flat.default, rpmdrake: kill "Mandriva choices"
+
+2008-03-14 10:58  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/Makefile: (update_n_merge) split it out of (merge) ; now
+	  (merge) only update po w/o updating main pot file
+
+2008-03-12 15:20  Funda Wang <fundawang at gmail.com>
+
+	* po/zh_CN.po: update again
+
+2008-03-12 15:18  Funda Wang <fundawang at gmail.com>
+
+	* po/zh_CN.po: Updated zh_CN translation
+
+2008-03-12 10:11  Yukiko Bando <ybando at k6.dion.ne.jp>
+
+	* po/ja.po: Japanese translation updated.
+
+2008-03-12 00:29  Reinout van Schouwen <reinout at gmail.com>
+
+	* po/nl.po: 2008-03-12 Reinout van Schouwen <reinouts@gnome.org>
+	  
+	  - nl.po: Updated Dutch translation
+
+2008-03-11 18:00  Rhoslyn Prys<post at meddal.com>
+
+	* po/cy.po: 20080311
+
+2008-03-11 11:08  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: (perform_installation) write configuration
+	  before restarting after
+	  priority upgrades so that we don't ask questions again
+
+2008-03-10 22:56  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: typo fix
+
+2008-03-10 22:54  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.6.1
+
+2008-03-10 16:15  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, Rpmdrake/pkg.pm: (warn_about_media) really only update
+	  media in MandrivaUpdate, not in
+	  rpmdrake (regression introduced in r238593 on 2008-03-05 for 4.4:
+	  "(readconf) remember latest view mode (#38138)")
+
+2008-03-10 15:32  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2008-03-10 15:31  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Makefile, NEWS: 4.6
