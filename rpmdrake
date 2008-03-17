@@ -387,7 +387,7 @@ sub run_treeview_dialog {
         normal => [ 'normal' ],
     );
     my $old_value;
-    my $cbox = gtknew(
+    my $view_box = gtknew(
         'ComboBox',
         list => [
             qw(all meta_pkgs gui_pkgs all_updates security bugfix normal),
@@ -594,7 +594,7 @@ sub run_treeview_dialog {
 		    gtknew('VBox', spacing => 3),
 		    0, gtkpack_(
 			gtknew('HBox', spacing => 10),
-			0, $cbox,
+			0, $view_box,
 			0, $fbox,
 			0, $mode_box,
 			1, gtkset_size_request(Gtk2::Alignment->new(0, 0, 0, 0), 100, 1),
