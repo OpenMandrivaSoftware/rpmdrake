@@ -418,7 +418,7 @@ sub run_treeview_dialog {
 	$options->{tree_subflat} ||= $options->{state}{flat};
 
 
-    my $fbox = gtknew(
+    my $filter_box = gtknew(
         'ComboBox',
         list => [ qw(all installed non_installed) ], text => $filters{$filter->[0]},
         format => sub { $filters{$_[0]} },
@@ -595,7 +595,7 @@ sub run_treeview_dialog {
 		    0, gtkpack_(
 			gtknew('HBox', spacing => 10),
 			0, $view_box,
-			0, $fbox,
+			0, $filter_box,
 			0, $mode_box,
 			1, gtkset_size_request(Gtk2::Alignment->new(0, 0, 0, 0), 100, 1),
 			0, $find_entry = gtknew('Sexy_IconEntry', clear_button => 1, width => 260,
