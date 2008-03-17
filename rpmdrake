@@ -385,7 +385,7 @@ sub run_treeview_dialog {
     my $cbox = gtksignal_connect(
         Gtk2::ComboBox->new_with_strings([
             @modes{
-                     qw(meta_pkgs gui_pkgs all_updates security bugfix normal),
+                     qw(all meta_pkgs gui_pkgs all_updates security bugfix normal),
                        if_($is_backports, 'backports')
                    } ],
                                          $modes{$default_mode{$MODE} || 'all'}),
