@@ -359,7 +359,6 @@ sub run_treeview_dialog {
         by_selection => N("All packages, by selection state"),
         by_size => N("All packages, by size"),
     );
-    my %rmodes = reverse %modes;
 
 
     my %views = (all => N("All"),
@@ -395,7 +394,7 @@ sub run_treeview_dialog {
             if_($is_backports, 'backports')
         ],
         format => sub { $views{$_[0]} }, text => $views{$default_list_mode},
-        tip => N("View"),
+        tip => N("/_View"),
         changed => sub {
             my $val = $_[0]->get_text;
             return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
@@ -439,16 +438,10 @@ sub run_treeview_dialog {
         }
     );
 
-    my $mode_box = gtknew(
-        'ComboBox',
-        list => [ qw(flat by_group by_leaves by_presence by_selection by_size) ],
-        format => sub { $modes{$_[0]} }, text => $modes{$mode->[0]},
-        tip => N("Tree Mode"),
-        changed => sub {
-            my $val = $_[0]->get_text;
+    my $view_callback = sub {
+            my ($val) = @_;
             return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
             $old_value = $val;
-            $val = $rmodes{$val};
             return if $mode->[0] eq $val;
             $mode->[0] = $val;
             $tree_flat->[0] = $options->{state}{flat} = member($mode->[0], qw(flat by_leaves by_selection by_size));
@@ -457,8 +450,7 @@ sub run_treeview_dialog {
                 reset_search();
                 $options->{rebuild_tree}->();
             }
-        }
-    );
+        };
 
 
     my @search_types = qw(normal descriptions summaries files);
@@ -545,6 +537,16 @@ sub run_treeview_dialog {
 		$dont_show_selections->[0] = !$checkbox_show_autoselect->get_active;
 	    }, undef, '<CheckItem>' ],
 	),
+	[ N("/_View"), undef, undef, undef, '<Branch>' ],
+        (map {
+            state ($idx, $previous);
+            my $type = $idx ? join('/', N("/_View"), $previous) : '<RadioItem>';
+            $type =~ s/_//g; # gtk+ retrieve widgets by their path w/o any shortcut marks
+            $previous = $modes{$_};
+            $idx++;
+            my $val = $_;
+            [ N("/_View") . '/' . $modes{$_}, undef, sub { $view_callback->($val) }, 0, $type ];
+        } qw(flat by_group by_leaves by_presence by_selection by_size)),
 	[ N("/_Help"), undef, undef, undef, '<Branch>' ],
      [ N("/_Help") . N("/_Report Bug"), undef, sub { run_program::raw({ detach => 1 }, 'drakbug', '--report', 'rpmdrake') }, undef, '<Item>' ],
 	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help('') }, undef, '<Item>' ],
@@ -596,7 +598,6 @@ sub run_treeview_dialog {
 			gtknew('HBox', spacing => 10),
 			0, $view_box,
 			0, $filter_box,
-			0, $mode_box,
 			1, $find_entry = gtknew('Sexy_IconEntry', clear_button => 1, width => 260,
                                              primary_icon => Gtk2::Image->new_from_stock('gtk-find', 'menu'),
                                              tip => N("Find"),
