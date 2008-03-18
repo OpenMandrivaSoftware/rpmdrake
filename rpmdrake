@@ -481,8 +481,8 @@ sub run_treeview_dialog {
 	do_search($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs);
     };
 
-    my $hpaned = gtknew('HPaned',
-                        child1 => gtknew('ScrolledWindow', child => $tree, width => $typical_width*0.9),
+    my $hpaned = gtknew('HPaned', position => $typical_width*0.9,
+                        child1 => gtknew('ScrolledWindow', child => $tree),
                         resize1 => 0, shrink1 => 0,
                         resize2 => 1, shrink2 => 0,
                         child2 => gtknew('VPaned',
