@@ -1,3 +1,168 @@
+2008-03-18 22:34  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.9.1
+
+2008-03-18 22:34  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, rpmdrake: (run_treeview_dialog) add "search:" label again
+	  (reverting part of
+	  r239827 on 2008-03-17: "add tooltip to search entry")
+
+2008-03-18 22:28  Wanderlei Antonio Cavassin <cavassin at mandriva.com>
+
+	* po/pt_BR.po: updated translations
+
+2008-03-18 22:20  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* Makefile, NEWS: 4.9
+
+2008-03-18 22:18  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, rpmdrake.pm: (interactive_msg) fix displaying data about
+	  packages when choosing one
+	  while resolving dependancies (#39042)
+	  
+	  (regression introduced in r238921 on 2008-03-10:
+	  "(interactive_msg)
+	  enable to use markups in TextView (needed for next commit)")
+
+2008-03-18 21:55  Marek Laane <bald at starman.ee>
+
+	* po/et.po: Updated Estonian translation.
+
+2008-03-18 21:43  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (run_treeview_dialog) preselect the right view mode in
+	  the menu
+
+2008-03-18 21:35  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn.po, po/br.po, po/bs.po, po/ca.po, po/de.po, po/el.po,
+	  po/eo.po, po/fa.po, po/fi.po, po/fur.po, po/ga.po, po/gl.po,
+	  po/hi.po, po/hr.po, po/hy.po, po/id.po, po/is.po, po/it.po,
+	  po/ka.po, po/ko.po, po/ku.po, po/ky.po, po/lt.po, po/ltg.po,
+	  po/lv.po, po/mk.po, po/mn.po, po/ms.po, po/mt.po, po/nb.po,
+	  po/pa_IN.po, po/ro.po, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/ta.po, po/tg.po, po/th.po,
+	  po/tl.po, po/tr.po, po/uk.po, po/uz.po, po/uz@cyrillic.po,
+	  po/vi.po, po/zh_TW.po: auto translate "/_View" from "View" (but
+	  w/o the shortcut)
+
+2008-03-18 21:29  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/ar.po, po/az.po, po/bg.po, po/bn.po, po/bs.po,
+	  po/ca.po, po/da.po, po/es.po, po/fa.po, po/fi.po, po/fr.po,
+	  po/fur.po, po/gl.po, po/hi.po, po/hr.po, po/is.po, po/ky.po,
+	  po/mk.po, po/mt.po, po/pt.po, po/ro.po, po/sk.po, po/sq.po,
+	  po/sv.po, po/tg.po, po/tl.po, po/tr.po, po/uk.po, po/vi.po,
+	  po/wa.po: resurect translations from r17865 (that got translated
+	  between 2005-01-12 and 2005-01-18)
+
+2008-03-18 21:25  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* po/af.po, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn.po, po/br.po, po/bs.po, po/ca.po, po/cs.po, po/cy.po,
+	  po/da.po, po/de.po, po/el.po, po/eo.po, po/es.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/fur.po, po/ga.po,
+	  po/gl.po, po/he.po, po/hi.po, po/hr.po, po/hu.po, po/hy.po,
+	  po/id.po, po/is.po, po/it.po, po/ja.po, po/ka.po, po/ko.po,
+	  po/ku.po, po/ky.po, po/lt.po, po/ltg.po, po/lv.po, po/mk.po,
+	  po/mn.po, po/ms.po, po/mt.po, po/nb.po, po/nl.po, po/nn.po,
+	  po/pa_IN.po, po/pl.po, po/pt.po, po/pt_BR.po, po/ro.po,
+	  po/rpmdrake.pot, po/ru.po, po/sc.po, po/sk.po, po/sl.po,
+	  po/sq.po, po/sr.po, po/sr@Latn.po, po/sv.po, po/ta.po, po/tg.po,
+	  po/th.po, po/tl.po, po/tr.po, po/uk.po, po/uz.po,
+	  po/uz@cyrillic.po, po/vi.po, po/wa.po, po/zh_CN.po, po/zh_TW.po:
+	  sync with code
+
+2008-03-18 21:22  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, rpmdrake: (run_treeview_dialog) move view pull down menu as
+	  a real menu
+
+2008-03-18 19:45  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: (mode box changed signal) no need to call
+	  switch_pkg_list_mode() since
+	  all is managed by rebuild_tree() and since anyway
+	  switch_pkg_list_mode() is noop here b/c $rmodes{$val} is void
+
+2008-03-18 19:15  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, rpmdrake: (run_treeview_dialog) enable to shrink package
+	  groups tree (#38762)
+	  (need drakxtools >= 10.16)
+
+2008-03-18 19:14  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: make clear latest change was for rpmdrake; also add note
+	  about UMPC
+	  since we'll commit anothe fix
+
+2008-03-18 19:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, rpmdrake: (run_treeview_dialog) hide banner if screen
+	  height is small than 600 px (#38943)
+
+2008-03-18 18:48  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* rpmdrake: help emacs display UTF-8 accents
+
+2008-03-18 16:26  Wanderlei Antonio Cavassin <cavassin at mandriva.com>
+
+	* po/pt_BR.po: more translations
+
+2008-03-18 15:33  Karl Ove Hufthammer <karl at huftis.org>
+
+	* po/nn.po: Updated Norwegian Nynorsk translation.
+
+2008-03-18 09:12  Yukiko Bando <ybando at k6.dion.ne.jp>
+
+	* po/ja.po: Japanese translation updated.
+
+2008-03-18 08:36  Tomasz Bednarski <tbednarski at mandrivalinux.pl>
+
+	* po/pl.po: update translation for Polish
+
+2008-03-18 07:12  aleph
+
+	* po/hu.po: hungarian translation update
+
+2008-03-18 01:47  Funda Wang <fundawang at gmail.com>
+
+	* po/zh_CN.po: Updated zh_CN translation
+
+2008-03-18 00:21  Dotan Kamber <kamberd at yahoo.com>
+
+	* po/he.po: update for Hebrew translation
+
+2008-03-17 23:22  Michal Bukovjan <bukovjan at mbox.dkm.cz>
+
+	* po/cs.po: Update Czech translation.
+
+2008-03-17 22:16  Rhoslyn Prys<post at meddal.com>
+
+	* po/cy.po: 20080317
+
+2008-03-17 22:16  Marek Laane <bald at starman.ee>
+
+	* po/et.po: Updated Estonian translation.
+
+2008-03-17 22:12  Inigo Salvador Azurmendi <xalba at euskalnet.net>
+
+	* po/eu.po: Osatuta.
+
+2008-03-17 22:02  Reinout van Schouwen <reinout at gmail.com>
+
+	* po/nl.po: * 2008-03-17 Reinout van Schouwen <reinout@gmail.com
+	  
+	  - nl.po: Updated Dutch translation
+
+2008-03-17 21:45  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2008-03-17 21:38  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* po/br.po, po/fr.po: update
