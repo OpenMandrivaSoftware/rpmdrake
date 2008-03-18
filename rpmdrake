@@ -588,7 +588,7 @@ sub run_treeview_dialog {
 	gtkpack_(
 	    gtknew('VBox', spacing => 3),
 	    0, $menu,
-	    0, getbanner(),
+	    if_((gtkroot()->get_size())[1] >= 600, 0, getbanner()),
 	    1, gtkadd(
 		gtknew('Frame', border_width => 3, shadow_type => 'none'),
 		gtkpack_(
