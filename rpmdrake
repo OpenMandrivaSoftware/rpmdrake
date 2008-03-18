@@ -455,7 +455,6 @@ sub run_treeview_dialog {
 
             if ($options->{tree_mode} ne $val) {
                 reset_search();
-                slow_func($::main_window->window, sub { switch_pkg_list_mode($rmodes{$val}) });
                 $options->{rebuild_tree}->();
             }
         }
