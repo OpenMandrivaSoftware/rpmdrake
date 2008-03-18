@@ -600,6 +600,7 @@ sub run_treeview_dialog {
 			gtknew('HBox', spacing => 10),
 			0, $view_box,
 			0, $filter_box,
+			0, gtknew('Label', text => N("Find:")),
 			1, $find_entry = gtknew('Sexy_IconEntry', clear_button => 1, width => 260,
                                              primary_icon => Gtk2::Image->new_from_stock('gtk-find', 'menu'),
                                              tip => N("Find"),
