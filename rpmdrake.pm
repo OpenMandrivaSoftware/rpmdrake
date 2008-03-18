@@ -201,9 +201,9 @@ sub interactive_msg {
     my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     if ($options{scroll}) {
-        $contents = ugtk2::markup_to_TextView_format($contents);
+        $contents = ugtk2::markup_to_TextView_format($contents) if !ref $contents;
     } else { #- because we'll use a WrappedLabel
-        $contents = formatAlaTeX($contents);
+        $contents = formatAlaTeX($contents) if !ref $contents;
     }
     my $banner = $options{banner} ? getbanner() : undef;
     my $text_w;
