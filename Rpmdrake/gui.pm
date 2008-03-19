@@ -833,7 +833,7 @@ or you already installed all of them."));
                 $explanation_only_once = 1;
             }
         }
-        @elems = map { [ $_, !$flat && ctreefy($pkgs->{$_}{pkg}->group) ] } @keys;
+        @elems = map { [ $_, !$flat && ctreefy($pkgs->{$_}{pkg}->group) ] } sort @keys;
     }
     my %sortmethods = (
         by_size => sub { sort { $pkgs->{$b->[0]}{pkg}->size <=> $pkgs->{$a->[0]}{pkg}->size } @_ },
@@ -865,7 +865,7 @@ or you already installed all of them."));
             #- we populate all the groups tree at first
             %$elems = ();
             # better loop on packages, create groups tree and push packages in the proper place:
-            foreach my $pkg (sort @elems) {
+            foreach my $pkg (@elems) {
                 my $grp = $pkg->[1];
                 add_parent($grp);
                 $elems->{$grp} ||= [];
