@@ -852,7 +852,7 @@ or you already installed all of them."));
         if (0 && $MODE eq 'update') {
             add_node($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
             $tree->expand_row($tree_model->get_path($tree_model->get_iter_first), 0);
-        } elsif ($mode eq 'by_source') {
+        } elsif ($::mode->[0] eq 'by_source') {
             add_node($_->[0], $_->[1]) foreach $sortmethods{by_medium}->(map {
                 my $m = pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm); [ $_->[0], $m->{name}, $m->{priority} ];
             } @elems);
