@@ -870,6 +870,7 @@ or you already installed all of them."));
              _build_tree($elems, $sortmethods{by_medium}->(map {
                 my $m = pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm); [ $_->[0], $m->{name}, $m->{priority} ];
             } @elems));
+        } elsif ($mode eq 'by_presence') {
             add_node(
                 $_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed && !$pkgs->{$_->[0]}{pkg}->flag_skip
                   ? N("Upgradable") : N("Addable")
