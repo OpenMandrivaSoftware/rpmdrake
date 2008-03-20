@@ -805,6 +805,20 @@ sub ctreefy {
     join('|', map { translate($_) } split m|/|, $_[0]);
 }
 
+sub _build_tree {
+    my ($elems, @elems) = @_;
+    #- we populate all the groups tree at first
+    %$elems = ();
+    # better loop on packages, create groups tree and push packages in the proper place:
+    foreach my $pkg (@elems) {
+        my $grp = $pkg->[1];
+        add_parent($grp);
+        $elems->{$grp} ||= [];
+        push @{$elems->{$grp}}, $pkg;
+    }
+}
+
+
 sub build_tree {
     my ($tree, $tree_model, $elems, $options, $force_rebuild, $flat, $mode) = @_;
     state $old_mode;
@@ -864,15 +878,7 @@ or you already installed all of them."));
                   ? N("Upgradable") : N("Addable")
 		    ) foreach $sortmethods{flat}->(@elems);
         } else {
-            #- we populate all the groups tree at first
-            %$elems = ();
-            # better loop on packages, create groups tree and push packages in the proper place:
-            foreach my $pkg (@elems) {
-                my $grp = $pkg->[1];
-                add_parent($grp);
-                $elems->{$grp} ||= [];
-                push @{$elems->{$grp}}, $pkg;
-            }
+            _build_tree($elems, @elems);
         }
     }
     statusbar_msg_remove($wait) if defined $wait;
