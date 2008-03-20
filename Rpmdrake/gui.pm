@@ -867,12 +867,9 @@ or you already installed all of them."));
             add_node($_->[0], N("All")) foreach $sortmethods{flat}->(@elems);
             $tree->expand_row($tree_model->get_path($tree_model->get_iter_first), 0);
         } elsif ($::mode->[0] eq 'by_source') {
-            my @list = $sortmethods{by_medium}->(map {
+             _build_tree($elems, $sortmethods{by_medium}->(map {
                 my $m = pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm); [ $_->[0], $m->{name}, $m->{priority} ];
-            } @elems);
-            add_parent($_) foreach uniq(map { $_->[1] } @list);
-            add_node($_->[0], $_->[1]) foreach @list;
-        } elsif ($mode eq 'by_presence') {
+            } @elems));
             add_node(
                 $_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed && !$pkgs->{$_->[0]}{pkg}->flag_skip
                   ? N("Upgradable") : N("Addable")
