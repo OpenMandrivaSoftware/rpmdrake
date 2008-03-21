@@ -207,6 +207,7 @@ sub interactive_msg {
     }
     my $banner = $options{banner} ? getbanner() : undef;
     my $text_w;
+    my $button_yes;
     gtkadd(
 	$d->{window},
 	gtkpack_(
@@ -226,23 +227,23 @@ sub interactive_msg {
 		    ref($options{yesno}) eq 'ARRAY' ? map {
 			my $label = $_;
 			gtksignal_connect(
-			    Gtk2::Button->new($label),
+			    $button_yes = Gtk2::Button->new($label),
 			    clicked => sub { $d->{retval} = $label; Gtk2->main_quit }
 			);
 		    } @{$options{yesno}}
 		    : (
 			$options{yesno} ? (
-			    gtksignal_connect(
-				Gtk2::Button->new($options{text}{no} || N("No")),
+			    gtksignal_connect( 
+				Gtk2::Button->new($options{text}{no} || N("No")), 
 				clicked => sub { $d->{retval} = 0; Gtk2->main_quit }
 			    ),
 			    gtksignal_connect(
-				Gtk2::Button->new($options{text}{yes} || N("Yes")),
+				$button_yes = Gtk2::Button->new($options{text}{yes} || N("Yes")),
 				clicked => sub { $d->{retval} = 1; Gtk2->main_quit }
 			    ),
 			)
 			: gtksignal_connect(
-			    Gtk2::Button->new(N("Ok")),
+			    $button_yes = Gtk2::Button->new(N("Ok")),
 			    clicked => sub { Gtk2->main_quit }
 			)
 		    )
@@ -250,6 +251,7 @@ sub interactive_msg {
 	    )
 	)
     );
+    $d->{window}->set_focus($button_yes);
     $text_w->set_size_request($typical_width*2, $options{scroll} ? 300 : -1);
     $d->main;
     return $d->{retval};
@@ -294,6 +296,7 @@ sub interactive_list {
 	} \@radios, $list,
     ) : gtkpack__(Gtk2::VBox->new(0, 0), @radios);
     my $choice;
+    my $button_ok;
     gtkadd(
 	$d->{window},
 	gtkpack__(
@@ -307,7 +310,7 @@ sub interactive_list {
 		    Gtk2::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit }),
           ),
           gtksignal_connect(
-		    Gtk2::Button->new(N("Ok")), clicked => sub {
+		    $button_ok=Gtk2::Button->new(N("Ok")), clicked => sub {
 			each_index { $_->get_active and $choice = $::i } @radios;
 			Gtk2->main_quit;
 		    }
@@ -315,6 +318,7 @@ sub interactive_list {
 	    )
 	)
     );
+    $d->{window}->set_focus($button_ok);
     $d->main;
     $choice;
 }
