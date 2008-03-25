@@ -66,7 +66,7 @@ sub ensure_utf8 {
 
 sub rpm_description {
     my ($description) = @_;
-    utf8::decode($description);
+    ensure_utf8($description);
     my ($t, $tmp);
     foreach (split "\n", $description) {
 	s/^\s*//;
