@@ -58,6 +58,8 @@ use Getopt::Long;
 use ugtk2 qw(:all);
 $::isStandalone = 1;
 
+readconf();
+
 my $fromfile;
 if (@ARGV == 1 && $ARGV[0] =~ /\.urpmi-media$/) {
     @ARGV = map { s/^\s*//; s/\s*$//; $_ } split /\n/, cat_($ARGV[0]);
