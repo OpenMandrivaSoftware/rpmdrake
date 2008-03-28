@@ -134,7 +134,7 @@ foreach (@addmedia_args) {
 	if_(!$distrib, undef),
 	if_($update, update => $update),
 	mirrorlist => $mirrorlist,
-	'with-dir' => $with_dir,
+	if_($with_dir, 'with-dir' => $with_dir),
     );
 }
 if ($success) {
