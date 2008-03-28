@@ -123,7 +123,7 @@ foreach (@addmedia_args) {
 	{ probe_with => !$_->[2], distrib => $distrib },
 	$_->[0],
 	$_->[1],
-	$_->[3],
+	if_(!$distrib, $_->[3]),
 	if_($update, update => $update),
     );
 }
