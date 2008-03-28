@@ -40,6 +40,7 @@ and [options] are from
   --distrib        install a set of media from a distribution
   --silent-success don't show popup window on success
   --update         create an update medium.
+  --mirrorlist     <url> is a mirror list
 ";
         exit(0);
     };
@@ -64,11 +65,13 @@ if (@ARGV == 1 && $ARGV[0] =~ /\.urpmi-media$/) {
 }
 
 my ($update, $distrib, $silent_success) = (0, 0, 0);
+my ($mirrorlist, $with_dir);
 
 GetOptions(
     'update'	     => \$update,
     'distrib'       => \$distrib,
     'silent-success' => \$silent_success,
+    'mirrorlist=s'     => \$mirrorlist,
 );
 
 # compatibility with -update:
@@ -82,7 +85,10 @@ my @names;
 
 while (@ARGV) {
     my ($name, $url) = @ARGV;
-    if ($url !~ m,^(([^:]*):/)?/,) {
+
+    if ($mirrorlist) {
+	($with_dir, $url) = ($url, undef);
+    } elsif ($url !~ m,^(([^:]*):/)?/,) {
 	interactive_msg('gurpmi.addmedia',
 			N("bad <url> (for local directory, the path must be absolute)") . "\n\n$url");
 	myexit(-1);
@@ -119,6 +125,8 @@ foreach (@addmedia_args) {
 	$_->[1],
 	if_(!$distrib, undef),
 	if_($update, update => $update),
+	mirrorlist => $mirrorlist,
+	'with-dir' => $with_dir,
     );
 }
 if ($success) {
