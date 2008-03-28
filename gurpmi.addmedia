@@ -100,6 +100,10 @@ while (@ARGV) {
     shift @ARGV foreach 1 .. 2;
 }
 
+if ($mirrorlist && $distrib && !@addmedia_args) {
+    @addmedia_args = [ '' ];
+}
+
 $fromfile and do {
     interactive_msg('gurpmi.addmedia',
 N("%s
