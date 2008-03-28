@@ -1,3 +1,64 @@
+2008-03-28 11:41  Pixel <pixel at mandriva.com>
+
+	* gurpmi.addmedia: don't pass "with-dir" if not set
+	  (otherwise urpm::media::add_distrib_media currently does not
+	  override it)
+
+2008-03-28 11:19  Olivier Blin <oblin at mandriva.com>
+
+	* NEWS: fix titypo
+
+2008-03-28 11:06  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, gurpmi.addmedia: read config in order not to garbage
+	  ~/.rpmdrake (because myexit() calls writeconf())
+
+2008-03-28 11:00  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, gurpmi.addmedia: fix --distrib --mirrorlist support
+
+2008-03-28 10:58  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS: add anssi name
+
+2008-03-28 10:49  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* NEWS, gurpmi.addmedia: fix --distrib
+
+2008-03-28 10:38  Pixel <pixel at mandriva.com>
+
+	* NEWS, gurpmi.addmedia: - gurpmi.addmedia:
+	  o handle --mirrorlist
+	  o drop 'with' parameter, it didn't work properly anymore (Anssi)
+
+2008-03-28 10:34  Pixel <pixel at mandriva.com>
+
+	* gurpmi.addmedia: drop 'with' parameter, it didn't work properly
+	  anymore (Anssi)
+
+2008-03-28 10:10  Pixel <pixel at mandriva.com>
+
+	* gurpmi.addmedia: fix superfluous parameter to
+	  add_medium_and_check
+	  
+	  (note that add_medium_and_check() is quite touchy since it
+	  redirects the call
+	  to urpm::media::add_medium or urpm::media::add_distrib_media
+	  which have
+	  different arguments)
+
+2008-03-27 01:17  Fabian Mandelbaum <fabman at mandriva.com>
+
+	* po/es.po: Updated ES translation
+
+2008-03-25 21:52  Fabian Mandelbaum <fabman at mandriva.com>
+
+	* po/es.po: Updated ES translation
+
+2008-03-25 15:49  Thierry Vignaud <tvignaud at mandriva.com>
+
+	* ChangeLog: update
+
 2008-03-25 15:46  Thierry Vignaud <tvignaud at mandriva.com>
 
 	* Makefile, NEWS: 4.9.8
