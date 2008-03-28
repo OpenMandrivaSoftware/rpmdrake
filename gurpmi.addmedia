@@ -81,21 +81,15 @@ my @addmedia_args;
 my @names;
 
 while (@ARGV) {
-    my ($name, $url, $with, $with_hdlist) = @ARGV;
-    $with eq 'with' or ($with, $with_hdlist) = (undef, undef);
+    my ($name, $url) = @ARGV;
     if ($url !~ m,^(([^:]*):/)?/,) {
 	interactive_msg('gurpmi.addmedia',
 			N("bad <url> (for local directory, the path must be absolute)") . "\n\n$url");
 	myexit(-1);
     }
-    if ($with && !$with_hdlist) {
-	interactive_msg('gurpmi.addmedia',
-			N("Unable to add medium, wrong or missing arguments"));
-	myexit(-1);
-    }
-    push @addmedia_args, [ $name, $url, $with, $with_hdlist ];
+    push @addmedia_args, [ $name, $url ];
     push @names, $name;
-    shift @ARGV foreach 1 .. ($with ? 4 : 2);
+    shift @ARGV foreach 1 .. 2;
 }
 
 $fromfile and do {
@@ -120,10 +114,10 @@ foreach (@addmedia_args) {
     #- NB: that short circuits
     $success = $success && add_medium_and_check(
 	$urpm,
-	{ probe_with => !$_->[2], distrib => $distrib },
+	{ distrib => $distrib },
 	$_->[0],
 	$_->[1],
-	if_(!$distrib, $_->[3]),
+	if_(!$distrib, undef),
 	if_($update, update => $update),
     );
 }
