@@ -450,6 +450,9 @@ sub get_pkgs {
     # list updates including skiped ones + their deps in MandrivaUpdate:
     @requested = uniq(@requested, @requested_strict);
 
+    # do not pre select updates in rpmdrake:
+    undef @requested_strict if !$probe_only_for_updates;
+
     $priority_state = $need_restart ? $state : undef;
     $priority_requested = $need_restart ? $requested : undef;
 
