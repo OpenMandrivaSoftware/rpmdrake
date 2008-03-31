@@ -808,10 +808,10 @@ you may now inspect some in order to take actions:"),
         my @argv = ('--previous-priority-upgrade=' . $urpm->{options}{'priority-upgrade'}, 
                 grep { !/^--no-priority-upgrade$|--previous-priority-upgrade=/ } @Rpmdrake::init::ARGV_copy);
         # remove "--emmbedded <id>" from argv:
-        my $i;
+        my $i = 0;
         foreach (@argv) {
+            splice @argv, $i, 2 if /^--embedded$/;
             $i++;
-            splice @argv, $i-1, 2 if /^--embedded$/;
         }
         alarm(0);
         # remember not to ask again questions and the like:
