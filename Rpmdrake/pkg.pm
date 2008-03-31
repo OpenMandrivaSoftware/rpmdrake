@@ -811,7 +811,7 @@ you may now inspect some in order to take actions:"),
         my $i;
         foreach (@argv) {
             $i++;
-            splice @ARGV, $i, 1 if /^--embedded$/
+            splice @argv, $i, 1 if /^--embedded$/
         }
         alarm(0);
         # remember not to ask again questions and the like:
