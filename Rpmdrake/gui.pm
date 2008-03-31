@@ -131,6 +131,7 @@ sub format_pkg_simplifiedinfo {
     my ($name, $version, $release) = split_fullname($key);
     my $pkg = $pkgs->{$key};
     my $upkg = $pkg->{pkg};
+    return if !$upkg;
     my $raw_medium = pkg2medium($upkg, $urpm);
     my $medium = $raw_medium ? $raw_medium->{name} : undef;
     my $update_descr = $descriptions->{$medium}{$name};
