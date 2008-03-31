@@ -169,6 +169,9 @@ sub readconf() {
     ${$config{$_}{var}} = $config{$_}{default} foreach keys %config;
     foreach my $l (cat_($configfile)) {
 	$l =~ /^\Q$_\E (.*)/ and ${$config{$_}{var}} = [ split ' ', $1 ] foreach keys %config;
+       foreach (keys %config) {
+           $l =~ /^\Q$_\E (.*)/ and $1 and ${$config{$_}{var}} = [ split ' ', $1 ];
+       }
     }
     # special cases:
     $::rpmdrake_options{'no-confirmation'} = $no_confirmation->[0] if !defined $::rpmdrake_options{'no-confirmation'};
