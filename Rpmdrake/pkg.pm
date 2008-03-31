@@ -613,10 +613,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     # select packages to install / enssure selected pkg set is consistant:
     my $requested = { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} };
-    $need_restart ||= urpm::select::resolve_dependencies(
+    urpm::select::resolve_dependencies(
         $urpm, $state, $requested,
         callback_choices => \&Rpmdrake::gui::callback_choices,
-        priority_upgrade => $urpm->{options}{'priority-upgrade'},
     );
     statusbar_msg_remove($bar_id);
 
