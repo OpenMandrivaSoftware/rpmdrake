@@ -10,13 +10,14 @@
 # Esa Linna <denzo@mbnet.fi>, 2004.
 # Thomas Backlund <tmb@mandrivalinux.org>, 2002, 2003, 2004, 2005.
 # Thomas Backlund <tmb@mandriva.org>, 2005, 2006.
+# Anssi Hannula <anssi@mandriva.org>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: rpmdrake-fi - Mandriva 2007 Release\n"
+"Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-03-19 18:24+0100\n"
-"PO-Revision-Date: 2006-09-18 19:44+0300\n"
-"Last-Translator: Thomas Backlund <tmb@mandriva.org>\n"
+"PO-Revision-Date: 2008-03-31 16:24+0300\n"
+"Last-Translator: Anssi Hannula <anssi@mandriva.org>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,9 +41,9 @@ msgid "Software Management"
 msgstr "Ohjelmistohallinta"
 
 #: ../MandrivaUpdate:126
-#, fuzzy, c-format
+#, c-format
 msgid "Here is the list of software package updates"
-msgstr "Ohjelmistopakettien päivitys"
+msgstr "Tässä on luettelo päivitetyistä paketeista"
 
 #: ../MandrivaUpdate:132
 #, c-format
@@ -50,19 +51,19 @@ msgid "Name"
 msgstr "Nimi"
 
 #: ../MandrivaUpdate:133 ../rpmdrake:263
-#, fuzzy, c-format
+#, c-format
 msgid "Version"
 msgstr "Versio"
 
 #: ../MandrivaUpdate:134 ../rpmdrake:267
 #, c-format
 msgid "Release"
-msgstr ""
+msgstr "Julkaisu"
 
 #: ../MandrivaUpdate:135
-#, fuzzy, c-format
+#, c-format
 msgid "Arch"
-msgstr "Arkistointi"
+msgstr "Arkkitehtuuri"
 
 #: ../MandrivaUpdate:148 ../Rpmdrake/edit_urpm_sources.pm:1118
 #, c-format
@@ -87,47 +88,47 @@ msgstr "Poistu"
 #: ../Rpmdrake/edit_urpm_sources.pm:61
 #, c-format
 msgid "CD-ROM"
-msgstr ""
+msgstr "CD/DVD-levy"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:62
-#, fuzzy, c-format
+#, c-format
 msgid "FTP"
-msgstr "Web/FTP"
+msgstr "FTP"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:63 ../Rpmdrake/edit_urpm_sources.pm:73
-#, fuzzy, c-format
+#, c-format
 msgid "Local"
-msgstr "Paikalliset tiedostot"
+msgstr "Paikallinen"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:64
 #, c-format
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:65
 #, c-format
 msgid "HTTPS"
-msgstr ""
+msgstr "HTTPS"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:66 ../Rpmdrake/edit_urpm_sources.pm:69
 #, c-format
 msgid "NFS"
-msgstr ""
+msgstr "NFS"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:67
-#, fuzzy, c-format
+#, c-format
 msgid "Removable"
-msgstr "Poista"
+msgstr "Siirrettävä levy"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:68
 #, c-format
 msgid "rsync"
-msgstr ""
+msgstr "rsync"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:72
-#, fuzzy, c-format
+#, c-format
 msgid "Mirror list"
-msgstr "Peilipalvelimen valinta"
+msgstr "Peilipalvelinluettelo"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:117
 #, c-format
@@ -148,16 +149,21 @@ msgid ""
 "set\n"
 "of sources."
 msgstr ""
+"Järjestelmän turvallisuuden ja vakauden varmistamiseksi tulee sinun asettaa\n"
+"lähteet virallisille turva- ja vakauspäivityksille. Voit myös asettaa\n"
+"kaikki Mandrivan viralliset pakettilähteet, jotka sisältävät huomattavasti\n"
+"suuremman määrän ohjelmia kuin mitä Mandrivan levyille mahtuu.\n"
+"Valitse, haluatko asentaa vain päivityslähteet vai kaikki lähteet."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:125
 #, c-format
 msgid "Full set of sources"
-msgstr ""
+msgstr "Kaikki lähteet"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:125
 #, c-format
 msgid "Update sources only"
-msgstr ""
+msgstr "Vain päivityslähteet"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:129
 #, c-format
@@ -194,9 +200,9 @@ msgid "Local files"
 msgstr "Paikalliset tiedostot"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:151
-#, fuzzy, c-format
+#, c-format
 msgid "Medium path:"
-msgstr "Lähde: "
+msgstr "Median polku:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:152
 #, c-format
@@ -246,9 +252,9 @@ msgid "Password:"
 msgstr "Salasana:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:206
-#, fuzzy, c-format
+#, c-format
 msgid "Medium name:"
-msgstr "Lähde: "
+msgstr "Median nimi:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:212
 #, c-format
@@ -256,9 +262,9 @@ msgid "Create media for a whole distribution"
 msgstr "Luo media kokonaiselle jakelulle"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:216
-#, fuzzy, c-format
+#, c-format
 msgid "Tag this medium as an update medium"
-msgstr "Etsi päivityksiä tästä mediasta"
+msgstr "Merkitse tämä media päivitysmediaksi"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:226
 #, c-format
@@ -322,24 +328,24 @@ msgid "always"
 msgstr "aina"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:318 ../Rpmdrake/edit_urpm_sources.pm:350
-#, fuzzy, c-format
+#, c-format
 msgid "Never"
-msgstr "ei koskaan"
+msgstr "Ei koskaan"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:319 ../Rpmdrake/edit_urpm_sources.pm:353
 #, c-format
 msgid "On-demand"
-msgstr ""
+msgstr "Tarvittaessa"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:320 ../Rpmdrake/edit_urpm_sources.pm:357
-#, fuzzy, c-format
+#, c-format
 msgid "Update-only"
-msgstr "Päivitä"
+msgstr "Vain päivitys"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:321 ../Rpmdrake/edit_urpm_sources.pm:360
-#, fuzzy, c-format
+#, c-format
 msgid "Always"
-msgstr "aina"
+msgstr "Aina"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:329
 #, c-format
@@ -354,41 +360,41 @@ msgstr "Käytettävä latausohjelma:"
 #: ../Rpmdrake/edit_urpm_sources.pm:341
 #, c-format
 msgid "XML meta-data download policy:"
-msgstr ""
+msgstr "XML-lisätietojen hakeminen:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:348
 #, c-format
 msgid ""
 "For remote media, specify when XML meta-data (file lists, changelogs & "
 "informations) are downloaded."
-msgstr ""
+msgstr "Aseta, miten etämedioiden XML-lisätiedot (tiedostoluettelot, muutoslokit ja muut tiedot) haetaan."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:351
 #, c-format
 msgid "For remote media, XML meta-data are never downloaded."
-msgstr ""
+msgstr "Etämedioiden XML-lisätietoja ei ladata koskaan."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:354
 #, c-format
 msgid "(This is the default)"
-msgstr ""
+msgstr "(Tämä on oletus)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:355
 #, c-format
 msgid "The specific XML info file is downloaded when clicking on package."
-msgstr ""
+msgstr "Tarvittavat XML-lisätiedot ladataan valittaessa paketti."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:358
 #, c-format
 msgid ""
 "Updating media implies updating XML info files already required at least "
 "once."
-msgstr ""
+msgstr "Päivitä jo ladatut XML-lisätiedot päivitettäessä mediat."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:361
 #, c-format
 msgid "All XML info files are downloaded when adding or updating media."
-msgstr ""
+msgstr "Kaikki XML-lisätiedot ladataan mediaa lisättäessä tai päivitettäessä."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:390
 #, c-format
@@ -401,9 +407,9 @@ msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Oletko varma että haluat poistaa lähteen \"%s\"?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:393
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to remove the following sources ?"
-msgstr "Oletko varma että haluat poistaa lähteen \"%s\"?"
+msgstr "Haluatko varmasti poistaa seuraavat lähteet?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:399
 #, c-format
@@ -423,7 +429,7 @@ msgstr "Muokataan lähdettä \"%s\":"
 #: ../Rpmdrake/edit_urpm_sources.pm:458
 #, c-format
 msgid "Downloader:"
-msgstr ""
+msgstr "Lataaja:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:470
 #, c-format
@@ -442,8 +448,7 @@ msgstr "Sinun pitää asettaa media jatkaaksesi"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:492
 #, c-format
-msgid ""
-"In order to save the changes, you need to insert the medium in the drive."
+msgid "In order to save the changes, you need to insert the medium in the drive."
 msgstr "Tallentaaksesi muutokset sinun pitää asettaa media asemaan."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:527
@@ -478,8 +483,7 @@ msgstr "Välityspalvelimen nimi:"
 #: ../Rpmdrake/edit_urpm_sources.pm:549
 #, c-format
 msgid "You may specify a user/password for the proxy authentication:"
-msgstr ""
-"Voit halutessasi antaa tunnuksen/salasanan välityspalvelimen tunnistukseen:"
+msgstr "Voit halutessasi antaa tunnuksen/salasanan välityspalvelimen tunnistukseen:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:552
 #, c-format
@@ -655,22 +659,26 @@ msgid "/_File"
 msgstr "/_Tiedosto"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:937
-#, fuzzy, c-format
+#, c-format
+#, fuzzy
 msgid "/_Update"
 msgstr "Päivitä"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:937
-#, fuzzy, c-format
+#, c-format
+#, fuzzy
 msgid "<control>U"
 msgstr "<control>L"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:938
-#, fuzzy, c-format
+#, c-format
+#, fuzzy
 msgid "/Close"
 msgstr "Sulje"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:938
-#, fuzzy, c-format
+#, c-format
+#, fuzzy
 msgid "<control>W"
 msgstr "<control>L"
 
@@ -1855,8 +1863,7 @@ msgstr "  --media=media1,..      rajoita valittuun mediaan"
 
 #: ../Rpmdrake/init.pm:52
 #, c-format
-msgid ""
-"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgid "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
 "  --merge-all-rpmnew     ehdota kaikki löydettyjen .rpmnew/.rpmsave "
 "tiedostojen yhdistäminen"
@@ -1875,10 +1882,8 @@ msgstr ""
 
 #: ../Rpmdrake/init.pm:55
 #, c-format
-msgid ""
-"  --no-confirmation      don't ask first confirmation question in update mode"
-msgstr ""
-"  --no-confirmation      älä kysy ensimmäinen vahvistus päivitystilassa"
+msgid "  --no-confirmation      don't ask first confirmation question in update mode"
+msgstr "  --no-confirmation      älä kysy ensimmäinen vahvistus päivitystilassa"
 
 #: ../Rpmdrake/init.pm:56
 #, c-format
@@ -1906,8 +1911,7 @@ msgstr ""
 
 #: ../Rpmdrake/init.pm:60
 #, fuzzy, c-format
-msgid ""
-"  --urpmi-root           use another root for urpmi db & rpm installation"
+msgid "  --urpmi-root           use another root for urpmi db & rpm installation"
 msgstr "  --run-as-root            käytä määriteltyä juurta rpm-asennukselle"
 
 #: ../Rpmdrake/init.pm:61
@@ -2043,8 +2047,7 @@ msgstr ""
 
 #: ../Rpmdrake/pkg.pm:150
 #, c-format
-msgid ""
-"No xml info for medium \"%s\", unable to return any result for package %s"
+msgid "No xml info for medium \"%s\", unable to return any result for package %s"
 msgstr ""
 
 #: ../Rpmdrake/pkg.pm:200 ../Rpmdrake/pkg.pm:205
@@ -2262,8 +2265,8 @@ msgstr[1] "Yksi seuraavista paketeista tarvitaan:"
 #, c-format
 msgid "Remove one package?"
 msgid_plural "Remove %d packages?"
-msgstr[0] "Poista avain"
-msgstr[1] "Poista avain"
+msgstr[0] "Poista yksi paketti?"
+msgstr[1] "Poista %d pakettia?"
 
 #: ../Rpmdrake/pkg.pm:630
 #, fuzzy, c-format
@@ -2344,8 +2347,7 @@ msgstr "Virhe"
 #: ../Rpmdrake/pkg.pm:747
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
-msgstr ""
-"Ohittamaton virhe: yhtään pakettia ei valitettavasti löytynyt asennettavaksi."
+msgstr "Ohittamaton virhe: yhtään pakettia ei valitettavasti löytynyt asennettavaksi."
 
 #: ../Rpmdrake/pkg.pm:750
 #, c-format
@@ -2461,8 +2463,7 @@ msgstr ""
 #: ../gurpmi.addmedia:93
 #, c-format
 msgid "Unable to add medium, wrong or missing arguments"
-msgstr ""
-"Lähteen lisääminen ei onnistunut, virheelliset tai puutteelliset argumentit"
+msgstr "Lähteen lisääminen ei onnistunut, virheelliset tai puutteelliset argumentit"
 
 #: ../gurpmi.addmedia:107
 #, c-format
@@ -2737,10 +2738,8 @@ msgstr "Voit selata paketteja aiheluettelossa vasemmalla."
 
 #: ../rpmdrake:600
 #, c-format
-msgid ""
-"You can view information about a package by clicking on it on the right list."
-msgstr ""
-"Voit nähdä lisätietoja paketista valitsemalla sitä oikeassa listauksessa."
+msgid "You can view information about a package by clicking on it on the right list."
+msgstr "Voit nähdä lisätietoja paketista valitsemalla sitä oikeassa listauksessa."
 
 #: ../rpmdrake:601
 #, c-format
@@ -3126,8 +3125,7 @@ msgstr "Päivitä lähteet"
 
 #: ../rpmdrake.pm:759
 #, c-format
-msgid ""
-"No active medium found. You must enable some media to be able to update them."
+msgid "No active medium found. You must enable some media to be able to update them."
 msgstr ""
 "Aktiivinen lähde ei löytynyt. sinun pitää aktivoida joitakin lähteitä "
 "voidaaksesi päivittää niitä."
@@ -3210,8 +3208,7 @@ msgstr "Ohje käynnistetty taustalla"
 
 #: ../rpmdrake.pm:909
 #, c-format
-msgid ""
-"The help window has been started, it should appear shortly on your desktop."
+msgid "The help window has been started, it should appear shortly on your desktop."
 msgstr "Ohjeikkuna on käynnistetty, sen pitäisi näkyä työpöydälläsi."
 
 #: ../data/rpmdrake-browse-only.desktop.in.h:1
@@ -3247,400 +3244,3 @@ msgstr "/Päivitä lähteet"
 msgid "Urpmi medium info"
 msgstr "Päivitä lähteet"
 
-#~ msgid "%s choices"
-#~ msgstr "%s valinnat"
-
-#~ msgid "Mandriva Linux choices"
-#~ msgstr "Mandriva Linux valinnat"
-
-#~ msgid "None"
-#~ msgstr "Ei mitään"
-
-#~ msgid ""
-#~ "Installation failed, some files are missing:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "You may want to update your media database."
-#~ msgstr ""
-#~ "Asennus epäonnistui, joitakin tiedostoja puuttuu:\n"
-#~ "%s \n"
-#~ "\n"
-#~ "Sinun kannattaisi päivittää lähdetietokantasi."
-
-#~ msgid "Relative path to synthesis/hdlist:"
-#~ msgstr "Suhteellinen polku tiedostoon synthesis tai hdlist:"
-
-#~ msgid "If left blank, synthesis/hdlist will be automatically probed"
-#~ msgstr "Jos jätetään tyhjäksi haetaan synthesis/hdlist automaattisesti"
-
-#~ msgid "Search"
-#~ msgstr "Etsi"
-
-#~ msgid "Clear"
-#~ msgstr "Tyhjennä"
-
-#~ msgid "Download directory does not exist"
-#~ msgstr "Lataushakemistoa ei ole olemassa"
-
-#~ msgid "Out of memory\n"
-#~ msgstr "Muisti loppu\n"
-
-#~ msgid "Could not open output file in append mode"
-#~ msgstr "Tulostetiedostoa ei voitu avata lisäystilassa"
-
-#~ msgid "Unsupported protocol\n"
-#~ msgstr "Protokollaa ei tueta\n"
-
-#~ msgid "Failed init\n"
-#~ msgstr "Alustus epäonnistui\n"
-
-#~ msgid "Bad URL format\n"
-#~ msgstr "Virheellinen URL muoto\n"
-
-#~ msgid "Bad user format in URL\n"
-#~ msgstr "Virheellinen käyttäjämuoto URL:ssa\n"
-
-#~ msgid "Couldn't resolve proxy\n"
-#~ msgstr "Välityspalvelinta ei löytynyt\n"
-
-#~ msgid "Couldn't resolve host\n"
-#~ msgstr "Kohdetta ei löytynyt\n"
-
-#~ msgid "Couldn't connect\n"
-#~ msgstr "Ei voitu yhdistää\n"
-
-#~ msgid "FTP unexpected server reply\n"
-#~ msgstr "FTP odottamaton vastaus palvelimelta\n"
-
-#~ msgid "FTP access denied\n"
-#~ msgstr "FTP pääsy evätty\n"
-
-#~ msgid "FTP user password incorrect\n"
-#~ msgstr "FTP salasana väärin\n"
-
-#~ msgid "FTP unexpected PASS reply\n"
-#~ msgstr "FTP odottamaton PASS vastaus\n"
-
-#~ msgid "FTP unexpected USER reply\n"
-#~ msgstr "FTP odottamaton USER vastaus\n"
-
-#~ msgid "FTP unexpected PASV reply\n"
-#~ msgstr "FTP odottamaton PASV vastaus\n"
-
-#~ msgid "FTP unexpected 227 format\n"
-#~ msgstr "FTP odottamaton 227:n muoto\n"
-
-#~ msgid "FTP can't get host\n"
-#~ msgstr "FTP ei voida tavoittaa konetta\n"
-
-#~ msgid "FTP can't reconnect\n"
-#~ msgstr "FTP ei voida yhdistää uudelleen\n"
-
-#~ msgid "FTP couldn't set binary\n"
-#~ msgstr "FTP binaarisiirtoa ei voitu asettaa\n"
-
-#~ msgid "Partial file\n"
-#~ msgstr "Vaillinainen tiedosto\n"
-
-#~ msgid "FTP couldn't RETR file\n"
-#~ msgstr "FTP tiedoston RETR epäonnistui\n"
-
-#~ msgid "FTP write error\n"
-#~ msgstr "FTP kirjoitusvirhe\n"
-
-#~ msgid "FTP quote error\n"
-#~ msgstr "FTP tilarajoitusvirhe\n"
-
-#~ msgid "HTTP not found\n"
-#~ msgstr "HTTP ei löytynyt\n"
-
-#~ msgid "Write error\n"
-#~ msgstr "Kirjoitusvirhe\n"
-
-#~ msgid "User name illegally specified\n"
-#~ msgstr "Käyttäjätunnus väärin asetettu\n"
-
-#~ msgid "FTP couldn't STOR file\n"
-#~ msgstr "FTP tiedoston STOR epäonnistui\n"
-
-#~ msgid "Read error\n"
-#~ msgstr "Lukuvirhe\n"
-
-#~ msgid "Time out\n"
-#~ msgstr "Aikaviive täyttyi\n"
-
-#~ msgid "FTP couldn't set ASCII\n"
-#~ msgstr "FTP ASCII-siirtoa ei voitu asettaa\n"
-
-#~ msgid "FTP PORT failed\n"
-#~ msgstr "FTP PORT epäonnistui\n"
-
-#~ msgid "FTP couldn't use REST\n"
-#~ msgstr "FTP ei voitu käyttää REST:a\n"
-
-#~ msgid "FTP couldn't get size\n"
-#~ msgstr "FTP kokoa ei saatu\n"
-
-#~ msgid "HTTP range error\n"
-#~ msgstr "HTTP aluevirhe\n"
-
-#~ msgid "HTTP POST error\n"
-#~ msgstr "HTTP POST-virhe\n"
-
-#~ msgid "SSL connect error\n"
-#~ msgstr "SSL yhdistämisvirhe\n"
-
-#~ msgid "FTP bad download resume\n"
-#~ msgstr "FTP tiedonsiirron jatkamisvirhe\n"
-
-#~ msgid "File couldn't read file\n"
-#~ msgstr "Tiedosto ei voitu lukea tiedostoa\n"
-
-#~ msgid "LDAP cannot bind\n"
-#~ msgstr "LDAP ei voida sitoa\n"
-
-#~ msgid "LDAP search failed\n"
-#~ msgstr "LDAP etsintä epäonnistui\n"
-
-#~ msgid "Library not found\n"
-#~ msgstr "Kirjastoa ei löytynyt\n"
-
-#~ msgid "Function not found\n"
-#~ msgstr "Funktiota ei löytynyt\n"
-
-#~ msgid "Aborted by callback\n"
-#~ msgstr "Keskeytetty takaisinkutsulla\n"
-
-#~ msgid "Bad function argument\n"
-#~ msgstr "Virheellinen funktion parametri\n"
-
-#~ msgid "Bad calling order\n"
-#~ msgstr "Virheellinen kutsumisjärjestys\n"
-
-#~ msgid "HTTP Interface operation failed\n"
-#~ msgstr "HTTP liitännän toiminta epäonnistui\n"
-
-#~ msgid "my_getpass() returns fail\n"
-#~ msgstr "my_getpass() palauttaa virheen\n"
-
-#~ msgid "catch endless re-direct loops\n"
-#~ msgstr "havaittu päättymättömät uudelleenohjaukset\n"
-
-#~ msgid "User specified an unknown option\n"
-#~ msgstr "käyttäjä määritti tuntemattoman option\n"
-
-#~ msgid "Malformed telnet option\n"
-#~ msgstr "Virheellinen telnet-optio\n"
-
-#~ msgid "removed after 7.7.3\n"
-#~ msgstr "poistettu 7.7.3:n jälkeen\n"
-
-#~ msgid "peer's certificate wasn't ok\n"
-#~ msgstr "kohteen sertifikaatti ei ollut kunnossa\n"
-
-#~ msgid "when this is a specific error\n"
-#~ msgstr "kun tämä on ominainen virhe\n"
-
-#~ msgid "SSL crypto engine not found\n"
-#~ msgstr "SSL-salauskoneistoa ei löytynyt\n"
-
-#~ msgid "can not set SSL crypto engine as default\n"
-#~ msgstr "SSL-salauskoneistoa ei voitu asettaa oletukseksi\n"
-
-#~ msgid "failed sending network data\n"
-#~ msgstr "virhe verkkodatan lähettämisessä\n"
-
-#~ msgid "failure in receiving network data\n"
-#~ msgstr "virhe verkkodatan vastaanotossa\n"
-
-#~ msgid "share is in use\n"
-#~ msgstr "jako on käytössä\n"
-
-#~ msgid "problem with the local certificate\n"
-#~ msgstr "ongelma paikallisen sertifikaatin kanssa\n"
-
-#~ msgid "couldn't use specified cipher\n"
-#~ msgstr "ei voitu käyttää määriteltyä salausta\n"
-
-#~ msgid "problem with the CA cert (path?)\n"
-#~ msgstr "ongelma CA-sertifikaatin kanssa (polku?)\n"
-
-#~ msgid "Unrecognized transfer encoding\n"
-#~ msgstr "Tunnistamaton siirron koodaus\n"
-
-#~ msgid "Unknown error code %d\n"
-#~ msgstr "Tuntematon virhekoodi %d\n"
-
-#~ msgid ""
-#~ "This step enables you to add sources from a Mandriva Linux web or FTP "
-#~ "mirror.\n"
-#~ "\n"
-#~ "There are two kinds of official mirrors. You can choose to add sources "
-#~ "that\n"
-#~ "contain the complete set of packages of your distribution (usually a "
-#~ "superset\n"
-#~ "of what comes on the standard installation CDs), or sources that provide "
-#~ "the\n"
-#~ "official updates for your distribution. (You can add both, but you'll "
-#~ "have\n"
-#~ "to do this in two steps.)"
-#~ msgstr ""
-#~ "Tämä vaihe sallii sinua lisätä Mandriva Linux webbi tai FTP "
-#~ "peilipalvelimia.\n"
-#~ "\n"
-#~ "On olemassa kaksi tyyppiä virallisista peilipalvelimista. Voit päättää "
-#~ "lisätä\n"
-#~ "lähteitä jotka sisältävät täydellinen pakettisetti jakelustasi (yleensä "
-#~ "paljon \n"
-#~ "enemmän kuin mitä löytyy vakiona asennuscd-levyiltä), tai lähteitä joita\n"
-#~ "tarjoavat viralliset päivitykset käyttämäsi jakelua varten. (Voit lisätä\n"
-#~ "molemmat, mutta sinun pitää tehdä sitä yksi kerrallaan.)"
-
-#~ msgid "Distribution sources"
-#~ msgstr "Jakelulähteet"
-
-#~ msgid "Official updates"
-#~ msgstr "Viralliset päivitykset"
-
-#~ msgid "  --pkg-nosel=pkg1,..    show only these packages"
-#~ msgstr "  --pkg-nosel=pkg1,..    näytä ainoastaan näitä paketteja"
-
-#~ msgid "  --pkg-sel=pkg1,..      preselect these packages"
-#~ msgstr "  --pkg-sel=pkg1,..      valitse näitä paketteja etukäten"
-
-#~ msgid "Selected size: %d MB"
-#~ msgstr "Valittujen koko: %d Mt"
-
-#, fuzzy
-#~ msgid "/_Automatically resolve queries"
-#~ msgstr "/Näytä automaattisesti valitut paketit"
-
-#~ msgid "Path:"
-#~ msgstr "Polku:"
-
-#~ msgid "Add custom..."
-#~ msgstr "Lisää mukautettu..."
-
-#~ msgid "Update..."
-#~ msgstr "Päivitä..."
-
-#~ msgid ""
-#~ "The following packages have bad signatures:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Do you want to continue installation?"
-#~ msgstr ""
-#~ "Seuraavissa paketeissa on virheelliset allekirjoitukset:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Haluatko jatkaa asennusta?"
-
-#~ msgid "installing %s from %s"
-#~ msgstr "asennetaan %s kohteesta %s"
-
-#~ msgid "installing %s"
-#~ msgstr "asennetaan %s"
-
-#~ msgid "removing %s"
-#~ msgstr "poistetaan %s"
-
-#, fuzzy
-#~ msgid "Installation failed:"
-#~ msgstr "Asennus epäonnistui"
-
-#~ msgid "Try installation without checking dependencies? (y/N) "
-#~ msgstr "Yritetään asentaa ilman riippuvuuksia? (k/E) "
-
-#, fuzzy
-#~ msgid "Try harder to install (--force)? (y/N) "
-#~ msgstr "Yritetään asentaa pakolla (--force)? (k/E) "
-
-#~ msgid "Preparing..."
-#~ msgstr "Valmistellaan..."
-
-#~ msgid "Message Passing"
-#~ msgstr "Viestinvälitys"
-
-#~ msgid "Queueing Services"
-#~ msgstr "Jonotuspalvelut"
-
-#~ msgid "Deploiement"
-#~ msgstr "Sijoitus"
-
-#~ msgid "Deployment"
-#~ msgstr "Sijoitus"
-
-#~ msgid "Add a key..."
-#~ msgstr "Lisää avain..."
-
-#~ msgid "Remove key"
-#~ msgstr "Poista avain"
-
-#, fuzzy
-#~ msgid "  --version              output version information and exit"
-#~ msgstr "  --root                 pakota suorittaminen root-tunnuksella"
-
-#~ msgid "unable to access rpm file [%s]"
-#~ msgstr "ei oikeuksia rpm-tiedostoon [%s]"
-
-#, fuzzy
-#~ msgid ""
-#~ "To satisfy dependencies, the following package is going to be installed:\n"
-#~ "%2$s\n"
-#~ msgid_plural ""
-#~ "To satisfy dependencies, the following %d packages are going to be "
-#~ "installed:\n"
-#~ "%s\n"
-#~ msgstr[0] ""
-#~ "Riippuvuuksien täyttämiseksi seuraavat %d pakettia asennetaan :\n"
-#~ "%s\n"
-#~ msgstr[1] ""
-#~ "Riippuvuuksien täyttämiseksi seuraavat %d pakettia asennetaan :\n"
-#~ "%s\n"
-
-#~ msgid "Please wait, reading packages database..."
-#~ msgstr "Odota, pakettitietokantaa luetaan..."
-
-#~ msgid "About Rpmdrake"
-#~ msgstr "Tietoja Rpmdrake:sta"
-
-#~ msgid "XFree86"
-#~ msgstr "XFree86"
-
-#~ msgid "No package found for installation."
-#~ msgstr "Yhtään pakettia ei löytynyt asennettavaksi."
-
-#~ msgid "Maximum information"
-#~ msgstr "Mahdollisimman paljon tietoa"
-
-#~ msgid "everything was installed correctly"
-#~ msgstr "Kaikki asennettiin oikein"
-
-#~ msgid "Regenerate hdlist"
-#~ msgstr "Luo hdlist uudelleen"
-
-#~ msgid "Please wait, generating hdlist..."
-#~ msgstr "Odota, luodaan hdlist..."
-
-#~ msgid "Everything installed successfully"
-#~ msgstr "Kaikki asennettiin onnistuneesti"
-
-#~ msgid "Keys"
-#~ msgstr "Avaimet"
-
-#~ msgid "<no description>"
-#~ msgstr "<ei kuvausta>"
-
-#~ msgid "Choose a mirror..."
-#~ msgstr "Valitse peilipalvelin..."
-
-#~ msgid "Reset the selection"
-#~ msgstr "Palauta valinnat"
-
-#~ msgid "Reload the packages list"
-#~ msgstr "Lataa pakettilista uudelleen"
-
-#~ msgid "Mandrake Update"
-#~ msgstr "Mandrake päivitys"
