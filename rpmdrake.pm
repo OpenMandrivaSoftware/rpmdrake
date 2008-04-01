@@ -557,7 +557,7 @@ sub mirrors {
                                                gtkflush();
                                            },
                                        );
-            $res or do { c::set_tagged_utf8($res); die $res };
+            $res or die N("retrieval of [%s] failed", $file) . "\n";
             return $canceled ? () : cat_($file);
         });
     my @mirrors = @{ mirror::list(common::parse_LDAP_namespace_structure(cat_('/etc/product.id')), 'distrib') || [] };
