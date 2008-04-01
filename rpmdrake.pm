@@ -593,6 +593,7 @@ Is it ok to continue?");
     my @mirrors = eval { mirrors($urpm, $options{want_base_distro}) };
     my $error = $@;
     if ($error) {
+        $error = "\n$error\n";
 	interactive_msg(N("Error during download"),
 ($branded
 ? N("There was an error downloading the mirror list:
