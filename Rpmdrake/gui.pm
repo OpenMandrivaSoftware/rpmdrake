@@ -874,10 +874,10 @@ or you already installed all of them."));
                 my $m = pkg2medium($pkgs->{$_->[0]}{pkg}, $urpm); [ $_->[0], $m->{name}, $m->{priority} ];
             } @elems));
         } elsif ($::mode->[0] eq 'by_presence') {
-            add_node(
-                $_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed && !$pkgs->{$_->[0]}{pkg}->flag_skip
-                  ? N("Upgradable") : N("Addable")
-		    ) foreach $sortmethods{flat}->(@elems);
+            _build_tree($elems, map {
+                [ $_->[0], $pkgs->{$_->[0]}{pkg}->flag_installed && !$pkgs->{$_->[0]}{pkg}->flag_skip
+                    ? N("Upgradable") : N("Addable") ];
+              } $sortmethods{flat}->(@elems));
         } else {
             _build_tree($elems, @elems);
         }
