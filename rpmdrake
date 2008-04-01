@@ -401,7 +401,7 @@ sub run_treeview_dialog {
             if_($is_backports, 'backports')
         ],
         format => sub { $views{$_[0]} }, text => $views{$default_list_mode},
-        tip => N("/_View"),
+        tip => N("View"),
         changed => sub {
             my $val = $_[0]->get_text;
             return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
