@@ -876,8 +876,9 @@ or you already installed all of them."));
         } elsif ($::mode->[0] eq 'by_presence') {
             _build_tree($elems, map {
                 my $pkg = $pkgs->{$_->[0]}{pkg};
-                [ $_->[0], $pkg->flag_installed && !$pkg->flag_skip
-                    ? N("Upgradable") : N("Addable") ];
+                [ $_->[0], $pkg->flag_installed ?
+                    (!$pkg->flag_skip && $pkg->flag_upgrade ? N("Upgradable") : N("Installed"))
+                      : N("Addable") ];
               } $sortmethods{flat}->(@elems));
         } else {
             _build_tree($elems, @elems);
