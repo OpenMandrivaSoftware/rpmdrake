@@ -618,7 +618,7 @@ sub run_treeview_dialog {
                                                  $search_menu->popup(undef, undef, undef, undef, $button, undef);
                                              },
 			    key_press_event => sub {
-				$_[1]->keyval == $Gtk2::Gdk::Keysyms{Return}
+				member($_[1]->keyval, $Gtk2::Gdk::Keysyms{Return}, $Gtk2::Gdk::Keysyms{KP_Enter})
 				    and $find_callback->();
 			    },
                                          ),
