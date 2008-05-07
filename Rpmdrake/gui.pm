@@ -857,9 +857,9 @@ or you already installed all of them."));
         by_leaves => sub {
             # inlining part of MDK::Common::Data::difference2():
             my %l; @l{map { $_->[0] } @_} = ();
-            my $pkgs_times = join(' ', 'rpm -q --qf "%{name}-%{version}-%{release}.%{arch} %{installtime}\n"',
+            my @pkgs_times = ('rpm', '-q', '--qf', '%{name}-%{version}-%{release}.%{arch} %{installtime}\n',
 		    map { chomp_($_) } run_program::get_stdout('urpmi_rpm-find-leaves'));
-            sort { $b->[1] <=> $a->[1] } grep { exists $l{$_->[0]} } map { chomp; [ split ] } run_rpm($pkgs_times);
+            sort { $b->[1] <=> $a->[1] } grep { exists $l{$_->[0]} } map { chomp; [ split ] } run_rpm(@pkgs_times);
         },
         flat => sub { no locale; sort { uc($a->[0]) cmp uc($b->[0]) } @_ },
         by_medium => sub { sort { $a->[2] <=> $b->[2] || uc($a->[0]) cmp uc($b->[0]) } @_ },
