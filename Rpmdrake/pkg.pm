@@ -66,7 +66,7 @@ sub run_rpm {
     foreach (qw(LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION LC_ALL)) {
         local $ENV{$_} = $ENV{$_} . '.UTF-8' if $ENV{$_} && $ENV{$_} !~ /UTF-8/;
     }
-    my @l = map { ensure_utf8($_) } `@_`;
+    my @l = map { ensure_utf8($_) } run_program::get_stdout(@_);
     wantarray() ? @l : join('', @l);
 }
 
