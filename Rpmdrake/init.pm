@@ -54,6 +54,7 @@ N("  --mode=MODE            set mode (install (default), remove, update)"),
 N("  --justdb               update the database, but do not modify the filesystem"),
 N("  --no-confirmation      don't ask first confirmation question in update mode"),
 N("  --no-media-update      don't update media at startup"),
+N("  --no-splash            don't ask first confirmation question in update mode"),
 N("  --no-verify-rpm        don't verify packages signatures"),
 if_($0 !~ /MandrivaUpdate/, N("  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps")),
 N("  --rpm-root=path        use another root for rpm installation"),
@@ -151,6 +152,7 @@ but you may still browse the existing database."), yesno => 1, text => { no => N
 
 sub init() {
     URPM::bind_rpm_textdomain_codeset();
+    push @$already_splashed, $MODE if $rpmdrake_options{'no-splash'};
     if (!$> && !member($MODE, @$already_splashed)) {
         interactive_msg(N("Welcome"),
                         N("%s
