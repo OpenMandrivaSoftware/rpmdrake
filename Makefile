@@ -1,4 +1,4 @@
-VERSION = 4.9.13
+VERSION = 4.9.14
 NAME = rpmdrake
 
 DIRS = grpmi po data mime
@@ -54,7 +54,7 @@ dis: clean
 	rm -rf $(NAME)-$(VERSION)
 
 gui.lst:
-	urpmf "/(opt/kde4|usr)/share/(applnk|applications(|/kde))/.*.desktop" |sed -e 's!:.*!!' |sort|uniq>gui.lst
+	urpmf "/(opt/kde[43]|usr)/share/(applnk|applications(|/kde))/.*.desktop" |sed -e 's!:.*!!' |sort|uniq>gui.lst
 
 .PHONY: ChangeLog log changelog gui.lst
 
