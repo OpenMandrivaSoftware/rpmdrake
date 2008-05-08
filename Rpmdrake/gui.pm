@@ -548,7 +548,8 @@ sub pkgs_provider {
         all_updates => sub {
             # potential "updates" from media not tagged as updates:
             if (!$options{pure_updates} && !$Rpmdrake::pkg::need_restart) {
-                [ @{$h->{updates}}, grep { is_updatable($_) } @{$h->{installable}} ];
+                [ @{$h->{updates}},
+                  difference2([ grep { is_updatable($_) } @{$h->{installable}} ], $h->{backports}) ];
             } else {
                 $h->{updates};
             }
