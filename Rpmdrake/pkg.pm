@@ -134,11 +134,14 @@ sub extract_header {
 	    };
 	    add2hash($pkg, { description => rpm_description($p->description),
 	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
+	        url => $p->url,
 		changelog => format_changelog_changelogs($o_installed_version, $p->changelogs) });
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
         } elsif ($xml_info_pkgs{$name}) {
             if ($xml_info eq 'info') {
-                add2hash($pkg, { description => rpm_description($xml_info_pkgs{$name}{description}) });
+                add2hash($pkg, { description => rpm_description($xml_info_pkgs{$name}{description}),
+                                 url => $xml_info_pkgs{$name}{url}
+                             });
             } elsif ($xml_info eq 'files') {
                 my @files = map { chomp_(to_utf8($_)) } split("\n", $xml_info_pkgs{$name}{files});
                 add2hash($pkg, { files => [ @files ? @files : N("(none)") ] });
