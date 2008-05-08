@@ -177,6 +177,21 @@ sub format_pkg_simplifiedinfo {
                             ),
                        );
 
+    my $url = $upkg->url || $pkg->{url};
+    if (!$url) {
+        open_rpm_db()->traverse_tag('name', [ $upkg->name ], sub { $url = $_[0]->url });
+    }
+
+    if ($url) {
+        push @$details_txt,
+          @{ ugtk2::markup_to_TextView_format(format_field("\n$spacing" . N("URL: "))) },
+          [ my $link = gtkshow(Gtk2::LinkButton->new($url, $url)) ];
+        $link->set_uri_hook(sub {
+            my (undef, $url) = @_;
+            run_program::raw({ detach => 1, setuid => get_parent_uid() }, 'www-browser', $url);
+        });
+    }
+
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
                        gtknew('TextView', text => $details_txt)) ];
     $exp0->set_use_markup(1);
