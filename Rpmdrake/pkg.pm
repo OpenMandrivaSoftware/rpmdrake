@@ -374,7 +374,12 @@ sub get_pkgs {
     $gurpm->label(N("Please wait, listing base packages..."));
     $gurpm->progress($level);
     
-    my $db = open_rpm_db();
+    my $db = eval { open_rpm_db() };
+    if (my $err = $@) {
+	interactive_msg(N("Error"), N("A fatal error occurred: %s.", $err));
+        return;
+    }
+
     my $sig_handler = sub { undef $db; exit 3 };
     local $SIG{INT} = $sig_handler;
     local $SIG{QUIT} = $sig_handler;
