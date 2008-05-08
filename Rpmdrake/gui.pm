@@ -162,8 +162,8 @@ sub format_pkg_simplifiedinfo {
     )) };
     push @$s, [ "\n" ];
     my $installed_version = eval { find_installed_version($upkg) };
-    push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
-                       gtknew('TextView', text => ugtk2::markup_to_TextView_format(
+
+    my $details_txt = ugtk2::markup_to_TextView_format(
                            $spacing . join("\n$spacing",
                                 format_field(N("Version: ")) . $version . '-' . $release,
                                 
@@ -175,8 +175,10 @@ sub format_pkg_simplifiedinfo {
                                 format_field(N("Size: ")) . N("%s KB", int($upkg->size/1024)),
                                 eval { format_field(N("Medium: ")) . $raw_medium->{name} },
                             ),
-                       ),
-                   )) ];
+                       );
+
+    push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
+                       gtknew('TextView', text => $details_txt)) ];
     $exp0->set_use_markup(1);
     push @$s, [ "\n\n" ];
     push @$s, [ build_expander($pkg, N("Files:"), 'files', sub {
