@@ -482,7 +482,8 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
             $urpm_obj->set_flag_skip(0);
         }
 
-        if ($Rpmdrake::pkg::need_restart) {
+        if ($Rpmdrake::pkg::need_restart && !$priority_up_alread_warned) {
+            $priority_up_alread_warned = 1;
             interactive_msg(N("Warning"), '<b>' . N("Rpmdrake or one of its priority dependencies needs to be updated first. Rpmdrake will then restart.") . '</b>' . "\n\n");
         }
 

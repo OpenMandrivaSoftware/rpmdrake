@@ -49,6 +49,7 @@ use urpm::args qw();
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(
+                    $priority_up_alread_warned
                     download_callback
                     extract_header
                     find_installed_version
@@ -61,6 +62,9 @@ use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
 use Gtk2::Pango;
 use Gtk2::Gdk::Keysyms;
+
+our $priority_up_alread_warned;
+
 
 sub run_rpm {
     foreach (qw(LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION LC_ALL)) {
@@ -358,6 +362,8 @@ sub get_pkgs {
     my $urpm = open_urpmi_db(update => $probe_only_for_updates);
 
     my $_drop_lock = before_leaving { undef $urpm->{lock} };
+
+    $priority_up_alread_warned = 0;
 
     # update media list in case warn_about_media() added some:
     @update_medias = get_update_medias($urpm);
