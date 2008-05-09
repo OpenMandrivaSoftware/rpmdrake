@@ -117,6 +117,7 @@ sub run_treeview_dialog {
     my (undef, $size_free) = MDK::Common::System::df('/usr');
 
     my (undef, $rootwin_height) = gtkroot()->get_size();
+    my $is_small_screen = $rootwin_height < 480;
 
     compute_main_window_size($w);
 
@@ -124,7 +125,7 @@ sub run_treeview_dialog {
 	$w->{window},
 	gtkpack_(
 	    gtknew('VBox', spacing => 3),
-	    if_($rootwin_height <480, 0, getbanner()),
+	    if_($is_small_screen, 0, getbanner()),
               0, gtknew('Title2', label => N("Here is the list of software package updates")),
          1, create_vpaned(
                  gtknew('ScrolledWindow', width => $typical_width*0.9, height => 200,
