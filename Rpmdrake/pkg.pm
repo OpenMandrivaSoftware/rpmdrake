@@ -531,7 +531,7 @@ sub get_pkgs {
        installed => \@installed_pkgs,
        installable => \@installable_pkgs,
        updates => \@updates,
-       meta_pkgs => [ grep { /^task-/ } keys %all_pkgs ],
+       meta_pkgs => [ grep { /^task-|^basesystem/ } keys %all_pkgs ],
        gui_pkgs => [ grep { member(($all_pkgs{$_}{pkg}->fullname)[0], @gui_pkgs) } keys %all_pkgs ],
        update_descr => $update_descr,
        backports => \@backports,
