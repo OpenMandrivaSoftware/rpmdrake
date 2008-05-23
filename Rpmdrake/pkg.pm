@@ -512,7 +512,7 @@ sub get_pkgs {
              $selected = member($name, @requested_strict);
             push @updates, $name;
 	}
-        $all_pkgs{urpm_name($pkg)} = { selected => $selected, pkg => $pkg,
+        $all_pkgs{$name} = { selected => $selected, pkg => $pkg,
                                        summary => $pkg->summary,
                                    };
       }
