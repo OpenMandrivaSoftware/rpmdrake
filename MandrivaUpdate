@@ -125,10 +125,10 @@ sub run_treeview_dialog {
 	$w->{window},
 	gtkpack_(
 	    gtknew('VBox', spacing => 3),
-	    if_($is_small_screen, 0, getbanner()),
+	    if_(!$is_small_screen, 0, getbanner()),
               0, gtknew('Title2', label => N("Here is the list of software package updates")),
          1, create_vpaned(
-                 gtknew('ScrolledWindow', width => $typical_width*0.9, height => $is_small_screen ? 200 : 150,
+                 gtknew('ScrolledWindow', width => $typical_width*0.9, height => $is_small_screen ? 150 : 200,
                         child => $list = Gtk2::SimpleList->new(
                             " " . " " . " "    => 'bool', #N("Selected")
                             '' => 'hidden',
@@ -140,7 +140,7 @@ sub run_treeview_dialog {
                     ),
                  
              gtknew('ScrolledWindow', width => $typical_width*0.9,
-                    child => $info = Gtk2::Mdv::TextView->new, height => $is_small_screen ? 190 : 150,
+                    child => $info = Gtk2::Mdv::TextView->new, height => $is_small_screen ? 150 : 190,
                 ),
              resize1 => 1,
          ),
