@@ -327,6 +327,7 @@ sub get_installed_packages {
                       my ($pkg) = @_;
                       update_pbar($gurpm);
                       my $fullname = urpm_name($pkg);
+                      return if $fullname =~ /@/;
                       #- Extract summary and description since they'll be lost when the header is packed
                       $all_pkgs->{$fullname} = {
                           selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
