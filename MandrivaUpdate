@@ -99,11 +99,11 @@ sub toggle {
     toggle_nodes($w->{real_window}->window, $list->get_model, sub {
                      my ($leaf, $state, $model) = @_;
                      $done = 1;
-                     $list->{data}[$data{$leaf}][0] = $pkgs->{$name}{selected};
+                     $list->{data}[$data{$leaf}][$pkg_columns{selected}] = $pkgs->{$name}{selected};
                  },
                  $old_status, @names);
     # handle canceling:
-    $list->{data}[$data{$name}][0] = !$list->{data}[$data{$name}][0] if !$done;
+    $list->{data}[$data{$name}][$pkg_columns{selected}] = !$list->{data}[$data{$name}][$pkg_columns{selected}] if !$done;
 }
 
 $w = ugtk2->new(N("Software Management"));
