@@ -44,12 +44,13 @@ use Gtk2::SimpleList;
 
 # make Rpmdrake::gui aware MandrivaUpdate do not use the same columns ids as rpmdrake:
 %pkg_columns = (
-    selected => 0,
-    text => 1,
-    short_name => 2,
-    version => 3,
-    release => 4,
-    arch => 5
+    image => 0,
+    selected => 1,
+    text => 2,
+    short_name => 3,
+    version => 4,
+    release => 5,
+    arch => 6
 );
 
 $ugtk2::wm_icon = "title-$MODE";
@@ -61,6 +62,14 @@ our $statusbar;
 warn_about_user_mode();
 
 my (%data, $initialized);
+
+my %update_icons = (
+    security => 'security-update',
+    bugfix => 'bugfix-update',
+    normal => 'general-update',
+);
+
+my %icons_cache;
 
 sub refresh_packages_list {
     my ($list, $info, $button) = @_;
@@ -80,7 +89,15 @@ sub refresh_packages_list {
         $data{$_} = $i++;
         my $summary = get_summary($_);
         my ($name, $version, $release, $arch) = split_fullname($_);
-        [ $pkgs->{$_}{selected}, $_, format_name_n_summary($name, $summary), $version, $release, $arch ];
+        my $pkg = $pkgs->{$_};
+        my $raw_medium = pkg2medium($pkg->{pkg}, $urpm);
+        my $medium = $raw_medium ? $raw_medium->{name} : undef;
+        my $icon;
+        my $importance = $medium && $descriptions->{$medium}{$name}{importance};
+        if ($importance) {
+            $icon = $icons_cache{$importance} ||= gtknew('Pixbuf', file => $update_icons{$importance});
+        }
+        [ $icon, $pkgs->{$_}{selected}, $_, format_name_n_summary($name, $summary), $version, $release, $arch ];
     } grep { $pkgs->{$_}{pkg} } @requested;
     gtktext_insert($info,
       formatAlaTeX(N("The list of updates is empty. This means that either there is
@@ -130,6 +147,7 @@ sub run_treeview_dialog {
          1, create_vpaned(
                  gtknew('ScrolledWindow', width => $typical_width*0.9, height => $is_small_screen ? 150 : 200,
                         child => $list = Gtk2::SimpleList->new(
+                            " " => 'pixbuf',
                             " " . " " . " "    => 'bool', #N("Selected")
                             '' => 'hidden',
                             " " . N("Name") . " "        => 'markup', #N("Name")
