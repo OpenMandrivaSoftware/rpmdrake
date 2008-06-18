@@ -42,6 +42,7 @@ use Gtk2::Gdk::Keysyms;
 use feature 'state';
 
 our @EXPORT = qw(
+                    $descriptions
                     $find_entry
                     $force_displaying_group
                     $force_rebuild
