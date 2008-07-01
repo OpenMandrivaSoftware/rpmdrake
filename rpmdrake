@@ -184,7 +184,7 @@ sub do_search($$$$$$$) {
 	    $searchw->destroy;
     }
     if (@search_results) {
-	$options->{add_nodes}->(map { [ $_, N("Search results") . ($options->{tree_mode} eq 'by_presence'
+	$options->{add_nodes}->(map { [ $_, $results_ok . ($options->{tree_mode} eq 'by_presence'
 								 ? '|' . ($pkgs->{$_}{pkg}->flag_installed ? N("Upgradable") : N("Addable"))
 								 : ($options->{tree_mode} eq 'by_selection'
 								    ? '|' . ($pkgs->{$_}{selected} ? N("Selected") : N("Not selected"))
