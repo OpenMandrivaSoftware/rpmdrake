@@ -52,6 +52,7 @@ $ugtk2::wm_icon = "title-$MODE";
 our $w;
 our $statusbar;
 
+my %elems;
 
 sub do_search($$$$$$$) {
     my ($find_entry, $tree, $tree_model, $options, $current_search_type, $urpm, $pkgs) = @_;
@@ -204,7 +205,7 @@ sub do_search($$$$$$$) {
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
-    my ($options, $tree, $tree_model, $detail_list, $detail_list_model, %elems);
+    my ($options, $tree, $tree_model, $detail_list, $detail_list_model);
     (undef, $size_free) = MDK::Common::System::df('/usr');
 
     $::main_window = $w->{real_window};
