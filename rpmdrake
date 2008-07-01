@@ -184,7 +184,11 @@ sub do_search($$$$$$$) {
 	    @search_results = uniq(@search_results); #- there can be multiple packages with same version/release for different arch's
 	    $searchw->destroy;
     }
+
+    my $iter;
     if (@search_results) {
+        $elems{$results_ok} = [ map { [ $_, $results_ok ] } sort { uc($a) cmp uc($b) } @search_results ];
+        $iter = $options->{add_parent}->($results_ok);
 	$options->{add_nodes}->(map { [ $_, $results_ok . ($options->{tree_mode} eq 'by_presence'
 								 ? '|' . ($pkgs->{$_}{pkg}->flag_installed ? N("Upgradable") : N("Addable"))
 								 : ($options->{tree_mode} eq 'by_selection'
@@ -197,6 +201,7 @@ sub do_search($$$$$$$) {
             $tree->scroll_to_cell($path, undef, 1, 0.5, 0);
         }
     } else {
+        $iter = $options->{add_parent}->($results_none);
         statusbar_msg($results_none, 1);
         gtkset_mousecursor_normal($::w->{rwindow}->window);
     }
