@@ -322,7 +322,6 @@ sub run_treeview_dialog {
         state $current_group;
         my $new_group = $model->get_path_str($iter);
         return if $current_group eq $new_group && !$force_displaying_group;
-        $options->{clear_all_caches}->();
         undef $force_displaying_group;
         $current_group = $new_group;
         $model && $iter or return;
