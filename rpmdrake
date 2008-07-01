@@ -350,7 +350,7 @@ sub run_treeview_dialog {
 
 
     # handle migrating config file from rpmdrake <= 4.9
-    if (member($default_list_mode, keys %filters)) {
+    if (exists $filters{$default_list_mode})) {
         $filter->[0] = $default_list_mode;
         $default_list_mode = 'all';
     }
