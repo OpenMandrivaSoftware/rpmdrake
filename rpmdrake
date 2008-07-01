@@ -64,7 +64,7 @@ sub do_search($$$$$$$) {
     }
     my $entry_rx = eval { qr/$entry/i } or return;
     my $results_ok = N("Search results");
-    $options->{delete_category}->($_) foreach $results_ok;
+    $options->{delete_category}->($results_ok);
     $options->{state}{flat} and $options->{delete_all}->();
     $tree->collapse_all;
     my @search_results;
