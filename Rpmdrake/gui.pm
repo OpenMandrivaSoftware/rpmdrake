@@ -452,7 +452,6 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     };
     $common->{add_nodes} = sub {
 	my (@nodes) = @_;
-	$common->{clear_all_caches}->();
 	$w->{detail_list_model}->clear;
 	$w->{detail_list}->scroll_to_point(0, 0);
 	add_node($_->[0], $_->[1], $_->[2]) foreach @nodes;
