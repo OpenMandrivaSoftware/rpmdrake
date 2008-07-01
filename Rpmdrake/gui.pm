@@ -421,28 +421,8 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     $common->{delete_category} = sub {
 	my ($cat) = @_;
 	exists $wtree{$cat} or return;
-	foreach (keys %ptree) {
-	    my @to_remove;
-	    foreach my $node (@{$ptree{$_}}) {
-		my $category;
-		my $parent = $node;
-		my @parents;
-		while ($parent = $w->{tree_model}->iter_parent($parent)) {    #- LEAKS
-		    my $parent_name = $w->{tree_model}->get($parent, $grp_columns{label});
-		    $category = $category ? "$parent_name|$category" : $parent_name;
-		    $_->[1] = "$parent_name|$_->[1]" foreach @parents;
-		    push @parents, [ $parent, $category ];
-		}
-		if ($category =~ /^\Q$cat/) {
-		    push @to_remove, $node;
-		    foreach (@parents) {
-			next if $_->[1] eq $cat || !exists $wtree{$_->[1]};
-			delete $wtree{$_->[1]};
-		    }
-		}
-	    }
-	    @{$ptree{$_}} = difference2($ptree{$_}, \@to_remove);
-	}
+	%ptree = ();
+
 	if (exists $wtree{$cat}) {
 	    my $_iter_str = $w->{tree_model}->get_path_str($wtree{$cat});
 	    $w->{tree_model}->remove($wtree{$cat});
