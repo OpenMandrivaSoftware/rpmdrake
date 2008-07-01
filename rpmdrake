@@ -64,7 +64,7 @@ sub do_search($$$$$$$) {
         $entry =~ s/^\s*$//;
     }
     my $entry_rx = eval { qr/$entry/i } or return;
-    my $results_ok = N("Search results");
+    my ($results_ok, $results_none) = (N("Search results"), N("Search results (none)"));
     $options->{delete_category}->($results_ok);
     $options->{state}{flat} and $options->{delete_all}->();
     $tree->collapse_all;
@@ -198,6 +198,7 @@ sub do_search($$$$$$$) {
         }
     } else {
         statusbar_msg(N("Search results (none)"), 1);
+        statusbar_msg($results_none, 1);
         gtkset_mousecursor_normal($::w->{rwindow}->window);
     }
 }
