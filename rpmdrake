@@ -208,6 +208,7 @@ sub do_search($$$$$$$) {
 }
 
 sub quit() {
+    ($rpmdrake_width->[0], $rpmdrake_height->[0]) = $::w->{real_window}->get_size();
     Gtk2->main_quit
 }
 
@@ -677,6 +678,10 @@ sub run_treeview_dialog {
     $w->{rwindow}->set_default_size($typical_width*2.7, 500) if !$::isEmbedded;
     $find_entry->set_text($rpmdrake_options{search}[0]) if $rpmdrake_options{search};
 
+    if ($rpmdrake_width->[0] && $rpmdrake_height->[0]) {
+        # so that we can shrink back:
+        $w->{real_window}->set_default_size($rpmdrake_width->[0], $rpmdrake_height->[0]);
+    }
     $w->{rwindow}->show_all;
     $w->{rwindow}->set_sensitive(0);
 

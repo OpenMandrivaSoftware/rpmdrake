@@ -53,6 +53,8 @@ our @EXPORT = qw(
     $max_info_in_descr
     $mode
     $offered_to_add_sources
+    $rpmdrake_height
+    $rpmdrake_width
     $tree_flat
     $tree_mode
     $typical_width
@@ -151,6 +153,7 @@ $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 our $configfile = "$ENV{HOME}/.rpmdrake";
 our ($already_splashed, $changelog_first_config, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode);
 our ($mandrakeupdate_wanted_categories, $offered_to_add_sources, $no_confirmation);
+our ($rpmdrake_height, $rpmdrake_width);
 our %config = (
     mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
     already_splashed => { var => \$already_splashed, default => [] },
@@ -163,6 +166,8 @@ our %config = (
     'no-confirmation' => { var => \$no_confirmation, default => [ 0 ] },
     filter => { var => \$filter, default => [ 'all' ] },
     mode => { var => \$mode, default => [ 'by_group' ] },
+    rpmdrake_width => { var => \$rpmdrake_width, default => [ 0 ] },
+    rpmdrake_height => { var => \$rpmdrake_height, default => [ 0 ] },
 );
 
 sub readconf() {
