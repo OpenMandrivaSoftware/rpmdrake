@@ -172,6 +172,7 @@ sub format_pkg_simplifiedinfo {
                                    format_field(N("Currently installed version: ")) . $installed_version
                                      : ()
                                  ),
+                                format_field(N("Group: ")) . translate_group($upkg->group),
                                 format_field(N("Architecture: ")) . $upkg->arch,
                                 format_field(N("Size: ")) . N("%s KB", int($upkg->size/1024)),
                                 eval { format_field(N("Medium: ")) . $raw_medium->{name} },
