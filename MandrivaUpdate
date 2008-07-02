@@ -127,6 +127,11 @@ $w = ugtk2->new(N("Software Management"));
 $w->{rwindow}->show_all if $::isEmbedded;
 $::main_window = $w->{real_window};
 
+sub quit() {
+    ($mandrivaupdate_width->[0], $mandrivaupdate_height->[0]) = $::w->{real_window}->get_size();
+    Gtk2->main_quit
+}
+
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
@@ -192,7 +197,7 @@ sub run_treeview_dialog {
 			),
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Quit"))),
-			    clicked => sub { Gtk2->main_quit },
+			    clicked => \&quit,
 			),
 		    ),
 	    #0, $statusbar = Gtk2::Statusbar->new,
@@ -228,6 +233,10 @@ sub run_treeview_dialog {
 
     $w->{rwindow}->set_default_size(-1, 500) if !$::isEmbedded;
 
+    if ($mandrivaupdate_width->[0] && $mandrivaupdate_height->[0]) {
+        # so that we can shrink back:
+        $w->{real_window}->set_default_size($mandrivaupdate_width->[0], $mandrivaupdate_height->[0]);
+    }
     $w->{rwindow}->show_all;
     $w->{rwindow}->set_sensitive(0);
 

@@ -50,6 +50,8 @@ our @EXPORT = qw(
     $filter
     $dont_show_selections
     $mandrakeupdate_wanted_categories
+    $mandrivaupdate_height
+    $mandrivaupdate_width
     $max_info_in_descr
     $mode
     $offered_to_add_sources
@@ -153,11 +155,13 @@ $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 our $configfile = "$ENV{HOME}/.rpmdrake";
 our ($already_splashed, $changelog_first_config, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode);
 our ($mandrakeupdate_wanted_categories, $offered_to_add_sources, $no_confirmation);
-our ($rpmdrake_height, $rpmdrake_width);
+our ($rpmdrake_height, $rpmdrake_width, $mandrivaupdate_height, $mandrivaupdate_width);
 our %config = (
     mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
     already_splashed => { var => \$already_splashed, default => [] },
     dont_show_selections => { var => \$dont_show_selections, default => [ $> ? 1 : 0 ] },
+    mandrivaupdate_width => { var => \$mandrivaupdate_width, default => [ 0 ] },
+    mandrivaupdate_height => { var => \$mandrivaupdate_height, default => [ 0 ] },
     max_info_in_descr => { var => \$max_info_in_descr, default => [] },
     offered_to_add_sources => { var => \$offered_to_add_sources, default => [ 0 ] },
     tree_mode => { var => \$tree_mode, default => [ qw(gui_pkgs) ] },
