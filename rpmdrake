@@ -207,6 +207,10 @@ sub do_search($$$$$$$) {
     $tree_selection->signal_emit('changed');
 }
 
+sub quit() {
+    Gtk2->main_quit
+}
+
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
@@ -534,7 +538,7 @@ sub run_treeview_dialog {
 	    $tree_selection->signal_emit('changed');
 	}, undef, '<Item>' ],
 	[ N("/_File") . N("/Reload the _packages list"), undef, $reload_db_and_clear_all, undef, '<Item>' ],
-	[ N("/_File") . N("/_Quit"), N("<control>Q"), sub { Gtk2->main_quit }, undef, '<Item>', ],
+	[ N("/_File") . N("/_Quit"), N("<control>Q"), \&quit, undef, '<Item>', ],
 	#[ N("/_View"), undef, undef, undef, '<Branch>' ],
 	if_(!$>,
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
@@ -649,7 +653,7 @@ sub run_treeview_dialog {
 			),
 			0, gtksignal_connect(
 			    Gtk2::Button->new(but_(N("Quit"))),
-			    clicked => sub { Gtk2->main_quit },
+			    clicked => \&quit,
 			),
 		    ),
 		),
