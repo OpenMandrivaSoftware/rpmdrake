@@ -180,8 +180,10 @@ sub readconf() {
 
 sub writeconf() {
     unlink $configfile;
+
     # special case:
     $no_confirmation->[0] = $::rpmdrake_options{'no-confirmation'};
+
     output $configfile, map { "$_ " . (ref ${$config{$_}{var}} ? join(' ', @${$config{$_}{var}}) : ()) . "\n" } keys %config;
 }
 
