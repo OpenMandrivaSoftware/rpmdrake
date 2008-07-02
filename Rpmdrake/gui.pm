@@ -800,6 +800,9 @@ sub do_action {
     $res;
 }
 
+sub translate_group {
+    join('/', map { translate($_) } split m|/|, $_[0]);
+}
 
 sub ctreefy {
     join('|', map { translate($_) } split m|/|, $_[0]);
