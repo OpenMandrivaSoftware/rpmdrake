@@ -197,6 +197,8 @@ sub do_search($$$$$$$) {
 				      ] } sort { uc($a) cmp uc($b) } @search_results);
     } else {
         $iter = $options->{add_parent}->($results_none);
+        # clear package list:
+        $options->{add_nodes}->();
         statusbar_msg($results_none, 1);
         gtkset_mousecursor_normal($::w->{rwindow}->window);
     }
