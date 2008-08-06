@@ -721,12 +721,13 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  my ($title, $msg) = @_;
                                  local $::main_window = $gurpm->{real_window};
                                  interactive_msg($title, $msg, yesno => 1, scroll => 1,
-                                 ) or goto return_with_exit_code;
+                                 );
                              },
                              message => sub {
                                  my ($title, $message) = @_;
                                  interactive_msg($title, $message, scroll => 1);
                              },
+                             # cancel installation when 'cancel' button is pressed:
                              trans_log => sub { download_callback($gurpm, @_) or goto return_with_exit_code },
                              post_extract => sub {
                                  my ($set, $transaction_sources, $transaction_sources_install) = @_;
@@ -763,7 +764,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  $msg =~ s/:$/\n\n/m; # FIXME: to be fixed in urpmi after 2008.0
                                  interactive_msg(
                                      N("Warning"), "$msg\n\n$msg2", yesno => 1, if_(10 < ($msg =~ tr/\n/\n/), scroll => 1),
-                                 ) or goto return_with_exit_code;
+                                 );
                              },
                              post_download => sub {
                                  $canceled and goto return_with_exit_code;
