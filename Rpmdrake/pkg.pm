@@ -719,7 +719,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              ask_yes_or_no => sub {
                                  # handle 'allow-force' and 'allow-nodeps' options:
                                  my ($title, $msg) = @_;
-                                 local $::main_window = $gurpm->{mainw}{real_window};
+                                 local $::main_window = $gurpm->{real_window};
                                  interactive_msg($title, $msg, yesno => 1, scroll => 1,
                                  ) or goto return_with_exit_code;
                              },
@@ -759,7 +759,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              check_sig => sub { $gurpm->progress(++$progress/$total) },
                              bad_signature => sub {
                                  my ($msg, $msg2) = @_;
-                                 local $::main_window = $gurpm->{mainw}{real_window};
+                                 local $::main_window = $gurpm->{real_window};
                                  $msg =~ s/:$/\n\n/m; # FIXME: to be fixed in urpmi after 2008.0
                                  interactive_msg(
                                      N("Warning"), "$msg\n\n$msg2", yesno => 1, if_(10 < ($msg =~ tr/\n/\n/), scroll => 1),
