@@ -23,8 +23,6 @@
 # $Id$
 
 use strict;
-use Rpmdrake::init;
-use Rpmdrake::open_db;
 
 BEGIN {
     @ARGV == 0 || "@ARGV" =~ /-h/ and do {
@@ -45,6 +43,8 @@ and [options] are from
         exit(0);
     };
 }
+use Rpmdrake::init;
+use Rpmdrake::open_db;
 
 use lib qw(/usr/lib/libDrakX);
 use urpm::media;
