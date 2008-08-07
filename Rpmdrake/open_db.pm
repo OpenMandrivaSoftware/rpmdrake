@@ -28,6 +28,7 @@ use common;
 use rpmdrake;
 use URPM;
 use urpm;
+use urpm::args;
 use feature 'state';
 
 use Exporter;
