@@ -95,14 +95,17 @@ if ($collation_locale) {
 
 my $version = 1;
 our %rpmdrake_options;
+
+my $i;
 foreach (@ARGV) {
+    $i++;
     /^-?-(\S+)$/ or next;
     my $val = $1;
     if ($val =~ /=/) {
         my ($name, $values) = split /=/, $val;
         my @values = split /,/, $values;
         $rpmdrake_options{$name} = \@values if @values;
-        shift @ARGV
+        splice @ARGV, $i-1, 1;
     } else {
         if ($val eq 'version') {
             print "$0 $version\n";
