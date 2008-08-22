@@ -634,10 +634,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     );
     statusbar_msg_remove($bar_id);
 
-    my ($local_sources, $list) = urpm::get_pkgs::selected2list($urpm, 
+    my ($local_sources, $blist) = urpm::get_pkgs::selected2local_and_blists($urpm, 
 	$state->{selected},
     );
-    if (!$local_sources && (!$list || !@$list)) {
+    if (!$local_sources && (!$blist || !@$blist)) {
         interactive_msg(
 	    N("Unable to get source packages."),
 	    N("Unable to get source packages, sorry. %s",
