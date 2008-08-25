@@ -109,11 +109,11 @@ sub extract_header {
             my $gurpm;
             $bar_id = statusbar_msg(N("Getting '%s' from XML meta-data...", $xml_info), 0);
             my $_gurpm_clean_guard = before_leaving { undef $gurpm };
-                if (my $xml_info_file = urpm::media::any_xml_info($urpm, $medium, $xml_info, undef, sub {
+                if (my $xml_info_file = eval { urpm::media::any_xml_info($urpm, $medium, $xml_info, undef, sub {
                                                                       $gurpm ||= Rpmdrake::gurpm->new(N("Please wait"), transient => $::main_window);
                                                                       download_callback($gurpm, @_)
                                                                         or goto header_non_available;
-                                                                  })) {
+                                                                  }) }) {
                     require urpm::xml_info;
                     require urpm::xml_info_pkg;
                     $urpm->{log}("getting information from $xml_info_file");
