@@ -524,6 +524,8 @@ sub get_pkgs {
     # urpmi only care about the first medium where it found the package,
     # so there's no need to list the same package several time:
     @installable_pkgs = uniq(difference2(\@installable_pkgs, \@updates));
+
+    my @meta_pkgs = grep { /^task-|^basesystem/ } keys %all_pkgs;
  
     my @gui_pkgs = map { chomp; $_ } cat_('/usr/share/rpmdrake/gui.lst');
 
@@ -532,7 +534,7 @@ sub get_pkgs {
        installed => \@installed_pkgs,
        installable => \@installable_pkgs,
        updates => \@updates,
-       meta_pkgs => [ grep { /^task-|^basesystem/ } keys %all_pkgs ],
+       meta_pkgs => \@meta_pkgs,
        gui_pkgs => [ grep { member(($all_pkgs{$_}{pkg}->fullname)[0], @gui_pkgs) } keys %all_pkgs ],
        update_descr => $update_descr,
        backports => \@backports,
