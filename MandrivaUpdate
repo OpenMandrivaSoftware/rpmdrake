@@ -50,7 +50,8 @@ use Gtk2::SimpleList;
     short_name => 3,
     version => 4,
     release => 5,
-    arch => 6
+    arch => 6,
+    importance => 7,
 );
 
 $ugtk2::wm_icon = "title-$MODE";
@@ -97,7 +98,7 @@ sub refresh_packages_list {
         if ($importance) {
             $icon = $icons_cache{$importance} ||= gtknew('Pixbuf', file => $update_icons{$importance});
         }
-        [ $icon, $pkgs->{$_}{selected}, $_, format_name_n_summary($name, $summary), $version, $release, $arch ];
+        [ $icon, $pkgs->{$_}{selected}, $_, format_name_n_summary($name, $summary), $version, $release, $arch, $importance ];
     } grep { $pkgs->{$_}{pkg} } @requested;
     gtktext_insert($info,
       formatAlaTeX(N("The list of updates is empty. This means that either there is
@@ -159,6 +160,7 @@ sub run_treeview_dialog {
                             " " . N("Version") . " "        => 'text',
                             " " . N("Release") . " "        => 'text',
                             " " . N("Arch") . " "        => 'text',
+                            '' => 'hidden',
                         ),
                     ),
                  
@@ -204,6 +206,13 @@ sub run_treeview_dialog {
 	),
     );
     $statusbar = Gtk2::Statusbar->new;
+
+    $list->get_model->set_sort_func($pkg_columns{image} + 1, sub {
+                                        my ($store, $treeiter1, $treeiter2) = @_;
+                                        $store->get_value($treeiter1, $pkg_columns{importance}) cmp
+                                          $store->get_value($treeiter2, $pkg_columns{importance});
+                                    });
+
 
     $list->set_rules_hint(1);
     my $bool_col = $list->get_column(0);
