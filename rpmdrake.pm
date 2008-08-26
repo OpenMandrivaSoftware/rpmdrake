@@ -184,7 +184,7 @@ sub readconf() {
     }
     # special cases:
     $::rpmdrake_options{'no-confirmation'} = $no_confirmation->[0] if !defined $::rpmdrake_options{'no-confirmation'};
-    $Rpmdrake::init::default_list_mode = $tree_mode->[0] if ref $tree_mode;
+    $Rpmdrake::init::default_list_mode = $tree_mode->[0] if ref $tree_mode && !$Rpmdrake::init::overriding_config;
 }
 
 sub writeconf() {

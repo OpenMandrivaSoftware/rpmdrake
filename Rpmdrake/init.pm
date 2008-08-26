@@ -126,6 +126,7 @@ foreach my $option (qw(media mode parallel rpm-root search)) {
 }
 
 our $MODE = ref $rpmdrake_options{mode} ? $rpmdrake_options{mode}[0] : undef;
+our $overriding_config = defined $MODE;
 unless ($MODE) {
     $MODE = 'install';
     $0 =~ m|remove$|  and $MODE = 'remove';
