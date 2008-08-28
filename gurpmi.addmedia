@@ -37,7 +37,8 @@ where <url> is one of
 and [options] are from
   --distrib        install a set of media from a distribution
   --silent-success don't show popup window on success
-  --update         create an update medium.
+  --update         create an update medium,
+                   or discard non-update media (when used with --distrib)
   --mirrorlist     <url> is a mirror list
 ";
         exit(0);
@@ -133,7 +134,7 @@ foreach (@addmedia_args) {
 	$_->[0],
 	$_->[1],
 	if_(!$distrib, undef),
-	if_($update, update => $update),
+	if_($update, update => $update, only_updates => $update),
 	mirrorlist => $mirrorlist,
 	if_($with_dir, 'with-dir' => $with_dir),
     );
