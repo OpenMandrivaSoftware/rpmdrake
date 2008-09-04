@@ -45,7 +45,6 @@ use feature 'state';
 our @ISA = qw(Exporter);
 our $VERSION = '2.27';
 our @EXPORT = qw(
-    $already_splashed
     $changelog_first_config
     $filter
     $dont_show_selections
@@ -153,12 +152,11 @@ my ($root) = grep { $_->[2] == 0 } list_passwd();
 $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
-our ($already_splashed, $changelog_first_config, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode);
+our ($changelog_first_config, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode);
 our ($mandrakeupdate_wanted_categories, $offered_to_add_sources, $no_confirmation);
 our ($rpmdrake_height, $rpmdrake_width, $mandrivaupdate_height, $mandrivaupdate_width);
 our %config = (
     mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
-    already_splashed => { var => \$already_splashed, default => [] },
     dont_show_selections => { var => \$dont_show_selections, default => [ $> ? 1 : 0 ] },
     mandrivaupdate_width => { var => \$mandrivaupdate_width, default => [ 0 ] },
     mandrivaupdate_height => { var => \$mandrivaupdate_height, default => [ 0 ] },

@@ -156,7 +156,6 @@ but you may still browse the existing database."), yesno => 1, text => { no => N
 
 sub init() {
     URPM::bind_rpm_textdomain_codeset();
-    push @$already_splashed, $MODE if $rpmdrake_options{'no-splash'};
     if (!$> && !$offered_to_add_sources->[0]) {
         if (interactive_msg(N("Welcome"),
                             join("\n\n",
