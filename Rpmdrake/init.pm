@@ -110,8 +110,8 @@ foreach (@ARGV) {
         if ($val eq 'version') {
             print "$0 $version\n";
             exit(0);
-       } elsif ($val eq 'test') {
-           $::test = 1;
+       } elsif ($val =~ /^(test|expert)$/) {
+           eval "\$::$1 = 1";
        } else {
            $rpmdrake_options{$val} = 1;
        }
