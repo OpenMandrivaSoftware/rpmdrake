@@ -37,7 +37,7 @@ use urpm::lock;
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(check_if_first_run run);
+our @EXPORT = qw(run);
 
 use mygtk2 qw(gtknew gtkset);
 use ugtk2 qw(:all);
@@ -1130,21 +1130,6 @@ sub mainwindow() {
     return $something_changed;
 }
 
-
-sub check_if_first_run() {
-    if (!member(basename($0), @$already_splashed)) {
-        interactive_msg('rpmdrake',
-                        N("%s
-
-Is it ok to continue?",
-                          N("Welcome to the Software Media Manager!
-
-This tool will help you configure the packages media you wish to use on
-your computer. They will then be available to install new software package
-or to perform updates.")), yesno => 1) or myexit -1;
-        push @$already_splashed, basename($0);
-    }
-}
 
 sub run() {
     local $ugtk2::wm_icon = "title-install";

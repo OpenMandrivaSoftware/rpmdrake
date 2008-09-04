@@ -157,31 +157,6 @@ but you may still browse the existing database."), yesno => 1, text => { no => N
 sub init() {
     URPM::bind_rpm_textdomain_codeset();
     push @$already_splashed, $MODE if $rpmdrake_options{'no-splash'};
-    if (!$> && !member($MODE, @$already_splashed)) {
-        interactive_msg(N("Welcome"),
-                        N("%s
-
-Is it ok to continue?",
-                          $MODE eq 'remove' ?
-                            N("Welcome to the software removal tool!
-
-This tool will help you choose which software you want to remove from
-your computer.")
-                              : $MODE eq 'update' ?
-                                N("Welcome to %s!
-
-This tool will help you choose the updates you want to install on your
-computer.", $rpmdrake::myname_update)
-                                  :
-                                    ($rpmdrake::branded ? N("Welcome to the software installation tool!")
-                                       : N("Welcome to the software installation tool!
-
-Your Mandriva Linux system comes with several thousands of software
-packages on CDROM or DVD. This tool will help you choose which software
-you want to install on your computer.")))
-                          , yesno => 1) or myexit(-1);
-        push @$already_splashed, $MODE;
-    }
     if (!$> && !$offered_to_add_sources->[0]) {
         if (interactive_msg(N("Welcome"),
                             join("\n\n",

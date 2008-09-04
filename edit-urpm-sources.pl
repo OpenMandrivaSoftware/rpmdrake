@@ -35,8 +35,6 @@ require_root_capability();
 
 readconf();
 
-check_if_first_run();
-
 run();
 
 myexit 0;
