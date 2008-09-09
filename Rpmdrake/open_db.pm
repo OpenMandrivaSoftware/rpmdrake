@@ -70,6 +70,10 @@ sub fast_open_urpmi_db() {
     urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}[0]) if $::rpmdrake_options{'rpm-root'}[0];
     urpm::args::set_debug($urpm) if $::rpmdrake_options{'debug'};
     urpm::args::set_verbosity();
+    if ($::rpmdrake_options{env} && $::rpmdrake_options{env}[0]) {
+        $::env = $::rpmdrake_options{env}[0];
+        urpm::set_env($urpm, $::env);
+    }
 
     $urpm::args::rpmdrake_options{justdb} = $::rpmdrake_options{justdb};
 
@@ -99,7 +103,7 @@ sub open_urpmi_db {
     my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
 
     my $searchmedia = $urpmi_options{update} ? undef : join(',', get_inactive_backport_media($urpm));
-    $urpm->{lock} = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
+    $urpm->{lock} = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock}) if !$::env;
     my $previous = $::rpmdrake_options{'previous-priority-upgrade'};
     urpm::select::set_priority_upgrade_option($urpm, (ref $previous ? join(',', @$previous) : ()));
     urpm::media::configure($urpm, media => $media, if_($searchmedia, searchmedia => $searchmedia), %urpmi_options);

@@ -624,8 +624,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         return perform_parallel_install($urpm, $group, $w, \$statusbar_msg_id);
     }
 
-    my $lock = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
-    my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
+    my $lock = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock}) if !$::env;
+    my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive') if !$::env;
     my $state = $priority_state || $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 
     my $bar_id = statusbar_msg(N("Checking validity of requested packages..."), 0);
@@ -634,6 +634,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $requested = { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} };
     urpm::select::resolve_dependencies(
         $urpm, $state, $requested,
+        rpmdb => $::env && "$::env/rpmdb.cz",
         callback_choices => \&Rpmdrake::gui::callback_choices,
     );
     statusbar_msg_remove($bar_id);
