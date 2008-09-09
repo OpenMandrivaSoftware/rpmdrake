@@ -555,7 +555,7 @@ sub mirrors {
             require Rpmdrake::gurpm;
             require Rpmdrake::pkg;
 
-            my $res = urpm::download::sync($urpm, undef, [ $url ],
+            my $res = urpm::download::sync_url($urpm, $url,
                                            dir => $cachedir,
                                            callback => sub {
                                                $gurpm ||= 
