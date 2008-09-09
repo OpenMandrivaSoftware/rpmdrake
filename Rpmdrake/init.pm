@@ -105,7 +105,6 @@ foreach (@ARGV) {
         my ($name, $values) = split /=/, $val;
         my @values = split /,/, $values;
         $rpmdrake_options{$name} = \@values if @values;
-        splice @ARGV, $i-1, 1;
     } else {
         if ($val eq 'version') {
             print "$0 $version\n";
