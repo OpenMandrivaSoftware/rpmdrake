@@ -68,6 +68,7 @@ sub fast_open_urpmi_db() {
     $urpm->{options}{auto} = $::rpmdrake_options{auto} if defined $::rpmdrake_options{auto};
     urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}[0]) if $::rpmdrake_options{'urpmi-root'}[0];
     urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}[0]) if $::rpmdrake_options{'rpm-root'}[0];
+    urpm::args::set_debug($urpm) if $::rpmdrake_options{'debug'};
 
     $urpm::args::rpmdrake_options{justdb} = $::rpmdrake_options{justdb};
 
