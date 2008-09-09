@@ -685,7 +685,7 @@ sub run_treeview_dialog {
     $w->{rwindow}->show_all;
     $w->{rwindow}->set_sensitive(0);
 
-    pkgs_provider({}, $default_list_mode); # default mode
+    slow_func($::main_window->window, sub { pkgs_provider({}, $default_list_mode) }); # default mode
     if (@initial_selection) {
         $options->{initial_selection} = \@initial_selection;
         $pkgs->{$_}{selected} = 0 foreach @initial_selection;
