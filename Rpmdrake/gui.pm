@@ -380,7 +380,7 @@ sub toggle_all {
       #- not all is selected, select all if no option to potentially override
       (exists $common->{partialsel_unsel} && $common->{partialsel_unsel}->(\@unsel, \@l) ? difference2(\@l, \@unsel) : @unsel)
         : @l;
-    toggle_nodes($w->{detail_list}->window, $w->{detail_list_model}, \&set_leaf_state, undef, @p);
+    toggle_nodes($w->{detail_list}->window, $w->{detail_list_model}, \&set_leaf_state, node_state($p[0]), @p);
     update_size($common);
 }
 
