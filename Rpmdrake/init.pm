@@ -28,6 +28,7 @@ use MDK::Common::Func 'any';
 use lib qw(/usr/lib/libDrakX);
 use common;
 BEGIN { $::no_global_argv_parsing = 1 }
+require urpm::args;
 
 use Exporter;
 our @ISA = qw(Exporter);
@@ -111,6 +112,10 @@ foreach (@ARGV) {
             exit(0);
        } elsif ($val =~ /^(test|expert)$/) {
            eval "\$::$1 = 1";
+       } elsif ($val =~ /^(q|quiet)$/) {
+           urpm::args::set_verbose(-1);
+       } elsif ($val =~ /^(v|verbose)$/) {
+           urpm::args::set_verbose(1);
        } else {
            $rpmdrake_options{$val} = 1;
        }
