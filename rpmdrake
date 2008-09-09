@@ -342,7 +342,7 @@ sub run_treeview_dialog {
             $group = join('|', $model->get($parent, 0), $group);
         }
         $detail_list->window->freeze_updates;
-        slow_func($::main_window->window, sub { $options->{add_nodes}->(@{$elems{$group}}) });
+        $options->{add_nodes}->(@{$elems{$group}});
         $detail_list->window->thaw_updates;
     });
 
