@@ -307,13 +307,16 @@ sub get_installed_packages {
     my ($urpm, $db, $all_pkgs, $gurpm) = @_;
 
     my @base = ("basesystem", split /,\s*/, $urpm->{global_config}{'prohibit-remove'});
-    my (%base, %basepackages, @installed_pkgs);
+    my (%base, %basepackages, @installed_pkgs, @processed_base);
     reset_pbar_count(0.33);
     while (defined(local $_ = shift @base)) {
 	exists $basepackages{$_} and next;
 	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
 			      update_pbar($gurpm);
 			      my $name = urpm_name($_[0]);
+			      # workaround looping in URPM:
+			      return if member($name, @processed_base);
+			      push @processed_base, $name;
 			      push @{$basepackages{$_}}, $name;
 			      push @base, $_[0]->requires_nosense;
 			  });
