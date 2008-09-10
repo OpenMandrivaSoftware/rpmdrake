@@ -313,7 +313,8 @@ sub get_installed_packages {
 	exists $basepackages{$_} and next;
 	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
 			      update_pbar($gurpm);
-			      push @{$basepackages{$_}}, urpm_name($_[0]);
+			      my $name = urpm_name($_[0]);
+			      push @{$basepackages{$_}}, $name;
 			      push @base, $_[0]->requires_nosense;
 			  });
     }
