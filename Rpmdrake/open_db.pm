@@ -59,7 +59,7 @@ sub open_rpm_db {
 	    $db = new URPM;
             $db->parse_synthesis("$::env/rpmdb.cz");
 	} else {
-            $db = URPM::DB::open($::env || $::rpmdrake_options{'rpm-root'}[0]);
+            $db = URPM::DB::open($::rpmdrake_options{'rpm-root'}[0]);
         }
         $db or die "Couldn't open RPM DB (" . ($::env ? "$::env/rpmdb.cz" : $::rpmdrake_options{'rpm-root'}[0]) . ")";
     }
