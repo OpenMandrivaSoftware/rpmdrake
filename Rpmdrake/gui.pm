@@ -696,6 +696,14 @@ sub toggle_nodes {
                 goto packages_selection_ok;
             }
 
+	    if (my $conflicting_msg = urpm::select::conflicting_packages_msg($urpm, $urpm->{state})) {
+                if (!interactive_msg('', $conflicting_msg, yesno => 1)) {
+		    @nodes_with_deps = ();
+		    $urpm->disable_selected(open_rpm_db(), $urpm->{state}, @requested);
+		    goto packages_selection_ok;
+		}
+	    }
+
             if (my @cant = sort(difference2(\@nodes, \@nodes_with_deps))) {
                 my @ask_unselect = urpm::select::unselected_packages($urpm, $urpm->{state});
                 my @reasons = map {
