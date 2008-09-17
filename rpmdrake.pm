@@ -71,7 +71,6 @@ our @EXPORT = qw(
     interactive_list
     interactive_list_
     interactive_msg
-    interactive_msg_with_banner
     interactive_packtable
     myexit
     readconf
@@ -336,7 +335,6 @@ sub interactive_list {
 }
 
 sub interactive_list_ { interactive_list(@_, if_($::main_window, transient => $::main_window)) }
-sub interactive_msg_with_banner { push @_, banner => 1 if $::isEmbedded; &interactive_msg }
 
 sub fatal_msg {
     interactive_msg @_;
