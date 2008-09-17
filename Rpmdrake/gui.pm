@@ -542,9 +542,11 @@ sub pkgs_provider {
     );
     foreach my $importance (qw(bugfix security normal)) {
         $tmp_filter_methods{$importance} = sub {
+            my @media = keys %$descriptions;
             [ grep { 
                 my ($name) = split_fullname($_);
-                $descriptions->{$name}{importance} eq $importance } @{$h->{updates}} ];
+                my $medium = find { $descriptions->{$_}{$name} } @media;
+                $medium && $descriptions->{$medium}{$name}{importance} eq $importance } @{$h->{updates}} ];
         };
     }
 
