@@ -216,14 +216,12 @@ sub interactive_msg {
     } else { #- because we'll use a WrappedLabel
         $contents = formatAlaTeX($contents) if !ref $contents;
     }
-    my $banner = $options{banner} ? getbanner() : undef;
     my $text_w;
     my $button_yes;
     gtkadd(
 	$d->{window},
 	gtkpack_(
 	    Gtk2::VBox->new(0, 5),
-	    if_($banner, 0, $banner),
 	    1,
 	    (
 		$options{scroll} ?
@@ -349,12 +347,10 @@ sub wait_msg {
     my $mainw = ugtk2->new(N("Please wait"), grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $mainw->{real_window}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::WrappedLabel->new($msg);
-    my $banner = $options{banner} ? getbanner() : undef;
     gtkadd(
 	$mainw->{window},
 	gtkpack__(
 	    gtkset_border_width(Gtk2::VBox->new(0, 5), 6),
-	    if_($banner, $banner),
 	    $label,
 	    if_(exists $options{widgets}, @{$options{widgets}}),
 	)
@@ -723,7 +719,6 @@ sub update_sources {
     my $w; my $label; $w = wait_msg(
 	$label = Gtk2::Label->new(N("Please wait, updating media...")),
 	no_wait_cursor => 1,
-	banner => $options{banner},
 	widgets => [
 	    my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1),
 	    gtkpack(
