@@ -500,7 +500,7 @@ sub run_treeview_dialog {
                     );
 
     my $reload_db_and_clear_all = sub {
-        slow_func($::main_window->window, sub {
+        slow_func($w->{real_window}->window, sub {
                       $force_rebuild = 1;
                       pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode});
                       reset_search();
