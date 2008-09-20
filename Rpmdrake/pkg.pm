@@ -656,7 +656,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         goto return_with_exit_code;
     }
 
-    my @pkgs = map { scalar($_->fullname) } sort(grep { $_->flag_selected } @{$urpm->{depslist}}[keys %{$state->{selected}}]);#{ $a->name cmp $b->name } @{$urpm->{depslist}}[keys %{$state->{selected}}];
+    my @to_install = @{$urpm->{depslist}}[keys %{$state->{selected}}];
+    my @pkgs = map { scalar($_->fullname) } sort(grep { $_->flag_selected } @to_install);
+
     @{$urpm->{ask_remove}} = sort urpm::select::removed_packages($urpm, $urpm->{state});
     my @to_remove = map { if_($pkgs->{$_}{selected} && !$pkgs->{$_}{pkg}->flag_upgrade, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
 
