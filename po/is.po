@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2007-01-18 00:46+0000\n"
 "Last-Translator: Pjetur G. Hjaltason <pjetur@pjetur.net>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -807,34 +807,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Sýsl"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Er í lagi að halda áfram?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Velkomin í Hugbúnaðar-miðla-tólið!\n"
-"\n"
-"Þetta tól hjálpar þér við að setja upp pakkamiðlara sem þú vilt nota á\n"
-"þinni tölvu. Þeir verða þá tiltækir þegar setja á inn nýja pakka eða\n"
-"sækja uppfærslur."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -887,22 +860,22 @@ msgstr "Öryggisathugasemdir"
 msgid "No description"
 msgstr "Engin lýsing til"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Útgáfa: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Núverandi uppsett útgáfa: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Flokkur"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Vélbúnaður: "
@@ -922,7 +895,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Miðill: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "Slóð:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Skrár:"
@@ -1199,7 +1182,12 @@ msgstr "Allt"
 msgid "Upgradable"
 msgstr "Uppfæranlegt"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Uppsett"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Viðbætanlegt"
@@ -1867,7 +1855,13 @@ msgstr "  --no-confirmation      ekki biðja um staðfestingu í uppfærsluham"
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update       ekki uppfæra miðil við ræsingu"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr "  --no-confirmation      ekki biðja um staðfestingu í uppfærsluham"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        ekki staðfesta undiskriftir pakka"
@@ -1947,53 +1941,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Velkomin(n)"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Velkomin að hugbúnaðar-tiltektar-tólinu \n"
-"\n"
-"Þetta tól hjálpar þér til að velja þá pakka sem þú vilt fjarlægja\n"
-"úr tölvunni."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Velkomin að %s!\n"
-"\n"
-"Þetta tól hjálpar þér við að velja þær uppfærslur sem þú vilt setja upp\n"
-"á tölvunni þinni."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Velkomin(n) að hugbúnaðar-uppsetningar-tólinu!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Velkomin að Hugbúnaðar-uppsetningar-tólinu!\n"
-"\n"
-"Mandriva Linux kerfið kemur með þúsundir hugbúnaðarpakka\n"
-"á geisladiskum eða DVD-diski. Þetta tól hjálpar þér að velja hvaða\n"
-"pakka þú vilt setja upp á tölvunni þinni."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2154,7 +2102,13 @@ msgstr "Augnablik, leita að tiltækum pökkum..."
 msgid "Please wait, listing base packages..."
 msgstr "Augnablik, lista grunnpakka..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Villa"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Augnablik, leita að uppsettum pökkum..."
@@ -2267,7 +2221,19 @@ msgstr "Ekki er hægt að fjarlægja suma pakkana"
 msgid "Is it ok to continue?"
 msgstr "Er í lagi að halda áfram?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Pakkastjórn"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Krefst einnig eftirtalins pakka:"
+msgstr[1] "Krefst einnig eftirtalins pakka:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Undirbý innsetningu pakka..."
@@ -2307,13 +2273,7 @@ msgstr "Staðfesti undirritanir pakka..."
 msgid "%d installation transactions failed"
 msgstr "%d Innsetningarfærslur brugðust"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Villa"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Alvarleg villa: engir pakkar fundust til að setja upp."
@@ -2429,12 +2389,18 @@ msgstr "Augnablik, leita..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr "óggild <slóð> (slóð að staðbundnum möppum verður að vera algild)"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Get ekki bætt við miðli, viðföng vantar eða þau eru röng"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Er í lagi að halda áfram?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2471,7 +2437,12 @@ msgstr "Tókst að bæta við miðli `%s'."
 msgid "Search results"
 msgstr "Leitarniðurstöður"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Leitarniðurstöður (engar)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Stöðva"
@@ -2496,12 +2467,7 @@ msgstr "Valið"
 msgid "Not selected"
 msgstr "Ekki valið"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Leitarniðurstöður (engar)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Valið: %s / Laust diskpláss: %s"
@@ -2523,12 +2489,7 @@ msgstr "Skjölun"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Uppsett"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Ekki uppsett"
@@ -2615,12 +2576,7 @@ msgstr "Kvikmyndir"
 msgid "Filter"
 msgstr "/_Skrá"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "í nöfnum"
@@ -3226,6 +3182,61 @@ msgstr "/_Uppfæra miðil"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr ""
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Velkomin í Hugbúnaðar-miðla-tólið!\n"
+#~ "\n"
+#~ "Þetta tól hjálpar þér við að setja upp pakkamiðlara sem þú vilt nota á\n"
+#~ "þinni tölvu. Þeir verða þá tiltækir þegar setja á inn nýja pakka eða\n"
+#~ "sækja uppfærslur."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Velkomin að hugbúnaðar-tiltektar-tólinu \n"
+#~ "\n"
+#~ "Þetta tól hjálpar þér til að velja þá pakka sem þú vilt fjarlægja\n"
+#~ "úr tölvunni."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Velkomin að %s!\n"
+#~ "\n"
+#~ "Þetta tól hjálpar þér við að velja þær uppfærslur sem þú vilt setja upp\n"
+#~ "á tölvunni þinni."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Velkomin(n) að hugbúnaðar-uppsetningar-tólinu!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Velkomin að Hugbúnaðar-uppsetningar-tólinu!\n"
+#~ "\n"
+#~ "Mandriva Linux kerfið kemur með þúsundir hugbúnaðarpakka\n"
+#~ "á geisladiskum eða DVD-diski. Þetta tól hjálpar þér að velja hvaða\n"
+#~ "pakka þú vilt setja upp á tölvunni þinni."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Get ekki bætt við miðli, viðföng vantar eða þau eru röng"
 
 #~ msgid "%s choices"
 #~ msgstr "%s val"

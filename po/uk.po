@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2008-08-28 06:23+0300\n"
 "Last-Translator: Taras Boychuk <btr0001@ukr.net>\n"
 "Language-Team: ukrainian <translation@linux.org.ua>\n"
@@ -25,9 +25,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -154,7 +155,8 @@ msgid ""
 msgstr ""
 "Щоб підтримувати систему в безпечному і стабільному стані, потрібно як\n"
 "мінімум налаштувати джерела з офіційними поновленнями безпеки. Також\n"
-"можна додати повніший набір джерел, що даватиме доступ до додаткових програм.\n"
+"можна додати повніший набір джерел, що даватиме доступ до додаткових "
+"програм.\n"
 "Виберіть, який набір джерел Ви хочете вибрати - тільки з поновленнями \n"
 "безпеки, чи повний."
 
@@ -455,7 +457,8 @@ msgstr "Вам потрібно вставити носій для продов�
 
 #: ../Rpmdrake/edit_urpm_sources.pm:492
 #, c-format
-msgid "In order to save the changes, you need to insert the medium in the drive."
+msgid ""
+"In order to save the changes, you need to insert the medium in the drive."
 msgstr "Щоб зберегти зміни, Вам слід вставити джерело у пристрій"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:527
@@ -824,35 +827,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Виправити"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Все гаразд? Продовжувати?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Ласкаво просимо до редактора джерел пакунків!\n"
-"\n"
-"Цей інструмент допоможе Вам налаштувати джерела пакунків, які Ви \n"
-"хочете використовувати на своєму комп'ютері. Вони стануть \n"
-"доступними для встановлення нових пакунків з програмами\n"
-"або для здійснення поновлень."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -905,22 +880,22 @@ msgstr "Повідомлення безпеки"
 msgid "No description"
 msgstr "Немає опису"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Деталі:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Версія: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Встановлена версія: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Група"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Архітектура: "
@@ -940,7 +915,17 @@ msgstr "%s кб"
 msgid "Medium: "
 msgstr "Джерело:"
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Деталі:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Файли:"
@@ -1226,7 +1211,12 @@ msgstr "Всі"
 msgid "Upgradable"
 msgstr "Можливо поновити"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Встановлено"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Можливо додати"
@@ -1864,8 +1854,10 @@ msgstr "  --media=medium1,..     обмежити вказаним носієм"
 
 #: ../Rpmdrake/init.pm:52
 #, c-format
-msgid "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
-msgstr "  --merge-all-rpmnew     об'єднувати всі знайдені файли  .rpmnew/.rpmsave"
+msgid ""
+"  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
+msgstr ""
+"  --merge-all-rpmnew     об'єднувати всі знайдені файли  .rpmnew/.rpmsave"
 
 #: ../Rpmdrake/init.pm:53
 #, c-format
@@ -1879,19 +1871,30 @@ msgstr ""
 msgid ""
 "  --justdb               update the database, but do not modify the "
 "filesystem"
-msgstr "  --justdb               поновити базу даних, але не змінювати файлову систему"
+msgstr ""
+"  --justdb               поновити базу даних, але не змінювати файлову "
+"систему"
 
 #: ../Rpmdrake/init.pm:55
 #, c-format
-msgid "  --no-confirmation      don't ask first confirmation question in update mode"
-msgstr "  --no-confirmation      не запитувати підтвердження в режимі поновлення"
+msgid ""
+"  --no-confirmation      don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      не запитувати підтвердження в режимі поновлення"
 
 #: ../Rpmdrake/init.pm:56
 #, c-format
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      не поновлювати носія при запуску"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      не запитувати підтвердження в режимі поновлення"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        не перевіряти підписи пакунків"
@@ -1914,8 +1917,11 @@ msgstr ""
 
 #: ../Rpmdrake/init.pm:60
 #, c-format
-msgid "  --urpmi-root           use another root for urpmi db & rpm installation"
-msgstr "  --run-as-root          використовувати інший root для встановлення бази даних і пакунків rpm"
+msgid ""
+"  --urpmi-root           use another root for urpmi db & rpm installation"
+msgstr ""
+"  --run-as-root          використовувати інший root для встановлення бази "
+"даних і пакунків rpm"
 
 #: ../Rpmdrake/init.pm:61
 #, c-format
@@ -1942,7 +1948,8 @@ msgstr "  --search=pkg           виконати пошук для \"pkg\""
 msgid ""
 "  --test                 only verify if the installation can be achieved "
 "correctly"
-msgstr "  --test                 тільки перевірити, чи можливо встановити пакунок"
+msgstr ""
+"  --test                 тільки перевірити, чи можливо встановити пакунок"
 
 #: ../Rpmdrake/init.pm:65
 #, c-format
@@ -1970,56 +1977,11 @@ msgstr ""
 msgid "Welcome"
 msgstr "Ласкаво просимо!"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Ласкаво просимо до інструменту вилучення пакунків!\n"
-"\n"
-"Цей інструмент допоможе вибрати, які пакунки Ви хочете вилучити з свого\n"
-"комп'ютера."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Ласкаво просимо до %s!\n"
-"\n"
-"Ця програма допоможе вибрати поновлення, які Ви хочете встановити на \n"
-"свій комп'ютер."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Ласкаво просимо до інструменту встановлення програм!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Ласкаво просимо до програми встановлення програмного забезпечення!\n"
-"\n"
-"Ваша система Мандріва Лінакс постачається з тисячами пакунків на cd i dvd "
-"дисках. Ця програма допоможе вибрати, які пакунки Ви \n"
-"хочете встановити на свій комп'ютер."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
-msgstr "З допомогою інструменту встановлення можна налаштувати джерела пакунків."
+msgstr ""
+"З допомогою інструменту встановлення можна налаштувати джерела пакунків."
 
 #: ../Rpmdrake/init.pm:183
 #, c-format
@@ -2046,14 +2008,16 @@ msgstr "Зачекайте, будь ласка"
 #: ../Rpmdrake/pkg.pm:148
 #, c-format
 msgid "No xml info for medium \"%s\", only partial result for package %s"
-msgstr "Для джерела \"%s\" немає xml-info; тільки частковий результат для пакунка %s"
+msgstr ""
+"Для джерела \"%s\" немає xml-info; тільки частковий результат для пакунка %s"
 
 #: ../Rpmdrake/pkg.pm:150
 #, c-format
-msgid "No xml info for medium \"%s\", unable to return any result for package %s"
+msgid ""
+"No xml info for medium \"%s\", unable to return any result for package %s"
 msgstr ""
-"Для джерела \"%s\" немає xml-info; неможливо повернути результат "
-"для пакунка %s"
+"Для джерела \"%s\" немає xml-info; неможливо повернути результат для пакунка "
+"%s"
 
 #: ../Rpmdrake/pkg.pm:200 ../Rpmdrake/pkg.pm:205
 #, c-format
@@ -2121,8 +2085,8 @@ msgid ""
 "You have no configured update media. MandrivaUpdate cannot operate without "
 "any update media."
 msgstr ""
-"Ви не налаштували джерело поновлення. MandrivaUpdate не може "
-"працювати без джерел поновлення."
+"Ви не налаштували джерело поновлення. MandrivaUpdate не може працювати без "
+"джерел поновлення."
 
 #: ../Rpmdrake/pkg.pm:277 ../rpmdrake.pm:565
 #, c-format
@@ -2183,7 +2147,13 @@ msgstr "Будь ласка, зачекайте, шукаю доступні п�
 msgid "Please wait, listing base packages..."
 msgstr "Зачекайте, будь ласка, створюється перелік пакунків..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Помилка"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Будь ласка, зачекайте, йде пошук встановлених пакунків..."
@@ -2298,7 +2268,20 @@ msgstr "%s пакунків буде завантажено."
 msgid "Is it ok to continue?"
 msgstr "Все гаразд? Продовжувати?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Пакунки з інформацією"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Потрібний наступний пакунок:"
+msgstr[1] "Потрібний наступний пакунок:"
+msgstr[2] "Потрібний наступний пакунок:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Підготовлюються пакунки до встановлення..."
@@ -2338,13 +2321,7 @@ msgstr "Перевіряються підписи пакунків..."
 msgid "%d installation transactions failed"
 msgstr "%d запит на встановлення завершився неуспішно"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Помилка"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Невиправна помилка: на жаль, пакунку для встановлення не знайдено."
@@ -2423,7 +2400,9 @@ msgstr "Зміни:"
 msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
 "unsure, keep the current file (\"%s\")."
-msgstr "Ви можете видалити файл .%s, використовувати його як головний або нічого не робити. Якщо не впевнені, залиште поточний файл (\"%s\")."
+msgstr ""
+"Ви можете видалити файл .%s, використовувати його як головний або нічого не "
+"робити. Якщо не впевнені, залиште поточний файл (\"%s\")."
 
 #: ../Rpmdrake/rpmnew.pm:112 ../Rpmdrake/rpmnew.pm:117
 #, c-format
@@ -2460,12 +2439,18 @@ msgstr "Зачекайте, будь ласка, шукаю..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr "неправильний <url> (для локальної теки шлях має бути абсолютним)"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Неможливо додати носій, неправильні або відсутні аргументи"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Все гаразд? Продовжувати?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2502,7 +2487,12 @@ msgstr "Успішно додано носій `%s'."
 msgid "Search results"
 msgstr "Результати пошуку"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Результат пошуку (немає)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Зупинити"
@@ -2527,12 +2517,7 @@ msgstr "Вибрано"
 msgid "Not selected"
 msgstr "Не вибрано"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Результат пошуку (немає)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Вибрано: %s / Вільно на диску: %s"
@@ -2554,12 +2539,7 @@ msgstr "Платформа"
 msgid "Status"
 msgstr "Стан"
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Встановлено"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Не встановлено"
@@ -2603,7 +2583,6 @@ msgstr "Всі пакунки, за джерелом"
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
 #: ../rpmdrake:375
 #, c-format
-
 msgid "Backports"
 msgstr "Нові пакунки"
 
@@ -2647,12 +2626,7 @@ msgstr "Вигляд"
 msgid "Filter"
 msgstr "Фільтр"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr "Режим дерева"
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "в назвах"
@@ -2744,13 +2718,18 @@ msgstr "Ви можете переглядати пакунки в дереві 
 
 #: ../rpmdrake:600
 #, c-format
-msgid "You can view information about a package by clicking on it on the right list."
-msgstr "Ви можете переглянути інформацію про пакунок, клацнувши мишкою в списку справа."
+msgid ""
+"You can view information about a package by clicking on it on the right list."
+msgstr ""
+"Ви можете переглянути інформацію про пакунок, клацнувши мишкою в списку "
+"справа."
 
 #: ../rpmdrake:601
 #, c-format
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
-msgstr "Щоб встановити, поновити або вилучити пакунок, позначте відповідний квадратик."
+msgstr ""
+"Щоб встановити, поновити або вилучити пакунок, позначте відповідний "
+"квадратик."
 
 #: ../rpmdrake.pm:104
 #, c-format
@@ -2965,7 +2944,8 @@ msgstr "Зачекайте, будь ласка, йде завантаження
 #: ../rpmdrake.pm:518
 #, c-format
 msgid "Please wait, downloading mirror addresses from the Mandriva website."
-msgstr "Зачекайте, будь ласка, йде завантаження адрес дзеркал з веб-сайту Mandriva."
+msgstr ""
+"Зачекайте, будь ласка, йде завантаження адрес дзеркал з веб-сайту Mandriva."
 
 #: ../rpmdrake.pm:560
 #, c-format
@@ -3134,7 +3114,8 @@ msgstr "Поновити джерела"
 
 #: ../rpmdrake.pm:759
 #, c-format
-msgid "No active medium found. You must enable some media to be able to update them."
+msgid ""
+"No active medium found. You must enable some media to be able to update them."
 msgstr ""
 "Не знайдено активного джерела. Потрібно його увімкнути, щоб мати можливість "
 "поновлювати."
@@ -3218,7 +3199,8 @@ msgstr "Довідку запущено у фоновому режимі"
 
 #: ../rpmdrake.pm:909
 #, c-format
-msgid "The help window has been started, it should appear shortly on your desktop."
+msgid ""
+"The help window has been started, it should appear shortly on your desktop."
 msgstr "Вікно довідки вже стартувало, незабаром воно з'явиться на стільниці."
 
 #: ../data/rpmdrake-browse-only.desktop.in.h:1
@@ -3249,3 +3231,61 @@ msgstr "/Додати джерела urpmi"
 msgid "Urpmi medium info"
 msgstr "Інформація про джерело urpmi"
 
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Ласкаво просимо до редактора джерел пакунків!\n"
+#~ "\n"
+#~ "Цей інструмент допоможе Вам налаштувати джерела пакунків, які Ви \n"
+#~ "хочете використовувати на своєму комп'ютері. Вони стануть \n"
+#~ "доступними для встановлення нових пакунків з програмами\n"
+#~ "або для здійснення поновлень."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Ласкаво просимо до інструменту вилучення пакунків!\n"
+#~ "\n"
+#~ "Цей інструмент допоможе вибрати, які пакунки Ви хочете вилучити з свого\n"
+#~ "комп'ютера."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Ласкаво просимо до %s!\n"
+#~ "\n"
+#~ "Ця програма допоможе вибрати поновлення, які Ви хочете встановити на \n"
+#~ "свій комп'ютер."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Ласкаво просимо до інструменту встановлення програм!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Ласкаво просимо до програми встановлення програмного забезпечення!\n"
+#~ "\n"
+#~ "Ваша система Мандріва Лінакс постачається з тисячами пакунків на cd i dvd "
+#~ "дисках. Ця програма допоможе вибрати, які пакунки Ви \n"
+#~ "хочете встановити на свій комп'ютер."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Неможливо додати носій, неправильні або відсутні аргументи"
+
+#~ msgid "Tree Mode"
+#~ msgstr "Режим дерева"

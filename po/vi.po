@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-vi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2005-05-14 09:52+0700\n"
 "Last-Translator: Trinh Minh Thanh <tmthanh@yahoo.com>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -803,34 +803,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Biên soạn"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Có đồng ý tiếp tục không?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Chào mừng Chương Trình Quản Lý Phương Tiện Phần Mềm!\n"
-"\n"
-"Công cụ này giúp cấu hình phương tiện chứa gói tin bạn muốn dùng trên\n"
-"máy tính này. Chúng sẽ có sẵn để cài đặt các gói phần mềm mới hoặc thực\n"
-"hiện cập nhật."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -884,22 +857,22 @@ msgstr "Cập nhật bảo mật"
 msgid "No description"
 msgstr "Không có mô tả"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Phiên bản: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Phiên bản đã cài đặt hiện thời: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Nhóm"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr ""
@@ -919,7 +892,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Phương tiện: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Tập tin:"
@@ -1202,7 +1185,12 @@ msgstr "Toàn bộ"
 msgid "Upgradable"
 msgstr "Có thể nâng cấp"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Cài đặt"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Có thể thêm vào"
@@ -1871,7 +1859,14 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      không cập nhật phương tiện khi khởi chạy"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      không hỏi việc khẳng định trong phương thức cập nhật"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        không kiểm tra chữ ký của các gói"
@@ -1949,53 +1944,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Chào Mừng"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Chào mừng công cụ gỡ bỏ phần mềm!\n"
-"\n"
-"Công cụ này giúp bạn chọn phần mềm nào muốn gỡ bỏ khỏi máy tính\n"
-"của bạn."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Chào mừng %s!\n"
-"\n"
-"Công cụ này giúp bạn chọn các cập nhật mà bạn muốn cài đặt lên\n"
-"máy tính."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Chào mừng công cụ cài đặt phần mềm!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Chào mừng công cụ cài đặt phần mềm!\n"
-"\n"
-"Hệ thống Mandriva Linux của bạn có vài nghìn gói phần mềm trên đĩa\n"
-"CDROM hay DVD. Công cụ này giúp bạn chọn phần mềm nào mà bạn\n"
-"muốn cài đặt vào máy tính của bạn."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2158,7 +2107,13 @@ msgstr "Hãy đợi, đang tìm các gói sẵn có..."
 msgid "Please wait, listing base packages..."
 msgstr "Hãy đợi, đang liệt kê các gói..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Lỗi"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Hãy đợi, đang tìm các gói sẵn có..."
@@ -2279,7 +2234,18 @@ msgstr ""
 "\n"
 "Có đồng ý tiếp tục không?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Đóng gói"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Cần đến một trong các gói tin sau:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Đang chuẩn bị cài đặt các gói tin..."
@@ -2319,13 +2285,7 @@ msgstr "Đang thẩm tra chữ ký của các gói tin..."
 msgid "%d installation transactions failed"
 msgstr "%d phiên giao dịch cài đặt lỗi"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Lỗi"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Lỗi không thể khắc phục: không tìm thấy gói để cài đặt, xin lỗi."
@@ -2441,12 +2401,18 @@ msgstr "Hãy đợi, đang tìm kiếm..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Không thể thêm phương tiện, thiếu hoặc sai đối số"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Có đồng ý tiếp tục không?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2483,7 +2449,12 @@ msgstr "Thêm phương tiện `%s' thành công."
 msgid "Search results"
 msgstr "Kết quả tìm kiếm"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Kết quả tìm kiếm (không)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Dừng"
@@ -2508,12 +2479,7 @@ msgstr "Được chọn"
 msgid "Not selected"
 msgstr "Không được chọn"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Kết quả tìm kiếm (không)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Đã chọn: %s / Không gian đĩa trống: %s"
@@ -2535,12 +2501,7 @@ msgstr "Lưu trữ"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "Cài đặt"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Cài đặt"
@@ -2627,12 +2588,7 @@ msgstr "Xem"
 msgid "Filter"
 msgstr "/_Tệp"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "trong các tên"
@@ -3234,6 +3190,61 @@ msgstr "/_Cập nhật phương tiện"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Cập nhật phương tiện"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Chào mừng Chương Trình Quản Lý Phương Tiện Phần Mềm!\n"
+#~ "\n"
+#~ "Công cụ này giúp cấu hình phương tiện chứa gói tin bạn muốn dùng trên\n"
+#~ "máy tính này. Chúng sẽ có sẵn để cài đặt các gói phần mềm mới hoặc thực\n"
+#~ "hiện cập nhật."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Chào mừng công cụ gỡ bỏ phần mềm!\n"
+#~ "\n"
+#~ "Công cụ này giúp bạn chọn phần mềm nào muốn gỡ bỏ khỏi máy tính\n"
+#~ "của bạn."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Chào mừng %s!\n"
+#~ "\n"
+#~ "Công cụ này giúp bạn chọn các cập nhật mà bạn muốn cài đặt lên\n"
+#~ "máy tính."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Chào mừng công cụ cài đặt phần mềm!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Chào mừng công cụ cài đặt phần mềm!\n"
+#~ "\n"
+#~ "Hệ thống Mandriva Linux của bạn có vài nghìn gói phần mềm trên đĩa\n"
+#~ "CDROM hay DVD. Công cụ này giúp bạn chọn phần mềm nào mà bạn\n"
+#~ "muốn cài đặt vào máy tính của bạn."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Không thể thêm phương tiện, thiếu hoặc sai đối số"
 
 #~ msgid "%s choices"
 #~ msgstr "%s lựa chọn"

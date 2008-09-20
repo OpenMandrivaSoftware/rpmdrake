@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2008-03-21 00:01+0100\n"
 "Last-Translator: Andrea Celli <andrea.celli@libero.it>\n"
 "Language-Team: Italian <timl@freelists.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -833,35 +833,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Modifica"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Vuoi proseguire?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Benvenuto nella gestione dei supporti software!\n"
-"\n"
-"Questo programma ti aiuterà a configurare i supporti da cui poter "
-"installare\n"
-"pacchetti software. Essi saranno quindi disponibili per l'installazione\n"
-"di nuovi pacchetti o per l'aggiornamento di quelli esistenti."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -914,22 +886,22 @@ msgstr "Annunci sulla sicurezza"
 msgid "No description"
 msgstr "Nessuna descrizione"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Dettagli:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versione: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Versione attualmente installata: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Gruppo"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Architettura: "
@@ -949,7 +921,17 @@ msgstr "%s kB"
 msgid "Medium: "
 msgstr "Supporto: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Dettagli:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "File:"
@@ -1235,7 +1217,12 @@ msgstr "Tutti"
 msgid "Upgradable"
 msgstr "Aggiornabili"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Installato"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Nuovi"
@@ -1908,7 +1895,15 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      non aggiorna i supporti all'avvio"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      non chiede una conferma preventiva durante gli "
+"aggiornamenti"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        non verifica le firme dei pacchetti"
@@ -1990,53 +1985,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Benvenuto"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Benvenuto nel programma di rimozione software!\n"
-"\n"
-"Questo programma ti aiuterà nella selezione del\n"
-"software che deve essere rimosso dal tuo computer."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Benvenuto in %s!\n"
-"\n"
-"Questo programma ti aiuterà a scegliere gli aggiornamenti da\n"
-"installare sul tuo computer."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Benvenuto nel programma di installazione software!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Benvenuto nel programma di installazione software!\n"
-"\n"
-"Il sistema Mandriva Linux include parecchie migliaia di pacchetti\n"
-"software su CD-ROM o DVD. Questo programma ti aiuterà a scegliere il\n"
-"software da installare sul tuo computer."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2209,7 +2158,13 @@ msgid "Please wait, listing base packages..."
 msgstr ""
 "Attendere, è in corso la creazione dell'elenco dei pacchetti di base..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Errore"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Attendere, è in corso la ricerca dei pacchetti installati..."
@@ -2325,7 +2280,19 @@ msgstr "Saranno scaricati %s di pacchetti."
 msgid "Is it ok to continue?"
 msgstr "Vuoi proseguire?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Meta-pacchetti"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Questo pacchetto è necessario:"
+msgstr[1] "Questo pacchetto è necessario:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Preparazione dei pacchetti per l'installazione..."
@@ -2365,13 +2332,7 @@ msgstr "Verifico le firme dei pacchetti..."
 msgid "%d installation transactions failed"
 msgstr "%d transazioni dell'installazione fallite"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Errore"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Errore fatale: non sono stati trovati pacchetti da installare."
@@ -2489,12 +2450,18 @@ msgstr "Attendere, ricerca in corso..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr "<url> non valido (per una directory locale serve un percorso assoluto)"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Impossibile aggiungere il supporto, parametri errati o incompleti"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Vuoi proseguire?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2531,7 +2498,12 @@ msgstr "È riuscita l'aggiunta della fonte \"%s\"."
 msgid "Search results"
 msgstr "Risultati della ricerca"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Risultati della ricerca (nessuno)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Stop"
@@ -2556,12 +2528,7 @@ msgstr "Selezionato"
 msgid "Not selected"
 msgstr "Non selezionato"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Risultati della ricerca (nessuno)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Selezionati: %s / Spazio libero su disco: %s"
@@ -2583,12 +2550,7 @@ msgstr "Arch."
 msgid "Status"
 msgstr "Stato"
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Installato"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Non installato"
@@ -2675,12 +2637,7 @@ msgstr "Video"
 msgid "Filter"
 msgstr "Filtro"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr "Albero delle directory"
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "nei nomi"
@@ -3291,3 +3248,62 @@ msgstr "Aggiungi un supporto urpmi"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Informazioni sul supporto urpmi"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Benvenuto nella gestione dei supporti software!\n"
+#~ "\n"
+#~ "Questo programma ti aiuterà a configurare i supporti da cui poter "
+#~ "installare\n"
+#~ "pacchetti software. Essi saranno quindi disponibili per l'installazione\n"
+#~ "di nuovi pacchetti o per l'aggiornamento di quelli esistenti."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Benvenuto nel programma di rimozione software!\n"
+#~ "\n"
+#~ "Questo programma ti aiuterà nella selezione del\n"
+#~ "software che deve essere rimosso dal tuo computer."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Benvenuto in %s!\n"
+#~ "\n"
+#~ "Questo programma ti aiuterà a scegliere gli aggiornamenti da\n"
+#~ "installare sul tuo computer."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Benvenuto nel programma di installazione software!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Benvenuto nel programma di installazione software!\n"
+#~ "\n"
+#~ "Il sistema Mandriva Linux include parecchie migliaia di pacchetti\n"
+#~ "software su CD-ROM o DVD. Questo programma ti aiuterà a scegliere il\n"
+#~ "software da installare sul tuo computer."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Impossibile aggiungere il supporto, parametri errati o incompleti"
+
+#~ msgid "Tree Mode"
+#~ msgstr "Albero delle directory"

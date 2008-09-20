@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2008-04-11 19:37+0200\n"
 "Last-Translator: Marek Laane <bald@starman.ee>\n"
 "Language-Team: Estonian <linux-ee@lists.eenet.ee>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: KBabel 1.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -818,34 +818,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Muuda"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Kas jätkata?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Tarkvaraallikate haldur\n"
-"\n"
-"See tööriist aitab määrata tarkvarapakettide allikaid, mida soovite\n"
-"kasutada oma süsteemi uuendamisel. Kui olete allikad määranud, saate\n"
-"nende abil paigaldada uusi tarkvarapakette või uuendada vanu."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -899,22 +872,22 @@ msgstr "Turvanõuanne"
 msgid "No description"
 msgstr "Kirjeldus puudub"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Üksikasjad:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versioon: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Praegu paigaldatud versioon: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Grupp"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Arhitektuur: "
@@ -934,7 +907,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Andmekandja: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Üksikasjad:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Failid:"
@@ -1216,7 +1199,12 @@ msgstr "Kõik"
 msgid "Upgradable"
 msgstr "Uuendatavad"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Paigaldatud"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Lisatavad"
@@ -1887,7 +1875,15 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      käivitamisel ei uuendata andmekandjat"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      uuendamisrežiimis ei esitata esimest "
+"kinnituseküsimust"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        pakettide signatuure ei kontrollita"
@@ -1969,50 +1965,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Tere tulemast"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Tarkvara eemaldamine\n"
-"\n"
-"Selle tööriista abil saate valida eemaldatava tarkvara."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"%s\n"
-"\n"
-"Selle tööriista abil saate oma Mandriva Linuxit uuendada."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Tere tulemast kasutama tarkvara paigaldamise tööriista!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Tarkvara paigaldamine\n"
-"\n"
-"Mandriva Linuxi CD või DVD sisaldab tuhandeid tarkvarapakette.\n"
-"Selle tööriista abil saate valida, millised soovite oma arvutile paigaldada."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr "Tarkvara paigaldamise tööriistaga saab seadistada tarkvara asukohti."
@@ -2179,7 +2132,13 @@ msgstr "Palun oodake, otsitakse kättesaadavaid pakette..."
 msgid "Please wait, listing base packages..."
 msgstr "Palun oodake, koostatakse baaspakettide nimekirja..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Viga"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Palun oodake, otsitakse paigaldatud pakette..."
@@ -2292,7 +2251,19 @@ msgstr "Tõmmatakse %s andmeid."
 msgid "Is it ok to continue?"
 msgstr "Kas jätkata?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Metapaketid"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Vajalik on järgmine pakett:"
+msgstr[1] "Vajalik on järgmine pakett:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Paigaldamiseks valmistumine..."
@@ -2332,13 +2303,7 @@ msgstr "Signatuuride kontrollimine..."
 msgid "%d installation transactions failed"
 msgstr "%d paigaldamistehingut ebaõnnestus"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Viga"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Parandamatu viga: kahjuks ei leitud paigaldamiseks ühtegi paketti."
@@ -2456,12 +2421,18 @@ msgstr "Palun oodake, otsitakse..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr "vigane <url> (kohaliku kataloogi asukoht peab olema absoluutne)"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Andmekandja lisamine nurjus, argumendid olid vigased või puudu"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Kas jätkata?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2498,7 +2469,12 @@ msgstr "Andmekandja %s edukalt lisatud."
 msgid "Search results"
 msgstr "Otsingu tulemused"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Otsingu tulemus (ei leitud)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Peata"
@@ -2523,12 +2499,7 @@ msgstr "Valitud"
 msgid "Not selected"
 msgstr "Valimata"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Otsingu tulemus (ei leitud)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Valitud: %s / Vaba kettaruumi %s"
@@ -2550,12 +2521,7 @@ msgstr "Arhit."
 msgid "Status"
 msgstr "Olek"
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Paigaldatud"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Paigaldamata"
@@ -2642,12 +2608,7 @@ msgstr "Vaade"
 msgid "Filter"
 msgstr "Filter"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr "Puurežiim"
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "nimedes"
@@ -3248,6 +3209,62 @@ msgstr "Urpmi andmekandja lisamine"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Uprmi andmekandja teave"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Tarkvaraallikate haldur\n"
+#~ "\n"
+#~ "See tööriist aitab määrata tarkvarapakettide allikaid, mida soovite\n"
+#~ "kasutada oma süsteemi uuendamisel. Kui olete allikad määranud, saate\n"
+#~ "nende abil paigaldada uusi tarkvarapakette või uuendada vanu."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Tarkvara eemaldamine\n"
+#~ "\n"
+#~ "Selle tööriista abil saate valida eemaldatava tarkvara."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "%s\n"
+#~ "\n"
+#~ "Selle tööriista abil saate oma Mandriva Linuxit uuendada."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Tere tulemast kasutama tarkvara paigaldamise tööriista!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Tarkvara paigaldamine\n"
+#~ "\n"
+#~ "Mandriva Linuxi CD või DVD sisaldab tuhandeid tarkvarapakette.\n"
+#~ "Selle tööriista abil saate valida, millised soovite oma arvutile "
+#~ "paigaldada."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Andmekandja lisamine nurjus, argumendid olid vigased või puudu"
+
+#~ msgid "Tree Mode"
+#~ msgstr "Puurežiim"
 
 #~ msgid "Download directory does not exist"
 #~ msgstr "Kataloog allatõmmatud failide salvestamiseks peab olema loodud"

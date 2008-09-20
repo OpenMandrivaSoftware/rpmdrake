@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-eo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2003-08-21 11:57+0000\n"
 "Last-Translator: Vilhelmo Lutermano <vlutermano@free.fr>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.0.1\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -803,35 +803,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Redaktu"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Ĉu mi nun daŭrigu?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Bonvenon ĉe la agordilo de program-portilo!\n"
-"\n"
-"Tiu ĉi ili helpos vin konfiguri la pakaĵo-portilojn kiujn vi deziras uzi en\n"
-"via komputilo. Ili estos poste atingeblaj por instali novajn program-"
-"pakaĵojn\n"
-"aŭ por ĝisdatigi."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -881,22 +853,22 @@ msgstr "Sekurecaj ĝisdatigoj"
 msgid "No description"
 msgstr "en priskriboj"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versio: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Nun instalita versio: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Grupo"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr ""
@@ -916,7 +888,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Portilo: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Dosieroj:"
@@ -1203,7 +1185,12 @@ msgstr "Ĉiuj"
 msgid "Upgradable"
 msgstr "Ĝisdatigebla"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Instalitaj"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Aldonebla"
@@ -1866,7 +1853,13 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr ""
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr ""
@@ -1944,53 +1937,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Bonvenon"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Bonvenon ĉe la program-malinstalilo!\n"
-"\n"
-"Tiu ĉi ilo helpos vin elekti kiun programon vi deziras malinstali de\n"
-"via komputilo."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Bonvenon ĉe la MandrivaĜisdatigo (%s)!\n"
-"\n"
-"Tiu ĉi ilo helpos vin elekti la ĝisdatigojn kiujn vi deziras instali en\n"
-"vian komputilon."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr ""
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Bonvenon en la program-instalilo!\n"
-"\n"
-"via Mandriva-Linukso-sistemo venas kun plurmilo da program-pakaĵoj\n"
-"sur KDRomo aŭ DVD. Tiu ĉi ilo helpos vin elekti kiujn programojn\n"
-"vi deziras instali en via komputilo."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2154,7 +2101,13 @@ msgstr "Bonvole atendu, mi serĉas haveblajn pakaĵojn..."
 msgid "Please wait, listing base packages..."
 msgstr "Bonvole atendu, mi listigas pakaĵojn..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Eraro"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Bonvole atendu, mi serĉas haveblajn pakaĵojn..."
@@ -2275,7 +2228,19 @@ msgstr ""
 "\n"
 "Ĉu mi nun daŭrigu?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Elektu Pakaĵojn"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Necesas unu el la sekvaj pakaĵoj:"
+msgstr[1] "Necesas unu el la sekvaj pakaĵoj:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Preparas instaldon de pakaĵoj..."
@@ -2315,13 +2280,7 @@ msgstr "Kontrolante signaturojn de pakaĵoj..."
 msgid "%d installation transactions failed"
 msgstr "Instalado malsukcesis"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Eraro"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Neriparebla eraro: nenia pakaĵo por instalo trovita, bedaŭre."
@@ -2437,12 +2396,18 @@ msgstr "Bonvole atendu dum mi serĉas..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
 msgstr ""
+"%s\n"
+"\n"
+"Ĉu mi nun daŭrigu?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2473,7 +2438,12 @@ msgstr ""
 msgid "Search results"
 msgstr "Serĉrezultoj"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Serĉrezultoj (neniu)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Haltu"
@@ -2498,12 +2468,7 @@ msgstr "Elektita(j)"
 msgid "Not selected"
 msgstr "Ne elektita"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Serĉrezultoj (neniu)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Elektita: %s / Libera diskospaco: %s"
@@ -2525,12 +2490,7 @@ msgstr "Arkivado"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Instalitaj"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Ne instalu"
@@ -2617,12 +2577,7 @@ msgstr "Vidbendo"
 msgid "Filter"
 msgstr "/_Dosiero"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "en nomoj"
@@ -3212,6 +3167,57 @@ msgstr "Ĝisdatigu datenportilon"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Ĝisdatigo de datenportilo"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Bonvenon ĉe la agordilo de program-portilo!\n"
+#~ "\n"
+#~ "Tiu ĉi ili helpos vin konfiguri la pakaĵo-portilojn kiujn vi deziras uzi "
+#~ "en\n"
+#~ "via komputilo. Ili estos poste atingeblaj por instali novajn program-"
+#~ "pakaĵojn\n"
+#~ "aŭ por ĝisdatigi."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Bonvenon ĉe la program-malinstalilo!\n"
+#~ "\n"
+#~ "Tiu ĉi ilo helpos vin elekti kiun programon vi deziras malinstali de\n"
+#~ "via komputilo."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Bonvenon ĉe la MandrivaĜisdatigo (%s)!\n"
+#~ "\n"
+#~ "Tiu ĉi ilo helpos vin elekti la ĝisdatigojn kiujn vi deziras instali en\n"
+#~ "vian komputilon."
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Bonvenon en la program-instalilo!\n"
+#~ "\n"
+#~ "via Mandriva-Linukso-sistemo venas kun plurmilo da program-pakaĵoj\n"
+#~ "sur KDRomo aŭ DVD. Tiu ĉi ilo helpos vin elekti kiujn programojn\n"
+#~ "vi deziras instali en via komputilo."
 
 #~ msgid "Mandriva Linux choices"
 #~ msgstr "Mandriva Linuks-elektoj"

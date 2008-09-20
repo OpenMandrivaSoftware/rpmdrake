@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake 1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2002-11-27 21:45:+0100\n"
 "Last-Translator: Naim Daka <naim70@freesurf>\n"
 "Language-Team: Albanian <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -808,34 +808,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Botoje"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"A pajtoheni për të vazhduar?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Mirësevini në Menagjerin e Burimeve Softver!\n"
-"\n"
-"Kjo vegël do të ju ndihmojë në konfigurimin e pakove në burime, të cilat\n"
-"ju dëshironi ti përdorni në kompjuterin tuaj. Ato do të ju mundësojnë\n"
-"instalimin e pakove të reja softver ose azhurnimin e tyre."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -885,22 +858,22 @@ msgstr "Azhurnimet e sigurisë"
 msgid "No description"
 msgstr "Asnjë përshkrim"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versioni: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Versioni i tanishëm i instaluar: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Grupi"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr ""
@@ -920,7 +893,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Burimi: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Skedaret:"
@@ -1203,7 +1186,12 @@ msgstr "Gjitha"
 msgid "Upgradable"
 msgstr "Azhurnuar"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Instaloje"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Të reja"
@@ -1866,7 +1854,13 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr ""
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr ""
@@ -1944,54 +1938,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Mirësevini"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Mirësevini tek vegla softver për zhdukje!\n"
-"\n"
-"Kjo vegël do të ju ndihmojë në zhdukjen e softverëve të dëshiruar nga "
-"kompjuteri juaj."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Mirësevini në %s!\n"
-"\n"
-"Kjo vegël do të ju ndihmojë për intalimin e azhurnimeve të zgjedhura në\n"
-"kompjuterit tuaj."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr ""
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Mirësevini në instalimin me vegël softver!\n"
-"\n"
-"Sistemi i juaj Mandriva Linux është i furnizuar me mijëra pako\n"
-"sofver, në CDROM ose DVD. Kjo vegël do të ju ndihmojë për të zgjedhur, "
-"cilin\n"
-"sofver dëshironi ta instaloni në kompjuterin tuaj."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2157,7 +2104,13 @@ msgstr "Një moment ju lutemi, gjetja e pakove të lira..."
 msgid "Please wait, listing base packages..."
 msgstr "Një moment ju lutemi, numërimi i pakove..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Gabim"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Një moment ju lutemi, gjetja e pakove të lira..."
@@ -2281,7 +2234,19 @@ msgstr ""
 "\n"
 "A pajtoheni për të vazhduar?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Paketim"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Një nga pakot vijuese është e nevojshme:"
+msgstr[1] "Një nga pakot vijuese është e nevojshme:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Pregatitje për instalimin e pakove..."
@@ -2321,13 +2286,7 @@ msgstr "Verifikimi i nënshkrimeve të pakove..."
 msgid "%d installation transactions failed"
 msgstr "Instalimi i transmetimit të %d dështio"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Gabim"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Gabim i pa mbuluar: asnjë pako e gjetur për instalim, kemi ndjesë."
@@ -2443,12 +2402,18 @@ msgstr "Një moment, hetimet në vazhdim e sipër..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
 msgstr ""
+"%s\n"
+"\n"
+"A pajtoheni për të vazhduar?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2479,7 +2444,12 @@ msgstr ""
 msgid "Search results"
 msgstr "Kërkues i rezultateve"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Rezultatet e hetimeve (asnjë)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Ndale"
@@ -2504,12 +2474,7 @@ msgstr "Zgjedhur"
 msgid "Not selected"
 msgstr "I pa zgjedhur"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Rezultatet e hetimeve (asnjë)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Zgjedhur: %s / Hapësirë e lirë në disk: %s"
@@ -2531,12 +2496,7 @@ msgstr "Arkivimi"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "Instaloje"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Instaloje"
@@ -2623,12 +2583,7 @@ msgstr "Paraqitja"
 msgid "Filter"
 msgstr "/_Skedare"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "mes emrave"
@@ -3222,6 +3177,56 @@ msgstr "/_Azhurnim i burimit"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Azhurnim i burimit"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Mirësevini në Menagjerin e Burimeve Softver!\n"
+#~ "\n"
+#~ "Kjo vegël do të ju ndihmojë në konfigurimin e pakove në burime, të cilat\n"
+#~ "ju dëshironi ti përdorni në kompjuterin tuaj. Ato do të ju mundësojnë\n"
+#~ "instalimin e pakove të reja softver ose azhurnimin e tyre."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Mirësevini tek vegla softver për zhdukje!\n"
+#~ "\n"
+#~ "Kjo vegël do të ju ndihmojë në zhdukjen e softverëve të dëshiruar nga "
+#~ "kompjuteri juaj."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Mirësevini në %s!\n"
+#~ "\n"
+#~ "Kjo vegël do të ju ndihmojë për intalimin e azhurnimeve të zgjedhura në\n"
+#~ "kompjuterit tuaj."
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Mirësevini në instalimin me vegël softver!\n"
+#~ "\n"
+#~ "Sistemi i juaj Mandriva Linux është i furnizuar me mijëra pako\n"
+#~ "sofver, në CDROM ose DVD. Kjo vegël do të ju ndihmojë për të zgjedhur, "
+#~ "cilin\n"
+#~ "sofver dëshironi ta instaloni në kompjuterin tuaj."
 
 #~ msgid "Mandriva Linux choices"
 #~ msgstr "Mundësit Mandriva Linux"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2008-03-31 02:51+0200\n"
 "Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Plural-Forms:  nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -833,34 +833,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Uredi"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Nadaljevanje?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Dobrodošli v Upravitelju virov programske opreme!\n"
-"\n"
-"To orodje vam bo pomagalo nastaviti vire paketov, ki jih želite uporabljati\n"
-"na računalniku. Viri bodo na voljo za nameščanje nove programske opreme\n"
-"ali za posodabljanje obstoječe."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -914,22 +887,22 @@ msgstr "Varnostna posodobitev"
 msgid "No description"
 msgstr "Brez opisa"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Podrobnosti:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Različica: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Trenutno nameščena različica: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Skupina"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Arhitektura: "
@@ -949,7 +922,17 @@ msgstr "%s KiB"
 msgid "Medium: "
 msgstr "Vir: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Podrobnosti:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Datoteke:"
@@ -1232,7 +1215,12 @@ msgstr "Vse"
 msgid "Upgradable"
 msgstr "Za nadgradnjo"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Nameščeno"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Za dodajanje"
@@ -1903,7 +1891,13 @@ msgstr "  --no-confirmation      pri nadgrajevanju ne zahtevaj potrditve"
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      ob zagonu ne posodobi vira"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr "  --no-confirmation      pri nadgrajevanju ne zahtevaj potrditve"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        ne preveri podpisov paketov"
@@ -1985,53 +1979,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Dobrodošli"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Dobrodošli v orodju za odstranjevanje programske opreme!\n"
-"\n"
-"To orodje vam bo pomagalo izbrati programsko opremo, ki jo želite\n"
-"odstraniti s svojega računalnika."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Dobrodošli v %s!\n"
-"\n"
-"To orodje vam bo pomagalo, da namestite posodobitve\n"
-"na svoj računalnik."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Dobrodošli v orodju za nameščanje programov!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Dobrodošli v orodju za nameščanje!\n"
-"\n"
-"Vaš Mandriva Linux sistem vsebuje nekaj tisoč programskih\n"
-"paketov na CDROMu oz. DVDju. To orodje vam bo pomagalo izbrati\n"
-"programsko opremo, ki jo želite namestiti na svoj računalnik."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr "Orodje za nameščanje programske opreme lahko nastavi vire paketov."
@@ -2198,7 +2146,13 @@ msgstr "Prosim počakajte, iščem dostopne pakete..."
 msgid "Please wait, listing base packages..."
 msgstr "Prosim počakajte, izpisovanje osnovnih paketov ..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Napaka"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Prosim počakajte, iskanje nameščenih paketov ..."
@@ -2316,7 +2270,21 @@ msgstr "Preneseno bo %s paketov."
 msgid "Is it ok to continue?"
 msgstr "Naj nadaljujem?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Meta-paketi"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Potreben je sledeči paket:"
+msgstr[1] "Potreben je sledeči paket:"
+msgstr[2] "Potreben je sledeči paket:"
+msgstr[3] "Potreben je sledeči paket:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Pripravljam namestitev paketov..."
@@ -2356,13 +2324,7 @@ msgstr "Preverjanje podpisov paketov..."
 msgid "%d installation transactions failed"
 msgstr "%d namestitvenih transakcij je spodletelo"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Napaka"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr ""
@@ -2482,12 +2444,18 @@ msgstr "Prosim počakajte, iskanje v teku..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr "napačen <url> (za krajevno mapo mora biti pot absolutna)"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Ne morem dodati vira, parametri so napačni ali manjkajo"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Nadaljevanje?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2524,7 +2492,12 @@ msgstr "Vir »%s« je uspešno dodan."
 msgid "Search results"
 msgstr "Rezultati iskanja"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Rezultati iskanja (brez)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Ustavi"
@@ -2549,12 +2522,7 @@ msgstr "Izbran"
 msgid "Not selected"
 msgstr "Ni izbrano"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Rezultati iskanja (brez)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Izbrano: %s / Prosti disk: %s"
@@ -2576,12 +2544,7 @@ msgstr "Arhit."
 msgid "Status"
 msgstr "Stanje"
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Nameščeno"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Ni nameščeno"
@@ -2668,12 +2631,7 @@ msgstr "Video"
 msgid "Filter"
 msgstr "Filter"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr "Drevesni pogled"
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "v imenih"
@@ -3278,3 +3236,62 @@ msgstr "Dodaj vir urpmi"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Podatki o viru urpmi"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Dobrodošli v Upravitelju virov programske opreme!\n"
+#~ "\n"
+#~ "To orodje vam bo pomagalo nastaviti vire paketov, ki jih želite "
+#~ "uporabljati\n"
+#~ "na računalniku. Viri bodo na voljo za nameščanje nove programske opreme\n"
+#~ "ali za posodabljanje obstoječe."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Dobrodošli v orodju za odstranjevanje programske opreme!\n"
+#~ "\n"
+#~ "To orodje vam bo pomagalo izbrati programsko opremo, ki jo želite\n"
+#~ "odstraniti s svojega računalnika."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Dobrodošli v %s!\n"
+#~ "\n"
+#~ "To orodje vam bo pomagalo, da namestite posodobitve\n"
+#~ "na svoj računalnik."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Dobrodošli v orodju za nameščanje programov!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Dobrodošli v orodju za nameščanje!\n"
+#~ "\n"
+#~ "Vaš Mandriva Linux sistem vsebuje nekaj tisoč programskih\n"
+#~ "paketov na CDROMu oz. DVDju. To orodje vam bo pomagalo izbrati\n"
+#~ "programsko opremo, ki jo želite namestiti na svoj računalnik."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Ne morem dodati vira, parametri so napačni ali manjkajo"
+
+#~ msgid "Tree Mode"
+#~ msgstr "Drevesni pogled"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uz\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2007-09-20 19:21+0200\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -467,7 +467,8 @@ msgstr "Proksi kompyuterning nomi:"
 #: ../Rpmdrake/edit_urpm_sources.pm:549
 #, c-format
 msgid "You may specify a user/password for the proxy authentication:"
-msgstr "Proksi tasdiqlash uchun foydalanuvchi/maxfiy soʻzni koʻrsatishingiz mumkin:"
+msgstr ""
+"Proksi tasdiqlash uchun foydalanuvchi/maxfiy soʻzni koʻrsatishingiz mumkin:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:552
 #, c-format
@@ -781,7 +782,8 @@ msgstr "Turi"
 #: ../Rpmdrake/edit_urpm_sources.pm:1035
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
-msgstr "Toʻplamdan foydalanish uchun uni yangilash kerak. Uni yangilashni istaysizmi?"
+msgstr ""
+"Toʻplamdan foydalanish uchun uni yangilash kerak. Uni yangilashni istaysizmi?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:1066
 #, c-format
@@ -799,34 +801,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Tahrirlash"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Davom etishni istaysizmi?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Paketlar toʻplamini boshqaruvchisiga marhamat!\n"
-"\n"
-"Bu vosita kompyuteringizda ishlatmoqchi boʻlgan paketlar toʻplamini\n"
-"moslashda sizga yordam beradi. Moslagandan keyin, ular yangi\n"
-"dasturlarni oʻrnatishda yoki yangilanishlarni qoʻllashda ishlatiladi."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -876,22 +851,22 @@ msgstr ""
 msgid "No description"
 msgstr "Taʼrif yoʻq"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Tafsilotlar:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versiya: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Oʻrnatilgan versiyasi: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Guruh"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr ""
@@ -911,7 +886,17 @@ msgstr "%s Kb"
 msgid "Medium: "
 msgstr "Toʻplam: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Tafsilotlar:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Fayllar:"
@@ -1190,7 +1175,12 @@ msgstr "Hammasi"
 msgid "Upgradable"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Oʻrnatilgan"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Qoʻshsa boʻladi"
@@ -1853,7 +1843,13 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr ""
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr ""
@@ -1931,53 +1927,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Marhamat"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Dasturlarni olib tashlovchi vositaga marhamat!\n"
-"\n"
-"Bu vosita kompyuteringizdan olib tashlamoqchi boʻlgan dasturlarni\n"
-"tanlashda sizga yordam beradi."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"%s - yangilash vositasiga marhamat!\n"
-"\n"
-"Bu vosita kompyuteringizga oʻrnatmoqchi boʻlgan yangilanishlarni tanlashda\n"
-"sizga yordam beradi."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Dasturlarni oʻrnatish vositasiga marhamat!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Dasturlarni oʻrnatish vositasiga marhamat!\n"
-"\n"
-"Mandriva Linux tizimi bilan birga minglab dasturlar\n"
-"DVD yoki kompakt-diskda tarqatiladi. Bu vosita kompyuteringizga\n"
-"dasturlarni oʻrnatish uchun ularni tanlashda sizga yordam beradi."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr "Ushbu vosita dasturlar toʻplamlarini qoʻshish imkoniyatiga ega."
@@ -2043,7 +1993,8 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
-"Yangilanishlar haqida kerakli maʼlumotlarni olish uchun oynaga ulanish kerak.\n"
+"Yangilanishlar haqida kerakli maʼlumotlarni olish uchun oynaga ulanish "
+"kerak.\n"
 "Bu uchun kompyuter tarmoqqa ulangan va tarmoq ishga tushgan boʻlishi kerak.\n"
 "\n"
 "Davom etishni istaysizmi?"
@@ -2129,7 +2080,13 @@ msgstr "Mavjud boʻlgan paketlar qidirilmoqda, iltimos kutib turing..."
 msgid "Please wait, listing base packages..."
 msgstr "Paketlar roʻyxati yaratilmoqda, iltimos kutib turing..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Xato"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Oʻrnatilgan paketlar qidirilmoqda, iltimos kutib turing..."
@@ -2240,7 +2197,18 @@ msgstr "Diskda %s joy boʻshatiladi."
 msgid "Is it ok to continue?"
 msgstr "Davom etishni istaysizmi?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Paket"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Quyidagi paket kerak:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Oʻrnatishga paketlar tayyorlanmoqda..."
@@ -2280,13 +2248,7 @@ msgstr "Paketlarning imzolari tekshirilmoqda..."
 msgid "%d installation transactions failed"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Xato"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr ""
@@ -2398,12 +2360,18 @@ msgstr "Qidirilmoqda, iltimos kutib turing..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
 msgstr ""
+"%s\n"
+"\n"
+"Davom etishni istaysizmi?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2434,7 +2402,12 @@ msgstr "\"%s\" toʻplami muvaffaqiyatli qoʻshildi."
 msgid "Search results"
 msgstr "Qidiruv natijalari"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Qidiruv natijalari (yoʻq)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Toʻxtatish"
@@ -2459,12 +2432,7 @@ msgstr "Tanlangan"
 msgid "Not selected"
 msgstr "Tanlanmagan"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Qidiruv natijalari (yoʻq)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Tanlangan: %s / Diskdagi boʻsh joy: %s"
@@ -2486,12 +2454,7 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Oʻrnatilgan"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Oʻrnatilmagan"
@@ -2578,12 +2541,7 @@ msgstr "Video"
 msgid "Filter"
 msgstr "/_Fayl"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "nomlarda"
@@ -2671,21 +2629,23 @@ msgstr "Kirish"
 #: ../rpmdrake:599
 #, c-format
 msgid "You can browse the packages through the categories tree on the left."
-msgstr "Paketlarni guruh boʻyicha chap tomondagi roʻyxatdan qarab chiqish mumkin."
+msgstr ""
+"Paketlarni guruh boʻyicha chap tomondagi roʻyxatdan qarab chiqish mumkin."
 
 #: ../rpmdrake:600
 #, c-format
 msgid ""
 "You can view information about a package by clicking on it on the right list."
 msgstr ""
-"Paket haqida maʼlumotni koʻrish uchun uni oʻng tomondagi roʻyxatdan tanlash kerak."
+"Paket haqida maʼlumotni koʻrish uchun uni oʻng tomondagi roʻyxatdan tanlash "
+"kerak."
 
 #: ../rpmdrake:601
 #, c-format
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
-"Paketni oʻrnatish, olib tashlash yoki yangilash uchun uning yonidagi katakni belgilash "
-"kerak."
+"Paketni oʻrnatish, olib tashlash yoki yangilash uchun uning yonidagi katakni "
+"belgilash kerak."
 
 #: ../rpmdrake.pm:104
 #, c-format
@@ -3161,6 +3121,59 @@ msgstr "Toʻplam faylidan qoʻshish"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Dasturlar toʻplami fayli"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Paketlar toʻplamini boshqaruvchisiga marhamat!\n"
+#~ "\n"
+#~ "Bu vosita kompyuteringizda ishlatmoqchi boʻlgan paketlar toʻplamini\n"
+#~ "moslashda sizga yordam beradi. Moslagandan keyin, ular yangi\n"
+#~ "dasturlarni oʻrnatishda yoki yangilanishlarni qoʻllashda ishlatiladi."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Dasturlarni olib tashlovchi vositaga marhamat!\n"
+#~ "\n"
+#~ "Bu vosita kompyuteringizdan olib tashlamoqchi boʻlgan dasturlarni\n"
+#~ "tanlashda sizga yordam beradi."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "%s - yangilash vositasiga marhamat!\n"
+#~ "\n"
+#~ "Bu vosita kompyuteringizga oʻrnatmoqchi boʻlgan yangilanishlarni "
+#~ "tanlashda\n"
+#~ "sizga yordam beradi."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Dasturlarni oʻrnatish vositasiga marhamat!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Dasturlarni oʻrnatish vositasiga marhamat!\n"
+#~ "\n"
+#~ "Mandriva Linux tizimi bilan birga minglab dasturlar\n"
+#~ "DVD yoki kompakt-diskda tarqatiladi. Bu vosita kompyuteringizga\n"
+#~ "dasturlarni oʻrnatish uchun ularni tanlashda sizga yordam beradi."
 
 #~ msgid "Mandriva Linux choices"
 #~ msgstr "Mandriva Linux termasi"

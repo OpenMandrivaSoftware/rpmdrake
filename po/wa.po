@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2005-04-02 16:13+0200\n"
 "Last-Translator: Lucyin Mahin <lucyin@walon.org>\n"
 "Language-Team: Walon <linux-wa@walon.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Generator: KBabel 1.0.2\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -816,34 +816,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Candjî"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"C' est bon di continouwer?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Bénvnowe å manaedjeu des sopoirts sourdants des programes!\n"
-"\n"
-"Ciste usteye vos aidrè a-z apontyî les sourdants des pacaedjes ki vos vloz "
-"eployî e vosse copiutrece. I sront-st adon disponibes po l' astalaedje di "
-"pacaedjes di noveas programes ou po les metaedjes a djoû."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -897,22 +870,22 @@ msgstr "Anonce di såvrité"
 msgid "No description"
 msgstr "Nou discrijhaedje"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Detays:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Modêye: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Modêye d' astalêye: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Groupe"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Årtchitecteure: "
@@ -932,7 +905,17 @@ msgstr "%s Ko"
 msgid "Medium: "
 msgstr "Sopoirt: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "Hårdêye:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Detays:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Fitchîs:"
@@ -1212,7 +1195,12 @@ msgstr "Totafwait"
 msgid "Upgradable"
 msgstr "Pout esse metou a djoû"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Astalé(s)"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Pout esse radjouté"
@@ -1883,7 +1871,14 @@ msgid "  --no-media-update      don't update media at startup"
 msgstr ""
 "  --no-media-update      èn nén mete a djoû les sopoirts a l' enondaedje"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      èn nén dmander d' acertiner e môde metaedje a djoû"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        èn nén verifyî les sinateures des pacaedjes"
@@ -1962,53 +1957,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Bénvnowe"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Bénvnowe a l' usteye di oistaedje di programes!\n"
-"\n"
-"Ciste usteye chal vos aidrè a tchoezi kés programes ki vos vloz dizastaler "
-"di vosse copiutrece."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Bénvnowe a %s!\n"
-"\n"
-"Ciste usteye chal vos aidrè a tchoezi les metaedjes a djoû ki vos vloz "
-"astaler sol copiutrece da vosse."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Bénvnowe a l' usteye d' astalaedje des programes!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Bénvnowe a l' usteye d' astalaedje di programes!\n"
-"\n"
-"Vosse sistinme Mandriva Linux vént avou sacwants meyes di programes dins des "
-"pacaedjes rpm so des plakes lazer. Ciste usteye chal vos aidrè a tchoezi kés "
-"programes vos vloz astaler sol copiutrece da vosse."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2176,7 +2125,13 @@ msgid "Please wait, listing base packages..."
 msgstr ""
 "Tårdjîz on pô s' i vs plait, dji fwait l' djivêye des pacaedjes di båze..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Aroke"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Tårdjîz on pô s' i vs plait, dji cwir après les pacaedjes astalés..."
@@ -2293,7 +2248,19 @@ msgstr "Des pacaedjes k' i gn a n' polèt nén esse oistés"
 msgid "Is it ok to continue?"
 msgstr "C' est bon di continouwer?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Manaedjmint des pacaedjes"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "I gn a mezåjhe do pacaedje ki shût:"
+msgstr[1] "I gn a mezåjhe do pacaedje ki shût:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Dj' aprestêye les pacaedjes po l' astalaedje..."
@@ -2333,13 +2300,7 @@ msgstr "Verifiaedje des sinateures des pacaedjes..."
 msgid "%d installation transactions failed"
 msgstr "I gn a-st avou %d transaccions d' astalaedje k' ont fwait berwete"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Aroke"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Aroke moirt: nou pacaedje n' a stî trové po l' astalaedje."
@@ -2456,12 +2417,18 @@ msgstr "Tårdjîz on pô s' i vs plait, dji cwir..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Dji n' sai radjouter l' sopoirt, les årgumints sont crons ou mankèt"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"C' est bon di continouwer?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2498,7 +2465,12 @@ msgstr "Li sopoirt «%s» a stî radjouté comifåt."
 msgid "Search results"
 msgstr "Rizultats do cweraedje"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Rizultats do cweraedje (nouk)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Arester"
@@ -2523,12 +2495,7 @@ msgstr "Tchoezi"
 msgid "Not selected"
 msgstr "Nén tchoezi"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Rizultats do cweraedje (nouk)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Tchoezi: %s / Plaece libe sol deure plake: %s"
@@ -2550,12 +2517,7 @@ msgstr "Årtchivaedje"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Astalé(s)"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Nén astalé(s)"
@@ -2642,12 +2604,7 @@ msgstr "Vey"
 msgid "Filter"
 msgstr "/_Fitchî"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "ezès nos d' pacaedje"
@@ -3262,6 +3219,61 @@ msgstr "/_Mete a djoû les sopoirts"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Mete a djoû on sopoirt"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Bénvnowe å manaedjeu des sopoirts sourdants des programes!\n"
+#~ "\n"
+#~ "Ciste usteye vos aidrè a-z apontyî les sourdants des pacaedjes ki vos "
+#~ "vloz eployî e vosse copiutrece. I sront-st adon disponibes po "
+#~ "l' astalaedje di pacaedjes di noveas programes ou po les metaedjes a djoû."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Bénvnowe a l' usteye di oistaedje di programes!\n"
+#~ "\n"
+#~ "Ciste usteye chal vos aidrè a tchoezi kés programes ki vos vloz "
+#~ "dizastaler di vosse copiutrece."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Bénvnowe a %s!\n"
+#~ "\n"
+#~ "Ciste usteye chal vos aidrè a tchoezi les metaedjes a djoû ki vos vloz "
+#~ "astaler sol copiutrece da vosse."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Bénvnowe a l' usteye d' astalaedje des programes!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Bénvnowe a l' usteye d' astalaedje di programes!\n"
+#~ "\n"
+#~ "Vosse sistinme Mandriva Linux vént avou sacwants meyes di programes dins "
+#~ "des pacaedjes rpm so des plakes lazer. Ciste usteye chal vos aidrè a "
+#~ "tchoezi kés programes vos vloz astaler sol copiutrece da vosse."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Dji n' sai radjouter l' sopoirt, les årgumints sont crons ou mankèt"
 
 #~ msgid "%s choices"
 #~ msgstr "%s tchuzes"

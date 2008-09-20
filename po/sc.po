@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2005-09-05 00:00+0100\n"
 "Last-Translator: Antoni Pistis <antonio.pistis@virgilio.it>\n"
 "Language-Team: Sardu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-Country: ITALY\n"
 "X-Generator: KBabel 1.3\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -806,35 +806,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Muda"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Fait a andai innantis?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Beni beniu a su Manijadori de Mèdius de Programas!\n"
-"\n"
-"Custa aina t'at a ajudai a assetiai is mèdius de pakitus ki bolis impreai "
-"in\n"
-"sa computadora. Apustis dus as apodi impreai po aposentai atrus pakitus\n"
-"o po fai ajorronus."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -888,22 +860,22 @@ msgstr "Ajorronus de siguresa"
 msgid "No description"
 msgstr "Nisçuna descriidura"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versioni: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Versioni aposentada imoi: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Grupu"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Arkidetura:"
@@ -923,7 +895,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Mèdiu: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Files:"
@@ -1207,7 +1189,12 @@ msgstr "Totu"
 msgid "Upgradable"
 msgstr "Ajorronaditzu"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Aposenta"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Açungiditzu"
@@ -1878,7 +1865,15 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      no ajorronist is mèdius a s'alluidura"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      no ponjast preguntas de cunfirma in modalidadi "
+"ajorronu"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        no controllist is firmas de is pakitus"
@@ -1956,53 +1951,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Beni beniu"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Beni beniu a su software removal tool!\n"
-"\n"
-"Custa aina t'at a ajudai a sçoberai cali programas bolis srexinai de\n"
-"sa computadora."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Beni beniu a %s!\n"
-"\n"
-"Custa aina t'at a ajudai a sçoberai is ajorronus ki bolis aposentai in\n"
-"sa computadora."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Beni beniu a su software installation tool!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Beni beniu a su software installation tool!\n"
-"\n"
-"Su sistema Mandriva Linux benit cun milli e milli pakitus de programa\n"
-"in CDROM o DVD. Custa aina t'at a ajudai a sçoberai cali programas\n"
-"bolis aposentai in sa computadora."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2165,7 +2114,13 @@ msgstr "Abeta, agatu is pakitus a disposta..."
 msgid "Please wait, listing base packages..."
 msgstr "Abeta, allistru is pakitus..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Faddina"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Abeta, agatu is pakitus a disposta..."
@@ -2288,7 +2243,19 @@ msgstr ""
 "\n"
 "Fait a andai innantis?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Pakitus"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Serbit unu de is pakitus ki sighint:"
+msgstr[1] "Serbit unu de is pakitus ki sighint:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Apariçu s'aposentadura de is pakitus..."
@@ -2328,13 +2295,7 @@ msgstr "Aberigu is firmas de is pakitus..."
 msgid "%d installation transactions failed"
 msgstr "%d transatzionis de aposentadura faddias"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Faddina"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Faddina mortali: nisçunu pakitu agatau po d'aposentai, mi spraxit."
@@ -2450,12 +2411,18 @@ msgstr "Abeta, circu..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "No potzu açungi su mèdiu, argumentus sballiaus o sbuidus"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Fait a andai innantis?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2492,7 +2459,12 @@ msgstr "Acabau de açungi su mèdiu `%s'."
 msgid "Search results"
 msgstr "Arresurtau de sa circa"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Arresurtau de sa circa (nudda)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Stop"
@@ -2517,12 +2489,7 @@ msgstr "Sçoberau"
 msgid "Not selected"
 msgstr "No sçoberau"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Arresurtau de sa circa (nudda)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Sçoberu: %s / Spàtziu discu lìberu: %s"
@@ -2544,12 +2511,7 @@ msgstr "Arcivadura"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "Aposenta"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Aposenta"
@@ -2636,12 +2598,7 @@ msgstr "Vìdeo"
 msgid "Filter"
 msgstr "/_File"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "in is nòminis"
@@ -3244,6 +3201,62 @@ msgstr "/Ajorrona mèdi_u"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Ajorrona mèdiu"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Beni beniu a su Manijadori de Mèdius de Programas!\n"
+#~ "\n"
+#~ "Custa aina t'at a ajudai a assetiai is mèdius de pakitus ki bolis impreai "
+#~ "in\n"
+#~ "sa computadora. Apustis dus as apodi impreai po aposentai atrus pakitus\n"
+#~ "o po fai ajorronus."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Beni beniu a su software removal tool!\n"
+#~ "\n"
+#~ "Custa aina t'at a ajudai a sçoberai cali programas bolis srexinai de\n"
+#~ "sa computadora."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Beni beniu a %s!\n"
+#~ "\n"
+#~ "Custa aina t'at a ajudai a sçoberai is ajorronus ki bolis aposentai in\n"
+#~ "sa computadora."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Beni beniu a su software installation tool!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Beni beniu a su software installation tool!\n"
+#~ "\n"
+#~ "Su sistema Mandriva Linux benit cun milli e milli pakitus de programa\n"
+#~ "in CDROM o DVD. Custa aina t'at a ajudai a sçoberai cali programas\n"
+#~ "bolis aposentai in sa computadora."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "No potzu açungi su mèdiu, argumentus sballiaus o sbuidus"
 
 #~ msgid "%s choices"
 #~ msgstr "%s sçoberus"

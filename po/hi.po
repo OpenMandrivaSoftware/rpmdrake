@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-hi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2005-08-21 15:37+0530\n"
 "Last-Translator: धनञ्जय शर्मा (Dhananjaya Sharma)\n"
 "Language-Team: Hindi, India\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: KBabel 1.10\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -809,34 +809,7 @@ msgstr ""
 msgid "Edit"
 msgstr "संपादन"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"क्या जारी रखना ठीक है?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"सॉफ़्टवेयर मीडीया मैनेज़र में स्वागत!\n"
-"\n"
-"यह टूल आपकी सहायता उन पैकेजों को संरचित करने में करेगा, जिन्हें आप अपने कम्पयूटर पर\n"
-"उपयोग करना चाहते है। यह सभी, तब नये सॉफ़्टवेयर पैकेजों को संसाधित करने में या अपडेट्स\n"
-"को करने के लिए उपलब्ध होगें।"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -890,22 +863,22 @@ msgstr "सुरक्षा अपडेटस"
 msgid "No description"
 msgstr "कोई वर्णन नहीं"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "संस्मरण: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "वर्तमान संसाधित संस्मरण:  "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "समूह"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "वास्तु:"
@@ -925,7 +898,17 @@ msgstr "%s के०बी०"
 msgid "Medium: "
 msgstr "माध्यम: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "यू०आर०एल०:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "सचिकाऐं:"
@@ -1207,7 +1190,12 @@ msgstr "सभी"
 msgid "Upgradable"
 msgstr "अपग्रेडेबल"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "संसाधन"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "जोड़ने-योग्य"
@@ -1874,7 +1862,13 @@ msgstr "  --no-confirmation      अपडेट विधा में सब�
 msgid "  --no-media-update      don't update media at startup"
 msgstr "   --no-media-update       - शुरुवात में माध्यम को अपडेट ना करें"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr "  --no-confirmation      अपडेट विधा में सबसे पहिले पुष्टि प्रश्न को ना पूछें"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm       पैकेजों के हस्ताक्षरों को सत्यापित ना करें"
@@ -1952,54 +1946,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "स्वागत"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"सॉफ़्टवेयर निरस्तीकरण टूल में स्वागत!\n"
-"\n"
-"यह टूल, उन सॉफ़्टवेयरों को चयन करने में आपकी मदद करेगा, \n"
-"जिन्हें आप अपने कम्पूयटर से हटाना चाहते है।"
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"%s में स्वागत!\n"
-"\n"
-"यह टूल, उन अपडेटस को चयन करने में आपकी मदद करेगा, \n"
-"जिन्हें आप अपने कम्पूयटर पर संसाधित करना चाहते है।"
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "सॉफ़्टवेयर संसाधन टूल में आपका स्वागत !"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"सॉफ़्टवेयर संसाधन टूल में स्वागत!\n"
-"\n"
-"आपकी मैनड्रिव लिनक्स प्रणाली के साथ असंख्य सॉफ़्टवेयर पैकेज सीडीरॉम या डी०वी०डी० पर आते "
-"है।\n"
-"यह टूल, उन सॉफ़्टवेयरों को चयन करने में आपकी मदद करेगा, \n"
-"जिन्हें आप अपने कम्पूयटर पर संसाधित करना चाहते है।"
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2162,7 +2109,13 @@ msgstr "कृपया प्रतीक्षा करें, उपलब�
 msgid "Please wait, listing base packages..."
 msgstr "कृपया प्रतीक्षा करें, पैकेजों की सूची को दिखाया जा रहा है..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "त्रुटि"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "कृपया प्रतीक्षा करें, उपलब्ध पैकेजों को पता लगाया जा रहा है..."
@@ -2285,7 +2238,19 @@ msgstr ""
 "\n"
 "क्या जारी रखना ठीक है?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "पैकेजिंग"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "निम्नलिखित में से एक पैकेज की आवश्यकता है:"
+msgstr[1] "निम्नलिखित में से एक पैकेज की आवश्यकता है:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "पैकेजों के संसाधन की तैयारी की जा रही है..."
@@ -2325,13 +2290,7 @@ msgstr "पैकेजों के हस्ताक्षर प्रमा
 msgid "%d installation transactions failed"
 msgstr "%d संसाधन क्रिया-कलाप असफ़ल"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "त्रुटि"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "असाध्य त्रुटि: संसाधन के लिए कोई पैकेज नहीं मिला, क्षमा करें।"
@@ -2447,12 +2406,18 @@ msgstr "कृपया प्रतीक्षा करें, खोज ज�
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "माध्यम को जोड़ने में असमर्थ, गलत या विलुप्त आर्गूमेन्टस"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"क्या जारी रखना ठीक है?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2487,7 +2452,12 @@ msgstr "`%s' माध्यम को सफ़लतापूर्वक जो�
 msgid "Search results"
 msgstr "खोज के परिणाम"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "खोज के परिणाम (कुछ नहीं)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "रूको"
@@ -2512,12 +2482,7 @@ msgstr "चयन किया गया"
 msgid "Not selected"
 msgstr "चयन नहीं किया गया"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "खोज के परिणाम (कुछ नहीं)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "चुना गया:  %s / मुक्त डिस्क स्थान: %s"
@@ -2539,12 +2504,7 @@ msgstr "पुरालेखण"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "संसाधन"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "संसाधन"
@@ -2631,12 +2591,7 @@ msgstr "वीडीओ"
 msgid "Filter"
 msgstr "/संचिका (_F)"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "नामों में"
@@ -3241,6 +3196,62 @@ msgstr "/माध्यम का अपडेट (_U)"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "माध्यम को अपडेट करें"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "सॉफ़्टवेयर मीडीया मैनेज़र में स्वागत!\n"
+#~ "\n"
+#~ "यह टूल आपकी सहायता उन पैकेजों को संरचित करने में करेगा, जिन्हें आप अपने कम्पयूटर पर\n"
+#~ "उपयोग करना चाहते है। यह सभी, तब नये सॉफ़्टवेयर पैकेजों को संसाधित करने में या अपडेट्स\n"
+#~ "को करने के लिए उपलब्ध होगें।"
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "सॉफ़्टवेयर निरस्तीकरण टूल में स्वागत!\n"
+#~ "\n"
+#~ "यह टूल, उन सॉफ़्टवेयरों को चयन करने में आपकी मदद करेगा, \n"
+#~ "जिन्हें आप अपने कम्पूयटर से हटाना चाहते है।"
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "%s में स्वागत!\n"
+#~ "\n"
+#~ "यह टूल, उन अपडेटस को चयन करने में आपकी मदद करेगा, \n"
+#~ "जिन्हें आप अपने कम्पूयटर पर संसाधित करना चाहते है।"
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "सॉफ़्टवेयर संसाधन टूल में आपका स्वागत !"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "सॉफ़्टवेयर संसाधन टूल में स्वागत!\n"
+#~ "\n"
+#~ "आपकी मैनड्रिव लिनक्स प्रणाली के साथ असंख्य सॉफ़्टवेयर पैकेज सीडीरॉम या डी०वी०डी० पर "
+#~ "आते है।\n"
+#~ "यह टूल, उन सॉफ़्टवेयरों को चयन करने में आपकी मदद करेगा, \n"
+#~ "जिन्हें आप अपने कम्पूयटर पर संसाधित करना चाहते है।"
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "माध्यम को जोड़ने में असमर्थ, गलत या विलुप्त आर्गूमेन्टस"
 
 #~ msgid "%s choices"
 #~ msgstr "%s पसन्दें"

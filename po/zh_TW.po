@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2008-03-19 15:01+0800\n"
 "Last-Translator: Shiva Huang <shivahuang@gmail.com>\n"
 "Language-Team: Chinese Traditional <zh@li.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Bookmarks: 350,351,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -829,33 +829,7 @@ msgstr ""
 msgid "Edit"
 msgstr "編輯"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"您要繼續嗎？"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"歡迎使用軟體套件媒體管理員！\n"
-"\n"
-"此工具將會協助您設定想要用於系統上的套件媒體來源。\n"
-"他們將會被用來安裝新的軟體套件或執行更新。"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -907,22 +881,22 @@ msgstr "安全性建言"
 msgid "No description"
 msgstr "沒有描述"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "細節："
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "版本："
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "目前已安裝的版本："
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "群組"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "硬體平台："
@@ -942,7 +916,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "媒體："
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "細節："
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "檔案 (_F)："
@@ -1223,7 +1207,12 @@ msgstr "全部"
 msgid "Upgradable"
 msgstr "可供更新"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "已安裝"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "可供加入"
@@ -1886,7 +1875,13 @@ msgstr "  --no-confirmation      在升級模式時不詢問第一個確認問�
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      啟動時不更新媒體"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr "  --no-confirmation      在升級模式時不詢問第一個確認問題"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        不驗證套件簽章"
@@ -1964,51 +1959,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "歡迎使用"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"歡迎使用套件移除工具！\n"
-"\n"
-"此工具將協助您選取要從系統移除的軟體。"
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"歡迎使用 %s！\n"
-"\n"
-"此工具將協助您選取要安裝於系統上的更新。"
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "歡迎使用軟體安裝工具！"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"歡迎使用軟體安裝工具！\n"
-"\n"
-"您的 Mandriva Linux 系統提供了包羅萬象的軟體套件，這些\n"
-"套件都位於 CD 或 DVD 光碟內。此工具將會協助您選取您想\n"
-"要安裝於系統的軟體。"
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr "軟體安裝工具可以設定媒體來源。"
@@ -2170,7 +2121,13 @@ msgstr "請稍候，正在尋找可用的套件..."
 msgid "Please wait, listing base packages..."
 msgstr "排序套件中，請稍候..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "錯誤"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "請稍候，正在尋找已安裝的套件..."
@@ -2281,7 +2238,18 @@ msgstr "將會取回 %s 套件。"
 msgid "Is it ok to continue?"
 msgstr "您要繼續嗎？"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Meta 套件"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "需要下列套件："
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "正在準備套件安裝..."
@@ -2321,13 +2289,7 @@ msgstr "核對套件簽章..."
 msgid "%d installation transactions failed"
 msgstr "有 %d 個安裝業務失敗"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "錯誤"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "無法回復的錯誤：抱歉，沒有找到可供安裝的套件。"
@@ -2445,12 +2407,18 @@ msgstr "搜尋中，請稍候..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr "錯誤的 <url> (使用本地端目錄，必須為絕對路徑)"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "無法新增媒體，遺失或錯誤的參數"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"您要繼續嗎？"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2485,7 +2453,12 @@ msgstr "成功的新增了媒體 `%s'。"
 msgid "Search results"
 msgstr "搜尋結果"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "搜尋結果 (無)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "停止"
@@ -2510,12 +2483,7 @@ msgstr "已選取"
 msgid "Not selected"
 msgstr "未選取"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "搜尋結果 (無)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "已選擇：%s / 可用磁碟空間：%s"
@@ -2537,12 +2505,7 @@ msgstr "硬體架構"
 msgid "Status"
 msgstr "狀態"
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "已安裝"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "未安裝"
@@ -2629,12 +2592,7 @@ msgstr "檢視"
 msgid "Filter"
 msgstr "過濾"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr "樹狀模式"
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "依名稱"
@@ -3226,6 +3184,61 @@ msgstr "新增 urpmi 媒體"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Urpmi 媒體資訊"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "歡迎使用軟體套件媒體管理員！\n"
+#~ "\n"
+#~ "此工具將會協助您設定想要用於系統上的套件媒體來源。\n"
+#~ "他們將會被用來安裝新的軟體套件或執行更新。"
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "歡迎使用套件移除工具！\n"
+#~ "\n"
+#~ "此工具將協助您選取要從系統移除的軟體。"
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "歡迎使用 %s！\n"
+#~ "\n"
+#~ "此工具將協助您選取要安裝於系統上的更新。"
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "歡迎使用軟體安裝工具！"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "歡迎使用軟體安裝工具！\n"
+#~ "\n"
+#~ "您的 Mandriva Linux 系統提供了包羅萬象的軟體套件，這些\n"
+#~ "套件都位於 CD 或 DVD 光碟內。此工具將會協助您選取您想\n"
+#~ "要安裝於系統的軟體。"
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "無法新增媒體，遺失或錯誤的參數"
+
+#~ msgid "Tree Mode"
+#~ msgstr "樹狀模式"
 
 #~ msgid "%s choices"
 #~ msgstr "%s 個選項"

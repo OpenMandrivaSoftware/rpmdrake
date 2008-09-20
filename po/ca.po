@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2005-11-09 00:32+0000\n"
 "Last-Translator: Ticià Sala <tsala@pie.xtec.es>\n"
 "Language-Team:  <ca@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: KBabel 1.10.2\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -819,36 +819,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Edita"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Esteu d'acord en continuar?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Benvinguts al gestor de fonts de programari!\n"
-"\n"
-"Aquesta eina us ajudarà a configurar les fonts dels paquets que voleu "
-"utilitzar en\n"
-"el vostre ordinador. Això permetrà que s'instal·lin nous paquets de "
-"programari \n"
-"o que es facin actualitzacions del sistema."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -902,22 +873,22 @@ msgstr "Actualitzacions de seguretat"
 msgid "No description"
 msgstr "Cap descripció"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versió: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Versió actualment instal·lada: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Grup"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Arquitectura: "
@@ -937,7 +908,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Font:"
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Fitxers:"
@@ -1221,7 +1202,12 @@ msgstr "Tot"
 msgid "Upgradable"
 msgstr "Actualitzable"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Instal·la"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Afegible"
@@ -1889,7 +1875,13 @@ msgstr "  --no-confirmation      no demanis confirmació en mode actualització"
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      no actualitzis les fonts al principi"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr "  --no-confirmation      no demanis confirmació en mode actualització"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        no verifiquis les signatures dels paquets"
@@ -1968,54 +1960,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Benvingut"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Benvinguts a l'eina per a eliminar programari!\n"
-"\n"
-"Aquesta eina us ajudarà a escollir quin programari voleu eliminar del\n"
-"vostre ordinador."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Benvinguts al %s!\n"
-"\n"
-"Aquesta eina us ajudarà a escollir les actualitzacions que voleu instal·lar\n"
-"en el vostre.ordinador."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Benvinguts a l'eina d'instal·lació de programari!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Benvinguts a la eina d'instal·lació de programari!\n"
-"\n"
-"El vostre sistema Mandriva Linux ve amb uns quants milers de paquets de\n"
-"programari en CDROM o DVD. Aquesta eina us ajudarà a escollir quin "
-"programari\n"
-"voleu instal·lar en el vostre ordinador."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2180,7 +2125,13 @@ msgstr "Espereu mentre es cerquen els paquets disponibles... "
 msgid "Please wait, listing base packages..."
 msgstr "Si us plau espereu, llistant els paquets..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Error"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Espereu mentre es cerquen els paquets disponibles... "
@@ -2295,7 +2246,19 @@ msgstr "Alguns paquets no poden ser esborrats"
 msgid "Is it ok to continue?"
 msgstr "Esteu d'acord en continuar?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Empaquetat"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Es necessita un dels següents paquets:"
+msgstr[1] "Es necessita un dels següents paquets:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "S'estan preparant els paquets per a la instal·lació... "
@@ -2335,13 +2298,7 @@ msgstr "Verificant les firmes dels paquets"
 msgid "%d installation transactions failed"
 msgstr "Instal·lació fallida"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Error"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr ""
@@ -2460,12 +2417,18 @@ msgstr "Si us plau espereu, s'està buscant..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "No s'ha pogut afegir la font, arguments incorrectes o insuficients"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Esteu d'acord en continuar?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2502,7 +2465,12 @@ msgstr "S'ha afegit la font `%s' amb èxit."
 msgid "Search results"
 msgstr "Resultats de la cerca"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Resultats de la cerca (cap)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Para"
@@ -2527,12 +2495,7 @@ msgstr "Seleccionat"
 msgid "Not selected"
 msgstr "No seleccionat"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Resultats de la cerca (cap)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Seleccionats: %s / Espai lliure en el disc: %s"
@@ -2554,12 +2517,7 @@ msgstr "Arxivant"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "Instal·la"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Instal·la"
@@ -2646,12 +2604,7 @@ msgstr "Vídeo"
 msgid "Filter"
 msgstr "/_Fitxer"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "en noms"
@@ -3261,6 +3214,65 @@ msgstr "/_Actualitza les fonts"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr ""
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Benvinguts al gestor de fonts de programari!\n"
+#~ "\n"
+#~ "Aquesta eina us ajudarà a configurar les fonts dels paquets que voleu "
+#~ "utilitzar en\n"
+#~ "el vostre ordinador. Això permetrà que s'instal·lin nous paquets de "
+#~ "programari \n"
+#~ "o que es facin actualitzacions del sistema."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Benvinguts a l'eina per a eliminar programari!\n"
+#~ "\n"
+#~ "Aquesta eina us ajudarà a escollir quin programari voleu eliminar del\n"
+#~ "vostre ordinador."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Benvinguts al %s!\n"
+#~ "\n"
+#~ "Aquesta eina us ajudarà a escollir les actualitzacions que voleu "
+#~ "instal·lar\n"
+#~ "en el vostre.ordinador."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Benvinguts a l'eina d'instal·lació de programari!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Benvinguts a la eina d'instal·lació de programari!\n"
+#~ "\n"
+#~ "El vostre sistema Mandriva Linux ve amb uns quants milers de paquets de\n"
+#~ "programari en CDROM o DVD. Aquesta eina us ajudarà a escollir quin "
+#~ "programari\n"
+#~ "voleu instal·lar en el vostre ordinador."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "No s'ha pogut afegir la font, arguments incorrectes o insuficients"
 
 #~ msgid "%s choices"
 #~ msgstr "Seleccions de %s"

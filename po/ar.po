@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2005-02-24 23:28+0300\n"
 "Last-Translator: Ossama M. Khayat <okhayat@yahoo.com>\n"
 "Language-Team: Arabic <support@arabeyes.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : "
 "3\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -806,34 +806,7 @@ msgstr ""
 msgid "Edit"
 msgstr "تحرير"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"هل من الممكن المتابعة؟"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"أهلا بك في مدير وسائط البرامج!\n"
-"\n"
-"هذه الأداة ستساعدك على تهيئة مصادر الحزم التي قد تريد استخدامها على\n"
-"حاسوبك. عندها ستكون هذه المصادر موجودة لتثبيت حزم برمجية جديدة\n"
-"أو لعمل التحديثات."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -886,22 +859,22 @@ msgstr "تحديثات أمنية"
 msgid "No description"
 msgstr "لا وصف"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "الإصدار: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "الإصدار المثبت حالياً: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "المجموعة"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr ""
@@ -921,7 +894,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "الوسيط: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "العنوان:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "الملفات:"
@@ -1203,7 +1186,12 @@ msgstr "الكلّ"
 msgid "Upgradable"
 msgstr "قابلة للترقية"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "تثبيت"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "قابلة للإضافة"
@@ -1866,7 +1854,13 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --update       - حدّث فقط وسائط التّحديث.\n"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:59
 #, fuzzy, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --name         - إطبع أسماء الحزم فقط.\n"
@@ -1946,53 +1940,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "أهلاً بكم"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"أهلا بك في أداة ازالة البرامج.\n"
-"\n"
-"هذه الأداة ستسمح لك باختيار البرامج التي تريد ازالتها\n"
-"من جهازك."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"أهلا بك في %s!\n"
-"\n"
-"هذه الأداة ستساعدك في اختيار التحديثات التي تريد تثبيتها على\n"
-"جهازك."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "أهلاً إلى أداة تثبيت البرامج!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"مرحبا في أداة تثبيت البرامج !\n"
-"\n"
-"يأتي نظامك لماندريبا لينكس مع عدّة آلاف من حزم\n"
-"برامجية على أقراص CDROM أو DVD. ستساعدك هذه الأداة في اختيار البرامج\n"
-"اّلتي تريد تثبيتها على حاسوبك."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2153,7 +2101,13 @@ msgstr "اتنظر من فضلك، جاري ايجاد الحزم المتوفر
 msgid "Please wait, listing base packages..."
 msgstr "انتظر من فضلك، جاري سرد الحزم..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "خطأ"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "اتنظر من فضلك، جاري ايجاد الحزم المتوفرة..."
@@ -2280,7 +2234,21 @@ msgstr ""
 "\n"
 "هل من الممكن المتابعة؟"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "التحزيم"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "أحد هذه الحزم مطلوب:"
+msgstr[1] "أحد هذه الحزم مطلوب:"
+msgstr[2] "أحد هذه الحزم مطلوب:"
+msgstr[3] "أحد هذه الحزم مطلوب:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "جاري تحضير الحزم للتثبيت..."
@@ -2320,13 +2288,7 @@ msgstr "جاري التأكد من توقيعات الحزم..."
 msgid "%d installation transactions failed"
 msgstr "فشل التثبيت"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "خطأ"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "خطأ غير قابل للتصحيح: تعذر ايجاد حزمة للتثبيت، عفواً."
@@ -2442,12 +2404,18 @@ msgstr "انتظر من فضلك، جاري البحث..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "تعذّرت إضافة الوسيط، وسائط خاطئة أو ناقصة"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"هل من الممكن المتابعة؟"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2484,7 +2452,12 @@ msgstr "تمّت إضافة الوسيط `%s' بنجاح."
 msgid "Search results"
 msgstr "نتائج البحث"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "نتائج البحث (لا شئ)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "قف"
@@ -2509,12 +2482,7 @@ msgstr "مختار"
 msgid "Not selected"
 msgstr "غير مختارة"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "نتائج البحث (لا شئ)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "تم اختيار: %s / المساحة المتوفرة في القرص: %s"
@@ -2536,12 +2504,7 @@ msgstr "أرشفة"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "تثبيت"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "تثبيت"
@@ -2628,12 +2591,7 @@ msgstr "عرض"
 msgid "Filter"
 msgstr "/_ملف"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "في الأسماء"
@@ -3234,6 +3192,61 @@ msgstr "/_تحديث الوسط"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "حدّث الوسيط"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "أهلا بك في مدير وسائط البرامج!\n"
+#~ "\n"
+#~ "هذه الأداة ستساعدك على تهيئة مصادر الحزم التي قد تريد استخدامها على\n"
+#~ "حاسوبك. عندها ستكون هذه المصادر موجودة لتثبيت حزم برمجية جديدة\n"
+#~ "أو لعمل التحديثات."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "أهلا بك في أداة ازالة البرامج.\n"
+#~ "\n"
+#~ "هذه الأداة ستسمح لك باختيار البرامج التي تريد ازالتها\n"
+#~ "من جهازك."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "أهلا بك في %s!\n"
+#~ "\n"
+#~ "هذه الأداة ستساعدك في اختيار التحديثات التي تريد تثبيتها على\n"
+#~ "جهازك."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "أهلاً إلى أداة تثبيت البرامج!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "مرحبا في أداة تثبيت البرامج !\n"
+#~ "\n"
+#~ "يأتي نظامك لماندريبا لينكس مع عدّة آلاف من حزم\n"
+#~ "برامجية على أقراص CDROM أو DVD. ستساعدك هذه الأداة في اختيار البرامج\n"
+#~ "اّلتي تريد تثبيتها على حاسوبك."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "تعذّرت إضافة الوسيط، وسائط خاطئة أو ناقصة"
 
 #~ msgid "%s choices"
 #~ msgstr "%s اختيارات"

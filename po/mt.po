@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2004-09-03 19:13+0200\n"
 "Last-Translator: Ramon Casha <ramon.casha@linux.org.mt>\n"
 "Language-Team: Maltese <mt@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -806,35 +806,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Editja"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Trid li nkomplu?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Merħba għall-editur ta' sorsi ta' softwer!\n"
-"\n"
-"Din l-għodda tgħinek biex tikkonfigura s-sorsi ta' pakketti li tixtieq "
-"tuża \n"
-"fuq il-kompjuter tiegħek. Dawn ikunu disponibbli biex minnhom tinstalla \n"
-"pakketti ġodda jew biex taġġorna s-sistema."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -888,22 +860,22 @@ msgstr "Aġġornamenti ta' sigurtà"
 msgid "No description"
 msgstr "fid-deskrizzjonijiet"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Verżjoni: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Verżjoni nstallata bħalissa: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Grupp"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr ""
@@ -923,7 +895,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Sors:"
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Fajls:"
@@ -1205,7 +1187,12 @@ msgstr "Kollha"
 msgid "Upgradable"
 msgstr "Jistgħu jiġu aġġornati"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Installa"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Jistgħu jiġu miżjuda"
@@ -1868,7 +1855,13 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --update       - uża s-sorsi ta' aġġornament biss.\n"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:59
 #, fuzzy, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --name         - uri biss l-ismijiet tal-pakketti.\n"
@@ -1948,53 +1941,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Merħba"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Merħba għall-għodda ta' tneħħija ta' softwer.\n"
-"\n"
-"Din l-għodda tgħinek tagħżel liema softwer trid tneħħi mill-kompjuter\n"
-"tiegħek."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Merħba għal %s!\n"
-"\n"
-"Din l-għodda tgħinek tagħżel aġġornamenti li trid tinstalla fuq il-\n"
-"kompjuter tiegħek."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr ""
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Merħba għall-għodda ta' installazzjoni ta' softwer!\n"
-"\n"
-"Is-sistema Mandriva Linux tiġi b'eluf ta' pakketti ta' softwer fuq CDROM\n"
-"jew DVD. Din l-għodda tgħinek tagħżel liema softwer tixtieq tinstalla fuq\n"
-"il-kompjuter tiegħek."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2156,7 +2103,13 @@ msgstr "Stenna ftit, qed insib pakketti disponibbli..."
 msgid "Please wait, listing base packages..."
 msgstr "Stenna ftit, qed jiġu llistjati l-pakketti..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Problema"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Stenna ftit, qed insib pakketti disponibbli..."
@@ -2280,7 +2233,19 @@ msgstr ""
 "\n"
 "Trid li nkomplu?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Pakkettjar"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Wieħed minn dawn il-pakketti huwa meħtieġ:"
+msgstr[1] "Wieħed minn dawn il-pakketti huwa meħtieġ:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Qed jiġu ppreparati l-pakketti għall-installazzjoni..."
@@ -2320,13 +2285,7 @@ msgstr "Qed jiġu verifikati l-firem tal-pakketti..."
 msgid "%d installation transactions failed"
 msgstr "%d tranżazzjonijiet ta' installazzjoni fallew"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Problema"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Problema: ebda pakkett ma nstab għall-installazzjoni."
@@ -2442,12 +2401,18 @@ msgstr "Stenna ftit, qed infittex..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Ma nistax inżid sors, argumenti nieqsa jew ħżiena"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Trid li nkomplu?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2484,7 +2449,12 @@ msgstr "Ġie miżjud is-sors \"%s\"."
 msgid "Search results"
 msgstr "Riżultat tat-tfittxija"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Riżultat tat-tfittxija (ebda)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Ieqaf"
@@ -2509,12 +2479,7 @@ msgstr "Magħżul"
 msgid "Not selected"
 msgstr "Mhux magħżulin"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Riżultat tat-tfittxija (ebda)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Magħżula: %s / Spazju disponibbli: %s"
@@ -2536,12 +2501,7 @@ msgstr "Arkivji"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "Installa"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Installa"
@@ -2628,12 +2588,7 @@ msgstr "Video"
 msgid "Filter"
 msgstr "/_Fajl"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "fl-ismijiet"
@@ -3237,6 +3192,60 @@ msgstr "Aġġorna sorsi"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Aġġorna sors"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Merħba għall-editur ta' sorsi ta' softwer!\n"
+#~ "\n"
+#~ "Din l-għodda tgħinek biex tikkonfigura s-sorsi ta' pakketti li tixtieq "
+#~ "tuża \n"
+#~ "fuq il-kompjuter tiegħek. Dawn ikunu disponibbli biex minnhom tinstalla \n"
+#~ "pakketti ġodda jew biex taġġorna s-sistema."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Merħba għall-għodda ta' tneħħija ta' softwer.\n"
+#~ "\n"
+#~ "Din l-għodda tgħinek tagħżel liema softwer trid tneħħi mill-kompjuter\n"
+#~ "tiegħek."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Merħba għal %s!\n"
+#~ "\n"
+#~ "Din l-għodda tgħinek tagħżel aġġornamenti li trid tinstalla fuq il-\n"
+#~ "kompjuter tiegħek."
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Merħba għall-għodda ta' installazzjoni ta' softwer!\n"
+#~ "\n"
+#~ "Is-sistema Mandriva Linux tiġi b'eluf ta' pakketti ta' softwer fuq CDROM\n"
+#~ "jew DVD. Din l-għodda tgħinek tagħżel liema softwer tixtieq tinstalla "
+#~ "fuq\n"
+#~ "il-kompjuter tiegħek."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Ma nistax inżid sors, argumenti nieqsa jew ħżiena"
 
 #~ msgid "Mandriva Linux choices"
 #~ msgstr "Għażliet ta' Mandriva Linux"

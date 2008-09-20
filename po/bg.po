@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-bg\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2005-01-28 15:12+0200\n"
 "Last-Translator: Dimitar Terziev <mitak@unix-bg.org>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -819,34 +819,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Редакция"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Да продължа ли?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Добре дошли в Диспечера на софтуерни източници!\n"
-"\n"
-"Тази програма ще ви помогне да настроите източниците на пакети,\n"
-"които ще използвате.След това те ще бъдат ползвани при инсталиране\n"
-"или обновяване на пакети."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -899,22 +872,22 @@ msgstr "Обновявания свързани със сигурността"
 msgid "No description"
 msgstr "Без описание"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Версия: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Текущо инсталирана версия: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Група"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr ""
@@ -934,7 +907,17 @@ msgstr "%s КБ"
 msgid "Medium: "
 msgstr "Източник:"
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Файлове:"
@@ -1219,7 +1202,12 @@ msgstr "Всичко"
 msgid "Upgradable"
 msgstr "Обновим"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Инсталирани"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Възможни за добавяне"
@@ -1882,7 +1870,13 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --update       - обновява само източниците за обновяване.\n"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr ""
@@ -1964,54 +1958,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Добре дошли"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Добре дошли в софтуерният инструмент за премахване на пакети!\n"
-"\n"
-"Този инструмент ще ви помогне да изберете кои софтуерни пакети искате да\n"
-"изтриете от системата."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Добре дошли в %s!\n"
-"\n"
-"Този инструмент ще ви помогне да изберете обновяване на вашият софтуер\n"
-"върху системата."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Добре дошли в помощника за инсталиране на софтуер!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Добре дошли в инструмента за инсталиране!\n"
-"\n"
-"Вашата Мандрива Линукс система идва с няколко хиляди софтуерни\n"
-"пакета на CDROM или DVD. Този инструмент ще ви помогне да изберете кои "
-"пакети\n"
-"вие искате да инсталирате на системата."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2178,7 +2125,13 @@ msgstr ""
 "Моля изчакайте\n"
 "Пакетите се сортират"
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Грешка"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr ""
@@ -2305,7 +2258,19 @@ msgstr ""
 "\n"
 "Да продължа ли?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Работа с пакети"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Един от следните пакети е необходим:"
+msgstr[1] "Един от следните пакети е необходим:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Подготвяне на пакетите за инсталация..."
@@ -2345,13 +2310,7 @@ msgstr "Проверка подписите на пакетите..."
 msgid "%d installation transactions failed"
 msgstr "Инсталацията пропадна"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Грешка"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr ""
@@ -2470,12 +2429,18 @@ msgstr "Моля изчакайте, търся..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Източникът нее може да бъде добавен - грешни или липсващи аргументи"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Да продължа ли?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2512,7 +2477,12 @@ msgstr "Източникът `%s' е добавен успешно."
 msgid "Search results"
 msgstr "Резултат от търсене"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Резултат от търсенето (няма)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Стоп"
@@ -2537,12 +2507,7 @@ msgstr "Избрано"
 msgid "Not selected"
 msgstr "Не е избрано"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Резултат от търсенето (няма)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Избрани: %s / Свободно дисково пространство: %s"
@@ -2564,12 +2529,7 @@ msgstr "Архивиране"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Инсталирани"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Инсталация"
@@ -2656,12 +2616,7 @@ msgstr "Изглед"
 msgid "Filter"
 msgstr "/_Файл"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "по имена"
@@ -3266,6 +3221,62 @@ msgstr "/_Обновяване на източниците"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Обновяване на източниците"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Добре дошли в Диспечера на софтуерни източници!\n"
+#~ "\n"
+#~ "Тази програма ще ви помогне да настроите източниците на пакети,\n"
+#~ "които ще използвате.След това те ще бъдат ползвани при инсталиране\n"
+#~ "или обновяване на пакети."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Добре дошли в софтуерният инструмент за премахване на пакети!\n"
+#~ "\n"
+#~ "Този инструмент ще ви помогне да изберете кои софтуерни пакети искате да\n"
+#~ "изтриете от системата."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Добре дошли в %s!\n"
+#~ "\n"
+#~ "Този инструмент ще ви помогне да изберете обновяване на вашият софтуер\n"
+#~ "върху системата."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Добре дошли в помощника за инсталиране на софтуер!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Добре дошли в инструмента за инсталиране!\n"
+#~ "\n"
+#~ "Вашата Мандрива Линукс система идва с няколко хиляди софтуерни\n"
+#~ "пакета на CDROM или DVD. Този инструмент ще ви помогне да изберете кои "
+#~ "пакети\n"
+#~ "вие искате да инсталирате на системата."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Източникът нее може да бъде добавен - грешни или липсващи аргументи"
 
 #~ msgid "%s choices"
 #~ msgstr "%s избрани"

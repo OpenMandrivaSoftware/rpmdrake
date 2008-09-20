@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2007-03-09 08:21+0700\n"
 "Last-Translator: Willy Sudiarto Raharjo <willysr@gmail.com>\n"
 "Language-Team: Indonesia <mdk-id@yahoogroups.com>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "X-Generator: KBabel 0.6\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -816,34 +816,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Edit"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Apakah ok untuk dilanjutkan?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Selamat datang di Manajer Media Perangkat Lunak!\n"
-"\n"
-"Perkakas ini akan membantu mengkonfigurasikan media paket yang ingin Anda\n"
-"pakai pada komputer Anda, yang kemudian dapat digunakan untuk menginstal\n"
-"perangkat lunak baru atau melakukan proses update"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -897,22 +870,22 @@ msgstr "Saran keamanan"
 msgid "No description"
 msgstr "Tidak ada deskripsi"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Detail:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versi: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Versi aktual yang terinstall: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Grup"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Arsitektur: "
@@ -932,7 +905,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Media: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Detail:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "File:"
@@ -1210,7 +1193,12 @@ msgstr "Semua"
 msgid "Upgradable"
 msgstr "Dapat di-upgrade"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Terinstall"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Dapat ditambahkan"
@@ -1879,7 +1867,14 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update       jangan update media saat di awal"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      jangan tanya pertanyaan konfirmasi dalam mode update"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr ""
@@ -1959,54 +1954,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Selamat datang"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Selamat datang di perkakas penghapus perangkat lunak!\n"
-"\n"
-"Peralatan ini membantu Anda memilih perangkat lunak yang ingin Anda hapus\n"
-"dari komputer Anda."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Selamat Datang di %s!\n"
-"\n"
-"Perkakas ini membantu Anda memilih update yang ingin Anda install pada\n"
-"komputer Anda."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Selamat datang pada perkakas installasi perangkat lunak!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Selamat datang pada perkakas instalasi perangkat lunak!\n"
-"\n"
-"Sistem Mandriva Linux Anda hadir dengan ribuan paket perangkat lunak dalam\n"
-"CDROM atau DVD. Peralatan ini akan membantu Anda memilih perangkat lunak "
-"yang\n"
-"hendak diinstall pada komputer Anda."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr "Perangkat installasi perangkat lunak dapat menentukan sumber media."
@@ -2169,7 +2117,13 @@ msgstr "Harap tunggu, mencari paket yang tersedia..."
 msgid "Please wait, listing base packages..."
 msgstr "Harap tunggu, mendaftar paket-paket dasar..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Kesalahan"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Harap tunggu, mencari paket-paket yang terinstall..."
@@ -2281,7 +2235,18 @@ msgstr "Beberapa paket tidak dapat dihapus"
 msgid "Is it ok to continue?"
 msgstr "Apakah ok untuk melanjutkan?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Pemaketan"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Satu di antara paket berikut diperlukan:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Persiapan installasi paket..."
@@ -2321,13 +2286,7 @@ msgstr "Memverifikasi tanda tangan paket..."
 msgid "%d installation transactions failed"
 msgstr "transaksi installasi %d gagal"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Kesalahan"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr ""
@@ -2445,12 +2404,18 @@ msgstr "Harap tunggu, sedang dicari..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr "<url> salah (untuk direktori lokal, path harus absolut)\n"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Tidak dapat menambahkan media, kesalahan atau kekurangan argumen"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Apakah ok untuk dilanjutkan?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2487,7 +2452,12 @@ msgstr "Penambahan media `%s' sukses."
 msgid "Search results"
 msgstr "Hasil pencarian"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Hasil pencarian (tidak ada)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Stop"
@@ -2512,12 +2482,7 @@ msgstr "Terpilih"
 msgid "Not selected"
 msgstr "Tidak terpilih"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Hasil pencarian (tidak ada)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Terpilih: %s / Ruang disk kosong: %s"
@@ -2539,12 +2504,7 @@ msgstr "Pengarsipan"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Terinstall"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Tidak ada yang terinstall"
@@ -2631,12 +2591,7 @@ msgstr "Tampilkan"
 msgid "Filter"
 msgstr "/_File"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "dalam nama"
@@ -3246,6 +3201,65 @@ msgstr "/_Update media"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Update media"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Selamat datang di Manajer Media Perangkat Lunak!\n"
+#~ "\n"
+#~ "Perkakas ini akan membantu mengkonfigurasikan media paket yang ingin "
+#~ "Anda\n"
+#~ "pakai pada komputer Anda, yang kemudian dapat digunakan untuk menginstal\n"
+#~ "perangkat lunak baru atau melakukan proses update"
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Selamat datang di perkakas penghapus perangkat lunak!\n"
+#~ "\n"
+#~ "Peralatan ini membantu Anda memilih perangkat lunak yang ingin Anda "
+#~ "hapus\n"
+#~ "dari komputer Anda."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Selamat Datang di %s!\n"
+#~ "\n"
+#~ "Perkakas ini membantu Anda memilih update yang ingin Anda install pada\n"
+#~ "komputer Anda."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Selamat datang pada perkakas installasi perangkat lunak!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Selamat datang pada perkakas instalasi perangkat lunak!\n"
+#~ "\n"
+#~ "Sistem Mandriva Linux Anda hadir dengan ribuan paket perangkat lunak "
+#~ "dalam\n"
+#~ "CDROM atau DVD. Peralatan ini akan membantu Anda memilih perangkat lunak "
+#~ "yang\n"
+#~ "hendak diinstall pada komputer Anda."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Tidak dapat menambahkan media, kesalahan atau kekurangan argumen"
 
 #~ msgid "%s choices"
 #~ msgstr "%s pilihan"

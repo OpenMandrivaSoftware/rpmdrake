@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2003-02-20 13:01+0200\n"
 "Last-Translator: Darius Liepuonis <dariusle@takas.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -800,26 +800,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Redaguoti"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -869,22 +850,22 @@ msgstr "Saugumo atnaujinimai"
 msgid "No description"
 msgstr "Nėra aprašymo"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versija: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Grupe"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr ""
@@ -904,7 +885,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, fuzzy, c-format
 msgid "Files:"
 msgstr "/_Byla"
@@ -1169,7 +1160,12 @@ msgstr "Visos"
 msgid "Upgradable"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Įdiegtas"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, fuzzy, c-format
 msgid "Addable"
 msgstr "Galimi"
@@ -1832,7 +1828,13 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr ""
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr ""
@@ -1905,40 +1907,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Sveiki"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr ""
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2084,7 +2053,13 @@ msgstr "Prašom palaukti.Pašalinami paketai"
 msgid "Please wait, listing base packages..."
 msgstr "Prašom palaukti.Pašalinami paketai"
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Klaida"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Prašom palaukti.Pašalinami paketai"
@@ -2202,7 +2177,20 @@ msgstr "Paketas `%s' negali būti įdiegtas\n"
 msgid "Is it ok to continue?"
 msgstr ""
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Pasirinkite paketus"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Vienas iš šių paketų yra reikalingas."
+msgstr[1] "Vienas iš šių paketų yra reikalingas."
+msgstr[2] "Vienas iš šių paketų yra reikalingas."
+
+#: ../Rpmdrake/pkg.pm:715
 #, fuzzy, c-format
 msgid "Preparing packages installation..."
 msgstr "Ruošiamasi paketo diegimui"
@@ -2242,13 +2230,7 @@ msgstr ""
 msgid "%d installation transactions failed"
 msgstr "%d įdiegimo operacijos nepavyko"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Klaida"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, fuzzy, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Ruošiamasi paketo diegimui"
@@ -2360,12 +2342,15 @@ msgstr "Prašom palaukti.Pašalinami paketai"
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
 msgstr ""
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2396,7 +2381,12 @@ msgstr ""
 msgid "Search results"
 msgstr "Paieškos rezultatai"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, fuzzy, c-format
+msgid "Search results (none)"
+msgstr "Paieškos rezultatai"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Stop"
@@ -2421,12 +2411,7 @@ msgstr "Pažymėtas"
 msgid "Not selected"
 msgstr "Rasti konfliktai"
 
-#: ../rpmdrake:198
-#, fuzzy, c-format
-msgid "Search results (none)"
-msgstr "Paieškos rezultatai"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr ""
@@ -2448,12 +2433,7 @@ msgstr "Archyvavimas"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Įdiegtas"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Neįdiegti"
@@ -2540,12 +2520,7 @@ msgstr "Vaizdas"
 msgid "Filter"
 msgstr "/_Byla"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr ""

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2008-07-23 18:48+0200\n"
 "Last-Translator: Pîrîu Cristian Ionuţ <piriu.cristian@rdslink.ro>\n"
 "Language-Team: Romanian <rtfs-project@lists.sourceforge.net>\n"
@@ -31,7 +31,7 @@ msgstr ""
 "X-Poedit-Language: Romanian\n"
 "X-Poedit-Country: ROMANIA\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -836,36 +836,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Editare"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Se poate continua?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Bun venit la Administratorul mediilor de pachete!\n"
-"\n"
-"Acest utilitar vă a ajuta să configuraţi sursele de pachete cu programe pe "
-"care\n"
-"doriţi să le utilizaţi pe calculatorul dvs. Ele vor fi apoi disponibile "
-"pentru \n"
-"instalarea programelor noi sau actualizărilor."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -919,22 +890,22 @@ msgstr "Buletin securitate"
 msgid "No description"
 msgstr "Nici o descriere"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Detalii:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versiune: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Versiunea instalată curent:"
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Grup"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Arhitectură:"
@@ -954,7 +925,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Mediu:"
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Detalii:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Fişiere:"
@@ -1239,7 +1220,12 @@ msgstr "Toate"
 msgid "Upgradable"
 msgstr "Actualizabile"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Instalat"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Disponibile pentru adăugare"
@@ -1910,7 +1896,13 @@ msgstr "  --no-confirmation     nu se cere confirmare în modul actualizare"
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      nu actualizaţi mediile la pornire"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr "  --no-confirmation     nu se cere confirmare în modul actualizare"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm         nu verificaţi semnăturile pachetelor"
@@ -1991,55 +1983,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Bun venit"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Bun venit la utilitarul de ştergere a programelor!\n"
-"\n"
-"Acest utilitar vă va ajuta să alegeţi programele pe care doriţi \n"
-"să le ştergeţi de pe calculatorul dvs."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Bun venit la %s!\n"
-"\n"
-"Acest utilitar vă va ajuta să alegeţi programele de pe calculatorul dvs pe "
-"care doriţi \n"
-"să le actualizaţi ."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Bun venit în utilitarul de instalare a programelor!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Bun venit la utilitarul de instalare a programelor!\n"
-"\n"
-"Sistemul Mandriva Linux vine cu mai multe mii de pachete de programe pe "
-"CDROM sau DVD.\n"
-"Acest utilitar vă va ajuta să alegeţi programele pe care doriţi \n"
-"să le instalaţi pe calculatorul dvs."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr "Utilitarul de instalare a programelor poate seta mediile sursă."
@@ -2209,7 +2153,13 @@ msgstr "Vă rog să aşteptaţi, se caută pachetele disponibile..."
 msgid "Please wait, listing base packages..."
 msgstr "Vă rog să aşteptaţi, se afişează pachetele..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Eroare"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Vă rog să aşteptaţi, se caută pachetele instalate..."
@@ -2326,7 +2276,20 @@ msgstr "%s de pachete vor fi primiţi."
 msgid "Is it ok to continue?"
 msgstr "Se poate continua?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Pachete globale"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Este necesar unul din următoarele pachete:"
+msgstr[1] "Este necesar unul din următoarele pachete:"
+msgstr[2] "Este necesar unul din următoarele pachete:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Pregătesc pachetele pentru instalare..."
@@ -2366,13 +2329,7 @@ msgstr "Verific semnăturile pachetelor..."
 msgid "%d installation transactions failed"
 msgstr "%d tranzacţii de instalarea eşuate"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Eroare"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Eroare, nu am găsit nici un pachet pt. instalare, regret."
@@ -2490,12 +2447,18 @@ msgstr "Vă rog să aşteptaţi, caut..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr "<url> greşit (pentru directorul local, calea trebuie să fie absolută)"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Nu pot adăuga mediul, argumente greşite sau lipsă"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Se poate continua?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2532,7 +2495,12 @@ msgstr "Mediul `%s' a fost adăugat cu succes."
 msgid "Search results"
 msgstr "Rezultatele căutării"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Rezultatele căutării (nimic)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Opreşte"
@@ -2557,12 +2525,7 @@ msgstr "Selectate"
 msgid "Not selected"
 msgstr "Deselectat"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Rezultatele căutării (nimic)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Selectat: %s / Spaţiu liber pe disc: %s"
@@ -2584,12 +2547,7 @@ msgstr "Arh."
 msgid "Status"
 msgstr "Situaţie"
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Instalat"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Nu este instalat"
@@ -2676,12 +2634,7 @@ msgstr "Vizualizare"
 msgid "Filter"
 msgstr "Filtru"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr "Mod arborescent"
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "în nume"
@@ -3286,6 +3239,68 @@ msgstr "Adăugaţi mediu urpmi"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Informaţii mediu urpmi"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Bun venit la Administratorul mediilor de pachete!\n"
+#~ "\n"
+#~ "Acest utilitar vă a ajuta să configuraţi sursele de pachete cu programe "
+#~ "pe care\n"
+#~ "doriţi să le utilizaţi pe calculatorul dvs. Ele vor fi apoi disponibile "
+#~ "pentru \n"
+#~ "instalarea programelor noi sau actualizărilor."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Bun venit la utilitarul de ştergere a programelor!\n"
+#~ "\n"
+#~ "Acest utilitar vă va ajuta să alegeţi programele pe care doriţi \n"
+#~ "să le ştergeţi de pe calculatorul dvs."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Bun venit la %s!\n"
+#~ "\n"
+#~ "Acest utilitar vă va ajuta să alegeţi programele de pe calculatorul dvs "
+#~ "pe care doriţi \n"
+#~ "să le actualizaţi ."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Bun venit în utilitarul de instalare a programelor!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Bun venit la utilitarul de instalare a programelor!\n"
+#~ "\n"
+#~ "Sistemul Mandriva Linux vine cu mai multe mii de pachete de programe pe "
+#~ "CDROM sau DVD.\n"
+#~ "Acest utilitar vă va ajuta să alegeţi programele pe care doriţi \n"
+#~ "să le instalaţi pe calculatorul dvs."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Nu pot adăuga mediul, argumente greşite sau lipsă"
+
+#~ msgid "Tree Mode"
+#~ msgstr "Mod arborescent"
 
 #~ msgid "Mandriva Linux choices"
 #~ msgstr "Opţiuni Mandriva Linux"

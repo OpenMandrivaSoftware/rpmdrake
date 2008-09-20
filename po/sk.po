@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2005-09-07 17:34+0100\n"
 "Last-Translator: Tibor Pittich <Tibor.Pittich@mandriva.org>\n"
 "Language-Team: Slovak <i18n@mandrake.sk>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -807,34 +807,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Editovať"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Je možné pokračovať?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Vitajte v editore zdrojov pre balíky!\n"
-"\n"
-"Tento nástroj vám pomôže pri nastavení zdrojov pre balíky, ktoré môžete\n"
-"použiť pre váš systém. Tieto balíky budú dostupné pri inštalácii nových\n"
-"balíkov alebo pri vykonávaní aktualizácií."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -887,22 +860,22 @@ msgstr "Bezpečnostné aktualizácie"
 msgid "No description"
 msgstr "Bez popisu"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Verzia: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Aktuálne nainštalovaná verzia:"
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Skupina"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Architektúra:"
@@ -922,7 +895,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Zdroj:"
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Súbory:"
@@ -1202,7 +1185,12 @@ msgstr "Všetko"
 msgid "Upgradable"
 msgstr "Aktualizovateľné"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Inštaluj"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Pridateľné"
@@ -1872,7 +1860,14 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      neaktualizovať toto médium pri spustení"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      nepýtať sa na potvrdenie v režimu aktualizácie"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        nekontrolovať podpisy balíkov"
@@ -1952,55 +1947,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Vitajte"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Vítajte v nástroji pre odstraňovanie softvéru!\n"
-"\n"
-"Tento nástroj vám pomôže si zvoliť softvér ktorý chcete odstrániť\n"
-"z vášho počítača."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Vítajte v %s!\n"
-"\n"
-"Tento nástroj vám pomôže vybrať aktualizácie ktoré chcete nainštalovať do "
-"vášho\n"
-"počítača."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Vitajte v nástroji pre inštaláciu softvéru!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Vítajte v nástroji pre inštaláciu softvéru!\n"
-"\n"
-"Váš Mandriva Linux systém prichádza s niekoľkými tisícami softvérových\n"
-"balíkov na CDROM alebo DVD. Tento nástroj vám pomôže pri výbere a "
-"inštalácii\n"
-"softvéru na váš počítač."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2162,7 +2109,13 @@ msgstr "Prosím čakajte, hľadajú sa dostupné balíky..."
 msgid "Please wait, listing base packages..."
 msgstr "Prosím čakajte, vypisujú sa balíky..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Chyba"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Prosím čakajte, hľadajú sa dostupné balíky..."
@@ -2287,7 +2240,20 @@ msgstr ""
 "\n"
 "Je možné pokračovať?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Balíkovanie"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Jeden z nasledujúcich balíkov je potrebný:"
+msgstr[1] "Jeden z nasledujúcich balíkov je potrebný:"
+msgstr[2] "Jeden z nasledujúcich balíkov je potrebný:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Príprava balíkov na inštaláciu..."
@@ -2327,13 +2293,7 @@ msgstr "Overovanie podpisov balíkov..."
 msgid "%d installation transactions failed"
 msgstr "%d inštalačná transakcia zlyhala"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Chyba"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Neobnoviteľná chyba: neboli nájdené žiadne balíky pre inštaláciu."
@@ -2449,12 +2409,18 @@ msgstr "Prosím čakajte, vyhľadávam..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Nie je možné pridať zdroj, chybné alebo chýbajúce argumenty"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Je možné pokračovať?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2491,7 +2457,12 @@ msgstr "Úspešne pridaný zdroj `%s'."
 msgid "Search results"
 msgstr "Výsledky vyhľadávania"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Výsledky vyhľadávania (žiadne)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Stop"
@@ -2516,12 +2487,7 @@ msgstr "Vybrané"
 msgid "Not selected"
 msgstr "Neoznačené"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Výsledky vyhľadávania (žiadne)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Vybrané: %s / Dostupné: %s"
@@ -2543,12 +2509,7 @@ msgstr "Archivovanie"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "Inštaluj"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Inštaluj"
@@ -2635,12 +2596,7 @@ msgstr "Zobraziť"
 msgid "Filter"
 msgstr "/_Súbor"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "v menách"
@@ -3245,6 +3201,63 @@ msgstr "/_Akutalizácia média"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Aktualizácia média"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Vitajte v editore zdrojov pre balíky!\n"
+#~ "\n"
+#~ "Tento nástroj vám pomôže pri nastavení zdrojov pre balíky, ktoré môžete\n"
+#~ "použiť pre váš systém. Tieto balíky budú dostupné pri inštalácii nových\n"
+#~ "balíkov alebo pri vykonávaní aktualizácií."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Vítajte v nástroji pre odstraňovanie softvéru!\n"
+#~ "\n"
+#~ "Tento nástroj vám pomôže si zvoliť softvér ktorý chcete odstrániť\n"
+#~ "z vášho počítača."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Vítajte v %s!\n"
+#~ "\n"
+#~ "Tento nástroj vám pomôže vybrať aktualizácie ktoré chcete nainštalovať do "
+#~ "vášho\n"
+#~ "počítača."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Vitajte v nástroji pre inštaláciu softvéru!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Vítajte v nástroji pre inštaláciu softvéru!\n"
+#~ "\n"
+#~ "Váš Mandriva Linux systém prichádza s niekoľkými tisícami softvérových\n"
+#~ "balíkov na CDROM alebo DVD. Tento nástroj vám pomôže pri výbere a "
+#~ "inštalácii\n"
+#~ "softvéru na váš počítač."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Nie je možné pridať zdroj, chybné alebo chýbajúce argumenty"
 
 #~ msgid "%s choices"
 #~ msgstr "%s voľby"

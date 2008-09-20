@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2008-04-24 17:13+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
 "Language-Team: Euskara <eu@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -825,35 +825,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Editatu"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Jarraitu nahi duzu?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Ongi etorri software-euskarrien kudeatzailera!\n"
-"\n"
-"Tresna hori lagungarria izango zaizu ordenagailuan erabili nahi dituzun\n"
-"euskarrien paketeak konfiguratzeko. Orduan erabilgarri egongo dira software "
-"berriaren paketea instalatzeko\n"
-"edo eguneratzeak egiteko."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -907,22 +879,22 @@ msgstr "Segurtasun aholkularitza"
 msgid "No description"
 msgstr "Azalpenik ez"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Xehetasunak:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Bertsioa: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Unean instalatutako bertsioa: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Elkartu"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Arkitektura: "
@@ -942,7 +914,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Euskarria: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URLa:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Xehetasunak:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Fitxategiak:"
@@ -1225,7 +1207,12 @@ msgstr "Denak"
 msgid "Upgradable"
 msgstr "Berritu daitekeena"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Instalatuta"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Gehi daitekeena"
@@ -1898,7 +1885,15 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      ez eguneratu euskarria hasterakoan"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      ez galdetu lehenengo baieztapen galdera eguneraketa "
+"moduan"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        ez egiaztatu paketeen sinadurak"
@@ -1977,53 +1972,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Ongi etorri"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Ongi etorri softwarea kentzeko tresnara!\n"
-"\n"
-"Tresna hau lagungarria izango zaizu ordenagailutik zein software kendu\n"
-"nahi duzun aukeratzeko."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Ongi etorri %s-ra!\n"
-"\n"
-"Tresna honek zure konputagailuan instalatu nahi dituzun eguneraketak\n"
-"aukeratzen lagunduko dizu."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Ongi etorri software instalazio tresnara!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Ongi etorri softwarea instalatzeko tresnara!\n"
-"\n"
-"Zure Mandriva Linux sistemak milaka software-pakete ditu\n"
-"CDROM edo DVDan. Tresna hau lagungarria izango zaizu ordenagailuan\n"
-"instalatu nahi duzun softwarea aukeratzeko."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr "Software instalaketa tresnak euskarri jatorriak ezarri ditzake."
@@ -2192,7 +2141,13 @@ msgstr "Itxaron, pakete erabilgarriak bilatzen..."
 msgid "Please wait, listing base packages..."
 msgstr "Itxoin mesedez, oinarrizko paketeak zerrendatzen..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Akatsa"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Itxaron mesedez, instalatutako paketeak bilatzen..."
@@ -2305,7 +2260,19 @@ msgstr "paketeen %s eskuratuko dira."
 msgid "Is it ok to continue?"
 msgstr "Jarraitu nahi duzu?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Meta paketeak"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Ondoko paketea behar da:"
+msgstr[1] "Ondoko paketea behar da:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Paketeen instalazioa prestatzen..."
@@ -2345,13 +2312,7 @@ msgstr "Paketeen sinadurak egiaztatzen..."
 msgid "%d installation transactions failed"
 msgstr "%d instaketa eragiketek huts egin dute"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Akatsa"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Akats konponezina: ez da instalatzeko paketerik aurkitu."
@@ -2470,12 +2431,18 @@ msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 "<url> okerra (bertako direktorioentzako, bidea absolutua izan behar da)"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Ezin da euskarririk gehitu, argumentuak falta dira edo okerrekoak dira"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Jarraitu nahi duzu?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2512,7 +2479,12 @@ msgstr "%s euskarria behar bezala gehitu da."
 msgid "Search results"
 msgstr "Bilaketaren emaitzak"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Bilaketaren emaitzak (bat ere ez)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Gelditu"
@@ -2537,12 +2509,7 @@ msgstr "Hautatuta"
 msgid "Not selected"
 msgstr "Ez dago hautatuta"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Bilaketaren emaitzak (bat ere ez)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Hautatuta: %s / Leku librea diskoan: %s"
@@ -2564,12 +2531,7 @@ msgstr "Arkit."
 msgid "Status"
 msgstr "Egoera"
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Instalatuta"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Instalatu gabe"
@@ -2656,12 +2618,7 @@ msgstr "Ikusi"
 msgid "Filter"
 msgstr "Iragazi"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr "Zuhaitz modua"
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "izenetan"
@@ -3266,3 +3223,63 @@ msgstr "Urpmi euskarria erantsi"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Urpmi euskarriaren info"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Ongi etorri software-euskarrien kudeatzailera!\n"
+#~ "\n"
+#~ "Tresna hori lagungarria izango zaizu ordenagailuan erabili nahi dituzun\n"
+#~ "euskarrien paketeak konfiguratzeko. Orduan erabilgarri egongo dira "
+#~ "software berriaren paketea instalatzeko\n"
+#~ "edo eguneratzeak egiteko."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Ongi etorri softwarea kentzeko tresnara!\n"
+#~ "\n"
+#~ "Tresna hau lagungarria izango zaizu ordenagailutik zein software kendu\n"
+#~ "nahi duzun aukeratzeko."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Ongi etorri %s-ra!\n"
+#~ "\n"
+#~ "Tresna honek zure konputagailuan instalatu nahi dituzun eguneraketak\n"
+#~ "aukeratzen lagunduko dizu."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Ongi etorri software instalazio tresnara!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Ongi etorri softwarea instalatzeko tresnara!\n"
+#~ "\n"
+#~ "Zure Mandriva Linux sistemak milaka software-pakete ditu\n"
+#~ "CDROM edo DVDan. Tresna hau lagungarria izango zaizu ordenagailuan\n"
+#~ "instalatu nahi duzun softwarea aukeratzeko."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr ""
+#~ "Ezin da euskarririk gehitu, argumentuak falta dira edo okerrekoak dira"
+
+#~ msgid "Tree Mode"
+#~ msgstr "Zuhaitz modua"

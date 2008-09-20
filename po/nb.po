@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2007-12-16 05:23+0100\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: dansk <dansk@dansk-gruppen.dk>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "X-Generator: KBabel 1.10.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -823,35 +823,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Rediger"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Er det greit å fortsette?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Velkommen til håndtereren for progamvaremedier!\n"
-"\n"
-"Dette verktøyet vil hjelpe deg å sette opp medier for pakker du ønsker å "
-"bruke\n"
-"på maskinen din. Du vil da få tilgang til nye programvarepakker\n"
-"eller å utføre oppdateringer."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -905,22 +877,22 @@ msgstr "Sikkerhetsvarsel"
 msgid "No description"
 msgstr "Ingen beskrivelse"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr "Detaljer:"
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Versjon: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Nåværende installerte versjon: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Gruppe"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Arkiktektur: "
@@ -940,7 +912,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Medium: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr "Detaljer:"
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Filer:"
@@ -1226,7 +1208,12 @@ msgstr "Alle"
 msgid "Upgradable"
 msgstr "Oppgraderbar"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Installert"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Kan legges til"
@@ -1899,7 +1886,15 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      – Ikke oppdater medie under oppstart."
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      – Ikke spørr etter første bekreftelsesspørsmål i "
+"oppdateringsmodus."
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        – Ikke kontroller pakkesignaturer."
@@ -1979,53 +1974,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Velkommen"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Velkommen til verktøyet for fjerning av programvare!\n"
-"\n"
-"Dette verktøyet vil hjelpe deg å velge hvilken programvare du skal fjerne\n"
-"fra maskinen din."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Velkommen til %s!\n"
-"\n"
-"Dette verktøyet vil hjelpe deg å velge oppdateringene du skal installere\n"
-"på maskinen din."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Velkommen til installasjonsprogrammet for programvarepakker!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Velkommen til verktøyet for installering av programvare!\n"
-"\n"
-"Mandriva Linux-systemet ditt kommer med flere tusen programvarepakker\n"
-"på CDROM eller DVD. Dette verktøyet hjelper deg med å velge hvilken\n"
-"programvare du ønsker å installere på maskinen din."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr "Installasjonprogrammet kan sette opp mediekilder."
@@ -2187,7 +2136,13 @@ msgstr "Finner tilgjengelige pakker..."
 msgid "Please wait, listing base packages..."
 msgstr "Lager liste over hovedpakker. Vent litt …"
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Feil"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Ser etter installerte pakker. Vent litt …"
@@ -2300,7 +2255,19 @@ msgstr "Det ble frigjort %s diskplass."
 msgid "Is it ok to continue?"
 msgstr "Vil du fortsette?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Pakke"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Du trenger den følgende pakken:"
+msgstr[1] "Du trenger den følgende pakken:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Forbereder pakker for installasjon …"
@@ -2340,13 +2307,7 @@ msgstr "Sjekker pakkersignaturer …"
 msgid "%d installation transactions failed"
 msgstr "%d mislykket installasjonstransjaksjon"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Feil"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Uopprettelig feil: ingen pakke ble funnet for installasjon, beklager."
@@ -2464,12 +2425,18 @@ msgstr "Søker..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr "Ugyldig <adresse> (for lokale mapper må adressa være absolutt)"
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Klarte ikke å legge til medium, feil eller manglende argumenter"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Er det greit å fortsette?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2506,7 +2473,12 @@ msgstr "Medium «%s» vellykket lagt til."
 msgid "Search results"
 msgstr "Søkeresultater"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Søkeresultater (ingen)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Stopp"
@@ -2531,12 +2503,7 @@ msgstr "Valgte"
 msgid "Not selected"
 msgstr "Ikke valgt"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Søkeresultater (ingen)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Valgt: %s / Ledig diskplass: %s"
@@ -2558,12 +2525,7 @@ msgstr "Arkitektur"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Installert"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Ikke installert"
@@ -2650,12 +2612,7 @@ msgstr "Vis"
 msgid "Filter"
 msgstr "/_Fil"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "i navn"
@@ -3264,6 +3221,63 @@ msgstr "Legg til urpmi medie"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Info om urpmi medie"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Velkommen til håndtereren for progamvaremedier!\n"
+#~ "\n"
+#~ "Dette verktøyet vil hjelpe deg å sette opp medier for pakker du ønsker å "
+#~ "bruke\n"
+#~ "på maskinen din. Du vil da få tilgang til nye programvarepakker\n"
+#~ "eller å utføre oppdateringer."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Velkommen til verktøyet for fjerning av programvare!\n"
+#~ "\n"
+#~ "Dette verktøyet vil hjelpe deg å velge hvilken programvare du skal "
+#~ "fjerne\n"
+#~ "fra maskinen din."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Velkommen til %s!\n"
+#~ "\n"
+#~ "Dette verktøyet vil hjelpe deg å velge oppdateringene du skal installere\n"
+#~ "på maskinen din."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Velkommen til installasjonsprogrammet for programvarepakker!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Velkommen til verktøyet for installering av programvare!\n"
+#~ "\n"
+#~ "Mandriva Linux-systemet ditt kommer med flere tusen programvarepakker\n"
+#~ "på CDROM eller DVD. Dette verktøyet hjelper deg med å velge hvilken\n"
+#~ "programvare du ønsker å installere på maskinen din."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Klarte ikke å legge til medium, feil eller manglende argumenter"
 
 #~ msgid "%s choices"
 #~ msgstr "%s valg"

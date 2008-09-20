@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2002-11-27 21:43+0700\n"
 "Last-Translator: Varokas Panusuwan <varokasp@hotmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: KBabel 0.9.6\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -797,33 +797,7 @@ msgstr ""
 msgid "Edit"
 msgstr "ปรับแต่ง"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"คุณต้องการจะทำต่อหรือไม่?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, fuzzy, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"ยินดีต้อนรับสู่ package source editor!\n"
-"\n"
-"เครื่องมือนี้จะช่วยคุณในการปรับแต่ง package sources ที่คุณจะใช้ในเครื่องคอมพิวเตอร์\n"
-"ของคุณ เพื่อที่เพกเกจเหล่านี้จะได้พร้อมสำหรับการ install หรืออัพเดทต่อไป"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -873,22 +847,22 @@ msgstr "อัพเดทระบบรักษาความปลอดภ
 msgid "No description"
 msgstr "ไม่มีคำอธิบายรายละเอียด"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "เวอร์ชัน:"
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "เวอร์ชันที่กำลังใช้อยู่:"
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "กลุ่ม"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr ""
@@ -908,7 +882,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "๊URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "แฟ้ม:"
@@ -1181,7 +1165,12 @@ msgstr "ทั้งหมด"
 msgid "Upgradable"
 msgstr "อัพเกรดได้"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Install"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "เพิ่มได้"
@@ -1844,7 +1833,13 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --update       - ใช้เพื่ออัพเดตมีเดีย\n"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr ""
@@ -1917,51 +1912,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "ยินดีต้อนรับ"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"ยินดีต้อนรับสู่ software removal tool!\n"
-"\n"
-"โปรแกรมนี้จะช่วยคุณในการเลือกโปรแกรมที่คุณต้องการลบออกจากเครื่อง"
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"ยินดีต้อนรับสู่ %s!\n"
-"\n"
-"โปรแกรมนี้จะช่วยคุณในการเลือกตัวอัพเดทที่คุณต้องการ install ลงในเครื่อง"
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr ""
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"ยินดีต้อนรับสู่ software installation tool!\n"
-"\n"
-"Mandriva Linux ของคุณมาพร้อมกับเพกเกจโปรแกรทเป็นพลายพันตัว\n"
-"บน CDROM หรือ DVD  โปรแกรมนี้จะช่วยคุณเลือกว่าโปรแกรทไหนที่คุณต้องการ\n"
-"จะลงบนเครื่อง"
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2117,7 +2068,13 @@ msgstr "กำลังหาเพกเกจที่มีอยู่, ก�
 msgid "Please wait, listing base packages..."
 msgstr "กำลังทำรายชื่อเพกเกจ, กรุณารอสักครู่"
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "ผิดพลาด"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "กำลังหาเพกเกจที่มีอยู่, กรุณารอสักครู่..."
@@ -2237,7 +2194,18 @@ msgstr ""
 "\n"
 "คุณต้องการจะทำต่อหรือไม่?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "จัดการแพ็คเกจ"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "ต้องการแพกเกจหนึ่งในรายชื่อนี้:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, fuzzy, c-format
 msgid "Preparing packages installation..."
 msgstr "การ install package"
@@ -2279,13 +2247,7 @@ msgstr ""
 msgid "%d installation transactions failed"
 msgstr "การติดตั้งไม่สำเร็จ"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "ผิดพลาด"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr ""
@@ -2401,12 +2363,18 @@ msgstr "กำลังค้นหา กรุณารอสักครู�
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
 msgstr ""
+"%s\n"
+"\n"
+"คุณต้องการจะทำต่อหรือไม่?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2437,7 +2405,12 @@ msgstr ""
 msgid "Search results"
 msgstr "ผลการค้นหา"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "ผลการค้นหา (ไม่พบ)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "หยุด"
@@ -2462,12 +2435,7 @@ msgstr "ถูกเลือก"
 msgid "Not selected"
 msgstr "ไม่ได้ถูกเลือก"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "ผลการค้นหา (ไม่พบ)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "เลือกไป: %s / พื้นที่ดิสก์ที่เหลือ: %s"
@@ -2489,12 +2457,7 @@ msgstr "Archiving"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "Install"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Install"
@@ -2581,12 +2544,7 @@ msgstr "Video"
 msgid "Filter"
 msgstr "/_ไฟล์"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "ในชื่อ"
@@ -3167,6 +3125,53 @@ msgstr "อัพเดท source(s)"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "อัพเดท source(s)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "ยินดีต้อนรับสู่ package source editor!\n"
+#~ "\n"
+#~ "เครื่องมือนี้จะช่วยคุณในการปรับแต่ง package sources ที่คุณจะใช้ในเครื่องคอมพิวเตอร์\n"
+#~ "ของคุณ เพื่อที่เพกเกจเหล่านี้จะได้พร้อมสำหรับการ install หรืออัพเดทต่อไป"
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "ยินดีต้อนรับสู่ software removal tool!\n"
+#~ "\n"
+#~ "โปรแกรมนี้จะช่วยคุณในการเลือกโปรแกรมที่คุณต้องการลบออกจากเครื่อง"
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "ยินดีต้อนรับสู่ %s!\n"
+#~ "\n"
+#~ "โปรแกรมนี้จะช่วยคุณในการเลือกตัวอัพเดทที่คุณต้องการ install ลงในเครื่อง"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "ยินดีต้อนรับสู่ software installation tool!\n"
+#~ "\n"
+#~ "Mandriva Linux ของคุณมาพร้อมกับเพกเกจโปรแกรทเป็นพลายพันตัว\n"
+#~ "บน CDROM หรือ DVD  โปรแกรมนี้จะช่วยคุณเลือกว่าโปรแกรทไหนที่คุณต้องการ\n"
+#~ "จะลงบนเครื่อง"
 
 #~ msgid "Mandriva Linux choices"
 #~ msgstr "Mandriva Linux choices"

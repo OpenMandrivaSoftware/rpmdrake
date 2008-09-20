@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2004-02-01 19:31+0100\n"
 "Last-Translator: Miodrag Zivkovic <miodragz@linuxo.org\n"
 "Language-Team: serbian <www.linuxo.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -815,35 +815,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Измени"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Да ли је у реду да наставим?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Добродошли у Менаџер за Софтвер!\n"
-"\n"
-"Овај алат вам може помоћи да подесите медиј са пакетима које желите да "
-"користите\n"
-"на вашем рачунару. Након тога ће бити спремни за инсталацију нових пакета\n"
-"или за надоградњу старих."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -893,22 +865,22 @@ msgstr "Сигурносни савети"
 msgid "No description"
 msgstr "Без описа"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Верзија: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Тренутно инсталирана верзија: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Група"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Архитектура"
@@ -928,7 +900,17 @@ msgstr "%s KB"
 msgid "Medium: "
 msgstr "Медиј: "
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Фајлови:"
@@ -1212,7 +1194,12 @@ msgstr "Све"
 msgid "Upgradable"
 msgstr "Могу се надоградити"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, c-format
+msgid "Installed"
+msgstr "Инсталирано"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Могу се додати"
@@ -1883,7 +1870,15 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update      не надограђуј медиј прилим стартовања"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      не постављај прво питање за потврђивање у моду за "
+"надоградњу"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm        не верификуј потписе пакета"
@@ -1961,53 +1956,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Добродошли"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Добродошли у програм за уклањање софтвера!\n"
-"\n"
-"Овај алат вам може помоћи да изаберете софтвер желите да уклоните са\n"
-"вашег рачунара."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"Добродошли у %s!\n"
-"\n"
-"Овај алат вам помаже да изабете надоградње које желите да инсталирате на\n"
-"ваш рачунар."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Добродошли у алат за инсталацију софтвера!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Добродошли у алат за инсталацију софтвера!\n"
-"\n"
-"Ваш Мандрива Линукс оперативни систем је дошао са неколико хиљада пакета\n"
-"са програмима, на CD-у или DVD-у. Овај алат ће Вам помоћи да изаберете\n"
-"пакете које желите да инсталирате на Ваш рачунар."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2173,7 +2122,13 @@ msgstr "Молим Вас сачекајте, проналазим доступ�
 msgid "Please wait, listing base packages..."
 msgstr "Молим Вас сачекајте, прелиствам базу пакета"
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Грешка"
+
+#: ../Rpmdrake/pkg.pm:401
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Молим Вас сачекајте, проналазим већ инсталиране пакете..."
@@ -2298,7 +2253,20 @@ msgstr ""
 "\n"
 "Да ли је У реду да наставим?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Уклони %d пакете"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Један од следећих пакета је потребан:"
+msgstr[1] "Један од следећих пакета је потребан:"
+msgstr[2] "Један од следећих пакета је потребан:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Припремам инсталацију пакета"
@@ -2338,13 +2306,7 @@ msgstr "Провера потписа на пакетима..."
 msgid "%d installation transactions failed"
 msgstr "%d инстлациона трансакција није успела"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Грешка"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Непоправљива грешка: Жао ми је јер није пронађен пакет за инсталацију"
@@ -2461,12 +2423,18 @@ msgstr "Молим Вас сачекајте, тражим..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Немогуће је убацити медиј,аргументи су погрешни или недостају "
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Да ли је у реду да наставим?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2500,7 +2468,12 @@ msgstr "Успешно додат медиј `%s'"
 msgid "Search results"
 msgstr "Резултати претраге"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Резултат претраге (нема)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Стоп"
@@ -2525,12 +2498,7 @@ msgstr "Изабрани"
 msgid "Not selected"
 msgstr "Нису изабрани"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Резултат претраге (нема)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Изабрано: %s / Слободан простор на диску: %s"
@@ -2552,12 +2520,7 @@ msgstr "Архивирање"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, c-format
-msgid "Installed"
-msgstr "Инсталирано"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, c-format
 msgid "Not installed"
 msgstr "Није инсталирано"
@@ -2644,12 +2607,7 @@ msgstr "Преглед"
 msgid "Filter"
 msgstr "/_Фајл"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "у именима"
@@ -3258,6 +3216,63 @@ msgstr "/_Надоградња медија"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Надогради медиј"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Добродошли у Менаџер за Софтвер!\n"
+#~ "\n"
+#~ "Овај алат вам може помоћи да подесите медиј са пакетима које желите да "
+#~ "користите\n"
+#~ "на вашем рачунару. Након тога ће бити спремни за инсталацију нових "
+#~ "пакета\n"
+#~ "или за надоградњу старих."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Добродошли у програм за уклањање софтвера!\n"
+#~ "\n"
+#~ "Овај алат вам може помоћи да изаберете софтвер желите да уклоните са\n"
+#~ "вашег рачунара."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "Добродошли у %s!\n"
+#~ "\n"
+#~ "Овај алат вам помаже да изабете надоградње које желите да инсталирате на\n"
+#~ "ваш рачунар."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Добродошли у алат за инсталацију софтвера!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Добродошли у алат за инсталацију софтвера!\n"
+#~ "\n"
+#~ "Ваш Мандрива Линукс оперативни систем је дошао са неколико хиљада пакета\n"
+#~ "са програмима, на CD-у или DVD-у. Овај алат ће Вам помоћи да изаберете\n"
+#~ "пакете које желите да инсталирате на Ваш рачунар."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Немогуће је убацити медиј,аргументи су погрешни или недостају "
 
 #~ msgid "%s choices"
 #~ msgstr "%s избори"

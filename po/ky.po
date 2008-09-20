@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ky\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-01 22:05+0200\n"
+"POT-Creation-Date: 2008-09-20 18:52+0200\n"
 "PO-Revision-Date: 2005-07-15 12:33+0000\n"
 "Last-Translator: Timur Jamakeev <ztimur@mail..ru>\n"
 "Language-Team: Kyrgyz\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: ../MandrivaUpdate:86 ../Rpmdrake/gui.pm:793
+#: ../MandrivaUpdate:104 ../Rpmdrake/gui.pm:858
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -810,35 +810,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Оңдоо"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1134 ../Rpmdrake/init.pm:156
-#: ../gurpmi.addmedia:103
-#, c-format
-msgid ""
-"%s\n"
-"\n"
-"Is it ok to continue?"
-msgstr ""
-"%s\n"
-"\n"
-"Улантууга даярсызбы?"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1137
-#, c-format
-msgid ""
-"Welcome to the Software Media Manager!\n"
-"\n"
-"This tool will help you configure the packages media you wish to use on\n"
-"your computer. They will then be available to install new software package\n"
-"or to perform updates."
-msgstr ""
-"Программалар Булагы Менеджерине кош келиңиз!\n"
-"\n"
-"Бул курал өзүңүздүн компьютерге орноткуңуз келген пакеттердин\n"
-"булагын калыптандырууга жардам берет. Андан соң ал жаңы\n"
-"программалардын пакеттерин орнотууга же жаңылоону ишке\n"
-"ашырууга даяр болот."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:1154
+#: ../Rpmdrake/edit_urpm_sources.pm:1142
 #, c-format
 msgid ""
 "Packages database is locked. Please close other applications\n"
@@ -893,22 +865,22 @@ msgstr "Коопсуздук боюнча жаңылоо"
 msgid "No description"
 msgstr "Баяндалбады"
 
-#: ../Rpmdrake/gui.pm:140
-#, c-format
-msgid "Details:"
-msgstr ""
-
-#: ../Rpmdrake/gui.pm:143 ../Rpmdrake/gui.pm:192
+#: ../Rpmdrake/gui.pm:169 ../Rpmdrake/gui.pm:236
 #, c-format
 msgid "Version: "
 msgstr "Версиясы: "
 
-#: ../Rpmdrake/gui.pm:146 ../Rpmdrake/gui.pm:187
+#: ../Rpmdrake/gui.pm:172 ../Rpmdrake/gui.pm:231
 #, c-format
 msgid "Currently installed version: "
 msgstr "Учурдагы орнотулган версиясы: "
 
-#: ../Rpmdrake/gui.pm:149 ../Rpmdrake/gui.pm:193
+#: ../Rpmdrake/gui.pm:175
+#, fuzzy, c-format
+msgid "Group: "
+msgstr "Группа"
+
+#: ../Rpmdrake/gui.pm:176 ../Rpmdrake/gui.pm:237
 #, c-format
 msgid "Architecture: "
 msgstr "Архитектурасы:"
@@ -928,7 +900,17 @@ msgstr "%s Кб"
 msgid "Medium: "
 msgstr "Булак:"
 
-#: ../Rpmdrake/gui.pm:157
+#: ../Rpmdrake/gui.pm:189
+#, fuzzy, c-format
+msgid "URL: "
+msgstr "URL:"
+
+#: ../Rpmdrake/gui.pm:197
+#, c-format
+msgid "Details:"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:201
 #, c-format
 msgid "Files:"
 msgstr "Файлдар:"
@@ -1215,7 +1197,12 @@ msgstr "Бардыгы"
 msgid "Upgradable"
 msgstr "Жаңыртса болот"
 
-#: ../Rpmdrake/gui.pm:825 ../rpmdrake:187
+#: ../Rpmdrake/gui.pm:894 ../rpmdrake:355
+#, fuzzy, c-format
+msgid "Installed"
+msgstr "Орнотуу"
+
+#: ../Rpmdrake/gui.pm:895 ../rpmdrake:193
 #, c-format
 msgid "Addable"
 msgstr "Кошсо болот"
@@ -1885,7 +1872,14 @@ msgstr ""
 msgid "  --no-media-update      don't update media at startup"
 msgstr "  --no-media-update     башталышта булакты жаңылабоо"
 
-#: ../Rpmdrake/init.pm:57
+#: ../Rpmdrake/init.pm:58
+#, fuzzy, c-format
+msgid ""
+"  --no-splash            don't ask first confirmation question in update mode"
+msgstr ""
+"  --no-confirmation      жаңылоо ыкмасында биринчи тактоо суроосун сурабайт"
+
+#: ../Rpmdrake/init.pm:59
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
 msgstr "  --no-verify-rpm       пакет сигнатурасын текшербөө"
@@ -1963,53 +1957,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Кош келиңиз"
 
-#: ../Rpmdrake/init.pm:160
-#, c-format
-msgid ""
-"Welcome to the software removal tool!\n"
-"\n"
-"This tool will help you choose which software you want to remove from\n"
-"your computer."
-msgstr ""
-"Программаны алып салуу куралына кош келиңиз!\n"
-"\n"
-"Бул курал компьютериңизден сиз тандаган программаны\n"
-"алып салууга жардам берет."
-
-#: ../Rpmdrake/init.pm:165
-#, c-format
-msgid ""
-"Welcome to %s!\n"
-"\n"
-"This tool will help you choose the updates you want to install on your\n"
-"computer."
-msgstr ""
-"%s'ке кош келиңиз!\n"
-"\n"
-"Бул курал компьютериңизге сиз тандаган программанын\n"
-"жаңылоосун орнотууга жардам берет."
-
-#: ../Rpmdrake/init.pm:170
-#, c-format
-msgid "Welcome to the software installation tool!"
-msgstr "Программалык жабдуунун жүктөө куралына кош келиңиз!"
-
-#: ../Rpmdrake/init.pm:171
-#, c-format
-msgid ""
-"Welcome to the software installation tool!\n"
-"\n"
-"Your Mandriva Linux system comes with several thousands of software\n"
-"packages on CDROM or DVD. This tool will help you choose which software\n"
-"you want to install on your computer."
-msgstr ""
-"Программа орнотуу куралына кош келиңиз!\n"
-"\n"
-"Сиздин Mandriva Linux системаңыз CDROM же DVD аркылуу бир нече\n"
-"миң программалык пакеттер менен кошо келет. Бул курал компьютериңизге\n"
-"сиз тандаган программаларды орнотууга жардам берет."
-
-#: ../Rpmdrake/init.pm:182
+#: ../Rpmdrake/init.pm:166
 #, c-format
 msgid "The software installation tool can set up media sources."
 msgstr ""
@@ -2173,7 +2121,13 @@ msgstr "Күтө туруңуз, мүмкүн болгон пакеттер из
 msgid "Please wait, listing base packages..."
 msgstr "Күтө туруңуз, пакеттердин тизмеси түзүлүүдө..."
 
-#: ../Rpmdrake/pkg.pm:371
+#: ../Rpmdrake/pkg.pm:393 ../Rpmdrake/pkg.pm:810 ../Rpmdrake/pkg.pm:833
+#: ../rpmdrake.pm:770 ../rpmdrake.pm:857 ../rpmdrake.pm:881
+#, c-format
+msgid "Error"
+msgstr "Жаңылыштык"
+
+#: ../Rpmdrake/pkg.pm:401
 #, fuzzy, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Күтө туруңуз, мүмкүн болгон пакеттер изделүүдө..."
@@ -2297,7 +2251,19 @@ msgstr ""
 "\n"
 "Улантууга даярсызбы?"
 
-#: ../Rpmdrake/pkg.pm:657
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:868
+#, fuzzy, c-format
+msgid "Orphan packages"
+msgstr "Пакеттер"
+
+#: ../Rpmdrake/pkg.pm:701
+#, fuzzy, c-format
+msgid "The following orphan package will be removed."
+msgid_plural "The following orphan packages will be removed."
+msgstr[0] "Төмөнкү пакеттердин бири талап кылынат:"
+msgstr[1] "Төмөнкү пакеттердин бири талап кылынат:"
+
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Пакеттерди орнотуу үчүн даярдануу..."
@@ -2337,13 +2303,7 @@ msgstr "Пакеттердин сигнатуралары текшерилүүд
 msgid "%d installation transactions failed"
 msgstr "%d орнотуу транзакциялары ишке ашпады"
 
-#: ../Rpmdrake/pkg.pm:746 ../Rpmdrake/pkg.pm:769 ../rpmdrake.pm:746
-#: ../rpmdrake.pm:833 ../rpmdrake.pm:857
-#, c-format
-msgid "Error"
-msgstr "Жаңылыштык"
-
-#: ../Rpmdrake/pkg.pm:747
+#: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Оңдолбос ката: тилекке каршы, орнотууга пакет табылбады."
@@ -2459,12 +2419,18 @@ msgstr "Күтө туруңуз, изделүүдө..."
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
 
-#: ../gurpmi.addmedia:93
+#: ../gurpmi.addmedia:113
 #, c-format
-msgid "Unable to add medium, wrong or missing arguments"
-msgstr "Булакты кошууга болбоду, аргументтер натуура же унутулган"
+msgid ""
+"%s\n"
+"\n"
+"Is it ok to continue?"
+msgstr ""
+"%s\n"
+"\n"
+"Улантууга даярсызбы?"
 
-#: ../gurpmi.addmedia:107
+#: ../gurpmi.addmedia:117
 #, fuzzy, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2501,7 +2467,12 @@ msgstr "`%s' булагы ийгиликтүү кошулду."
 msgid "Search results"
 msgstr "Издөө жыйынтыктары"
 
-#: ../rpmdrake:98
+#: ../rpmdrake:67
+#, c-format
+msgid "Search results (none)"
+msgstr "Издөө жыйынтыктары (жок)"
+
+#: ../rpmdrake:100
 #, c-format
 msgid "Stop"
 msgstr "Стоп"
@@ -2526,12 +2497,7 @@ msgstr "Тандалган"
 msgid "Not selected"
 msgstr "Тандалган эмес"
 
-#: ../rpmdrake:198
-#, c-format
-msgid "Search results (none)"
-msgstr "Издөө жыйынтыктары (жок)"
-
-#: ../rpmdrake:219
+#: ../rpmdrake:231
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Тандалганы: %s / Бош диск көлөмү: %s"
@@ -2553,12 +2519,7 @@ msgstr "Архивдөө"
 msgid "Status"
 msgstr ""
 
-#: ../rpmdrake:343
-#, fuzzy, c-format
-msgid "Installed"
-msgstr "Орнотуу"
-
-#: ../rpmdrake:344
+#: ../rpmdrake:356
 #, fuzzy, c-format
 msgid "Not installed"
 msgstr "Орнотуу"
@@ -2646,12 +2607,7 @@ msgstr "Видео"
 msgid "Filter"
 msgstr "/_Файл"
 
-#: ../rpmdrake:445
-#, c-format
-msgid "Tree Mode"
-msgstr ""
-
-#: ../rpmdrake:468
+#: ../rpmdrake:477
 #, c-format
 msgid "in names"
 msgstr "аттарында"
@@ -3258,6 +3214,62 @@ msgstr "/_Булакты жаңылоо"
 #, fuzzy
 msgid "Urpmi medium info"
 msgstr "Булакты жаңылоо"
+
+#~ msgid ""
+#~ "Welcome to the Software Media Manager!\n"
+#~ "\n"
+#~ "This tool will help you configure the packages media you wish to use on\n"
+#~ "your computer. They will then be available to install new software "
+#~ "package\n"
+#~ "or to perform updates."
+#~ msgstr ""
+#~ "Программалар Булагы Менеджерине кош келиңиз!\n"
+#~ "\n"
+#~ "Бул курал өзүңүздүн компьютерге орноткуңуз келген пакеттердин\n"
+#~ "булагын калыптандырууга жардам берет. Андан соң ал жаңы\n"
+#~ "программалардын пакеттерин орнотууга же жаңылоону ишке\n"
+#~ "ашырууга даяр болот."
+
+#~ msgid ""
+#~ "Welcome to the software removal tool!\n"
+#~ "\n"
+#~ "This tool will help you choose which software you want to remove from\n"
+#~ "your computer."
+#~ msgstr ""
+#~ "Программаны алып салуу куралына кош келиңиз!\n"
+#~ "\n"
+#~ "Бул курал компьютериңизден сиз тандаган программаны\n"
+#~ "алып салууга жардам берет."
+
+#~ msgid ""
+#~ "Welcome to %s!\n"
+#~ "\n"
+#~ "This tool will help you choose the updates you want to install on your\n"
+#~ "computer."
+#~ msgstr ""
+#~ "%s'ке кош келиңиз!\n"
+#~ "\n"
+#~ "Бул курал компьютериңизге сиз тандаган программанын\n"
+#~ "жаңылоосун орнотууга жардам берет."
+
+#~ msgid "Welcome to the software installation tool!"
+#~ msgstr "Программалык жабдуунун жүктөө куралына кош келиңиз!"
+
+#~ msgid ""
+#~ "Welcome to the software installation tool!\n"
+#~ "\n"
+#~ "Your Mandriva Linux system comes with several thousands of software\n"
+#~ "packages on CDROM or DVD. This tool will help you choose which software\n"
+#~ "you want to install on your computer."
+#~ msgstr ""
+#~ "Программа орнотуу куралына кош келиңиз!\n"
+#~ "\n"
+#~ "Сиздин Mandriva Linux системаңыз CDROM же DVD аркылуу бир нече\n"
+#~ "миң программалык пакеттер менен кошо келет. Бул курал компьютериңизге\n"
+#~ "сиз тандаган программаларды орнотууга жардам берет."
+
+#~ msgid "Unable to add medium, wrong or missing arguments"
+#~ msgstr "Булакты кошууга болбоду, аргументтер натуура же унутулган"
 
 #~ msgid "%s choices"
 #~ msgstr "%s тандоолор"
