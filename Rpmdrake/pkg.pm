@@ -694,6 +694,15 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $_gurpm_clean_guard = before_leaving { undef $gurpm };
     my $something_installed;
+ 
+    if (@to_install && $::rpmdrake_options{auto_orphans}) {
+        urpm::orphans::compute_future_unrequested_orphans($urpm, $state);
+        if (my @orphans = map { scalar $_->fullname } @{$state->{orphans_to_remove}}) {
+            interactive_msg(N("Orphan packages"), P("The following orphan package will be removed.",
+                    "The following orphan packages will be removed.", scalar(@orphans))
+              . "\n" . urpm::orphans::add_leading_spaces(join("\n", @orphans) . "\n"), scroll => 1);
+        }
+    }
 
     my ($progress, $total, @rpms_upgrade);
     my $transaction;
@@ -852,6 +861,14 @@ you may now inspect some in order to take actions:"),
     N("Details");
 
     statusbar_msg_remove($statusbar_msg_id); #- XXX maybe remove this
+
+    if ($exit_code == 0 && !$::rpmdrake_options{auto_orphans}) {
+        if (urpm::orphans::check_unrequested_orphans_after_auto_select($urpm)) {
+            if (my $msg = urpm::orphans::get_now_orphans_msg($urpm)) {
+                interactive_msg(N("Orphan packages"), $msg, scroll => 1);
+            }
+        }
+    }
 
   return_with_exit_code:
     return !($something_installed || scalar(@to_remove));
