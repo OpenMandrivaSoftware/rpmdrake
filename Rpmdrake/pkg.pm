@@ -60,7 +60,6 @@ our @EXPORT = qw(
 
 use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
-use Gtk2::Gdk::Keysyms;
 
 our $priority_up_alread_warned;
 

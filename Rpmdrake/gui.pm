@@ -38,7 +38,6 @@ use Rpmdrake::init;
 use Rpmdrake::icon;
 use Rpmdrake::pkg;
 use Rpmdrake::icon;
-use Gtk2::Gdk::Keysyms;
 use feature 'state';
 
 our @EXPORT = qw(
