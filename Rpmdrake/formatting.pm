@@ -116,6 +116,7 @@ our $spacing = "        ";
 sub format_changelog_string {
     my ($installed_version, $string) = @_;
     #- preprocess changelog for faster TextView insert reaction
+    require Gtk2::Pango;
     my %date_attr = ('weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD);
     my %update_attr = ('style' => 'italic');
     my $version;
