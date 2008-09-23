@@ -50,6 +50,9 @@ use Rpmdrake::open_db;
 use lib qw(/usr/lib/libDrakX);
 use urpm::media;
 use common;
+use any;
+
+any::set_wm_hints_if_needed($in);
 
 require_root_capability();
 
