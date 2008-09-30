@@ -33,7 +33,6 @@ use base qw(ugtk2);
 sub new {
     my ($self, $title, $initializing, %options) = @_;
     my $mainw = bless(ugtk2->new($title, %options, default_width => 600, width => 600), $self);
-    $mainw->{previous_main_window} = $::main_window;
     $::main_window = $mainw->{real_window};
     $mainw->{label} = gtknew('Label', text => $initializing, alignment => [ 0.5, 0 ]);
     # size label's heigh to 2 lines in order to prevent dummy vertical resizing:
@@ -70,7 +69,7 @@ sub progress {
 
 sub DESTROY {
     my ($self) = @_;
-    $::main_window = $self->{previous_main_window};
+    mygtk2::may_destroy($self);
     $self and $self->destroy;
     $self = undef;
     $self->{cancel} = undef;  #- in case we'll do another one later
