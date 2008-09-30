@@ -683,12 +683,11 @@ sub run_treeview_dialog {
         $w->{real_window}->set_default_size($rpmdrake_width->[0], $rpmdrake_height->[0]);
     }
     $w->{rwindow}->show_all;
+    $w->{rwindow}->set_sensitive(0);
 
     # ensure treeview get realized so that ->get_selection returns something
     $detail_list->realize;
     gtkflush();
-
-    $w->{rwindow}->set_sensitive(0);
 
     slow_func($::main_window->window, sub { pkgs_provider({}, $default_list_mode) }); # default mode
     if (@initial_selection) {
