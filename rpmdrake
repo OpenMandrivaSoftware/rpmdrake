@@ -474,9 +474,11 @@ sub run_treeview_dialog {
     my $current_search_type = $search_types[0];
     my $search_menu = Gtk2::Menu->new;
     my $i = 0;
+    my $previous;
     foreach (N("in names"), N("in descriptions"), N("in summaries"), N("in file names")) { 
         my ($name, $val) = ($_, $i);
-	$search_menu->append(gtksignal_connect(gtkshow(Gtk2::MenuItem->new_with_label($name)),
+	$search_menu->append(gtksignal_connect(gtkshow(
+            $previous = Gtk2::RadioMenuItem->new_with_label($previous, $name)),
                                                activate => sub { $current_search_type = $search_types[$val] }));
         $i++;
     }
