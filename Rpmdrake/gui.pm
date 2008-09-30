@@ -259,7 +259,10 @@ sub node_state {
     my $urpm_obj = $pkg->{pkg};
     if (!$urpm_obj) {
         my ($short_name) = split_fullname($name);
-        interactive_msg(N("Warning"),
+        state $warned;
+        if (!$warned) {
+            $warned = 1;
+            interactive_msg(N("Warning"),
                         join("\n",
                              N("The package \"%s\" was found.", $name),
                              N("However this package is not in the package list."),
@@ -275,6 +278,7 @@ sub node_state {
                          ),
                         scroll => 1,
                     );
+        }
         return 'XXX';
     }
     #- checks $_[0] -> hack for partial tree displaying
