@@ -154,20 +154,9 @@ sub easy_add_callback() {
 
     #- cooker and community don't have update sources
     my $want_base_distro = _want_base_distro();
-    my $distro = $rpmdrake::mandrake_release;
-    my ($mirror) = choose_mirror($urpm, message =>
-N("This will attempt to install all official sources corresponding to your
-distribution (%s).
-
-I need to contact the Mandriva website to get the mirror list.
-Please check that your network is currently running.
-
-Is it ok to continue?", $distro),
-     transient => $::main_window,
-    ) or return 0;
-    ref $mirror or return;
+    warn_for_network_need() or return;
     my $wait = wait_msg(N("Please wait, adding media..."));
-    add_distrib_update_media($urpm, $mirror, if_(!$want_base_distro, only_updates => 1));
+    add_distrib_update_media($urpm, undef, if_(!$want_base_distro, only_updates => 1));
     $offered_to_add_sources->[0] = 1;
     remove_wait_msg($wait);
     return 1;
