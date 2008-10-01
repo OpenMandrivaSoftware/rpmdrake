@@ -473,7 +473,7 @@ sub edit_callback() {
 	    0, gtknew('Title2', label => N("Editing medium \"%s\":", $medium->{name})),
 	    0, create_packtable(
 		{},
-		[ gtknew('Label_Left', text => N("URL:")), $url_entry = gtkentry($verbatim_medium->{url}) ],
+		[ gtknew('Label_Left', text => N("URL:")), $url_entry = gtkentry($verbatim_medium->{url} || $verbatim_medium->{mirrorlist}) ],
 		[ gtknew('Label_Left', text => N("Downloader:")),
             my $download_combo = Gtk2::ComboBox->new_with_strings([ urpm::download::available_ftp_http_downloaders() ],
                                                                   $verbatim_medium->{downloader} || '') ],
@@ -517,7 +517,7 @@ sub edit_callback() {
 	urpm::media::select_media($urpm, $name);
      if (my ($media) = grep { $_->{name} eq $name } @{$urpm->{media}}) {
          put_in_hash($media, {
-             url => $url,
+             ($verbatim_medium->{mirrorlist} ? 'mirrorlist' : 'url') => $url,
              name => $name,
              update => $update,
              proxy => $saved_proxy,
