@@ -120,7 +120,7 @@ discs. Please choose whether to configure update sources only, or the full set
 of sources."),
 	 transient => $::main_window,
 	yesno => 1, text => { yes => N("Full set of sources"), no => N("Update sources only") },
-    ) : 1
+    ) : 1;
 }
 
 sub easy_add_callback_with_mirror() {
@@ -154,7 +154,7 @@ sub easy_add_callback() {
 
     #- cooker and community don't have update sources
     my $want_base_distro = _want_base_distro();
-    warn_for_network_need() or return;
+    warn_for_network_need(undef, transient => $::main_window) or return;
     my $wait = wait_msg(N("Please wait, adding media..."));
     add_distrib_update_media($urpm, undef, if_(!$want_base_distro, only_updates => 1));
     $offered_to_add_sources->[0] = 1;
