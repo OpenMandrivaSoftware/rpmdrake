@@ -957,6 +957,7 @@ sub mainwindow() {
 	[ N("/_File") . N("/Close"), N("<control>W"), sub { Gtk2->main_quit }, undef, '<Item>', ],
      [ N("/_Options"), undef, undef, undef, '<Branch>' ],
      [ N("/_Options") . N("/_Global options"), N("<control>G"), \&options_callback, undef, '<Item>' ],
+     [ N("/_Options") . N("/_Add media"), N("<control>A"), sub { easy_add_callback_with_mirror() and $reread_media->() }, undef, '<Item>' ],
      [ N("/_Options") . N("/_Add a custom medium"), N("<control>A"), sub { add_callback() and $reread_media->() }, undef, '<Item>' ],
      [ N("/_Options") . N("/Manage _keys"), N("<control>K"), \&keys_callback, undef, '<Item>' ],
      [ N("/_Options") . N("/_Parallel"), N("<control>P"), \&parallel_callback, undef, '<Item>' ],
