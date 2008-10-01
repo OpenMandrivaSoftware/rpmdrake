@@ -926,7 +926,9 @@ sub add_distrib_update_media {
     add_medium_and_check(
         $urpm,
         { nolock => 1, distrib => 1 },
-        $medium_name, $mirror->{url}, probe_with => 'synthesis', initial_number => $initial_number, %options, 
+        $medium_name,
+        ($mirror ? $mirror->{url} : (undef, mirrorlist => '$MIRRORLIST')),
+        probe_with => 'synthesis', initial_number => $initial_number, %options, 
         usedistrib => 1,
     );
 }
