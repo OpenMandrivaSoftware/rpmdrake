@@ -86,6 +86,7 @@ our @EXPORT = qw(
     update_sources_interactive
     update_sources_noninteractive
     wait_msg
+    warn_for_network_need
     writeconf
 );
 our $typical_width = 280;
@@ -578,9 +579,9 @@ sub mirrors {
     return sort { $b->{goodness} <=> $a->{goodness} } @mirrors;
 }
 
-sub choose_mirror {
-    my ($urpm, %options) = @_;
-    my $message = $options{message} ? $options{message} :
+sub warn_for_network_need {
+    my ($message, %options) = @_;
+    $message ||= 
 $branded
 ? N("I need to access internet to get the mirror list.
 Please check that your network is currently running.
@@ -590,9 +591,14 @@ Is it ok to continue?")
 Please check that your network is currently running.
 
 Is it ok to continue?");
+    interactive_msg(N("Mirror choice"), $message, yesno => 1, %options) or return '';
+}
+
+sub choose_mirror {
+    my ($urpm, %options) = @_;
     delete $options{message};
     my @transient_options = exists $options{transient} ? (transient => $options{transient}) : ();
-    interactive_msg(N("Mirror choice"), $message, yesno => 1, %options) or return '';
+    warn_for_network_need($options{message}, %options);
     my @mirrors = eval { mirrors($urpm, $options{want_base_distro}) };
     my $error = $@;
     if ($error) {
