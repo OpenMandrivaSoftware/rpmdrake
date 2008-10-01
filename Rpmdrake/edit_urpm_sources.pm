@@ -109,12 +109,8 @@ sub remove_from_list {
 
 }
 
-sub easy_add_callback() {
-    # when called on early init by rpmdrake
-    $urpm ||= fast_open_urpmi_db();
-
-    #- cooker and community don't have update sources
-    my $want_base_distro = distro_type(0) eq 'updates' ? interactive_msg(
+sub _want_base_distro() {
+    distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
 N("In order to keep your system secure and stable, you must at a minimum set up
 sources for official security and stability updates. You can also choose to set
@@ -124,7 +120,15 @@ discs. Please choose whether to configure update sources only, or the full set
 of sources."),
 	 transient => $::main_window,
 	yesno => 1, text => { yes => N("Full set of sources"), no => N("Update sources only") },
-    ) : 1;
+    ) : 1
+}
+
+sub easy_add_callback() {
+    # when called on early init by rpmdrake
+    $urpm ||= fast_open_urpmi_db();
+
+    #- cooker and community don't have update sources
+    my $want_base_distro = _want_base_distro();
     my $distro = $rpmdrake::mandrake_release;
     my ($mirror) = choose_mirror($urpm, message =>
 N("This will attempt to install all official sources corresponding to your
