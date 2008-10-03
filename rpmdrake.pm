@@ -796,9 +796,9 @@ sub update_sources_interactive {
 	    Gtk2::Label->new(N("Select the media you wish to update:")),
             gtknew('ScrolledWindow', height => 300, child =>
                      gtknew('VBox', spacing => 5, children_tight => [
-		@buttons = map {
-		    Gtk2::CheckButton->new_with_label($_->{name});
-		} @media
+                         @buttons = map {
+                             Gtk2::CheckButton->new_with_label($_->{name});
+                         } @media
                      ])
 	    ),
 	    Gtk2::HSeparator->new,
