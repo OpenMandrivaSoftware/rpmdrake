@@ -795,6 +795,7 @@ sub update_sources_interactive {
 	    Gtk2::VBox->new(0,5),
 	    Gtk2::Label->new(N("Select the media you wish to update:")),
             gtknew('ScrolledWindow', height => 300, child =>
+                     # FIXME: using a listview would be just better:
                      gtknew('VBox', spacing => 5, children_tight => [
                          @buttons = map {
                              Gtk2::CheckButton->new_with_label($_->{name});
