@@ -914,7 +914,7 @@ sub sort_callback {
 
 sub run_help_callback {
     my (undef, $url) = @_;
-    run_program::raw({ detach => 1, setuid => get_parent_uid() }, 'www-browser', $url);
+    run_as_user('www-browser', $url);
 }
 
 1;

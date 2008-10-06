@@ -937,17 +937,26 @@ sub add_distrib_update_media {
     );
 }
 
+sub run_as_user {
+    if (my $user = $ENV{USERHELPER_UID} && getpwuid($ENV{USERHELPER_UID})) {
+        run_program::raw({ detach => 1 }, 'su', $user, '-c', join(' ', @_));
+    } else {
+        run_program::raw({ detach => 1 }, @_);
+    }
+}
+
+
 sub open_help {
     my ($mode) = @_;
     use run_program;
-    run_program::raw({ detach => 1 }, 'drakhelp', '--id', $mode ?  "software-management-$mode" : 'software-management');
+    run_as_user('drakhelp', '--id', $mode ?  "software-management-$mode" : 'software-management');
     N("Help launched in background");
     statusbar_msg(N("The help window has been started, it should appear shortly on your desktop."), 1);
 }
 
 sub run_drakbug {
     my ($id) = @_;
-    run_program::raw({ detach => 1 }, 'drakbug', '--report', $id);
+    run_as_user('drakbug', '--report', $id);
 }
 
 sub strip_first_underscore { join '', map { s/_//; $_ } @_ }
