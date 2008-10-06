@@ -151,10 +151,7 @@ sub format_pkg_simplifiedinfo {
       '')); # extra empty line
     if ($is_update) {
         push @$s, [ my $link = gtkshow(Gtk2::LinkButton->new($update_descr->{URL}, N("Security advisory"))) ];
-        $link->set_uri_hook(sub {
-            my (undef, $url) = @_;
-            run_program::raw({ detach => 1, setuid => get_parent_uid() }, 'www-browser', $url);
-        });
+        $link->set_uri_hook(\&run_help_callback);
       }
 
     push @$s, @{ ugtk2::markup_to_TextView_format(join("\n",
@@ -187,10 +184,7 @@ sub format_pkg_simplifiedinfo {
         push @$details_txt,
           @{ ugtk2::markup_to_TextView_format(format_field("\n$spacing" . N("URL: "))) },
           [ my $link = gtkshow(Gtk2::LinkButton->new($url, $url)) ];
-        $link->set_uri_hook(sub {
-            my (undef, $url) = @_;
-            run_program::raw({ detach => 1, setuid => get_parent_uid() }, 'www-browser', $url);
-        });
+        $link->set_uri_hook(\&run_help_callback);
     }
 
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
@@ -916,6 +910,11 @@ sub get_info {
 sub sort_callback {
     my ($store, $treeiter1, $treeiter2) = @_;
     URPM::rpmvercmp(map { $store->get_value($_, $pkg_columns{version}) } $treeiter1, $treeiter2);
+}
+
+sub run_help_callback {
+    my (undef, $url) = @_;
+    run_program::raw({ detach => 1, setuid => get_parent_uid() }, 'www-browser', $url);
 }
 
 1;
