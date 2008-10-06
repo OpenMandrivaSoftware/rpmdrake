@@ -75,6 +75,7 @@ our @EXPORT = qw(
     myexit
     readconf
     remove_wait_msg
+    run_drakbug
     show_urpm_progress
     slow_func
     slow_func_statusbar
@@ -942,6 +943,11 @@ sub open_help {
     run_program::raw({ detach => 1 }, 'drakhelp', '--id', $mode ?  "software-management-$mode" : 'software-management');
     N("Help launched in background");
     statusbar_msg(N("The help window has been started, it should appear shortly on your desktop."), 1);
+}
+
+sub run_drakbug {
+    my ($id) = @_;
+    run_program::raw({ detach => 1 }, 'drakbug', '--report', $id);
 }
 
 sub strip_first_underscore { join '', map { s/_//; $_ } @_ }

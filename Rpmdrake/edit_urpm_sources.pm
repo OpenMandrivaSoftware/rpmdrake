@@ -964,7 +964,7 @@ sub mainwindow() {
      [ N("/_Options") . N("/P_roxy"), N("<control>R"), \&proxy_callback, undef, '<Item>' ],
      if_($0 =~ /edit-urpm-sources/,
          [ N("/_Help"), undef, undef, undef, '<Branch>' ],
-         [ N("/_Help") . N("/_Report Bug"), undef, sub { run_program::raw({ detach => 1 }, 'drakbug', '--report', 'edit-urpm-sources.pl') }, undef, '<Item>' ],
+         [ N("/_Help") . N("/_Report Bug"), undef, sub { run_drakbug('edit-urpm-sources.pl') }, undef, '<Item>' ],
          [ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help('sources') }, undef, '<Item>' ],
          [ N("/_Help") . N("/_About..."), undef, sub {
                my $license = formatAlaTeX(translate($::license));

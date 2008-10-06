@@ -567,7 +567,7 @@ sub run_treeview_dialog {
             [ N("/_View") . '/' . $modes{$_}, undef, sub { $view_callback->($val) }, 0, $type ];
         } qw(flat by_group by_leaves by_presence by_selection by_size by_source)),
 	[ N("/_Help"), undef, undef, undef, '<Branch>' ],
-     [ N("/_Help") . N("/_Report Bug"), undef, sub { run_program::raw({ detach => 1 }, 'drakbug', '--report', 'rpmdrake') }, undef, '<Item>' ],
+     [ N("/_Help") . N("/_Report Bug"), undef, sub { run_drakbug('rpmdrake') }, undef, '<Item>' ],
 	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help('') }, undef, '<Item>' ],
      [ N("/_Help") . N("/_About..."), undef, sub {
          my $license = formatAlaTeX(translate($::license));
