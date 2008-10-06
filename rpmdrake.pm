@@ -75,6 +75,7 @@ our @EXPORT = qw(
     myexit
     readconf
     remove_wait_msg
+    run_as_user
     run_drakbug
     show_urpm_progress
     slow_func
