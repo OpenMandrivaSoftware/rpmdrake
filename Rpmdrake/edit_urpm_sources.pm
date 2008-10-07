@@ -971,7 +971,7 @@ sub mainwindow() {
                $license =~ s/\n/\n\n/sg; # nicer formatting
                my $w = gtknew('AboutDialog', name => N("Rpmdrake"),
                               version => '2007',
-                              copyright => N("Copyright (C) %s by Mandriva", '2002-2007'),
+                              copyright => N("Copyright (C) %s by Mandriva", '2002-2008'),
                               license => $license, wrap_license => 1,
                               comments => N("Rpmdrake is Mandriva Linux package management tool."),
                               website => 'http://mandrivalinux.com',
