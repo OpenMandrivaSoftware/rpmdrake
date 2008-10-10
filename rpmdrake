@@ -515,6 +515,7 @@ sub run_treeview_dialog {
     my $checkbox_show_autoselect;
     my %check_boxes;
     my $auto_string = N("/_Options") . N("/_Select dependencies without asking");
+    my $noclean_string = N("/_Options") . "/" . N("Clear download cache after successfull install");
     my ($menu, $factory) = create_factory_menu(
 	$w->{real_window},
 	[ N("/_File"), undef, undef, undef, '<Branch>' ],
@@ -547,6 +548,9 @@ sub run_treeview_dialog {
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
 	    [ $auto_string, undef, sub {
                $urpm->{options}{auto} = $::rpmdrake_options{auto} = $check_boxes{$auto_string}->get_active if $check_boxes{$auto_string};
+           }, undef, '<CheckItem>' ],
+	    [ $noclean_string, undef, sub {
+               $::noclean = $check_boxes{$noclean_string}->get_active if $check_boxes{$noclean_string};
            }, undef, '<CheckItem>' ],
 	    [ N("/_Options") . N("/_Media Manager"), undef, sub {
                require Rpmdrake::edit_urpm_sources;
@@ -604,8 +608,9 @@ sub run_treeview_dialog {
 
     %check_boxes = map {
         $_ => $factory->get_widget("<main>" . $get_path->($_));
-    } ($auto_string);
+    } ($auto_string, $noclean_string);
     $check_boxes{$auto_string}->set_active($::rpmdrake_options{auto}) if !$>;
+    $check_boxes{$noclean_string}->set_active(!$::noclean);
 
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections->[0]);
