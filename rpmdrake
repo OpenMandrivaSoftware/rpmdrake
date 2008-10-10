@@ -603,7 +603,7 @@ sub run_treeview_dialog {
     }
 
     %check_boxes = map {
-        $_ => $factory->get_widget("<main>" . $get_path->($auto_string));
+        $_ => $factory->get_widget("<main>" . $get_path->($_));
     } ($auto_string);
     $check_boxes{$auto_string}->set_active($::rpmdrake_options{auto}) if !$>;
 
