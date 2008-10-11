@@ -189,6 +189,7 @@ sub readconf() {
 }
 
 sub writeconf() {
+    return if $::env;
     unlink $configfile;
 
     # special case:
