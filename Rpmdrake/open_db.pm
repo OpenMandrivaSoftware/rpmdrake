@@ -91,6 +91,10 @@ sub fast_open_urpmi_db() {
     };
 
     urpm::media::read_config($urpm);
+    foreach (@{$urpm->{media}}) {
+	    next if $_->{ignore};
+	    urpm::media::_tempignore($_, 1) if $ignore_debug_media->[0] && $_->{name} =~ /debug/i;
+    }
     # FIXME: seems uneeded with newer urpmi:
     if ($error_happened) {
         touch('/etc/urpmi/urpmi.cfg');
