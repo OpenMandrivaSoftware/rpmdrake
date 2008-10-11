@@ -79,7 +79,6 @@ BEGIN { #- for mcc
     }
 }
 
-use rpmdrake;
 
 #- This is needed because text printed by Gtk2 will always be encoded
 #- in UTF-8; we first check if LC_ALL is defined, because if it is,
@@ -148,14 +147,17 @@ if ($MODE eq 'remove') {
 $MODE eq 'update' || $rpmdrake_options{'run-as-root'} || $rpmdrake_options{root} and require_root_capability();
 $::noborderWhenEmbedded = 1;
 
-our $changelog_first = $changelog_first_config->[0];
+require rpmdrake;
+
+our $changelog_first = $rpmdrake::changelog_first_config->[0];
 $changelog_first = 1 if $rpmdrake_options{'changelog-first'};
 
 sub warn_about_user_mode() {
-    $> and (interactive_msg(N("Running in user mode"),
+    $> and (rpmdrake::interactive_msg(N("Running in user mode"),
                             N("You are launching this program as a normal user.
 You will not be able to perform modifications on the system,
-but you may still browse the existing database."), yesno => 1, text => { no => N("Cancel"), yes => N("Ok") }) or myexit(0));
+but you may still browse the existing database."), yesno => 1, text => { no => N("Cancel"), yes => N("Ok") })
+        or rpmdrake::myexit(0));
 }
 
 sub init() {

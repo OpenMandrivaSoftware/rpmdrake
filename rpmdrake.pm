@@ -152,6 +152,7 @@ sub myexit {
 
 my ($root) = grep { $_->[2] == 0 } list_passwd();
 $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
+$ENV{HOME} = $::env if $::env = $Rpmdrake::init::rpmdrake_options{env}[0];
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
 our ($changelog_first_config, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode);
