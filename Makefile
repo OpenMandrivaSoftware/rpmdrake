@@ -34,7 +34,6 @@ install: $(ALL)
 	ln -sf $(RELATIVE_SBIN)/drakrpm-update $(BINDIR)/drakrpm-update
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons
-	install -m644 icons/*.jpg $(DATADIR)/rpmdrake/icons
 	install -m644 gui.lst $(DATADIR)/rpmdrake
 	mkdir -p $(PERL_VENDORLIB)/Rpmdrake
 	install -m 644 rpmdrake.pm $(PERL_VENDORLIB)
