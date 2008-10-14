@@ -715,10 +715,10 @@ sub show_urpm_progress {
         } elsif ($mode eq 'progress') {
             if (defined $total && defined $eta) {
                 $pb->set_fraction($percent/100);
-                $label->set_label(N("Download of `%s', time to go:%s, speed:%s", $file, $eta, $speed));
+                $label->set_label(N("Download of `%s'\ntime to go:%s, speed:%s", $file, $eta, $speed));
             } else {
                 $pb->set_fraction($percent/100);
-                $label->set_label(N("Download of `%s', speed:%s", $file, $speed));
+                $label->set_label(N("Download of `%s'\nspeed:%s", $file, $speed));
             }
         }
     }
