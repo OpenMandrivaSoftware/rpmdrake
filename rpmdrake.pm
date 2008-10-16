@@ -739,6 +739,7 @@ sub update_sources {
 		    Gtk2::Button->new(N("Cancel")),
 		    clicked => sub {
 			$cancel = 1;
+                        $urpm->{error}->(N("Canceled"));
 			$w and $w->destroy;
 		    },
 		),
