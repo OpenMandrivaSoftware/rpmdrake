@@ -51,7 +51,7 @@ dis: clean
 	rm -rf $(NAME)-$(VERSION)
 
 gui.lst:
-	urpmf "/(opt/kde[43]|usr)/share/(applnk|applications(|/kde)|apps/kicker/applets)/.*.desktop" |sed -e 's!:.*!!' |sort|uniq>gui.lst
+	LC_COLLATE=C; urpmf "/(opt/kde[43]|usr)/share/(applnk|applications(|/kde)|apps/kicker/applets)/.*.desktop" |sed -e 's!:.*!!' |sort|uniq>gui.lst
 
 .PHONY: ChangeLog log changelog gui.lst
 
