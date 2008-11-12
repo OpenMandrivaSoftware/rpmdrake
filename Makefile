@@ -47,6 +47,7 @@ dis: clean
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
 	svn export -q -rBASE . $(NAME)-$(VERSION)
 	find $(NAME)-$(VERSION) -name .svnignore |xargs rm -rf
+	find $(NAME)-$(VERSION) -name '*.pm' -o -name rpmdrake -o -name MandrivaUpdate | xargs ./simplify-drakx-modules
 	tar cfY ../$(NAME)-$(VERSION).tar.lzma $(NAME)-$(VERSION)
 	rm -rf $(NAME)-$(VERSION)
 
