@@ -171,7 +171,7 @@ sub add_callback() {
 	ftp => { name => N("FTP server"), url => N("URL:"), loginpass => 1 },
 	rsync => { name => N("RSYNC server"), url => N("URL:") },
 	http => { name => N("HTTP server"), url => N("URL:") },
-	removable => { name => N("Removable device"), url => N("Path or mount point:"), dirsel => 1 },
+	removable => { name => N("Removable device (CD-ROM, DVD, ...)"), url => N("Path or mount point:"), dirsel => 1 },
     );
     my @radios_names_ordered = qw(local ftp rsync http removable);
     # TODO: replace NoteBook by sensitive widgets and Label->set()
