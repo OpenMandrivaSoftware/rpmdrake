@@ -228,7 +228,12 @@ sub add_callback() {
 		    $url_entry->() ],
 		if_($info->{loginpass}, $loginpass_entries->()),
 		sub {
-		    [ $info->{distrib_check} = $cb1 = gtknew('CheckButton', text => N("Create media for a whole distribution"))
+		    [ $info->{distrib_check} = $cb1 = gtknew('CheckButton', text => N("Create media for a whole distribution"),
+                                                         toggled => sub {
+                                                             return if !$cb2;
+                                                             my ($w) = @_;
+                                                             $info->{update_check}->set_sensitive(!$w->get_active);
+                                                         })
 		    ];
 		}->(),
 		sub {
