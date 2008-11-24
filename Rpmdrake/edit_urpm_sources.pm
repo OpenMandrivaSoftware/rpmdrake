@@ -531,7 +531,7 @@ sub edit_callback() {
          });
          urpm::media::write_config($urpm);
          local $::main_window = $old_main_window;
-         update_sources_noninteractive($urpm, [ media => $name ], transient => $::main_window, nolock => 1);
+         update_sources_noninteractive($urpm, [ $name ], transient => $::main_window, nolock => 1);
      } else {
          urpm::media::remove_selected_media($urpm);
          add_medium_and_check($urpm, { nolock => 1, proxy => $saved_proxy }, $name, $url, undef, update => $update, if_($downloader, downloader => $downloader));
