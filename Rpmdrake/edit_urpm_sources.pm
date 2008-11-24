@@ -1080,10 +1080,6 @@ sub mainwindow() {
      $something_changed = 1;
 	$urpm = fast_open_urpmi_db();
 	if (defined $name) {
-	    #- this media must be reconstructed since editing it failed
-	    if (my $medium = urpm::media::name2medium($urpm, $name)) {
-		delete $medium->{ignore};
-	    }
 	    urpm::media::select_media($urpm, $name);
 	    update_sources_check(
 		$urpm,
