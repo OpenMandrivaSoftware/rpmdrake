@@ -842,10 +842,6 @@ sub update_sources_interactive {
 sub update_sources_noninteractive {
     my ($urpm, $media, %options) = @_;
 
-	#- force ignored media to be returned alive (forked from urpmi.update...)
-	foreach (@{$urpm->{media}}) {
-	    $_->{modified} and delete $_->{ignore};
-	}
         urpm::media::select_media($urpm, @$media);
         update_sources_check(
 	    $urpm,
