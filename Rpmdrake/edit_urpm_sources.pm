@@ -524,9 +524,9 @@ sub edit_callback() {
          put_in_hash($media, {
              ($verbatim_medium->{mirrorlist} ? 'mirrorlist' : 'url') => $url,
              name => $name,
-             update => $update,
-             proxy => $saved_proxy,
-             downloader => $downloader,
+             if_($update ne $media->{update}, update => $update),
+             if_($saved_proxy ne $media->{proxy}, proxy => $saved_proxy),
+             if_($downloader ne $media->{downloader}, downloader => $downloader),
              modified => 1,
          });
          urpm::media::write_config($urpm);
