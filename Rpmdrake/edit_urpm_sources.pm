@@ -69,8 +69,8 @@ sub get_medium_type {
         rsync     => N("rsync"),
         ssh       => N("NFS"),
     );
-    return $medium_type{$1} if $medium->{url} =~ m!^([^:]*)://!;
     return N("Mirror list") if $medium->{mirrorlist};
+    return $medium_type{$1} if $medium->{url} =~ m!^([^:]*)://!;
     return N("Local");
 }
 
