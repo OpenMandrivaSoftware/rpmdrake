@@ -205,6 +205,7 @@ sub do_search($$$$$$$) {
     my $tree_selection = $tree->get_selection;
     if (my $path = $tree_model->get_path($iter)) {
         $tree_selection->select_path($path);
+        $tree->scroll_to_cell($path, undef, 1, 0.5, 0);
         $tree_selection->signal_emit('changed');
     }
 }
