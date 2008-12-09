@@ -203,8 +203,10 @@ sub do_search($$$$$$$) {
         gtkset_mousecursor_normal($::w->{rwindow}->window);
     }
     my $tree_selection = $tree->get_selection;
-    $tree_selection->select_path($tree_model->get_path($iter));
-    $tree_selection->signal_emit('changed');
+    if (my $path = $tree_model->get_path($iter)) {
+        $tree_selection->select_path($path);
+        $tree_selection->signal_emit('changed');
+    }
 }
 
 sub quit() {
