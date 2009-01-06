@@ -56,6 +56,7 @@ sub open_rpm_db {
     } else {
         my $db;
         if ($::env) {
+	    #- URPM has same methods as URPM::DB and empty URPM will be seen as empty URPM::DB.
 	    $db = new URPM;
             $db->parse_synthesis("$::env/rpmdb.cz");
 	} else {
