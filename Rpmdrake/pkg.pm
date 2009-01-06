@@ -325,6 +325,7 @@ sub get_installed_packages {
 	    $base{$_} = \$n;
 	}
     }
+    # costly:
     $db->traverse(sub {
                       my ($pkg) = @_;
                       update_pbar($gurpm);
