@@ -750,7 +750,7 @@ sub update_sources {
     my $outerfatal = $urpm->{fatal};
     local $urpm->{fatal} = sub { $w->destroy; $outerfatal->(@_) };
     urpm::media::update_those_media($urpm, [ urpm::media::select_media_by_name($urpm, [ @media ]) ],
-	%options,
+	%options, allow_failures => 1,
 	callback => sub {
 	    $cancel and goto cancel_update;
 	    my ($type, $media) = @_;
