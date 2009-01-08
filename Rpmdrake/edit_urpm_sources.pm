@@ -414,7 +414,7 @@ sub remove_callback() {
 	N("Source Removal"),
 	@rows == 1 ?
 	  N("Are you sure you want to remove source \"%s\"?", to_utf8($urpm->{media}[$rows[0]]{name})) :
-	    N("Are you sure you want to remove the following sources ?") . "\n\n" .
+	    N("Are you sure you want to remove the following sources?") . "\n\n" .
 	      format_list(map { to_utf8($urpm->{media}[$_]{name}) } @rows),
 	yesno => 1, scroll => 1,
 	 transient => $::main_window,
