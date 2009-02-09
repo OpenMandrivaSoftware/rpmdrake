@@ -236,7 +236,7 @@ Is it ok to continue?"), yesno => 1,
                                  )) or myexit(-1);
 		    writeconf();
 		    urpm::media::select_media($urpm, map { $_->{name} } @update_medias);
-		    update_sources($urpm, noclean => 1);
+		    update_sources($urpm, noclean => 1, medialist => [ map { $_->{name} } @update_medias ]);
 		}
 	    } else {
 		if (any { $_->{update} } @{$urpm->{media}}) {
