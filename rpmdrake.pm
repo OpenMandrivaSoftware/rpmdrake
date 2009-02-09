@@ -798,10 +798,10 @@ sub update_sources_interactive {
     }
     gtkadd(
 	$w->{window},
-	gtkpack__(
-	    Gtk2::VBox->new(0,5),
-	    Gtk2::Label->new(N("Select the media you wish to update:")),
-            gtknew('ScrolledWindow', height => 300, child =>
+	gtkpack_(
+	    0, Gtk2::VBox->new(0,5),
+	    0, Gtk2::Label->new(N("Select the media you wish to update:")),
+            1, gtknew('ScrolledWindow', height => 300, child =>
                      # FIXME: using a listview would be just better:
                      gtknew('VBox', spacing => 5, children_tight => [
                          @buttons = map {
@@ -809,8 +809,8 @@ sub update_sources_interactive {
                          } @media
                      ])
 	    ),
-	    Gtk2::HSeparator->new,
-	    gtkpack(
+	    0, Gtk2::HSeparator->new,
+	    0, gtkpack(
 		create_hbox(),
 		gtksignal_connect(
 		    Gtk2::Button->new(N("Cancel")),
