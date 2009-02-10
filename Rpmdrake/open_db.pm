@@ -83,7 +83,7 @@ sub fast_open_urpmi_db() {
         urpm::set_env($urpm, $::env);
     }
 
-    $urpm::args::rpmdrake_options{justdb} = $::rpmdrake_options{justdb};
+    $urpm::args::options{justdb} = $::rpmdrake_options{justdb};
 
     $urpm->{fatal} = sub {
         $error_happened = 1;
