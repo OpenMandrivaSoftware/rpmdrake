@@ -723,7 +723,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     };
 
     my $exit_code = 
-      urpm::main_loop::run($urpm, $state, undef, undef, $requested,
+      urpm::main_loop::run($urpm, $state, 1, undef, $requested,
                          {
                              completed => sub {
                                  # explicitly destroy the progress window when it's over; we may
@@ -803,6 +803,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                          join("\n\n", @$errors, @error_msgs)),
                                      scroll => 1,
                                  );
+                             },
+                             need_restart => sub {
+                                 my ($need_restart_formatted) = @_;
+                                 interactive_msg(N("Warning"),
+                                                 join("\n\n", values %$need_restart_formatted));
                              },
                              success_summary => sub {
                                  if (!($done || @to_remove)) {
