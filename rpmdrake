@@ -617,6 +617,11 @@ sub run_treeview_dialog {
 
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections->[0]);
+
+    my $accel = Gtk2::AccelGroup->new;
+    $accel->connect(Gtk2::Gdk->keyval_from_name('F'), ['control-mask'], ['visible'], sub { $find_entry->grab_focus() });
+    $w->{real_window}->add_accel_group($accel);
+
     gtkadd(
 	$w->{window},
 	gtkpack_(
