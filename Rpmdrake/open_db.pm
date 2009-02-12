@@ -80,6 +80,8 @@ sub fast_open_urpmi_db() {
     urpm::args::set_verbosity();
     if ($::rpmdrake_options{env} && $::rpmdrake_options{env}[0]) {
         $::env = $::rpmdrake_options{env}[0];
+        # prevent crashing in URPM.pm prevent when using --env:
+        $::env = "$ENV{PWD}/$::env" if $::env !~ m!^/!;
         urpm::set_env($urpm, $::env);
     }
 
