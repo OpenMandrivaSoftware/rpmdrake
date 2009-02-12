@@ -959,7 +959,7 @@ sub mainwindow() {
 	$mainw->{real_window},
 	[ N("/_File"), undef, undef, undef, '<Branch>' ],
 	[ N("/_File") . N("/_Update"), N("<control>U"), sub { update_callback() and $reread_media->() }, undef, '<Item>', ],
-        [ N("/_File") . N("/Add a specific _media mirror"), N("<control>A"), sub { easy_add_callback_with_mirror() and $reread_media->() }, undef, '<Item>' ],
+        [ N("/_File") . N("/Add a specific _media mirror"), N("<control>M"), sub { easy_add_callback_with_mirror() and $reread_media->() }, undef, '<Item>' ],
         [ N("/_File") . N("/_Add a custom medium"), N("<control>A"), sub { add_callback() and $reread_media->() }, undef, '<Item>' ],
 	[ N("/_File") . N("/Close"), N("<control>W"), sub { Gtk2->main_quit }, undef, '<Item>', ],
      [ N("/_Options"), undef, undef, undef, '<Branch>' ],
