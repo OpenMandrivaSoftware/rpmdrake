@@ -837,8 +837,9 @@ you may now inspect some in order to take actions:"),
                              },
                              already_installed_or_not_installable => sub {
                                  my ($msg1, $msg2) = @_;
-                                 return if !($msg1 || $msg2); # workaround missing state
-                                 interactive_msg(N("Error"), join("\n", @$msg1, @$msg2));                                
+                                 my $msg = join("\n", @$msg1, @$msg2);
+                                 return if !$msg; # workaround missing state
+                                 interactive_msg(N("Error"), $msg);
                              },
                          },
                      );
