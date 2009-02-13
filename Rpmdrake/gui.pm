@@ -696,7 +696,7 @@ sub toggle_nodes {
             }
 
 	    if (my $conflicting_msg = urpm::select::conflicting_packages_msg($urpm, $urpm->{state})) {
-                if (!interactive_msg('', $conflicting_msg, yesno => 1, scroll => 1)) {
+                if (!interactive_msg(N("Conflicting Packages"), $conflicting_msg, yesno => 1, scroll => 1)) {
 		    @nodes_with_deps = ();
 		    $urpm->disable_selected(open_rpm_db(), $urpm->{state}, @requested);
 		    goto packages_selection_ok;
