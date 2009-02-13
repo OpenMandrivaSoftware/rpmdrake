@@ -656,7 +656,7 @@ sub toggle_nodes {
                               grep { $pkgs->{$_}{selected} && !member($_, @nodes) } keys %$pkgs });
             push @nodes_with_deps, @nodes;
             statusbar_msg_remove($bar_id);
-            deps_msg(N("Some packages can't be removed"),
+            deps_msg(N("Some additional packages need to be removed"),
                         N("Because of their dependencies, the following package(s) must be\nunselected now:\n\n"),
                         \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
             $pkgs->{$_}{base} && ${$pkgs->{$_}{base}}++ foreach @nodes_with_deps;
