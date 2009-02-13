@@ -723,7 +723,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     };
 
     my $exit_code = 
-      urpm::main_loop::run($urpm, $state, 1, undef, $requested,
+      urpm::main_loop::run($urpm, $state, 1, [ ], $requested,
                          {
                              completed => sub {
                                  # explicitly destroy the progress window when it's over; we may
