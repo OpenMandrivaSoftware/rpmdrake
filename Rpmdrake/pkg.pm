@@ -722,8 +722,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     };
 
+    # FIXME: sometimes state is lost:
+    my @ask_unselect = urpm::select::unselected_packages($urpm, $state);
+
     my $exit_code = 
-      urpm::main_loop::run($urpm, $state, 1, [ ], $requested,
+      urpm::main_loop::run($urpm, $state, 1, \@ask_unselect, $requested,
                          {
                              completed => sub {
                                  # explicitly destroy the progress window when it's over; we may
