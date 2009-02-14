@@ -69,6 +69,7 @@ our @EXPORT = qw(
     distro_type
     fatal_msg
     getbanner
+    get_icon
     interactive_list
     interactive_list_
     interactive_msg
@@ -964,6 +965,14 @@ sub open_help {
 sub run_drakbug {
     my ($id) = @_;
     run_as_user('drakbug', '--report', $id);
+}
+
+mygtk2::add_icon_path('/usr/share/mcc/themes/default/');
+sub get_icon {
+    my ($mcc_icon, $fallback_icon) = @_;
+    my $icon = eval { mygtk2::_find_imgfile($mcc_icon) };
+    $icon ||= eval { mygtk2::_find_imgfile($fallback_icon) };
+    $icon;
 }
 
 sub strip_first_underscore { join '', map { s/_//; $_ } @_ }
