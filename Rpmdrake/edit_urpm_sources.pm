@@ -1154,7 +1154,7 @@ sub mainwindow() {
 
 
 sub run() {
-    local $ugtk2::wm_icon = get_icon('rpmdrake-mdk', 'title-install');
+    local $ugtk2::wm_icon = get_icon('rpmdrake-mdk', 'title-media');
     my $lock;
     {
         $urpm = fast_open_urpmi_db();
