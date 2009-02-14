@@ -1111,7 +1111,7 @@ sub mainwindow() {
 	gtkpack_(
 	    gtknew('VBox', spacing => 5),
 	    0, $menu,
-	    ($0 =~ /rpm-edit-media|edit-urpm-sources/ ? (0, Gtk2::Banner->new('title-install', N("Configure media"))) : ()),
+	    ($0 =~ /rpm-edit-media|edit-urpm-sources/ ? (0, Gtk2::Banner->new($ugtk2::wm_icon, N("Configure media"))) : ()),
 	    1, gtkpack_(
 		gtknew('HBox', spacing => 10),
 		1, gtknew('ScrolledWindow', child => $list_tv),
@@ -1154,7 +1154,7 @@ sub mainwindow() {
 
 
 sub run() {
-    local $ugtk2::wm_icon = "title-install";
+    local $ugtk2::wm_icon = get_icon('rpmdrake-mdk', 'title-install');
     my $lock;
     {
         $urpm = fast_open_urpmi_db();
