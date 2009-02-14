@@ -129,6 +129,7 @@ sub easy_add_callback_with_mirror() {
 
     #- cooker and community don't have update sources
     my $want_base_distro = _want_base_distro();
+    defined $want_base_distro or return;
     my $distro = $rpmdrake::mandrake_release;
     my ($mirror) = choose_mirror($urpm, message =>
 N("This will attempt to install all official sources corresponding to your
@@ -154,6 +155,7 @@ sub easy_add_callback() {
 
     #- cooker and community don't have update sources
     my $want_base_distro = _want_base_distro();
+    defined $want_base_distro or return;
     warn_for_network_need(undef, transient => $::main_window) or return;
     my $wait = wait_msg(N("Please wait, adding media..."));
     add_distrib_update_media($urpm, undef, if_(!$want_base_distro, only_updates => 1));
