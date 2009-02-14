@@ -604,7 +604,7 @@ sub choose_mirror {
     my ($urpm, %options) = @_;
     delete $options{message};
     my @transient_options = exists $options{transient} ? (transient => $options{transient}) : ();
-    warn_for_network_need($options{message}, %options);
+    warn_for_network_need($options{message}, %options) or return;
     my @mirrors = eval { mirrors($urpm, $options{want_base_distro}) };
     my $error = $@;
     if ($error) {
