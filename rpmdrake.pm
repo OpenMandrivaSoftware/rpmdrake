@@ -212,6 +212,10 @@ sub getbanner() {
     Gtk2::Banner->new('title-update', $::MODE eq 'update' ? N("Software Packages Update") : N("Software Management"));
 }
 
+# return value:
+# - undef if if closed (aka really canceled)
+# - 0 if if No/Cancel
+# - 1 if if Yes/Ok
 sub interactive_msg {
     my ($title, $contents, %options) = @_;
     $options{transient} ||= $::main_window if $::main_window;
