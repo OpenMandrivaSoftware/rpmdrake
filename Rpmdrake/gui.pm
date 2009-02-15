@@ -806,6 +806,7 @@ sub do_action {
     my ($options, $callback_action, $o_info) = @_;
     my $res = eval { do_action__real($options, $callback_action, $o_info) };
     my $err = $@;
+    # FIXME: offer to report the problem into bugzilla:
     if ($err && $err !~ /cancel_perform/) {
         interactive_msg(N("Fatal error"),
                         N("A fatal error occurred: %s.", $err));
