@@ -421,6 +421,10 @@ sub get_pkgs {
 
     my $requested = {};
     my $state = {};
+    my (@requested, @requested_strict);
+
+    if ($::rpmdrake_options{compute_updates} || $::MODE eq 'update') {
+
     $urpm->request_packages_to_upgrade(
 	$db,
 	$state,
@@ -432,10 +436,6 @@ sub get_pkgs {
         priority_upgrade => $urpm->{options}{'priority-upgrade'},
     );
 
-    my (@requested, @requested_strict);
-
-
-    if ($::rpmdrake_options{compute_updates}) {
     if ($urpm->{options}{'priority-upgrade'}) {
         $need_restart =
           urpm::select::resolve_priority_upgrades_after_auto_select($urpm, $db, $state,
