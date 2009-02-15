@@ -432,6 +432,10 @@ sub get_pkgs {
         priority_upgrade => $urpm->{options}{'priority-upgrade'},
     );
 
+    my (@requested, @requested_strict);
+
+
+    if ($::rpmdrake_options{compute_updates}) {
     if ($urpm->{options}{'priority-upgrade'}) {
         $need_restart =
           urpm::select::resolve_priority_upgrades_after_auto_select($urpm, $db, $state,
@@ -439,10 +443,10 @@ sub get_pkgs {
     }
 
     # list of updates (including those matching /etc/urpmi/skip.list):
-    my @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
+    @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
 
     # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
-    my @requested_strict;
+    @requested_strict;
     if ($probe_only_for_updates && !$need_restart) {
         @requested_strict = sort map {
             urpm_name($_);
@@ -470,6 +474,8 @@ sub get_pkgs {
 
     # do not pre select updates in rpmdrake:
     undef @requested_strict if !$probe_only_for_updates;
+
+    }
 
     $priority_state = $need_restart ? $state : undef;
     $priority_requested = $need_restart ? $requested : undef;

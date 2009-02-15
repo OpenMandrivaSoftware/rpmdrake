@@ -519,6 +519,7 @@ sub run_treeview_dialog {
     my %check_boxes;
     my $auto_string = N("/_Options") . N("/_Select dependencies without asking");
     my $noclean_string = N("/_Options") . "/" . N("Clear download cache after successfull install");
+    my $updates_string = N("/_Options") . N("/_Compute updates on startup");
     my ($menu, $factory) = create_factory_menu(
 	$w->{real_window},
 	[ N("/_File"), undef, undef, undef, '<Branch>' ],
@@ -561,6 +562,9 @@ sub run_treeview_dialog {
            }, undef, '<Item>' ],
 	    [ N("/_Options") . N("/_Show automatically selected packages"), undef, sub {
 		$dont_show_selections->[0] = !$checkbox_show_autoselect->get_active;
+	    }, undef, '<CheckItem>' ],
+	    [ $updates_string, undef, sub {
+                $::rpmdrake_options{compute_updates} = $check_boxes{$updates_string}->get_active;
 	    }, undef, '<CheckItem>' ],
 	),
 	[ N("/_View"), undef, undef, undef, '<Branch>' ],
@@ -611,8 +615,9 @@ sub run_treeview_dialog {
 
     %check_boxes = map {
         $_ => $factory->get_widget("<main>" . $get_path->($_));
-    } ($auto_string, $noclean_string);
+    } ($auto_string, $noclean_string, $updates_string);
     $check_boxes{$auto_string}->set_active($::rpmdrake_options{auto}) if !$>;
+    $check_boxes{$updates_string}->set_active($::rpmdrake_options{compute_updates}) if !$>;
     $check_boxes{$noclean_string}->set_active(!$::noclean);
 
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
