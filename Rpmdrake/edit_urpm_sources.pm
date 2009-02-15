@@ -1042,10 +1042,19 @@ sub mainwindow() {
 	},
     );
 
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled"), my $tr = Gtk2::CellRendererToggle->new, 'active' => $col{mainw}{is_enabled}));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates"), my $cu = Gtk2::CellRendererToggle->new, 'active' => $col{mainw}{is_update}, activatable => $col{mainw}{activatable}));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Type"), Gtk2::CellRendererText->new, 'text' => $col{mainw}{type}));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => $col{mainw}{name}));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled"),
+                                                                      my $tr = Gtk2::CellRendererToggle->new,
+                                                                      'active' => $col{mainw}{is_enabled}));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates"),
+                                                                      my $cu = Gtk2::CellRendererToggle->new,
+                                                                      'active' => $col{mainw}{is_update},
+                                                                      activatable => $col{mainw}{activatable}));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Type"),
+                                                                      Gtk2::CellRendererText->new,
+                                                                      'text' => $col{mainw}{type}));
+    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"),
+                                                                      Gtk2::CellRendererText->new,
+                                                                      'text' => $col{mainw}{name}));
 
     $tr->signal_connect(
 	toggled => sub {
