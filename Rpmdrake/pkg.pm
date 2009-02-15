@@ -353,6 +353,59 @@ my ($priority_state, $priority_requested);
 our $need_restart;
 
 our $probe_only_for_updates;
+
+sub get_updates_list {
+    my ($urpm, $db, $state, $requested, $requested_list, $requested_strict) = @_;
+
+    $urpm->request_packages_to_upgrade(
+	$db,
+	$state,
+	$requested,
+    );
+
+    my %common_opts = (
+        callback_choices => \&Rpmdrake::gui::callback_choices,
+        priority_upgrade => $urpm->{options}{'priority-upgrade'},
+    );
+
+    if ($urpm->{options}{'priority-upgrade'}) {
+        $need_restart =
+          urpm::select::resolve_priority_upgrades_after_auto_select($urpm, $db, $state,
+                                                                    $requested, %common_opts);
+    }
+
+    # list of updates (including those matching /etc/urpmi/skip.list):
+    @$requested_list = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
+
+    # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
+    if ($probe_only_for_updates && !$need_restart) {
+        @$requested_strict = sort map {
+            urpm_name($_);
+        } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices);
+
+        if (my @l = grep { $state->{selected}{$_->id} }
+              urpm::select::_priority_upgrade_pkgs($urpm, $urpm->{options}{'priority-upgrade'})) {
+            if (!$need_restart) {
+                $need_restart =
+                  urpm::select::_resolve_priority_upgrades($urpm, $db, $state, $state->{selected},
+                                                           \@l, %common_opts);
+            }
+        }
+    }
+
+    if ($need_restart) {
+        $requested_strict = [ map { scalar $_->fullname } @{$urpm->{depslist}}[keys %{$state->{selected}}] ];
+        # drop non priority updates:
+        @$requested_list = ();
+    }
+
+    # list updates including skiped ones + their deps in MandrivaUpdate:
+    @$requested_list = uniq(@$requested_list, @$requested_strict);
+
+    # do not pre select updates in rpmdrake:
+    @$requested_strict = () if !$probe_only_for_updates;
+}
+
 sub get_pkgs {
     my ($opts) = @_;
     my $w = $::main_window;
@@ -424,57 +477,7 @@ sub get_pkgs {
     my (@requested, @requested_strict);
 
     if ($::rpmdrake_options{compute_updates} || $::MODE eq 'update') {
-
-    $urpm->request_packages_to_upgrade(
-	$db,
-	$state,
-	$requested,
-    );
-
-    my %common_opts = (
-        callback_choices => \&Rpmdrake::gui::callback_choices,
-        priority_upgrade => $urpm->{options}{'priority-upgrade'},
-    );
-
-    if ($urpm->{options}{'priority-upgrade'}) {
-        $need_restart =
-          urpm::select::resolve_priority_upgrades_after_auto_select($urpm, $db, $state,
-                                                                    $requested, %common_opts);
-    }
-
-    # list of updates (including those matching /etc/urpmi/skip.list):
-    @requested = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
-
-    # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
-    @requested_strict;
-    if ($probe_only_for_updates && !$need_restart) {
-        @requested_strict = sort map {
-            urpm_name($_);
-        } $urpm->resolve_requested($db, $state, $requested, callback_choices => \&Rpmdrake::gui::callback_choices);
-
-        if (my @l = grep { $state->{selected}{$_->id} }
-              urpm::select::_priority_upgrade_pkgs($urpm, $urpm->{options}{'priority-upgrade'})) {
-            if (!$need_restart) {
-                $need_restart =
-                  urpm::select::_resolve_priority_upgrades($urpm, $db, $state, $state->{selected},
-                                                           \@l, %common_opts);
-            }
-        }
-    }
-
-    if ($need_restart) {
-        @requested_strict = map { scalar $_->fullname } @{$urpm->{depslist}}[keys %{$state->{selected}}];
-        # drop non priority updates:
-        undef @requested;
-    }
-
-
-    # list updates including skiped ones + their deps in MandrivaUpdate:
-    @requested = uniq(@requested, @requested_strict);
-
-    # do not pre select updates in rpmdrake:
-    undef @requested_strict if !$probe_only_for_updates;
-
+        get_updates_list($urpm, $db, $state, $requested, \@requested, \@requested_strict);
     }
 
     $priority_state = $need_restart ? $state : undef;
