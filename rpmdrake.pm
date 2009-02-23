@@ -210,7 +210,7 @@ sub getbanner() {
 	install => N("Software Packages Installation"),
 	};
     }
-    Gtk2::Banner->new('title-update', $::MODE eq 'update' ? N("Software Packages Update") : N("Software Management"));
+    Gtk2::Banner->new($ugtk2::wm_icon, $::MODE eq 'update' ? N("Software Packages Update") : N("Software Management"));
 }
 
 # return value:
