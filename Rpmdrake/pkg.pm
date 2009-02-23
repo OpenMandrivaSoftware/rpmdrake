@@ -334,7 +334,6 @@ sub get_installed_packages {
                       #- Extract summary and description since they'll be lost when the header is packed
                       $all_pkgs->{$fullname} = {
                           selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
-                          summary => $pkg->summary,
                           description => rpm_description($pkg->description),
                       } if !($all_pkgs->{$fullname} && $all_pkgs->{$fullname}{description});
                       if (my $name = $base{$fullname}) {
@@ -499,7 +498,7 @@ sub get_pkgs {
 	$pkg->flag_upgrade or next;
         my $name = urpm_name($pkg);
         push @installable_pkgs, $name;
-        $all_pkgs{$name} = { pkg => $pkg, summary => $pkg->summary };
+        $all_pkgs{$name} = { pkg => $pkg };
     }
     foreach my $medium (@search_medias) {
         update_pbar($gurpm);
@@ -509,7 +508,7 @@ sub get_pkgs {
           $pkg->flag_upgrade or next;
           my $name = urpm_name($pkg);
 	  	push @backports, $name;
-          $all_pkgs{$name} = { pkg => $pkg, summary => $pkg->summary };
+          $all_pkgs{$name} = { pkg => $pkg };
       }
     }
     foreach my $medium (@update_medias) {
@@ -526,7 +525,6 @@ sub get_pkgs {
             push @updates, $name;
 	}
         $all_pkgs{$name} = { selected => $selected, pkg => $pkg,
-                                       summary => $pkg->summary,
                                    };
       }
     }
