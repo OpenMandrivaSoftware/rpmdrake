@@ -91,6 +91,7 @@ sub extract_header {
     if ($p->flag_installed && !$p->flag_upgrade) {
         my @files = map { chomp_($_) } run_rpm("rpm -ql $name");
 	add2hash($pkg, { files => [ @files ? @files : N("(none)") ],
+                         description => rpm_description(scalar(run_rpm("rpm -q --qf '%{description}' $name"))),
                          changelog => format_changelog_string($o_installed_version, scalar(run_rpm("rpm -q --changelog $name"))) });
     } else {
 	my $medium = pkg2medium($p, $urpm);
@@ -331,10 +332,8 @@ sub get_installed_packages {
                       update_pbar($gurpm);
                       my $fullname = urpm_name($pkg);
                       return if $fullname =~ /@/;
-                      #- Extract summary and description since they'll be lost when the header is packed
                       $all_pkgs->{$fullname} = {
                           selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
-                          description => rpm_description($pkg->description),
                       } if !($all_pkgs->{$fullname} && $all_pkgs->{$fullname}{description});
                       if (my $name = $base{$fullname}) {
                           $all_pkgs->{$fullname}{base} = \$name;
