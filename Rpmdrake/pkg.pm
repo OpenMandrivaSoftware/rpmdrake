@@ -515,17 +515,14 @@ sub get_pkgs {
       foreach my $pkg_id ($medium->{start} .. $medium->{end}) {
           my $pkg = $urpm->{depslist}[$pkg_id];
           $pkg->flag_upgrade or next;
-        my $selected = 0;
         my $name = urpm_name($pkg);
-
-	if (member($name, @requested)) {
-             # selecting updates by default but skipped ones (MandrivaUpdate only):
-             $selected = member($name, @requested_strict);
-            push @updates, $name;
-	}
-        $all_pkgs{$name} = { selected => $selected, pkg => $pkg,
-                                   };
+        $all_pkgs{$name} = { pkg => $pkg };
       }
+    }
+    @updates = @requested;
+    # selecting updates by default but skipped ones (MandrivaUpdate only):
+    foreach (@requested_strict) {
+	$all_pkgs{$_}{selected} = 1;
     }
 
     $all_pkgs{$_}{pkg}->set_flag_installed foreach @installed_pkgs;
