@@ -353,7 +353,7 @@ our $need_restart;
 our $probe_only_for_updates;
 
 sub get_updates_list {
-    my ($urpm, $db, $state, $requested, $requested_list, $requested_strict) = @_;
+    my ($urpm, $db, $state, $requested, $requested_list, $requested_strict, $all_pkgs) = @_;
 
     $urpm->request_packages_to_upgrade(
 	$db,
@@ -373,7 +373,11 @@ sub get_updates_list {
     }
 
     # list of updates (including those matching /etc/urpmi/skip.list):
-    @$requested_list = sort map { urpm_name($_) } @{$urpm->{depslist}}[keys %$requested];
+    @$requested_list = sort map {
+	my $name = urpm_name($_);
+        $all_pkgs->{$name} = { pkg => $_ };
+	$name;
+    } @{$urpm->{depslist}}[keys %$requested];
 
     # list of pure updates (w/o those matching /etc/urpmi/skip.list but with their deps):
     if ($probe_only_for_updates && !$need_restart) {
@@ -475,7 +479,7 @@ sub get_pkgs {
     my (@requested, @requested_strict);
 
     if ($::rpmdrake_options{compute_updates} || $::MODE eq 'update') {
-        get_updates_list($urpm, $db, $state, $requested, \@requested, \@requested_strict);
+        get_updates_list($urpm, $db, $state, $requested, \@requested, \@requested_strict, \%all_pkgs);
     }
 
     $priority_state = $need_restart ? $state : undef;
@@ -508,15 +512,6 @@ sub get_pkgs {
           my $name = urpm_name($pkg);
 	  	push @backports, $name;
           $all_pkgs{$name} = { pkg => $pkg };
-      }
-    }
-    foreach my $medium (@update_medias) {
-        update_pbar($gurpm);
-      foreach my $pkg_id ($medium->{start} .. $medium->{end}) {
-          my $pkg = $urpm->{depslist}[$pkg_id];
-          $pkg->flag_upgrade or next;
-        my $name = urpm_name($pkg);
-        $all_pkgs{$name} = { pkg => $pkg };
       }
     }
     @updates = @requested;
