@@ -49,14 +49,13 @@ use Gtk2::SimpleList;
     short_name => 3,
     version => 4,
     release => 5,
-    arch => 6,
+    'arch' => 6,
     importance => 7,
 );
 
 $ugtk2::wm_icon = get_icon('MandrivaUpdate', "title-$MODE");
 
 our $w;
-my $treeview_dialog_run = 0;
 our $statusbar;
 
 warn_about_user_mode();
@@ -114,7 +113,7 @@ sub toggle {
     my $done;
     $pkgs->{$name}{pkg}->set_flag_skip(0);
     toggle_nodes($w->{real_window}->window, $list->get_model, sub {
-                     my ($leaf, $state, $model) = @_;
+                     my ($leaf, $_state, $_model) = @_;
                      $done = 1;
                      $list->{data}[$data{$leaf}][$pkg_columns{selected}] = $pkgs->{$name}{selected};
                  },
@@ -128,17 +127,16 @@ $w->{rwindow}->show_all if $::isEmbedded;
 $::main_window = $w->{real_window};
 
 sub quit() {
-    ($mandrivaupdate_width->[0], $mandrivaupdate_height->[0]) = $::w->{real_window}->get_size();
-    Gtk2->main_quit
+    ($mandrivaupdate_width->[0], $mandrivaupdate_height->[0]) = $::w->{real_window}->get_size;
+    Gtk2->main_quit;
 }
 
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
-    my ($size_selected, %elems, $list, $info, $update_button);
-    my (undef, $size_free) = MDK::Common::System::df('/usr');
+    my ($list, $info, $update_button);
 
-    my (undef, $rootwin_height) = gtkroot()->get_size();
+    my (undef, $rootwin_height) = gtkroot()->get_size;
     my $is_small_screen = $rootwin_height < 480;
 
     compute_main_window_size($w);
@@ -260,17 +258,16 @@ sub run_treeview_dialog {
 
     my $cell = ($bool_col->get_cell_renderers)[0];
     $cell->signal_connect(toggled => sub {
-	my ($cell, $text_path) = @_;
-	my ($val, $name) = @{$list->{data}[$text_path]};
+	my ($_cell, $text_path) = @_;
+	my ($_val, $name) = @{$list->{data}[$text_path]};
 	gtkset_mousecursor_wait($w->{real_window}->window);
-	my $_guard = before_leaving(sub {gtkset_mousecursor_normal($w->{real_window}->window) });
+	my $_guard = before_leaving(sub { gtkset_mousecursor_normal($w->{real_window}->window) });
 	toggle($list, $name);
     });
     $action_button->set_sensitive(0) if $>;
 
     $w->{rwindow}->set_sensitive(1);
 
-    $treeview_dialog_run = 1;
     $w->main;
 }
 
