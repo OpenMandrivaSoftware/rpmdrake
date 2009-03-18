@@ -212,7 +212,7 @@ sub run_treeview_dialog {
 
 
     $list->set_rules_hint(1);
-    my $bool_col = $list->get_column(0);
+    my $bool_col = $list->get_column($pkg_columns{selected});
     $bool_col->set_fixed_width(24);
     $bool_col->set_sizing('fixed');
     $bool_col->set_sort_column_id($pkg_columns{selected});
@@ -259,7 +259,7 @@ sub run_treeview_dialog {
     my $cell = ($bool_col->get_cell_renderers)[0];
     $cell->signal_connect(toggled => sub {
 	my ($_cell, $text_path) = @_;
-	my ($_val, $name) = @{$list->{data}[$text_path]};
+	my $name = @{$list->{data}[$text_path]}[$pkg_columns{text}];
 	gtkset_mousecursor_wait($w->{real_window}->window);
 	my $_guard = before_leaving(sub { gtkset_mousecursor_normal($w->{real_window}->window) });
 	toggle($list, $name);
