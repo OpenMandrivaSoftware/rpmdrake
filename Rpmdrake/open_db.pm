@@ -33,7 +33,12 @@ use feature 'state';
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(fast_open_urpmi_db get_inactive_backport_media get_update_medias open_rpm_db open_urpmi_db);
+our @EXPORT = qw(fast_open_urpmi_db
+                 get_inactive_backport_media
+                 get_update_medias
+                 open_rpm_db
+                 open_urpmi_db
+            );
 
 
 # because rpm blocks some signals when rpm DB is opened, we don't keep open around:
