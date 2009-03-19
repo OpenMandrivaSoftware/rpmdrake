@@ -201,11 +201,6 @@ sub download_callback {
 
 my (@update_medias, $is_update_media_already_asked);
 
-sub get_update_medias {
-    my ($urpm) = @_;
-    grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
-}
-
 sub warn_about_media {
     my ($w, $opts) = @_;
 

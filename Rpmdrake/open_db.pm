@@ -33,7 +33,7 @@ use feature 'state';
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(fast_open_urpmi_db get_inactive_backport_media open_rpm_db open_urpmi_db);
+our @EXPORT = qw(fast_open_urpmi_db get_inactive_backport_media get_update_medias open_rpm_db open_urpmi_db);
 
 
 # because rpm blocks some signals when rpm DB is opened, we don't keep open around:
@@ -109,6 +109,11 @@ sub fast_open_urpmi_db() {
 sub get_inactive_backport_media {
     my ($urpm) = @_;
     map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i && $_->{name} !~ /debug|sources/i } @{$urpm->{media}};
+}
+
+sub get_update_medias {
+    my ($urpm) = @_;
+    grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
 }
 
 sub open_urpmi_db {
