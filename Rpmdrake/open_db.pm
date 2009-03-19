@@ -106,6 +106,13 @@ sub fast_open_urpmi_db() {
     $urpm;
 }
 
+sub is_it_a_devel_distro {
+    state $res;
+    return $res if defined $res;
+    $res = common::parse_LDAP_namespace_structure(cat_('/etc/product.id'))->{branch} eq 'Devel';
+    return $res;
+}
+
 sub get_inactive_backport_media {
     my ($urpm) = @_;
     map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i && $_->{name} !~ /debug|sources/i } @{$urpm->{media}};
