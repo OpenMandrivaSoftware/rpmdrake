@@ -120,7 +120,11 @@ sub get_inactive_backport_media {
 
 sub get_update_medias {
     my ($urpm) = @_;
-    grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
+    if (is_it_a_devel_distro()) {
+        grep { !$_->{ignore} } @{$urpm->{media}};
+    } else {
+        grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
+    }
 }
 
 sub open_urpmi_db {
