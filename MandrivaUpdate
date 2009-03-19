@@ -212,6 +212,8 @@ sub run_treeview_dialog {
 
 
     $list->set_rules_hint(1);
+    my $pix_col = $list->get_column($pkg_columns{image});
+    $pix_col->set_fixed_width(32);
     my $bool_col = $list->get_column($pkg_columns{selected});
     $bool_col->set_fixed_width(24);
     $bool_col->set_sizing('fixed');
