@@ -108,7 +108,7 @@ sub fast_open_urpmi_db() {
 
 sub get_inactive_backport_media {
     my ($urpm) = @_;
-    map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i && $_->{name} !~ /debug/i } @{$urpm->{media}};
+    map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i && $_->{name} !~ /debug|sources/i } @{$urpm->{media}};
 }
 
 sub open_urpmi_db {
