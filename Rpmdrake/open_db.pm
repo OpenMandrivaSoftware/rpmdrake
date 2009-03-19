@@ -36,6 +36,7 @@ our @ISA = qw(Exporter);
 our @EXPORT = qw(fast_open_urpmi_db
                  get_inactive_backport_media
                  get_update_medias
+                 is_it_a_devel_distro
                  open_rpm_db
                  open_urpmi_db
             );
