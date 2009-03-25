@@ -45,7 +45,6 @@ use ugtk2 qw(:all);
 use Gtk2::Gdk::Keysyms;
 use Rpmdrake::widgets;
 use feature 'state';
-use Gtk2::Sexy;
 
 $ugtk2::wm_icon = get_icon('installremoverpm', "title-$MODE");
 
@@ -642,14 +641,17 @@ sub run_treeview_dialog {
 			0, $view_box,
 			0, $filter_box,
 			0, gtknew('Label', text => N("Find:")),
-			1, $find_entry = gtknew('Sexy_IconEntry', clear_button => 1, width => 260,
-                                             primary_icon => Gtk2::Image->new_from_stock('gtk-find', 'menu'),
+			1, $find_entry = gtknew('Entry', width => 260,
+                                             primary_icon => 'gtk-find',
+                                             secondary_icon => 'gtk-clear',
                                              tip => N("Find"),
-                                             'icon-released' => $find_callback,
-                                             'icon-pressed' => sub {
-                                                 my (undef, $pos, $button) = @_;
-                                                 return if $pos != 0;
-                                                 $search_menu->popup(undef, undef, undef, undef, $button, undef);
+                                             'icon-release' => $find_callback,
+                                             'icon-press' => sub {
+                                                 my (undef, $pos, $event) = @_;
+                                                 # emulate Sexy::IconEntry's clear_button:
+                                                 $find_entry->set_text('') if $pos eq 'secondary';
+                                                 return if $pos ne 'primary';
+                                                 $search_menu->popup(undef, undef, undef, undef, $event->button, $event->time);
                                              },
 			    key_press_event => sub {
 				member($_[1]->keyval, $Gtk2::Gdk::Keysyms{Return}, $Gtk2::Gdk::Keysyms{KP_Enter})
