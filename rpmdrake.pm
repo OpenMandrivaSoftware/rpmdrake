@@ -711,6 +711,7 @@ sub show_urpm_progress {
 	$label->set_label($label->get_label . N(" failed!"));
         $medium = undef;
     } else {
+        # FIXME: we're displaying misplaced quotes such as "downloading `foobar from 'medium Main Updates'´"
         $file = $medium && length($file) < 40 ? #-PO: We're downloading the said file from the said medium
                                                  N("%s from medium %s", basename($file), $medium)
                                                : basename($file);
