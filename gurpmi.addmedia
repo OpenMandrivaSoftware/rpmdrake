@@ -145,7 +145,8 @@ foreach (@addmedia_args) {
 }
 if ($success) {
     my $message =
-          @names > 1
+      $distrib ? N("Successfully added media.")
+        : @names > 1
 	    ? N("Successfully added media %s.", join ", ", @names)
 	    : N("Successfully added medium `%s'.", $names[0]);
     interactive_msg('gurpmi.addmedia', $message) if !$silent_success;
