@@ -11,18 +11,19 @@
 # Thomas Backlund <tmb@mandrivalinux.org>, 2002, 2003, 2004, 2005.
 # Thomas Backlund <tmb@mandriva.org>, 2005, 2006, 2008.
 # Anssi Hannula <anssi@mandriva.org>, 2008.
+# Jani Välimaa <jani.valimaa@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-fi\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-01 17:56+0200\n"
-"PO-Revision-Date: 2008-10-02 21:32+0300\n"
-"Last-Translator: Thomas Backlund <tmb@mandriva.org>\n"
+"PO-Revision-Date: 2009-04-17 21:58+0300\n"
+"Last-Translator: Jani Välimaa <jani.valimaa@gmail.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../MandrivaUpdate:102 ../Rpmdrake/gui.pm:862
@@ -32,18 +33,18 @@ msgid ""
 "no available update for the packages installed on your computer,\n"
 "or you already installed all of them."
 msgstr ""
-"Päivityslista on tyhjä. Tämä tarkoittaa joko ettei\n"
-"päivityksiä löydy, tai olet jo asentanut kaikki."
+"Päivityslista on tyhjä. Päivitykset on asennettu tai\n"
+"päivityksiä ei ole saatavilla."
 
 #: ../MandrivaUpdate:125 ../rpmdrake:89 ../rpmdrake:747 ../rpmdrake.pm:213
 #, c-format
 msgid "Software Management"
-msgstr "Ohjelmistohallinta"
+msgstr "Ohjelmistojen hallinta"
 
 #: ../MandrivaUpdate:149
 #, c-format
 msgid "Here is the list of software package updates"
-msgstr "Tässä on luettelo päivitetyistä paketeista"
+msgstr "Saatavilla olevat päivitykset"
 
 #: ../MandrivaUpdate:156
 #, c-format
@@ -149,11 +150,11 @@ msgid ""
 "set\n"
 "of sources."
 msgstr ""
-"Järjestelmän turvallisuuden ja vakauden varmistamiseksi tulee sinun asettaa\n"
-"lähteet virallisille turva- ja vakauspäivityksille. Voit myös asettaa\n"
-"kaikki Mandrivan viralliset pakettilähteet, jotka sisältävät huomattavasti\n"
-"suuremman määrän ohjelmia kuin mitä Mandrivan levyille mahtuu.\n"
-"Valitse, haluatko asentaa vain päivityslähteet vai kaikki lähteet."
+"Järjestelmän turvallisuuden ja vakauden varmistamiseksi tulee asettaa\n"
+"lähteet virallisille turva- ja vakauspäivityksille. Myös kaikki Mandrivan\n"
+"viralliset pakettilähteet voidaan asettaa, viralliset lähteet sisältävät\n"
+"huomattavasti suuremman määrän ohjelmia kuin Mandrivan asennus-\n"
+"levyille mahtuu. Asennetaanko kaikki vai vain päivityslähteet?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:122
 #, c-format
@@ -176,18 +177,18 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
-"Tämä yrittää asettaa kaikki viralliset lähteet jotka vastaavat\n"
-"käyttämäsi jakelua (%s).\n"
+"Yritetään asettaa jakelulle %s\n"
+"tarkoitetut viralliset lähteet.\n"
 "\n"
 "Peilipalvelinlistan saamiseksi tarvitaan internetyhteyttä.\n"
-"Varmista että verkkoyhteytesi on avattu.\n"
+"Varmista, että verkkoyhteys on käytettävissä.\n"
 "\n"
-"Sopiiko että jatketaan?"
+"Jatketaanko?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:145 ../Rpmdrake/edit_urpm_sources.pm:160
 #, c-format
 msgid "Please wait, adding media..."
-msgstr "Odota, lisätään lähteet..."
+msgstr "Lisätään lähdettä..."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:168
 #, c-format
@@ -226,9 +227,9 @@ msgid "HTTP server"
 msgstr "HTTP-palvelin"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:176
-#, fuzzy, c-format
+#, c-format
 msgid "Removable device (CD-ROM, DVD, ...)"
-msgstr "Siirrettävä laite"
+msgstr "Siirrettävä laite (CD/DVD-levy, ...)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:176
 #, c-format
@@ -264,31 +265,29 @@ msgstr "Luo media kokonaiselle jakelulle"
 #: ../Rpmdrake/edit_urpm_sources.pm:242
 #, c-format
 msgid "Tag this medium as an update medium"
-msgstr "Merkitse tämä media päivitysmediaksi"
+msgstr "Merkitse päivitysmediaksi"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:252
 #, c-format
 msgid "You need to fill up at least the two first entries."
-msgstr "Sinun pitää täyttää ainakin kaksi ensimmäistä kohtaa."
+msgstr "Ainakin kaksi ensimmäistä kohtaa pitää täyttää."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:256
 #, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
 "really want to replace it?"
-msgstr ""
-"Tämän niminen lähde on jo olemassa,\n"
-"Oletko varma että haluat korvata sen?"
+msgstr "Media on jo olemassa, haluatko varmasti korvata sen?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:268
 #, c-format
 msgid "Adding a medium:"
-msgstr "Lisätään lähde:"
+msgstr "Median lisäys:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:270
 #, c-format
 msgid "Type of medium:"
-msgstr "Lähteen tyyppi:"
+msgstr "Median tyyppi:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:280 ../Rpmdrake/edit_urpm_sources.pm:394
 #: ../Rpmdrake/edit_urpm_sources.pm:492 ../Rpmdrake/edit_urpm_sources.pm:519
@@ -340,7 +339,7 @@ msgstr "Tarvittaessa"
 #: ../Rpmdrake/edit_urpm_sources.pm:346 ../Rpmdrake/edit_urpm_sources.pm:383
 #, c-format
 msgid "Update-only"
-msgstr "Vain päivitys"
+msgstr "Vain päivitettäessä"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:347 ../Rpmdrake/edit_urpm_sources.pm:386
 #, c-format
@@ -350,7 +349,7 @@ msgstr "Aina"
 #: ../Rpmdrake/edit_urpm_sources.pm:355
 #, c-format
 msgid "Verify RPMs to be installed:"
-msgstr "Varmista asennettavia RPM paketteja: "
+msgstr "Varmista asennettavat RPM-paketit:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:360
 #, c-format
@@ -360,7 +359,7 @@ msgstr "Käytettävä latausohjelma:"
 #: ../Rpmdrake/edit_urpm_sources.pm:367
 #, c-format
 msgid "XML meta-data download policy:"
-msgstr "XML-lisätietojen hakeminen:"
+msgstr "XML-lisätietojen hakukäytäntö:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:374
 #, c-format
@@ -391,7 +390,9 @@ msgstr "Tarvittavat XML-lisätiedot ladataan valittaessa paketti."
 msgid ""
 "Updating media implies updating XML info files already required at least "
 "once."
-msgstr "Päivitä jo ladatut XML-lisätiedot päivitettäessä mediat."
+msgstr ""
+"Lähteiden päivittäminen tarkoittaa, että XML-lisätietojen päivitystä "
+"tarvitaan."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:387
 #, c-format
@@ -401,12 +402,12 @@ msgstr "Kaikki XML-lisätiedot ladataan mediaa lisättäessä tai päivitettäes
 #: ../Rpmdrake/edit_urpm_sources.pm:416
 #, c-format
 msgid "Source Removal"
-msgstr "Ohjelmistopakettien poisto"
+msgstr "Urpmi-lähteiden poisto"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:418
 #, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
-msgstr "Oletko varma että haluat poistaa lähteen \"%s\"?"
+msgstr "Haluatko varmasti poistaa lähteen \"%s\"?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:419
 #, c-format
@@ -431,7 +432,7 @@ msgstr "Muokataan lähdettä \"%s\":"
 #: ../Rpmdrake/edit_urpm_sources.pm:484
 #, c-format
 msgid "Downloader:"
-msgstr "Lataaja:"
+msgstr "Latausohjelma:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:496
 #, c-format
@@ -446,18 +447,18 @@ msgstr "Välityspalvelin..."
 #: ../Rpmdrake/edit_urpm_sources.pm:517
 #, c-format
 msgid "You need to insert the medium to continue"
-msgstr "Sinun pitää asettaa media jatkaaksesi"
+msgstr "Media tulee lisätä, jotta voidaan jatkaa"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:518
 #, c-format
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
-msgstr "Tallentaaksesi muutokset sinun pitää asettaa media asemaan."
+msgstr "Media tulee asettaa asemaan, jotta muutokset voidaan tallentaa."
 
 #: ../Rpmdrake/edit_urpm_sources.pm:553
 #, c-format
 msgid "Configure proxies"
-msgstr "Määritä välityspalvelin"
+msgstr "Aseta välityspalvelin"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:566
 #, c-format
@@ -475,24 +476,23 @@ msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
 "<proxyhost[:port]>):"
 msgstr ""
-"Jos tarvitset välityspalvelinta, anna palvelimen nimi ja mahdollisesti "
-"portti (muodossa: <palvelinnimi[:portti]>):"
+"Käytettäessä välityspalvelinta, anna palvelimen nimi\n"
+"ja tarvittaessa käytettävä portti (<palvelin[:portti]>):"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:572
 #, c-format
 msgid "Proxy hostname:"
-msgstr "Välityspalvelimen nimi:"
+msgstr "Välityspalvelimen osoite:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:575
 #, c-format
 msgid "You may specify a user/password for the proxy authentication:"
-msgstr ""
-"Voit halutessasi antaa tunnuksen/salasanan välityspalvelimen tunnistukseen:"
+msgstr "Välityspalvelin vaatii tunnistautumisen"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:578
 #, c-format
 msgid "User:"
-msgstr "Käyttäjä:"
+msgstr "Käyttäjätunnus:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:674
 #, c-format
@@ -512,7 +512,7 @@ msgstr "Lisää lähderajoitus"
 #: ../Rpmdrake/edit_urpm_sources.pm:698
 #, c-format
 msgid "Choose a medium for adding in the media limit:"
-msgstr "Valitse lisättävä lähde lähderajoitukseen:"
+msgstr "Valitse lähteet, joihin haut rajoitetaan:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:715
 #, c-format
@@ -522,7 +522,7 @@ msgstr "Lisää kone"
 #: ../Rpmdrake/edit_urpm_sources.pm:715
 #, c-format
 msgid "Type in the hostname or IP address of the host to add:"
-msgstr "Kirjoita koneen nimi tai IP-osoite jonka haluat lisätä:"
+msgstr "Anna lisättävän koneen nimi tai IP-osoite:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:729
 #, c-format
@@ -532,7 +532,7 @@ msgstr "Muokataan rinnakkaisryhmää \"%s\":"
 #: ../Rpmdrake/edit_urpm_sources.pm:733
 #, c-format
 msgid "Group name:"
-msgstr "Ryhmänimi:"
+msgstr "Ryhmän nimi:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:734
 #, c-format
@@ -542,7 +542,9 @@ msgstr "Protokolla:"
 #: ../Rpmdrake/edit_urpm_sources.pm:736
 #, c-format
 msgid "Media limit:"
-msgstr "Lähderajoitus:"
+msgstr ""
+"Lähteet, joihin\n"
+"rajoitutaan:"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:741 ../Rpmdrake/edit_urpm_sources.pm:750
 #: ../Rpmdrake/edit_urpm_sources.pm:934 ../Rpmdrake/edit_urpm_sources.pm:1140
@@ -607,12 +609,12 @@ msgstr "Lisää..."
 #: ../Rpmdrake/edit_urpm_sources.pm:840
 #, c-format
 msgid "Manage keys for digital signatures of packages"
-msgstr "Pakettien digitaalisten allekirjoitusavaimien hallinta"
+msgstr "Pakettien digitaalisten allekirjoitusavainten hallinta"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:846 ../Rpmdrake/edit_urpm_sources.pm:1055
 #, c-format
 msgid "Medium"
-msgstr "Lähde"
+msgstr "Media"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:853
 #, c-format
@@ -624,7 +626,7 @@ msgstr "Avaimet"
 #: ../Rpmdrake/edit_urpm_sources.pm:876
 #, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
-msgstr "nimeä ei löydetty, avainta ei ole rpm-avaintiedostossa!"
+msgstr "nimeä ei löytynyt, avainta ei ole rpm-avainrenkaassa!"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:896
 #, c-format
@@ -634,7 +636,7 @@ msgstr "Lisää avain"
 #: ../Rpmdrake/edit_urpm_sources.pm:896
 #, c-format
 msgid "Choose a key for adding to the medium %s"
-msgstr "Valitse lisättävä avain lähteelle %s"
+msgstr "Valitse lisättävä avain medialle \"%s\""
 
 #: ../Rpmdrake/edit_urpm_sources.pm:915
 #, c-format
@@ -647,13 +649,13 @@ msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
 "(name of the key: %s)"
 msgstr ""
-"Oletko varma että haluat poistaa avaimen %s lähteeltä %s?\n"
+"Oletko varma, että halutaan poistaa avain %s lähteeltä \"%s\"?\n"
 "(avaimen nimi: %s)"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:955 ../Rpmdrake/edit_urpm_sources.pm:1123
 #, c-format
 msgid "Configure media"
-msgstr "Määritä lähteet"
+msgstr "Aseta lähteet"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:962 ../Rpmdrake/edit_urpm_sources.pm:963
 #: ../Rpmdrake/edit_urpm_sources.pm:964 ../Rpmdrake/edit_urpm_sources.pm:965
@@ -666,7 +668,7 @@ msgstr "/_Tiedosto"
 #: ../Rpmdrake/edit_urpm_sources.pm:963
 #, c-format
 msgid "/_Update"
-msgstr "/_Päivitä"
+msgstr "/_Päivitä lähteet"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:963
 #, c-format
@@ -676,22 +678,22 @@ msgstr "<control>P"
 #: ../Rpmdrake/edit_urpm_sources.pm:964
 #, c-format
 msgid "/Add a specific _media mirror"
-msgstr ""
+msgstr "/Lisää lähteet _tietyltä peilipalvelimelta"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:964
-#, fuzzy, c-format
+#, c-format
 msgid "<control>M"
-msgstr "<control>P"
+msgstr "<control>T"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:965
 #, c-format
 msgid "/_Add a custom medium"
-msgstr "/_Lisää mukautettu lähde"
+msgstr "/Lisää _mukautettu lähde"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:965
 #, c-format
 msgid "<control>A"
-msgstr "<control>L"
+msgstr "<control>M"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:966
 #, c-format
@@ -701,7 +703,7 @@ msgstr "/Sulje"
 #: ../Rpmdrake/edit_urpm_sources.pm:966
 #, c-format
 msgid "<control>W"
-msgstr "<control>W"
+msgstr "<control>S"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:967 ../Rpmdrake/edit_urpm_sources.pm:968
 #: ../Rpmdrake/edit_urpm_sources.pm:969 ../Rpmdrake/edit_urpm_sources.pm:970
@@ -725,7 +727,7 @@ msgstr "<control>Y"
 #: ../Rpmdrake/edit_urpm_sources.pm:969
 #, c-format
 msgid "/Manage _keys"
-msgstr "/_Avaimien hallinta..."
+msgstr "/_Avaimien hallinta"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:969
 #, c-format
@@ -801,6 +803,7 @@ msgstr ""
 "Janne Puonti <janne.puonti@kolumbus.fi>\n"
 "Matias Griese <mahagr@utu.fi>\n"
 "Kim Enkovaara <kim.enkovaara@iki.fi>\n"
+"Jani Välimaa <jani.valimaa@gmail.com>\n"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:1045 ../Rpmdrake/pkg.pm:245
 #, c-format
@@ -810,7 +813,7 @@ msgstr "Käytössä"
 #: ../Rpmdrake/edit_urpm_sources.pm:1048
 #, c-format
 msgid "Updates"
-msgstr "Päivitykset"
+msgstr "Päivityslähde"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:1052
 #, c-format
@@ -820,7 +823,7 @@ msgstr "Tyyppi"
 #: ../Rpmdrake/edit_urpm_sources.pm:1071
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now ?"
-msgstr "Tämä lähde pitää päivittää jotta sitä voi käyttää. Päivitä nyt?"
+msgstr "Lähde pitää päivittää, jotta sitä voidaan käyttää. Päivitä nyt?"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:1098
 #, c-format
@@ -846,10 +849,10 @@ msgid ""
 "manager on another desktop, or are you currently installing\n"
 "packages as well?)."
 msgstr ""
-"Pakettitietokanta on lukittu. Sulje muut sovellukset\n"
-"jotka käyttävät pakettitietokantaa (onko sinulla toinen\n"
-"lähteidenhallintaohjelma toisella työpöydällä tai oletko\n"
-"juuri asentamassa paketteja?)."
+"Pakettitietokanta on lukittu. Muut pakettitietokantaa\n"
+"käyttävät sovellukset on suljettava (onko taustalla toinen\n"
+"Ohjelmistolähteiden hallinta toisella työpöydällä tai\n"
+"asennetaanko paketteja juuri nyt?)."
 
 #: ../Rpmdrake/formatting.pm:102
 #, c-format
@@ -864,7 +867,7 @@ msgstr "Pakettien asentamien vie %s lisää levytilaa."
 #: ../Rpmdrake/formatting.pm:167
 #, c-format
 msgid "%s of disk space will be freed."
-msgstr "%s levytilaa vapautuu."
+msgstr "Levytilaa vapautuu %s."
 
 #: ../Rpmdrake/gui.pm:120 ../Rpmdrake/gui.pm:217 ../Rpmdrake/gui.pm:219
 #: ../Rpmdrake/pkg.pm:163
@@ -880,12 +883,12 @@ msgstr "Tärkeys: "
 #: ../Rpmdrake/gui.pm:150 ../Rpmdrake/gui.pm:243
 #, c-format
 msgid "Reason for update: "
-msgstr "Syy päivitykseen: "
+msgstr "Päivityksen syy: "
 
 #: ../Rpmdrake/gui.pm:154
 #, c-format
 msgid "Security advisory"
-msgstr "Tietoturvaselitys"
+msgstr "Tietoturvapäivitys"
 
 #: ../Rpmdrake/gui.pm:159 ../Rpmdrake/gui.pm:245
 #, c-format
@@ -905,7 +908,7 @@ msgstr "Asennettu versio: "
 #: ../Rpmdrake/gui.pm:172
 #, c-format
 msgid "Group: "
-msgstr "Ryhmä"
+msgstr "Ryhmä: "
 
 #: ../Rpmdrake/gui.pm:173 ../Rpmdrake/gui.pm:231
 #, c-format
@@ -930,7 +933,7 @@ msgstr "Lähde: "
 #: ../Rpmdrake/gui.pm:186
 #, c-format
 msgid "URL: "
-msgstr "URL:"
+msgstr "URL: "
 
 #: ../Rpmdrake/gui.pm:191
 #, c-format
@@ -982,17 +985,17 @@ msgstr "Varoitus"
 #: ../Rpmdrake/gui.pm:262
 #, c-format
 msgid "The package \"%s\" was found."
-msgstr "Löydettiin paketti \"%s\"."
+msgstr "Löydettiin paketti %s."
 
 #: ../Rpmdrake/gui.pm:263
 #, c-format
 msgid "However this package is not in the package list."
-msgstr "Tämä paketti puuttuu kuitenkin pakettiluettelosta."
+msgstr "Kyseinen paketti kuitenkin puuttuu pakettiluettelosta."
 
 #: ../Rpmdrake/gui.pm:264
 #, c-format
 msgid "You may want to update your urpmi database."
-msgstr "Urpmi-tietokannan päivittäminen voi auttaa."
+msgstr "Urpmi-tietokanta tulisi päivittää."
 
 #: ../Rpmdrake/gui.pm:266
 #, c-format
@@ -1009,7 +1012,7 @@ msgstr "- %s (lähde: %s)"
 #: ../Rpmdrake/gui.pm:455
 #, c-format
 msgid "Removing package %s would break your system"
-msgstr "Paketin %s poistaminen rikkoisi järjestelmäsi."
+msgstr "Paketin %s poistaminen rikkoisi järjestelmän"
 
 #: ../Rpmdrake/gui.pm:460
 #, c-format
@@ -1017,8 +1020,8 @@ msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
 "Do you want to select it anyway?"
 msgstr ""
-"Paketti \"%s\" on urpmin ohituslistassa.\n"
-"Haluatko silti valita sen?"
+"Paketti %s on urpmi:n ohituslistalla.\n"
+"Valitaanko se kuitenkin?"
 
 #: ../Rpmdrake/gui.pm:466 ../Rpmdrake/pkg.pm:662
 #, c-format
@@ -1026,8 +1029,8 @@ msgid ""
 "Rpmdrake or one of its priority dependencies needs to be updated first. "
 "Rpmdrake will then restart."
 msgstr ""
-"Rpmdrake tai jokin sen prioriteettiriippuvuuksista tulee päivittää ensin. "
-"Tämän jälkeen Rpmdrake käynnisyy uudelleen."
+"Rpmdrake tai jokin sen prioriteettiriippuvuuksista tulee päivittää. Rpmdrake "
+"käynnistyy tämän jälkeen uudestaan."
 
 #: ../Rpmdrake/gui.pm:583 ../Rpmdrake/gui.pm:613 ../Rpmdrake/gui.pm:615
 #, c-format
@@ -1037,7 +1040,7 @@ msgstr "Lisätietoa paketista..."
 #: ../Rpmdrake/gui.pm:585
 #, c-format
 msgid "Please choose"
-msgstr "Ole hyvä ja valitse"
+msgstr "Valitse"
 
 #: ../Rpmdrake/gui.pm:586
 #, c-format
@@ -1047,13 +1050,13 @@ msgstr "Tarvitaan seuraava paketti:"
 #: ../Rpmdrake/gui.pm:586
 #, c-format
 msgid "One of the following packages is needed:"
-msgstr "Yksi seuraavista paketeista tarvitaan:"
+msgstr "Tarvitaan yksi seuraavista paketeista:"
 
 #. -PO: Keep it short, this is gonna be on a button
 #: ../Rpmdrake/gui.pm:601 ../Rpmdrake/gui.pm:606
 #, c-format
 msgid "More info"
-msgstr "Lisätietoa"
+msgstr "Lisätietoja"
 
 #: ../Rpmdrake/gui.pm:608
 #, c-format
@@ -1068,7 +1071,7 @@ msgstr "Tarkistetaan paketin riippuvuuksia..."
 #: ../Rpmdrake/gui.pm:641
 #, c-format
 msgid "Some additional packages need to be removed"
-msgstr "Joitakin paketteja pitää poistaa tämän lisäksi"
+msgstr "Joitakin paketteja täytyy poistaa tämän lisäksi"
 
 #: ../Rpmdrake/gui.pm:652
 #, c-format
@@ -1088,7 +1091,7 @@ msgid ""
 "Removing these packages would break your system, sorry:\n"
 "\n"
 msgstr ""
-"Näiden pakettien poistaminen valitettavasti rikkoisi järjestelmäsi:\n"
+"Valittujen pakettien poistaminen valitettavasti rikkoisi järjestelmän:\n"
 "\n"
 
 #: ../Rpmdrake/gui.pm:667 ../Rpmdrake/gui.pm:743
@@ -1098,8 +1101,7 @@ msgid ""
 "now:\n"
 "\n"
 msgstr ""
-"Riippuvuuksien vuoksi seuraavat paketit joudutaan\n"
-"nyt poistamaan valinnasta:\n"
+"Riippuvuuksien vuoksi seuraavat paketit joudutaan poistamaan valinnasta:\n"
 "\n"
 
 #: ../Rpmdrake/gui.pm:696
@@ -1114,19 +1116,18 @@ msgid ""
 "installed:\n"
 "\n"
 msgstr ""
-"Riippuvuuksien täyttämiseksi myös seuraavat paketit\n"
-"pitää asentaa:\n"
+"Riippuvuuksien täyttämiseksi myös seuraavat paketit pitää asentaa:\n"
 "\n"
 
 #: ../Rpmdrake/gui.pm:705
-#, fuzzy, c-format
+#, c-format
 msgid "Conflicting Packages"
-msgstr "Täsmäävät paketit:"
+msgstr "Ristiriidassa olevat paketit"
 
 #: ../Rpmdrake/gui.pm:719
 #, c-format
 msgid "%s (belongs to the skip list)"
-msgstr "%s (on ohitettavien listalla)"
+msgstr "%s (on ohitettavien pakettien listalla)"
 
 #: ../Rpmdrake/gui.pm:723
 #, c-format
@@ -1168,17 +1169,17 @@ msgstr "Joitakin paketteja pitää poistaa"
 #: ../Rpmdrake/gui.pm:775
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
-msgstr "Virhe: %s näyttää olevean liitettynä ainoastan lukuoikeuksilla."
+msgstr "Virhe: %s näyttää olevan liitettynä ainoastan lukuoikeuksin."
 
 #: ../Rpmdrake/gui.pm:779
 #, c-format
 msgid "You need to select some packages first."
-msgstr "Sinun pitää valita joitakin paketteja ensin."
+msgstr "Paketteja pitää valita ensin."
 
 #: ../Rpmdrake/gui.pm:784
 #, c-format
 msgid "Too many packages are selected"
-msgstr "Liian paljon paketteja valittu"
+msgstr "Paketteja on valittu liian paljon"
 
 #: ../Rpmdrake/gui.pm:785
 #, c-format
@@ -1190,12 +1191,12 @@ msgid ""
 "\n"
 "Do you really want to install all the selected packages?"
 msgstr ""
-"Varoitus: näyttää siltä että yrität asentaa niin paljon\n"
-"paketteja että tiedostojärjestelmäsi tila voi loppua kesken,\n"
-"joko asennuksen aikana tai sen jälkeen; tämä on vaarallista\n"
-"ja asiaa pitäisi harkita kunnolla.\n"
+"Varoitus! Näyttää siltä, että yritetään asentaa niin paljon\n"
+"paketteja, että tiedostojärjestelmästä voi loppua tila\n"
+"asennuksen aikana tai sen jälkeen; tämä on vaarallista\n"
+"ja asiaa tulisi harkita kunnolla.\n"
 "\n"
-"Oletko varma että haluat asentaa kaikki valitsemasi paketit?"
+"Oletko varma, että haluat asentaa kaikki valitut paketit?"
 
 #: ../Rpmdrake/gui.pm:812 ../Rpmdrake/open_db.pm:98
 #, c-format
@@ -1241,7 +1242,7 @@ msgstr "Lisättävissä"
 #: ../Rpmdrake/gui.pm:911
 #, c-format
 msgid "Description not available for this package\n"
-msgstr "Paketin kuvaus ei ole saatavilla\n"
+msgstr "Paketin kuvausta ei ole saatavilla\n"
 
 #: ../Rpmdrake/icon.pm:36
 #, c-format
@@ -1274,7 +1275,7 @@ msgstr "Pakkaus"
 #: ../Rpmdrake/icon.pm:124 ../Rpmdrake/icon.pm:135
 #, c-format
 msgid "Other"
-msgstr "Muu"
+msgstr "Muut"
 
 #: ../Rpmdrake/icon.pm:42 ../Rpmdrake/icon.pm:43 ../Rpmdrake/icon.pm:44
 #: ../Rpmdrake/icon.pm:45 ../Rpmdrake/icon.pm:46 ../Rpmdrake/icon.pm:47
@@ -1290,12 +1291,12 @@ msgstr "Tietokonekirjat"
 #: ../Rpmdrake/icon.pm:44
 #, c-format
 msgid "Faqs"
-msgstr "Faq"
+msgstr "FAQ"
 
 #: ../Rpmdrake/icon.pm:45
 #, c-format
 msgid "Howtos"
-msgstr "Howto"
+msgstr "HOWTOt"
 
 #: ../Rpmdrake/icon.pm:46
 #, c-format
@@ -1408,7 +1409,7 @@ msgstr "Seikkailu"
 #: ../Rpmdrake/icon.pm:69
 #, c-format
 msgid "Arcade"
-msgstr "Arkade"
+msgstr "Arcade"
 
 #: ../Rpmdrake/icon.pm:70
 #, c-format
@@ -1418,7 +1419,7 @@ msgstr "Lautapelit"
 #: ../Rpmdrake/icon.pm:71
 #, c-format
 msgid "Cards"
-msgstr "Kortti"
+msgstr "Korttipelit"
 
 #: ../Rpmdrake/icon.pm:73
 #, c-format
@@ -1697,7 +1698,7 @@ msgstr "Type1"
 #: ../Rpmdrake/icon.pm:142
 #, c-format
 msgid "X11 bitmap"
-msgstr "X11 bittikartta"
+msgstr "X11-bittikartta"
 
 #: ../Rpmdrake/icon.pm:143
 #, c-format
@@ -1750,7 +1751,7 @@ msgstr "Komentorivityökalut"
 #: ../Rpmdrake/icon.pm:160 ../Rpmdrake/icon.pm:175
 #, c-format
 msgid "Documentation"
-msgstr "Dokumentaatio"
+msgstr "Asiakirjat"
 
 #: ../Rpmdrake/icon.pm:161
 #, c-format
@@ -1760,7 +1761,7 @@ msgstr "Peliasema"
 #: ../Rpmdrake/icon.pm:162
 #, c-format
 msgid "Internet station"
-msgstr "Internettyöasema"
+msgstr "Internet-työasema"
 
 #: ../Rpmdrake/icon.pm:163
 #, c-format
@@ -1796,7 +1797,7 @@ msgstr "GNOME-työasema"
 #: ../Rpmdrake/icon.pm:170
 #, c-format
 msgid "IceWm Desktop"
-msgstr "IceWm Työpöytä"
+msgstr "IceWm-työpöytä"
 
 #: ../Rpmdrake/icon.pm:171
 #, c-format
@@ -1806,7 +1807,7 @@ msgstr "KDE-työasema"
 #: ../Rpmdrake/icon.pm:172
 #, c-format
 msgid "Other Graphical Desktops"
-msgstr "Muut graafiset käyttöympäristöt"
+msgstr "Muut graafiset työpöydät"
 
 #: ../Rpmdrake/icon.pm:176 ../Rpmdrake/icon.pm:177 ../Rpmdrake/icon.pm:178
 #: ../Rpmdrake/icon.pm:179 ../Rpmdrake/icon.pm:180 ../Rpmdrake/icon.pm:181
@@ -1818,7 +1819,7 @@ msgstr "Palvelin"
 #: ../Rpmdrake/icon.pm:177
 #, c-format
 msgid "DNS/NIS"
-msgstr "DNS/NIS"
+msgstr "DNS / NIS"
 
 #: ../Rpmdrake/icon.pm:178
 #, c-format
@@ -1833,7 +1834,7 @@ msgstr "Palomuuri / Reititin"
 #: ../Rpmdrake/icon.pm:181
 #, c-format
 msgid "Mail/Groupware/News"
-msgstr "Sähköposti/Groupware/Uutisryhmät"
+msgstr "Sähköposti / Groupware / Uutisryhmät"
 
 #: ../Rpmdrake/icon.pm:182
 #, c-format
@@ -1843,12 +1844,12 @@ msgstr "Verkkotietokone (palvelin)"
 #: ../Rpmdrake/icon.pm:183
 #, c-format
 msgid "Web/FTP"
-msgstr "Web/FTP"
+msgstr "Internet / FTP"
 
 #: ../Rpmdrake/init.pm:49
 #, c-format
 msgid "Usage: %s [OPTION]..."
-msgstr "Käyttö: %s [OPTIO]..."
+msgstr "Käyttö: %s [VALITSIN]..."
 
 #: ../Rpmdrake/init.pm:50
 #, c-format
@@ -1861,7 +1862,7 @@ msgid ""
 "  --changelog-first      display changelog before filelist in the "
 "description window"
 msgstr ""
-"  --changelog-first      näytä muutoslokia ennen tiedostolistausta "
+"  --changelog-first      näytä muutosloki ennen tiedostolistausta "
 "kuvausikkunassa"
 
 #: ../Rpmdrake/init.pm:52
@@ -1874,8 +1875,8 @@ msgstr "  --media=media1,..      rajoita valittuun mediaan"
 msgid ""
 "  --merge-all-rpmnew     propose to merge all .rpmnew/.rpmsave files found"
 msgstr ""
-"  --merge-all-rpmnew     ehdota kaikki löydettyjen .rpmnew/.rpmsave "
-"tiedostojen yhdistäminen"
+"  --merge-all-rpmnew     ehdota kaikkien löydettyjen .rpmnew- ja .rpmsave-"
+"tiedostojen yhdistämistä"
 
 #: ../Rpmdrake/init.pm:54
 #, c-format
@@ -1888,7 +1889,7 @@ msgid ""
 "  --justdb               update the database, but do not modify the "
 "filesystem"
 msgstr ""
-"  --justdb               päivitä tietokanta, mutta älä muokkaa "
+"  --justdb               päivitä tietokanta, mutta älä muuta "
 "tiedostojärjestelmää"
 
 #: ../Rpmdrake/init.pm:56
@@ -1896,17 +1897,17 @@ msgstr ""
 msgid ""
 "  --no-confirmation      don't ask first confirmation question in update mode"
 msgstr ""
-"  --no-confirmation      älä kysy ensimmäinen vahvistus päivitystilassa"
+"  --no-confirmation      älä kysy ensimmäistä vahvistusta päivitettäessä"
 
 #: ../Rpmdrake/init.pm:57
 #, c-format
 msgid "  --no-media-update      don't update media at startup"
-msgstr "  --no-media-update      älä päivitä mediaa käynnistuksessä"
+msgstr "  --no-media-update      älä päivitä medioita käynnistyessä"
 
 #: ../Rpmdrake/init.pm:58
 #, c-format
 msgid "  --no-verify-rpm        don't verify packages signatures"
-msgstr "  --no-verify-rpm        älä tarkista pakettien allekirjoitukset"
+msgstr "  --no-verify-rpm        älä tarkista pakettien allekirjoituksia"
 
 #: ../Rpmdrake/init.pm:59
 #, c-format
@@ -1914,7 +1915,7 @@ msgid ""
 "  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host"
 "\" machine to show needed deps"
 msgstr ""
-"  --parallel=alias,kone  aseta rinnakkaistila, käytä  \"alias\" ryhmä, käytä "
+"  --parallel=alias,kone  aseta rinnakkaistila, käytä \"alias\" ryhmä, käytä "
 "\"kone\" tietokone riippuvuuksien näyttämiseen"
 
 #: ../Rpmdrake/init.pm:60
@@ -1927,8 +1928,8 @@ msgstr "  --rpm-root=path        käytä toista juurihakemistoa rpm-asennukselle
 msgid ""
 "  --urpmi-root           use another root for urpmi db & rpm installation"
 msgstr ""
-"  --urpmi-root           käytä toista juurihakemistoa urpmi- ja rpm-"
-"asennukselle"
+"  --urpmi-root           käytä toista juurihakemistoa urpmi- tietokannalle "
+"ja rpm-pakettien asentamiseen"
 
 #: ../Rpmdrake/init.pm:62
 #, c-format
@@ -1938,7 +1939,7 @@ msgstr "  --root                 pakota suorittaminen root-tunnuksella"
 #: ../Rpmdrake/init.pm:62
 #, c-format
 msgid "(Deprecated)"
-msgstr "(vanhentunut)"
+msgstr "(Vanhentunut)"
 
 #: ../Rpmdrake/init.pm:63
 #, c-format
@@ -1948,19 +1949,19 @@ msgstr "  --run-as-root          pakota suorittaminen root-tunnuksella"
 #: ../Rpmdrake/init.pm:64
 #, c-format
 msgid "  --search=pkg           run search for \"pkg\""
-msgstr "  --search=pkg           etsi paketti nimelä \"pkg\""
+msgstr "  --search=pkg           etsi paketti nimeltä \"pkg\""
 
 #: ../Rpmdrake/init.pm:65
 #, c-format
 msgid ""
 "  --test                 only verify if the installation can be achieved "
 "correctly"
-msgstr "  --test                 tarkista vain, voiko asennusta suorittaa"
+msgstr "  --test                 tarkista, voiko asennuksen suorittaa"
 
 #: ../Rpmdrake/init.pm:66
 #, c-format
 msgid "  --version              print this tool's version number\n"
-msgstr "  --version              tulosta työkalun versio\n"
+msgstr "  --version              tulosta versio\n"
 
 #: ../Rpmdrake/init.pm:155
 #, c-format
@@ -1974,19 +1975,19 @@ msgid ""
 "You will not be able to perform modifications on the system,\n"
 "but you may still browse the existing database."
 msgstr ""
-"Suoritat tämän ohjelman tavallisena käyttäjänä.\n"
-"Et voi suorittaa muutoksia järjestelmään, mutta \n"
-"voit selata olemassa olevaa tietokantaa."
+"Ohjelmaa ollaan suorittamassa tavallisena käyttäjänä.\n"
+"Tavallinen käyttäjä pystyy vain selaamaan tietokantaa,\n"
+"ei muokkaamaan järjestelmää."
 
 #: ../Rpmdrake/pkg.pm:105
 #, c-format
 msgid "Getting information from XML meta-data from %s..."
-msgstr "Haetaan tietoa XML-tiedoista lähteestä %s..."
+msgstr "Haetaan tietoa XML-tiedoista lähteestä \"%s\"..."
 
 #: ../Rpmdrake/pkg.pm:109
 #, c-format
 msgid "Getting '%s' from XML meta-data..."
-msgstr "Haetaan '%s' XML-tiedoista..."
+msgstr "Tutkitaan XML-tiedostoa (%s)..."
 
 #: ../Rpmdrake/pkg.pm:112 ../Rpmdrake/pkg.pm:410 ../Rpmdrake/pkg.pm:686
 #: ../Rpmdrake/pkg.pm:886 ../rpmdrake:126 ../rpmdrake.pm:359
@@ -1998,33 +1999,34 @@ msgstr "Odota hetki"
 #: ../Rpmdrake/pkg.pm:124
 #, c-format
 msgid "No xml info for medium \"%s\", only partial result for package %s"
-msgstr "Medialla \"%s\" ei ole XML-tietoja, vain osittainen tulos paketille %s"
+msgstr ""
+"Medialla \"%s\" ei ole XML-tietoja, vain osittainen hakutulos paketille %s"
 
 #: ../Rpmdrake/pkg.pm:126
 #, c-format
 msgid ""
 "No xml info for medium \"%s\", unable to return any result for package %s"
-msgstr "Medialla \"%s\" ei ole XML-tietoja, ei tuloksia paketille %s"
+msgstr "Medialla \"%s\" ei ole XML-tietoja, ei hakutuloksia paketille %s"
 
 #: ../Rpmdrake/pkg.pm:179 ../Rpmdrake/pkg.pm:184
 #, c-format
 msgid "Downloading package `%s'..."
-msgstr "Ladataan pakettia `%s'..."
+msgstr "Ladataan tiedostoa %s..."
 
 #: ../Rpmdrake/pkg.pm:186
 #, c-format
 msgid "        %s%% of %s completed, ETA = %s, speed = %s"
-msgstr "        %s%% valmis, koko %s, valmistumisaika %s, nopeus %s"
+msgstr "        %s%% valmiina, koko %s, aikaa jäljellä %s, nopeus %s"
 
 #: ../Rpmdrake/pkg.pm:187
 #, c-format
 msgid "        %s%% completed, speed = %s"
-msgstr "        %s%% valmis, nopeus %s"
+msgstr "        %s%% valmiina, nopeus %s"
 
 #: ../Rpmdrake/pkg.pm:225 ../Rpmdrake/pkg.pm:666
 #, c-format
 msgid "Confirmation"
-msgstr "Vahvistaminen"
+msgstr "Vahvistus"
 
 #: ../Rpmdrake/pkg.pm:226
 #, c-format
@@ -2034,10 +2036,10 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
-"Viimeisimpien päivityspakettien saamiseksi tarvitaan yhteys\n"
-"peilipalvelimelle. Varmista että verkkoyhteytesi on avattu.\n"
+"Viimeisimpien päivityspakettien listaamiseksi tarvitaan yhteys\n"
+"peilipalvelimelle. Varmista että verkkoyhteys on käytettävissä.\n"
 "\n"
-"Sopiiko että jatkan?"
+"Jatketaanko?"
 
 #: ../Rpmdrake/pkg.pm:230
 #, c-format
@@ -2047,7 +2049,7 @@ msgstr "Älä kysy seuraavalla kerralla"
 #: ../Rpmdrake/pkg.pm:239
 #, c-format
 msgid "Already existing update media"
-msgstr "Olemassa olevat päivityslähteet"
+msgstr "Olemassa olevat päivitysmediat"
 
 #: ../Rpmdrake/pkg.pm:240
 #, c-format
@@ -2059,12 +2061,11 @@ msgid ""
 "\n"
 "Then, restart \"%s\"."
 msgstr ""
-"Olet jo määrittänyt ainakin yhden päivityslähteen, mutta\n"
-"kaikki ovat tällä hetkellä pois käytöstä. Sinun pitäisi ottaa\n"
-"käyttöön ainakin yksi lähteistä Ohjelmistolähteiden hallinnassa\n"
-"(merkitse lähteen \"%s\"-valinta).\n"
-"\n"
-"Käynnistä tämän jälkeen \"%s\" uudelleen."
+"Ainakin yksi päivityslähde on määritelty, mutta päivitys-\n"
+"lähteitä ei ole tällä hetkellä käytössä. Ainakin yksi\n"
+"päivityslähde tulisi ottaa käyttöön Ohjelmistolähteiden\n"
+"hallinnalla (valitse lähteen %s-valinta).\n"
+"Tämän jälkeen käynnistä %s uudelleen."
 
 #: ../Rpmdrake/pkg.pm:250
 #, c-format
@@ -2083,15 +2084,15 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
-"Peilipalvelinlistan saamiseksi tarvitaan yhteys Mandrivain\n"
-"webbisivustoon. Varmista että verkkoyhteytesi on avattu.\n"
+"Peilipalvelinlistan lataamiseksi tarvitaan yhteys Mandrivan\n"
+"Internet-sivuihin. Varmista, että verkkoyhteys on avattu.\n"
 "\n"
-"Sopiiko että jatketaan?"
+"Jatketaanko?"
 
 #: ../Rpmdrake/pkg.pm:258
 #, c-format
 msgid "How to choose manually your mirror"
-msgstr "Miten manuaalisesti valitset peilipalvelimen"
+msgstr "Miten peilipalvelin valitaan käsin"
 
 #: ../Rpmdrake/pkg.pm:259
 #, c-format
@@ -2102,11 +2103,11 @@ msgid ""
 "\n"
 "Then, restart %s."
 msgstr ""
-"Voit myös lisätä haluamasi peilipalvelimen manuaalisesti:\n"
-"tehdäksesi tämän, käynnistä 'Ohjelmistolähteiden hallinta'\n"
-"ja lisää 'Tietoturvapäivitykset' lähde.\n"
+"Peilipalvelin voidaan myös lisätä käsin:\n"
+"Käynnistä Ohjelmistolähteiden hallinta\n"
+"ja lisää lähde Tietoturvapäivitykset.\n"
 "\n"
-"Käynnistä %s tämän jälkeen uudelleen."
+"Tämän jälkeen käynnistä %s uudelleen."
 
 #: ../Rpmdrake/pkg.pm:410 ../Rpmdrake/pkg.pm:686
 #, c-format
@@ -2152,7 +2153,7 @@ msgstr "Päivitystiedot"
 #: ../Rpmdrake/pkg.pm:550
 #, c-format
 msgid "These packages come with upgrade information"
-msgstr "Näissä paketeissa on päivitystiedot"
+msgstr "Seuraavissa paketeissa on päivitystiedot"
 
 #: ../Rpmdrake/pkg.pm:558
 #, c-format
@@ -2167,12 +2168,12 @@ msgstr "Paketin %s päivitystiedot"
 #: ../Rpmdrake/pkg.pm:583 ../Rpmdrake/pkg.pm:827
 #, c-format
 msgid "All requested packages were installed successfully."
-msgstr "Kaikki haluamasi paketit asennettiin onnistuneesti."
+msgstr "Halutut paketit asennettiin onnistuneesti"
 
 #: ../Rpmdrake/pkg.pm:587 ../Rpmdrake/pkg.pm:796
 #, c-format
 msgid "Problem during installation"
-msgstr "Ongelma asennuksen aikana"
+msgstr "Ongelmia asennuksen aikana"
 
 #: ../Rpmdrake/pkg.pm:588 ../Rpmdrake/pkg.pm:608 ../Rpmdrake/pkg.pm:798
 #, c-format
@@ -2203,7 +2204,7 @@ msgstr "Lähdepakettien nouto epäonnistui."
 #: ../Rpmdrake/pkg.pm:644
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
-msgstr "Lähdepakettien nouto valitettavasti epäonnistui. %s"
+msgstr "Valitettavasti lähdepakettien lataaminen epäonnistui. %s"
 
 #: ../Rpmdrake/pkg.pm:645
 #, c-format
@@ -2222,8 +2223,8 @@ msgstr ""
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
-msgstr[0] "Asennetaan seuraava paketti:"
-msgstr[1] "Asennetaan seuraavat %d pakettia:"
+msgstr[0] "Asennetaan paketti:"
+msgstr[1] "Asennetaan %d pakettia:"
 
 #: ../Rpmdrake/pkg.pm:669
 #, c-format
@@ -2245,7 +2246,7 @@ msgstr "Seuraavat paketit tulee poistaa, jotta muut paketit voidaan päivittää
 #: ../Rpmdrake/pkg.pm:675
 #, c-format
 msgid "%s of packages will be retrieved."
-msgstr "Noudetaan yhteensä %s."
+msgstr "Ladataan yhteensä %s."
 
 #: ../Rpmdrake/pkg.pm:677
 #, c-format
@@ -2255,7 +2256,7 @@ msgstr "Jatketaanko?"
 #: ../Rpmdrake/pkg.pm:693 ../Rpmdrake/pkg.pm:870
 #, c-format
 msgid "Orphan packages"
-msgstr "Tarpettomat paketit"
+msgstr "Tarpeettomat paketit"
 
 #: ../Rpmdrake/pkg.pm:693
 #, c-format
@@ -2277,12 +2278,12 @@ msgstr "Valmistellaan ohjelmistopakettien asennustapahtumaa..."
 #: ../Rpmdrake/pkg.pm:710
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
-msgstr "Asennetaan pakettia `%s' (%s/%s)..."
+msgstr "Asennetaan pakettia %s (%s / %s)..."
 
 #: ../Rpmdrake/pkg.pm:711
 #, c-format
 msgid "Total: %s/%s"
-msgstr "Yhteensä: %s/%s"
+msgstr "Yhteensä: %s / %s"
 
 #: ../Rpmdrake/pkg.pm:769
 #, c-format
@@ -2307,8 +2308,7 @@ msgstr "%d asennustapahtumaa epäonnistui"
 #: ../Rpmdrake/pkg.pm:811
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
-msgstr ""
-"Ohittamaton virhe: yhtään pakettia ei valitettavasti löytynyt asennettavaksi."
+msgstr "Ohittamaton virhe: yhtään pakettia ei löytynyt asennettavaksi."
 
 #: ../Rpmdrake/pkg.pm:814
 #, c-format
@@ -2323,10 +2323,10 @@ msgid ""
 "Some configuration files were created as `.rpmnew' or `.rpmsave',\n"
 "you may now inspect some in order to take actions:"
 msgstr ""
-"Asennus on valmis;  kaikki asennettiin onnistuneesti.\n"
+"Asennus on valmis;  kaikki paketit asennettiin onnistuneesti.\n"
 "\n"
-"Jotkut asetustiedostot tallennettiin päätteellä '.rpmnew' tai '.rpmsave',\n"
-"voit tarkistaa ne ja tehdä tarvittavat muutokset:"
+"Joitakin asetustiedostoja tallennettiin päätteellä .rpmnew tai .rpmsave.\n"
+"Voit tarkistaa ne ja tehdä tarvittavat muutokset:"
 
 #: ../Rpmdrake/pkg.pm:828
 #, c-format
@@ -2336,12 +2336,12 @@ msgstr "Etsitään \"README\"-tiedostoja..."
 #: ../Rpmdrake/pkg.pm:861
 #, c-format
 msgid "RPM transaction %d/%d"
-msgstr "RPM-tapahtuma %d/%d"
+msgstr "RPM-tapahtuma %d / %d"
 
 #: ../Rpmdrake/pkg.pm:862
 #, c-format
 msgid "Unselect all"
-msgstr "Poista valinta"
+msgstr "Poista valinnat"
 
 #: ../Rpmdrake/pkg.pm:863
 #, c-format
@@ -2351,7 +2351,7 @@ msgstr "Lisätiedot"
 #: ../Rpmdrake/pkg.pm:886 ../Rpmdrake/pkg.pm:902
 #, c-format
 msgid "Please wait, removing packages..."
-msgstr "Odota, paketteja poistetaan..."
+msgstr "Odota, poistetaan paketteja..."
 
 #: ../Rpmdrake/pkg.pm:915
 #, c-format
@@ -2385,8 +2385,8 @@ msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
 "unsure, keep the current file (\"%s\")."
 msgstr ""
-"Voit joko poistaa .%s -tiedoston, ottaa sen käyttöön päätiedostona tai olla "
-"tekemättä mitään. Jos olet epävarma, säilytä nykyinen tiedosto (\"%s\")."
+"Tiedosto .%s voidaan poistaa, ottaa käyttöön päätiedostona tai sille ei "
+"tehdä mitään. Jos olet epävarma, säilytä nykyinen tiedosto (\"%s\")."
 
 #: ../Rpmdrake/rpmnew.pm:112 ../Rpmdrake/rpmnew.pm:117
 #, c-format
@@ -2422,8 +2422,8 @@ msgstr "Odota, etsitään..."
 #, c-format
 msgid "bad <url> (for local directory, the path must be absolute)"
 msgstr ""
-"Virheellinen <url> (paikalliselle hakemistolle polun tulee olla "
-"absoluuttinen)"
+"Virheellinen <url> (polun tulee olla absoluuttinen paikalliselle "
+"hakemistolle)"
 
 #: ../gurpmi.addmedia:117
 #, c-format
@@ -2434,7 +2434,7 @@ msgid ""
 msgstr ""
 "%s\n"
 "\n"
-"Sopiiko että jatketaan?"
+"Jatketaanko"
 
 #: ../gurpmi.addmedia:121
 #, c-format
@@ -2443,9 +2443,9 @@ msgid ""
 "That means you will be able to add new software packages\n"
 "to your system from these new media."
 msgstr ""
-"Olet lisäämässä uuden ohjelmistolähteen, `%s'.\n"
-"Tämä tarkoittaa että voit asentaa uusia ohjelmapaketteja\n"
-"järjestelmääsi uudesta ohjelmistolähteestä."
+"Uusia ohjelmistolähteitä \"%s\" ollaan lisäämässä.\n"
+"Lisäämisen jälkeen tietokoneelle voidaan asentaa\n"
+"ohjelmistopaketteja kyseisiltä lähteiltä."
 
 #: ../gurpmi.addmedia:124
 #, c-format
@@ -2454,24 +2454,24 @@ msgid ""
 "That means you will be able to add new software packages\n"
 "to your system from that new medium."
 msgstr ""
-"Olet lisäämässä uuden ohjelmistolähteen, `%s'.\n"
-"Tämä tarkoittaa että voit asentaa uusia ohjelmapaketteja\n"
-"järjestelmääsi uudesta ohjelmistolähteestä."
+"Uutta ohjelmistolähdettä \"%s\" ollaan lisäämässä.\n"
+"Lisäämisen jälkeen tietokoneelle voidaan asentaa\n"
+"ohjelmistopaketteja kyseiseltä lähteeltä."
 
 #: ../gurpmi.addmedia:148
-#, fuzzy, c-format
+#, c-format
 msgid "Successfully added media."
-msgstr "Ohjelmistolähde `%s' lisättiin onnistuneesti."
+msgstr "Media lisättiin onnistuneesti"
 
 #: ../gurpmi.addmedia:150
 #, c-format
 msgid "Successfully added media %s."
-msgstr "Ohjelmistolähde `%s' lisättiin onnistuneesti."
+msgstr "Media \"%s\" lisättiin onnistuneesti."
 
 #: ../gurpmi.addmedia:151
 #, c-format
 msgid "Successfully added medium `%s'."
-msgstr "Ohjelmistolähde `%s' lisättiin onnistuneesti."
+msgstr "Media \"%s\" lisättiin onnistuneesti."
 
 #: ../rpmdrake:66
 #, c-format
@@ -2491,7 +2491,7 @@ msgstr "Pysäytä"
 #: ../rpmdrake:133
 #, c-format
 msgid "no xml-info available for medium \"%s\""
-msgstr "medialla \"%s\" ei ole xml-tietoja"
+msgstr "Medialla \"%s\" ei ole xml-tietoja"
 
 #: ../rpmdrake:149 ../rpmdrake:177
 #, c-format
@@ -2508,22 +2508,21 @@ msgstr "Valittu"
 msgid "Not selected"
 msgstr "Ei valittu"
 
-#: ../rpmdrake:201
-#, fuzzy, c-format
+#: ../rpmdrake:201, c-format
 msgid "No search results."
-msgstr "Haun tulokset"
+msgstr "Ei hakutuloksia."
 
 #: ../rpmdrake:202
 #, c-format
 msgid ""
 "No search results. You may want to switch to the '%s' view and to the '%s' "
 "filter"
-msgstr ""
+msgstr "Ei hakutuloksia. Kokeile valita alasvetovalikoista kohdat %s ja %s."
 
 #: ../rpmdrake:236
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
-msgstr "Valitut: %s / Vapaata levytilaa: %s"
+msgstr "Valittu: %s / Vapaata levytilaa: %s"
 
 #: ../rpmdrake:276
 #, c-format
@@ -2627,7 +2626,7 @@ msgstr "Näytä"
 #: ../rpmdrake:447
 #, c-format
 msgid "Filter"
-msgstr "Suodin"
+msgstr "Suodatin"
 
 #: ../rpmdrake:483
 #, c-format
@@ -2657,27 +2656,27 @@ msgstr "/_Valitse riippuvuudet kysymättä"
 #: ../rpmdrake:523
 #, c-format
 msgid "Clear download cache after successfull install"
-msgstr ""
+msgstr "Tyhjennä pakettimuisti onnistuneen asennuksen jälkeen"
 
 #: ../rpmdrake:524
 #, c-format
 msgid "/_Compute updates on startup"
-msgstr ""
+msgstr "/_Tarkista päivitykset käynnistyksen yhteydessä"
 
 #: ../rpmdrake:530
 #, c-format
 msgid "/_Update media"
-msgstr "/Päivitä lähteet"
+msgstr "/_Päivitä lähteet"
 
 #: ../rpmdrake:535
 #, c-format
 msgid "/_Reset the selection"
-msgstr "/Palauta valinnat"
+msgstr "/Poista _valinnat"
 
 #: ../rpmdrake:550
 #, c-format
 msgid "/Reload the _packages list"
-msgstr "/Lataa pakettilista uudelleen"
+msgstr "/Lataa pakettilista _uudelleen"
 
 #: ../rpmdrake:551
 #, c-format
@@ -2692,12 +2691,12 @@ msgstr "<control>L"
 #: ../rpmdrake:561
 #, c-format
 msgid "/_Media Manager"
-msgstr "/_Lähteiden Hallinta"
+msgstr "/_Ohjelmistolähteiden hallinta"
 
 #: ../rpmdrake:565 ../rpmdrake:625
 #, c-format
 msgid "/_Show automatically selected packages"
-msgstr "/Näytä automaattisesti valitut paketit"
+msgstr "/Näytä _automaattisesti valitut paketit"
 
 #: ../rpmdrake:572 ../rpmdrake:575 ../rpmdrake:580 ../rpmdrake:612
 #, c-format
@@ -2707,12 +2706,12 @@ msgstr "/_Näytä"
 #: ../rpmdrake:646
 #, c-format
 msgid "Find:"
-msgstr "Hae:"
+msgstr "Etsi:"
 
 #: ../rpmdrake:650
 #, c-format
 msgid "Please type in the string you want to search then press the <enter> key"
-msgstr ""
+msgstr "Anna hakuehto ja paina Enter."
 
 #: ../rpmdrake:677
 #, c-format
@@ -2727,26 +2726,25 @@ msgstr "Pikaopas"
 #: ../rpmdrake:697
 #, c-format
 msgid "You can browse the packages through the categories tree on the left."
-msgstr "Voit selata paketteja aiheluettelossa vasemmalla."
+msgstr "Selaa paketteja vasemman reunan kategorialistasta."
 
 #: ../rpmdrake:698
 #, c-format
 msgid ""
 "You can view information about a package by clicking on it on the right list."
-msgstr ""
-"Voit nähdä lisätietoja paketista valitsemalla sitä oikeassa listauksessa."
+msgstr "Lue lisätietoja paketista valitsemalla se yläreunan listasta."
 
 #: ../rpmdrake:699
 #, c-format
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
-"Asentaaksesi, päivittääksesi tai postaaksesi paketin, klikkaa \"valintaruutua"
-"\"."
+"Valitse paketti asennettavaksi, päivitettäväksi tai poistettavaksi "
+"klikkaamalla \"valintaruutua\" yläreunan listasta."
 
 #: ../rpmdrake.pm:117
 #, c-format
 msgid "Software Update"
-msgstr "Ohjelmisto Päivitys"
+msgstr "Ohjelmistopäivitys"
 
 #: ../rpmdrake.pm:117
 #, c-format
@@ -2756,12 +2754,12 @@ msgstr "Mandriva Linux Update"
 #: ../rpmdrake.pm:144
 #, c-format
 msgid "Please enter your credentials for accessing proxy\n"
-msgstr "Syötä tunnistetietojasi välityspalvelimen käyttämiseen\n"
+msgstr "Syötä tunnistetietoja välityspalvelimen käyttämiseen\n"
 
 #: ../rpmdrake.pm:145
 #, c-format
 msgid "User name:"
-msgstr "Käyttäjänimi:"
+msgstr "Käyttäjätunnus:"
 
 #: ../rpmdrake.pm:208
 #, c-format
@@ -2956,7 +2954,7 @@ msgstr "Odota, haetaan lista peilipalvelimista."
 #: ../rpmdrake.pm:554
 #, c-format
 msgid "Please wait, downloading mirror addresses from the Mandriva website."
-msgstr "Odota, haetaan lista peilipalvelimista Mandrivain webbisivustosta."
+msgstr "Odota, haetaan lista peilipalvelimista Mandrivan Internet-sivuilta."
 
 #: ../rpmdrake.pm:575
 #, c-format
@@ -2971,10 +2969,10 @@ msgid ""
 "\n"
 "Is it ok to continue?"
 msgstr ""
-"Tarvitsen nettiyhteyttä Peilipalvelinlistan saamiseksi.\n"
-"Varmista että verkkoyhteytesi on avattu.\n"
+"Peilipalvelinlistan lataamiseksi tarvitaan Internet-yhteyttä.\n"
+"Varmista, että verkkoyhteys on käytössä.\n"
 "\n"
-"Sopiiko että jatketaan?"
+"Jatketaanko?"
 
 #: ../rpmdrake.pm:605 ../rpmdrake.pm:644
 #, c-format
@@ -2995,10 +2993,10 @@ msgid ""
 "The network, or the website, may be unavailable.\n"
 "Please try again later."
 msgstr ""
-"Haettaessa listaa peilipalvelimista ilmeni virhe:\n"
+"Ilmeni virhe peilipalvelinlistaa ladattaessa:\n"
 "\n"
 "%s\n"
-"Verkkoyhteytesi tai webbisivusto ei ole saatavilla.\n"
+"Verkkoyhteyttä tai Internet-sivua ei ole saatavilla.\n"
 "Yritä myöhemmin uudelleen."
 
 #: ../rpmdrake.pm:624
@@ -3010,10 +3008,10 @@ msgid ""
 "The network, or the Mandriva website, may be unavailable.\n"
 "Please try again later."
 msgstr ""
-"Haettaessa listaa peilipalvelimista ilmeni virhe:\n"
+"Ilmeni virhe peilipalvelinlistaa ladattaessa:\n"
 "\n"
 "%s\n"
-"Verkkoyhteytesi tai Mandriva:n webbisivusto ei ole saatavilla.\n"
+"Verkkoyhteyttä tai Mandrivan Internet-sivusto ei ole saatavilla.\n"
 "Yritä myöhemmin uudelleen."
 
 #: ../rpmdrake.pm:634
@@ -3024,7 +3022,7 @@ msgstr "Ei peilipalvelinta"
 #: ../rpmdrake.pm:636
 #, c-format
 msgid "I can't find any suitable mirror."
-msgstr "En löydä yhtään sopivaa peilipalvelinta."
+msgstr "Sopivaa peilipalvelinta ei löydy."
 
 #: ../rpmdrake.pm:637
 #, c-format
@@ -3035,31 +3033,31 @@ msgid ""
 "the case when the architecture of your processor is not supported\n"
 "by Mandriva Linux Official Updates."
 msgstr ""
-"Yhtäkään sopivaa peilipalvelinta ei löytynyt.\n"
+"Sopivaa peilipalvelinta ei löydy.\n"
 "\n"
-"Tähän voi olla monta syytä, mutta yleisin syy on\n"
-"että käyttämäsi suoritin-arkkitehtuuri ei ole tuettu\n"
-"virallisissa Mandriva Linux päivityksissä."
+"Syitä voi olla monia; yleisin syy on, että prosessorin\n"
+"arkkitehuuria ei tueta virallisissa Mandriva Linuxin\n"
+"päivityksissä."
 
 #: ../rpmdrake.pm:656
 #, c-format
 msgid "Please choose the desired mirror."
-msgstr "Ole hyvä ja valitse haluttu peilipalvelin."
+msgstr "Valitse haluttu peilipalvelin."
 
 #: ../rpmdrake.pm:697
 #, c-format
 msgid "Copying file for medium `%s'..."
-msgstr "Kopioidaan lähteen `%s' tiedostoa..."
+msgstr "Kopioidaan median \"%s\" tiedostoa..."
 
 #: ../rpmdrake.pm:700
 #, c-format
 msgid "Examining file of medium `%s'..."
-msgstr "Tarkistetaan lähteen `%s' tiedostoa..."
+msgstr "Tarkistetaan median \"%s\" tiedostoa..."
 
 #: ../rpmdrake.pm:703
 #, c-format
 msgid "Examining remote file of medium `%s'..."
-msgstr "Tarkistetaan lähteen `%s' etätiedostoa..."
+msgstr "Tarkistetaan etämedian \"%s\" tiedostoa..."
 
 #: ../rpmdrake.pm:707
 #, c-format
@@ -3075,12 +3073,12 @@ msgstr " epäonnistui!"
 #: ../rpmdrake.pm:716
 #, c-format
 msgid "%s from medium %s"
-msgstr "%s lähteeltä %s"
+msgstr "Tiedosto %s medialta %s"
 
 #: ../rpmdrake.pm:720
 #, c-format
 msgid "Starting download of `%s'..."
-msgstr "Aloitetaan `%s' lataaminen..."
+msgstr "Aloitetaan tiedoston \"%s\" lataaminen..."
 
 #: ../rpmdrake.pm:724
 #, c-format
@@ -3088,17 +3086,15 @@ msgid ""
 "Download of `%s'\n"
 "time to go:%s, speed:%s"
 msgstr ""
-"Ladataan `%s'\n"
-"aikaa jäljellä:%s, nopeus:%s"
+"Ladataan \"%s\"\n"
+"Aikaa jäljellä: %s, nopeus: %s"
 
 #: ../rpmdrake.pm:727
 #, c-format
 msgid ""
 "Download of `%s'\n"
 "speed:%s"
-msgstr ""
-"Ladataan `%s'\n"
-"nopeus:%s"
+msgstr "Ladataan \"%s\"Nopeus: %s"
 
 #: ../rpmdrake.pm:738
 #, c-format
@@ -3106,9 +3102,9 @@ msgid "Please wait, updating media..."
 msgstr "Odota, päivitetään lähteet..."
 
 #: ../rpmdrake.pm:748
-#, fuzzy, c-format
+#, c-format
 msgid "Canceled"
-msgstr "Peruuta"
+msgstr "Peruutettu"
 
 #: ../rpmdrake.pm:765
 #, c-format
@@ -3125,11 +3121,10 @@ msgid ""
 "to reconfigure it, either it is currently unreachable and you should retry\n"
 "later."
 msgstr ""
-"Lähteeltä %s ei voida noutaa uusien pakettien listaa: Joko tämä\n"
-"lähde on väärin asetettu - jolloin sinun pitäisi käyttää Ohjelmisto- \n"
-"lähteiden hallintaa poistaaksesi ja lisätäksesi sen uudelleen\n"
-"oikein asetettuna - tai se on tilapäisesti poistettu käytöstä\n"
-"jolloin voit yrittää myöhemmin uudelleen."
+"Lähteeltä \"%s\" ei voida noutaa uusien pakettien listaa. Lähde on\n"
+"väärin asetettu ja se pitää poistaa ja lisätä uudelleen Ohjelmisto-\n"
+"lähteiden hallinnalla. Lähde voi olla myös tilapäisesti pois käytöstä,\n"
+"jolloin lataamista pitää yrittää myöhemmin uudelleen."
 
 #: ../rpmdrake.pm:797
 #, c-format
@@ -3141,13 +3136,13 @@ msgstr "Päivitä lähteet"
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
 msgstr ""
-"Aktiivinen lähde ei löytynyt. sinun pitää aktivoida joitakin lähteitä "
-"voidaaksesi päivittää niitä."
+"Aktiivisia lähteitä ei löytynyt. Lähteitä on otettava käyttöön, jotta niitä "
+"voidaan päivittää."
 
 #: ../rpmdrake.pm:809
 #, c-format
 msgid "Select the media you wish to update:"
-msgstr "Valitse lähteet, jotka haluat päivittää:"
+msgstr "Valitse päivitettävät lähteet:"
 
 #: ../rpmdrake.pm:855
 #, c-format
@@ -3157,7 +3152,7 @@ msgid ""
 "Errors:\n"
 "%s"
 msgstr ""
-"Lähteen päivitys epäonnistui, poistetaan käytöstä automaattisesti.\n"
+"Lähteen päivitys epäonnistui, lähde poistetaan käytöstä automaattisesti.\n"
 "\n"
 "Virheet:\n"
 "%s"
@@ -3201,8 +3196,8 @@ msgid ""
 "running (%s).\n"
 "It will be disabled."
 msgstr ""
-"Päivityksiin käytetävä lähde `%s' ei vastaa käyttämääsi %s versiota (%s).\n"
-"Lähde poistetaan käytöstä."
+"Päivityksiin käytetävä lähde \"%s\" ei vastaa käyttämääsi %s versiota (%s).\n"
+"Poistetaan lähde käytöstä."
 
 #: ../rpmdrake.pm:921
 #, c-format
@@ -3211,20 +3206,21 @@ msgid ""
 "Linux you're running (%s).\n"
 "It will be disabled."
 msgstr ""
-"Päivityksiin käytetävä lähde `%s' ei vastaa käyttämääsi Mandriva Linuxin "
+"Päivityksiin käytetävä lähde \"%s\" ei vastaa käyttämääsi Mandriva Linuxin "
 "versiota (%s).\n"
-"Lähde poistetaan käytöstä."
+"Poistetaan lähde käytöstä."
 
 #: ../rpmdrake.pm:962
 #, c-format
 msgid "Help launched in background"
-msgstr "Ohje käynnistetty taustalla"
+msgstr "Ohje käynnistetty taustalle"
 
 #: ../rpmdrake.pm:963
 #, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
-msgstr "Ohjeikkuna on käynnistetty, sen pitäisi näkyä työpöydälläsi."
+msgstr ""
+"Käynnistettiin ohjeikkuna, sen pitäisi ilmestyä hetken kuluttua työpöydälle."
 
 #: ../data/rpmdrake-browse-only.desktop.in.h:1
 msgid "A graphical front end for browsing installed & available packages"
@@ -3239,7 +3235,8 @@ msgstr "Selaa saatavilla olevia ohjelmia"
 #: ../data/rpmdrake.desktop.in.h:1
 msgid "A graphical front end for installing, removing and updating packages"
 msgstr ""
-"Graafinen käyttöliittymä pakettien asentamiseen, päivittämiseen ja poistoon."
+"Graafinen käyttöliittymä pakettien asentamiseen, päivittämiseen ja "
+"poistamiseen."
 
 #: ../data/rpmdrake.desktop.in.h:2
 msgid "Install & Remove Software"
@@ -3261,10 +3258,10 @@ msgstr "Urpmi-lähdetiedot"
 #~ "  --no-splash            don't ask first confirmation question in update "
 #~ "mode"
 #~ msgstr ""
-#~ "  --no-splash            älä kysy ensimmäinen vahvistus päivitystilassa"
+#~ "  --no-splash            älä kysy ensimmäistä vahvistusta päivitettäessä"
 
 #~ msgid "Find"
-#~ msgstr "Hae"
+#~ msgstr "Etsi"
 
 #~ msgid "/Add _media"
 #~ msgstr "/Lisää _media"
