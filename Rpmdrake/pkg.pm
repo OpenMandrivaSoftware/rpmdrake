@@ -651,7 +651,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my @to_install = @{$urpm->{depslist}}[keys %{$state->{selected}}];
     my @pkgs = map { scalar($_->fullname) } sort(grep { $_->flag_selected } @to_install);
 
-    @{$urpm->{ask_remove}} = sort urpm::select::removed_packages($urpm, $urpm->{state});
+    @{$urpm->{ask_remove}} = sort(urpm::select::removed_packages($urpm, $urpm->{state}));
     my @to_remove = map { if_($pkgs->{$_}{selected} && !$pkgs->{$_}{pkg}->flag_upgrade, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
 
     my $r = format_list(map { scalar(urpm::select::translate_why_removed_one($urpm, $urpm->{state}, $_)) } @to_remove);
