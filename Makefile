@@ -53,7 +53,9 @@ dis: clean
 	rm -rf $(NAME)-$(VERSION)
 
 gui.lst:
-	LC_COLLATE=C; urpmf "/(opt/kde[43]|usr)/share/((applnk|applications(|/kde)|apps/kicker/applets)/|kde4/services/plasma-applet).*.desktop" |sed -e 's!:.*!!' |sort|uniq>gui.lst
+	LC_COLLATE=C; ( echo -e "cedega-mandriva\npicasa\nVariCAD_2009-en\nVariCAD_View_2009-en\nVMware-Player" ; \
+	urpmf "/(opt/kde[43]|usr)/share/((applnk|applications(|/kde)|apps/kicker/applets)/|kde4/services/plasma-applet).*.desktop" |sed -e 's!:.*!!') \
+	 | sort | uniq > gui.lst
 
 .PHONY: ChangeLog log changelog gui.lst
 
