@@ -475,7 +475,7 @@ sub get_pkgs {
     my $state = {};
     my (@requested, @requested_strict);
 
-    if ($::rpmdrake_options{compute_updates} || $::MODE eq 'update') {
+    if ($compute_updates || $::MODE eq 'update') {
         get_updates_list($urpm, $db, $state, $requested, \@requested, \@requested_strict, \%all_pkgs);
     }
 
