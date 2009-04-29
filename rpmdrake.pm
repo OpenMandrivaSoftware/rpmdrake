@@ -161,21 +161,21 @@ our ($changelog_first_config, $filter, $max_info_in_descr, $mode, $tree_flat, $t
 our ($mandrakeupdate_wanted_categories, $ignore_debug_media, $offered_to_add_sources, $no_confirmation);
 our ($rpmdrake_height, $rpmdrake_width, $mandrivaupdate_height, $mandrivaupdate_width);
 our %config = (
-    mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
-    dont_show_selections => { var => \$dont_show_selections, default => [ $> ? 1 : 0 ] },
-    mandrivaupdate_width => { var => \$mandrivaupdate_width, default => [ 0 ] },
-    mandrivaupdate_height => { var => \$mandrivaupdate_height, default => [ 0 ] },
-    max_info_in_descr => { var => \$max_info_in_descr, default => [] },
-    ignore_debug_media => { var => \$ignore_debug_media, default => [ 0 ] },
-    offered_to_add_sources => { var => \$offered_to_add_sources, default => [ 0 ] },
-    tree_mode => { var => \$tree_mode, default => [ qw(gui_pkgs) ] },
-    tree_flat => { var => \$tree_flat, default => [ 0 ] },
     changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },
-    'no-confirmation' => { var => \$no_confirmation, default => [ 0 ] },
+    dont_show_selections => { var => \$dont_show_selections, default => [ $> ? 1 : 0 ] },
     filter => { var => \$filter, default => [ 'all' ] },
+    ignore_debug_media => { var => \$ignore_debug_media, default => [ 0 ] },
+    mandrakeupdate_wanted_categories => { var => \$mandrakeupdate_wanted_categories, default => [ qw(security) ] },
+    mandrivaupdate_height => { var => \$mandrivaupdate_height, default => [ 0 ] },
+    mandrivaupdate_width => { var => \$mandrivaupdate_width, default => [ 0 ] },
+    max_info_in_descr => { var => \$max_info_in_descr, default => [] },
     mode => { var => \$mode, default => [ 'by_group' ] },
-    rpmdrake_width => { var => \$rpmdrake_width, default => [ 0 ] },
+    'no-confirmation' => { var => \$no_confirmation, default => [ 0 ] },
+    offered_to_add_sources => { var => \$offered_to_add_sources, default => [ 0 ] },
     rpmdrake_height => { var => \$rpmdrake_height, default => [ 0 ] },
+    rpmdrake_width => { var => \$rpmdrake_width, default => [ 0 ] },
+    tree_flat => { var => \$tree_flat, default => [ 0 ] },
+    tree_mode => { var => \$tree_mode, default => [ qw(gui_pkgs) ] },
 );
 
 sub readconf() {
