@@ -46,6 +46,7 @@ our @ISA = qw(Exporter);
 our $VERSION = '2.27';
 our @EXPORT = qw(
     $changelog_first_config
+    $compute_updates
     $filter
     $dont_show_selections
     $ignore_debug_media
@@ -157,11 +158,12 @@ $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 $ENV{HOME} = $::env if $::env = $Rpmdrake::init::rpmdrake_options{env}[0];
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
-our ($changelog_first_config, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode);
+our ($changelog_first_config, $compute_updates, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode);
 our ($mandrakeupdate_wanted_categories, $ignore_debug_media, $offered_to_add_sources, $no_confirmation);
 our ($rpmdrake_height, $rpmdrake_width, $mandrivaupdate_height, $mandrivaupdate_width);
 our %config = (
     changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },
+    compute_updates => { var => \$compute_updates, default => [ 1 ] },
     dont_show_selections => { var => \$dont_show_selections, default => [ $> ? 1 : 0 ] },
     filter => { var => \$filter, default => [ 'all' ] },
     ignore_debug_media => { var => \$ignore_debug_media, default => [ 0 ] },
