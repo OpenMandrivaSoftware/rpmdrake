@@ -109,7 +109,9 @@ sub extract_header {
             $bar_id = statusbar_msg(N("Getting '%s' from XML meta-data...", $xml_info), 0);
             my $_gurpm_clean_guard = before_leaving { undef $gurpm };
                 if (my $xml_info_file = eval { urpm::media::any_xml_info($urpm, $medium, $xml_info, undef, sub {
-                                                                      $gurpm ||= Rpmdrake::gurpm->new(N("Please wait"), transient => $::main_window);
+                                                                      $gurpm ||= Rpmdrake::gurpm->new(N("Please wait"),
+                                                                                                      '', # FIXME: add a real string after cooker
+                                                                                                      transient => $::main_window);
                                                                       download_callback($gurpm, @_)
                                                                         or goto header_non_available;
                                                                   }) }) {
