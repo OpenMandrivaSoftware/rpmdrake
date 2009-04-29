@@ -99,7 +99,7 @@ sub urpm_name {
 sub pkg2medium {
     my ($p, $urpm) = @_;
     return if !ref $p;
-    return { name => N("None (installed)") } if !$p->id; # if installed
+    return { name => N("None (installed)") } if !defined $p->id || $p->flag_installed; # if installed
     URPM::pkg2media($urpm->{media}, $p) || undef;
 }
 
