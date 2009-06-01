@@ -76,6 +76,7 @@ sub open_rpm_db {
 sub fast_open_urpmi_db() {
     my $urpm = urpm->new;
     urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}[0]) if $::rpmdrake_options{'urpmi-root'}[0];
+    $::rpmdrake_options{'rpm-root'}[0] ||= $::rpmdrake_options{'urpmi-root'}[0];
     urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}[0]) if $::rpmdrake_options{'rpm-root'}[0];
     urpm::args::set_debug($urpm) if $::rpmdrake_options{'debug'};
     $urpm->get_global_options;
