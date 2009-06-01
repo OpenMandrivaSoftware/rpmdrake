@@ -115,7 +115,9 @@ sub fast_open_urpmi_db() {
 sub is_it_a_devel_distro {
     state $res;
     return $res if defined $res;
-    $res = common::parse_LDAP_namespace_structure(cat_('/etc/product.id'))->{branch} eq 'Devel';
+    
+    my $path = $::rpmdrake_options{'urpmi-root'}[0] . '/etc/product.id';
+    $res = common::parse_LDAP_namespace_structure(cat_($path))->{branch} eq 'Devel';
     return $res;
 }
 
