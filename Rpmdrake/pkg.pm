@@ -840,7 +840,7 @@ you may now inspect some in order to take actions:"),
                      );
 
     #- restart rpmdrake if needed, keep command line for that.
-    if ($need_restart && !$exit_code) {
+    if ($need_restart && !$exit_code && $something_installed) {
         log::explanations("restarting rpmdrake");
         #- it seems to work correctly with exec instead of system, provided we stop timers
         #- added --previous-priority-upgrade to allow checking if yet if
