@@ -201,6 +201,30 @@ sub format_pkg_simplifiedinfo {
                                          : () }) ];
     push @$s, [ "\n\n" ];
     push @$s, [ build_expander($pkg, N("Changelog:"), 'changelog',  sub { $pkg->{changelog} }, $installed_version) ];
+
+    push @$s, [ "\n\n" ];
+    if ($upkg->id) { # If not installed
+        my $deps_textview;
+        push @$s, [ gtkadd(
+            gtksignal_connect(
+                gtkshow(my $dependencies = Gtk2::Expander->new(format_field(N("Dependencies:")))), 
+                activate => sub { 
+                    slow_func($::main_window->window, sub {
+                            my @requested = $urpm->resolve_requested(
+                                open_rpm_db(), $urpm->{state},
+                                { $upkg->id => 1 },
+                            );
+                            $urpm->disable_selected(open_rpm_db(), $urpm->{state}, @requested);
+                            my @nodes_with_deps = map { urpm_name($_) } @requested;
+                            my @deps = sort { $a cmp $b } difference2(\@nodes_with_deps, [ urpm_name($upkg) ]);
+                            gtktext_insert($deps_textview, join("\n", @deps));
+                        });
+                }
+            ),
+            $deps_textview = gtknew('TextView')
+        ) ];
+        $dependencies->set_use_markup(1);
+    }
     $s;
 
 }
