@@ -1142,8 +1142,15 @@ sub mainwindow() {
 		    ),
 		    gtkpack(
 			gtknew('HBox'),
-			gtksignal_connect($up_button = gtknew('Button', child => Gtk2::Arrow->new("up", "none")), clicked => \&upwards_callback),
-			gtksignal_connect($dw_button = gtknew('Button', child => Gtk2::Arrow->new("down", "none")), clicked => \&downwards_callback),
+			gtksignal_connect(
+                            $up_button = gtknew('Button',
+                                                image => gtknew('Image', stock => 'gtk-go-up')),
+                            clicked => \&upwards_callback),
+
+			gtksignal_connect(
+                            $dw_button = gtknew('Button',
+                                                image => gtknew('Image', stock => 'gtk-go-down')),
+                            clicked => \&downwards_callback),
 		    ),
 		)
 	    ),
