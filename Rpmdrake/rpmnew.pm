@@ -73,7 +73,11 @@ sub inspect {
 	-r $rpmnew or $rpmfile = 'rpmsave';
 	-r $rpmnew && -r $rpmsave && (stat $rpmsave)[9] > (stat $rpmnew)[9] and $rpmfile = 'rpmsave';
 	$rpmfile eq 'rpmsave' and $rpmnew = $rpmsave;
-	my @diff = `/usr/bin/diff -u '$file' '$rpmnew'`;
+
+	foreach (qw(LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION LC_ALL)) {
+            local $ENV{$_} = $ENV{$_} . '.UTF-8' if $ENV{$_} && $ENV{$_} !~ /UTF-8/;
+	}
+	my @diff = map { ensure_utf8($_) } `/usr/bin/diff -u '$file' '$rpmnew'`;
 	@diff = N("(none)") if !@diff;
 	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $::main_window);
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
