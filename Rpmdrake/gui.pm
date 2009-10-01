@@ -799,7 +799,7 @@ sub do_action__real {
         $urpm->{fatal}(1, N("Error: %s appears to be mounted read-only.", $urpm::sys::mountpoint));
         return 1;
     }
-    if (!int(grep { $pkgs->{$_}{selected} } keys %$pkgs)) {
+    if (!$Rpmdrake::pkg::need_restart && !int(grep { $pkgs->{$_}{selected} } keys %$pkgs)) {
         interactive_msg(N("You need to select some packages first."), N("You need to select some packages first."));
         return 1;
     }
