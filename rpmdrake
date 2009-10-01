@@ -360,7 +360,7 @@ sub run_treeview_dialog {
         }
         $detail_list->window->freeze_updates;
         $options->{add_nodes}->(@{$elems{$group}});
-        $detail_list->window->thaw_updates;
+        $detail_list->window->thaw_updates if $detail_list->window;
     });
 
     $options->{state}{splited} = 1;
