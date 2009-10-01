@@ -677,7 +677,10 @@ sub run_treeview_dialog {
                                              'icon-press' => sub {
                                                  my (undef, $pos, $event) = @_;
                                                  # emulate Sexy::IconEntry's clear_button:
-                                                 $find_entry->set_text('') if $pos eq 'secondary';
+                                                 if ($pos eq 'secondary') {
+                                                     $find_entry->set_text('');
+                                                     reset_search();
+                                                 }
                                                  return if $pos ne 'primary';
                                                  $search_menu->popup(undef, undef, undef, undef, $event->button, $event->time);
                                              },
