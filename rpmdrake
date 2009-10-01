@@ -525,6 +525,7 @@ sub run_treeview_dialog {
                       reset_search();
                       $size_selected = 0;
                       $options->{rebuild_tree}->();
+                      $find_callback->();
                   });
     };
 
