@@ -92,7 +92,7 @@ if ($collation_locale) {
   $collation_locale =~ /UTF-8/ or setlocale(LC_COLLATE, "$collation_locale.UTF-8");
 }
 
-my $version = 1;
+our $version = 1;
 our %rpmdrake_options;
 
 my $i;
