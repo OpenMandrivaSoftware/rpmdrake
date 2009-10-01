@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 15:32+0200\n"
+"POT-Creation-Date: 2009-10-01 16:39+0200\n"
 "PO-Revision-Date: 2009-04-11 21:32+0300\n"
 "Last-Translator: Taras Boychuk <btr0001@ukr.net>\n"
 "Language-Team: ukrainian <translation@linux.org.ua>\n"
@@ -302,7 +302,7 @@ msgstr "Тип джерела:"
 #: ../Rpmdrake/edit_urpm_sources.pm:492 ../Rpmdrake/edit_urpm_sources.pm:519
 #: ../Rpmdrake/edit_urpm_sources.pm:600 ../Rpmdrake/edit_urpm_sources.pm:664
 #: ../Rpmdrake/edit_urpm_sources.pm:766 ../Rpmdrake/gui.pm:633
-#: ../Rpmdrake/init.pm:158 ../Rpmdrake/pkg.pm:182 ../Rpmdrake/pkg.pm:773
+#: ../Rpmdrake/init.pm:158 ../Rpmdrake/pkg.pm:188 ../Rpmdrake/pkg.pm:779
 #: ../rpmdrake.pm:337 ../rpmdrake.pm:678 ../rpmdrake.pm:751 ../rpmdrake.pm:828
 #, c-format
 msgid "Cancel"
@@ -314,7 +314,7 @@ msgstr "Скасувати"
 #: ../Rpmdrake/edit_urpm_sources.pm:832 ../Rpmdrake/edit_urpm_sources.pm:946
 #: ../Rpmdrake/edit_urpm_sources.pm:1160 ../Rpmdrake/gui.pm:633
 #: ../Rpmdrake/gui.pm:649 ../Rpmdrake/gui.pm:654 ../Rpmdrake/init.pm:158
-#: ../Rpmdrake/pkg.pm:570 ../Rpmdrake/pkg.pm:773 ../Rpmdrake/rpmnew.pm:185
+#: ../Rpmdrake/pkg.pm:576 ../Rpmdrake/pkg.pm:779 ../Rpmdrake/rpmnew.pm:185
 #: ../rpmdrake.pm:139 ../rpmdrake.pm:273 ../rpmdrake.pm:340 ../rpmdrake.pm:678
 #, c-format
 msgid "Ok"
@@ -595,8 +595,8 @@ msgid "Command"
 msgstr "Команда"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:796 ../Rpmdrake/formatting.pm:129
-#: ../Rpmdrake/gui.pm:902 ../Rpmdrake/pkg.pm:93 ../Rpmdrake/pkg.pm:141
-#: ../Rpmdrake/pkg.pm:152 ../Rpmdrake/pkg.pm:173 ../Rpmdrake/rpmnew.pm:81
+#: ../Rpmdrake/gui.pm:902 ../Rpmdrake/pkg.pm:99 ../Rpmdrake/pkg.pm:147
+#: ../Rpmdrake/pkg.pm:158 ../Rpmdrake/pkg.pm:179 ../Rpmdrake/rpmnew.pm:81
 #, c-format
 msgid "(none)"
 msgstr "(нічого)"
@@ -803,7 +803,7 @@ msgstr "Mandriva Linux"
 msgid "_: Translator(s) name(s) & email(s)\n"
 msgstr "Тарас Бойчук <btr0001@ukr.net>\n"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1045 ../Rpmdrake/pkg.pm:247
+#: ../Rpmdrake/edit_urpm_sources.pm:1045 ../Rpmdrake/pkg.pm:253
 #, c-format
 msgid "Enabled"
 msgstr "Доступний"
@@ -856,6 +856,11 @@ msgstr ""
 msgid "None (installed)"
 msgstr "Немає (встановлений)"
 
+#: ../Rpmdrake/formatting.pm:103
+#, c-format
+msgid "Unknown"
+msgstr ""
+
 #: ../Rpmdrake/formatting.pm:166
 #, c-format
 msgid "%s of additional disk space will be used."
@@ -877,7 +882,7 @@ msgid "Search results (none)"
 msgstr "Результат пошуку (немає)"
 
 #: ../Rpmdrake/gui.pm:124 ../Rpmdrake/gui.pm:245 ../Rpmdrake/gui.pm:247
-#: ../Rpmdrake/pkg.pm:165
+#: ../Rpmdrake/pkg.pm:171
 #, c-format
 msgid "(Not available)"
 msgstr "(Недоступне)"
@@ -988,8 +993,8 @@ msgid "Description: "
 msgstr "Опис: "
 
 #: ../Rpmdrake/gui.pm:288 ../Rpmdrake/gui.pm:482 ../Rpmdrake/gui.pm:488
-#: ../Rpmdrake/gui.pm:494 ../Rpmdrake/pkg.pm:783 ../Rpmdrake/pkg.pm:793
-#: ../Rpmdrake/pkg.pm:807 ../rpmdrake.pm:808 ../rpmdrake.pm:922
+#: ../Rpmdrake/gui.pm:494 ../Rpmdrake/pkg.pm:789 ../Rpmdrake/pkg.pm:799
+#: ../Rpmdrake/pkg.pm:813 ../rpmdrake.pm:808 ../rpmdrake.pm:922
 #, c-format
 msgid "Warning"
 msgstr "Попередження"
@@ -1035,7 +1040,7 @@ msgstr ""
 "Пакунок \"%s\" знаходиться в списку urpmi для ігнорування.\n"
 "Все одно вибрати його?"
 
-#: ../Rpmdrake/gui.pm:494 ../Rpmdrake/pkg.pm:664
+#: ../Rpmdrake/gui.pm:494 ../Rpmdrake/pkg.pm:670
 #, c-format
 msgid ""
 "Rpmdrake or one of its priority dependencies needs to be updated first. "
@@ -1177,7 +1182,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:774 ../Rpmdrake/pkg.pm:668
+#: ../Rpmdrake/gui.pm:774 ../Rpmdrake/pkg.pm:674
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Деякі пакунки повинні бути видалені"
@@ -1229,7 +1234,7 @@ msgstr ""
 msgid "Fatal error"
 msgstr "Невиправна помилка"
 
-#: ../Rpmdrake/gui.pm:856 ../Rpmdrake/open_db.pm:100 ../Rpmdrake/pkg.pm:444
+#: ../Rpmdrake/gui.pm:856 ../Rpmdrake/open_db.pm:100 ../Rpmdrake/pkg.pm:450
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "Сталася невиправна помилка: %s"
@@ -2009,30 +2014,30 @@ msgstr ""
 "Ви не зможете зробити зміни у системі,\n"
 "але зможете переглядати існуючу базу даних."
 
-#: ../Rpmdrake/pkg.pm:105
+#: ../Rpmdrake/pkg.pm:111
 #, c-format
 msgid "Getting information from XML meta-data from %s..."
 msgstr "Отримується інформація з XML-метаданих з %s..."
 
-#: ../Rpmdrake/pkg.pm:109
+#: ../Rpmdrake/pkg.pm:115
 #, c-format
 msgid "Getting '%s' from XML meta-data..."
 msgstr "Отримується '%s' з XML-метаданих..."
 
-#: ../Rpmdrake/pkg.pm:112 ../Rpmdrake/pkg.pm:412 ../Rpmdrake/pkg.pm:688
-#: ../Rpmdrake/pkg.pm:888 ../rpmdrake:137 ../rpmdrake.pm:365
+#: ../Rpmdrake/pkg.pm:118 ../Rpmdrake/pkg.pm:418 ../Rpmdrake/pkg.pm:694
+#: ../Rpmdrake/pkg.pm:894 ../rpmdrake:137 ../rpmdrake.pm:365
 #: ../rpmdrake.pm:574
 #, c-format
 msgid "Please wait"
 msgstr "Зачекайте, будь ласка"
 
-#: ../Rpmdrake/pkg.pm:126
+#: ../Rpmdrake/pkg.pm:132
 #, c-format
 msgid "No xml info for medium \"%s\", only partial result for package %s"
 msgstr ""
 "Для джерела \"%s\" немає xml-info; тільки частковий результат для пакунка %s"
 
-#: ../Rpmdrake/pkg.pm:128
+#: ../Rpmdrake/pkg.pm:134
 #, c-format
 msgid ""
 "No xml info for medium \"%s\", unable to return any result for package %s"
@@ -2040,27 +2045,27 @@ msgstr ""
 "Для джерела \"%s\" немає xml-info; неможливо повернути результат для пакунка "
 "%s"
 
-#: ../Rpmdrake/pkg.pm:181 ../Rpmdrake/pkg.pm:186
+#: ../Rpmdrake/pkg.pm:187 ../Rpmdrake/pkg.pm:192
 #, c-format
 msgid "Downloading package `%s'..."
 msgstr "Звантажується пакунок %s"
 
-#: ../Rpmdrake/pkg.pm:188
+#: ../Rpmdrake/pkg.pm:194
 #, c-format
 msgid "        %s%% of %s completed, ETA = %s, speed = %s"
 msgstr "        %s%% з %s завершено, залишилося часу = %s, швидкість = %s"
 
-#: ../Rpmdrake/pkg.pm:189
+#: ../Rpmdrake/pkg.pm:195
 #, c-format
 msgid "        %s%% completed, speed = %s"
 msgstr "        %s%% завершено, швидкість = %s"
 
-#: ../Rpmdrake/pkg.pm:227 ../Rpmdrake/pkg.pm:668
+#: ../Rpmdrake/pkg.pm:233 ../Rpmdrake/pkg.pm:674
 #, c-format
 msgid "Confirmation"
 msgstr "Підтвердження"
 
-#: ../Rpmdrake/pkg.pm:228
+#: ../Rpmdrake/pkg.pm:234
 #, c-format
 msgid ""
 "I need to contact the mirror to get latest update packages.\n"
@@ -2074,17 +2079,17 @@ msgstr ""
 "\n"
 "Продовжити?"
 
-#: ../Rpmdrake/pkg.pm:232
+#: ../Rpmdrake/pkg.pm:238
 #, c-format
 msgid "Do not ask me next time"
 msgstr "Не запитувати наступного разу"
 
-#: ../Rpmdrake/pkg.pm:241
+#: ../Rpmdrake/pkg.pm:247
 #, c-format
 msgid "Already existing update media"
 msgstr "Вже існуюче джерело поновлення"
 
-#: ../Rpmdrake/pkg.pm:242
+#: ../Rpmdrake/pkg.pm:248
 #, c-format
 msgid ""
 "You already have at least one update medium configured, but\n"
@@ -2100,7 +2105,7 @@ msgstr ""
 "\n"
 "Після цього перезапустіть %s."
 
-#: ../Rpmdrake/pkg.pm:252
+#: ../Rpmdrake/pkg.pm:258
 #, c-format
 msgid ""
 "You have no configured update media. MandrivaUpdate cannot operate without "
@@ -2109,7 +2114,7 @@ msgstr ""
 "Ви не налаштували джерело поновлення. MandrivaUpdate не може працювати без "
 "джерел поновлення."
 
-#: ../Rpmdrake/pkg.pm:253 ../rpmdrake.pm:607
+#: ../Rpmdrake/pkg.pm:259 ../rpmdrake.pm:607
 #, c-format
 msgid ""
 "I need to contact the Mandriva website to get the mirror list.\n"
@@ -2123,12 +2128,12 @@ msgstr ""
 "\n"
 "Продовжити?"
 
-#: ../Rpmdrake/pkg.pm:260
+#: ../Rpmdrake/pkg.pm:266
 #, c-format
 msgid "How to choose manually your mirror"
 msgstr "Як вибрати дзеркало вручну"
 
-#: ../Rpmdrake/pkg.pm:261
+#: ../Rpmdrake/pkg.pm:267
 #, c-format
 msgid ""
 "You may also choose your desired mirror manually: to do so,\n"
@@ -2143,73 +2148,73 @@ msgstr ""
 "\n"
 "Потім перезапустіть %s."
 
-#: ../Rpmdrake/pkg.pm:412 ../Rpmdrake/pkg.pm:688
+#: ../Rpmdrake/pkg.pm:418 ../Rpmdrake/pkg.pm:694
 #, c-format
 msgid "Package installation..."
 msgstr "Встановлюються пакунки..."
 
-#: ../Rpmdrake/pkg.pm:412 ../Rpmdrake/pkg.pm:688 ../Rpmdrake/pkg.pm:888
+#: ../Rpmdrake/pkg.pm:418 ../Rpmdrake/pkg.pm:694 ../Rpmdrake/pkg.pm:894
 #, c-format
 msgid "Initializing..."
 msgstr "Започаткування..."
 
-#: ../Rpmdrake/pkg.pm:427
+#: ../Rpmdrake/pkg.pm:433
 #, c-format
 msgid "Reading updates description"
 msgstr "Читаються описи поновлень"
 
-#: ../Rpmdrake/pkg.pm:433 ../Rpmdrake/pkg.pm:469
+#: ../Rpmdrake/pkg.pm:439 ../Rpmdrake/pkg.pm:475
 #, c-format
 msgid "Please wait, finding available packages..."
 msgstr "Будь ласка, зачекайте, шукаю доступні пакунки..."
 
-#: ../Rpmdrake/pkg.pm:439
+#: ../Rpmdrake/pkg.pm:445
 #, c-format
 msgid "Please wait, listing base packages..."
 msgstr "Зачекайте, будь ласка, створюється перелік пакунків..."
 
-#: ../Rpmdrake/pkg.pm:444 ../Rpmdrake/pkg.pm:812 ../Rpmdrake/pkg.pm:837
+#: ../Rpmdrake/pkg.pm:450 ../Rpmdrake/pkg.pm:818 ../Rpmdrake/pkg.pm:843
 #: ../rpmdrake.pm:795 ../rpmdrake.pm:881 ../rpmdrake.pm:905
 #, c-format
 msgid "Error"
 msgstr "Помилка"
 
-#: ../Rpmdrake/pkg.pm:452
+#: ../Rpmdrake/pkg.pm:458
 #, c-format
 msgid "Please wait, finding installed packages..."
 msgstr "Будь ласка, зачекайте, йде пошук встановлених пакунків..."
 
-#: ../Rpmdrake/pkg.pm:550
+#: ../Rpmdrake/pkg.pm:556
 #, c-format
 msgid "Upgrade information"
 msgstr "Інформація про оновлення"
 
-#: ../Rpmdrake/pkg.pm:552
+#: ../Rpmdrake/pkg.pm:558
 #, c-format
 msgid "These packages come with upgrade information"
 msgstr "Ці пакунки містять інформацію про оновлення"
 
-#: ../Rpmdrake/pkg.pm:560
+#: ../Rpmdrake/pkg.pm:566
 #, c-format
 msgid "Upgrade information about this package"
 msgstr "Інформація про оновлення цього пакунку"
 
-#: ../Rpmdrake/pkg.pm:563
+#: ../Rpmdrake/pkg.pm:569
 #, c-format
 msgid "Upgrade information about package %s"
 msgstr "Інформація про оновлення пакунка... [%s]"
 
-#: ../Rpmdrake/pkg.pm:585 ../Rpmdrake/pkg.pm:829
+#: ../Rpmdrake/pkg.pm:591 ../Rpmdrake/pkg.pm:835
 #, c-format
 msgid "All requested packages were installed successfully."
 msgstr "Всі вибрані пакунки було успішно встановлено."
 
-#: ../Rpmdrake/pkg.pm:589 ../Rpmdrake/pkg.pm:798
+#: ../Rpmdrake/pkg.pm:595 ../Rpmdrake/pkg.pm:804
 #, c-format
 msgid "Problem during installation"
 msgstr "Помилка під час встановлення"
 
-#: ../Rpmdrake/pkg.pm:590 ../Rpmdrake/pkg.pm:610 ../Rpmdrake/pkg.pm:800
+#: ../Rpmdrake/pkg.pm:596 ../Rpmdrake/pkg.pm:616 ../Rpmdrake/pkg.pm:806
 #, c-format
 msgid ""
 "There was a problem during the installation:\n"
@@ -2220,27 +2225,27 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:609
+#: ../Rpmdrake/pkg.pm:615
 #, c-format
 msgid "Installation failed"
 msgstr "Встановлення невдале"
 
-#: ../Rpmdrake/pkg.pm:629
+#: ../Rpmdrake/pkg.pm:635
 #, c-format
 msgid "Checking validity of requested packages..."
 msgstr "Перевіряється цілісність пакунків..."
 
-#: ../Rpmdrake/pkg.pm:645
+#: ../Rpmdrake/pkg.pm:651
 #, c-format
 msgid "Unable to get source packages."
 msgstr "Неможливо отримати джерельні пакунки."
 
-#: ../Rpmdrake/pkg.pm:646
+#: ../Rpmdrake/pkg.pm:652
 #, c-format
 msgid "Unable to get source packages, sorry. %s"
 msgstr "Вибачте, неможливо отримати джерельні пакунки. %s"
 
-#: ../Rpmdrake/pkg.pm:647
+#: ../Rpmdrake/pkg.pm:653
 #, c-format
 msgid ""
 "\n"
@@ -2253,7 +2258,7 @@ msgstr ""
 "Повідомлено про помилки:\n"
 "%s"
 
-#: ../Rpmdrake/pkg.pm:665
+#: ../Rpmdrake/pkg.pm:671
 #, c-format
 msgid "The following package is going to be installed:"
 msgid_plural "The following %d packages are going to be installed:"
@@ -2261,7 +2266,7 @@ msgstr[0] "Наступний %d пакунок буде встановлено:
 msgstr[1] "Наступні %d пакунки буде встановлено:"
 msgstr[2] "Наступні %d пакунків буде встановлено:"
 
-#: ../Rpmdrake/pkg.pm:671
+#: ../Rpmdrake/pkg.pm:677
 #, c-format
 msgid "Remove one package?"
 msgid_plural "Remove %d packages?"
@@ -2269,32 +2274,32 @@ msgstr[0] "Видалити %d пакунок?"
 msgstr[1] "Видалити %d пакунки?"
 msgstr[2] "Видалити %d пакунків?"
 
-#: ../Rpmdrake/pkg.pm:673
+#: ../Rpmdrake/pkg.pm:679
 #, c-format
 msgid "The following package has to be removed for others to be upgraded:"
 msgstr "Наступні пакунки повинні бути видалені, щоб інші можна було оновити:"
 
-#: ../Rpmdrake/pkg.pm:674
+#: ../Rpmdrake/pkg.pm:680
 #, c-format
 msgid "The following packages have to be removed for others to be upgraded:"
 msgstr "Наступні пакунки будуть вилучені для того, щоб поновити інші:"
 
-#: ../Rpmdrake/pkg.pm:677
+#: ../Rpmdrake/pkg.pm:683
 #, c-format
 msgid "%s of packages will be retrieved."
 msgstr "%s пакунків буде завантажено."
 
-#: ../Rpmdrake/pkg.pm:679
+#: ../Rpmdrake/pkg.pm:685
 #, c-format
 msgid "Is it ok to continue?"
 msgstr "Все гаразд? Продовжувати?"
 
-#: ../Rpmdrake/pkg.pm:695 ../Rpmdrake/pkg.pm:872
+#: ../Rpmdrake/pkg.pm:701 ../Rpmdrake/pkg.pm:878
 #, c-format
 msgid "Orphan packages"
 msgstr "Осиротілі пакунки"
 
-#: ../Rpmdrake/pkg.pm:695
+#: ../Rpmdrake/pkg.pm:701
 #, c-format
 msgid "The following orphan package will be removed."
 msgid_plural "The following orphan packages will be removed."
@@ -2302,57 +2307,57 @@ msgstr[0] "Вказаний нижче осиротілий пакунок бу�
 msgstr[1] "Вказані нижче осиротілі пакунки буде вилучено."
 msgstr[2] "Вказані нижче осиротілі пакунки буде вилучено."
 
-#: ../Rpmdrake/pkg.pm:709
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing packages installation..."
 msgstr "Підготовлюються пакунки до встановлення..."
 
-#: ../Rpmdrake/pkg.pm:709
+#: ../Rpmdrake/pkg.pm:715
 #, c-format
 msgid "Preparing package installation transaction..."
 msgstr "Підготовлюються пакунки до встановлення..."
 
-#: ../Rpmdrake/pkg.pm:712
+#: ../Rpmdrake/pkg.pm:718
 #, c-format
 msgid "Installing package `%s' (%s/%s)..."
 msgstr "Встановлюється пакунок '%s' (%s/%s)..."
 
-#: ../Rpmdrake/pkg.pm:713
+#: ../Rpmdrake/pkg.pm:719
 #, c-format
 msgid "Total: %s/%s"
 msgstr "Загалом: %s/%s"
 
-#: ../Rpmdrake/pkg.pm:771
+#: ../Rpmdrake/pkg.pm:777
 #, c-format
 msgid "Change medium"
 msgstr "Змініть носій"
 
-#: ../Rpmdrake/pkg.pm:772
+#: ../Rpmdrake/pkg.pm:778
 #, c-format
 msgid "Please insert the medium named \"%s\""
 msgstr "Будь ласка, вставте диск з назвою \"%s\""
 
-#: ../Rpmdrake/pkg.pm:776
+#: ../Rpmdrake/pkg.pm:782
 #, c-format
 msgid "Verifying package signatures..."
 msgstr "Перевіряються підписи пакунків..."
 
-#: ../Rpmdrake/pkg.pm:799
+#: ../Rpmdrake/pkg.pm:805
 #, c-format
 msgid "%d installation transactions failed"
 msgstr "%d запит на встановлення завершився невдало"
 
-#: ../Rpmdrake/pkg.pm:813
+#: ../Rpmdrake/pkg.pm:819
 #, c-format
 msgid "Unrecoverable error: no package found for installation, sorry."
 msgstr "Невиправна помилка: на жаль, пакунку для встановлення не знайдено."
 
-#: ../Rpmdrake/pkg.pm:816
+#: ../Rpmdrake/pkg.pm:822
 #, c-format
 msgid "Inspecting configuration files..."
 msgstr "Вивчаються конфігураційні файли..."
 
-#: ../Rpmdrake/pkg.pm:824
+#: ../Rpmdrake/pkg.pm:830
 #, c-format
 msgid ""
 "The installation is finished; everything was installed correctly.\n"
@@ -2365,37 +2370,37 @@ msgstr ""
 "Деякі конфігураційні файли були створені як '.rpmnew' або '.rmpsave',\n"
 "Ви можете ретельно переглянути їх для подальших дій:"
 
-#: ../Rpmdrake/pkg.pm:830
+#: ../Rpmdrake/pkg.pm:836
 #, c-format
 msgid "Looking for \"README\" files..."
 msgstr "Іде пошук файлів \"README\"..."
 
-#: ../Rpmdrake/pkg.pm:863
+#: ../Rpmdrake/pkg.pm:869
 #, c-format
 msgid "RPM transaction %d/%d"
 msgstr "Транзакція RPM-файла %d/%d"
 
-#: ../Rpmdrake/pkg.pm:864
+#: ../Rpmdrake/pkg.pm:870
 #, c-format
 msgid "Unselect all"
 msgstr "Скасувати вибір усього"
 
-#: ../Rpmdrake/pkg.pm:865
+#: ../Rpmdrake/pkg.pm:871
 #, c-format
 msgid "Details"
 msgstr "Деталі"
 
-#: ../Rpmdrake/pkg.pm:888 ../Rpmdrake/pkg.pm:904
+#: ../Rpmdrake/pkg.pm:894 ../Rpmdrake/pkg.pm:910
 #, c-format
 msgid "Please wait, removing packages..."
 msgstr "Зачекайте, будь ласка, поки rpm вилучає ці пакунки..."
 
-#: ../Rpmdrake/pkg.pm:917
+#: ../Rpmdrake/pkg.pm:923
 #, c-format
 msgid "Problem during removal"
 msgstr "Проблема під час вилучення"
 
-#: ../Rpmdrake/pkg.pm:918
+#: ../Rpmdrake/pkg.pm:924
 #, c-format
 msgid ""
 "There was a problem during the removal of packages:\n"
@@ -2472,6 +2477,17 @@ msgstr ""
 "Все гаразд? Продовжувати?"
 
 #: ../gurpmi.addmedia:121
+#, fuzzy, c-format
+msgid ""
+"You are about to add new packages media.\n"
+"That means you will be able to add new software packages\n"
+"to your system from these new media."
+msgstr ""
+"Зараз Ви додасте нове джерело пакунків, %s.\n"
+"Це означає, що Ви зможете додавати нові програми\n"
+"в систему з цього нового джерела."
+
+#: ../gurpmi.addmedia:125
 #, c-format
 msgid ""
 "You are about to add new packages media, %s.\n"
@@ -2482,7 +2498,7 @@ msgstr ""
 "Це означає, що Ви зможете додавати нові програми\n"
 "в систему з цього нового джерела."
 
-#: ../gurpmi.addmedia:124
+#: ../gurpmi.addmedia:128
 #, c-format
 msgid ""
 "You are about to add a new packages medium, `%s'.\n"
@@ -2493,17 +2509,17 @@ msgstr ""
 "Це означає, що Ви зможете додавати нові програми\n"
 "в систему з цього нового джерела."
 
-#: ../gurpmi.addmedia:148
+#: ../gurpmi.addmedia:152
 #, c-format
 msgid "Successfully added media."
 msgstr "Успішно додано джерело."
 
-#: ../gurpmi.addmedia:150
+#: ../gurpmi.addmedia:154
 #, c-format
 msgid "Successfully added media %s."
 msgstr "Успішно додано джерело %s."
 
-#: ../gurpmi.addmedia:151
+#: ../gurpmi.addmedia:155
 #, c-format
 msgid "Successfully added medium `%s'."
 msgstr "Успішно додано джерело `%s'."
