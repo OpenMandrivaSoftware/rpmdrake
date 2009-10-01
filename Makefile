@@ -49,7 +49,7 @@ dis: clean
 	find $(NAME)-$(VERSION) -name .svnignore |xargs rm -rf
 	find $(NAME)-$(VERSION) -name '*.pm' -o -name rpmdrake -o -name MandrivaUpdate | xargs ./simplify-drakx-modules
 	./simplify-drakx-modules $(NAME)-$(VERSION)/{gurpmi.addmedia,edit-urpm-sources.pl}
-	tar cfY ../$(NAME)-$(VERSION).tar.lzma $(NAME)-$(VERSION)
+	tar cfa ../$(NAME)-$(VERSION).tar.lzma $(NAME)-$(VERSION)
 	rm -rf $(NAME)-$(VERSION)
 
 gui.lst:
