@@ -60,6 +60,7 @@ our @EXPORT = qw(
     $rpmdrake_width
     $tree_flat
     $tree_mode
+    $use_regexp
     $typical_width
     add_distrib_update_media
     add_medium_and_check
@@ -158,7 +159,7 @@ $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 $ENV{HOME} = $::env if $::env = $Rpmdrake::init::rpmdrake_options{env}[0];
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
-our ($changelog_first_config, $compute_updates, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode);
+our ($changelog_first_config, $compute_updates, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode, $use_regexp);
 our ($mandrakeupdate_wanted_categories, $ignore_debug_media, $offered_to_add_sources, $no_confirmation);
 our ($rpmdrake_height, $rpmdrake_width, $mandrivaupdate_height, $mandrivaupdate_width);
 our %config = (
@@ -178,6 +179,7 @@ our %config = (
     rpmdrake_width => { var => \$rpmdrake_width, default => [ 0 ] },
     tree_flat => { var => \$tree_flat, default => [ 0 ] },
     tree_mode => { var => \$tree_mode, default => [ qw(gui_pkgs) ] },
+    use_regexp => { var => \$use_regexp, default => [ 0 ] },
 );
 
 sub readconf() {
