@@ -84,6 +84,12 @@ sub extract_header {
     return if $pkg->{$fields{$xml_info}};
 
     my $p = $pkg->{pkg};
+
+    if (!$p) {
+        warn ">> ghost package '$pkg' has no URPM object!!!\n";
+        return;
+    }
+
     my $name = urpm_name($p);
     # fix extracting info for SRPMS and RPM GPG keys:
     $name =~ s!\.src!!;
