@@ -226,7 +226,7 @@ sub do_search($$$$$$$) {
 
 sub quit() {
     ($rpmdrake_width->[0], $rpmdrake_height->[0]) = $::w->{real_window}->get_size();
-    Gtk2->main_quit;
+    real_quit();
 }
 
 sub run_treeview_dialog {

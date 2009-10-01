@@ -128,7 +128,7 @@ $::main_window = $w->{real_window};
 
 sub quit() {
     ($mandrivaupdate_width->[0], $mandrivaupdate_height->[0]) = $::w->{real_window}->get_size;
-    Gtk2->main_quit;
+    real_quit();
 }
 
 sub run_treeview_dialog {

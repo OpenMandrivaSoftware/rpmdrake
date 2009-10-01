@@ -65,6 +65,7 @@ our @EXPORT = qw(
                     is_locale_available
                     node_state
                     pkgs_provider
+                    real_quit
                     reset_search
                     set_node_state
                     sort_callback
@@ -801,6 +802,13 @@ sub toggle_nodes {
 
 sub is_there_selected_packages() {
     int(grep { $pkgs->{$_}{selected} } keys %$pkgs)
+}
+
+sub real_quit() {
+    if (is_there_selected_packages()) {
+        interactive_msg(N("Some packages are selected."), N("Some packages are selected.") . "\n" . N("Do you really want to quit?"), yesno => 1) or return;
+    }
+    Gtk2->main_quit;
 }
 
 sub do_action__real {
