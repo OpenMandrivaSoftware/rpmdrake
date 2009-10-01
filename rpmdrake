@@ -68,8 +68,7 @@ sub do_search($$$$$$$) {
         $entry =~ s/^\s*$//;
     }
     my $entry_rx = eval { qr/$entry/i } or return;
-    my ($results_ok, $results_none) = (N("Search results"), N("Search results (none)"));
-    $options->{delete_category}->($_) foreach $results_ok, $results_none;
+    reset_search();
     $options->{state}{flat} and $options->{delete_all}->();
     $tree->collapse_all;
     my @search_results;

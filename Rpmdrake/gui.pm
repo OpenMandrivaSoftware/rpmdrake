@@ -46,6 +46,8 @@ our @EXPORT = qw(
                     $force_displaying_group
                     $force_rebuild
                     $pkgs
+                    $results_ok
+                    $results_none
                     $size_free
                     $size_selected
                     $urpm
@@ -72,6 +74,7 @@ our @EXPORT = qw(
             );
 
 our ($descriptions, %filters, @filtered_pkgs, %filter_methods, $force_displaying_group, $force_rebuild, @initial_selection, $pkgs, $size_free, $size_selected, $urpm);
+our ($results_ok, $results_none) = (N("Search results"), N("Search results (none)"));
 
 our %grp_columns = (
     label => 0,
@@ -516,6 +519,10 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 our $find_entry;
 
 sub reset_search() {
+    return if !$common;
+    $common->{delete_category}->($_) foreach $results_ok, $results_none;
+    # clear package list:
+    $common->{add_nodes}->();
 }
 
 sub is_a_package {
