@@ -799,6 +799,10 @@ sub toggle_nodes {
     }
 }
 
+sub is_there_selected_packages() {
+    int(grep { $pkgs->{$_}{selected} } keys %$pkgs)
+}
+
 sub do_action__real {
     my ($options, $callback_action, $o_info) = @_;
     require urpm::sys;
@@ -806,7 +810,7 @@ sub do_action__real {
         $urpm->{fatal}(1, N("Error: %s appears to be mounted read-only.", $urpm::sys::mountpoint));
         return 1;
     }
-    if (!$Rpmdrake::pkg::need_restart && !int(grep { $pkgs->{$_}{selected} } keys %$pkgs)) {
+    if (!$Rpmdrake::pkg::need_restart && !is_there_selected_packages()) {
         interactive_msg(N("You need to select some packages first."), N("You need to select some packages first."));
         return 1;
     }
