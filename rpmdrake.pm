@@ -55,6 +55,7 @@ our @EXPORT = qw(
     $mandrivaupdate_width
     $max_info_in_descr
     $mode
+    $NVR_searches
     $offered_to_add_sources
     $rpmdrake_height
     $rpmdrake_width
@@ -159,7 +160,7 @@ $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 $ENV{HOME} = $::env if $::env = $Rpmdrake::init::rpmdrake_options{env}[0];
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
-our ($changelog_first_config, $compute_updates, $filter, $max_info_in_descr, $mode, $tree_flat, $tree_mode, $use_regexp);
+our ($changelog_first_config, $compute_updates, $filter, $max_info_in_descr, $mode, $NVR_searches, $tree_flat, $tree_mode, $use_regexp);
 our ($mandrakeupdate_wanted_categories, $ignore_debug_media, $offered_to_add_sources, $no_confirmation);
 our ($rpmdrake_height, $rpmdrake_width, $mandrivaupdate_height, $mandrivaupdate_width);
 our %config = (
@@ -173,6 +174,7 @@ our %config = (
     mandrivaupdate_width => { var => \$mandrivaupdate_width, default => [ 0 ] },
     max_info_in_descr => { var => \$max_info_in_descr, default => [] },
     mode => { var => \$mode, default => [ 'by_group' ] },
+    NVR_searches => { var => \$NVR_searches, default => [ 0 ] },
     'no-confirmation' => { var => \$no_confirmation, default => [ 0 ] },
     offered_to_add_sources => { var => \$offered_to_add_sources, default => [ 0 ] },
     rpmdrake_height => { var => \$rpmdrake_height, default => [ 0 ] },

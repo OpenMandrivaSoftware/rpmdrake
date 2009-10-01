@@ -76,7 +76,14 @@ sub do_search($$$$$$$) {
     if ($current_search_type eq 'normal') {
         my $count;
         foreach (@filtered_pkgs) {
-            next if first(split_fullname($_)) !~ /$entry_rx/;
+            if ($NVR_searches->[0]) {
+                next if !/$entry_rx/;
+            } else {
+                if (/^([^-]*)-/) {
+                    my $name = $1;
+                    next if /^(.*)-/ and $name !~ /$entry_rx/;
+                }
+            }
             push @search_results, $_;
             # FIXME: should be done for all research types
             last if $count++ > 2000;
@@ -528,6 +535,7 @@ sub run_treeview_dialog {
     my $auto_string = N("/_Options") . N("/_Select dependencies without asking");
     my $noclean_string = N("/_Options") . "/" . N("Clear download cache after successfull install");
     my $updates_string = N("/_Options") . N("/_Compute updates on startup");
+    my $NVR_string = N("/_Options") . "/" . N("Search in _full package names");
     my $regexp_search_string = N("/_Options") . "/" . N("Use _regular expressions in searches");
     my ($menu, $factory) = create_factory_menu(
 	$w->{real_window},
@@ -575,6 +583,9 @@ sub run_treeview_dialog {
 
 	    [ $updates_string, undef, sub {
                 $compute_updates->[0] = $check_boxes{$updates_string}->get_active;
+	    }, undef, '<CheckItem>' ],
+	    [ $NVR_string, undef, sub {
+                $NVR_searches->[0] = $check_boxes{$NVR_string}->get_active;
 	    }, undef, '<CheckItem>' ],
 	    [ $regexp_search_string, undef, sub {
                 $use_regexp->[0] = $check_boxes{$regexp_search_string}->get_active;
@@ -628,8 +639,9 @@ sub run_treeview_dialog {
 
     %check_boxes = map {
         $_ => $factory->get_widget("<main>" . $get_path->($_));
-    } ($auto_string, $noclean_string, $updates_string, $regexp_search_string);
+    } ($auto_string, $noclean_string, $NVR_string, $updates_string, $regexp_search_string);
     $check_boxes{$regexp_search_string}->set_active($use_regexp->[0]);
+    $check_boxes{$NVR_string}->set_active($NVR_searches->[0]);
     if (!$>) {
         $check_boxes{$auto_string}->set_active($::rpmdrake_options{auto});
         $check_boxes{$updates_string}->set_active($compute_updates->[0]);
