@@ -58,6 +58,8 @@ sub do_search($$$$$$$) {
     my $entry = $find_entry->get_text or return;
     if (!$use_regexp->[0]) {
         $entry = quotemeta $entry;
+        # enable OR search by default:
+        $entry =~ s/\\ /|/g if $current_search_type eq 'normal';
     }
     # remove leading/trailing spacing when pasting:
     if ($entry !~ /\S\s\S/) {
