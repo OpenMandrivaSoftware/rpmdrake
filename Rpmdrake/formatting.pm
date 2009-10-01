@@ -100,7 +100,7 @@ sub pkg2medium {
     my ($p, $urpm) = @_;
     return if !ref $p;
     return { name => N("None (installed)") } if !defined($p->id); # if installed
-    URPM::pkg2media($urpm->{media}, $p) || undef;
+    URPM::pkg2media($urpm->{media}, $p) || { name => N("Unknown"), fake => 1 };
 }
 
 # [ duplicate urpmi's urpm::msg::localtime2changelog() ]

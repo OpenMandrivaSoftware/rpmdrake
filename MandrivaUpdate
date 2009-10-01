@@ -90,7 +90,7 @@ sub refresh_packages_list {
         my ($name, $version, $release, $arch) = split_fullname($_);
         my $pkg = $pkgs->{$_};
         my $raw_medium = pkg2medium($pkg->{pkg}, $urpm);
-        my $medium = $raw_medium ? $raw_medium->{name} : undef;
+        my $medium = !$raw_medium->{fake} ? $raw_medium->{name} : undef;
         my $icon;
         my $importance = $medium && $descriptions->{$medium}{$name}{importance};
         if ($importance) {

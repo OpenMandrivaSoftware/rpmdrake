@@ -138,7 +138,7 @@ sub format_pkg_simplifiedinfo {
     my $upkg = $pkg->{pkg};
     return if !$upkg;
     my $raw_medium = pkg2medium($upkg, $urpm);
-    my $medium = $raw_medium ? $raw_medium->{name} : undef;
+    my $medium = !$raw_medium->{fake} ? $raw_medium->{name} : undef;
     my $update_descr = $descriptions->{$medium}{$name};
     # discard update fields if not matching:
     my $is_update = ($upkg->flag_upgrade && $update_descr && $update_descr->{pre});
