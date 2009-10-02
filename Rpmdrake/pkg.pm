@@ -901,6 +901,10 @@ sub perform_removal {
     my $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
     my $_gurpm_clean_guard = before_leaving { undef $gurpm };
 
+    my $may_be_orphans = 1;
+    urpm::orphans::unrequested_orphans_after_remove($urpm, \@toremove)
+	or $may_be_orphans = 0;
+
     my $progress = -1;
     local $urpm->{log} = sub {
         my $str = $_[0];
@@ -933,6 +937,11 @@ sub perform_removal {
 	);
 	return 1;
     } else {
+        if ($may_be_orphans && !$::rpmdrake_options{auto_orphans}) {
+            if (my $msg = urpm::orphans::get_now_orphans_msg($urpm)) {
+                interactive_msg(N("Information"), $msg);
+            }
+        }
 	return 0;
     }
 }
