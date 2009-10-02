@@ -704,6 +704,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     }
 
+    urpm::orphans::mark_as_requested($urpm, $state);
+
     my ($progress, $total, @rpms_upgrade);
     my $transaction;
     my ($progress_nb, $transaction_progress_nb, $remaining, $done);
@@ -726,6 +728,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     # FIXME: sometimes state is lost:
     my @ask_unselect = urpm::select::unselected_packages($urpm, $state);
 
+    # fix flags for orphan computing:
+    foreach (keys %{$state->{selected}}) {
+        my $pkg = $urpm->{depslist}[$_];
+        $pkg->set_flag_requested(0);
+    }
     my $exit_code = 
       urpm::main_loop::run($urpm, $state, 1, \@ask_unselect, $requested,
                          {
