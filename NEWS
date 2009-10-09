@@ -1,3 +1,7 @@
+- edit-urpm-sources:
+  o prevent crashing if one click on a media checkbox while another
+    one is being processed (gtk+ was reentering the callback when we
+    were processing refreshing events...) (#46727)
 - rpmdrake
   o fix searching on just names (#54339)
 

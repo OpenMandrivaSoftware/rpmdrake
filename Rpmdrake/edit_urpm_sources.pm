@@ -1055,10 +1055,12 @@ sub mainwindow() {
     $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"),
                                                                       Gtk2::CellRendererText->new,
                                                                       'text' => $col{mainw}{name}));
-
-    $tr->signal_connect(
+    my $id;
+    $id = $tr->signal_connect(
 	toggled => sub {
 	    my (undef, $path) = @_;
+	    $tr->signal_handler_block($id);
+	    my $_guard = before_leaving { $tr->signal_handler_unblock($id) };
 	    my $iter = $list->get_iter_from_string($path);
 	    $urpm->{media}[$path]{ignore} = !$urpm->{media}[$path]{ignore} || undef;
 	    $list->set($iter, $col{mainw}{is_enabled}, !$urpm->{media}[$path]{ignore});
