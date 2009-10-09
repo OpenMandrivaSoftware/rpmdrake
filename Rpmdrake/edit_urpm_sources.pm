@@ -1172,6 +1172,8 @@ sub mainwindow() {
 
 
 sub run() {
+    # ignore rpmdrake's option regarding ignoring debug media:
+    local $ignore_debug_media->[0] = 0;
     local $ugtk2::wm_icon = get_icon('rpmdrake-mdk', 'title-media');
     my $lock;
     {
