@@ -78,10 +78,7 @@ sub do_search($$$$$$$) {
             if ($NVR_searches->[0]) {
                 next if !/$entry_rx/;
             } else {
-                if (/^([^-]*)-/) {
-                    my $name = $1;
-                    next if /^(.*)-/ and $name !~ /$entry_rx/;
-                }
+                next if first(split_fullname($_)) !~ /$entry_rx/
             }
             push @search_results, $_;
             # FIXME: should be done for all research types
