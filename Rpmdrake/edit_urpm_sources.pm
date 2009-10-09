@@ -1068,6 +1068,12 @@ sub mainwindow() {
 	    my $ignored = $urpm->{media}[$path]{ignore};
 	    $reread_media->();
 	    if (!$ignored && $urpm->{media}[$path]{ignore}) {
+		# reread media failed to un-ignore an ignored medium
+		# probably because urpm::media::check_existing_medium() complains
+		# about missing synthesis when the medium never was enabled before;
+		# thus it restored the ignore bit
+		$urpm->{media}[$path]{ignore} = !$urpm->{media}[$path]{ignore} || undef;
+		urpm::media::write_config($urpm);
 		#- Enabling this media failed, force update
 		interactive_msg('rpmdrake',
 		    N("This medium needs to be updated to be usable. Update it now ?"),
@@ -1091,7 +1097,6 @@ sub mainwindow() {
 	my ($name) = @_;
         $reorder_ok = 0;
      $something_changed = 1;
-	$urpm = fast_open_urpmi_db();
 	if (defined $name) {
 	    urpm::media::select_media($urpm, $name);
 	    update_sources_check(
@@ -1101,6 +1106,9 @@ sub mainwindow() {
 		$name,
 	    );
 	}
+	# reread configuration after updating media else ignore bit will be restored
+	# by urpm::media::check_existing_medium():
+	$urpm = fast_open_urpmi_db();
 	$list->clear;
      foreach (grep { ! $_->{external} } @{$urpm->{media}}) {
          my $name = $_->{name};
