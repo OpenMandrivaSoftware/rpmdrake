@@ -953,8 +953,7 @@ sub add_distrib_update_media {
 sub open_help {
     my ($mode) = @_;
     use run_program;
-    # FIXME: run_as_user() doesn't work for drakhelp:
-    run_program::raw({ detach => 1 }, 'drakhelp', '--id', $mode ?  "software-management-$mode" : 'software-management');
+    run_program::raw({ detach => 1, as_user => 1 },  'drakhelp', '--id', $mode ?  "software-management-$mode" : 'software-management');
     N("Help launched in background");
     statusbar_msg(N("The help window has been started, it should appear shortly on your desktop."), 1);
 }
