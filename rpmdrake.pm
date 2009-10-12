@@ -80,7 +80,6 @@ our @EXPORT = qw(
     myexit
     readconf
     remove_wait_msg
-    run_as_user
     run_drakbug
     show_urpm_progress
     slow_func
@@ -950,15 +949,6 @@ sub add_distrib_update_media {
         usedistrib => 1,
     );
 }
-
-sub run_as_user {
-    if (my $user = $ENV{USERHELPER_UID} && getpwuid($ENV{USERHELPER_UID})) {
-        run_program::raw({ detach => 1 }, 'su', $user, '-c', join(' ', @_));
-    } else {
-        run_program::raw({ detach => 1 }, @_);
-    }
-}
-
 
 sub open_help {
     my ($mode) = @_;
