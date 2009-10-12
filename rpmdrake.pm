@@ -971,7 +971,7 @@ sub open_help {
 
 sub run_drakbug {
     my ($id) = @_;
-    run_as_user('drakbug', '--report', $id);
+    run_program::raw({ detach => 1, as_user => 1 }, 'drakbug', '--report', $id);
 }
 
 mygtk2::add_icon_path('/usr/share/mcc/themes/default/');

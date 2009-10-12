@@ -964,7 +964,7 @@ sub sort_callback {
 
 sub run_help_callback {
     my (undef, $url) = @_;
-    run_as_user('www-browser', $url);
+    run_program::raw({ detach => 1, as_user => 1 }, 'www-browser', $url);
 }
 
 1;
