@@ -636,7 +636,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     # FIXME: THIS SET flag_requested on all packages!!!!
     # select packages to install / enssure selected pkg set is consistant:
-    my $requested = { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} };
+    my %saved_flags;
+    my $requested = { map {
+        $saved_flags{$_->id} = $_->flag_requested;
+        $_->id => undef;
+    } grep { $_->flag_selected } @{$urpm->{depslist}} };
     urpm::select::resolve_dependencies(
         $urpm, $state, $requested,
         rpmdb => $::env && "$::env/rpmdb.cz",
@@ -732,7 +736,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     # fix flags for orphan computing:
     foreach (keys %{$state->{selected}}) {
         my $pkg = $urpm->{depslist}[$_];
-        $pkg->set_flag_requested(0);
+        $pkg->set_flag_requested($saved_flags{$pkg->id});
     }
     my $exit_code = 
       urpm::main_loop::run($urpm, $state, 1, \@ask_unselect, $requested,
