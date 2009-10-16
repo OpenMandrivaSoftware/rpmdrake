@@ -634,6 +634,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my $bar_id = statusbar_msg(N("Checking validity of requested packages..."), 0);
 
+    # FIXME: THIS SET flag_requested on all packages!!!!
     # select packages to install / enssure selected pkg set is consistant:
     my $requested = { map { $_->id => undef } grep { $_->flag_selected } @{$urpm->{depslist}} };
     urpm::select::resolve_dependencies(
