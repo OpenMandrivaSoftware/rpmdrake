@@ -767,7 +767,8 @@ sub run_treeview_dialog {
 
 
 if (my $pid = is_running('rpmdrake')) {
-    die "rpmdrake is already running ($pid)\n";
+    interactive_msg(N("Warning"), N("rpmdrake is already running (pid: $pid)"., yesno => [ N("Quit") ]);
+    exit(0);
 }
 
 $w = ugtk2->new(N("Software Management"));
