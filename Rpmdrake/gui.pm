@@ -211,7 +211,7 @@ sub format_pkg_simplifiedinfo {
         my $deps_textview;
         push @$s, [ gtkadd(
             gtksignal_connect(
-                gtkshow(my $dependencies = Gtk2::Expander->new(format_field(N("Dependencies:")))), 
+                gtkshow(my $dependencies = Gtk2::Expander->new(format_field(N("New dependencies:")))), 
                 activate => sub { 
                     slow_func($::main_window->window, sub {
                             my $state = {};
@@ -222,6 +222,7 @@ sub format_pkg_simplifiedinfo {
                             $urpm->disable_selected(open_rpm_db(), $state, @requested);
                             my @nodes_with_deps = map { urpm_name($_) } @requested;
                             my @deps = sort { $a cmp $b } difference2(\@nodes_with_deps, [ urpm_name($upkg) ]);
+                            @deps = N("No non installed dependancy.") if !@deps;
                             gtktext_insert($deps_textview, join("\n", @deps));
                         });
                 }
