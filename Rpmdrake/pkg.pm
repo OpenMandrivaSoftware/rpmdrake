@@ -944,7 +944,7 @@ sub perform_removal {
     } else {
         if ($may_be_orphans && !$::rpmdrake_options{auto_orphans}) {
             if (my $msg = urpm::orphans::get_now_orphans_msg($urpm)) {
-                interactive_msg(N("Information"), $msg);
+                interactive_msg(N("Information"), $msg, scroll => 1);
             }
         }
 	return 0;
