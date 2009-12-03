@@ -59,7 +59,6 @@ N("  --no-verify-rpm        don't verify packages signatures"),
 if_($0 !~ /MandrivaUpdate/, N("  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps")),
 N("  --rpm-root=path        use another root for rpm installation"),
 N("  --urpmi-root           use another root for urpmi db & rpm installation"),
-N("  --root                 force to run as root") . ' ' . N("(Deprecated)"),
 N("  --run-as-root          force to run as root"),
 N("  --search=pkg           run search for \"pkg\""),
 N("  --test                 only verify if the installation can be achieved correctly"),
@@ -143,7 +142,7 @@ if ($MODE eq 'remove') {
     $default_list_mode = 'all_updates';
 }
 
-$MODE eq 'update' || $rpmdrake_options{'run-as-root'} || $rpmdrake_options{root} and require_root_capability();
+$MODE eq 'update' || $rpmdrake_options{'run-as-root'} and require_root_capability();
 $::noborderWhenEmbedded = 1;
 
 require rpmdrake;
