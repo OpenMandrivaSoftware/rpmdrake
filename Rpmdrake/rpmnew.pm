@@ -82,8 +82,8 @@ sub inspect {
 	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $::main_window);
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my %texts;
-	require Gtk2::SourceView;
-	my $lang_manager = Gtk2::SourceView::LanguagesManager->new;
+	require Gtk2::SourceView2;
+	my $lang_manager = Gtk2::SourceView2::LanguageManager->get_default;
 	gtkadd(
 	    $d->{window},
 	    gtkpack_(
@@ -93,19 +93,19 @@ sub inspect {
 			gtkpack_(
 			    gtknew('VBox'),
 			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$file:</span>)),
-			    1, gtknew('ScrolledWindow', child => $texts{file} = Gtk2::SourceView::View->new),
+			    1, gtknew('ScrolledWindow', child => $texts{file} = Gtk2::SourceView2::View->new),
 			),
 			gtkpack_(
 			    gtknew('VBox'),
 			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$rpmnew:</span>)),
-			    1, gtknew('ScrolledWindow', child => $texts{rpmnew} = Gtk2::SourceView::View->new),
+			    1, gtknew('ScrolledWindow', child => $texts{rpmnew} = Gtk2::SourceView2::View->new),
 			),
 			resize1 => 1,
 		    ),
 		    gtkpack_(
 			gtknew('VBox'),
 			0, gtknew('Label', text => N("Changes:")),
-			1, gtknew('ScrolledWindow', child => $texts{diff} = Gtk2::SourceView::View->new),
+			1, gtknew('ScrolledWindow', child => $texts{diff} = Gtk2::SourceView2::View->new),
 		    ),
 		    resize1 => 1,
 		),
@@ -136,18 +136,14 @@ sub inspect {
 	my %files = (file => $file, rpmnew => $rpmnew);
      foreach (keys %files) {
          gtktext_insert($texts{$_}, [ [ scalar(cat_($files{$_})), { 'font' => 'monospace' } ] ]);
-         require File::MimeInfo::Magic;
-         my $mime_type = File::MimeInfo::Magic::mimetype($files{$_});
-         next if !$mime_type;
-         my $lang = $lang_manager->get_language_from_mime_type($mime_type);
+         my $lang = $lang_manager->guess_language($files{$_});
+         $lang ||= $lang_manager->get_language('sh');
          my $buffer = $texts{$_}->get_buffer;
-        $buffer->set('highlight', $lang);
          $buffer->set_language($lang) if $lang;
      }
 	gtktext_insert($texts{diff}, [ [ join('', @diff), { 'font' => 'monospace' } ] ]);
 	my $buffer = $texts{diff}->get_buffer;
-	my $lang = $lang_manager->get_language_from_mime_type('text/x-patch');
-	$buffer->set('highlight', $lang);
+	my $lang = $lang_manager->get_language('diff');
 	$buffer->set_language($lang) if $lang;
 	$d->{rwindow}->set_default_size(@inspect_wsize);
 	$d->main;
