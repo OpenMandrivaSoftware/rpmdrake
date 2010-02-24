@@ -1112,7 +1112,6 @@ sub mainwindow() {
 	$list->clear;
      foreach (grep { ! $_->{external} } @{$urpm->{media}}) {
          my $name = $_->{name};
-         c::set_tagged_utf8($name) if utf8::valid($name);
          $list->append_set($col{mainw}{is_enabled} => !$_->{ignore},
                            $col{mainw}{is_update} => ! !$_->{update},
                            $col{mainw}{type} => get_medium_type($_),
