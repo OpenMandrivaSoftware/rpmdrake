@@ -149,8 +149,45 @@ sub get_description {
                                          )) };
 }
 
+sub get_string_from_keywords {
+    my ($medium) = @_;
+    return if !$medium->{mediacfg};
+    my ($distribconf, $medium_name) = @{$medium->{mediacfg}};
+
+    return if !$distribconf;
+
+    my @media_types = split(':', $distribconf->getvalue($medium_name, 'media_type'));
+
+    my $unsupported = N("It is <b>not supported</b> by Mandriva.");
+    my $dangerous = N("It may <b>break</b> your system.");
+    my $s;
+    $s .= N("This package is not free software") . "\n" if member('non-free', @media_types);
+    if (member('backport', @media_types)) {
+        return join("\n",
+                    N("This package contains a new version that was backported."),
+                    $unsupported, $dangerous, $s);
+    } elsif (member('testing', @media_types)) {
+        return join("\n",
+                    N("This package is a potential candidate for an update."),
+                    $unsupported, $dangerous, $s);
+    } elsif (member('updates', @media_types)) {
+        return join("\n",
+                    (member('official', @media_types) && member('official', @media_types) ?
+                       N("This is an offical update which is supported by Mandriva.")
+                       : N("This is an unoffical update which is <b>not supported</b>.")),
+                    N("This package contains a new version that was backported."),
+                    $unsupported, $s);
+    } else {
+        $s .= N("This is an official package supported by Mandriva") . "\n" if member('official', @media_types);
+        return $s;
+    }
+}
+
 sub get_main_text {
-    my ($name, $summary, $is_update, $update_descr) = @_;
+    my ($medium, $name, $summary, $is_update, $update_descr) = @_;
+
+    my $txt = get_string_from_keywords($medium);
+ 
     ugtk2::markup_to_TextView_format(
         # force align "name - summary" to the right with RTL languages (#33603):
         if_(lang::text_direction_rtl(), "\x{200f}") .
@@ -158,6 +195,7 @@ sub get_main_text {
                format_header(join(' - ', $name, $summary)) .
                  # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
                  "\x{200b} \x{feff}" . ' ' x 120,
+               if_($txt, format_field(N("Notice: ")) . $txt) .
                if_($is_update, # is it an update?
                    format_field(N("Importance: ")) . format_update_field($update_descr->{importance}),
                    format_field(N("Reason for update: ")) . format_update_field(rpm_description($update_descr->{pre})),
@@ -251,7 +289,7 @@ sub format_pkg_simplifiedinfo {
     # discard update fields if not matching:
     my $is_update = ($upkg->flag_upgrade && $update_descr && $update_descr->{pre});
     my $summary = get_summary($key);
-    my $s = get_main_text($name, $summary, $is_update, $update_descr);
+    my $s = get_main_text($raw_medium, $name, $summary, $is_update, $update_descr);
     push @$s, get_advisory_link($update_descr) if $is_update;
 
     push @$s, get_description($pkg, $update_descr);
