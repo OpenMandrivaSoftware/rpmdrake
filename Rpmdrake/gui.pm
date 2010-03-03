@@ -183,6 +183,33 @@ sub get_details {
     );
 }
 
+sub get_new_deps {
+    my ($urpm, $upkg) = @_;
+    my $deps_textview;
+    my @a = [ gtkadd(
+        gtksignal_connect(
+            gtkshow(my $dependencies = Gtk2::Expander->new(format_field(N("New dependencies:")))), 
+            activate => sub { 
+                slow_func($::main_window->window, sub {
+                              my $state = {};
+                              my @requested = $urpm->resolve_requested(
+                                  open_rpm_db(), $state,
+                                  { $upkg->id => 1 },
+                              );
+                              $urpm->disable_selected(open_rpm_db(), $state, @requested);
+                              my @nodes_with_deps = map { urpm_name($_) } @requested;
+                              my @deps = sort { $a cmp $b } difference2(\@nodes_with_deps, [ urpm_name($upkg) ]);
+                              @deps = N("No non installed dependancy.") if !@deps;
+                              gtktext_insert($deps_textview, join("\n", @deps));
+                          });
+            }
+        ),
+        $deps_textview = gtknew('TextView')
+    ) ];
+    $dependencies->set_use_markup(1);
+    @a;
+}
+
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name) = split_fullname($key);
@@ -232,28 +259,7 @@ sub format_pkg_simplifiedinfo {
 
     push @$s, [ "\n\n" ];
     if ($upkg->id) { # If not installed
-        my $deps_textview;
-        push @$s, [ gtkadd(
-            gtksignal_connect(
-                gtkshow(my $dependencies = Gtk2::Expander->new(format_field(N("New dependencies:")))), 
-                activate => sub { 
-                    slow_func($::main_window->window, sub {
-                            my $state = {};
-                            my @requested = $urpm->resolve_requested(
-                                open_rpm_db(), $state,
-                                { $upkg->id => 1 },
-                            );
-                            $urpm->disable_selected(open_rpm_db(), $state, @requested);
-                            my @nodes_with_deps = map { urpm_name($_) } @requested;
-                            my @deps = sort { $a cmp $b } difference2(\@nodes_with_deps, [ urpm_name($upkg) ]);
-                            @deps = N("No non installed dependancy.") if !@deps;
-                            gtktext_insert($deps_textview, join("\n", @deps));
-                        });
-                }
-            ),
-            $deps_textview = gtknew('TextView')
-        ) ];
-        $dependencies->set_use_markup(1);
+        push @$s, get_new_deps($urpm, $upkg);
     }
     $s;
 
