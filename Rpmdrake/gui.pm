@@ -258,9 +258,9 @@ sub format_pkg_simplifiedinfo {
     push @$s, [ "\n" ];
     my $installed_version = eval { find_installed_version($upkg) };
 
-    push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
+    push @$s, [ gtkadd(gtkshow(my $details_exp = Gtk2::Expander->new(format_field(N("Details:")))),
                        gtknew('TextView', text => get_details($key, $pkg, $upkg, $installed_version, $raw_medium))) ];
-    $exp0->set_use_markup(1);
+    $details_exp->set_use_markup(1);
     push @$s, [ "\n\n" ];
     if (exists $pkg->{files}) {
         push @$s, [ build_expander($pkg, N("Files:"), 'files', sub { files_format($pkg->{files}) }) ];
