@@ -138,6 +138,17 @@ sub get_advisory_link {
     [ $link ];
 }
 
+sub get_description {
+    my ($pkg, $update_descr) = @_;
+    @{ ugtk2::markup_to_TextView_format(join("\n",
+                                             (eval {
+                                                 escape_text_for_TextView_markup_format(
+                                                     $pkg->{description}
+                                                       || $update_descr->{description});
+                                             } || '<i>' . N("No description") . '</i>')
+                                         )) };
+}
+
 
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
@@ -164,9 +175,7 @@ sub format_pkg_simplifiedinfo {
       '')); # extra empty line
     push @$s, get_advisory_link($update_descr) if $is_update;
 
-    push @$s, @{ ugtk2::markup_to_TextView_format(join("\n",
-      (eval { escape_text_for_TextView_markup_format($pkg->{description} || $update_descr->{description}) } || '<i>' . N("No description") . '</i>')
-    )) };
+    push @$s, get_description($pkg, $update_descr);
     push @$s, [ "\n" ];
     my $installed_version = eval { find_installed_version($upkg) };
 
