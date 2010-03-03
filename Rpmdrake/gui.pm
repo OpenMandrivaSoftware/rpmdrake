@@ -131,6 +131,14 @@ sub build_expander {
 }
 
 
+sub get_advisory_link {
+    my ($update_descr) = @_;
+    my $link = gtkshow(Gtk2::LinkButton->new($update_descr->{URL}, N("Security advisory")));
+    $link->set_uri_hook(\&run_help_callback);
+    [ $link ];
+}
+
+
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name, $version, $release) = split_fullname($key);
@@ -154,10 +162,7 @@ sub format_pkg_simplifiedinfo {
 	  format_field(N("Reason for update: ")) . format_update_field(rpm_description($update_descr->{pre})),
       ),
       '')); # extra empty line
-    if ($is_update) {
-        push @$s, [ my $link = gtkshow(Gtk2::LinkButton->new($update_descr->{URL}, N("Security advisory"))) ];
-        $link->set_uri_hook(\&run_help_callback);
-      }
+    push @$s, get_advisory_link($update_descr) if $is_update;
 
     push @$s, @{ ugtk2::markup_to_TextView_format(join("\n",
       (eval { escape_text_for_TextView_markup_format($pkg->{description} || $update_descr->{description}) } || '<i>' . N("No description") . '</i>')
