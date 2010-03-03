@@ -149,6 +149,22 @@ sub get_description {
                                          )) };
 }
 
+sub get_main_text {
+    my ($name, $summary, $is_update, $update_descr) = @_;
+    ugtk2::markup_to_TextView_format(
+        # force align "name - summary" to the right with RTL languages (#33603):
+        if_(lang::text_direction_rtl(), "\x{200f}") .
+          join("\n",
+               format_header(join(' - ', $name, $summary)) .
+                 # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
+                 "\x{200b} \x{feff}" . ' ' x 120,
+               if_($is_update, # is it an update?
+                   format_field(N("Importance: ")) . format_update_field($update_descr->{importance}),
+                   format_field(N("Reason for update: ")) . format_update_field(rpm_description($update_descr->{pre})),
+               ),
+               ''  # extra empty line
+           ));
+}
 
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
@@ -162,17 +178,7 @@ sub format_pkg_simplifiedinfo {
     # discard update fields if not matching:
     my $is_update = ($upkg->flag_upgrade && $update_descr && $update_descr->{pre});
     my $summary = get_summary($key);
-    my $s = ugtk2::markup_to_TextView_format(
-        # force align "name - summary" to the right with RTL languages (#33603):
-        if_(lang::text_direction_rtl(), "\x{200f}") .
-        join("\n", format_header(join(' - ', $name, $summary)) .
-      # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
-                                                      "\x{200b} \x{feff}" . ' ' x 120,
-      if_($is_update, # is it an update?
-	  format_field(N("Importance: ")) . format_update_field($update_descr->{importance}),
-	  format_field(N("Reason for update: ")) . format_update_field(rpm_description($update_descr->{pre})),
-      ),
-      '')); # extra empty line
+    my $s = get_main_text($name, $summary, $is_update, $update_descr);
     push @$s, get_advisory_link($update_descr) if $is_update;
 
     push @$s, get_description($pkg, $update_descr);
