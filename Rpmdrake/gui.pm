@@ -166,9 +166,26 @@ sub get_main_text {
            ));
 }
 
+sub get_details {
+    my ($key, $upkg, $installed_version, $raw_medium) = @_;
+    my (undef, $version, $release) = split_fullname($key);
+    ugtk2::markup_to_TextView_format(
+        $spacing . join("\n$spacing",
+                        format_field(N("Version: ")) . $version . '-' . $release,
+                        ($upkg->flag_installed ?
+                           format_field(N("Currently installed version: ")) . $installed_version : ()
+                        ),
+                        format_field(N("Group: ")) . translate_group($upkg->group),
+                        format_field(N("Architecture: ")) . $upkg->arch,
+                        format_field(N("Size: ")) . N("%s KB", int($upkg->size/1024)),
+                        eval { format_field(N("Medium: ")) . $raw_medium->{name} },
+                    ),
+    );
+}
+
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
-    my ($name, $version, $release) = split_fullname($key);
+    my ($name) = split_fullname($key);
     my $pkg = $pkgs->{$key};
     my $upkg = $pkg->{pkg};
     return if !$upkg;
@@ -185,20 +202,7 @@ sub format_pkg_simplifiedinfo {
     push @$s, [ "\n" ];
     my $installed_version = eval { find_installed_version($upkg) };
 
-    my $details_txt = ugtk2::markup_to_TextView_format(
-                           $spacing . join("\n$spacing",
-                                format_field(N("Version: ")) . $version . '-' . $release,
-                                
-                                ($upkg->flag_installed ?
-                                   format_field(N("Currently installed version: ")) . $installed_version
-                                     : ()
-                                 ),
-                                format_field(N("Group: ")) . translate_group($upkg->group),
-                                format_field(N("Architecture: ")) . $upkg->arch,
-                                format_field(N("Size: ")) . N("%s KB", int($upkg->size/1024)),
-                                eval { format_field(N("Medium: ")) . $raw_medium->{name} },
-                            ),
-                       );
+    my $details_txt = get_details($key, $upkg, $installed_version, $raw_medium);
 
     my $url = $upkg->url || $pkg->{url};
     if (!$url) {
