@@ -803,7 +803,7 @@ sub toggle_nodes {
 }
 
 sub is_there_selected_packages() {
-    int(grep { $pkgs->{$_}{selected} } keys %$pkgs)
+    int(grep { $pkgs->{$_}{selected} } keys %$pkgs);
 }
 
 sub real_quit() {
