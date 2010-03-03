@@ -231,6 +231,14 @@ sub get_url_link {
     @a;
 }
 
+sub files_format {
+    my ($files) = @_;
+    ugtk2::markup_to_TextView_format(
+        '<tt>' . $spacing #- to highlight information
+          . join("\n$spacing", map { "\x{200e}$_" } @$files)
+            . '</tt>');
+}
+
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name) = split_fullname($key);
@@ -255,12 +263,7 @@ sub format_pkg_simplifiedinfo {
     $exp0->set_use_markup(1);
     push @$s, [ "\n\n" ];
     if (exists $pkg->{files}) {
-    push @$s, [ build_expander($pkg, N("Files:"), 'files', sub {
-                                     ugtk2::markup_to_TextView_format('<tt>' . $spacing . 
-                                                                        join("\n$spacing", 
-                                                                             map { "\x{200e}$_" } @{$pkg->{files}}
-                                                                         ) . '</tt>') #- to highlight information
-                                          }) ];
+    push @$s, [ build_expander($pkg, N("Files:"), 'files', sub { files_format($pkg->{files}) }) ];
     push @$s, [ "\n\n" ];
     }
     push @$s, [ build_expander($pkg, N("Changelog:"), 'changelog',  sub { $pkg->{changelog} }, $installed_version) ];
