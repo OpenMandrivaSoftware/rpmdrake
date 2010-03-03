@@ -210,6 +210,23 @@ sub get_new_deps {
     @a;
 }
 
+sub get_url_link {
+    my ($upkg, $pkg, $details_txt) = @_;
+
+    my $url = $upkg->url || $pkg->{url};
+
+    if (!$url) {
+        open_rpm_db()->traverse_tag('name', [ $upkg->name ], sub { $url = $_[0]->url });
+    }
+
+    return if !$url;
+
+    push @$details_txt,
+      @{ ugtk2::markup_to_TextView_format(format_field("\n$spacing" . N("URL: "))) },
+        [ my $link = gtkshow(Gtk2::LinkButton->new($url, $url)) ];
+    $link->set_uri_hook(\&run_help_callback);
+}
+
 sub format_pkg_simplifiedinfo {
     my ($pkgs, $key, $urpm, $descriptions) = @_;
     my ($name) = split_fullname($key);
@@ -231,17 +248,7 @@ sub format_pkg_simplifiedinfo {
 
     my $details_txt = get_details($key, $upkg, $installed_version, $raw_medium);
 
-    my $url = $upkg->url || $pkg->{url};
-    if (!$url) {
-        open_rpm_db()->traverse_tag('name', [ $upkg->name ], sub { $url = $_[0]->url });
-    }
-
-    if ($url) {
-        push @$details_txt,
-          @{ ugtk2::markup_to_TextView_format(format_field("\n$spacing" . N("URL: "))) },
-          [ my $link = gtkshow(Gtk2::LinkButton->new($url, $url)) ];
-        $link->set_uri_hook(\&run_help_callback);
-    }
+    get_url_link($upkg, $pkg, $details_txt);
 
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
                        gtknew('TextView', text => $details_txt)) ];
