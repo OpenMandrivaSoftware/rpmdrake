@@ -167,9 +167,9 @@ sub get_main_text {
 }
 
 sub get_details {
-    my ($key, $upkg, $installed_version, $raw_medium) = @_;
+    my ($key, $pkg, $upkg, $installed_version, $raw_medium) = @_;
     my (undef, $version, $release) = split_fullname($key);
-    ugtk2::markup_to_TextView_format(
+    my $a = ugtk2::markup_to_TextView_format(
         $spacing . join("\n$spacing",
                         format_field(N("Version: ")) . $version . '-' . $release,
                         ($upkg->flag_installed ?
@@ -181,6 +181,9 @@ sub get_details {
                         eval { format_field(N("Medium: ")) . $raw_medium->{name} },
                     ),
     );
+    my @link = get_url_link($upkg, $pkg);
+    push @$a, @link if @link;
+    $a;
 }
 
 sub get_new_deps {
@@ -211,7 +214,7 @@ sub get_new_deps {
 }
 
 sub get_url_link {
-    my ($upkg, $pkg, $details_txt) = @_;
+    my ($upkg, $pkg) = @_;
 
     my $url = $upkg->url || $pkg->{url};
 
@@ -221,10 +224,11 @@ sub get_url_link {
 
     return if !$url;
 
-    push @$details_txt,
-      @{ ugtk2::markup_to_TextView_format(format_field("\n$spacing" . N("URL: "))) },
-        [ my $link = gtkshow(Gtk2::LinkButton->new($url, $url)) ];
+    my @a =
+      (@{ ugtk2::markup_to_TextView_format(format_field("\n$spacing" . N("URL: "))) },
+        [ my $link = gtkshow(Gtk2::LinkButton->new($url, $url)) ]);
     $link->set_uri_hook(\&run_help_callback);
+    @a;
 }
 
 sub format_pkg_simplifiedinfo {
@@ -246,9 +250,7 @@ sub format_pkg_simplifiedinfo {
     push @$s, [ "\n" ];
     my $installed_version = eval { find_installed_version($upkg) };
 
-    my $details_txt = get_details($key, $upkg, $installed_version, $raw_medium);
-
-    get_url_link($upkg, $pkg, $details_txt);
+    my $details_txt = get_details($key, $pkg, $upkg, $installed_version, $raw_medium);
 
     push @$s, [ gtkadd(gtkshow(my $exp0 = Gtk2::Expander->new(format_field(N("Details:")))),
                        gtknew('TextView', text => $details_txt)) ];
