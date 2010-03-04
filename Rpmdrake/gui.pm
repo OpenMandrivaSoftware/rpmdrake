@@ -839,6 +839,7 @@ sub toggle_nodes {
                     scroll => 1,
                 );
                 foreach (@cant) {
+                    next unless $pkgs->{$_}{pkg};
                     $pkgs->{$_}{pkg}->set_flag_requested(0);
                     $pkgs->{$_}{pkg}->set_flag_required(0);
                 }
