@@ -34,6 +34,7 @@ use feature 'state';
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(fast_open_urpmi_db
+                 get_backport_media
                  get_inactive_backport_media
                  get_update_medias
                  is_it_a_devel_distro
@@ -122,9 +123,15 @@ sub is_it_a_devel_distro {
     return $res;
 }
 
+sub get_backport_media {
+    my ($urpm) = @_;
+    grep { $_->{name} =~ /backport/i && 
+	       $_->{name} !~ /debug|sources/i } @{$urpm->{media}};
+}
+
 sub get_inactive_backport_media {
     my ($urpm) = @_;
-    map { $_->{name} } grep { $_->{ignore} && $_->{name} =~ /backport/i && $_->{name} !~ /debug|sources/i } @{$urpm->{media}};
+    map { $_->{name} } grep { $_->{ignore} } get_backport_media($urpm);
 }
 
 sub get_update_medias {

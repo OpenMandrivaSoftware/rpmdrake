@@ -636,19 +636,25 @@ sub pkgs_provider {
         all => [ keys %$pkgs ],
     );
     my %tmp_filter_methods = (
-        all => sub { [ keys %$pkgs ] },
+        all => sub { 
+            [ difference2([ keys %$pkgs ], $h->{inactive_backports}) ]
+        },
         all_updates => sub {
             # potential "updates" from media not tagged as updates:
             if (!$options{pure_updates} && !$Rpmdrake::pkg::need_restart) {
                 [ @{$h->{updates}},
                   difference2([ grep { is_updatable($_) } @{$h->{installable}} ], $h->{backports}) ];
             } else {
-                $h->{updates};
+                [ difference2($h->{updates}, $h->{inactive_backports}) ];
             }
         },
         backports => sub { $h->{backports} },
-        meta_pkgs => sub { $h->{meta_pkgs} },
-        gui_pkgs => sub { $h->{gui_pkgs} },
+        meta_pkgs => sub { 
+            [ difference2($h->{meta_pkgs}, $h->{inactive_backports}) ]
+        },
+        gui_pkgs => sub { 
+            [ difference2($h->{gui_pkgs}, $h->{inactive_backports}) ] 
+        },
     );
     foreach my $importance (qw(bugfix security normal)) {
         $tmp_filter_methods{$importance} = sub {

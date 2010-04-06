@@ -495,9 +495,6 @@ sub get_pkgs {
     $urpm->{rpmdrake_state} = $state; #- Don't forget it
     $gurpm->progress($level = 0.7);
 
-    my @search_medias = grep { $_->{searchmedia} } @{$urpm->{media}};
-
-    my @backports;
     reset_pbar_count(1);
     foreach my $pkg (@{$urpm->{depslist}}) {
         update_pbar($gurpm);
@@ -506,14 +503,27 @@ sub get_pkgs {
         push @installable_pkgs, $name;
         $all_pkgs{$name} = { pkg => $pkg };
     }
-    foreach my $medium (@search_medias) {
+
+    my @inactive_backports;
+    my @active_backports;
+    my @backport_medias = get_backport_media($urpm);
+
+    foreach my $medium (@backport_medias) {
         update_pbar($gurpm);
+
+        # The 'searchmedia' flag differentiates inactive backport medias
+        # (because that option was passed to urpm::media::configure to
+        # temporarily enable them)
+
+        my $backports =  
+            $medium->{searchmedia} ? \@inactive_backports : \@active_backports;
+
       foreach my $pkg_id ($medium->{start} .. $medium->{end}) {
           next if !$pkg_id;
           my $pkg = $urpm->{depslist}[$pkg_id];
           $pkg->flag_upgrade or next;
           my $name = urpm_name($pkg);
-	  	push @backports, $name;
+          push @$backports, $name;
           $all_pkgs{$name} = { pkg => $pkg };
       }
     }
@@ -543,7 +553,8 @@ sub get_pkgs {
        meta_pkgs => \@meta_pkgs,
        gui_pkgs => [ grep { member(($all_pkgs{$_}{pkg}->fullname)[0], @gui_pkgs) } keys %all_pkgs ],
        update_descr => $update_descr,
-       backports => \@backports,
+       backports => [ @inactive_backports, @active_backports ],
+       inactive_backports => \@inactive_backports
    };
 }
 
