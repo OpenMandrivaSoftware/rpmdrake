@@ -63,6 +63,8 @@ our @EXPORT = qw(
     $tree_mode
     $use_regexp
     $typical_width
+    $clean_cache
+    $auto_select
     add_distrib_update_media
     add_medium_and_check
     but
@@ -159,10 +161,30 @@ $ENV{HOME} = $> == 0 ? $root->[7] : $ENV{HOME} || '/root';
 $ENV{HOME} = $::env if $::env = $Rpmdrake::init::rpmdrake_options{env}[0];
 
 our $configfile = "$ENV{HOME}/.rpmdrake";
+
+#
+# Configuration File Options
+#
+
+# clear download cache after succesfull installation of packages
+our $clean_cache;
+
+# automatic select dependencies without user intervention
+our $auto_select;
+
 our ($changelog_first_config, $compute_updates, $filter, $max_info_in_descr, $mode, $NVR_searches, $tree_flat, $tree_mode, $use_regexp);
 our ($mandrakeupdate_wanted_categories, $ignore_debug_media, $offered_to_add_sources, $no_confirmation);
 our ($rpmdrake_height, $rpmdrake_width, $mandrivaupdate_height, $mandrivaupdate_width);
+
 our %config = (
+    clean_cache => { 
+	var => \$clean_cache, 
+	default => [ 0 ] 
+    },
+    auto_select => { 
+	var => \$auto_select, 
+	default => [ 0 ] 
+    },
     changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },
     compute_updates => { var => \$compute_updates, default => [ 1 ] },
     dont_show_selections => { var => \$dont_show_selections, default => [ $> ? 1 : 0 ] },
@@ -186,10 +208,9 @@ our %config = (
 sub readconf() {
     ${$config{$_}{var}} = $config{$_}{default} foreach keys %config;
     foreach my $l (cat_($configfile)) {
-	$l =~ /^\Q$_\E (.*)/ and ${$config{$_}{var}} = [ split ' ', $1 ] foreach keys %config;
-       foreach (keys %config) {
-           $l =~ /^\Q$_\E (.*)/ and $1 and ${$config{$_}{var}} = [ split ' ', $1 ];
-       }
+	foreach (keys %config) {
+	    ${$config{$_}{var}} = [ split ' ', $1 ] if $l =~ /^\Q$_\E(.*)/;
+	}
     }
     # special cases:
     $::rpmdrake_options{'no-confirmation'} = $no_confirmation->[0] if !defined $::rpmdrake_options{'no-confirmation'};

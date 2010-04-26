@@ -529,8 +529,11 @@ sub run_treeview_dialog {
     my $status = gtknew('Label');
     my $checkbox_show_autoselect;
     my %check_boxes;
-    my $auto_string = N("/_Options") . N("/_Select dependencies without asking");
-    my $noclean_string = N("/_Options") . "/" . N("Clear download cache after successfull install");
+    my $auto_select_string =
+            N("/_Options") . N("/_Select dependencies without asking");
+    my $clean_cache_string = 
+            N("/_Options") . "/" . 
+            N("Clear download cache after successfull install");
     my $updates_string = N("/_Options") . N("/_Compute updates on startup");
     my $NVR_string = N("/_Options") . "/" . N("Search in _full package names");
     my $regexp_search_string = N("/_Options") . "/" . N("Use _regular expressions in searches");
@@ -564,12 +567,21 @@ sub run_treeview_dialog {
 	#[ N("/_View"), undef, undef, undef, '<Branch>' ],
 	if_(!$>,
 	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
-	    [ $auto_string, undef, sub {
-               $urpm->{options}{auto} = $::rpmdrake_options{auto} = $check_boxes{$auto_string}->get_active if $check_boxes{$auto_string};
-           }, undef, '<CheckItem>' ],
-	    [ $noclean_string, undef, sub {
-               $::noclean = $check_boxes{$noclean_string}->get_active if $check_boxes{$noclean_string};
-           }, undef, '<CheckItem>' ],
+	    [ $auto_select_string, undef, 
+              sub {
+                  my $box = $check_boxes{$auto_select_string};
+                  $auto_select->[0] = $box->get_active;
+                  $::rpmdrake_options{auto} = $box->get_active;
+                  $urpm->{options}{auto} = $box->get_active;
+              },
+              undef, '<CheckItem>' ],
+	    [ $clean_cache_string, undef, 
+              sub {
+                  $clean_cache->[0] = 
+                          $check_boxes{$clean_cache_string}->get_active;
+                  $::noclean = !$clean_cache->[0];
+              }, 
+              undef, '<CheckItem>' ],
 	    [ N("/_Options") . N("/_Media Manager"), undef, sub {
                require Rpmdrake::edit_urpm_sources;
                Rpmdrake::edit_urpm_sources::run() && $reload_db_and_clear_all->();
@@ -636,13 +648,18 @@ sub run_treeview_dialog {
 
     %check_boxes = map {
         $_ => $factory->get_widget("<main>" . $get_path->($_));
-    } ($auto_string, $noclean_string, $NVR_string, $updates_string, $regexp_search_string);
+    } ($auto_select_string, 
+       $clean_cache_string, 
+       $NVR_string, 
+       $updates_string, 
+       $regexp_search_string);
+
     if (!$>) {
         $check_boxes{$regexp_search_string}->set_active($use_regexp->[0]);
         $check_boxes{$NVR_string}->set_active($NVR_searches->[0]);
-        $check_boxes{$auto_string}->set_active($::rpmdrake_options{auto});
+        $check_boxes{$auto_select_string}->set_active($auto_select->[0]);
         $check_boxes{$updates_string}->set_active($compute_updates->[0]);
-        $check_boxes{$noclean_string}->set_active(!$::noclean);
+        $check_boxes{$clean_cache_string}->set_active($clean_cache->[0]);
     }
 
     $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
