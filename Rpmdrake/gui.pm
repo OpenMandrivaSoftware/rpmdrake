@@ -300,10 +300,8 @@ sub format_pkg_simplifiedinfo {
                        gtknew('TextView', text => get_details($key, $pkg, $upkg, $installed_version, $raw_medium))) ];
     $details_exp->set_use_markup(1);
     push @$s, [ "\n\n" ];
-    if (exists $pkg->{files}) {
-        push @$s, [ build_expander($pkg, N("Files:"), 'files', sub { files_format($pkg->{files}) }) ];
-        push @$s, [ "\n\n" ];
-    }
+    push @$s, [ build_expander($pkg, N("Files:"), 'files', sub { files_format($pkg->{files}) }) ];
+    push @$s, [ "\n\n" ];
     push @$s, [ build_expander($pkg, N("Changelog:"), 'changelog',  sub { $pkg->{changelog} }, $installed_version) ];
 
     push @$s, [ "\n\n" ];
