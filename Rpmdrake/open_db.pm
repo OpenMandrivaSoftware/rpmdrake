@@ -29,6 +29,8 @@ use rpmdrake;
 use URPM;
 use urpm;
 use urpm::args;
+use urpm::select;
+use urpm::media;
 use feature 'state';
 
 use Exporter;
