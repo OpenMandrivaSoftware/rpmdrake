@@ -343,6 +343,7 @@ sub get_installed_packages {
                           $pkg->set_flag_base(1) if $$name == 1;
                       }
                       push @installed_pkgs, $fullname;
+                      $pkg->set_flag_installed;
                       $pkg->pack_header; # needed in order to call methods on objects outside ->traverse
                   });
     @installed_pkgs;
@@ -532,8 +533,6 @@ sub get_pkgs {
     foreach (@requested_strict) {
 	$all_pkgs{$_}{selected} = 1;
     }
-
-    $all_pkgs{$_}{pkg}->set_flag_installed foreach @installed_pkgs;
 
     # urpmi only care about the first medium where it found the package,
     # so there's no need to list the same package several time:
