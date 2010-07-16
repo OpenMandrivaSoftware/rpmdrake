@@ -195,7 +195,7 @@ sub get_main_text {
                format_header(join(' - ', $name, $summary)) .
                  # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
                  "\x{200b} \x{feff}" . ' ' x 120,
-               if_($txt, format_field(N("Notice: ")) . $txt) .
+               if_($txt, format_field(N("Notice: ")) . $txt),
                if_($is_update, # is it an update?
                    format_field(N("Importance: ")) . format_update_field($update_descr->{importance}),
                    format_field(N("Reason for update: ")) . format_update_field(rpm_description($update_descr->{pre})),
