@@ -172,11 +172,11 @@ sub get_string_from_keywords {
                     $unsupported, $dangerous, $s);
     } elsif (member('updates', @media_types)) {
         return join("\n",
-                    (member('official', @media_types) && member('official', @media_types) ?
+                    (member('official', @media_types) ?
                        N("This is an offical update which is supported by Mandriva.")
-                       : N("This is an unoffical update which is <b>not supported</b>.")),
-                    N("This package contains a new version that was backported."),
-                    $unsupported, $s);
+                       : (N("This is an unoffical update."), $unsupported))
+                    ,
+                    $s);
     } else {
         $s .= N("This is an official package supported by Mandriva") . "\n" if member('official', @media_types);
         return $s;
