@@ -57,6 +57,10 @@ gui.lst:
 	urpmf "/(opt/kde[43]|usr)/share/((applnk|applications(|/kde)|apps/kicker/applets)/|kde4/services/plasma-applet).*.desktop" |sed -e 's!:.*!!') \
 	 | sort | uniq > gui.lst
 
+check:
+	rm -f po/*.pot 
+	@make -C po rpmdrake.pot
+
 .PHONY: ChangeLog log changelog gui.lst
 
 log: ChangeLog
