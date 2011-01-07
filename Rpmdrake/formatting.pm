@@ -91,7 +91,9 @@ sub my_fullname {
 
 sub urpm_name {
     return '?-?-?.?' unless ref $_[0];
-    my ($name, $version, $release, $arch) = $_[0]->fullname;
+    my @fullname = $_[0]->fullname;
+    my ($name, $version, $release) = @fullname;
+    my $arch = @fullname[-1];
     "$name-$version-$release.$arch";
 }
 
