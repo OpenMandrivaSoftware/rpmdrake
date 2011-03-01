@@ -518,7 +518,7 @@ sub run_treeview_dialog {
     my $reload_db_and_clear_all = sub {
         slow_func($w->{real_window}->window, sub {
                       $force_rebuild = 1;
-                      pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode});
+                      pkgs_provider($options->{tree_mode}, skip_updating_mu => 1);
                       reset_search();
                       $size_selected = 0;
                       $options->{rebuild_tree}->();
@@ -757,7 +757,7 @@ sub run_treeview_dialog {
     $detail_list->realize;
     gtkflush();
 
-    slow_func($::main_window->window, sub { pkgs_provider({}, $default_list_mode) }); # default mode
+    slow_func($::main_window->window, sub { pkgs_provider($default_list_mode) }); # default mode
     if (@initial_selection) {
         $options->{initial_selection} = \@initial_selection;
         $pkgs->{$_}{selected} = 0 foreach @initial_selection;

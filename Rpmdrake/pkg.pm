@@ -210,7 +210,7 @@ sub download_callback {
 my (@update_medias, $is_update_media_already_asked);
 
 sub warn_about_media {
-    my ($w, $opts) = @_;
+    my ($w, %opts) = @_;
 
     return if $::MODE ne 'update';
     return if $::rpmdrake_options{'no-media-update'};
@@ -228,7 +228,7 @@ sub warn_about_media {
     $::rpmdrake_options{'no-media-update'} ||= 1;
 
 	    if (@update_medias > 0) {
-		if (!$opts->{skip_updating_mu} && !$is_update_media_already_asked) {
+		if (!$opts{skip_updating_mu} && !$is_update_media_already_asked) {
               $is_update_media_already_asked = 1;
 		     $::rpmdrake_options{'no-confirmation'} or interactive_msg(N("Confirmation"),
 N("I need to contact the mirror to get latest update packages.
@@ -357,12 +357,13 @@ our $need_restart;
 our $probe_only_for_updates;
 
 sub get_updates_list {
-    my ($urpm, $db, $state, $requested, $requested_list, $requested_strict, $all_pkgs) = @_;
+    my ($urpm, $db, $state, $requested, $requested_list, $requested_strict, $all_pkgs, %limit_preselect) = @_;
 
     $urpm->request_packages_to_upgrade(
 	$db,
 	$state,
 	$requested,
+	%limit_preselect
     );
 
     my %common_opts = (
@@ -413,14 +414,14 @@ sub get_updates_list {
 }
 
 sub get_pkgs {
-    my ($opts) = @_;
+    my (%options) = @_;
     my $w = $::main_window;
 
     my $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $_gurpm_clean_guard = before_leaving { undef $gurpm };
     #my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
-    warn_about_media($w, $opts);
+    warn_about_media($w, %options);
 
     my $urpm = open_urpmi_db(update => $probe_only_for_updates && !is_it_a_devel_distro());
 
@@ -483,7 +484,12 @@ sub get_pkgs {
     my (@requested, @requested_strict);
 
     if ($compute_updates->[0] || $::MODE eq 'update') {
-        get_updates_list($urpm, $db, $state, $requested, \@requested, \@requested_strict, \%all_pkgs);
+        my %filter;
+        if ($options{pure_updates}) {
+            # limit to packages from update-media (dependencies can still come from other media)
+            %filter = ( idlist => [map {$_->{start}..$_->{end}} @update_medias] );
+        }
+        get_updates_list($urpm, $db, $state, $requested, \@requested, \@requested_strict, \%all_pkgs, %filter);
     }
 
     $priority_state = $need_restart ? $state : undef;

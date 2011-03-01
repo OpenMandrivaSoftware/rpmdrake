@@ -623,9 +623,9 @@ sub is_updatable {
 }
 
 sub pkgs_provider {
-    my ($options, $mode, %options) = @_;
+    my ($mode, %options) = @_;
     return if !$mode;
-    my $h = &get_pkgs($options); # was given (1, @_) for updates
+    my $h = &get_pkgs(%options);
     ($urpm, $descriptions) = @$h{qw(urpm update_descr)};
     $pkgs = $h->{all_pkgs};
     %filters = (
@@ -921,7 +921,7 @@ Do you really want to install all the selected packages?"), yesno => 1)
     my $res = $callback_action->($urpm, $pkgs);
     if (!$res) {
         $force_rebuild = 1;
-        pkgs_provider({ skip_updating_mu => 1 }, $options->{tree_mode}, if_($Rpmdrake::pkg::probe_only_for_updates, pure_updates => 1));
+        pkgs_provider($options->{tree_mode}, if_($Rpmdrake::pkg::probe_only_for_updates, pure_updates => 1), skip_updating_mu => 1);
         reset_search();
         $size_selected = 0;
         (undef, $size_free) = MDK::Common::System::df('/usr');
