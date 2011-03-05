@@ -32,53 +32,53 @@ Version 5.26.6 -  7 Januar 2011, Per Øyvind Karlsen
 
 Version 5.26.5 - 24 October 2010, Thierry Vignaud
 
-- add a minimal "testsuite" in order to prevent syntax errors such as #60901
+- add a minimal "testsuite" in order to prevent syntax errors such as MDV#60901
 
 Version 5.26.4 - 16 July 2010, João Victor Duarte Martins
 
-- fix wrong notice message for updates (#60629)
+- fix wrong notice message for updates (MDV#60629)
 
 Version 5.26.3 - 16 July 2010, Thierry Vignaud
 
-- fix crashing when looking at update details (#60153)
+- fix crashing when looking at update details (MDV#60153)
   (bug introduced in rpmdrake 5.25)
 
 Version 5.26.2 - 5 June 2010, Thierry Vignaud
 
 - rpmdrake:
-  o fix displaying version numer in about dialog (#59665)
+  o fix displaying version numer in about dialog (MDV#59665)
 
 Version 5.26.1 - 25 May 2010, João Victor Duarte Martins
 
-- uninstalled package shows files list (bug #58871)
-- added auto_select and clean_cache options to conf file (bug #48552)
+- uninstalled package shows files list (bug MDV#58871)
+- added auto_select and clean_cache options to conf file (bug MDV#48552)
 
 Version 5.26 - 6 April 2010, João Victor Martins
 
 - inactive backports are only listed in the "Backports" view (fixes
-  #40556)
-- fix for a crash (#56144)
+  MDV#40556)
+- fix for a crash (MDV#56144)
 
 Version 5.25 - 3 March 2010, Thierry Vignaud
 
 - do not show file list if empty
 - explain what are official, backports ... packages
 - edit-urpm-sources:
-  o fix crashing when deleting media with UTF-8 characters (#57644)
+  o fix crashing when deleting media with UTF-8 characters (MDV#57644)
 
 Version 5.24 - 3 December 2009, Thierry Vignaud
 
 - remove --root option that was deprecated since August 2007
 - use gtksourceview-2 instead of gtksourceview-1
 - rpmdrake:
-  o fix crashing when running as user (#55009)
+  o fix crashing when running as user (MDV#55009)
 
 Version 5.23 - 27 October 2009, Thierry Vignaud
 
 - rename 'dependancies' as 'new dependancies' and tell there's no new
-  dependancy when list is empty (#54697)
+  dependancy when list is empty (MDV#54697)
 - use a scrolling window if needed when displaying list of orphan
-  packages after removing some packages (#54713)
+  packages after removing some packages (MDV#54713)
 
 Version 5.22 - 16 October 2009, Thierry Vignaud
 
@@ -88,7 +88,7 @@ Version 5.22 - 16 October 2009, Thierry Vignaud
   o match urpmi behavior when registering requested package
 - MandrivaUpdate:
   o do not display the banner when height <= 480 instead of just < 480
-    (#54550)
+    (MDV#54550)
 
 Version 5.21.1 - 12 October 2009, Thierry Vignaud
 
@@ -98,29 +98,29 @@ Version 5.21 - 9 October 2009, Thierry Vignaud
 
 - edit-urpm-sources:
   o fix enabling for the first time a medium that never was enabled
-    before (#47110, #52636)
+    before (MDV#47110, #52636)
   o ignore rpmdrake's option regarding ignoring debug media
   o prevent crashing if one click on a media checkbox while another
     one is being processed (gtk+ was reentering the callback when we
-    were processing refreshing events...) (#46727)
+    were processing refreshing events...) (MDV#46727)
 - rpmdrake
-  o fix searching on just names (#54339)
+  o fix searching on just names (MDV#54339)
 
 Version 5.20 - 2 October 2009, Thierry Vignaud
 
 - rpmdrake
   o display orphan packages after removing some packages
-  o fix registering orphan package (#51229)
+  o fix registering orphan package (MDV#51229)
 
 Version 5.19 - 1 October 2009, Thierry Vignaud
 
 - gurpmi.addmedia
-  o fix message when adding distrib media (#49566)
+  o fix message when adding distrib media (MDV#49566)
 - rpmdrake
-  o fix encoding of diff output (#52994)  
-  o fix for unreproductable crash (#49273)
-  o fix rare crash when medium is unknown (#49901)
-  o fix rare crash with packages without any URPM objects (#52751)
+  o fix encoding of diff output (MDV#52994)  
+  o fix for unreproductable crash (MDV#49273)
+  o fix rare crash when medium is unknown (MDV#49901)
+  o fix rare crash with packages without any URPM objects (MDV#52751)
   o update GUI package list
 
 Version 5.18 - 1 October 2009, Thierry Vignaud
@@ -128,19 +128,19 @@ Version 5.18 - 1 October 2009, Thierry Vignaud
 - edit-urpm-sources:
   o use proper stock icons for arrows
 - rpmdrake
-  o added dependencies section in package details panel (#39491)
+  o added dependencies section in package details panel (MDV#39491)
   o enable to apply priority updates without trying to select any
     package
   o search
-    * clear search results too when cleaing searched text (#49239)
-    * default to OR like searches for searches among package names (#37643)
+    * clear search results too when cleaing searched text (MDV#49239)
+    * default to OR like searches for searches among package names (MDV#37643)
     * enable to disable use of regular expression (default is: disabled)
-    * enable to search in full or short package names (#46473)
-    * fix searching for summary on startup (#49293)
-    * rerun search after reloading package list (#49834)
+    * enable to search in full or short package names (MDV#46473)
+    * fix searching for summary on startup (MDV#49293)
+    * rerun search after reloading package list (MDV#49834)
   o show rpmdrake version in about dialog instead of distribution
-    version (#49467)
-  o warn on exit if some packages are selected (#45404)
+    version (MDV#49467)
+  o warn on exit if some packages are selected (MDV#45404)
 
 Version 5.17 - 1 June 2009, Thierry Vignaud
 
@@ -148,8 +148,8 @@ Version 5.17 - 1 June 2009, Thierry Vignaud
   distro is stable or cooker
 - do not restart if we didn't install any package (when having
   priority packages)
-- fix not displaying importance and reasons of updates (#51118)
-  (regression introduced by #50276 fix in 5.16.2)
+- fix not displaying importance and reasons of updates (MDV#51118)
+  (regression introduced by MDV#50276 fix in 5.16.2)
 - make 'urpmi-root' implying rpm-root so that the proper chrooted db
   got opened
 - rpmdrake:
@@ -158,30 +158,30 @@ Version 5.17 - 1 June 2009, Thierry Vignaud
 Version 5.16.4 - 13 May 2009, Thierry Vignaud
 
 - rpmdrake:
-  o do not crash when running as root (#50473)
+  o do not crash when running as root (MDV#50473)
 
 Version 5.16.3 - 6 May 2009, Thierry Vignaud
 
 - rpmdrake:
   o save "Compute updates on startup" setting
   o when searching in descriptions, do not search among packages not
-    in current view (#50638)
+    in current view (MDV#50638)
 
 Version 5.16.2 - 30 April 2009, Thierry Vignaud
 
 - rpmdrake:
-  o fix listing _one_ non installed package as installed (#50276)
-  o fix swedish translation that broke menu structure (#49989)
+  o fix listing _one_ non installed package as installed (MDV#50276)
+  o fix swedish translation that broke menu structure (MDV#49989)
   o default "Compute updates on startup" to yes
     (fix "MandrivaUpdate and urpmi show updated rpm, while rpmdrake
-    doesn't", #47305)
+    doesn't", MDV#47305)
   o manually list cedega, picasa, VariCAD, VariCAD_View &
-    VMware-Player as GUI packages (#50379)
+    VMware-Player as GUI packages (MDV#50379)
   o update GUI package list
 
 Version 5.16.1 - 15 April 2009, Thierry Vignaud
 
-- ignore /etc/fstab for *.rpmnew (#49887)
+- ignore /etc/fstab for *.rpmnew (MDV#49887)
 - rpmdrake:
   o update GUI package list
 
@@ -189,24 +189,24 @@ Version 5.16 - 3 April 2009, Thierry Vignaud
 
 - revert using installer hack that prevents having gray wait message dialogs on
   dialog popup in favor of old rgs hack, else (when not on displayed desktop),
-  it uses too much CPU and waits until it got the focus (#48912)
+  it uses too much CPU and waits until it got the focus (MDV#48912)
 - rpmdrake:
   o update GUI package list
 
 Version 5.15 - 1 April 2009, Thierry Vignaud
 
 - kill --no-splash option (useless since 4.17 (do not display a splash
-  text anymore)), thus fixing #49035)
+  text anymore)), thus fixing MDV#49035)
 - rpmdrake:
-  o add a sensible tooltip for the "find" entry (#39454)
-  o suggest to switch to the 'all' view if there's no search results (#38461)
+  o add a sensible tooltip for the "find" entry (MDV#39454)
+  o suggest to switch to the 'all' view if there's no search results (MDV#38461)
 
 Version 5.14 - 25 March 2009, Thierry Vignaud
 
 - prevent dialog to enlarge too much when displaying downloads of
   media meta_data (eg: adding or updating media)
 - gurpmi.addmedia:
-  o fix success message when adding mirrorlist (#48112)
+  o fix success message when adding mirrorlist (MDV#48112)
 - rpmdrake:
   o update GUI package list
 
@@ -214,7 +214,7 @@ Version 5.13 - 25 March 2009, Thierry Vignaud
 
 - rpmdrake:
   o do not use Gtk2::Sexy anymore (sligthly reduce memory usage)
-  o update GUI package list (#49086)
+  o update GUI package list (MDV#49086)
 
 Version 5.12 - 19 March 2009, Thierry Vignaud
 
@@ -228,7 +228,7 @@ Version 5.11.1 - 19 March 2009, Thierry Vignaud
 Version 5.11 - 19 March 2009, Thierry Vignaud
 
 - MandrivaUpdate:
-  o fix width of title by workarounding Gtk+ (#48259)
+  o fix width of title by workarounding Gtk+ (MDV#48259)
   o update all media on cooker instead of only update media
 - rpmdrake:
   o do not try to update & parse inactive sources backports media
@@ -236,7 +236,7 @@ Version 5.11 - 19 March 2009, Thierry Vignaud
 Version 5.10 - 17 March 2009, Thierry Vignaud
 
 - MandrivaUpdate:
-  o fix ignoring selected/unselected packages (embarassing bug #29835)
+  o fix ignoring selected/unselected packages (embarassing bug MDV#29835)
     (regression introduced in 4.10 on 24 June 2008: "show type of
     update in mandrivaupdate (fix, security, ...)")
 
@@ -244,28 +244,28 @@ Version 5.9 - 23 February 2009, Thierry Vignaud
 
 - rpmdrake:
   o add 'compute_updates' option that enable super fast startup by
-    skipping computing updates on startup (#42848)
+    skipping computing updates on startup (MDV#42848)
   o do not try to update & parse inactive debug backports media
-  o prevent running more than one instance (#47755)
+  o prevent running more than one instance (MDV#47755)
   o reduce memory usage
   o update GUI package list
   o use right icon
 
 Version 5.8 - 15 February 2009, Thierry Vignaud
 
-- fix crashing on uninstalling packages (#47751)
-- icons (#44671):
+- fix crashing on uninstalling packages (MDV#47751)
+- icons (MDV#44671):
   o update banner icons from mcc ones
   o use mcc icon for banners if availlable
 - prevent crashing in URPM when using --env with relative paths
 - edit-urpm-sources:
   o do not use the same shortcut for "Add a specific "media mirror"
-    and "_Add a custom medium" menu entries (#46027)
+    and "_Add a custom medium" menu entries (MDV#46027)
   o honnor canceling when the user closed the "updates/full_sources"
-    dialog (#47125)
+    dialog (MDV#47125)
   o honnor canceling when the user refused to access the network when
-    adding a specific mirror from the menubar (#46027)
-  o use same icon as in mcc instead of rpmdrake one (#44671)
+    adding a specific mirror from the menubar (MDV#46027)
+  o use same icon as in mcc instead of rpmdrake one (MDV#44671)
 
 Version 5.7 - 11 February 2009, Thierry Vignaud
 
@@ -273,19 +273,19 @@ Version 5.7 - 11 February 2009, Thierry Vignaud
 - MandrivaUpdate:
   o warn when rebooting is needed after installing packages
 - rpmdrake:
-  o add C-F accelerator in order to focus on search entry (#46404)
+  o add C-F accelerator in order to focus on search entry (MDV#46404)
 
 Version 5.6 - 9 February 2009, Thierry Vignaud
 
 - edit-urpm-sources:
   o add media even if one failed instead of rollbacking all of them
     (regression introduced in urpmi-6.19)
-  o fix displayling big list of media to remove (#46773)
+  o fix displayling big list of media to remove (MDV#46773)
   o fix media selection dialog layout so that dialog behaves smoothly
-    on resizing (#47271)
+    on resizing (MDV#47271)
 - MandrivaUpdate:
   o use new proper API to select media, thus fixing not updating media
-    (side effect of urpmi API changes, #47209)
+    (side effect of urpmi API changes, MDV#47209)
 - rpmdrake:
   o update GUI package list
 
@@ -293,26 +293,26 @@ Version 5.5 - 9 December 2008, Thierry Vignaud
 
 - rpmdrake:
   o searching:
-    * fix a rare crash on searching (#46225)
+    * fix a rare crash on searching (MDV#46225)
     * only look at name, not at full name (n-e-v-r) when performing
-      search in names (#45410)
+      search in names (MDV#45410)
     * scroll group list to search category
   o update GUI package list
 
 Version 5.4 - 24 November 2008, Thierry Vignaud
 
 - edit-urpm-sources:
-  o do not drop 'ignore' flag when updating a medium (#44930)
-  o fix displaying type of altered mirrorlist media (#44930)
+  o do not drop 'ignore' flag when updating a medium (MDV#44930)
+  o fix displaying type of altered mirrorlist media (MDV#44930)
 - rpmdrake:
-  o list plasma applets in GUI package list too (#45835)
+  o list plasma applets in GUI package list too (MDV#45835)
   o update GUI package list
 
 Version 5.3 - 17 November 2008, Thierry Vignaud
 
-- drop diagnostics, strict, vars and warnings pragmas (should help #45361)
+- drop diagnostics, strict, vars and warnings pragmas (should help MDV#45361)
 - edit_urpm_sources:
-  o make clearer than DVD, CD-ROM are removable devices (#30842)
+  o make clearer than DVD, CD-ROM are removable devices (MDV#30842)
   o prevent enabling one to tag media as update media when adding
     whole distro media
 - rpmdrake:
@@ -337,22 +337,22 @@ Version 5.2 - 16 October 2008, Thierry Vignaud
 - gurpmi.addmedia:
   o fix return value when canceling
 - rpmdrake:
-  o enable to set 'noclean' option (#13522)
+  o enable to set 'noclean' option (MDV#13522)
 
 Version 5.1 - 10 October 2008, Thierry Vignaud
 
 - do not ask sources on startup
-- open help & bug report as user instead of as root (#44497)
+- open help & bug report as user instead of as root (MDV#44497)
 - edit_urpm_sources:
   o fix displayed version in 'About' dialog
   o move "add media" menu entries from the "Options" menu into the
-    "File" menu (#44601)
+    "File" menu (MDV#44601)
 - gurpmi.addmedia:
   o handle --urpmi-root
 - MandrivaUpdate:
-  o make bug importance icons be transparent (#44745)
+  o make bug importance icons be transparent (MDV#44745)
 - rpmdrake:
-  o fix too big "media to update" window (#44518)
+  o fix too big "media to update" window (MDV#44518)
   o update GUI package list
 
 Version 5 - 1 October 2008, Thierry Vignaud
@@ -362,7 +362,7 @@ Version 5 - 1 October 2008, Thierry Vignaud
 - edit_urpm_sources:
   o add an "Add media" menu item in order to still able to manually
     choose mirror
-  o default to use mirrorlist (#39898)
+  o default to use mirrorlist (MDV#39898)
   o enable to edit mirrorlist media
 
 Version 4.21 - 30 September 2008, Thierry Vignaud
@@ -370,10 +370,10 @@ Version 4.21 - 30 September 2008, Thierry Vignaud
 - fix modality/transient hints
   (regression introduced in drakxtools-11.10.2 on 18 August 2008 while
   fixing focus issues)
-- workaround crashing when tree selection wasn't realized yet (#41010)
+- workaround crashing when tree selection wasn't realized yet (MDV#41010)
 - rpmdrake:
   o only warn once per session when media XML metadata are newer than
-    synthesis (#42737)
+    synthesis (MDV#42737)
     (meaning package list & metadata are not syncrhonised and that
     media need updates)
 
@@ -395,24 +395,24 @@ Version 4.20.1 - 20 September 2008, Thierry Vignaud
 
 Version 4.20 - 20 September 2008, Thierry Vignaud
 
-- basic managment of orphan packages (#43723):
+- basic managment of orphan packages (MDV#43723):
   o display them
   o handle --auto_orphans option
 - rpmdrake:
   o remove short lived wait message when changing selected view to
     some 'update' view (security/bugfix/...) since it's too fast
   o remove short lived wait message when reloading the packages list
-    (#43955)
+    (MDV#43955)
 
 Version 4.19 - 17 September 2008, Thierry Vignaud
 
 - do display conflicting packages instead of silently removing them
-  (needs urpmi 6.11) (#43501)
+  (needs urpmi 6.11) (MDV#43501)
 - do not display any (truncated) banner when embedded while updating
-  media (like non-embedded case) (#43815)
+  media (like non-embedded case) (MDV#43815)
 - do not display any banner when embedded while adding media
 - rpmdrake:
-  o fix listing updates per importance (#41331)
+  o fix listing updates per importance (MDV#41331)
     (regression introduced in 3.95 on 2007-09-14)
 
 Version 4.18.2 - 10 September 2008, Thierry Vignaud
@@ -423,19 +423,19 @@ Version 4.18.2 - 10 September 2008, Thierry Vignaud
 Version 4.18.1 - 9 September 2008, Thierry Vignaud
 
 - rpmdrake:
-  o fix crashing when selecting all packages (#40025)
+  o fix crashing when selecting all packages (MDV#40025)
 
 Version 4.18 - 9 September 2008, Thierry Vignaud
 
 - all:
   o adapt to urpmi-6.6+ new API (which workaround urpmi API breakage
-    #43639)
+    MDV#43639)
   o do not ignore some options
   o handle --debug, --env, -q, --quiet, -v & --verbose options
 - rpmdrake:
   o display a busy cursor while fetching package list on startup
   o remove short lived wait message when changing selected package
-    group (#43320) since it's too fast
+    group (MDV#43320) since it's too fast
   o update GUI package list
 
 Version 4.17 - 4 September 2008, Thierry Vignaud
@@ -458,13 +458,13 @@ Version 4.16 - 26 August 2008, Thierry Vignaud
   o fix sorting by type of update
 - rpmdrake:
   o make --mode option work again
-  o workaround crashing when media's MD5SUM are garbaged (#41352)
+  o workaround crashing when media's MD5SUM are garbaged (MDV#41352)
 
 Version 4.15 - 25 August 2008, Thierry Vignaud
 
 - rpmdrake:
-  o fix a rare crash when canceling (#41970)
-  o list meta tasks in GUI package list too (#43114)
+  o fix a rare crash when canceling (MDV#41970)
+  o list meta tasks in GUI package list too (MDV#43114)
   o update GUI package list
 
 Version 4.14 - 7 August 2008, Thierry Vignaud
@@ -486,17 +486,17 @@ Version 4.13 - 6 August 2008, Thierry Vignaud
 Version 4.12 - 2 July 2008, Thierry Vignaud
 
 - MandrivaUpdate, rpmdrake:
-  o save & restore window size (#25932)
+  o save & restore window size (MDV#25932)
 - rpmdrake:
-  o make sure searches with no results clear package list (#34898)
-  o show 'Group' in details (usefull for search results, #39244)
-  o stop packaging rpmdrake-remove (#39485)
+  o make sure searches with no results clear package list (MDV#34898)
+  o show 'Group' in details (usefull for search results, MDV#39244)
+  o stop packaging rpmdrake-remove (MDV#39485)
   o update GUI package list
  
 Version 4.11 - 1 July 2008, Thierry Vignaud
 
 - rpmdrake:
-  o always create a search category in tree (#29164)
+  o always create a search category in tree (MDV#29164)
   o open the search results category once searching is done
 
 Version 4.10 - 24 June 2008, Thierry Vignaud
@@ -509,37 +509,37 @@ Version 4.10 - 24 June 2008, Thierry Vignaud
 Version 4.9.16 - 16 June 2008, Thierry Vignaud
 
 - rpmdrake:
-  o fix crash in URPM with non standard package names (#41002)
-- MandrivaUpdate (#40235):
+  o fix crash in URPM with non standard package names (MDV#41002)
+- MandrivaUpdate (MDV#40235):
   o laptop mode (height not bigger than 480): fix test
 
 Version 4.9.15 - 23 May 2008, Thierry Vignaud
 
 - rpmdrake:
   o list basesystem-* as meta-task too
-- MandrivaUpdate (#40235):
+- MandrivaUpdate (MDV#40235):
   o laptop mode (height not bigger than 480):
     * do not display banner
     * reduce Trees' height
 
 Version 4.9.14 - 8 May 2008, Thierry Vignaud
 
-- display URLs of packages (#40571)
+- display URLs of packages (MDV#40571)
 - handle gracefully locked RPM DB when trying to install some packages
-  (#40244)
-- warn only once about priority upgrades (#39737)
+  (MDV#40244)
+- warn only once about priority upgrades (MDV#39737)
 - MandrivaUpdate:
   o provide --no-splash option in order to skip splash screen when run
-    from mdkapplet (#40366)
+    from mdkapplet (MDV#40366)
 - rpmdrake:
   o GUI packages view:
     * adapt to KDE3 moving into /opt
-    * include KDE applets into GUI packages view (#40073)
+    * include KDE applets into GUI packages view (MDV#40073)
     * update list
   o do not list backports as unselected updates media in rpmdrake, not
-    just in MandrivaUpdate (#35009, #40556)
-  o fix a crash when default view is unknown (#39626)
-  o fix searching when numeric pad's return key is pressed (#40659)
+    just in MandrivaUpdate (MDV#35009, #40556)
+  o fix a crash when default view is unknown (MDV#39626)
+  o fix searching when numeric pad's return key is pressed (MDV#40659)
 
 Version 4.9.13 - 3 April 2008, Thierry Vignaud
 
@@ -547,10 +547,10 @@ Version 4.9.13 - 3 April 2008, Thierry Vignaud
 
 Version 4.9.12 - 1 April 2008, Thierry Vignaud
 
-- better error message while downloading mirror list (#39675)
+- better error message while downloading mirror list (MDV#39675)
 - rpmdrake:
-  o fix view tooltip (#39694)
-  o really make "by update availability" view usable (#39461)
+  o fix view tooltip (MDV#39694)
+  o really make "by update availability" view usable (MDV#39461)
   o split out installed packages if any in "by update availability" view
 
 Version 4.9.11 - 1 April 2008, Thierry Vignaud
@@ -558,14 +558,14 @@ Version 4.9.11 - 1 April 2008, Thierry Vignaud
 - rpmdrake:
   o really remove "--emmbedded <id>" from ARGV when restarting after
     priority upgrades, thus fixing displaying it when run from mcc
-    (#39262)
+    (MDV#39262)
 
 Version 4.9.10 - 30 March 2008, Thierry Vignaud
 
 - rpmdrake:
-  o do not crash if package is unknow (#39608)
+  o do not crash if package is unknow (MDV#39608)
   o do not crash if config file set empty values for some variables
-    (eg: after old buggy gurpmi.addmedia garbaged it) (#39511)
+    (eg: after old buggy gurpmi.addmedia garbaged it) (MDV#39511)
   o fix priority upgrades:
     * do not preselect updates
     * do not recompute them when checking selection consistency just
@@ -580,7 +580,7 @@ Version 4.9.9 - 28 March 2008, Thierry Vignaud
   o fix --distrib
   o fix --distrib --mirrorlist
 - rpmdrake:
-  o make "by update availability" view usable (#39461)
+  o make "by update availability" view usable (MDV#39461)
 
 Version 4.9.8 - 25 March 2008, Thierry Vignaud
 
@@ -588,24 +588,24 @@ Version 4.9.8 - 25 March 2008, Thierry Vignaud
 - fix displaying garbaged UTF-8 descriptions (eg: cgoban1)
   (instead of displaying "none")
 - remove "--emmbedded <id>" from ARGV when restarting after priority
-  upgrades, thus fixing displaying it when run from mcc (#39262)
-- workaround crashing while performing medium name lookup (#38793)
+  upgrades, thus fixing displaying it when run from mcc (MDV#39262)
+- workaround crashing while performing medium name lookup (MDV#38793)
 
 Version 4.9.7 - 21 March 2008, Thierry Vignaud
 
 - make the focus default on "yes" in yes/no dialogs
-  (Emmanuel Blindauer, #39123)
+  (Emmanuel Blindauer, MDV#39123)
 
 Version 4.9.6 - 20 March 2008, Thierry Vignaud
 
 - rpmdrake:
-  o actually restrict "by_leaves" view to current mode (#39090)
+  o actually restrict "by_leaves" view to current mode (MDV#39090)
   o fix sorting in "by_source" view
 
 Version 4.9.5 - 19 March 2008, Thierry Vignaud
 
 - rpmdrake:
-  o readd by_source view (#30557, removed on 2006-07-09)
+  o readd by_source view (MDV#30557, removed on 2006-07-09)
 
 Version 4.9.4 - 19 March 2008, Thierry Vignaud
 
@@ -617,7 +617,7 @@ Version 4.9.4 - 19 March 2008, Thierry Vignaud
 Version 4.9.3 - 19 March 2008, Thierry Vignaud
 
 - rpmdrake:
-  o fix crash with cs, cy, eu, hu, nl, pl & zh_CN locales (#39052)
+  o fix crash with cs, cy, eu, hu, nl, pl & zh_CN locales (MDV#39052)
     (regression introduced in 4.9: "move view pull down menu as a real
     menu")
 
@@ -633,13 +633,13 @@ Version 4.9.1 - 18 March 2008, Thierry Vignaud
 Version 4.9 - 18 March 2008, Thierry Vignaud
 
 - fix displaying data about packages when choosing one while resolving
-  dependancies (#38854)
+  dependancies (MDV#38854)
   (regression introduced in "display in bold that priority updates
   require restarting" in 4.6 on 10 March 2008)
 - rpmdrake:
   o be nice with UMPC screens:
-    * enable to shrink package groups tree (#38762)
-    * hide banner if screen height is small than 600 px (#38943)
+    * enable to shrink package groups tree (MDV#38762)
+    * hide banner if screen height is small than 600 px (MDV#38943)
   o move view pull down menu as a real menu
 
 Version 4.8 - 17 March 2008, Thierry Vignaud
@@ -647,9 +647,9 @@ Version 4.8 - 17 March 2008, Thierry Vignaud
 - tell the user to "restart system" when needed (needs urpmi-5.14)
 - rpmdrake:
   o add tooltips to pull down menus & to search entry
-  o allow to sort packages by size (#25417)
-  o make find box larger and left-aligned (#38298)
-  o restore flat mode (#25770)
+  o allow to sort packages by size (MDV#25417)
+  o make find box larger and left-aligned (MDV#38298)
+  o restore flat mode (MDV#25770)
 
 Version 4.7 - 17 March 2008, Thierry Vignaud
 
@@ -666,14 +666,14 @@ Version 4.6.2 - 14 March 2008, Thierry Vignaud
 - rpmdrake:
   o kill "Mandriva choices"
   o only list priority upgrades if there're
-  o warn there're priority upgrades when selecting other packages (#38885)
+  o warn there're priority upgrades when selecting other packages (MDV#38885)
 
 Version 4.6.1 - 10 March 2008, Thierry Vignaud
 
 - rpmdrake:
   o do not update media unlike MandrivaUpdate
     (regression introduced in 4.4: "remember latest view mode
-    (#38138)")
+    (MDV#38138)")
 
 Version 4.6 - 10 March 2008, Thierry Vignaud
 
@@ -708,27 +708,27 @@ Version 4.4.2.1 - 6 March 2008, Thierry Vignaud
 Version 4.4.2 - 6 March 2008, Thierry Vignaud
 
 - MandrivaUpdate:
-  o fix not listing all updates (#38595)
+  o fix not listing all updates (MDV#38595)
     (regression introduced in 4.4 with 'remember state of "Show
-    automatically selected packages" (#38138)'
+    automatically selected packages" (MDV#38138)'
 - rpmdrake:
-  o don't select all updates by default in rpmdrake (#38611)
+  o don't select all updates by default in rpmdrake (MDV#38611)
     (regression introduced in 4.3.2 with "handle priority upgrade list")
 
 Version 4.4.1 - 5 March 2008, Thierry Vignaud
 
-- fix crash (#38514) due to not having commited all bits of 'remember
-  state of "Show automatically selected packages" (#38138)'
+- fix crash (MDV#38514) due to not having commited all bits of 'remember
+  state of "Show automatically selected packages" (MDV#38138)'
 - rpmdrake:
-  o do not reset search field (#35244)
+  o do not reset search field (MDV#35244)
 
 Version 4.4 - 5 March 2008, Thierry Vignaud
 
-- do not warn about empty package names (#38480)
+- do not warn about empty package names (MDV#38480)
 - rpmdrake:
-  o make search box larger (#38298)
-  o remember latest view mode (#38138)
-  o remember state of "Show automatically selected packages" (#38138)
+  o make search box larger (MDV#38298)
+  o remember latest view mode (MDV#38138)
+  o remember state of "Show automatically selected packages" (MDV#38138)
 
 Version 4.3.2 - 5 March 2008, Thierry Vignaud
 
@@ -748,12 +748,12 @@ Version 4.3.1 - Wed Feb 27 2008, Thierry Vignaud
 
 Version 4.3 - Tue Feb 26 2008, Thierry Vignaud
 
-- display size of data to downloaded (#32154)
-- make clearer why there's no medium (#37033) (maybe should we just
+- display size of data to downloaded (MDV#32154)
+- make clearer why there's no medium (MDV#37033) (maybe should we just
   not display the medium for installed packages like old_rpmdrake
   did?)
 - rpmdrake:
-  o remove leading/trailing spacing in searched word when pasting (#23249)
+  o remove leading/trailing spacing in searched word when pasting (MDV#23249)
   o package list:
     * hide architecture column on non biarch systems
     * shrink some column headers
@@ -779,16 +779,16 @@ Version 4.2.5 - Sat Feb 23 2008, Thierry Vignaud
 Version 4.2.4 - Sat Feb 23 2008, Thierry Vignaud
 
 - MandrivaUpdate:
-  o adjust default layout repartition (#36069)
+  o adjust default layout repartition (MDV#36069)
 
 Version 4.2.3 - Fri Feb 22 2008, Thierry Vignaud
 
 - edit-urpm-sources:
   o add a progress bar while downloading mirrors list & enable to
-    cancel it (#34630)
+    cancel it (MDV#34630)
   o fix crashing when adding a custom medium (regression introduced in
     4.2)
-  o set 'ftp_proxy' with the same value as 'http_proxy' (#31026)
+  o set 'ftp_proxy' with the same value as 'http_proxy' (MDV#31026)
 
 Version 4.2.2 - Fri Feb 22 2008, Thierry Vignaud
 
@@ -821,10 +821,10 @@ Version 4.1 - Tue Feb 19 2008, Thierry Vignaud
 - rpmdrake:
   o default to 'GUI packages' view
 - edit-urpm-sources:
-  o allow user to specify how rpmdrake handles .xml.lzma files (#37390)
+  o allow user to specify how rpmdrake handles .xml.lzma files (MDV#37390)
   o fix menu entries in br locale
   o prevent rpmdrake to ask adding sources if already done through the
-    media manager (#37360)
+    media manager (MDV#37360)
 
 Version 4.0 - Thu Feb 14 2008, Thierry Vignaud
 
@@ -842,15 +842,15 @@ Version 3.144 - Wed Feb 13 2008, Thierry Vignaud
   mixed UTF-8/ISO-8859-1 changelogs (eg: 7.0-8mdv2007.0 in vim) ;
   not much we can do w/o fixing all /log in SVN
 - rpmdrake:
-  o do not crash when a icon is missing (#37700)
-  o fix a crash on searching (#37626)
+  o do not crash when a icon is missing (MDV#37700)
+  o fix a crash on searching (MDV#37626)
   o revert ignoring disabled backport media in rpmdrake too, not just
-    in MandrivaUpdate (#35009) since it's broken
+    in MandrivaUpdate (MDV#35009) since it's broken
 
 Version 3.143 - Wed Feb 13 2008, Thierry Vignaud
 
 - rpmdrake:
-  o skip non existing packages (#36529)
+  o skip non existing packages (MDV#36529)
     (eg: when rpmdrake download info.xml.lzma on demand when searching
     or browsing whereas the package was updated in the mean time, the
     info file references the newer package whereas urpmi database only
@@ -859,12 +859,12 @@ Version 3.143 - Wed Feb 13 2008, Thierry Vignaud
 Version 3.142 - Wed Feb 13 2008, Thierry Vignaud
 
 - ignore disabled backport media in rpmdrake too, not just in
-  MandrivaUpdate (#35009)
+  MandrivaUpdate (MDV#35009)
 
 Version 3.141 - Tue Feb 12 2008, Thierry Vignaud
 
 - rpmdrake:
-  o add list of programs with GUI view (#36486)
+  o add list of programs with GUI view (MDV#36486)
   o align search fields to right
   o ensure we never crash on garbaged UTF-8 while querying local files
     (which results in garbaged names in eg vim changelog instead of crashes)
@@ -892,7 +892,7 @@ Version 3.137 - Fri Feb  8 2008, Thierry Vignaud
 
 - fix querying file list of installed packages (regression introduced
   in 3.134: "fix formating of file list of installed packages")
-- highlight relevant parts of the changelog as italic (#37208)
+- highlight relevant parts of the changelog as italic (MDV#37208)
 - render update fields as italic (type & reason of update)
 - separate version and release by '-' in details
 - use the same format for changelogs from XML metadata as for those
@@ -901,7 +901,7 @@ Version 3.137 - Fri Feb  8 2008, Thierry Vignaud
 Version 3.136 - Thu Feb  7 2008, Thierry Vignaud
 
 - adapt to new urpmi API for searching in XML meta-data, thus stopping
-  from downloading hdlists, side effect of urpmi-5.x (#37411)
+  from downloading hdlists, side effect of urpmi-5.x (MDV#37411)
 
 Version 3.135 - Wed Feb  6 2008, Thierry Vignaud
 
@@ -909,17 +909,17 @@ Version 3.135 - Wed Feb  6 2008, Thierry Vignaud
 
 Version 3.134 - Wed Feb  6 2008, Thierry Vignaud
 
-- add a meta packages view (#34510)
+- add a meta packages view (MDV#34510)
 - display a message in statusbar while extracting metada from a local
   package
-- display size of selection (#34123)
+- display size of selection (MDV#34123)
 - do not display the download progress dialog when not downloading,
   only a statusbar message
 - download & parse the needed XML meta data on demand (aka only
   download & parse the needed ones and not all of them) ;
   always update & fetch 'info' metada on click for descriptions
 - fallback to get XML metada when RPM is missing from local medium
-- fix extracting info from packages from local media (#37354)
+- fix extracting info from packages from local media (MDV#37354)
 - fix formating of file list of installed packages
 - fix setting UTF-8 locale when running rpm for query
 - make progres dialogs not be grayed on initial display
@@ -929,21 +929,21 @@ Version 3.134 - Wed Feb  6 2008, Thierry Vignaud
 
 Version 3.133 - Mon Feb 04 2008, Thierry Vignaud
 
-- fix MandrivaUpdate not ignoring backport media tagged as update (#36654)
+- fix MandrivaUpdate not ignoring backport media tagged as update (MDV#36654)
 - fix a bug in unused/unsupported parallel mode
 
 Version 3.132 - Mon Feb  4 2008, Thierry Vignaud
 
-- display a progress bar while fetching XML metadata (#37264) (needs
+- display a progress bar while fetching XML metadata (MDV#37264) (needs
   urpmi-5.3)
 - do not include architecture in SRPM names, thus fixing extracting
   info for SRPMS and RPM GPG keys
 - fix a breakage in unused/unmaintained parralel mode
-- fix encoding of rpm error message "package contains no file" (#37428)
+- fix encoding of rpm error message "package contains no file" (MDV#37428)
 
 Version 3.131 - Wed Jan 30 2008, Thierry Vignaud
 
-- gracefully handle "could not find foobar in" (#37211)
+- gracefully handle "could not find foobar in" (MDV#37211)
 
 Version 3.130 - Tue Jan 29 2008, Thierry Vignaud
 
@@ -957,45 +957,45 @@ Version 3.130 - Tue Jan 29 2008, Thierry Vignaud
 Version 3.129 - Fri Jan 25 2008, Thierry Vignaud
 
 - do not show "backports" in the list of filters if there's no
-  inactive backport medium (#37088)
-- make sure a wait dialog always got killed (might fix #36921)
+  inactive backport medium (MDV#37088)
+- make sure a wait dialog always got killed (might fix MDV#36921)
 
 Version 3.128 - Wed Jan 23 2008, Thierry Vignaud
 
-- fix a crash on extracting package header (#37122)
-- prevent selecting basesystem packages earlier (#36367)
+- fix a crash on extracting package header (MDV#37122)
+- prevent selecting basesystem packages earlier (MDV#36367)
 
 Version 3.127 - Wed Jan 23 2008, Thierry Vignaud
 
-- fix a crash when using empty inactive backport media (#36720)
+- fix a crash when using empty inactive backport media (MDV#36720)
 
 Version 3.126 - Tue Jan 22 2008, Thierry Vignaud
 
 - adapt to new urpmi-5.x API and use XML info instead of hdlist when
   possible
-- typo fix (Shlomi Fish, #36365)
+- typo fix (Shlomi Fish, MDV#36365)
 
 Version 3.125 - Wed Dec 19 2007, Thierry Vignaud
 
-- fix reading urpmi options with new urpmi (#36681)
-- renamed Uzbek translations to follow the libc standard (#35090)
+- fix reading urpmi options with new urpmi (MDV#36681)
+- renamed Uzbek translations to follow the libc standard (MDV#35090)
 - kill re-definition of %buildroot on Pixel's request
 
 Version 3.124 - Thu Dec  6 2007, Thierry Vignaud
 
-- fix sorting by using RPM version sorting logic (#35209)
+- fix sorting by using RPM version sorting logic (MDV#35209)
 
 Version 3.123 - Wed Dec  5 2007, Thierry Vignaud
 
 - ensure message is displayed in status bar instaneously
 - explain long operations in status bar
-- MandrivaUpdate: fix fetching updates from non update media (#35009)
+- MandrivaUpdate: fix fetching updates from non update media (MDV#35009)
 
 Version 3.122 - Thu Nov 29 2007, Thierry Vignaud
 
 - edit_urpm_sources: update button labels & message in order to make
   the clearer and more up to date concerning current media structure
-  (#35834)
+  (MDV#35834)
 - rpmdrake:
   o drop --pkg-sel and --pkg-nosel broken options (introduced in
     rpmdrake-2.1.2-8mdk on Feb 26 2004 for MandrakeOnline which didn't
@@ -1015,7 +1015,7 @@ Version 3.119 - Tue Oct 23 2007, Thierry Vignaud
 
 - factorize some code
 - edit_urpm_sources:
-  o display nicer media with non ASCII characters in names (#34906)
+  o display nicer media with non ASCII characters in names (MDV#34906)
 - MandrivaUpdate:
   o ensure mirror list got centered on MandrivaUpdate
   o explain the actual issue when there's no configured update medium
@@ -1047,11 +1047,11 @@ Version 3.114 - Thu Oct 04 2007, Thierry Vignaud
 
 Version 3.113 - Fri Sep 28 2007, Thierry Vignaud
 
-- do refresh package list after updating media (#34241)
+- do refresh package list after updating media (MDV#34241)
 
 Version 3.112 - Thu Sep 27 2007, Thierry Vignaud
 
-- workaround canceled selection still selected (#34218);
+- workaround canceled selection still selected (MDV#34218);
   side effect: no more explanations for (un)selectioned dependencies
 
 Version 3.111 - Wed Sep 26 2007, Thierry Vignaud
@@ -1076,18 +1076,18 @@ Version 3.108 - Tue Sep 25 2007, Thierry Vignaud
 
 Version 3.107 - Tue Sep 25 2007, Thierry Vignaud
 
-- fix crashing while reporting db is locked (#33921)
+- fix crashing while reporting db is locked (MDV#33921)
 
 Version 3.106 - Mon Sep 24 2007, Thierry Vignaud
 
-- properly account size of update packages (#33851)
+- properly account size of update packages (MDV#33851)
 - use field code %f for Exec field of gurpmi.addmedia as only local
   files are accepted (anssi)
 
 Version 3.105 - Fri Sep 21 2007, Thierry Vignaud
 
 - make "Reset the selection" work if no group is selected in tree
-- properly account size of update packages (#33851)
+- properly account size of update packages (MDV#33851)
 
 Version 3.104 - Fri Sep 21 2007, Thierry Vignaud
 
@@ -1109,7 +1109,7 @@ Version 3.101 - Thu Sep 19 2007, Thierry Vignaud
 
 - enable to copy/paste transaction errors
 - fix a crash on removing packages
-- fix counting size of selected package (#32506)
+- fix counting size of selected package (MDV#32506)
 - installing/removing confirmation dialog box:
   o always display "Is it ok to continue?"
   o better formatting
@@ -1135,9 +1135,9 @@ Version 3.99 - Wed Sep 19 2007, Thierry Vignaud
 Version 3.98 - Tue Sep 18 2007, Thierry Vignaud
 
 - better looking message for bad signatures
-- register application/x-urpmi-media MIME type again (#33436)
+- register application/x-urpmi-media MIME type again (MDV#33436)
 - rpmdrake:
-  o enable to sort by selected status(#27338)
+  o enable to sort by selected status(MDV#27338)
 
 Version 3.97 - Tue Sep 18 2007, Thierry Vignaud
 
@@ -1149,7 +1149,7 @@ Version 3.96 - Mon Sep 17 2007, Thierry Vignaud
 - MandrivaUpdate, rpmdrake:
   o make package names appear in bold
 - rpmdrake:
-  o force align "name - summary" to the right with RTL languages (#33603)
+  o force align "name - summary" to the right with RTL languages (MDV#33603)
   o indent expanders' contents (details, file list, changelog)
 
 Version 3.95 - Fri Sep 14 2007, Thierry Vignaud
@@ -1161,37 +1161,37 @@ Version 3.95 - Fri Sep 14 2007, Thierry Vignaud
 - gurpmi.addmedia:
   o display the URL when bogus
   o enable to use --urpmi-root & co options
-  o handle --distrib (#33435)
+  o handle --distrib (MDV#33435)
 
 Version 3.94 - Thu Sep 13 2007, Thierry Vignaud
 
 - force sizing of Labels in order to prevent garbaged wrapping with
-  hebrew (#32882)
-- run the regular user browser (#31021)
+  hebrew (MDV#32882)
+- run the regular user browser (MDV#31021)
 
 Version 3.93 - Wed Sep 12 2007, Thierry Vignaud
 
 - make sure we reread the db if we added a new repository on startup
 - further improve startup time by killing a costly
-  urpm::media::configure that is only needed in some cases (#33334)
+  urpm::media::configure that is only needed in some cases (MDV#33334)
 
 Version 3.92 - Tue Sep 11 2007, Thierry Vignaud
 
-- startup time (#33334):
+- startup time (MDV#33334):
   o reduce package enumeration by 10%
   o shrink opening urpmi DB time by 30%
 - edit-urpm-sources:
   o enable --urpmi-root options and the like
 - rpmdrake:
   o make "Package" column use all available space
-  o rephrasing (#33188)
+  o rephrasing (MDV#33188)
 
 Version 3.91 - Mon Sep 10 2007, Thierry Vignaud
 
 - rpmdrake:
   o do not try to convert into UTF-8, thus fixing a SIGV loop while inserting
     file list of "balazar" package
-  o fix a crash (#33283)
+  o fix a crash (MDV#33283)
   o fix order of columns
   o simplify (since perl-URPM-1.56, perl knows that strings from rpm headers
     are UTF-8)
@@ -1200,7 +1200,7 @@ Version 3.90 - Mon Sep 10 2007, Thierry Vignaud
 
 - edit-urpm-sources:
   o display a banner now that we don't display mcc's banner & menubar
-    while embedded (side effect of #33316's fix)
+    while embedded (side effect of MDV#33316's fix)
 
 Version 3.89 - Thu Sep  6 2007, Thierry Vignaud
 
@@ -1214,7 +1214,7 @@ Version 3.89 - Thu Sep  6 2007, Thierry Vignaud
 
 Version 3.88 - Thu Sep  6 2007, Thierry Vignaud
 
-- gurpmi.addmedia: do not always adds repository as update medium (#30440)
+- gurpmi.addmedia: do not always adds repository as update medium (MDV#30440)
 - rpmdrake: 
   o package list:
     * disable fixed mode
@@ -1227,10 +1227,10 @@ Version 3.88 - Thu Sep  6 2007, Thierry Vignaud
 Version 3.87 - Mon Sep  3 2007, Thierry Vignaud
 
 - MandrivaUpdate:
-  o make "Select all" button working (#29892)
+  o make "Select all" button working (MDV#29892)
 - rpmdrake: 
   o kill "help" button in button bar (which was there because we
-    didn't have any menubar when embedded) (#29883)
+    didn't have any menubar when embedded) (MDV#29883)
 
 Version 3.86 - Mon Sep  3 2007, Thierry Vignaud
 
@@ -1238,7 +1238,7 @@ Version 3.86 - Mon Sep  3 2007, Thierry Vignaud
   o swap "add custom" and "add sources" between menubar and buttons bar
 - rpmdrake: 
   o fix erasing all existing media when adding new media on first
-    startup of rpmdrake (#30883)
+    startup of rpmdrake (MDV#30883)
 
 Version 3.85 - Tue Sep 03 2007, Thierry Vignaud
 
@@ -1247,8 +1247,8 @@ Version 3.85 - Tue Sep 03 2007, Thierry Vignaud
 Version 3.84 - Thu Aug 30 2007, Thierry Vignaud
 
 - really fix --no-verify-rpm option
-- edit-urpm-sources: display media type in media list (#25043)
-- rpmdrake: enable to select a package listed in urpmi's skip.list (#31548)
+- edit-urpm-sources: display media type in media list (MDV#25043)
+- rpmdrake: enable to select a package listed in urpmi's skip.list (MDV#31548)
 
 Version 3.83 - Thu Aug 30 2007, Thierry Vignaud
 
@@ -1261,7 +1261,7 @@ Version 3.83 - Thu Aug 30 2007, Thierry Vignaud
 - fix --no-verify-rpm option (got broken when introducing
   urpm::main_loop)
 - temporary workaround gtk+ regression that mess up when shrinking a
-  window (#32613)
+  window (MDV#32613)
 - use X-MandrivaLinux-CrossDesktop category in menu entries
 
 Version 3.82 - Tue Aug 28 2007, Thierry Vignaud
@@ -1275,28 +1275,28 @@ Version 3.81 - Mon Aug 27 2007, Thierry Vignaud
 
 - refresh packages tree when edit-urpm-sources performed something
   thus fixing crash when removing source then selecting a package that
-  is no more know to urpmi (#32832)
+  is no more know to urpmi (MDV#32832)
 
 Version 3.80 - Mon Aug 27 2007, Thierry Vignaud
 
 - all:
   o add a "Do not ask me next time" checkbox when asking about media
-    update (#17697)
+    update (MDV#17697)
   o ensure we respect 'auto' option in /etc/urpmi.cfg
   o make clearer how to use --rpm-root
   o warn if misusing --rpm-root option
 - edit-urpm-source:
   o ensure update progress dialog is centered upon main window
-  o fix moving altered medium at end of media list (#32489)
+  o fix moving altered medium at end of media list (MDV#32489)
   o make all buttons look consistent regarding "..."
   o move all buttons not directely related to media list in a new menu
-    bar (#14439)
+    bar (MDV#14439)
   o show a standard "help" menu
   o rework some strings
 - MandrivaUpdate:
-  o do not update again media after installing/removing some packages (#32586)
+  o do not update again media after installing/removing some packages (MDV#32586)
   o restore rpmdrake-2.x behaviour (which is inconsistant with urpmi
-    one) by only computing updates on media flagged as update (#30546)
+    one) by only computing updates on media flagged as update (MDV#30546)
 - rpmdrake:
   o enable to search only in summaries (previously "in descriptions"
     used to search in both in descriptions and in summaries
@@ -1304,11 +1304,11 @@ Version 3.80 - Mon Aug 27 2007, Thierry Vignaud
     a few seconds delay
   o make non basic searches faster (saving 25% of time spent when
     searching in packages' files)
-  o remove not found messages from status bar after 5 seconds (#32332)
+  o remove not found messages from status bar after 5 seconds (MDV#32332)
 
 Version 3.79 - Sat Aug 25 2007, Thierry Vignaud
 
-- fix crash if no backport medium is configured (aka no std configuration, #32815)
+- fix crash if no backport medium is configured (aka no std configuration, MDV#32815)
 
 Version 3.78 - Sat Aug 25 2007, Thierry Vignaud
 
@@ -1318,8 +1318,8 @@ Version 3.78 - Sat Aug 25 2007, Thierry Vignaud
 Version 3.77 - Fri Aug 24 2007, Thierry Vignaud
 
 - add new "System/Printing" group
-- fix error if urpm::install stoped early (#32504)
-- fix running as a user (#32496)
+- fix error if urpm::install stoped early (MDV#32504)
+- fix running as a user (MDV#32496)
 - new option --justdb (new perl-URPM 1.76 & urpmi 4.10.6)
 - prevent some gtk+ warnings
 
@@ -1332,7 +1332,7 @@ Version 3.76 - Tue Aug 14 2007, Thierry Vignaud
   before
 - display already installed & not installable packages on errors
 - do not create multiple useless N("Search results (none)") subtrees
-  but display a message in status bar instead (#32332)
+  but display a message in status bar instead (MDV#32332)
 - do not unconditionnally enable 'allow-force' & 'allow-nodeps'
   options since we do no want end users to shoot themselves in the
   foot
@@ -1341,9 +1341,9 @@ Version 3.76 - Tue Aug 14 2007, Thierry Vignaud
 
 Version 3.75 - Sun Aug 12 2007, Thierry Vignaud
 
-- implement --auto option (#16093)
-- add a menu entry for --auto option (#16093)
-- display which package failed, and from which hdlist (#32349)
+- implement --auto option (MDV#16093)
+- add a menu entry for --auto option (MDV#16093)
+- display which package failed, and from which hdlist (MDV#32349)
 
 Version 3.74 - Sat Aug 11 2007, Thierry Vignaud
 
@@ -1366,21 +1366,21 @@ Version 3.73 - Fri Aug  3 2007, Thierry Vignaud
 
 Version 3.72 - Fri Aug 03 2007, Thierry Vignaud
 
-- disable notifications (#18965)
+- disable notifications (MDV#18965)
 - display again README.urpmi*
 - do not list identical packages several times when existing in
   several medium since urpmi only consider the first one anyway (same
-  behavior as old rpmdrake-2.x) (#31810)
+  behavior as old rpmdrake-2.x) (MDV#31810)
 - ensure list of update/install instructions is centered on main window
 - open rpm database less often
 - some internal refactoring
-- rephrase (#30072)
-- disable notifications (#18965)
+- rephrase (MDV#30072)
+- disable notifications (MDV#18965)
 
 Version 3.71 - Tue Jul  3 2007, Thierry Vignaud
 
 - prevent alarm() to mess up system(), thus making DVD being ejected
-  and printing wrong error messages (#30463)
+  and printing wrong error messages (MDV#30463)
 
 Version 3.70 - Fri Jun 22 2007, Thierry Vignaud
 
@@ -1399,38 +1399,38 @@ Version 3.69 - Thu Jun 21 2007, Thierry Vignaud
 Version 3.68 - Tue Jun 12 2007, Thierry Vignaud
 
 - rpmdrake:
-  o do not display bogus medium for already installed packages (#30556)
-  o fix crash when trying to save non set variables (#31367)
-  o fix freezing the GNOME desktop when xterm is installed (#30867)
+  o do not display bogus medium for already installed packages (MDV#30556)
+  o fix crash when trying to save non set variables (MDV#31367)
+  o fix freezing the GNOME desktop when xterm is installed (MDV#30867)
   o read config before warning if running as user in order to fix
-    error when trying to save config (#31367)
-- MandrivaUpdate: do handle skip.list if update media were updated (#31092)
+    error when trying to save config (MDV#31367)
+- MandrivaUpdate: do handle skip.list if update media were updated (MDV#31092)
 
 Version 3.67 - Tue Jun  5 2007, Thierry Vignaud
 
 - ensure "initialization" dialog got destroyed if an error happens very early
-  (ie if no package was ever installed) (#31029)
+  (ie if no package was ever installed) (MDV#31029)
 - rpmdrake: limit the number of results to 2000, else gtk+ takes quite
-  a lot of time in order to render the list (#30355)
+  a lot of time in order to render the list (MDV#30355)
 
 Version 3.66 - Tue May 22 2007, Thierry Vignaud
 
 - MandrivaUpdate: fix crash due to UTF-8 issue
-- workaround crash due to option abuse (#30817)
+- workaround crash due to option abuse (MDV#30817)
 
 Version 3.65 - Wed May  2 2007, Thierry Vignaud
 
-- rpmdrake: handle invalid UTF8 summaries (#30409)
+- rpmdrake: handle invalid UTF8 summaries (MDV#30409)
 
 Version 3.64 - Thu Apr 26 2007, Thierry Vignaud
 
-- readd back files lost after SVN crash (#30466)
+- readd back files lost after SVN crash (MDV#30466)
 
 Version 3.63 - Wed Apr 25 2007, Thierry Vignaud
 
-- MandrivaUpdate: escape characters, thus fixing duplicated names (#28970)
+- MandrivaUpdate: escape characters, thus fixing duplicated names (MDV#28970)
 - rpmdrake: fix not refreshing a subcategory if old & new
-  subcategories have the same name (#30421)
+  subcategories have the same name (MDV#30421)
 - when asking to choose a package among several ones, fix selecting
   first choice, thus preventing asking again the same question if
   choosing the first one
@@ -1440,14 +1440,14 @@ Version 3.62 - Thu Apr  5 2007, Thierry Vignaud
 - display a progress bar while removing packages
 - display which package is beging removed
 - do display some data if only one field is not UTF-8 valid
-- ensure version as reported by rpmdrake --version is uptodate (#29840)
+- ensure version as reported by rpmdrake --version is uptodate (MDV#29840)
 - reload the database if we removed some packages but didn't installed
   anything if an error happened or if first install transaction was canceled
-- edit-urpm-sources: handle --help immediatly (#29971)
+- edit-urpm-sources: handle --help immediatly (MDV#29971)
 - rpmdrake:
   o fix one remaining Gtk+ warning
-  o fix "rpmdrake --merge-all-rpmnew" (#29993)
-  o only search in package listed in current mode (#29708)
+  o fix "rpmdrake --merge-all-rpmnew" (MDV#29993)
+  o only search in package listed in current mode (MDV#29708)
 
 Version 3.61 - Fri Mar 23 2007, Thierry Vignaud
 
@@ -1467,23 +1467,23 @@ Version 3.60 - Fri Mar 23 2007, Thierry Vignaud
 
 Version 3.59 - Thu Mar 22 2007, Thierry Vignaud
 
-- make it closable again in mcc (#26069)
+- make it closable again in mcc (MDV#26069)
 - rpmdrake:
-  o fix gtk+ warnings (#26798)
-  o fix "unable to remove package" errors messages (#29823)
-    (#29291's fix wasn't enough for updates packages)
+  o fix gtk+ warnings (MDV#26798)
+  o fix "unable to remove package" errors messages (MDV#29823)
+    (MDV#29291's fix wasn't enough for updates packages)
 
 Version 3.58 - Thu Mar 22 2007, Thierry Vignaud
 
 - do not show "cancel" button when listing alternatives to select
   (it's still possible to cancel later)
-- edit_urpm_sources: enable to select ia32 for adding media (#28409)
+- edit_urpm_sources: enable to select ia32 for adding media (MDV#28409)
 - MandrivaUpdate:
   o do not refresh the list twice after installing some updates
   o once we updated some packages, refresh the list _after_ updating
     the package list
 - rpmdrake: workaround cannot selecting a selected then unselected
-  package witth deps (#28613)
+  package witth deps (MDV#28613)
 
 Version 3.57 - Wed Mar 21 2007, Thierry Vignaud
 
@@ -1491,7 +1491,7 @@ Version 3.57 - Wed Mar 21 2007, Thierry Vignaud
 - config file management:
   o always read config file in root directory if EUID is 0
   o handle root directory not being /root
-- fix bogus "unable to remove package" warnings (#29291)
+- fix bogus "unable to remove package" warnings (MDV#29291)
 - restore the main window sensivity if an exception occured
 
 Version 3.56 - Wed Mar 21 2007, Thierry Vignaud
@@ -1499,11 +1499,11 @@ Version 3.56 - Wed Mar 21 2007, Thierry Vignaud
 - do not reload package databases when canceling installing
 - fix error reporting with --parallel
 - prevent mcc from complaining that we exited abnormally when
-  canceling confirm dialiog (#29573)
+  canceling confirm dialiog (MDV#29573)
 
 Version 3.55 - Tue Mar 20 2007, Thierry Vignaud
 
-- rpmdrake: fix crash when looking at bugfix or security bugs (#29707)
+- rpmdrake: fix crash when looking at bugfix or security bugs (MDV#29707)
 
 Version 3.54 - Tue Mar 20 2007, Thierry Vignaud
 
@@ -1518,13 +1518,13 @@ Version 3.53 - Mon Mar 19 2007, Thierry Vignaud
   such signals for Toggles) and this make rpmdrake behaving like other
   regular Gtk+ applications
 - do refresh the list if something was installed even if a transaction
-  failed (#29384)
+  failed (MDV#29384)
 - handle more gracefully crashes while installing
 - split selection column into a toggle one and a status one, thus
   enabling to use a true (themable) ToggleButton instead of a manually
   randered one
 - MandrivaUpdate: make it fit in 800x600
-- rpmdrake: fix 'unable to update in "installed" view' (#27629)
+- rpmdrake: fix 'unable to update in "installed" view' (MDV#27629)
 
 Version 3.52 - Fri Mar 16 2007, Thierry Vignaud
 
@@ -1533,7 +1533,7 @@ Version 3.52 - Fri Mar 16 2007, Thierry Vignaud
 
 Version 3.51 - Thu Mar 15 2007, Thierry Vignaud
 
-- don't report cryptic "undefined value as array" error message (#27429)
+- don't report cryptic "undefined value as array" error message (MDV#27429)
 
 Version 3.50 - Thu Mar 15 2007, Thierry Vignaud
 
@@ -1550,7 +1550,7 @@ Version 3.48 - Thu Mar 15 2007, Thierry Vignaud
 - save configuration on exit so that we "remember" we've offered to
   add media on first run
 - MandrivaUpdate:
-  o do not ask again to update media after installing some updates (#27427)
+  o do not ask again to update media after installing some updates (MDV#27427)
   o reduce default width
   o set a 3:2 ratio between the package list and the package description
 
@@ -1566,7 +1566,7 @@ Version 3.46 - Mon Mar 12 2007, Thierry Vignaud
 Version 3.45 - Fri Mar  9 2007, Thierry Vignaud
 
 - edit_urpm_sources.pm: adapt "up" & "down" buttons to multiple
-  selection mode (#29186)
+  selection mode (MDV#29186)
 
 Version 3.44 - Thu Mar  8 2007, Thierry Vignaud
 
@@ -1577,22 +1577,22 @@ Version 3.44 - Thu Mar  8 2007, Thierry Vignaud
 
 Version 3.43 - Wed Mar 07 2007, Thierry Vignaud
 
-- fix crash when adding sources on startup (#29252)
+- fix crash when adding sources on startup (MDV#29252)
 
 Version 3.42 - Wed Mar 07 2007, Thierry Vignaud
 
 - fix wrong count number while dowloading packages and sync messages
-  with urpmi/gurpmi ones (#29237)
+  with urpmi/gurpmi ones (MDV#29237)
 - skip broken require (b/c of my laziness)
 
 Version 3.41 - Wed Mar 07 2007, Thierry Vignaud
 
 - edit_urpm_sources.pm: improved layout for keys management
 - MandrivaUpdate:
-  o display extended info about currently selected package (#28862, #28971)
+  o display extended info about currently selected package (MDV#28862, #28971)
   o reload package list after performing updades
-- rpmdrake: show again current version (#26946), source medium
-  (#23153), size and architecture (#26410)
+- rpmdrake: show again current version (MDV#26946), source medium
+  (MDV#23153), size and architecture (#26410)
 
 Version 3.40 - Tue Mar  6 2007, Thierry Vignaud
 
@@ -1600,24 +1600,24 @@ Version 3.40 - Tue Mar  6 2007, Thierry Vignaud
 
 Version 3.39 - Tue Mar  6 2007, Thierry Vignaud
 
-- display version number if --version is given (#28858)
+- display version number if --version is given (MDV#28858)
 - edit_urpm_sources.pm:
-  o fix editing a medium (#29204)
-  o fix removing several medium (#29203)
+  o fix editing a medium (MDV#29204)
+  o fix removing several medium (MDV#29203)
 
 Version 3.38 - Tue Mar  6 2007, Thierry Vignaud
 
 - missing packages:
   o display them at end of install
   o nicer display
-- on first run, offer to set up the packages sources (#28050)
+- on first run, offer to set up the packages sources (MDV#28050)
 - edit-urpm-sources: set down/edit/remove/up buttons insensitive by default
 - MandrivaUpdate: fix a crash
 - rpmdrake:
   o display a wait message while removing packages
   o do not reread the urpm database if media manager didn't perform anything
-  o fix installing packages (#29068)
-  o fix removing packages by performing a removal pass before other transactions (#29070)
+  o fix installing packages (MDV#29068)
+  o fix removing packages by performing a removal pass before other transactions (MDV#29070)
 
 Version 3.37 - Fri Mar  2 2007, Thierry Vignaud
 
@@ -1629,12 +1629,12 @@ Version 3.36.1 - Fri Mar  2 2007, Thierry Vignaud
 
 - add support for urpmi transactions:
   o display errors at end of installation
-  o download only the transaction's packages at once (#27495)
-  o fix canceling all installationss when one transaction failled (#26867)
+  o download only the transaction's packages at once (MDV#27495)
+  o fix canceling all installationss when one transaction failled (MDV#26867)
 - add support for preforming installation w/o deps & for forcing installation
 - don't lock the urpmi db when displaying success/error messages at end
-- fix emptying the cache (#26222)
-- edit_urpm_sources: enable to delete several medium at once (#21532)
+- fix emptying the cache (MDV#26222)
+- edit_urpm_sources: enable to delete several medium at once (MDV#21532)
 - MandrivaUpdate:
   o don't preselect kernel packages required by kernel*-latest too
   o refresh updates list at end of install
@@ -1652,30 +1652,30 @@ Version 3.34 - Wed Feb 28 2007, Thierry Vignaud
 
 Version 3.33 - Wed Feb 28 2007, Thierry Vignaud
 
-- fix searching in description (#28943)
+- fix searching in description (MDV#28943)
 
 Version 3.32 - Wed Feb 28 2007, Thierry Vignaud
 
 - MandrivaUpdate:
-  o don't ignore /etc/urpmi/skip.list (#28390)
+  o don't ignore /etc/urpmi/skip.list (MDV#28390)
   o don't select kernel*-latest by default
-  o fix not listing all updates (#20294)
-  o fix upgrading biarch machines (#15906, #27698)
+  o fix not listing all updates (MDV#20294)
+  o fix upgrading biarch machines (MDV#15906, #27698)
 
 Version 3.31 - Wed Feb 28 2007, Thierry Vignaud
 
 - fix unrefreshed dialogs while reading the package database or
-  installing/removing packages (#15408)
+  installing/removing packages (MDV#15408)
 
 Version 3.30 - Tue Feb 27 2007, Thierry Vignaud
 
-- fix crash after (un)installing package (#28896)
+- fix crash after (un)installing package (MDV#28896)
 
 Version 3.29 - Mon Feb 26 2007, Thierry Vignaud
 
 - edit_urpm_sources.pm: make "edit" button insensitive if no selection
 - rpmdrake: don't preselect anymore the updates when not started as
-  MandrivaUpdate (#27500)
+  MandrivaUpdate (MDV#27500)
 - rpmdrake, MandrivaUpdate:
   o --merge-all-rpmnew option: use Gtk2::SourceView in order to
     source highlight file contents and patches
@@ -1687,7 +1687,7 @@ Version 3.28 - Thu Feb 22 2007, Thierry Vignaud
 - display again the full usage on --help
 - rpmdrake:
   o do not fork edit-urpm-sources.pl in background
-  o reload the package db after editing sources (#27483)
+  o reload the package db after editing sources (MDV#27483)
   o rename "apply" button as "update"
 - edit-urpm-sources.pl
   o make "remove" button insensitive if no selection
@@ -1697,9 +1697,9 @@ Version 3.28 - Thu Feb 22 2007, Thierry Vignaud
 Version 3.27 - Wed Feb 21 2007, Thierry Vignaud
 
 - fix being unable to install packages when started as rpmdrake-remove
-  (#26364)
+  (MDV#26364)
 - fix crash introduced in 3.26 when started as rpmdrake-remove
-- fix crash if there's no source (#28846)
+- fix crash if there's no source (MDV#28846)
 
 Version 3.26 - Wed Feb 21 2007, Thierry Vignaud
 
@@ -1707,10 +1707,10 @@ Version 3.26 - Wed Feb 21 2007, Thierry Vignaud
   o have better sub dialogs behaviour (WM hints)
 - rpmdrake:
   o add some transient & modal hints
-  o fix "cannot see uninstalled packages" bug (#25991)
-  o fix crash when performing a search while loading the package list (#27577)
+  o fix "cannot see uninstalled packages" bug (MDV#25991)
+  o fix crash when performing a search while loading the package list (MDV#27577)
   o fix a bug in listing updates
-  o handle singular/plural (#27533)
+  o handle singular/plural (MDV#27533)
   o refactoring
 - MandrivaUpdate:
   o faster startup 
@@ -1723,7 +1723,7 @@ Version 3.25 - Mon Dec 04 2006, Thierry Vignaud
   o better looking (key column now wraps)
 - rpmdrake:
   o don't try to show .rpmnew differences for
-    /etc/sysconfig/harddrake2/previous_hw (#27426)
+    /etc/sysconfig/harddrake2/previous_hw (MDV#27426)
   o first attempt of displaying a (for now nonlinear) progress bar
   o only show description for real updates, not also for packages with
     the same base name
@@ -1742,8 +1742,8 @@ Version 3.23 - Thu Nov 30 2006, Thierry Vignaud
   o don't ellipsize lost of packages since we have a scrolled window
   o dynamically switch the selection label
   o explain why packages are removed
-  o handle spurious Gtk+ signals (#27381)
-  o really fix not able to select only one update (#26135)
+  o handle spurious Gtk+ signals (MDV#27381)
+  o really fix not able to select only one update (MDV#26135)
   o show the main window way earlier for faster startup experience
   o update information:
   * better formatting of update data
@@ -1751,7 +1751,7 @@ Version 3.23 - Thu Nov 30 2006, Thierry Vignaud
   * better title for README.urpmi dialog
   * better labels
 - edit-urpm-sources.pl:
-  o fix bad looking error messages (#26971)
+  o fix bad looking error messages (MDV#26971)
 - bump require on drakxtools due to API changes
 
 Version 3.22 - Mon Nov 27 2006, Thierry Vignaud
@@ -1762,24 +1762,24 @@ Version 3.22 - Mon Nov 27 2006, Thierry Vignaud
 - edit-urpm-sources.pl: when canceling removal of a medium, don't
   reset the selection
 - rpmdrake:
-  o add a line between description and file list expander (#27022)
-  o allow using regexp in searches (Vincent Panel, #27198)
-  o don't crash on UTF-8 issues (#26099)
+  o add a line between description and file list expander (MDV#27022)
+  o allow using regexp in searches (Vincent Panel, MDV#27198)
+  o don't crash on UTF-8 issues (MDV#26099)
   o fix displaying list of removed packages
   o lock rpm & urpmi DB whenever needed
   o optimize --pkg-sel
   o reload urpmi db if removing some packages
   o restore --help output
   o when reseting the selection, refresh the package list instead of
-  clearing it (#26796)
+  clearing it (MDV#26796)
 - MandrivaUpdate:
-  o add a "select all" button (reall "toggle") (#25271)
+  o add a "select all" button (reall "toggle") (MDV#25271)
   o default to "all updates" rather than "security updates" in
   MandrivaUpdate mode
-  o fix not able to select only one update (#26135)
-  o preselect updates by default (#25271)
+  o fix not able to select only one update (MDV#26135)
+  o preselect updates by default (MDV#25271)
   o really show all security, bugfix & normal updates in "all updates"
-  mode (#27268)
+  mode (MDV#27268)
 
 Version 3.21-2mdv - Sat Nov 25 2006, Thierry Vignaud
 
@@ -1792,7 +1792,7 @@ Version 3.21 - Fri Nov 24 2006, Thierry Vignaud
 - if nothing got installed (eg: because some packages are missing),
   do not bother reread the whole hdlists
 - really show all security, bugfix & normal updates in "all updates"
-  mode (#27268)
+  mode (MDV#27268)
 - use more modern API (MDV::Packdrakeng instead of packdrake)
 
 Version 3.20 - Thu Nov 23 2006, Thierry Vignaud
@@ -1809,23 +1809,23 @@ Version 3.19 - Thu Nov 23 2006, Thierry Vignaud
 Version 3.18 - Mon Nov 13 2006, Thierry Vignaud
 
 - regenerated with correct permissions
-- fix messed up reasons for removal (#25130)
-- fix forever all encoding issues of urpmi (#18629, #25130)
-- really fix crash by behaving like urpmi & gurpmi (#26742)
+- fix messed up reasons for removal (MDV#25130)
+- fix forever all encoding issues of urpmi (MDV#18629, #25130)
+- really fix crash by behaving like urpmi & gurpmi (MDV#26742)
 
 Version 3.17 - Fri Oct 27 2006, Thierry Vignaud
 
-- add support of hdlists for update media (#26788)
-  better confirmation string when only removing packages (#26789)
+- add support of hdlists for update media (MDV#26788)
+  better confirmation string when only removing packages (MDV#26789)
 
 Version 3.16 - Thu Oct 26 2006, Thierry Vignaud
 
 - enable "File/_Update media" whatever is the starting mode
-- fix not installing packages when invoked as -remove (#26364)
+- fix not installing packages when invoked as -remove (MDV#26364)
 - if one package cannot be removed, do not alter "selected" status for
   other packages in the loop
 - fix uninstalling the last package deselected for removal when
-  installing others packages (#26108)
+  installing others packages (MDV#26108)
 - "/_File/_Reset the selection" menu item:
   o fix displaying again the three after clicking on it
   o behave faster after clicking on it
@@ -1833,7 +1833,7 @@ Version 3.16 - Thu Oct 26 2006, Thierry Vignaud
 
 Version 3.15 - Wed Oct 25 2006, Thierry Vignaud
 
-- rpmdrake: fix crash by behaving like urpmi & gurpmi (#26742)
+- rpmdrake: fix crash by behaving like urpmi & gurpmi (MDV#26742)
 - park-rpmdrake:
   o center dialogs on parent windows
   o set some sensitive dialog titles
@@ -1847,87 +1847,87 @@ Version 3.14 - Wed Oct 25 2006, Thierry Vignaud
 
 Version 3.13 - Tue Oct 24 2006, Thierry Vignaud
 
-- check if any sensitive mount point is mounted read-only (#12967)
-- fix inverted status icon (#26743)
-- fix mis encoded strings returned by urpmi on download errors (#25130)
+- check if any sensitive mount point is mounted read-only (MDV#12967)
+- fix inverted status icon (MDV#26743)
+- fix mis encoded strings returned by urpmi on download errors (MDV#25130)
 - show nice icons in "mandriva choice" mode
 
 Version 3.12 - Sat Oct 21 2006, Thierry Vignaud
 
 - enable to see all updates too when not started as MandrivaUpdate
-- fix empty list after updating media from "File" menu (#26290)
+- fix empty list after updating media from "File" menu (MDV#26290)
 - if /etc/urpmi/urpmi.cfg doesn't exists, prevent urpmi to kill
   rpmdrake, create an empty config file and run edit-urpm-sources
-  instead (#26533)
-- show non installed updates in "non installed" list too (#26656)
+  instead (MDV#26533)
+- show non installed updates in "non installed" list too (MDV#26656)
 - Import rpmdrake
 
 Version 3.11 - Tue Sep 26 2006, Thierry Vignaud
 
-- fix icon state on unselecting (#26126)
+- fix icon state on unselecting (MDV#26126)
 - in "all updates" mode, list again packages without an importance
-  field (aka those coming from non update media) (#25267)
+  field (aka those coming from non update media) (MDV#25267)
 
 Version 3.10 - Tue Sep 19 2006, Thierry Vignaud
 
 - new icons
 - fix unselecting an update
-- fix displayed status for selected updates (#25964)
+- fix displayed status for selected updates (MDV#25964)
 - merge-all-rpmnew option:
   o center main window
   o display a wait message
   o do not silently do nothing when there's no changes but show it to
-    the user and enable him to delete bogus .rpmnew files (#22744)
-  o fix it (#24930)
+    the user and enable him to delete bogus .rpmnew files (MDV#22744)
+  o fix it (MDV#24930)
   o increase default width
 
 Version 3.9 - Tue Sep 19 2006, Thierry Vignaud
 
 - rpmdrake:
   o fix crash
-  o force displaying of group on mode switching (#25955)
+  o force displaying of group on mode switching (MDV#25955)
 
 Version 3.8 - Tue Sep 19 2006, Thierry Vignaud
 
 - for official releases, use new mirror API to ask for only update or
   distrib media
-- keep internal state untranslated (#25774)
+- keep internal state untranslated (MDV#25774)
 - prevent blank screen after reloading db from menu
 - MandrivaUpdate:
   o fix crash
   o fix listing updates
-  o offer to add an update media in on startup if needed (#25708)
+  o offer to add an update media in on startup if needed (MDV#25708)
 
 Version 3.7 - Mon Sep 18 2006, Thierry Vignaud
 
 - edit-urpm-sources: fix canceling "Add"
 - rpmdrake:
-  o fix crash when searching after clicking "Clear" button (#25926)
-  o fix only listing first line of changelog/files list (#25925)
+  o fix crash when searching after clicking "Clear" button (MDV#25926)
+  o fix only listing first line of changelog/files list (MDV#25925)
 
 Version 3.6 - Mon Sep 18 2006, Thierry Vignaud
 
 - display a link on security advisory
-- fix looping on resizing (side effect of #25533's fix)
-- prevent dummy "unable to remove package" error dialog (#25680)
-- really reload the package list after installing some packages (#25910)
+- fix looping on resizing (side effect of MDV#25533's fix)
+- prevent dummy "unable to remove package" error dialog (MDV#25680)
+- really reload the package list after installing some packages (MDV#25910)
 
 Version 3.5 - Sun Sep 17 2006, Thierry Vignaud
 
 - do not needlessly reread urpmi database when canceling
-  (un)installation (#25673)
+  (un)installation (MDV#25673)
 - do not reload the urpmi db when switching list mode
 - further speedup mode switching (50% less time)
 - fix bogus portuguese tranlation of a menu item
-- fix lost selection on mode switch (#25248)
+- fix lost selection on mode switch (MDV#25248)
 - fix displaying update data for updates
-- fix encoding when querying rpm (#25670, #25716)
+- fix encoding when querying rpm (MDV#25670, #25716)
 - fix listing not all updates (aka only security, bugfixes or normal updates)
-- fix title (#25666)
-- fix unselecting packages to remove (#25653)
-- make "files" and "changelog" embedded widgets be properly sized (#25533)
+- fix title (MDV#25666)
+- fix unselecting packages to remove (MDV#25653)
+- make "files" and "changelog" embedded widgets be properly sized (MDV#25533)
 - scroll textview to its top when selecting a new package
-- when launched in remove mode, default to this mode (#25551)
+- when launched in remove mode, default to this mode (MDV#25551)
 
 Version 3.4 - Sat Sep 16 2006, Thierry Vignaud
 
@@ -1936,33 +1936,33 @@ Version 3.4 - Sat Sep 16 2006, Thierry Vignaud
 - edit-urpm-sources:
   o center some dialogs on main window
   o don't display oversmall error dialogs
-  o use new mirror API (#25400)
-- fix crash on "Reload the _packages list" in "File" menu (#25652)
-- fix double "About About rpmdrake" (#25667)
+  o use new mirror API (MDV#25400)
+- fix crash on "Reload the _packages list" in "File" menu (MDV#25652)
+- fix double "About About rpmdrake" (MDV#25667)
 
 Version 3.3 - Wed Sep 13 2006, Thierry Vignaud
 
-- ask confirmation for packages to be installed too (#25451, #25548)
-- better formating: one package per line (#16079)
+- ask confirmation for packages to be installed too (MDV#25451, #25548)
+- better formating: one package per line (MDV#16079)
 - fix dialogs not centered on parent window
 - fix extracting info for installed packages
-- fix uninstalling several packages (#25027)
+- fix uninstalling several packages (MDV#25027)
 - prevent some not good looking horizontal scrollbars
 
 Version 3.2 - Mon Sep 11 2006, Thierry Vignaud
 
-- add a menu entry for superuser mode (#25302)
+- add a menu entry for superuser mode (MDV#25302)
 - rpmdrake: 
   o display changelog & file list using expanders
   o fix corrupted images after the CVS to SVN switch due to missing
-    -kb (#24790)
-  o fix crash (#24870)
-  o fix dialog title when removing packages (#25046)
+    -kb (MDV#24790)
+  o fix crash (MDV#24870)
+  o fix dialog title when removing packages (MDV#25046)
   o fix "preparing" message when there's no package to install
-    (#25272)
+    (MDV#25272)
   o misc other fixes
 - edit-urpm-sources.pl: HIG
-- MandrivaUpdate: fix dying upon startup (#23686)
+- MandrivaUpdate: fix dying upon startup (MDV#23686)
 
 Version 3.1.1 - Mon Aug 28 2006, Thierry Vignaud
 
@@ -1991,13 +1991,13 @@ Version 3.0 - Mon Jul  3 2006, Thierry Vignaud
 - make some windows transcient
 - fix garbaged error messages while accessing mirrors
 - edit-urpm-sources:
-  o improve layout by using nicer alignment (#17716)
-  o improve layout by using a combo box (#17733)
+  o improve layout by using nicer alignment (MDV#17716)
+  o improve layout by using a combo box (MDV#17733)
   o let's be more user-friendly by showing one cannot move an item
     when it's the first or the last one
   o prevent some Gtk+ critic warnings
 - rpmdrake (WIP):
-  o unify all interfaces (#21877)
+  o unify all interfaces (MDV#21877)
   o add a "report bug" menu entry (since mcc's menu is hidden)
   o enable one to cancel selecting packages
   o fix encoding of urpmi error
@@ -2046,11 +2046,11 @@ Version 2.22 - Wed Nov 16 2005, Rafael Garcia-Suarez
 
 Version 2.21 - Mon Oct 31 2005, Rafael Garcia-Suarez
 
-- Fix sort under some locales (bugs #18617 and #19356)
+- Fix sort under some locales (bugs MDV#18617 and #19356)
 - Ask the user if one should update unignored invalid media
 - Remove context menu in the software media manager
 - Make some popups prettier in the software media manager
-- Fix busy loop in gtk display (bug #15985)
+- Fix busy loop in gtk display (bug MDV#15985)
 - Misc. cleanups
 - Message updates
 
@@ -2131,7 +2131,7 @@ Version 2.11 - Fri Apr 15 2005, Rafael Garcia-Suarez
 Version 2.10-4mdk - Wed Mar 30 2005, Rafael Garcia-Suarez
 
 - po updates
-- make gurpmi.addmedia more robust (bug #15028)
+- make gurpmi.addmedia more robust (bug MDV#15028)
 
 Version 2.10-3mdk - Mon Mar 21 2005, Rafael Garcia-Suarez
 
@@ -2359,7 +2359,7 @@ Version 2.1.3-12mdk - Tue Jul 20 2004, Rafael Garcia-Suarez
 
 - Display fixes
 - Message updates
-- Prevent to select an entire subtree by mistake. (work around for bug #9941)
+- Prevent to select an entire subtree by mistake. (work around for bug MDV#9941)
 
 Version 2.1.3-11mdk - Thu Jul 08 2004, Rafael Garcia-Suarez
 
@@ -2402,7 +2402,7 @@ Version 2.1.3-5mdk - Tue May 11 2004, Rafael Garcia-Suarez
 
 Version 2.1.3-4mdk - Tue May 04 2004, Rafael Garcia-Suarez
 
-- Make the package list pane resizable (Robert Vojta) (#8925)
+- Make the package list pane resizable (Robert Vojta) (MDV#8925)
 
 Version 2.1.3-3mdk - Mon May 03 2004, Rafael Garcia-Suarez
 
@@ -2451,13 +2451,13 @@ Version 2.1.2-8mdk - Thu Feb 26 2004, Guillaume Cottenceau
 
 Version 2.1.2-7mdk - Mon Feb 23 2004, Guillaume Cottenceau
 
-- rpmdrake: don't hide progress window during install (#8146)
+- rpmdrake: don't hide progress window during install (MDV#8146)
 
 Version 2.1.2-6mdk - Fri Feb 20 2004, Guillaume Cottenceau
 
 - edit-urpm-media: fix broken media reordering (program crashed)
-- rpmdrake: hide password in logs (#6260)
-- edit-urpm-media: lock urpmi database while running (#6828)
+- rpmdrake: hide password in logs (MDV#6260)
+- edit-urpm-media: lock urpmi database while running (MDV#6828)
 
 Version 2.1.2-5mdk - Fri Feb 13 2004, Thierry Vignaud
 
@@ -2469,10 +2469,10 @@ Version 2.1.2-4mdk - Fri Feb 13 2004, Thierry Vignaud
 
 Version 2.1.2-3mdk - Thu Feb 12 2004, Guillaume Cottenceau
 
-- some #7472-alike progressbar sizing fixes
+- some MDV#7472-alike progressbar sizing fixes
 - menu: specify that gurpmi.addmedia handles application/x-urpmi-media
-- fix #7425: center-always or center-on-parent popup windows
-- fix #7675: rpmdrake-remove wrongly thought an unrelated package was
+- fix MDV#7425: center-always or center-on-parent popup windows
+- fix MDV#7675: rpmdrake-remove wrongly thought an unrelated package was
   needed to remove another one
 
 Version 2.1.2-2mdk - Wed Jan 21 2004, Guillaume Cottenceau
@@ -2487,19 +2487,19 @@ Version 2.1.2 - Thu Jan 15 2004, Guillaume Cottenceau
 - add ability to use rpmdrake/rpmdrake-remove with a "parallel"
   urpmi configuration (drawbacks: deps are shown only valid for a
   given node; multiple choices will work in --auto mode only)
-- reword "void" for "empty" (#6873)
+- reword "void" for "empty" (MDV#6873)
 
 Version 2.1.1-2mdk - Wed Jan 14 2004, Guillaume Cottenceau
 
 - fix wrongly using unavailable sorting method in remove mode after
   save in install mode
 - fix big performance penalty on long filelists since 2.1-36mdk
-  allowing correct display of filenames in RTL languages (#6865)
+  allowing correct display of filenames in RTL languages (MDV#6865)
  
 Version 2.1.1 - Mon Jan 12 2004, Guillaume Cottenceau
 
-- add ability to cancel packages downloads (#6317)
-- save sorting method at exit of rpmdrake for Lord Titi (#6051)
+- add ability to cancel packages downloads (MDV#6317)
+- save sorting method at exit of rpmdrake for Lord Titi (MDV#6051)
 - together with changes in 2.1-36mdk deserve a subsubversion change
 - remove unecessary provides perl(rpmdrake)
 
@@ -2510,9 +2510,9 @@ Version 2.1-37mdk - Fri Jan 09 2004, Warly
 Version 2.1-36mdk - Tue Dec 23 2003, Guillaume Cottenceau
 
 - provide drak* names as well
-- fix filelist wrongly displayed in RTL language, thx titi (#6581)
-- remove info on last selected package after install (#4648)
-- MandrakeUpdate: add ability to select all (#6576 and others)
+- fix filelist wrongly displayed in RTL language, thx titi (MDV#6581)
+- remove info on last selected package after install (MDV#4648)
+- MandrakeUpdate: add ability to select all (MDV#6576 and others)
 
 Version 2.1-35mdk - Fri Sep  5 2003, Guillaume Cottenceau
 
@@ -2524,13 +2524,13 @@ Version 2.1-35mdk - Fri Sep  5 2003, Guillaume Cottenceau
 
 Version 2.1-34mdk - Tue Sep  2 2003, Guillaume Cottenceau
 
-- s/9.1/9.2/ (#5201)
+- s/9.1/9.2/ (MDV#5201)
 - help:
   - use --id
   - launch the good sub-chapter
   - add an help button to the Media Editor
 - edit-urpm-media: fix not reporting any error when updating of
-  media fail (#5212)
+  media fail (MDV#5212)
 
 Version 2.1-33mdk - Tue Sep 02 2003, David Baudens
 
@@ -2540,10 +2540,10 @@ Version 2.1-32mdk - Mon Aug 18 2003, Guillaume Cottenceau
 
 - edit-urpm-media:
   - handle modality in parallel and key editors
-  - fix #4914 (program crashes when trying to add a medium)
+  - fix MDV#4914 (program crashes when trying to add a medium)
 - MandrakeUpdate: handle subdirectory in "updates" for special
   Mandrake issues such as corporate/clustering/etc
-- rpmdrake: focus in the find entry on startup (#5021)
+- rpmdrake: focus in the find entry on startup (MDV#5021)
 
 Version 2.1-31mdk - Wed Aug 13 2003, Guillaume Cottenceau
 
@@ -2554,10 +2554,10 @@ Version 2.1-31mdk - Wed Aug 13 2003, Guillaume Cottenceau
   because titi replaced ->size_request by ->get_size_request
   (such dialog is for example "more information on packages")
 - don't display a too high message when there are many packages
-  with signatures problems (#4335)
+  with signatures problems (MDV#4335)
 - when updating media, if url is too long, don't display it because
   it enlarges much the dialog; better display only the basename
-  and the medium name (#4338)
+  and the medium name (MDV#4338)
 - edit-urpm-media/add:
   - right-align left labels
   - use a checkbutton for "hdlist" so that user better understands
@@ -2577,7 +2577,7 @@ Version 2.1-29mdk - Fri Jul 25 2003, Thierry Vignaud
 
 Version 2.1-28mdk - Wed Jul 23 2003, Thierry Vignaud
 
-- fix #4248 (crash when asking for more infos in rpmdrake-remove)
+- fix MDV#4248 (crash when asking for more infos in rpmdrake-remove)
 
 Version 2.1-27mdk - Tue Jul 22 2003, Thierry Vignaud
 
@@ -2636,7 +2636,7 @@ Version 2.1-20mdk - Fri May 16 2003, Guillaume Cottenceau
   question! :)
 - fix not removing gurpm dialog when exiting package installation with
   an error
-- fix #3908 (garbage chars displayed as date in changelog entries in
+- fix MDV#3908 (garbage chars displayed as date in changelog entries in
   removal mode)
 - substitute references to "sources" by now talking about "medias",
   should be more understandable and more consistent with urpmi
@@ -2650,7 +2650,7 @@ Version 2.1-19mdk - Mon May 12 2003, Guillaume Cottenceau
 
 Version 2.1-18mdk - Thu Apr 17 2003, Guillaume Cottenceau
 
-- fix problem shown by #3768: correctly handle case when there
+- fix problem shown by MDV#3768: correctly handle case when there
   are already update source(s), but they are all disabled
 - report more urpmi errors in the GUI
 
@@ -2672,14 +2672,14 @@ Version 2.1-16mdk - Tue Apr 15 2003, Guillaume Cottenceau
   not in "Upgradable" under "sort by update availability", as one
   would expect)
 - MandrakeUpdate: UI change to follow David Walser's suggestions and
-  patches from #3610, e.g. don't use two paned windows anymore
+  patches from MDV#3610, e.g. don't use two paned windows anymore
 
 Version 2.1-15mdk - Tue Apr  8 2003, Guillaume Cottenceau
 
-- rpmdrake: small UI change to follow #3610, e.g. in
+- rpmdrake: small UI change to follow MDV#3610, e.g. in
   "maximum information" mode, have the source and currently installed
   version closer to the top
-- grpmi: fix yet again an UTF8 problem (#3676)
+- grpmi: fix yet again an UTF8 problem (MDV#3676)
 
 Version 2.1-14mdk - Wed Mar 26 2003, Guillaume Cottenceau
 
@@ -2722,9 +2722,9 @@ Version 2.1-8mdk - Fri Feb 28 2003, Guillaume Cottenceau
 Version 2.1-7mdk - Fri Feb 21 2003, Guillaume Cottenceau
 
 - fix bug that prevented from having all the translations in
-  the PO (#1233)
+  the PO (MDV#1233)
 - rpmdrake:
-  - fix locking of CD after installation (#1311)
+  - fix locking of CD after installation (MDV#1311)
 - add download progress when updating distant sources (still needs
   improvement in messages, work in progress with urpmi)
 - some code cleanup thx to titi & perl checker
@@ -2739,16 +2739,16 @@ Version 2.1-5mdk - Tue Feb 11 2003, Guillaume Cottenceau
 
 - rpmdrake:
   - mark version as 9.1
-  - fixes error "source not selected" (#966 and its army of duplicates)
+  - fixes error "source not selected" (MDV#966 and its army of duplicates)
 
 Version 2.1-4mdk - Thu Jan 23 2003, Guillaume Cottenceau
 
 - edit-urpm-sources:
   - fix wrong display of medium as "enabled", after adding a medium
-    that has problems and is hence automatically disabled (#995)
+    that has problems and is hence automatically disabled (MDV#995)
   - fix crashing when managing to call Remove or Edit with nothing
-    selected (#970)
-- add a dependency to a recent drakxtools to fix #1030
+    selected (MDV#970)
+- add a dependency to a recent drakxtools to fix MDV#1030
 - fix problems of characters display in non-latin1 locales
 - fix wait messages breakage when using perl-GTK2 >= 0.0.cvs.2003.01.27.1
 - a sources editor fix thx to titi
