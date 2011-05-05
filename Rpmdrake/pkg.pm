@@ -313,7 +313,7 @@ sub get_installed_packages {
     reset_pbar_count(0.33);
     while (defined(local $_ = shift @base)) {
 	exists $basepackages{$_} and next;
-	$db->traverse_tag(m|^/| ? 'path' : 'whatprovides', [ $_ ], sub {
+	$db->traverse_tag(m|^/| ? 'basenames' : 'providename', [ $_ ], sub {
 			      update_pbar($gurpm);
 			      my $name = urpm_name($_[0]);
 			      # workaround looping in URPM:
