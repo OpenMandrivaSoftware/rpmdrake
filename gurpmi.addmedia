@@ -118,14 +118,14 @@ N("%s
 
 Is it ok to continue?",
 $distrib || !@names
-? N("You are about to add new packages media.
+? N("You are about to add new package media.
 That means you will be able to add new software packages
 to your system from these new media.")
 : 1 < @names
-? N("You are about to add new packages media, %s.
+? N("You are about to add new package medium, %s.
 That means you will be able to add new software packages
 to your system from these new media.", join ", ", @names)
-: N("You are about to add a new packages medium, `%s'.
+: N("You are about to add a new package medium, `%s'.
 That means you will be able to add new software packages
 to your system from that new medium.", $names[0])
 ),
