@@ -1188,8 +1188,9 @@ sub run() {
         my $err_msg = "urpmdb locked\n";
         local $urpm->{fatal} = sub {
             interactive_msg('rpmdrake',
-                            N("Packages database is locked. Please close other applications
-working with the Package database (do you have another media
+                            N("The Package Database is locked. Please close other applications
+working with the Package Database (do you have another media
+
 manager on another desktop, or are you currently installing
 packages as well?)."));
             die $err_msg;
