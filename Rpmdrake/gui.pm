@@ -376,9 +376,8 @@ sub node_state {
                                  #-PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
                                  #-PO: eg: "- rpmdrake (medium: "Main Release"
                                  N("- %s (medium: %s)", $_, pkg2medium($pkgs->{$_}{pkg}, $urpm)->{name});
-                             } grep {
-				 /^$short_name/ && $pkgs->{$_}{pkg}
-			     } keys %$pkgs),
+                                 } grep { /^$short_name/ } keys %$pkgs),
+
                          ),
                         scroll => 1,
                     );
