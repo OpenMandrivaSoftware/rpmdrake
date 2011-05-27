@@ -166,7 +166,7 @@ our $configfile = "$ENV{HOME}/.rpmdrake";
 # Configuration File Options
 #
 
-# clear download cache after succesfull installation of packages
+# clear download cache after succesful installation of packages
 our $clean_cache;
 
 # automatic select dependencies without user intervention

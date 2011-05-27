@@ -173,8 +173,8 @@ sub get_string_from_keywords {
     } elsif (member('updates', @media_types)) {
         return join("\n",
                     (member('official', @media_types) ?
-                       N("This is an offical update which is supported by Mandriva.")
-                       : (N("This is an unoffical update."), $unsupported))
+                       N("This is an official update which is supported by Mandriva.")
+                       : (N("This is an unofficial update."), $unsupported))
                     ,
                     $s);
     } else {
@@ -240,7 +240,7 @@ sub get_new_deps {
                               $urpm->disable_selected(open_rpm_db(), $state, @requested);
                               my @nodes_with_deps = map { urpm_name($_) } @requested;
                               my @deps = sort { $a cmp $b } difference2(\@nodes_with_deps, [ urpm_name($upkg) ]);
-                              @deps = N("No non installed dependancy.") if !@deps;
+                              @deps = N("No non installed dependency.") if !@deps;
                               gtktext_insert($deps_textview, join("\n", @deps));
                           });
             }
@@ -359,7 +359,7 @@ sub node_state {
     my $pkg = $pkgs->{$name};
     my $urpm_obj = $pkg->{pkg};
     if (!$urpm_obj) {
-        my ($short_name) = split_fullname($name);
+        my ($short_name) = $name;
         state $warned;
         if (!$warned) {
             $warned = 1;
@@ -841,7 +841,7 @@ sub toggle_nodes {
                     ($count == 1 ? N("One package cannot be installed") : N("Some packages can't be installed")),
 		    ($count == 1 ? 
                  N("Sorry, the following package cannot be selected:\n\n%s", format_list(@reasons))
-                   : N("Sorry, the following packages can't be selected:\n\n%s", format_list(@reasons))),
+                   : N("Sorry, the following packages cannot be selected:\n\n%s", format_list(@reasons))),
                     scroll => 1,
                 );
                 foreach (@cant) {
@@ -912,7 +912,7 @@ sub do_action__real {
     my $size_added = sum(map { if_($_->flag_selected && !$_->flag_installed, $_->size) } @{$urpm->{depslist}});
     if ($MODE eq 'install' && $size_free - $size_added/1024 < 50*1024) {
         interactive_msg(N("Too many packages are selected"),
-                        N("Warning: it seems that you are attempting to add so much
+                        N("Warning: it seems that you are attempting to add so many
 packages that your filesystem may run out of free diskspace,
 during or after package installation ; this is particularly
 dangerous and should be considered with care.

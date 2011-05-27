@@ -735,7 +735,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         my $pkg = defined $id ? $urpm->{depslist}[$id] : undef;
         if ($subtype eq 'start') {
             if ($type eq 'trans') {
-                $gurpm->label(1 ? N("Preparing packages installation...") : N("Preparing package installation transaction..."));
+                $gurpm->label(1 ? N("Preparing package installation...") : N("Preparing package installation transaction..."));
                 } elsif (defined $pkg) {
                     $something_installed = 1;
                     $gurpm->label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$transaction_progress_nb, scalar(@{$transaction->{upgrade}}))
