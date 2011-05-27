@@ -16,7 +16,7 @@ LOCALEDIR=$(DATADIR)/locale
 all: $(MOFILES)
 
 %.mo: %.po
-	msgfmt -o $@ $<
+	msgfmt -c -o $@ $<
 
 update_n_merge: $(PGOAL).pot merge
 
