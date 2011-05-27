@@ -772,7 +772,7 @@ sub toggle_nodes {
             foreach (grep { exists $pkgs->{$_}{base} } @remove) {
                 ${$pkgs->{$_}{base}} == 1 ? push @impossible_to_remove, $_ : ${$pkgs->{$_}{base}}--;
             }
-            @impossible_to_remove and interactive_msg(N("Some packages can't be removed"),
+            @impossible_to_remove and interactive_msg(N("Some packages cannot be removed"),
                                                       N("Removing these packages would break your system, sorry:\n\n") .
                                                         format_list(@impossible_to_remove));
             @nodes_with_deps = difference2(\@nodes_with_deps, \@impossible_to_remove);
@@ -838,7 +838,7 @@ sub toggle_nodes {
                 } @cant;
                 my $count = @reasons;
                 interactive_msg(
-                    ($count == 1 ? N("One package cannot be installed") : N("Some packages can't be installed")),
+                    ($count == 1 ? N("One package cannot be installed") : N("Some packages cannot be installed")),
 		    ($count == 1 ? 
                  N("Sorry, the following package cannot be selected:\n\n%s", format_list(@reasons))
                    : N("Sorry, the following packages cannot be selected:\n\n%s", format_list(@reasons))),
@@ -873,9 +873,9 @@ sub toggle_nodes {
         #- some deps may exist on some packages which aren't listed because
         #- not upgradable (older than what currently installed)
         exists $pkgs->{$_} or next;
-        if (!$pkgs->{$_}{pkg}) { #- can't be removed  # FIXME; what about next packages in the loop?
+        if (!$pkgs->{$_}{pkg}) { #- cannot be removed  # FIXME; what about next packages in the loop?
             $pkgs->{$_}{selected} = 0;
-            log::explanations("can't be removed: $_");
+            log::explanations("cannot be removed: $_");
         } else {
             $pkgs->{$_}{selected} = $new_state;
         }
