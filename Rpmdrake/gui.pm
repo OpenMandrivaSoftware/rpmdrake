@@ -37,7 +37,6 @@ use Rpmdrake::formatting;
 use Rpmdrake::init;
 use Rpmdrake::icon;
 use Rpmdrake::pkg;
-use Rpmdrake::icon;
 use feature 'state';
 
 our @EXPORT = qw(
