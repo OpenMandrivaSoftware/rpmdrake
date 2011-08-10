@@ -679,6 +679,11 @@ sub pkgs_provider {
 sub closure_removal {
     local $urpm->{state} = {};
     urpm::select::find_packages_to_remove($urpm, $urpm->{state}, \@_);
+    my $rejected = $urpm->{state}{rejected};
+    return map {
+	sprintf("%s-%s-%s.%s",
+		URPM::fullname_parts($rejected->{$_}, $_))
+    } urpm::select::removed_packages(undef, $urpm->{state});
 }
 
 sub is_locale_available {
