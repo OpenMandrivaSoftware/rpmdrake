@@ -902,7 +902,7 @@ you may now inspect some in order to take actions:"),
 
     if ($exit_code == 0 && !$::rpmdrake_options{auto_orphans}) {
         if (urpm::orphans::check_unrequested_orphans_after_auto_select($urpm)) {
-            if (my $msg = urpm::orphans::get_now_orphans_msg($urpm)) {
+            if (my $msg = urpm::orphans::get_now_orphans_gui_msg($urpm)) {
                 interactive_msg(N("Orphan packages"), $msg, scroll => 1);
             }
         }
@@ -959,7 +959,7 @@ sub perform_removal {
 	return 1;
     } else {
         if ($may_be_orphans && !$::rpmdrake_options{auto_orphans}) {
-            if (my $msg = urpm::orphans::get_now_orphans_msg($urpm)) {
+            if (my $msg = urpm::orphans::get_now_orphans_gui_msg($urpm)) {
                 interactive_msg(N("Information"), $msg, scroll => 1);
             }
         }
