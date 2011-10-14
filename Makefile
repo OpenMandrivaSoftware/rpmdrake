@@ -47,11 +47,26 @@ clean:
 
 dis: dist
 dist: clean
+	rm -rf ../$(NAME)-$(VERSION).tar*
+	@if [ -e ".svn" ]; then \
+		$(MAKE) dist-svn; \
+	elif [ -e ".git" ]; then \
+		$(MAKE) dist-git; \
+	else \
+		echo "Unknown SCM (not SVN nor GIT)";\
+		exit 1; \
+	fi;
+	$(info $(NAME)-$(VERSION).tar.xz is ready)
+
+dist-svn:
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
 	svn export -q -rBASE . $(NAME)-$(VERSION)
 	find $(NAME)-$(VERSION) -name .svnignore |xargs rm -rf
 	tar cfa ../$(NAME)-$(VERSION).tar.xz $(NAME)-$(VERSION)
 	rm -rf $(NAME)-$(VERSION)
+
+dist-git:
+	 @git archive --prefix=$(NAME)-$(VERSION)/ HEAD | xz  >../$(NAME)-$(VERSION).tar.xz;
 
 gui.lst:
 	LC_COLLATE=C; ( echo -e "cedega-mandriva\npicasa\nVariCAD_2009-en\nVariCAD_View_2009-en\nVMware-Player" ; \
