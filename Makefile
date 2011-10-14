@@ -19,6 +19,8 @@ dirs:
 	done
 
 install: $(ALL)
+	find -name '*.pm' -o -name rpmdrake -o -name MandrivaUpdate | xargs ./simplify-drakx-modules
+	./simplify-drakx-modules {gurpmi.addmedia,edit-urpm-sources.pl}
 	@for n in $(DIRS); do make -C $$n install; done
 	install -d $(SBINDIR)
 	install rpmdrake MandrivaUpdate edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
@@ -43,12 +45,11 @@ install: $(ALL)
 clean:
 	@for n in $(DIRS); do make -C $$n clean; done
 
-dis: clean
+dis: dist
+dist: clean
 	rm -rf $(NAME)-$(VERSION) ../$(NAME)-$(VERSION).tar*
 	svn export -q -rBASE . $(NAME)-$(VERSION)
 	find $(NAME)-$(VERSION) -name .svnignore |xargs rm -rf
-	find $(NAME)-$(VERSION) -name '*.pm' -o -name rpmdrake -o -name MandrivaUpdate | xargs ./simplify-drakx-modules
-	./simplify-drakx-modules $(NAME)-$(VERSION)/{gurpmi.addmedia,edit-urpm-sources.pl}
 	tar cfa ../$(NAME)-$(VERSION).tar.xz $(NAME)-$(VERSION)
 	rm -rf $(NAME)-$(VERSION)
 
