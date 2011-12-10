@@ -1080,6 +1080,8 @@ sub sort_callback {
 
 sub run_help_callback {
     my (undef, $url) = @_;
+    my ($user) = grep { $_->[2] eq $ENV{USERHELPER_UID} } list_passwd();
+    local $ENV{HOME} = $user->[7] if $user && $ENV{USERHELPER_UID};
     run_program::raw({ detach => 1, as_user => 1 }, 'www-browser', $url);
 }
 
