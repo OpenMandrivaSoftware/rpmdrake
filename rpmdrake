@@ -222,7 +222,7 @@ sub do_search($$$$$$$) {
 }
 
 sub quit() {
-    ($rpmdrake_width->[0], $rpmdrake_height->[0]) = $::w->{real_window}->get_size();
+    ($rpmdrake_width->[0], $rpmdrake_height->[0]) = $::w->{real_window}->get_size;
     real_quit();
 }
 
@@ -666,7 +666,7 @@ sub run_treeview_dialog {
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections->[0]);
 
     my $accel = Gtk2::AccelGroup->new;
-    $accel->connect(Gtk2::Gdk->keyval_from_name('F'), ['control-mask'], ['visible'], sub { $find_entry->grab_focus() });
+    $accel->connect(Gtk2::Gdk->keyval_from_name('F'), ['control-mask'], ['visible'], sub { $find_entry->grab_focus });
     $w->{real_window}->add_accel_group($accel);
 
     gtkadd(
@@ -674,7 +674,7 @@ sub run_treeview_dialog {
 	gtkpack_(
 	    gtknew('VBox', spacing => 3),
 	    0, $menu,
-	    if_(second(gtkroot()->get_size()) >= 600, 0, getbanner()),
+	    if_(second(gtkroot()->get_size) >= 600, 0, getbanner()),
 	    1, gtkadd(
 		gtknew('Frame', border_width => 3, shadow_type => 'none'),
 		gtkpack_(
