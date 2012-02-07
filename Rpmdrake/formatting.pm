@@ -43,6 +43,7 @@ our @EXPORT = qw(
                     format_list
                     format_name_n_summary
                     format_size
+                    format_filesize
                     format_update_field
                     my_fullname
                     pkg2medium
@@ -174,6 +175,11 @@ sub format_size {
     $size >= 0 ? 
       N("%s of additional disk space will be used.", formatXiB($size)) :
         N("%s of disk space will be freed.", formatXiB(-$size));
+}
+
+sub format_filesize {
+    my ($filesize) = @_;
+    $filesize ? N("%s of packages will be retrieved.", formatXiB($filesize)) : ();
 }
 
 sub format_list { join("\n", map { s/^(\s)/  $1/mg; "- $_" } sort { uc($a) cmp uc($b) } @_) }

@@ -701,8 +701,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
    : N("The following packages have to be removed for others to be upgraded:")), $r), if_($to_install, $to_install))
                           : $to_install),
                          format_size($size),
-                           $filesize ? N("%s of packages will be retrieved.", formatXiB($filesize))
-                             : (),
+                         format_filesize($filesize),
                          N("Is it ok to continue?")),
                      scroll => 1,
                      yesno => 1) or return 1;
