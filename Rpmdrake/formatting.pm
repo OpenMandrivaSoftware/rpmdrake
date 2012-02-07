@@ -174,7 +174,7 @@ sub format_size {
     $size >= 0 ? 
       N("%s of additional disk space will be used.", formatXiB($size)) :
         N("%s of disk space will be freed.", formatXiB(-$size));
- }
+}
 
 sub format_list { join("\n", map { s/^(\s)/  $1/mg; "- $_" } sort { uc($a) cmp uc($b) } @_) }
 
