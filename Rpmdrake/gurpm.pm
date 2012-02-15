@@ -28,6 +28,8 @@ use lib qw(/usr/lib/libDrakX);
 use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
 use ugtk2 qw(:all);
 use base qw(ugtk2);
+use Time::HiRes;
+use feature 'state';
 
 
 sub new {
@@ -61,9 +63,12 @@ sub label {
 
 sub progress {
     my ($self, $fraction) = @_;
+    state $time;
     $fraction = 0 if $fraction < 0;
     $fraction = 1 if 1 < $fraction;
     $self->{progressbar}->set_fraction($fraction);
+    return if Time::HiRes::clock_gettime() - $time < 0.333;
+    $time = Time::HiRes::clock_gettime();
     $self->flush;
 }
 
