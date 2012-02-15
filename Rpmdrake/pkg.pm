@@ -506,7 +506,7 @@ sub get_pkgs {
     foreach my $pkg (@{$urpm->{depslist}}) {
         update_pbar($gurpm);
 	$pkg->flag_upgrade or next;
-        my $name = urpm_name($pkg);
+        my $name = $pkg->fullname;
         push @installable_pkgs, $name;
         $all_pkgs{$name} = { pkg => $pkg };
     }
