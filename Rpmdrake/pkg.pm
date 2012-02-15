@@ -336,7 +336,7 @@ sub get_installed_packages {
                       my $fullname = urpm_name($pkg);
                       return if $fullname =~ /@/;
                       $all_pkgs->{$fullname} = {
-                          selected => 0, pkg => $pkg, urpm_name => urpm_name($pkg),
+                          selected => 0, pkg => $pkg, urpm_name => $fullname,
                       } if !($all_pkgs->{$fullname} && $all_pkgs->{$fullname}{description});
                       if (my $name = $base{$fullname}) {
                           $all_pkgs->{$fullname}{base} = \$name;
