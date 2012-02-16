@@ -81,7 +81,6 @@ sub rpm_description {
     "$t$tmp\n";
 }
 
-
 sub split_fullname {
     if ($_[0] =~ /^(.+)-(\d[^-]*)-(\d[^-]*-?[a-z]*[\d.]+)\.([^.-]+)$/) {
         return ($1, $2, $3, $4);
@@ -92,19 +91,16 @@ sub split_fullname {
     }
 }
 
-
 sub my_fullname {
     return '?-?-?' unless ref $_[0];
     my ($name, $version, $release) = $_[0]->fullname;
     "$name-$version-$release";
 }
 
-
 sub urpm_name {
     return '?-?-?.?' unless ref $_[0];
     return scalar $_[0]->fullname;
 }
-
 
 sub pkg2medium {
     my ($p, $urpm) = @_;
