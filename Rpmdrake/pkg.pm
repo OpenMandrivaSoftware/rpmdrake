@@ -66,8 +66,11 @@ use ugtk2 qw(:all);
 our $priority_up_alread_warned;
 
 sub sort_packages_biarch {
-    my ($x64, $other) = partition { !/86$/ } @_;
-    (sort { uc($a) cmp uc($b) } @$x64), sort { uc($a) cmp uc($b) } @$other;
+    sort {
+        my ($na, $aa) = $a =~ /^(.*-[^-]+-[^-]+)\.([^.-]+)$/;
+        my ($nb, $ab) = $b =~ /^(.*-[^-]+-[^-]+)\.([^.-]+)$/;
+        $na cmp $nb || ($ab =~ /64$/) <=> ($aa =~ /64$/);
+    } @_;
 }
 
 sub sort_packages_monoarch {
