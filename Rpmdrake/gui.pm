@@ -1024,7 +1024,8 @@ or you already installed all of them."));
                 $explanation_only_once = 1;
             }
         }
-        @elems = map { [ $_, !$flat && ctreefy($pkgs->{$_}{pkg}->group) ] } sort @keys;
+        # FIXME: better do this on first group access for faster startup...
+        @elems = map { [ $_, !$flat && ctreefy($pkgs->{$_}{pkg}->group) ] } sort_packages(@keys);
     }
     my %sortmethods = (
         by_size => sub { sort { $pkgs->{$b->[0]}{pkg}->size <=> $pkgs->{$a->[0]}{pkg}->size } @_ },
