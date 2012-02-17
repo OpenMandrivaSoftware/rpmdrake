@@ -56,13 +56,25 @@ our @EXPORT = qw(
                     get_pkgs
                     perform_installation
                     perform_removal
-                    run_rpm);
+                    run_rpm
+                    sort_packages
+                    );
 
 use mygtk2 qw(gtknew);
 use ugtk2 qw(:all);
 
 our $priority_up_alread_warned;
 
+sub sort_packages_biarch {
+    my ($x64, $other) = partition { !/86$/ } @_;
+    (sort { uc($a) cmp uc($b) } @$x64), sort { uc($a) cmp uc($b) } @$other;
+}
+
+sub sort_packages_monoarch {
+    sort { uc($a) cmp uc($b) } @_;
+}
+
+*sort_packages = arch() =~ /x86_64/ ? \&sort_packages_biarch : \&sort_packages_monoarch;
 
 sub run_rpm {
     foreach (qw(LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT LC_IDENTIFICATION LC_ALL)) {

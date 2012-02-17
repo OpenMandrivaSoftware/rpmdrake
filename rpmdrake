@@ -195,11 +195,7 @@ sub do_search($$$$$$$) {
 
     my $iter;
     if (@search_results) {
-        my $f = arch() =~ /x86_64/ ? sub {
-		my ($x64, $other) = partition { !/86$/ } @_;
-	       	(sort { uc($a) cmp uc($b) } @$x64), sort { uc($a) cmp uc($b) } @$other;
-        } : sub { sort { uc($a) cmp uc($b) } @_ };
-        @search_results = $f->(@search_results);
+        @search_results = sort_packages(@search_results);
         $elems{$results_ok} = [ map { [ $_, $results_ok ] } @search_results ];
         $iter = $options->{add_parent}->($results_ok);
 	$options->{add_nodes}->(map { [ $_, $results_ok . ($options->{tree_mode} eq 'by_presence'
