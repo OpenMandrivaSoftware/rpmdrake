@@ -199,14 +199,15 @@ sub do_search($$$$$$$) {
 		my ($x64, $other) = partition { !/86$/ } @_;
 	       	(sort { uc($a) cmp uc($b) } @$x64), sort { uc($a) cmp uc($b) } @$other;
         } : sub { sort { uc($a) cmp uc($b) } @_ };
-        $elems{$results_ok} = [ map { [ $_, $results_ok ] } $f->(@search_results) ];
+        @search_results = $f->(@search_results);
+        $elems{$results_ok} = [ map { [ $_, $results_ok ] } @search_results ];
         $iter = $options->{add_parent}->($results_ok);
 	$options->{add_nodes}->(map { [ $_, $results_ok . ($options->{tree_mode} eq 'by_presence'
 								 ? '|' . ($pkgs->{$_}{pkg}->flag_installed ? N("Upgradable") : N("Addable"))
 								 : ($options->{tree_mode} eq 'by_selection'
 								    ? '|' . ($pkgs->{$_}{selected} ? N("Selected") : N("Not selected"))
 								    : ''))
-				      ] } $f->(@search_results));
+				      ] } @search_results);
     } else {
         $iter = $options->{add_parent}->($results_none);
         # clear package list:
