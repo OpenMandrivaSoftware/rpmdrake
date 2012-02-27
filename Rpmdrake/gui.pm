@@ -38,6 +38,8 @@ use Rpmdrake::init;
 use Rpmdrake::icon;
 use Rpmdrake::pkg;
 use feature 'state';
+#use warnings;
+#use strict;
 
 our @EXPORT = qw(
                     $descriptions
@@ -641,7 +643,7 @@ sub pkgs_provider {
         all_updates => sub {
             # potential "updates" from media not tagged as updates:
             if (!$options{pure_updates} && !$Rpmdrake::pkg::need_restart) {
-                [ @{$h->{updates}},
+                [ difference2($h->{updates}, $h->{inactive_backports}),
                   difference2([ grep { is_updatable($_) } @{$h->{installable}} ], $h->{backports}) ];
             } else {
                 [ difference2($h->{updates}, $h->{inactive_backports}) ];
@@ -655,13 +657,14 @@ sub pkgs_provider {
             [ difference2($h->{gui_pkgs}, $h->{inactive_backports}) ] 
         },
     );
+    my $tmp_updates = [ difference2($h->{updates}, $h->{inactive_backports}) ];
     foreach my $importance (qw(bugfix security normal)) {
         $tmp_filter_methods{$importance} = sub {
             my @media = keys %$descriptions;
             [ grep { 
                 my ($name) = split_fullname($_);
                 my $medium = find { $descriptions->{$_}{$name} } @media;
-                $medium && $descriptions->{$medium}{$name}{importance} eq $importance } @{$h->{updates}} ];
+                $medium && $descriptions->{$medium}{$name}{importance} eq $importance } @{$tmp_updates} ];
         };
     }
 
@@ -759,7 +762,7 @@ sub toggle_nodes {
                  formatAlaTeX($msg) . "\n\n",
                  \@nodes, \@nodes_with_deps) or @nodes_with_deps = ();
     };
-
+    
     if (member($old_state, qw(to_remove installed))) { # remove pacckages
         if ($new_state) {
             my @remove;
@@ -797,7 +800,9 @@ sub toggle_nodes {
                 }
                 @nodes = difference2(\@nodes, \@bad_i18n_pkgs);
             }
+            
             my @requested;
+            my $err_msg = "";
             slow_func(
                 $widget,
                 sub {
@@ -809,25 +814,40 @@ sub toggle_nodes {
                 },
             );
             @nodes_with_deps = map { urpm_name($_) } @requested;
+            my @ask_unselect = urpm::select::unselected_packages($urpm, $urpm->{state});
+            @nodes = (@nodes, difference2(\@ask_unselect, \@nodes));
+            
             statusbar_msg_remove($bar_id);
-            if (!deps_msg(N("Additional packages needed"),
-                             formatAlaTeX(N("To satisfy dependencies, the following package(s) also need to be installed:\n\n")) . "\n\n",
-                             \@nodes, \@nodes_with_deps)) {
-                @nodes_with_deps = ();
-                $urpm->disable_selected(open_rpm_db(), $urpm->{state}, @requested);
-                goto packages_selection_ok;
-            }
-
+            
 	    if (my $conflicting_msg = urpm::select::conflicting_packages_msg($urpm, $urpm->{state})) {
                 if (!interactive_msg(N("Conflicting Packages"), $conflicting_msg, yesno => 1, scroll => 1)) {
-		    @nodes_with_deps = ();
-		    $urpm->disable_selected(open_rpm_db(), $urpm->{state}, @requested);
-		    goto packages_selection_ok;
+                    $err_msg = "Aborted.";
+                    goto packages_selection_ok;
 		}
 	    }
 
+            if (!deps_msg(N("Additional packages needed"),
+                             formatAlaTeX(N("To satisfy dependencies, the following package(s) also need to be installed:\n\n")) . "\n\n",
+                             \@nodes, \@nodes_with_deps)) {
+                $err_msg = "Aborted.";
+                goto packages_selection_ok;
+            }
+            
+            #for old packages - this "if" based on "urpmi" source
+            my $unselected_uninstalled = $urpm->{state}{unselected_uninstalled};
+            if (ref($unselected_uninstalled) eq "ARRAY"){
+                my @unselected_uninstalled = @{$unselected_uninstalled};
+                my $tmp_list = join "\n", map { '- ' . $_->name . '-' . $_->version . '-' . $_->release  } @unselected_uninstalled;
+                my $unselected_uninstalled_msg = @unselected_uninstalled == 1 ?
+                    N("The following package cannot be installed because it depends on packages that are older than the installed ones:\n\n%s%s",
+                        $tmp_list, length(@unselected_uninstalled))
+                    : N("The following packages cannot be installed because they depend on packages that are older than the installed ones:\n\n%s%s",
+                        $tmp_list, length(@unselected_uninstalled));
+                $err_msg .= $unselected_uninstalled_msg;
+                goto packages_selection_ok;
+            }
+
             if (my @cant = sort(difference2(\@nodes, \@nodes_with_deps))) {
-                my @ask_unselect = urpm::select::unselected_packages($urpm, $urpm->{state});
                 my @reasons = map {
                     my $cant = $_;
                     my $unsel = find { $_ eq $cant } @ask_unselect;
@@ -836,20 +856,31 @@ sub toggle_nodes {
                         : ($pkgs->{$_}{pkg}->flag_skip ? N("%s (belongs to the skip list)", $cant) : $cant);
                 } @cant;
                 my $count = @reasons;
-                interactive_msg(
-                    ($count == 1 ? N("One package cannot be installed") : N("Some packages cannot be installed")),
-		    ($count == 1 ? 
-                 N("Sorry, the following package cannot be selected:\n\n%s", format_list(@reasons))
-                   : N("Sorry, the following packages cannot be selected:\n\n%s", format_list(@reasons))),
-                    scroll => 1,
-                );
+                
+                my $cannot_install_msg;
+                $count == 1
+                    ? $cannot_install_msg = N("Sorry, the following package cannot be selected:\n\n%s",
+                                              format_list(@reasons))
+                    : $cannot_install_msg = N("Sorry, the following packages cannot be selected:\n\n%s",
+                                              format_list(@reasons));
+                $err_msg .= $cannot_install_msg;
                 foreach (@cant) {
                     next unless $pkgs->{$_}{pkg};
                     $pkgs->{$_}{pkg}->set_flag_requested(0);
                     $pkgs->{$_}{pkg}->set_flag_required(0);
                 }
             }
+
           packages_selection_ok:
+            if ($err_msg ne ""){
+                @nodes_with_deps = ();
+                $urpm->disable_selected(open_rpm_db(), $urpm->{state}, @requested);
+                $urpm->{state}{rejected} = {};
+                $urpm->{state}{unselected_uninstalled} = undef;
+                if ($err_msg ne "Aborted.") { interactive_msg(N("Cannot select"),
+                                                              $err_msg, scroll => 1); }
+            }
+    
         } else {
             my @unrequested;
             slow_func($widget,
@@ -867,10 +898,10 @@ sub toggle_nodes {
           packages_unselection_ok:
         }
     }
-
+    
     foreach (@nodes_with_deps) {
         #- some deps may exist on some packages which aren't listed because
-        #- not upgradable (older than what currently installed)
+        #- not upgradable (older than what currently installed) #FIXED
         exists $pkgs->{$_} or next;
         if (!$pkgs->{$_}{pkg}) { #- cannot be removed  # FIXME; what about next packages in the loop?
             $pkgs->{$_}{selected} = 0;

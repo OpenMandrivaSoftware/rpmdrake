@@ -81,7 +81,17 @@ sub rpm_description {
 }
 
 
-sub split_fullname { $_[0] =~ /^(.*)-([^-]+)-([^-]+)\.([^.-]+)$/ }
+sub split_fullname {
+    if ($_[0] =~ /^(.+)-(\d[^-]*)-(\d[^-]*-?[a-z]*[\d.]+)\.([^.-]+)$/) {
+        return ($1, $2, $3, $4);
+    } elsif ($_[0] =~ /^(.*)-([^-]+)-([^-]+)\.([^.-]+)$/) {
+        return ($1, $2, $3, $4);
+    } else {
+        return ($_[0]);
+    }
+}
+
+
 sub my_fullname {
     return '?-?-?' unless ref $_[0];
     my ($name, $version, $release) = $_[0]->fullname;
