@@ -598,7 +598,7 @@ sub display_READMEs_if_needed {
                       clicked => sub {
                           interactive_msg(
                               N("Upgrade information about package %s", $Readmes{$fullname}),
-                              (join '' => formatAlaTeX(scalar cat_($fullname))),
+                              (join '' => map { s/$/\n/smg; $_ } formatAlaTeX(scalar cat_($fullname))),
                               scroll => 1,
                           );
                       },
