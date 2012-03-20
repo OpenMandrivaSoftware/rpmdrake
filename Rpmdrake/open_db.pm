@@ -150,6 +150,7 @@ sub open_urpmi_db {
     my $urpm = fast_open_urpmi_db();
     my $media = ref $::rpmdrake_options{media} ? join(',', @{$::rpmdrake_options{media}}) : '';
 
+    # FIXME: this is bogus and pulls backports as updates:
     my $searchmedia = $urpmi_options{update} ? undef : join(',', get_inactive_backport_media($urpm));
     $urpm->{lock} = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock}) if !$::env;
     my $previous = $::rpmdrake_options{'previous-priority-upgrade'};
