@@ -516,15 +516,16 @@ sub get_pkgs {
     $urpm->{rpmdrake_state} = $state; #- Don't forget it
     $gurpm->progress($level = 0.7);
 
-    my @installable_pkgs;
+    my %l;
     reset_pbar_count(1);
     foreach my $pkg (@{$urpm->{depslist}}) {
         update_pbar($gurpm);
 	$pkg->flag_upgrade or next;
-        my $name = $pkg->fullname;
-        push @installable_pkgs, $name;
-        $all_pkgs{$name} = { pkg => $pkg };
+	my $short_name = $pkg->name;
+	$l{$short_name} = $pkg if !$l{$short_name} || $l{$short_name}->compare($pkg);
     }
+    my @installable_pkgs = map { my $n = $_->fullname; $all_pkgs{$n} = { pkg => $_ }; $n } values %l;
+    undef %l;
 
     my @inactive_backports;
     my @active_backports;
