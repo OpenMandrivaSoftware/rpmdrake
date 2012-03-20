@@ -547,7 +547,7 @@ sub get_pkgs {
           $pkg->flag_upgrade or next;
           my $name = urpm_name($pkg);
           push @$backports, $name;
-          $all_pkgs{$name} = { pkg => $pkg };
+          $all_pkgs{$name} = { pkg => $pkg, is_backport => 1 };
       }
     }
     my @updates = @requested;
