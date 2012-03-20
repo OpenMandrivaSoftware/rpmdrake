@@ -688,7 +688,7 @@ sub is_locale_available {
     my ($name) = @_;
     any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$name} || {}} and return 1;
     my $found;
-    open_rpm_db()->traverse_tag('name', [ $name ], sub { $found ||= 1 });
+    open_rpm_db()->traverse_tag_find('name', $name, sub { $found = 1 });
     return $found;
 }
 
