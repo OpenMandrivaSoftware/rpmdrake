@@ -383,12 +383,11 @@ sub warn_if_no_pkg {
 
 sub node_state {
     my ($name) = @_;
-    return if !$name;
+    #- checks $_[0] -> hack for partial tree displaying
+    return 'XXX' if !$name;
     my $pkg = $pkgs->{$name};
     my $urpm_obj = $pkg->{pkg};
     return warn_if_no_pkg($name) if !$urpm_obj;
-    #- checks $_[0] -> hack for partial tree displaying
-    return 'XXX' if !$_[0];
     $pkg->{selected} ?
       ($urpm_obj->flag_installed ?
          ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove')
