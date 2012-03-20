@@ -487,7 +487,6 @@ sub get_pkgs {
     # find out availlable packages:
 
     $urpm->{state} = {};
-    my (@installable_pkgs, @updates);
 
     $gurpm->label(N("Please wait, finding available packages..."));
     $gurpm->progress($level = 0.66);
@@ -517,6 +516,7 @@ sub get_pkgs {
     $urpm->{rpmdrake_state} = $state; #- Don't forget it
     $gurpm->progress($level = 0.7);
 
+    my @installable_pkgs;
     reset_pbar_count(1);
     foreach my $pkg (@{$urpm->{depslist}}) {
         update_pbar($gurpm);
@@ -549,7 +549,7 @@ sub get_pkgs {
           $all_pkgs{$name} = { pkg => $pkg };
       }
     }
-    @updates = @requested;
+    my @updates = @requested;
     # selecting updates by default but skipped ones (MandrivaUpdate only):
     foreach (@requested_strict) {
 	$all_pkgs{$_}{selected} = 1;
