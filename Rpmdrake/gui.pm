@@ -354,17 +354,13 @@ sub format_pkg_info {
     ));
 }
 
-sub node_state {
+sub warn_if_no_pkg {
     my ($name) = @_;
-    return if !$name;
-    my $pkg = $pkgs->{$name};
-    my $urpm_obj = $pkg->{pkg};
-    if (!$urpm_obj) {
-        my ($short_name) = $name;
-        state $warned;
-        if (!$warned) {
-            $warned = 1;
-            interactive_msg(N("Warning"),
+    my ($short_name) = split_fullname($name);
+    state $warned;
+    if (!$warned) {
+        $warned = 1;
+        interactive_msg(N("Warning"),
                         join("\n",
                              N("The package \"%s\" was found.", $name),
                              N("However this package is not in the package list."),
@@ -376,14 +372,21 @@ sub node_state {
                                  #-PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
                                  #-PO: eg: "- rpmdrake (medium: "Main Release"
                                  N("- %s (medium: %s)", $_, pkg2medium($pkgs->{$_}{pkg}, $urpm)->{name});
-                                 } grep { /^$short_name/ } keys %$pkgs),
+                             } grep { /^$short_name/ } keys %$pkgs),
 
                          ),
                         scroll => 1,
                     );
-        }
-        return 'XXX';
     }
+    return 'XXX';
+}
+
+sub node_state {
+    my ($name) = @_;
+    return if !$name;
+    my $pkg = $pkgs->{$name};
+    my $urpm_obj = $pkg->{pkg};
+    return warn_if_no_pkg($name) if !$urpm_obj;
     #- checks $_[0] -> hack for partial tree displaying
     return 'XXX' if !$_[0];
     $pkg->{selected} ?
