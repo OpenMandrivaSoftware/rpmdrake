@@ -685,9 +685,10 @@ sub closure_removal {
 }
 
 sub is_locale_available {
-    any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$_[0]} || {}} and return 1;
+    my ($name) = @_;
+    any { $urpm->{depslist}[$_]->flag_selected } keys %{$urpm->{provides}{$name} || {}} and return 1;
     my $found;
-    open_rpm_db()->traverse_tag('name', [ $_ ], sub { $found ||= 1 });
+    open_rpm_db()->traverse_tag('name', [ $name ], sub { $found ||= 1 });
     return $found;
 }
 
