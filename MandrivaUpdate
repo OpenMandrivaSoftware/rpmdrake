@@ -73,7 +73,7 @@ my %icons_cache;
 sub refresh_packages_list {
     my ($list, $info, $button) = @_;
     # select packages to update:
-    my @requested = sort @filtered_pkgs;
+    my @requested = sort grep { $pkgs->{$_}{pkg} } @filtered_pkgs;
 
     # don't select packages in skip list:
     if (!$initialized) {
@@ -97,7 +97,7 @@ sub refresh_packages_list {
             $icon = $icons_cache{$importance} ||= gtknew('Pixbuf', file => $update_icons{$importance});
         }
         [ $icon, $pkgs->{$_}{selected}, $_, format_name_n_summary($name, $summary), $version, $release, $arch, $importance ];
-    } grep { $pkgs->{$_}{pkg} } @requested;
+    } @requested;
     gtktext_insert($info,
       formatAlaTeX(N("The list of updates is empty. This means that either there is
 no available update for the packages installed on your computer,
