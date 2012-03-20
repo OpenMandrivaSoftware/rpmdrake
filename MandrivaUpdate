@@ -111,7 +111,9 @@ sub toggle {
     my $val = $pkgs->{$name}{selected};
     my $old_status = $val ? 'to_install' : 'to_update';
     my $done;
-    $pkgs->{$name}{pkg}->set_flag_skip(0);
+    my $pkg = $pkgs->{$name}{pkg};
+    return if !$pkg;
+    $pkg->set_flag_skip(0);
     toggle_nodes($w->{real_window}->window, $list->get_model, sub {
                      my ($leaf, $_state, $_model) = @_;
                      $done = 1;
