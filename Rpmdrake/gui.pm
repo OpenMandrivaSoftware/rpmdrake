@@ -107,7 +107,7 @@ sub get_summary {
     my ($key) = @_;
     $pkgs->{$key}{summary} ||= $pkgs->{$key}{pkg}->summary;
     my $summary = translate($pkgs->{$key}{summary});
-    utf8::valid($summary) ? $summary : ();
+    utf8::valid($summary) ? $summary : @{[]};
 }
 
 sub build_expander {
