@@ -403,7 +403,7 @@ my ($common, $w, %wtree, %ptree, %pix);
 
 sub set_node_state {
     my ($iter, $state, $model) = @_;
-    ($state eq 'XXX' || !$state) and return;
+    return if $state eq 'XXX' || !$state;
     $pix{$state} ||= gtkcreate_pixbuf('state_' . $state);
     $model->set($iter, $pkg_columns{state_icon} => $pix{$state});
     $model->set($iter, $pkg_columns{state} => $state);
@@ -640,7 +640,7 @@ sub pkgs_provider {
     );
     my %tmp_filter_methods = (
         all => sub { 
-            [ difference2([ keys %$pkgs ], $h->{inactive_backports}) ]
+            [ difference2([ keys %$pkgs ], $h->{inactive_backports}) ];
         },
         all_updates => sub {
             # potential "updates" from media not tagged as updates:
@@ -653,10 +653,10 @@ sub pkgs_provider {
         },
         backports => sub { $h->{backports} },
         meta_pkgs => sub { 
-            [ difference2($h->{meta_pkgs}, $h->{inactive_backports}) ]
+            [ difference2($h->{meta_pkgs}, $h->{inactive_backports}) ];
         },
         gui_pkgs => sub { 
-            [ difference2($h->{gui_pkgs}, $h->{inactive_backports}) ] 
+            [ difference2($h->{gui_pkgs}, $h->{inactive_backports}) ];
         },
     );
     my $tmp_updates = [ difference2($h->{updates}, $h->{inactive_backports}) ];
