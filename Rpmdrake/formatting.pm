@@ -54,15 +54,16 @@ our @EXPORT = qw(
 
 # from rpmtools, #37482:
 sub ensure_utf8 {
-    my ($s) = @_;
-    require Encode;
-    Encode::_utf8_on($s); #- this is done on the copy
-    if (!Encode::is_utf8($s, 1)) {
-        Encode::_utf8_off($_[0]);
-        Encode::from_to($_[0], 'iso-8859-15', 'utf8'); # most probable
+    if (utf8::is_utf8($_[0])) {
+	utf8::valid($_[0]) and return;
+
+	utf8::encode($_[0]); #- disable utf8 flag
+	utf8::upgrade($_[0]);
+    } else {
+	utf8::decode($_[0]); #- try to set utf8 flag
+	utf8::valid($_[0]) and return;
+	warn "do not know what to with $_[0]\n";
     }
-    Encode::_utf8_on($_[0]); #- now we know it is valid utf8
-    $_[0];
 }
 
 sub rpm_description {
