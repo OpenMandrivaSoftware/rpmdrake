@@ -386,14 +386,14 @@ sub node_state {
     my $pkg = $pkgs->{$name};
     my $urpm_obj = $pkg->{pkg};
     return warn_if_no_pkg($name) if !$urpm_obj;
-    return 'backport' if $pkgs->{$name}{is_backport};
     $pkg->{selected} ?
       ($urpm_obj->flag_installed ?
          ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove')
            : 'to_install')
         : ($urpm_obj->flag_installed ? 
+            ($pkgs->{$name}{is_backport} ? 'backport' :
              ($urpm_obj->flag_upgrade ? 'to_update'
-                : ($urpm_obj->flag_base ? 'base' : 'installed'))
+                : ($urpm_obj->flag_base ? 'base' : 'installed')))
                : 'uninstalled');
 }
 
