@@ -367,7 +367,7 @@ sub get_installed_packages {
     @installed_pkgs;
 }
 
-urpm::select::add_packages_to_priority_upgrade_list('rpmdrake');
+urpm::select::add_packages_to_priority_upgrade_list('rpmdrake', 'perl-Glib', 'perl-Gtk2');
 
 my ($priority_state, $priority_requested);
 our $need_restart;
