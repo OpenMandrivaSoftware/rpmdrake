@@ -435,7 +435,7 @@ sub add_parent {
 }
 
 sub add_node {
-    my ($leaf, $root, $options) = @_;
+    my ($leaf, $root, $o_options) = @_;
     my $state = node_state($leaf) or return;
     if ($leaf) {
         my $iter;
@@ -459,7 +459,7 @@ sub add_node {
         #- if leaf is void, we may create the parent and one child (to have the [+] in front of the parent in the ctree)
         #- though we use '' as the label of the child; then rpmdrake will connect on tree_expand, and whenever
         #- the first child has '' as the label, it will remove the child and add all the "right" children
-        $options->{nochild} or $w->{tree_model}->append_set($parent, [ $grp_columns{label} => '' ]); # test $leaf?
+        $o_options->{nochild} or $w->{tree_model}->append_set($parent, [ $grp_columns{label} => '' ]); # test $leaf?
     }
 }
 
