@@ -185,12 +185,12 @@ my %group_icons = (
     );
 
 sub get_icon {
-    my ($group, $parent) = @_;
+    my ($group, $o_parent) = @_;
     my $pixbuf;
     my $path = $group =~ /\|/ ? '/usr/share/icons/mini/' : '/usr/share/icons/';
     my $create_pixbuf = sub { eval { gtknew('Pixbuf', file => join('', $path, $_[0], '.png')) } };
     $pixbuf = $create_pixbuf->($group_icons{$group});
-    $pixbuf ||= $create_pixbuf->($group_icons{$parent}) if $parent;
+    $pixbuf ||= $create_pixbuf->($group_icons{$o_parent}) if $o_parent;
     $pixbuf ||= $create_pixbuf->('applications_section');
 }
 
