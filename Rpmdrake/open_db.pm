@@ -78,12 +78,18 @@ sub open_rpm_db {
 # do not pay the urpm::media::configure() heavy cost:
 sub fast_open_urpmi_db() {
     my $urpm = urpm->new;
+    my $error_happened;
+    $urpm->{fatal} = sub {
+        $error_happened = 1;
+        interactive_msg(N("Fatal error"),
+                         N("A fatal error occurred: %s.", $_[1]));
+    };
+
     urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}[0]) if $::rpmdrake_options{'urpmi-root'}[0];
     $::rpmdrake_options{'rpm-root'}[0] ||= $::rpmdrake_options{'urpmi-root'}[0];
     urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}[0]) if $::rpmdrake_options{'rpm-root'}[0];
     urpm::args::set_debug($urpm) if $::rpmdrake_options{debug};
     $urpm->get_global_options;
-    my $error_happened;
     $urpm->{options}{wait_lock} = $::rpmdrake_options{'wait-lock'};
     $urpm->{options}{'verify-rpm'} = !$::rpmdrake_options{'no-verify-rpm'} if defined $::rpmdrake_options{'no-verify-rpm'};
     $urpm->{options}{auto} = $::rpmdrake_options{auto} if defined $::rpmdrake_options{auto};
@@ -96,12 +102,6 @@ sub fast_open_urpmi_db() {
     }
 
     $urpm::args::options{justdb} = $::rpmdrake_options{justdb};
-
-    $urpm->{fatal} = sub {
-        $error_happened = 1;
-        interactive_msg(N("Fatal error"),
-                         N("A fatal error occurred: %s.", $_[1]));
-    };
 
     urpm::media::read_config($urpm, 0);
     foreach (@{$urpm->{media}}) {
