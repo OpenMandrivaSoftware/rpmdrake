@@ -991,7 +991,8 @@ sub _build_tree {
     # better loop on packages, create groups tree and push packages in the proper place:
     foreach my $pkg (@elems) {
         my $grp = $pkg->[1];
-        add_parent($grp);
+        # no state for groups (they're not packages and thus have no state)
+        add_parent($grp, undef);
         $elems->{$grp} ||= [];
         push @{$elems->{$grp}}, $pkg;
     }
