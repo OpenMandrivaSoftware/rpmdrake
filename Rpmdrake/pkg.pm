@@ -524,7 +524,7 @@ sub get_pkgs {
     foreach my $pkg (@{$urpm->{depslist}}) {
         update_pbar($gurpm);
 	$pkg->flag_upgrade or next;
-	my $short_name = $pkg->name;
+	my $short_name = $pkg->name . $pkg->arch;
 	$l{$short_name} = $pkg if !$l{$short_name} || $l{$short_name}->compare($pkg);
     }
     my @installable_pkgs = map { my $n = $_->fullname; $all_pkgs{$n} = { pkg => $_ }; $n } values %l;
