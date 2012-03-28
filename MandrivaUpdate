@@ -263,7 +263,7 @@ sub run_treeview_dialog {
     my $cell = ($bool_col->get_cell_renderers)[0];
     $cell->signal_connect(toggled => sub {
 	my ($_cell, $text_path) = @_;
-	my $name = @{$list->{data}[$text_path]}[$pkg_columns{text}];
+	my $name = $list->{data}[$text_path][$pkg_columns{text}];
 	gtkset_mousecursor_wait($w->{real_window}->window);
 	my $_guard = before_leaving(sub { gtkset_mousecursor_normal($w->{real_window}->window) });
 	toggle($list, $name);

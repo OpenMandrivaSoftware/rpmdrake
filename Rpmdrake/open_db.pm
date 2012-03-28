@@ -81,7 +81,7 @@ sub fast_open_urpmi_db() {
     urpm::set_files($urpm, $::rpmdrake_options{'urpmi-root'}[0]) if $::rpmdrake_options{'urpmi-root'}[0];
     $::rpmdrake_options{'rpm-root'}[0] ||= $::rpmdrake_options{'urpmi-root'}[0];
     urpm::args::set_root($urpm, $::rpmdrake_options{'rpm-root'}[0]) if $::rpmdrake_options{'rpm-root'}[0];
-    urpm::args::set_debug($urpm) if $::rpmdrake_options{'debug'};
+    urpm::args::set_debug($urpm) if $::rpmdrake_options{debug};
     $urpm->get_global_options;
     my $error_happened;
     $urpm->{options}{wait_lock} = $::rpmdrake_options{'wait-lock'};
@@ -103,7 +103,7 @@ sub fast_open_urpmi_db() {
                          N("A fatal error occurred: %s.", $_[1]));
     };
 
-    urpm::media::read_config($urpm);
+    urpm::media::read_config($urpm, 0);
     foreach (@{$urpm->{media}}) {
 	    next if $_->{ignore};
 	    urpm::media::_tempignore($_, 1) if $ignore_debug_media->[0] && $_->{name} =~ /debug/i;
@@ -116,7 +116,7 @@ sub fast_open_urpmi_db() {
     $urpm;
 }
 
-sub is_it_a_devel_distro {
+sub is_it_a_devel_distro() {
     state $res;
     return $res if defined $res;
     

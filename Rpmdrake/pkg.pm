@@ -663,8 +663,11 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         return perform_parallel_install($urpm, $group, $w, \$statusbar_msg_id);
     }
 
-    my $lock = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock}) if !$::env;
-    my $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive') if !$::env;
+    my ($lock, $rpm_lock);
+    if (!$::env) {
+        $lock = urpm::lock::urpmi_db($urpm, undef, wait => $urpm->{options}{wait_lock});
+        $rpm_lock = urpm::lock::rpm_db($urpm, 'exclusive');
+    }
     my $state = $priority_state || $probe_only_for_updates ? { } : $urpm->{rpmdrake_state};
 
     my $bar_id = statusbar_msg(N("Checking validity of requested packages..."), 0);
@@ -743,7 +746,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         }
     }
 
-    urpm::orphans::mark_as_requested($urpm, $state);
+    urpm::orphans::mark_as_requested($urpm, $state, 0);
 
     my ($progress, $total, @rpms_upgrade);
     my $transaction;

@@ -224,7 +224,7 @@ sub writeconf() {
     # special case:
     $no_confirmation->[0] = $::rpmdrake_options{'no-confirmation'};
 
-    output $configfile, map { "$_ " . (ref ${$config{$_}{var}} ? join(' ', @${$config{$_}{var}}) : ()) . "\n" } keys %config;
+    output($configfile, map { "$_ " . (ref ${$config{$_}{var}} ? join(' ', @${$config{$_}{var}}) : undef) . "\n" } keys %config);
 }
 
 sub getbanner() {
@@ -914,7 +914,7 @@ sub add_medium_and_check {
         urpm::media::write_config($urpm);
 	$options->{proxy} and urpm::download::dump_proxy_config();
     } else {
-	urpm::media::read_config($urpm);
+	urpm::media::read_config($urpm, 0);
         return 0;
     }
 
