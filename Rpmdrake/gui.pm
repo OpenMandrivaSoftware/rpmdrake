@@ -1072,7 +1072,8 @@ sub get_info {
     #- the package information hasn't been loaded. Instead of rescanning the media, just give up.
     exists $pkgs->{$key} or return [ [ N("Description not available for this package\n") ] ];
     #- get the description if needed:
-    exists $pkgs->{$key}{description} or slow_func($widget, sub { extract_header($pkgs->{$key}, $urpm, 'info') });
+    
+    exists $pkgs->{$key}{description} or slow_func($widget, sub { extract_header($pkgs->{$key}, $urpm, 'info', version_release($pkgs->{$key}{pkg})) });
     format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions);
 }
 
