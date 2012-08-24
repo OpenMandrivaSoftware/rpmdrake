@@ -205,10 +205,9 @@ sub get_main_text {
 
 sub get_details {
     my ($key, $pkg, $upkg, $installed_version, $raw_medium) = @_;
-    my (undef, $version, $release) = split_fullname($key);
     my $a = ugtk2::markup_to_TextView_format(
         $spacing . join("\n$spacing",
-                        format_field(N("Version: ")) . $version . '-' . $release,
+                        format_field(N("Version: ")) . version_release($upkg),
                         ($upkg->flag_installed ?
                            format_field(N("Currently installed version: ")) . $installed_version : ()
                         ),

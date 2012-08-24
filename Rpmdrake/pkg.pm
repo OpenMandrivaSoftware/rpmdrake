@@ -195,7 +195,7 @@ sub find_installed_version {
     # FIXME: make it faster
     # 1) reuse $db if set
     # 2) s/traverse_tag/traverse_tag_find/ and time it
-    open_rpm_db()->traverse_tag('name', [ $p->name ], sub { push @version, $_[0]->version . '-' . $_[0]->release });
+    open_rpm_db()->traverse_tag('name', [ $p->name ], sub { push @version, version_release($_[0])});
     @version ? join(',', sort @version) : N("(none)");
 }
 

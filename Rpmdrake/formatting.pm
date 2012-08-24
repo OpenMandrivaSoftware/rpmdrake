@@ -49,7 +49,9 @@ our @EXPORT = qw(
                     pkg2medium
                     rpm_description
                     split_fullname
-                    urpm_name);
+                    urpm_name
+                    version_release
+            );
 
 
 # from rpmtools, #37482:
@@ -96,6 +98,11 @@ sub my_fullname {
     return '?-?-?' unless ref $_[0];
     my ($name, $version, $release) = $_[0]->fullname;
     "$name-$version-$release";
+}
+
+sub version_release {
+    my (undef, $version, $release) = $_[0]->fullname;
+    "$version-$release";
 }
 
 sub urpm_name {
