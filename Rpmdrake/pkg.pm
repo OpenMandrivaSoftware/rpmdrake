@@ -509,8 +509,12 @@ sub get_pkgs {
         get_updates_list($urpm, $db, $state, $requested, \@requested, \@requested_strict, \%all_pkgs, %filter);
     }
 
-    $priority_state = $need_restart ? $state : undef;
-    $priority_requested = $need_restart ? $requested : undef;
+    if ($need_restart) {
+        $priority_state = $state;
+        $priority_requested = $requested;
+    } else {
+        ($priority_state, $priority_requested) = ();
+    }
 
     if (!$probe_only_for_updates) {
         $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
