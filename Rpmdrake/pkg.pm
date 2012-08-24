@@ -158,8 +158,10 @@ sub extract_header {
 		warn "Warning, could not extract header for $name from $medium!";
 		goto header_non_available;
 	    };
+	    my @files = $p->files;
+	    @files = N("(none)") if !@files;
 	    add2hash($pkg, { description => rpm_description($p->description),
-	        files => scalar($p->files) ? [ $p->files ] : [ N("(none)") ],
+	        files => \@files,
 	        url => $p->url,
 		changelog => format_changelog_changelogs($o_installed_version, $p->changelogs) });
 	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
