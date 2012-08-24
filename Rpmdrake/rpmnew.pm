@@ -193,7 +193,7 @@ sub do_merge_if_needed() {
         # costly:
         open_rpm_db()->traverse(sub {
                           my $n = my_fullname($_[0]);
-                          $pkg2rpmnew{$n} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") } map { chomp_($_) } $_[0]->files ];
+                          $pkg2rpmnew{$n} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") } map { chomp_($_) } $_[0]->conf_files ];
                       });
         print "done.\n";
         undef $wait;
