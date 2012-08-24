@@ -977,7 +977,7 @@ sub mainwindow() {
                my $license = formatAlaTeX(translate($::license));
                $license =~ s/\n/\n\n/sg; # nicer formatting
                my $w = gtknew('AboutDialog', name => N("Rpmdrake"),
-                              version => $rpmdrake::mdk_version,
+                              version => $rpmdrake::distro_version,
                               copyright => N("Copyright (C) %s by Mandriva", '2002-2008'),
                               license => $license, wrap_license => 1,
                               comments => N("Rpmdrake is Mandriva Linux package management tool."),

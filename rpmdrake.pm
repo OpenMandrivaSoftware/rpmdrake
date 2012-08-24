@@ -114,7 +114,7 @@ our $mandrake_release = cat_(
     -e '/etc/mandrakelinux-release' ? '/etc/mandrakelinux-release' : '/etc/release'
 ) || '';
 chomp $mandrake_release;
-our ($mdk_version) = $mandrake_release =~ /(\d+\.\d+)/;
+our ($distro_version) = $mandrake_release =~ /(\d+\.\d+)/;
 our ($branded, %distrib);
 $branded = -f '/etc/sysconfig/oem'
     and %distrib = MDK::Common::System::distrib();
@@ -937,7 +937,7 @@ sub add_medium_and_check {
 sub check_update_media_version {
     my $urpm = shift;
     foreach (@_) {
-	if ($_->{name} =~ /(\d+\.\d+).*\bftp\du\b/ && $1 ne $mdk_version) {
+	if ($_->{name} =~ /(\d+\.\d+).*\bftp\du\b/ && $1 ne $distro_version) {
 	    interactive_msg(
 		N("Warning"),
 		$branded
@@ -946,7 +946,7 @@ It will be disabled.",
 		    $_->{name}, $distrib{system}, $distrib{product})
 		: N("Your medium `%s', used for updates, does not match the version of Mandriva Linux you're running (%s).
 It will be disabled.",
-		    $_->{name}, $mdk_version)
+		    $_->{name}, $distro_version)
 	    );
 	    $_->{ignore} = 1;
 	    urpm::media::write_config($urpm) if -w $urpm->{config};
