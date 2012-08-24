@@ -256,7 +256,7 @@ sub get_url_link {
     my $url = $upkg->url || $pkg->{url};
 
     if (!$url) {
-        open_rpm_db()->traverse_tag('name', [ $upkg->name ], sub { $url = $_[0]->url });
+        open_rpm_db()->traverse_tag_find('name', $upkg->name, sub { $url = $_[0]->url });
     }
 
     return if !$url;
