@@ -126,6 +126,8 @@ foreach my $option (qw(media mode parallel rpm-root search)) {
     }
 }
 
+$urpm::args::options{basename} = 1;
+
 our $MODE = ref $rpmdrake_options{mode} ? $rpmdrake_options{mode}[0] : undef;
 our $overriding_config = defined $MODE;
 unless ($MODE) {
