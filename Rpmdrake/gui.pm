@@ -204,7 +204,7 @@ sub get_main_text {
 }
 
 sub get_details {
-    my ($key, $pkg, $upkg, $installed_version, $raw_medium) = @_;
+    my ($pkg, $upkg, $installed_version, $raw_medium) = @_;
     my $a = ugtk2::markup_to_TextView_format(
         $spacing . join("\n$spacing",
                         format_field(N("Version: ")) . version_release($upkg),
@@ -295,7 +295,7 @@ sub format_pkg_simplifiedinfo {
     my $installed_version = eval { find_installed_version($upkg) };
 
     push @$s, [ gtkadd(gtkshow(my $details_exp = Gtk2::Expander->new(format_field(N("Details:")))),
-                       gtknew('TextView', text => get_details($key, $pkg, $upkg, $installed_version, $raw_medium))) ];
+                       gtknew('TextView', text => get_details($pkg, $upkg, $installed_version, $raw_medium))) ];
     $details_exp->set_use_markup(1);
     push @$s, [ "\n\n" ];
     push @$s, [ build_expander($pkg, N("Files:"), 'files', sub { files_format($pkg->{files}) }) ];
