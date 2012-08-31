@@ -106,6 +106,7 @@ sub get_summary {
     my ($key) = @_;
     $pkgs->{$key}{summary} ||= $pkgs->{$key}{pkg}->summary;
     my $summary = translate($pkgs->{$key}{summary});
+    require utf8;
     utf8::valid($summary) ? $summary : @{[]};
 }
 
