@@ -814,7 +814,7 @@ sub toggle_nodes {
                 },
             );
             @nodes_with_deps = map { urpm_name($_) } @requested;
-            my @ask_unselect = urpm::select::unselected_packages($urpm, $urpm->{state});
+            my @ask_unselect = urpm::select::unselected_packages($urpm->{state});
             @nodes = (@nodes, difference2(\@ask_unselect, \@nodes));
             
             statusbar_msg_remove($bar_id);

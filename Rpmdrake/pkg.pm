@@ -708,7 +708,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my @to_install = @{$urpm->{depslist}}[keys %{$state->{selected}}];
     my @pkgs = map { scalar($_->fullname) } sort(grep { $_->flag_selected } @to_install);
 
-    @{$urpm->{ask_remove}} = sort(urpm::select::removed_packages($urpm, $urpm->{state}));
+    @{$urpm->{ask_remove}} = sort(urpm::select::removed_packages($urpm->{state}));
     my @to_remove = map { if_($pkgs->{$_}{selected} && !$pkgs->{$_}{pkg}->flag_upgrade, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
 
     my $r = format_list(map { scalar(urpm::select::translate_why_removed_one($urpm, $urpm->{state}, $_)) } @to_remove);
@@ -774,7 +774,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     };
 
     # FIXME: sometimes state is lost:
-    my @ask_unselect = urpm::select::unselected_packages($urpm, $state);
+    my @ask_unselect = urpm::select::unselected_packages($state);
 
     # fix flags for orphan computing:
     foreach (keys %{$state->{selected}}) {
@@ -782,7 +782,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         $pkg->set_flag_requested($saved_flags{$pkg->id});
     }
     my $exit_code = 
-      urpm::main_loop::run($urpm, $state, 1, \@ask_unselect, $requested,
+      urpm::main_loop::run($urpm, $state, 1, \@ask_unselect,
                          {
                              completed => sub {
                                  # explicitly destroy the progress window when it's over; we may
