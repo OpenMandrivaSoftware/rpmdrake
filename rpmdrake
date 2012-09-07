@@ -550,8 +550,13 @@ sub run_treeview_dialog {
 	),
 	[ N("/_File") . N("/_Reset the selection"), undef, sub {
 	    if ($MODE ne 'remove') {
+                my $db = eval { open_rpm_db() };
+                if (!ref($db)) {
+                    statusbar_msg(N("Reset aborted (RPM DB is locked by another process)"), 1);
+                    return;
+                };
 		$urpm->disable_selected(
-		    open_rpm_db(), $urpm->{state},
+		    $db, $urpm->{state},
 		    map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs,
 		);
 	    }
