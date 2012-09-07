@@ -232,11 +232,13 @@ sub get_new_deps {
             activate => sub { 
                 slow_func($::main_window->window, sub {
                               my $state = {};
+                              my $db = open_rpm_db();
                               my @requested = $urpm->resolve_requested(
-                                  open_rpm_db(), $state,
+                                  $db, $state,
                                   { $upkg->id => 1 },
                               );
-                              $urpm->disable_selected(open_rpm_db(), $state, @requested);
+                              $urpm->disable_selected($db, $state, @requested);
+                              undef $db;
                               my @nodes_with_deps = map { urpm_name($_) } @requested;
                               my @deps = sort { $a cmp $b } difference2(\@nodes_with_deps, [ urpm_name($upkg) ]);
                               @deps = N("No non installed dependency.") if !@deps;
