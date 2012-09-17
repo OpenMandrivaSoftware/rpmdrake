@@ -554,7 +554,7 @@ sub run_treeview_dialog {
                 if (!ref($db)) {
                     statusbar_msg(N("Reset aborted (RPM DB is locked by another process)"), 1);
                     return;
-                };
+                }
 		$urpm->disable_selected(
 		    $db, $urpm->{state},
 		    map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs,
@@ -672,7 +672,7 @@ sub run_treeview_dialog {
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections->[0]);
 
     my $accel = Gtk2::AccelGroup->new;
-    $accel->connect(Gtk2::Gdk->keyval_from_name('F'), ['control-mask'], ['visible'], sub { $find_entry->grab_focus });
+    $accel->connect(Gtk2::Gdk->keyval_from_name('F'), [ 'control-mask' ], [ 'visible' ], sub { $find_entry->grab_focus });
     $w->{real_window}->add_accel_group($accel);
 
     gtkadd(
