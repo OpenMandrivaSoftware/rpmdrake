@@ -233,11 +233,10 @@ sub get_new_deps {
                 slow_func($::main_window->window, sub {
                               my $state = {};
                               my $db = open_rpm_db();
-                              my @requested = $urpm->resolve_requested(
+                              my @requested = $urpm->resolve_requested__no_suggests_(
                                   $db, $state,
                                   { $upkg->id => 1 },
                               );
-                              $urpm->disable_selected($db, $state, @requested);
                               undef $db;
                               my @nodes_with_deps = map { urpm_name($_) } @requested;
                               my @deps = sort { $a cmp $b } difference2(\@nodes_with_deps, [ urpm_name($upkg) ]);
