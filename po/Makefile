@@ -42,3 +42,6 @@ install:
 clean:
 	@rm -rf *.mo *.pof *.pog $(POFILES:%=%t) $(PL_CFILES) desktopstuff.pot $(PGOAL)_tmp.pot
 
+check:
+	for i in *.po; do msgfmt -c $$i -o /dev/null; done 
+
