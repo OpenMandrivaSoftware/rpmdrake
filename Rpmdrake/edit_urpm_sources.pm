@@ -695,7 +695,7 @@ sub edit_parallel {
         $medias_list->get_selection->set_mode('browse');
         $medias_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
         my $sel;
-        add_callback_(N("Add a medium limit"), N("Choose a medium for adding in the media limit:"),
+        add_callback_(N("Add a medium limit"), N("Choose a medium to add to the media limit:"),
                       $w, $medias_list, sub { $sel = selrow($medias_list) },
                       sub {
                           return if $sel == -1;
@@ -893,7 +893,7 @@ sub keys_callback() {
         $available_keyz->get_selection->set_mode('browse');
         $available_keyz_ls->append_set([ 0 => sprintf("%s (%s)", $_, $key_name->($_)), 1 => $_ ]) foreach keys %{$urpm->{keys}};
         my $key;
-        add_callback_(N("Add a key"), N("Choose a key for adding to the medium %s", $current_medium), $w, $available_keyz,
+        add_callback_(N("Add a key"), N("Choose a key to add to the medium %s", $current_medium), $w, $available_keyz,
                       sub {
                           my ($model, $iter) = $available_keyz->get_selection->get_selected;
                           $model && $iter and $key = $model->get($iter, 1);
