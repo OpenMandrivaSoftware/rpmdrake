@@ -371,7 +371,7 @@ sub options_callback() {
                               format => sub { $xml_info_policies{$_[0]} || $_[0] },
                               tip => 
                                 join("\n",
-                                     N("For remote media, specify when XML meta-data (file lists, changelogs & informations) are downloaded."),
+                                     N("For remote media, specify when XML meta-data (file lists, changelogs & information) are downloaded."),
                                      '',
                                      N("Never"),
                                      N("For remote media, XML meta-data are never downloaded."),
@@ -572,7 +572,7 @@ sub proxy_callback {
 		1, gtkset_active($proxybutton = gtknew('CheckButton', text => N("Proxy hostname:")), to_bool($proxy)),
 		0, gtkadd_widget($sg, gtkset_sensitive($proxyentry = gtkentry($proxy), to_bool($proxy))),
 	    ),
-         gtkset_active($proxyuserbutton = gtknew('CheckButton', text => N("You may specify a user/password for the proxy authentication:")), to_bool($proxy_user)),
+         gtkset_active($proxyuserbutton = gtknew('CheckButton', text => N("You may specify a username/password for the proxy authentication:")), to_bool($proxy_user)),
 	    gtkpack_(
 		my $hb_user = gtknew('HBox', spacing => 10, sensitive => to_bool($proxy_user)),
 		1, gtknew('Label_Left', text => N("User:")),
