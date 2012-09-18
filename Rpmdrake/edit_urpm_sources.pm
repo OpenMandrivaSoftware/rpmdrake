@@ -1076,7 +1076,7 @@ sub mainwindow() {
 		urpm::media::write_config($urpm);
 		#- Enabling this media failed, force update
 		interactive_msg('rpmdrake',
-		    N("This medium needs to be updated to be usable. Update it now ?"),
+		    N("This medium needs to be updated to be usable. Update it now?"),
 		    yesno => 1,
 		) and $reread_media->($urpm->{media}[$path]{name});
 	    }
@@ -1192,7 +1192,7 @@ sub run() {
 working with the Package Database (do you have another media
 
 manager on another desktop, or are you currently installing
-packages as well?)."));
+packages as well?"));
             die $err_msg;
         };
         # lock urpmi DB
