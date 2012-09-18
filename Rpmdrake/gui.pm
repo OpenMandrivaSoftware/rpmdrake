@@ -241,7 +241,7 @@ sub get_new_deps {
                               undef $db;
                               my @nodes_with_deps = map { urpm_name($_) } @requested;
                               my @deps = sort { $a cmp $b } difference2(\@nodes_with_deps, [ urpm_name($upkg) ]);
-                              @deps = N("No non installed dependency.") if !@deps;
+                              @deps = N("All dependencies installed.") if !@deps;
                               gtktext_insert($deps_textview, join("\n", @deps));
                           });
             }
