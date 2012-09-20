@@ -101,8 +101,10 @@ sub my_fullname {
 }
 
 sub version_release {
-    my (undef, $version, $release) = $_[0]->fullname;
-    "$version-$release";
+    my ($pkg) = @_;
+    my (undef, $version, $release) = $pkg->fullname;
+    my $epoch = $pkg->epoch;
+    $epoch ? "$epoch-$version-$release" : "$version-$release";
 }
 
 sub urpm_name {
