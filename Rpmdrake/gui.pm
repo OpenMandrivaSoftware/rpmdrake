@@ -1076,7 +1076,7 @@ sub get_info {
     exists $pkgs->{$key} or return [ [ N("Description not available for this package\n") ] ];
     #- get the description if needed:
     
-    exists $pkgs->{$key}{description} or slow_func($widget, sub { extract_header($pkgs->{$key}, $urpm, 'info', version_release($pkgs->{$key}{pkg})) });
+    exists $pkgs->{$key}{description} or slow_func($widget, sub { extract_header($pkgs->{$key}, $urpm, 'info', find_installed_version($pkgs->{$key}{pkg})) });
     format_pkg_simplifiedinfo($pkgs, $key, $urpm, $descriptions);
 }
 
