@@ -36,6 +36,7 @@ our @ISA = qw(Exporter);
 our @EXPORT = qw(
                     $spacing
                     ensure_utf8
+                    evr
                     format_changelog_changelogs
                     format_changelog_string
                     format_field
@@ -50,7 +51,6 @@ our @EXPORT = qw(
                     rpm_description
                     split_fullname
                     urpm_name
-                    version_release
             );
 
 
@@ -100,7 +100,7 @@ sub my_fullname {
     "$name-$version-$release";
 }
 
-sub version_release {
+sub evr {
     my ($pkg) = @_;
     my (undef, $version, $release) = $pkg->fullname;
     my $epoch = $pkg->epoch;

@@ -208,7 +208,7 @@ sub get_details {
     my ($pkg, $upkg, $installed_version, $raw_medium) = @_;
     my $a = ugtk2::markup_to_TextView_format(
         $spacing . join("\n$spacing",
-                        format_field(N("Version: ")) . version_release($upkg),
+                        format_field(N("Version: ")) . evr($upkg),
                         ($upkg->flag_installed ?
                            format_field(N("Currently installed version: ")) . $installed_version : ()
                         ),
