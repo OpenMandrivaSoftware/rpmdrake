@@ -36,7 +36,6 @@ our @ISA = qw(Exporter);
 our @EXPORT = qw(
                     $spacing
                     ensure_utf8
-                    evr
                     format_changelog_changelogs
                     format_changelog_string
                     format_field
@@ -98,13 +97,6 @@ sub my_fullname {
     return '?-?-?' unless ref $_[0];
     my ($name, $version, $release) = $_[0]->fullname;
     "$name-$version-$release";
-}
-
-sub evr {
-    my ($pkg) = @_;
-    my (undef, $version, $release) = $pkg->fullname;
-    my $epoch = $pkg->epoch;
-    $epoch ? "$epoch-$version-$release" : "$version-$release";
 }
 
 sub urpm_name {
