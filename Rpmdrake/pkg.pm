@@ -192,7 +192,7 @@ sub extract_header {
 sub find_installed_version {
     my ($p) = @_;
     my $version;
-    open_rpm_db()->traverse_tag_find('name', $p->name, sub { $version = evr($_[0]) });
+    open_rpm_db()->traverse_tag_find('name', $p->name, sub { $version = $_[0]->EVR });
     $version || N("(none)");
 }
 
