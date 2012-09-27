@@ -104,8 +104,7 @@ sub compute_main_window_size {
 
 sub get_summary {
     my ($key) = @_;
-    $pkgs->{$key}{summary} ||= $pkgs->{$key}{pkg}->summary;
-    my $summary = translate($pkgs->{$key}{summary});
+    my $summary = translate($pkgs->{$key}{pkg}->summary);
     require utf8;
     utf8::valid($summary) ? $summary : @{[]};
 }
@@ -343,7 +342,7 @@ sub format_pkg_info {
       ),
       @source_info,
       '', # extra empty line
-      format_field(N("Summary: ")) . $pkg->{summary},
+      format_field(N("Summary: ")) . $upkg->summary,
       '', # extra empty line
       if_(
 	  $MODE eq 'update',
