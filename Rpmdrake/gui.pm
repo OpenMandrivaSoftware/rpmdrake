@@ -906,7 +906,7 @@ sub toggle_nodes {
         #- not upgradable (older than what currently installed) #FIXED
         exists $pkgs->{$_} or next;
         if (!$pkgs->{$_}{pkg}) { #- cannot be removed  # FIXME; what about next packages in the loop?
-            $pkgs->{$_}{selected} = 0;
+            undef $pkgs->{$_}{selected};
             log::explanations("cannot be removed: $_");
         } else {
             $pkgs->{$_}{selected} = $new_state;

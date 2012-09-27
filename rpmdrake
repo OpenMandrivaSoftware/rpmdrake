@@ -560,7 +560,7 @@ sub run_treeview_dialog {
 		    map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs,
 		);
 	    }
-	    $pkgs->{$_}{selected} = 0 foreach keys %$pkgs;
+	    undef $pkgs->{$_}{selected} foreach keys %$pkgs;
 	    reset_search();
 	    $size_selected = 0;
 	    $force_displaying_group = 1;
@@ -766,7 +766,7 @@ sub run_treeview_dialog {
     slow_func($::main_window->window, sub { pkgs_provider($default_list_mode) }); # default mode
     if (@initial_selection) {
         $options->{initial_selection} = \@initial_selection;
-        $pkgs->{$_}{selected} = 0 foreach @initial_selection;
+        undef $pkgs->{$_}{selected} foreach @initial_selection;
     }
 
     $w->{rwindow}->set_sensitive(1);

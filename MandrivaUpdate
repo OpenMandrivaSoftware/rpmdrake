@@ -77,7 +77,7 @@ sub refresh_packages_list {
 
     # don't select packages in skip list:
     if (!$initialized) {
-        $pkgs->{$_}{selected} = 0 foreach @requested;
+        undef $pkgs->{$_}{selected} foreach @requested;
         my @selectable = grep { !$pkgs->{$_}{pkg}->flag_skip } @requested;
         toggle($list, @selectable) if @selectable;
         $initialized = 1;
