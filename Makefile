@@ -69,7 +69,7 @@ dist-git:
 	 @git archive --prefix=$(NAME)-$(VERSION)/ HEAD | xz  >../$(NAME)-$(VERSION).tar.xz;
 
 gui.lst:
-	LC_COLLATE=C; ( echo -e "cedega-mandriva\npicasa\nVariCAD_2009-en\nVariCAD_View_2009-en\nVMware-Player" ; \
+	export LC_COLLATE=C; ( echo -e "cedega-mandriva\npicasa\nVariCAD_2009-en\nVariCAD_View_2009-en\nVMware-Player" ; \
 	urpmf "/usr/share/((applnk|applications(|/kde)|apps/kicker/applets)/|kde4/services/plasma-applet).*.desktop" |sed -e 's!:.*!!') \
 	 | sort -u > gui.lst
 
