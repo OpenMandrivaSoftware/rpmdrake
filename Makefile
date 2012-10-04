@@ -71,7 +71,7 @@ dist-git:
 gui.lst:
 	LC_COLLATE=C; ( echo -e "cedega-mandriva\npicasa\nVariCAD_2009-en\nVariCAD_View_2009-en\nVMware-Player" ; \
 	urpmf "/usr/share/((applnk|applications(|/kde)|apps/kicker/applets)/|kde4/services/plasma-applet).*.desktop" |sed -e 's!:.*!!') \
-	 | sort | uniq > gui.lst
+	 | sort -u > gui.lst
 
 check:
 	rm -f po/*.pot 
