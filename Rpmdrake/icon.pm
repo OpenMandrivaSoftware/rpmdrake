@@ -144,6 +144,7 @@ my %group_icons = (
 	join('|', N("Sciences"), N("Biology")) => 'biology_section',
 	join('|', N("Sciences"), N("Chemistry")) => 'chemistry_section',
 	join('|', N("Sciences"), N("Computer science")) => 'computer_science_section',
+	join('|', N("Sciences"), N("Geosciences")) => 'geosciences_section',
 	join('|', N("Sciences"), N("Mathematics")) => 'mathematics_section',
 	join('|', N("Sciences"), N("Other")) => 'other_sciences',
 	join('|', N("Sciences"), N("Physics")) => 'physics_section',
