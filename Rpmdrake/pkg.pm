@@ -179,7 +179,6 @@ sub extract_header {
                                                              @{$xml_info_pkgs{$name}{changelogs}})
                 });
             }
-	    $p->pack_header; # needed in order to call methods on objects outside ->traverse
         } else {
             goto header_non_available;
         }
