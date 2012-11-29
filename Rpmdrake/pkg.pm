@@ -119,9 +119,8 @@ sub extract_header {
         my ($local_source, %xml_info_pkgs, $bar_id);
         my $_statusbar_clean_guard = before_leaving { $bar_id and statusbar_msg_remove($bar_id) };
         my $dir = urpm::file_from_local_url($medium->{url});
-        if ($dir) {
-            $local_source = "$dir/" . $p->filename;
-        }
+	$local_source = "$dir/" . $p->filename if $dir;
+
         if (-e $local_source) {
             $bar_id = statusbar_msg(N("Getting information from %s...", $dir), 0);
             $urpm->{log}("getting information from rpms from $dir");
