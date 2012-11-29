@@ -105,7 +105,7 @@ sub extract_header {
         return;
     }
 
-    my $name = urpm_name($p);
+    my $name = $p->fullname;
     # fix extracting info for SRPMS and RPM GPG keys:
     $name =~ s!\.src!!;
 
@@ -331,7 +331,7 @@ sub get_installed_packages {
 	exists $basepackages{$_} and next;
 	$db->traverse_tag(m|^/| ? 'basenames' : 'providename', [ $_ ], sub {
 			      update_pbar($gurpm);
-			      my $name = urpm_name($_[0]);
+			      my $name = $_[0]->fullname;
 			      # workaround looping in URPM:
 			      return if member($name, @processed_base);
 			      push @processed_base, $name;
@@ -550,7 +550,7 @@ sub get_pkgs {
           next if !$pkg_id;
           my $pkg = $urpm->{depslist}[$pkg_id];
           $pkg->flag_upgrade or next;
-          my $name = urpm_name($pkg);
+          my $name = $pkg->fullname;
           push @$backports, $name;
           $all_pkgs{$name} = { pkg => $pkg, is_backport => 1 };
       }
