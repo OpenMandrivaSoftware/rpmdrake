@@ -153,8 +153,8 @@ sub get_string_from_keywords {
     my ($medium, $name) = @_;
     my @media_types;
     if ($medium->{mediacfg}) {
-        my ($distribconf, $medium_name) = @{$medium->{mediacfg}};
-        @media_types = split(':', $distribconf->getvalue($medium_name, 'media_type')) if $distribconf;
+        my ($distribconf, $medium_path) = @{$medium->{mediacfg}};
+        @media_types = split(':', $distribconf->getvalue($medium_path, 'media_type')) if $distribconf;
     }
 
     my $unsupported = N("It is <b>not supported</b> by Mandriva.");
