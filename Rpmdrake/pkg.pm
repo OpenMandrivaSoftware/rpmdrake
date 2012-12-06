@@ -805,7 +805,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  $transaction_progress_nb = 0;
                                  $done += grep { !/\.src\.rpm$/ } values %$transaction_sources;         #updates
                                  $total = keys(%$transaction_sources_install) + keys %$transaction_sources;
-                                 push @rpms_upgrade, grep { !/\.src\.rpm$/ } values %$transaction_sources;
+                                 push @rpms_upgrade, keys %$transaction_sources;
                                  $done += grep { !/\.src\.rpm$/ } values %$transaction_sources_install; # installs
                              },
                              pre_removable => sub {
@@ -868,10 +868,10 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  }
                                  my $id = statusbar_msg(N("Inspecting configuration files..."), 0);
                                  my %pkg2rpmnew;
-                                 foreach my $u (@rpms_upgrade) {
-                                     $u =~ m|/([^/]+-[^-]+-[^-]+)\.[^\./]+\.rpm$|
-                                       and $pkg2rpmnew{$1} = [ grep { m|^/etc| && (-r "$_.rpmnew" || -r "$_.rpmsave") }
-                                                                 map { chomp_($_) } run_rpm("rpm -ql $1") ];
+                                 foreach my $id (@rpms_upgrade) {
+				     my $pkg = $urpm->{depslist}[$id];
+				     next if $pkg->arch eq 'src';
+				     $pkg2rpmnew{$pkg->fullname} = [ grep { -r "$_.rpmnew" || -r "$_.rpmsave" } $pkg->conf_files ];
                                  }
                                  statusbar_msg_remove($id);
                                  dialog_rpmnew(N("The installation is finished; everything was installed correctly.
