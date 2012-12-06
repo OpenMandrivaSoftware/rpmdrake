@@ -575,7 +575,7 @@ sub get_pkgs {
        installable => \@installable_pkgs,
        updates => \@updates,
        meta_pkgs => \@meta_pkgs,
-       gui_pkgs => [ grep { member(($all_pkgs{$_}{pkg}->fullname)[0], @gui_pkgs) } keys %all_pkgs ],
+       gui_pkgs => [ grep { my $p = $all_pkgs{$_}{pkg}; $p && member(($p->fullname)[0], @gui_pkgs) } keys %all_pkgs ],
        update_descr => $update_descr,
        backports => [ @inactive_backports, @active_backports ],
        inactive_backports => \@inactive_backports
