@@ -84,5 +84,5 @@ log: ChangeLog
 changelog: ChangeLog
 
 ChangeLog:
-	svn2cl --accum --authors ../../soft/common/username.xml
+	svn2cl --accum
 	rm -f *.bak
