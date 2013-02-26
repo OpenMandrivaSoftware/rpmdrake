@@ -110,7 +110,7 @@ sub remove_from_list {
 }
 
 sub _want_base_distro() {
-    distro_type(0) eq 'updates' ? interactive_msg(
+    $::expert && distro_type(0) eq 'updates' ? interactive_msg(
 	N("Choose media type"),
 N("In order to keep your system secure and stable, you must at a minimum set up
 sources for official security and stability updates. You can also choose to set
