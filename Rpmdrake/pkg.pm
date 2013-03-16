@@ -34,6 +34,7 @@ use Rpmdrake::open_db;
 use Rpmdrake::gurpm;
 use Rpmdrake::formatting;
 use Rpmdrake::rpmnew;
+use gurpm::RPMProgressDialog;
 
 use rpmdrake;
 use urpm;
@@ -697,6 +698,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     my @to_install = @{$urpm->{depslist}}[keys %{$state->{selected}}];
     my @pkgs = map { scalar($_->fullname) } sort(grep { $_->flag_selected } @to_install);
+    $urpm->{nb_install} = @to_install;
 
     @{$urpm->{ask_remove}} = sort(urpm::select::removed_packages($urpm->{state}));
     my @to_remove = map { if_($pkgs->{$_}{selected} && !$pkgs->{$_}{pkg}->flag_upgrade, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
@@ -729,7 +731,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     # select packages to uninstall for !update mode:
     perform_removal($urpm, { map { $_ => $pkgs->{$_} } @to_remove }) if !$probe_only_for_updates;
 
-    $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
+    $gurpm = gurpm::RPMProgressDialog->new($urpm);
+    $gurpm->label(1 ? N("Please wait") : N("Package installation..."));
     my $_gurpm_clean_guard = before_leaving { undef $gurpm };
     my $something_installed;
  
@@ -745,23 +748,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     urpm::orphans::mark_as_requested($urpm, $state, 0);
 
     my ($progress, $total, @rpms_upgrade);
-    my $transaction;
-    my ($progress_nb, $transaction_progress_nb, $remaining, $done);
-    my $callback_inst = sub {
-        my ($urpm, $type, $id, $subtype, $amount, $total) = @_;
-        my $pkg = defined $id ? $urpm->{depslist}[$id] : undef;
-        if ($subtype eq 'start') {
-            if ($type eq 'trans') {
-                $gurpm->label(1 ? N("Preparing package installation...") : N("Preparing package installation transaction..."));
-                } elsif (defined $pkg) {
-                    $something_installed = 1;
-                    $gurpm->label(N("Installing package `%s' (%s/%s)...", $pkg->name, ++$transaction_progress_nb, scalar(@{$transaction->{upgrade}}))
-                                             . "\n" . N("Total: %s/%s", ++$progress_nb, $install_count));
-                }
-        } elsif ($subtype eq 'progress') {
-            $gurpm->progress($total ? $amount/$total : 1);
-        }
-    };
+    my ($remaining, $done);
 
     # FIXME: sometimes state is lost:
     my @ask_unselect = urpm::select::unselected_packages($state);
@@ -771,6 +758,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
         my $pkg = $urpm->{depslist}[$_];
         $pkg->set_flag_requested($saved_flags{$pkg->id});
     }
+
+    $gurpm->init_progressbar;
+
     my $exit_code = 
       urpm::main_loop::run($urpm, $state, 1, \@ask_unselect,
                          {
@@ -782,8 +772,9 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  undef $lock;
                                  undef $rpm_lock;
                              },
-                             inst => $callback_inst,
-                             trans => $callback_inst,
+                             inst => \&gurpm::RPMProgressDialog::callback_inst,
+                             trans => \&gurpm::RPMProgressDialog::callback_inst,
+                             uninst => \&gurpm::RPMProgressDialog::callback_inst,
                              ask_yes_or_no => sub {
                                  # handle 'allow-force' and 'allow-nodeps' options:
                                  my ($title, $msg) = @_;
@@ -798,9 +789,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              # cancel installation when 'cancel' button is pressed:
                              trans_log => sub { download_callback($gurpm, @_) or goto return_with_exit_code },
                              post_extract => sub {
-                                 my ($set, $transaction_sources, $transaction_sources_install) = @_;
-                                 $transaction = $set;
-                                 $transaction_progress_nb = 0;
+                                 my ($_set, $transaction_sources, $transaction_sources_install) = @_;
                                  $done += grep { !/\.src\.rpm$/ } values %$transaction_sources;         #updates
                                  $total = keys(%$transaction_sources_install) + keys %$transaction_sources;
                                  push @rpms_upgrade, keys %$transaction_sources;
@@ -836,7 +825,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              },
                              post_download => sub {
                                  $canceled and goto return_with_exit_code;
-                                 $gurpm->invalidate_cancel_forever;
+                                 #$gurpm->invalidate_cancel_forever; # FIXME: cancel
                              },
                              need_restart => sub {
                                  my ($need_restart_formatted) = @_;
@@ -926,6 +915,7 @@ you may now inspect some in order to take actions:"),
     }
 
   return_with_exit_code:
+    $something_installed = gurpm::RPMProgressDialog::get_something_done();
     return !($something_installed || scalar(@to_remove));
 }
 
@@ -936,7 +926,9 @@ sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
     return if !@toremove;
-    my $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Please wait, removing packages..."), N("Initializing..."), transient => $::main_window);
+    my $gurpm =gurpm::RPMProgressDialog->new($urpm);
+    $gurpm->label(1 ? N("Please wait") : N("Please wait, removing packages..."));
+    $gurpm->init_progressbar;
     my $_gurpm_clean_guard = before_leaving { undef $gurpm };
 
     my $may_be_orphans = 1;
@@ -962,7 +954,7 @@ sub perform_removal {
 	    @results = $::rpmdrake_options{parallel}
 		? urpm::parallel::remove($urpm, \@toremove)
 		: urpm::install::install($urpm, \@toremove, {}, {},
-                                   callback_report_uninst => sub { $gurpm->label($_[0]) },
+                                   callback_uninst => \&gurpm::RPMProgressDialog::callback_inst,
                                );
 	    open_rpm_db('force_sync');
 	},
