@@ -367,7 +367,7 @@ sub get_installed_packages {
 
 urpm::select::add_packages_to_priority_upgrade_list('rpmdrake', 'perl-Glib', 'perl-Gtk2');
 
-my ($priority_state, $priority_requested);
+my $priority_state;
 our $need_restart;
 
 our $probe_only_for_updates;
@@ -382,6 +382,7 @@ sub get_updates_list {
 	%limit_preselect
     );
 
+    require Rpmdrake::gui;
     my %common_opts = (
         callback_choices => \&Rpmdrake::gui::callback_choices,
         priority_upgrade => $urpm->{options}{'priority-upgrade'},
@@ -507,12 +508,7 @@ sub get_pkgs {
         get_updates_list($urpm, $db, $state, $requested, \@requested, \@requested_strict, \%all_pkgs, %filter);
     }
 
-    if ($need_restart) {
-        $priority_state = $state;
-        $priority_requested = $requested;
-    } else {
-        ($priority_state, $priority_requested) = ();
-    }
+    $priority_state = $need_restart ? $state : undef;
 
     if (!$probe_only_for_updates) {
         $urpm->compute_installed_flags($db); # TODO/FIXME: not for updates
