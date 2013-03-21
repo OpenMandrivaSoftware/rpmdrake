@@ -926,7 +926,7 @@ sub perform_removal {
     my ($urpm, $pkgs) = @_;
     my @toremove = map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{urpm_name}) } keys %$pkgs;
     return if !@toremove;
-    my $gurpm =gurpm::RPMProgressDialog->new($urpm);
+    my $gurpm = gurpm::RPMProgressDialog->new($urpm);
     $gurpm->label(1 ? N("Please wait") : N("Please wait, removing packages..."));
     $gurpm->init_progressbar;
     my $_gurpm_clean_guard = before_leaving { undef $gurpm };
