@@ -787,7 +787,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  interactive_msg($title, $message, scroll => 1);
                              },
                              # cancel installation when 'cancel' button is pressed:
-                             trans_log => sub { download_callback($gurpm, @_) or goto return_with_exit_code },
+                             trans_log => sub { gurpm::RPMProgressDialog::callback_download(@_) }, # or goto return_with_exit_code },
                              post_extract => sub {
                                  my ($_set, $transaction_sources, $transaction_sources_install) = @_;
                                  $done += grep { !/\.src\.rpm$/ } values %$transaction_sources;         #updates
