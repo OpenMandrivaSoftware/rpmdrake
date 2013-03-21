@@ -935,17 +935,6 @@ sub perform_removal {
     urpm::orphans::unrequested_orphans_after_remove($urpm, \@toremove)
 	or $may_be_orphans = 0;
 
-    my $progress = -1;
-    local $urpm->{log} = sub {
-        my $str = $_[0];
-        print $str;
-        $progress++;
-        return if $progress <= 0; # skip first "creating transaction..." message
-        $gurpm->label($str); # display "removing package %s"
-        $gurpm->progress(min(0.99, scalar($progress/@toremove)));
-        gtkflush();
-    };
-
     my @results;
     slow_func_statusbar(
 	N("Please wait, removing packages..."),
