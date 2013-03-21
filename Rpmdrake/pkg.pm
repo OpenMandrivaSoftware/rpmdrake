@@ -824,8 +824,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  );
                              },
                              post_download => sub {
-                                 $canceled and goto return_with_exit_code;
-                                 #$gurpm->invalidate_cancel_forever; # FIXME: cancel
+                                 $gurpm->canceled and goto return_with_exit_code;
+                                 $gurpm->invalidate_cancel_forever;
                              },
                              need_restart => sub {
                                  my ($need_restart_formatted) = @_;
