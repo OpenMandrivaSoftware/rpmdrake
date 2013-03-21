@@ -552,8 +552,7 @@ sub proxy_callback {
     my $medium_name = $medium ? $medium->{name} : '';
     my $w = ugtk2->new(N("Configure proxies"), grab => 1, center => 1,  transient => $::main_window);
     local $::main_window = $w->{real_window};
-    require curl_download;
-    my ($proxy, $proxy_user) = curl_download::readproxy($medium_name);
+    my ($proxy, $proxy_user) = readproxy($medium_name);
     my ($user, $pass) = $proxy_user =~ /^([^:]*):(.*)$/;
     my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry, $proxypasswordentry);
     my $sg = Gtk2::SizeGroup->new('horizontal');
@@ -618,7 +617,7 @@ sub proxy_callback {
 
     $w->main and do {
         $something_changed = 1;
-        curl_download::writeproxy($proxy, $proxy_user, $medium_name);
+        writeproxy($proxy, $proxy_user, $medium_name);
     };
 }
 
@@ -1212,5 +1211,20 @@ packages as well?"));
     $res;
 }
 
+sub readproxy (;$) {
+    my $proxy = get_proxy($_[0]);
+    ($proxy->{http_proxy} || $proxy->{ftp_proxy} || '',
+	defined $proxy->{user} ? "$proxy->{user}:$proxy->{pwd}" : '');
+}
+
+sub writeproxy {
+    my ($proxy, $proxy_user, $o_media_name) = @_;
+    my ($user, $pwd) = split /:/, $proxy_user;
+    set_proxy_config(user => $user, $o_media_name);
+    set_proxy_config(pwd => $pwd, $o_media_name);
+    set_proxy_config(http_proxy => $proxy, $o_media_name);
+    set_proxy_config(ftp_proxy => $proxy, $o_media_name);
+    dump_proxy_config();
+}
 
 1;

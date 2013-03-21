@@ -1,7 +1,7 @@
 VERSION = 5.43
 NAME = rpmdrake
 
-DIRS = grpmi po data mime
+DIRS = po data mime
 
 PREFIX = /usr/local
 DATADIR = $(PREFIX)/share
