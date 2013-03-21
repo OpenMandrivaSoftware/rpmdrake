@@ -931,6 +931,7 @@ sub perform_removal {
     $gurpm->init_progressbar;
     my $_gurpm_clean_guard = before_leaving { undef $gurpm };
 
+    $urpm->{nb_install} = @toremove;
     my $may_be_orphans = 1;
     urpm::orphans::unrequested_orphans_after_remove($urpm, \@toremove)
 	or $may_be_orphans = 0;
