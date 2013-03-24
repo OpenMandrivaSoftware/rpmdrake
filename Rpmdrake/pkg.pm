@@ -656,7 +656,8 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     $w->set_sensitive(0);
     my $_restore_sensitive = before_leaving { $w->set_sensitive(1) };
 
-    my $_flush_guard = Gtk2::GUI_Update_Guard->new;
+    # prevent perl to segfault upon receiving SIGALARM (mga#4918):
+    #my $_flush_guard = Gtk2::GUI_Update_Guard->new;
 
     if (my $group = get_parallel_group()) {
         return perform_parallel_install($urpm, $group, $w, \$statusbar_msg_id);
