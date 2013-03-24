@@ -815,7 +815,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  );
                              },
                              pre_check_sig => sub { $gurpm->label(N("Verifying package signatures...")) },
-                             check_sig => sub { $gurpm->set_progressbar(++$progress/$total) },
+                             #check_sig => sub { $gurpm->set_progressbar(++$progress/$total) },
                              bad_signature => sub {
                                  my ($msg, $msg2) = @_;
                                  local $::main_window = $gurpm->{real_window};
