@@ -645,7 +645,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     local $urpm->{fatal} = sub {
         my $fatal_msg = $_[1];
         printf STDERR "Fatal: %s\n", $fatal_msg;
-        undef $gurpm;
+        $gurpm->destroy;
         interactive_msg(N("Installation failed"),
                         N("There was a problem during the installation:\n\n%s", $fatal_msg));
         goto return_with_exit_code;
@@ -733,7 +733,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     $gurpm = gurpm::RPMProgressDialog->new($urpm);
     $gurpm->label(1 ? N("Please wait") : N("Package installation..."));
-    my $_gurpm_clean_guard = before_leaving { undef $gurpm };
+    my $_gurpm_clean_guard = before_leaving { $gurpm->destroy };
     my $something_installed;
  
     if (@to_install && $::rpmdrake_options{auto_orphans}) {
@@ -767,7 +767,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              completed => sub {
                                  # explicitly destroy the progress window when it's over; we may
                                  # have sg to display before returning (errors, rpmnew/rpmsave, ...):
-                                 undef $gurpm;
+                                 $gurpm->destroy;
                                        
                                  undef $lock;
                                  undef $rpm_lock;
@@ -929,7 +929,7 @@ sub perform_removal {
     my $gurpm = gurpm::RPMProgressDialog->new($urpm);
     $gurpm->label(1 ? N("Please wait") : N("Please wait, removing packages..."));
     $gurpm->init_progressbar;
-    my $_gurpm_clean_guard = before_leaving { undef $gurpm };
+    my $_gurpm_clean_guard = before_leaving { $gurpm->destroy };
 
     $urpm->{nb_install} = @toremove;
     my $may_be_orphans = 1;
