@@ -748,8 +748,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
 
     urpm::orphans::mark_as_requested($urpm, $state, 0);
 
-    my ($progress, $total, @rpms_upgrade);
-    my ($remaining, $done);
+    my (@rpms_upgrade, $remaining, $done);
 
     # FIXME: sometimes state is lost:
     my @ask_unselect = urpm::select::unselected_packages($state);
@@ -792,7 +791,6 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                              post_extract => sub {
                                  my ($_set, $transaction_sources, $transaction_sources_install) = @_;
                                  $done += grep { !/\.src\.rpm$/ } values %$transaction_sources;         #updates
-                                 $total = keys(%$transaction_sources_install) + keys %$transaction_sources;
                                  push @rpms_upgrade, keys %$transaction_sources;
                                  $done += grep { !/\.src\.rpm$/ } values %$transaction_sources_install; # installs
                              },
