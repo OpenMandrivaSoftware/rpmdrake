@@ -599,9 +599,11 @@ sub display_READMEs_if_needed {
                   gtksignal_connect(
                       gtknew('Button', text => N("Upgrade information about this package")),
                       clicked => sub {
+                          my $upgrade_info = (join '' => map { s/$/\n/smg; $_ } formatAlaTeX(scalar cat_($fullname)));
+                          c::set_tagged_utf8($upgrade_info) if !utf8::is_utf8($upgrade_info);
                           interactive_msg(
                               N("Upgrade information about package %s", $Readmes{$fullname}),
-                              (join '' => map { s/$/\n/smg; $_ } formatAlaTeX(scalar cat_($fullname))),
+                              $upgrade_info,
                               scroll => 1,
                           );
                       },
