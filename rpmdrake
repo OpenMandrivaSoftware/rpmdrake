@@ -532,6 +532,8 @@ sub run_treeview_dialog {
     my %check_boxes;
     my $auto_select_string =
             N("/_Options") . N("/_Select dependencies without asking");
+    my $force_req_update_string =
+            N("/_Options") . N("/Try to update all package requires");
     my $clean_cache_string = 
             N("/_Options") . "/" . 
             N("Clear download cache after successful install");
@@ -579,6 +581,19 @@ sub run_treeview_dialog {
                   $auto_select->[0] = $box->get_active;
                   $::rpmdrake_options{auto} = $box->get_active;
                   $urpm->{options}{auto} = $box->get_active;
+              },
+              undef, '<CheckItem>' ],
+	    [ $force_req_update_string, undef, 
+              sub {
+                  my $box = $check_boxes{$force_req_update_string};
+                  $force_req_update->[0] = $box->get_active;
+                  if ($box->get_active) {
+                      $urpm->{options}{'force-req-update'} = 1;
+                      $::rpmdrake_options{'force-req-update'} = 1;
+                  } else {
+                      $urpm->{options}{'force-req-update'} = 0;
+                      $::rpmdrake_options{'force-req-update'} = 0;
+                  }
               },
               undef, '<CheckItem>' ],
 	    [ $clean_cache_string, undef, 
@@ -656,6 +671,7 @@ sub run_treeview_dialog {
         $_ => $factory->get_widget("<main>" . $get_path->($_));
     } ($auto_select_string, 
        $clean_cache_string, 
+       $force_req_update_string, 
        $NVR_string, 
        $updates_string, 
        $regexp_search_string);
@@ -664,6 +680,7 @@ sub run_treeview_dialog {
         $check_boxes{$regexp_search_string}->set_active($use_regexp->[0]);
         $check_boxes{$NVR_string}->set_active($NVR_searches->[0]);
         $check_boxes{$auto_select_string}->set_active($auto_select->[0]);
+        $check_boxes{$force_req_update_string}->set_active($force_req_update->[0]);
         $check_boxes{$updates_string}->set_active($compute_updates->[0]);
         $check_boxes{$clean_cache_string}->set_active($clean_cache->[0]);
     }
