@@ -65,6 +65,7 @@ our @EXPORT = qw(
     $typical_width
     $clean_cache
     $auto_select
+    $force_req_update
     add_distrib_update_media
     add_medium_and_check
     but
@@ -172,6 +173,9 @@ our $clean_cache;
 # automatic select dependencies without user intervention
 our $auto_select;
 
+# try to update required packages
+our $force_req_update;
+
 our ($changelog_first_config, $compute_updates, $filter, $max_info_in_descr, $mode, $NVR_searches, $tree_flat, $tree_mode, $use_regexp);
 our ($mandrakeupdate_wanted_categories, $ignore_debug_media, $offered_to_add_sources, $no_confirmation);
 our ($rpmdrake_height, $rpmdrake_width, $mandrivaupdate_height, $mandrivaupdate_width);
@@ -184,6 +188,10 @@ our %config = (
     auto_select => { 
 	var => \$auto_select, 
 	default => [ 0 ] 
+    },
+    force_req_update => {
+	var => \$force_req_update, 
+	default => [ 1 ] 
     },
     changelog_first_config => { var => \$changelog_first_config, default => [ 0 ] },
     compute_updates => { var => \$compute_updates, default => [ 1 ] },

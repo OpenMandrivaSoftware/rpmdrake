@@ -93,6 +93,7 @@ sub fast_open_urpmi_db() {
     $urpm->{options}{wait_lock} = $::rpmdrake_options{'wait-lock'};
     $urpm->{options}{'verify-rpm'} = !$::rpmdrake_options{'no-verify-rpm'} if defined $::rpmdrake_options{'no-verify-rpm'};
     $urpm->{options}{auto} = $::rpmdrake_options{auto} if defined $::rpmdrake_options{auto};
+    $urpm->{options}{'force-req-update'} = $::rpmdrake_options{'force-req-update'} if defined $::rpmdrake_options{'force-req-update'};
     urpm::args::set_verbosity();
     if ($::rpmdrake_options{env} && $::rpmdrake_options{env}[0]) {
         $::env = $::rpmdrake_options{env}[0];
