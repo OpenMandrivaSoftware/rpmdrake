@@ -213,9 +213,9 @@ sub download_callback {
                   ) =~ /^\s*(.*)/
               ),
         );
-        $gurpm->set_progressbar($percent/100);
+        $gurpm->progress($percent/100);
     } elsif ($mode eq 'end') {
-        $gurpm->set_progressbar(1);
+        $gurpm->progress(1);
         $gurpm->invalidate_cancel;
     }
     !$canceled;
