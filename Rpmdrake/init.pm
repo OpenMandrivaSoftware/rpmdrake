@@ -56,7 +56,7 @@ N("  --justdb               update the database, but do not modify the filesyste
 N("  --no-confirmation      don't ask first confirmation question in update mode"),
 N("  --no-media-update      don't update media at startup"),
 N("  --no-verify-rpm        don't verify package signatures"),
-if_($0 !~ /MandrivaUpdate/, N("  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps")),
+if_($0 !~ /Online Update/, N("  --parallel=alias,host  be in parallel mode, use \"alias\" group, use \"host\" machine to show needed deps")),
 N("  --rpm-root=path        use another root for rpm installation"),
 N("  --urpmi-root           use another root for urpmi db & rpm installation"),
 N("  --run-as-root          force to run as root"),
@@ -156,7 +156,7 @@ sub warn_about_user_mode() {
     $> and (rpmdrake::interactive_msg(N("Running in user mode"),
                             N("You are launching this program as a normal user.
 You will not be able to perform modifications on the system,
-but you may still browse the existing database."), yesno => 1, text => { no => N("Cancel"), yes => N("Ok") })
+but you may still browse the existing database."), yesno => 1, text => { no => N("Exit"), yes => N("OK") })
         or rpmdrake::myexit(0));
 }
 

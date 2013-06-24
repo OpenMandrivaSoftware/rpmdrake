@@ -19,20 +19,20 @@ dirs:
 	done
 
 install: $(ALL)
-	find -name '*.pm' -o -name rpmdrake -o -name MandrivaUpdate | xargs ./simplify-drakx-modules
+	find -name '*.pm' -o -name rpmdrake -o -name OnlineUpdate | xargs ./simplify-drakx-modules
 	./simplify-drakx-modules {gurpmi.addmedia,edit-urpm-sources.pl}
 	@for n in $(DIRS); do make -C $$n install; done
 	install -d $(SBINDIR)
-	install rpmdrake MandrivaUpdate edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
+	install rpmdrake OnlineUpdate edit-urpm-sources.pl gurpmi.addmedia $(SBINDIR)
 	install -d $(BINDIR)
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/rpmdrake
-	ln -sf $(RELATIVE_SBIN)/MandrivaUpdate $(BINDIR)/MandrivaUpdate
+	ln -sf $(RELATIVE_SBIN)/OnlineUpdate $(BINDIR)/OnlineUpdate
 	ln -sf $(RELATIVE_SBIN)/edit-urpm-sources.pl $(BINDIR)/edit-urpm-sources.pl
 	ln -sf edit-urpm-sources.pl $(SBINDIR)/drakrpm-edit-media
 	ln -sf $(RELATIVE_SBIN)/drakrpm-edit-media $(BINDIR)/drakrpm-edit-media
 	ln -sf $(RELATIVE_SBIN)/gurpmi.addmedia $(BINDIR)/gurpmi.addmedia
 	ln -sf $(RELATIVE_SBIN)/rpmdrake $(BINDIR)/drakrpm
-	ln -sf $(RELATIVE_SBIN)/MandrivaUpdate $(SBINDIR)/drakrpm-update
+	ln -sf $(RELATIVE_SBIN)/OnlineUpdate $(SBINDIR)/drakrpm-update
 	ln -sf $(RELATIVE_SBIN)/drakrpm-update $(BINDIR)/drakrpm-update
 	install -d $(DATADIR)/rpmdrake/icons
 	install -m644 icons/*.png $(DATADIR)/rpmdrake/icons

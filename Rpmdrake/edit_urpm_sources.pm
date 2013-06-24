@@ -67,7 +67,7 @@ sub get_medium_type {
         nfs       => N("NFS"),
         removable => N("Removable"),
         rsync     => N("rsync"),
-        ssh       => N("NFS"),
+        ssh       => N("SSH"),
     );
     return N("Mirror list") if $medium->{mirrorlist};
     return $medium_type{$1} if $medium->{url} =~ m!^([^:]*)://!;
@@ -114,9 +114,9 @@ sub _want_base_distro() {
 	N("Choose media type"),
 N("In order to keep your system secure and stable, you must at a minimum set up
 sources for official security and stability updates. You can also choose to set
-up a fuller set of sources which includes the complete official Mandriva
-repositories, giving you access to more software than can fit on the Mandriva
-discs. Please choose whether to configure update sources only, or the full set
+up a fuller set of sources which includes the complete official OpenMandriva LX
+repositories, giving you access to a greater variety of software. Please choose
+whether to configure update sources only, or the full set
 of sources."),
 	 transient => $::main_window,
 	yesno => 1, text => { yes => N("Full set of sources"), no => N("Update sources only") },
@@ -135,7 +135,7 @@ sub easy_add_callback_with_mirror() {
 N("This will attempt to install all official sources corresponding to your
 distribution (%s).
 
-I need to contact the Mandriva website to get the mirror list.
+I need to contact the OpenMandriva website to get the mirror list.
 Please check that your network is currently running.
 
 Is it ok to continue?", $distro),
@@ -977,11 +977,11 @@ sub mainwindow() {
                $license =~ s/\n/\n\n/sg; # nicer formatting
                my $w = gtknew('AboutDialog', name => N("Rpmdrake"),
                               version => $rpmdrake::distro_version,
-                              copyright => N("Copyright (C) %s by Mandriva", '2002-2008'),
+                              copyright => N("Copyright (C) %s by Mandriva\nCopyright (C) %s OpenMandriva", '2002-2008', '2013'),
                               license => $license, wrap_license => 1,
-                              comments => N("Rpmdrake is Mandriva Linux package management tool."),
-                              website => 'http://mandrivalinux.com',
-                              website_label => N("Mandriva Linux"),
+                              comments => N("Rpmdrake is the package management tool for OpenMandriva."),
+                              website => 'http://openmandriva.org',
+                              website_label => N("OpenMandriva"),
                               authors => 'Thierry Vignaud <vignaud@mandriva.com>',
                               artists => 'Hélène Durosini <ln@mandriva.com>',
                               translator_credits =>
@@ -1180,7 +1180,7 @@ sub mainwindow() {
 sub run() {
     # ignore rpmdrake's option regarding ignoring debug media:
     local $ignore_debug_media = [ 0 ];
-    local $ugtk2::wm_icon = get_icon('rpmdrake-mdk', 'title-media');
+    local $ugtk2::wm_icon = get_icon('rpmdrake-omv', 'title-media');
     my $lock;
     {
         $urpm = fast_open_urpmi_db();

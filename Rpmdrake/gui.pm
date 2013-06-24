@@ -157,7 +157,7 @@ sub get_string_from_keywords {
         @media_types = split(':', $distribconf->getvalue($medium_path, 'media_type')) if $distribconf;
     }
 
-    my $unsupported = N("It is <b>not supported</b> by Mandriva.");
+    my $unsupported = N("It is <b>not supported</b> by OpenMandriva.");
     my $dangerous = N("It may <b>break</b> your system.");
     my $s;
     $s .= N("This package is not free software") . "\n" if member('non-free', @media_types);
@@ -172,12 +172,12 @@ sub get_string_from_keywords {
     } elsif (member('updates', @media_types)) {
         return join("\n",
                     (member('official', @media_types) ?
-                       N("This is an official update which is supported by Mandriva.")
+                       N("This is an official update which is supported by OpenMandriva.")
                        : (N("This is an unofficial update."), $unsupported))
                     ,
                     $s);
     } else {
-        $s .= N("This is an official package supported by Mandriva") . "\n" if member('official', @media_types);
+        $s .= N("This is an official package supported by OpenMandriva") . "\n" if member('official', @media_types);
         return $s;
     }
 }

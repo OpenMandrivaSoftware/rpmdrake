@@ -2,7 +2,7 @@
 PGOAL = rpmdrake
 
 # perl files to search translatable strings in
-PL_FILES = ../rpmdrake ../edit-urpm-sources.pl ../rpmdrake.pm ../gurpmi.addmedia ../Rpmdrake/*.pm ../MandrivaUpdate
+PL_FILES = ../rpmdrake ../edit-urpm-sources.pl ../rpmdrake.pm ../gurpmi.addmedia ../Rpmdrake/*.pm ../OnlineUpdate
 
 POFILES = $(wildcard *.po)
 MOFILES = $(POFILES:%.po=%.mo)

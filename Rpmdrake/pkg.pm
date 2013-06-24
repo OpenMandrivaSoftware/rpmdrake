@@ -272,8 +272,8 @@ Then, restart \"%s\".", N("Enabled"), $rpmdrake::myname_update));
 		}
 		my ($mirror) = choose_mirror($urpm, transient => $w->{real_window} || $::main_window,
                                        message => join("\n\n",
-                                                       N("You have no configured update media. MandrivaUpdate cannot operate without any update media."),
-                                                       N("I need to contact the Mandriva website to get the mirror list.
+                                                       N("You have no configured update media. Online Update cannot operate without any update media."),
+                                                       N("I need to contact the OpenMandriva website to get the mirror list.
 Please check that your network is currently running.
 
 Is it ok to continue?"),
