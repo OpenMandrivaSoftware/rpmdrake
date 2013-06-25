@@ -148,8 +148,8 @@ sub run_treeview_dialog {
 	gtkpack_(
 	    gtknew('VBox', spacing => 3),
 	    if_(!$is_small_screen, 0, getbanner()),
-              0, gtknew('Title2', label => N("There are updates available for your system"), width => 600),
-              1, gtknew('Label_Left', text => N("Software updates correct errors, eliminate\nsecurity vulnerabilities, and provide new features."), width => 600),
+              0, gtknew('Title2', label => N("Available updates for your system are below."), width => 600),
+              1, gtknew('Label_Left', text => N("Software updates correct errors, eliminate security vulnerabilities, and provide new features.")),
          2, create_vpaned(
                  gtknew('ScrolledWindow', width => $typical_width*0.9, height => $is_small_screen ? 150 : 200,
                         child => $list = Gtk2::SimpleList->new(
