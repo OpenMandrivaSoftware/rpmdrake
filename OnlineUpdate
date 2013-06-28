@@ -151,7 +151,6 @@ sub run_treeview_dialog {
               0, create_vpaned(
 		    gtknew('Title2', label => N("Available updates for your system are displayed below."), width => 600),
 		    gtknew('Label_Left', text => N("Software updates correct errors, eliminate security vulnerabilities, and provide new features."), width => 600),
-		    resize1 => 0,
 		 ),
          1, create_vpaned(
                  gtknew('ScrolledWindow', width => $typical_width*0.9, height => $is_small_screen ? 150 : 200,
