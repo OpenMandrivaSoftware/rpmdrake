@@ -149,8 +149,8 @@ sub run_treeview_dialog {
 	    gtknew('VBox', spacing => 3),
 	    if_(!$is_small_screen, 0, getbanner()),
               0, create_vpaned(
-		    gtknew('Title2', label => ( @{$list->{data}} ? N("There are software updates available for your system.") : N("No updates are currently available.") ), width => 600),
-		    gtknew('Label_Left', text => N("Software updates correct errors, eliminate security vulnerabilities, and provide new features.")),
+		    gtknew('Title2', label => N("Available updates for your system are displayed below."), width => 600),
+		    gtknew('Label_Left', text => N("Software updates correct errors, eliminate security vulnerabilities, and provide new features."), width => 600),
 		    resize1 => 1,
 		 ),
          1, create_vpaned(
