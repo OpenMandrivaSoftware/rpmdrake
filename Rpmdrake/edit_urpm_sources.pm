@@ -114,7 +114,7 @@ sub _want_base_distro() {
 	N("Choose media type"),
 N("In order to keep your system secure and stable, you must at a minimum set up
 sources for official security and stability updates. You can also choose to set
-up a fuller set of sources which includes the complete official OpenMandriva LX
+up a fuller set of sources which includes the complete official OpenMandriva Lx
 repositories, giving you access to a greater variety of software. Please choose
 whether to configure update sources only, or the full set
 of sources."),

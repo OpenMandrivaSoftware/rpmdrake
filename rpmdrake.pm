@@ -672,7 +672,7 @@ Please try again later.", $error)), %options
 
 There can be many reasons for this problem; the most frequent is
 the case when the architecture of your processor is not supported
-by OpenMandriva LX.")), %options
+by OpenMandriva Lx.")), %options
     ), return '';
 
     my $w = ugtk2->new(N("Mirror choice"), grab => 1, @transient_options);
@@ -952,7 +952,7 @@ sub check_update_media_version {
 		? N("Your medium `%s', used for updates, does not match the version of %s you're running (%s).
 It will be disabled.",
 		    $_->{name}, $distrib{system}, $distrib{product})
-		: N("Your medium `%s', used for updates, does not match the version of OpenMandriva LX you're running (%s).
+		: N("Your medium `%s', used for updates, does not match the version of OpenMandriva Lx you're running (%s).
 It will be disabled.",
 		    $_->{name}, $distro_version)
 	    );
