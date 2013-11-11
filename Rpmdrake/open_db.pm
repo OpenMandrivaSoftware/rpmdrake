@@ -142,7 +142,7 @@ sub get_update_medias {
     if (is_it_a_devel_distro()) {
         grep { !$_->{ignore} } @{$urpm->{media}};
     } else {
-        grep { !$_->{ignore} && $_->{update} } @{$urpm->{media}};
+        grep { !$_->{ignore} } @{$urpm->{media}};
     }
 }
 
