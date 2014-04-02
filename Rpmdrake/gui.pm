@@ -682,6 +682,7 @@ sub pkgs_provider {
 
 sub closure_removal {
     local $urpm->{state} = {};
+    local $urpm->{options}{'force-req-update'} = 0;
     urpm::select::find_packages_to_remove($urpm, $urpm->{state}, \@_);
 }
 
