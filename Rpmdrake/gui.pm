@@ -697,12 +697,6 @@ sub is_locale_available {
 sub callback_choices {
     my (undef, undef, undef, $choices) = @_;
     return $choices->[0] if $::rpmdrake_options{auto};
-    foreach my $pkg (@$choices) {
-        foreach ($pkg->requires_nosense) {
-            /locales-/ or next;
-            is_locale_available($_) and return $pkg;
-        }
-    }
     my $callback = sub { interactive_msg(N("More information on package..."), get_info($_[0]), scroll => 1) };
     $choices = [ sort { $a->name cmp $b->name } @$choices ];
     my @choices = interactive_list_(N("Please choose"), (scalar(@$choices) == 1 ? 
