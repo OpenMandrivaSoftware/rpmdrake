@@ -36,6 +36,7 @@ use Rpmdrake::open_db;
 use Rpmdrake::formatting;
 use Rpmdrake::init;
 use Rpmdrake::pkg;
+use Rpmdrake::icon;
 use feature 'state';
 #use warnings;
 #use strict;
