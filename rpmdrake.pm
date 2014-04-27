@@ -66,6 +66,7 @@ our @EXPORT = qw(
     $clean_cache
     $auto_select
     $force_req_update
+    $show_group_icons
     add_distrib_update_media
     add_medium_and_check
     but
@@ -176,7 +177,7 @@ our $auto_select;
 # try to update required packages
 our $force_req_update;
 
-our ($changelog_first_config, $compute_updates, $filter, $max_info_in_descr, $mode, $NVR_searches, $tree_flat, $tree_mode, $use_regexp);
+our ($changelog_first_config, $compute_updates, $filter, $max_info_in_descr, $mode, $NVR_searches, $tree_flat, $tree_mode, $use_regexp, $show_group_icons);
 our ($mandrakeupdate_wanted_categories, $ignore_debug_media, $offered_to_add_sources, $no_confirmation);
 our ($rpmdrake_height, $rpmdrake_width, $mandrivaupdate_height, $mandrivaupdate_width);
 
@@ -211,6 +212,7 @@ our %config = (
     tree_flat => { var => \$tree_flat, default => [ 0 ] },
     tree_mode => { var => \$tree_mode, default => [ qw(gui_pkgs) ] },
     use_regexp => { var => \$use_regexp, default => [ 0 ] },
+    show_group_icons => { var => \$show_group_icons, default => [ 0 ] },
 );
 
 sub readconf() {

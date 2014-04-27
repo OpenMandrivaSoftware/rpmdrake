@@ -425,7 +425,8 @@ sub add_parent {
     my $s; foreach (split '\|', $root) {
         my $s2 = $s ? "$s|$_" : $_;
         $wtree{$s2} ||= do {
-            my $pixbuf = get_icon($s2, $s);
+            my $pixbuf;
+	    $pixbuf = get_icon($s2, $s) if $show_group_icons->[0];
             my $iter = $w->{tree_model}->append_set($s ? add_parent($s, $state) : undef,
                                                     [ $grp_columns{label} => $_, if_($pixbuf, $grp_columns{icon} => $pixbuf) ]);
             $iter;
