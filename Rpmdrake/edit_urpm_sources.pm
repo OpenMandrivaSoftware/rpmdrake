@@ -674,11 +674,11 @@ sub edit_parallel {
     local $::main_window = $w->{real_window};
     my $name_entry;
 
-    my ($medias_ls, $hosts_ls) = (Gtk3::ListStore->new("Glib::String"), Gtk2::ListStore->new("Glib::String"));
+    my ($medias_ls, $hosts_ls) = (Gtk3::ListStore->new("Glib::String"), Gtk3::ListStore->new("Glib::String"));
 
     my ($medias, $hosts) = map {
         my $list = Gtk3::TreeView->new_with_model($_);
-        $list->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+        $list->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::CellRendererText->new, 'text' => 0));
         $list->set_headers_visible(0);
         $list->get_selection->set_mode('browse');
         $list;
@@ -689,7 +689,7 @@ sub edit_parallel {
     my $add_media = sub {
         my $medias_list_ls = Gtk3::ListStore->new("Glib::String");
         my $medias_list = Gtk3::TreeView->new_with_model($medias_list_ls);
-        $medias_list->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+        $medias_list->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::CellRendererText->new, 'text' => 0));
         $medias_list->set_headers_visible(0);
         $medias_list->get_selection->set_mode('browse');
         $medias_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
@@ -781,8 +781,8 @@ sub parallel_callback() {
     local $::main_window = $w->{real_window};
     my $list_ls = Gtk3::ListStore->new("Glib::String", "Glib::String", "Glib::String", "Glib::String");
     my $list = Gtk3::TreeView->new_with_model($list_ls);
-    each_index { $list->append_column(Gtk3::TreeViewColumn->new_with_attributes($_, Gtk2::CellRendererText->new, 'text' => $::i)) } N("Group"), N("Protocol"), N("Media limit");
-    $list->append_column(my $commandcol = Gtk3::TreeViewColumn->new_with_attributes(N("Command"), Gtk2::CellRendererText->new, 'text' => 3));
+    each_index { $list->append_column(Gtk3::TreeViewColumn->new_with_attributes($_, Gtk3::CellRendererText->new, 'text' => $::i)) } N("Group"), N("Protocol"), N("Media limit");
+    $list->append_column(my $commandcol = Gtk3::TreeViewColumn->new_with_attributes(N("Command"), Gtk3::CellRendererText->new, 'text' => 3));
     $commandcol->set_max_width(200);
 
     my $conf;
@@ -842,14 +842,14 @@ sub keys_callback() {
 
     my $media_list_ls = Gtk3::ListStore->new("Glib::String");
     my $media_list = Gtk3::TreeView->new_with_model($media_list_ls);
-    $media_list->append_column(Gtk3::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 0));
+    $media_list->append_column(Gtk3::TreeViewColumn->new_with_attributes(N("Medium"), Gtk3::CellRendererText->new, 'text' => 0));
     $media_list->get_selection->set_mode('browse');
 
     my $key_col_size = 200;
     my $keys_list_ls = Gtk3::ListStore->new("Glib::String", "Glib::String");
     my $keys_list = Gtk3::TreeView->new_with_model($keys_list_ls);
     $keys_list->set_rules_hint(1);
-    $keys_list->append_column(my $col = Gtk3::TreeViewColumn->new_with_attributes(N("_:cryptographic keys\nKeys"), my $renderer = Gtk2::CellRendererText->new, 'text' => 0));
+    $keys_list->append_column(my $col = Gtk3::TreeViewColumn->new_with_attributes(N("_:cryptographic keys\nKeys"), my $renderer = Gtk3::CellRendererText->new, 'text' => 0));
     $col->set_sizing('fixed');
     $col->set_fixed_width($key_col_size);
     $renderer->set_property('width' => 1);
@@ -887,7 +887,7 @@ sub keys_callback() {
     my $add_key = sub {
         my $available_keyz_ls = Gtk3::ListStore->new("Glib::String", "Glib::String");
         my $available_keyz = Gtk3::TreeView->new_with_model($available_keyz_ls);
-        $available_keyz->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+        $available_keyz->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::CellRendererText->new, 'text' => 0));
         $available_keyz->set_headers_visible(0);
         $available_keyz->get_selection->set_mode('browse');
         $available_keyz_ls->append_set([ 0 => sprintf("%s (%s)", $_, $key_name->($_)), 1 => $_ ]) foreach keys %{$urpm->{keys}};
@@ -1165,7 +1165,7 @@ sub mainwindow() {
 	    0, gtknew('HSeparator'),
 	    0, gtknew('HButtonBox', layout => 'edge', children_loose => [
 		gtksignal_connect(Gtk3::Button->new(but(N("Help"))), clicked => sub { rpmdrake::open_help('sources') }),
-		gtksignal_connect(Gtk3::Button->new(but(N("Ok"))), clicked => sub { Gtk2->main_quit })
+		gtksignal_connect(Gtk3::Button->new(but(N("Ok"))), clicked => sub { Gtk3->main_quit })
 	    ])
 	)
     );

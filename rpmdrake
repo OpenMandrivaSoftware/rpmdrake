@@ -247,12 +247,12 @@ sub run_treeview_dialog {
 	rebuild_tree => sub {},
     };
 
-    $tree_model = Gtk3::TreeStore->new("Glib::String", "Glib::String", "Gtk2::Gdk::Pixbuf");
+    $tree_model = Gtk3::TreeStore->new("Glib::String", "Glib::String", "Gtk3::Gdk::Pixbuf");
     $tree_model->set_sort_column_id($grp_columns{label}, 'ascending');
     $tree = Gtk3::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
 
-    $tree->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk2::MDV::CellRendererPixWithLabel->new, 'pixbuf' => $grp_columns{icon}, label => $grp_columns{label}));
+    $tree->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::MDV::CellRendererPixWithLabel->new, 'pixbuf' => $grp_columns{icon}, label => $grp_columns{label}));
     $tree->set_headers_visible(0);
 
     $detail_list_model = Gtk3::ListStore->new("Glib::String",
