@@ -977,45 +977,54 @@ sub mainwindow() {
 
     my $reread_media;
 
-    my ($menu, $_factory) = create_factory_menu(
-	$mainw->{real_window},
-	[ N("/_File"), undef, undef, undef, '<Branch>' ],
-	[ N("/_File") . N("/_Update"), N("<control>U"), sub { update_callback() and $reread_media->() }, undef, '<Item>', ],
-        [ N("/_File") . N("/Add a specific _media mirror"), N("<control>M"), sub { easy_add_callback_with_mirror() and $reread_media->() }, undef, '<Item>' ],
-        [ N("/_File") . N("/_Add a custom medium"), N("<control>A"), sub { add_callback() and $reread_media->() }, undef, '<Item>' ],
-	[ N("/_File") . N("/Close"), N("<control>W"), sub { Gtk3->main_quit }, undef, '<Item>', ],
-     [ N("/_Options"), undef, undef, undef, '<Branch>' ],
-     [ N("/_Options") . N("/_Global options"), N("<control>G"), \&options_callback, undef, '<Item>' ],
-     [ N("/_Options") . N("/Manage _keys"), N("<control>K"), \&keys_callback, undef, '<Item>' ],
-     [ N("/_Options") . N("/_Parallel"), N("<control>P"), \&parallel_callback, undef, '<Item>' ],
-     [ N("/_Options") . N("/P_roxy"), N("<control>R"), \&proxy_callback, undef, '<Item>' ],
-     if_($0 =~ /edit-urpm-sources/,
-         [ N("/_Help"), undef, undef, undef, '<Branch>' ],
-         [ N("/_Help") . N("/_Report Bug"), undef, sub { run_drakbug('edit-urpm-sources.pl') }, undef, '<Item>' ],
-         [ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help('sources') }, undef, '<Item>' ],
-         [ N("/_Help") . N("/_About..."), undef, sub {
-               my $license = formatAlaTeX(translate($::license));
-               $license =~ s/\n/\n\n/sg; # nicer formatting
-               my $w = gtknew('AboutDialog', name => N("Rpmdrake"),
-                              version => $rpmdrake::distro_version,
-                              copyright => N("Copyright (C) %s by Mandriva\nCopyright (C) %s OpenMandriva", '2002-2008', '2013'),
-                              license => $license, wrap_license => 1,
-                              comments => N("Rpmdrake is the package management tool for OpenMandriva."),
-                              website => 'http://openmandriva.org',
-                              website_label => N("OpenMandriva"),
-                              authors => 'Thierry Vignaud <vignaud@mandriva.com>',
-                              artists => 'Hélène Durosini <ln@mandriva.com>',
-                              translator_credits =>
-                                #-PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-                                N("_: Translator(s) name(s) & email(s)\n"),
-                              transient_for => $::main_window, modal => 1, position_policy => 'center-on-parent',
-                          );
-               $w->show_all;
-               $w->run;
-           }, undef, '<Item>'
-       ]
-     ),
-    );
+    my $ui = gtknew(
+	'UIManager',
+	actions => [
+	    [ 'FileMenu', undef, N("_File") ],
+	    [ 'Update', undef, N("_Update"), N("<control>U"), undef, sub { update_callback() and $reread_media->() }, ],
+	    [ 'Add_a_specific_mirror', undef, N("Add a specific _media mirror"), N("<control>M"), undef, sub { easy_add_callback_with_mirror() and $reread_media->() } ],
+	    [ 'Add_a_custom_medium', undef, N("_Add a custom medium"), N("<control>A"), undef, sub { add_callback() and $reread_media->() } ],
+	    [ 'Close', undef, N("Close"), N("<control>W"), undef, sub { Gtk3->main_quit }, ],
+	    [ 'OptionsMenu', undef, N("_Options") ],
+	    [ 'Global_options', undef, N("_Global options"), N("<control>G"), undef, \&options_callback ],
+	    [ 'Manage_keys', undef, N("Manage _keys"), N("<control>K"), undef, \&keys_callback ],
+	    [ 'Parallel', undef, N("_Parallel"), N("<control>P"), undef, \&parallel_callback ],
+	    [ 'Proxy', undef, N("P_roxy"), N("<control>R"), undef, \&proxy_callback ],
+	    if_($0 =~ /edit-urpm-sources/,
+		[ 'HelpMenu', undef, N("_Help") ],
+		[ 'Report_Bug', undef, N("_Report Bug"), undef, undef, sub { run_drakbug('edit-urpm-sources.pl') } ],
+		[ 'Help', undef, N("_Help"), undef, undef, sub { rpmdrake::open_help('sources') } ],
+		[ 'About', undef, N("_About..."), undef, undef, \&show_about ],
+	    ),
+	],
+	string =>
+	join("\n",
+	     qq(<ui>
+  <menubar name='MenuBar'>
+    <menu action='FileMenu'>
+      <menuitem action='Update'/>
+      <menuitem action='Add_a_specific_mirror'/>
+      <menuitem action='Add_a_custom_medium'/>
+      <menuitem action='Close'/>
+    </menu>
+    <menu action='OptionsMenu'>
+      <menuitem action='Global_options'/>
+      <menuitem action='Manage_keys'/>
+      <menuitem action='Parallel'/>
+      <menuitem action='Proxy'/>
+    </menu>
+),
+	     if_($0 =~ /edit-urpm-sources/, qq(
+    <menu action='HelpMenu'>
+      <menuitem action='Report_Bug'/>
+      <menuitem action='Help'/>
+      <menuitem action='About'/>
+    </menu>)),
+	     qq(
+  </menubar>
+</ui>)));
+
+    my $menu = $ui->get_widget('/MenuBar');
 
     my $list = Gtk3::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String", "Glib::String", "Glib::Boolean");
     $list_tv = Gtk3::TreeView->new_with_model($list);
