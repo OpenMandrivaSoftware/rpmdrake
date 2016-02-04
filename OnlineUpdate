@@ -138,7 +138,7 @@ sub run_treeview_dialog {
 
     my ($list, $info, $update_button);
 
-    my $rootwin_height = second(gtkroot()->get_size);
+    my $rootwin_height = second(mygtk3::root_window_size());
     my $is_small_screen = $rootwin_height <= 480;
 
     compute_main_window_size($w);

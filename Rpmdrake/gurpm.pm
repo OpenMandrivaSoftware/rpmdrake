@@ -39,8 +39,8 @@ sub new {
     $mainw->{label} = gtknew('Label', text => $initializing, alignment => [ 0.5, 0 ]);
     # size label's heigh to 2 lines in order to prevent dummy vertical resizing:
     my $context = $mainw->{label}->get_layout->get_context;
-    my $metrics = $context->get_metrics($mainw->{label}->style->font_desc, $context->get_language);
-    $mainw->{label}->set_size_request(-1, 2 * Pango->PANGO_PIXELS($metrics->get_ascent + $metrics->get_descent));
+    my $metrics = $context->get_metrics(undef, $context->get_language);
+    $mainw->{label}->set_size_request(-1, 2 * Pango::units_to_double($metrics->get_ascent + $metrics->get_descent));
 
     $mainw->{progressbar} = gtknew('ProgressBar');
     gtkadd($mainw->{window}, $mainw->{vbox} = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [

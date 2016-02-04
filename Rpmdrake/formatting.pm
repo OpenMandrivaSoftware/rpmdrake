@@ -122,8 +122,7 @@ our $spacing = "        ";
 sub format_changelog_string {
     my ($installed_version, $string) = @_;
     #- preprocess changelog for faster TextView insert reaction
-    require Pango;
-    my %date_attr = ('weight' => Pango->PANGO_WEIGHT_BOLD);
+    my %date_attr = ('weight' => 'bold');
     my %update_attr = ('style' => 'italic');
     my $version;
     my $highlight;

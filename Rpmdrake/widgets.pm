@@ -43,7 +43,7 @@ sub new {
         return if Time::HiRes::clock_gettime() - $time < 0.200;
         $time = Time::HiRes::clock_gettime();
         foreach my $anchor (@{$w->{anchors}}) {
-            $_->set_size_request($requisition->width-30, -1) foreach $anchor->get_widgets;
+            $_->set_size_request($requisition->{width}-30, -1) foreach @{ $anchor->get_widgets };
         }
         1;
     });

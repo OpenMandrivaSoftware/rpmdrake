@@ -457,8 +457,8 @@ sub downwards_callback() {
     @rows == 0 and return;
     my $model = $list_tv->get_model;
     my $iter = $model->get_iter_from_string($rows[0]);
-    my $next = $model->iter_next($iter);
-    defined $next and renum_media($model, $iter, $next);
+    my $next = $iter;
+    $model->iter_next($next) and renum_media($model, $iter, $next);
     $list_tv->get_selection->signal_emit('changed');
 }
 
@@ -678,7 +678,7 @@ sub edit_parallel {
 
     my ($medias, $hosts) = map {
         my $list = Gtk3::TreeView->new_with_model($_);
-        $list->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::CellRendererText->new, 'text' => 0));
+        $list->append_column(Gtk3::TreeViewColumn->new_with_attributes('', Gtk3::CellRendererText->new, 'text' => 0));
         $list->set_headers_visible(0);
         $list->get_selection->set_mode('browse');
         $list;
@@ -689,7 +689,7 @@ sub edit_parallel {
     my $add_media = sub {
         my $medias_list_ls = Gtk3::ListStore->new("Glib::String");
         my $medias_list = Gtk3::TreeView->new_with_model($medias_list_ls);
-        $medias_list->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::CellRendererText->new, 'text' => 0));
+        $medias_list->append_column(Gtk3::TreeViewColumn->new_with_attributes('', Gtk3::CellRendererText->new, 'text' => 0));
         $medias_list->set_headers_visible(0);
         $medias_list->get_selection->set_mode('browse');
         $medias_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
@@ -887,7 +887,7 @@ sub keys_callback() {
     my $add_key = sub {
         my $available_keyz_ls = Gtk3::ListStore->new("Glib::String", "Glib::String");
         my $available_keyz = Gtk3::TreeView->new_with_model($available_keyz_ls);
-        $available_keyz->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::CellRendererText->new, 'text' => 0));
+        $available_keyz->append_column(Gtk3::TreeViewColumn->new_with_attributes('', Gtk3::CellRendererText->new, 'text' => 0));
         $available_keyz->set_headers_visible(0);
         $available_keyz->get_selection->set_mode('browse');
         $available_keyz_ls->append_set([ 0 => sprintf("%s (%s)", $_, $key_name->($_)), 1 => $_ ]) foreach keys %{$urpm->{keys}};
@@ -947,6 +947,27 @@ sub keys_callback() {
 	),
     );
     $w->main;
+}
+
+sub show_about() {
+    my $license = formatAlaTeX(translate($::license));
+    $license =~ s/\n/\n\n/sg; # nicer formatting
+    my $w = gtknew('AboutDialog', name => N("Rpmdrake"),
+		   version => $rpmdrake::distro_version,
+		   copyright => N("Copyright (C) %s by Mandriva\nCopyright (C) %s OpenMandriva", '2002-2008', '2013'),
+		   license => $license, wrap_license => 1,
+		   comments => N("Rpmdrake is the OpenMandriva package management tool."),
+		   website => 'http://openmandriva.org/',
+		   website_label => N("OpenMandriva"),
+		   authors => [ 'Thierry Vignaud <vignaud@mandriva.com>' ],
+		   artists => [ 'Rugyada' ],
+		   translator_credits =>
+		   #-PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+		   N("_: Translator(s) name(s) & email(s)\n"),
+		   transient_for => $::main_window, modal => 1, position_policy => 'center-on-parent',
+	);
+    $w->show_all;
+    $w->run;
 }
 
 sub mainwindow() {

@@ -226,6 +226,49 @@ sub quit() {
     real_quit();
 }
 
+sub reset_selection {
+    my ($tree) = @_;
+    if ($MODE ne 'remove') {
+	my $db = eval { open_rpm_db() };
+	if (!ref($db)) {
+	    statusbar_msg(N("Reset aborted (RPM DB is locked by another process)"), 1);
+	    return;
+	}
+	$urpm->disable_selected(
+	    $db, $urpm->{state},
+	    map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs,
+	    );
+    }
+    undef $pkgs->{$_}{selected} foreach keys %$pkgs;
+    reset_search();
+    $size_selected = 0;
+    $force_displaying_group = 1;
+    my $tree_selection = $tree->get_selection;
+    $tree_selection->select_path(Gtk3::TreePath->new_from_string('0')) if !$tree_selection->get_selected;
+    $tree_selection->signal_emit('changed');
+}
+
+sub show_about_dlg {
+    my $license = formatAlaTeX(translate($::license));
+    $license =~ s/\n/\n\n/sg; # nicer formatting
+    my $w = gtknew('AboutDialog', name => N("Rpmdrake"),
+		   version => $Rpmdrake::init::version,
+		   copyright => N("Copyright (C) %s by Mandriva\nCopyright (C) %s OpenMandriva", '2002-2009', '2013-2016'),
+		   license => $license, wrap_license => 1,
+		   comments => N("Rpmdrake is the OpenMandriva package management tool."),
+		   website => 'http://openmandriva.org',
+		   website_label => N("OpenMandriva"),
+		   authors => [ 'Thierry Vignaud <vignaud@mandriva.com>' ],
+		   artists => [ 'Rugyada' ],
+		   translator_credits =>
+		   #-PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
+		   N("_: Translator(s) name(s) & email(s)\n"),
+		   transient_for => $::main_window, modal => 1, position_policy => 'center-on-parent',
+	);
+    $w->show_all;
+    $w->run;
+}
+
 sub run_treeview_dialog {
     my ($callback_action) = @_;
 
@@ -252,7 +295,13 @@ sub run_treeview_dialog {
     $tree = Gtk3::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
 
-    $tree->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::MDV::CellRendererPixWithLabel->new, 'pixbuf' => $grp_columns{icon}, label => $grp_columns{label}));
+    $tree->append_column(my $col = Gtk3::TreeViewColumn->new);
+    $col->pack_start(my $img_renderer = Gtk3::CellRendererPixbuf->new, $grp_columns{icon});
+    $col->set_attributes($img_renderer, pixbuf => $grp_columns{icon});
+ 
+    $col->pack_start(my $text_renderer = Gtk3::CellRendererText->new, $grp_columns{label});
+    $col->set_attributes($text_renderer, text => $grp_columns{label});
+
     $tree->set_headers_visible(0);
 
     $detail_list_model = Gtk3::ListStore->new("Glib::String",
@@ -268,7 +317,7 @@ sub run_treeview_dialog {
     $detail_list = Gtk3::TreeView->new_with_model($detail_list_model);
     $detail_list->append_column(
         my $col_sel = Gtk3::TreeViewColumn->new_with_attributes(
-            undef,
+            '',
             Gtk3::CellRendererToggle->new,
             active => $pkg_columns{selected},
             activatable => $pkg_columns{selectable}
@@ -470,7 +519,8 @@ sub run_treeview_dialog {
     );
 
     my $view_callback = sub {
-            my ($val) = @_;
+            my (undef, $current) = @_;
+            my $val = $current->get_name;
             return if $val eq $old_value; # workarounding gtk+ sending us sometimes twice events
             $old_value = $val;
             return if $mode->[0] eq $val;
@@ -492,7 +542,7 @@ sub run_treeview_dialog {
     foreach (N("in names"), N("in descriptions"), N("in summaries"), N("in file names")) { 
         my ($name, $val) = ($_, $i);
 	$search_menu->append(gtksignal_connect(gtkshow(
-            $previous = Gtk3::RadioMenuItem->new_with_label($previous, $name)),
+            $previous = Gtk3::RadioMenuItem->new_with_label([ $previous ], $name)),
                                                activate => sub { $current_search_type = $search_types[$val] }));
         $i++;
     }
@@ -704,7 +754,7 @@ sub run_treeview_dialog {
 	gtkpack_(
 	    gtknew('VBox', spacing => 3),
 	    0, $menu,
-	    if_(second(gtkroot()->get_size) >= 600, 0, getbanner()),
+	    if_(second(mygtk3::root_window_size()) >= 600, 0, getbanner()),
 	    1, gtkadd(
 		gtknew('Frame', border_width => 3, shadow_type => 'none'),
 		gtkpack_(
@@ -780,6 +830,7 @@ sub run_treeview_dialog {
         # so that we can shrink back:
         $w->{real_window}->set_default_size($rpmdrake_width->[0], $rpmdrake_height->[0]);
     }
+    $w->{rwindow}->add_accel_group($ui->get_accel_group);
     $w->{rwindow}->show_all;
     $w->{rwindow}->set_sensitive(0);
 

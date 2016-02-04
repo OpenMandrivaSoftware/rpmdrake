@@ -90,7 +90,6 @@ our @EXPORT = qw(
     slow_func_statusbar
     statusbar_msg
     statusbar_msg_remove
-    strip_first_underscore
     update_sources
     update_sources_check
     update_sources_interactive
@@ -682,7 +681,7 @@ by OpenMandriva Lx.")), %options
     my $tree_model = Gtk3::TreeStore->new("Glib::String");
     my $tree = Gtk3::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
-    $tree->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::CellRendererText->new, text => 0));
+    $tree->append_column(Gtk3::TreeViewColumn->new_with_attributes('', Gtk3::CellRendererText->new, text => 0));
     $tree->set_headers_visible(0);
 
     gtkadd(
@@ -1001,7 +1000,5 @@ sub get_icon {
     $icon ||= eval { mygtk3::_find_imgfile($fallback_icon) };
     $icon;
 }
-
-sub strip_first_underscore { join '', map { s/_//; $_ } @_ }
 
 1;

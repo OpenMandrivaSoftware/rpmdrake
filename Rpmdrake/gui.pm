@@ -135,7 +135,6 @@ sub build_expander {
 sub get_advisory_link {
     my ($update_descr) = @_;
     my $link = gtkshow(Gtk3::LinkButton->new($update_descr->{URL}, N("Security advisory")));
-    $link->set_uri_hook(\&run_help_callback);
     [ $link ];
 }
 
@@ -190,7 +189,7 @@ sub get_main_text {
  
     ugtk3::markup_to_TextView_format(
         # force align "name - summary" to the right with RTL languages (#33603):
-        if_(lang::text_direction_rtl(), "\x{200f}") .
+        if_(mygtk3::text_direction_rtl(), "\x{200f}") .
           join("\n",
                format_header(join(' - ', $name, $summary)) .
                  # workaround gtk+ bug where GtkTextView wronly limit embedded widget size to bigger line's width (#25533):
@@ -266,7 +265,6 @@ sub get_url_link {
     my @a =
       (@{ ugtk3::markup_to_TextView_format(format_field("\n$spacing" . N("URL: "))) },
         [ my $link = gtkshow(Gtk3::LinkButton->new($url, $url)) ]);
-    $link->set_uri_hook(\&run_help_callback);
     @a;
 }
 
@@ -1080,13 +1078,6 @@ sub get_info {
 sub sort_callback {
     my ($store, $treeiter1, $treeiter2) = @_;
     URPM::rpmvercmp(map { $store->get_value($_, $pkg_columns{version}) } $treeiter1, $treeiter2);
-}
-
-sub run_help_callback {
-    my (undef, $url) = @_;
-    my ($user) = grep { $_->[2] eq $ENV{USERHELPER_UID} } list_passwd();
-    local $ENV{HOME} = $user->[7] if $user && $ENV{USERHELPER_UID};
-    run_program::raw({ detach => 1, as_user => 1 }, 'www-browser', $url);
 }
 
 1;
