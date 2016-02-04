@@ -106,9 +106,9 @@ our $dont_show_selections;
 # i18n: IMPORTANT: to get correct namespace (rpmdrake instead of libDrakX)
 BEGIN { unshift @::textdomains, qw(rpmdrake urpmi rpm-summary-main rpm-summary-contrib rpm-summary-devel rpm-summary-non-free) }
 
-use mygtk2 qw(gtknew);
-use ugtk2 qw(:all);
-ugtk2::add_icon_path('/usr/share/rpmdrake/icons');
+use mygtk3 qw(gtknew);
+use ugtk3 qw(:all);
+ugtk3::add_icon_path('/usr/share/rpmdrake/icons');
 
 Locale::gettext::bind_textdomain_codeset('rpmdrake', 'UTF8');
 
@@ -127,19 +127,19 @@ our $myname_update = $branded ? N("Software Update") : N("Online Update");
 sub rpmdrake::prompt::prompt {
     my ($self) = @_;
     my @answers;
-    my $d = ugtk2->new("", grab => 1, if_($::main_window, transient => $::main_window));
+    my $d = ugtk3->new("", grab => 1, if_($::main_window, transient => $::main_window));
     $d->{rwindow}->set_position('center_on_parent');
     gtkadd(
 	$d->{window},
 	gtkpack(
-	    Gtk2::VBox->new(0, 5),
-	    Gtk2::WrappedLabel->new($self->{title}),
+	    Gtk3::VBox->new(0, 5),
+	    Gtk3::WrappedLabel->new($self->{title}),
 	    (map { gtkpack(
-		Gtk2::HBox->new(0, 5),
-		Gtk2::Label->new($self->{prompts}[$_]),
+		Gtk3::HBox->new(0, 5),
+		Gtk3::Label->new($self->{prompts}[$_]),
 		$answers[$_] = gtkset_visibility(gtkentry(), !$self->{hidden}[$_]),
 	    ) } 0 .. $#{$self->{prompts}}),
-	    gtksignal_connect(Gtk2::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }),
+	    gtksignal_connect(Gtk3::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }),
 	),
     );
     $d->main;
@@ -155,7 +155,7 @@ $urpm::download::PROMPT_PROXY = new rpmdrake::prompt(
 
 sub myexit {
     writeconf();
-    ugtk2::exit(undef, @_);
+    ugtk3::exit(undef, @_);
 }
 
 my ($root) = grep { $_->[2] == 0 } list_passwd();
@@ -246,7 +246,7 @@ sub getbanner() {
 	install => N("Software Packages Installation"),
 	};
     }
-    Gtk2::Banner->new($ugtk2::wm_icon, $::MODE eq 'update' ? N("Software Packages Update") : N("Software Management"));
+    Gtk3::Banner->new($ugtk3::wm_icon, $::MODE eq 'update' ? N("Software Packages Update") : N("Software Management"));
 }
 
 # return value:
@@ -257,10 +257,10 @@ sub interactive_msg {
     my ($title, $contents, %options) = @_;
     $options{transient} ||= $::main_window if $::main_window;
     local $::isEmbedded;
-    my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
+    my $d = ugtk3->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     if ($options{scroll}) {
-        $contents = ugtk2::markup_to_TextView_format($contents) if !ref $contents;
+        $contents = ugtk3::markup_to_TextView_format($contents) if !ref $contents;
     } else { #- because we'll use a WrappedLabel
         $contents = formatAlaTeX($contents) if !ref $contents;
     }
@@ -269,11 +269,11 @@ sub interactive_msg {
     gtkadd(
 	$d->{window},
 	gtkpack_(
-	    Gtk2::VBox->new(0, 5),
+	    Gtk3::VBox->new(0, 5),
 	    1,
 	    (
 		$options{scroll} ?
-            ($text_w = create_scrolled_window(gtktext_insert(Gtk2::TextView->new, $contents)))
+            ($text_w = create_scrolled_window(gtktext_insert(Gtk3::TextView->new, $contents)))
               : ($text_w = gtknew('WrappedLabel', text_markup => $contents))
 	    ),
          if_($options{widget}, 0, $options{widget}),
@@ -284,23 +284,23 @@ sub interactive_msg {
 		    ref($options{yesno}) eq 'ARRAY' ? map {
 			my $label = $_;
 			gtksignal_connect(
-			    $button_yes = Gtk2::Button->new($label),
+			    $button_yes = Gtk3::Button->new($label),
 			    clicked => sub { $d->{retval} = $label; Gtk2->main_quit }
 			);
 		    } @{$options{yesno}}
 		    : (
 			$options{yesno} ? (
 			    gtksignal_connect( 
-				Gtk2::Button->new($options{text}{no} || N("No")), 
+				Gtk3::Button->new($options{text}{no} || N("No")), 
 				clicked => sub { $d->{retval} = 0; Gtk2->main_quit }
 			    ),
 			    gtksignal_connect(
-				$button_yes = Gtk2::Button->new($options{text}{yes} || N("Yes")),
+				$button_yes = Gtk3::Button->new($options{text}{yes} || N("Yes")),
 				clicked => sub { $d->{retval} = 1; Gtk2->main_quit }
 			    ),
 			)
 			: gtksignal_connect(
-			    $button_yes = Gtk2::Button->new(N("Ok")),
+			    $button_yes = Gtk3::Button->new(N("Ok")),
 			    clicked => sub { Gtk2->main_quit }
 			)
 		    )
@@ -317,14 +317,14 @@ sub interactive_msg {
 sub interactive_packtable {
     my ($title, $parent_window, $top_label, $lines, $action_buttons) = @_;
     
-    my $w = ugtk2->new($title, grab => 1, transient => $parent_window);
+    my $w = ugtk3->new($title, grab => 1, transient => $parent_window);
     local $::main_window = $w->{real_window};
     $w->{rwindow}->set_position($parent_window ? 'center_on_parent' : 'center');
     my $packtable = create_packtable({}, @$lines);
 
     gtkadd($w->{window},
-	   gtkpack_(Gtk2::VBox->new(0, 5),
-		    if_($top_label, 0, Gtk2::Label->new($top_label)),
+	   gtkpack_(Gtk3::VBox->new(0, 5),
+		    if_($top_label, 0, Gtk3::Label->new($top_label)),
 		    1, create_scrolled_window($packtable),
 		    0, gtkpack__(create_hbox(), @$action_buttons)));
     my $preq = $packtable->size_request;
@@ -338,7 +338,7 @@ sub interactive_packtable {
 
 sub interactive_list {
     my ($title, $contents, $list, $callback, %options) = @_;
-    my $d = ugtk2->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
+    my $d = ugtk3->new($title, grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $d->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my @radios = gtkradio('', @$list);
     my $vbradios = $callback ? create_packtable(
@@ -347,27 +347,27 @@ sub interactive_list {
 	    my $n = $_[1];
 	    [ $_[0],
 	    gtksignal_connect(
-		Gtk2::Button->new(but(N("Info..."))),
+		Gtk3::Button->new(but(N("Info..."))),
 		clicked => sub { $callback->($n) },
 	    ) ];
 	} \@radios, $list,
-    ) : gtkpack__(Gtk2::VBox->new(0, 0), @radios);
+    ) : gtkpack__(Gtk3::VBox->new(0, 0), @radios);
     my $choice;
     my $button_ok;
     gtkadd(
 	$d->{window},
 	gtkpack__(
-	    Gtk2::VBox->new(0,5),
-	    Gtk2::Label->new($contents),
+	    Gtk3::VBox->new(0,5),
+	    Gtk3::Label->new($contents),
 	    int(@$list) > 8 ? gtkset_size_request(create_scrolled_window($vbradios), 250, 320) : $vbradios,
 	    gtkpack__(
 		create_hbox(),
           if_(!$options{nocancel},
           gtksignal_connect(
-		    Gtk2::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit }),
+		    Gtk3::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit }),
           ),
           gtksignal_connect(
-		    $button_ok=Gtk2::Button->new(N("Ok")), clicked => sub {
+		    $button_ok=Gtk3::Button->new(N("Ok")), clicked => sub {
 			each_index { $_->get_active and $choice = $::i } @radios;
 			Gtk2->main_quit;
 		    }
@@ -392,26 +392,26 @@ sub wait_msg {
     gtkflush();
     $options{transient} ||= $::main_window if $::main_window;
     local $::isEmbedded;
-    my $mainw = ugtk2->new(N("Please wait"), grab => 1, if_(exists $options{transient}, transient => $options{transient}));
+    my $mainw = ugtk3->new(N("Please wait"), grab => 1, if_(exists $options{transient}, transient => $options{transient}));
     $mainw->{real_window}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
-    my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk2::WrappedLabel->new($msg);
+    my $label = ref($msg) =~ /^Gtk/ ? $msg : Gtk3::WrappedLabel->new($msg);
     gtkadd(
 	$mainw->{window},
 	gtkpack__(
-	    gtkset_border_width(Gtk2::VBox->new(0, 5), 6),
+	    gtkset_border_width(Gtk3::VBox->new(0, 5), 6),
 	    $label,
 	    if_(exists $options{widgets}, @{$options{widgets}}),
 	)
     );
     $mainw->sync;
-    gtkset_mousecursor_wait($mainw->{rwindow}->window) unless $options{no_wait_cursor};
+    gtkset_mousecursor_wait($mainw->{rwindow}->get_window) unless $options{no_wait_cursor};
     $mainw->flush;
     $mainw;
 }
 
 sub remove_wait_msg {
     my $w = shift;
-    gtkset_mousecursor_normal($w->{rwindow}->window);
+    gtkset_mousecursor_normal($w->{rwindow}->get_window);
     $w->destroy;
 }
 
@@ -422,7 +422,7 @@ sub slow_func ($&) {
     my ($param, $func) = @_;
     if (ref($param) =~ /^Gtk/) {
 	gtkset_mousecursor_wait($param);
-	ugtk2::flush();
+	ugtk3::flush();
 	$func->();
 	gtkset_mousecursor_normal($param);
     } else {
@@ -439,7 +439,7 @@ sub statusbar_msg {
     my ($msg, $o_timeout) = @_;
     #- always use the same context description for now
     my $cx = $::statusbar->get_context_id("foo");
-    $::w and $::w->{rwindow} and gtkset_mousecursor_wait($::w->{rwindow}->window);
+    $::w and $::w->{rwindow} and gtkset_mousecursor_wait($::w->{rwindow}->get_window);
     #- returns a msg_id to be passed optionnally to statusbar_msg_remove
     my $id = $::statusbar->push($cx, $msg);
     gtkflush();
@@ -458,17 +458,17 @@ sub statusbar_msg_remove {
     } else {
 	$::statusbar->pop($cx);
     }
-    $::w and $::w->{rwindow} and gtkset_mousecursor_normal($::w->{rwindow}->window);
+    $::w and $::w->{rwindow} and gtkset_mousecursor_normal($::w->{rwindow}->get_window);
 }
 
 sub slow_func_statusbar ($$&) {
     my ($msg, $w, $func) = @_;
-    gtkset_mousecursor_wait($w->window);
+    gtkset_mousecursor_wait($w->get_window);
     my $msg_id = statusbar_msg($msg);
     gtkflush();
     $func->();
     statusbar_msg_remove($msg_id);
-    gtkset_mousecursor_normal($w->window);
+    gtkset_mousecursor_normal($w->get_window);
 }
 
 my %u2l = (
@@ -677,18 +677,18 @@ the case when the architecture of your processor is not supported
 by OpenMandriva Lx.")), %options
     ), return '';
 
-    my $w = ugtk2->new(N("Mirror choice"), grab => 1, @transient_options);
+    my $w = ugtk3->new(N("Mirror choice"), grab => 1, @transient_options);
     $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
-    my $tree_model = Gtk2::TreeStore->new("Glib::String");
-    my $tree = Gtk2::TreeView->new_with_model($tree_model);
+    my $tree_model = Gtk3::TreeStore->new("Glib::String");
+    my $tree = Gtk3::TreeView->new_with_model($tree_model);
     $tree->get_selection->set_mode('browse');
-    $tree->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, text => 0));
+    $tree->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk3::CellRendererText->new, text => 0));
     $tree->set_headers_visible(0);
 
     gtkadd(
 	$w->{window}, 
 	gtkpack_(
-	    Gtk2::VBox->new(0,5),
+	    Gtk3::VBox->new(0,5),
 	    0, N("Please choose the desired mirror."),
 	    1, create_scrolled_window($tree),
 	    0, gtkpack(
@@ -696,7 +696,7 @@ by OpenMandriva Lx.")), %options
 		map {
 		    my $retv = $_->[1];
 		    gtksignal_connect(
-			Gtk2::Button->new(but($_->[0])),
+			Gtk3::Button->new(but($_->[0])),
 			clicked => sub {
 			    if ($retv) {
 				my ($model, $iter) = $tree->get_selection->get_selected;
@@ -716,7 +716,7 @@ by OpenMandriva Lx.")), %options
     $w->{window}->set_size_request(500, 400);
     $w->{rwindow}->show_all;
 
-    my $path = Gtk2::TreePath->new_first;
+    my $path = Gtk3::TreePath->new_first;
     $tree->expand_row($path, 0);
     $path->down;
     $tree->get_selection->select_path($path);
@@ -771,14 +771,14 @@ sub update_sources {
     my ($urpm, %options) = @_;
     my $cancel = 0;
     my $w; my $label; $w = wait_msg(
-	$label = Gtk2::Label->new(N("Please wait, updating media...")),
+	$label = Gtk3::Label->new(N("Please wait, updating media...")),
 	no_wait_cursor => 1,
 	widgets => [
-	    my $pb = gtkset_size_request(Gtk2::ProgressBar->new, 300, -1),
+	    my $pb = gtkset_size_request(Gtk3::ProgressBar->new, 300, -1),
 	    gtkpack(
 		create_hbox(),
 		gtksignal_connect(
-		    Gtk2::Button->new(N("Cancel")),
+		    Gtk3::Button->new(N("Cancel")),
 		    clicked => sub {
 			$cancel = 1;
                         $urpm->{error}->(N("Canceled"));
@@ -830,7 +830,7 @@ sub update_sources_check {
 
 sub update_sources_interactive {
     my ($urpm, %options) = @_;
-    my $w = ugtk2->new(N("Update media"), grab => 1, center => 1, %options);
+    my $w = ugtk3->new(N("Update media"), grab => 1, center => 1, %options);
     $w->{rwindow}->set_position($options{transient} ? 'center_on_parent' : 'center_always');
     my @buttons;
     my @media = grep { ! $_->{ignore} } @{$urpm->{media}};
@@ -841,29 +841,29 @@ sub update_sources_interactive {
     gtkadd(
 	$w->{window},
 	gtkpack_(
-	    0, Gtk2::VBox->new(0,5),
-	    0, Gtk2::Label->new(N("Select the media you wish to update:")),
+	    0, Gtk3::VBox->new(0,5),
+	    0, Gtk3::Label->new(N("Select the media you wish to update:")),
             1, gtknew('ScrolledWindow', height => 300, child =>
                      # FIXME: using a listview would be just better:
                      gtknew('VBox', spacing => 5, children_tight => [
                          @buttons = map {
-                             Gtk2::CheckButton->new_with_label($_->{name});
+                             Gtk3::CheckButton->new_with_label($_->{name});
                          } @media
                      ])
 	    ),
-	    0, Gtk2::HSeparator->new,
+	    0, Gtk3::HSeparator->new,
 	    0, gtkpack(
 		create_hbox(),
 		gtksignal_connect(
-		    Gtk2::Button->new(N("Cancel")),
+		    Gtk3::Button->new(N("Cancel")),
 		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
 		),
 		gtksignal_connect(
-		    Gtk2::Button->new(N("Select all")),
+		    Gtk3::Button->new(N("Select all")),
 		    clicked => sub { $_->set_active(1) foreach @buttons },
 		),
 		gtksignal_connect(
-		    Gtk2::Button->new(N("Update")),
+		    Gtk3::Button->new(N("Update")),
 		    clicked => sub {
 			$w->{retval} = any { $_->get_active } @buttons;
 			# list of media listed in the checkbox panel
@@ -994,11 +994,11 @@ sub run_drakbug {
     run_program::raw({ detach => 1, as_user => 1 }, 'drakbug', '--report', $id);
 }
 
-mygtk2::add_icon_path('/usr/share/mcc/themes/default/');
+mygtk3::add_icon_path('/usr/share/mcc/themes/default/');
 sub get_icon {
     my ($mcc_icon, $fallback_icon) = @_;
-    my $icon = eval { mygtk2::_find_imgfile($mcc_icon) };
-    $icon ||= eval { mygtk2::_find_imgfile($fallback_icon) };
+    my $icon = eval { mygtk3::_find_imgfile($mcc_icon) };
+    $icon ||= eval { mygtk3::_find_imgfile($fallback_icon) };
     $icon;
 }
 

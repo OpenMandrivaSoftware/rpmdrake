@@ -29,7 +29,7 @@ use POSIX qw(strftime);
 use rpmdrake;
 use lib qw(/usr/lib/libDrakX);
 use common;
-use ugtk2 qw(escape_text_for_TextView_markup_format);
+use ugtk3 qw(escape_text_for_TextView_markup_format);
 
 use Exporter;
 our @ISA = qw(Exporter);
@@ -111,7 +111,7 @@ sub pkg2medium {
 
 # [ duplicate urpmi's urpm::msg::localtime2changelog() ]
 #- strftime returns a string in the locale charset encoding;
-#- but gtk2 requires UTF-8, so we use to_utf8() to ensure the
+#- but gtk3 requires UTF-8, so we use to_utf8() to ensure the
 #- output of localtime2changelog() is always in UTF-8
 #- as to_utf8() uses LC_CTYPE for locale encoding and strftime() uses LC_TIME,
 #- it doesn't work if those two variables have values with different
@@ -122,8 +122,8 @@ our $spacing = "        ";
 sub format_changelog_string {
     my ($installed_version, $string) = @_;
     #- preprocess changelog for faster TextView insert reaction
-    require Gtk2::Pango;
-    my %date_attr = ('weight' => Gtk2::Pango->PANGO_WEIGHT_BOLD);
+    require Pango;
+    my %date_attr = ('weight' => Pango->PANGO_WEIGHT_BOLD);
     my %update_attr = ('style' => 'italic');
     my $version;
     my $highlight;

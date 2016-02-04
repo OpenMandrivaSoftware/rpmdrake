@@ -25,22 +25,22 @@ package Rpmdrake::gurpm;
 
 use strict;
 use lib qw(/usr/lib/libDrakX);
-use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
-use ugtk2 qw(:all);
-use base qw(ugtk2);
+use mygtk3 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk3 one
+use ugtk3 qw(:all);
+use base qw(ugtk3);
 use Time::HiRes;
 use feature 'state';
 
 
 sub new {
     my ($self, $title, $initializing, %options) = @_;
-    my $mainw = bless(ugtk2->new($title, %options, default_width => 600, width => 600), $self);
+    my $mainw = bless(ugtk3->new($title, %options, default_width => 600, width => 600), $self);
     $::main_window = $mainw->{real_window};
     $mainw->{label} = gtknew('Label', text => $initializing, alignment => [ 0.5, 0 ]);
     # size label's heigh to 2 lines in order to prevent dummy vertical resizing:
     my $context = $mainw->{label}->get_layout->get_context;
     my $metrics = $context->get_metrics($mainw->{label}->style->font_desc, $context->get_language);
-    $mainw->{label}->set_size_request(-1, 2 * Gtk2::Pango->PANGO_PIXELS($metrics->get_ascent + $metrics->get_descent));
+    $mainw->{label}->set_size_request(-1, 2 * Pango->PANGO_PIXELS($metrics->get_ascent + $metrics->get_descent));
 
     $mainw->{progressbar} = gtknew('ProgressBar');
     gtkadd($mainw->{window}, $mainw->{vbox} = gtknew('VBox', spacing => 5, border_width => 6, children_tight => [
@@ -74,7 +74,7 @@ sub progress {
 
 sub DESTROY {
     my ($self) = @_;
-    mygtk2::may_destroy($self);
+    mygtk3::may_destroy($self);
     $self and $self->destroy;
     $self = undef;
     $self->{cancel} = undef;  #- in case we'll do another one later
@@ -105,7 +105,7 @@ sub invalidate_cancel_forever {
     $self->{hbox_cancel} or return;
     $self->{hbox_cancel}->destroy;
     # FIXME: temporary workaround that prevents
-    # Gtk2::Label::set_text() set_text_internal() -> queue_resize() ->
+    # Gtk3::Label::set_text() set_text_internal() -> queue_resize() ->
     # size_allocate() call chain to mess up when ->shrink_topwindow()
     # has been called (#32613):
     #$self->shrink_topwindow;

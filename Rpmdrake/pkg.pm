@@ -61,8 +61,8 @@ our @EXPORT = qw(
                     sort_packages
                     );
 
-use mygtk2 qw(gtknew);
-use ugtk2 qw(:all);
+use mygtk3 qw(gtknew);
+use ugtk3 qw(:all);
 
 our $priority_up_alread_warned;
 
@@ -366,7 +366,7 @@ sub get_installed_packages {
     @installed_pkgs;
 }
 
-urpm::select::add_packages_to_priority_upgrade_list('rpmdrake', 'perl-Glib', 'perl-Gtk2');
+urpm::select::add_packages_to_priority_upgrade_list('rpmdrake', 'perl-Glib', 'perl-Gtk3');
 
 my $priority_state;
 our $need_restart;
@@ -437,7 +437,7 @@ sub get_pkgs {
 
     my $gurpm = Rpmdrake::gurpm->new(1 ? N("Please wait") : N("Package installation..."), N("Initializing..."), transient => $::main_window);
     my $_gurpm_clean_guard = before_leaving { undef $gurpm };
-    #my $_flush_guard = Gtk2::GUI_Update_Guard->new;
+    #my $_flush_guard = Gtk3::GUI_Update_Guard->new;
 
     warn_about_media($w, %options);
 
@@ -609,7 +609,7 @@ sub display_READMEs_if_needed {
                       },
                   ),
 		    ] } keys %Readmes ],
-            [ gtknew('Button', text => N("Ok"), clicked => sub { Gtk2->main_quit }) ]
+            [ gtknew('Button', text => N("Ok"), clicked => sub { Gtk3->main_quit }) ]
         );
     }
 }
@@ -659,7 +659,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     my $_restore_sensitive = before_leaving { $w->set_sensitive(1) };
 
     # prevent perl to segfault upon receiving SIGALARM (mga#4918):
-    #my $_flush_guard = Gtk2::GUI_Update_Guard->new;
+    #my $_flush_guard = Gtk3::GUI_Update_Guard->new;
 
     if (my $group = get_parallel_group()) {
         return perform_parallel_install($urpm, $group, $w, \$statusbar_msg_id);
@@ -797,7 +797,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
                                  $done += grep { !/\.src\.rpm$/ } values %$transaction_sources_install; # installs
                              },
                              pre_removable => sub {
-                                 # Gtk2::GUI_Update_Guard->new use of alarm() kill us when
+                                 # Gtk3::GUI_Update_Guard->new use of alarm() kill us when
                                  # running system(), thus making DVD being ejected and printing
                                  # wrong error messages (#30463)
                                        

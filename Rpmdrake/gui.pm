@@ -28,9 +28,9 @@ our @ISA = qw(Exporter);
 use lib qw(/usr/lib/libDrakX);
 
 use common;
-use mygtk2 qw(gtknew); #- do not import gtkadd which conflicts with ugtk2 version
+use mygtk3 qw(gtknew); #- do not import gtkadd which conflicts with ugtk3 version
 
-use ugtk2 qw(:helpers :wrappers);
+use ugtk3 qw(:helpers :wrappers);
 use rpmdrake;
 use Rpmdrake::open_db;
 use Rpmdrake::formatting;
@@ -115,12 +115,12 @@ sub build_expander {
     my $textview;
     gtkadd(
         gtkshow(my $exp = gtksignal_connect(
-            Gtk2::Expander->new(format_field($label)),
+            Gtk3::Expander->new(format_field($label)),
             activate => sub {
                 state $first;
                 return if $first;
                 $first = 1;
-                slow_func($::main_window->window, sub {
+                slow_func($::main_window->get_window, sub {
                               extract_header($pkg, $urpm, $type, $o_installed_version);
                               gtktext_insert($textview, $get_data->() || [ [  N("(Not available)") ] ]);
                           });
@@ -134,14 +134,14 @@ sub build_expander {
 
 sub get_advisory_link {
     my ($update_descr) = @_;
-    my $link = gtkshow(Gtk2::LinkButton->new($update_descr->{URL}, N("Security advisory")));
+    my $link = gtkshow(Gtk3::LinkButton->new($update_descr->{URL}, N("Security advisory")));
     $link->set_uri_hook(\&run_help_callback);
     [ $link ];
 }
 
 sub get_description {
     my ($pkg, $update_descr) = @_;
-    @{ ugtk2::markup_to_TextView_format(join("\n",
+    @{ ugtk3::markup_to_TextView_format(join("\n",
                                              (eval {
                                                  escape_text_for_TextView_markup_format(
                                                      $pkg->{description}
@@ -188,7 +188,7 @@ sub get_main_text {
 
     my $txt = get_string_from_keywords($medium, $fullname);
  
-    ugtk2::markup_to_TextView_format(
+    ugtk3::markup_to_TextView_format(
         # force align "name - summary" to the right with RTL languages (#33603):
         if_(lang::text_direction_rtl(), "\x{200f}") .
           join("\n",
@@ -206,7 +206,7 @@ sub get_main_text {
 
 sub get_details {
     my ($pkg, $upkg, $installed_version, $raw_medium) = @_;
-    my $a = ugtk2::markup_to_TextView_format(
+    my $a = ugtk3::markup_to_TextView_format(
         $spacing . join("\n$spacing",
                         eval { format_field(N("Version: ")) . $upkg->EVR },
                         ($upkg->flag_installed ?
@@ -228,9 +228,9 @@ sub get_new_deps {
     my $deps_textview;
     my @a = [ gtkadd(
         gtksignal_connect(
-            gtkshow(my $dependencies = Gtk2::Expander->new(format_field(N("New dependencies:")))), 
+            gtkshow(my $dependencies = Gtk3::Expander->new(format_field(N("New dependencies:")))), 
             activate => sub { 
-                slow_func($::main_window->window, sub {
+                slow_func($::main_window->get_window, sub {
                               my $state = {};
                               my $db = open_rpm_db();
                               my @requested = $urpm->resolve_requested__no_suggests_(
@@ -264,15 +264,15 @@ sub get_url_link {
     return if !$url;
 
     my @a =
-      (@{ ugtk2::markup_to_TextView_format(format_field("\n$spacing" . N("URL: "))) },
-        [ my $link = gtkshow(Gtk2::LinkButton->new($url, $url)) ]);
+      (@{ ugtk3::markup_to_TextView_format(format_field("\n$spacing" . N("URL: "))) },
+        [ my $link = gtkshow(Gtk3::LinkButton->new($url, $url)) ]);
     $link->set_uri_hook(\&run_help_callback);
     @a;
 }
 
 sub files_format {
     my ($files) = @_;
-    ugtk2::markup_to_TextView_format(
+    ugtk3::markup_to_TextView_format(
         '<tt>' . $spacing #- to highlight information
           . join("\n$spacing", map { "\x{200e}$_" } @$files)
             . '</tt>');
@@ -297,7 +297,7 @@ sub format_pkg_simplifiedinfo {
     push @$s, [ "\n" ];
     my $installed_version = eval { find_installed_version($upkg) };
 
-    push @$s, [ gtkadd(gtkshow(my $details_exp = Gtk2::Expander->new(format_field(N("Details:")))),
+    push @$s, [ gtkadd(gtkshow(my $details_exp = Gtk3::Expander->new(format_field(N("Details:")))),
                        gtknew('TextView', text => get_details($pkg, $upkg, $installed_version, $raw_medium))) ];
     $details_exp->set_use_markup(1);
     push @$s, [ "\n\n" ];
@@ -333,7 +333,7 @@ sub format_pkg_info {
 	    )
     );
     my @max_info = @$max_info_in_descr && $changelog_first ? (@chglo, @files) : (@files, '', @chglo);
-    ugtk2::markup_to_TextView_format(join("\n", format_field(N("Name: ")) . $name,
+    ugtk3::markup_to_TextView_format(join("\n", format_field(N("Name: ")) . $name,
       format_field(N("Version: ")) . $version,
       format_field(N("Architecture: ")) . $upkg->arch,
       format_field(N("Size: ")) . N("%s KB", int($upkg->size/1024)),
@@ -369,9 +369,11 @@ sub warn_if_no_pkg {
                              N("Matching packages:"),
                              '',
                              join("\n", sort map {
-                                 #-PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
-                                 #-PO: eg: "- rpmdrake (medium: "Main Release"
-                                 N("- %s (medium: %s)", $_, pkg2medium($pkgs->{$_}{pkg}, $urpm)->{name});
+                                 ref($pkgs->{$_}) ?
+				     #-PO: this is list fomatting: "- <package_name> (medium: <medium_name>)"
+				     #-PO: eg: "- rpmdrake (medium: "Main Release"
+				     N("- %s (medium: %s)", $_, pkg2medium($pkgs->{$_}{pkg}, $urpm)->{name})
+				     : N("- %s", $_);
                              } grep { /^$short_name/ } keys %$pkgs),
 
                          ),
@@ -490,13 +492,13 @@ sub toggle_all {
       #- not all is selected, select all if no option to potentially override
       (exists $common->{partialsel_unsel} && $common->{partialsel_unsel}->(\@unsel, \@l) ? difference2(\@l, \@unsel) : @unsel)
         : @l;
-    toggle_nodes($w->{detail_list}->window, $w->{detail_list_model}, \&set_leaf_state, node_state($p[0]), @p);
+    toggle_nodes($w->{detail_list}->get_window, $w->{detail_list_model}, \&set_leaf_state, node_state($p[0]), @p);
     update_size($common);
 }
 
 # ask_browse_tree_given_widgets_for_rpmdrake will run gtk+ loop. its main parameter "common" is a hash containing:
 # - a "widgets" subhash which holds:
-#   o a "w" reference on a ugtk2 object
+#   o a "w" reference on a ugtk3 object
 #   o "tree" & "info" references a TreeView
 #   o "info" is a TextView
 #   o "tree_model" is the associated model of "tree"
@@ -550,15 +552,15 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     };
     
     $common->{display_info} = sub {
-        gtktext_insert($w->{info}, get_info($_[0], $w->{tree}->window));
+        gtktext_insert($w->{info}, get_info($_[0], $w->{tree}->get_window));
         $w->{info}->scroll_to_iter($w->{info}->get_buffer->get_start_iter, 0, 0, 0, 0);
         0;
     };
 
     my $fast_toggle = sub {
         my ($iter) = @_;
-        gtkset_mousecursor_wait($w->{w}{rwindow}->window);
-        my $_cleaner = before_leaving { gtkset_mousecursor_normal($w->{w}{rwindow}->window) };
+        gtkset_mousecursor_wait($w->{w}{rwindow}->get_window);
+        my $_cleaner = before_leaving { gtkset_mousecursor_normal($w->{w}{rwindow}->get_window) };
         my $name = $w->{detail_list_model}->get($iter, $pkg_columns{text});
         my $urpm_obj = $pkgs->{$name}{pkg};
 
@@ -578,7 +580,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
             interactive_msg(N("Warning"), '<b>' . N("Rpmdrake or one of its priority dependencies needs to be updated first. Rpmdrake will then restart.") . '</b>' . "\n\n");
         }
 
-        toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, $pkg_columns{state}),
+        toggle_nodes($w->{tree}->get_window, $w->{detail_list_model}, \&set_leaf_state, $w->{detail_list_model}->get($iter, $pkg_columns{state}),
                      $w->{detail_list_model}->get($iter, $pkg_columns{text}));
 	    update_size($common);
     };
@@ -587,7 +589,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
 	$model && $iter or return;
      $common->{display_info}($model->get($iter, $pkg_columns{text}));
  });
-    ($w->{detail_list}->get_column(0)->get_cell_renderers)[0]->signal_connect(toggled => sub {
+    ($w->{detail_list}->get_column(0)->get_cells)[0]->signal_connect(toggled => sub {
 	    my ($_cell, $path) = @_; #text_
 	    my $iter = $w->{detail_list_model}->get_iter_from_string($path);
 	    $fast_toggle->($iter) if $iter;
@@ -595,7 +597,7 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     });
     $common->{rebuild_tree}->();
     update_size($common);
-    $common->{initial_selection} and toggle_nodes($w->{tree}->window, $w->{detail_list_model}, \&set_leaf_state, undef, @{$common->{initial_selection}});
+    $common->{initial_selection} and toggle_nodes($w->{tree}->get_window, $w->{detail_list_model}, \&set_leaf_state, undef, @{$common->{initial_selection}});
     #my $_b = before_leaving { $clear_all_caches->() };
     $common->{init_callback}->() if $common->{init_callback};
     $w->{w}->main;
@@ -734,7 +736,7 @@ sub deps_msg {
                                      interactive_msg(N("More information on package..."), get_info($pkg), scroll => 1);
                                  }) ] } @deps ],
                 [ gtknew('Button', text => N("Ok"), 
-                         clicked => sub { Gtk2->main_quit }) ]
+                         clicked => sub { Gtk3->main_quit }) ]
             );
             goto deps_msg_again;
         } else {
@@ -924,7 +926,7 @@ sub real_quit() {
     if (is_there_selected_packages()) {
         interactive_msg(N("Some packages are selected."), N("Some packages are selected.") . "\n" . N("Do you really want to quit?"), yesno => 1) or return;
     }
-    Gtk2->main_quit;
+    Gtk3->main_quit;
 }
 
 sub do_action__real {

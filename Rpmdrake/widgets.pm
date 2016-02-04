@@ -1,4 +1,4 @@
-package Gtk2::Mdv::TextView;
+package Gtk3::Mdv::TextView;
 #*****************************************************************************
 #
 #  Copyright (c) 2002 Guillaume Cottenceau
@@ -27,8 +27,8 @@ use strict;
 use MDK::Common::Func 'any';
 use lib qw(/usr/lib/libDrakX);
 
-use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
-use ugtk2 qw(:all);
+use mygtk3 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk3 one
+use ugtk3 qw(:all);
 use Time::HiRes;
 use feature 'state';
 

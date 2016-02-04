@@ -31,8 +31,8 @@ use Rpmdrake::init;
 use Rpmdrake::pkg;
 use Rpmdrake::open_db;
 use Rpmdrake::formatting;
-use mygtk2 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk2 one
-use ugtk2 qw(:all);
+use mygtk3 qw(gtknew);  #- do not import anything else, especially gtkadd() which conflicts with ugtk3 one
+use ugtk3 qw(:all);
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(dialog_rpmnew do_merge_if_needed);
@@ -79,11 +79,11 @@ sub inspect {
 	}
 	my @diff = map { ensure_utf8($_); $_ } `/usr/bin/diff -u '$file' '$rpmnew'`;
 	@diff = N("(none)") if !@diff;
-	my $d = ugtk2->new(N("Inspecting %s", $file), grab => 1, transient => $::main_window);
+	my $d = ugtk3->new(N("Inspecting %s", $file), grab => 1, transient => $::main_window);
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my %texts;
-	require Gtk2::SourceView2;
-	my $lang_manager = Gtk2::SourceView2::LanguageManager->get_default;
+	require Gtk3::SourceView2;
+	my $lang_manager = Gtk3::SourceView2::LanguageManager->get_default;
 	gtkadd(
 	    $d->{window},
 	    gtkpack_(
@@ -93,25 +93,25 @@ sub inspect {
 			gtkpack_(
 			    gtknew('VBox'),
 			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$file:</span>)),
-			    1, gtknew('ScrolledWindow', child => $texts{file} = Gtk2::SourceView2::View->new),
+			    1, gtknew('ScrolledWindow', child => $texts{file} = Gtk3::SourceView2::View->new),
 			),
 			gtkpack_(
 			    gtknew('VBox'),
 			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$rpmnew:</span>)),
-			    1, gtknew('ScrolledWindow', child => $texts{rpmnew} = Gtk2::SourceView2::View->new),
+			    1, gtknew('ScrolledWindow', child => $texts{rpmnew} = Gtk3::SourceView2::View->new),
 			),
 			resize1 => 1,
 		    ),
 		    gtkpack_(
 			gtknew('VBox'),
 			0, gtknew('Label', text => N("Changes:")),
-			1, gtknew('ScrolledWindow', child => $texts{diff} = Gtk2::SourceView2::View->new),
+			1, gtknew('ScrolledWindow', child => $texts{diff} = Gtk3::SourceView2::View->new),
 		    ),
 		    resize1 => 1,
 		),
-		0, Gtk2::HSeparator->new,
+		0, Gtk3::HSeparator->new,
 		0, gtknew('WrappedLabel',
-                    # prevent bad sizing of Gtk2::WrappedLabel:
+                    # prevent bad sizing of Gtk3::WrappedLabel:
                     width => $inspect_wsize[0],
                     text => N("You can either remove the .%s file, use it as main file or do nothing. If unsure, keep the current file (\"%s\").",
                               $rpmfile, N("Remove .%s", $rpmfile)),
@@ -120,15 +120,15 @@ sub inspect {
 		    gtknew('HButtonBox'),
 		    gtksignal_connect(
 			gtknew('Button', text => N("Remove .%s", $rpmfile)),
-			clicked => sub { $save_wsize->(); unlink $rpmnew; Gtk2->main_quit },
+			clicked => sub { $save_wsize->(); unlink $rpmnew; Gtk3->main_quit },
 		    ),
 		    gtksignal_connect(
 			gtknew('Button', text => N("Use .%s as main file", $rpmfile)),
-			clicked => sub { $save_wsize->(); renamef($rpmnew, $file); Gtk2->main_quit },
+			clicked => sub { $save_wsize->(); renamef($rpmnew, $file); Gtk3->main_quit },
 		    ),
 		    gtksignal_connect(
 			gtknew('Button', text => N("Do nothing")),
-			clicked => sub { $save_wsize->(); Gtk2->main_quit },
+			clicked => sub { $save_wsize->(); Gtk3->main_quit },
 		    ),
 		)
 	    )
@@ -179,7 +179,7 @@ sub dialog_rpmnew {
 	    } @{$p2r{$pkg}};
 	} keys %p2r ],
 	[ gtknew('Button', text => N("Ok"), 
-	    clicked => sub { Gtk2->main_quit }) ]
+	    clicked => sub { Gtk3->main_quit }) ]
     );
     return 0;
 }

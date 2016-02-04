@@ -39,8 +39,8 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(run);
 
-use mygtk2 qw(gtknew gtkset);
-use ugtk2 qw(:all);
+use mygtk3 qw(gtknew gtkset);
+use ugtk3 qw(:all);
 
 my $urpm;
 my ($mainw, $list_tv, $something_changed);
@@ -165,7 +165,7 @@ sub easy_add_callback() {
 }
 
 sub add_callback() {
-    my $w = ugtk2->new(N("Add a medium"), grab => 1, center => 1,  transient => $::main_window);
+    my $w = ugtk3->new(N("Add a medium"), grab => 1, center => 1,  transient => $::main_window);
     my $prev_main_window = $::main_window;
     local $::main_window = $w->{real_window};
     my %radios_infos = (
@@ -180,7 +180,7 @@ sub add_callback() {
     my $notebook = gtknew('Notebook');
     $notebook->set_show_tabs(0); $notebook->set_show_border(0);
     my ($count_nbs, %pages);
-    my $size_group = Gtk2::SizeGroup->new('horizontal');
+    my $size_group = Gtk3::SizeGroup->new('horizontal');
     my ($cb1, $cb2);
     foreach (@radios_names_ordered) {
 	my $info = $radios_infos{$_};
@@ -267,7 +267,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    gtknew('VBox', spacing => 5),
 	    gtknew('Title2', label => N("Adding a medium:")),
 	    gtknew('HBox', children_tight => [
-                      Gtk2::Label->new(but(N("Type of medium:"))),
+                      Gtk3::Label->new(but(N("Type of medium:"))),
                       gtknew('ComboBox', text_ref => \$type, 
                              list => \@radios_names_ordered,
                              format => sub { $radios_infos{$_[0]}{name} },
@@ -277,7 +277,7 @@ really want to replace it?"), yesno => 1) or return 0;
 	    gtknew('HSeparator'),
 	    gtkpack(
 		gtknew('HButtonBox'),
-		gtknew('Button', text => N("Cancel"), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }),
+		gtknew('Button', text => N("Cancel"), clicked => sub { $w->{retval} = 0; Gtk3->main_quit }),
 		gtksignal_connect(
 		    gtknew('Button', text => N("Ok")), clicked => sub {
 			if ($checkok->()) {
@@ -301,7 +301,7 @@ really want to replace it?"), yesno => 1) or return 0;
 				    ? ($info->{login_entry}->get_text . ':' . $info->{pass_entry}->get_text . '@')
 				    : '',
 				$i{url};
-			    Gtk2->main_quit;
+			    Gtk3->main_quit;
 			}
 		    },
 		),
@@ -334,7 +334,7 @@ really want to replace it?"), yesno => 1) or return 0;
 }
 
 sub options_callback() {
-    my $w = ugtk2->new(N("Global options for package installation"), grab => 1, center => 1,  transient => $::main_window);
+    my $w = ugtk3->new(N("Global options for package installation"), grab => 1, center => 1,  transient => $::main_window);
     local $::main_window = $w->{real_window};
     my %verif = (0 => N("never"), 1 => N("always"));
     my $verify_rpm = $urpm->{global_config}{'verify-rpm'};
@@ -391,7 +391,7 @@ sub options_callback() {
 
 	    gtkpack(
 		gtknew('HButtonBox'),
-		gtknew('Button', text => N("Cancel"), clicked => sub { Gtk2->main_quit }),
+		gtknew('Button', text => N("Cancel"), clicked => sub { Gtk3->main_quit }),
 		gtksignal_connect(
 		    gtknew('Button', text => N("Ok")), clicked => sub {
                         $urpm->{global_config}{'verify-rpm'} = $verify_rpm;
@@ -400,7 +400,7 @@ sub options_callback() {
                         $something_changed = 1;
 			urpm::media::write_config($urpm);
 			$urpm = fast_open_urpmi_db();
-			Gtk2->main_quit;
+			Gtk3->main_quit;
 		    },
 		),
 	    ),
@@ -470,7 +470,7 @@ sub edit_callback() {
     my $config = urpm::cfg::load_config_raw($urpm->{config}, 1);
     my ($verbatim_medium) = grep { $medium->{name} eq $_->{name} } @$config;
     my $old_main_window = $::main_window;
-    my $w = ugtk2->new(N("Edit a medium"), grab => 1, center => 1,  transient => $::main_window);
+    my $w = ugtk3->new(N("Edit a medium"), grab => 1, center => 1,  transient => $::main_window);
     local $::main_window = $w->{real_window};
     my ($url_entry, $downloader_entry, $url, $downloader);
     gtkadd(
@@ -482,7 +482,7 @@ sub edit_callback() {
 		{},
 		[ gtknew('Label_Left', text => N("URL:")), $url_entry = gtkentry($verbatim_medium->{url} || $verbatim_medium->{mirrorlist}) ],
 		[ gtknew('Label_Left', text => N("Downloader:")),
-            my $download_combo = Gtk2::ComboBox->new_with_strings([ urpm::download::available_ftp_http_downloaders() ],
+            my $download_combo = Gtk3::ComboBox->new_with_strings([ urpm::download::available_ftp_http_downloaders() ],
                                                                   $verbatim_medium->{downloader} || '') ],
 	    ),
 	    0, gtknew('HSeparator'),
@@ -490,7 +490,7 @@ sub edit_callback() {
 		gtknew('HButtonBox'),
 		gtksignal_connect(
 		    gtknew('Button', text => N("Cancel")),
-		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
+		    clicked => sub { $w->{retval} = 0; Gtk3->main_quit },
 		),
 		gtksignal_connect(
 		    gtknew('Button', text => N("Save changes")),
@@ -498,7 +498,7 @@ sub edit_callback() {
 			$w->{retval} = 1;
 			$url = $url_entry->get_text;
 			$downloader = $downloader_entry->get_text;
-			Gtk2->main_quit;
+			Gtk3->main_quit;
 		    },
 		),
 		gtksignal_connect(
@@ -550,12 +550,12 @@ sub update_callback() {
 sub proxy_callback {
     my ($medium) = @_;
     my $medium_name = $medium ? $medium->{name} : '';
-    my $w = ugtk2->new(N("Configure proxies"), grab => 1, center => 1,  transient => $::main_window);
+    my $w = ugtk3->new(N("Configure proxies"), grab => 1, center => 1,  transient => $::main_window);
     local $::main_window = $w->{real_window};
     my ($proxy, $proxy_user) = readproxy($medium_name);
     my ($user, $pass) = $proxy_user =~ /^([^:]*):(.*)$/;
     my ($proxybutton, $proxyentry, $proxyuserbutton, $proxyuserentry, $proxypasswordentry);
-    my $sg = Gtk2::SizeGroup->new('horizontal');
+    my $sg = Gtk3::SizeGroup->new('horizontal');
     gtkadd(
 	$w->{window},
 	gtkpack__(
@@ -592,12 +592,12 @@ sub proxy_callback {
 			$proxy = $proxybutton->get_active ? $proxyentry->get_text : '';
 			$proxy_user = $proxyuserbutton->get_active
 			    ? ($proxyuserentry->get_text . ':' . $proxypasswordentry->get_text) : '';
-			Gtk2->main_quit;
+			Gtk3->main_quit;
 		    },
 		),
 		gtksignal_connect(
 		    gtknew('Button', text => N("Cancel")),
-		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
+		    clicked => sub { $w->{retval} = 0; Gtk3->main_quit },
 		)
 	    )
 	)
@@ -648,7 +648,7 @@ sub remove_parallel {
 
 sub add_callback_ {
     my ($title, $label, $mainw, $widget, $get_value, $check) = @_;
-    my $w = ugtk2->new($title, grab => 1,  transient => $mainw->{real_window});
+    my $w = ugtk3->new($title, grab => 1,  transient => $mainw->{real_window});
     local $::main_window = $w->{real_window};
     gtkadd(
         $w->{window},
@@ -659,8 +659,8 @@ sub add_callback_ {
             gtknew('HSeparator'),
             gtkpack(
                 gtknew('HButtonBox'),
-                gtknew('Button', text => N("Ok"), clicked => sub { $w->{retval} = 1; $get_value->(); Gtk2->main_quit }),
-                gtknew('Button', text => N("Cancel"), clicked => sub { $w->{retval} = 0; Gtk2->main_quit })
+                gtknew('Button', text => N("Ok"), clicked => sub { $w->{retval} = 1; $get_value->(); Gtk3->main_quit }),
+                gtknew('Button', text => N("Cancel"), clicked => sub { $w->{retval} = 0; Gtk3->main_quit })
             )
         )
     );
@@ -670,15 +670,15 @@ sub add_callback_ {
 sub edit_parallel {
     my ($num, $conf) = @_;
     my $edited = $num == -1 ? {} : $conf->[$num];
-    my $w = ugtk2->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"), grab => 1, center => 1,  transient => $::main_window);
+    my $w = ugtk3->new($num == -1 ? N("Add a parallel group") : N("Edit a parallel group"), grab => 1, center => 1,  transient => $::main_window);
     local $::main_window = $w->{real_window};
     my $name_entry;
 
-    my ($medias_ls, $hosts_ls) = (Gtk2::ListStore->new("Glib::String"), Gtk2::ListStore->new("Glib::String"));
+    my ($medias_ls, $hosts_ls) = (Gtk3::ListStore->new("Glib::String"), Gtk2::ListStore->new("Glib::String"));
 
     my ($medias, $hosts) = map {
-        my $list = Gtk2::TreeView->new_with_model($_);
-        $list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+        my $list = Gtk3::TreeView->new_with_model($_);
+        $list->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
         $list->set_headers_visible(0);
         $list->get_selection->set_mode('browse');
         $list;
@@ -687,9 +687,9 @@ sub edit_parallel {
     $medias_ls->append_set([ 0 => $_ ]) foreach @{$edited->{medias}};
 
     my $add_media = sub {
-        my $medias_list_ls = Gtk2::ListStore->new("Glib::String");
-        my $medias_list = Gtk2::TreeView->new_with_model($medias_list_ls);
-        $medias_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+        my $medias_list_ls = Gtk3::ListStore->new("Glib::String");
+        my $medias_list = Gtk3::TreeView->new_with_model($medias_list_ls);
+        $medias_list->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
         $medias_list->set_headers_visible(0);
         $medias_list->get_selection->set_mode('browse');
         $medias_list_ls->append_set([ 0 => $_->{name} ]) foreach @{$urpm->{media}};
@@ -737,8 +737,8 @@ sub edit_parallel {
 		    1, gtknew('Frame', shadow_type => 'in', child => 
 			gtknew('ScrolledWindow', h_policy => 'never', child => $medias)),
 		    0, gtknew('VBox', children_tight => [
-			gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_media->() }),
-			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub {
+			gtksignal_connect(Gtk3::Button->new(but(N("Add"))),    clicked => sub { $add_media->() }),
+			gtksignal_connect(Gtk3::Button->new(but(N("Remove"))), clicked => sub {
                                               remove_from_list($medias, $edited->{medias}, $medias_ls);
                                           }) ]) ]) ],
 		[ N("Hosts:"),
@@ -746,8 +746,8 @@ sub edit_parallel {
 		    1, gtknew('Frame', shadow_type => 'in', child => 
 			gtknew('ScrolledWindow', h_policy => 'never', child => $hosts)),
 		    0, gtknew('VBox', children_tight => [
-			gtksignal_connect(Gtk2::Button->new(but(N("Add"))),    clicked => sub { $add_host->() }),
-			gtksignal_connect(Gtk2::Button->new(but(N("Remove"))), clicked => sub {
+			gtksignal_connect(Gtk3::Button->new(but(N("Add"))),    clicked => sub { $add_host->() }),
+			gtksignal_connect(Gtk3::Button->new(but(N("Remove"))), clicked => sub {
                                               remove_from_list($hosts, $hosts_list, $hosts_ls);
                                           }) ]) ]) ]
 	    ),
@@ -759,10 +759,10 @@ sub edit_parallel {
 			$w->{retval} = 1;
 			$edited->{name} = $name_entry->get_text;
 			mapn { $_[0]->get_active and $edited->{protocol} = $_[1] } \@protocols, \@protocols_names;
-			Gtk2->main_quit;
+			Gtk3->main_quit;
 		    }
 		),
-		gtknew('Button', text => N("Cancel"), clicked => sub { $w->{retval} = 0; Gtk2->main_quit }))
+		gtknew('Button', text => N("Cancel"), clicked => sub { $w->{retval} = 0; Gtk3->main_quit }))
 	)
     );
     $w->{rwindow}->set_size_request(600, -1);
@@ -777,12 +777,12 @@ sub edit_parallel {
 }
 
 sub parallel_callback() {
-    my $w = ugtk2->new(N("Configure parallel urpmi (distributed execution of urpmi)"), grab => 1, center => 1,  transient => $mainw->{real_window});
+    my $w = ugtk3->new(N("Configure parallel urpmi (distributed execution of urpmi)"), grab => 1, center => 1,  transient => $mainw->{real_window});
     local $::main_window = $w->{real_window};
-    my $list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String", "Glib::String", "Glib::String");
-    my $list = Gtk2::TreeView->new_with_model($list_ls);
-    each_index { $list->append_column(Gtk2::TreeViewColumn->new_with_attributes($_, Gtk2::CellRendererText->new, 'text' => $::i)) } N("Group"), N("Protocol"), N("Media limit");
-    $list->append_column(my $commandcol = Gtk2::TreeViewColumn->new_with_attributes(N("Command"), Gtk2::CellRendererText->new, 'text' => 3));
+    my $list_ls = Gtk3::ListStore->new("Glib::String", "Glib::String", "Glib::String", "Glib::String");
+    my $list = Gtk3::TreeView->new_with_model($list_ls);
+    each_index { $list->append_column(Gtk3::TreeViewColumn->new_with_attributes($_, Gtk2::CellRendererText->new, 'text' => $::i)) } N("Group"), N("Protocol"), N("Media limit");
+    $list->append_column(my $commandcol = Gtk3::TreeViewColumn->new_with_attributes(N("Command"), Gtk2::CellRendererText->new, 'text' => 3));
     $commandcol->set_max_width(200);
 
     my $conf;
@@ -808,11 +808,11 @@ sub parallel_callback() {
 		0, gtkpack__(
 		    gtknew('VBox', spacing => 5),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Remove"))),
+			Gtk3::Button->new(but(N("Remove"))),
 			clicked => sub { remove_parallel(selrow($list), $conf); $reread->() },
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Edit..."))),
+			Gtk3::Button->new(but(N("Edit..."))),
 			clicked => sub {
 			    my $row = selrow($list);
 			    $row != -1 and edit_parallel($row, $conf);
@@ -820,7 +820,7 @@ sub parallel_callback() {
 			},
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Add..."))),
+			Gtk3::Button->new(but(N("Add..."))),
 			clicked => sub { edit_parallel(-1, $conf) and $reread->() },
 		    )
 		)
@@ -828,7 +828,7 @@ sub parallel_callback() {
 	    0, gtknew('HSeparator'),
 	    0, gtkpack(
 		gtknew('HButtonBox'),
-		gtknew('Button', text => N("Ok"), clicked => sub { Gtk2->main_quit })
+		gtknew('Button', text => N("Ok"), clicked => sub { Gtk3->main_quit })
 	    )
 	)
     );
@@ -836,20 +836,20 @@ sub parallel_callback() {
 }
 
 sub keys_callback() {
-    my $w = ugtk2->new(N("Manage keys for digital signatures of packages"), grab => 1, center => 1,  transient => $mainw->{real_window});
+    my $w = ugtk3->new(N("Manage keys for digital signatures of packages"), grab => 1, center => 1,  transient => $mainw->{real_window});
     local $::main_window = $w->{real_window};
     $w->{real_window}->set_size_request(600, 300);
 
-    my $media_list_ls = Gtk2::ListStore->new("Glib::String");
-    my $media_list = Gtk2::TreeView->new_with_model($media_list_ls);
-    $media_list->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 0));
+    my $media_list_ls = Gtk3::ListStore->new("Glib::String");
+    my $media_list = Gtk3::TreeView->new_with_model($media_list_ls);
+    $media_list->append_column(Gtk3::TreeViewColumn->new_with_attributes(N("Medium"), Gtk2::CellRendererText->new, 'text' => 0));
     $media_list->get_selection->set_mode('browse');
 
     my $key_col_size = 200;
-    my $keys_list_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
-    my $keys_list = Gtk2::TreeView->new_with_model($keys_list_ls);
+    my $keys_list_ls = Gtk3::ListStore->new("Glib::String", "Glib::String");
+    my $keys_list = Gtk3::TreeView->new_with_model($keys_list_ls);
     $keys_list->set_rules_hint(1);
-    $keys_list->append_column(my $col = Gtk2::TreeViewColumn->new_with_attributes(N("_:cryptographic keys\nKeys"), my $renderer = Gtk2::CellRendererText->new, 'text' => 0));
+    $keys_list->append_column(my $col = Gtk3::TreeViewColumn->new_with_attributes(N("_:cryptographic keys\nKeys"), my $renderer = Gtk2::CellRendererText->new, 'text' => 0));
     $col->set_sizing('fixed');
     $col->set_fixed_width($key_col_size);
     $renderer->set_property('width' => 1);
@@ -885,9 +885,9 @@ sub keys_callback() {
     });
 
     my $add_key = sub {
-        my $available_keyz_ls = Gtk2::ListStore->new("Glib::String", "Glib::String");
-        my $available_keyz = Gtk2::TreeView->new_with_model($available_keyz_ls);
-        $available_keyz->append_column(Gtk2::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
+        my $available_keyz_ls = Gtk3::ListStore->new("Glib::String", "Glib::String");
+        my $available_keyz = Gtk3::TreeView->new_with_model($available_keyz_ls);
+        $available_keyz->append_column(Gtk3::TreeViewColumn->new_with_attributes(undef, Gtk2::CellRendererText->new, 'text' => 0));
         $available_keyz->set_headers_visible(0);
         $available_keyz->get_selection->set_mode('browse');
         $available_keyz_ls->append_set([ 0 => sprintf("%s (%s)", $_, $key_name->($_)), 1 => $_ ]) foreach keys %{$urpm->{keys}};
@@ -930,11 +930,11 @@ sub keys_callback() {
 		0, gtkpack__(
 		    gtknew('VBox', spacing => 5),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Add"))),
+			Gtk3::Button->new(but(N("Add"))),
 			clicked => \&$add_key,
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Remove"))),
+			Gtk3::Button->new(but(N("Remove"))),
 			clicked => \&$remove_key,
 		    )
 		)
@@ -942,7 +942,7 @@ sub keys_callback() {
 	    0, gtknew('HSeparator'),
 	    0, gtkpack(
 		gtknew('HButtonBox'),
-		gtknew('Button', text => N("Ok"), clicked => sub { Gtk2->main_quit })
+		gtknew('Button', text => N("Ok"), clicked => sub { Gtk3->main_quit })
 	    ),
 	),
     );
@@ -951,7 +951,7 @@ sub keys_callback() {
 
 sub mainwindow() {
     undef $something_changed;
-    $mainw = ugtk2->new(N("Configure media"), center => 1, transient => $::main_window, modal => 1);
+    $mainw = ugtk3->new(N("Configure media"), center => 1, transient => $::main_window, modal => 1);
     local $::main_window = $mainw->{real_window};
 
     my $reread_media;
@@ -962,7 +962,7 @@ sub mainwindow() {
 	[ N("/_File") . N("/_Update"), N("<control>U"), sub { update_callback() and $reread_media->() }, undef, '<Item>', ],
         [ N("/_File") . N("/Add a specific _media mirror"), N("<control>M"), sub { easy_add_callback_with_mirror() and $reread_media->() }, undef, '<Item>' ],
         [ N("/_File") . N("/_Add a custom medium"), N("<control>A"), sub { add_callback() and $reread_media->() }, undef, '<Item>' ],
-	[ N("/_File") . N("/Close"), N("<control>W"), sub { Gtk2->main_quit }, undef, '<Item>', ],
+	[ N("/_File") . N("/Close"), N("<control>W"), sub { Gtk3->main_quit }, undef, '<Item>', ],
      [ N("/_Options"), undef, undef, undef, '<Branch>' ],
      [ N("/_Options") . N("/_Global options"), N("<control>G"), \&options_callback, undef, '<Item>' ],
      [ N("/_Options") . N("/Manage _keys"), N("<control>K"), \&keys_callback, undef, '<Item>' ],
@@ -996,8 +996,8 @@ sub mainwindow() {
      ),
     );
 
-    my $list = Gtk2::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String", "Glib::String", "Glib::Boolean");
-    $list_tv = Gtk2::TreeView->new_with_model($list);
+    my $list = Gtk3::ListStore->new("Glib::Boolean", "Glib::Boolean", "Glib::String", "Glib::String", "Glib::Boolean");
+    $list_tv = Gtk3::TreeView->new_with_model($list);
     $list_tv->get_selection->set_mode('multiple');
     my ($dw_button, $edit_button, $remove_button, $up_button);
     $list_tv->get_selection->signal_connect(changed => sub {
@@ -1041,18 +1041,18 @@ sub mainwindow() {
 	},
     );
 
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Enabled"),
-                                                                      my $tr = Gtk2::CellRendererToggle->new,
+    $list_tv->append_column(Gtk3::TreeViewColumn->new_with_attributes(N("Enabled"),
+                                                                      my $tr = Gtk3::CellRendererToggle->new,
                                                                       'active' => $col{mainw}{is_enabled}));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Updates"),
-                                                                      my $cu = Gtk2::CellRendererToggle->new,
+    $list_tv->append_column(Gtk3::TreeViewColumn->new_with_attributes(N("Updates"),
+                                                                      my $cu = Gtk3::CellRendererToggle->new,
                                                                       'active' => $col{mainw}{is_update},
                                                                       activatable => $col{mainw}{activatable}));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Type"),
-                                                                      Gtk2::CellRendererText->new,
+    $list_tv->append_column(Gtk3::TreeViewColumn->new_with_attributes(N("Type"),
+                                                                      Gtk3::CellRendererText->new,
                                                                       'text' => $col{mainw}{type}));
-    $list_tv->append_column(Gtk2::TreeViewColumn->new_with_attributes(N("Medium"),
-                                                                      Gtk2::CellRendererText->new,
+    $list_tv->append_column(Gtk3::TreeViewColumn->new_with_attributes(N("Medium"),
+                                                                      Gtk3::CellRendererText->new,
                                                                       'text' => $col{mainw}{name}));
     my $id;
     $id = $tr->signal_connect(
@@ -1128,24 +1128,24 @@ sub mainwindow() {
 	gtkpack_(
 	    gtknew('VBox', spacing => 5),
 	    0, $menu,
-	    ($0 =~ /rpm-edit-media|edit-urpm-sources/ ? (0, Gtk2::Banner->new($ugtk2::wm_icon, N("Configure media"))) : ()),
+	    ($0 =~ /rpm-edit-media|edit-urpm-sources/ ? (0, Gtk3::Banner->new($ugtk3::wm_icon, N("Configure media"))) : ()),
 	    1, gtkpack_(
 		gtknew('HBox', spacing => 10),
 		1, gtknew('ScrolledWindow', child => $list_tv),
 		0, gtkpack__(
 		    gtknew('VBox', spacing => 5),
 		    gtksignal_connect(
-			$remove_button = Gtk2::Button->new(but(N("Remove"))),
+			$remove_button = Gtk3::Button->new(but(N("Remove"))),
 			clicked => sub { remove_callback() and $reread_media->() },
 		    ),
 		    gtksignal_connect(
-			$edit_button = Gtk2::Button->new(but(N("Edit"))),
+			$edit_button = Gtk3::Button->new(but(N("Edit"))),
 			clicked => sub {
 			    my $name = edit_callback(); defined $name and $reread_media->($name);
 			}
 		    ),
 		    gtksignal_connect(
-			Gtk2::Button->new(but(N("Add"))),
+			Gtk3::Button->new(but(N("Add"))),
 			clicked => sub { easy_add_callback() and $reread_media->() },
 		    ),
 		    gtkpack(
@@ -1164,8 +1164,8 @@ sub mainwindow() {
 	    ),
 	    0, gtknew('HSeparator'),
 	    0, gtknew('HButtonBox', layout => 'edge', children_loose => [
-		gtksignal_connect(Gtk2::Button->new(but(N("Help"))), clicked => sub { rpmdrake::open_help('sources') }),
-		gtksignal_connect(Gtk2::Button->new(but(N("Ok"))), clicked => sub { Gtk2->main_quit })
+		gtksignal_connect(Gtk3::Button->new(but(N("Help"))), clicked => sub { rpmdrake::open_help('sources') }),
+		gtksignal_connect(Gtk3::Button->new(but(N("Ok"))), clicked => sub { Gtk2->main_quit })
 	    ])
 	)
     );
@@ -1180,7 +1180,7 @@ sub mainwindow() {
 sub run() {
     # ignore rpmdrake's option regarding ignoring debug media:
     local $ignore_debug_media = [ 0 ];
-    local $ugtk2::wm_icon = get_icon('rpmdrake-omv', 'title-media');
+    local $ugtk3::wm_icon = get_icon('rpmdrake-omv', 'title-media');
     my $lock;
     {
         $urpm = fast_open_urpmi_db();
