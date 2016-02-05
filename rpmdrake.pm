@@ -138,7 +138,7 @@ sub rpmdrake::prompt::prompt {
 		Gtk3::Label->new($self->{prompts}[$_]),
 		$answers[$_] = gtkset_visibility(gtkentry(), !$self->{hidden}[$_]),
 	    ) } 0 .. $#{$self->{prompts}}),
-	    gtksignal_connect(Gtk3::Button->new(N("Ok")), clicked => sub { Gtk2->main_quit }),
+	    gtksignal_connect(Gtk3::Button->new(N("Ok")), clicked => sub { Gtk3->main_quit }),
 	),
     );
     $d->main;
@@ -284,23 +284,23 @@ sub interactive_msg {
 			my $label = $_;
 			gtksignal_connect(
 			    $button_yes = Gtk3::Button->new($label),
-			    clicked => sub { $d->{retval} = $label; Gtk2->main_quit }
+			    clicked => sub { $d->{retval} = $label; Gtk3->main_quit }
 			);
 		    } @{$options{yesno}}
 		    : (
 			$options{yesno} ? (
 			    gtksignal_connect( 
 				Gtk3::Button->new($options{text}{no} || N("No")), 
-				clicked => sub { $d->{retval} = 0; Gtk2->main_quit }
+				clicked => sub { $d->{retval} = 0; Gtk3->main_quit }
 			    ),
 			    gtksignal_connect(
 				$button_yes = Gtk3::Button->new($options{text}{yes} || N("Yes")),
-				clicked => sub { $d->{retval} = 1; Gtk2->main_quit }
+				clicked => sub { $d->{retval} = 1; Gtk3->main_quit }
 			    ),
 			)
 			: gtksignal_connect(
 			    $button_yes = Gtk3::Button->new(N("Ok")),
-			    clicked => sub { Gtk2->main_quit }
+			    clicked => sub { Gtk3->main_quit }
 			)
 		    )
 		)
@@ -363,12 +363,12 @@ sub interactive_list {
 		create_hbox(),
           if_(!$options{nocancel},
           gtksignal_connect(
-		    Gtk3::Button->new(N("Cancel")), clicked => sub { Gtk2->main_quit }),
+		    Gtk3::Button->new(N("Cancel")), clicked => sub { Gtk3->main_quit }),
           ),
           gtksignal_connect(
 		    $button_ok=Gtk3::Button->new(N("Ok")), clicked => sub {
 			each_index { $_->get_active and $choice = $::i } @radios;
-			Gtk2->main_quit;
+			Gtk3->main_quit;
 		    }
 		)
 	    )
@@ -701,7 +701,7 @@ by OpenMandriva Lx.")), %options
 				my ($model, $iter) = $tree->get_selection->get_selected;
 				$model and $w->{retval} = { sel => $model->get($iter, 0) };
 			    }
-			    Gtk2->main_quit;
+			    Gtk3->main_quit;
 			},
 		    );
 		} [ N("Cancel"), 0 ], [ N("Ok"), 1 ]
@@ -763,7 +763,7 @@ sub show_urpm_progress {
             }
         }
     }
-    Gtk2->main_iteration while Gtk2->events_pending;
+    Gtk3->main_iteration while Gtk3->events_pending;
 }
 
 sub update_sources {
@@ -855,7 +855,7 @@ sub update_sources_interactive {
 		create_hbox(),
 		gtksignal_connect(
 		    Gtk3::Button->new(N("Cancel")),
-		    clicked => sub { $w->{retval} = 0; Gtk2->main_quit },
+		    clicked => sub { $w->{retval} = 0; Gtk3->main_quit },
 		),
 		gtksignal_connect(
 		    Gtk3::Button->new(N("Select all")),
@@ -868,7 +868,7 @@ sub update_sources_interactive {
 			# list of media listed in the checkbox panel
 			my @buttonmedia = grep { !$_->{ignore} } @{$urpm->{media}};
 			@media = map_index { if_($_->get_active, $buttonmedia[$::i]{name}) } @buttons;
-			Gtk2->main_quit;
+			Gtk3->main_quit;
 		    },
 		),
 	    )
