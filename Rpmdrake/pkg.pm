@@ -366,7 +366,7 @@ sub get_installed_packages {
     @installed_pkgs;
 }
 
-urpm::select::add_packages_to_priority_upgrade_list('rpmdrake', 'perl-Glib', 'perl-Gtk3');
+urpm::select::add_packages_to_priority_upgrade_list(qw(rpmdrake perl-Glib perl-Glib-Object-Introspection perl-Gtk3));
 
 my $priority_state;
 our $need_restart;
@@ -647,7 +647,7 @@ sub perform_installation {  #- (partially) duplicated from /usr/sbin/urpmi :-(
     local $urpm->{fatal} = sub {
         my $fatal_msg = $_[1];
         printf STDERR "Fatal: %s\n", $fatal_msg;
-        $gurpm->destroy;
+        $gurpm->destroy if $gurpm;
         interactive_msg(N("Installation failed"),
                         N("There was a problem during the installation:\n\n%s", $fatal_msg));
         goto return_with_exit_code;

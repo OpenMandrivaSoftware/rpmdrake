@@ -214,6 +214,7 @@ sub do_search($$$$$$$) {
         gtkset_mousecursor_normal($::w->{rwindow}->get_window);
     }
     my $tree_selection = $tree->get_selection;
+    return if !$tree_selection;
     if (my $path = $tree_model->get_path($iter)) {
         $tree_selection->select_path($path);
         $tree->scroll_to_cell($path, undef, 1, 0.5, 0);
@@ -406,7 +407,7 @@ sub run_treeview_dialog {
         }
         $detail_list->get_window->freeze_updates;
         $options->{add_nodes}->(@{$elems{$group}});
-        $detail_list->get_window->thaw_updates if $detail_list->window;
+        $detail_list->get_window->thaw_updates if $detail_list->get_window;
     });
 
     $options->{state}{splited} = 1;
@@ -762,7 +763,7 @@ qq(
                                                  $search_menu->popup(undef, undef, undef, undef, $event->button, $event->time);
                                              },
 			    key_press_event => sub {
-				member($_[1]->keyval, $Gtk3::Gdk::KEY_Return, $Gtk3::Gdk::Keysyms{KP_Enter})
+				member($_[1]->keyval, Gtk3::Gdk::KEY_Return, Gtk3::Gdk::KEY_KP_Enter)
 				    and $find_callback->();
 			    },
                                          ),

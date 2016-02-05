@@ -87,9 +87,9 @@ sub selrow {
 sub selected_rows {
     my ($o_list_tv) = @_;
     defined $o_list_tv or $o_list_tv = $list_tv;
-    my (@rows) = $o_list_tv->get_selection->get_selected_rows;
-    return -1 if @rows == 0;
-    map { $_->to_string } @rows;
+    my ($rows) = $o_list_tv->get_selection->get_selected_rows;
+    return -1 if @$rows == 0;
+    map { $_->to_string } @$rows;
 }
 
 sub remove_row {
@@ -192,7 +192,10 @@ sub add_callback() {
 		    $info->{dirsel},
 		    0, gtksignal_connect(
 			gtknew('Button', text => but(N("Browse..."))),
-			clicked => sub { $info->{url_entry}->set_text(ask_dir()) },
+			clicked => sub {
+                            my $dir = ask_dir() or return;
+                            $info->{url_entry}->set_text(ask_dir());
+                        },
 		    )
 		),
 	    );
@@ -457,8 +460,8 @@ sub downwards_callback() {
     @rows == 0 and return;
     my $model = $list_tv->get_model;
     my $iter = $model->get_iter_from_string($rows[0]);
-    my $next = $iter;
-    $model->iter_next($next) and renum_media($model, $iter, $next);
+    my $next = $model->get_iter_from_string($rows[0] + 1);
+    defined $next and renum_media($model, $iter, $next);
     $list_tv->get_selection->signal_emit('changed');
 }
 
@@ -1032,23 +1035,24 @@ sub mainwindow() {
     my ($dw_button, $edit_button, $remove_button, $up_button);
     $list_tv->get_selection->signal_connect(changed => sub {
         my ($selection) = @_;
-        my @rows = $selection->get_selected_rows;
+        my ($rows) = $selection->get_selected_rows;
         my $model = $list;
+        my $size = $#{$rows};
         # we can delete several medium at a time:
-        $remove_button and $remove_button->set_sensitive($#rows != -1);
+        $remove_button and $remove_button->set_sensitive($size != -1);
         # we can only edit/move one item at a time:
-        $_ and $_->set_sensitive(@rows == 1) foreach $up_button, $dw_button, $edit_button;
+        $_ and $_->set_sensitive($size == 0) foreach $up_button, $dw_button, $edit_button;
 
         # we can only up/down one item if not at begin/end:
-        return if @rows != 1;
+        return if $size != 0;
 	
-        my $curr_path = $rows[0];
+        my $curr_path = $rows->[0];
         my $first_path = $model->get_path($model->get_iter_first);
         $up_button->set_sensitive($first_path && $first_path->compare($curr_path));
 
         $curr_path->next;
         my $next_item = $model->get_iter($curr_path);
-        $dw_button->set_sensitive($next_item); # && !$model->get($next_item, 0)
+        $dw_button->set_sensitive($next_item || 0); # && !$model->get($next_item, 0)
     });
 
     $list_tv->set_rules_hint(1);
@@ -1126,6 +1130,9 @@ sub mainwindow() {
 	my ($name) = @_;
         $reorder_ok = 0;
      $something_changed = 1;
+        # save position:
+        my $rect = $list_tv->get_visible_rect;
+        my ($x, $y) = @$rect{'x', 'y'};
 	if (defined $name) {
 	    urpm::media::select_media($urpm, $name);
 	    update_sources_check(
@@ -1149,6 +1156,8 @@ sub mainwindow() {
                        );
      }
         $reorder_ok = 1;
+        # restore position:
+        Glib::Timeout->add(10, sub { $list_tv->scroll_to_point($x, $y); 0 });
     };
     $reread_media->();
     $something_changed = 0;

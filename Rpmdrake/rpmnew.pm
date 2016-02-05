@@ -82,8 +82,12 @@ sub inspect {
 	my $d = ugtk3->new(N("Inspecting %s", $file), grab => 1, transient => $::main_window);
 	my $save_wsize = sub { @inspect_wsize = $d->{rwindow}->get_size };
 	my %texts;
-	require Gtk3::SourceView2;
-	my $lang_manager = Gtk3::SourceView2::LanguageManager->get_default;
+	Glib::Object::Introspection->setup(
+	    basename => 'GtkSource',
+	    version => '3.0',
+	    package => 'Gtk3::Source');
+	my $lang_manager = Gtk3::Source::LanguageManager::get_default();
+
 	gtkadd(
 	    $d->{window},
 	    gtkpack_(
@@ -93,19 +97,19 @@ sub inspect {
 			gtkpack_(
 			    gtknew('VBox'),
 			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$file:</span>)),
-			    1, gtknew('ScrolledWindow', child => $texts{file} = Gtk3::SourceView2::View->new),
+			    1, gtknew('ScrolledWindow', child => $texts{file} = Gtk3::Source::View->new),
 			),
 			gtkpack_(
 			    gtknew('VBox'),
 			    0, gtknew('Label', text_markup => qq(<span font_desc="monospace">$rpmnew:</span>)),
-			    1, gtknew('ScrolledWindow', child => $texts{rpmnew} = Gtk3::SourceView2::View->new),
+			    1, gtknew('ScrolledWindow', child => $texts{rpmnew} = Gtk3::Source::View->new),
 			),
 			resize1 => 1,
 		    ),
 		    gtkpack_(
 			gtknew('VBox'),
 			0, gtknew('Label', text => N("Changes:")),
-			1, gtknew('ScrolledWindow', child => $texts{diff} = Gtk3::SourceView2::View->new),
+			1, gtknew('ScrolledWindow', child => $texts{diff} = Gtk3::Source::View->new),
 		    ),
 		    resize1 => 1,
 		),

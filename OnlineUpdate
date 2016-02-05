@@ -74,6 +74,10 @@ sub refresh_packages_list {
     my ($list, $info, $button) = @_;
     # select packages to update:
     my @requested = sort grep { $pkgs->{$_}{pkg} } @filtered_pkgs;
+ 
+    $list->freeze_child_notify;
+    my $model = $list->get_model;
+    $list->set_model;
 
     # don't select packages in skip list:
     if (!$initialized) {
@@ -103,6 +107,9 @@ sub refresh_packages_list {
 no available update for the packages installed on your computer,
 or you already installed all of them."))) if !@{$list->{data}};
     $button->set_sensitive(scalar(@{$list->{data}}));
+
+    $list->set_model($model);
+    $list->thaw_child_notify;
 }
 
 sub toggle {

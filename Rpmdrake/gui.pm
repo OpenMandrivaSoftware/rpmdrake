@@ -387,7 +387,14 @@ sub node_state {
     return 'XXX' if !$name;
     my $pkg = $pkgs->{$name};
     my $urpm_obj = $pkg->{pkg};
-    return warn_if_no_pkg($name) if !$urpm_obj;
+    if (!$urpm_obj) {
+       my $res = eval { warn_if_no_pkg($name) };
+       if (my $err = $@) {
+	       warn "ERROR: $err\n";
+	       log::explanations("ERROR: $err");
+       }
+       return $res;
+    }
     $pkg->{selected} ?
       ($urpm_obj->flag_installed ?
          ($urpm_obj->flag_upgrade ? 'to_install' : 'to_remove')
@@ -543,10 +550,15 @@ sub ask_browse_tree_given_widgets_for_rpmdrake {
     };
     $common->{add_nodes} = sub {
 	my (@nodes) = @_;
+	$w->{detail_list}->freeze_child_notify;
+	my $model = $w->{detail_list}->get_model;
+	$w->{detail_list}->set_model;
 	$w->{detail_list_model}->clear;
 	$w->{detail_list}->scroll_to_point(0, 0);
 	add_node($_->[0], $_->[1], $_->[2]) foreach @nodes;
 	update_size($common);
+	$w->{detail_list}->set_model($model);
+	$w->{detail_list}->thaw_child_notify;
     };
     
     $common->{display_info} = sub {
