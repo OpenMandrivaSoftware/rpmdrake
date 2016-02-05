@@ -630,7 +630,7 @@ sub run_treeview_dialog {
               }  ],
 	    [ 'Force_req_update', undef, N("Try to update all package requires"), undef, undef,
               sub {
-                  my $box = $check_boxes{$force_req_update_string};
+                  my $box = $check_boxes{'Force_req_update'};
                   $force_req_update->[0] = $box->get_active;
                   if ($box->get_active) {
                       $urpm->{options}{'force-req-update'} = 1;
