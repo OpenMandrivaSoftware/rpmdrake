@@ -579,61 +579,55 @@ sub run_treeview_dialog {
     my $status = gtknew('Label');
     my $checkbox_show_autoselect;
     my %check_boxes;
-    my $auto_select_string =
-            N("/_Options") . N("/_Select dependencies without asking");
-    my $force_req_update_string =
-            N("/_Options") . N("/Try to update all package requires");
-    my $clean_cache_string = 
-            N("/_Options") . "/" . 
-            N("Clear download cache after successful install");
-    my $updates_string = N("/_Options") . N("/_Compute updates on startup");
-    my $NVR_string = N("/_Options") . "/" . N("Search in _full package names");
-    my $regexp_search_string = N("/_Options") . "/" . N("Use _regular expressions in searches");
-    my $show_group_icons_string = N("/_Options") . "/" . N("Show _icons in group names");
-    my ($menu, $factory) = create_factory_menu(
-	$w->{real_window},
-	[ N("/_File"), undef, undef, undef, '<Branch>' ],
-	if_(
-	    ! $>,
-	    [ N("/_File") . N("/_Update media"), undef, sub {
-		update_sources_interactive($urpm, transient => $w->{real_window})
-		    and $reload_db_and_clear_all->();
-	    }, undef, '<Item>' ]
-	),
-	[ N("/_File") . N("/_Reset the selection"), undef, sub {
-	    if ($MODE ne 'remove') {
-                my $db = eval { open_rpm_db() };
-                if (!ref($db)) {
-                    statusbar_msg(N("Reset aborted (RPM DB is locked by another process)"), 1);
-                    return;
-                }
-		$urpm->disable_selected(
-		    $db, $urpm->{state},
-		    map { if_($pkgs->{$_}{selected}, $pkgs->{$_}{pkg}) } keys %$pkgs,
-		);
-	    }
-	    undef $pkgs->{$_}{selected} foreach keys %$pkgs;
-	    reset_search();
-	    $size_selected = 0;
-	    $force_displaying_group = 1;
-	    my $tree_selection = $tree->get_selection;
-	    $tree_selection->select_path(Gtk3::TreePath->new_from_string('0')) if !$tree_selection->get_selected;
-	    $tree_selection->signal_emit('changed');
-	}, undef, '<Item>' ],
-	[ N("/_File") . N("/Reload the _packages list"), undef, $reload_db_and_clear_all, undef, '<Item>' ],
-	[ N("/_File") . N("/_Quit"), N("<control>Q"), \&quit, undef, '<Item>', ],
-	#[ N("/_View"), undef, undef, undef, '<Branch>' ],
-	if_(!$>,
-	    [ N("/_Options"), undef, undef, undef, '<Branch>' ],
-	    [ $auto_select_string, undef, 
+
+    my @radio_labels = qw(flat by_group by_leaves by_presence by_selection by_size by_source);
+    my @radios = map {
+      [ $_, undef, $modes{$_}, undef, undef, $view_callback ];
+
+  } @radio_labels;
+
+    my $ui = gtknew('UIManager',
+		    actions => [
+				# [name, stock_id, value, label, accelerator, tooltip, callback]
+				[ 'FileMenu',        undef, N("_File") ],
+				if_(! $>,
+				    [ 'Update_media', undef, N("_Update media"), undef, undef, sub {
+					update_sources_interactive($urpm, transient => $w->{real_window})
+					  and $reload_db_and_clear_all->();
+				      } ]
+				   ),
+				[ 'Reset_selection', undef, N("_Reset the selection"), undef, undef, sub { reset_selection($tree) } ],
+				[ 'Reload_the_packages_list', undef, N("Reload the _packages list"), undef, undef, $reload_db_and_clear_all ],
+				[ 'Quit', undef, N("_Quit"), N("<control>Q"), undef, \&quit ],
+
+				if_(! $>,
+				    [ 'OptionsMenu',        undef, N("_Options") ],
+				[ 'Media_Manager', undef, N("_Media Manager"), undef, undef, sub {
+				    require Rpmdrake::edit_urpm_sources;
+				    Rpmdrake::edit_urpm_sources::run() && $reload_db_and_clear_all->();
+				  }, ],
+				   ),
+
+				[ 'ViewMenu', undef, N("_View") ],
+
+				[ 'HelpMenu', undef, N("_Help") ],
+				[ 'Report_Bug', undef, N("_Report Bug"), undef, undef, sub { run_drakbug('rpmdrake') } ],
+				[ 'Help', undef, N("_Help"), undef, undef, sub { rpmdrake::open_help('') } ],
+				[ 'About', undef, N("_About..."), undef, undef, \&show_about_dlg ],
+
+		],
+		    radio_actions => [ [ \@radios, undef, # +default choice
+				    $view_callback
+				       ] ],
+		toggle_actions => [
+	    [ 'Auto_select', undef, N("_Select dependencies without asking"), undef, undef,
               sub {
-                  my $box = $check_boxes{$auto_select_string};
+                  my $box = $check_boxes{'Auto_select'};
                   $auto_select->[0] = $box->get_active;
                   $::rpmdrake_options{auto} = $box->get_active;
                   $urpm->{options}{auto} = $box->get_active;
-              },
-              undef, '<CheckItem>' ],
-	    [ $force_req_update_string, undef, 
+              }  ],
+	    [ 'Force_req_update', undef, N("Try to update all package requires"), undef, undef,
               sub {
                   my $box = $check_boxes{$force_req_update_string};
                   $force_req_update->[0] = $box->get_active;
@@ -644,109 +638,97 @@ sub run_treeview_dialog {
                       $urpm->{options}{'force-req-update'} = 0;
                       $::rpmdrake_options{'force-req-update'} = 0;
                   }
-              },
-              undef, '<CheckItem>' ],
-	    [ $clean_cache_string, undef, 
+              } ],
+-           [ 'Show_group_icons', undef, N("Show _icons in group names"), undef, undef,
+              sub {
+-                $show_group_icons->[0] = $check_boxes{$show_group_icons_string}->get_active;
+-               $options->{rebuild_tree}->();
+-             } ],
+	    [ 'Clean_Cache', undef, N("Clear download cache after successful install"), undef, undef,
               sub {
                   $clean_cache->[0] = 
-                          $check_boxes{$clean_cache_string}->get_active;
+                          $check_boxes{'Clean_Cache'}->get_active;
                   $::noclean = !$clean_cache->[0];
-              }, 
-              undef, '<CheckItem>' ],
-	    [ N("/_Options") . N("/_Media Manager"), undef, sub {
-               require Rpmdrake::edit_urpm_sources;
-               Rpmdrake::edit_urpm_sources::run() && $reload_db_and_clear_all->();
-           }, undef, '<Item>' ],
-	    [ N("/_Options") . N("/_Show automatically selected packages"), undef, sub {
+              } ],
+	    [ 'Show_auto_selected_pkgs', undef, N("_Show automatically selected packages"), undef, undef, sub {
 		$dont_show_selections->[0] = !$checkbox_show_autoselect->get_active;
-	    }, undef, '<CheckItem>' ],
+	    } ],
 
-	    [ $updates_string, undef, sub {
-                $compute_updates->[0] = $check_boxes{$updates_string}->get_active;
-	    }, undef, '<CheckItem>' ],
-	    [ $NVR_string, undef, sub {
-                $NVR_searches->[0] = $check_boxes{$NVR_string}->get_active;
-	    }, undef, '<CheckItem>' ],
-	    [ $regexp_search_string, undef, sub {
-                $use_regexp->[0] = $check_boxes{$regexp_search_string}->get_active;
-	    }, undef, '<CheckItem>' ],
-            [ $show_group_icons_string, undef, sub {
-                $show_group_icons->[0] = $check_boxes{$show_group_icons_string}->get_active;
-		$options->{rebuild_tree}->();
-            }, undef, '<CheckItem>' ],
+	    [ 'Compute_updates_on_startup', undef, N("_Compute updates on startup"), undef, undef, sub {
+                $compute_updates->[0] = $check_boxes{'Compute_updates_on_startup'}->get_active;
+	    } ],
+	    [ 'NVR_search', undef, N("Search in _full package names"), undef, undef, sub {
+                $NVR_searches->[0] = $check_boxes{'NVR_search'}->get_active;
+	    } ],
+	    [ 'Use_RE_in_searches', undef, N("Use _regular expressions in searches"), undef, undef, sub {
+                $use_regexp->[0] = $check_boxes{'Use_RE_in_searches'}->get_active;
+	    } ],
+		],
+		string =>
+		join("\n",
+		     qq(<ui>
+  <menubar name='MenuBar'>
+    <menu action='FileMenu'>),
+		     if_(! $>, "<menuitem action='Update_media'/>"),
+		     qq(
+      <menuitem action='Reset_selection'/>
+      <menuitem action='Reload_the_packages_list'/>
+      <menuitem action='Quit'/>
+    </menu>),
+	if_(!$>, qq(
+    <menu action='OptionsMenu'>
+      <menuitem action='Auto_select'/>
+      <menuitem action='Force_req_update'/>
+      <menuitem action='Show_group_icons'/>
+      <menuitem action='Clean_Cache'/>
+      <menuitem action='Media_Manager'/>
+      <menuitem action='Show_auto_selected_pkgs'/>
+      <menuitem action='Compute_updates_on_startup'/>
+      <menuitem action='NVR_search'/>
+      <menuitem action='Use_RE_in_searches'/>
+    </menu>
+)),
+    "<menu action='ViewMenu'>",
+		     (map { "<menuitem action='$_'/>" } @radio_labels),
+qq(
+    </menu>
 
-	),
-	[ N("/_View"), undef, undef, undef, '<Branch>' ],
-        (map {
-            state ($idx, $previous);
-            my $type = $idx ? join('/', N("/_View"), $previous) : '<RadioItem>';
-            $type =~ s/_//g; # gtk+ retrieve widgets by their path w/o any shortcut marks
-            $previous = $modes{$_};
-            $idx++;
-            my $val = $_;
-            [ N("/_View") . '/' . $modes{$_}, undef, sub { $view_callback->($val) }, 0, $type ];
-        } qw(flat by_group by_leaves by_presence by_selection by_size by_source)),
-	[ N("/_Help"), undef, undef, undef, '<Branch>' ],
-     [ N("/_Help") . N("/_Report Bug"), undef, sub { run_drakbug('rpmdrake') }, undef, '<Item>' ],
-	[ N("/_Help") . N("/_Help"), undef, sub { rpmdrake::open_help('') }, undef, '<Item>' ],
-     [ N("/_Help") . N("/_About..."), undef, sub {
-         my $license = formatAlaTeX(translate($::license));
-         $license =~ s/\n/\n\n/sg; # nicer formatting
-         my $w = gtknew('AboutDialog', name => N("Rpmdrake"),
-                        version => $Rpmdrake::init::version,
-                        copyright => N("Copyright (C) %s by Mandriva\nCopyright (C) %s OpenMandriva", '2002-2009', '2013'),
-                        license => $license, wrap_license => 1,
-                        comments => N("Rpmdrake is the package management tool for OpenMandriva."),
-                        website => 'http://www.openmandriva.org',
-                        website_label => N("OpenMandriva"),
-                        authors => 'Thierry Vignaud <vignaud@mandriva.com>',
-                        artists => 'Hélène Durosini <ln@mandriva.com>',
-                        translator_credits =>
-                          #-PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-                          N("_: Translator(s) name(s) & email(s)\n"),
-                        transient_for => $::main_window, modal => 1, position_policy => 'center-on-parent',
-                    );
-         $w->show_all;
-         $w->run;
-       }, undef, '<Item>'
-     ]
+    <menu action='HelpMenu'>
+      <menuitem action='Help'/>
+      <menuitem action='Report_Bug'/>
+      <menuitem action='About'/>
+    </menu>
+  </menubar>
+</ui>)));
 
-    );
+    my $menu = $ui->get_widget('/MenuBar');
 
-    # to retrieve a path, one must prevent "accelerators completion":
-    my $get_path = sub { return join('', map { my $i = $_; $i =~ s/_//g; $i } @_) };
-
-    if (my $widget = $factory->get_item('<main>' . $get_path->(N("/_View") . '/' . $modes{$mode->[0]}))) {
+    if (my $widget = $ui->get_widget('/MenuBar/ViewMenu/' . $modes{$mode->[0]})) {
         $widget->set_active(1);
     } else {
         warn "Impossible to set $mode->[0] view as default\n";
     }
 
     %check_boxes = map {
-        $_ => $factory->get_widget("<main>" . $get_path->($_));
-    } ($auto_select_string, 
-       $clean_cache_string, 
-       $force_req_update_string, 
-       $NVR_string, 
-       $updates_string, 
-       $regexp_search_string,
-       $show_group_icons_string);
+        $_ => $ui->get_widget('/MenuBar/OptionsMenu/' . $_);
+    } ('Auto_select', 'Force_req_update', 'Show_group_icons', 'Clean_Cache', 'NVR_search',
+	    'Compute_updates_on_startup', 'Use_RE_in_searches');
 
     if (!$>) {
-        $check_boxes{$show_group_icons_string}->set_active($show_group_icons->[0]);
-        $check_boxes{$regexp_search_string}->set_active($use_regexp->[0]);
-        $check_boxes{$NVR_string}->set_active($NVR_searches->[0]);
-        $check_boxes{$auto_select_string}->set_active($auto_select->[0]);
-        $check_boxes{$force_req_update_string}->set_active($force_req_update->[0]);
-        $check_boxes{$updates_string}->set_active($compute_updates->[0]);
-        $check_boxes{$clean_cache_string}->set_active($clean_cache->[0]);
+        $check_boxes{'Show_group_icons'}->set_active($show_group_icons->[0]);
+        $check_boxes{'Use_RE_in_searches'}->set_active($use_regexp->[0]);
+        $check_boxes{'NVR_search'}->set_active($NVR_searches->[0]);
+        $check_boxes{'Auto_select'}->set_active($auto_select_opt->[0] || '');
+        $check_boxes{'Force_req_update'}->set_active($force_req_update->[0]);
+        $check_boxes{'Compute_updates_on_startup'}->set_active($compute_updates->[0] || '');
+        $check_boxes{'Clean_Cache'}->set_active($clean_cache->[0]);
     }
 
-    $checkbox_show_autoselect = $factory->get_widget("<main>" . strip_first_underscore(N("/_Options"), N("/_Show automatically selected packages")))
+    $checkbox_show_autoselect = $ui->get_widget('/MenuBar/OptionsMenu/Auto_select')
 	and $checkbox_show_autoselect->set_active(!$dont_show_selections->[0]);
 
     my $accel = Gtk3::AccelGroup->new;
-    $accel->connect(Gtk3::Gdk->keyval_from_name('F'), [ 'control-mask' ], [ 'visible' ], sub { $find_entry->grab_focus });
+    $accel->connect(Gtk3::Gdk::keyval_from_name('F'), [ 'control-mask' ], [ 'visible' ], sub { $find_entry->grab_focus });
     $w->{real_window}->add_accel_group($accel);
 
     gtkadd(
