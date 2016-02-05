@@ -639,11 +639,11 @@ sub run_treeview_dialog {
                       $::rpmdrake_options{'force-req-update'} = 0;
                   }
               } ],
--           [ 'Show_group_icons', undef, N("Show _icons in group names"), undef, undef,
+           [ 'Show_group_icons', undef, N("Show _icons in group names"), undef, undef,
               sub {
--                $show_group_icons->[0] = $check_boxes{$show_group_icons_string}->get_active;
--               $options->{rebuild_tree}->();
--             } ],
+                $show_group_icons->[0] = $check_boxes{'Show_group_icons'}->get_active;
+               $options->{rebuild_tree}->();
+             } ],
 	    [ 'Clean_Cache', undef, N("Clear download cache after successful install"), undef, undef,
               sub {
                   $clean_cache->[0] = 
