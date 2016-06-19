@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-2010.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-31 17:25+0200\n"
+"POT-Creation-Date: 2016-06-19 16:53+0200\n"
 "PO-Revision-Date: 2010-03-04 14:57+0100\n"
 "Last-Translator: Gergely Lónyai <aleph@mandriva.org>\n"
 "Language-Team: Hungarian <aleph@mandriva.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 "X-Poedit-Country: HUNGARY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../OnlineUpdate:102 ../Rpmdrake/gui.pm:1025
+#: ../OnlineUpdate:106 ../Rpmdrake/gui.pm:1034
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -36,52 +36,59 @@ msgstr ""
 "gépére telepített csomagokhoz frissítés, vagy pedig már telepítve\n"
 "lett az összes."
 
-#: ../OnlineUpdate:127 ../rpmdrake:97 ../rpmdrake:797 ../rpmdrake.pm:239
+#: ../OnlineUpdate:134 ../rpmdrake:96 ../rpmdrake:855 ../rpmdrake.pm:248
 #, c-format
 msgid "Software Management"
 msgstr "Szoftverkezelés"
 
-#: ../OnlineUpdate:151
+#: ../OnlineUpdate:160
 #, c-format
-msgid "Here is the list of software package updates"
-msgstr "A szoftvercsomag-frissítések listája"
+msgid "Available updates for your system are displayed below."
+msgstr ""
 
-#: ../OnlineUpdate:158
+#: ../OnlineUpdate:161
+#, c-format
+msgid ""
+"Software updates correct errors, eliminate security vulnerabilities, and "
+"provide new features."
+msgstr ""
+
+#: ../OnlineUpdate:169
 #, c-format
 msgid "Name"
 msgstr "Név"
 
-#: ../OnlineUpdate:159 ../rpmdrake:290
+#: ../OnlineUpdate:170 ../rpmdrake:339
 #, c-format
 msgid "Version"
 msgstr "Verzió"
 
-#: ../OnlineUpdate:160 ../rpmdrake:294
+#: ../OnlineUpdate:171 ../rpmdrake:343
 #, c-format
 msgid "Release"
 msgstr "Kiadás"
 
-#: ../OnlineUpdate:161
+#: ../OnlineUpdate:172
 #, c-format
 msgid "Arch"
 msgstr "Architektúra"
 
-#: ../OnlineUpdate:175 ../Rpmdrake/edit_urpm_sources.pm:1167
+#: ../OnlineUpdate:186 ../Rpmdrake/edit_urpm_sources.pm:1206
 #, c-format
 msgid "Help"
 msgstr "Segítség"
 
-#: ../OnlineUpdate:179 ../rpmdrake:719 ../rpmdrake.pm:852
+#: ../OnlineUpdate:190 ../rpmdrake:776 ../rpmdrake.pm:861
 #, c-format
 msgid "Select all"
 msgstr "Minden kijelölése"
 
-#: ../OnlineUpdate:192 ../rpmdrake.pm:856
-#, c-format
-msgid "Update"
-msgstr "Frissítés"
+#: ../OnlineUpdate:203
+#, fuzzy, c-format
+msgid "Install Updates"
+msgstr "Az összes frissítés"
 
-#: ../OnlineUpdate:200 ../rpmdrake:730 ../rpmdrake:793
+#: ../OnlineUpdate:211 ../rpmdrake:787 ../rpmdrake:851
 #, c-format
 msgid "Quit"
 msgstr "Kilépés"
@@ -111,7 +118,7 @@ msgstr "HTTP"
 msgid "HTTPS"
 msgstr "HTTPS"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:67 ../Rpmdrake/edit_urpm_sources.pm:70
+#: ../Rpmdrake/edit_urpm_sources.pm:67
 #, c-format
 msgid "NFS"
 msgstr "NFS"
@@ -126,6 +133,11 @@ msgstr "Cserélhető"
 msgid "rsync"
 msgstr "Rsync"
 
+#: ../Rpmdrake/edit_urpm_sources.pm:70
+#, c-format
+msgid "SSH"
+msgstr ""
+
 #: ../Rpmdrake/edit_urpm_sources.pm:72
 #, c-format
 msgid "Mirror list"
@@ -137,17 +149,17 @@ msgid "Choose media type"
 msgstr "Válasszon adatforrás-típust"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:115
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "In order to keep your system secure and stable, you must at a minimum set "
 "up\n"
 "sources for official security and stability updates. You can also choose to "
 "set\n"
-"up a fuller set of sources which includes the complete official OpenMandriva\n"
-"repositories, giving you access to more software than can fit on the "
-"OpenMandriva\n"
-"discs. Please choose whether to configure update sources only, or the full "
-"set\n"
+"up a fuller set of sources which includes the complete official OpenMandriva "
+"Lx\n"
+"repositories, giving you access to a greater variety of software. Please "
+"choose\n"
+"whether to configure update sources only, or the full set\n"
 "of sources."
 msgstr ""
 "A rendszer biztonságának és stabilitásának megőrzése végett, egy minimális, "
@@ -155,7 +167,8 @@ msgstr ""
 " biztonsági és stabilitási frissítéseket tartalmazó adatforrást ki kell "
 "választani, - amely\n"
 " kiegészíti az ön lemezeit. A másik lehetőség, hogy a teljes és hivatalos\n"
-" OpenMandriva csomagösszeállítás alapján végzi a frissítéseket. Ezzel mindig\n"
+" OpenMandriva csomagösszeállítás alapján végzi a frissítéseket. Ezzel "
+"mindig\n"
 " a legfrissebb csomagokhoz juthat hozzá, mintha csak a telepítési lemezeket\n"
 " használná. Kérjük válasszon, hogy csak frissítési adatforrásokat, vagy a "
 "teljes\n"
@@ -215,7 +228,7 @@ msgid "FTP server"
 msgstr "FTP-kiszolgáló"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:173 ../Rpmdrake/edit_urpm_sources.pm:174
-#: ../Rpmdrake/edit_urpm_sources.pm:175 ../Rpmdrake/edit_urpm_sources.pm:483
+#: ../Rpmdrake/edit_urpm_sources.pm:175 ../Rpmdrake/edit_urpm_sources.pm:486
 #, c-format
 msgid "URL:"
 msgstr "URL:"
@@ -245,127 +258,127 @@ msgstr "Útvonal vagy csatolási pont:"
 msgid "Browse..."
 msgstr "Böngészés..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:221
+#: ../Rpmdrake/edit_urpm_sources.pm:224
 #, c-format
 msgid "Login:"
 msgstr "Felhasználónév:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:221 ../Rpmdrake/edit_urpm_sources.pm:582
-#: ../rpmdrake.pm:149
+#: ../Rpmdrake/edit_urpm_sources.pm:224 ../Rpmdrake/edit_urpm_sources.pm:585
+#: ../rpmdrake.pm:150
 #, c-format
 msgid "Password:"
 msgstr "Jelszó:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:227
+#: ../Rpmdrake/edit_urpm_sources.pm:230
 #, c-format
 msgid "Medium name:"
 msgstr "Adatforrás-név:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:233
+#: ../Rpmdrake/edit_urpm_sources.pm:236
 #, c-format
 msgid "Create media for a whole distribution"
 msgstr "Adatforrás létrehozása teljes disztribúcióhoz"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:242
+#: ../Rpmdrake/edit_urpm_sources.pm:245
 #, c-format
 msgid "Tag this medium as an update medium"
 msgstr "Ezen adatforrás megjelölése frissítési adatforrásként"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:252
+#: ../Rpmdrake/edit_urpm_sources.pm:255
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "Legalább az első két bejegyzést ki kell tölteni."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:256
+#: ../Rpmdrake/edit_urpm_sources.pm:259
 #, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
 "really want to replace it?"
 msgstr "Már van ilyen néven adatforrás. Szeretné azt felülírni?"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:268
+#: ../Rpmdrake/edit_urpm_sources.pm:271
 #, c-format
 msgid "Adding a medium:"
 msgstr "Adatforrás felvétele:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:270
+#: ../Rpmdrake/edit_urpm_sources.pm:273
 #, c-format
 msgid "Type of medium:"
 msgstr "Az adatforrás típusa:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:280 ../Rpmdrake/edit_urpm_sources.pm:394
-#: ../Rpmdrake/edit_urpm_sources.pm:492 ../Rpmdrake/edit_urpm_sources.pm:519
-#: ../Rpmdrake/edit_urpm_sources.pm:599 ../Rpmdrake/edit_urpm_sources.pm:663
-#: ../Rpmdrake/edit_urpm_sources.pm:765 ../Rpmdrake/gui.pm:723
-#: ../Rpmdrake/init.pm:159 ../Rpmdrake/pkg.pm:205 ../Rpmdrake/pkg.pm:814
-#: ../rpmdrake.pm:357 ../rpmdrake.pm:698 ../rpmdrake.pm:771 ../rpmdrake.pm:848
+#: ../Rpmdrake/edit_urpm_sources.pm:283 ../Rpmdrake/edit_urpm_sources.pm:397
+#: ../Rpmdrake/edit_urpm_sources.pm:495 ../Rpmdrake/edit_urpm_sources.pm:522
+#: ../Rpmdrake/edit_urpm_sources.pm:602 ../Rpmdrake/edit_urpm_sources.pm:666
+#: ../Rpmdrake/edit_urpm_sources.pm:768 ../Rpmdrake/gui.pm:732
+#: ../Rpmdrake/pkg.pm:205 ../Rpmdrake/pkg.pm:814 ../rpmdrake.pm:366
+#: ../rpmdrake.pm:707 ../rpmdrake.pm:780 ../rpmdrake.pm:857
 #, c-format
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:282 ../Rpmdrake/edit_urpm_sources.pm:396
-#: ../Rpmdrake/edit_urpm_sources.pm:519 ../Rpmdrake/edit_urpm_sources.pm:589
-#: ../Rpmdrake/edit_urpm_sources.pm:662 ../Rpmdrake/edit_urpm_sources.pm:758
-#: ../Rpmdrake/edit_urpm_sources.pm:831 ../Rpmdrake/edit_urpm_sources.pm:945
-#: ../Rpmdrake/edit_urpm_sources.pm:1168 ../Rpmdrake/gui.pm:723
-#: ../Rpmdrake/gui.pm:739 ../Rpmdrake/gui.pm:744 ../Rpmdrake/init.pm:159
-#: ../Rpmdrake/pkg.pm:612 ../Rpmdrake/pkg.pm:814 ../Rpmdrake/rpmnew.pm:181
-#: ../rpmdrake.pm:140 ../rpmdrake.pm:293 ../rpmdrake.pm:360 ../rpmdrake.pm:698
+#: ../Rpmdrake/edit_urpm_sources.pm:285 ../Rpmdrake/edit_urpm_sources.pm:399
+#: ../Rpmdrake/edit_urpm_sources.pm:522 ../Rpmdrake/edit_urpm_sources.pm:592
+#: ../Rpmdrake/edit_urpm_sources.pm:665 ../Rpmdrake/edit_urpm_sources.pm:761
+#: ../Rpmdrake/edit_urpm_sources.pm:834 ../Rpmdrake/edit_urpm_sources.pm:948
+#: ../Rpmdrake/edit_urpm_sources.pm:1207 ../Rpmdrake/gui.pm:732
+#: ../Rpmdrake/gui.pm:748 ../Rpmdrake/gui.pm:753 ../Rpmdrake/pkg.pm:612
+#: ../Rpmdrake/pkg.pm:814 ../Rpmdrake/rpmnew.pm:185 ../rpmdrake.pm:141
+#: ../rpmdrake.pm:302 ../rpmdrake.pm:369 ../rpmdrake.pm:707
 #, c-format
 msgid "Ok"
 msgstr "OK"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:337
+#: ../Rpmdrake/edit_urpm_sources.pm:340
 #, c-format
 msgid "Global options for package installation"
 msgstr "Globális beállítások csomagtelepítéshez"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:339
+#: ../Rpmdrake/edit_urpm_sources.pm:342
 #, c-format
 msgid "never"
 msgstr "soha"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:339
+#: ../Rpmdrake/edit_urpm_sources.pm:342
 #, c-format
 msgid "always"
 msgstr "mindig"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:344 ../Rpmdrake/edit_urpm_sources.pm:376
+#: ../Rpmdrake/edit_urpm_sources.pm:347 ../Rpmdrake/edit_urpm_sources.pm:379
 #, c-format
 msgid "Never"
 msgstr "Soha"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:345 ../Rpmdrake/edit_urpm_sources.pm:379
+#: ../Rpmdrake/edit_urpm_sources.pm:348 ../Rpmdrake/edit_urpm_sources.pm:382
 #, c-format
 msgid "On-demand"
 msgstr "Kérésre"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:346 ../Rpmdrake/edit_urpm_sources.pm:383
+#: ../Rpmdrake/edit_urpm_sources.pm:349 ../Rpmdrake/edit_urpm_sources.pm:386
 #, c-format
 msgid "Update-only"
 msgstr "Csak frissítés"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:347 ../Rpmdrake/edit_urpm_sources.pm:386
+#: ../Rpmdrake/edit_urpm_sources.pm:350 ../Rpmdrake/edit_urpm_sources.pm:389
 #, c-format
 msgid "Always"
 msgstr "Mindig"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:355
+#: ../Rpmdrake/edit_urpm_sources.pm:358
 #, c-format
 msgid "Verify RPMs to be installed:"
 msgstr "A telepítendő RPM-csomagok ellenőrzése:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:360
+#: ../Rpmdrake/edit_urpm_sources.pm:363
 #, c-format
 msgid "Download program to use:"
 msgstr "A használandó letöltőprogram:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:367
+#: ../Rpmdrake/edit_urpm_sources.pm:370
 #, c-format
 msgid "XML meta-data download policy:"
 msgstr "XML meta letöltési szabályok:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:374
+#: ../Rpmdrake/edit_urpm_sources.pm:377
 #, c-format
 msgid ""
 "For remote media, specify when XML meta-data (file lists, changelogs & "
@@ -374,22 +387,22 @@ msgstr ""
 "A távoli adatforrás XML metaadat-specifikációja (fájlok és változások "
 "listája, információk) letöltve."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:377
+#: ../Rpmdrake/edit_urpm_sources.pm:380
 #, c-format
 msgid "For remote media, XML meta-data are never downloaded."
 msgstr "A távoli adatforrás XML metaadata ne kerüljön letöltésre."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:380
+#: ../Rpmdrake/edit_urpm_sources.pm:383
 #, c-format
 msgid "(This is the default)"
 msgstr "(Ez az alapértelmezett)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:381
+#: ../Rpmdrake/edit_urpm_sources.pm:384
 #, c-format
 msgid "The specific XML info file is downloaded when clicking on package."
 msgstr "Az XML információ a csomagra kattintáskor kerüljön letöltésre."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:384
+#: ../Rpmdrake/edit_urpm_sources.pm:387
 #, c-format
 msgid ""
 "Updating media implies updating XML info files already required at least "
@@ -398,86 +411,86 @@ msgstr ""
 "Frissítés az adatforrásokkal, ha az XML fájlok frissítésére legalább egyszer "
 "igény volt."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:387
+#: ../Rpmdrake/edit_urpm_sources.pm:390
 #, c-format
 msgid "All XML info files are downloaded when adding or updating media."
 msgstr ""
 "Minden XML információ kerüljön letöltésre az adatforrások hozzáadásakor, "
 "frissítésekor."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:416
+#: ../Rpmdrake/edit_urpm_sources.pm:419
 #, c-format
 msgid "Source Removal"
 msgstr "Forrás eltávolítása"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:418
+#: ../Rpmdrake/edit_urpm_sources.pm:421
 #, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "Biztosan el kívánja távolítani a(z) \"%s\" forrást?"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:419
+#: ../Rpmdrake/edit_urpm_sources.pm:422
 #, c-format
 msgid "Are you sure you want to remove the following sources?"
 msgstr "Biztosan el kívánja távolítani a következő forrásokat?"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:425
+#: ../Rpmdrake/edit_urpm_sources.pm:428
 #, c-format
 msgid "Please wait, removing medium..."
 msgstr "Az adatforrás eltávolítása folyamatban..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:473
+#: ../Rpmdrake/edit_urpm_sources.pm:476
 #, c-format
 msgid "Edit a medium"
 msgstr "Adatforrás szerkesztése"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:480
+#: ../Rpmdrake/edit_urpm_sources.pm:483
 #, c-format
 msgid "Editing medium \"%s\":"
 msgstr "\"%s\" adatforrás szerkesztése:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:484
+#: ../Rpmdrake/edit_urpm_sources.pm:487
 #, c-format
 msgid "Downloader:"
 msgstr "Letöltő:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:496
+#: ../Rpmdrake/edit_urpm_sources.pm:499
 #, c-format
 msgid "Save changes"
 msgstr "Módosítások mentése"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:505
+#: ../Rpmdrake/edit_urpm_sources.pm:508
 #, c-format
 msgid "Proxy..."
 msgstr "Proxy..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:517
+#: ../Rpmdrake/edit_urpm_sources.pm:520
 #, c-format
 msgid "You need to insert the medium to continue"
 msgstr "A folytatáshoz be kell helyeznie az adathordozót"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:518
+#: ../Rpmdrake/edit_urpm_sources.pm:521
 #, c-format
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr ""
 "A módosítások mentéséhez be kell helyeznie az adathordozót a meghajtóba."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:553
+#: ../Rpmdrake/edit_urpm_sources.pm:556
 #, c-format
 msgid "Configure proxies"
 msgstr "Proxyk beállítása"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:565
+#: ../Rpmdrake/edit_urpm_sources.pm:568
 #, c-format
 msgid "Proxy settings for media \"%s\""
 msgstr "Proxybeállítások a(z) \"%s\" adatforráshoz"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:566
+#: ../Rpmdrake/edit_urpm_sources.pm:569
 #, c-format
 msgid "Global proxy settings"
 msgstr "Globális proxybeállítások"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:568
+#: ../Rpmdrake/edit_urpm_sources.pm:571
 #, c-format
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
@@ -486,145 +499,145 @@ msgstr ""
 "Ha szüksége van proxyra, adja meg annak gépnevét és opcionálisan a "
 "portszámát (formátum: <gépnév[:port]>):"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:571
+#: ../Rpmdrake/edit_urpm_sources.pm:574
 #, c-format
 msgid "Proxy hostname:"
 msgstr "A proxy gépneve:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:574
+#: ../Rpmdrake/edit_urpm_sources.pm:577
 #, c-format
 msgid "You may specify a username/password for the proxy authentication:"
 msgstr "A proxyhoz szükséges felhasználónév és jelszó:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:577
+#: ../Rpmdrake/edit_urpm_sources.pm:580
 #, c-format
 msgid "User:"
 msgstr "Felhasználó:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:673
+#: ../Rpmdrake/edit_urpm_sources.pm:676
 #, c-format
 msgid "Add a parallel group"
 msgstr "Párhuzamos csoport felvétele"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:673
+#: ../Rpmdrake/edit_urpm_sources.pm:676
 #, c-format
 msgid "Edit a parallel group"
 msgstr "Párhuzamos csoport szerkesztése"
 
 # "Add a media to the list of media to be used
 # when updating"
-#: ../Rpmdrake/edit_urpm_sources.pm:697
+#: ../Rpmdrake/edit_urpm_sources.pm:700
 #, c-format
 msgid "Add a medium limit"
 msgstr "Adatforrás felvétele az engedélyezettek közé"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:697
+#: ../Rpmdrake/edit_urpm_sources.pm:700
 #, c-format
 msgid "Choose a medium to add to the media limit:"
 msgstr ""
 "Válassza ki az adatforrást, amelyet fel kell venni az engedélyezettek közé:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:714
+#: ../Rpmdrake/edit_urpm_sources.pm:717
 #, c-format
 msgid "Add a host"
 msgstr "Gép felvétele"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:714
+#: ../Rpmdrake/edit_urpm_sources.pm:717
 #, c-format
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr "Adja meg a felveendő gép nevét vagy IP-címét:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:728
+#: ../Rpmdrake/edit_urpm_sources.pm:731
 #, c-format
 msgid "Editing parallel group \"%s\":"
 msgstr "\"%s\" párhuzamos csoport szerkesztése:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:732
+#: ../Rpmdrake/edit_urpm_sources.pm:735
 #, c-format
 msgid "Group name:"
 msgstr "Csoportnév:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:733
+#: ../Rpmdrake/edit_urpm_sources.pm:736
 #, c-format
 msgid "Protocol:"
 msgstr "Protokoll:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:735
+#: ../Rpmdrake/edit_urpm_sources.pm:738
 #, c-format
 msgid "Media limit:"
 msgstr "Engedélyezett adatforrások:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:740 ../Rpmdrake/edit_urpm_sources.pm:749
-#: ../Rpmdrake/edit_urpm_sources.pm:933 ../Rpmdrake/edit_urpm_sources.pm:1148
+#: ../Rpmdrake/edit_urpm_sources.pm:743 ../Rpmdrake/edit_urpm_sources.pm:752
+#: ../Rpmdrake/edit_urpm_sources.pm:936 ../Rpmdrake/edit_urpm_sources.pm:1187
 #, c-format
 msgid "Add"
 msgstr "Felvétel"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:741 ../Rpmdrake/edit_urpm_sources.pm:750
-#: ../Rpmdrake/edit_urpm_sources.pm:811 ../Rpmdrake/edit_urpm_sources.pm:937
-#: ../Rpmdrake/edit_urpm_sources.pm:1138
+#: ../Rpmdrake/edit_urpm_sources.pm:744 ../Rpmdrake/edit_urpm_sources.pm:753
+#: ../Rpmdrake/edit_urpm_sources.pm:814 ../Rpmdrake/edit_urpm_sources.pm:940
+#: ../Rpmdrake/edit_urpm_sources.pm:1177
 #, c-format
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:744
+#: ../Rpmdrake/edit_urpm_sources.pm:747
 #, c-format
 msgid "Hosts:"
 msgstr "Gépek:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:780
+#: ../Rpmdrake/edit_urpm_sources.pm:783
 #, c-format
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr "Párhuzamos urpmi beállítása (az urpmi elosztott módú végrehajtása)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:784
+#: ../Rpmdrake/edit_urpm_sources.pm:787
 #, c-format
 msgid "Group"
 msgstr "Csoport"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:784
+#: ../Rpmdrake/edit_urpm_sources.pm:787
 #, c-format
 msgid "Protocol"
 msgstr "Protokoll"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:784
+#: ../Rpmdrake/edit_urpm_sources.pm:787
 #, c-format
 msgid "Media limit"
 msgstr "Engedélyezett adatforrások"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:785
+#: ../Rpmdrake/edit_urpm_sources.pm:788
 #, c-format
 msgid "Command"
 msgstr "Parancs"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:795 ../Rpmdrake/formatting.pm:135
-#: ../Rpmdrake/gui.pm:1022 ../Rpmdrake/pkg.pm:115 ../Rpmdrake/pkg.pm:162
+#: ../Rpmdrake/edit_urpm_sources.pm:798 ../Rpmdrake/formatting.pm:134
+#: ../Rpmdrake/gui.pm:1031 ../Rpmdrake/pkg.pm:115 ../Rpmdrake/pkg.pm:162
 #: ../Rpmdrake/pkg.pm:175 ../Rpmdrake/pkg.pm:196 ../Rpmdrake/rpmnew.pm:81
 #, c-format
 msgid "(none)"
 msgstr "(egyik sem)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:815
+#: ../Rpmdrake/edit_urpm_sources.pm:818
 #, c-format
 msgid "Edit..."
 msgstr "Módosítás..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:823
+#: ../Rpmdrake/edit_urpm_sources.pm:826
 #, c-format
 msgid "Add..."
 msgstr "Felvétel..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:839
+#: ../Rpmdrake/edit_urpm_sources.pm:842
 #, c-format
 msgid "Manage keys for digital signatures of packages"
 msgstr "A csomagok digitális aláírási kulcsainak kezelése"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:845 ../Rpmdrake/edit_urpm_sources.pm:1054
+#: ../Rpmdrake/edit_urpm_sources.pm:848 ../Rpmdrake/edit_urpm_sources.pm:1088
 #, c-format
 msgid "Medium"
 msgstr "Adatforrás"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:852
+#: ../Rpmdrake/edit_urpm_sources.pm:855
 #, c-format
 msgid ""
 "_:cryptographic keys\n"
@@ -633,27 +646,27 @@ msgstr ""
 "_:titkosító kulcsok\n"
 "Kulcsok"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:875
+#: ../Rpmdrake/edit_urpm_sources.pm:878
 #, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr "név nem található, a kulcs nem létezik az RPM-kulcsok közt"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:895
+#: ../Rpmdrake/edit_urpm_sources.pm:898
 #, c-format
 msgid "Add a key"
 msgstr "Kulcs felvétele"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:895
+#: ../Rpmdrake/edit_urpm_sources.pm:898
 #, c-format
 msgid "Choose a key to add to the medium %s"
 msgstr "Válassza ki a(z) %s adatforráshoz felveendő kulcsot"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:914
+#: ../Rpmdrake/edit_urpm_sources.pm:917
 #, c-format
 msgid "Remove a key"
 msgstr "Kulcs eltávolítása"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:915
+#: ../Rpmdrake/edit_urpm_sources.pm:918
 #, c-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
@@ -662,175 +675,169 @@ msgstr ""
 "Biztosan el kívánja távolítani a(z) %s kulcsot a(z) %s adatforrásból?\n"
 "(a kulcs neve: %s)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:954 ../Rpmdrake/edit_urpm_sources.pm:1131
-#, c-format
-msgid "Configure media"
-msgstr "Adatforrások beállítása"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:961 ../Rpmdrake/edit_urpm_sources.pm:962
-#: ../Rpmdrake/edit_urpm_sources.pm:963 ../Rpmdrake/edit_urpm_sources.pm:964
-#: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:543 ../rpmdrake:546
-#: ../rpmdrake:551 ../rpmdrake:571 ../rpmdrake:572
-#, c-format
-msgid "/_File"
-msgstr "/_Fájl"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:962
-#, c-format
-msgid "/_Update"
-msgstr "/F_rissítés"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:962
-#, c-format
-msgid "<control>U"
-msgstr "<control>U"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:963
-#, c-format
-msgid "/Add a specific _media mirror"
-msgstr "/Speciális adatforrás megadása"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:963
-#, c-format
-msgid "<control>M"
-msgstr "<control>M"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:964
-#, c-format
-msgid "/_Add a custom medium"
-msgstr "/_Egyéni adatforrás felvétele"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:964
-#, c-format
-msgid "<control>A"
-msgstr "<control>A"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:965
-#, c-format
-msgid "/Close"
-msgstr "/Bezárás"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:965
-#, c-format
-msgid "<control>W"
-msgstr "<control>W"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
-#: ../Rpmdrake/edit_urpm_sources.pm:968 ../Rpmdrake/edit_urpm_sources.pm:969
-#: ../Rpmdrake/edit_urpm_sources.pm:970 ../rpmdrake:534 ../rpmdrake:536
-#: ../rpmdrake:538 ../rpmdrake:539 ../rpmdrake:540 ../rpmdrake:575
-#: ../rpmdrake:591 ../rpmdrake:595 ../rpmdrake:671
-#, c-format
-msgid "/_Options"
-msgstr "/_Beállítások"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:967
-#, c-format
-msgid "/_Global options"
-msgstr "/_Globális beállítások"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:967
-#, c-format
-msgid "<control>G"
-msgstr "<control>G"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:968
-#, c-format
-msgid "/Manage _keys"
-msgstr "/_Kulcsok kezelése"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:968
-#, c-format
-msgid "<control>K"
-msgstr "<control>K"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:969
-#, c-format
-msgid "/_Parallel"
-msgstr "/_Párhuzamos"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:969
-#, c-format
-msgid "<control>P"
-msgstr "<control>P"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:970
-#, c-format
-msgid "/P_roxy"
-msgstr "/Pro_xy"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:970
-#, c-format
-msgid "<control>R"
-msgstr "<control>R"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:972 ../Rpmdrake/edit_urpm_sources.pm:973
-#: ../Rpmdrake/edit_urpm_sources.pm:974 ../Rpmdrake/edit_urpm_sources.pm:975
-#: ../rpmdrake:619 ../rpmdrake:620 ../rpmdrake:621 ../rpmdrake:622
-#, c-format
-msgid "/_Help"
-msgstr "/_Segítség"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:973 ../rpmdrake:620
-#, c-format
-msgid "/_Report Bug"
-msgstr "/_Hibabejelentés"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:975 ../rpmdrake:622
-#, c-format
-msgid "/_About..."
-msgstr "/_Névjegy..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:978 ../rpmdrake:625
+#: ../Rpmdrake/edit_urpm_sources.pm:958 ../rpmdrake:255
 #, c-format
 msgid "Rpmdrake"
 msgstr "Rpmdrake"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:980 ../rpmdrake:627
-#, c-format
-msgid "Copyright (C) %s by OpenMandriva"
+#: ../Rpmdrake/edit_urpm_sources.pm:960 ../rpmdrake:257
+#, fuzzy, c-format
+msgid ""
+"Copyright (C) %s by Mandriva\n"
+"Copyright (C) %s OpenMandriva"
 msgstr "Copyright (C) %s, OpenMandriva"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:982 ../rpmdrake:629
-#, c-format
-msgid "Rpmdrake is OpenMandriva package management tool."
+#: ../Rpmdrake/edit_urpm_sources.pm:962 ../rpmdrake:259
+#, fuzzy, c-format
+msgid "Rpmdrake is the OpenMandriva package management tool."
 msgstr "Az Rpmdrake a OpenMandriva csomagkezelője."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:984 ../rpmdrake:631
+#: ../Rpmdrake/edit_urpm_sources.pm:964 ../rpmdrake:261
 #, c-format
 msgid "OpenMandriva"
 msgstr "OpenMandriva"
 
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../Rpmdrake/edit_urpm_sources.pm:989 ../rpmdrake:636
+#: ../Rpmdrake/edit_urpm_sources.pm:969 ../rpmdrake:266
 #, c-format
 msgid "_: Translator(s) name(s) & email(s)\n"
 msgstr "Lónyai Gergely <aleph@mandriva.org>\n"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1044 ../Rpmdrake/pkg.pm:270
+#: ../Rpmdrake/edit_urpm_sources.pm:978 ../Rpmdrake/edit_urpm_sources.pm:1170
+#, c-format
+msgid "Configure media"
+msgstr "Adatforrások beállítása"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:986 ../rpmdrake:593
+#, fuzzy, c-format
+msgid "_File"
+msgstr "/_Fájl"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:987
+#, fuzzy, c-format
+msgid "_Update"
+msgstr "/F_rissítés"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:987
+#, c-format
+msgid "<control>U"
+msgstr "<control>U"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:988
+#, fuzzy, c-format
+msgid "Add a specific _media mirror"
+msgstr "/Speciális adatforrás megadása"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:988
+#, c-format
+msgid "<control>M"
+msgstr "<control>M"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:989
+#, fuzzy, c-format
+msgid "_Add a custom medium"
+msgstr "/_Egyéni adatforrás felvétele"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:989
+#, c-format
+msgid "<control>A"
+msgstr "<control>A"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:990
+#, fuzzy, c-format
+msgid "Close"
+msgstr "/Bezárás"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:990
+#, c-format
+msgid "<control>W"
+msgstr "<control>W"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:991 ../rpmdrake:605
+#, fuzzy, c-format
+msgid "_Options"
+msgstr "/_Beállítások"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:992
+#, fuzzy, c-format
+msgid "_Global options"
+msgstr "/_Globális beállítások"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:992
+#, c-format
+msgid "<control>G"
+msgstr "<control>G"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:993
+#, fuzzy, c-format
+msgid "Manage _keys"
+msgstr "/_Kulcsok kezelése"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:993
+#, c-format
+msgid "<control>K"
+msgstr "<control>K"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:994
+#, fuzzy, c-format
+msgid "_Parallel"
+msgstr "/_Párhuzamos"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:994
+#, c-format
+msgid "<control>P"
+msgstr "<control>P"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:995
+#, fuzzy, c-format
+msgid "P_roxy"
+msgstr "/Pro_xy"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:995
+#, c-format
+msgid "<control>R"
+msgstr "<control>R"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:997 ../Rpmdrake/edit_urpm_sources.pm:999
+#: ../rpmdrake:614 ../rpmdrake:616
+#, fuzzy, c-format
+msgid "_Help"
+msgstr "/_Segítség"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:998 ../rpmdrake:615
+#, fuzzy, c-format
+msgid "_Report Bug"
+msgstr "/_Hibabejelentés"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1000 ../rpmdrake:617
+#, fuzzy, c-format
+msgid "_About..."
+msgstr "/_Névjegy..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1078 ../Rpmdrake/pkg.pm:270
 #, c-format
 msgid "Enabled"
 msgstr "Engedélyezve"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1047
+#: ../Rpmdrake/edit_urpm_sources.pm:1081
 #, c-format
 msgid "Updates"
 msgstr "Frissítések"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#: ../Rpmdrake/edit_urpm_sources.pm:1085
 #, c-format
 msgid "Type"
 msgstr "Típus"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1078
+#: ../Rpmdrake/edit_urpm_sources.pm:1112
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now?"
 msgstr ""
 "Ezt az adatforrást frissíteni kell ahhoz, hogy használható legyen. Kívánja "
 "frissíteni most?"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1104
+#: ../Rpmdrake/edit_urpm_sources.pm:1141
 #, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -841,12 +848,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1142
+#: ../Rpmdrake/edit_urpm_sources.pm:1181
 #, c-format
 msgid "Edit"
 msgstr "Módosítás"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1190
+#: ../Rpmdrake/edit_urpm_sources.pm:1229
 #, fuzzy, c-format
 msgid ""
 "The Package Database is locked. Please close other applications\n"
@@ -870,43 +877,43 @@ msgstr "Nem (telepítve)"
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: ../Rpmdrake/formatting.pm:172
+#: ../Rpmdrake/formatting.pm:171
 #, c-format
 msgid "%s of additional disk space will be used."
 msgstr "További %s lemezhely lesz használva."
 
-#: ../Rpmdrake/formatting.pm:173
+#: ../Rpmdrake/formatting.pm:172
 #, c-format
 msgid "%s of disk space will be freed."
 msgstr "%s lemezhely fel lesz szabadítva."
 
-#: ../Rpmdrake/formatting.pm:178
+#: ../Rpmdrake/formatting.pm:177
 #, c-format
 msgid "%s of packages will be retrieved."
 msgstr "%s tömörített állomány lesz letöltve."
 
-#: ../Rpmdrake/gui.pm:78
+#: ../Rpmdrake/gui.pm:79
 #, c-format
 msgid "Search results"
 msgstr "Keresési eredmény"
 
-#: ../Rpmdrake/gui.pm:78
+#: ../Rpmdrake/gui.pm:79
 #, c-format
 msgid "Search results (none)"
 msgstr "Keresési eredmény (nincs)"
 
-#: ../Rpmdrake/gui.pm:124 ../Rpmdrake/gui.pm:323 ../Rpmdrake/gui.pm:325
+#: ../Rpmdrake/gui.pm:125 ../Rpmdrake/gui.pm:322 ../Rpmdrake/gui.pm:324
 #: ../Rpmdrake/pkg.pm:187
 #, c-format
 msgid "(Not available)"
 msgstr "(Nem elérhető)"
 
-#: ../Rpmdrake/gui.pm:136
+#: ../Rpmdrake/gui.pm:137
 #, c-format
 msgid "Security advisory"
 msgstr "Biztonsági figyelmeztetés"
 
-#: ../Rpmdrake/gui.pm:148 ../Rpmdrake/gui.pm:351
+#: ../Rpmdrake/gui.pm:148 ../Rpmdrake/gui.pm:350
 #, c-format
 msgid "No description"
 msgstr "Nincs leírás"
@@ -956,22 +963,22 @@ msgstr "Ez egy hivatalos csomag, a OpenMandriva támogatásával."
 msgid "Notice: "
 msgstr "Megjegyzés: "
 
-#: ../Rpmdrake/gui.pm:199 ../Rpmdrake/gui.pm:341
+#: ../Rpmdrake/gui.pm:199 ../Rpmdrake/gui.pm:340
 #, c-format
 msgid "Importance: "
 msgstr "Fontosság: "
 
-#: ../Rpmdrake/gui.pm:200 ../Rpmdrake/gui.pm:349
+#: ../Rpmdrake/gui.pm:200 ../Rpmdrake/gui.pm:348
 #, c-format
 msgid "Reason for update: "
 msgstr "A frissítés oka: "
 
-#: ../Rpmdrake/gui.pm:210 ../Rpmdrake/gui.pm:336
+#: ../Rpmdrake/gui.pm:210 ../Rpmdrake/gui.pm:335
 #, c-format
 msgid "Version: "
 msgstr "Verzió: "
 
-#: ../Rpmdrake/gui.pm:212 ../Rpmdrake/gui.pm:331
+#: ../Rpmdrake/gui.pm:212 ../Rpmdrake/gui.pm:330
 #, c-format
 msgid "Currently installed version: "
 msgstr "A jelenleg telepített verzió: "
@@ -981,22 +988,22 @@ msgstr "A jelenleg telepített verzió: "
 msgid "Group: "
 msgstr "Csoport: "
 
-#: ../Rpmdrake/gui.pm:215 ../Rpmdrake/gui.pm:337
+#: ../Rpmdrake/gui.pm:215 ../Rpmdrake/gui.pm:336
 #, c-format
 msgid "Architecture: "
 msgstr "Architektúra: "
 
-#: ../Rpmdrake/gui.pm:216 ../Rpmdrake/gui.pm:338
+#: ../Rpmdrake/gui.pm:216 ../Rpmdrake/gui.pm:337
 #, c-format
 msgid "Size: "
 msgstr "Méret: "
 
-#: ../Rpmdrake/gui.pm:216 ../Rpmdrake/gui.pm:338
+#: ../Rpmdrake/gui.pm:216 ../Rpmdrake/gui.pm:337
 #, c-format
 msgid "%s KB"
 msgstr "%s KByte"
 
-#: ../Rpmdrake/gui.pm:217 ../Rpmdrake/gui.pm:330 ../rpmdrake.pm:903
+#: ../Rpmdrake/gui.pm:217 ../Rpmdrake/gui.pm:329 ../rpmdrake.pm:912
 #, c-format
 msgid "Medium: "
 msgstr "Adatforrás: "
@@ -1016,70 +1023,70 @@ msgstr ""
 msgid "URL: "
 msgstr "URL: "
 
-#: ../Rpmdrake/gui.pm:299
+#: ../Rpmdrake/gui.pm:298
 #, c-format
 msgid "Details:"
 msgstr "Részletek:"
 
-#: ../Rpmdrake/gui.pm:303
+#: ../Rpmdrake/gui.pm:302
 #, c-format
 msgid "Files:"
 msgstr "Fájlok:"
 
-#: ../Rpmdrake/gui.pm:305
+#: ../Rpmdrake/gui.pm:304
 #, c-format
 msgid "Changelog:"
 msgstr "Változások jegyzéke:"
 
-#: ../Rpmdrake/gui.pm:320
+#: ../Rpmdrake/gui.pm:319
 #, c-format
 msgid "Files:\n"
 msgstr "Fájlok:\n"
 
-#: ../Rpmdrake/gui.pm:325
+#: ../Rpmdrake/gui.pm:324
 #, c-format
 msgid "Changelog:\n"
 msgstr "Változások jegyzéke:\n"
 
-#: ../Rpmdrake/gui.pm:335
+#: ../Rpmdrake/gui.pm:334
 #, c-format
 msgid "Name: "
 msgstr "Név: "
 
-#: ../Rpmdrake/gui.pm:345
+#: ../Rpmdrake/gui.pm:344
 #, c-format
 msgid "Summary: "
 msgstr "Összefoglaló: "
 
-#: ../Rpmdrake/gui.pm:351
+#: ../Rpmdrake/gui.pm:350
 #, c-format
 msgid "Description: "
 msgstr "Leírás: "
 
-#: ../Rpmdrake/gui.pm:362 ../Rpmdrake/gui.pm:564 ../Rpmdrake/gui.pm:570
-#: ../Rpmdrake/gui.pm:576 ../Rpmdrake/pkg.pm:824 ../Rpmdrake/pkg.pm:834
-#: ../Rpmdrake/pkg.pm:848 ../rpmdrake:793 ../rpmdrake.pm:828
-#: ../rpmdrake.pm:942
+#: ../Rpmdrake/gui.pm:361 ../Rpmdrake/gui.pm:578 ../Rpmdrake/gui.pm:584
+#: ../Rpmdrake/gui.pm:590 ../Rpmdrake/pkg.pm:824 ../Rpmdrake/pkg.pm:834
+#: ../Rpmdrake/pkg.pm:848 ../rpmdrake:851 ../rpmdrake.pm:837
+#: ../rpmdrake.pm:951
 #, c-format
 msgid "Warning"
 msgstr "Figyelmeztetés"
 
-#: ../Rpmdrake/gui.pm:364
+#: ../Rpmdrake/gui.pm:363
 #, c-format
 msgid "The package \"%s\" was found."
 msgstr "A \"%s\" csomagot találtam."
 
-#: ../Rpmdrake/gui.pm:365
+#: ../Rpmdrake/gui.pm:364
 #, c-format
 msgid "However this package is not in the package list."
 msgstr "Ezt a csomagot nem tartalmazza a csomaglista."
 
-#: ../Rpmdrake/gui.pm:366
+#: ../Rpmdrake/gui.pm:365
 #, c-format
 msgid "You may want to update your urpmi database."
 msgstr "Lehet, hogy frissítenie kell az urpmi adatbázist."
 
-#: ../Rpmdrake/gui.pm:368
+#: ../Rpmdrake/gui.pm:367
 #, c-format
 msgid "Matching packages:"
 msgstr "Illeszkedő csomagok:"
@@ -1091,12 +1098,17 @@ msgstr "Illeszkedő csomagok:"
 msgid "- %s (medium: %s)"
 msgstr "- %s (adatforrás: %s)"
 
-#: ../Rpmdrake/gui.pm:565
+#: ../Rpmdrake/gui.pm:374
+#, c-format
+msgid "- %s"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:579
 #, c-format
 msgid "Removing package %s would break your system"
 msgstr "A %s csomag eltávolítása rendszerproblémákhoz vezet"
 
-#: ../Rpmdrake/gui.pm:570
+#: ../Rpmdrake/gui.pm:584
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
@@ -1105,7 +1117,7 @@ msgstr ""
 "A(z) \"%s\" csomag szerepel az Urpmi kihagyási listájában.\n"
 "Ennek ellenére szeretné kijelölni azt?"
 
-#: ../Rpmdrake/gui.pm:576 ../Rpmdrake/pkg.pm:714
+#: ../Rpmdrake/gui.pm:590 ../Rpmdrake/pkg.pm:714
 #, c-format
 msgid ""
 "Rpmdrake or one of its priority dependencies needs to be updated first. "
@@ -1114,60 +1126,60 @@ msgstr ""
 "Az Rpmdrake egy vagy több függőségét először frissíteni kell. Kérem indítsa "
 "újra az Rpmdrake-t."
 
-#: ../Rpmdrake/gui.pm:705 ../Rpmdrake/gui.pm:735 ../Rpmdrake/gui.pm:737
+#: ../Rpmdrake/gui.pm:714 ../Rpmdrake/gui.pm:744 ../Rpmdrake/gui.pm:746
 #, c-format
 msgid "More information on package..."
 msgstr "További információ a csomagról..."
 
-#: ../Rpmdrake/gui.pm:707
+#: ../Rpmdrake/gui.pm:716
 #, c-format
 msgid "Please choose"
 msgstr "Válasszon"
 
-#: ../Rpmdrake/gui.pm:708
+#: ../Rpmdrake/gui.pm:717
 #, c-format
 msgid "The following package is needed:"
 msgstr "Szükség van a következő csomagra:"
 
-#: ../Rpmdrake/gui.pm:708
+#: ../Rpmdrake/gui.pm:717
 #, c-format
 msgid "One of the following packages is needed:"
 msgstr "A következő csomagok valamelyikére szükség van:"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../Rpmdrake/gui.pm:723 ../Rpmdrake/gui.pm:728
+#: ../Rpmdrake/gui.pm:732 ../Rpmdrake/gui.pm:737
 #, c-format
 msgid "More info"
 msgstr "További információ"
 
-#: ../Rpmdrake/gui.pm:730
+#: ../Rpmdrake/gui.pm:739
 #, c-format
 msgid "Information on packages"
 msgstr "Információ a csomagokról"
 
-#: ../Rpmdrake/gui.pm:758
+#: ../Rpmdrake/gui.pm:767
 #, c-format
 msgid "Checking dependencies of package..."
 msgstr "Csomagfüggőségek ellenőrzése..."
 
-#: ../Rpmdrake/gui.pm:763
+#: ../Rpmdrake/gui.pm:772
 #, c-format
 msgid "Some additional packages need to be removed"
 msgstr "Néhány további csomagot is el kell távolítani"
 
-#: ../Rpmdrake/gui.pm:774
+#: ../Rpmdrake/gui.pm:783
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be "
 "removed:"
 msgstr "A függőségeik miatt a következő csomago(ka)t is el kell távolítani:"
 
-#: ../Rpmdrake/gui.pm:779
+#: ../Rpmdrake/gui.pm:788
 #, fuzzy, c-format
 msgid "Some packages cannot be removed"
 msgstr "Bizonyos csomagok nem távolíthatók el"
 
-#: ../Rpmdrake/gui.pm:780
+#: ../Rpmdrake/gui.pm:789
 #, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
@@ -1176,7 +1188,7 @@ msgstr ""
 "Ezen csomagok eltávolítása rendszerproblémákhoz vezetne:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:789 ../Rpmdrake/gui.pm:894
+#: ../Rpmdrake/gui.pm:798 ../Rpmdrake/gui.pm:903
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be unselected "
@@ -1186,17 +1198,17 @@ msgstr ""
 "A függőségeik miatt a következő csomag(ok) kijelölését törölni kell:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:825
+#: ../Rpmdrake/gui.pm:834
 #, c-format
 msgid "Conflicting Packages"
 msgstr "Ütköző csomagok"
 
-#: ../Rpmdrake/gui.pm:831
+#: ../Rpmdrake/gui.pm:840
 #, c-format
 msgid "Additional packages needed"
 msgstr "Szükség van további csomagokra"
 
-#: ../Rpmdrake/gui.pm:832
+#: ../Rpmdrake/gui.pm:841
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need to be "
@@ -1206,7 +1218,7 @@ msgstr ""
 "A függőségek miatt a következő csomago(ka)t is telepíteni kell:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:844
+#: ../Rpmdrake/gui.pm:853
 #, c-format
 msgid ""
 "The following package cannot be installed because it depends on packages "
@@ -1215,7 +1227,7 @@ msgid ""
 "%s%s"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:846
+#: ../Rpmdrake/gui.pm:855
 #, c-format
 msgid ""
 "The following packages cannot be installed because they depend on packages "
@@ -1224,12 +1236,12 @@ msgid ""
 "%s%s"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:858
+#: ../Rpmdrake/gui.pm:867
 #, c-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (a kihagyandók listájához tartozik)"
 
-#: ../Rpmdrake/gui.pm:864
+#: ../Rpmdrake/gui.pm:873
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following package cannot be selected:\n"
@@ -1240,7 +1252,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:866
+#: ../Rpmdrake/gui.pm:875
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following packages cannot be selected:\n"
@@ -1251,42 +1263,42 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:882
+#: ../Rpmdrake/gui.pm:891
 #, fuzzy, c-format
 msgid "Cannot select"
 msgstr "Nincs kijelölve"
 
-#: ../Rpmdrake/gui.pm:893 ../Rpmdrake/pkg.pm:718
+#: ../Rpmdrake/gui.pm:902 ../Rpmdrake/pkg.pm:718
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "Bizonyos csomagokat el kell távolítani"
 
-#: ../Rpmdrake/gui.pm:928
+#: ../Rpmdrake/gui.pm:937
 #, c-format
 msgid "Some packages are selected."
 msgstr "Néhány csomag ki lett jelölve"
 
-#: ../Rpmdrake/gui.pm:928
+#: ../Rpmdrake/gui.pm:937
 #, c-format
 msgid "Do you really want to quit?"
 msgstr "Tényleg ki akar lépni?"
 
-#: ../Rpmdrake/gui.pm:937
+#: ../Rpmdrake/gui.pm:946
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr "Hiba: úgy tűnik, hogy \"%s\" csak olvasható módon lett csatolva."
 
-#: ../Rpmdrake/gui.pm:941
+#: ../Rpmdrake/gui.pm:950
 #, c-format
 msgid "You need to select some packages first."
 msgstr "Először ki kell jelölni néhány csomagot."
 
-#: ../Rpmdrake/gui.pm:946
+#: ../Rpmdrake/gui.pm:955
 #, c-format
 msgid "Too many packages are selected"
 msgstr "Túl sok csomag van kijelölve"
 
-#: ../Rpmdrake/gui.pm:947
+#: ../Rpmdrake/gui.pm:956
 #, fuzzy, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so many\n"
@@ -1302,38 +1314,38 @@ msgstr ""
 "\n"
 "Biztos abban, hogy telepíteni kívánja az összes kijelölt csomagot?"
 
-#: ../Rpmdrake/gui.pm:974 ../Rpmdrake/open_db.pm:84
+#: ../Rpmdrake/gui.pm:983 ../Rpmdrake/open_db.pm:84
 #, c-format
 msgid "Fatal error"
 msgstr "Végzetes hiba"
 
-#: ../Rpmdrake/gui.pm:975 ../Rpmdrake/open_db.pm:85 ../Rpmdrake/pkg.pm:470
+#: ../Rpmdrake/gui.pm:984 ../Rpmdrake/open_db.pm:85 ../Rpmdrake/pkg.pm:470
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "Végzetes hiba történt: %s."
 
-#: ../Rpmdrake/gui.pm:1011
+#: ../Rpmdrake/gui.pm:1020
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "A csomagok listázása folyamatban..."
 
-#: ../Rpmdrake/gui.pm:1024
+#: ../Rpmdrake/gui.pm:1033
 #, c-format
 msgid "No update"
 msgstr "Frissítés nem található"
 
-#: ../Rpmdrake/gui.pm:1052 ../Rpmdrake/icon.pm:35 ../rpmdrake:213
-#: ../rpmdrake:369 ../rpmdrake:396
+#: ../Rpmdrake/gui.pm:1061 ../Rpmdrake/icon.pm:35 ../rpmdrake:212
+#: ../rpmdrake:418 ../rpmdrake:445
 #, c-format
 msgid "All"
 msgstr "Mind"
 
-#: ../Rpmdrake/gui.pm:1062 ../rpmdrake:202
+#: ../Rpmdrake/gui.pm:1071 ../rpmdrake:201
 #, c-format
 msgid "Upgradable"
 msgstr "Frissíthető"
 
-#: ../Rpmdrake/gui.pm:1062 ../rpmdrake:370
+#: ../Rpmdrake/gui.pm:1071 ../rpmdrake:419
 #, c-format
 msgid "Installed"
 msgstr "Telepítve"
@@ -1342,12 +1354,12 @@ msgstr "Telepítve"
 # "by update availability"; the first lists the packages you can "add" to your computer
 # (new packages), the second lists the packages which are newer versions of already
 # installed packages
-#: ../Rpmdrake/gui.pm:1063 ../rpmdrake:202
+#: ../Rpmdrake/gui.pm:1072 ../rpmdrake:201
 #, c-format
 msgid "Addable"
 msgstr "Telepíthető"
 
-#: ../Rpmdrake/gui.pm:1075
+#: ../Rpmdrake/gui.pm:1084
 #, c-format
 msgid "Description not available for this package\n"
 msgstr "Ehhez a csomaghoz nincs leírás\n"
@@ -2198,6 +2210,16 @@ msgstr ""
 "Módosításokat nem fog tudni végrehajtani a rendszeren,\n"
 "viszont böngészheti a meglevő adatbázist."
 
+#: ../Rpmdrake/init.pm:159
+#, c-format
+msgid "Exit"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:159
+#, c-format
+msgid "OK"
+msgstr ""
+
 #: ../Rpmdrake/pkg.pm:126
 #, fuzzy, c-format
 msgid "Getting information from %s..."
@@ -2209,8 +2231,8 @@ msgid "Getting '%s' from XML meta-data..."
 msgstr "'%s' megszerzése az XML adatokból..."
 
 #: ../Rpmdrake/pkg.pm:133 ../Rpmdrake/pkg.pm:438 ../Rpmdrake/pkg.pm:738
-#: ../Rpmdrake/pkg.pm:931 ../rpmdrake:134 ../rpmdrake.pm:385
-#: ../rpmdrake.pm:594
+#: ../Rpmdrake/pkg.pm:931 ../rpmdrake:133 ../rpmdrake.pm:394
+#: ../rpmdrake.pm:603
 #, c-format
 msgid "Please wait"
 msgstr "Kis türelmet..."
@@ -2299,7 +2321,7 @@ msgstr ""
 "Nincs frissítési adatforrás beállítva. A Online Update nem működik "
 "frissítési média nélkül."
 
-#: ../Rpmdrake/pkg.pm:276 ../rpmdrake.pm:627
+#: ../Rpmdrake/pkg.pm:276 ../rpmdrake.pm:636
 #, c-format
 msgid ""
 "I need to contact the OpenMandriva website to get the mirror list.\n"
@@ -2358,7 +2380,7 @@ msgid "Please wait, listing base packages..."
 msgstr "Alapcsomagok listázása folyamatban..."
 
 #: ../Rpmdrake/pkg.pm:470 ../Rpmdrake/pkg.pm:853 ../Rpmdrake/pkg.pm:878
-#: ../rpmdrake.pm:815 ../rpmdrake.pm:901 ../rpmdrake.pm:925
+#: ../rpmdrake.pm:824 ../rpmdrake.pm:910 ../rpmdrake.pm:934
 #, c-format
 msgid "Error"
 msgstr "Hiba"
@@ -2576,12 +2598,12 @@ msgstr "Információ"
 msgid "Inspecting %s"
 msgstr "%s vizsgálata"
 
-#: ../Rpmdrake/rpmnew.pm:107
+#: ../Rpmdrake/rpmnew.pm:111
 #, c-format
 msgid "Changes:"
 msgstr "Módosítások:"
 
-#: ../Rpmdrake/rpmnew.pm:116
+#: ../Rpmdrake/rpmnew.pm:120
 #, c-format
 msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
@@ -2592,32 +2614,32 @@ msgstr ""
 "abban, hogy melyiket érdemes választani, akkor tartsa meg a jelenlegi fájlt "
 "(\"%s\")."
 
-#: ../Rpmdrake/rpmnew.pm:117 ../Rpmdrake/rpmnew.pm:122
+#: ../Rpmdrake/rpmnew.pm:121 ../Rpmdrake/rpmnew.pm:126
 #, c-format
 msgid "Remove .%s"
 msgstr ".%s eltávolítása"
 
-#: ../Rpmdrake/rpmnew.pm:126
+#: ../Rpmdrake/rpmnew.pm:130
 #, c-format
 msgid "Use .%s as main file"
 msgstr ".%s használata főfájlként"
 
-#: ../Rpmdrake/rpmnew.pm:130
+#: ../Rpmdrake/rpmnew.pm:134
 #, c-format
 msgid "Do nothing"
 msgstr "Ne tegyen semmit"
 
-#: ../Rpmdrake/rpmnew.pm:158
+#: ../Rpmdrake/rpmnew.pm:162
 #, c-format
 msgid "Installation finished"
 msgstr "A telepítés befejeződött"
 
-#: ../Rpmdrake/rpmnew.pm:173
+#: ../Rpmdrake/rpmnew.pm:177
 #, c-format
 msgid "Inspect..."
 msgstr "Vizsgálat..."
 
-#: ../Rpmdrake/rpmnew.pm:191 ../rpmdrake:102
+#: ../Rpmdrake/rpmnew.pm:195 ../rpmdrake:101
 #, c-format
 msgid "Please wait, searching..."
 msgstr "Keresés..."
@@ -2687,37 +2709,37 @@ msgstr "A következő adatforrások felvétele megtörtént: \"%s\"."
 msgid "Successfully added medium `%s'."
 msgstr "A(z) \"%s\" adatforrás felvétele megtörtént."
 
-#: ../rpmdrake:107
+#: ../rpmdrake:106
 #, c-format
 msgid "Stop"
 msgstr "Leállítás"
 
-#: ../rpmdrake:141
+#: ../rpmdrake:140
 #, c-format
 msgid "no xml-info available for medium \"%s\""
 msgstr "A \"%s\" adatforráshoz nem tartozik xml-info"
 
-#: ../rpmdrake:157 ../rpmdrake:185
+#: ../rpmdrake:156 ../rpmdrake:184
 #, c-format
 msgid "Search aborted"
 msgstr "Keresés félbeszakítva"
 
-#: ../rpmdrake:204
+#: ../rpmdrake:203
 #, c-format
 msgid "Selected"
 msgstr "Kijelölve"
 
-#: ../rpmdrake:204
+#: ../rpmdrake:203
 #, c-format
 msgid "Not selected"
 msgstr "Nincs kijelölve"
 
-#: ../rpmdrake:211
+#: ../rpmdrake:210
 #, c-format
 msgid "No search results."
 msgstr "Nincs keresési eredmény."
 
-#: ../rpmdrake:212
+#: ../rpmdrake:211
 #, c-format
 msgid ""
 "No search results. You may want to switch to the '%s' view and to the '%s' "
@@ -2726,238 +2748,248 @@ msgstr ""
 "Nincs keresési eredmény. Lehetnek találatok, ha átvált a '%s' nézetre vagy "
 "tágabbra veszi a '%s' feltételt"
 
-#: ../rpmdrake:246
+#: ../rpmdrake:235
+#, c-format
+msgid "Reset aborted (RPM DB is locked by another process)"
+msgstr ""
+
+#: ../rpmdrake:289
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "Kijelölve: %s / Üres hely a lemezen: %s"
 
-#: ../rpmdrake:286
+#: ../rpmdrake:335
 #, c-format
 msgid "Package"
 msgstr "Csomag"
 
 #. -PO: "Architecture" but to be kept *small* !!!
-#: ../rpmdrake:300
+#: ../rpmdrake:349
 #, c-format
 msgid "Arch."
 msgstr "Arch."
 
 #. -PO: "Status" should be kept *small* !!!
-#: ../rpmdrake:328
+#: ../rpmdrake:377
 #, c-format
 msgid "Status"
 msgstr "Státusz"
 
-#: ../rpmdrake:371
+#: ../rpmdrake:420
 #, c-format
 msgid "Not installed"
 msgstr "Nincs telepítve"
 
-#: ../rpmdrake:386
+#: ../rpmdrake:435
 #, c-format
 msgid "All packages, alphabetical"
 msgstr "Az összes csomag, ábécérendben"
 
-#: ../rpmdrake:387
+#: ../rpmdrake:436
 #, c-format
 msgid "All packages, by group"
 msgstr "Az összes csomag, csoport szerint"
 
 # urpmi_rpm-find-leaves: returns the packages not required by any other package
-#: ../rpmdrake:388
+#: ../rpmdrake:437
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "A más által nem igényeltek, telepítési dátum szerint"
 
 # it's a sort method
 # "new or update"
-#: ../rpmdrake:389
+#: ../rpmdrake:438
 #, c-format
 msgid "All packages, by update availability"
 msgstr "Az összes csomag, frissítés elérhetősége alapján"
 
 # it's a sort method
 # "selected or not"
-#: ../rpmdrake:390
+#: ../rpmdrake:439
 #, c-format
 msgid "All packages, by selection state"
 msgstr "Az összes csomag, kijelölési állapot szerint"
 
-#: ../rpmdrake:391
+#: ../rpmdrake:440
 #, c-format
 msgid "All packages, by size"
 msgstr "Az összes csomag, méret szerint"
 
-#: ../rpmdrake:392
+#: ../rpmdrake:441
 #, c-format
 msgid "All packages, by medium repository"
 msgstr "Az összes csomag, adatforrás alapján"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
-#: ../rpmdrake:400
+#: ../rpmdrake:449
 #, c-format
 msgid "Backports"
 msgstr "Visszaportolt szoftver"
 
-#: ../rpmdrake:401
+#: ../rpmdrake:450
 #, c-format
 msgid "Meta packages"
 msgstr "Alapcsomag"
 
-#: ../rpmdrake:402
+#: ../rpmdrake:451
 #, c-format
 msgid "Packages with GUI"
 msgstr "Csomagok GUI-val"
 
-#: ../rpmdrake:403
+#: ../rpmdrake:452
 #, c-format
 msgid "All updates"
 msgstr "Az összes frissítés"
 
-#: ../rpmdrake:404
+#: ../rpmdrake:453
 #, c-format
 msgid "Security updates"
 msgstr "Biztonsági frissítések"
 
-#: ../rpmdrake:405
+#: ../rpmdrake:454
 #, c-format
 msgid "Bugfixes updates"
 msgstr "Hibajavító frissítések"
 
-#: ../rpmdrake:406
+#: ../rpmdrake:455
 #, c-format
 msgid "General updates"
 msgstr "Általános frissítések"
 
-#: ../rpmdrake:429
+#: ../rpmdrake:478
 #, c-format
 msgid "View"
 msgstr "Nézet"
 
-#: ../rpmdrake:457
+#: ../rpmdrake:506
 #, c-format
 msgid "Filter"
 msgstr "Szűrő"
 
-#: ../rpmdrake:493
+#: ../rpmdrake:543
 #, c-format
 msgid "in names"
 msgstr "a nevekben"
 
-#: ../rpmdrake:493
+#: ../rpmdrake:543
 #, c-format
 msgid "in descriptions"
 msgstr "a leírásokban"
 
-#: ../rpmdrake:493
+#: ../rpmdrake:543
 #, c-format
 msgid "in summaries"
 msgstr "az összefoglalókban"
 
-#: ../rpmdrake:493
+#: ../rpmdrake:543
 #, c-format
 msgid "in file names"
 msgstr "a fájlnevekben"
 
-#: ../rpmdrake:534
-#, c-format
-msgid "/_Select dependencies without asking"
-msgstr "/Függőségek kijelölése kérde_zés nélkül"
-
-#: ../rpmdrake:537
+#: ../rpmdrake:595
 #, fuzzy, c-format
-msgid "Clear download cache after successful install"
-msgstr "Letöltési tároló tisztítása sikeres telepítés után"
-
-#: ../rpmdrake:538
-#, c-format
-msgid "/_Compute updates on startup"
-msgstr "/_Frissítések ütemezése a rendszerindításhoz"
-
-#: ../rpmdrake:539
-#, c-format
-msgid "Search in _full package names"
-msgstr "Keresés a csomagok _teljes csomagnevek között"
-
-#: ../rpmdrake:540
-#, c-format
-msgid "Use _regular expressions in searches"
-msgstr "Használjon _reguláris kifejezést a kereséshez"
-
-#: ../rpmdrake:546
-#, c-format
-msgid "/_Update media"
+msgid "_Update media"
 msgstr "/Adatforrások _frissítése"
 
-#: ../rpmdrake:551
-#, c-format
-msgid "/_Reset the selection"
+#: ../rpmdrake:600
+#, fuzzy, c-format
+msgid "_Reset the selection"
 msgstr "/A kijelölés _visszaállítása"
 
-#: ../rpmdrake:555
-#, c-format
-msgid "Reset aborted (RPM DB is locked by another process)"
-msgstr ""
-
-#: ../rpmdrake:571
-#, c-format
-msgid "/Reload the _packages list"
+#: ../rpmdrake:601
+#, fuzzy, c-format
+msgid "Reload the _packages list"
 msgstr "/A csomaglista újra_olvasása"
 
-#: ../rpmdrake:572
-#, c-format
-msgid "/_Quit"
+#: ../rpmdrake:602
+#, fuzzy, c-format
+msgid "_Quit"
 msgstr "/Ki_lépés"
 
-#: ../rpmdrake:572
+#: ../rpmdrake:602
 #, c-format
 msgid "<control>Q"
 msgstr "<control>Q"
 
-#: ../rpmdrake:591
-#, c-format
-msgid "/_Media Manager"
+#: ../rpmdrake:606
+#, fuzzy, c-format
+msgid "_Media Manager"
 msgstr "/A_datforrás-kezelő"
 
-#: ../rpmdrake:595 ../rpmdrake:671
-#, c-format
-msgid "/_Show automatically selected packages"
-msgstr "/_Automatikusan kijelölt csomagok megjelenítése"
-
-#: ../rpmdrake:609 ../rpmdrake:612 ../rpmdrake:617 ../rpmdrake:649
-#, c-format
-msgid "/_View"
+#: ../rpmdrake:612
+#, fuzzy, c-format
+msgid "_View"
 msgstr "/Nézet"
 
-#: ../rpmdrake:692
+#: ../rpmdrake:624
+#, fuzzy, c-format
+msgid "_Select dependencies without asking"
+msgstr "/Függőségek kijelölése kérde_zés nélkül"
+
+#: ../rpmdrake:631
+#, c-format
+msgid "Try to update all package requires"
+msgstr ""
+
+#: ../rpmdrake:643
+#, c-format
+msgid "Show _icons in group names"
+msgstr ""
+
+#: ../rpmdrake:648
+#, fuzzy, c-format
+msgid "Clear download cache after successful install"
+msgstr "Letöltési tároló tisztítása sikeres telepítés után"
+
+#: ../rpmdrake:654
+#, fuzzy, c-format
+msgid "_Show automatically selected packages"
+msgstr "/_Automatikusan kijelölt csomagok megjelenítése"
+
+#: ../rpmdrake:658
+#, fuzzy, c-format
+msgid "_Compute updates on startup"
+msgstr "/_Frissítések ütemezése a rendszerindításhoz"
+
+#: ../rpmdrake:661
+#, c-format
+msgid "Search in _full package names"
+msgstr "Keresés a csomagok _teljes csomagnevek között"
+
+#: ../rpmdrake:664
+#, c-format
+msgid "Use _regular expressions in searches"
+msgstr "Használjon _reguláris kifejezést a kereséshez"
+
+#: ../rpmdrake:749
 #, c-format
 msgid "Find:"
 msgstr "Keresés:"
 
-#: ../rpmdrake:696
+#: ../rpmdrake:753
 #, c-format
 msgid "Please type in the string you want to search then press the <enter> key"
 msgstr "Kérem adjon meg egy keresőszót, és nyomja meg az <Enter>-t"
 
-#: ../rpmdrake:726
+#: ../rpmdrake:783
 #, c-format
 msgid "Apply"
 msgstr "Alkalmazás"
 
-#: ../rpmdrake:745
+#: ../rpmdrake:802
 #, c-format
 msgid "Quick Introduction"
 msgstr "Gyors bevezetés"
 
-#: ../rpmdrake:746
+#: ../rpmdrake:803
 #, c-format
 msgid "You can browse the packages through the categories tree on the left."
 msgstr ""
 "A csomagok közt a bal oldalon látható kategóriák segítségével lehet "
 "böngészni."
 
-#: ../rpmdrake:747
+#: ../rpmdrake:804
 #, c-format
 msgid ""
 "You can view information about a package by clicking on it on the right list."
@@ -2965,239 +2997,240 @@ msgstr ""
 "Ha információt szeretne egy csomagról, akkor kattintson annak nevére a jobb "
 "oldali listában."
 
-#: ../rpmdrake:748
+#: ../rpmdrake:805
 #, c-format
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
 "Egy csomag telepítéséhez, frissítéséhez vagy eltávolításához kattintson "
 "annak \"jelölőnégyzetére\"."
 
-#: ../rpmdrake:793
+#: ../rpmdrake:851
 #, c-format
 msgid "rpmdrake is already running (pid: %s)"
 msgstr "Az rpmdrake már fut (pid: %s)"
 
-#: ../rpmdrake.pm:121
+#: ../rpmdrake.pm:122
 #, c-format
 msgid "Software Update"
 msgstr "Szoftverfrissítés"
 
-#: ../rpmdrake.pm:121
-#, c-format
-msgid "OpenMandriva Update"
-msgstr "OpenMandriva-frissítés"
+#: ../rpmdrake.pm:122
+#, fuzzy, c-format
+msgid "Online Update"
+msgstr "Frissítés"
 
-#: ../rpmdrake.pm:148
+#: ../rpmdrake.pm:149
 #, c-format
 msgid "Please enter your credentials for accessing proxy\n"
 msgstr "Adja meg az adatait a proxy eléréséhez\n"
 
-#: ../rpmdrake.pm:149
+#: ../rpmdrake.pm:150
 #, c-format
 msgid "User name:"
 msgstr "Felhasználónév:"
 
-#: ../rpmdrake.pm:234
+#: ../rpmdrake.pm:243
 #, c-format
 msgid "Software Packages Removal"
 msgstr "Szoftvercsomag-eltávolítás"
 
-#: ../rpmdrake.pm:235 ../rpmdrake.pm:239
+#: ../rpmdrake.pm:244 ../rpmdrake.pm:248
 #, c-format
 msgid "Software Packages Update"
 msgstr "Szoftvercsomag-frissítés"
 
-#: ../rpmdrake.pm:236
+#: ../rpmdrake.pm:245
 #, c-format
 msgid "Software Packages Installation"
 msgstr "Szoftvercsomag-telepítés"
 
-#: ../rpmdrake.pm:284
+#: ../rpmdrake.pm:293
 #, c-format
 msgid "No"
 msgstr "Nem"
 
-#: ../rpmdrake.pm:288
+#: ../rpmdrake.pm:297
 #, c-format
 msgid "Yes"
 msgstr "Igen"
 
-#: ../rpmdrake.pm:340
+#: ../rpmdrake.pm:349
 #, c-format
 msgid "Info..."
 msgstr "Információ..."
 
-#: ../rpmdrake.pm:465
+#: ../rpmdrake.pm:474
 #, c-format
 msgid "Austria"
 msgstr "Ausztria"
 
-#: ../rpmdrake.pm:466
+#: ../rpmdrake.pm:475
 #, c-format
 msgid "Australia"
 msgstr "Ausztrália"
 
-#: ../rpmdrake.pm:467
+#: ../rpmdrake.pm:476
 #, c-format
 msgid "Belgium"
 msgstr "Belgium"
 
-#: ../rpmdrake.pm:468
+#: ../rpmdrake.pm:477
 #, c-format
 msgid "Brazil"
 msgstr "Brazília"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:478
 #, c-format
 msgid "Canada"
 msgstr "Kanada"
 
-#: ../rpmdrake.pm:470
+#: ../rpmdrake.pm:479
 #, c-format
 msgid "Switzerland"
 msgstr "Svájc"
 
-#: ../rpmdrake.pm:471
+#: ../rpmdrake.pm:480
 #, c-format
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: ../rpmdrake.pm:472
+#: ../rpmdrake.pm:481
 #, c-format
 msgid "Czech Republic"
 msgstr "Cseh Köztársaság"
 
-#: ../rpmdrake.pm:473
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Germany"
 msgstr "Németország"
 
-#: ../rpmdrake.pm:474
+#: ../rpmdrake.pm:483
 #, c-format
 msgid "Danmark"
 msgstr "Dánia"
 
-#: ../rpmdrake.pm:475 ../rpmdrake.pm:479
+#: ../rpmdrake.pm:484 ../rpmdrake.pm:488
 #, c-format
 msgid "Greece"
 msgstr "Görögország"
 
-#: ../rpmdrake.pm:476
+#: ../rpmdrake.pm:485
 #, c-format
 msgid "Spain"
 msgstr "Spanyolország"
 
-#: ../rpmdrake.pm:477
+#: ../rpmdrake.pm:486
 #, c-format
 msgid "Finland"
 msgstr "Finnország"
 
-#: ../rpmdrake.pm:478
+#: ../rpmdrake.pm:487
 #, c-format
 msgid "France"
 msgstr "Franciaország"
 
-#: ../rpmdrake.pm:480
+#: ../rpmdrake.pm:489
 #, c-format
 msgid "Hungary"
 msgstr "Magyarország"
 
-#: ../rpmdrake.pm:481
+#: ../rpmdrake.pm:490
 #, c-format
 msgid "Israel"
 msgstr "Izrael"
 
-#: ../rpmdrake.pm:482
+#: ../rpmdrake.pm:491
 #, c-format
 msgid "Italy"
 msgstr "Olaszország"
 
-#: ../rpmdrake.pm:483
+#: ../rpmdrake.pm:492
 #, c-format
 msgid "Japan"
 msgstr "Japán"
 
-#: ../rpmdrake.pm:484
+#: ../rpmdrake.pm:493
 #, c-format
 msgid "Korea"
 msgstr "Korea"
 
-#: ../rpmdrake.pm:485
+#: ../rpmdrake.pm:494
 #, c-format
 msgid "Netherlands"
 msgstr "Hollandia"
 
-#: ../rpmdrake.pm:486
+#: ../rpmdrake.pm:495
 #, c-format
 msgid "Norway"
 msgstr "Norvégia"
 
-#: ../rpmdrake.pm:487
+#: ../rpmdrake.pm:496
 #, c-format
 msgid "Poland"
 msgstr "Lengyelország"
 
-#: ../rpmdrake.pm:488
+#: ../rpmdrake.pm:497
 #, c-format
 msgid "Portugal"
 msgstr "Portugália"
 
-#: ../rpmdrake.pm:489
+#: ../rpmdrake.pm:498
 #, c-format
 msgid "Russia"
 msgstr "Oroszország"
 
-#: ../rpmdrake.pm:490
+#: ../rpmdrake.pm:499
 #, c-format
 msgid "Sweden"
 msgstr "Svédország"
 
-#: ../rpmdrake.pm:491
+#: ../rpmdrake.pm:500
 #, c-format
 msgid "Singapore"
 msgstr "Szingapúr"
 
-#: ../rpmdrake.pm:492
+#: ../rpmdrake.pm:501
 #, c-format
 msgid "Slovakia"
 msgstr "Szlovákia"
 
-#: ../rpmdrake.pm:493
+#: ../rpmdrake.pm:502
 #, c-format
 msgid "Taiwan"
 msgstr "Tajvan"
 
-#: ../rpmdrake.pm:494
+#: ../rpmdrake.pm:503
 #, c-format
 msgid "United Kingdom"
 msgstr "Egyesült Királyság"
 
-#: ../rpmdrake.pm:495
+#: ../rpmdrake.pm:504
 #, c-format
 msgid "China"
 msgstr "Kína"
 
-#: ../rpmdrake.pm:496 ../rpmdrake.pm:497 ../rpmdrake.pm:498 ../rpmdrake.pm:499
+#: ../rpmdrake.pm:505 ../rpmdrake.pm:506 ../rpmdrake.pm:507 ../rpmdrake.pm:508
 #, c-format
 msgid "United States"
 msgstr "Amerikai Egyesült Államok"
 
-#: ../rpmdrake.pm:579
+#: ../rpmdrake.pm:588
 #, c-format
 msgid "Please wait, downloading mirror addresses."
 msgstr "A tükörkiszolgálók listájának letöltése..."
 
-#: ../rpmdrake.pm:580
+#: ../rpmdrake.pm:589
 #, c-format
-msgid "Please wait, downloading mirror addresses from the OpenMandriva website."
+msgid ""
+"Please wait, downloading mirror addresses from the OpenMandriva website."
 msgstr "A tükörkiszolgálók listájának letöltése a OpenMandriva weboldaláról..."
 
-#: ../rpmdrake.pm:601
+#: ../rpmdrake.pm:610
 #, c-format
 msgid "retrieval of [%s] failed"
 msgstr "[%s] megszerzése sikertelen"
 
-#: ../rpmdrake.pm:623
+#: ../rpmdrake.pm:632
 #, c-format
 msgid ""
 "I need to access internet to get the mirror list.\n"
@@ -3210,17 +3243,17 @@ msgstr ""
 "\n"
 "Kívánja folytatni?"
 
-#: ../rpmdrake.pm:631 ../rpmdrake.pm:670
+#: ../rpmdrake.pm:640 ../rpmdrake.pm:679
 #, c-format
 msgid "Mirror choice"
 msgstr "Tükör kiválasztása"
 
-#: ../rpmdrake.pm:643
+#: ../rpmdrake.pm:652
 #, c-format
 msgid "Error during download"
 msgstr "Hiba a letöltés közben"
 
-#: ../rpmdrake.pm:645
+#: ../rpmdrake.pm:654
 #, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -3235,7 +3268,7 @@ msgstr ""
 "Elképzelhető, hogy a hálózat vagy a weboldal nem\n"
 "elérhető. Próbálja meg később."
 
-#: ../rpmdrake.pm:650
+#: ../rpmdrake.pm:659
 #, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -3250,24 +3283,24 @@ msgstr ""
 "Elképzelhető, hogy a hálózat vagy a OpenMandriva weboldala nem\n"
 "elérhető. Próbálja meg később."
 
-#: ../rpmdrake.pm:660
+#: ../rpmdrake.pm:669
 #, c-format
 msgid "No mirror"
 msgstr "Tükörkiszolgáló nem található"
 
-#: ../rpmdrake.pm:662
+#: ../rpmdrake.pm:671
 #, c-format
 msgid "I can't find any suitable mirror."
 msgstr "Nem található megfelelő tükörkiszolgáló."
 
-#: ../rpmdrake.pm:663
-#, c-format
+#: ../rpmdrake.pm:672
+#, fuzzy, c-format
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
 "There can be many reasons for this problem; the most frequent is\n"
 "the case when the architecture of your processor is not supported\n"
-"by OpenMandriva Official Updates."
+"by OpenMandriva Lx."
 msgstr ""
 "Nem található megfelelő tükörkiszolgáló.\n"
 "\n"
@@ -3275,78 +3308,78 @@ msgstr ""
 "a hivatalos OpenMandriva-frissítések nem támogatják az Ön\n"
 "gépében levő processzort."
 
-#: ../rpmdrake.pm:682
+#: ../rpmdrake.pm:691
 #, c-format
 msgid "Please choose the desired mirror."
 msgstr "Válassza ki a kívánt tükörkiszolgálót."
 
-#: ../rpmdrake.pm:723
+#: ../rpmdrake.pm:732
 #, c-format
 msgid "Copying file for medium `%s'..."
 msgstr "Az adatforráshoz tartozó fájl másolása: \"%s\"..."
 
-#: ../rpmdrake.pm:726
+#: ../rpmdrake.pm:735
 #, c-format
 msgid "Examining file of medium `%s'..."
 msgstr "Az adatforráshoz tartozó fájl vizsgálata: \"%s\"..."
 
 # $label->set_label(N("Examining remote file of medium `%s'...", $file));
-#: ../rpmdrake.pm:729
+#: ../rpmdrake.pm:738
 #, c-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "Az adatforráshoz tartozó távoli fájl vizsgálata: \"%s\"..."
 
-#: ../rpmdrake.pm:733
+#: ../rpmdrake.pm:742
 #, c-format
 msgid " done."
 msgstr " kész"
 
-#: ../rpmdrake.pm:737
+#: ../rpmdrake.pm:746
 #, c-format
 msgid " failed!"
 msgstr " nem sikerült"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:742
+#: ../rpmdrake.pm:751
 #, c-format
 msgid "%s from medium %s"
 msgstr "%s a következő adatforrásból: %s"
 
-#: ../rpmdrake.pm:746
+#: ../rpmdrake.pm:755
 #, c-format
 msgid "Starting download of `%s'..."
 msgstr "\"%s\" letöltésének megkezdése..."
 
-#: ../rpmdrake.pm:750
+#: ../rpmdrake.pm:759
 #, c-format
 msgid ""
 "Download of `%s'\n"
 "time to go:%s, speed:%s"
 msgstr "\"%s\" letöltése; hátralevő idő: %s; sebesség: %s"
 
-#: ../rpmdrake.pm:753
+#: ../rpmdrake.pm:762
 #, c-format
 msgid ""
 "Download of `%s'\n"
 "speed:%s"
 msgstr "\"%s\" letöltése; sebesség: %s"
 
-#: ../rpmdrake.pm:764
+#: ../rpmdrake.pm:773
 #, c-format
 msgid "Please wait, updating media..."
 msgstr "Az adatforrások frissítése folyamatban..."
 
-#: ../rpmdrake.pm:774
+#: ../rpmdrake.pm:783
 #, c-format
 msgid "Canceled"
 msgstr "Megszakítva"
 
-#: ../rpmdrake.pm:791
+#: ../rpmdrake.pm:800
 #, c-format
 msgid "Error retrieving packages"
 msgstr "Hiba a csomagok letöltése közben"
 
-#: ../rpmdrake.pm:792
+#: ../rpmdrake.pm:801
 #, c-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
@@ -3362,12 +3395,12 @@ msgstr ""
 "újrakonfigurálás érdekében; vagy pedig nem elérhető - ebben az esetben\n"
 "pedig próbálkozzon később."
 
-#: ../rpmdrake.pm:823
+#: ../rpmdrake.pm:832
 #, c-format
 msgid "Update media"
 msgstr "Adatforrások frissítése"
 
-#: ../rpmdrake.pm:828
+#: ../rpmdrake.pm:837
 #, c-format
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
@@ -3375,12 +3408,17 @@ msgstr ""
 "Nem található aktív adatforrás. Egy adatforrást engedélyeznie kell ahhoz, "
 "hogy frissíthesse azt."
 
-#: ../rpmdrake.pm:835
+#: ../rpmdrake.pm:844
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "Válassza ki, mely adatforrás(oka)t kívánja frissíteni:"
 
-#: ../rpmdrake.pm:881
+#: ../rpmdrake.pm:865
+#, c-format
+msgid "Update"
+msgstr "Frissítés"
+
+#: ../rpmdrake.pm:890
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -3393,7 +3431,7 @@ msgstr ""
 "Hibák:\n"
 "%s"
 
-#: ../rpmdrake.pm:902 ../rpmdrake.pm:913
+#: ../rpmdrake.pm:911 ../rpmdrake.pm:922
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -3404,17 +3442,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:925
+#: ../rpmdrake.pm:934
 #, c-format
 msgid "Unable to create medium."
 msgstr "Az adatforrás létrehozása nem sikerült."
 
-#: ../rpmdrake.pm:930
+#: ../rpmdrake.pm:939
 #, c-format
 msgid "Failure when adding medium"
 msgstr "Nem sikerült felvenni az adatforrást"
 
-#: ../rpmdrake.pm:931
+#: ../rpmdrake.pm:940
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -3425,7 +3463,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:944
+#: ../rpmdrake.pm:953
 #, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
@@ -3436,23 +3474,23 @@ msgstr ""
 "verziójának (%s).\n"
 "Az adatforrás ki lesz kapcsolva."
 
-#: ../rpmdrake.pm:947
-#, c-format
+#: ../rpmdrake.pm:956
+#, fuzzy, c-format
 msgid ""
-"Your medium `%s', used for updates, does not match the version of OpenMandriva "
-"Linux you're running (%s).\n"
+"Your medium `%s', used for updates, does not match the version of "
+"OpenMandriva Lx you're running (%s).\n"
 "It will be disabled."
 msgstr ""
-"A(z) \"%s\" frissítési adatforrás nem felel meg a jelenleg használt OpenMandriva "
-"Linux verziójának (%s).\n"
+"A(z) \"%s\" frissítési adatforrás nem felel meg a jelenleg használt "
+"OpenMandriva Linux verziójának (%s).\n"
 "Az adatforrás ki lesz kapcsolva."
 
-#: ../rpmdrake.pm:978
+#: ../rpmdrake.pm:987
 #, c-format
 msgid "Help launched in background"
 msgstr "A segítség elindítva a háttérben"
 
-#: ../rpmdrake.pm:979
+#: ../rpmdrake.pm:988
 #, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
@@ -3486,6 +3524,12 @@ msgstr "Urpmi-adatforrás felvétele"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "Információ az Urpmi-adatforrásról"
+
+#~ msgid "Here is the list of software package updates"
+#~ msgstr "A szoftvercsomag-frissítések listája"
+
+#~ msgid "OpenMandriva Update"
+#~ msgstr "OpenMandriva-frissítés"
 
 #, fuzzy
 #~ msgid "No non installed dependency."

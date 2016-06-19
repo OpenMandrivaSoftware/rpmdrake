@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rpmdrake-ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-31 17:25+0200\n"
+"POT-Creation-Date: 2016-06-19 16:53+0200\n"
 "PO-Revision-Date: 2008-10-19 07:30+0900\n"
 "Last-Translator: Yukiko Bando<ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <cooker-i18n@mandrivalinux.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Generator: KBabel 1.3.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../OnlineUpdate:102 ../Rpmdrake/gui.pm:1025
+#: ../OnlineUpdate:106 ../Rpmdrake/gui.pm:1034
 #, c-format
 msgid ""
 "The list of updates is empty. This means that either there is\n"
@@ -33,52 +33,59 @@ msgstr ""
 "更新リストが無効です。インストールされているパッケージの\n"
 "更新版がないか、既にすべてインストールされています。"
 
-#: ../OnlineUpdate:127 ../rpmdrake:97 ../rpmdrake:797 ../rpmdrake.pm:239
+#: ../OnlineUpdate:134 ../rpmdrake:96 ../rpmdrake:855 ../rpmdrake.pm:248
 #, c-format
 msgid "Software Management"
 msgstr "ソフトウェアの管理"
 
-#: ../OnlineUpdate:151
+#: ../OnlineUpdate:160
 #, c-format
-msgid "Here is the list of software package updates"
-msgstr "RPM アップデートの一覧です"
+msgid "Available updates for your system are displayed below."
+msgstr ""
 
-#: ../OnlineUpdate:158
+#: ../OnlineUpdate:161
+#, c-format
+msgid ""
+"Software updates correct errors, eliminate security vulnerabilities, and "
+"provide new features."
+msgstr ""
+
+#: ../OnlineUpdate:169
 #, c-format
 msgid "Name"
 msgstr "名前"
 
-#: ../OnlineUpdate:159 ../rpmdrake:290
+#: ../OnlineUpdate:170 ../rpmdrake:339
 #, c-format
 msgid "Version"
 msgstr "バージョン"
 
-#: ../OnlineUpdate:160 ../rpmdrake:294
+#: ../OnlineUpdate:171 ../rpmdrake:343
 #, c-format
 msgid "Release"
 msgstr "リリース"
 
-#: ../OnlineUpdate:161
+#: ../OnlineUpdate:172
 #, c-format
 msgid "Arch"
 msgstr "アーキテクチャ"
 
-#: ../OnlineUpdate:175 ../Rpmdrake/edit_urpm_sources.pm:1167
+#: ../OnlineUpdate:186 ../Rpmdrake/edit_urpm_sources.pm:1206
 #, c-format
 msgid "Help"
 msgstr "ヘルプ"
 
-#: ../OnlineUpdate:179 ../rpmdrake:719 ../rpmdrake.pm:852
+#: ../OnlineUpdate:190 ../rpmdrake:776 ../rpmdrake.pm:861
 #, c-format
 msgid "Select all"
 msgstr "すべて選択"
 
-#: ../OnlineUpdate:192 ../rpmdrake.pm:856
-#, c-format
-msgid "Update"
-msgstr "更新"
+#: ../OnlineUpdate:203
+#, fuzzy, c-format
+msgid "Install Updates"
+msgstr "すべての更新"
 
-#: ../OnlineUpdate:200 ../rpmdrake:730 ../rpmdrake:793
+#: ../OnlineUpdate:211 ../rpmdrake:787 ../rpmdrake:851
 #, c-format
 msgid "Quit"
 msgstr "終了"
@@ -108,7 +115,7 @@ msgstr "HTTP"
 msgid "HTTPS"
 msgstr "HTTPS"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:67 ../Rpmdrake/edit_urpm_sources.pm:70
+#: ../Rpmdrake/edit_urpm_sources.pm:67
 #, c-format
 msgid "NFS"
 msgstr "NFS"
@@ -123,6 +130,11 @@ msgstr "リムーバブルメディア"
 msgid "rsync"
 msgstr "rsync"
 
+#: ../Rpmdrake/edit_urpm_sources.pm:70
+#, c-format
+msgid "SSH"
+msgstr ""
+
 #: ../Rpmdrake/edit_urpm_sources.pm:72
 #, c-format
 msgid "Mirror list"
@@ -134,17 +146,17 @@ msgid "Choose media type"
 msgstr "メディアの種類を選択"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:115
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "In order to keep your system secure and stable, you must at a minimum set "
 "up\n"
 "sources for official security and stability updates. You can also choose to "
 "set\n"
-"up a fuller set of sources which includes the complete official OpenMandriva\n"
-"repositories, giving you access to more software than can fit on the "
-"OpenMandriva\n"
-"discs. Please choose whether to configure update sources only, or the full "
-"set\n"
+"up a fuller set of sources which includes the complete official OpenMandriva "
+"Lx\n"
+"repositories, giving you access to a greater variety of software. Please "
+"choose\n"
+"whether to configure update sources only, or the full set\n"
 "of sources."
 msgstr ""
 "あなたのシステムの安全性と安定性を保つためには、少なくとも公式の\n"
@@ -209,7 +221,7 @@ msgid "FTP server"
 msgstr "FTP サーバ"
 
 #: ../Rpmdrake/edit_urpm_sources.pm:173 ../Rpmdrake/edit_urpm_sources.pm:174
-#: ../Rpmdrake/edit_urpm_sources.pm:175 ../Rpmdrake/edit_urpm_sources.pm:483
+#: ../Rpmdrake/edit_urpm_sources.pm:175 ../Rpmdrake/edit_urpm_sources.pm:486
 #, c-format
 msgid "URL:"
 msgstr "URL:"
@@ -239,38 +251,38 @@ msgstr "パスまたはマウントポイント:"
 msgid "Browse..."
 msgstr "ブラウズ"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:221
+#: ../Rpmdrake/edit_urpm_sources.pm:224
 #, c-format
 msgid "Login:"
 msgstr "ログイン:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:221 ../Rpmdrake/edit_urpm_sources.pm:582
-#: ../rpmdrake.pm:149
+#: ../Rpmdrake/edit_urpm_sources.pm:224 ../Rpmdrake/edit_urpm_sources.pm:585
+#: ../rpmdrake.pm:150
 #, c-format
 msgid "Password:"
 msgstr "パスワード:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:227
+#: ../Rpmdrake/edit_urpm_sources.pm:230
 #, c-format
 msgid "Medium name:"
 msgstr "メディアの名前:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:233
+#: ../Rpmdrake/edit_urpm_sources.pm:236
 #, c-format
 msgid "Create media for a whole distribution"
 msgstr "ディストリビューションのすべてのメディアを追加"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:242
+#: ../Rpmdrake/edit_urpm_sources.pm:245
 #, c-format
 msgid "Tag this medium as an update medium"
 msgstr "このメディアを更新メディアと見なす"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:252
+#: ../Rpmdrake/edit_urpm_sources.pm:255
 #, c-format
 msgid "You need to fill up at least the two first entries."
 msgstr "少なくとも最初の二つの項目は入力してください。"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:256
+#: ../Rpmdrake/edit_urpm_sources.pm:259
 #, c-format
 msgid ""
 "There is already a medium by that name, do you\n"
@@ -279,89 +291,89 @@ msgstr ""
 "同じ名前のメディアが既にあります。\n"
 "置き換えますか？"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:268
+#: ../Rpmdrake/edit_urpm_sources.pm:271
 #, c-format
 msgid "Adding a medium:"
 msgstr "メディアを追加:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:270
+#: ../Rpmdrake/edit_urpm_sources.pm:273
 #, c-format
 msgid "Type of medium:"
 msgstr "メディアの種類:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:280 ../Rpmdrake/edit_urpm_sources.pm:394
-#: ../Rpmdrake/edit_urpm_sources.pm:492 ../Rpmdrake/edit_urpm_sources.pm:519
-#: ../Rpmdrake/edit_urpm_sources.pm:599 ../Rpmdrake/edit_urpm_sources.pm:663
-#: ../Rpmdrake/edit_urpm_sources.pm:765 ../Rpmdrake/gui.pm:723
-#: ../Rpmdrake/init.pm:159 ../Rpmdrake/pkg.pm:205 ../Rpmdrake/pkg.pm:814
-#: ../rpmdrake.pm:357 ../rpmdrake.pm:698 ../rpmdrake.pm:771 ../rpmdrake.pm:848
+#: ../Rpmdrake/edit_urpm_sources.pm:283 ../Rpmdrake/edit_urpm_sources.pm:397
+#: ../Rpmdrake/edit_urpm_sources.pm:495 ../Rpmdrake/edit_urpm_sources.pm:522
+#: ../Rpmdrake/edit_urpm_sources.pm:602 ../Rpmdrake/edit_urpm_sources.pm:666
+#: ../Rpmdrake/edit_urpm_sources.pm:768 ../Rpmdrake/gui.pm:732
+#: ../Rpmdrake/pkg.pm:205 ../Rpmdrake/pkg.pm:814 ../rpmdrake.pm:366
+#: ../rpmdrake.pm:707 ../rpmdrake.pm:780 ../rpmdrake.pm:857
 #, c-format
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:282 ../Rpmdrake/edit_urpm_sources.pm:396
-#: ../Rpmdrake/edit_urpm_sources.pm:519 ../Rpmdrake/edit_urpm_sources.pm:589
-#: ../Rpmdrake/edit_urpm_sources.pm:662 ../Rpmdrake/edit_urpm_sources.pm:758
-#: ../Rpmdrake/edit_urpm_sources.pm:831 ../Rpmdrake/edit_urpm_sources.pm:945
-#: ../Rpmdrake/edit_urpm_sources.pm:1168 ../Rpmdrake/gui.pm:723
-#: ../Rpmdrake/gui.pm:739 ../Rpmdrake/gui.pm:744 ../Rpmdrake/init.pm:159
-#: ../Rpmdrake/pkg.pm:612 ../Rpmdrake/pkg.pm:814 ../Rpmdrake/rpmnew.pm:181
-#: ../rpmdrake.pm:140 ../rpmdrake.pm:293 ../rpmdrake.pm:360 ../rpmdrake.pm:698
+#: ../Rpmdrake/edit_urpm_sources.pm:285 ../Rpmdrake/edit_urpm_sources.pm:399
+#: ../Rpmdrake/edit_urpm_sources.pm:522 ../Rpmdrake/edit_urpm_sources.pm:592
+#: ../Rpmdrake/edit_urpm_sources.pm:665 ../Rpmdrake/edit_urpm_sources.pm:761
+#: ../Rpmdrake/edit_urpm_sources.pm:834 ../Rpmdrake/edit_urpm_sources.pm:948
+#: ../Rpmdrake/edit_urpm_sources.pm:1207 ../Rpmdrake/gui.pm:732
+#: ../Rpmdrake/gui.pm:748 ../Rpmdrake/gui.pm:753 ../Rpmdrake/pkg.pm:612
+#: ../Rpmdrake/pkg.pm:814 ../Rpmdrake/rpmnew.pm:185 ../rpmdrake.pm:141
+#: ../rpmdrake.pm:302 ../rpmdrake.pm:369 ../rpmdrake.pm:707
 #, c-format
 msgid "Ok"
 msgstr "OK"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:337
+#: ../Rpmdrake/edit_urpm_sources.pm:340
 #, c-format
 msgid "Global options for package installation"
 msgstr "パッケージをインストールする際の共通オプション"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:339
+#: ../Rpmdrake/edit_urpm_sources.pm:342
 #, c-format
 msgid "never"
 msgstr "確認しない"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:339
+#: ../Rpmdrake/edit_urpm_sources.pm:342
 #, c-format
 msgid "always"
 msgstr "常に確認する"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:344 ../Rpmdrake/edit_urpm_sources.pm:376
+#: ../Rpmdrake/edit_urpm_sources.pm:347 ../Rpmdrake/edit_urpm_sources.pm:379
 #, c-format
 msgid "Never"
 msgstr "しない"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:345 ../Rpmdrake/edit_urpm_sources.pm:379
+#: ../Rpmdrake/edit_urpm_sources.pm:348 ../Rpmdrake/edit_urpm_sources.pm:382
 #, c-format
 msgid "On-demand"
 msgstr "要求時に"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:346 ../Rpmdrake/edit_urpm_sources.pm:383
+#: ../Rpmdrake/edit_urpm_sources.pm:349 ../Rpmdrake/edit_urpm_sources.pm:386
 #, c-format
 msgid "Update-only"
 msgstr "更新のみ"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:347 ../Rpmdrake/edit_urpm_sources.pm:386
+#: ../Rpmdrake/edit_urpm_sources.pm:350 ../Rpmdrake/edit_urpm_sources.pm:389
 #, c-format
 msgid "Always"
 msgstr "常に"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:355
+#: ../Rpmdrake/edit_urpm_sources.pm:358
 #, c-format
 msgid "Verify RPMs to be installed:"
 msgstr "インストールする RPM の署名を確認:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:360
+#: ../Rpmdrake/edit_urpm_sources.pm:363
 #, c-format
 msgid "Download program to use:"
 msgstr "ダウンロードに使用するプログラム:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:367
+#: ../Rpmdrake/edit_urpm_sources.pm:370
 #, c-format
 msgid "XML meta-data download policy:"
 msgstr "XML メタデータのダウンロードポリシー:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:374
+#: ../Rpmdrake/edit_urpm_sources.pm:377
 #, c-format
 msgid ""
 "For remote media, specify when XML meta-data (file lists, changelogs & "
@@ -370,24 +382,24 @@ msgstr ""
 "リモートメディアについて、ファイルのリストや変更ログなどの情報を提供する XML "
 "メタデータをいつダウンロードするかを指定します。"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:377
+#: ../Rpmdrake/edit_urpm_sources.pm:380
 #, c-format
 msgid "For remote media, XML meta-data are never downloaded."
 msgstr "XML メタデータをダウンロードしません。"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:380
+#: ../Rpmdrake/edit_urpm_sources.pm:383
 #, c-format
 msgid "(This is the default)"
 msgstr "(これがデフォルトです)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:381
+#: ../Rpmdrake/edit_urpm_sources.pm:384
 #, c-format
 msgid "The specific XML info file is downloaded when clicking on package."
 msgstr ""
 "パッケージをクリックしたときに、そのパッケージの XML 情報ファイルをダウンロー"
 "ドします。"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:384
+#: ../Rpmdrake/edit_urpm_sources.pm:387
 #, c-format
 msgid ""
 "Updating media implies updating XML info files already required at least "
@@ -396,85 +408,85 @@ msgstr ""
 "メディアを更新したときに、少なくとも一度要求された XML 情報ファイルを更新しま"
 "す。"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:387
+#: ../Rpmdrake/edit_urpm_sources.pm:390
 #, c-format
 msgid "All XML info files are downloaded when adding or updating media."
 msgstr ""
 "メディアを追加/更新したときに、すべての XML 情報ファイルをダウンロードしま"
 "す。"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:416
+#: ../Rpmdrake/edit_urpm_sources.pm:419
 #, c-format
 msgid "Source Removal"
 msgstr "ソースを削除"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:418
+#: ../Rpmdrake/edit_urpm_sources.pm:421
 #, c-format
 msgid "Are you sure you want to remove source \"%s\"?"
 msgstr "ソース %s を削除しますか？"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:419
+#: ../Rpmdrake/edit_urpm_sources.pm:422
 #, c-format
 msgid "Are you sure you want to remove the following sources?"
 msgstr "本当に以下のソースを削除しますか？"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:425
+#: ../Rpmdrake/edit_urpm_sources.pm:428
 #, c-format
 msgid "Please wait, removing medium..."
 msgstr "メディアを削除しています。お待ちください..."
 
-#: ../Rpmdrake/edit_urpm_sources.pm:473
+#: ../Rpmdrake/edit_urpm_sources.pm:476
 #, c-format
 msgid "Edit a medium"
 msgstr "メディアを編集"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:480
+#: ../Rpmdrake/edit_urpm_sources.pm:483
 #, c-format
 msgid "Editing medium \"%s\":"
 msgstr "メディア %s を編集:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:484
+#: ../Rpmdrake/edit_urpm_sources.pm:487
 #, c-format
 msgid "Downloader:"
 msgstr "ダウンローダー:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:496
+#: ../Rpmdrake/edit_urpm_sources.pm:499
 #, c-format
 msgid "Save changes"
 msgstr "変更を保存"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:505
+#: ../Rpmdrake/edit_urpm_sources.pm:508
 #, c-format
 msgid "Proxy..."
 msgstr "プロキシ"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:517
+#: ../Rpmdrake/edit_urpm_sources.pm:520
 #, c-format
 msgid "You need to insert the medium to continue"
 msgstr "続けるにはメディアを挿入してください"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:518
+#: ../Rpmdrake/edit_urpm_sources.pm:521
 #, c-format
 msgid ""
 "In order to save the changes, you need to insert the medium in the drive."
 msgstr "変更を保存するにはメディアをドライブに挿入してください。"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:553
+#: ../Rpmdrake/edit_urpm_sources.pm:556
 #, c-format
 msgid "Configure proxies"
 msgstr "プロキシの設定"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:565
+#: ../Rpmdrake/edit_urpm_sources.pm:568
 #, c-format
 msgid "Proxy settings for media \"%s\""
 msgstr "メディア %s のプロキシ設定"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:566
+#: ../Rpmdrake/edit_urpm_sources.pm:569
 #, c-format
 msgid "Global proxy settings"
 msgstr "全体のプロキシ設定"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:568
+#: ../Rpmdrake/edit_urpm_sources.pm:571
 #, c-format
 msgid ""
 "If you need a proxy, enter the hostname and an optional port (syntax: "
@@ -483,169 +495,169 @@ msgstr ""
 "プロキシが必要な場合は、ホスト名とポート番号 (オプション) を次の書式で入力し"
 "てください: <プロキシホスト[:ポート]>"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:571
+#: ../Rpmdrake/edit_urpm_sources.pm:574
 #, c-format
 msgid "Proxy hostname:"
 msgstr "プロキシのホスト名:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:574
+#: ../Rpmdrake/edit_urpm_sources.pm:577
 #, c-format
 msgid "You may specify a username/password for the proxy authentication:"
 msgstr "プロキシ認証用にユーザ名/パスワードを指定できます:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:577
+#: ../Rpmdrake/edit_urpm_sources.pm:580
 #, c-format
 msgid "User:"
 msgstr "ユーザ名:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:673
+#: ../Rpmdrake/edit_urpm_sources.pm:676
 #, c-format
 msgid "Add a parallel group"
 msgstr "パラレルグループを追加"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:673
+#: ../Rpmdrake/edit_urpm_sources.pm:676
 #, c-format
 msgid "Edit a parallel group"
 msgstr "パラレルグループを編集"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:697
+#: ../Rpmdrake/edit_urpm_sources.pm:700
 #, c-format
 msgid "Add a medium limit"
 msgstr "メディアの制限を追加"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:697
+#: ../Rpmdrake/edit_urpm_sources.pm:700
 #, c-format
 msgid "Choose a medium to add to the media limit:"
 msgstr "メディアの制限に追加するメディアを選んでください:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:714
+#: ../Rpmdrake/edit_urpm_sources.pm:717
 #, c-format
 msgid "Add a host"
 msgstr "ホストを追加"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:714
+#: ../Rpmdrake/edit_urpm_sources.pm:717
 #, c-format
 msgid "Type in the hostname or IP address of the host to add:"
 msgstr "追加するホストのホスト名または IP アドレスを入力してください:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:728
+#: ../Rpmdrake/edit_urpm_sources.pm:731
 #, c-format
 msgid "Editing parallel group \"%s\":"
 msgstr "パラレルグループ %s を編集:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:732
+#: ../Rpmdrake/edit_urpm_sources.pm:735
 #, c-format
 msgid "Group name:"
 msgstr "グループ名:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:733
+#: ../Rpmdrake/edit_urpm_sources.pm:736
 #, c-format
 msgid "Protocol:"
 msgstr "プロトコル:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:735
+#: ../Rpmdrake/edit_urpm_sources.pm:738
 #, c-format
 msgid "Media limit:"
 msgstr "メディアの制限:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:740 ../Rpmdrake/edit_urpm_sources.pm:749
-#: ../Rpmdrake/edit_urpm_sources.pm:933 ../Rpmdrake/edit_urpm_sources.pm:1148
+#: ../Rpmdrake/edit_urpm_sources.pm:743 ../Rpmdrake/edit_urpm_sources.pm:752
+#: ../Rpmdrake/edit_urpm_sources.pm:936 ../Rpmdrake/edit_urpm_sources.pm:1187
 #, c-format
 msgid "Add"
 msgstr "追加"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:741 ../Rpmdrake/edit_urpm_sources.pm:750
-#: ../Rpmdrake/edit_urpm_sources.pm:811 ../Rpmdrake/edit_urpm_sources.pm:937
-#: ../Rpmdrake/edit_urpm_sources.pm:1138
+#: ../Rpmdrake/edit_urpm_sources.pm:744 ../Rpmdrake/edit_urpm_sources.pm:753
+#: ../Rpmdrake/edit_urpm_sources.pm:814 ../Rpmdrake/edit_urpm_sources.pm:940
+#: ../Rpmdrake/edit_urpm_sources.pm:1177
 #, c-format
 msgid "Remove"
 msgstr "削除"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:744
+#: ../Rpmdrake/edit_urpm_sources.pm:747
 #, c-format
 msgid "Hosts:"
 msgstr "ホスト:"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:780
+#: ../Rpmdrake/edit_urpm_sources.pm:783
 #, c-format
 msgid "Configure parallel urpmi (distributed execution of urpmi)"
 msgstr "パラレル urpmi を設定 (distributed execution of urpmi)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:784
+#: ../Rpmdrake/edit_urpm_sources.pm:787
 #, c-format
 msgid "Group"
 msgstr "グループ"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:784
+#: ../Rpmdrake/edit_urpm_sources.pm:787
 #, c-format
 msgid "Protocol"
 msgstr "プロトコル"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:784
+#: ../Rpmdrake/edit_urpm_sources.pm:787
 #, c-format
 msgid "Media limit"
 msgstr "メディアの制限"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:785
+#: ../Rpmdrake/edit_urpm_sources.pm:788
 #, c-format
 msgid "Command"
 msgstr "コマンド"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:795 ../Rpmdrake/formatting.pm:135
-#: ../Rpmdrake/gui.pm:1022 ../Rpmdrake/pkg.pm:115 ../Rpmdrake/pkg.pm:162
+#: ../Rpmdrake/edit_urpm_sources.pm:798 ../Rpmdrake/formatting.pm:134
+#: ../Rpmdrake/gui.pm:1031 ../Rpmdrake/pkg.pm:115 ../Rpmdrake/pkg.pm:162
 #: ../Rpmdrake/pkg.pm:175 ../Rpmdrake/pkg.pm:196 ../Rpmdrake/rpmnew.pm:81
 #, c-format
 msgid "(none)"
 msgstr "(なし)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:815
+#: ../Rpmdrake/edit_urpm_sources.pm:818
 #, c-format
 msgid "Edit..."
 msgstr "編集"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:823
+#: ../Rpmdrake/edit_urpm_sources.pm:826
 #, c-format
 msgid "Add..."
 msgstr "追加"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:839
+#: ../Rpmdrake/edit_urpm_sources.pm:842
 #, c-format
 msgid "Manage keys for digital signatures of packages"
 msgstr "パッケージのデジタル署名用のキーを管理"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:845 ../Rpmdrake/edit_urpm_sources.pm:1054
+#: ../Rpmdrake/edit_urpm_sources.pm:848 ../Rpmdrake/edit_urpm_sources.pm:1088
 #, c-format
 msgid "Medium"
 msgstr "メディア"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:852
+#: ../Rpmdrake/edit_urpm_sources.pm:855
 #, c-format
 msgid ""
 "_:cryptographic keys\n"
 "Keys"
 msgstr "暗号キー"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:875
+#: ../Rpmdrake/edit_urpm_sources.pm:878
 #, c-format
 msgid "no name found, key doesn't exist in rpm keyring!"
 msgstr "名前が見つかりません。キーが rpm keyring にありません。"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:895
+#: ../Rpmdrake/edit_urpm_sources.pm:898
 #, c-format
 msgid "Add a key"
 msgstr "キーを追加"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:895
+#: ../Rpmdrake/edit_urpm_sources.pm:898
 #, c-format
 msgid "Choose a key to add to the medium %s"
 msgstr "メディア %s に追加するキーを選んでください"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:914
+#: ../Rpmdrake/edit_urpm_sources.pm:917
 #, c-format
 msgid "Remove a key"
 msgstr "キーを削除"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:915
+#: ../Rpmdrake/edit_urpm_sources.pm:918
 #, c-format
 msgid ""
 "Are you sure you want to remove the key %s from medium %s?\n"
@@ -654,175 +666,169 @@ msgstr ""
 "キー %s を メディア %s から削除しますか？\n"
 "(キーの名前: %s)"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:954 ../Rpmdrake/edit_urpm_sources.pm:1131
-#, c-format
-msgid "Configure media"
-msgstr "メディアを設定"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:961 ../Rpmdrake/edit_urpm_sources.pm:962
-#: ../Rpmdrake/edit_urpm_sources.pm:963 ../Rpmdrake/edit_urpm_sources.pm:964
-#: ../Rpmdrake/edit_urpm_sources.pm:965 ../rpmdrake:543 ../rpmdrake:546
-#: ../rpmdrake:551 ../rpmdrake:571 ../rpmdrake:572
-#, c-format
-msgid "/_File"
-msgstr "/ファイル(_F)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:962
-#, c-format
-msgid "/_Update"
-msgstr "/更新(_U)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:962
-#, c-format
-msgid "<control>U"
-msgstr "<control>U"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:963
-#, c-format
-msgid "/Add a specific _media mirror"
-msgstr "/ミラーリストからメディアを追加(_M)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:963
-#, c-format
-msgid "<control>M"
-msgstr "<control>M"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:964
-#, c-format
-msgid "/_Add a custom medium"
-msgstr "/カスタムメディアを追加(_A)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:964
-#, c-format
-msgid "<control>A"
-msgstr "<control>A"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:965
-#, c-format
-msgid "/Close"
-msgstr "/閉じる"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:965
-#, c-format
-msgid "<control>W"
-msgstr "<control>W"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:966 ../Rpmdrake/edit_urpm_sources.pm:967
-#: ../Rpmdrake/edit_urpm_sources.pm:968 ../Rpmdrake/edit_urpm_sources.pm:969
-#: ../Rpmdrake/edit_urpm_sources.pm:970 ../rpmdrake:534 ../rpmdrake:536
-#: ../rpmdrake:538 ../rpmdrake:539 ../rpmdrake:540 ../rpmdrake:575
-#: ../rpmdrake:591 ../rpmdrake:595 ../rpmdrake:671
-#, c-format
-msgid "/_Options"
-msgstr "/オプション(_O)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:967
-#, c-format
-msgid "/_Global options"
-msgstr "/共通オプション(_G)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:967
-#, c-format
-msgid "<control>G"
-msgstr "<control>G"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:968
-#, c-format
-msgid "/Manage _keys"
-msgstr "/キーを管理(_K)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:968
-#, c-format
-msgid "<control>K"
-msgstr "<control>K"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:969
-#, c-format
-msgid "/_Parallel"
-msgstr "/パラレル(_P)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:969
-#, c-format
-msgid "<control>P"
-msgstr "<control>P"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:970
-#, c-format
-msgid "/P_roxy"
-msgstr "/プロキシ(_R)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:970
-#, c-format
-msgid "<control>R"
-msgstr "<control>R"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:972 ../Rpmdrake/edit_urpm_sources.pm:973
-#: ../Rpmdrake/edit_urpm_sources.pm:974 ../Rpmdrake/edit_urpm_sources.pm:975
-#: ../rpmdrake:619 ../rpmdrake:620 ../rpmdrake:621 ../rpmdrake:622
-#, c-format
-msgid "/_Help"
-msgstr "/ヘルプ(_H)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:973 ../rpmdrake:620
-#, c-format
-msgid "/_Report Bug"
-msgstr "/バグを報告(_R)"
-
-#: ../Rpmdrake/edit_urpm_sources.pm:975 ../rpmdrake:622
-#, c-format
-msgid "/_About..."
-msgstr "/情報(_A)..."
-
-#: ../Rpmdrake/edit_urpm_sources.pm:978 ../rpmdrake:625
+#: ../Rpmdrake/edit_urpm_sources.pm:958 ../rpmdrake:255
 #, c-format
 msgid "Rpmdrake"
 msgstr "Rpmdrake"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:980 ../rpmdrake:627
-#, c-format
-msgid "Copyright (C) %s by OpenMandriva"
+#: ../Rpmdrake/edit_urpm_sources.pm:960 ../rpmdrake:257
+#, fuzzy, c-format
+msgid ""
+"Copyright (C) %s by Mandriva\n"
+"Copyright (C) %s OpenMandriva"
 msgstr "Copyright (C) %s by OpenMandriva"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:982 ../rpmdrake:629
-#, c-format
-msgid "Rpmdrake is OpenMandriva package management tool."
+#: ../Rpmdrake/edit_urpm_sources.pm:962 ../rpmdrake:259
+#, fuzzy, c-format
+msgid "Rpmdrake is the OpenMandriva package management tool."
 msgstr "Rpmdrake は OpenMandriva のパッケージ管理ツールです。"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:984 ../rpmdrake:631
+#: ../Rpmdrake/edit_urpm_sources.pm:964 ../rpmdrake:261
 #, c-format
 msgid "OpenMandriva"
 msgstr "OpenMandriva"
 
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
 #. -PO: put here name(s) and email(s) of translator(s) (eg: "John Smith <jsmith@nowhere.com>")
-#: ../Rpmdrake/edit_urpm_sources.pm:989 ../rpmdrake:636
+#: ../Rpmdrake/edit_urpm_sources.pm:969 ../rpmdrake:266
 #, c-format
 msgid "_: Translator(s) name(s) & email(s)\n"
 msgstr ""
 "Yukiko BANDO <ybando@k6.dion.ne.jp>\n"
 "Hirosi UTUMI <utuhiro78@yahoo.co.jp>\n"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1044 ../Rpmdrake/pkg.pm:270
+#: ../Rpmdrake/edit_urpm_sources.pm:978 ../Rpmdrake/edit_urpm_sources.pm:1170
+#, c-format
+msgid "Configure media"
+msgstr "メディアを設定"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:986 ../rpmdrake:593
+#, fuzzy, c-format
+msgid "_File"
+msgstr "/ファイル(_F)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:987
+#, fuzzy, c-format
+msgid "_Update"
+msgstr "/更新(_U)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:987
+#, c-format
+msgid "<control>U"
+msgstr "<control>U"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:988
+#, fuzzy, c-format
+msgid "Add a specific _media mirror"
+msgstr "/ミラーリストからメディアを追加(_M)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:988
+#, c-format
+msgid "<control>M"
+msgstr "<control>M"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:989
+#, fuzzy, c-format
+msgid "_Add a custom medium"
+msgstr "/カスタムメディアを追加(_A)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:989
+#, c-format
+msgid "<control>A"
+msgstr "<control>A"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:990
+#, fuzzy, c-format
+msgid "Close"
+msgstr "/閉じる"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:990
+#, c-format
+msgid "<control>W"
+msgstr "<control>W"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:991 ../rpmdrake:605
+#, fuzzy, c-format
+msgid "_Options"
+msgstr "/オプション(_O)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:992
+#, fuzzy, c-format
+msgid "_Global options"
+msgstr "/共通オプション(_G)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:992
+#, c-format
+msgid "<control>G"
+msgstr "<control>G"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:993
+#, fuzzy, c-format
+msgid "Manage _keys"
+msgstr "/キーを管理(_K)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:993
+#, c-format
+msgid "<control>K"
+msgstr "<control>K"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:994
+#, fuzzy, c-format
+msgid "_Parallel"
+msgstr "/パラレル(_P)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:994
+#, c-format
+msgid "<control>P"
+msgstr "<control>P"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:995
+#, fuzzy, c-format
+msgid "P_roxy"
+msgstr "/プロキシ(_R)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:995
+#, c-format
+msgid "<control>R"
+msgstr "<control>R"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:997 ../Rpmdrake/edit_urpm_sources.pm:999
+#: ../rpmdrake:614 ../rpmdrake:616
+#, fuzzy, c-format
+msgid "_Help"
+msgstr "/ヘルプ(_H)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:998 ../rpmdrake:615
+#, fuzzy, c-format
+msgid "_Report Bug"
+msgstr "/バグを報告(_R)"
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1000 ../rpmdrake:617
+#, fuzzy, c-format
+msgid "_About..."
+msgstr "/情報(_A)..."
+
+#: ../Rpmdrake/edit_urpm_sources.pm:1078 ../Rpmdrake/pkg.pm:270
 #, c-format
 msgid "Enabled"
 msgstr "有効"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1047
+#: ../Rpmdrake/edit_urpm_sources.pm:1081
 #, c-format
 msgid "Updates"
 msgstr "更新"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1051
+#: ../Rpmdrake/edit_urpm_sources.pm:1085
 #, c-format
 msgid "Type"
 msgstr "タイプ"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1078
+#: ../Rpmdrake/edit_urpm_sources.pm:1112
 #, c-format
 msgid "This medium needs to be updated to be usable. Update it now?"
 msgstr "このメディアを使うためには更新する必要があります。今更新しますか？"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1104
+#: ../Rpmdrake/edit_urpm_sources.pm:1141
 #, c-format
 msgid ""
 "Unable to update medium, errors reported:\n"
@@ -833,12 +839,12 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1142
+#: ../Rpmdrake/edit_urpm_sources.pm:1181
 #, c-format
 msgid "Edit"
 msgstr "編集"
 
-#: ../Rpmdrake/edit_urpm_sources.pm:1190
+#: ../Rpmdrake/edit_urpm_sources.pm:1229
 #, fuzzy, c-format
 msgid ""
 "The Package Database is locked. Please close other applications\n"
@@ -862,43 +868,43 @@ msgstr "なし (インストール済み)"
 msgid "Unknown"
 msgstr "不明"
 
-#: ../Rpmdrake/formatting.pm:172
+#: ../Rpmdrake/formatting.pm:171
 #, c-format
 msgid "%s of additional disk space will be used."
 msgstr "ディスク容量を %s 使います。"
 
-#: ../Rpmdrake/formatting.pm:173
+#: ../Rpmdrake/formatting.pm:172
 #, c-format
 msgid "%s of disk space will be freed."
 msgstr "ディスク容量が %s 空きます。"
 
-#: ../Rpmdrake/formatting.pm:178
+#: ../Rpmdrake/formatting.pm:177
 #, c-format
 msgid "%s of packages will be retrieved."
 msgstr "%s のパッケージを取得します。"
 
-#: ../Rpmdrake/gui.pm:78
+#: ../Rpmdrake/gui.pm:79
 #, c-format
 msgid "Search results"
 msgstr "検索結果"
 
-#: ../Rpmdrake/gui.pm:78
+#: ../Rpmdrake/gui.pm:79
 #, c-format
 msgid "Search results (none)"
 msgstr "検索結果 (なし)"
 
-#: ../Rpmdrake/gui.pm:124 ../Rpmdrake/gui.pm:323 ../Rpmdrake/gui.pm:325
+#: ../Rpmdrake/gui.pm:125 ../Rpmdrake/gui.pm:322 ../Rpmdrake/gui.pm:324
 #: ../Rpmdrake/pkg.pm:187
 #, c-format
 msgid "(Not available)"
 msgstr "(なし)"
 
-#: ../Rpmdrake/gui.pm:136
+#: ../Rpmdrake/gui.pm:137
 #, c-format
 msgid "Security advisory"
 msgstr "セキュリティ報告"
 
-#: ../Rpmdrake/gui.pm:148 ../Rpmdrake/gui.pm:351
+#: ../Rpmdrake/gui.pm:148 ../Rpmdrake/gui.pm:350
 #, c-format
 msgid "No description"
 msgstr "説明なし"
@@ -948,22 +954,22 @@ msgstr ""
 msgid "Notice: "
 msgstr "重要性: "
 
-#: ../Rpmdrake/gui.pm:199 ../Rpmdrake/gui.pm:341
+#: ../Rpmdrake/gui.pm:199 ../Rpmdrake/gui.pm:340
 #, c-format
 msgid "Importance: "
 msgstr "重要性: "
 
-#: ../Rpmdrake/gui.pm:200 ../Rpmdrake/gui.pm:349
+#: ../Rpmdrake/gui.pm:200 ../Rpmdrake/gui.pm:348
 #, c-format
 msgid "Reason for update: "
 msgstr "更新の理由: "
 
-#: ../Rpmdrake/gui.pm:210 ../Rpmdrake/gui.pm:336
+#: ../Rpmdrake/gui.pm:210 ../Rpmdrake/gui.pm:335
 #, c-format
 msgid "Version: "
 msgstr "バージョン: "
 
-#: ../Rpmdrake/gui.pm:212 ../Rpmdrake/gui.pm:331
+#: ../Rpmdrake/gui.pm:212 ../Rpmdrake/gui.pm:330
 #, c-format
 msgid "Currently installed version: "
 msgstr "インストール済みのバージョン: "
@@ -973,22 +979,22 @@ msgstr "インストール済みのバージョン: "
 msgid "Group: "
 msgstr "グループ: "
 
-#: ../Rpmdrake/gui.pm:215 ../Rpmdrake/gui.pm:337
+#: ../Rpmdrake/gui.pm:215 ../Rpmdrake/gui.pm:336
 #, c-format
 msgid "Architecture: "
 msgstr "アーキテクチャ: "
 
-#: ../Rpmdrake/gui.pm:216 ../Rpmdrake/gui.pm:338
+#: ../Rpmdrake/gui.pm:216 ../Rpmdrake/gui.pm:337
 #, c-format
 msgid "Size: "
 msgstr "サイズ: "
 
-#: ../Rpmdrake/gui.pm:216 ../Rpmdrake/gui.pm:338
+#: ../Rpmdrake/gui.pm:216 ../Rpmdrake/gui.pm:337
 #, c-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: ../Rpmdrake/gui.pm:217 ../Rpmdrake/gui.pm:330 ../rpmdrake.pm:903
+#: ../Rpmdrake/gui.pm:217 ../Rpmdrake/gui.pm:329 ../rpmdrake.pm:912
 #, c-format
 msgid "Medium: "
 msgstr "メディア: "
@@ -1008,70 +1014,70 @@ msgstr ""
 msgid "URL: "
 msgstr "URL: "
 
-#: ../Rpmdrake/gui.pm:299
+#: ../Rpmdrake/gui.pm:298
 #, c-format
 msgid "Details:"
 msgstr "詳細:"
 
-#: ../Rpmdrake/gui.pm:303
+#: ../Rpmdrake/gui.pm:302
 #, c-format
 msgid "Files:"
 msgstr "ファイル: "
 
-#: ../Rpmdrake/gui.pm:305
+#: ../Rpmdrake/gui.pm:304
 #, c-format
 msgid "Changelog:"
 msgstr "変更ログ: "
 
-#: ../Rpmdrake/gui.pm:320
+#: ../Rpmdrake/gui.pm:319
 #, c-format
 msgid "Files:\n"
 msgstr "ファイル: \n"
 
-#: ../Rpmdrake/gui.pm:325
+#: ../Rpmdrake/gui.pm:324
 #, c-format
 msgid "Changelog:\n"
 msgstr "変更ログ: \n"
 
-#: ../Rpmdrake/gui.pm:335
+#: ../Rpmdrake/gui.pm:334
 #, c-format
 msgid "Name: "
 msgstr "名前: "
 
-#: ../Rpmdrake/gui.pm:345
+#: ../Rpmdrake/gui.pm:344
 #, c-format
 msgid "Summary: "
 msgstr "概要: "
 
-#: ../Rpmdrake/gui.pm:351
+#: ../Rpmdrake/gui.pm:350
 #, c-format
 msgid "Description: "
 msgstr "説明: "
 
-#: ../Rpmdrake/gui.pm:362 ../Rpmdrake/gui.pm:564 ../Rpmdrake/gui.pm:570
-#: ../Rpmdrake/gui.pm:576 ../Rpmdrake/pkg.pm:824 ../Rpmdrake/pkg.pm:834
-#: ../Rpmdrake/pkg.pm:848 ../rpmdrake:793 ../rpmdrake.pm:828
-#: ../rpmdrake.pm:942
+#: ../Rpmdrake/gui.pm:361 ../Rpmdrake/gui.pm:578 ../Rpmdrake/gui.pm:584
+#: ../Rpmdrake/gui.pm:590 ../Rpmdrake/pkg.pm:824 ../Rpmdrake/pkg.pm:834
+#: ../Rpmdrake/pkg.pm:848 ../rpmdrake:851 ../rpmdrake.pm:837
+#: ../rpmdrake.pm:951
 #, c-format
 msgid "Warning"
 msgstr "警告"
 
-#: ../Rpmdrake/gui.pm:364
+#: ../Rpmdrake/gui.pm:363
 #, c-format
 msgid "The package \"%s\" was found."
 msgstr "パッケージ \"%s\" が見つかりました。"
 
-#: ../Rpmdrake/gui.pm:365
+#: ../Rpmdrake/gui.pm:364
 #, c-format
 msgid "However this package is not in the package list."
 msgstr "しかしながら、このパッケージはパッケージリストにありません。"
 
-#: ../Rpmdrake/gui.pm:366
+#: ../Rpmdrake/gui.pm:365
 #, c-format
 msgid "You may want to update your urpmi database."
 msgstr "urpmi データベースを更新した方がよいでしょう。"
 
-#: ../Rpmdrake/gui.pm:368
+#: ../Rpmdrake/gui.pm:367
 #, c-format
 msgid "Matching packages:"
 msgstr "マッチするパッケージ:"
@@ -1083,12 +1089,17 @@ msgstr "マッチするパッケージ:"
 msgid "- %s (medium: %s)"
 msgstr "- %s (メディア: %s)"
 
-#: ../Rpmdrake/gui.pm:565
+#: ../Rpmdrake/gui.pm:374
+#, c-format
+msgid "- %s"
+msgstr ""
+
+#: ../Rpmdrake/gui.pm:579
 #, c-format
 msgid "Removing package %s would break your system"
 msgstr "パッケージ %s を削除するとシステムが壊れます"
 
-#: ../Rpmdrake/gui.pm:570
+#: ../Rpmdrake/gui.pm:584
 #, c-format
 msgid ""
 "The \"%s\" package is in urpmi skip list.\n"
@@ -1097,7 +1108,7 @@ msgstr ""
 "パッケージ \"%s\" は urpmi のスキップリストにあります。\n"
 "それでも選択しますか？"
 
-#: ../Rpmdrake/gui.pm:576 ../Rpmdrake/pkg.pm:714
+#: ../Rpmdrake/gui.pm:590 ../Rpmdrake/pkg.pm:714
 #, c-format
 msgid ""
 "Rpmdrake or one of its priority dependencies needs to be updated first. "
@@ -1106,60 +1117,60 @@ msgstr ""
 "rpmdrake またはそれが依存するパッケージの一つを先に更新する必要があります。"
 "rpmdrake は更新後に再スタートします。"
 
-#: ../Rpmdrake/gui.pm:705 ../Rpmdrake/gui.pm:735 ../Rpmdrake/gui.pm:737
+#: ../Rpmdrake/gui.pm:714 ../Rpmdrake/gui.pm:744 ../Rpmdrake/gui.pm:746
 #, c-format
 msgid "More information on package..."
 msgstr "パッケージの詳細情報..."
 
-#: ../Rpmdrake/gui.pm:707
+#: ../Rpmdrake/gui.pm:716
 #, c-format
 msgid "Please choose"
 msgstr "選んでください"
 
-#: ../Rpmdrake/gui.pm:708
+#: ../Rpmdrake/gui.pm:717
 #, c-format
 msgid "The following package is needed:"
 msgstr "以下のパッケージのいずれかが必要です:"
 
-#: ../Rpmdrake/gui.pm:708
+#: ../Rpmdrake/gui.pm:717
 #, c-format
 msgid "One of the following packages is needed:"
 msgstr "以下のパッケージのいずれかが必要です:"
 
 #. -PO: Keep it short, this is gonna be on a button
-#: ../Rpmdrake/gui.pm:723 ../Rpmdrake/gui.pm:728
+#: ../Rpmdrake/gui.pm:732 ../Rpmdrake/gui.pm:737
 #, c-format
 msgid "More info"
 msgstr "詳細情報"
 
-#: ../Rpmdrake/gui.pm:730
+#: ../Rpmdrake/gui.pm:739
 #, c-format
 msgid "Information on packages"
 msgstr "パッケージの情報"
 
-#: ../Rpmdrake/gui.pm:758
+#: ../Rpmdrake/gui.pm:767
 #, c-format
 msgid "Checking dependencies of package..."
 msgstr "パッケージの依存関係をチェックしています..."
 
-#: ../Rpmdrake/gui.pm:763
+#: ../Rpmdrake/gui.pm:772
 #, c-format
 msgid "Some additional packages need to be removed"
 msgstr "いくつかのパッケージを削除します"
 
-#: ../Rpmdrake/gui.pm:774
+#: ../Rpmdrake/gui.pm:783
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) also need to be "
 "removed:"
 msgstr "依存関係を満たすために 以下のパッケージを削除します:"
 
-#: ../Rpmdrake/gui.pm:779
+#: ../Rpmdrake/gui.pm:788
 #, fuzzy, c-format
 msgid "Some packages cannot be removed"
 msgstr "削除できないパッケージがあります"
 
-#: ../Rpmdrake/gui.pm:780
+#: ../Rpmdrake/gui.pm:789
 #, c-format
 msgid ""
 "Removing these packages would break your system, sorry:\n"
@@ -1168,7 +1179,7 @@ msgstr ""
 "このパッケージを削除するとシステムが壊れます:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:789 ../Rpmdrake/gui.pm:894
+#: ../Rpmdrake/gui.pm:798 ../Rpmdrake/gui.pm:903
 #, c-format
 msgid ""
 "Because of their dependencies, the following package(s) must be unselected "
@@ -1179,17 +1190,17 @@ msgstr ""
 "以下のパッケージの選択を解除します:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:825
+#: ../Rpmdrake/gui.pm:834
 #, c-format
 msgid "Conflicting Packages"
 msgstr "衝突するパッケージ"
 
-#: ../Rpmdrake/gui.pm:831
+#: ../Rpmdrake/gui.pm:840
 #, c-format
 msgid "Additional packages needed"
 msgstr "追加パッケージが必要です"
 
-#: ../Rpmdrake/gui.pm:832
+#: ../Rpmdrake/gui.pm:841
 #, c-format
 msgid ""
 "To satisfy dependencies, the following package(s) also need to be "
@@ -1200,7 +1211,7 @@ msgstr ""
 "以下のパッケージを追加します:\n"
 "\n"
 
-#: ../Rpmdrake/gui.pm:844
+#: ../Rpmdrake/gui.pm:853
 #, c-format
 msgid ""
 "The following package cannot be installed because it depends on packages "
@@ -1209,7 +1220,7 @@ msgid ""
 "%s%s"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:846
+#: ../Rpmdrake/gui.pm:855
 #, c-format
 msgid ""
 "The following packages cannot be installed because they depend on packages "
@@ -1218,12 +1229,12 @@ msgid ""
 "%s%s"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:858
+#: ../Rpmdrake/gui.pm:867
 #, c-format
 msgid "%s (belongs to the skip list)"
 msgstr "%s (スキップリストに含まれています)"
 
-#: ../Rpmdrake/gui.pm:864
+#: ../Rpmdrake/gui.pm:873
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following package cannot be selected:\n"
@@ -1234,7 +1245,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:866
+#: ../Rpmdrake/gui.pm:875
 #, fuzzy, c-format
 msgid ""
 "Sorry, the following packages cannot be selected:\n"
@@ -1245,42 +1256,42 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../Rpmdrake/gui.pm:882
+#: ../Rpmdrake/gui.pm:891
 #, fuzzy, c-format
 msgid "Cannot select"
 msgstr "選択されていません"
 
-#: ../Rpmdrake/gui.pm:893 ../Rpmdrake/pkg.pm:718
+#: ../Rpmdrake/gui.pm:902 ../Rpmdrake/pkg.pm:718
 #, c-format
 msgid "Some packages need to be removed"
 msgstr "いくつかのパッケージを削除する必要があります"
 
-#: ../Rpmdrake/gui.pm:928
+#: ../Rpmdrake/gui.pm:937
 #, fuzzy, c-format
 msgid "Some packages are selected."
 msgstr "選択されたパッケージが多すぎます"
 
-#: ../Rpmdrake/gui.pm:928
+#: ../Rpmdrake/gui.pm:937
 #, c-format
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: ../Rpmdrake/gui.pm:937
+#: ../Rpmdrake/gui.pm:946
 #, c-format
 msgid "Error: %s appears to be mounted read-only."
 msgstr "エラー: %s は読み取り専用でマウントされているようです。"
 
-#: ../Rpmdrake/gui.pm:941
+#: ../Rpmdrake/gui.pm:950
 #, c-format
 msgid "You need to select some packages first."
 msgstr "まずパッケージを選んでください。"
 
-#: ../Rpmdrake/gui.pm:946
+#: ../Rpmdrake/gui.pm:955
 #, c-format
 msgid "Too many packages are selected"
 msgstr "選択されたパッケージが多すぎます"
 
-#: ../Rpmdrake/gui.pm:947
+#: ../Rpmdrake/gui.pm:956
 #, fuzzy, c-format
 msgid ""
 "Warning: it seems that you are attempting to add so many\n"
@@ -1296,48 +1307,48 @@ msgstr ""
 "\n"
 "選択したパッケージをすべてインストールしますか？"
 
-#: ../Rpmdrake/gui.pm:974 ../Rpmdrake/open_db.pm:84
+#: ../Rpmdrake/gui.pm:983 ../Rpmdrake/open_db.pm:84
 #, c-format
 msgid "Fatal error"
 msgstr "致命的なエラー"
 
-#: ../Rpmdrake/gui.pm:975 ../Rpmdrake/open_db.pm:85 ../Rpmdrake/pkg.pm:470
+#: ../Rpmdrake/gui.pm:984 ../Rpmdrake/open_db.pm:85 ../Rpmdrake/pkg.pm:470
 #, c-format
 msgid "A fatal error occurred: %s."
 msgstr "致命的なエラーが発生: %s."
 
-#: ../Rpmdrake/gui.pm:1011
+#: ../Rpmdrake/gui.pm:1020
 #, c-format
 msgid "Please wait, listing packages..."
 msgstr "パッケージのリストを作成しています。お待ちください..."
 
-#: ../Rpmdrake/gui.pm:1024
+#: ../Rpmdrake/gui.pm:1033
 #, c-format
 msgid "No update"
 msgstr "更新なし"
 
-#: ../Rpmdrake/gui.pm:1052 ../Rpmdrake/icon.pm:35 ../rpmdrake:213
-#: ../rpmdrake:369 ../rpmdrake:396
+#: ../Rpmdrake/gui.pm:1061 ../Rpmdrake/icon.pm:35 ../rpmdrake:212
+#: ../rpmdrake:418 ../rpmdrake:445
 #, c-format
 msgid "All"
 msgstr "すべて"
 
-#: ../Rpmdrake/gui.pm:1062 ../rpmdrake:202
+#: ../Rpmdrake/gui.pm:1071 ../rpmdrake:201
 #, c-format
 msgid "Upgradable"
 msgstr "更新可能"
 
-#: ../Rpmdrake/gui.pm:1062 ../rpmdrake:370
+#: ../Rpmdrake/gui.pm:1071 ../rpmdrake:419
 #, c-format
 msgid "Installed"
 msgstr "インストール済み"
 
-#: ../Rpmdrake/gui.pm:1063 ../rpmdrake:202
+#: ../Rpmdrake/gui.pm:1072 ../rpmdrake:201
 #, c-format
 msgid "Addable"
 msgstr "追加可能"
 
-#: ../Rpmdrake/gui.pm:1075
+#: ../Rpmdrake/gui.pm:1084
 #, c-format
 msgid "Description not available for this package\n"
 msgstr "このパッケージには説明がありません\n"
@@ -2180,6 +2191,16 @@ msgstr ""
 "現在の権限ではシステムを変更することはできませんが\n"
 "データベースを閲覧することはできます。"
 
+#: ../Rpmdrake/init.pm:159
+#, c-format
+msgid "Exit"
+msgstr ""
+
+#: ../Rpmdrake/init.pm:159
+#, c-format
+msgid "OK"
+msgstr ""
+
 #: ../Rpmdrake/pkg.pm:126
 #, fuzzy, c-format
 msgid "Getting information from %s..."
@@ -2191,8 +2212,8 @@ msgid "Getting '%s' from XML meta-data..."
 msgstr "XML メタデータから '%s' を取得..."
 
 #: ../Rpmdrake/pkg.pm:133 ../Rpmdrake/pkg.pm:438 ../Rpmdrake/pkg.pm:738
-#: ../Rpmdrake/pkg.pm:931 ../rpmdrake:134 ../rpmdrake.pm:385
-#: ../rpmdrake.pm:594
+#: ../Rpmdrake/pkg.pm:931 ../rpmdrake:133 ../rpmdrake.pm:394
+#: ../rpmdrake.pm:603
 #, c-format
 msgid "Please wait"
 msgstr "お待ちください"
@@ -2278,7 +2299,7 @@ msgstr ""
 "更新メディアが設定されていません。Online Update は更新メディアなしでは機能し"
 "ません。"
 
-#: ../Rpmdrake/pkg.pm:276 ../rpmdrake.pm:627
+#: ../Rpmdrake/pkg.pm:276 ../rpmdrake.pm:636
 #, c-format
 msgid ""
 "I need to contact the OpenMandriva website to get the mirror list.\n"
@@ -2337,7 +2358,7 @@ msgid "Please wait, listing base packages..."
 msgstr "ベースパッケージのリストを作成しています。お待ちください..."
 
 #: ../Rpmdrake/pkg.pm:470 ../Rpmdrake/pkg.pm:853 ../Rpmdrake/pkg.pm:878
-#: ../rpmdrake.pm:815 ../rpmdrake.pm:901 ../rpmdrake.pm:925
+#: ../rpmdrake.pm:824 ../rpmdrake.pm:910 ../rpmdrake.pm:934
 #, c-format
 msgid "Error"
 msgstr "エラー"
@@ -2548,12 +2569,12 @@ msgstr "情報"
 msgid "Inspecting %s"
 msgstr "%s を検査中"
 
-#: ../Rpmdrake/rpmnew.pm:107
+#: ../Rpmdrake/rpmnew.pm:111
 #, c-format
 msgid "Changes:"
 msgstr "変更:"
 
-#: ../Rpmdrake/rpmnew.pm:116
+#: ../Rpmdrake/rpmnew.pm:120
 #, c-format
 msgid ""
 "You can either remove the .%s file, use it as main file or do nothing. If "
@@ -2562,32 +2583,32 @@ msgstr ""
 ".%s ファイルを削除する、メインファイルとして使う、何もしないの中から選択でき"
 "ます。よく分からない場合は、現在のファイル (%s) を残しておいてください。"
 
-#: ../Rpmdrake/rpmnew.pm:117 ../Rpmdrake/rpmnew.pm:122
+#: ../Rpmdrake/rpmnew.pm:121 ../Rpmdrake/rpmnew.pm:126
 #, c-format
 msgid "Remove .%s"
 msgstr ".%s を削除する"
 
-#: ../Rpmdrake/rpmnew.pm:126
+#: ../Rpmdrake/rpmnew.pm:130
 #, c-format
 msgid "Use .%s as main file"
 msgstr ".%s をメインファイルとして使う"
 
-#: ../Rpmdrake/rpmnew.pm:130
+#: ../Rpmdrake/rpmnew.pm:134
 #, c-format
 msgid "Do nothing"
 msgstr "何もしない"
 
-#: ../Rpmdrake/rpmnew.pm:158
+#: ../Rpmdrake/rpmnew.pm:162
 #, c-format
 msgid "Installation finished"
 msgstr "インストールが完了しました"
 
-#: ../Rpmdrake/rpmnew.pm:173
+#: ../Rpmdrake/rpmnew.pm:177
 #, c-format
 msgid "Inspect..."
 msgstr "検査..."
 
-#: ../Rpmdrake/rpmnew.pm:191 ../rpmdrake:102
+#: ../Rpmdrake/rpmnew.pm:195 ../rpmdrake:101
 #, c-format
 msgid "Please wait, searching..."
 msgstr "検索しています。お待ちください..."
@@ -2656,268 +2677,278 @@ msgstr "メディア %s を追加しました。"
 msgid "Successfully added medium `%s'."
 msgstr "メディア %s を追加しました。"
 
-#: ../rpmdrake:107
+#: ../rpmdrake:106
 #, c-format
 msgid "Stop"
 msgstr "停止"
 
-#: ../rpmdrake:141
+#: ../rpmdrake:140
 #, c-format
 msgid "no xml-info available for medium \"%s\""
 msgstr "メディア %s の XML 情報はありません"
 
-#: ../rpmdrake:157 ../rpmdrake:185
+#: ../rpmdrake:156 ../rpmdrake:184
 #, c-format
 msgid "Search aborted"
 msgstr "検索を中止しました"
 
-#: ../rpmdrake:204
+#: ../rpmdrake:203
 #, c-format
 msgid "Selected"
 msgstr "選択済み"
 
-#: ../rpmdrake:204
+#: ../rpmdrake:203
 #, c-format
 msgid "Not selected"
 msgstr "選択されていません"
 
-#: ../rpmdrake:211
+#: ../rpmdrake:210
 #, fuzzy, c-format
 msgid "No search results."
 msgstr "検索結果"
 
-#: ../rpmdrake:212
+#: ../rpmdrake:211
 #, c-format
 msgid ""
 "No search results. You may want to switch to the '%s' view and to the '%s' "
 "filter"
 msgstr ""
 
-#: ../rpmdrake:246
+#: ../rpmdrake:235
+#, c-format
+msgid "Reset aborted (RPM DB is locked by another process)"
+msgstr ""
+
+#: ../rpmdrake:289
 #, c-format
 msgid "Selected: %s / Free disk space: %s"
 msgstr "選択: %s / ディスクの空き容量: %s"
 
-#: ../rpmdrake:286
+#: ../rpmdrake:335
 #, c-format
 msgid "Package"
 msgstr "パッケージ"
 
 #. -PO: "Architecture" but to be kept *small* !!!
-#: ../rpmdrake:300
+#: ../rpmdrake:349
 #, c-format
 msgid "Arch."
 msgstr "Arch."
 
 #. -PO: "Status" should be kept *small* !!!
-#: ../rpmdrake:328
+#: ../rpmdrake:377
 #, c-format
 msgid "Status"
 msgstr "状態"
 
-#: ../rpmdrake:371
+#: ../rpmdrake:420
 #, c-format
 msgid "Not installed"
 msgstr "インストールなし"
 
-#: ../rpmdrake:386
+#: ../rpmdrake:435
 #, c-format
 msgid "All packages, alphabetical"
 msgstr "全パッケージ (ABC 順)"
 
-#: ../rpmdrake:387
+#: ../rpmdrake:436
 #, c-format
 msgid "All packages, by group"
 msgstr "全パッケージ (グループ順)"
 
-#: ../rpmdrake:388
+#: ../rpmdrake:437
 #, c-format
 msgid "Leaves only, sorted by install date"
 msgstr "単独で削除できるパッケージ (インストール順)"
 
-#: ../rpmdrake:389
+#: ../rpmdrake:438
 #, c-format
 msgid "All packages, by update availability"
 msgstr "全パッケージ (更新可能別)"
 
-#: ../rpmdrake:390
+#: ../rpmdrake:439
 #, c-format
 msgid "All packages, by selection state"
 msgstr "全パッケージ (選択順)"
 
-#: ../rpmdrake:391
+#: ../rpmdrake:440
 #, c-format
 msgid "All packages, by size"
 msgstr "全パッケージ (サイズ順)"
 
-#: ../rpmdrake:392
+#: ../rpmdrake:441
 #, c-format
 msgid "All packages, by medium repository"
 msgstr "全パッケージ(メディア順)"
 
 #. -PO: Backports media are newer but less-tested versions of some packages in main
 #. -PO: See http://wiki.mandriva.com/en/Policies/SoftwareMedia#.2Fmain.2Fbackports
-#: ../rpmdrake:400
+#: ../rpmdrake:449
 #, c-format
 msgid "Backports"
 msgstr "バックポート"
 
-#: ../rpmdrake:401
+#: ../rpmdrake:450
 #, c-format
 msgid "Meta packages"
 msgstr "メタパッケージ"
 
-#: ../rpmdrake:402
+#: ../rpmdrake:451
 #, c-format
 msgid "Packages with GUI"
 msgstr "GUI のあるパッケージ"
 
-#: ../rpmdrake:403
+#: ../rpmdrake:452
 #, c-format
 msgid "All updates"
 msgstr "すべての更新"
 
-#: ../rpmdrake:404
+#: ../rpmdrake:453
 #, c-format
 msgid "Security updates"
 msgstr "セキュリティアップデート"
 
-#: ../rpmdrake:405
+#: ../rpmdrake:454
 #, c-format
 msgid "Bugfixes updates"
 msgstr "バグ修正の更新"
 
-#: ../rpmdrake:406
+#: ../rpmdrake:455
 #, c-format
 msgid "General updates"
 msgstr "通常の更新"
 
-#: ../rpmdrake:429
+#: ../rpmdrake:478
 #, c-format
 msgid "View"
 msgstr "表示"
 
-#: ../rpmdrake:457
+#: ../rpmdrake:506
 #, c-format
 msgid "Filter"
 msgstr "フィルタ"
 
-#: ../rpmdrake:493
+#: ../rpmdrake:543
 #, c-format
 msgid "in names"
 msgstr "名前"
 
-#: ../rpmdrake:493
+#: ../rpmdrake:543
 #, c-format
 msgid "in descriptions"
 msgstr "説明"
 
-#: ../rpmdrake:493
+#: ../rpmdrake:543
 #, c-format
 msgid "in summaries"
 msgstr "要約"
 
-#: ../rpmdrake:493
+#: ../rpmdrake:543
 #, c-format
 msgid "in file names"
 msgstr "中のファイル名"
 
-#: ../rpmdrake:534
-#, c-format
-msgid "/_Select dependencies without asking"
-msgstr "/確認せずに依存パッケージを選択する(_S)"
-
-#: ../rpmdrake:537
+#: ../rpmdrake:595
 #, fuzzy, c-format
-msgid "Clear download cache after successful install"
-msgstr "インストールが成功したらダウンロードキャッシュを消す"
-
-#: ../rpmdrake:538
-#, c-format
-msgid "/_Compute updates on startup"
-msgstr ""
-
-#: ../rpmdrake:539
-#, c-format
-msgid "Search in _full package names"
-msgstr ""
-
-#: ../rpmdrake:540
-#, c-format
-msgid "Use _regular expressions in searches"
-msgstr ""
-
-#: ../rpmdrake:546
-#, c-format
-msgid "/_Update media"
+msgid "_Update media"
 msgstr "/メディアを更新(_U)"
 
-#: ../rpmdrake:551
-#, c-format
-msgid "/_Reset the selection"
+#: ../rpmdrake:600
+#, fuzzy, c-format
+msgid "_Reset the selection"
 msgstr "/選択をリセット(_R)"
 
-#: ../rpmdrake:555
-#, c-format
-msgid "Reset aborted (RPM DB is locked by another process)"
-msgstr ""
-
-#: ../rpmdrake:571
-#, c-format
-msgid "/Reload the _packages list"
+#: ../rpmdrake:601
+#, fuzzy, c-format
+msgid "Reload the _packages list"
 msgstr "/パッケージリストをリロード(_P)"
 
-#: ../rpmdrake:572
-#, c-format
-msgid "/_Quit"
+#: ../rpmdrake:602
+#, fuzzy, c-format
+msgid "_Quit"
 msgstr "/終了(_Q)"
 
-#: ../rpmdrake:572
+#: ../rpmdrake:602
 #, c-format
 msgid "<control>Q"
 msgstr "<control>Q"
 
-#: ../rpmdrake:591
-#, c-format
-msgid "/_Media Manager"
+#: ../rpmdrake:606
+#, fuzzy, c-format
+msgid "_Media Manager"
 msgstr "/メディアマネージャ(_M)"
 
-#: ../rpmdrake:595 ../rpmdrake:671
-#, c-format
-msgid "/_Show automatically selected packages"
-msgstr "/自動選択されたパッケージを表示(_S)"
-
-#: ../rpmdrake:609 ../rpmdrake:612 ../rpmdrake:617 ../rpmdrake:649
-#, c-format
-msgid "/_View"
+#: ../rpmdrake:612
+#, fuzzy, c-format
+msgid "_View"
 msgstr "/表示(_V)"
 
-#: ../rpmdrake:692
+#: ../rpmdrake:624
+#, fuzzy, c-format
+msgid "_Select dependencies without asking"
+msgstr "/確認せずに依存パッケージを選択する(_S)"
+
+#: ../rpmdrake:631
+#, c-format
+msgid "Try to update all package requires"
+msgstr ""
+
+#: ../rpmdrake:643
+#, c-format
+msgid "Show _icons in group names"
+msgstr ""
+
+#: ../rpmdrake:648
+#, fuzzy, c-format
+msgid "Clear download cache after successful install"
+msgstr "インストールが成功したらダウンロードキャッシュを消す"
+
+#: ../rpmdrake:654
+#, fuzzy, c-format
+msgid "_Show automatically selected packages"
+msgstr "/自動選択されたパッケージを表示(_S)"
+
+#: ../rpmdrake:658
+#, c-format
+msgid "_Compute updates on startup"
+msgstr ""
+
+#: ../rpmdrake:661
+#, c-format
+msgid "Search in _full package names"
+msgstr ""
+
+#: ../rpmdrake:664
+#, c-format
+msgid "Use _regular expressions in searches"
+msgstr ""
+
+#: ../rpmdrake:749
 #, c-format
 msgid "Find:"
 msgstr "検索対象:"
 
-#: ../rpmdrake:696
+#: ../rpmdrake:753
 #, c-format
 msgid "Please type in the string you want to search then press the <enter> key"
 msgstr ""
 
-#: ../rpmdrake:726
+#: ../rpmdrake:783
 #, c-format
 msgid "Apply"
 msgstr "適用"
 
-#: ../rpmdrake:745
+#: ../rpmdrake:802
 #, c-format
 msgid "Quick Introduction"
 msgstr "使い方"
 
-#: ../rpmdrake:746
+#: ../rpmdrake:803
 #, c-format
 msgid "You can browse the packages through the categories tree on the left."
 msgstr "左のカテゴリのツリーを展開してパッケージをブラウズすることができます。"
 
-#: ../rpmdrake:747
+#: ../rpmdrake:804
 #, c-format
 msgid ""
 "You can view information about a package by clicking on it on the right list."
@@ -2925,240 +2956,242 @@ msgstr ""
 "右のリストでパッケージの名前をクリックすると、ここにパッケージの説明が表示さ"
 "れます。"
 
-#: ../rpmdrake:748
+#: ../rpmdrake:805
 #, c-format
 msgid "To install, update or remove a package, just click on its \"checkbox\"."
 msgstr ""
 "パッケージをインストール、更新、削除するには、それぞれのチェックボックスをク"
 "リックしてください。"
 
-#: ../rpmdrake:793
+#: ../rpmdrake:851
 #, c-format
 msgid "rpmdrake is already running (pid: %s)"
 msgstr ""
 
-#: ../rpmdrake.pm:121
+#: ../rpmdrake.pm:122
 #, c-format
 msgid "Software Update"
 msgstr "ソフトウェアのアップデート"
 
-#: ../rpmdrake.pm:121
-#, c-format
-msgid "OpenMandriva Update"
-msgstr "OpenMandriva アップデート"
+#: ../rpmdrake.pm:122
+#, fuzzy, c-format
+msgid "Online Update"
+msgstr "更新"
 
-#: ../rpmdrake.pm:148
+#: ../rpmdrake.pm:149
 #, c-format
 msgid "Please enter your credentials for accessing proxy\n"
 msgstr "プロキシにアクセスするための資格情報を入力してください\n"
 
-#: ../rpmdrake.pm:149
+#: ../rpmdrake.pm:150
 #, c-format
 msgid "User name:"
 msgstr "ユーザ名:"
 
-#: ../rpmdrake.pm:234
+#: ../rpmdrake.pm:243
 #, c-format
 msgid "Software Packages Removal"
 msgstr "RPM を削除"
 
-#: ../rpmdrake.pm:235 ../rpmdrake.pm:239
+#: ../rpmdrake.pm:244 ../rpmdrake.pm:248
 #, c-format
 msgid "Software Packages Update"
 msgstr "RPM のアップデート"
 
-#: ../rpmdrake.pm:236
+#: ../rpmdrake.pm:245
 #, c-format
 msgid "Software Packages Installation"
 msgstr "RPM をインストール"
 
-#: ../rpmdrake.pm:284
+#: ../rpmdrake.pm:293
 #, c-format
 msgid "No"
 msgstr "いいえ"
 
-#: ../rpmdrake.pm:288
+#: ../rpmdrake.pm:297
 #, c-format
 msgid "Yes"
 msgstr "はい"
 
-#: ../rpmdrake.pm:340
+#: ../rpmdrake.pm:349
 #, c-format
 msgid "Info..."
 msgstr "情報..."
 
-#: ../rpmdrake.pm:465
+#: ../rpmdrake.pm:474
 #, c-format
 msgid "Austria"
 msgstr "オーストリア"
 
-#: ../rpmdrake.pm:466
+#: ../rpmdrake.pm:475
 #, c-format
 msgid "Australia"
 msgstr "オーストラリア"
 
-#: ../rpmdrake.pm:467
+#: ../rpmdrake.pm:476
 #, c-format
 msgid "Belgium"
 msgstr "ベルギー"
 
-#: ../rpmdrake.pm:468
+#: ../rpmdrake.pm:477
 #, c-format
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: ../rpmdrake.pm:469
+#: ../rpmdrake.pm:478
 #, c-format
 msgid "Canada"
 msgstr "カナダ"
 
-#: ../rpmdrake.pm:470
+#: ../rpmdrake.pm:479
 #, c-format
 msgid "Switzerland"
 msgstr "スイス"
 
-#: ../rpmdrake.pm:471
+#: ../rpmdrake.pm:480
 #, c-format
 msgid "Costa Rica"
 msgstr "コスタリカ"
 
-#: ../rpmdrake.pm:472
+#: ../rpmdrake.pm:481
 #, c-format
 msgid "Czech Republic"
 msgstr "チェコ"
 
-#: ../rpmdrake.pm:473
+#: ../rpmdrake.pm:482
 #, c-format
 msgid "Germany"
 msgstr "ドイツ"
 
-#: ../rpmdrake.pm:474
+#: ../rpmdrake.pm:483
 #, c-format
 msgid "Danmark"
 msgstr "デンマーク"
 
-#: ../rpmdrake.pm:475 ../rpmdrake.pm:479
+#: ../rpmdrake.pm:484 ../rpmdrake.pm:488
 #, c-format
 msgid "Greece"
 msgstr "ギリシャ"
 
-#: ../rpmdrake.pm:476
+#: ../rpmdrake.pm:485
 #, c-format
 msgid "Spain"
 msgstr "スペイン"
 
-#: ../rpmdrake.pm:477
+#: ../rpmdrake.pm:486
 #, c-format
 msgid "Finland"
 msgstr "フィンランド"
 
-#: ../rpmdrake.pm:478
+#: ../rpmdrake.pm:487
 #, c-format
 msgid "France"
 msgstr "フランス"
 
-#: ../rpmdrake.pm:480
+#: ../rpmdrake.pm:489
 #, c-format
 msgid "Hungary"
 msgstr "ハンガリー"
 
-#: ../rpmdrake.pm:481
+#: ../rpmdrake.pm:490
 #, c-format
 msgid "Israel"
 msgstr "イスラエル"
 
-#: ../rpmdrake.pm:482
+#: ../rpmdrake.pm:491
 #, c-format
 msgid "Italy"
 msgstr "イタリア"
 
-#: ../rpmdrake.pm:483
+#: ../rpmdrake.pm:492
 #, c-format
 msgid "Japan"
 msgstr "日本"
 
-#: ../rpmdrake.pm:484
+#: ../rpmdrake.pm:493
 #, c-format
 msgid "Korea"
 msgstr "韓国"
 
-#: ../rpmdrake.pm:485
+#: ../rpmdrake.pm:494
 #, c-format
 msgid "Netherlands"
 msgstr "オランダ"
 
-#: ../rpmdrake.pm:486
+#: ../rpmdrake.pm:495
 #, c-format
 msgid "Norway"
 msgstr "ノルウェー"
 
-#: ../rpmdrake.pm:487
+#: ../rpmdrake.pm:496
 #, c-format
 msgid "Poland"
 msgstr "ポーランド"
 
-#: ../rpmdrake.pm:488
+#: ../rpmdrake.pm:497
 #, c-format
 msgid "Portugal"
 msgstr "ポルトガル"
 
-#: ../rpmdrake.pm:489
+#: ../rpmdrake.pm:498
 #, c-format
 msgid "Russia"
 msgstr "ロシア"
 
-#: ../rpmdrake.pm:490
+#: ../rpmdrake.pm:499
 #, c-format
 msgid "Sweden"
 msgstr "スウェーデン"
 
-#: ../rpmdrake.pm:491
+#: ../rpmdrake.pm:500
 #, c-format
 msgid "Singapore"
 msgstr "シンガポール"
 
-#: ../rpmdrake.pm:492
+#: ../rpmdrake.pm:501
 #, c-format
 msgid "Slovakia"
 msgstr "スロバキア"
 
-#: ../rpmdrake.pm:493
+#: ../rpmdrake.pm:502
 #, c-format
 msgid "Taiwan"
 msgstr "台湾"
 
-#: ../rpmdrake.pm:494
+#: ../rpmdrake.pm:503
 #, c-format
 msgid "United Kingdom"
 msgstr "イギリス"
 
-#: ../rpmdrake.pm:495
+#: ../rpmdrake.pm:504
 #, c-format
 msgid "China"
 msgstr "中国"
 
-#: ../rpmdrake.pm:496 ../rpmdrake.pm:497 ../rpmdrake.pm:498 ../rpmdrake.pm:499
+#: ../rpmdrake.pm:505 ../rpmdrake.pm:506 ../rpmdrake.pm:507 ../rpmdrake.pm:508
 #, c-format
 msgid "United States"
 msgstr "アメリカ"
 
-#: ../rpmdrake.pm:579
+#: ../rpmdrake.pm:588
 #, c-format
 msgid "Please wait, downloading mirror addresses."
 msgstr "ミラーのアドレスを取得しています。お待ちください。"
 
-#: ../rpmdrake.pm:580
+#: ../rpmdrake.pm:589
 #, c-format
-msgid "Please wait, downloading mirror addresses from the OpenMandriva website."
+msgid ""
+"Please wait, downloading mirror addresses from the OpenMandriva website."
 msgstr ""
-"OpenMandriva のウェブサイトからミラーのアドレスを取得しています。お待ちください。"
+"OpenMandriva のウェブサイトからミラーのアドレスを取得しています。お待ちくださ"
+"い。"
 
-#: ../rpmdrake.pm:601
+#: ../rpmdrake.pm:610
 #, c-format
 msgid "retrieval of [%s] failed"
 msgstr "[%s] の取得に失敗しました"
 
-#: ../rpmdrake.pm:623
+#: ../rpmdrake.pm:632
 #, c-format
 msgid ""
 "I need to access internet to get the mirror list.\n"
@@ -3171,17 +3204,17 @@ msgstr ""
 "\n"
 "続けますか？"
 
-#: ../rpmdrake.pm:631 ../rpmdrake.pm:670
+#: ../rpmdrake.pm:640 ../rpmdrake.pm:679
 #, c-format
 msgid "Mirror choice"
 msgstr "ミラーの選択"
 
-#: ../rpmdrake.pm:643
+#: ../rpmdrake.pm:652
 #, c-format
 msgid "Error during download"
 msgstr "ダウンロード中にエラー発生"
 
-#: ../rpmdrake.pm:645
+#: ../rpmdrake.pm:654
 #, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -3196,7 +3229,7 @@ msgstr ""
 "ネットワークかウェブサイトが利用不能になっているようです。\n"
 "しばらくたってからやり直してください。"
 
-#: ../rpmdrake.pm:650
+#: ../rpmdrake.pm:659
 #, c-format
 msgid ""
 "There was an error downloading the mirror list:\n"
@@ -3211,24 +3244,24 @@ msgstr ""
 "ネットワークか OpenMandriva のウェブサイトが利用不能になっているようです。\n"
 "しばらくたってからやり直してください。"
 
-#: ../rpmdrake.pm:660
+#: ../rpmdrake.pm:669
 #, c-format
 msgid "No mirror"
 msgstr "ミラーなし"
 
-#: ../rpmdrake.pm:662
+#: ../rpmdrake.pm:671
 #, c-format
 msgid "I can't find any suitable mirror."
 msgstr "適切なミラーが見つかりません。"
 
-#: ../rpmdrake.pm:663
-#, c-format
+#: ../rpmdrake.pm:672
+#, fuzzy, c-format
 msgid ""
 "I can't find any suitable mirror.\n"
 "\n"
 "There can be many reasons for this problem; the most frequent is\n"
 "the case when the architecture of your processor is not supported\n"
-"by OpenMandriva Official Updates."
+"by OpenMandriva Lx."
 msgstr ""
 "適切なミラーが見つかりません。\n"
 "\n"
@@ -3236,48 +3269,48 @@ msgstr ""
 "アーキテクチャが OpenMandriva の公式アップデートでサポートされて\n"
 "いない場合です。"
 
-#: ../rpmdrake.pm:682
+#: ../rpmdrake.pm:691
 #, c-format
 msgid "Please choose the desired mirror."
 msgstr "ミラーを選んでください。"
 
-#: ../rpmdrake.pm:723
+#: ../rpmdrake.pm:732
 #, c-format
 msgid "Copying file for medium `%s'..."
 msgstr "メディア %s 用のファイルをコピー..."
 
-#: ../rpmdrake.pm:726
+#: ../rpmdrake.pm:735
 #, c-format
 msgid "Examining file of medium `%s'..."
 msgstr "メディア %s のファイルを調べています..."
 
-#: ../rpmdrake.pm:729
+#: ../rpmdrake.pm:738
 #, c-format
 msgid "Examining remote file of medium `%s'..."
 msgstr "メディア %s のリモートファイルを調べています..."
 
-#: ../rpmdrake.pm:733
+#: ../rpmdrake.pm:742
 #, c-format
 msgid " done."
 msgstr "完了しました"
 
-#: ../rpmdrake.pm:737
+#: ../rpmdrake.pm:746
 #, c-format
 msgid " failed!"
 msgstr "失敗しました"
 
 #. -PO: We're downloading the said file from the said medium
-#: ../rpmdrake.pm:742
+#: ../rpmdrake.pm:751
 #, c-format
 msgid "%s from medium %s"
 msgstr "%s (メディア %s)"
 
-#: ../rpmdrake.pm:746
+#: ../rpmdrake.pm:755
 #, c-format
 msgid "Starting download of `%s'..."
 msgstr "%s のダウンロードを開始..."
 
-#: ../rpmdrake.pm:750
+#: ../rpmdrake.pm:759
 #, c-format
 msgid ""
 "Download of `%s'\n"
@@ -3286,29 +3319,29 @@ msgstr ""
 "%s をダウンロード。残り時間:%s\n"
 "速度:%s"
 
-#: ../rpmdrake.pm:753
+#: ../rpmdrake.pm:762
 #, c-format
 msgid ""
 "Download of `%s'\n"
 "speed:%s"
 msgstr "%s をダウンロード。速度:%s"
 
-#: ../rpmdrake.pm:764
+#: ../rpmdrake.pm:773
 #, c-format
 msgid "Please wait, updating media..."
 msgstr "メディアを更新しています。お待ちください..."
 
-#: ../rpmdrake.pm:774
+#: ../rpmdrake.pm:783
 #, c-format
 msgid "Canceled"
 msgstr "キャンセルされました"
 
-#: ../rpmdrake.pm:791
+#: ../rpmdrake.pm:800
 #, c-format
 msgid "Error retrieving packages"
 msgstr "パッケージ検索中にエラー発生"
 
-#: ../rpmdrake.pm:792
+#: ../rpmdrake.pm:801
 #, c-format
 msgid ""
 "It's impossible to retrieve the list of new packages from the media\n"
@@ -3324,12 +3357,12 @@ msgstr ""
 "削除し、改めて追加してください。後者の場合は、しばらくたってから\n"
 "やり直してください。"
 
-#: ../rpmdrake.pm:823
+#: ../rpmdrake.pm:832
 #, c-format
 msgid "Update media"
 msgstr "メディアを更新"
 
-#: ../rpmdrake.pm:828
+#: ../rpmdrake.pm:837
 #, c-format
 msgid ""
 "No active medium found. You must enable some media to be able to update them."
@@ -3337,12 +3370,17 @@ msgstr ""
 "有効なメディアが見つかりません。更新するにはメディアを最低一つ有効にしてくだ"
 "さい。"
 
-#: ../rpmdrake.pm:835
+#: ../rpmdrake.pm:844
 #, c-format
 msgid "Select the media you wish to update:"
 msgstr "更新するメディアを選んでください:"
 
-#: ../rpmdrake.pm:881
+#: ../rpmdrake.pm:865
+#, c-format
+msgid "Update"
+msgstr "更新"
+
+#: ../rpmdrake.pm:890
 #, c-format
 msgid ""
 "Unable to update medium; it will be automatically disabled.\n"
@@ -3355,7 +3393,7 @@ msgstr ""
 "エラー:\n"
 "%s"
 
-#: ../rpmdrake.pm:902 ../rpmdrake.pm:913
+#: ../rpmdrake.pm:911 ../rpmdrake.pm:922
 #, c-format
 msgid ""
 "Unable to add medium, errors reported:\n"
@@ -3366,17 +3404,17 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:925
+#: ../rpmdrake.pm:934
 #, c-format
 msgid "Unable to create medium."
 msgstr "メディアを作成できません。"
 
-#: ../rpmdrake.pm:930
+#: ../rpmdrake.pm:939
 #, c-format
 msgid "Failure when adding medium"
 msgstr "メディアの追加に失敗しました"
 
-#: ../rpmdrake.pm:931
+#: ../rpmdrake.pm:940
 #, c-format
 msgid ""
 "There was a problem adding medium:\n"
@@ -3387,7 +3425,7 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../rpmdrake.pm:944
+#: ../rpmdrake.pm:953
 #, c-format
 msgid ""
 "Your medium `%s', used for updates, does not match the version of %s you're "
@@ -3398,23 +3436,23 @@ msgstr ""
 "ていません。\n"
 "無効にします。"
 
-#: ../rpmdrake.pm:947
-#, c-format
+#: ../rpmdrake.pm:956
+#, fuzzy, c-format
 msgid ""
-"Your medium `%s', used for updates, does not match the version of OpenMandriva "
-"Linux you're running (%s).\n"
+"Your medium `%s', used for updates, does not match the version of "
+"OpenMandriva Lx you're running (%s).\n"
 "It will be disabled."
 msgstr ""
 "更新メディアに指定されている %s は現在お使いの OpenMandriva のバージョン "
 "(%s) と一致していません。\n"
 "無効にします。"
 
-#: ../rpmdrake.pm:978
+#: ../rpmdrake.pm:987
 #, c-format
 msgid "Help launched in background"
 msgstr "ヘルプを裏で起動しました"
 
-#: ../rpmdrake.pm:979
+#: ../rpmdrake.pm:988
 #, c-format
 msgid ""
 "The help window has been started, it should appear shortly on your desktop."
@@ -3451,6 +3489,12 @@ msgstr "urpmi メディアを追加"
 #: ../mime/x-urpmi-media.desktop.in.h:1
 msgid "Urpmi medium info"
 msgstr "urpmi メディアの情報"
+
+#~ msgid "Here is the list of software package updates"
+#~ msgstr "RPM アップデートの一覧です"
+
+#~ msgid "OpenMandriva Update"
+#~ msgstr "OpenMandriva アップデート"
 
 #~ msgid "Books"
 #~ msgstr "文書"
@@ -3593,8 +3637,7 @@ msgstr "urpmi メディアの情報"
 #~ msgstr ""
 #~ "RPM インストールツールへようこそ\n"
 #~ "\n"
-#~ "OpenMandriva の CDROM や DVD には数千ものパッケージが収録されていま"
-#~ "す。\n"
+#~ "OpenMandriva の CDROM や DVD には数千ものパッケージが収録されています。\n"
 #~ "このツールはソフトウェアをインストールするお手伝いをします。"
 
 #~ msgid "Unable to add medium, wrong or missing arguments"
@@ -3844,8 +3887,8 @@ msgstr "urpmi メディアの情報"
 #~ "have\n"
 #~ "to do this in two steps.)"
 #~ msgstr ""
-#~ "このステップでは OpenMandriva ウェブサイトまたは FTP ミラーからソースを"
-#~ "追加します。\n"
+#~ "このステップでは OpenMandriva ウェブサイトまたは FTP ミラーからソースを追"
+#~ "加します。\n"
 #~ "\n"
 #~ "公式ミラーには二種類あります。一つは、お使いのディストリビューションの\n"
 #~ "すべてのパッケージ (通常これは標準のインストール CD に収録されているもの"
