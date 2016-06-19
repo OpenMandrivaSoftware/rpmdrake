@@ -74,7 +74,7 @@ sub refresh_packages_list {
     my ($list, $info, $button) = @_;
     # select packages to update:
     my @requested = sort grep { $pkgs->{$_}{pkg} } @filtered_pkgs;
- 
+
     $list->freeze_child_notify;
     my $model = $list->get_model;
     $list->set_model;
